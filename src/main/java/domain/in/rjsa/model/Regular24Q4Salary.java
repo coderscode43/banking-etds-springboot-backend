@@ -143,28 +143,28 @@ public class Regular24Q4Salary {
 	public String panOfLandlord3;
 	@Column(name = "nameOfLandlord3")
 	public String nameOfLandlord3;
-	@Column(name = "panOfLandlord4")
-	public String panOfLandlord4;
-	@Column(name = "nameOfLandlord4")
-	public String nameOfLandlord4;
-	@Column(name = "whetherInterestPaidToBeLender")
-	public String whetherInterestPaidToBeLender;
-	@Column(name = "countOfPanOfLender")
-	public Long countOfPanOfLender;
-	@Column(name = "panOfLender1")
-	public String panOfLender1;
-	@Column(name = "nameOfLender1")
-	public String nameOfLender1;
-	@Column(name = "panOfLandlord4")
-	public String panOfLandlord4;
-	@Column(name = "panOfLandlord4")
-	public String panOfLandlord4;
-	@Column(name = "panOfLandlord4")
-	public String panOfLandlord4;
-	@Column(name = "panOfLandlord4")
-	public String panOfLandlord4;
-	@Column(name = "panOfLandlord4")
-	public String panOfLandlord4;
+//	@Column(name = "panOfLandlord4")
+//	public String panOfLandlord4;
+//	@Column(name = "nameOfLandlord4")
+//	public String nameOfLandlord4;
+//	@Column(name = "whetherInterestPaidToBeLender")
+//	public String whetherInterestPaidToBeLender;
+//	@Column(name = "countOfPanOfLender")
+//	public Long countOfPanOfLender;
+//	@Column(name = "panOfLender1")
+//	public String panOfLender1;
+//	@Column(name = "nameOfLender1")
+//	public String nameOfLender1;
+//	@Column(name = "panOfLandlord4")
+//	public String panOfLandlord4;
+//	@Column(name = "panOfLandlord4")
+//	public String panOfLandlord4;
+//	@Column(name = "panOfLandlord4")
+//	public String panOfLandlord4;
+//	@Column(name = "panOfLandlord4")
+//	public String panOfLandlord4;
+//	@Column(name = "panOfLandlord4")
+//	public String panOfLandlord4;
 	
 	
 	

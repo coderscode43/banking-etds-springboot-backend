@@ -1,0 +1,95 @@
+<div id="page-wrapper">
+	<div class="container-fluid">
+		<!-- Page Heading -->
+		<div class="row">
+			<ol class="breadcrumb">
+				<li class="active"><i class="fa fa-dashboard"></i>&nbsp;&nbsp;
+					Add Client Investment Type</li>
+			</ol>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<form role="form" name="clientInvestmentTypeForm">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Client ID*</label> <input class="form-control"
+									type="text" name="clientId" placeholder="Client ID"
+									ng-model="cCctr.entity.clientId" autocomplete="off"
+									ng-maxlength="50" ng-required="true"
+									ng-pattern="/^[ A-Za-z\s]*$/"
+									ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="clientInvestmentTypeForm.clientId.$dirty && clientInvestmentTypeForm.clientId.$invalid">
+									<span class="error"
+									ng-show="clientInvestmentTypeForm.clientId.$error.pattern">Please
+										enter valid Client ID.</span> <span class="error"
+									ng-show="clientInvestmentTypeForm.clientId.$error.maxlength">Client
+										ID should not be greater than 50 characters</span> <span
+									class="error"
+									ng-show="clientInvestmentTypeForm.clientId.$error.required">Client
+										ID is Required.</span>
+								</span>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Investment Name*</label> <input class="form-control" type="text"
+									name="investmentName" placeholder="Investment Name" ng-model="cCctr.entity.investmentName"
+									autocomplete="off" ng-maxlength="50" ng-required="true"
+									ng-pattern="/^[ A-Za-z\s]*$/"
+									ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="clientInvestmentTypeForm.investmentName.$dirty && clientInvestmentTypeForm.investmentName.$invalid">
+									<span class="error"
+									ng-show="clientInvestmentTypeForm.investmentName.$error.pattern">Please
+										enter valid Investment Name.</span> <span class="error"
+									ng-show="clientInvestmentTypeForm.investmentName.$error.maxlength">Investment Name
+										should not be greater than 10 characters</span> <span class="error"
+									ng-show="clientInvestmentTypeForm.investmentName.$error.required">Investment Name is
+										Required.</span>
+								</span>
+							</div>
+						</div>
+					</div>
+						<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Section*</label> <input class="form-control"
+									type="text" name="section" placeholder="Section"
+									ng-model="cCctr.entity.section" autocomplete="off"
+									ng-maxlength="50" ng-required="true"
+									ng-pattern="/^[ A-Za-z\s]*$/"
+									ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="clientInvestmentTypeForm.section.$dirty && clientDetailForm.section.$invalid">
+									<span class="error"
+									ng-show="clientInvestmentTypeForm.section.$error.pattern">Please
+										enter valid Section.</span> <span class="error"
+									ng-show="clientInvestmentTypeForm.section.$error.maxlength">
+										Section should not be greater than 50 characters</span> <span
+									class="error"
+									ng-show="clientInvestmentTypeForm.section.$error.required">
+										Section is Required.</span>
+								</span>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Description*</label> 
+								<textarea rows="4" cols="50" name="comment" form="clientInvestmentTypeForm">
+                                 Enter Description here...</textarea>
+							</div>
+						</div>
+						</div>
+	               <div class="row">
+            			<div class="col-md-6">
+            				<button ng-click="clientInvestmentTypeForm.submitted=true;cCctr.submit(clientInvestmentTypeForm.$valid,'clientInvestmentType')" class="btn btn-success">Submit</button>
+            				<button ng-click="cCctr.gotoList('clientInvestmentType')" class="btn btn-primary">Cancel</button>
+            			</div>
+            		</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

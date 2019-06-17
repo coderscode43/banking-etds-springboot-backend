@@ -1,0 +1,151 @@
+<div id="page-wrapper">
+
+            <div class="container-fluid">
+            
+                <!-- Page Heading -->
+                <div class="row">
+                       <h1 class="page-header" style="margin-top:0;">
+                       		List of Employee detail
+                        </h1>
+                    </div>
+                </div>
+                <!-- Searchbar-->
+                <div class="col-lg-12">
+                		 <div class="table-responsive">
+                            <table style="width: 100%;border-color: red;border-collapse: separate;border-spacing:10px;">
+                            	<col width="20%">
+                            	<col width="20%">
+                            	<col width="20%">
+                            	<col width="20%">
+                            	<col width="20%">
+            			<tr>
+            				<th>Client ID</th>
+                			<td>
+                				<md-autocomplete
+            								md-input-name="clientId"
+            								md-input-minlength="3"
+            								md-no-cache = "true"
+            								md-input-maxlength="75"
+            								md-selected-item="cCctr.search.searchName"
+            								md-search-text="b"
+            								md-items="item in cCctr.ajax1('employee','clientId',b)"
+            								md-delay="2000"
+            								placeholder="Client ID">
+          								<md-item-template>
+            								<span >{{item}}</span>
+          								</md-item-template>
+          								<md-not-found>
+                     						No bank name with "{{b}}" were found.<a ng-click = "">Add new</a>
+           								</md-not-found>
+        								</md-autocomplete>
+                			</td>
+            				<th>
+                    			Employee ID
+                			</th>
+                			<td>
+                				<input type="text" class="form-control" name="employeeId" ng-model="cCctr.search.employeeId" autocomplete="off">
+                			</td>
+                			<td align="right">
+            				<button ng-click="cCctr.searchEntities(true,'clientDetail')" class="btn btn-success" >Search</button>
+            				</td>
+                		</tr>
+                		
+                		<tr>
+                		<th>
+                    	 name
+                		</th>
+                		<td>
+                		<input type="text" class="form-control" name="name" ng-model="cCctr.search.name" autocomplete="off">
+                		</td>
+                		<th>
+                    	pan
+                		</th>
+                		<td>
+                		<input type="text" class="form-control" name="pan" ng-model="cCctr.search.pan" autocomplete="off">
+                		</td>	
+                		</tr>
+                		
+                		<tr>
+                		<th>
+                    	 branch
+                		</th>
+                		<td>
+                		<input type="text" class="form-control" name="branch" ng-model="cCctr.search.name" autocomplete="off">
+                		</td>
+                		<th>
+                    	pan
+                		</th>
+                		<td>
+                		<input type="text" class="form-control" name="description" ng-model="cCctr.search.pan" autocomplete="off">
+                		</td>	
+                		</tr>
+                		
+                		
+                	</table>
+                	</div>
+                </div>
+                
+                  <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default" style="border: none !important;" >
+                         <div style="background-color: #5e7ba4">
+                            <div class="panel-heading">
+                                <h3 style= color:White class="panel-title"><i class="fa fa-fw fa-table"></i> <b>List of Client Detail</b>
+                                <a  style="float: right;color:White" ng-click="cCctr.gotoAdd('clientDetail')" data-toggle="tab" >&nbsp;&nbsp;<b>+Add</b>&nbsp;&nbsp;</a>
+                                </h3>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                            <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-striped" style="font-size:12px; width:100%; padding:0; margin:0;">
+                                <thead>
+                                <tr>
+                                            <th></th>
+											<th><input type="text" ng-model="search.clientName" class="form-control" placeholder="Client Name"></th>
+											<th><input type="text" ng-model="search.pan" class="form-control" placeholder="PAN"></th>
+											<th><input type="text" ng-model="search.address" class="form-control" placeholder="Address"></th>
+										</tr>
+												<colgroup>
+											<col span="12" style="background-color: #81b7db">
+                                           
+                                                </colgroup>
+											
+                                    <tr>
+                                        <th>Sr. No.</th>
+                                        <th>Client Name</th>
+                                        <th>Branch</th>
+                                        <th>Address</th>
+                    
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-show="cCctr.getList().length <= 0"><td colspan="6" style="text-align:center;">No data found!!</td></tr>
+                                	<tr dir-paginate="a in cCctr.getList()|filter:search|itemsPerPage:cCctr.ItemsPerPage" >
+                                       		<td>{{$index+1}}</td>
+                                            <td>{{a.clientName}}</td>
+                                            <td>{{a.pan}}</td>
+                                            <td>{{a.address}}</td>                       
+                                            <td><a ng-click="cCctr.gotoDetail(a.id,'detailclientDetail')" style="color:blue"> Detail </a> </td>
+                                   </tr>
+                                   
+                                </tbody>
+                            </table>
+                            <dir-pagination-controls
+      								 max-size="10"
+      								 direction-links="true"
+     								 boundary-links="true" >
+    							</dir-pagination-controls>
+                        </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+               
+            </div>
+            <!-- /.container-fluid -->
+
+        
+        <!-- /#page-wrapper -->
+        

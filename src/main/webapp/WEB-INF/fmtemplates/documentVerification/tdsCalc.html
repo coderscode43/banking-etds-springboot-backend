@@ -1,0 +1,266 @@
+<div class="container">    
+        <div id="hraCalc" style="margin-top:10px; " class="mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">                    
+            <div class="panel panel-info" >
+                    <div class="panel-heading" style=" background-color: #B6D8FC;color:#000">
+                        <div class="panel-title"><h3>
+									<i class="fa fa-calculator"></i> TDS Calculator
+								</h3></div>
+                     </div> 
+                         <div style="padding-top:30px" class="panel-body" >
+                  <form id="hraCalcform" class="form-horizontal" role="form">
+                  
+                      <div class="form-group">
+        				<div class="col-md-6">    
+                            <label>Financial Year</label>
+                    			
+                    	</div>
+                    	<div class="col-md-6">    
+                    <select name="" id="" class="form-control">
+					<option selected="selected" value="0">Select</option>
+					<option value="7">2018-19</option>
+					<option value="6">2017-18</option>
+					<option value="5">2016-17</option>
+					<option value="4">2015-16</option>
+					<option value="3">2014-15</option>
+					<option value="2">2013-14</option>
+					<option value="1">2012-13</option>
+
+				</select>
+                    			
+                    	</div>
+                      </div>
+                      
+                       <div class="form-group">
+        				<div class="col-md-6">    
+                            <label for="validationCustom03">Residential Status</label>
+                    			
+                    	</div>
+                    	<div class="col-md-6">    
+                   <select name="category"  id="validationCustom03" class="form-control" onchange="ChangecatList()" required >
+					<option >Select</option>
+					<option value="Resident">Resident</option>
+					<option value="Non-Resident">Non-Resident</option>
+
+				</select>
+                 	</div>
+                      </div>
+                                
+                  <div class="form-group">
+        				<div class="col-md-6">    
+                            <label for="validationCustom04" >Residential Type</label>
+                    			
+                    	</div>
+                    	<div class="col-md-6">    
+                   <select  class="form-control" id="validationCustom04" name="activity" required>
+					<option >---Select---</option>
+
+				</select>
+                 	</div>
+                      </div>     
+                      
+                        
+                    <div class="form-group">
+        				<div class="col-md-6">    
+                            <label>PAN is not available</label>
+                    			
+                    	</div>
+                    	<div class="col-md-6">    
+                  
+                    <select name="category"  id="validationCustom03" class="form-control" >
+					<option selected="selected" value="0">Select</option>
+					<option value="1">Yes</option>
+					<option value="2">No</option>
+
+				</select>
+               
+                 	</div>
+                      </div>  
+                      
+                      
+                      
+                      
+                        <div class="form-group">
+        				<div class="col-md-6">    
+                            <label>Section/ Description</label>
+                    			
+                    	</div>
+                    	<div class="col-md-6">    
+                   <select name=""  id="" class="form-control">
+					<option selected="selected" value="--Select--">--Select--</option>
+					<option value="192A">192A:Payment of taxable accumulated balance of provident fund</option>
+					<option value="193">193:Interest on securities to a resident</option>
+					<option value="194">194:Dividend to a resident</option>
+					<option value="194A">194A:Interest other than interest on securities to a resident</option>
+					<option value="194B">194B:Winning from lottery or crossword puzzle or card game or other game of any sort to a resident</option>
+					<option value="194BB">194BB:Winning from Horse races to a resident</option>
+					<option value="194C">194C:Payment to a resident contractor/sub-contractor</option>
+					<option value="194D">194D:Insurance commission to a resident</option>
+					<option value="194DA">194DA:Payment in respect of life insurance policy</option>
+					<option value="194EE">194EE:Payment in respect of deposits under National Savings Scheme, 1987 to a resident</option>
+					<option value="194F">194F:Payment on account of repurchase of units of MF or UTI to a resident</option>
+					<option value="194G">194G:Commission on sale of lottery tickets to a resident</option>
+					<option value="194H">194H:Commission or brokerage to a resident</option>
+					<option value="194I(a)">194I(a):Rent to a resident (Plant and Machinery)</option>
+					<option value="194I(b)">194I(b):Rent to a resident (Others)</option>
+					<option value="194IA">194IA:Payment/credit of considration to a resident transferor for transfer of any immovable property</option>
+					<option value="194IB">194IB:Payment/credit of rent by Individual/HUF to a resident</option>
+					<option value="194IC">194IC:Payment under joint development agreement to resident Individual/HUF</option>
+					<option value="194J">194J:Fees for professional or technical services to a resident</option>
+					<option value="194LA">194LA:Payment of compensation to a resident on acquisition of certain immovable property</option>
+					<option value="194LBA(1)">194LBA(1):Income from units of a business trust</option>
+					<option value="194LBB">194LBB:Payment in respect of units of investment fund specified in section 115UB</option>
+					<option value="194LBC">194LBC:Income from Investment in specified securitization trust u/s 115TCA</option>
+
+				</select>
+                 	</div>
+                      </div>  
+                      
+                      
+                 <div class="form-group">
+        				<div class="col-md-6">    
+                            <label>Amount Of Payment</label>
+                    			
+                    	</div>
+                    	<div class="col-md-6">    
+                  <input name="" type="text" maxlength="18" id="" class="form-control numericinput"   >
+                 	</div>
+                      </div>  
+                      
+                     
+                      
+                       <div class="col-sm-12 calc_panel_group" style="margin-top:5%">
+                                <div class="form-group clearfix text-center m20">
+                                   
+                                    <button name="submitButton" id="calculatehra" class="btn btn-calc btn-green" style="float: none; background-color:#5cb85c; color:white" onclick="test('#calculator'); calculateHRA()"><i class="fa fa-check"></i><b> Calculate</b></button>
+                                </div>
+                             
+                            </div> 
+                            
+                        
+                        
+                      
+                       
+                       
+                    </form>     
+
+
+                       
+                    
+
+                        </div>  
+                    
+                   
+                    
+                    
+                    
+                    
+                        
+
+                   
+           </div>  
+        </div>
+  
+    </div>
+   
+   
+     <div id="calculator" class="modal fade" role="dialog">
+  <div class="modal-dialog" style="width:54%">
+    <!-- Modal content-->
+    <div class="modal-content">
+     
+      
+     <div class="modal-header modal-header-primary">
+                   
+                    <h3><i class="fa fa-paper-plane"></i>  Results</h3>
+                </div> 
+     
+      <div class="modal-body">  
+      <div id="myTabContent" class="tab-content">
+					<div class="tab-pane fade active in" id="signin">
+						<form name="profileForm" class="form-horizontal"
+							enctype="multipart/form-data">
+							<fieldset>
+							
+    
+    
+    
+    
+    <div class="col-md-12" style="margin-top:30px; ">
+       
+       
+       <div class="form-group">
+        				<div class="col-md-6">    
+                            <label>TDS</label>
+                    			
+                    	</div>
+                    	<div class="col-md-6">    
+                  <input name="" type="text" maxlength="18" id="" class="form-control numericinput" readonly=""  >
+                 	</div>
+                      </div>     
+                      
+                       <div class="form-group">
+        				<div class="col-md-6">    
+                            <label>Surcharge</label>
+                    			
+                    	</div>
+                    	<div class="col-md-6">    
+                  <input name="" type="text" maxlength="18" id="" class="form-control numericinput"  readonly="" >
+                 	</div>
+                      </div> 
+                      
+                       <div class="form-group">
+        				<div class="col-md-6">    
+                            <label>Education Cess</label>
+                    			
+                    	</div>
+                    	<div class="col-md-6">    
+                  <input name="" type="text" maxlength="18" id="" class="form-control numericinput"  readonly="" >
+                 	</div>
+                      </div> 
+                      <div class="form-group">
+        				<div class="col-md-6">    
+                            <label> Secondary and higher education cess</label>
+                    			
+                    	</div>
+                    	<div class="col-md-6">    
+                  <input name="" type="text" maxlength="18" id="" class="form-control numericinput" readonly=""  >
+                 	</div>
+                      </div> 
+                      
+                      <div class="form-group">
+        				<div class="col-md-6">    
+                            <label>Total TDS To be Deducted</label>
+                    			
+                    	</div>
+                    	<div class="col-md-6">    
+                  <input name="" type="text" maxlength="18" id="" class="form-control numericinput"  readonly=""  >
+                 	</div>
+                      </div>
+       
+       
+       
+       
+    </div>
+   
+   
+    
+    <div class="col-md-12 text-center" style="margin-top:10%;margin-bottom:5%">
+        <a id="calculateagain" class="btn btn-calc btn-orange btn-plain ct-btn mt20" style="float: none;background-color:#5cb85c; color:white" data-dismiss="modal"><i class="fa fa-calculator"></i><b> Calculate again</b></a>
+    </div>
+    <br>
+    
+    
+    </fieldset>
+							</form>
+							</div>
+							</div>
+      
+    </div>
+	</div>
+  </div>
+</div>  
+    
+    
+    
+    
+           

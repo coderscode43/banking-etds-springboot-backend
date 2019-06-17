@@ -1,0 +1,64 @@
+package domain.in.rjsa.service.impl;
+
+import java.util.HashMap;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import domain.in.rjsa.dao.LoginDao;
+import domain.in.rjsa.model.Login;
+import domain.in.rjsa.service.LoginService;
+
+@Transactional
+@Service("loginService")
+public class LoginServiceImpl implements LoginService {
+
+	@Autowired
+	LoginDao dao;
+
+	@Override
+	public void updateLogin(Login login) {
+		// TODO Auto-generated method stub
+		dao.update(login);
+	}
+
+	@Override
+	public Login getLogin(String userName) {
+		// TODO Auto-generated method stub
+		return dao.getByuserName(userName);
+	}
+
+	@Override
+	public void persist(Login login) {
+		dao.persist(login);
+
+	}
+
+	@Override
+	public HashMap<String, Login> getUserNameLogin() {
+		// TODO Auto-generated method stub
+		List<Login> all = dao.findall();
+		HashMap<String, Login> map = new HashMap<String, Login>();
+		for (Login l : all) {
+			map.put(l.getUserName(), l);
+		}
+		return map;
+	}
+
+	public void updatePassword(Login login, String password) {
+		String hash = generateHash(password);
+		login.setPassword(hash);
+		login.setPasswordReset(false);
+		updateLogin(login);
+	}
+
+	public String generateHash(String password) {
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		return passwordEncoder.encode(password);
+
+	}
+
+}

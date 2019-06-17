@@ -1,0 +1,285 @@
+
+
+<style>
+/*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+	@media
+	  only screen 
+    and (max-width: 760px), (min-device-width: 768px) 
+    and (max-device-width: 1024px)  {
+
+		/* Force table to not be like tables anymore */
+		table, thead, tbody, th, td, tr {
+			display: block;
+		}
+
+		/* Hide table headers (but not display: none;, for accessibility) */
+		thead tr {
+			position: absolute;
+			top: -9999px;
+			left: -9999px;
+		}
+
+    tr {
+      margin: 0 0 1rem 0;
+    }
+      
+    tr:nth-child(odd) {
+      background: #ccc;
+    }
+    
+		td {
+			/* Behave  like a "row" */
+			border: none;
+			border-bottom: 1px solid #eee;
+			position: relative;
+			padding-left: 50%;
+		}
+
+		td:before {
+			/* Now like a table header */
+			position: absolute;
+			/* Top/left values mimic padding */
+			top: 0;
+			left: 6px;
+			width: 45%;
+			padding-right: 10px;
+			white-space: nowrap;
+		}
+
+		/*
+		Label the data
+    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+		*/
+		td:nth-of-type(1):before { content: "Sr. No."; }
+		td:nth-of-type(2):before { content: "Employee Code"; }
+		td:nth-of-type(3):before { content: "Name"; }
+		td:nth-of-type(4):before { content: "PAN"; }
+		td:nth-of-type(5):before { content: "Designation"; }
+		td:nth-of-type(6):before { content: "Email"; }
+		td:nth-of-type(7):before { content: "Mobile"; }
+		td:nth-of-type(8):before { content: "Address"; }
+		td:nth-of-type(9):before { content: "Branch"; }
+		td:nth-of-type(10):before { content: "Group Code"; }
+		td:nth-of-type(11):before { content: "Action"; }
+		
+	
+	}
+	
+	
+	
+	
+    @media only screen and (max-width: 1000px) {
+        .one{
+            display: none;
+          
+        }
+    }
+    
+ @media only screen and (max-width: 1000px) {
+        .two{
+         
+            padding:8px;
+        }
+    }
+        
+   @media only screen and (min-width:600px) {
+            #three{
+                display: none;
+                max-height: 0;
+                overflow: hidden;
+            }
+        }
+        
+       @media only screen and (min-width:1000px) {
+            #search{
+             
+             margin-left:45%;
+             margin-top:2px;
+             display:none;
+            }
+        }
+        
+            @media only screen and (max-width: 1000px) {
+      #hide{
+            display: none;
+          
+        }
+    }
+     .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background-color: whitesmoke;
+}
+@media (min-width: 768px) {
+  .collapse.dont-collapse-sm {
+    display: block;
+    height: auto !important;
+    visibility: visible;
+  }
+}
+</style>
+
+
+<div class="container-fluid">
+	<div style="font-size: 25px;" class="row">Reimburseable Incharge</div>
+
+	<!-- Searchbar-->
+	<!-- <div class="row">
+		<div class="col-md-12">
+			<div class="table-responsive">
+				<table
+					style="width: 100%; border-color: red;font-size: 12px; border-collapse: separate; border-spacing: 10px;">
+					<tr>
+						<th width="15%">Employee Code :</th>
+						<td><md-autocomplete
+            								md-input-name="Employee code"
+            								md-input-minlength="3"
+            								md-no-cache = "true"
+            								md-input-maxlength="75"
+            								md-selected-item="cCctr.search.employeeCode"
+            								md-search-text="b"
+            								md-items="item in cCctr.ajax1('employeeInchargeGroup','employeeCode',b)"
+            								md-delay="2000"
+            								placeholder="Employee Code">
+          								<md-item-template>
+            								<span >{{item}}</span>
+          								</md-item-template>
+          								<md-not-found>
+                     						No Employee code with "{{b}}" were found.<a ng-click = "">Add new</a>
+           								</md-not-found>
+        								</md-autocomplete></td>
+						<th width="15%">&nbsp; &nbsp; &nbsp; &nbsp;Group Code :</th>
+						<td>
+							<md-autocomplete
+            								md-input-name="Group Code"
+            								md-input-minlength="3"
+            								md-no-cache = "true"
+            								md-input-maxlength="75"
+            								md-selected-item="cCctr.search.groupCode"
+            								md-search-text="a"
+            								md-items="item in cCctr.ajax1('employeeInchargeGroup','groupCode',a)"
+            								md-delay="2000"
+            								placeholder="Group Code">
+          								<md-item-template>
+            								<span >{{item}}</span>
+          								</md-item-template>
+          								<md-not-found>
+                     						No Group code with "{{a}}" were found.<a ng-click = "">Add new</a>
+           								</md-not-found>
+        								</md-autocomplete>
+						</td>
+						<td align="center">
+						<button ng-click="cCctr.searchEntities(true,'employeeInchargeGroup','employeeIncharge')"
+								class="btn btn-success" style="width: 90px;">Search</button>
+						</td>
+					</tr>
+					
+					
+				</table>
+			</div>
+		</div>
+	</div> -->
+	
+	
+	
+	<div class="container">
+	  <br>
+	      <button class="btn btn-primary hidden visible-xs" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+             Search 
+          </button>
+  <div class="collapse dont-collapse-sm" id="collapseExample2"> 
+	  <div class="row">
+	   <div class="form-group">
+	   <div class="col-md-4">
+       							
+            <label>Nature Of Expense</label>
+         <input type="text" class="form-control" ng-model="cCctr.search.natureOfExpense" placeholder="Name">
+      
+									</div>
+	<div class="col-md-5">							
+          <div class="col-md-6">							
+            <label>From Date :</label>
+        <input type="date" class="form-control" style="padding-top: 0px;" ng-model="cCctr.search.fromDate"
+							placeholder="From Date" >
+      </div>
+      
+     	<div class="col-md-6">	
+            <label>To Date :</label>
+        <input type="date"  style="padding-top: 0px;" class="form-control" ng-model="cCctr.search.toDate" >
+       </div>
+      </div>
+      
+     	
+ </div>
+           
+	      		
+	             <div class="row" id="hide" >
+	         	  <div class="col-md-4"  style="margin-left:85%;margin-top:-50px">	
+	                       <button ng-click="cCctr.searchEntities(true,'reimburseableIncharge','reimburseableIncharge')"
+								class="btn btn-success" style="width: 90px;">Search</button>
+	                 </div>					
+  </div>
+  
+   <div class="row" id="search" >
+	         	  <div class="col-md-4" id="search">	
+	                       <button ng-click="cCctr.searchEntities(true,'reimburseableIncharge','reimburseableIncharge')"
+								class="btn btn-success" style="width: 90px;">Search</button>
+	                 </div>					
+  </div>
+  </div>
+ </div>
+ </div>
+<br>
+
+<div class="row">
+	 <div class="col-xs-12">
+		<div class="text-right">
+	          <button class="btn btn-primary" data-toggle="modal" ng-click="cCctr.gotoListPage('reimburseableIncharge','addreimburseableIncharge')" >Add Reimburseable Incharge</button>
+		</div>
+	 </div>
+    </div>	
+	
+	<div class="container-fluid">
+		<div class="row">
+		<div class="table-responsive">
+			<table class=" table-bordered table-hover table-striped ">
+				<thead>
+					<tr style="background-color: #81b7db; font-size:15px">
+					 <th>Sr. No.</th>
+						<th>Nature Of Reimbursement</th>
+						<th>Amount Incurred</th>
+						<th width="10%">Date</th>
+						<th>Reimbursement Claim No.</th>
+						<th>Claim Submitted To</th>
+						<th>Approved Amount</th>
+						<th>Approved Date</th>
+						<th>Remark</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="a in cCctr.getEntityListData()" style="font-size:13px">
+					    <td style="height:20px">{{$index+1}}</td>
+						<td style="height:20px">{{a.natureOfReimbursement}}</td>
+						<td style="height:20px">{{a.amountIncurred}}</td>					
+						<td style="height:20px">{{a.date | date:'dd-MM-yyyy'}}</td>
+						<td style="height:20px">{{a.claimNo}}</td>
+						<td style="height:20px">{{a.claimSubmittedTo}}</td>
+						<td style="height:20px">{{a.amountApproved}}</td>
+						<td style="height:20px">{{a.approvedDate}}</td>
+						<td style="height:20px">{{a.remark}}</td>
+						<td style="height:20px"><a ng-click="cCctr.gotoDetailPage('reimburseableIncharge',a.id,'reimburseableIncharge');"><font
+						color="blue">Detail</font></a></a></td>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="container">
+&nbsp;
+
+</div>

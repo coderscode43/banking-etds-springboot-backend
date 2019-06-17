@@ -1,0 +1,150 @@
+<div id="page-wrapper">
+	<div class="container-fluid">
+		<!-- Page Heading -->
+		<div class="row">
+			<ol class="breadcrumb">
+				<li class="active"><i class="fa fa-dashboard"></i>&nbsp;&nbsp;
+					Add Employee Detail</li>
+			</ol>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<form role="form" name="employeeForm">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Client ID*</label> <input class="form-control"
+									type="text" name="clientID" placeholder="Client ID"
+									ng-model="cCctr.entity.clientId" autocomplete="off"
+									ng-maxlength="50" ng-required="true"
+									ng-pattern="/^[ A-Za-z\s]*$/"
+									ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="employeeForm.employeeId.$dirty && employeeForm.employeeId.$invalid">
+									<span class="error"
+									ng-show="employeeForm.employeeId.$error.pattern">Please
+										enter valid Client ID.</span> <span class="error"
+									ng-show="employeeForm.employeeId.$error.maxlength">Client
+									   ID should not be greater than 50 characters</span> <span
+									class="error"
+									ng-show="employeeForm.employeeId.$error.required">Client
+										ID is Required.</span>
+								</span>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Employee Id*</label> <input class="form-control" type="text"
+									name="employeeId" placeholder="Employee Id" ng-model="cCctr.entity.employeeId"
+									autocomplete="off" ng-maxlength="50" ng-required="true"
+									ng-pattern="[A-Za-z]{5}\d{4}[A-Za-z]{1}"
+									ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="employeeForm.employeeId.$dirty && employeeForm.employeeId.$invalid">
+									<span class="error"
+									ng-show="employeeForm.employeeId.$error.pattern">Please
+										enter valid Employee Id.</span> <span class="error"
+									ng-show="employeeForm.employeeId.$error.maxlength">Employee Id
+										should not be greater than 10 characters</span> <span class="error"
+									ng-show="employeeForm.employeeId.$error.required">Employee Id is
+										Required.</span>
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Name*</label> <input class="form-control"
+									type="text" name="name" placeholder="Name"
+									ng-model="cCctr.entity.name" autocomplete="off"
+									ng-maxlength="50" ng-required="true"
+									ng-pattern="/^[ A-Za-z\s]*$/"
+									ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="employeeForm.name.$dirty && employeeForm.name.$invalid">
+									<span class="error"
+									ng-show="employeeForm.name.$error.pattern">Please
+										enter valid Name.</span> <span class="error"
+									ng-show="employeeForm.name.$error.maxlength">
+									  Name should not be greater than 50 characters</span> <span
+									class="error"
+									ng-show="employeeForm.name.$error.required">Name
+								     is Required.</span>
+								</span>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>PAN*</label> <input class="form-control" type="text"
+									name="pan" placeholder="PAN" ng-model="cCctr.entity.pan"
+									autocomplete="off" ng-maxlength="50" ng-required="true"
+									ng-pattern="[A-Za-z]{5}\d{4}[A-Za-z]{1}"
+									ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="employeeForm.pan.$dirty && employeeForm.pan.$invalid">
+									<span class="error"
+									ng-show="employeeForm.pan.$error.pattern">Please
+										enter valid PAN.</span> <span class="error"
+									ng-show="employeeForm.pan.$error.maxlength">PAN
+										should not be greater than 10 characters</span> <span class="error"
+									ng-show="employeeForm.pan.$error.required">PAN is
+										Required.</span>
+								</span>
+							</div>
+						</div>
+					</div>
+										<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Designation*</label> <input class="form-control"
+									type="text" name="designation" placeholder="Designation"
+									ng-model="cCctr.entity.designation" autocomplete="off"
+									ng-maxlength="50" ng-required="true"
+									ng-pattern="/^[ A-Za-z\s]*$/"
+									ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="employeeForm.designation.$dirty && employeeForm.designation.$invalid">
+									<span class="error"
+									ng-show="employeeForm.designation.$error.pattern">Please
+										enter valid Designation.</span> <span class="error"
+									ng-show="employeeForm.designation.$error.maxlength">
+									  Designation not be greater than 50 characters</span> <span
+									class="error"
+									ng-show="employeeForm.designation.$error.required">Designation
+								     is Required.</span>
+								</span>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Email*</label> <input class="form-control" type="text"
+									name="email" placeholder="Email" ng-model="cCctr.entity.email"
+									autocomplete="off" ng-maxlength="50" ng-required="true"
+									ng-pattern="[A-Za-z]{5}\d{4}[A-Za-z]{1}"
+									ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="employeeForm.email.$dirty && employeeForm.email.$invalid">
+									<span class="error"
+									ng-show="employeeForm.email.$error.pattern">Please
+										enter valid Email.</span> <span class="error"
+									ng-show="employeeForm.email.$error.maxlength">Email
+										should not be greater than 10 characters</span> <span class="error"
+									ng-show="employeeForm.email.$error.required">Email is
+										Required.</span>
+								</span>
+							</div>
+						</div>
+					</div>
+					
+                    <div class="row">
+            			<div class="col-md-6">
+            				<button ng-click="employeeForm.submitted=true;cCctr.submit(employeeForm.$valid,'employee')" class="btn btn-success">Submit</button>
+            				<button ng-click="cCctr.gotoList('employee')" class="btn btn-primary">Cancel</button>
+            			</div>
+            		</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

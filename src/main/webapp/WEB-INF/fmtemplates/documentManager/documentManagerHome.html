@@ -1,0 +1,332 @@
+<style>
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #0F316D;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #fff;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+@media screen and (max-width: 1200px) {
+  .mn_menu {
+     display: none;
+   }
+}
+.blink_me {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {  
+  50% { opacity: 0; }
+}
+
+
+</style>
+
+
+
+<div id="mySidenav" class="sidenav">
+                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a><br><br>
+                     <li class="dropdown"><a
+				       ng-click="cCctr.gotoListPage('pdocument','pdocument')"
+				        class="dropdown-toggle" data-toggle="dropdown"><b style="font-size:13px"><i class="fa fa-file" aria-hidden="true"></i>&nbsp;Personal
+						Documents</b></a>
+					</li>
+                   <li class="dropdown" ><a
+				      ng-click="cCctr.gotoDirectList2Page('declaration','declaration','summary','summary',cCctr.temp)"
+				       class="dropdown-toggle" data-toggle="dropdown"><b style="font-size:13px"><i class="fa fa-bullhorn" aria-hidden="true"></i>&nbsp;
+						Declaration</b></a> 
+				  </li>
+                    <li class="dropdown"><a
+				          ng-click="cCctr.gotoListPage('reimburseable','reimburseable')"
+			           	class="dropdown-toggle" data-toggle="dropdown"><b style="font-size:13px"><i class="fa fa-money"></i>&nbsp;Reimburseable Expenses
+						</b></a>
+					</li>
+                  <li class="dropdown"><a href="#" class="dropdown-toggle"
+		                data-toggle="dropdown"><b style="font-size:13px"><i class="fa fa-calculator" aria-hidden="true"></i>&nbsp;Calculator</b><b class="caret"></b></a>
+				         <ul class="dropdown-menu">
+					
+				  <li style="font-size:13px"><a ng-click="cCctr.gotoDetailPage('hraCalc',cCctr.employeeId,'hraCalc')"><b style="font-size:12px">HRA
+								Calculator</b></a></li>
+				     </ul>
+				     
+				 </li>
+			
+			    <li class="dropdown"><a href="#" class="dropdown-toggle"
+				                data-toggle="dropdown"><b style="font-size:15px"><i class="fa fa-user"></i>&nbsp; ${userName}</b> <b
+					              class="caret"></b></a>
+			                     	<ul class="dropdown-menu">
+
+			           	<li>
+			             	<a ng-click="cCctr.gotoDetailPage('employeeProfile',${employeeId},'profile')"><b style="font-size:12px">Profile</b></a>
+			         	</li>
+						
+						
+						
+			     	    <li style="font-size:13px"><a ng-click="cCctr.changeAction()"><b style="font-size:12px">Go To Main Page</b></a></li>
+
+				           	<li class="divider"></li>
+				         	<li style="font-size:12px"><a ui-sref="logout"><i class="fa fa-fw fa-power-off" style="font-size:13px"></i>
+							<b style="font-size:13px"> Log Out</b></a></li>
+				    </ul>
+			 </li>
+</div>
+
+
+<!-- <span style="font-size:30px;margin-top:90px;cursor:pointer" onclick="openNav()">&#9776;</span> -->
+
+
+
+<!-- fixed navebar -->
+<div style="width:100%;height:auto;font-size:12px">
+<div class="top row col-lg-12" style="margin-left:50px">
+		<div class="top-item top1 col-lg-offset-5">
+			<p>${cd.getName()}</p>
+		</div>
+		<div class="top-item top2 col-lg-offset-5"  >
+			<p>2018-19</p>
+		</div>
+</div>
+  
+	<!-- Navigation -->
+	<nav class="navbar navbar-default navbar-fixed" role="navigation" ng-init="cCctr.employeeId=${employeeId};cCctr.clientId=${cd.getId()};cCctr.temp.employeeId=${employeeId};"
+		style="background-color: white;  border-width: 0 0 1px; padding-top: 0px;">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+		
+		 <button type="button"  onclick="openNav()" style="margin-top:10px;border-color:#fff;margin-left:10px" class="pull-left navbar-toggle" data-toggle="collapse" data-target="#tejas">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                          </button> 
+			<a class="icon-cog anchorUnderline" style="line-height: 0.2%;"
+				ng-click="cCctr.gotoHomePage(cCctr.clientId,'documentManager')"> <span
+				class="icon-tax-o-smart"
+				style="font-size: 60px; color: #0F316D; position: relative; top: 4px;"></span>
+
+				<span color="whitle"
+				style="font-size: 35px; color: #0F316D; position: relative; bottom: 13px;">Tax-<strong
+					style="color: #79BD3C;">O</strong>-Smart
+			</span></a>
+		</div>
+		<!-- Top Menu Items -->
+		<ul class="nav navbar-right top-nav mn_menu "
+			style="margin-top: 10px; margin-right: 0%">
+
+			<li class="dropdown"><a
+				ng-click="cCctr.gotoListPage('pdocument','pdocument')"
+				class="dropdown-toggle" data-toggle="dropdown"><b>Personal
+						Documents</b></a></li>
+
+			<li class="dropdown" ><a
+				ng-click="cCctr.gotoDirectList2Page('declaration','declaration','summary','summary',cCctr.temp)"
+				class="dropdown-toggle" data-toggle="dropdown"><b>
+						Declaration</b></a></li>
+						
+						<li class="dropdown"><a
+				ng-click="cCctr.gotoListPage('reimburseable','reimburseable')"
+				class="dropdown-toggle" data-toggle="dropdown"><b>Reimburseable Expenses
+						</b></a></li>
+
+      
+			<li class="dropdown"><a href="#" class="dropdown-toggle"
+				data-toggle="dropdown"><b>Calculator</b><b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					
+					<li style="font-size:12px"><a ng-click="cCctr.gotoDetailPage('hraCalc',cCctr.employeeId,'hraCalc')">HRA
+								Calculator</a></li>
+				</ul></li>
+			
+			<li class="dropdown"><a href="#" class="dropdown-toggle"
+				data-toggle="dropdown"><i class="fa fa-user"></i><b> ${userName}</b> <b
+					class="caret"></b></a>
+				<ul class="dropdown-menu">
+
+					<li><a
+						ng-click="cCctr.gotoDetailPage('employeeProfile',${employeeId},'profile')">Profile</a></li>
+						
+						
+						
+						<li style="font-size:12px"><a ng-click="cCctr.changeAction()">Go To Main Page</a></li>
+
+					<li class="divider"></li>
+					<li style="font-size:12px"><a ui-sref="logout"><i class="fa fa-fw fa-power-off"></i>
+							Log Out</a></li>
+				</ul></li>
+
+		</ul>
+	</nav>
+	
+		<div ng-http-loader methods="['GET']" ttl="1"   id="example/loader"  template="index/example-loader.tpl"></div>
+	<div ui-view></div>
+	
+	   	<div id="errorMsg" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-sm">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 style="color:red;"><span class="blink_me"> <img src="./././static/img/errorNew.png" height="30" width="30"></span>&nbsp;Error</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="msg" style="font-size: 18px;">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+			</div>
+		</div>
+	</div>
+	</div>
+	
+	<div id="successMsg" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-sm">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 style="color:green;"> <img src="./././static/img/success.gif" height="30" width="30">&nbsp;<span class="headingMsg"></span></h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="msg" style="font-size: 18px;">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cCctr.reload();">Ok</button>
+			</div>
+		</div>
+	</div>
+	</div>
+	
+	<div id="errorMsg1" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-sm">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 style="color:#f0ad4e;"> <b>Information</b></h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="msg" style="font-size: 18px;">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+			</div>
+		</div>
+	</div>
+	</div>	
+	
+	<div id="successMsg1" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-sm">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 style="color:#f0ad4e;"> <span class="headingMsg"></span></h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="msg" style="font-size: 18px;">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cCctr.reload();">Ok</button>
+			</div>
+		</div>
+	</div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	<!-- refresh modal-->
+	<a  id="viewProgressBar" onclick="test('#progressBar')">
+	</a>
+	<a  id="viewFileClick" onclick="test('#viewFile')"> </a>
+	<a  id="noviewFileClick" onclick="test('#noviewFile')">
+	</a>
+<div id="progressBar" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top:15%; overflow-y:visible;">
+		<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+			    <h3 style="margin:0;">
+			        Processing..
+			    </h3>
+			</div>
+			<div class="modal-body">
+				<div class="progress progress-striped active" style="margin-bottom:0;">
+				    <div class="progress-bar progress-bar-success" style="width: 100%">
+				    </div>
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<footer style="background-color: #24478f; color: white;position:fixed; right: 0; bottom:0; left: 0;">
+		<div class="page-wraper">
+			&nbsp;&nbsp; Copyright &copy; 2017 taxOsmart.com| All Rights Reserved
+			| <strong>Email: </strong>info@rjsa.in &nbsp;&nbsp; <strong>Support:
+			</strong>+91-9967646171.
+
+		</div>
+	</footer>
+</div>
+

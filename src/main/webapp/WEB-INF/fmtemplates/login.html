@@ -1,0 +1,89 @@
+	<style>
+
+#login .container #login-row #login-column #login-box {
+  margin-top: -550px;
+   width: 400px;
+  height: 350px;
+ 
+  /* Fallback color */
+  background-color: rgba(0,0,0, 0.2); 
+  color: #ffffff;
+}
+#login .container #login-row #login-column #login-box #login-form {
+  padding: 20px;
+}
+#login .container #login-row #login-column #login-box #login-form #register-link {
+  margin-top: -85px;
+}
+
+.bg{
+  /* The image used */
+  background-image: url("static/img/officegrey.jpeg");
+ /* Add the blur effect */
+  filter: blur(4px);
+  -webkit-filter: blur(4px);
+ 
+  /* Full height */
+  height: 100%;
+ 
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#detail{
+ background-color: rgba(0,0,0, 0.1); 
+  color: #ffffff;
+
+
+}
+
+
+</style>
+
+<div class="bg" style="padding-top:0px;"></div>
+<div class="row">
+<div  class="col-md-4">
+  </div>
+ 
+ <div  class="col-md-8 "   id="login">
+   <div class="container ">
+   
+   <div id="login-row" class="row justify-content-center align-items-center">
+             <div id="login-column" >
+                 <div id="login-box" >
+                        <form id="login-form" class="form" action="" method="post"><h3 class="text-center  panel-header">
+                            <span
+				class="icon-tax-o-smart  "
+				style="font-size: 45px;  color:#0F316D; position: relative;top:10px; "></span>
+				
+				<span color="whitle"
+				style="font-size: 22px;   position: relative; "><b>Tax-</b><strong
+					style="color: #79BD3C;"><b>O</b></strong><b>-Smart</b> </span>
+               </h3>
+					<hr />
+                            <div class="form-group">
+                                <label for="username" >Username:</label><br>
+                                <input type="text" name="username" id="username" ng-model="cCctr.temp.username"class="form-control" autocomplete="off">
+                            </div>
+                            <div class="form-group">
+                                <label for="password" >Password:</label><br>
+                                <input type="password" name="password" ng-model="cCctr.temp.password"id="password" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="remember-me" ><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
+                                <input  
+                                      type="submit" name="login" class="btn btn-success btn-md" value="Login"
+                                   ng-click="cCctr.login(cCctr.temp.username,cCctr.temp.password)" >
+                            </div>
+                           
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

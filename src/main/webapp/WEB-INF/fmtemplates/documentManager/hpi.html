@@ -1,0 +1,955 @@
+
+<style>
+/*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+	@media
+	  only screen 
+    and (max-width: 760px), (min-device-width: 768px) 
+    and (max-device-width: 1024px)  {
+
+		/* Force table to not be like tables anymore */
+		table, thead, tbody, th, td, tr {
+			display: block;
+		}
+
+		/* Hide table headers (but not display: none;, for accessibility) */
+		thead tr {
+			position: absolute;
+			top: -9999px;
+			left: -9999px;
+		}
+
+    tr {
+      margin: 0 0 1rem 0;
+    }
+      
+    tr:nth-child(odd) {
+      background: #ccc;
+    }
+    
+		td {
+			/* Behave  like a "row" */
+			border: none;
+			border-bottom: 1px solid #eee;
+			position: relative;
+			padding-left: 50%;
+		}
+
+		td:before {
+			/* Now like a table header */
+			position: absolute;
+			/* Top/left values mimic padding */
+			top: 0;
+			left: 6px;
+			width: 45%;
+			padding-right: 10px;
+			white-space: nowrap;
+		}
+
+		/*
+		Label the data
+    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+		*/
+		td:nth-of-type(1):before { content: "Description"; }
+		td:nth-of-type(2):before { content: "Name Of Lender"; }
+		td:nth-of-type(3):before { content: "Address Of Lender"; }
+		td:nth-of-type(4):before { content: "Type of Lender "; }
+		td:nth-of-type(5):before { content: "Details Of Lender"; }
+		td:nth-of-type(6):before { content: "PAN Of Lender"; }
+		td:nth-of-type(7):before { content: "Type Of Home"; }
+		td:nth-of-type(8):before { content: "House Property Address"; }
+		td:nth-of-type(9):before { content: "House property Income "; }
+		td:nth-of-type(10):before { content: "Rent Received"; }
+		td:nth-of-type(11):before { content: "Municipal Tax paid"; }
+		td:nth-of-type(12):before { content: "Interest Paid"; }
+		td:nth-of-type(13):before { content: "Amount Invested"; }
+		td:nth-of-type(14):before { content: "Status"; }
+		td:nth-of-type(15):before { content: "Remark"; }
+		td:nth-of-type(16):before { content: "Action"; }
+		
+	
+	}
+	
+  @media only screen and (max-width: 1000px) {
+        .one{
+            display: none;
+          
+        }
+    }
+    
+ @media only screen and (max-width: 1000px) {
+        .two{
+         
+            padding:8px;
+        }
+    }
+        
+   @media only screen and (min-width:600px) {
+            #three{
+                display: none;
+                max-height: 0;
+                overflow: hidden;
+            }
+        }
+        
+       @media only screen and (min-width:1000px) {
+            #search{
+             
+             margin-left:45%;
+             margin-top:2px;
+             display:none;
+            }
+        }
+        
+            @media only screen and (max-width: 1000px) {
+      #hide{
+            display: none;
+          
+        }
+    }
+     .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background-color: whitesmoke;
+}
+@media (min-width: 768px) {
+  .collapse.dont-collapse-sm {
+    display: block;
+    height: auto !important;
+    visibility: visible;
+  }
+}
+</style>
+
+
+<div class="col-md-12 " style="padding-left: 0px;">
+	<div class="heading">House Property Income</div>
+	<div class="heading"><p>Municipal taxes
+		paid: Any taxes paid to the Government during the financial year (for
+		which the income is being computed) on the property owned, such as
+		house tax, are allowed for deduction from the Gross Annual Value which
+		is calculated on the basis of the total rent
+		receivable/received/deemed rent for the property</p></div>
+
+
+
+		<div class="row">
+				<div class="col-xs-12">
+					<div class="text-right">
+						<button type="button" class="btn  btn-primary" data-toggle="modal"
+							data-keyboard="true" onclick="test('#myModal')">Add File</button>
+					</div>
+				</div>
+			</div>
+   <div class="table-responsive">
+	<table class=" table-bordered table-hover table-striped ">
+	<thead>
+			<tr  style="background-color: #81b7db; height:40px;font-size:13px">
+				<th width="20%">Description</th>
+				<th width="20%"> Name Of Lender</th>
+				<th width="20%"> Address Of Lender</th>
+				<th width="20%"> Type of Lender </th>  
+				<th width="20%"> Details Of Lender</th> 				
+				<th width="20%"> PAN Of Lender</th>
+				<th width="20%"> Type Of Home</th>
+				<th width="10%"> House Property Address </th>
+				<th width="10%"> House property Income </th>
+				<th width="10%"> Rent Received</th>
+				<th width="10%"> Municipal Tax paid</th>
+				<th width="10%"> Interest Paid</th>
+				<th width="10%"> Amount Invested</th>
+				<th width="10%"> Status</th>
+				<th width="10%"> Remark </th>
+				<th width="10%"> Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="a in cCctr.getEntityListData() track by a.id" style="font-size:13px">
+				<td style="height:20px">{{a.fileDescription}}</td>
+				<td style="height:20px">{{a.nameOfLender}}</td>
+				<td style="height:20px">{{a.addressOfLender}}</td>
+				<td style="height:20px">{{a.typeOfLender}}</td>
+				<td style="height:20px">{{a.detailsOfLender}}</td>
+				<td style="height:20px">{{a.panOfLender}}</td>
+				<td style="height:20px">{{a.homeType}}</td>
+				<td style="height:20px">{{a.address}}</td>
+				<td style="height:20px">{{a.houseIncome}}</td>
+				<td style="height:20px">{{a.rent}}</td>
+				<td style="height:20px">{{a.municipalTax}}</td>
+				<td style="height:20px">{{a.interestPaid}}</td>
+				<td style="height:20px">{{a.amountClaimed}}</td>
+				<td style="height:20px">{{a.status}}</td>
+				<td style="height:20px">{{a.remark}}</td>
+				<td><a ng-click="cCctr.viewFile('fileDetail',a,'viewFile');" >View</a>&nbsp || <a onclick="test('#update')" ng-click="cCctr.gotoDetail('fileDetail',a.fileId);cCctr.temp2.dec=a;"><font color="blue">Update</font></a>||<a onclick="test('#delete')"><font
+						color="red" ng-click="cCctr.setTemp1(a);cCctr.setIndex($index)"> Delete</font></a></td>
+			</tr>
+
+		</tbody>
+		
+	</table>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+</div>
+</div>
+
+
+<!-- modal     -->
+
+<div  class="modal fade" id="myModal" tabindex="-1"
+style=" margin-top: 0px; background-color: rgba(0, 0, 0, .7);  
+	role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div style="padding-bottom:-10px;"   class="modal-dialog modal-lg" >
+		<div  class="modal-content">
+			<br>
+
+			<div   class="modal-body " >
+				<div id="myTabContent" class="tab-content">
+					<div class="tab-pane fade active in" id="signin">
+						<form name="fileForm" style="padding-top: 0px;" class="form-horizontal" enctype="multipart/form-data">
+							<fieldset    padding-top: 0px;">
+							
+								<input type="hidden" ng-model="cCctr.fileName.dec.employeeId"
+									ng-init="cCctr.fileName.dec.employeeId=cCctr.employeeId;cCctr.fileName.dec.status='Not Verified'">
+								<input type="hidden" ng-model="cCctr.fileName.dec.status">
+						<div class="row" >
+           					<div class="col-md-4">		
+								 <div class="control-group">
+									<label class="control-label" for="description">Description</label>
+									<div class="controls">
+										<input  id="description" name="description" type="text"
+											class="form-control input-medium" placeholder="Description"
+											ng-model="cCctr.fileName.dec.fileDescription">
+											<span class="error" id="fileDescription"></span>
+									</div>
+								</div>
+								</div>
+                             <div class="col-md-4">	    
+                              <div class="control-group">
+									<label class="control-label" for="nameOfLender">Name of lender</label>
+									<div class="controls">
+										<input  id="nameOfLender" name="nameOfLender" type="text"
+											class="form-control input-medium" placeholder="Name of lender"
+											ng-model="cCctr.fileName.dec.nameOfLender">
+											<span class="error" id="nameOfLender"></span>
+									</div>
+								</div>
+								</div>
+								<div class="col-md-4">	
+								<div class="control-group">
+									<label class="control-label" for="adressofLender">Address of lender</label>
+									<div class="controls">
+										<input  id="adressofLender" name="adressofLender" type="text"
+											class="form-control input-medium" placeholder="Address of lender"
+											ng-model="cCctr.fileName.dec.addressOfLender">
+											<span class="error" id="addressOfLender"></span>
+									</div>
+								</div>								
+								</div>
+								</div>
+								
+								
+								<div class="row" >
+           					<div class="col-md-4">	
+								<div class="control-group">
+									<label class="control-label" for="typeofLender">Type Of lender</label>
+									<div class="controls">
+										<input  id="typeofLender" name="typeofLender" type="text"
+											class="form-control input-medium" placeholder="Type Of Lender"
+											ng-model="cCctr.fileName.dec.typeOfLender">
+									</div>
+								</div>
+								</div>
+								<div class="col-md-4">	
+								<div class="control-group">
+									<label class="control-label" for="lenderDetails">Details of lender</label>
+									<div class="controls">
+										<input id="lenderDetails" name="lenderDetails" type="text"
+											class="form-control input-medium" placeholder="Details of Lender"
+											ng-model="cCctr.fileName.dec.detailsOfLender">
+											<span class="error" id="detailsOfLender"></span>
+									</div>
+								</div>
+								</div>
+								<div class="col-md-4">	
+								<div class="control-group">
+									<label class="control-label" for="lenderPAN">PAN of lender</label>
+									<div class="controls">
+										<input id="lenderPAN" name="lenderPAN" type="text"
+											class="form-control input-medium" placeholder="PAN of lender"
+											ng-model="cCctr.fileName.dec.panOfLender">
+											<span class="error" id="panOfLender"></span>
+									</div>
+								</div>
+								</div>
+								</div>
+								
+								<div class="row" >
+           					<div class="col-md-4">	
+								<div class="control-group">
+									<label class="control-label" for="homeType">Type Of Home</label>
+									<div class="controls">
+										<select class="form-control" name="homeType"  style="width:100%" ng-model="cCctr.fileName.dec.homeType" >
+ 											 <option value="Let Out Property">Let Out Property</option>
+ 											 <option value="self occupied property">self occupied property </option>
+										</select>
+										 <span
+									style="color: red"
+									ng-show="fileForm.submitted || fileForm.homeType.$dirty && fileForm.homeType.$invalid">
+										<span class="error"
+									ng-show="fileForm.homeType.$error.required">Type of Home is
+										Required.</span>
+										</span>
+									</div>
+								</div>
+								</div>
+								<div class="col-md-4">
+								<div class="control-group">
+									<label class="control-label" for="hpAddress">House Property Address</label>
+									<div class="controls">
+										<input  id="hpAddress" name="hpAddress" type="text"
+											class="form-control input-medium" placeholder="House Property Address"
+											ng-model="cCctr.fileName.dec.address">
+											<span class="error" id="address"></span>
+									</div>
+								</div>
+								</div>
+								<div class="col-md-4">
+								<div class="control-group">
+									<label class="control-label" for="hpIncome">House Property Income</label>
+									<div class="controls">
+										<input id="hpIncome" name="hpIncome" type="text"
+											class="form-control input-medium" placeholder="House Property Income"
+											ng-model="cCctr.fileName.dec.houseIncome">
+											<span class="error" id="houseIncome"></span>
+									</div>
+								</div>
+								</div>
+								</div>
+								
+								
+								<div class="row" >
+           					<div class="col-md-4">	
+								<div class="control-group">
+									<label class="control-label" for="rentReceived">Rent Received</label>
+									<div class="controls">
+										<input  id="rentReceived" name="rentReceived" type="text"
+											class="form-control input-medium" placeholder="Rent Received"
+											ng-model="cCctr.fileName.dec.rent">
+											<span class="error" id="rent"></span>
+									</div>
+								</div>
+								</div>
+								<div class="col-md-4">	
+								<div class="control-group">
+									<label class="control-label" for="municipalTaxPaid">Municipal Tax Paid</label>
+									<div class="controls">
+										<input  id="municipalTaxPaid" name="municipalTaxPaid" type="text"
+											class="form-control input-medium" placeholder="Municipal Tax Paid"
+											ng-model="cCctr.fileName.dec.municipalTax">
+											<span class="error" id="municipalTax"></span>
+									</div>
+								</div>
+								</div>
+								<div class="col-md-4">	
+								<div class="control-group">
+									<label class="control-label" for="incomePaid">Interest Paid</label>
+									<div class="controls">
+										<input id="userid" name="userid" type="text"
+											class="form-control input-medium" placeholder="interest Paid"
+											ng-model="cCctr.fileName.dec.interestPaid">
+											<span class="error" id="interestPaid"></span>
+									</div>
+								</div>
+								</div>
+								</div>
+								
+								
+								<div class="row" >
+           					<div class="col-md-4">	
+								<div class="control-group">
+									<label class="control-label" for="amountClaim">Amount Invested*</label>
+									<div class="controls">
+										<input required="" id="amountClaim" name="amountClaim" type="text"
+											class="form-control input-medium" placeholder="Amount Invest"
+										ng-model="cCctr.fileName.dec.amountClaimed">
+									<span class="error" id="amountClaimed"></span>
+									</div>
+								</div>
+								</div>
+								
+                               <div class="col-md-4">
+								<div class="control-group">
+									<label class="control-label" for="file">Select File</label>
+									<div class="controls">
+										<input multiple id="file-upload" type="file" 
+										name="fileName"
+										file-model="cCctr.fileName.file"/>
+									</div>
+								</div>
+								</div>
+								<div class="col-md-4">
+								<div class="control-group" style="margin-top:15px;">
+									<label class="control-label" for="save"></label>
+									<div class="controls">
+										<button id="add" name="add"
+											class="btn btn-success btn-block btn-primary"
+											ng-click="fileForm.submitted=true;cCctr.submitFile(fileForm.$valid,'hpi',cCctr.fileName,'close')">Add</button>
+									</div>
+								</div>
+								</div>
+								</div>
+ 									
+								
+								<!-- Button -->
+								
+           					
+								
+								
+							</fieldset>
+						</form>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="modal-footer">
+
+				<button type="button" class="btn btn-default" id="close" data-dismiss="modal">Close</button>
+
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+ <!-- Modal -->
+  <div class="modal fade  bs-modal-sm1" id="dialogBox" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        
+        <div class="modal-body">
+          <p> By Continuing You will confirm that no other person has claimed the amount</p>
+        </div>
+          <button  style="margin-bottom:10px; margin-left:20px;" type="button" class="btn btn-default" data-dismiss="modal">Yes</button> &nbsp;
+          <button  style="margin-bottom:10px;" type="button" class="btn btn-default" data-dismiss="modal">No</button>
+        </div>
+      </div>
+    </div>
+  
+
+
+<!-- view file --> 
+<div class="modal fade1" id="viewFile"
+	style="background-color: rgba(0, 0, 0, .7);">
+	<div class="modal-dialog1" ng-it="cCctr.getEntityData();">
+		<div class="modal-content">
+			<!-- Modal Header -->
+			<div class="modal-body row">
+				<div class="col-md-8">
+					<div style="width: 100%; auto; margin-top: 0px;">
+						 
+							<iframe  id="iframe1"
+						  ng-src="{{cCctr.loader}}"
+							 width="100%" height="100%"></iframe> 
+					</div>
+				</div>
+				<div class="col-md-4">
+				<div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" style="color:red" ng-click="cCctr.loader='static/img/Spinner-1s-200px.gif'"><i class="fa fa-times fa-1x" aria-hidden="true"></i></button><br>
+						<h5 class="modal-title" style=" font-family: Times New Roman, Times, serif"><b>
+							House Property Income</b></h5>
+					</div>
+					
+					<div class="row col-sm-12" style="font-size: 11px;">
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>Description</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.fileDescription}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>Name Of Lender</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.nameOfLender}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>Address Of Lender</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.addressOfLender}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>Type Of Lender</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.typeOfLender}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>Detail Of Lender</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.detailsOfLender}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>PAN Of Lender</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.panOfLender}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>Type of Home</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.homeType}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>House Property Address</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.address}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>House Property Income</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.houseIncome}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>Rent Received</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.rent}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>Municipal Tax Paid</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.municipalTax}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>Interest Paid</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.interestPaid}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>Amount Invested</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.amountClaimed}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>Status</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.status}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>Remark</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.remark}}</div>
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+ <!-- No view file modal-->
+<div class="modal fade1" id="noviewFile"
+	style="background-color: rgba(0, 0, 0, .7);">
+	<div class="modal-dialog1" ng-it="cCctr.getEntityData();">
+		<div class="modal-content">
+			<!-- Modal Header -->
+			<div class="modal-body row">
+				<div class="col-md-8">
+					<div style="width: 100%; auto; margin-top: 0px;" >
+					
+					<h1>No File Uploaded</h1>
+							 
+						
+					</div>
+				</div>
+				<div class="col-md-4" style="font-size: 11px;">
+
+
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"style="color:red" ><i class="fa fa-times fa-1x" aria-hidden="true"></i></button>
+						<br>
+						<h5 class="modal-title"
+							style="font-family: Times New Roman, Times, serif">
+							<b>House Property Income</b>
+						</h5>
+					</div>
+					<br>
+					<div class="row col-sm-12" style="font-size: 11px;">
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>Description</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.fileDescription}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>Name Of Lender</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.nameOfLender}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>Address Of Lender</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.addressOfLender}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>Type Of Lender</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.typeOfLender}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>Detail Of Lender</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.detailsOfLender}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>PAN Of Lender</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.panOfLender}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>Type of Home</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.homeType}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>House Property Address</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.address}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>House Property Income</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.houseIncome}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>Rent Received</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.rent}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>Municipal Tax Paid</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.municipalTax}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>Interest Paid</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.interestPaid}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>Amount Invested</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.amountClaimed}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>Status</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.status}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>Remark</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.remark}}</div>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+
+
+<div id="update" class="modal fade" role="dialog"
+style="background-color: rgba(0, 0, 0, .7);">
+  <div class="modal-dialog" style="width:70%">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" id="closeU" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><b>Update Section House Property Income</b></h4>
+      </div>
+      <div class="modal-body">
+				<div id="myTabContent" class="tab-content">
+					<div class="tab-pane fade active in" id="signin">
+						<form name="updatefileForm" class="form-horizontal"
+							enctype="multipart/form-data">
+							<fieldset>
+
+                             <div class="row" >
+           					<div class="col-md-4">
+								<div class="control-group">
+									<label class="control-label" for="userid">
+										Description</label>
+									<div class="controls">
+										<input required="" id="userid" name="userid" type="text"
+											class="form-control input-medium"
+											placeholder="Description"
+											ng-model="cCctr.temp2.dec.fileDescription ">
+											<span class="error" id="fileDescriptionU"></span>
+									</div>
+								</div>
+								</div>
+								
+								<div class="col-md-4">
+								<div class="control-group">
+									<label class="control-label" for="userid">Name Of Lender</label>
+									<div class="controls">
+										<input required="" id="userid" name="userid" type="text"
+											class="form-control input-medium" placeholder="Amount Invest"
+											ng-model="cCctr.temp2.dec.nameOfLender">
+											<span class="error" id="nameOfLenderU"></span>
+									</div>
+								</div>
+								</div>
+								<div class="col-md-4">
+								<div class="control-group">
+									<label class="control-label" for="userid">Address Of Lender</label>
+									<div class="controls">
+										<input required="" id="userid" name="userid" type="text"
+											class="form-control input-medium" placeholder="Address Of Lender"
+											ng-model="cCctr.temp2.dec.addressOfLender">
+											<span class="error" id="addressOfLenderU"></span>
+									</div>
+								</div>
+								</div>
+								</div>
+								
+								<div class="row" >
+           					<div class="col-md-4">
+								<div class="control-group">
+									<label class="control-label" for="userid">Type Of Lender</label>
+									<div class="controls">
+										<input required="" id="userid" name="userid" type="text"
+											class="form-control input-medium" placeholder="Type Of Lender"
+											ng-model="cCctr.temp2.dec.typeOfLender">
+											
+									</div>
+								</div>
+								</div>
+								<div class="col-md-4">
+								<div class="control-group">
+									<label class="control-label" for="userid">Details Of Lender</label>
+									<div class="controls">
+										<input required="" id="userid" name="userid" type="text"
+											class="form-control input-medium" placeholder="Details Of Lender"
+											ng-model="cCctr.temp2.dec.detailsOfLender">
+											<span class="error" id="detailsOfLenderU"></span>
+									</div>
+								</div>
+								</div>
+								<div class="col-md-4">
+								<div class="control-group">
+									<label class="control-label" for="userid">Type Of Home</label>
+									
+										<select class="form-control"  style="width:100%" ng-model="cCctr.temp2.dec.homeType">
+ 											 <option value="Let Out Property">Let Out Property</option>
+ 											 <option value="self occupied property">self occupied property </option>
+										</select>
+								</div>
+								</div>
+								</div>
+								
+								
+								
+								<div class="row" >
+           					<div class="col-md-4">
+								<div class="control-group">
+									<label class="control-label" for="userid">PAN Of Lender</label>
+									<div class="controls">
+										<input required="" id="userid" name="userid" type="text"
+											class="form-control input-medium" placeholder="PAN Of Lender"
+											ng-model="cCctr.temp2.dec.panOfLender">
+											<span class="error" id="panOfLenderU"></span>
+									</div>
+								</div>
+								</div>
+								<div class="col-md-4">
+								<div class="control-group">
+									<label class="control-label" for="userid">House Property Address</label>
+									<div class="controls">
+										<input required="" id="userid" name="userid" type="text"
+											class="form-control input-medium" placeholder="House Property Address"
+											ng-model="cCctr.temp2.dec.address">
+											<span class="error" id="addressU"></span>
+									</div>
+								</div>
+								</div>
+								<div class="col-md-4">
+								<div class="control-group">
+									<label class="control-label" for="userid">House Property Income</label>
+									<div class="controls">
+										<input required="" id="userid" name="userid" type="text"
+											class="form-control input-medium" placeholder="House Property Address"
+											ng-model="cCctr.temp2.dec.houseIncome">
+											<span class="error" id="houseIncomeU"></span>
+									</div>
+								</div>
+								</div>
+								</div>
+								
+								<div class="row" >
+           					<div class="col-md-4">
+								<div class="control-group">
+									<label class="control-label" for="userid">Rent Received</label>
+									<div class="controls">
+										<input required="" id="userid" name="userid" type="text"
+											class="form-control input-medium" placeholder="Rent Received"
+											ng-model="cCctr.temp2.dec.rent">
+											<span class="error" id="rentU"></span>
+									</div>
+								</div>
+								</div>
+								<div class="col-md-4">
+								<div class="control-group">
+									<label class="control-label" for="userid">Municipal Tax Paid</label>
+									<div class="controls">
+										<input required="" id="userid" name="userid" type="text"
+											class="form-control input-medium" placeholder="Municipal Tax Paid"
+											ng-model="cCctr.temp2.dec.municipalTax">
+											<span class="error" id="municipalTaxU"></span>
+									</div>
+								</div>
+								</div>
+								<div class="col-md-4">
+								<div class="control-group">
+									<label class="control-label" for="userid">Interest Paid</label>
+									<div class="controls">
+										<input required="" id="userid" name="userid" type="text"
+											class="form-control input-medium" placeholder="interest Paid"
+											ng-model="cCctr.temp2.dec.interestPaid">
+											<span class="error" id="interestPaidU"></span>
+									</div>
+								</div>
+								</div>
+								</div>
+								
+								<div class="row" >
+           					<div class="col-md-4">
+								<div class="control-group">
+									<label class="control-label" for="userid">Amount Invested</label>
+									<div class="controls">
+										<input required="" id="userid" name="userid" type="text"
+											class="form-control input-medium" placeholder="Amount Invest"
+											ng-model="cCctr.temp2.dec.amountClaimed">
+											<span class="error" id="amountClaimedU"></span>
+									</div>
+								</div>
+								</div>
+									<div class="col-md-4">
+								<div class="control-group">
+									<label class="control-label" for="userid">Status:</label>
+									<div class="controls">
+									{{cCctr.temp2.dec.status }}
+									</div>
+									
+								</div>
+								</div>
+								<div class="col-md-4">
+								<div class="control-group">
+									<label class="control-label" for="userid">Remark:</label> 
+										<div class="controls">
+										{{cCctr.temp2.dec.remark }}
+									</div>
+								</div>
+								</div>
+								</div>
+								
+								<div class="row" >
+           					<div class="col-md-4">
+							 		<div class="control-group">
+									<label class="control-label" for="name">Saved File : </label>&nbsp;
+									<div class="controls">
+									<span ng-show="cCctr.getEntityData().fileName!=null">{{cCctr.getEntityData().fileName}}</span>
+									<span ng-show="cCctr.getEntityData().fileName==null">No file uploaded.</span><br>
+									</div>
+									</div>
+									</div>
+									<div class="col-md-4">
+							 		<div class="control-group">
+									<label class="control-label" for="file">Replace File </label>
+									<div class="controls">
+										<input multiple id="file-upload" type="file" name="fileName"
+											file-model="cCctr.temp2.file" >
+									</div>
+								</div>
+								</div>
+	                             
+                                 <div class="col-md-4">
+								<div class="control-group" style="margin-top:10px">
+									<label class="control-label" for="save"></label>
+									<div class="controls">
+										<button id="add" name="add"
+											class="btn btn-success btn-block btn-primary"
+											ng-click="cCctr.updateFile(true,'hpi',cCctr.temp2,'closeU')">Update</button>
+									</div>
+								</div>
+								</div>
+								</div>
+							</fieldset>
+						</form>
+					</div>
+				</div>
+			</div>
+	</div>
+  </div>
+</div>  
+ <div class="modal fade" id="delete" role="dialog">
+    <div class="modal-dialog modal-sm" style="width:30%">
+      <div class="modal-content">
+       <p></p>
+        <div class="modal-body">
+          <p>Are you sure you want to delete ?</p>
+          
+          <fieldset>
+           <div class="row col-sm-12" style="font-size: 13px;">
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>Description</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.fileDescription}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>Name Of Lender</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.nameOfLender}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>Address Of Lender</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.addressOfLender}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>Type Of Lender</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.typeOfLender}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>Detail Of Lender</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.detailsOfLender}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>PAN Of Lender</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.panOfLender}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>Type of Home</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.homeType}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>House Property Address</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.address}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>House Property Income</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.houseIncome}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>Rent Received</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.rent}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>Municipal Tax Paid</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.municipalTax}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>Interest Paid</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.interestPaid}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>Amount Invested</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.amountClaimed}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>Status</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.status}}</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-4"><label>Remark</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.remark}}</div>
+						</div>
+					</div>
+          		
+		  </fieldset>
+          
+           <button type="button" class="btn btn-default" ng-click="cCctr.deleteFunction(true,'hpi',cCctr.temp1,cCctr.getEntityListData(),cCctr.dlIndex,'closeD')" data-dismiss="modal">Yes</button>
+           <button type="button" id="closeD" class="btn btn-default" data-dismiss="modal">No</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>

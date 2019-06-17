@@ -1,0 +1,71 @@
+<div id="page-wrapper">
+	<div class="container-fluid">
+		<!-- Page Heading -->
+		<div class="row">
+					<h4>Add Notification</h4>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<form role="form" name="notificationForm">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Date*</label> <input class="form-control" type="date"  required style="padding-top: 0px;"  ng-model="cCctr.entity.date" >
+								<span class="error" id="date"></span>
+							</div>
+						</div>
+						<div class="col-md-6">
+						<label>Group Code*</label>
+							<div class="form-group">
+								
+														<md-autocomplete
+            							    			 	md-input-name="Group Code"
+            								   				md-input-minlength="3"
+            												md-no-cache = "true"
+            												ng-required="true"
+            												md-input-maxlength="75"
+            												md-selected-item="cCctr.entity.groupCode"
+            												md-search-text="c"
+            												md-items="item in cCctr.ajax1('notifications','groupCode',c)"
+            												md-delay="2000"
+            												placeholder="Group Code">
+          													<md-item-template>
+            											<span >{{item}}</span>
+          													</md-item-template>
+          										<md-not-found>
+                     									No Group code with "{{c}}" were found.<a ng-click = "">Add new</a>
+           										</md-not-found>
+        											</md-autocomplete>
+        											</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Message*</label> <textarea class="form-control"ng-model="cCctr.entity.message" required></textarea>
+								<span class="error" id="message"></span>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Mode*</label> 
+								<select class="form-control" ng-model="cCctr.entity.mode" ng-init="cCctr.entity.mode='Email'" >
+									<option value="Email" selected>Email</option>
+									<option value="SMS">SMS</option>
+								</select>
+							</div>
+						</div>
+					</div>
+										
+										
+                    <div class="row">
+            			<div class="col-md-6">
+            				<button ng-click="notificationForm.submitted=true;cCctr.submit(notificationForm.$valid,'notifications')" class="btn btn-success">Submit</button>
+            				<button ng-click="cCctr.gotoListPage('notifications','notifications');" class="btn btn-primary">Cancel</button>
+            			</div>
+            		</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

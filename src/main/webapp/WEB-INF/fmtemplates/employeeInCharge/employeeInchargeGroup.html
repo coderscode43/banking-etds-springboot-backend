@@ -1,0 +1,100 @@
+<div class="container-fluid">
+	<div style="font-size: 30px;" class="row">Employee Incharge</div>
+
+	<!-- Searchbar-->
+	<div class="row">
+		<div class="col-md-12">
+			<div class="table-responsive">
+				<table
+					style="width: 100%; border-color: red; border-collapse: separate; border-spacing: 10px;">
+					<tr>
+						<th width="15%">Employee Code :</th>
+						<td><md-autocomplete
+            								md-input-name="Employee code"
+            								md-input-minlength="3"
+            								md-no-cache = "true"
+            								md-input-maxlength="75"
+            								md-selected-item="cCctr.search.employeeCode"
+            								md-search-text="b"
+            								md-items="item in cCctr.ajax1('employeeInchargeGroup','employeeCode',b)"
+            								md-delay="2000"
+            								placeholder="Employee Code">
+          								<md-item-template>
+            								<span >{{item}}</span>
+          								</md-item-template>
+          								<md-not-found>
+                     						No Employee code with "{{b}}" were found.<a ng-click = "">Add new</a>
+           								</md-not-found>
+        								</md-autocomplete></td>
+						<th width="15%">&nbsp; &nbsp; &nbsp; &nbsp;Group Code :</th>
+						<td>
+							<md-autocomplete
+            								md-input-name="Group Code"
+            								md-input-minlength="3"
+            								md-no-cache = "true"
+            								md-input-maxlength="75"
+            								md-selected-item="cCctr.search.groupCode"
+            								md-search-text="a"
+            								md-items="item in cCctr.ajax1('employeeInchargeGroup','groupCode',a)"
+            								md-delay="2000"
+            								placeholder="Group Code">
+          								<md-item-template>
+            								<span >{{item}}</span>
+          								</md-item-template>
+          								<md-not-found>
+                     						No Group code with "{{a}}" were found.<a ng-click = "">Add new</a>
+           								</md-not-found>
+        								</md-autocomplete>
+						</td>
+						<td align="center">
+						<button ng-click="cCctr.searchEntities(true,'employeeInchargeGroup','employeeIncharge')"
+								class="btn btn-success" style="width: 90px;">Search</button>
+						</td>
+					</tr>
+					
+					
+				</table>
+			</div>
+		</div>
+	</div>
+<br>
+<div class="row">
+	 <div class="col-xs-12">
+		<div class="text-right">
+	          <button class="btn btn-primary" data-toggle="modal" ng-click="cCctr.gotoListPage('employeeInchargeGroup','addemployeeIncharge')" >Add Employee Incharge</button>
+		</div>
+	 </div>
+    </div>	
+	
+	<div class="container-fluid">
+		<div class="row">
+		<div class="table-responsive">
+			<table class="table table-bordered table-hover table-striped table">
+				<thead>
+					<tr>
+					 <th>Sr. No.</th>
+						<th>Employee Code</th>
+						<th>Group Code</th>
+						<th>Date</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="a in cCctr.getEntityListData()">
+					<td>{{$index+1}}</td>
+						<td>{{a.employeeCode}}</td>
+						<td>{{a.groupCode}}</td>
+						<td>{{a.date | date:'dd-MM-yyyy'}}</td>
+						<td><a ng-click="cCctr.gotoDetailPage('employeeInchargeGroup',a.id,'detailemployeeInCharge');"><font
+						color="blue">Detail</font></a></a></td>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+&nbsp;
+
+</div>

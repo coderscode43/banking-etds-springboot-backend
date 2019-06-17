@@ -1,0 +1,698 @@
+
+
+<style>
+/*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+	@media
+	  only screen 
+    and (max-width: 760px), (min-device-width: 768px) 
+    and (max-device-width: 1024px)  {
+
+		/* Force table to not be like tables anymore */
+		table, thead, tbody, th, td, tr {
+			display: block;
+		}
+
+		/* Hide table headers (but not display: none;, for accessibility) */
+		thead tr {
+			position: absolute;
+			top: -9999px;
+			left: -9999px;
+		}
+
+    tr {
+      margin: 0 0 1rem 0;
+    }
+      
+    tr:nth-child(odd) {
+      background: #ccc;
+    }
+    
+		td {
+			/* Behave  like a "row" */
+			border: none;
+			border-bottom: 1px solid #eee;
+			position: relative;
+			padding-left: 50%;
+		}
+
+		td:before {
+			/* Now like a table header */
+			position: absolute;
+			/* Top/left values mimic padding */
+			top: 0;
+			left: 6px;
+			width: 45%;
+			padding-right: 10px;
+			white-space: nowrap;
+		}
+
+		/*
+		Label the data
+    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+		*/
+		td:nth-of-type(1):before { content: "Nature Of Expense"; }
+		td:nth-of-type(2):before { content: "Description"; }
+		td:nth-of-type(3):before { content: "Amount Incurred"; }
+		td:nth-of-type(4):before { content: "Amount Approved"; }
+		td:nth-of-type(5):before { content: "Approved By"; }
+		td:nth-of-type(6):before { content: "Date"; }
+		td:nth-of-type(7):before { content: "Claimed ID"; }
+		td:nth-of-type(8):before { content: "Status"; }
+		td:nth-of-type(9):before { content: "Remark"; }
+		td:nth-of-type(10):before { content: "Action"; }
+		
+	
+	}
+	
+
+	
+	
+    @media only screen and (max-width: 1000px) {
+        .one{
+            display: none;
+          
+        }
+    }
+    
+ @media only screen and (max-width: 1000px) {
+        .two{
+         
+            padding:8px;
+        }
+    }
+        
+   @media only screen and (min-width:600px) {
+            #three{
+                display: none;
+                max-height: 0;
+                overflow: hidden;
+            }
+        }
+        
+       @media only screen and (min-width:1000px) {
+            #search{
+             
+             margin-left:45%;
+             margin-top:2px;
+             display:none;
+            }
+        }
+        
+            @media only screen and (max-width: 1000px) {
+      #hide{
+            display: none;
+          
+        }
+    }
+     .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background-color: whitesmoke;
+}
+@media (min-width: 768px) {
+  .collapse.dont-collapse-sm {
+    display: block;
+    height: auto !important;
+    visibility: visible;
+  }
+}
+</style>
+<div class="container-fluid">
+<div style="font-size: 25px;" class="row">Reimburseable</div>
+		<div class="container">
+	  <br>
+	      <button class="btn btn-primary hidden visible-xs" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+             Search 
+          </button>
+  <div class="collapse dont-collapse-sm" id="collapseExample2"> 
+	  <div class="row">
+	   <div class="form-group">
+	   <div class="col-md-4">
+       							
+            <label>Nature Of Expense</label>
+         <input type="text" class="form-control" ng-model="cCctr.search.natureOfExpense" placeholder="Name">
+      
+									</div>
+	<div class="col-md-5">							
+          <div class="col-md-6">							
+            <label>From Date :</label>
+        <input type="date" class="form-control" style="padding-top: 0px;" ng-model="cCctr.search.fromDate"
+							placeholder="From Date" >
+      </div>
+      
+     	<div class="col-md-6">	
+            <label>To Date :</label>
+        <input type="date"  style="padding-top: 0px;" class="form-control" ng-model="cCctr.search.toDate" >
+       </div>
+      </div>
+      
+     	
+ </div>
+
+          
+	      
+         
+	       	
+	      		
+	             <div class="row" id="hide" >
+	         	  <div class="col-md-4"  style="margin-left:85%;margin-top:-50px">	
+	                        <button ng-click="cCctr.searchEntities(true,'reimburseable','reimburseable')"
+								class="btn btn-success" style="width: 90px;">Search</button>
+	                 </div>					
+  </div>
+  
+   <div class="row" id="search" >
+	         	  <div class="col-md-4" id="search">	
+	                        <button ng-click="cCctr.searchEntities(true,'reimburseable','reimburseable')"
+								class="btn btn-success" style="width: 90px;">Search</button>
+	                 </div>	
+	                    </div>	
+	                    </div>			
+  </div>
+  </div>
+
+
+
+
+
+<div class="container-fluid">
+	
+	<div class="row">
+
+
+		<div class="col-md-12">
+
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="text-right">
+						<button type="button" class="btn  btn-primary" data-toggle="modal"
+							data-keyboard="true" onclick="test('#myModal')">Add File</button>
+					</div>
+				</div>
+			</div>
+			 <div class="table-responsive">
+			<table class=" table-bordered table-hover table-striped ">
+				<thead>
+					<tr  style="background-color: #81b7db;font-size:13px">
+				<th width="15%">Nature Of Expense</th>	
+			    <th width="20%">Description</th>					
+				<th width="10%">Amount Incurred</th>
+				<th width="10%">Amount Approved</th>
+				<th width="10%">Approved By</th>
+				<th width="15%">Date</th>
+				<th width="15%">Claimed ID</th>
+				<th width="10%">Status</th>
+				<th width="10%">Remark</th>
+				<th width="10%">Action</th>
+			</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="a in cCctr.getEntityListData()" style="font-size:13px">
+						<td>{{a.natureOfExpense}}</td>	
+						<td>{{a.fileDescription}}</td>		       
+						<td style="height:20px">{{a.amountClaimed}}</td>
+						<td style="height:20px">{{a.amountApproved}}</td>
+						<td style="height:20px">{{a.verifier}}</td>
+						<td style="height:20px">{{a.date | date:'dd-MM-yyyy'}}</td>
+						<td style="height:20px">{{a.claimedId}}</td>
+						<td style="height:20px">{{a.status}}</td>
+						<td style="height:20px">{{a.remark}}</td>
+						<td style="height:30px"><a 
+					ng-click="cCctr.viewFile('fileDetail',a,'viewFile');" >View</a>|| <a
+					onclick="test('#update')"  ng-click="cCctr.gotoDetail('fileDetail',a.fileId);cCctr.temp2.dec=a;"><font
+						color="blue">Update</font></a>|| <a onclick="test('#delete')"><font
+						color="red" ng-click="cCctr.setTemp1(a);cCctr.setIndex($index)"> Delete</font></a></td>
+					</tr>
+
+				</tbody>
+			</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+<div class="modal fade bs-modal-sm" id="myModal" tabindex="-1"
+  style="background-color: rgba(0, 0, 0, .7);"		role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<br>
+
+			<div class="modal-body">
+				<div id="myTabContent" class="tab-content">
+					<div class="tab-pane fade active in" id="signin">
+						<form name="fileForm" class="form-horizontal" enctype="multipart/form-data">
+							<fieldset>
+								<input type="hidden" ng-model="cCctr.fileName.dec.employeeId"
+									ng-init="cCctr.fileName.dec.employeeId=cCctr.employeeId;cCctr.fileName.dec.status='Not Verified'">
+								<input type="hidden" ng-model="cCctr.fileName.dec.status"
+									>
+
+                                <div class="control-group">
+									<label class="control-label" for="relation">Nature Of Expense </label>
+									<div class="controls">
+										<select style="width: 100%; height:30px" ng-model="cCctr.fileName.dec.natureOfExpense" name="natureOfExpense" require="">
+										  <option value="Travel/Tickets">Travel/Tickets</option>
+										  <option value="Hotel Stay">Hotel Stay</option>
+										   <option value="Food">Food</option>
+										    <option value="Other">Other</option>
+										</select>
+									
+									</div>
+								</div> 
+
+                                 <div class="control-group">
+									<label class="control-label" >Description*</label>
+									<div class="controls">
+									 <input  id="userid" name="fileDescription" type="text" 
+										class="form-control input-medium" placeholder="Description" 
+										ng-model="cCctr.fileName.dec.fileDescription ">
+									 <span class="error" id="fileDescription"></span>
+									</div>
+								</div>
+                                 
+
+								<div class="control-group">
+									<label class="control-label" for="userid">Amount Incurred*</label>
+									<div class="controls">
+										<input required="" id="userid" name="amountClaimed" type="text"
+											class="form-control input-medium" placeholder="Amount Incurred"
+											ng-model="cCctr.fileName.dec.amountClaimed">
+											<span class="error" id="amountClaimed"></span>
+									</div>
+								</div>
+								
+								<div class="control-group">
+									<label class="control-label" for="userid">Amount Approved*</label>
+									<div class="controls">
+										<input required="" id="userid" name="amountApproved" type="text"
+											class="form-control input-medium" placeholder="Amount Approved"
+											ng-model="cCctr.fileName.dec.amountApproved">
+											<span class="error" id="amountApproved"></span>
+									</div>
+								</div>
+								
+
+                                  <div class="control-group">
+										<label class="control-label" >Date*</label>
+												
+										<div class="controls" >
+											<input id="date" name="date" style="padding-top:0px;" ng-required="true"
+												class="form-control input-medium" type="date"
+												placeholder="Date" 
+												ng-model="cCctr.fileName.dec.date">
+												<span class="error" id="date"></span>
+										</div>
+									</div>
+									
+										<div class="control-group">
+									<label class="control-label" for="userid">Claimed ID*</label>
+									<div class="controls">
+										<input required="" id="userid" name="claimedId" type="text"
+											class="form-control input-medium" placeholder="Claimed ID"
+											ng-model="cCctr.fileName.dec.claimedId">
+											<span class="error" id="claimedId"></span>
+									</div>
+								</div>
+								
+								<div class="control-group">
+									<label class="control-label" for="file">Select File</label>
+									<div class="controls">
+										<input multiple id="file-upload" type="file"
+										name="fileName"
+											file-model="cCctr.fileName.file"  />
+									</div>
+								</div>
+
+								<BR>
+								<!-- Button -->
+								<div class="control-group">
+									<label class="control-label" for="save"></label>
+									<div class="controls">
+										<button id="add" name="add"
+											class="btn btn-success btn-block btn-primary"
+											ng-click="fileForm.submitted=true;cCctr.submitFile(fileForm.$valid,'reimburseable',cCctr.fileName,'close')" >Add</button>
+									</div>
+								</div>
+							</fieldset>
+						</form>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="modal-footer">
+
+				<button type="button" class="btn btn-default" id="close" data-dismiss="modal">Close</button>
+
+			</div>
+
+		</div>
+	</div>
+</div>
+</div>
+
+<!-- modal     -->
+
+<!-- view file -->
+<div class="modal fade1" id="viewFile"
+	style="background-color: rgba(0, 0, 0, .7);">
+	<div class="modal-dialog1" ng-it="cCctr.getEntityData();">
+		<div class="modal-content">
+			<!-- Modal Header -->
+			<div class="modal-body row">
+				<div class="col-md-8">
+					<div style="width: 100%; auto; margin-top: 0px;">
+						 
+							<iframe  id="iframe1"
+						  ng-src="{{cCctr.loader}}"
+							 width="100%" height="100%"></iframe> 
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal"  style="color:red" ng-click="cCctr.loader='static/img/Spinner-1s-200px.gif'"><i class="fa fa-times fa-1x" aria-hidden="true"></i></button><br>
+						<h5 class="modal-title" style=" font-family: Times New Roman, Times, serif"><b>Reimburseable</b></h5>
+					</div> 
+					<div class="row col-sm-12" style="font-size: 11px;">
+					
+					<div class="row" style="margin-top: 15px;">
+							<div class="col-sm-4"><label>Nature Of Expense</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.natureOfExpense}}</div>
+						</div>
+						
+						<div class="row" style="margin-top: 15px;">
+							<div class="col-sm-4"><label>Description</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.fileDescription}}</div>
+						</div>
+						
+						<div class="row" style="margin-top: 15px;">
+							<div class="col-sm-4"><label>Amount Incurred</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.amountClaimed}}</div>
+						</div>
+						<div class="row" style="margin-top: 15px;">
+							<div class="col-sm-4"><label>Amount Approved</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.amountApproved}}</div>
+						</div>
+						<div class="row" style="margin-top: 15px;">
+							<div class="col-sm-4"><label> Approved By</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.verifier}}</div>
+						</div>
+						
+						<div class="row" style="margin-top: 15px;">
+							<div class="col-sm-4"><label>Date</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.date}}</div>
+						</div>
+						
+						<div class="row" style="margin-top: 15px;">
+							<div class="col-sm-4"><label>Claimed ID</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.claimedId}}</div>
+						</div>
+						
+						<div class="row" style="margin-top: 15px;">
+							<div class="col-sm-4"><label>Status</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.status}}</div>
+						</div>
+						<div class="row" style="margin-top: 15px;">
+							<div class="col-sm-4"><label>Remark</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.remark}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<!-- No view file modal-->
+<div class="modal fade1" id="noviewFile"
+	style="background-color: rgba(0, 0, 0, .7);">
+	<div class="modal-dialog1" ng-it="cCctr.getEntityData();">
+		<div class="modal-content">
+			<!-- Modal Header -->
+			<div class="modal-body row">
+				<div class="col-md-8">
+					<div style="width: 100%; auto; margin-top: 0px;" >
+					
+					<h1>No File Uploaded</h1>
+							 
+						
+					</div>
+				</div>
+				<div class="col-md-4" style="font-size: 11px;">
+
+
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"style="color:red"><i class="fa fa-times fa-1x" aria-hidden="true"></i></button>
+						<br>
+						<h5 class="modal-title"
+							style="font-family: Times New Roman, Times, serif">
+							<b>Reimburseable</b>
+						</h5>
+					</div>
+					<br>
+					<div class="row col-sm-12>">
+						<div class="row" style="margin-top:15px;">
+							<div class="col-sm-4">
+								<label>Nature Of Expense</label>
+							</div>
+							<div class="col-sm-8">{{cCctr.temp1.natureOfExpense}}</div>
+						</div>
+						
+						<div class="row"style="margin-top:15px;">
+							<div class="col-sm-4">
+								<label>Amount Incurred</label>
+							</div>
+							<div class="col-sm-8">{{cCctr.temp1.amountClaimed}}</div>
+						</div>
+						
+						<div class="row" style="margin-top: 15px;">
+							<div class="col-sm-4"><label>Amount Approved</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.amountApproved}}</div>
+						</div>
+						<div class="row" style="margin-top: 15px;">
+							<div class="col-sm-4"><label> Approved By</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.verifier}}</div>
+						</div>
+						
+						<div class="row" style="margin-top: 15px;">
+							<div class="col-sm-4"><label>Date</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.date}}</div>
+						</div>
+						<div class="row" style="margin-top: 15px;">
+							<div class="col-sm-4"><label>Claimed ID</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.claimedId}}</div>
+						</div>
+						
+						<div class="row"style="margin-top:15px;">
+							<div class="col-sm-4">
+								<label>Status</label>
+							</div>
+							<div class="col-sm-8">{{cCctr.temp1.status}}</div>
+						</div>
+						<div class="row"style="margin-top:15px;">
+							<div class="col-sm-4">
+								<label>Remark </label>
+							</div>
+							<div class="col-sm-8">{{cCctr.temp1.remark}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div id="update" class="modal fade" role="dialog" 
+style="background-color: rgba(0, 0, 0, .7);">
+  <div class="modal-dialog" style="width:30%">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" id="closeU" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><b>Update Reimburseable</b></h4>
+      </div>
+      <div class="modal-body">
+				<div id="myTabContent" class="tab-content">
+					<div class="tab-pane fade active in" id="signin">
+						<form name="updatefileForm" class="form-horizontal"
+							enctype="multipart/form-data">
+							<fieldset>
+
+
+								  <div class="control-group">
+									<label class="control-label" for="relation">Nature Of Expense </label>
+									<div class="controls">
+										<select style="width: 100%; height:30px" ng-model="cCctr.temp2.dec.natureOfExpense" name="natureOfExpense" require="">
+										  <option value="Travel/Tickets">Travel/Tickets</option>
+										  <option value="Hotel Stay">Hotel Stay</option>
+										   <option value="Food">Food</option>
+										    <option value="Other">Other</option>
+										</select>
+									
+									</div>
+								</div> 
+								<div class="control-group">
+									<label class="control-label" >Description*</label>
+									<div class="controls">
+									 <input  id="userid" name="fileDescription" type="text" 
+										class="form-control input-medium" placeholder="Description" 
+										ng-model="cCctr.temp2.dec.fileDescription ">
+									 <span class="error" id="fileDescription"></span>
+									</div>
+								</div>
+								
+								<div class="control-group">
+									<label class="control-label" for="userid">Amount Incurred</label>
+									<div class="controls">
+										<input required="" id="userid" name="userid" type="text"
+											class="form-control input-medium" placeholder="Amount Incurred"
+											ng-model="cCctr.temp2.dec.amountClaimed">
+											<span class="error" id="amountClaimed"></span>
+									</div>
+								</div>
+								
+								<div class="control-group">
+									<label class="control-label" for="userid">Amount Approved*</label>
+									<div class="controls">
+										<input required="" id="userid" name="amountApproved" type="text"
+											class="form-control input-medium" placeholder="Amount Approved"
+											ng-model="cCctr.temp2.dec.amountApproved">
+											<span class="error" id="amountApproved"></span>
+									</div>
+								</div>
+								
+
+                                  <div class="control-group">
+										<label class="control-label" >Date*</label>
+												
+										<div class="controls" >
+											<input id="date" name="date" style="padding-top:0px;" ng-required="true"
+												class="form-control input-medium" type="date"
+												placeholder="Date" 
+												ng-model="cCctr.temp2.dec.date">
+												<span class="error" id="dateU"></span>
+										</div>
+									</div>
+									
+									<div class="control-group">
+									<label class="control-label" for="userid">Claimed ID*</label>
+									<div class="controls">
+										<input required="" id="userid" name="claimedId" type="text"
+											class="form-control input-medium" placeholder="Claimed ID"
+											ng-model="cCctr.temp2.dec.claimedId">
+											<span class="error" id="claimedIdU"></span>
+									</div>
+								</div>
+								
+								<div class="control-group">
+									<label class="control-label" for="userid">Status:</label>{{cCctr.temp2.dec.status }}
+									<div class="controls">
+										
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="userid">Remark:</label> {{cCctr.temp2.dec.remark }}
+									<div class="controls">
+										
+									</div>
+								</div>
+								
+								
+									<div class="control-group">
+									<label class="control-label" for="name">Saved File : </label>&nbsp;
+									<span ng-show="cCctr.getEntityData().fileName!=null">{{cCctr.getEntityData().fileName}}</span>
+									<span ng-show="cCctr.getEntityData().fileName==null">No file uploaded.</span><br>
+									<label class="control-label" for="file">Replace File </label>
+									<div class="controls">
+										<input multiple id="file-upload" type="file" name="fileName"
+											file-model="cCctr.temp2.file" >
+									</div>
+								</div>
+								<BR>
+
+								<div class="control-group">
+									<label class="control-label" for="save"></label>
+									<div class="controls">
+										<button id="add" name="add"
+											class="btn btn-success btn-block btn-primary" 
+											ng-click="cCctr.updateFile(true,'reimburseable',cCctr.temp2,'closeU')">Update</button>
+									</div>
+								</div>
+							</fieldset>
+						</form>
+					</div>
+
+				</div>
+			</div>
+
+	</div>
+  </div>
+</div>  
+
+ <div class="modal fade" id="delete" role="dialog">
+    <div class="modal-dialog modal-sm" style="width:30%">
+      <div class="modal-content">
+       <p></p>
+        <div class="modal-body">
+          <p>Are you sure you want to delete ?</p>
+          
+          <fieldset>
+           <div class="row col-sm-12" style="font-size: 13px;">
+						<div class="row" style="margin-top: 15px;">
+							<div class="col-sm-4"><label>Nature Of Expense</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.natureOfExpense}}</div>
+						</div>
+						<div class="row" style="margin-top: 15px;">
+							<div class="col-sm-4"><label>Amount Incurred</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.amountClaimed}}</div>
+						</div>
+						
+						<div class="row" style="margin-top: 15px;">
+							<div class="col-sm-4"><label>Amount Approved</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.amountApproved}}</div>
+						</div>
+						<div class="row" style="margin-top: 15px;">
+							<div class="col-sm-4"><label> Approved By</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.verifier}}</div>
+						</div>
+						
+						<div class="row" style="margin-top: 15px;">
+							<div class="col-sm-4"><label>Date</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.date}}</div>
+						</div>
+						<div class="row" style="margin-top: 15px;">
+							<div class="col-sm-4"><label>Claimed ID</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.claimedId}}</div>
+						</div>
+						<div class="row" style="margin-top: 15px;">
+							<div class="col-sm-4"><label>Status</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.status}}</div>
+						</div>
+						<div class="row" style="margin-top: 15px;">
+							<div class="col-sm-4"><label>Remark</label></div>
+							<div class="col-sm-8">{{cCctr.temp1.remark}}</div>
+						</div>
+			</div>
+          		
+		  </fieldset>
+           <button type="button" class="btn btn-default" ng-click="cCctr.deleteFunction(true,'reimburseable',cCctr.temp1,cCctr.getEntityListData(),cCctr.dlIndex,'closeD')" data-dismiss="modal">Yes</button>
+           <button type="button" id="closeD" class="btn btn-default" data-dismiss="modal">No</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>

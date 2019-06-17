@@ -1,0 +1,102 @@
+package domain.in.rjsa.security;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationTrustResolver;
+import org.springframework.security.authentication.AuthenticationTrustResolverImpl;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices;
+
+import domain.in.rjsa.dao.impl.HibernateTokenRepositoryImpl;
+
+@Configuration
+@EnableWebSecurity
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+	@Autowired
+	@Qualifier("customUserDetailsService")
+	UserDetailsService userDetailsService;
+	@Autowired
+	HibernateTokenRepositoryImpl tokenRepository;
+
+
+	@Autowired
+	public void configureGlobalSecurity(AuthenticationManagerBuilder auth)
+			throws Exception {
+		auth.userDetailsService(userDetailsService);
+		auth.authenticationProvider(authenticationProvider());
+	}
+	
+
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+	
+		
+		http.formLogin().loginPage("/login.jsp").loginProcessingUrl("/login").defaultSuccessUrl("/", true).permitAll().and().authorizeRequests()
+        .antMatchers( "/login","/","/static/css/fonts/untitled-font-2*").permitAll().anyRequest().authenticated()
+        .and().rememberMe().rememberMeParameter("remember-me")
+				.tokenRepository(tokenRepository).tokenValiditySeconds(10000)
+				.and().exceptionHandling()
+				.accessDeniedPage("/Access_Denied").and().csrf().disable().headers().frameOptions().sameOrigin();
+
+//		http.authorizeRequests()
+//        .antMatchers("/login*").permitAll()
+//        .anyRequest().authenticated()
+//         
+//        .and()
+//        .formLogin()
+//        .loginPage("/login.jsp")
+//        .successHandler(myAuthenticationSuccessHandler());
+		
+		
+		
+		
+		
+		
+//		 http
+//	        .authorizeRequests()
+//	            .anyRequest().authenticated()
+//	            .and()
+//	        .formLogin()
+//	            .loginPage("/login") 
+//	            .permitAll();  
+	}
+
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+
+	@Bean
+	public DaoAuthenticationProvider authenticationProvider() {
+		DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
+		authenticationProvider.setUserDetailsService(userDetailsService);
+		authenticationProvider.setPasswordEncoder(passwordEncoder());
+		return authenticationProvider;
+	}
+
+	
+
+	@Bean
+	public AuthenticationTrustResolver getAuthenticationTrustResolver() {
+		return new AuthenticationTrustResolverImpl();
+	}
+
+	@Bean
+	public PersistentTokenBasedRememberMeServices getPersistentTokenBasedRememberMeServices() {
+		PersistentTokenBasedRememberMeServices tokenBasedservice = new PersistentTokenBasedRememberMeServices(
+				"remember-me", userDetailsService, tokenRepository);
+		return tokenBasedservice;
+	}
+
+}

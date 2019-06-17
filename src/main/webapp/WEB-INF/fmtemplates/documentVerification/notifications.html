@@ -1,0 +1,223 @@
+
+<style>
+/*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+	@media
+	  only screen 
+    and (max-width: 760px), (min-device-width: 768px) 
+    and (max-device-width: 1024px)  {
+
+		/* Force table to not be like tables anymore */
+		table, thead, tbody, th, td, tr {
+			display: block;
+		}
+
+		/* Hide table headers (but not display: none;, for accessibility) */
+		thead tr {
+			position: absolute;
+			top: -9999px;
+			left: -9999px;
+		}
+
+    tr {
+      margin: 0 0 1rem 0;
+    }
+      
+    tr:nth-child(odd) {
+      background: #ccc;
+    }
+    
+		td {
+			/* Behave  like a "row" */
+			border: none;
+			border-bottom: 1px solid #eee;
+			position: relative;
+			padding-left: 50%;
+		}
+
+		td:before {
+			/* Now like a table header */
+			position: absolute;
+			/* Top/left values mimic padding */
+			top: 0;
+			left: 6px;
+			width: 45%;
+			padding-right: 10px;
+			white-space: nowrap;
+		}
+
+		/*
+		Label the data
+    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+		*/
+		td:nth-of-type(1):before { content: "Sr. No."; }
+		td:nth-of-type(2):before { content: "Message"; }
+		td:nth-of-type(3):before { content: "Group Code"; }
+		td:nth-of-type(4):before { content: "mode"; }
+		td:nth-of-type(5):before { content: "Date"; }
+		
+	}
+	
+	
+	  
+						
+						
+    @media only screen and (max-width: 1000px) {
+        .one{
+            display: none;
+          
+        }
+    }
+    
+ @media only screen and (max-width: 1000px) {
+        .two{
+         
+            padding:8px;
+        }
+    }
+        
+   @media only screen and (min-width:600px) {
+            #three{
+                display: none;
+                max-height: 0;
+                overflow: hidden;
+            }
+        }
+        
+       @media only screen and (min-width:1000px) {
+            #search{
+             
+             margin-left:45%;
+             margin-top:2px;
+             display:none;
+            }
+        }
+        
+            @media only screen and (max-width: 1000px) {
+      #hide{
+            display: none;
+          
+        }
+    }
+     .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background-color: whitesmoke;
+}
+@media (min-width: 768px) {
+  .collapse.dont-collapse-sm {
+    display: block;
+    height: auto !important;
+    visibility: visible;
+  }
+}
+</style>
+
+
+
+
+
+
+<div class="container-fluid">
+	<div style="font-size: 25px;" class="row">Notifications</div>
+
+	<!-- Searchbar-->
+	<!-- <div class="row">
+		<div class="col-md-12">
+			<div class="table-responsive">
+				<table
+					style="width: 100%; border-color: red;font-size: 12px; border-collapse: separate; border-spacing: 10px;">
+					<tr>
+						<th width="10%">From Date :</th>
+						<td><input type="date" class="form-control" style="padding-top: 0px;" ng-model="cCctr.search.fromDate"
+							placeholder="From Date" ></td>
+						<th width="10%">&nbsp; &nbsp; &nbsp; &nbsp;To Date :</th>
+						<td><input type="date"  style="padding-top: 0px;" class="form-control" ng-model="cCctr.search.toDate" >
+						</td>
+						<td align="center">
+						<button ng-click="cCctr.searchEntities(true,'notifications','notifications')"
+								class="btn btn-success" style="width: 90px;">Search</button>
+						</td>
+					</tr>
+					
+					
+				</table>
+			</div>
+		</div>
+	</div> -->
+	
+	<div class="container">
+	  <br>
+	      <button class="btn btn-primary hidden visible-xs" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+             Search 
+          </button>
+  <div class="collapse dont-collapse-sm" id="collapseExample2"> 
+	  <div class="row">
+	   <div class="form-group">
+	  
+	<div class="col-md-5">							
+            <label>From Date :</label>
+        <input type="date" class="form-control" style="padding-top: 0px;" ng-model="cCctr.search.fromDate"
+							placeholder="From Date" >
+      </div>
+      
+     	<div class="col-md-5">	
+            <label>To Date :</label>
+        <input type="date"  style="padding-top: 0px;" class="form-control" ng-model="cCctr.search.toDate" >
+       </div>
+ </div>
+   </div>
+           
+	      		
+	             <div class="row" id="hide" >
+	         	  <div class="col-md-2"  style="margin-left:85%;margin-top:-35px">	
+	                         <button ng-click="cCctr.searchEntities(true,'notifications','notifications')"
+								class="btn btn-success" style="width: 90px;">Search</button>
+	                 </div>					
+  </div>
+  
+   <div class="row" id="search" >
+	         	  <div class="col-md-2" id="search">	
+	                        <button ng-click="cCctr.searchEntities(true,'notifications','notifications')"
+								class="btn btn-success" style="width: 90px;">Search</button>
+	                 </div>					
+  </div>
+  </div>
+ </div>
+
+	<br>
+	<div class="row">
+	 <div class="col-xs-12">
+		<div class="text-right">
+	          <button class="btn btn-primary" data-toggle="modal" ng-click="cCctr.gotoListPage('addNotification','addNotification')" >Add Notifications</button>
+		</div>
+	 </div>
+    </div>
+	
+	
+	<div class="container-fluid">
+		<div class="row">
+		<div class="table-responsive">
+			<table class=" table-bordered table-hover table-striped ">
+				<thead>
+					<tr style="background-color: #81b7db; height:40px">
+					   <th style="font-size:13px;text-align:center">Sr. No.</th>
+						<th style="font-size:13px;text-align:center">Message</th>
+						<th style="font-size:13px;text-align:center">Group Code</th>
+						<th style="font-size:13px;text-align:center">Mode</th>
+						<th style="font-size:13px;text-align:center">Date</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="a in cCctr.getEntityListData()">
+					<td  style="font-size:13px;height:30px;width:220px;text-align:center" class="one">{{$index+1}}</td>
+						<td  style="font-size:13px;height:20px;width:350px;text-align:center">{{a.message}}</td>
+						<td  style="font-size:13px;height:20px;width:350px;text-align:center">{{a.groupCode}}</td>
+						<td  style="font-size:13px;height:20px;width:350px;text-align:center">{{a.mode}}</td>
+						<td  style="font-size:13px;height:20px;width:350px;text-align:center">{{a.date | date:'dd-MM-yyyy'}}</td>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+		</div>
+	</div>
+</div>

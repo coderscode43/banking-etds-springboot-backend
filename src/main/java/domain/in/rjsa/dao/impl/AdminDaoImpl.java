@@ -1,0 +1,11 @@
+package domain.in.rjsa.dao.impl;
+
+import org.springframework.stereotype.Repository;
+
+import domain.in.rjsa.dao.AbstractNewDao;
+import domain.in.rjsa.dao.AdminDao;
+import domain.in.rjsa.model.Admin;
+@Repository("adminDao")
+public class AdminDaoImpl extends AbstractNewDao<Long, Admin> implements AdminDao{
+
+}

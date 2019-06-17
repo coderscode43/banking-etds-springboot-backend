@@ -1,0 +1,91 @@
+<style>
+.button1 {
+	font-size: 15px;
+	width: 100%;
+	color: white;
+	background-color: #24478f;
+}
+</style>
+
+<div class="row col-lg-12" style="border-coler: #DDDDDD;">
+	<div class="table-responsive">
+		<table
+			style="width: 100%; border-color: red;font-size: 12px; border-collapse: separate; border-spacing: 10px;">
+			<tr>
+				<th>Employee Code :</th>
+				<td><md-autocomplete md-input-name="Employee code"
+						md-input-minlength="3" md-no-cache="true" md-input-maxlength="75"
+						md-selected-item="cCctr.search.employeeCode" md-search-text="b"
+						md-items="item in cCctr.ajax1('employee','employeeCode',b)"
+						md-delay="2000" placeholder="Employee Code"> <md-item-template>
+					<span>{{item}}</span> </md-item-template> <md-not-found> No Employee
+					code with "{{b}}" were found.<a ng-click="">Add new</a> </md-not-found> </md-autocomplete></td>
+				<th>Name :</th>
+				<td><input type="text" class="form-control"
+					ng-model="cCctr.search.name" placeholder="Name"></td>
+				<td></td>
+			</tr>
+			<tr>
+				<th width="10%">Status :</th>
+				<td><select class="form-control">
+						<option value="volvo">Verified</option>
+						<option value="saab">Pending for Verification</option>
+				</select></td>
+
+
+				<th>Group Code:</th>
+				<td><md-autocomplete md-input-name="Group Code"
+						md-input-minlength="3" md-no-cache="true" md-input-maxlength="75"
+						md-selected-item="cCctr.search.groupCode" md-search-text="a"
+						md-items="item in cCctr.ajax1('employee','groupCode',a)"
+						md-delay="2000" placeholder="Group Code"> <md-item-template>
+					<span>{{item}}</span> </md-item-template> <md-not-found> No Group code
+					with "{{a}}" were found.<a ng-click="">Add new</a> </md-not-found> </md-autocomplete></td>
+
+				<td align="center">
+					<button
+						ng-click="cCctr.searchEntities(true,'employee','emplDecVeri')"
+						class="btn btn-success" style="width: 90px;">Search</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<!-- Displaying only when data not available -->
+<div class="row">
+<div class="col-md-2">
+	<div class="nav-side-menu" style="height:400px">
+
+		<i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse"
+			data-target="#menu-content"></i>
+
+		<div class="menu-list" >
+			<div class="brand" style="background-color: #0F316D;">
+				<b>List Of Employee</b>
+			</div>
+			<div class="row" style="
+ max-height:300px;">
+				<table class="table table-responsive tbl">
+					<tbody>
+						<tr ng-repeat="a in cCctr.getEntityListData()">
+							<td><a
+								ng-click="cCctr.gotoSearchDetailPage('employee',a.id,'detailemployee')" style="margin-left:10px"><b>{{a.name}}</b>({{a.employeeCode}})
+								</a></td>
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="col-md-10">
+	<div ng-init="cCctr.show=true;" ui-view></div>
+
+</div>
+<div class="container"></div>
+</div>
+
+
+

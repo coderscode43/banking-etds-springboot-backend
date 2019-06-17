@@ -1,0 +1,72 @@
+<div id="page-wrapper">
+	<div class="container-fluid">
+		<!-- Page Heading -->
+		<div class="row">
+			<ol class="breadcrumb">
+				<li class="active"><i class="fa fa-dashboard"></i>&nbsp;&nbsp;
+					Add Client Detail</li>
+			</ol>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<form role="form" name="clientDetailForm">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Client Name*</label> <input class="form-control"
+									type="text" name="clientName" placeholder="Client Name"
+									ng-model="cCctr.entity.clientName" autocomplete="off"
+									ng-maxlength="50" ng-required="true"
+									ng-pattern="/^[ A-Za-z\s]*$/"
+									ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="clientDetailForm.clientName.$dirty && clientDetailForm.clientName.$invalid">
+									<span class="error"
+									ng-show="clientDetailForm.clientName.$error.pattern">Please
+										enter valid Client Name.</span> <span class="error"
+									ng-show="clientDetailForm.clientName.$error.maxlength">Client
+										Name should not be greater than 50 characters</span> <span
+									class="error"
+									ng-show="clientDetailForm.clientName.$error.required">Client
+										Name is Required.</span>
+								</span>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>PAN*</label> <input class="form-control" type="text"
+									name="pan" placeholder="PAN" ng-model="cCctr.entity.pan"
+									autocomplete="off" ng-maxlength="50" ng-required="true"
+									ng-pattern="[A-Za-z]{5}\d{4}[A-Za-z]{1}"
+									ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="clientDetailForm.pan.$dirty && clientDetailForm.pan.$invalid">
+									<span class="error"
+									ng-show="clientDetailForm.pan.$error.pattern">Please
+										enter valid PAN.</span> <span class="error"
+									ng-show="clientDetailForm.pan.$error.maxlength">PAN
+										should not be greater than 10 characters</span> <span class="error"
+									ng-show="clientDetailForm.pan.$error.required">PAN is
+										Required.</span>
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<label>Address*</label>
+							<textarea rows="4" cols="50" name="comment" form="usrform">
+                            Enter address here...</textarea>
+						</div>
+					</div>
+                    <div class="row">
+            			<div class="col-md-6">
+            				<button ng-click="clientDetailForm.submitted=true;cCctr.submit(clientDetailForm.$valid,'clientDetail')" class="btn btn-success">Submit</button>
+            				<button ng-click="cCctr.gotoList('clientDetail')" class="btn btn-primary">Cancel</button>
+            			</div>
+            		</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

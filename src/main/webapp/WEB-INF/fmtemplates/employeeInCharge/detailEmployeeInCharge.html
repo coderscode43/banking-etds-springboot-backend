@@ -1,0 +1,133 @@
+	
+	<style>
+	@media(min-width: 900px)
+    {
+    .button-menu-mobile
+    {
+    display:none;
+    }
+    }
+	
+	@media (max-width: 480px) {
+  .Button1 {
+    display: none;
+  }
+}
+	</style>
+	
+	
+	
+	<div id="page-wrapper" ng-init="cCctr.entity=cCctr.getEntityData();">
+	<div class="container-fluid">
+
+		<div ng-show="cCctr.show != true">
+
+			<div class="row">
+				<h2 class="page-header" style="margin-top: 0;">Detail of
+				 Employee Incharge</h2>
+			</div>
+
+			<div class="panel panel-default"
+				style="margin-top: -2%; border: none !important;">
+				<div class="panel-body">
+
+                <h3>    Employee Details </h3>	<br>			 
+					<div class="row" >
+					<div class="col-md-3">
+                                		<strong>Employee Code :</strong> {{cCctr.entity.employee[0].employeeCode}}
+                                	</div>
+									<div class="col-md-3">
+                                		<strong>Employee Name &nbsp;:</strong> {{cCctr.entity.employee[0].name}}
+                                	</div>
+                                	<div class="col-md-3">
+                                		<strong> Address :</strong> {{cCctr.entity.employee[0].address}}
+                          </div>
+                          <div class="col-md-3">
+                                		<strong>Email :</strong> {{cCctr.entity.employee[0].email}}
+                          </div>
+                                	</div>
+                                	<br>
+                                	<div class="row">
+                                	<div class="col-md-3">
+                                		<strong>PAN &nbsp;:</strong> {{cCctr.entity.employee[0].pan}}
+                                	</div>
+                                	<div class="col-md-3">
+                                		<strong>Designation :</strong> {{cCctr.entity.employee[0].designation}}
+                                	</div>
+                                	 <div class="col-md-3">
+                                		<strong> Branch :</strong> {{cCctr.entity.employee[0].branch}}
+                          </div>
+                           <div class="col-md-3">
+                                		<strong> Mobile :</strong> {{cCctr.entity.employee[0].mobile}}
+                          </div>
+                                	
+                                	
+                                	 <br>
+                                	</div>
+                                  
+                                	<div class="row">
+                                	<div class="col-md-3" style="margin-left:90%;margin-top:-50px"">
+                                		<a class="btn btn-primary Button1 " ng-click="cCctr.gotoDetailPage('employee',cCctr.entity.employee[0].id,'detailemployee');"> Employee </a>
+                          </div>
+                         
+                          </div>
+                                	<div class="row">
+                                	<div class="col-md-3" style="margin-left:65%;margin-top:-10px">
+                                		<a class="btn btn-primary button-menu-mobile" ng-click="cCctr.gotoDetailPage('employee',cCctr.entity.employee[0].id,'detailemployee');"> Employee  </a>
+                          </div>
+                         
+                          </div>
+                          
+                          
+                           
+                        </div>
+                        </div>
+                       
+                       
+                        
+                        	<div class="panel panel-default"
+				style="margin-top: -2%; border: none !important;">
+				<div class="panel-body">
+
+                <h3>   Group  Detail </h3>	<br>			 
+					<div class="row" >
+					<div class="col-md-3">
+                                		<strong>Group code : </strong> {{cCctr.entity.groupList[0].groupCode}}
+                                	</div>
+                      <div class="col-md-3">
+                    <strong>Group Name :</strong> {{cCctr.entity.groupList[0].groupName}}
+                      </div> 
+                        <div class="col-md-3">
+                    <strong>Description :</strong> {{cCctr.entity.groupList[0].description}}
+                      </div> 
+                      
+                         <div class="col-md-3">
+                    <strong>Verifier  :</strong> {{cCctr.entity.groupList[0].verifier}}
+                      </div> 
+                      <br>
+                      <div class="row">
+                       <div class="col-md-3" style="margin-left:90%;;margin-top:-30px">
+                                		<a class="btn btn-primary Button1" ng-click="cCctr.gotoDetailPage('groups',cCctr.entity.groupList[0].id,'detailGroups');"> Group </a>
+                          </div>
+                          </div>
+                      <div class="row">
+                       <div class="col-md-3" style="margin-left:65%;margin-top:-10px">
+                                		<a class="btn btn-primary  button-menu-mobile" ng-click="cCctr.gotoDetailPage('groups',cCctr.entity.groupList[0].id,'detailGroups');"> Group </a>
+                          </div>
+                          </div>
+			</div>
+		</div>
+	</div>
+	
+	</div>
+
+	</div>
+	
+	</div>
+	
+	
+	
+	
+	
+	
+	

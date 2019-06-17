@@ -99,8 +99,7 @@ public class Regular24Q4Salary {
 	@Column(name = "deductionUs80TTA")
 	public Double deductionUs80TTA;
 	@Column(name = "amountDeductible80ccg")
-	public Double amountDeductible80ccg;
-	
+	public Double amountDeductible80ccg;	
 	@Column(name = "anyOtherDeduction")
 	public Double anyOtherDeduction;
 	@Column(name = "totalDeductionUnderChapterVIA")
@@ -143,29 +142,52 @@ public class Regular24Q4Salary {
 	public String panOfLandlord3;
 	@Column(name = "nameOfLandlord3")
 	public String nameOfLandlord3;
-//	@Column(name = "panOfLandlord4")
-//	public String panOfLandlord4;
-//	@Column(name = "nameOfLandlord4")
-//	public String nameOfLandlord4;
-//	@Column(name = "whetherInterestPaidToBeLender")
-//	public String whetherInterestPaidToBeLender;
-//	@Column(name = "countOfPanOfLender")
-//	public Long countOfPanOfLender;
-//	@Column(name = "panOfLender1")
-//	public String panOfLender1;
-//	@Column(name = "nameOfLender1")
-//	public String nameOfLender1;
-//	@Column(name = "panOfLandlord4")
-//	public String panOfLandlord4;
-//	@Column(name = "panOfLandlord4")
-//	public String panOfLandlord4;
-//	@Column(name = "panOfLandlord4")
-//	public String panOfLandlord4;
-//	@Column(name = "panOfLandlord4")
-//	public String panOfLandlord4;
-//	@Column(name = "panOfLandlord4")
-//	public String panOfLandlord4;
-	
+	@Column(name = "panOfLandlord4")
+	public String panOfLandlord4;
+	@Column(name = "nameOfLandlord4")
+	public String nameOfLandlord4;
+	@Column(name = "whetherInterestPaidToBeLender")
+	public String whetherInterestPaidToBeLender;
+	@Column(name = "countOfPanOfLender")
+	public Long countOfPanOfLender;
+	@Column(name = "panOfLender1")
+	public String panOfLender1;
+	@Column(name = "nameOfLender1")
+	public String nameOfLender1;
+	@Column(name = "panOfLender2")
+	public String panOfLender2;
+	@Column(name = "nameOfLender2")
+	public String nameOfLender2;
+	@Column(name = "panOfLender3")
+	public String panOfLender3;
+	@Column(name = "nameOfLender3")
+	public String nameOfLender3;
+	@Column(name = "panOfLender4")
+	public String panOfLender4;
+	@Column(name = "nameOfLender4")
+	public String nameOfLender4;
+	@Column(name = "contributionPaidByTrustees")
+	public Double contributionPaidByTrustees;
+	@Column(name = "SuperannuationFundFromDate")
+	public Date SuperannuationFundFromDate;
+	@Column(name = "SuperannuationFundToDate")
+	public Date SuperannuationFundToDate;
+	@Column(name = "contributionSuperannuationFund")
+	public Double contributionSuperannuationFund;
+	@Column(name = "averageRateOfDeduction")
+	public Double averageRateOfDeduction;
+	@Column(name = "taxDeductedOfSuperannuationFund")
+	public Double taxDeductedOfSuperannuationFund;
+	@Column(name = "grossTotalIncomeincludingContribution")
+	public Double grossTotalIncomeincludingContribution;
+	@Column(name = "errorDescription")
+	public String errorDescription;
+	@Column(name = "warningDescription")
+	public String warningDescription;
+	@Column(name = "shortDeduction")
+	public Double shortDeduction;
+	@Column(name = "interestOnShortDeduction")
+	public Double interestOnShortDeduction;
 	
 	
 	

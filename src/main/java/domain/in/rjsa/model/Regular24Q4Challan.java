@@ -21,7 +21,9 @@ public class Regular24Q4Challan extends CommonModelAbstract{
 	@GeneratedValue(strategy= GenerationType.AUTO, generator="native")
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
-	public Long id;		
+	public Long id;	
+	@Column(name = "clientId")
+	public Long clientId;	
 	@Column(name = "srNo")
 	public Long srNo;
 	@Column(name = "tds")

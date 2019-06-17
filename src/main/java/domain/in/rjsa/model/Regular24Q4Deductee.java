@@ -22,6 +22,8 @@ public class Regular24Q4Deductee {
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
 	public Long id;	
+	@Column(name = "clientId")
+	public Long clientId;
 	@Column(name = "srNo")
 	public Long srNo;	
 	@Column(name = "challanSrNo")

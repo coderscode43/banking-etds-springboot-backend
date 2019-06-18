@@ -2,9 +2,7 @@ package domain.in.rjsa.dao.impl;
 
 import org.springframework.stereotype.Repository;
 
-@Repository("DEFAULTSUMMARYDao")
-public class DEFAULTSUMMARYDaoImpl {
-	
-	
+@Repository("GH15RETURNSTATUSDao")
+public class GH15RETURNSTATUSDaoImpl {
 
 }

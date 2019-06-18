@@ -13,23 +13,15 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "branch")
-public class Branch extends CommonModelAbstract{
-	
+@Table(name = "TRACESSLOGIN")
+public class TRACESSLOGIN extends CommonModelAbstract{
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO, generator="native")
 	@GenericGenerator(name = "native", strategy = "native")
-	@Column(name = "tan")
-	public String tan;		
-	@Column(name = "name")
-	public Long name;
-	@Column(name = "branch")
-	public Long branch;
-	@Column(name = "pan")
-	public Long pan;
-	@Column(name = "type")
-	public Long type;
-	@Column(name = "email")
-	public Long email;
-	
+	@Column(name = "TAN")
+	public String TAN;
+	@Column(name = "USERNAME")
+	public String USERNAME;
+	@Column(name = "PASSWORD")
+	public String PASSWORD;
 }

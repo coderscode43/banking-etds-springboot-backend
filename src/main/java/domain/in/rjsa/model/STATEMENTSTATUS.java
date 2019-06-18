@@ -10,21 +10,30 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
 import lombok.Data;
-
 @Data
 @Entity
-@Table(name = "clientDetail")
-public class ClientDetail extends CommonModelAbstract {
+@Table(name = "STATEMENTSTATUS")
+public class STATEMENTSTATUS extends CommonModelAbstract{
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO, generator="native")
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
-	private Long id;
-	@Column(name = "name")
-	private String name;
-	@Column(name = "PAN")
-	private String PAN;
-	@Column(name = "address")
-	private String address;
-
+	public Long id;
+	@Column(name = "TAN")
+	public String TAN;
+	@Column(name = "FORM")
+	public String FORM;
+	@Column(name = "QUARTER")
+	public String QUARTER;
+	@Column(name = "AS_ON_DATE")
+	public String AS_ON_DATE;
+	@Column(name = "FY")
+	public String FY;
+	@Column(name = "STATUS")
+	public String STATUS;
+	
+	@Column(name = "RT")
+	public String RT;
+	
+	
 }

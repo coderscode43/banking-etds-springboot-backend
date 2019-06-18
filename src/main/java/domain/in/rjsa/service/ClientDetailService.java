@@ -6,4 +6,5 @@ public interface ClientDetailService {
 	
 
 public ClientDetail getByKey(Long id);
+
 }

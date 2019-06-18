@@ -70,6 +70,7 @@ public class Regular27EQChallan {
 	public Double interestOnLatePay;
 	@Column(name = "interestOnLateDeduct")
 	public Double interestOnLateDeduct;
-	
+	@Column(name = "fy")
+	public String fy;
 	
 }

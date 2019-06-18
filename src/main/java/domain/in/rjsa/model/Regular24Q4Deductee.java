@@ -70,4 +70,6 @@ public class Regular24Q4Deductee {
 	public Double interestOnLatePayment;
 	@Column(name = "interestOnLateDeduction")
 	public Double interestOnLateDeduction;
+	@Column(name = "fy")
+	public String fy;
 }

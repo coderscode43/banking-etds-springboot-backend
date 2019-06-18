@@ -86,4 +86,6 @@ public class Regular27QDeductee {
 	public String interestOnLatePayment;
 	@Column(name = "interestOnLateDeduction")
 	public String interestOnLateDeduction;
+	@Column(name = "fy")
+	public String fy;
 }

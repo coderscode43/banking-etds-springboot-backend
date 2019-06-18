@@ -80,7 +80,8 @@ public class Regular27EQDeductee {
 	public Double interestOnLatePay;
 	@Column(name = "interestOnLateDeduct")
 	public Double interestOnLateDeduct;
-	
+	@Column(name = "fy")
+	public String fy;
 	
 	
 }

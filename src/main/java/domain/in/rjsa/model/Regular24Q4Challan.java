@@ -66,6 +66,7 @@ public class Regular24Q4Challan extends CommonModelAbstract{
 	public String shortPayment;
 	@Column(name = "interestOnShortPayment")
 	public String interestOnShortPayment;
-
+	@Column(name = "fy")
+	public String fy;
 	
 }

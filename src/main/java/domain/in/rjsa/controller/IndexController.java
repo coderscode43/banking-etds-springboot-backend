@@ -1,5 +1,7 @@
 package domain.in.rjsa.controller;
 
+import java.util.HashSet;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,6 +17,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import domain.in.rjsa.model.ClientDetail;
+import domain.in.rjsa.model.Login;
 import domain.in.rjsa.web.ApplicationCache;
 
 @Controller
@@ -40,28 +44,18 @@ public class IndexController {
 	// mainPage
 	@RequestMapping(value = "/{page}")
 	public String getSelectCompanyTemplate(@PathVariable String page, ModelMap model) {
-//		if(page.equals("main")) {
-//			String userName =getPrincipal();
-//			Login login =applicationCache.getLoginDetail(userName);
-//			ClientDetail cd = applicationCache.getClientDetail(login.getClientId());
-//			HashSet<String> groups= applicationCache.getEmployeeInchargeGroupCode(login.getEmployeeId());
-//			if(groups!=null && !groups.isEmpty()) {
-//				model.addAttribute("employeeIncharge", true);
-//			}else {
-//				model.addAttribute("employeeIncharge", false);	
-//			}
-//			Boolean admin = applicationCache.isAdmin(login.getEmployeeId());
-//			if(admin!=null && admin) {
-//				model.addAttribute("admin", true);
-//			}else {
-//				model.addAttribute("admin", false);
-//			}
-//			model.addAttribute("cd", cd);	
-//			model.addAttribute("employeeId", login.getEmployeeId());
-//			if(login.getPasswordReset()==null ||login.getPasswordReset()) {
-//				return "firstLogin";
-//			}
-//		}
+
+		
+		
+		if(page.equals("main")) {
+			String userName =getPrincipal();
+			Login login =applicationCache.getLoginDetail(userName);
+			ClientDetail cd = applicationCache.getClientDetail(login.getClientId());
+			model.addAttribute("cd", cd);	
+			if(login.getPasswordReset()==null ||login.getPasswordReset()) {
+				return "firstLogin";
+			}
+		}
 		return page;
 	}
 
@@ -74,6 +68,7 @@ public class IndexController {
 	@RequestMapping(value = "/home/{clientId}/{action}")
 	public String gethome(@PathVariable Long clientId, @PathVariable String action, ModelMap model) {
 
+		return action;
 //		String userName =getPrincipal();
 //		Login login =applicationCache.getLoginDetail(userName);
 //		ClientDetail cd = applicationCache.getClientDetail(login.getClientId());
@@ -83,10 +78,10 @@ public class IndexController {
 //		
 //		String pageName="Home";
 //		return action+"/"+action+pageName;
-//	}
-//	@RequestMapping(value = "/homePage/{clientId}/{action}")
-//	public String getHomePage(@PathVariable Long clientId,@PathVariable String action,ModelMap model) {
-//		String pageName="HomePage";
+	}
+	@RequestMapping(value = "/homePage/{clientId}/{action}")
+	public String getHomePage(@PathVariable Long clientId,@PathVariable String action,ModelMap model) {
+		String pageName="HomePage";
 //		Login l = applicationCache.getLoginDetail(getPrincipal());
 //		
 //		{
@@ -142,7 +137,7 @@ public class IndexController {
 //		model.addAttribute("impDates",applicationCache.getImpDates());
 //		model.addAttribute("recentNotifications",applicationCache.getRecentNotifications(clientId));
 //		model.addAttribute("recentRemark",applicationCache.getRecentRemark(clientId));
-		return null;
+		return action+"/"+action+pageName;
 		// return action+"/"+action+pageName;
 	}
 

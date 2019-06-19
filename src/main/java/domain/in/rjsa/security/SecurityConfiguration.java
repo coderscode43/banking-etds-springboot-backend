@@ -29,8 +29,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	HibernateTokenRepositoryImpl tokenRepository;
 
 
-	@Autowired
-	public void configureGlobalSecurity(AuthenticationManagerBuilder auth)
+	@Override
+	public void configure(AuthenticationManagerBuilder auth)
 			throws Exception {
 		auth.userDetailsService(userDetailsService);
 		auth.authenticationProvider(authenticationProvider());
@@ -41,34 +41,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 	
 		
-		http.formLogin().loginPage("/login.jsp").loginProcessingUrl("/login").defaultSuccessUrl("/", true).permitAll().and().authorizeRequests()
+		http.formLogin().loginProcessingUrl("/login").defaultSuccessUrl("/", true).permitAll().and().authorizeRequests()
         .antMatchers( "/login","/","/static/css/fonts/untitled-font-2*","/static/img/tds.png").permitAll().anyRequest().authenticated()
         .and().rememberMe().rememberMeParameter("remember-me")
 				.tokenRepository(tokenRepository).tokenValiditySeconds(10000)
 				.and().exceptionHandling()
 				.accessDeniedPage("/Access_Denied").and().csrf().disable().headers().frameOptions().sameOrigin();
-
-//		http.authorizeRequests()
-//        .antMatchers("/login*").permitAll()
-//        .anyRequest().authenticated()
-//         
-//        .and()
-//        .formLogin()
-//        .loginPage("/login.jsp")
-//        .successHandler(myAuthenticationSuccessHandler());
-		
-		
-		
-		
-		
-		
-//		 http
-//	        .authorizeRequests()
-//	            .anyRequest().authenticated()
-//	            .and()
-//	        .formLogin()
-//	            .loginPage("/login") 
-//	            .permitAll();  
 	}
 
 	@Bean

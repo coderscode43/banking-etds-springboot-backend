@@ -26,7 +26,7 @@ App.config([ '$stateProvider', '$urlRouterProvider',function($stateProvider, $ur
 
     
     
-	$urlRouterProvider.otherwise("/homeSC")
+	$urlRouterProvider.otherwise("/home")
    
 	$stateProvider
 	.state('logout', {
@@ -43,9 +43,9 @@ App.config([ '$stateProvider', '$urlRouterProvider',function($stateProvider, $ur
 		}
 	)	
 	
-	.state('homeSC', {
-		url : "/homeSC",
-		templateUrl : 'index/homeSC',
+	.state('main', {
+		url : "/home",
+		templateUrl : 'index/main',
 		controller : "CommonController as cCctr"
 		}
 		
@@ -59,7 +59,7 @@ App.config([ '$stateProvider', '$urlRouterProvider',function($stateProvider, $ur
 		
 	)
 	
-	
+		
 	//Home that contains Side bar and header
 	.state('home', {
 		url : "/:clientId/:action",

@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import domain.in.rjsa.dao.LoginDao;
 import domain.in.rjsa.model.Login;
 import domain.in.rjsa.service.LoginService;
+import domain.in.rjsa.web.ApplicationCache;
 
 @Transactional
 @Service("loginService")
@@ -18,6 +19,11 @@ public class LoginServiceImpl implements LoginService {
 
 	@Autowired
 	LoginDao dao;
+	ApplicationCache applicationCache;
+	@Autowired
+	public void setApplicationCache(ApplicationCache ap){
+		this.applicationCache= ap;
+		}
 
 	@Override
 	public void updateLogin(Login login) {
@@ -53,6 +59,7 @@ public class LoginServiceImpl implements LoginService {
 		login.setPassword(hash);
 		login.setPasswordReset(false);
 		updateLogin(login);
+		applicationCache.refreshLogin(login.getUserName());
 	}
 
 	public String generateHash(String password) {

@@ -32,7 +32,7 @@
 			</h3>
 			<br>
 			<div class="collapse" id="changePass"
-				ng-init="cCctr.employeeId=${employeeId};cCctr.clientId=${cd.getId()};">
+				ng-init="cCctr.clientId=${cd.getId()};">
 				<ul class="menu-content menu-list"
 					style="font-size: 11px; background-color: #A9CD7F; color: white; width: 170px; height: 25px;">
 					<a ng-click="cCctr.gotoRestPqassword();"><li
@@ -51,39 +51,14 @@
 			<div class="col-md-12">
 				<div class="form-group" align="center">
 					<button
-						ng-click="cCctr.gotoHomePage(cCctr.clientId,'documentManager')"
+						ng-click="cCctr.gotoHomePage(cCctr.clientId,'homeSC')"
 						class="button" style="margin-top: 150; vertical-align: middle">
-						<span>Document Manager</span>
+						<span>TDS</span>
 					</button>
 				</div>
 			</div>
-			<div class="col-md-12" ng-show=${employeeIncharge?c}>
-				<div class="form-group" align="center">
-					<button
-						ng-click="cCctr.gotoHomePage(cCctr.clientId,'documentVerification')"
-						class="button" style="margin-top: 10; vertical-align: middle">
-						<span>E-Document Verification</span>
-					</button>
-				</div>
-			</div>
-			<div class="col-md-12" ng-show=${admin?c}>
-				<div class="form-group" align="center">
-					<button class="button"
-						ng-click="cCctr.gotoHomePage(cCctr.clientId,'employeeInCharge')"
-						style="margin-top: 10; vertical-align: middle">
-						<span>Employee-In Charge Changes</span>
-					</button>
-				</div>
-			</div>
-			<div class="col-md-12">
-				<div class="form-group" align="center">
-					<button class="button"
-						ng-click="cCctr.gotoHomePage(cCctr.clientId,'reimburseableInCharge')"
-						style="margin-top: 10; vertical-align: middle">
-						<span>Reimburseable In-Charge</span>
-					</button>
-				</div>
-			</div>
+			
+			
 		</div>
 	</div>
 </div>
@@ -99,7 +74,7 @@
 				By continuing past this page, you agree to our <a
 					ui-sref="home.terms" style="color: #79BD3C">Terms and
 					Conditions</a> and <a ui-sref="home.privacy" style="color: #79BD3C">Privacy
-					Policy</a> | Copyright &copy; 2017 taxOsmart.com| All Rights Reserved |</br>
+					Policy</a> | Copyright &copy; 2019 taxOsmart.com| All Rights Reserved |</br>
 				<strong>Email: </strong>info@rjsa.in &nbsp;&nbsp; <strong>Support:
 				</strong>+91-9967646171.
 

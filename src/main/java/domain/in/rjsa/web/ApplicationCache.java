@@ -1,18 +1,13 @@
 package domain.in.rjsa.web;
 
-import java.util.HashMap;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import domain.in.rjsa.model.Admin;
 import domain.in.rjsa.model.ClientDetail;
 import domain.in.rjsa.model.Login;
-import domain.in.rjsa.service.AdminService;
 import domain.in.rjsa.service.ClientDetailService;
-import domain.in.rjsa.service.EmployeeService;
 import domain.in.rjsa.service.LoginService;
 
 @Service("ApplicationCache")
@@ -20,6 +15,7 @@ public class ApplicationCache {
 
 	
 	private LoginService loginService;
+	private ClientDetailService cdService;
 
 
 	
@@ -36,6 +32,21 @@ public class ApplicationCache {
 		// TODO Auto-generated method stub
 	}
 
-	
+
+	@Cacheable(value = "clientDetail")
+	public ClientDetail getClientDetail(Long id) {
+		// TODO Auto-generated method stub
+		return cdService.getByKey(id);
+	}
+
+	@Autowired
+	public void setClientDetailService(ClientDetailService clientDetailService) {
+		this.cdService = clientDetailService;
+	}
+
+	@Autowired
+	public void setLoginService(LoginService loginService) {
+		this.loginService = loginService;
+	}
 
 }

@@ -15,7 +15,7 @@ App.controller(
 								CommonService, $q,$window) {
 
 							var self = this;
-							self.employeeId;
+							self.tan;
 							self.clientId;
 							self.loader='';
 							self.entity = {};
@@ -43,11 +43,11 @@ App.controller(
 								$state.go("logout");
 							}
 							self.changeAction = function() {
-								if( $state.current.name=='homeSC'){
+								if( $state.current.name=='main'){
 									$window.location.reload();	
 								}
 								else{
-									$state.go("homeSC");
+									$state.go("main");
 								}
 								
 								

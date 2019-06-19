@@ -72,5 +72,7 @@ public class Regular27EQChallan {
 	public Double interestOnLateDeduct;
 	@Column(name = "fy")
 	public String fy;
+	@Column(name = "quarter")
+	public String quarter;
 	
 }

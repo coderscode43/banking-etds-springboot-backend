@@ -192,6 +192,8 @@ public class Regular24Q4Salary {
 	public Double interestOnShortDeduction;
 	@Column(name = "fy")
 	public String fy;
+	@Column(name = "quarter")
+	public String quarter;
 	
 	
 	

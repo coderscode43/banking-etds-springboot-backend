@@ -33,8 +33,7 @@ public class Regular27QDeductee {
 	@Column(name = "deducteeCode")
 	public String deducteeCode;	
 	@Column(name = "pan")
-	public String pan;	
-	
+	public String pan;		
 	@Column(name = "name")
 	public String name;	
 	@Column(name = "sectionCode")
@@ -44,8 +43,7 @@ public class Regular27QDeductee {
 	@Column(name = "amountPaid")
 	public Double amountPaid;	
 	@Column(name = "tds")
-	public Double tds;	
-	
+	public Double tds;		
 	@Column(name = "surcharge")
 	public Double surcharge;
 	@Column(name = "educationCess")
@@ -88,4 +86,6 @@ public class Regular27QDeductee {
 	public String interestOnLateDeduction;
 	@Column(name = "fy")
 	public String fy;
+	@Column(name = "quarter")
+	public String quarter;
 }

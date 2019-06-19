@@ -67,4 +67,6 @@ public class Regular26QChallan {
 	public Double interestShortPay;
 	@Column(name = "fy")
 	public String fy;
+	@Column(name = "quarter")
+	public String quarter;
 }

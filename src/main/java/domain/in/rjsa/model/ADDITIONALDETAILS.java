@@ -38,8 +38,5 @@ public class ADDITIONALDETAILS extends CommonModelAbstract{
 	@Column(name = "TDSCIRCLEPIN")
 	public String TDSCIRCLEPIN;
 	
-
-	
-	
 	
 }

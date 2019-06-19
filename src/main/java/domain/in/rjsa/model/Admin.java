@@ -22,7 +22,7 @@ public class Admin extends CommonModelAbstract{
 	private Long id;
 	@Column(name = "clientId")
 	private Long clientId;
-
+	
 
 
 }

@@ -25,8 +25,7 @@ public class REQUESTSTATUS extends CommonModelAbstract{
 	@Column(name = "FY")
 	public String FY;
 	@Column(name = "QUARTER")
-	public String QUARTER;
-	
+	public String QUARTER;	
 	@Column(name = "FORM")
 	public String FORM;
 	@Column(name = "RETURNTYPE")

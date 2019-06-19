@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import domain.in.rjsa.web.ApplicationCache;
+
 @Controller
 @RequestMapping("/index")
 public class IndexController {
@@ -24,19 +25,21 @@ public class IndexController {
 
 	@Autowired
 	ApplicationCache applicationCache;
-	@RequestMapping(value = "/logout")
-	public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
-		
-		 Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		    if (auth != null){    
-		        new SecurityContextLogoutHandler().logout(request, response, auth);
-		    }
-		    return "redirect:/login.jsp";//You can redirect wherever you want, but generally it's a good practice to show login screen again.
-		}
 
-	//mainPage
+	@RequestMapping(value = "/logout")
+	public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
+
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if (auth != null) {
+			new SecurityContextLogoutHandler().logout(request, response, auth);
+		}
+		return "redirect:/login.jsp";// You can redirect wherever you want, but generally it's a good practice to
+										// show login screen again.
+	}
+
+	// mainPage
 	@RequestMapping(value = "/{page}")
-	public String getSelectCompanyTemplate(@PathVariable String page,ModelMap model) {
+	public String getSelectCompanyTemplate(@PathVariable String page, ModelMap model) {
 //		if(page.equals("main")) {
 //			String userName =getPrincipal();
 //			Login login =applicationCache.getLoginDetail(userName);
@@ -61,17 +64,16 @@ public class IndexController {
 //		}
 		return page;
 	}
-	
+
 	@RequestMapping(value = "/resetPass")
 	public String resetPassword(ModelMap model) {
-	String pageName="resetPass";
+		String pageName = "resetPass";
 		return pageName;
 	}
 
-
 	@RequestMapping(value = "/home/{clientId}/{action}")
-	public String gethome(@PathVariable Long clientId,@PathVariable String action,ModelMap model) {
-		
+	public String gethome(@PathVariable Long clientId, @PathVariable String action, ModelMap model) {
+
 //		String userName =getPrincipal();
 //		Login login =applicationCache.getLoginDetail(userName);
 //		ClientDetail cd = applicationCache.getClientDetail(login.getClientId());
@@ -141,23 +143,27 @@ public class IndexController {
 //		model.addAttribute("recentNotifications",applicationCache.getRecentNotifications(clientId));
 //		model.addAttribute("recentRemark",applicationCache.getRecentRemark(clientId));
 		return null;
-	//	return action+"/"+action+pageName;
+		// return action+"/"+action+pageName;
 	}
+
 	@RequestMapping(value = "/detail/{clientId}/{action}/{page}")
-	public String getPage(@PathVariable Long clientId,@PathVariable String action,@PathVariable String page,ModelMap model) {
-		return action+"/"+page;
+	public String getPage(@PathVariable Long clientId, @PathVariable String action, @PathVariable String page,
+			ModelMap model) {
+		return action + "/" + page;
 	}
+
 	@RequestMapping(value = "/list/{clientId}/{action}/{page}")
-	public String getListPage(@PathVariable Long clientId,@PathVariable String action,@PathVariable String page,ModelMap model) {
-		return action+"/"+page;
+	public String getListPage(@PathVariable Long clientId, @PathVariable String action, @PathVariable String page,
+			ModelMap model) {
+		return action + "/" + page;
 	}
+
 	/**
 	 * This method returns the principal[user-name] of logged-in user.
 	 */
 	private String getPrincipal() {
 		String userName = null;
-		Object principal = SecurityContextHolder.getContext()
-				.getAuthentication().getPrincipal();
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
 		if (principal instanceof UserDetails) {
 			userName = ((UserDetails) principal).getUsername();
@@ -167,6 +173,5 @@ public class IndexController {
 		return userName;
 
 	}
-	
 
 }

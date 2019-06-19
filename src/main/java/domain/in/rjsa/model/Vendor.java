@@ -24,6 +24,10 @@ public class Vendor {
 	public Long clientId;
 	@Column(name = "name")
 	public String name;
+	
+	@Column(name = "vendorCode")
+	public String vendorCode;
+
 	@Column(name = "pan")
 	public String pan;
 	@Column(name = "address")

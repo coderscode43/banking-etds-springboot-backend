@@ -22,8 +22,7 @@ public class Admin extends CommonModelAbstract{
 	private Long id;
 	@Column(name = "clientId")
 	private Long clientId;
-	@Column(name = "employeeId")
-	private Long employeeId;
+
 
 
 }

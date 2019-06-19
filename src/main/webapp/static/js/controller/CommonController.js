@@ -43,11 +43,11 @@ App.controller(
 								$state.go("logout");
 							}
 							self.changeAction = function() {
-								if( $state.current.name=='main'){
+								if( $state.current.name=='homeSC'){
 									$window.location.reload();	
 								}
 								else{
-									$state.go("main");
+									$state.go("homeSC");
 								}
 								
 								

@@ -15,16 +15,19 @@ import lombok.Data;
 @Entity
 @Table(name = "branch")
 public class Branch extends CommonModelAbstract{
-	
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO, generator="native")
 	@GenericGenerator(name = "native", strategy = "native")
+	@Column(name = "id")
+	private Long id;
+	@Column(name = "clientId")
+	private long clientId;
 	@Column(name = "tan")
 	public String tan;		
 	@Column(name = "name")
 	public Long name;
-	@Column(name = "branch")
-	public Long branch;
+	@Column(name = "branchCode")
+	public String branchCode;
 	@Column(name = "pan")
 	public Long pan;
 	@Column(name = "type")

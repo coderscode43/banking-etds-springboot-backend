@@ -24,4 +24,8 @@ public class ZonalBranches extends CommonModelAbstract{
 	public Long zonalId;
 	@Column(name = "branchId")
 	public Long branchId;
+	@Column(name = "zoneCode")
+	public String zoneCode;
+	@Column(name = "branchCode")
+	public String branchCode;
 }

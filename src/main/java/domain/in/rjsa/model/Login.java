@@ -29,8 +29,10 @@ public class Login extends CommonModelAbstract{
 	private int accessLevel;
 	@Column(name = "enabled")
 	private Boolean enabled;
-	@Column(name = "employeeId")
-	private long employeeId;
+	@Column(name = "type")
+	private String type;
+	@Column(name = "refId")
+	private long refId;
 	@Column(name = "clientId")
 	private long clientId;
 	@Column(name = "passwordReset")

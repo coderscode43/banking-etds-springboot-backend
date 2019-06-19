@@ -68,7 +68,7 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
 		constrains.put("clientId", applicationCache.getLoginDetail(getPrincipal()).getClientId());
-		constrains.put("employeeId", applicationCache.getLoginDetail(getPrincipal()).getEmployeeId());
+//		constrains.put("employeeId", applicationCache.getLoginDetail(getPrincipal()).getEmployeeId());
 
 		return getService().findAll(constrains, pageNo, resultPerPage);
 	}
@@ -81,7 +81,7 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 //			applicationCache.getUserAuthorised();
 		HashMap<String, Object> constrains = new HashMap<>();
 		constrains.put("clientId", applicationCache.getLoginDetail(getPrincipal()).getClientId());
-		constrains.put("employeeId", applicationCache.getLoginDetail(getPrincipal()).getEmployeeId());
+//		constrains.put("employeeId", applicationCache.getLoginDetail(getPrincipal()).getEmployeeId());
 
 		String mapping = request.getPathInfo();
 
@@ -131,7 +131,7 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 		// TODO Auto-generated method stub
 		Login l = applicationCache.getLoginDetail(getPrincipal());
 		map.put("clientId", l.getClientId());
-		map.put("employeeId", l.getEmployeeId());
+//		map.put("employeeId", l.getEmployeeId());
 		return getService().search(map);
 	}
 
@@ -153,7 +153,7 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 		// TODO Auto-generated method stub
 		Login l = applicationCache.getLoginDetail(getPrincipal());
 		map.put("clientId", l.getClientId());
-		map.put("employeeId", l.getEmployeeId());
+//		map.put("employeeId", l.getEmployeeId());
 		return getService().uniqueSearch(map);
 	}
 
@@ -167,14 +167,14 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 
 	}
 
-	public void create(LinkedHashMap<String, Object>  entity) {
+	public void create(LinkedHashMap<String, Object> entity) {
 		Gson gson = new Gson();
 		Login l = applicationCache.getLoginDetail(getPrincipal());
-		if(entity.containsKey("clientId")) {
+		if (entity.containsKey("clientId")) {
 			entity.put("clientId", l.getClientId());
 		}
-		if(entity.containsKey("employeeId")) {
-		entity.put("employeeId",  l.getEmployeeId());
+		if (entity.containsKey("employeeId")) {
+//		entity.put("employeeId",  l.getEmployeeId());
 		}
 		JsonElement jsonElement = gson.toJsonTree(entity);
 
@@ -217,11 +217,11 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 	public void update(LinkedHashMap<String, Object> entity) {
 		Gson gson = new Gson();
 		Login l = applicationCache.getLoginDetail(getPrincipal());
-		if(entity.containsKey("clientId")) {
+		if (entity.containsKey("clientId")) {
 			entity.put("clientId", l.getClientId());
 		}
-		if(entity.containsKey("employeeId")) {
-		entity.put("employeeId",  l.getEmployeeId());
+		if (entity.containsKey("employeeId")) {
+//		entity.put("employeeId",  l.getEmployeeId());
 		}
 		JsonElement jsonElement = gson.toJsonTree(entity);
 
@@ -268,7 +268,6 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 		return getService().ajax(name, term, constrains);
 	}
 
-
 	// ------------------- Other Methods ---------------------------------
 
 	public String getPrincipal() {
@@ -286,7 +285,4 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 
 	public abstract Class<E> getEntity();
 
-	
-	
-	
 }

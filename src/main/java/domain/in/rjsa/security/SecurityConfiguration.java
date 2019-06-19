@@ -14,7 +14,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices;
 
 import domain.in.rjsa.dao.impl.HibernateTokenRepositoryImpl;
@@ -43,7 +42,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 		
 		http.formLogin().loginPage("/login.jsp").loginProcessingUrl("/login").defaultSuccessUrl("/", true).permitAll().and().authorizeRequests()
-        .antMatchers( "/login","/","/static/css/fonts/untitled-font-2*").permitAll().anyRequest().authenticated()
+        .antMatchers( "/login","/","/static/css/fonts/untitled-font-2*","/static/img/tds.png").permitAll().anyRequest().authenticated()
         .and().rememberMe().rememberMeParameter("remember-me")
 				.tokenRepository(tokenRepository).tokenValiditySeconds(10000)
 				.and().exceptionHandling()

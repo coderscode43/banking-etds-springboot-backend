@@ -23,5 +23,7 @@ public class Zone extends CommonModelAbstract{
 	@Column(name = "clientId")
 	public Long clientId;
 	@Column(name = "name")
-	public Long name;
+	public String name;
+	@Column(name = "zoneCode")
+	public String zoneCode;
 }

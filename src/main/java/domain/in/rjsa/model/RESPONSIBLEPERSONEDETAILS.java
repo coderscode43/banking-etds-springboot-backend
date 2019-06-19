@@ -24,8 +24,7 @@ public class RESPONSIBLEPERSONEDETAILS extends CommonModelAbstract{
 	@Column(name = "PANRESPONSIBLEPERSONE")
 	public String PANRESPONSIBLEPERSONE;
 	@Column(name = "FATHERNAMERESPONSIBLEPERSONE")
-	public String FATHERNAMERESPONSIBLEPERSONE;
-	
+	public String FATHERNAMERESPONSIBLEPERSONE;	
 	@Column(name = "DESIGNATION")
 	public String DESIGNATION;
 	@Column(name = "FLATORFLOAR")
@@ -45,8 +44,7 @@ public class RESPONSIBLEPERSONEDETAILS extends CommonModelAbstract{
 	@Column(name = "STD")
 	public String STD;
 	@Column(name = "TELEPHONE")
-	public String TELEPHONE;
-	
+	public String TELEPHONE;	
 	@Column(name = "RESPONSIBLEPERSONEMOBILE")
 	public String RESPONSIBLEPERSONEMOBILE;
 	@Column(name = "EMAIL")

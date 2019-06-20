@@ -1,0 +1,250 @@
+
+
+<h2>Branch Details</h2>
+
+
+<div class="container">
+	  <br>
+	      <button class="btn btn-primary hidden visible-xs" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+             Search 
+          </button>
+  <div class="collapse dont-collapse-sm" id="collapseExample2"> 
+	  <div class="row">
+	   <div class="form-group">
+	   <div class="col-md-3">
+        <form class="form-inline">
+
+      <h6>Customer Alias Name</h6>
+                           <md-autocomplete md-input-name="aliasName"  style="width:30%"
+									md-input-minlength="3" md-no-cache="true"
+									md-input-maxlength="75"
+									md-selected-item="cCctr.search.aliasName" md-search-text="b"
+									md-items="item in cCctr.ajax1('customerDetail','aliasName',b)"
+									md-delay="2000" placeholder="Customer Alias Name">
+		                	<md-item-template> <span>{{item}}</span> </md-item-template> <md-not-found>
+								No customer alias name with "{{b}}" were found.<a ng-click="">Add
+									new</a> </md-not-found> </md-autocomplete>
+									</div>
+	<div class="col-md-3">							
+            <h6>GSTIN</h6>
+           <input type="text" ng-model="cCctr.search.gstin" class="form-control" placeholder="GSTIN" style="width:70%">
+      </div>
+      
+     	<div class="col-md-3">	
+           <h6>From Bill No.<h6>
+           <input type="text" ng-model="cCctr.search.fromDocumentNumber" class="form-control" placeholder="From Bill No." style="width:70%">
+       </div>
+ </div>
+   </div>
+            <div class="row">
+ 	             <div class="col-md-3">	
+                   <h6>To Bill No.<h6>
+                     <input type="text"ng-model="cCctr.search.toDocumentNumber" class="form-control" placeholder="To Bill No." style="width:70%">
+                </div>
+
+	        <div class="col-md-3">	
+                <h6>From Date.<h6>
+                  <input type="date" ng-model="cCctr.search.fromDate" ng-change="cCctr.search.fromDate=cCctr.date(cCctr.search.fromDate);"
+								class="form-control" placeholder="From Date" style="width:70%">
+								</div>
+             <div class="col-md-3">	
+               <h6>To Date<h6>
+                   <input type="date" ng-model="cCctr.search.toDate" ng-change="cCctr.search.toDate=cCctr.date(cCctr.search.toDate);"
+								class="form-control" placeholder="To Date" style="size:15px;width:70%"">
+									</div>
+	       </div>	
+	      		
+	             <div class="row" id="hide" >
+	         	  <div class="col-md-3"  style="margin-left:85%;margin-top:-70px">	
+	                          <button ng-click="cCctr.searchEntities(true,'invoice')"
+									class="btn btn-success" >Search</button>
+	                 </div>					
+  </div>
+  
+   <div class="row" id="search" >
+	         	  <div class="col-md-3" id="search">	
+	                          <button ng-click="cCctr.searchEntities(true,'invoice')"
+									class="btn btn-success">Search</button>
+	                 </div>					
+  </div>
+  </div>
+ </div>
+ 
+ 
+ 
+				<div class="panel-body" style="">
+					<div class="row">
+						<div class="table-responsive">
+
+							<table class="  table-bordered table-hover table-striped" role="table"
+								style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+
+
+								<thead>
+
+								
+									
+									
+								<colgroup>
+									<col span="14" style="background-color: #ffffff">
+								</colgroup>
+							 <tr>
+							  <thead role="rowgroup">
+    <tr role="row" style="height:40px;background-color:#81b7db">
+      <th role="columnheader" class="one" >Sr. No.</th>
+      <th role="columnheader" class="one">Bill No.</th>
+      <th role="columnheader" class="one">Date</th>
+      <th role="columnheader"  >Customer Name</th>
+      <th role="columnheader">Customer Alias Name</th>
+      <th role="columnheader" >GSTIN</th>
+      <th role="columnheader">Amount</th>
+      <th role="columnheader">CGST Amount</th>
+      <th role="columnheader">SGST Amount</th>
+      <th role="columnheader" >IGST Amount</th>
+      <th role="columnheader">Total Amount</th>
+      <th role="columnheader"></th>
+     
+    </tr>
+  </thead>
+								<tbody>
+									<tr ng-show="cCctr.getList().length <= 0">
+										<td colspan="14" style="text-align: center;">No data
+											found!!</td>
+									</tr>
+									<tr role="row"
+										dir-paginate="a in (filteredList =(cCctr.getList()|filter:search|itemsPerPage:cCctr.ItemsPerPage))">
+										<td role="cell" class="one" style="height: 60px;padding:10px">{{$index+1}}</td>
+										<td role="cell" >{{a.documentNumber}}</td>
+										<td role="cell" style="height:20px">{{a.date | date:'dd-MM-yyyy'}}</td>
+										<td role="cell" style="height:30px">{{a.partyName}}</td>
+										<td role="cell" style="height:30px">{{a.aliasName}}</td>
+										<td role="cell" style="height:15px" >{{a.gstin}}</td>
+										<td role="cell" >{{a.subTotal}}</td>
+										<td role="cell" class="one" >{{a.cgstTotal}}</td>
+										<td role="cell" class="one" >{{a.sgstTotal}}</td>
+										<td role="cell" class="one" >{{a.igstTotal}}</td>
+										<td role="cell">{{a.total}}</td>
+										<!-- <td>{{a.total-a.amountPaid}}</td> -->
+										<td class="two"><a
+											ng-click="cCctr.gotoDetailPage(a.id,'invoice',a.typeOfGood)"
+											style="color: blue">Detail </a> <strong> &nbsp;
+												|&nbsp; </strong> <span
+											ng-if="a.typeOfGood == 'invoice' || a.typeOfGood == 'invoice-nosize'">
+												<a ng-click="cCctr.download('invoice',a,'invoice')"
+												style="color: blue" download="fileName"> Invoice </a>
+										</span> <span ng-if="a.typeOfGood == 'invoice-others'"> <a
+												ng-click="cCctr.download('invoice',a,'invoiceTCS')"
+												style="color: blue" download="fileName"> Invoice </a>
+										</span> <strong>&nbsp; | &nbsp; </strong> <a
+											ng-click="cCctr.download('invoice',a,'gd')"
+											style="color: blue" download="GoodsDescription">&nbsp;&nbsp;
+												Goods Detail </a></td>
+									</tr>
+									<tr>
+										<th class="one" colspan="6" style="text-align: center;height:40px" ng-init="ttl=0">TOTAL</th>
+										<td class="one">{{filteredList | sumByKey:'subTotal'}}</td>
+										<td class="one">{{filteredList | sumByKey:'cgstTotal'}}</td>
+										<td class="one">{{filteredList | sumByKey:'sgstTotal'}}</td>
+										<td class="one">{{filteredList | sumByKey:'igstTotal'}}</td>
+										<td class="one">{{ttl=(filteredList | sumByKey:'total')}}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="row three" ng-show="cCctr.getNoPage() > 0">
+						<div class="row" align="center">
+							<span ng-show="cCctr.currentPage != 1"> <a
+								ng-click="cCctr.getPage(true,'invoice',cCctr.currentPage-1)"><strong>Previous</strong></a>
+							</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.currentPage}}</strong>&nbsp;
+								of &nbsp;<strong>{{cCctr.getNoPage()}}</strong>
+								&nbsp;&nbsp;&nbsp;&nbsp; <span
+								ng-show="cCctr.currentPage != cCctr.getNoPage()"> <a
+									ng-click="cCctr.getPage(true,'invoice',cCctr.currentPage+1)"><strong>Next</strong></a>
+							</span>
+							</span>
+						</div>
+						<form role="form" name="gotoForm">
+							<div class="row" align="center">
+								<span>Go to</span> &nbsp;&nbsp;&nbsp; <input
+									style="width: 70px; text-align: center;" type="number"
+									name="pageNo" ng-model="cCctr.currentPage"
+									ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
+									ng-min="1" ng-max="cCctr.getNoPage()" ng-required="true">
+								&nbsp;&nbsp;&nbsp;
+								<button style="height: 25px;"
+									ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'invoice',cCctr.currentPage)"
+									class="btn btn-primary">Go</button>
+							</div>
+							<div class="row" align="center">
+								<span style="color: red"
+									ng-show="gotoForm.submitted || gotoForm.pageNo.$dirty && gotoForm.pageNo.$invalid">
+									<span class="error" ng-show="gotoForm.pageNo.$error.min">Page
+										No. should not be less than 1.</span> <span class="error"
+									ng-show="gotoForm.pageNo.$error.max">Page No. should not
+										be greater than {{cCctr.getNoPage()}}.</span> <span class="error"
+									ng-show="gotoForm.pageNo.$error.required">Please enter
+										page number.</span>
+								</span>
+							</div>
+						</form>
+					</div>
+				</div>
+ 
+ 
+ 
+ 
+ 
+ 
+ <style>
+ 
+ 
+    @media only screen and (max-width: 1000px) {
+        .one{
+            display: none;
+          
+        }
+    }
+    
+ @media only screen and (max-width: 1000px) {
+        .two{
+         
+            padding:8px;
+        }
+    }
+        
+   @media only screen and (min-width:600px) {
+            #three{
+                display: none;
+                max-height: 0;
+                overflow: hidden;
+            }
+        }
+        
+       @media only screen and (min-width:1000px) {
+            #search{
+             
+             margin-left:45%;
+             margin-top:2px;
+             display:none;
+            }
+        }
+        
+            @media only screen and (max-width: 1000px) {
+      #hide{
+            display: none;
+          
+        }
+    }
+     .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background-color: whitesmoke;
+}
+@media (min-width: 768px) {
+  .collapse.dont-collapse-sm {
+    display: block;
+    height: auto !important;
+    visibility: visible;
+  }
+}
+ 
+ </style>

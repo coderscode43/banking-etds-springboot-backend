@@ -1,0 +1,53 @@
+<div id="page-wrapper">
+	<div class="container-fluid">
+<div class="col-md-12 " style="padding-left: 0px;font-size: 12px">
+	<div class="heading">Logs</div>
+	
+
+
+	</div>
+	
+	
+ <div class="table-responsive">
+	<table class=" table-bordered table-hover table-striped ">
+		<thead>
+			<tr  style="height:40px;background-color: #81b7db;font-size:13px">
+				<th width="18%">USER</th>
+				<th width="15%">DATE</th>
+				<th width="15%">ACTION</th>
+				<th width="18%">FY</th>
+				<th width="18%">TAN</th>
+				<th width="15%">FORM</th>
+				<th width="20%">QUARTER</th>
+				<th width="15%">TIME</th>
+				
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="a in cCctr.getEntityListData() track by a.id" style="font-size:13px">
+				<td>{{a.USER}}</td>
+				<td>{{a.DATE}}</td>
+				<td>{{a.ACTION}}</td>
+				<td>{{a.FY}}</td>
+				<td>{{a.TAN}}</td>
+				<td>{{a.FORM}}</td>
+				<td>{{a.QUARTER}}</td>
+				<td>{{a.TIME}}</td>
+				
+
+				<td><a 
+					ng-click="cCctr.viewFile('fileDetail',a,'viewFile');" >View</a>|| <a
+					onclick="test('#update')"  ng-click="cCctr.gotoDetail('fileDetail',a.fileId);cCctr.temp2.dec=a;"><font
+						color="blue">Update</font></a>|| <a onclick="test('#delete')"><font
+						color="red" ng-click="cCctr.setTemp1(a);cCctr.setIndex($index)"> Delete</font></a></td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+	<br>
+	<br>
+	<br>
+	</div>
+
+</div>
+</div>

@@ -1,0 +1,119 @@
+<div id="page-wrapper">
+	<div class="container-fluid">
+<div class="col-md-12 " style="padding-left: 0px;font-size: 12px">
+	<div class="heading">Default Summary</div>
+	</div>
+	
+		<div class="container">
+	  <br>
+	      <button class="btn btn-primary hidden visible-xs" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+             Search 
+          </button>
+  <div class="collapse dont-collapse-sm" id="collapseExample2"> 
+	  <div class="row">
+	   <div class="form-group">
+	   <div class="col-md-4">
+       							
+            <label>Financial Year</label>
+         <input type="text" class="form-control" ng-model="cCctr.search.natureOfExpense" placeholder="Name">
+      
+									</div>
+	 <div class="col-md-4">      							
+            <label>Form</label>
+         <input type="text" class="form-control" ng-model="cCctr.search.natureOfExpense" placeholder="Name">    
+		</div>
+		 <div class="col-md-4">      							
+            <label>Quarter</label>
+         <input type="text" class="form-control" ng-model="cCctr.search.natureOfExpense" placeholder="Name">    
+		</div>
+      
+     	
+ </div>
+
+ 	      		
+	             <div class="row" id="hide" >
+	         	  <div class="col-md-4"  style="margin-left:85%;margin-top:-50px">	
+	                        <button ng-click="cCctr.searchEntities(true,'reimburseable','reimburseable')"
+								class="btn btn-success" style="width: 90px;">Search</button>
+	                 </div>					
+  </div>
+  
+   <div class="row" id="search" >
+	         	  <div class="col-md-4" id="search">	
+	                        <button ng-click="cCctr.searchEntities(true,'reimburseable','reimburseable')"
+								class="btn btn-success" style="width: 90px;">Search</button>
+	                 </div>	
+	                    </div>	
+	                    </div>			
+  </div>
+  </div>
+	
+	
+ <div class="table-responsive">
+	<table class=" table-bordered table-hover table-striped ">
+		<thead>
+			<tr  style="height:40px;background-color: #81b7db;font-size:13px">
+				<th width="18%">TAN</th>
+				<th width="15%">FY</th>
+				<th width="15%">QUARTER</th>
+				<th width="18%">FORM</th>
+				<th width="15%">STATUS</th>
+				<th width="15%">NET_PAY</th>
+				<th width="15%">TOTAL</th>
+				<th width="15%">SHORT_PAYMENT</th>
+				<th width="15%">INTEREST_SHORT_PAYMENT</th>
+				<th width="15%">SHORT_DEDUCTION</th>
+				<th width="15%">INTEREST_SHORT_DEDUCTION</th>
+				<th width="15%">ADDITIONAL_LATE_PAYMENT</th>
+				<th width="15%">INTEREST_ON_LATE_PAYMENT</th>
+				<th width="15%">LATE_FILING</th>
+				<th width="15%">INTERST_LATE_DEDUCTION</th>
+				<th width="15%">INTERST</th>
+				<th width="15%">ADDITIONAL_LATE_FILING</th>
+				<th width="15%">ADDITIONAL_LATE_DEDUCTION</th>
+				<th width="15%">ORDER_PASSED_DATE</th>
+				<th width="15%">DEDUCTEES_WITHOUT_PAN</th>
+				<th width="15%">DEDUCTEES_WITH_INVALID_PAN</th>
+				
+			
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="a in cCctr.getEntityListData() track by a.id" style="font-size:13px">
+				<td>{{a.TAN}}</td>
+				<td>{{a.FY}}</td>
+				<td>{{a.QUARTER}}</td>
+				<td>{{a.FORM}}</td>
+				<td>{{a.STATUS}}</td>
+				<td>{{a.NET_PAY}}</td>
+				<td>{{a.TOTAL}}</td>
+				<td>{{a.SHORT_PAYMENT}}</td>
+				<td>{{a.INTEREST_SHORT_PAYMENT}}</td>
+				<td>{{a.SHORT_DEDUCTION}}</td>
+				<td>{{a.INTEREST_SHORT_DEDUCTION}}</td>
+				<td>{{a.ADDITIONAL_LATE_PAYMENT}}</td>
+				<td>{{a.INTEREST_ON_LATE_PAYMENT}}</td>
+				<td>{{a.LATE_FILING}}</td>
+				<td>{{a.INTERST_LATE_DEDUCTION}}</td>
+				<td>{{a.INTERST}}</td>
+				<td>{{a.ADDITIONAL_LATE_FILING}}</td>
+				<td>{{a.ADDITIONAL_LATE_DEDUCTION}}</td>
+				<td>{{a.ORDER_PASSED_DATE}}</td>
+				<td>{{a.DEDUCTEES_WITHOUT_PAN}}</td>
+				<td>{{a.DEDUCTEES_WITH_INVALID_PAN}}</td>
+			<td><a 
+					ng-click="cCctr.viewFile('fileDetail',a,'viewFile');" >View</a>|| <a
+					onclick="test('#update')"  ng-click="cCctr.gotoDetail('fileDetail',a.fileId);cCctr.temp2.dec=a;"><font
+						color="blue">Update</font></a>|| <a onclick="test('#delete')"><font
+						color="red" ng-click="cCctr.setTemp1(a);cCctr.setIndex($index)"> Delete</font></a></td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+	<br>
+	<br>
+	<br>
+	</div>
+
+</div>
+</div>

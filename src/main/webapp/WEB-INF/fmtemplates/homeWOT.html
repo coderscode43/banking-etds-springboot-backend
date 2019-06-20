@@ -1,44 +1,52 @@
-
-<!------ Include the above in your HEAD tag ---------->
-
-  <!-- I was motivated to create this after seeing BhaumikPatel's http://bootsnipp.com/snippets/featured/accordion-menu; I adapted it to a list format rather than a table so that it would be easy to create a nav toggle button when viewed on mobile devices -->
-  <div class="col-md-3">
-  <div id="sidenav1">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#sideNavbar"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-    </div>
-    <div class="collapse navbar-collapse" id="sideNavbar">
-      <div class="panel-group" id="accordion">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title"><a ng-click="hctr.gotoTutorialSubPage('aboutTds')"><span class="glyphicon glyphicon-home"></span>Home</a> </h4>
-          </div>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title"> <a  ng-click="hctr.gotoTutorialSubPage('tutorialPage')"><span class="glyphicon glyphicon-book"> </span>Important Dates</a> </h4>
-          </div>
-          </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title"> <a  ng-click="hctr.gotoTutorialSubPage('tutorialPage')"><span class="glyphicon glyphicon-book"> </span>Statement Status</a> </h4>
-          </div>
-          </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title"> <a ng-click="hctr.gotoTutorialSubPage('addingDeductor')"><span class="glyphicon glyphicon-cog"> </span>Default Summary</a> </h4>
-          </div>
-         </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title"> <a ng-click="hctr.gotoTutorialSubPage('addingDeductor')"><span class="glyphicon glyphicon-cog"> </span>Select Branch</a> </h4>
-          </div>
-         </div>
-         <!-- end hidden Menu items --> 
-      </div>
-    </div>
-  </div>
+<div class="container-fluied" >
+<nav class="navbar navbar-inverse sidebar" role="navigation" style="margin-top:-22px;position: fixed;"   >
+    <div class="container-fluid" style="background-color:#0F316D;color:white">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			
+		</div>
+		<div class="row" style="background-color:white;border:1px solid">
+		<img src="static/img/tdsosmart1.png" style="height:200px;width:93%;">
+		
+		</div>
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Branch<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
+				<li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Important Dates<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a></li>
+				<li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Statement Status<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-envelope"></span></a></li>
+				<li>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Default Summary<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-cog"></span></a>
+					
+				</li>
+				<li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Logs<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
+				
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-cog"></span></a>
+				</li>
+					<li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Logs<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
+					
+			</ul>
+		</div>
+	</div>
+</nav>
 </div>
+
+
+
+
+
+
+
+
+
+
 
 
 <div ui-view></div>
@@ -53,119 +61,180 @@
 
 <style>
 
-/********* SIDE NAV BAR ***********/
-a {
-color:#000;
-}
+    
 
-li {
-list-style:none;
-} 
+	/* remove outer padding */
+	.main .row{
+		padding: 0px;
+		margin: 0px;
+	}
 
-.panel-default>.panel-heading {
-    color: #fff;
-    background-color: #0F316D;
-    border-color: #ddd;
-}
+	/*Remove rounded coners*/
 
-.panel-group .panel+.panel {
-    margin-top: 0px;
-}
-.panel-group {
-	margin-top: 35px;
-}
-.panel-collapse {
-	background-color:whitesmoke;
-}
+	nav.sidebar.navbar {
+		border-radius: 0px;
+	}
 
-.glyphicon { 
-margin-right:10px; 
-}
+	nav.sidebar, .main{
+		-webkit-transition: margin 200ms ease-out;
+	    -moz-transition: margin 200ms ease-out;
+	    -o-transition: margin 200ms ease-out;
+	    transition: margin 200ms ease-out;
+	}
 
+	/* Add gap to nav and right windows.*/
+	.main{
+		padding: 10px 10px 0 10px;
+	}
 
-ul.list-group {
-	margin:0px;
-}
+	/* .....NavBar: Icon only with coloring/layout.....*/
 
-ul.bulletlist li {
-	list-style:disc;
-}
+	/*small/medium side display*/
+	@media (min-width: 768px) {
 
+		/*Allow main to be next to Nav*/
+		.main{
+			position: absolute;
+			width: calc(100% - 40px); /*keeps 100% minus nav size*/
+			margin-left: 40px;
+			float: right;
+		}
 
-ul.list-group  li a {
- display:block;
- padding:5px 0px 5px 15px;
- text-decoration:none;
-}
+		/*lets nav bar to be showed on mouseover*/
+		nav.sidebar:hover + .main{
+			margin-left: 200px;
+		}
 
-ul.list-group li {
-	border-bottom: 1px dotted rgba(0,0,0,0.2);
-}
+		/*Center Brand*/
+		nav.sidebar.navbar.sidebar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+			margin-left: 0px;
+		}
+		/*Center Brand*/
+		nav.sidebar .navbar-brand, nav.sidebar .navbar-header{
+			text-align: center;
+			width: 100%;
+			margin-left: 0px;
+		}
+
+		/*Center Icons*/
+		nav.sidebar a{
+			padding-right: 13px;
+		}
+
+		/*adds border top to first nav box */
+		nav.sidebar .navbar-nav > li:first-child{
+			border-top: 1px #e5e5e5 solid;
+		}
+
+		/*adds border to bottom nav boxes*/
+		nav.sidebar .navbar-nav > li{
+			border-bottom: 1px #e5e5e5 solid;
+		}
+
+		/* Colors/style dropdown box*/
+		nav.sidebar .navbar-nav .open .dropdown-menu {
+			position: static;
+			float: none;
+			width: auto;
+			margin-top: 0;
+			background-color: transparent;
+			border: 0;
+			-webkit-box-shadow: none;
+			box-shadow: none;
+		}
+
+		/*allows nav box to use 100% width*/
+		nav.sidebar .navbar-collapse, nav.sidebar .container-fluid{
+			padding: 0 0px 0 0px;
+		}
+
+		/*colors dropdown box text */
+		.navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
+			color: #777;
+		}
+
+		/*gives sidebar width/height*/
+		nav.sidebar{
+			width: 200px;
+			height: 100%;
+			margin-left: -160px;
+			float: left;
+			z-index: 8000;
+			margin-bottom: 0px;
+		}
+
+		/*give sidebar 100% width;*/
+		nav.sidebar li {
+			width: 100%;
+		}
+
+		/* Move nav to full on mouse over*/
+		nav.sidebar:hover{
+			margin-left: 0px;
+			
+		}
+		/*for hiden things when navbar hidden*/
+		.forAnimate{
+			opacity: 0;
+		}
+	}
+
+	/* .....NavBar: Fully showing nav bar..... */
+
+	@media (min-width: 1330px) {
+
+		/*Allow main to be next to Nav*/
+		.main{
+			width: calc(100% - 200px); /*keeps 100% minus nav size*/
+			margin-left: 200px;
+		}
+
+		/*Show all nav*/
+		nav.sidebar{
+			margin-left: 0px;
+			float: left;
+		}
+		/*Show hidden items on nav*/
+		nav.sidebar .forAnimate{
+			opacity: 1;
+		}
+	}
+
+	nav.sidebar .navbar-nav .open .dropdown-menu>li>a:hover, nav.sidebar .navbar-nav .open .dropdown-menu>li>a:focus {
+		color: #CCC;
+		background-color: transparent;
+	}
+
+	nav:hover .forAnimate{
+		opacity: 1;
+	}
+	section{
+		padding-left: 15px;
+	}
 	
-
-ul.list-group  li a:hover, ul li a:focus {
- color:#fff;
- background-color: #00436a;
+.navbar-inverse .navbar-nav>li>a {
+    color:white;
 }
 
-.panel-title a:hover,
-.panel-title a:active,
-.panel-title a:focus,
-.panel-title .open a:hover,
-.panel-title .open a:active,
-.panel-title .open a:focus
- {
-	text-decoration:none;
-	color:#fff;
+
+.navbar-inverse .navbar-nav>li:focus, .navbar-inverse .navbar-nav>li:hover {
+    color: white;
+    background-color: #ff9c33;
 }
 
-.panel-title>.small, .panel-title>.small>a, .panel-title>a, .panel-title>small, .panel-title>small>a {
-        display: block;
-}
 
-@media (min-width: 768px){
-.navbar-collapse.collapse 
-	{
-    display: block!important;
-    height: auto!important;
-    padding-bottom: 0;
-    overflow: visible!important;
-	padding-left:0px; 
-}
-}
-
-@media (min-width: 992px){
-.menu-hide {
-    display: none;
-}
-
-}
-.menu-hide .panel-default>.panel-heading {
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
     color: #fff;
-    background-color: #8e8c8c;
-    border-color: #ddd;
+    background-color: orange;
 }
-
-/********** END SIDEBAR *************/
-
-/********** NAVBAR TOGGLE *************/
-
-.navbar-toggle .icon-bar {
+.navbar-inverse {
     background-color: #fff;
 }
-.navbar-toggle {
-    padding: 11px 10px;
-    margin-top: 8px;
-    margin-right: 15px;
-    margin-bottom: 8px;
-    background-color: #a32638;
-    border-radius: 0px;
+
+.navbar-inverse {
+  
+    border-color: black;
 }
-
-/********** END NAVBAR TOGGLE *************/
-
-
-
 </style>
 
 

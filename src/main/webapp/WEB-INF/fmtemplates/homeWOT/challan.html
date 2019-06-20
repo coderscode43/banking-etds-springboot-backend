@@ -1,0 +1,77 @@
+<div id="page-wrapper">
+	<div class="container-fluid">
+<div class="col-md-12 " style="padding-left: 0px;font-size: 12px">
+	<div class="heading">Challan Details </div>
+	</div>
+	
+	<div class="container">
+	  <br>
+	      <button class="btn btn-primary hidden visible-xs" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+             Search 
+          </button>
+  <div class="collapse dont-collapse-sm" id="collapseExample2"> 
+	  <div class="row">
+
+      
+ 	      		
+	             <div class="row" id="hide" >
+	         	  <div class="col-md-4"  style="margin-left:85%;margin-top:-50px">	
+	                        <button ng-click="cCctr.searchEntities(true,'reimburseable','reimburseable')"
+								class="btn btn-success" style="width: 90px;">Search</button>
+	                 </div>					
+  </div>
+  
+   <div class="row" id="search" >
+	         	  <div class="col-md-4" id="search">	
+	                        <button ng-click="cCctr.searchEntities(true,'reimburseable','reimburseable')"
+								class="btn btn-success" style="width: 90px;">Search</button>
+	                 </div>	
+	                    </div>	
+	                    </div>			
+  </div>
+  </div>
+	
+ <div class="table-responsive">
+	<table class=" table-bordered table-hover table-striped ">
+		<thead>
+			<tr  style="height:40px;background-color: #81b7db;font-size:13px">
+				<th width="18%">CIN</th>
+				<th width="15%">TAN</th>
+				<th width="15%">AVAILABLE_BALENCE</th>
+				<th width="18%">AMOUNT_OF_CLALLAN</th>
+				<th width="18%">DATE_OF_DEPOSITION</th>
+				<th width="15%">AS_ON_DATE</th>
+				<th width="20%">CHALLAN_MISMATCH</th>
+				<th width="15%">SECTION</th>
+				<th width="20%">MINORHEAD</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="a in cCctr.getEntityListData() track by a.id" style="font-size:13px">
+				<td>{{a.CIN}}</td>
+				<td>{{a.TAN}}</td>
+				<td>{{a.AVAILABLE_BALENCE}}</td>
+				<td>{{a.AMOUNT_OF_CLALLAN}}</td>
+				<td>{{a.DATE_OF_DEPOSITION}}</td>
+				<td>{{a.AS_ON_DATE}}</td>
+				<td>{{a.CHALLAN_MISMATCH}}</td>
+				<td>{{a.SECTION}}</td>
+				<td>{{a.MINORHEAD}}</td>
+				
+
+				<td><a 
+					ng-click="cCctr.viewFile('fileDetail',a,'viewFile');" >View</a>|| <a
+					onclick="test('#update')"  ng-click="cCctr.gotoDetail('fileDetail',a.fileId);cCctr.temp2.dec=a;"><font
+						color="blue">Update</font></a>|| <a onclick="test('#delete')"><font
+						color="red" ng-click="cCctr.setTemp1(a);cCctr.setIndex($index)"> Delete</font></a></td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+	<br>
+	<br>
+	<br>
+	</div>
+
+</div>
+</div>

@@ -21,18 +21,18 @@ public class Branch extends CommonModelAbstract{
 	@Column(name = "id")
 	private Long id;
 	@Column(name = "clientId")
-	private long clientId;
+	private Long clientId;
 	@Column(name = "tan")
 	public String tan;		
 	@Column(name = "name")
-	public Long name;
+	public String name;
 	@Column(name = "branchCode")
 	public String branchCode;
 	@Column(name = "pan")
-	public Long pan;
+	public String pan;
 	@Column(name = "type")
-	public Long type;
+	public String type;
 	@Column(name = "email")
-	public Long email;
+	public String email;
 	
 }

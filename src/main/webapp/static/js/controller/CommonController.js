@@ -75,6 +75,11 @@ App.controller(
 
 							}
 
+							
+							
+						
+							
+							
 							self.gotoDetail = function(entity, detailId) {
 								self.company = name;
 								var deferred = $q.defer();

@@ -1,86 +1,188 @@
-
-<h2>Default Summary</h2>
-
-<table id="customers" style="margin-left:-2%">
-  <tr>
-    <th>Company</th>
-    <th>Contact</th>
-    <th>Country</th>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Berglunds snabbköp</td>
-    <td>Christina Berglund</td>
-    <td>Sweden</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr>
-  <tr>
-    <td>Ernst Handel</td>
-    <td>Roland Mendel</td>
-    <td>Austria</td>
-  </tr>
-  <tr>
-    <td>Island Trading</td>
-    <td>Helen Bennett</td>
-    <td>UK</td>
-  </tr>
-  <tr>
-    <td>Königlich Essen</td>
-    <td>Philip Cramer</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Laughing Bacchus Winecellars</td>
-    <td>Yoshi Tannamuri</td>
-    <td>Canada</td>
-  </tr>
-  <tr>
-    <td>Magazzini Alimentari Riuniti</td>
-    <td>Giovanni Rovelli</td>
-    <td>Italy</td>
-  </tr>
-  <tr>
-    <td>North/South</td>
-    <td>Simon Crowther</td>
-    <td>UK</td>
-  </tr>
-  <tr>
-    <td>Paris spécialités</td>
-    <td>Marie Bertrand</td>
-    <td>France</td>
-  </tr>
-</table>
-
-
 <style>
-#customers {
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
+ 
+ 
+    @media only screen and (max-width: 1000px) {
+        .one{
+            display: none;
+          
+        }
+    }
+    
+ @media only screen and (max-width: 1000px) {
+        .two{
+         
+            padding:8px;
+        }
+    }
+        
+   @media only screen and (min-width:600px) {
+            #three{
+                display: none;
+                max-height: 0;
+                overflow: hidden;
+            }
+        }
+        
+       @media only screen and (min-width:1000px) {
+            #search{
+             
+             margin-left:45%;
+             margin-top:2px;
+             display:none;
+            }
+        }
+        
+            @media only screen and (max-width: 1000px) {
+      #hide{
+            display: none;
+          
+        }
+    }
+     .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background-color: whitesmoke;
 }
-
-#customers td, #customers th {
-  border: 1px solid #ddd;
-  padding: 8px;
+@media (min-width: 768px) {
+  .collapse.dont-collapse-sm {
+    display: block;
+    height: auto !important;
+    visibility: visible;
+  }
 }
+ 
+ </style>
 
-#customers tr:nth-child(even){background-color: #f2f2f2;}
 
-#customers tr:hover {background-color: #ddd;}
 
-#customers th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #4CAF50;
-  color: white;
-}
-</style>
+
+<div id="page-wrapper">
+	<div class="container-fluid">
+<div class="col-md-12 " style="padding-left: 0px;font-size: 12px; margin-top:2%">
+	<div class="heading">Default Summary</div>
+	</div>
+	
+				<div class="container" style="margin-left:-2%">
+	  <br>
+	      <button class="btn btn-primary hidden visible-xs" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+             Search 
+          </button>
+  <div class="collapse dont-collapse-sm" id="collapseExample2"> 
+	  <div class="row">
+	   <div class="form-group">
+	  
+	<div class="col-md-2">							
+            <h6><b>Financial Year</b></h6>
+           <select>
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="mercedes">Mercedes</option>
+  <option value="audi">Audi</option>
+</select> 
+      </div>
+      
+     	<div class="col-md-2">	
+           <h6><b>Quarter</b><h6>
+           <input type="text" ng-model="cCctr.search.fromDocumentNumber" class="form-control" placeholder="Quarter" style="width:70%">
+       </div>
+       <div class="row">
+ 	             <div class="col-md-2">	
+                   <h6><b>Form</b><h6>
+                     <input type="text"ng-model="cCctr.search.toDocumentNumber" class="form-control" placeholder="Form" style="width:70%">
+                </div>
+
+	        <div class="col-md-3">	
+                <h6><b>Status</b><h6>
+                  <input type="text"ng-model="cCctr.search.toDocumentNumber" class="form-control" placeholder="Status" style="width:70%">
+								</div>
+ </div>
+   </div>
+            
+           
+	       </div>	
+	      		
+	             <div class="row" id="hide" >
+	         	  <div class="col-md-3"  style="margin-left:85%;margin-top:-70px">	
+	                          <button ng-click="cCctr.searchEntities(true,'invoice')"
+									class="btn btn-success" >Search</button>
+	                 </div>					
+  </div>
+  
+   <div class="row" id="search" >
+	         	  <div class="col-md-3" id="search">	
+	                          <button ng-click="cCctr.searchEntities(true,'invoice')"
+									class="btn btn-success">Search</button>
+	                 </div>					
+  </div>
+  </div>
+ </div>
+ 
+	
+<div class="panel-body" style="margin-left:-3%; width: 107%;">	
+ <div class="table-responsive">
+	<table class=" table-bordered table-hover table-striped " style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+		<thead>
+			<tr  style="height:40px;background-color: #81b7db;font-size:13px">
+				<th width="18%">TAN</th>
+				<th width="15%">FY</th>
+				<th width="15%">QUARTER</th>
+				<th width="18%">FORM</th>
+				<th width="15%">STATUS</th>
+				<th width="15%">NET_PAY</th>
+				<th width="15%">TOTAL</th>
+				<th width="15%">SHORT_PAYMENT</th>
+				<th width="15%">INTEREST_SHORT_PAYMENT</th>
+				<th width="15%">SHORT_DEDUCTION</th>
+				<th width="15%">INTEREST_SHORT_DEDUCTION</th>
+				<th width="15%">ADDITIONAL_LATE_PAYMENT</th>
+				<th width="15%">INTEREST_ON_LATE_PAYMENT</th>
+				<th width="15%">LATE_FILING</th>
+				<th width="15%">INTERST_LATE_DEDUCTION</th>
+				<th width="15%">INTERST</th>
+				<th width="15%">ADDITIONAL_LATE_FILING</th>
+				<th width="15%">ADDITIONAL_LATE_DEDUCTION</th>
+				<th width="15%">ORDER_PASSED_DATE</th>
+				<th width="15%">DEDUCTEES_WITHOUT_PAN</th>
+				<th width="15%">DEDUCTEES_WITH_INVALID_PAN</th>
+				
+			
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="a in cCctr.getEntityListData() track by a.id" style="font-size:13px">
+				<td>{{a.TAN}}</td>
+				<td>{{a.FY}}</td>
+				<td>{{a.QUARTER}}</td>
+				<td>{{a.FORM}}</td>
+				<td>{{a.STATUS}}</td>
+				<td>{{a.NET_PAY}}</td>
+				<td>{{a.TOTAL}}</td>
+				<td>{{a.SHORT_PAYMENT}}</td>
+				<td>{{a.INTEREST_SHORT_PAYMENT}}</td>
+				<td>{{a.SHORT_DEDUCTION}}</td>
+				<td>{{a.INTEREST_SHORT_DEDUCTION}}</td>
+				<td>{{a.ADDITIONAL_LATE_PAYMENT}}</td>
+				<td>{{a.INTEREST_ON_LATE_PAYMENT}}</td>
+				<td>{{a.LATE_FILING}}</td>
+				<td>{{a.INTERST_LATE_DEDUCTION}}</td>
+				<td>{{a.INTERST}}</td>
+				<td>{{a.ADDITIONAL_LATE_FILING}}</td>
+				<td>{{a.ADDITIONAL_LATE_DEDUCTION}}</td>
+				<td>{{a.ORDER_PASSED_DATE}}</td>
+				<td>{{a.DEDUCTEES_WITHOUT_PAN}}</td>
+				<td>{{a.DEDUCTEES_WITH_INVALID_PAN}}</td>
+			<td><a 
+					ng-click="cCctr.viewFile('fileDetail',a,'viewFile');" >View</a>|| <a
+					onclick="test('#update')"  ng-click="cCctr.gotoDetail('fileDetail',a.fileId);cCctr.temp2.dec=a;"><font
+						color="blue">Update</font></a>|| <a onclick="test('#delete')"><font
+						color="red" ng-click="cCctr.setTemp1(a);cCctr.setIndex($index)"> Delete</font></a></td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	</div>
+
+</div>
+</div>

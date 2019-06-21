@@ -1,10 +1,66 @@
+<style>
+ 
+ 
+    @media only screen and (max-width: 1000px) {
+        .one{
+            display: none;
+          
+        }
+    }
+    
+ @media only screen and (max-width: 1000px) {
+        .two{
+         
+            padding:8px;
+        }
+    }
+        
+   @media only screen and (min-width:600px) {
+            #three{
+                display: none;
+                max-height: 0;
+                overflow: hidden;
+            }
+        }
+        
+       @media only screen and (min-width:1000px) {
+            #search{
+             
+             margin-left:45%;
+             margin-top:2px;
+             display:none;
+            }
+        }
+        
+            @media only screen and (max-width: 1000px) {
+      #hide{
+            display: none;
+          
+        }
+    }
+     .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background-color: whitesmoke;
+}
+@media (min-width: 768px) {
+  .collapse.dont-collapse-sm {
+    display: block;
+    height: auto !important;
+    visibility: visible;
+  }
+}
+ 
+ </style>
+
+
+
+
 <div id="page-wrapper">
 	<div class="container-fluid">
-<div class="col-md-12 " style="padding-left: 0px;font-size: 12px">
+<div class="col-md-12 " style="padding-left: 0px;font-size: 12px; margin-top:2%">
 	<div class="heading">Default Summary</div>
 	</div>
 	
-		<div class="container">
+				<div class="container" style="margin-left:-2%">
 	  <br>
 	      <button class="btn btn-primary hidden visible-xs" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
              Search 
@@ -12,49 +68,62 @@
   <div class="collapse dont-collapse-sm" id="collapseExample2"> 
 	  <div class="row">
 	   <div class="form-group">
-	   <div class="col-md-4">
-       							
-            <label>Financial Year</label>
-         <input type="text" class="form-control" ng-model="cCctr.search.natureOfExpense" placeholder="Name">
+	  
+	<div class="col-md-2">							
+            <h6><b>Financial Year</b></h6>
+           <select>
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="mercedes">Mercedes</option>
+  <option value="audi">Audi</option>
+</select> 
+      </div>
       
-									</div>
-	 <div class="col-md-4">      							
-            <label>Form</label>
-         <input type="text" class="form-control" ng-model="cCctr.search.natureOfExpense" placeholder="Name">    
-		</div>
-		 <div class="col-md-4">      							
-            <label>Quarter</label>
-         <input type="text" class="form-control" ng-model="cCctr.search.natureOfExpense" placeholder="Name">    
-		</div>
-      
-     	
- </div>
+     	<div class="col-md-2">	
+           <h6><b>Quarter</b><h6>
+           <input type="text" ng-model="cCctr.search.fromDocumentNumber" class="form-control" placeholder="Quarter" style="width:70%">
+       </div>
+       <div class="row">
+ 	             <div class="col-md-2">	
+                   <h6><b>Form</b><h6>
+                     <input type="text"ng-model="cCctr.search.toDocumentNumber" class="form-control" placeholder="Form" style="width:70%">
+                </div>
 
- 	      		
+	        <div class="col-md-3">	
+                <h6><b>Status</b><h6>
+                  <input type="text"ng-model="cCctr.search.toDocumentNumber" class="form-control" placeholder="Status" style="width:70%">
+								</div>
+ </div>
+   </div>
+            
+           
+	       </div>	
+	      		
 	             <div class="row" id="hide" >
-	         	  <div class="col-md-4"  style="margin-left:85%;margin-top:-50px">	
-	                        <button ng-click="cCctr.searchEntities(true,'reimburseable','reimburseable')"
-								class="btn btn-success" style="width: 90px;">Search</button>
+	         	  <div class="col-md-3"  style="margin-left:85%;margin-top:-70px">	
+	                          <button ng-click="cCctr.searchEntities(true,'invoice')"
+									class="btn btn-success" >Search</button>
 	                 </div>					
   </div>
   
    <div class="row" id="search" >
-	         	  <div class="col-md-4" id="search">	
-	                        <button ng-click="cCctr.searchEntities(true,'reimburseable','reimburseable')"
-								class="btn btn-success" style="width: 90px;">Search</button>
-	                 </div>	
-	                    </div>	
-	                    </div>			
+	         	  <div class="col-md-3" id="search">	
+	                          <button ng-click="cCctr.searchEntities(true,'invoice')"
+									class="btn btn-success">Search</button>
+	                 </div>					
   </div>
   </div>
+ </div>
+ 
 	
-	
+<div class="panel-body" style="margin-left:-3%; width: 107%;">	
  <div class="table-responsive">
-	<table class=" table-bordered table-hover table-striped ">
+	<table class=" table-bordered table-hover table-striped " style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
 		<thead>
 			<tr  style="height:40px;background-color: #81b7db;font-size:13px">
+			 <th width="10%">Sr. No.</th>
 				<th width="18%">TAN</th>
-				<th width="15%">FY</th>
+				<th width="20%">FY</th>
 				<th width="15%">QUARTER</th>
 				<th width="18%">FORM</th>
 				<th width="15%">STATUS</th>
@@ -80,6 +149,7 @@
 		</thead>
 		<tbody>
 			<tr ng-repeat="a in cCctr.getEntityListData() track by a.id" style="font-size:13px">
+			<td role="cell" class="one" style="height: 60px;padding:10px">{{$index+1}}</td>
 				<td>{{a.TAN}}</td>
 				<td>{{a.FY}}</td>
 				<td>{{a.QUARTER}}</td>
@@ -101,14 +171,11 @@
 				<td>{{a.ORDER_PASSED_DATE}}</td>
 				<td>{{a.DEDUCTEES_WITHOUT_PAN}}</td>
 				<td>{{a.DEDUCTEES_WITH_INVALID_PAN}}</td>
-			<td><a 
-					ng-click="cCctr.viewFile('fileDetail',a,'viewFile');" >View</a>|| <a
-					onclick="test('#update')"  ng-click="cCctr.gotoDetail('fileDetail',a.fileId);cCctr.temp2.dec=a;"><font
-						color="blue">Update</font></a>|| <a onclick="test('#delete')"><font
-						color="red" ng-click="cCctr.setTemp1(a);cCctr.setIndex($index)"> Delete</font></a></td>
+			
 			</tr>
 		</tbody>
 	</table>
+	</div>
 	<br>
 	<br>
 	<br>

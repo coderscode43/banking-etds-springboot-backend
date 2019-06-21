@@ -19,8 +19,10 @@ public class DEFAULTSUMMARY extends CommonModelAbstract{
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO, generator="native")
 	@GenericGenerator(name = "native", strategy = "native")
-	@Column(name = "ID")
-	public String ID;
+	@Column(name = "id")
+	public Long id;
+	@Column(name = "clientId")
+	public Long clientId;
 	@Column(name = "TAN")
 	public String TAN;
 	@Column(name = "FY")

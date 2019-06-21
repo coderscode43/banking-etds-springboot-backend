@@ -1,5 +1,7 @@
 package domain.in.rjsa.service;
 
-public interface DEFAULTSUMMARYService {
+import domain.in.rjsa.model.DEFAULTSUMMARY;
+
+public interface DEFAULTSUMMARYService extends ServiceInterface<Long,DEFAULTSUMMARY>{
 
 }

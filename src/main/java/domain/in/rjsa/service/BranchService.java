@@ -1,5 +1,7 @@
 package domain.in.rjsa.service;
 
-public interface BranchService {
+import domain.in.rjsa.model.Branch;
+
+public interface BranchService extends ServiceInterface<Long,Branch>{
 
 }

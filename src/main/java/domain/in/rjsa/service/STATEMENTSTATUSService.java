@@ -1,5 +1,7 @@
 package domain.in.rjsa.service;
 
-public interface STATEMENTSTATUSService {
+import domain.in.rjsa.model.STATEMENTSTATUS;
+
+public interface STATEMENTSTATUSService extends ServiceInterface<Long,STATEMENTSTATUS>{
 
 }

@@ -1,5 +1,7 @@
 package domain.in.rjsa.dao;
 
-public interface BranchDao {
+import domain.in.rjsa.model.Branch;
+
+public interface BranchDao extends DaoInterface<Long,  Branch>{
 
 }

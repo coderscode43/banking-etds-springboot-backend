@@ -1,4 +1,4 @@
-<div class="top row col-lg-12" style="margin-left:50px">
+<div class="top row col-lg-12" style="margin-left:5%">
 		<div class="top-item top1 col-lg-offset-5" style=" border-radius: 5px; ">
 			<p><b>R. J. SONI & ASSOCIATES</b></p>
 		</div>
@@ -7,7 +7,7 @@
 		</div>
 </div>
 
-	<div class="col-md-2" style="margin-left:-1%">
+	<div class="col-lg-2" style="margin-left:-1%">
 		<nav class="navbar navbar-inverse sidebar" role="navigation"
 			style="margin-top: -22px;position:fixed">
 			<div class="container-fluid"
@@ -32,25 +32,25 @@
 						style="height: 180px; width: 93%;">
 					</li>
 						<li><a class="dropdown-toggle" ng-click="cCctr.gotoListPage('branch','branch')"
-							data-toggle="dropdown">Branch<span style="font-size: 16px;"
+							    data-toggle="dropdown">Branch<span style="font-size: 16px;"
 								class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
-						<li><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown">Important Dates<span
-								style="font-size: 16px;"
-								class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a></li>
-						<li><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown">Statement Status<span
+						<li><a ng-click="cCctr.gotoListPage('importantDates','importantDates')" class="dropdown-toggle"
+							     data-toggle="dropdown">Important Dates<span
+								 style="font-size: 16px;"
+								 class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a></li>
+						<li><a  class="dropdown-toggle"
+							    data-toggle="dropdown" ng-click="cCctr.gotoListPage('statementStatus','statementStatus')">Statement Status<span
 								style="font-size: 16px;"
 								class="pull-right hidden-xs showopacity glyphicon glyphicon-envelope"></span></a></li>
-						<li><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown">Default Summary<span
+						<li><a ng-click="cCctr.gotoListPage('defaultSummary','defaultSummary')" class="dropdown-toggle"
+							    data-toggle="dropdown" >Default Summary<span
 								style="font-size: 16px;"
 								class="pull-right hidden-xs showopacity glyphicon glyphicon-cog"></span></a>
 
 						</li>
-						<li><a href="#" class="dropdown-toggle"
+						<li><a ng-click="cCctr.gotoListPage('logs','logs')" class="dropdown-toggle"
 							data-toggle="dropdown">Logs<span style="font-size: 16px;"
-								class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
+								class="pull-right hidden-xs showopacity glyphicon glyphicon-home" ></span></a></li>
 
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown">Settings <span
@@ -72,9 +72,9 @@
 		</nav>
 	</div>
 
-	<div class="col-md-10">
+	<div class="col-lg-10">
 
-		<div  style="margin-top:-22px" ui-view></div>
+		<div  style="margin-top:-2%" ui-view></div>
 
 	</div>
 
@@ -82,7 +82,7 @@
 
 
 		<div class="row">
-	<footer style="position:fixed; bottom: 0; left: 0; right: 0; width: 100%; background-color: #24478f; color: white">
+	<footer style="position:fixed; bottom: 0; left: 0; right: 0; width: 100%; background-color: #0F316D; color: white">
 		<div class="container">
 	
 			<div class="col-md-2"></div>
@@ -145,7 +145,7 @@ nav.sidebar, .main {
 /* .....NavBar: Icon only with coloring/layout.....*/
 
 /*small/medium side display*/
-@media ( min-width : 768px) {
+@media ( min-width : 100px) {
 	/*Allow main to be next to Nav*/
 	.main {
 		position: absolute;

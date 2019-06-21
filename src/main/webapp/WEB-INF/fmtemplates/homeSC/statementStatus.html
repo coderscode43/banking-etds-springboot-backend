@@ -1,0 +1,129 @@
+<h2>Statement Status</h2>
+<div class="container" style="margin-left:-3%">
+	  <br>
+	      <button class="btn btn-primary hidden visible-xs" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+             Search 
+          </button>
+  <div class="collapse dont-collapse-sm" id="collapseExample2"> 
+	  <div class="row">
+	   <div class="form-group">
+	   <div class="col-md-3">
+        <form class="form-inline">
+
+      <h6 ><b>Customer Alias Name</b></h6>
+                           <md-autocomplete md-input-name="aliasName"  style="width:30%"
+									md-input-minlength="3" md-no-cache="true"
+									md-input-maxlength="75"
+									md-selected-item="cCctr.search.aliasName" md-search-text="b"
+									md-items="item in cCctr.ajax1('customerDetail','aliasName',b)"
+									md-delay="2000" placeholder="Customer Alias Name">
+		                	<md-item-template> <span>{{item}}</span> </md-item-template> <md-not-found>
+								No customer alias name with "{{b}}" were found.<a ng-click="">Add
+									new</a> </md-not-found> </md-autocomplete>
+									</div>
+	<div class="col-md-3">							
+            <h6><b>GSTIN</b></h6>
+           <input type="text" ng-model="cCctr.search.gstin" class="form-control" placeholder="GSTIN" style="width:70%">
+      </div>
+      
+     	<div class="col-md-3">	
+           <h6><b>From Bill No.</b><h6>
+           <input type="text" ng-model="cCctr.search.fromDocumentNumber" class="form-control" placeholder="From Bill No." style="width:70%">
+       </div>
+ </div>
+   </div>
+            <div class="row">
+ 	             <div class="col-md-3">	
+                   <h6><b>To Bill No.</b><h6>
+                     <input type="text"ng-model="cCctr.search.toDocumentNumber" class="form-control" placeholder="To Bill No." style="width:70%">
+                </div>
+
+	        <div class="col-md-3">	
+                <h6><b>From Date.</b><h6>
+                  <input type="date" ng-model="cCctr.search.fromDate" ng-change="cCctr.search.fromDate=cCctr.date(cCctr.search.fromDate);"
+								class="form-control" placeholder="From Date" style="width:70%">
+								</div>
+             <div class="col-md-3">	
+               <h6><b>To Date</b><h6>
+                   <input type="date" ng-model="cCctr.search.toDate" ng-change="cCctr.search.toDate=cCctr.date(cCctr.search.toDate);"
+								class="form-control" placeholder="To Date" style="size:15px;width:70%"">
+									</div>
+	       </div>	
+	      		
+	             <div class="row" id="hide" >
+	         	  <div class="col-md-3"  style="margin-left:85%;margin-top:-70px">	
+	                          <button ng-click="cCctr.searchEntities(true,'invoice')"
+									class="btn btn-success" >Search</button>
+	                 </div>					
+  </div>
+  
+   <div class="row" id="search" >
+	         	  <div class="col-md-3" id="search">	
+	                          <button ng-click="cCctr.searchEntities(true,'invoice')"
+									class="btn btn-success">Search</button>
+	                 </div>					
+  </div>
+  </div>
+ </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <style>
+ 
+ 
+    @media only screen and (max-width: 1000px) {
+        .one{
+            display: none;
+          
+        }
+    }
+    
+ @media only screen and (max-width: 1000px) {
+        .two{
+         
+            padding:8px;
+        }
+    }
+        
+   @media only screen and (min-width:600px) {
+            #three{
+                display: none;
+                max-height: 0;
+                overflow: hidden;
+            }
+        }
+        
+       @media only screen and (min-width:1000px) {
+            #search{
+             
+             margin-left:45%;
+             margin-top:2px;
+             display:none;
+            }
+        }
+        
+            @media only screen and (max-width: 1000px) {
+      #hide{
+            display: none;
+          
+        }
+    }
+     .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background-color: whitesmoke;
+}
+@media (min-width: 768px) {
+  .collapse.dont-collapse-sm {
+    display: block;
+    height: auto !important;
+    visibility: visible;
+  }
+}
+ 
+ </style>

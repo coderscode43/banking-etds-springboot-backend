@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.BranchDao;
 import domain.in.rjsa.model.Branch;
+import domain.in.rjsa.model.ClientDetail;
 import domain.in.rjsa.service.AbstractService;
 import domain.in.rjsa.service.BranchService;
 
@@ -18,6 +19,11 @@ public class BranchServiceImpl extends AbstractService<Long, Branch, BranchDao> 
 	public BranchDao getPrimaryDao() {
 		// TODO Auto-generated method stub
 		return dao;
+	}
+	@Override
+	public Branch getByKey(Long id) {
+		// TODO Auto-generated method stub
+		return dao.getByKey(id);
 	}
 
 }

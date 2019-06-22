@@ -62,13 +62,14 @@ App.config([ '$stateProvider', '$urlRouterProvider',function($stateProvider, $ur
 		
 	//Home that contains Side bar and header
 	.state('home', {
-		url : "/:clientId/:action",
+		url : "/:clientId/:action/:branchId",
 		params: {
 			clientId: null,
 			action: null,
+			branchId:null
 		   },
 		templateUrl : function($stateParams) {
-				return 'index/home/' + $stateParams.clientId+'/'+$stateParams.action;
+				return 'index/home/' + $stateParams.clientId+'/'+$stateParams.action+'/'+$stateParams.branchId; 
 			},
 			
 		controller : "CommonController as cCctr"

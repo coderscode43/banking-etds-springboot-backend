@@ -56,7 +56,7 @@ App.controller(
 								$state.go("resetPass");
 							}
 
-							self.gotoHomePage = function(clientId, action) {
+							self.gotoHomePageSC = function(clientId, action) {
 								self.company = name;
 								$state.go("home.homepage", {
 									"clientId" : clientId,
@@ -64,6 +64,17 @@ App.controller(
 								});
 
 							}
+							
+							self.gotoHomePageWOT = function(clientId,id, action) {
+								self.company = name;
+								$state.go("home.homepage", {
+									"clientId" : clientId,
+								    "branchId" :id,
+									"action" : action
+								});
+
+							}
+							
 							self.gotoDetailPage = function(entity, detailId,
 									page) {
 								self.company = name;

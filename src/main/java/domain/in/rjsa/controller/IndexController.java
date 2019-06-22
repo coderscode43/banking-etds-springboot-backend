@@ -17,6 +17,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import domain.in.rjsa.model.Branch;
 import domain.in.rjsa.model.ClientDetail;
 import domain.in.rjsa.model.Login;
 import domain.in.rjsa.web.ApplicationCache;
@@ -65,13 +66,29 @@ public class IndexController {
 		return pageName;
 	}
 
-	@RequestMapping(value = "/home/{clientId}/{action}")
-	public String gethome(@PathVariable Long clientId, @PathVariable String action, ModelMap model) {
-
+	@RequestMapping(value = "/home/{clientId}/{action}/{branchId}")
+	public String gethome(@PathVariable Long clientId, @PathVariable String action, @PathVariable String branchId, ModelMap model) {
+		String userName =getPrincipal();
+		Login login =applicationCache.getLoginDetail(userName);
+		if(branchId!=null) {
+			
+			try {
+				Long bId = Long.valueOf(branchId);
+				Branch br = applicationCache.getBranch(bId);
+				model.addAttribute("br", br);
+			}catch(Exception e) {
+				model.addAttribute("br", new Branch());
+			}
+			ClientDetail cd = applicationCache.getClientDetail(login.getClientId());
+			model.addAttribute("cd", cd);
+			
+		}
+		
+		
 		return action;
 //		String userName =getPrincipal();
 //		Login login =applicationCache.getLoginDetail(userName);
-//		ClientDetail cd = applicationCache.getClientDetail(login.getClientId());
+//		Branch br = applicationCache.getClientDetail(login.getClientId());
 //		model.addAttribute("cd", cd);	
 //		model.addAttribute("employeeId", login.getEmployeeId());
 //		model.addAttribute("userName", login.getUserName());
@@ -137,6 +154,7 @@ public class IndexController {
 //		model.addAttribute("impDates",applicationCache.getImpDates());
 //		model.addAttribute("recentNotifications",applicationCache.getRecentNotifications(clientId));
 //		model.addAttribute("recentRemark",applicationCache.getRecentRemark(clientId));
+		
 		return action+"/"+action+pageName;
 		// return action+"/"+action+pageName;
 	}

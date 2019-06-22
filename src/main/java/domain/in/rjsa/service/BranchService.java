@@ -4,4 +4,6 @@ import domain.in.rjsa.model.Branch;
 
 public interface BranchService extends ServiceInterface<Long,Branch>{
 
+	public Branch getByKey(Long id);
+
 }

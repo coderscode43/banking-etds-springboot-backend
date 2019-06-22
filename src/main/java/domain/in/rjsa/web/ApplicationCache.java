@@ -5,8 +5,10 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import domain.in.rjsa.model.Branch;
 import domain.in.rjsa.model.ClientDetail;
 import domain.in.rjsa.model.Login;
+import domain.in.rjsa.service.BranchService;
 import domain.in.rjsa.service.ClientDetailService;
 import domain.in.rjsa.service.LoginService;
 
@@ -16,6 +18,7 @@ public class ApplicationCache {
 	
 	private LoginService loginService;
 	private ClientDetailService cdService;
+	private BranchService branchService;
 
 
 	
@@ -39,6 +42,12 @@ public class ApplicationCache {
 		return cdService.getByKey(id);
 	}
 
+	@Cacheable(value = "branch")
+	public Branch getBranch(Long id) {
+		// TODO Auto-generated method stub
+		return branchService.getByKey(id);
+	}
+	
 	@Autowired
 	public void setClientDetailService(ClientDetailService clientDetailService) {
 		this.cdService = clientDetailService;
@@ -48,5 +57,11 @@ public class ApplicationCache {
 	public void setLoginService(LoginService loginService) {
 		this.loginService = loginService;
 	}
+	
+	@Autowired
+	public void setBranchService(BranchService branchService) {
+		this.branchService = branchService;
+	}
+	
 
 }

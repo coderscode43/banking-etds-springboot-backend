@@ -56,7 +56,7 @@
 
 <div id="page-wrapper">
 	<div class="container-fluid">
-<div class="col-md-12 " style="padding-left: 0px;font-size: 12pxp; margin-top:2%">
+<div class="col-md-12 " style="padding-left: 0px;font-size: 12pxp; margin-top:2%" >
 	<div class="heading">Branch Details</div>
 	
 
@@ -64,30 +64,30 @@
 	</div>
 		<div class="container" style="margin-left:-2%">
 	  <br>
-	      <button class="btn btn-primary hidden visible-xs" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+	      <button class="btn btn-primary hidden visible-xs" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample" >
              Search 
           </button>
-  <div class="collapse dont-collapse-sm" id="collapseExample2"> 
+  <div class="collapse dont-collapse-sm" id="collapseExample2" > 
 	  <div class="row">
 	   <div class="form-group">
 	  
 	    <div class="col-md-3">	
                 <h6><b>Name</b><h6>
-                  <input type="text"ng-model="cCctr.search.toDocumentNumber" class="form-control" placeholder="Name" style="width:70%">
+                  <input type="text" ng-model="cCctr.search.name" class="form-control" placeholder="Name" style="width:70%">
 								</div>
-	<div class="col-md-3">							
+	          <div class="col-md-3">							
             <h6><b>Tan</b></h6>
-           <select>
-  <option value="volvo">2018</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-</select> 
+           <select ng-model="cCctr.search.tan">
+             <option value="asasas">asasas</option>
+             <option value="pqr">pqr</option>
+             <option value="pqr1">pqr1</option>
+             <option value="pqr2">pqr2</option>
+          </select> 
       </div>
       
      	<div class="col-md-3">	
            <h6><b>Email</b><h6>
-           <input type="text" ng-model="cCctr.search.fromDocumentNumber" class="form-control" placeholder="Quarter" style="width:70%">
+           <input type="text" ng-model="cCctr.search.email" class="form-control" placeholder="Quarter" style="width:70%">
        </div>
       
    </div>
@@ -99,15 +99,14 @@
 	  
 	    <div class="col-md-3">	
                 <h6><b>Branch</b><h6>
-                  <input type="text"ng-model="cCctr.search.toDocumentNumber" class="form-control" placeholder="Branch" style="width:70%">
+                  <input type="text"ng-model="cCctr.search.branch" class="form-control" placeholder="Branch" style="width:70%">
 								</div>
 	<div class="col-md-3">							
             <h6><b>Pan</b></h6>
            <select>
-  <option value="volvo">2018</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
+  <option value="abcd132">abcd132</option>
+  <option value="pqr123">pqr123</option>
+  <option value="xyz123">xyz123</option>
 </select> 
       </div>
       
@@ -120,14 +119,14 @@
 	      		
 	             <div class="row" id="hide" >
 	         	  <div class="col-md-3"  style="margin-left:85%;margin-top:-70px">	
-	                          <button ng-click="cCctr.searchEntities(true,'invoice')"
+	                          <button ng-click="cCctr.searchEntities(true,'branch')"
 									class="btn btn-success" >Search</button>
 	                 </div>					
   </div>
   
    <div class="row" id="search" >
 	         	  <div class="col-md-3" id="search">	
-	                          <button ng-click="cCctr.searchEntities(true,'invoice')"
+	                          <button ng-click="cCctr.searchEntities(true,'branch')"
 									class="btn btn-success">Search</button>
 	                 </div>					
   </div>
@@ -140,32 +139,23 @@
 
 							<table class="  table-bordered table-hover table-striped" role="table"
 								style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
-
-
 								<thead>
-
-								
-									
-									
-								<colgroup>
+							<colgroup>
 									<col span="14" style="background-color: #ffffff">
 								</colgroup>
 							 <tr>
 							  <thead role="rowgroup">
-    <tr role="row" style="height:40px;background-color:#81b7db">
-      <th width="10%">Sr. No.</th>
-      <th width="10%">Name</th>
-      <th width="10%">Branch</th>
-      <th width="10%" >Tan</th>
-      <th width="10%">Pan</th>
-      <th width="10%" >Type Of Deductor</th>
-      <th width="10%">Email</th>
-     
-    
-     
-     
-    </tr>
-  </thead>
+							      <tr role="row" style="height:40px;background-color:#81b7db">
+							      <th width="10%">Sr. No.</th>
+							      <th width="10%">Name</th>
+							      <th width="10%">Branch</th>
+							      <th width="10%" >Tan</th>
+							      <th width="10%">Pan</th>
+							      <th width="10%" >Type Of Deductor</th>
+							      <th width="10%">Email</th>
+							      <th width="10%">Action</th>
+                                  </tr>
+                               </thead>
 								<tbody>
 									<tr role="row" ng-repeat="a in cCctr.getEntityListData() track by a.id">
 										<td role="cell" class="one" style="height: 60px;padding:10px">{{$index+1}}</td>
@@ -175,23 +165,15 @@
 											<td>{{a.pan}}</td>
 											<td>{{a.type}}</td>
 											<td>{{a.email}}</td>
-											
+											<td><a ng-click="cCctr.gotoHomePageWOT(1,a.id,'homeWOT')">Work On This</a></td>
 										<!-- <td>{{a.total-a.amountPaid}}</td> -->
 										
-									</tr>
-								
+									</tr>								
 								</tbody>
 							</table>
 							</div>
 						</div>
 					</div>
- 
- 
- 
- 
-	
- 
-
-</div>
+ </div>
 </div>
 

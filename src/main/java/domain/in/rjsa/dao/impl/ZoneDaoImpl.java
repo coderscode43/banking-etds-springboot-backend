@@ -7,6 +7,6 @@ import domain.in.rjsa.dao.ZoneDao;
 import domain.in.rjsa.model.form.Zone;
 
 @Repository("zoneDao")
-public class ZoneDaoImpl {
+public class ZoneDaoImpl extends AbstractNewDao<Long, Zone> implements ZoneDao{
 
 }

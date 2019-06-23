@@ -13,7 +13,7 @@ import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.service.LoginService;
 import domain.in.rjsa.web.ApplicationCache;
 
-@Transactional
+@Transactional("transactionManager")
 @Service("loginService")
 public class LoginServiceImpl implements LoginService {
 

@@ -6,6 +6,7 @@ import javax.sql.DataSource;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -24,8 +25,13 @@ public class HibernateConfiguration2 {
  
     @Autowired
     private Environment environment;
+    @Autowired
+    @Qualifier("tdsSessionFactory")
+    private SessionFactory sessionFactory;
+    
+    
  
-    @Bean
+    @Bean(name = "tdsSessionFactory")
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
@@ -34,7 +40,7 @@ public class HibernateConfiguration2 {
         return sessionFactory;
      }
      
-    @Bean
+    @Bean(name ="tdsDataSource")
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(environment.getRequiredProperty("jdbc.driverClassName"));
@@ -52,11 +58,11 @@ public class HibernateConfiguration2 {
         return properties;        
     }
      
-    @Bean
-    @Autowired
-    public HibernateTransactionManager transactionManager(SessionFactory s) {
+    @Bean(name = "tdsTxManager")
+ 
+    public HibernateTransactionManager transactionManager() {
        HibernateTransactionManager txManager = new HibernateTransactionManager();
-       txManager.setSessionFactory(s);
+       txManager.setSessionFactory(this.sessionFactory);
        return txManager;
     }
 }

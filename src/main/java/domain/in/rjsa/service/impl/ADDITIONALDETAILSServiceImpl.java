@@ -1,8 +1,9 @@
 package domain.in.rjsa.service.impl;
 
-import org.springframework.stereotype.Repository;
-
-@Repository("ADDITIONALDETAILSService")
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+@Transactional("tdsTxManager")
+@Service("ADDITIONALDETAILSService")
 public class ADDITIONALDETAILSServiceImpl {
 
 }

@@ -6,6 +6,7 @@ import javax.sql.DataSource;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -24,6 +25,10 @@ public class HibernateConfiguration {
  
     @Autowired
     private Environment environment;
+    @Autowired
+    @Qualifier("sessionFactory")
+    private SessionFactory sessionFactory;
+    
  
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
@@ -53,10 +58,9 @@ public class HibernateConfiguration {
     }
      
     @Bean
-    @Autowired
-    public HibernateTransactionManager transactionManager(SessionFactory s) {
+    public HibernateTransactionManager transactionManager() {
        HibernateTransactionManager txManager = new HibernateTransactionManager();
-       txManager.setSessionFactory(s);
+       txManager.setSessionFactory(this.sessionFactory);
        return txManager;
     }
 }

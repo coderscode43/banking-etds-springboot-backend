@@ -9,7 +9,7 @@ import domain.in.rjsa.model.form.Branch;
 import domain.in.rjsa.service.AbstractService;
 import domain.in.rjsa.service.BranchService;
 
-@Transactional
+@Transactional("transactionManager")
 @Service("branchService")
 public class BranchServiceImpl extends AbstractService<Long, Branch, BranchDao> implements BranchService{
 	@Autowired

@@ -19,7 +19,9 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.transaction.annotation.Transactional;
+@Transactional("transactionManager")
 public abstract class AbstractNewDao<K extends Serializable, E> implements DaoInterface<K, E> {
 
 	private final Class<E> persistentClass;
@@ -31,6 +33,7 @@ public abstract class AbstractNewDao<K extends Serializable, E> implements DaoIn
 	}
 
 	@Autowired
+    @Qualifier("sessionFactory")
 	private SessionFactory sessionFactory;
 
 	protected Session getSession() {

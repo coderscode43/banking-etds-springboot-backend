@@ -8,7 +8,7 @@ import domain.in.rjsa.dao.AdminDao;
 import domain.in.rjsa.model.form.Admin;
 import domain.in.rjsa.service.AbstractService;
 import domain.in.rjsa.service.AdminService;
-@Transactional
+@Transactional("transactionManager")
 @Service("adminService")
 public class AdminServiceImpl extends AbstractService<Long, Admin,AdminDao> implements AdminService {
 	@Autowired

@@ -1,10 +1,9 @@
 package domain.in.rjsa.service.impl;
 
-import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
-
-@Transactional
+import org.springframework.transaction.annotation.Transactional;
+@Transactional("transactionManager")
 @Service("regular27EQDeducteeService")
 public class Regular27EQDeducteeServiceImpl {
 

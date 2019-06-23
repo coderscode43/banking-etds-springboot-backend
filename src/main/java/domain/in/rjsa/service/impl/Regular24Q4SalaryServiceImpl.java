@@ -1,10 +1,10 @@
 package domain.in.rjsa.service.impl;
 
-import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-@Transactional
+@Transactional("transactionManager")
 @Service("regular24Q4SalaryService")
 public class Regular24Q4SalaryServiceImpl {
 

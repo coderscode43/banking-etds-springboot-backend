@@ -16,6 +16,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 public abstract class AbstractDao<PK extends Serializable, T> {
 	
@@ -27,6 +28,7 @@ public abstract class AbstractDao<PK extends Serializable, T> {
     }
      
     @Autowired
+    @Qualifier("sessionFactory")
     private SessionFactory sessionFactory;
  
     protected Session getSession(){

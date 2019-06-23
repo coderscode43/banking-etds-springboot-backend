@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.DaoInterface;
 
-@Transactional
 public abstract class AbstractService<K extends Serializable, E, D extends DaoInterface<K, E>>
 		implements ServiceInterface<K, E> {
 //	@Autowired

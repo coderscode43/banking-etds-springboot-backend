@@ -1,5 +1,7 @@
 package domain.in.rjsa.service;
 
-public interface ZoneService {
+import domain.in.rjsa.model.form.Zone;
+
+public interface ZoneService extends ServiceInterface<Long,Zone>{
 
 }

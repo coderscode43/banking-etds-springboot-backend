@@ -1,5 +1,7 @@
 package domain.in.rjsa.service;
 
-public interface ZonalBranchesService {
+import domain.in.rjsa.model.form.ZonalBranches;
+
+public interface ZonalBranchesService extends ServiceInterface<Long,ZonalBranches>{
 
 }

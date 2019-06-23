@@ -4,11 +4,8 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 
-import org.springframework.transaction.annotation.Transactional;
-
 import domain.in.rjsa.dao.DaoTDSInterface;
 
-@Transactional
 public abstract class AbstractTDSService<K extends Serializable, E, D extends DaoTDSInterface<K, E>>
 		implements ServiceTDSInterface<K, E> {
 //	@Autowired

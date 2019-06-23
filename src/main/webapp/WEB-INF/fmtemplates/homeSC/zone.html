@@ -57,10 +57,7 @@
 <div id="page-wrapper">
 	<div class="container-fluid">
 <div class="col-md-12 " style="padding-left: 0px;font-size: 12pxp; margin-top:2%">
-	<div class="heading">Statement Status</div>
-	
-
-
+	<div class="heading">Zone Details</div>
 	</div>
 		
 	  <br>
@@ -71,30 +68,19 @@
 	  <div class="row">
 	   <div class="form-group">
 	  
-	<div class="col-md-2">							
-            <h6><b>Financial Year</b></h6>
-           <select>
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-</select> 
-      </div>
+	
       
-     	<div class="col-md-2">	
-           <h6><b>Quarter</b><h6>
-           <input type="text" ng-model="cCctr.search.fromDocumentNumber" class="form-control" placeholder="Quarter" style="width:70%">
+     	<div class="col-md-4">	
+           <h6><b>Name</b><h6>
+           <input type="text" ng-model="cCctr.search.name" class="form-control" placeholder="Quarter" style="width:70%">
        </div>
        <div class="row">
- 	             <div class="col-md-2">	
-                   <h6><b>Form</b><h6>
-                     <input type="text"ng-model="cCctr.search.toDocumentNumber" class="form-control" placeholder="Form" style="width:70%">
+ 	             <div class="col-md-4">	
+                   <h6><b>Zone Code</b><h6>
+                     <input type="text"ng-model="cCctr.search.zoneCode" class="form-control" placeholder="Form" style="width:70%">
                 </div>
 
-	        <div class="col-md-3">	
-                <h6><b>Status</b><h6>
-                  <input type="text"ng-model="cCctr.search.toDocumentNumber" class="form-control" placeholder="Status" style="width:70%">
-								</div>
+	     
  </div>
    </div>
             
@@ -103,14 +89,14 @@
 	      		
 	             <div class="row" id="hide" >
 	         	  <div class="col-md-3"  style="margin-left:85%;margin-top:-70px">	
-	                          <button ng-click="cCctr.searchEntities(true,'invoice')"
+	                          <button ng-click="cCctr.searchEntities(true,'zone')"
 									class="btn btn-success" >Search</button>
 	                 </div>					
   </div>
   
    <div class="row" id="search" >
 	         	  <div class="col-md-3" id="search">	
-	                          <button ng-click="cCctr.searchEntities(true,'invoice')"
+	                          <button ng-click="cCctr.searchEntities(true,'zone')"
 									class="btn btn-success">Search</button>
 	                 </div>					
   </div>
@@ -123,27 +109,17 @@
 
 							<table class="  table-bordered table-hover table-striped" role="table"
 								style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
-
-
 								<thead>
-
-								
-									
-									
 								<colgroup>
 									<col span="14" style="background-color: #ffffff">
 								</colgroup>
 							 <tr>
 							  <thead role="rowgroup">
     <tr role="row" style="height:40px;background-color:#81b7db">
-      <th width="10%">Sr. No.</th>
-      <th width="10%">TAN</th>
-      <th width="10%">FORM</th>
-      <th width="10%" >QUARTER</th>
-      <th width="10%">AS_ON_DATE</th>
-      <th width="10%" >FY</th>
-      <th width="10%">STATUS</th>
-      <th width="10%">RT</th>
+      <th width="5%">Sr. No.</th>
+      <th width="20%">Name</th>
+      <th width="20%">Zone Code</th>
+      <th width="20%">Action</th>
     
      
      
@@ -152,13 +128,10 @@
 								<tbody>
 									<tr role="row" ng-repeat="a in cCctr.getEntityListData() track by a.id">
 										<td role="cell" class="one" style="height: 60px;padding:10px">{{$index+1}}</td>
-											<td>{{a.TAN}}</td>
-											<td>{{a.FORM}}</td>
-											<td>{{a.QUARTER}}</td>
-											<td>{{a.AS_ON_DATE}}</td>
-											<td>{{a.FY}}</td>
-											<td>{{a.STATUS}}</td>
-											<td>{{a.RT}}</td>
+											<td>{{a.name}}</td>
+											<td>{{a.zoneCode}}</td>
+											<td><a ng-click="cCctr.gotoDetailPage('zone',a.id,'detailzone');"><font
+						color="blue" style="font-size:13px">Detail</font></a></td>
 										<!-- <td>{{a.total-a.amountPaid}}</td> -->
 										
 									</tr>

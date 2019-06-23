@@ -6,12 +6,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.DEFAULTSUMMARYDao;
 import domain.in.rjsa.model.tds.DEFAULTSUMMARY;
-import domain.in.rjsa.service.AbstractService;
+import domain.in.rjsa.service.AbstractTDSService;
 import domain.in.rjsa.service.DEFAULTSUMMARYService;
 
 @Transactional("tdsTxManager")
 @Service("DEFAULTSUMMARYService")
-public class DEFAULTSUMMARYServiceImpl extends AbstractService<Long, DEFAULTSUMMARY, DEFAULTSUMMARYDao> implements DEFAULTSUMMARYService{
+public class DEFAULTSUMMARYServiceImpl extends AbstractTDSService<Long, DEFAULTSUMMARY, DEFAULTSUMMARYDao> implements DEFAULTSUMMARYService{
 @Autowired
 DEFAULTSUMMARYDao dao;
 	@Override

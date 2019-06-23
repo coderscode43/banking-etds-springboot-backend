@@ -22,8 +22,7 @@ public class DEFAULTSUMMARY extends CommonModelAbstract{
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
 	public Long id;
-	@Column(name = "clientId")
-	public Long clientId;
+
 	@Column(name = "TAN")
 	public String TAN;
 	@Column(name = "FY")

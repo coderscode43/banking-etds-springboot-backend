@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.AdminDao;
-import domain.in.rjsa.model.Admin;
+import domain.in.rjsa.model.form.Admin;
 import domain.in.rjsa.service.AbstractService;
 import domain.in.rjsa.service.AdminService;
 @Transactional

@@ -2,8 +2,6 @@ package domain.in.rjsa.dao;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
-import java.sql.Date;
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;

@@ -1,7 +1,7 @@
 package domain.in.rjsa.dao;
 
-import domain.in.rjsa.model.STATEMENTSTATUS;
+import domain.in.rjsa.model.tds.STATEMENTSTATUS;
 
-public interface STATEMENTSTATUSDao extends DaoInterface<Long,  STATEMENTSTATUS>{
+public interface STATEMENTSTATUSDao extends DaoTDSInterface<Long,  STATEMENTSTATUS>{
 
 }

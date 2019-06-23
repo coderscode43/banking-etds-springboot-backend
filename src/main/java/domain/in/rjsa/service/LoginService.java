@@ -2,7 +2,7 @@ package domain.in.rjsa.service;
 
 import java.util.HashMap;
 
-import domain.in.rjsa.model.Login;
+import domain.in.rjsa.model.form.Login;
 
 public interface LoginService {
 

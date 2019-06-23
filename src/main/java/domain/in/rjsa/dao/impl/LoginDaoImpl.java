@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractDao;
 import domain.in.rjsa.dao.LoginDao;
-import domain.in.rjsa.model.Login;
+import domain.in.rjsa.model.form.Login;
 @Repository("loginDao")
 public class LoginDaoImpl extends AbstractDao<Long, Login> implements LoginDao {
 

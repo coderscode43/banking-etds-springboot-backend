@@ -1,14 +1,10 @@
 package domain.in.rjsa.controller;
 
-import java.util.LinkedHashMap;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import domain.in.rjsa.model.Branch;
-import domain.in.rjsa.model.Login;
-import domain.in.rjsa.model.wrapper.BranchDetailWrapper;
+import domain.in.rjsa.model.form.Branch;
 import domain.in.rjsa.service.BranchService;
 
 @Controller

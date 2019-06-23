@@ -5,8 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.BranchDao;
-import domain.in.rjsa.model.Branch;
-import domain.in.rjsa.model.ClientDetail;
+import domain.in.rjsa.model.form.Branch;
 import domain.in.rjsa.service.AbstractService;
 import domain.in.rjsa.service.BranchService;
 

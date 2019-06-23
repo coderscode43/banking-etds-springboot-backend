@@ -13,7 +13,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import domain.in.rjsa.model.Login;
+import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.service.LoginService;
 @Service("customUserDetailsService")
 public class CustomUserDetailsService implements UserDetailsService {

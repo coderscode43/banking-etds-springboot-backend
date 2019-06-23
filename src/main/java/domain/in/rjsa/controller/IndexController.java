@@ -1,7 +1,5 @@
 package domain.in.rjsa.controller;
 
-import java.util.HashSet;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,9 +15,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import domain.in.rjsa.model.Branch;
-import domain.in.rjsa.model.ClientDetail;
-import domain.in.rjsa.model.Login;
+import domain.in.rjsa.model.form.Branch;
+import domain.in.rjsa.model.form.ClientDetail;
+import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.web.ApplicationCache;
 
 @Controller

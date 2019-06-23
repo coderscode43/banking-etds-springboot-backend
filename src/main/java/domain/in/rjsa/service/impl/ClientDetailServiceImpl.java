@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.ClientDetailDao;
-import domain.in.rjsa.model.ClientDetail;
+import domain.in.rjsa.model.form.ClientDetail;
 import domain.in.rjsa.service.ClientDetailService;
 @Transactional
 @Service("clientDetailService")

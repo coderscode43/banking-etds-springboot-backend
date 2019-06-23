@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import domain.in.rjsa.model.Login;
+import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.service.LoginService;
 import domain.in.rjsa.web.ApplicationCache;
 

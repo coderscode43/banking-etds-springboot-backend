@@ -13,7 +13,7 @@ import org.springframework.security.web.authentication.rememberme.PersistentToke
 import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractDao;
-import domain.in.rjsa.model.PersistentLogin;
+import domain.in.rjsa.model.form.PersistentLogin;
 
 @Repository("tokenRepositoryDao")
 public class HibernateTokenRepositoryImpl extends AbstractDao<String, PersistentLogin>

@@ -8,12 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import domain.in.rjsa.model.Ajax;
-import domain.in.rjsa.model.Model;
+import domain.in.rjsa.model.form.Ajax;
 
 
 public interface ControllerInterface <K, E> {

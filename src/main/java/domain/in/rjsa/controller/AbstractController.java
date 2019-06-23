@@ -27,10 +27,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
-import domain.in.rjsa.model.Ajax;
-import domain.in.rjsa.model.ListCount;
-import domain.in.rjsa.model.Login;
-import domain.in.rjsa.model.Model;
+import domain.in.rjsa.model.form.Ajax;
+import domain.in.rjsa.model.form.ListCount;
+import domain.in.rjsa.model.form.Login;
+import domain.in.rjsa.model.form.Model;
 import domain.in.rjsa.service.ServiceInterface;
 import domain.in.rjsa.web.ApplicationCache;
 

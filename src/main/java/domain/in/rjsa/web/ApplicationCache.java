@@ -5,9 +5,9 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import domain.in.rjsa.model.Branch;
-import domain.in.rjsa.model.ClientDetail;
-import domain.in.rjsa.model.Login;
+import domain.in.rjsa.model.form.Branch;
+import domain.in.rjsa.model.form.ClientDetail;
+import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.service.BranchService;
 import domain.in.rjsa.service.ClientDetailService;
 import domain.in.rjsa.service.LoginService;

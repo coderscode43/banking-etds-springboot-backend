@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.LoginDao;
-import domain.in.rjsa.model.Login;
+import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.service.LoginService;
 import domain.in.rjsa.web.ApplicationCache;
 

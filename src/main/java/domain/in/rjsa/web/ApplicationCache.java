@@ -8,9 +8,11 @@ import org.springframework.stereotype.Service;
 import domain.in.rjsa.model.form.Branch;
 import domain.in.rjsa.model.form.ClientDetail;
 import domain.in.rjsa.model.form.Login;
+import domain.in.rjsa.model.form.Zone;
 import domain.in.rjsa.service.BranchService;
 import domain.in.rjsa.service.ClientDetailService;
 import domain.in.rjsa.service.LoginService;
+import domain.in.rjsa.service.ZoneService;
 
 @Service("ApplicationCache")
 public class ApplicationCache {
@@ -19,6 +21,7 @@ public class ApplicationCache {
 	private LoginService loginService;
 	private ClientDetailService cdService;
 	private BranchService branchService;
+	private ZoneService zoneService;
 
 
 	
@@ -40,6 +43,12 @@ public class ApplicationCache {
 	public ClientDetail getClientDetail(Long id) {
 		// TODO Auto-generated method stub
 		return cdService.getByKey(id);
+	}
+	
+	@Cacheable(value = "zone")
+	public Zone getZone(Long id) {
+		// TODO Auto-generated method stub
+		return zoneService.getByKey(id);
 	}
 
 	@Cacheable(value = "branch")
@@ -63,5 +72,9 @@ public class ApplicationCache {
 		this.branchService = branchService;
 	}
 	
+	@Autowired
+	public void setZoneService(ZoneService zoneService) {
+		this.zoneService = zoneService;
+	}
 
 }

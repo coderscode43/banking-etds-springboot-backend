@@ -4,25 +4,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import domain.in.rjsa.model.form.Employee;
-import domain.in.rjsa.service.EmployeeService;
+import domain.in.rjsa.model.form.Pensioner;
+import domain.in.rjsa.service.PensionerService;
 
 @Controller
-@RequestMapping("/apiemployee")
-
-public class EmployeeController extends AbstractController<Long, Employee, EmployeeService>{
+@RequestMapping("/apipensioner")
+public class PensionerController extends AbstractController<Long, Pensioner, PensionerService>{
 @Autowired
-EmployeeService service;
+PensionerService service;
 	@Override
-	public EmployeeService getService() {
+	public PensionerService getService() {
 		// TODO Auto-generated method stub
 		return service;
 	}
 
 	@Override
-	public Class<Employee> getEntity() {
+	public Class<Pensioner> getEntity() {
 		// TODO Auto-generated method stub
-		return Employee.class;
+		return Pensioner.class;
 	}
 
 }

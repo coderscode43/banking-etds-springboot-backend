@@ -1,6 +1,8 @@
 package domain.in.rjsa.service;
 
-public interface EmployeeService  {
+import domain.in.rjsa.model.form.Employee;
+
+public interface EmployeeService extends ServiceInterface<Long,Employee> {
 
 	
 

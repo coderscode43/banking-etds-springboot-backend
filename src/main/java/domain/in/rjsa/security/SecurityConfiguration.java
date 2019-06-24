@@ -41,7 +41,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 	
 		
-		http.formLogin().loginProcessingUrl("/login").defaultSuccessUrl("/", true).permitAll().and().authorizeRequests()
+		http.formLogin().loginPage("/login.jsp").loginProcessingUrl("/login").defaultSuccessUrl("/", true).permitAll().and().authorizeRequests()
         .antMatchers( "/login","/","/static/css/fonts/untitled-font-2*","/static/img/tds.png").permitAll().anyRequest().authenticated()
         .and().rememberMe().rememberMeParameter("remember-me")
 				.tokenRepository(tokenRepository).tokenValiditySeconds(10000)

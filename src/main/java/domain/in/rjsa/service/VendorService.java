@@ -1,5 +1,7 @@
 package domain.in.rjsa.service;
 
-public interface VendorService {
+import domain.in.rjsa.model.form.Vendor;
+
+public interface VendorService extends ServiceInterface<Long,Vendor>{
 
 }

@@ -36,4 +36,4 @@ public class Vendor {
 	public String mobile;
 	@Column(name = "email")
 	public String email;
-}
+  }

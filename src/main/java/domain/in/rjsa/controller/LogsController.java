@@ -4,24 +4,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import domain.in.rjsa.model.form.Vendor;
-import domain.in.rjsa.service.VendorService;
+import domain.in.rjsa.model.form.Logs;
+import domain.in.rjsa.service.LogsService;
 
 @Controller
-@RequestMapping("/apivendor")
-public class VendorController extends AbstractController<Long, Vendor, VendorService>{
-	@Autowired
-	VendorService service;
+@RequestMapping("/apilogs")
+public class LogsController extends AbstractController<Long, Logs, LogsService>{
+@Autowired
+LogsService service;
 	@Override
-	public VendorService getService() {
+	public LogsService getService() {
 		// TODO Auto-generated method stub
 		return service;
 	}
 
 	@Override
-	public Class<Vendor> getEntity() {
+	public Class<Logs> getEntity() {
 		// TODO Auto-generated method stub
-		return Vendor.class;
+		return Logs.class;
 	}
 
 }

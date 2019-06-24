@@ -1,5 +1,7 @@
 package domain.in.rjsa.model.form;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,8 +15,8 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "vendor")
-public class Vendor extends CommonModelAbstract{
+@Table(name = "logs")
+public class Logs extends CommonModelAbstract{
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO, generator="native")
 	@GenericGenerator(name = "native", strategy = "native")
@@ -22,18 +24,21 @@ public class Vendor extends CommonModelAbstract{
 	public Long id;		
 	@Column(name = "clientId")
 	public Long clientId;
-	@Column(name = "name")
-	public String name;
+	@Column(name = "user")
+	public String user;
+	@Column(name = "date")
+	public Date date;
+	@Column(name = "action")
+	public String action;
+	@Column(name = "fy")
+	public String fy;
+	@Column(name = "tan")
+	public String tan;
+	@Column(name = "form")
+	public String form;
+	@Column(name = "quarter")
+	public String quarter;
+	@Column(name = "time")
+	public String time;
 	
-	@Column(name = "vendorCode")
-	public String vendorCode;
-
-	@Column(name = "pan")
-	public String pan;
-	@Column(name = "address")
-	public String address;
-	@Column(name = "mobile")
-	public String mobile;
-	@Column(name = "email")
-	public String email;
-  }
+}

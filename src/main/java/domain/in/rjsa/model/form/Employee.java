@@ -51,12 +51,6 @@ public class Employee extends CommonModelAbstract{
 	public String email1;
 	@Column(name = "email2")
 	public String email2;
-	@Column(name = "bankAccNo")
-	public String bankAccNo;
-	@Column(name = "ifcCode")
-	public String ifcCode;
-	@Column(name = "bankName")
-	public String bankName;
 	
 	@Column(name = "currentAddress1")
 	public String currentAddress1;
@@ -83,4 +77,7 @@ public class Employee extends CommonModelAbstract{
 	public String permanentState;
 	@Column(name = "permanentPincode")
 	public String permanentPincode;
+	
+	@Column(name = "bankId")
+	public Long bankId;
 }

@@ -23,7 +23,7 @@ public class VendorLDC extends CommonModelAbstract{
 	@Column(name = "clientId")
 	public Long clientId;
 	@Column(name = "vendorId")
-	public String vendorId;
+	public Long vendorId;
 	@Column(name = "lowerDeduction")
 	public String lowerDeduction;
 	@Column(name = "cerNo")

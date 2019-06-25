@@ -12,4 +12,5 @@ public class BranchDetailWrapper {
 	
 	public List<Branch> branchList;
 	public Zone zone;
+	
 }

@@ -56,12 +56,9 @@ public class Vendor extends CommonModelAbstract{
 	public String pincode;
 	@Column(name = "contPerName")
 	public String contPerName;
-	@Column(name = "bankAccNo")
-	public String bankAccNo;
-	@Column(name = "ifcCode")
-	public String ifcCode;
-	@Column(name = "bankName")
-	public String bankName;
+
+	@Column(name = "bankId")
+	public Long bankId;	
 	
 	
 	

@@ -146,9 +146,7 @@
       <th width="10%">State</th>
       <th width="10%">Pin Code</th>
       <th width="10%">Contact Person Name</th>
-      <th width="10%">Bank Account Number</th>
-      <th width="10%">IFC Code</th>
-      <th width="10%">Bank Name</th>
+      <th width="10%">Action</th>
      
       </tr>
   </thead>
@@ -170,10 +168,9 @@
 											<td>{{a.state}}</td>
 											<td>{{a.pincode}}</td>
 											<td>{{a.contPerName}}</td>
-											<td>{{a.bankAccNo}}</td>
-											<td>{{a.ifcCode}}</td>
-											<td>{{a.bankName}}</td>
-											
+											<td><a
+							                ng-click="cCctr.gotoDetailPage('vendor',a.id,'detailVendor');"><font
+								          color="blue" style="font-size: 13px">Detail</font></a></td>
 											
 											
 										<!-- <td>{{a.total-a.amountPaid}}</td> -->

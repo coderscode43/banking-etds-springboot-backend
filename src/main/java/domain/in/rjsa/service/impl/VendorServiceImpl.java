@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.VendorDao;
 import domain.in.rjsa.dao.ZoneDao;
+import domain.in.rjsa.model.form.Branch;
 import domain.in.rjsa.model.form.Vendor;
 import domain.in.rjsa.service.AbstractService;
 import domain.in.rjsa.service.VendorService;
@@ -20,6 +21,11 @@ public class VendorServiceImpl extends AbstractService<Long, Vendor, VendorDao> 
 	public VendorDao getPrimaryDao() {
 		// TODO Auto-generated method stub
 		return dao;
+	}
+	@Override
+	public Vendor getByKey(Long id) {
+		// TODO Auto-generated method stub
+		return dao.getByKey(id);
 	}
 
 }

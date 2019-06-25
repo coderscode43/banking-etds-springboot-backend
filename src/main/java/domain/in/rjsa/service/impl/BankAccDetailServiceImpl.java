@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.BankAccDetailDao;
-import domain.in.rjsa.dao.SalaryDao;
 import domain.in.rjsa.model.form.BankAccDetail;
 import domain.in.rjsa.service.AbstractService;
 import domain.in.rjsa.service.BankAccDetailService;
@@ -19,5 +18,10 @@ public class BankAccDetailServiceImpl extends AbstractService<Long, BankAccDetai
 		public BankAccDetailDao getPrimaryDao() {
 			// TODO Auto-generated method stub
 			return dao;
+		}
+		@Override
+		public BankAccDetail getByKey(Long bankId) {
+			// TODO Auto-generated method stub
+			return dao.getByKey(bankId);
 		}
 }

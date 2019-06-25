@@ -57,7 +57,7 @@
 <div id="page-wrapper">
 	<div class="container-fluid">
 <div class="col-md-12 " style="padding-left: 0px;font-size: 12pxp; margin-top:2%">
-	<div class="heading">Token Number</div>
+	<div class="heading">Form 15G/15H Status Status</div>
 	
 
 
@@ -75,15 +75,7 @@
                 <h6><b>TAN</b><h6>
                   <input type="text"ng-model="cCctr.search.toDocumentNumber" class="form-control" placeholder="TAN" style="width:70%">
 								</div>
-	<div class="col-md-2">							
-            <h6><b>Financial Year</b></h6>
-           <select>
-  <option value="volvo">2018</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-</select> 
-      </div>
+	
       
      	<div class="col-md-2">	
            <h6><b>Quarter</b><h6>
@@ -132,12 +124,12 @@
     <tr role="row" style="height:40px;background-color:#81b7db">
       <th width="10%">Sr. No.</th>
       <th width="10%">TAN</th>
-        <th width="10%" >FY</th>
          <th width="10%" >QUARTER</th>
       <th width="10%">FORM</th>
-      <th width="10%">DATEOFFILING</th>
+      <th width="10%">RT</th>
       <th width="10%" >PRN</th>
-      <th width="10%">RETURNTYPE</th>
+      <th width="10%">STATUS</th>
+      <th width="10%">AS_ON_DATE</th>
    
     
      
@@ -148,12 +140,12 @@
 									<tr role="row" ng-repeat="a in cCctr.getEntityListData() track by a.id">
 										<td role="cell" class="one" style="padding:5px">{{$index+1}}</td>
 											<td>{{a.TAN}}</td>
-												<td>{{a.FY}}</td>
 												<td>{{a.QUARTER}}</td>
 											<td>{{a.FORM}}</td>
-											<td>{{a.DATEOFFILING | date:'dd-MM-yyyy'}}</td>
+											<td>{{a.RT}}</td>
 											<td>{{a.PRN}}</td>
-											<td>{{a.RETURNTYPE}}</td>
+											<td>{{a.STATUS}}</td>
+											<td>{{a.AS_ON_DATE| date:'dd-MM-yyyy'}}</td>
 										<!-- <td>{{a.total-a.amountPaid}}</td> -->
 										
 									</tr>

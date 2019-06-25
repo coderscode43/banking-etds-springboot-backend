@@ -1,94 +1,208 @@
+<style>
+ 
+ 
+    @media only screen and (max-width: 1000px) {
+        .one{
+            display: none;
+          
+        }
+    }
+    
+ @media only screen and (max-width: 1000px) {
+        .two{
+         
+            padding:8px;
+        }
+    }
+        
+   @media only screen and (min-width:600px) {
+            #three{
+                display: none;
+                max-height: 0;
+                overflow: hidden;
+            }
+        }
+        
+       @media only screen and (min-width:1000px) {
+            #search{
+             
+             margin-left:45%;
+             margin-top:2px;
+             display:none;
+            }
+        }
+        
+            @media only screen and (max-width: 1000px) {
+      #hide{
+            display: none;
+          
+        }
+    }
+     .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background-color: whitesmoke;
+}
+@media (min-width: 768px) {
+  .collapse.dont-collapse-sm {
+    display: block;
+    height: auto !important;
+    visibility: visible;
+  }
+}
+
+ .center {
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#formPanel {
+	background-color: #e6e6e6;
+	border: 1;
+	height: 50%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.button {
+	display: inline-block;
+	border-radius: 5px;
+	background-color: #24478f;
+	border: none;
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 15px;
+	padding: 20px;
+	width: 270px;
+	height: 60px;
+	transition: all 0.5s;
+	cursor: pointer;
+}
+
+.button span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+}
+
+.button span:after {
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.5s;
+	color: #79BD3C;
+}
+
+.button:hover span {
+	padding-right: 25px;
+}
+
+.button:hover span:after {
+	opacity: 1;
+	right: 0;
+}
+ </style>
+
+
+
+<br>
 <div id="page-wrapper">
 	<div class="container-fluid">
-<div class="col-md-12 " style="padding-left: 0px;font-size: 12px">
-	<div class="heading">Statement Status</div>
-	</div>
+<div class="col-md-12 " style="padding-left: 0px;font-size: 15px; margin-top:2%">
+	<div class="heading"><center><h2>Request Correction</center></h2></div>
 	
-	<div class="container">
+
+
+	</div>
+		
 	  <br>
 	      <button class="btn btn-primary hidden visible-xs" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
              Search 
           </button>
   <div class="collapse dont-collapse-sm" id="collapseExample2"> 
-	  <div class="row">
-	   <div class="form-group">
+	 
+  	    <div class="row">
+	      <div class="form-group">
+  	         <div class="col-md-4" style="margin-left:30%">	
+                  <label>Financial year</label>
+                  <input type="text" ng-model="" ng-change=""
+								class="form-control" placeholder="Financial year">
+			</div> 
+		</div>
+	  </div><br>
+  	    <div class="row">
+	      <div class="form-group">
+  	         <div class="col-md-4" style="margin-left:30%">	
+                  <label>Quarter</label>
+                  <input type="text" ng-model="" ng-change=""
+								class="form-control" placeholder="Quarter">
+			</div> 
+		</div>
+	  </div><br>
+  	   <!--  <div class="row">
+	      <div class="form-group">
+  	         <div class="col-md-4" style="margin-left:30%">	
+                  <label>Form</label>
+                  <select style="width:100%" class="form-control">
+                    <option value="zone">Zone</option>
+                    <option value="section">Section</option>
+                    <option value="branch">Branch</option>
+                 </select> 
+		   </div> 
+	    </div>
+      </div> -->
+  	  
+  	    <div class="row">
+	      <div class="form-group">
+  	         <div class="col-md-4" style="margin-left:30%">	
+                  <label>Form</label>
+                  <input type="text" ng-model="" ng-change=""
+								class="form-control" placeholder="Form">
+			</div> 
+		</div>
+	  </div>
+	
 	  
-	 	<div class="col-md-5">							
-          <div class="col-md-6">							
-            <label>From Date :</label>
-        <input type="date" class="form-control" style="padding-top: 0px;" ng-model="cCctr.search.fromDate"
-							placeholder="From Date" >
-      </div>
-      
-     	<div class="col-md-6">	
-            <label>To Date :</label>
-        <input type="date"  style="padding-top: 0px;" class="form-control" ng-model="cCctr.search.toDate" >
-       </div>
-      </div>
-		
-		
-     	
- </div>
-
- 	      		
-	             <div class="row" id="hide" >
-	         	  <div class="col-md-4"  style="margin-left:85%;margin-top:-50px">	
-	                        <button ng-click="cCctr.searchEntities(true,'reimburseable','reimburseable')"
-								class="btn btn-success" style="width: 90px;">Search</button>
+	  
+   </div>
+  	       </div>	
+	      		
+	             <!-- <div class="row" id="hide" >
+	         	  <div class="col-md-4"  style="margin-left:40%;">	
+	                          <button ng-click=""
+									class="btn btn-success" >Generate Report</button>
 	                 </div>					
-  </div>
+  </div> -->
+  <br><br>
+  <div style="height: 50%;">
+	<div class="row" id="hide">
+		<div class="row">
+			<div class="col-md-4" style="margin-left:33%">
+				<div class="form-group">
+					<button
+						ng-click=""
+						class="button" style="vertical-align: middle">
+						<span>Generate Report</span>
+					</button>
+				</div>
+			</div>
+			
+			
+		</div>
+		
+	</div>
+</div>
   
    <div class="row" id="search" >
-	         	  <div class="col-md-4" id="search">	
-	                        <button ng-click="cCctr.searchEntities(true,'reimburseable','reimburseable')"
-								class="btn btn-success" style="width: 90px;">Search</button>
-	                 </div>	
-	                    </div>	
-	                    </div>			
+	         	  <div class="col-md-4" id="search"> 	
+	                          <button ng-click="" 
+									class="btn btn-success">Generate Report</button>
+	                 </div>					
   </div>
   </div>
-	
- <div class="table-responsive">
-	<table class=" table-bordered table-hover table-striped ">
-		<thead>
-			<tr  style="height:40px;background-color: #81b7db;font-size:13px">
-				<th width="18%">TAN</th>
-				<th width="15%">FY</th>
-				<th width="15%">QUARTER</th>
-				<th width="18%">FORM</th>
-				<th width="18%">RETURNTYPE</th>
-				<th width="15%">REQUESTDATE</th>
-				<th width="20%">REQUEST_TYPE</th>
-				<th width="15%">REQUEST_NUMBER</th>
-				<th width="20%">STATUS</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat="a in cCctr.getEntityListData() track by a.id" style="font-size:13px">
-				<td>{{a.TAN}}</td>
-				<td>{{a.FY}}</td>
-				<td>{{a.QUARTER}}</td>
-				<td>{{a.FORM}}</td>
-				<td>{{a.RETURNTYPE}}</td>
-				<td>{{a.REQUESTDATE}}</td>
-				<td>{{a.REQUEST_TYPE}}</td>
-				<td>{{a.REQUEST_NUMBER}}</td>
-				<td>{{a.STATUS}}</td>
-				<td style="height:20px">{{a.remark}}</td>
-
-				<td><a 
-					ng-click="cCctr.viewFile('fileDetail',a,'viewFile');" >View</a>|| <a
-					onclick="test('#update')"  ng-click="cCctr.gotoDetail('fileDetail',a.fileId);cCctr.temp2.dec=a;"><font
-						color="blue">Update</font></a>|| <a onclick="test('#delete')"><font
-						color="red" ng-click="cCctr.setTemp1(a);cCctr.setIndex($index)"> Delete</font></a></td>
-			</tr>
-		</tbody>
-	</table>
-	<br>
-	<br>
-	<br>
-	<br>
-	</div>
-
-</div>
-</div>
+ </div>
+ 
+ 
+ 	

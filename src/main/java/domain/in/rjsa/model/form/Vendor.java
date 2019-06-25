@@ -62,18 +62,7 @@ public class Vendor extends CommonModelAbstract{
 	public String ifcCode;
 	@Column(name = "bankName")
 	public String bankName;
-	@Column(name = "lowerDeduction")
-	public String lowerDeduction;
-	@Column(name = "cerNo")
-	public String cerNo;
-	@Column(name = "validFrom")
-	public String validFrom;
-	@Column(name = "validTo")
-	public String validTo;
-	@Column(name = "cerLimit")
-	public String cerLimit;
-	@Column(name = "cerNature")
-	public String cerNature;
+	
 	
 	
   }

@@ -1,0 +1,891 @@
+<!-- <style>
+ 
+ 
+    @media only screen and (max-width: 1000px) {
+        .one{
+            display: none;
+          
+        }
+    }
+    
+ @media only screen and (max-width: 1000px) {
+        .two{
+         
+            padding:8px;
+        }
+    }
+        
+   @media only screen and (min-width:600px) {
+            #three{
+                display: none;
+                max-height: 0;
+                overflow: hidden;
+            }
+        }
+        
+       @media only screen and (min-width:1000px) {
+            #search{
+             
+             margin-left:45%;
+             margin-top:2px;
+             display:none;
+            }
+        }
+        
+            @media only screen and (max-width: 1000px) {
+      #hide{
+            display: none;
+          
+        }
+    }
+     .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background-color: whitesmoke;
+}
+@media (min-width: 768px) {
+  .collapse.dont-collapse-sm {
+    display: block;
+    height: auto !important;
+    visibility: visible;
+  }
+}
+
+ .center {
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#formPanel {
+	background-color: #e6e6e6;
+	border: 1;
+	height: 50%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.button {
+	display: inline-block;
+	border-radius: 5px;
+	background-color: #24478f;
+	border: none;
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 15px;
+	padding: 20px;
+	width: 270px;
+	height: 60px;
+	transition: all 0.5s;
+	cursor: pointer;
+}
+
+.button span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+}
+
+.button span:after {
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.5s;
+	color: #79BD3C;
+}
+
+.button:hover span {
+	padding-right: 25px;
+}
+
+.button:hover span:after {
+	opacity: 1;
+	right: 0;
+}
+ </style>
+
+
+
+<br>
+<div id="page-wrapper">
+	<div class="container-fluid">
+<div class="col-md-12 " style="padding-left: 0px;font-size: 15px; margin-top:2%">
+	<div class="heading"><center><h2>Request Correction</center></h2></div>
+	
+
+
+	</div>
+		
+	  <br>
+	      <button class="btn btn-primary hidden visible-xs" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+             Search 
+          </button>
+  <div class="collapse dont-collapse-sm" id="collapseExample2"> 
+	 
+  	    <div class="row">
+	      <div class="form-group">
+  	         <div class="col-md-4" style="margin-left:30%">	
+                  <label>Financial year</label>
+                  <input type="text" ng-model="" ng-change=""
+								class="form-control" placeholder="Financial year">
+			</div> 
+		</div>
+	  </div><br>
+  	    <div class="row">
+	      <div class="form-group">
+  	         <div class="col-md-4" style="margin-left:30%">	
+                  <label>Quarter</label>
+                  <input type="text" ng-model="" ng-change=""
+								class="form-control" placeholder="Quarter">
+			</div> 
+		</div>
+	  </div><br>
+  	    <div class="row">
+	      <div class="form-group">
+  	         <div class="col-md-4" style="margin-left:30%">	
+                  <label>Form</label>
+                  <select style="width:100%" class="form-control">
+                    <option value="zone">Zone</option>
+                    <option value="section">Section</option>
+                    <option value="branch">Branch</option>
+                 </select> 
+		   </div> 
+	    </div>
+      </div>
+  	  
+  	    <div class="row">
+	      <div class="form-group">
+  	         <div class="col-md-4" style="margin-left:30%">	
+                  <label>Form</label>
+                  <input type="text" ng-model="" ng-change=""
+								class="form-control" placeholder="Form">
+			</div> 
+		</div>
+	  </div>
+	
+	  
+	  
+   </div>
+  	       </div>	
+	      		
+	             <div class="row" id="hide" >
+	         	  <div class="col-md-4"  style="margin-left:40%;">	
+	                          <button ng-click=""
+									class="btn btn-success" >Generate Report</button>
+	                 </div>					
+  </div>
+  <br><br>
+  <div style="height: 50%;">
+	<div class="row" id="hide">
+		<div class="row">
+			<div class="col-md-4" style="margin-left:33%">
+				<div class="form-group">
+					<button
+						ng-click=""
+						class="button" style="vertical-align: middle">
+						<span>Request Correction</span>
+					</button>
+				</div>
+			</div>
+			
+			
+		</div>
+		
+	</div>
+</div>
+  
+   <div class="row" id="search" >
+	         	  <div class="col-md-4" id="search"> 	
+	                          <button ng-click="" 
+									class="btn btn-success">Request Correction</button>
+	                 </div>					
+  </div>
+  </div>
+ </div>
+ 
+ 
+ 	 -->
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
+ 	<style>
+ 	
+ 	
+ 	/*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+	@media
+	  only screen 
+    and (max-width: 760px), (min-device-width: 768px) 
+    and (max-device-width: 1024px)  {
+
+		/* Force table to not be like tables anymore */
+		table, thead, tbody, th, td, tr {
+			display: block;
+		}
+
+		/* Hide table headers (but not display: none;, for accessibility) */
+		thead tr {
+			position: absolute;
+			top: -9999px;
+			left: -9999px;
+		}
+
+    tr {
+      margin: 0 0 1rem 0;
+    }
+      
+    tr:nth-child(odd) {
+      background: #ccc;
+    }
+    
+		td {
+			/* Behave  like a "row" */
+			border: none;
+			border-bottom: 1px solid #eee;
+			position: relative;
+			padding-left: 50%;
+		}
+
+		td:before {
+			/* Now like a table header */
+			position: absolute;
+			/* Top/left values mimic padding */
+			top: 0;
+			left: 6px;
+			width: 45%;
+			padding-right: 10px;
+			white-space: nowrap;
+		}
+
+		/*
+		Label the data
+    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+		*/
+		td:nth-of-type(1):before { content: "Sr. No."; }
+		td:nth-of-type(2):before { content: "Bill No."; }
+		td:nth-of-type(3):before { content: "Date"; }
+		td:nth-of-type(4):before { content: "Customer Name"; }
+		td:nth-of-type(5):before { content: "Customer Alias Name"; }
+		td:nth-of-type(6):before { content: "GSTIN"; }
+		td:nth-of-type(7):before { content: "Amount"; }
+		td:nth-of-type(8):before { content: "CGST Amount"; }
+		td:nth-of-type(9):before { content: "SGST Amount"; }
+		td:nth-of-type(10):before { content: "IGST Amount"; }
+		td:nth-of-type(11):before { content: "Total Amount"; }
+	}
+	
+	
+	
+    @media only screen and (max-width: 1000px) {
+        .one{
+            display: none;
+          
+        }
+    }
+    
+ @media only screen and (max-width: 1000px) {
+        .two{
+         
+            padding:8px;
+        }
+    }
+        
+   @media only screen and (min-width:600px) {
+            #three{
+                display: none;
+                max-height: 0;
+                overflow: hidden;
+            }
+        }
+        
+       @media only screen and (min-width:1000px) {
+            #search{
+             
+             margin-left:45%;
+             margin-top:2px;
+             display:none;
+            }
+        }
+        
+            @media only screen and (max-width: 1000px) {
+      #hide{
+            display: none;
+          
+        }
+    }
+     .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background-color: whitesmoke;
+}
+@media (min-width: 768px) {
+  .collapse.dont-collapse-sm {
+    display: block;
+    height: auto !important;
+    visibility: visible;
+  }
+}
+ 	</style> 
+ 	 
+ 	 
+ 	 
+ <br>
+  <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" data-target="#home">Deductor Details</a></li>
+      <li><a data-toggle="tab" data-target="#menu1">Login Details</a></li>
+   
+ </ul>
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane  active">
+       <h3>Client Details</h3>
+      
+      <div class="container">
+	   
+	      <button class="btn btn-primary hidden visible-xs" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+             Search 
+          </button>
+<div class="collapse dont-collapse-sm" id="collapseExample2"> 
+  <div class="row">
+	     <div class="form-group">
+	       <form>
+	        <div class="col-md-4">
+        
+               <label>Name*</label>
+               <input type="text" ng-model="" class="form-control" placeholder="Name">
+     
+		    </div>
+	       <div class="col-md-4">							
+              <label>Tan</label>
+              <input type="text" ng-model="" class="form-control" placeholder="Tan">
+          </div>
+      
+         <div class="col-md-4">	
+                  <h6><b>Type Of Deductor*</b></h6>
+                  <select class="form-control">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                 </select> 
+		   </div> 
+       </div>
+   </div>
+            <div class="row">
+ 	             <div class="col-md-4">	
+                    <label>Branch*</label>
+                     <input type="text"ng-model="" class="form-control" placeholder="Branch">
+                </div>
+
+	        <div class="col-md-4">	
+                <label>Pan*</label>
+                  <input type="text" ng-model="" 
+								class="form-control" placeholder="Pan">
+								</div>
+             <div class="col-md-4">	
+               <label>Email ID*</label>
+                   <input type="email" ng-model="" 
+								class="form-control" placeholder="Email" style="size:15px">
+									</div>
+	       </div>	
+	      		
+	          
+  
+  
+  </div>
+ </div><hr>
+       <h3>Deductor Details</h3>
+      
+      <div class="container">
+	   
+	      <button class="btn btn-primary hidden visible-xs" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+             Search 
+          </button>
+<div class="collapse dont-collapse-sm" id="collapseExample2"> 
+  <div class="row">
+	     <div class="form-group">
+	       <form>
+	        <div class="col-md-4">
+        
+               <label>Name Of The Deductor*</label>
+               <input type="text" ng-model="" class="form-control" placeholder="Name Of The Deductor">
+     
+		    </div>
+	       <div class="col-md-4">							
+              <label>Permanent Account Number*</label>
+              <input type="text" ng-model="" class="form-control" placeholder="Permanent Account Number">
+          </div>
+      
+         <div class="col-md-4">	
+             <label>Branch/Division*</label>
+             <input type="text" ng-model="" class="form-control" placeholder="Branch/Division">
+         </div>
+       </div>
+   </div>
+            <div class="row">
+ 	             <div class="col-md-4">	
+                    <h6><b>Flat/Door/Block No*</b></h6>
+                     <input type="text"ng-model="" class="form-control" placeholder="Flat/Door/Block No">
+                </div>
+
+	        <div class="col-md-4">	
+                  <h6><b>Name Of Premises/Building*</b></h6>
+                  <input type="text" ng-model="" 
+								class="form-control" placeholder="Name Of Premises/Building">
+								</div>
+             <div class="col-md-4">	
+                 <h6><b>Road/Street/Lane*</b></h6>
+                   <input type="text" ng-model="" 
+								class="form-control" placeholder="Road/Street/Lane" style="size:15px">
+									</div>
+	       </div>	
+            <div class="row">
+ 	             <div class="col-md-4">	
+                    <h6><b>Area/Locality*</b></h6>
+                     <input type="text"ng-model="" class="form-control" placeholder="Area/Locality">
+                </div>
+
+	        <div class="col-md-4">	
+                  <h6><b>Town/District/City*</b></h6>
+                  <input type="text" ng-model="" 
+								class="form-control" placeholder="Town/District/City">
+								</div>
+           <div class="col-md-4">	
+                  <h6><b>State</b></h6>
+                  <select class="form-control">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                 </select> 
+		   </div> 
+	       </div>	
+	      		
+            <div class="row">
+ 	             <div class="col-md-4">	
+                    <h6><b>Pin Code*</b></h6>
+                     <input type="text"ng-model="" class="form-control" placeholder="Pin Code">
+                </div>
+
+	        <div class="col-md-4">	
+                  <h6><b>STD Code</b></h6>
+                  <input type="text" ng-model="" 
+								class="form-control" placeholder="STD Code">
+								</div>
+	        <div class="col-md-4">	
+                  <h6><b>Telephone No</b></h6>
+                  <input type="text" ng-model="" 
+								class="form-control" placeholder="Telephone No">
+								</div>
+         
+	       </div>	
+	      		
+            <div class="row">
+ 	             <div class="col-md-4">	
+                    <h6><b>Email ID(Alternate)</b></h6>
+                     <input type="text"ng-model="" class="form-control" placeholder="Pin Code">
+                </div>
+
+	        <div class="col-md-4">	
+                  <h6><b>STD Code(Alternate)</b></h6>
+                  <input type="text" ng-model="" 
+								class="form-control" placeholder="STD Code">
+								</div>
+	        <div class="col-md-4">	
+                  <h6><b>Telephone No(Alternate)</b></h6>
+                  <input type="text" ng-model="" 
+								class="form-control" placeholder="Telephone No(Alternate)">
+								</div>
+         
+	       </div>	
+            <div class="row">
+ 	             <div class="col-md-4">	
+                    <h6><b> Company Email ID(Alternate)</b></h6>
+                     <input type="email"ng-model="" class="form-control" placeholder=" Company Email ID(Alternate)">
+                </div>
+
+	        <div class="col-md-4">	
+                 <h6><b>Change Of Address Of Employer Since Last Return(Y/N)*</b></h6>
+                  <select class="form-control">
+                    <option value="Null">Null</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                 </select> 
+		   </div>
+	        <div class="col-md-4">	
+                  <h6><b>GSTIN</b></h6>
+                  <input type="text" ng-model="" 
+								class="form-control" placeholder="Telephone No">
+								</div>
+         
+	       </div>	
+            <div class="row">
+ 	            <div class="col-md-4">	
+                  <h6><b>Deductor Status</b></h6>
+                  <select class="form-control">
+                    <option value="Null">Null</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                 </select> 
+		     </div>
+          </div>	
+	   </div>
+    </div><hr>
+    
+     <h3>Responsible Person Details</h3>
+      
+      <div class="container">
+	   
+	      <button class="btn btn-primary hidden visible-xs" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+             Search 
+          </button>
+<div class="collapse dont-collapse-sm" id="collapseExample2"> 
+  <div class="row">
+	     <div class="form-group">
+	       <form>
+	        <div class="col-md-4">
+        
+               <label>Name Of The responsible Person*</label>
+               <input type="text" ng-model="" class="form-control" placeholder="Name Of The responsible Person">
+     
+		    </div>
+	       <div class="col-md-4">							
+              <label>Pan Of Responsible Person</label>
+              <input type="text" ng-model="" class="form-control" placeholder="Pan Of Responsible Person">
+          </div>
+      
+         <div class="col-md-4">							
+              <label> Responsible Person's Father Name</label>
+              <input type="text" ng-model="" class="form-control" placeholder="Responsible Person's Father Name">
+          </div>
+       </div>
+   </div>
+            <div class="row">
+ 	             <div class="col-md-4">	
+                    <label>Designation*</label>
+                     <input type="text"ng-model="" class="form-control" placeholder="Designation">
+                </div>
+
+	        <div class="col-md-4">	
+                <label>Flat/Door/Block No*</label>
+                  <input type="text" ng-model="" 
+								class="form-control" placeholder="Flat/Door/Block No">
+								</div>
+             <div class="col-md-4">	
+               <label>Name Of Premises/Building*</label>
+                   <input type="text" ng-model="" 
+								class="form-control" placeholder="Name Of Premises/Building" style="size:15px">
+									</div>
+	       </div>	
+            <div class="row">
+ 	             <div class="col-md-4">	
+                    <label>Road/Stree/Lane*</label>
+                     <input type="text"ng-model="" class="form-control" placeholder="Road/Stree/Lane">
+                </div>
+
+	        <div class="col-md-4">	
+                <label>Area/Locality*</label>
+                  <input type="text" ng-model="" 
+								class="form-control" placeholder="Area/Locality">
+								</div>
+             <div class="col-md-4">	
+               <label>Town/District/City*</label>
+                   <input type="email" ng-model="" 
+								class="form-control" placeholder="Town/District/City" style="size:15px">
+									</div>
+	       </div>	
+            <div class="row">
+ 	            <div class="col-md-4">	
+                  <h6><b>State</b></h6>
+                  <select class="form-control">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                 </select> 
+		   </div> 
+
+	        <div class="col-md-4">	
+                <label>Pin Code*</label>
+                  <input type="text" ng-model="" 
+								class="form-control" placeholder="Pin Code">
+								</div>
+             <div class="col-md-4">	
+               <label>STD Code*</label>
+                   <input type="text" ng-model="" 
+								class="form-control" placeholder="STD Code" style="size:15px">
+									</div>
+	       </div>	
+            <div class="row">
+ 	           
+
+	        <div class="col-md-4">	
+                <label>Telephone No*</label>
+                  <input type="text" ng-model="" 
+								class="form-control" placeholder="Telephone No">
+								</div>
+	        <div class="col-md-4">	
+                <label>Responsible Person's Mobile No*</label>
+                  <input type="text" ng-model="" 
+								class="form-control" placeholder="Responsible Person's Mobile No">
+								</div>
+             <div class="col-md-4">	
+               <label>Email ID*</label>
+                   <input type="email" ng-model="" 
+								class="form-control" placeholder="Email ID" style="size:15px">
+									</div>
+	       </div>	
+            <div class="row">
+ 	           
+
+	        <div class="col-md-4">	
+                <label>Email(Alternate)*</label>
+                  <input type="email" ng-model="" 
+								class="form-control" placeholder="Email(Alternate)">
+								</div>
+	        <div class="col-md-4">	
+                <label>STD Code(Alternate)*</label>
+                  <input type="text" ng-model="" 
+								class="form-control" placeholder="Responsible Person's Mobile No">
+								</div>
+             <div class="col-md-4">	
+               <label>Telephone No (Alternate)*</label>
+                   <input type="email" ng-model="" 
+								class="form-control" placeholder="Email ID" style="size:15px">
+									</div>
+	       </div>	
+            <div class="row">
+ 	           
+        <div class="col-md-4">	
+                  <h6><b>Change Of Add.Of Resp Person Since Last Return(Y/N)*</b></h6>
+                  <select class="form-control">
+                    <option value="y">Y</option>
+                    <option value="n">N</option>
+                   
+                 </select> 
+		   </div>
+	        
+	       
+	       </div>	
+	      		
+	          
+  
+  
+  </div>
+ </div><hr>
+    
+    <h3>Government Details</h3>
+      
+      <div class="container">
+	   
+	      <button class="btn btn-primary hidden visible-xs" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+             Search 
+          </button>
+<div class="collapse dont-collapse-sm" id="collapseExample2"> 
+  <div class="row">
+	     <div class="form-group">
+	       <form>
+	        <div class="col-md-4">	
+                  <h6><b>State Name*</b></h6>
+                  <select class="form-control">
+                    <option value="a">A</option>
+                    <option value="b">B</option>
+                   
+                 </select> 
+		   </div>
+	       <div class="col-md-4">							
+              <label>Ministry Name Other</label>
+              <input type="text" ng-model="" class="form-control" placeholder="Ministry Name Other">
+          </div>
+	       <div class="col-md-4">							
+              <label>PAO Code</label>
+              <input type="text" ng-model="" class="form-control" placeholder="PAO Code">
+          </div>
+      
+        
+       </div>
+   </div>
+            <div class="row">
+ 	             <div class="col-md-4">	
+                    <label>PAO Registration Number*</label>
+                     <input type="text"ng-model="" class="form-control" placeholder="PAO Registration Number">
+                </div>
+
+	        <div class="col-md-4">	
+                <label>DDO Code*</label>
+                  <input type="text" ng-model="" 
+								class="form-control" placeholder="DDO Code">
+								</div>
+             <div class="col-md-4">	
+               <label>DDO Registration No*</label>
+                   <input type="text" ng-model="" 
+								class="form-control" placeholder="DDO Registration No" style="size:15px">
+									</div>
+	       </div>	
+            <div class="row">
+ 	            <div class="col-md-4">	
+                  <h6><b>Ministry Name*</b></h6>
+                  <select class="form-control">
+                    <option value="a">A</option>
+                    <option value="b">B</option>
+                   
+                 </select> 
+		   </div>
+
+	        <div class="col-md-4">	
+                <label>AIN No*</label>
+                  <input type="text" ng-model="" 
+								class="form-control" placeholder="AIN No*">
+								</div>
+            
+	       </div>	
+	      		
+	          
+  
+  
+  </div>
+ </div><br><br>
+             <div class="row" style="float:right;margin-right:20%">
+        <button type="button" class="btn btn-primary btn-lg">Submit</button>
+       <button type="button" class="btn btn-danger btn-lg">Cancel</button>
+ </div>
+
+ 
+    
+   </div><br><br>
+    
+    
+    
+    
+    
+    <div id="menu1" class="tab-pane fade">
+     <div id="page-wrapper">
+	<div class="container-fluid">
+<div class="col-md-12 " style="padding-left: 0px;font-size: 15px; margin-top:2%">
+	<div class="heading"><center><h2>Traces Login Details</center></h2></div>
+	
+
+
+	</div>
+		
+	  <br>
+	      <button class="btn btn-primary hidden visible-xs" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+             Search 
+          </button>
+  <div class="collapse dont-collapse-sm" id="collapseExample2"> 
+	 
+  	    <div class="row">
+	      <div class="form-group">
+  	         <div class="col-md-4" style="margin-left:30%">	
+                  <label>User ID</label>
+                  <input type="text" ng-model="" ng-change=""
+								class="form-control" placeholder="User ID">
+			</div> 
+		</div>
+	  </div><br>
+  	    <div class="row">
+	      <div class="form-group">
+  	         <div class="col-md-4" style="margin-left:30%">	
+                  <label>Password</label>
+                  <input type="password" ng-model="" ng-change=""
+								class="form-control" placeholder="Password">
+			</div> 
+		</div>
+	  </div><br>
+  	   
+  	  
+  	    
+	
+	  
+	  
+   </div>
+  	       </div>	
+	      		
+	            
+  
+  <button type="button" class="btn btn-primary btn-lg" style="margin-left:33%">Update Traces Login Details</button>
+  </div><hr>
+     <div id="page-wrapper">
+	<div class="container-fluid">
+<div class="col-md-12 " style="padding-left: 0px;font-size: 15px; margin-top:2%">
+	<div class="heading"><center><h2>EFiling Login Details</center></h2></div>
+	
+
+
+	</div>
+		
+	  <br>
+	      <button class="btn btn-primary hidden visible-xs" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+             Search 
+          </button>
+  <div class="collapse dont-collapse-sm" id="collapseExample2"> 
+	 
+  	    <div class="row">
+	      <div class="form-group">
+  	         <div class="col-md-4" style="margin-left:30%">	
+                  <label>User ID</label>
+                  <input type="text" ng-model="" ng-change=""
+								class="form-control" placeholder="User ID">
+			</div> 
+		</div>
+	  </div><br>
+  	    <div class="row">
+	      <div class="form-group">
+  	         <div class="col-md-4" style="margin-left:30%">	
+                  <label>Password</label>
+                  <input type="password" ng-model="" ng-change=""
+								class="form-control" placeholder="Password">
+			</div> 
+		</div>
+	  </div><br>
+  	   
+  	  
+  	    
+	
+	  
+	  
+   </div>
+  	       </div>	
+	      		
+	            
+  
+  <button type="button" class="btn btn-primary btn-lg" style="margin-left:33%">Update EFiling Login Details</button>
+  </div>
+ </div>
+ 
+    </div><br><br>
+   
+
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 

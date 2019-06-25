@@ -47,7 +47,7 @@ public class Vendor extends CommonModelAbstract{
 	@Column(name = "address2")
 	public String address2;
 	@Column(name = "address3")
-	public String addres3;
+	public String address3;
 	@Column(name = "city")
 	public String city;
 	@Column(name = "state")

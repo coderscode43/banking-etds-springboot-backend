@@ -24,5 +24,10 @@ public class StaticData {
 	}}; 
 	
 	public static String fy ="2018-19";
+	
+	public static String presentQ="F9FDBF";
+	public static String presentFiling="FDBEBE";
+	public static String presentChallan="BECFFD";
+	
 
 }

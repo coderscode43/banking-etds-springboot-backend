@@ -9,7 +9,7 @@ import domain.in.rjsa.service.GH15RETURNSTATUSService;
 import domain.in.rjsa.service.TOKENNUMBERService;
 
 @Controller
-@RequestMapping("/apiGH15RETURNSTATUS")
+@RequestMapping("/apighReturnStatus")
 public class GH15RETURNSTATUSController  extends AbstractTDSController<Long, GH15RETURNSTATUS, GH15RETURNSTATUSService> {
 
 	

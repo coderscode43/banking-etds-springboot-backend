@@ -130,50 +130,27 @@
 							 <tr>
 							  <thead role="rowgroup">
     <tr role="row" style="height:40px;background-color:#81b7db">
-      <th width="10%">Sr. No.</th>
-      <th width="10%"> Vendor No</th>
-      <th width="10%">Vendor Name</th>
-      <th width="10%" >PAN</th>
-      <th width="10%">GST No</th>
-      <th width="10%" >Residential Status</th>
-      <th width="10%">Tel No</th>
-      <th width="10%">Mobile No</th>
-      <th width="10%">Email</th>
-      <th width="10%">Address 1</th>
-      <th width="10%">Address 2</th>
-      <th width="10%">Address 3</th>
-      <th width="10%">City</th>
-      <th width="10%">State</th>
-      <th width="10%">Pin Code</th>
-      <th width="10%">Contact Person Name</th>
-      <th width="10%">Bank Account Number</th>
-      <th width="10%">IFC Code</th>
-      <th width="10%">Bank Name</th>
+     <th width="10%">Sr. No.</th>
+      <th width="10%">Lower Deduction</th>
+      <th width="10%">Certificate Number</th>
+      <th width="10%">Valid From</th>
+      <th width="10%">Valid To</th>
+      <th width="10%">Certificate Limit</th>
+      <th width="10%">Certificate Nature</th>
+       <th width="10%">Action</th>
      
       </tr>
   </thead>
 								<tbody>
 									<tr role="row" ng-repeat="a in cCctr.getEntityListData() track by a.id">
 										<td role="cell" class="one" style="height: 60px;padding:10px">{{$index+1}}</td>
-											<td>{{a.vendorNo}}</td>
-											<td>{{a.vendorName}}</td>
-											<td>{{a.pan}}</td>
-											<td>{{a.gstNo}}</td>
-											<td>{{a.resiStatus}}</td>
-											<td>{{a.telNo}}</td>
-											<td>{{a.mobNo}}</td>
-											<td>{{a.email}}</td>
-											<td>{{a.address2}}</td>
-											<td>{{a.address2}}</td>
-											<td>{{a.address3}}</td>
-											<td>{{a.city}}</td>
-											<td>{{a.state}}</td>
-											<td>{{a.pincode}}</td>
-											<td>{{a.contPerName}}</td>
-											<td>{{a.bankAccNo}}</td>
-											<td>{{a.ifcCode}}</td>
-											<td>{{a.bankName}}</td>
-											
+											<td>{{a.lowerDeduction}}</td>
+											<td>{{a.cerNo}}</td>
+											<td>{{a.validFrom}}</td>
+											<td>{{a.validTo}}</td>
+											<td>{{a.cerLimit}}</td>
+											<td>{{a.cerNature}}</td>
+											<td>Detail</td>
 											
 											
 										<!-- <td>{{a.total-a.amountPaid}}</td> -->

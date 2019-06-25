@@ -1,5 +1,7 @@
 package domain.in.rjsa.dao;
 
-public interface GH15RETURNSTATUSDao {
+import domain.in.rjsa.model.tds.GH15RETURNSTATUS;
+
+public interface GH15RETURNSTATUSDao extends DaoTDSInterface<Long,  GH15RETURNSTATUS> {
 
 }

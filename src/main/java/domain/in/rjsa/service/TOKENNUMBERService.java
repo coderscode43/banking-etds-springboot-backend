@@ -1,5 +1,7 @@
 package domain.in.rjsa.service;
 
-public interface TOKENNUMBERService {
+import domain.in.rjsa.model.tds.TOKENNUMBER;
+
+public interface TOKENNUMBERService extends ServiceTDSInterface<Long,TOKENNUMBER> {
 
 }

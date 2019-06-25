@@ -1,5 +1,7 @@
 package domain.in.rjsa.service;
 
-public interface GH15RETURNSTATUSService {
+import domain.in.rjsa.model.tds.GH15RETURNSTATUS;
+
+public interface GH15RETURNSTATUSService extends ServiceTDSInterface<Long,GH15RETURNSTATUS> {
 
 }

@@ -16,7 +16,7 @@ App.controller(
 
 							var self = this;
 							self.tan;
-							self.clientId;
+							self.clientId=0;
 							self.loader='';
 							self.entity = {};
 							self.search = {};
@@ -58,6 +58,7 @@ App.controller(
 
 							self.gotoHomePageSC = function(clientId, action) {
 								self.company = name;
+								self.clientId=clientId;
 								$state.go("home.homepage", {
 									"clientId" : clientId,
 									"action" : action
@@ -65,10 +66,10 @@ App.controller(
 
 							}
 							
-							self.gotoHomePageWOT = function(clientId,id, action) {
+							self.gotoHomePageWOT = function(id, action) {
 								self.company = name;
+								self.clientId=$stateParams.clientId;
 								$state.go("home.homepage", {
-									"clientId" : clientId,
 								    "branchId" :id,
 									"action" : action
 								});

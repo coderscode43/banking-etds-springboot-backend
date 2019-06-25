@@ -1,5 +1,7 @@
 package domain.in.rjsa.dao;
 
-public interface TOKENNUMBERDao {
+import domain.in.rjsa.model.tds.TOKENNUMBER;
+
+public interface TOKENNUMBERDao extends DaoTDSInterface<Long,  TOKENNUMBER> {
 
 }

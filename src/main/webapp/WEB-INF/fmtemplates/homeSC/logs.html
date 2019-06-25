@@ -1,46 +1,168 @@
+<style>
+ 
+ 
+    @media only screen and (max-width: 1000px) {
+        .one{
+            display: none;
+          
+        }
+    }
+    
+ @media only screen and (max-width: 1000px) {
+        .two{
+         
+            padding:8px;
+        }
+    }
+        
+   @media only screen and (min-width:600px) {
+            #three{
+                display: none;
+                max-height: 0;
+                overflow: hidden;
+            }
+        }
+        
+       @media only screen and (min-width:1000px) {
+            #search{
+             
+             margin-left:45%;
+             margin-top:2px;
+             display:none;
+            }
+        }
+        
+            @media only screen and (max-width: 1000px) {
+      #hide{
+            display: none;
+          
+        }
+    }
+     .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background-color: whitesmoke;
+}
+@media (min-width: 768px) {
+  .collapse.dont-collapse-sm {
+    display: block;
+    height: auto !important;
+    visibility: visible;
+  }
+}
+ 
+ </style>
 
-<div class="container" style="margin-left:-3%">
-  <h2>Contextual Classes</h2>
-  <p>Contextual classes can be used to color table rows or table cells. The classes that can be used are: .active, .success, .info, .warning, and .danger.</p>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Default</td>
-        <td>Defaultson</td>
-        <td>def@somemail.com</td>
-      </tr>      
-      <tr class="success">
-        <td>Success</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-      </tr>
-      <tr class="danger">
-        <td>Danger</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr class="info">
-        <td>Info</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
-      <tr class="warning">
-        <td>Warning</td>
-        <td>Refs</td>
-        <td>bo@example.com</td>
-      </tr>
-      <tr class="active">
-        <td>Active</td>
-        <td>Activeson</td>
-        <td>act@example.com</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+
+
+
+
+	<div class="container-fluid">
+    <div class="col-md-12 " style="padding-left: 0px;font-size: 12pxp; margin-top:2%" >
+	<div class="heading">Logs Detail</div>
+	</div>
+		
+	  <br>
+	      <button class="btn btn-primary hidden visible-xs" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample" >
+             Search 
+          </button>
+  <div class="collapse dont-collapse-sm" id="collapseExample2" > 
+	  <div class="row">
+	   <div class="form-group">
+	  
+	    <div class="col-md-3">	
+                <h6><b>User</b><h6>
+                  <input type="text" ng-model="cCctr.search.name" class="form-control" placeholder="User" style="width:100%">
+								</div>
+	  <div class="col-md-3">							
+            <h6><b>Action</b></h6>
+         <input type="text" ng-model="cCctr.search.name" class="form-control" placeholder="Action" style="width:100%">
+      </div>
+      
+     	<div class="col-md-3">	
+           <h6><b>TAN</b><h6>
+           <input type="text" ng-model="cCctr.search.email" class="form-control" placeholder="TAN" style="width:100%">
+       </div>
+      
+   </div>
+            
+           
+	       </div>	
+	       <div class="row">
+	   <div class="form-group">
+	  
+	    <div class="col-md-3">	
+                <h6><b>Form</b><h6>
+                  <input type="text"ng-model="cCctr.search.branch" class="form-control" placeholder="Form" style="width:100%">
+								</div>
+	<div class="col-md-3">							
+            <h6><b>FY</b></h6>
+           <select ng-model="cCctr.search.pan"style="width:100%">
+  <option value="abcd132">abcd132</option>
+  <option value="pqr123">pqr123</option>
+  <option value="xyz123">xyz123</option>
+</select> 
+      </div>
+   </div>
+ </div>
+	      		
+	             <div class="row" id="hide" >
+	         	  <div class="col-md-3"  style="margin-left:85%;margin-top:-70px">	
+	                          <button ng-click="cCctr.searchEntities(true,'branch')"
+									class="btn btn-success" >Search</button>
+	                 </div>					
+  				</div>
+  
+             <div class="row" id="search" >
+	         	  <div class="col-md-3" id="search">	
+	                <button ng-click="cCctr.searchEntities(true,'branch')"
+					class="btn btn-success">Search</button>
+	                 </div>					
+              </div>
+  </div>
+ </div>
+
+ 
+ 					
+						<div class="table-responsive">
+
+							<table class="  table-bordered table-hover table-striped" role="table"
+								style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+								<thead>
+							<colgroup>
+									<col span="14" style="background-color: #ffffff">
+								</colgroup>
+							 <tr>
+							  <thead role="rowgroup">
+							      <tr role="row" style="height:40px;background-color:#81b7db">
+							      <th width="10%">Sr. No.</th>
+							      <th width="10%">User</th>
+							      <th width="10%">Date</th>
+							      <th width="10%" >FY</th>
+							      <th width="10%">TAN</th>
+							      <th width="10%" >Form</th>
+							      <th width="10%">Quarter</th>
+							      <th width="10%">Time</th>
+							      <th width="10%">Action</th>
+                                  </tr>
+                               </thead>
+								<tbody>
+									<tr role="row" ng-repeat="a in cCctr.getEntityListData() track by a.id">
+										<td role="cell" class="one" style="padding:5px">{{$index+1}}</td>
+											<td>{{a.user}}</td>
+											<td style="text-align:center">{{a.date | date:'dd-MM-yyyy'}}</td>
+											<td>{{a.fy}}</td>
+											<td>{{a.tan}}</td>
+											<td>{{a.form}}</td>
+											<td>{{a.quarter}}</td>
+											<td>{{a.time}}</td>
+											<td><a ng-click="cCctr.gotoHomePageWOT(cCctr.clientId,a.id,'homeWOT')" style="color:blue">Work On This</a></td>
+										<!-- <td>{{a.total-a.amountPaid}}</td> -->
+										
+									</tr>								
+								</tbody>
+							</table>
+							</div>
+					
+					
+
+
+

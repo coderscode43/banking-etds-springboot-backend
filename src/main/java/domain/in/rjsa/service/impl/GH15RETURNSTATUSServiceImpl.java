@@ -1,9 +1,24 @@
 package domain.in.rjsa.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import domain.in.rjsa.dao.GH15RETURNSTATUSDao;
+import domain.in.rjsa.model.tds.GH15RETURNSTATUS;
+import domain.in.rjsa.service.AbstractTDSService;
+import domain.in.rjsa.service.GH15RETURNSTATUSService;
 @Transactional("tdsTxManager")
 @Service("GH15RETURNSTATUSService")
-public class GH15RETURNSTATUSServiceImpl {
+public class GH15RETURNSTATUSServiceImpl extends AbstractTDSService<Long, GH15RETURNSTATUS, GH15RETURNSTATUSDao> implements GH15RETURNSTATUSService {
+
+	
+	@Autowired 
+	GH15RETURNSTATUSDao dao;
+	@Override
+	public GH15RETURNSTATUSDao getPrimaryDao() {
+		// TODO Auto-generated method stub
+		return dao;
+	}
 
 }

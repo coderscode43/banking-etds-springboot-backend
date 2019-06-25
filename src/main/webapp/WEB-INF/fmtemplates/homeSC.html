@@ -33,7 +33,7 @@
 				id="bs-sidebar-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><img src="static/img/tdsosmart1.png"
-						style="height: 180px; width: 93%;" ng-click="cCctr.gotoListPage('homeSCHomepage','homeSCHomepage')"></li>
+						style="height: 150px; width: 90%;" ng-click="cCctr.gotoListPage('homeSCHomepage','homeSCHomepage')"></li>
 					<li><a class="dropdown-toggle"
 						ng-click="cCctr.gotoListPage('branch','branch')"
 						data-toggle="dropdown">Branch</a></li>
@@ -64,7 +64,7 @@
 						
 					<li><a class="dropdown-toggle" data-toggle="dropdown"
 						ng-click="cCctr.gotoListPage('ghReturnStatus','ghReturnStatus')">Form 15G/15H Status
-							Status</a></li>
+							</a></li>
 					<li><a class="dropdown-toggle" data-toggle="dropdown"
 						ng-click="cCctr.gotoListPage('misReport','misReport')">MIS Report</a></li>
 							
@@ -184,6 +184,7 @@ nav.sidebar, .main {
 		text-align: center;
 		width: 100%;
 		margin-left: 0px;
+		 overflow: auto;
 	}
 
 	/*Center Icons*/
@@ -211,6 +212,7 @@ nav.sidebar, .main {
 		border: 0;
 		-webkit-box-shadow: none;
 		box-shadow: none;
+		 overflow: auto;
 	}
 
 	/*allows nav box to use 100% width*/
@@ -231,6 +233,7 @@ nav.sidebar, .main {
 		float: left;
 		z-index: 8000;
 		margin-bottom: 0px;
+		 overflow: auto;	
 	}
 
 	/*give sidebar 100% width;*/
@@ -333,6 +336,10 @@ section {
 	top: 16px;
 	background-color: #39599A;
 	color: white;
+}
+.navbar-nav>li>a {
+  
+    line-height: 4px;
 }
 </style>
 

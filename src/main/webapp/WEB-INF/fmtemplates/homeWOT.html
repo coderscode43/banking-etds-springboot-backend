@@ -22,7 +22,7 @@
 				id="bs-sidebar-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li ng-click="cCctr.gotoListPage('homeWOTHomepage','homeWOTHomepage')"><img src="static/img/tdsosmart1.png"
-						style="height: 180px; width: 93%;"></li>
+						style="height: 150px; width: 90%;"></li>
 
 					<li><a
 						ng-click="cCctr.gotoListPage('vendorPayment','vendorPayment')"
@@ -33,7 +33,7 @@
 						class="dropdown-toggle" data-toggle="dropdown">Form 27Q</a></li>
 					<li><a ng-click="cCctr.gotoListPage('form24Q','form24Q')"
 						class="dropdown-toggle" data-toggle="dropdown">Form 24Q</a></li>
-					<li><a ng-click="cCctr.gotoListPage('requestStatus','requestStatus')"
+					<li><a ng-click="cCctr.gotoListPage('addrequestCorrection','addrequestCorrection')"
 						class="dropdown-toggle" data-toggle="dropdown">Request Correction</a></li>
 
 					<li><a
@@ -52,7 +52,7 @@
 						ng-click="cCctr.gotoListPage('misReport','misReport')">MIS
 							Report</a></li>
 					<li><a class="dropdown-toggle" data-toggle="dropdown"
-						ng-click="cCctr.gotoListPage('form15ghStatus','form15ghStatus')">Deductor Details</a></li>
+						ng-click="cCctr.gotoListPage('deductorDetails','deductorDetails')">Deductor Details</a></li>
 					<li><a class="dropdown-toggle" data-toggle="dropdown"
 					ng-click="cCctr.gotoHomePageSC(cCctr.clientId,'homeSC')">Select Branch</a></li>
 
@@ -231,6 +231,7 @@ nav.sidebar, .main {
 		border: 0;
 		-webkit-box-shadow: none;
 		box-shadow: none;
+		 overflow: auto;
 	}
 
 	/*allows nav box to use 100% width*/
@@ -251,6 +252,7 @@ nav.sidebar, .main {
 		float: left;
 		z-index: 8000;
 		margin-bottom: 0px;
+		 overflow: auto;
 	}
 
 	/*give sidebar 100% width;*/
@@ -353,6 +355,11 @@ section {
 	top: 16px;
 	background-color: #39599A;
 	color: white;
+}
+
+.navbar-nav>li>a {
+  
+    line-height: 6px;
 }
 </style>
 

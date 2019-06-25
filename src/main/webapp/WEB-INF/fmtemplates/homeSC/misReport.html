@@ -69,44 +69,53 @@
           </button>
   <div class="collapse dont-collapse-sm" id="collapseExample2"> 
 	  <div class="row">
-	   <div class="form-group">
-	   <div class="col-md-4">	
-                 <label>Generate Report</label>
+	     <div class="form-group">
+	       <div class="col-md-4"style="margin-left:30%">	
+                  <label>Generate Report</label>
                   <input type="text"ng-model="cCctr.search.toDocumentNumber" class="form-control" placeholder="PAN" >
-								</div>
-	  <div class="col-md-4">	
-                <label>From Date.</label>
+            </div>
+	      </div>
+  	   </div><br>
+  	    <div class="row">
+	      <div class="form-group">
+  	         <div class="col-md-4" style="margin-left:30%">	
+                  <label>From Date.</label>
                   <input type="date" ng-model="" ng-change=""
 								class="form-control" placeholder="From Date">
-								</div>
-	  
-	  
-   </div>
-  	       </div>
-  	       
-  	        <div class="row">
-	   <div class="form-group">
-	    <div class="col-md-4">							
-            <label>Report Type</label>
-           <select ng-model="cCctr.search.tan"style="width:100%" class="form-control">
-             <option value="zone">Zone</option>
-             <option value="section">Section</option>
-             <option value="branch">Branch</option>
-            
-          </select> 
-      </div>
+			</div> 
+		</div>
+	  </div><br>
+  	    <div class="row">
+	      <div class="form-group">
+  	         <div class="col-md-4" style="margin-left:30%">	
+                  <label>To Date.</label>
+                  <input type="date" ng-model="" ng-change=""
+								class="form-control" placeholder="From Date">
+			</div> 
+		</div>
+	  </div><br>
+  	    <div class="row">
+	      <div class="form-group">
+  	         <div class="col-md-4" style="margin-left:30%">	
+                  <label>Report Type</label>
+                  <select ng-model=""style="width:100%" class="form-control">
+                    <option value="zone">Zone</option>
+                    <option value="section">Section</option>
+                    <option value="branch">Branch</option>
+                 </select> 
+		   </div> 
+	    </div>
+      </div><br>
+  	  
+  	    
 	
-	    <div class="col-md-4">	
-                <label>To Date.</label>
-                  <input type="date" ng-model="" ng-change=""
-								class="form-control" placeholder="From Date">
-								</div>  
+	  
 	  
    </div>
   	       </div>	
 	      		
 	             <div class="row" id="hide" >
-	         	  <div class="col-md-4"  style="margin-left:85%;margin-top:-70px">	
+	         	  <div class="col-md-4"  style="margin-left:40%">	
 	                          <button ng-click=""
 									class="btn btn-success" >Generate Report</button>
 	                 </div>					
@@ -122,50 +131,4 @@
  </div>
  
  
- <br>
- 	<div class="row">
-						<div class="table-responsive">
-
-							<table class=" table table-bordered table-hover table-striped" role="table"
-								style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
-
-
-								<thead>
-
-								
-									
-									
-								<colgroup>
-									<col span="14" style="background-color: #ffffff">
-								</colgroup>
-							 <tr>
-							  <thead role="rowgroup">
-    <tr role="row" style="height:40px;background-color:#81b7db">
-      <th width="10%">Sr. No.</th>
-      <th width="10%">Employee Code</th>
-      <th width="10%">Name</th>
-      <th width="10%" >PAN</th>
-     
-   
-    
-     
-     
-    </tr>
-  </thead>
-								<tbody>
-									<tr role="row" ng-repeat="">
-										<td role="cell" class="one" style="height: 60px;padding:10px">{{$index+1}}</td>
-											<td>{{}}</td>
-											<td>{{}}</td>
-											<td>{{}}</td>
-											
-											
-										<!-- <td>{{a.total-a.amountPaid}}</td> -->
-										
-									</tr>
-								
-								</tbody>
-							</table>
-							</div>
-</div>
-</div>
+ 	

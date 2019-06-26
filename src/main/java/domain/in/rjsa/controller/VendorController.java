@@ -7,11 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import domain.in.rjsa.model.form.Address;
 import domain.in.rjsa.model.form.BankAccDetail;
 import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.form.Vendor;
 import domain.in.rjsa.model.form.VendorLDC;
 import domain.in.rjsa.model.wrapper.VendorDetailWrapper;
+import domain.in.rjsa.service.AddressService;
 import domain.in.rjsa.service.BankAccDetailService;
 import domain.in.rjsa.service.VendorLDCService;
 import domain.in.rjsa.service.VendorService;
@@ -26,6 +28,9 @@ public class VendorController extends AbstractController<Long, Vendor, VendorSer
 	VendorLDCService vldcservice;
 	@Autowired
 	BankAccDetailService bService;
+	@Autowired
+	AddressService aService;
+	
 	@Autowired
 	ApplicationCache applicationCache;
 	
@@ -55,10 +60,12 @@ public class VendorController extends AbstractController<Long, Vendor, VendorSer
 		ew.setVldcs(v);
 		Vendor vendor = service.getByKey(id);
 		ew.setVendor(vendor);
-		if(vendor.getBankId()!=null) {
+		if(vendor.getBankId()!=null || vendor.getAddressId()!=null) {
 			ew.setBank(bService.getByKey(vendor.getBankId()));
+			ew.setAddress(aService.getByKey(vendor.getAddressId()));
 		}else {
 			ew.setBank(new BankAccDetail());
+			ew.setAddress(new Address());
 		}
 		
 		

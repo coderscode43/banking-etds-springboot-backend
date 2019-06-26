@@ -54,7 +54,7 @@
 	<div class="container-fluid">
 		<div class="col-md-12 "
 			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
-			<div class="heading">Form 26Q</div>
+			<div class="heading">Form 24Q</div>
 
 
 
@@ -75,7 +75,7 @@
 						<h6>
 							<b>Financial Year</b>
 						</h6>
-						<select class="form-control">
+						<select>
 							<option value="volvo">2018</option>
 							<option value="saab">Saab</option>
 							<option value="mercedes">Mercedes</option>
@@ -132,23 +132,22 @@
 						<tr role="row" style="height: 40px; background-color: #81b7db">
 							<th width="10%">Sr. No.</th>
 							<th width="10%">Challan Sr.No.</th>
-							<th width="10%">Deductee Reference No.</th>
-							<th width="10%">Deductee Code</th>
-							<th width="10%">Deductee Pan</th>
-							<th width="10%">Deductee Name</th>
+							<th width="10%">Employee Reference No.</th>
+							<th width="10%">Pan Ref. No.</th>
+							<th width="10%">Pan</th>
+							<th width="10%">Name</th>
 							<th width="10%">Section Code</th>
 							<th width="10%">Date of Payment</th>
-
+							<th width="10%">Date of Deduction</th>
 							<th width="10%">Paid Amount</th>
 							<th width="10%">TDS</th>
 							<th width="10%">Surcharge</th>
 							<th width="10%">Education cess</th>
-							<th width="10%">Total Tax Deducted</th>
+							<th width="10%">Total TDS</th>
 							<th width="10%">Total Tax Deposited</th>
-							<th width="10%">Deduct Date</th>
-							<th width="10%">Rate Tax Deduct</th>
 							<th width="10%">Remarks</th>
 							<th width="10%">Certificate No.</th>
+							<th width="10%">Error Description</th>
 							<th width="10%">Warning Description</th>
 							<th width="10%">Short Deduction</th>
 							<th width="10%">Interest on Short Deduction</th>
@@ -166,28 +165,27 @@
 							<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
 
 							<td>{{a.challanSrNo}}</td>
-							<td>{{a.deducteeRefNo}}</td>
-							<td>{{a.deducteeCode}}</td>
-							<td>{{a.deducteePan}}</td>
-							<td>{{a.deducteeName}}</td>
+							<td>{{a.employeeRefNo}}</td>
+							<td>{{a.panRefNo}}</td>
+							<td>{{a.pan}}</td>
+							<td>{{a.name}}</td>
 							<td>{{a.sectionCode}}</td>
-							<td>{{a.paymentDate | date:'dd-MM-yyyy'}}</td>
-
-							<td>{{a.paidAmt}}</td>
+							<td>{{a.dateOfPayment | date:'dd-MM-yyyy'}}</td>
+							<td>{{a.dateOfDeduction | date:'dd-MM-yyyy'}}</td>
+							<td>{{a.amountPaid}}</td>
 							<td>{{a.tds}}</td>
 							<td>{{a.surcharge}}</td>
-							<td>{{a.eduCess}}</td>
-							<td>{{a.totalTaxDeduct}}</td>
-							<td>{{a.totalTaxDeposit}}</td>
-							<td>{{a.deductDate| date:'dd-MM-yyyy'}}</td>
-							<td>{{a.rateTaxDeduct}}</td>
+							<td>{{a.educationCess}}</td>
+							<td>{{a.totalTds}}</td>
+							<td>{{a.totalTaxDeposited}}</td>
 							<td>{{a.remarks}}</td>
-							<td>{{a.certificateNo}}</td>
+							<td>{{a.certificateNumber}}</td>
+							<td>{{a.errorDescription}}</td>
 							<td>{{a.warningDescription}}</td>
-							<td>{{a.shortDeduct}}</td>
-							<td>{{a.interestOnShtDeduct}}</td>
-							<td>{{a.interestOnLatePay}}</td>
-							<td>{{a.interestOnLateDeduct}}</td>
+							<td>{{a.shortDeduction}}</td>
+							<td>{{a.interestOnShortDeduction}}</td>
+							<td>{{a.interestOnLatePayment}}</td>
+							<td>{{a.interestOnLateDeduction}}</td>
 							<td>{{a.fy}}</td>
 							<td>{{a.quarter}}</td>
 

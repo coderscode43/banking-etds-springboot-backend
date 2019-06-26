@@ -22,32 +22,32 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy= GenerationType.AUTO, generator="native")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
-	public Long id;	
+	public Long id;
 	@Column(name = "clientId")
 	public Long clientId;
 	@Column(name = "deducteeSrNo")
-	public Long deducteeSrNo;	
+	public Long deducteeSrNo;
 	@Column(name = "srNoInChallan")
-	public Long srNoInChallan;	
+	public Long srNoInChallan;
 	@Column(name = "deducteeRefNo")
-	public Long deducteeRefNo;	
+	public Long deducteeRefNo;
 	@Column(name = "deducteeCode")
-	public String deducteeCode;	
+	public String deducteeCode;
 	@Column(name = "pan")
-	public String pan;		
+	public String pan;
 	@Column(name = "name")
-	public String name;	
+	public String name;
 	@Column(name = "sectionCode")
-	public String sectionCode;	
+	public String sectionCode;
 	@Column(name = "dateOfPayment")
-	public Date dateOfPayment;	
+	public Date dateOfPayment;
 	@Column(name = "amountPaid")
-	public Double amountPaid;	
+	public Double amountPaid;
 	@Column(name = "tds")
-	public Double tds;		
+	public Double tds;
 	@Column(name = "surcharge")
 	public Double surcharge;
 	@Column(name = "educationCess")
@@ -62,6 +62,8 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	public Double rateAtWhichTaxDeducted;
 	@Column(name = "reasonForNonDeduction")
 	public String reasonForNonDeduction;
+	@Column(name = "grossingUpIndicator")
+	public String grossingUpIndicator;
 	@Column(name = "noOfCertificateUnderSection")
 	public Long noOfCertificateUnderSection;
 	@Column(name = "uniqueAcknowledgeNo")
@@ -77,7 +79,7 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	@Column(name = "taxIdentificationNo")
 	public Long taxIdentificationNo;
 	@Column(name = "errorDescription")
-	public String errorDescription;	
+	public String errorDescription;
 	@Column(name = "warningDescription")
 	public String warningDescription;
 	@Column(name = "shortDeduction")

@@ -36,5 +36,5 @@ public class BankAccDetail extends CommonModelAbstract {
 	@Column(name = "acType")
 	private String acType;
 	@Column(name = "micrNo")
-	private String micr;
+	private String micrNo;
 }

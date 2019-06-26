@@ -52,31 +52,11 @@ public class Employee extends CommonModelAbstract{
 	@Column(name = "email2")
 	public String email2;
 	
-	@Column(name = "currentAddress1")
-	public String currentAddress1;
-	@Column(name = "currentAddress2")
-	public String currentAddress2;
-	@Column(name = "currentAddress3")
-	public String currentAddress3;
+	@Column(name = "curAddrId")
+	public Long curAddrId;
+	@Column(name = "perAddrId")
+	public Long perAddrId;
 	
-	@Column(name = "currentcity")
-	public String currentcity;
-	@Column(name = "currentState")
-	public String currentState;
-	@Column(name = "currentPincode")
-	public String currentPincode;
-	@Column(name = "permenentAddress1")
-	public String permenentAddress1;
-	@Column(name = "permenentAddress2")
-	public String permenentAddress2;
-	@Column(name = "permenentAddress3")
-	public String permenentAddress3;
-	@Column(name = "permanentCity")
-	public String permanentCity;
-	@Column(name = "permanentState")
-	public String permanentState;
-	@Column(name = "permanentPincode")
-	public String permanentPincode;
 	
 	@Column(name = "bankId")
 	public Long bankId;

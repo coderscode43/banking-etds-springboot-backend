@@ -1,5 +1,7 @@
 package domain.in.rjsa.service;
 
-public interface Regular26QDeducteeService {
+import domain.in.rjsa.model.form.Regular26QDeductee;
+
+public interface Regular26QDeducteeService extends ServiceInterface<Long,Regular26QDeductee> {
 
 }

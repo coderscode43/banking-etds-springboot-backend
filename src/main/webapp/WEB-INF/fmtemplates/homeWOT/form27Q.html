@@ -1,0 +1,226 @@
+<style>
+ 
+ 
+    @media only screen and (max-width: 1000px) {
+        .one{
+            display: none;
+          
+        }
+    }
+    
+ @media only screen and (max-width: 1000px) {
+        .two{
+         
+            padding:8px;
+        }
+    }
+        
+   @media only screen and (min-width:600px) {
+            #three{
+                display: none;
+                max-height: 0;
+                overflow: hidden;
+            }
+        }
+        
+       @media only screen and (min-width:1000px) {
+            #search{
+             
+             margin-left:45%;
+             margin-top:2px;
+             display:none;
+            }
+        }
+        
+            @media only screen and (max-width: 1000px) {
+      #hide{
+            display: none;
+          
+        }
+    }
+     .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background-color: whitesmoke;
+}
+@media (min-width: 768px) {
+  .collapse.dont-collapse-sm {
+    display: block;
+    height: auto !important;
+    visibility: visible;
+  }
+}
+ 
+ </style>
+
+
+
+
+<div id="page-wrapper">
+	<div class="container-fluid">
+<div class="col-md-12 " style="padding-left: 0px;font-size: 12pxp; margin-top:2%">
+	<div class="heading">Form 27Q</div>
+	
+
+
+	</div>
+		
+	  <br>
+	      <button class="btn btn-primary hidden visible-xs" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+             Search 
+          </button>
+          
+  <div class="collapse dont-collapse-sm" id="collapseExample2"> 
+	  <div class="row">
+	   <div class="form-group">
+	  
+	  
+	<div class="col-md-2">							
+            <h6><b>Financial Year</b></h6>
+           <select>
+  <option value="volvo">2018</option>
+  <option value="saab">Saab</option>
+  <option value="mercedes">Mercedes</option>
+  <option value="audi">Audi</option>
+</select> 
+      </div>
+      
+     	<div class="col-md-2">	
+           <h6><b>Quarter</b><h6>
+           <input type="text" ng-model="cCctr.search.fromDocumentNumber" class="form-control" placeholder="Quarter" style="width:70%">
+       </div>
+      
+   </div>
+            
+           
+	       </div>	
+	      		
+	             <div class="row" id="hide" >
+	         	  <div class="col-md-3"  style="margin-left:85%;margin-top:-70px">	
+	                          <button ng-click="cCctr.searchEntities(true,'invoice')"
+									class="btn btn-success" >Search</button>
+									<button type="button" class="btn btn-primary">Add</button>
+	                 </div>					
+  </div>
+  
+   <div class="row"  >
+	         	  <div class="col-md-3" id="search">	
+	                          <button ng-click="cCctr.searchEntities(true,'invoice')"
+									class="btn btn-success">Search</button>
+								<button type="button" class="btn btn-primary">Add</button>	
+	                 </div>					
+  </div>
+  </div>
+ </div>
+
+ 
+ 					<div class="row">
+						<div class="table-responsive">
+
+							<table class="  table-bordered table-hover table-striped" role="table"
+								style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+
+
+								<thead>
+
+								
+									
+									
+								<colgroup>
+									<col span="14" style="background-color: #ffffff">
+								</colgroup>
+							 <tr>
+							  <thead role="rowgroup">
+    <tr role="row" style="height:40px;background-color:#81b7db">
+      <th width="10%">Sr. No.</th>
+      <th width="10%">Deductee Sr.No.</th>
+        <th width="10%" >Sr No. in challan</th>
+         <th width="10%" >Deductee Ref. No </th>
+      <th width="10%"> Deductee Code</th>
+        <th width="10%"> Pan</th>
+      <th width="10%"> Name</th>
+        <th width="10%"> Section Code </th>
+      <th width="10%" >Date of Payment </th>
+      <th width="10%">Paid Amount</th>
+      <th width="10%">TDS</th>
+      <th width="10%">Surcharge</th>
+      <th width="10%">Education Cess</th>
+      <th width="10%">Total Tax Deducted</th>
+      <th width="10%">Total Tax Deposited</th>
+      <th width="10%">Date of Deduction| date:'dd-MM-yyyy'</th>
+        <th width="10%">Rate at which tax Deducted</th>
+          <th width="10%">Reason for non Deduction</th>
+            <th width="10%">No of certificate under section</th>
+              <th width="10%">Unique Knowledge No.</th>
+                <th width="10%">Country</th>
+      <th width="10%">Email</th>
+        <th width="10%">Contact no</th>
+          <th width="10%">Address</th>
+            <th width="10%">TIN</th>
+              <th width="10%">Error</th>
+                <th width="10%">Warning</th>
+                  <th width="10%">short Deduction</th>
+                    <th width="10%">Interest on short Deduction</th>
+                     <th width="10%">Interest on Late Payment</th>
+        <th width="10%">Interest on Late Deduction </th>
+            <th width="10%">FY</th>
+                <th width="10%">Quarter</th>
+                <th></th>
+     
+     
+    </tr>
+  </thead>
+								<tbody>
+									<tr role="row" ng-repeat="a in cCctr.getEntityListData() track by a.id">
+										<td role="cell" class="one" style="padding:5px">{{$index+1}}</td>
+											<td>{{a.deducteeSrNo}}</td>
+											<td>{{a.srNoInChallan}}</td>
+												<td>{{a.deducteeRefNo}}</td>
+											<td>{{a.deducteeCode}}</td>
+												<td>{{a.pan}}</td>
+													<td>{{a.name}}</td>
+													<td>{{a.sectionCode}}</td>
+											<td>{{a.dateOfPayment | date:'dd-MM-yyyy'}}</td>
+											<td>{{a.amountPaid}}</td>
+											<td>{{a.tds}}</td>
+											<td>{{a.surcharge}}</td>
+											<td>{{a.educationCess}}</td>
+												<td>{{a.totalTaxDeducted}}</td>
+													<td>{{a.totalTaxDeposited}}</td>
+													<td>{{a.dateOfDeduction| date:'dd-MM-yyyy'}}</td>
+													<td>{{a.rateAtWhichTaxDeducted}}</td>
+													<td>{{a.reasonForNonDeduction}}</td>
+													<td>{{a.noOfCertificateUnderSection}}</td>
+														<td>{{a.uniqueAcknowledgeNo}}</td>
+														<td>{{a.countryOfResidence}}</td>
+															<td>{{a.emailId}}</td>
+																<td>{{a.contactNoOfDeductee}}</td>
+																<td>{{a.addressOfDeductee}}</td>
+																<td>{{a.taxIdentificationNo}}</td>
+																<td>{{a.errorDescription}}</td>
+																<td>{{a.warningDescription}}</td>
+																<td>{{a.shortDeduction}}</td>
+																<td>{{a.interestOnShortDeduction}}</td>
+																<td>{{a.interestOnLatePayment}}</td>
+																<td>{{a.interestOnLateDeduction}}</td>
+																<td>{{a.fy}}</td>
+																	<td>{{a.quarter}}</td>
+																	<td><a ng-click="cCctr.gotoHomePageWOT(a.id,'homeWOT')" style="color:blue">Work On This</a></td>
+																
+															
+										<!-- <td>{{a.total-a.amountPaid}}</td> -->
+										
+									</tr>
+								
+								</tbody>
+							</table>
+							</div>
+						
+					
+ 
+ 
+ 
+ 
+	
+ 
+
+</div>
+</div>

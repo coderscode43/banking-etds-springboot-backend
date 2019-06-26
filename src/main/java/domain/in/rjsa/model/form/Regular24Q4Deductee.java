@@ -16,7 +16,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "regular24Q4Deductee")
-public class Regular24Q4Deductee {
+public class Regular24Q4Deductee extends CommonModelAbstract  {
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO, generator="native")
 	@GenericGenerator(name = "native", strategy = "native")

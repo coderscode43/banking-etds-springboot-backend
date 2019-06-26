@@ -19,5 +19,10 @@ public class AddressServiceImpl extends AbstractService<Long, Address, AddressDa
 			// TODO Auto-generated method stub
 			return dao;
 		}
+		@Override
+		public Address getByKey(Long addressId) {
+			// TODO Auto-generated method stub
+			return dao.getByKey(addressId);
+		}
 
 }

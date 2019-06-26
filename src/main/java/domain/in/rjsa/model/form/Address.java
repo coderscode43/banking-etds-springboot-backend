@@ -34,4 +34,6 @@ public class Address extends CommonModelAbstract{
 	public String state;
 	@Column(name = "pincode")
 	public String pincode;
+	
+	
 }

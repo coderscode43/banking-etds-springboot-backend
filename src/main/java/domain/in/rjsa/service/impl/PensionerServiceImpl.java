@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.PensionerDao;
 import domain.in.rjsa.model.form.Pensioner;
+import domain.in.rjsa.model.form.Vendor;
 import domain.in.rjsa.service.AbstractService;
 import domain.in.rjsa.service.PensionerService;
 
@@ -18,6 +19,11 @@ PensionerDao dao;
 	public PensionerDao getPrimaryDao() {
 		// TODO Auto-generated method stub
 		return dao;
+	}
+	@Override
+	public Pensioner getByKey(Long id) {
+		// TODO Auto-generated method stub
+		return dao.getByKey(id);
 	}
 
 }

@@ -170,6 +170,7 @@
        <th width="10%">Permanent City</th>
        <th width="10%">Permanent State</th>
        <th width="10%">Permanent Pincode</th>
+         <th width="10%">Action</th>
       </tr>
   </thead>
 								<tbody>
@@ -203,7 +204,9 @@
 											<td>{{a.permanentCity}}</td>
 											<td>{{a.permanentState}}</td>
 											<td>{{a.permanentPincode}}</td>
-																						
+											<td><a
+							                ng-click="cCctr.gotoDetailPage('employee',a.id,'detailemployee');"><font
+								          color="blue" style="font-size: 13px">Detail</font></a></td>											
 										<!-- <td>{{a.total-a.amountPaid}}</td> -->
 										
 									</tr>

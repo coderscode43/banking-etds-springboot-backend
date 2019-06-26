@@ -44,7 +44,4 @@ public class Vendor extends CommonModelAbstract{
 	public String contPerName;
 	@Column(name = "bankId")
 	public Long bankId;	
-	
-	
-	
   }

@@ -19,4 +19,9 @@ EmployeeDao dao;
 		// TODO Auto-generated method stub
 		return dao;
 	}
+	@Override
+	public Employee getByKey(Long id) {
+		// TODO Auto-generated method stub
+		return dao.getByKey(id);
+	}
 	}

@@ -109,12 +109,12 @@
 								<tbody>
 									<tr role="row" ng-repeat="a in cCctr.getEntityListData() track by a.id">
 										<td role="cell" class="one" style="padding:5px">{{$index+1}}</td>
-											<td>{{}}</td>
-											<td>{{}}</td>
-											<td>{{}}</td>
-											<td>{{}}</td>
-											<td>{{}}</td>
-											<td>{{}}</td>
+											<td>{{a.form}}</td>
+											<td>{{a.quarter}}</td>
+											<td>{{a.fy}}</td>
+											<td>{{a.dor | date:'dd-MM-yyyy'}}</td>
+											<td>{{a.status}}</td>
+											<td>{{a.remark}}</td>
 									</tr>								
 								</tbody>
 							</table>

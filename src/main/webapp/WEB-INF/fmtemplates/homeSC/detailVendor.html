@@ -175,6 +175,8 @@
 				data-toggle="tab">LDC Details</a></li>
 				<li ><a data-target="#bankDtls"
 				data-toggle="tab">Bank Account Detail</a></li>
+				<li ><a data-target="#vendorPaymentDtls"
+				data-toggle="tab">Vendor Payment</a></li>
 				<li ><a data-target="#paymentDtls"
 				data-toggle="tab">Payment Detail</a></li>
 
@@ -344,9 +346,85 @@
 			
 			</div>
 			
+						<div class="tab-pane " id="vendorPaymentDtls">
+
+				<div class="table-responsive">
+
+					<table class="  table-bordered table-hover table-striped"
+						role="table"
+						style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+						<thead>
+						<colgroup>
+							<col span="14" style="background-color: #ffffff">
+						</colgroup>
+						<tr>
+						<thead role="rowgroup">
+							<tr role="row" style="height: 40px; background-color: #81b7db">
+								<th >Sr. No.</th>
+								<th >Invoice Date</th>
+								<th >Payment Done</th>
+								<th >Payment Date</th>
+								<th >Payment Mode</th>
+								<th >Invoice Number</th>
+								<th >Total Invoice Value</th>
+								<th >Taxable Value</th>
+								<th >CGST</th>
+								<th >SGST</th>
+								<th >IGST</th>
+								<th >Cess</th>
+								<th >Income Tax TDS</th>
+								<th >GST TDS</th>
+								<th >Nature of Payment</th>
+								<th >Net Amount Paid</th>								
+								<th >BGL Code</th>
+								<th >Our GST</th>
+								
+							</tr>
+							
+						</thead>
+						<tbody>
+							<tr role="row"
+								ng-repeat="a in cCctr.entity.vldcs track by a.id">
+								<td role="cell" class="one" style=" padding: 5px">{{$index+1}}</td>
+								<td>{{a.invoiceDate}}</td>
+								<td>{{a.paymentDone}}</td>
+								<td>{{a.paymentDate}}</td>
+								<td>{{a.paymentMode}}</td>
+								<td>{{a.invoiceNumber}}</td>
+								<td>{{a.totalInvoiceValue}}</td>
+								<td>{{a.taxableValue}}</td>
+								<td>{{a.cgst}}</td>
+								<td>{{a.sgst}}</td>
+								<td>{{a.igst}}</td>
+								<td>{{a.cess}}</td>
+								<td>{{a.incomeTaxTds}}</td>
+								<td>{{a.gstTds}}</td>
+								<td>{{a.natureOfPayment}}</td>
+								<td>{{a.netAmountPaid}}</td>
+								<td>{{a.bglCode}}</td>
+								<td>{{a.ourGst}}</td>
+							
+								<!-- <td>{{a.total-a.amountPaid}}</td> -->
+
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
 			
 			
 			
+			<div class="tab-pane " id="paymentDtls">
+						<hr>
+              <div class="panel panel-default"
+				style="margin-top: -2%; border: none !important;">
+				<div class="panel-body">
+										
+					
+				</div>
+			</div>
+
+			</div>
 			
 
 		</div>

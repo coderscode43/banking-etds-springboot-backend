@@ -22,14 +22,14 @@ public class Vendor extends CommonModelAbstract{
 	public Long id;		
 	@Column(name = "clientId")
 	public Long clientId;
+	@Column(name = "addressId")
+	public Long addressId;	
 	@Column(name = "vendorNo")
 	public String vendorNo;
 	@Column(name = "vendorName")
-	public String vendorName;
-	
+	public String vendorName;	
 	@Column(name = "pan")
-	public String pan;
-	
+	public String pan;	
 	@Column(name = "gstNo")
 	public String gstNo;
 	@Column(name = "resiStatus")
@@ -40,23 +40,8 @@ public class Vendor extends CommonModelAbstract{
 	public String mobNo;
 	@Column(name = "email")
 	public String email;
-	
-	
-	@Column(name = "address1")
-	public String address1;
-	@Column(name = "address2")
-	public String address2;
-	@Column(name = "address3")
-	public String address3;
-	@Column(name = "city")
-	public String city;
-	@Column(name = "state")
-	public String state;
-	@Column(name = "pincode")
-	public String pincode;
 	@Column(name = "contPerName")
 	public String contPerName;
-
 	@Column(name = "bankId")
 	public Long bankId;	
 	

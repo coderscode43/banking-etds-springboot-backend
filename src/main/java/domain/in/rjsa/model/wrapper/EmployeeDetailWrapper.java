@@ -1,18 +1,14 @@
 package domain.in.rjsa.model.wrapper;
 
-import java.util.List;
-
 import domain.in.rjsa.model.form.Address;
 import domain.in.rjsa.model.form.BankAccDetail;
 import domain.in.rjsa.model.form.Employee;
-import domain.in.rjsa.model.form.Vendor;
-import domain.in.rjsa.model.form.VendorLDC;
 import lombok.Data;
 @Data
-public class VendorDetailWrapper {
-	public Vendor vendor;
-	public List<VendorLDC> vldcs;
+public class EmployeeDetailWrapper {
 	public BankAccDetail bank;
-	public Address address;
+	public Address paddress;
+	public Address taddress;
+	public Employee employee;
 	
 }

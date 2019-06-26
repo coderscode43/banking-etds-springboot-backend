@@ -44,39 +44,7 @@
 		Label the data
     You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
 		*/
-	td:nth-of-type(1):before {
-		content: "Sr. No.";
-	}
-	td:nth-of-type(2):before {
-		content: "Employee Code";
-	}
-	td:nth-of-type(3):before {
-		content: "Name";
-	}
-	td:nth-of-type(4):before {
-		content: "PAN";
-	}
-	td:nth-of-type(5):before {
-		content: "Designation";
-	}
-	td:nth-of-type(6):before {
-		content: "Email";
-	}
-	td:nth-of-type(7):before {
-		content: "Mobile";
-	}
-	td:nth-of-type(8):before {
-		content: "Address";
-	}
-	td:nth-of-type(9):before {
-		content: "Branch";
-	}
-	td:nth-of-type(10):before {
-		content: "Group Code";
-	}
-	td:nth-of-type(11):before {
-		content: "Action";
-	}
+	
 }
 
 @media only screen and (max-width: 1000px) {
@@ -136,7 +104,7 @@
 		<div ng-show="cCctr.show != true">
 
 			<div class="row">
-				<h3 class="page-header" style="margin-top: 2%;">Details of Vendor</h3>
+				<h3 class="page-header" style="margin-top: 2%;">Details of Employee</h3>
 			</div>
 
 			<div class="panel panel-default"
@@ -144,10 +112,10 @@
 				<div class="panel-body">
 					<div class="row" style="font-size: 13px;">
 						<div class="col-md-3">
-							<label>vendorNo &nbsp;:</label> {{cCctr.entity.vendor.vendorNo}}
+							<label>Employee No &nbsp;:</label> {{cCctr.entity.employee.employeeNo}}
 						</div>
 						<div class="col-md-3">
-							<label>Vendor Name &nbsp;:</label> {{cCctr.entity.vendor.vendorName}}
+							<label>Employee Name &nbsp;:</label> {{cCctr.entity.employee.name}}
 						</div>
 
 					</div>
@@ -167,12 +135,11 @@
 
 
 		<ul class="nav nav-tabs">
-		<li ><a data-target="#vendorDtls"
-				data-toggle="tab">Vendor Details</a></li>
+		<li ><a data-target="#empDtls"
+				data-toggle="tab">Employee Details</a></li>
 				<li ><a data-target="#addrDtls"
 				data-toggle="tab">Address Details</a></li>
-			<li ><a data-target="#ldcDtls"
-				data-toggle="tab">LDC Details</a></li>
+			
 				<li ><a data-target="#bankDtls"
 				data-toggle="tab">Bank Account Detail</a></li>
 				<li ><a data-target="#paymentDtls"
@@ -184,23 +151,23 @@
 		
 				<div class="tab-content ">
 				
-			<div class="tab-pane active" id="vendorDtls">
+			<div class="tab-pane active" id="empDtls">
 			<hr>
               <div class="panel panel-default"
 				style="margin-top: -2%; border: none !important;">
 				<div class="panel-body">
 					<div class="row" style="font-size: 13px;">
 						<div class="col-md-3">
-							<label>PAN &nbsp;:</label> {{cCctr.entity.vendor.pan}}
+							<label>Father Name &nbsp;:</label> {{cCctr.entity.employee.fatherName}}
 						</div>
 						<div class="col-md-3">
-							<label>GST No &nbsp;:</label> {{cCctr.entity.vendor.gstNo}}
+							<label>PAN &nbsp;:</label> {{cCctr.entity.employee.pan}}
 						</div>
 						<div class="col-md-3">
-							<label>Residential Status &nbsp;:</label> {{cCctr.entity.vendor.resiStatus}}
+							<label>DOB &nbsp;:</label> {{cCctr.entity.employee.dob}}
 						</div>
 						<div class="col-md-3">
-							<label>Tel No &nbsp;:</label> {{cCctr.entity.vendor.telNo}}
+							<label>DOJ &nbsp;:</label> {{cCctr.entity.employee.doj}}
 						</div>
 						
 						
@@ -209,15 +176,28 @@
 					<br>
 					<div class="row" style="font-size: 13px;">
 						<div class="col-md-3">
-							<label>Mobile No &nbsp;:</label> {{cCctr.entity.vendor.mobNo}}
+							<label>Designation &nbsp;:</label> {{cCctr.entity.employee.designation}}
 						</div>
 						<div class="col-md-3">
-							<label>Email &nbsp;:</label> {{cCctr.entity.vendor.email}}
+							<label>Current Office &nbsp;:</label> {{cCctr.entity.employee.currentOffice}}
+						</div>
+						<div class="col-md-3">
+							<label>Employee Grade &nbsp;:</label> {{cCctr.entity.employee.empGrade}}
+						</div>
+						<div class="col-md-3">
+							<label>Mobile1 &nbsp;:</label> {{cCctr.entity.employee.mobile1}}
+						</div>
+								</div>
+						<br>		
+						<div class="row" style="font-size: 13px;">
+						<div class="col-md-3">
+							<label>Mobile2 &nbsp;:</label> {{cCctr.entity.employee.mobile2}}
+						</div>
+						<div class="col-md-3">
+							<label>Email1 &nbsp;:</label> {{cCctr.entity.employee.email2}}
 						</div>
 						
-						
-
-					</div>
+								</div>		
 					
 					<br>
 					
@@ -264,51 +244,7 @@
 			
 			
 			
-						<div class="tab-pane " id="ldcDtls">
-
-				<div class="table-responsive">
-
-					<table class="  table-bordered table-hover table-striped"
-						role="table"
-						style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
-						<thead>
-						<colgroup>
-							<col span="14" style="background-color: #ffffff">
-						</colgroup>
-						<tr>
-						<thead role="rowgroup">
-							<tr role="row" style="height: 40px; background-color: #81b7db">
-								<th >Sr. No.</th>
-								<th >Lower Deduction</th>
-								<th >Certificate No</th>
-								<th >Valid From</th>
-								<th >Valid To</th>
-								<th >Certificate Limit</th>
-								<th >Certificate Nature</th>
-								<th >Action</th>
-								
-							</tr>
-							
-						</thead>
-						<tbody>
-							<tr role="row"
-								ng-repeat="a in cCctr.entity.vldcs track by a.id">
-								<td role="cell" class="one" style=" padding: 5px">{{$index+1}}</td>
-								<td>{{a.lowerDeduction}}</td>
-								<td>{{a.cerNo}}</td>
-								<td>{{a.validFrom}}</td>
-								<td>{{a.validTo}}</td>
-								<td>{{a.cerLimit}}</td>
-								<td>{{a.cerNature}}</td>
-								<td><a ng-click="cCctr.gotoHomePageWOT(1,a.id,'homeWOT')"
-									style="color: blue">Update</a></td>
-								<!-- <td>{{a.total-a.amountPaid}}</td> -->
-
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
+						
 			
 			<div class="tab-pane" id="bankDtls">
 			<hr>

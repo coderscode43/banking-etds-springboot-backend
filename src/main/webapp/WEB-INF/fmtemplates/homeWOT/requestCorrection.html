@@ -11,7 +11,7 @@
 	      <div class="row">
 	         <div class="form-group">
 	  
-	                 <div class="col-md-3">							
+	                 <div class="col-md-2">							
                    <h6><b>Financial year</b></h6>
                    <select ng-model="cCctr.search.pan" class="form-control">
                    <option value="abcd132">abcd132</option>
@@ -20,7 +20,7 @@
                    </select> 
                 </div>
 	                 
-	                 <div class="col-md-3">							
+	                 <div class="col-md-2">							
                    <h6><b>Quarter</b></h6>
                    <select ng-model="cCctr.search.pan" class="form-control">
                    <option value="abcd132">abcd132</option>
@@ -29,7 +29,7 @@
                    </select> 
                 </div>
                      
-	                 <div class="col-md-3">							
+	                 <div class="col-md-2">							
                    <h6><b>Form</b></h6>
                    <select ng-model="cCctr.search.pan" class="form-control">
                    <option value="abcd132">abcd132</option>
@@ -37,21 +37,28 @@
                    <option value="xyz123">xyz123</option>
                    </select> 
                 </div>
-                       <div class="col-md-3">	
-                    <h6><b>Status</b><h6>
-                     <input type="text"ng-model="" class="form-control" placeholder="Status">
-				</div>
-      
-            </div>
-          </div>	
-	     
-	      		
-	             <div class="row" id="hide" >
-	         	     <div class="col-md-3"  style="margin-left:85%">	
+                 <div class="col-md-2">							
+                   <h6><b>Status</b></h6>
+                   <select ng-model="cCctr.search.pan" class="form-control">
+                   <option value="abcd132">abcd132</option>
+                   <option value="pqr123">pqr123</option>
+                   <option value="xyz123">xyz123</option>
+                   </select> 
+                </div>
+                
+                
+	             
+	         	     <div class="col-md-4" id="hide" style=" margin-top:-3%;margin-left:80%">	
 	                          <button ng-click=""
 							  class="btn btn-success" >Search</button>
 	                 </div>					
-  				</div>
+  				
+                    
+      
+            </div>
+          </div>	 
+	     
+	      		
   
              <div class="row" id="search" >
 	         	  <div class="col-md-3" id="search">	
@@ -65,6 +72,19 @@
  
  
  <br>
+ 
+  <div class="row" id="search">
+	         	  <div class="col-md-12" id="hide">	
+	                    <button ng-click=""
+					      class="btn btn-success">Search</button>
+	              </div>					
+              </div>
+  <div class="row">
+	         	  <div  style="float:right">	
+	                    <button ng-click=""
+					      class="btn btn-Primary">Add</button>
+	              </div>					
+              </div>
  <div class="table-responsive">
 
 							<table class="  table-bordered table-hover table-striped" role="table"
@@ -77,29 +97,24 @@
 							  <thead role="rowgroup">
 							      <tr role="row" style="height:40px;background-color:#81b7db">
 							      <th width="10%">Sr. No.</th>
-							      <th width="10%">User</th>
-							      <th width="10%">Date</th>
-							      <th width="10%" >FY</th>
-							      <th width="10%">TAN</th>
-							      <th width="10%" >Form</th>
+							      <th width="10%">Form</th>
 							      <th width="10%">Quarter</th>
-							      <th width="10%">Time</th>
-							      <th width="10%">Action</th>
+							      <th width="10%" >Financial Year</th>
+							      <th width="10%">Date Of Request</th>
+							      <th width="10%" >Status</th>
+							      <th width="10%">Remark</th>
+							     
                                   </tr>
                                </thead>
 								<tbody>
 									<tr role="row" ng-repeat="a in cCctr.getEntityListData() track by a.id">
 										<td role="cell" class="one" style="padding:5px">{{$index+1}}</td>
 											<td>{{}}</td>
-											<td style="text-align:center">{{a.date | date:'dd-MM-yyyy'}}</td>
 											<td>{{}}</td>
 											<td>{{}}</td>
 											<td>{{}}</td>
 											<td>{{}}</td>
 											<td>{{}}</td>
-											<td><a ng-click="cCctr.gotoHomePageWOT(cCctr.clientId,a.id,'homeWOT')" style="color:blue">Work On This</a></td>
-										<!-- <td>{{a.total-a.amountPaid}}</td> -->
-										
 									</tr>								
 								</tbody>
 							</table>

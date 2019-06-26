@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import domain.in.rjsa.model.form.Address;
 import domain.in.rjsa.model.form.BankAccDetail;
 import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.form.Pensioner;
@@ -55,6 +56,8 @@ ApplicationCache applicationCache;
 			ew.setPaddress(aService.getByKey(pensioner.paddrId));
 		}else {
 			ew.setBank(new BankAccDetail());
+			ew.setCaddress(new Address());
+			ew.setPaddress(new Address());
 		}
 		
 		return ew;

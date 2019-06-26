@@ -15,7 +15,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "vendorpayment")
+@Table(name = "vendorPayment")
 public class VendorPayment extends CommonModelAbstract{
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO, generator="native")
@@ -47,7 +47,7 @@ public class VendorPayment extends CommonModelAbstract{
 	@Column(name = "igst")
 	public Double igst;
 	@Column(name = "cess")
-	public String Double;
+	public String cess;
 	@Column(name = "incomeTaxTds")
 	public Double incomeTaxTds;
 	@Column(name = "gstTds")

@@ -52,6 +52,9 @@ public class Pensioner extends CommonModelAbstract{
 	@Column(name = "bankName")
 	public String bankName;
 	
+	
+	@Column(name = "caddrId")
+	public Long caddrId;	
 	@Column(name = "currentAddress1")
 	public String currentAddress1;
 	@Column(name = "currentAddress2")
@@ -65,6 +68,9 @@ public class Pensioner extends CommonModelAbstract{
 	public String currentState;
 	@Column(name = "currentPincode")
 	public String currentPincode;
+	
+	@Column(name = "paddrId")
+	public Long paddrId;
 	@Column(name = "permenentAddress1")
 	public String permenentAddress1;
 	@Column(name = "permenentAddress2")
@@ -77,6 +83,9 @@ public class Pensioner extends CommonModelAbstract{
 	public String permanentState;
 	@Column(name = "permanentPincode")
 	public String permanentPincode;
+	@Column(name = "bankId")
+	public Long bankId;	
+	
 	
 	
 }

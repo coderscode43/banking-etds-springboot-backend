@@ -71,18 +71,18 @@
 	 	  <div class="row">
 	   <div class="form-group">
 	   <div class="col-md-3">	
-                <h6><b>Employee No</b><h6>
-                  <input type="text"ng-model="cCctr.search.toDocumentNumber" class="form-control" placeholder="Employee No" style="width:70%">
+                <h6><b>Pension No</b><h6>
+                  <input type="text"ng-model="cCctr.search.pensionNo" class="form-control" placeholder="Pension No" style="width:70%">
 								</div>
 	  <div class="col-md-3">	
                 <h6><b>Name</b><h6>
-                  <input type="text"ng-model="cCctr.search.toDocumentNumber" class="form-control" placeholder="Name" style="width:70%">
+                  <input type="text"ng-model="cCctr.search.name" class="form-control" placeholder="Name" style="width:70%">
 								</div>
 	  
 	  
 	    <div class="col-md-3">	
                 <h6><b>PAN</b><h6>
-                  <input type="text"ng-model="cCctr.search.toDocumentNumber" class="form-control" placeholder="PAN" style="width:70%">
+                  <input type="text"ng-model="cCctr.search.pan" class="form-control" placeholder="PAN" style="width:70%">
 								</div>     
    </div>
   	       </div>
@@ -90,38 +90,45 @@
   	        <div class="row">
 	   <div class="form-group">
 	   <div class="col-md-3">	
-                <h6><b>Designation</b><h6>
-                  <input type="text"ng-model="cCctr.search.toDocumentNumber" class="form-control" placeholder="Designation" style="width:70%">
+                <h6><b>Employee Grade</b><h6>
+                  <input type="text"ng-model="cCctr.search.empGrade" class="form-control" placeholder="Employee Grade" style="width:70%">
 								</div>
 	  <div class="col-md-3">	
                 <h6><b>Email</b><h6>
-                  <input type="text"ng-model="cCctr.search.toDocumentNumber" class="form-control" placeholder="Email" style="width:70%">
+                  <input type="text"ng-model="cCctr.search.email1" class="form-control" placeholder="Email" style="width:70%">
 								</div>
 	  
 	  
 	    <div class="col-md-3">	
                 <h6><b>Mobile</b><h6>
-                  <input type="text"ng-model="cCctr.search.toDocumentNumber" class="form-control" placeholder="Mobile" style="width:70%">
+                  <input type="text"ng-model="cCctr.search.mobile1" class="form-control" placeholder="Mobile" style="width:70%">
 								</div>     
    </div>
   	       </div>	
 	      		
 	             <div class="row" id="hide" >
 	         	  <div class="col-md-3"  style="margin-left:85%;margin-top:-70px">	
-	                          <button ng-click="cCctr.searchEntities(true,'invoice')"
+	                          <button ng-click="cCctr.searchEntities(true,'pensioner')"
 									class="btn btn-success" >Search</button>
-	                 </div>					
+	                 </div>	
+	                				
   </div>
   
    <div class="row" id="search" >
 	         	  <div class="col-md-3" id="search">	
-	                          <button ng-click="cCctr.searchEntities(true,'invoice')"
+	                          <button ng-click="cCctr.searchEntities(true,'pensioner')"
 									class="btn btn-success">Search</button>
 	                 </div>					
   </div>
   </div>
  </div>
-
+<div class="row">
+	 <div class="col-xs-12">
+		<div class="text-right">
+	          <button class="btn btn-primary" data-toggle="modal" ng-click="cCctr.gotoListPage('addPensioner','addPensioner');" >Add</button>
+		</div>
+	 </div>
+    </div>
  
  					<div class="row">
 						<div class="table-responsive">
@@ -155,18 +162,8 @@
      <th width="10%" >Bank Account Number</th>
      <th width="10%" >IFC Code</th>
      <th width="10%" >Bank Name</th>
-     <th width="10%" >Current Address1</th>
-     <th width="10%" >Current Address2</th>
-     <th width="10%" >Current Address3</th>
-     <th width="10%" >Current City</th>
-     <th width="10%" >Current State</th>
-     <th width="10%" >Current Pincode</th>
-     <th width="10%" >Permenent Address1</th>
-     <th width="10%" >Permenent Address2</th>
-     <th width="10%" >Permenent Address3</th>
-     <th width="10%" >Permanent City</th>
-     <th width="10%" >Permanent State</th>
-      <th width="10%" >Permanent Pincode</th>
+     <th width="10%">Action</th>    
+      
     
      
      
@@ -188,18 +185,9 @@
 											<td>{{a.bankAccNo}}</td>
 											<td>{{a.ifcCode}}</td>
 											<td>{{a.bankName}}</td>
-											<td>{{a.currentAddress1}}</td>
-											<td>{{a.currentAddress2}}</td>
-											<td>{{a.currentAddress3}}</td>
-											<td>{{a.currentcity}}</td>
-											<td>{{a.currentState}}</td>
-											<td>{{a.currentPincode}}</td>
-											<td>{{a.permenentAddress1}}</td>
-											<td>{{a.permenentAddress2}}</td>
-											<td>{{a.permenentAddress3}}</td>
-											<td>{{a.permanentCity}}</td>
-											<td>{{a.permanentState}}</td>
-											<td>{{a.permanentPincode}}</td>				
+											<td><a
+							                ng-click="cCctr.gotoDetailPage('pensioner',a.id,'detailpensioner');"><font
+								          color="blue" style="font-size: 13px">Detail</font></a></td>			
 										<!-- <td>{{a.total-a.amountPaid}}</td> -->
 										
 									</tr>

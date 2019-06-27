@@ -70,16 +70,26 @@
 	  
 	    <div class="col-md-3">	
                 <h6><b>User</b><h6>
-                  <input type="text" ng-model="cCctr.search.name" class="form-control" placeholder="User" style="width:100%">
+                  <input type="text" ng-model="cCctr.search.user" class="form-control" placeholder="User" style="width:100%">
 								</div>
 	  <div class="col-md-3">							
-            <h6><b>Action</b></h6>
-         <input type="text" ng-model="cCctr.search.name" class="form-control" placeholder="Action" style="width:100%">
+            <h6><b>Quarter</b></h6>
+            <select ng-model="cCctr.search.quarter" class="form-control">
+                   <option value="Q1">Q1</option>
+                   <option value="Q2">Q2</option>
+                   <option value="Q3">Q3</option>
+                   <option value="Q4">Q4</option>
+                   </select> 
       </div>
       
      	<div class="col-md-3">	
            <h6><b>TAN</b><h6>
-           <input type="text" ng-model="cCctr.search.email" class="form-control" placeholder="TAN" style="width:100%">
+            <select ng-model="cCctr.search.tan" class="form-control">
+                   <option value="NGPA06860A">NGPA06860A</option>
+                   <option value="MUML04603E">MUML04603E</option>
+                   <option value="MUML05817A">MUML05817A</option>
+                   </select> 
+          
        </div>
       
    </div>
@@ -91,29 +101,35 @@
 	  
 	    <div class="col-md-3">	
                 <h6><b>Form</b><h6>
-                  <input type="text"ng-model="cCctr.search.branch" class="form-control" placeholder="Form" style="width:100%">
+                 <select ng-model="cCctr.search.form" class="form-control">
+                   <option value="24Q">24Q</option>
+                   <option value="26Q">26Q</option>
+                   <option value="27Q">27Q</option>
+                   <option value="27EQ">27EQ</option>
+                   </select> 
+                  
 								</div>
 	<div class="col-md-3">							
-            <h6><b>FY</b></h6>
-           <select ng-model="cCctr.search.pan"style="width:100%">
-  <option value="abcd132">abcd132</option>
-  <option value="pqr123">pqr123</option>
-  <option value="xyz123">xyz123</option>
-</select> 
+            <h6><b>Financial Year</b></h6>
+           <select ng-model="cCctr.search.fy" class="form-control">
+                   <option value="201819">201819</option>
+                   <option value="201718">201718</option>
+                   <option value="201617">201617</option>
+                   </select>
       </div>
    </div>
  </div>
 	      		
 	             <div class="row" id="hide" >
 	         	  <div class="col-md-3"  style="margin-left:85%;margin-top:-70px">	
-	                          <button ng-click="cCctr.searchEntities(true,'branch')"
+	                          <button ng-click="cCctr.searchEntities(true,'logs')"
 									class="btn btn-success" >Search</button>
 	                 </div>					
   				</div>
   
              <div class="row" id="search" >
 	         	  <div class="col-md-3" id="search">	
-	                <button ng-click="cCctr.searchEntities(true,'branch')"
+	                <button ng-click="cCctr.searchEntities(true,'logs')"
 					class="btn btn-success">Search</button>
 	                 </div>					
               </div>

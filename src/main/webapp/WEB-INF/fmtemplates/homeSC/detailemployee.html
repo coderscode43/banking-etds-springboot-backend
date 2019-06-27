@@ -1,0 +1,349 @@
+
+<style>
+/*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+@media only screen and (max-width: 760px) , ( min-device-width : 768px)
+	and (max-device-width: 1024px) {
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr {
+		display: block;
+	}
+
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	tr {
+		margin: 0 0 1rem 0;
+	}
+	tr:nth-child(odd) {
+		background: #ccc;
+	}
+	td {
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee;
+		position: relative;
+		padding-left: 50%;
+	}
+	td:before {
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 0;
+		left: 6px;
+		width: 45%;
+		padding-right: 10px;
+		white-space: nowrap;
+	}
+
+	/*
+		Label the data
+    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+		*/
+	
+}
+
+@media only screen and (max-width: 1000px) {
+	.one {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.two {
+		padding: 8px;
+	}
+}
+
+@media only screen and (min-width:600px) {
+	#three {
+		display: none;
+		max-height: 0;
+		overflow: hidden;
+	}
+}
+
+@media only screen and (min-width:1000px) {
+	#search {
+		margin-left: 45%;
+		margin-top: 2px;
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	#hide {
+		display: none;
+	}
+}
+
+.table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
+	{
+	background-color: whitesmoke;
+}
+
+@media ( min-width : 768px) {
+	.collapse.dont-collapse-sm {
+		display: block;
+		height: auto !important;
+		visibility: visible;
+	}
+}
+</style>
+
+
+
+
+<div id="page-wrapper" ng-init="cCctr.entity=cCctr.getEntityData();">
+	<div class="container-fluid">
+
+		<div ng-show="cCctr.show != true">
+
+			<div class="row">
+				<h3 class="page-header" style="margin-top: 2%;">Details of Employee</h3>
+			</div>
+
+			<div class="panel panel-default"
+				style="margin-top: -2%; border: none !important;">
+				<div class="panel-body">
+					<div class="row" style="font-size: 13px;">
+						<div class="col-md-3">
+							<label>Employee No &nbsp;:</label> {{cCctr.entity.employee.employeeNo}}
+						</div>
+						<div class="col-md-3">
+							<label>Employee Name &nbsp;:</label> {{cCctr.entity.employee.name}}
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+
+
+
+
+	</div>
+	<div class="row">
+
+
+
+		<ul class="nav nav-tabs">
+		<li ><a data-target="#empDtls"
+				data-toggle="tab">Employee Details</a></li>
+				<li ><a data-target="#addrDtls"
+				data-toggle="tab">Address Details</a></li>
+			
+				<li ><a data-target="#bankDtls"
+				data-toggle="tab">Bank Account Detail</a></li>
+				<li ><a data-target="#paymentDtls"
+				data-toggle="tab">Payment Detail</a></li>
+
+		</ul>
+		<br>
+		
+		
+				<div class="tab-content ">
+				
+			<div class="tab-pane active" id="empDtls">
+			<hr>
+              <div class="panel panel-default"
+				style="margin-top: -5%; border: none !important;">
+				<div class="panel-body">
+				<b> Employee Details</b>
+				<br><br>
+					<div class="row" style="font-size: 13px;">
+						<div class="col-md-3">
+							<label>Father Name &nbsp;:</label> {{cCctr.entity.employee.fatherName}}
+						</div>
+						<div class="col-md-3">
+							<label>PAN &nbsp;:</label> {{cCctr.entity.employee.pan}}
+						</div>
+						<div class="col-md-3">
+							<label>DOB &nbsp;:</label> {{cCctr.entity.employee.dob}}
+						</div>
+						<div class="col-md-3">
+							<label>DOJ &nbsp;:</label> {{cCctr.entity.employee.doj}}
+						</div>
+						
+						
+
+					</div>
+					<br>
+					<div class="row" style="font-size: 13px;">
+						<div class="col-md-3">
+							<label>Designation &nbsp;:</label> {{cCctr.entity.employee.designation}}
+						</div>
+						<div class="col-md-3">
+							<label>Current Office &nbsp;:</label> {{cCctr.entity.employee.currentOffice}}
+						</div>
+						<div class="col-md-3">
+							<label>Employee Grade &nbsp;:</label> {{cCctr.entity.employee.empGrade}}
+						</div>
+						<div class="col-md-3">
+							<label>Mobile1 &nbsp;:</label> {{cCctr.entity.employee.mobile1}}
+						</div>
+								</div>
+						<br>		
+						<div class="row" style="font-size: 13px;">
+						<div class="col-md-3">
+							<label>Mobile2 &nbsp;:</label> {{cCctr.entity.employee.mobile2}}
+						</div>
+						<div class="col-md-3">
+							<label>Email1 &nbsp;:</label> {{cCctr.entity.employee.email2}}
+						</div>
+						
+								</div>		
+					
+					<br>
+					
+					
+				</div>
+			</div>
+			
+			</div>
+			
+			
+						<div class="tab-pane" id="addrDtls">
+			<hr>
+              <div class="panel panel-default"
+				style="margin-top: -5%; border: none !important;">
+				<div class="panel-body">
+			<b>	Permanent Address</b>
+					<br><br>
+					<div class="row" style="font-size: 13px;">
+						<div class="col-md-4">
+							<label>Address1 &nbsp;:</label> {{cCctr.entity.paddress.address1}}
+						</div>
+						<div class="col-md-4">
+							<label>Address2 &nbsp;:</label> {{cCctr.entity.paddress.address2}}
+						</div>
+						<div class="col-md-4">
+							<label>Address2 &nbsp;:</label> {{cCctr.entity.paddress.address3}}
+						</div>
+					</div>
+					<br>
+					<div class="row" style="font-size: 13px;">
+						<div class="col-md-4">
+							<label>City &nbsp;:</label> {{cCctr.entity.paddress.city}}
+						</div>
+						<div class="col-md-4">
+							<label>State &nbsp;:</label> {{cCctr.entity.paddress.state}}
+						</div>
+						<div class="col-md-4">
+							<label>Pincode &nbsp;:</label> {{cCctr.entity.paddress.pincode}}
+						</div>
+						</div>	
+						<br>				
+				<b>	Current Address</b>
+						<br><br>
+						<div class="row" style="font-size: 13px;">
+						<div class="col-md-4">
+							<label>Address1 &nbsp;:</label> {{cCctr.entity.taddress.address1}}
+						</div>
+						<div class="col-md-4">
+							<label>Address2 &nbsp;:</label> {{cCctr.entity.taddress.address2}}
+						</div>
+						<div class="col-md-4">
+							<label>Address3 &nbsp;:</label> {{cCctr.address.taddress.address3}}
+						</div>
+					</div>
+					<br>
+					<div class="row" style="font-size: 13px;">
+						<div class="col-md-4">
+							<label>City &nbsp;:</label> {{cCctr.entity.taddress.city}}
+						</div>
+						<div class="col-md-4">
+							<label>State &nbsp;:</label> {{cCctr.entity.taddress.state}}
+						</div>
+						<div class="col-md-4">
+							<label>Pincode &nbsp;:</label> {{cCctr.entity.taddress.pincode}}
+						</div>
+						</div>	
+				</div>
+			</div>
+			
+			</div>
+			
+			
+			
+						
+			
+			<div class="tab-pane" id="bankDtls">
+			<hr>
+              <div class="panel panel-default"
+				style="margin-top: -5%; border: none !important;">
+				<div class="panel-body">
+				<b>Bank Details</b>
+				<br><br>
+					<div class="row" style="font-size: 13px;">
+						<div class="col-md-4">
+							<label>Bank Name &nbsp;:</label> {{cCctr.entity.bank.bankName}}
+						</div>
+						<div class="col-md-4">
+							<label>Account No &nbsp;:</label> {{cCctr.entity.bank.acNo}}
+						</div>
+						<div class="col-md-4">
+							<label>Branch &nbsp;:</label> {{cCctr.entity.bank.branch}}
+						</div>
+					</div>
+					<br>
+					<div class="row" style="font-size: 13px;">
+						<div class="col-md-4">
+							<label>IFSC &nbsp;:</label> {{cCctr.entity.bank.ifsc}}
+						</div>
+						<div class="col-md-4">
+							<label>Account Type &nbsp;:</label> {{cCctr.entity.bank.acType}}
+						</div>
+						<div class="col-md-4">
+							<label>MICR &nbsp;:</label> {{cCctr.entity.bank.micrNo}}
+						</div>
+						</div>					
+					<br>
+				</div>
+			</div>
+			
+			</div>
+			<div class="tab-pane" id="paymentDtls">
+				<hr>
+			     <div class="panel panel-default"
+				style="margin-top: -2%; border: none !important;">
+				<div class="panel-body">
+					
+				
+						
+				</div>
+			</div>
+			</div>
+			
+			
+			
+			
+			
+
+		</div>
+		
+		
+		
+		
+
+		
+
+
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+

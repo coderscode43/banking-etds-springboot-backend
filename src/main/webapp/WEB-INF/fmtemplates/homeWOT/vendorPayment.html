@@ -1,7 +1,7 @@
  <div class="container-fluid">
       <div class="col-md-12 " style="padding-left: 0px;font-size: 12pxp; margin-top:2%" >
 	      <div class="heading">
-	    Request Correction
+	    Vendor Payment
 	     </div>
 	  </div> <br>
 	         <button class="btn btn-primary hidden visible-xs" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample" >
@@ -11,49 +11,30 @@
 	      <div class="row">
 	         <div class="form-group">
 	  
-	                 <div class="col-md-2">							
-                   <h6><b>Form</b></h6>
-                   <select ng-model="cCctr.search.form" class="form-control">
-                   <option value=""></option>
-                   <option value="24Q">24Q</option>
-                   <option value="26Q">26Q</option>
-                   <option value="27Q">27Q</option>
-                   <option value="27EQ">27EQ</option>
+	                 <div class="col-md-3">							
+                   <h6><b>Invoice Number</b></h6>
+                   <select ng-model="cCctr.search.invoiceNumber" class="form-control">
+                   <option value="gchmn">gchmn</option>
+                   <option value="pqr123">pqr123</option>
+                   <option value="xyz123">xyz123</option>
                    </select> 
                 </div>
 	                 
-	                 <div class="col-md-2">							
-                   <h6><b>Quarter</b></h6>
-                   <select ng-model="cCctr.search.quarter" class="form-control">
-                   <option value=""></option>
-                   <option value="Q1">Q1</option>
-                   <option value="Q2">Q2</option>
-                   <option value="Q3">Q3</option>
-                   <option value="Q4">Q4</option>
-                   </select> 
+	                 <div class="col-md-3">							
+                   <h6><b>From Date</b></h6>
+                   <input type="date" class="form-control" style="padding-top:0px;" ng-model="cCctr.search.fromDate" placeholder="From Date">
                 </div>
                      
-	                 <div class="col-md-2">							
-                   <h6><b>Financial Year</b></h6>
-                   <select ng-model="cCctr.search.fy" class="form-control">
-                   <option value=""></option>
-                   <option value="2018-19">2018-19</option>
-                   <option value="2017-18">2017-18</option>
-                   <option value="2016-17">2016-17</option>
-                   </select> 
+	                 <div class="col-md-3">							
+                   <h6><b>To Date</b></h6>
+                    <input type="date" class="form-control" style="padding-top:0px;" ng-model="cCctr.search.toDate" placeholder="To Date">
                 </div>
-                 <div class="col-md-2">							
-                   <h6><b>Status</b></h6>
-                   <select ng-model="cCctr.search.status" class="form-control">
-                   <option value=""></option>
-                   <option value="FVU Generated">FVU Generated</option>
-                   </select> 
-                </div>
+             
                 
                 
 	             
 	         	     <div class="col-md-4" id="hide" style=" margin-top:-3%;margin-left:80%">	
-	                          <button ng-click="cCctr.searchEntities(true,'requestCorrection')"
+	                          <button ng-click="cCctr.searchEntities(true,'vendorPayment')"
 							  class="btn btn-success" >Search</button>
 	                 </div>					
   				
@@ -66,7 +47,7 @@
   
              <div class="row" id="search" >
 	         	  <div class="col-md-3" id="search">	
-	                    <button ng-click="cCctr.searchEntities(true,'requestCorrection')"
+	                    <button ng-click="cCctr.searchEntities(true,'vendorPayment')"
 					      class="btn btn-success">Search</button>
 	              </div>					
               </div>
@@ -79,14 +60,13 @@
  
   <div class="row" id="search">
 	         	  <div class="col-md-12" id="hide">	
-	                    <button ng-click="cCctr.searchEntities(true,'requestCorrection')"
+	                    <button ng-click=""
 					      class="btn btn-success">Search</button>
 	              </div>					
               </div>
   <div class="row">
 	         	  <div  style="float:right">	
-	                    <button ng-click="cCctr.gotoListPage('addrequestCorrection','addrequestCorrection');"
-					      class="btn btn-Primary">Add</button>
+	                    <button class="btn btn-Primary" data-toggle="modal" ng-click="cCctr.gotoListPage('addVendorPayment','addVendorPayment');">Add</button>
 	              </div>					
               </div>
  <div class="table-responsive">
@@ -101,67 +81,55 @@
 							  <thead role="rowgroup">
 							      <tr role="row" style="height:40px;background-color:#81b7db">
 							      <th width="10%">Sr. No.</th>
-							      <th width="10%">Form</th>
-							      <th width="10%">Quarter</th>
-							      <th width="10%" >Financial Year</th>
-							      <th width="10%">Date Of Request</th>
-							      <th width="10%" >Status</th>
-							      <th width="10%">Remark</th>
+							      <th width="10%">Invoice Date</th>
+							      <th width="10%">Payment Done</th>
+							      <th width="10%" >Payment Date</th>
+							      <th width="10%">Payment Mode</th>
+							      <th width="10%" >Invoice Number</th>
+							      <th width="10%">Total Invoice Value</th>
+							      <th width="10%">Taxable Value</th>
+							      <th width="10%">CGST</th>
+							      <th width="10%">SGST</th>
+							      <th width="10%">IGST</th>
+							      <th width="10%">CESS</th>
+							      <th width="10%">Income Tax TDS</th>
+							      <th width="10%">GST TDS</th>
+							      <th width="10%">Nature Of Payment</th>
+							      <th width="10%">Net Amount Paid</th>
+							      <th width="10%">BGL Code</th>
+							      <th width="10%">Our GST</th>
+							     
+							         
 							     
                                   </tr>
                                </thead>
 								<tbody>
 									<tr role="row" ng-repeat="a in cCctr.getEntityListData() track by a.id">
 										<td role="cell" class="one" style="padding:5px">{{$index+1}}</td>
-											<td>{{a.form}}</td>
-											<td>{{a.quarter}}</td>
-											<td>{{a.fy}}</td>
-											<td>{{a.dor | date:'dd-MM-yyyy'}}</td>
-											<td>{{a.status}}</td>
-											<td>{{a.remark}}</td>
+											<td>{{a.invoiceDate | date:'dd-MM-yyyy'}}</td>
+											<td>{{a.paymentDone}}</td>
+											<td>{{a.paymentDate | date:'dd-MM-yyyy'}}</td>
+											<td>{{a.paymentMode}}</td>
+											<td>{{a.invoiceNumber}}</td>
+											<td>{{a.totalInvoiceValue}}</td>
+											<td>{{a.taxableValue}}</td>
+											<td>{{a.cgst}}</td>
+											<td>{{a.sgst}}</td>
+											<td>{{a.igst}}</td>
+											<td>{{a.cess}}</td>
+											<td>{{a.incomeTaxTds}}</td>
+											<td>{{a.gstTds}}</td>				
+											<td>{{a.natureOfPayment}}</td>
+											<td>{{a.netAmountPaid}}</td>							
+											<td>{{a.bglCode}}</td>
+											<td>{{a.ourGst}}</td>
+									
 									</tr>								
 								</tbody>
 							</table>
 							</div>
 					
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+  
  <style>
  
  

@@ -1,5 +1,6 @@
 package domain.in.rjsa.controller;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -7,13 +8,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import domain.in.rjsa.model.form.Address;
 import domain.in.rjsa.model.form.BankAccDetail;
+import domain.in.rjsa.model.form.Branch;
 import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.form.Vendor;
 import domain.in.rjsa.model.form.VendorLDC;
+import domain.in.rjsa.model.form.VendorPayment;
+import domain.in.rjsa.model.form.Zone;
 import domain.in.rjsa.model.wrapper.VendorDetailWrapper;
+import domain.in.rjsa.service.AddressService;
 import domain.in.rjsa.service.BankAccDetailService;
 import domain.in.rjsa.service.VendorLDCService;
+import domain.in.rjsa.service.VendorPaymentService;
 import domain.in.rjsa.service.VendorService;
 import domain.in.rjsa.web.ApplicationCache;
 
@@ -25,7 +32,12 @@ public class VendorController extends AbstractController<Long, Vendor, VendorSer
 	@Autowired
 	VendorLDCService vldcservice;
 	@Autowired
+	VendorPaymentService vpservice;
+	@Autowired
 	BankAccDetailService bService;
+	@Autowired
+	AddressService aService;
+	
 	@Autowired
 	ApplicationCache applicationCache;
 	
@@ -46,19 +58,25 @@ public class VendorController extends AbstractController<Long, Vendor, VendorSer
 		// TODO Auto-generated method stub
 		VendorDetailWrapper ew = new VendorDetailWrapper();
 		Login l = applicationCache.getLoginDetail(getPrincipal());
-       
+		Branch b=applicationCache.getBranch(id);
 		LinkedHashMap<String, Object> constrains = new LinkedHashMap<>();
 		constrains.put("clientId", l.getClientId());
 		constrains.put("vendorId", id);
-		List<VendorLDC> v = vldcservice.search(constrains);
-		
+		List<VendorLDC> v = vldcservice.search(constrains);		
 		ew.setVldcs(v);
+		constrains.remove("vendorId");
+		constrains.put("branchId", b.getId());
+		List<VendorPayment> vendorPay = vpservice.search(constrains);		
+		ew.setVpList(vendorPay);
+		
 		Vendor vendor = service.getByKey(id);
 		ew.setVendor(vendor);
-		if(vendor.getBankId()!=null) {
+		if(vendor.getBankId()!=null || vendor.getAddressId()!=null) {
 			ew.setBank(bService.getByKey(vendor.getBankId()));
+			ew.setAddress(aService.getByKey(vendor.getAddressId()));
 		}else {
 			ew.setBank(new BankAccDetail());
+			ew.setAddress(new Address());
 		}
 		
 		

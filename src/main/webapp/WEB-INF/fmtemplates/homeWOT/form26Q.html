@@ -54,7 +54,7 @@
 	<div class="container-fluid">
 		<div class="col-md-12 "
 			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
-			<div class="heading">Form 26Q</div>
+			<div class="heading">Form 26Q Deductee Details</div>
 
 
 
@@ -75,11 +75,12 @@
 						<h6>
 							<b>Financial Year</b>
 						</h6>
-						<select class="form-control">
-							<option value="volvo">2018</option>
-							<option value="saab">Saab</option>
-							<option value="mercedes">Mercedes</option>
-							<option value="audi">Audi</option>
+						<select class="form-control"  ng-model="cCctr.search.fy" >
+						<option value="" ng-selected=true>Year</option>
+							<option value="201918">201918</option>
+							<option value="201817">201817</option>
+							<option value="201716">201716</option>
+							<option value="201615">201615</option>
 						</select>
 					</div>
 
@@ -87,28 +88,59 @@
 						<h6>
 							<b>Quarter</b>
 							<h6>
-								<input type="text" ng-model="cCctr.search.fromDocumentNumber"
-									class="form-control" placeholder="Quarter" style="width: 70%">
+							<select class="form-control"   ng-model="cCctr.search.quarter" >
+							<option value="" ng-selected=true>Quarter</option>
+							<option value="Q1">Q1</option>
+							<option value="Q2">Q2</option>
+							<option value="Q3">Q3</option>
+							<option value="Q4">Q4</option>
+							</select>
+							
+					</div>
+					
+					<div class="col-md-2">
+						<h6>
+							<b>Pan</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.deducteePan" 
+									class="form-control" placeholder="Pan" style="width: 100%">
+					</div>
+					
+					<div class="col-md-2">
+						<h6>
+							<b>Name</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.deducteeName" 
+									class="form-control" placeholder="Name" style="width: 100%">
+					</div>
+					
+					<div class="col-md-2">
+						<h6>
+							<b>Date Of Payment</b>
+							<h6>
+								 <input type="date" ng-model="cCctr.search.paymentDate" 
+									class="form-control" placeholder="Date" style="width: 100%">
+									
 					</div>
 
-
 				</div>
-
 
 			</div>
 
 			<div class="row" id="hide">
-				<div class="col-md-3" style="margin-left: 85%; margin-top: -70px">
-					<button ng-click="cCctr.searchEntities(true,'invoice')"
-						class="btn btn-success">Search</button>
-					<button type="button" class="btn btn-primary">Add</button>
-				</div>
-
+				<div class="col-md-3" style="margin-left: 90%; margin-top: -70px">
+					<button ng-click="cCctr.searchEntities(true,'form26Q')"
+						 class="btn btn-success">Search</button>
+						 </div> 
+					 <div class="modal-header" style="margin-left: 94%; margin-bottom: -20px" >
+					   	  <button type="button" class="btn btn-primary">Add</button>
+				 </div>
+			
 				<div class="row">
 					<div class="col-md-3" id="search">
-						<button ng-click="cCctr.searchEntities(true,'invoice')"
+						<button ng-click="cCctr.searchEntities(true,'form26Q')"
 							class="btn btn-success">Search</button>
-						<button type="button" class="btn btn-primary">Add</button>
+						<button type="button" class="btn btn-primary">Add</button> 	
 					</div>
 				</div>
 			</div>
@@ -164,10 +196,10 @@
 						<tr role="row"
 							ng-repeat="a in cCctr.getEntityListData() track by a.id">
 							<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
-
 							<td>{{a.challanSrNo}}</td>
 							<td>{{a.deducteeRefNo}}</td>
 							<td>{{a.deducteeCode}}</td>
+							
 							<td>{{a.deducteePan}}</td>
 							<td>{{a.deducteeName}}</td>
 							<td>{{a.sectionCode}}</td>
@@ -201,14 +233,6 @@
 					</tbody>
 				</table>
 			</div>
-
-
-
-
-
-
-
-
 
 		</div>
 	</div>

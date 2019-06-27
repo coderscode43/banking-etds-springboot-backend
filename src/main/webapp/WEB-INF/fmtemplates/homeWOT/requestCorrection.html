@@ -12,44 +12,48 @@
 	         <div class="form-group">
 	  
 	                 <div class="col-md-2">							
-                   <h6><b>Financial year</b></h6>
-                   <select ng-model="cCctr.search.pan" class="form-control">
-                   <option value="abcd132">abcd132</option>
-                   <option value="pqr123">pqr123</option>
-                   <option value="xyz123">xyz123</option>
+                   <h6><b>Form</b></h6>
+                   <select ng-model="cCctr.search.form" class="form-control">
+                   <option value=""></option>
+                   <option value="24Q">24Q</option>
+                   <option value="26Q">26Q</option>
+                   <option value="27Q">27Q</option>
+                   <option value="27EQ">27EQ</option>
                    </select> 
                 </div>
 	                 
 	                 <div class="col-md-2">							
                    <h6><b>Quarter</b></h6>
-                   <select ng-model="cCctr.search.pan" class="form-control">
-                   <option value="abcd132">abcd132</option>
-                   <option value="pqr123">pqr123</option>
-                   <option value="xyz123">xyz123</option>
+                   <select ng-model="cCctr.search.quarter" class="form-control">
+                   <option value=""></option>
+                   <option value="Q1">Q1</option>
+                   <option value="Q2">Q2</option>
+                   <option value="Q3">Q3</option>
+                   <option value="Q4">Q4</option>
                    </select> 
                 </div>
                      
 	                 <div class="col-md-2">							
-                   <h6><b>Form</b></h6>
-                   <select ng-model="cCctr.search.pan" class="form-control">
-                   <option value="abcd132">abcd132</option>
-                   <option value="pqr123">pqr123</option>
-                   <option value="xyz123">xyz123</option>
+                   <h6><b>Financial Year</b></h6>
+                   <select ng-model="cCctr.search.fy" class="form-control">
+                   <option value=""></option>
+                   <option value="2018-19">2018-19</option>
+                   <option value="2017-18">2017-18</option>
+                   <option value="2016-17">2016-17</option>
                    </select> 
                 </div>
                  <div class="col-md-2">							
                    <h6><b>Status</b></h6>
-                   <select ng-model="cCctr.search.pan" class="form-control">
-                   <option value="abcd132">abcd132</option>
-                   <option value="pqr123">pqr123</option>
-                   <option value="xyz123">xyz123</option>
+                   <select ng-model="cCctr.search.status" class="form-control">
+                   <option value=""></option>
+                   <option value="FVU Generated">FVU Generated</option>
                    </select> 
                 </div>
                 
                 
 	             
 	         	     <div class="col-md-4" id="hide" style=" margin-top:-3%;margin-left:80%">	
-	                          <button ng-click=""
+	                          <button ng-click="cCctr.searchEntities(true,'requestCorrection')"
 							  class="btn btn-success" >Search</button>
 	                 </div>					
   				
@@ -62,7 +66,7 @@
   
              <div class="row" id="search" >
 	         	  <div class="col-md-3" id="search">	
-	                    <button ng-click=""
+	                    <button ng-click="cCctr.searchEntities(true,'requestCorrection')"
 					      class="btn btn-success">Search</button>
 	              </div>					
               </div>
@@ -75,7 +79,7 @@
  
   <div class="row" id="search">
 	         	  <div class="col-md-12" id="hide">	
-	                    <button ng-click=""
+	                    <button ng-click="cCctr.searchEntities(true,'requestCorrection')"
 					      class="btn btn-success">Search</button>
 	              </div>					
               </div>

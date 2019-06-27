@@ -71,40 +71,67 @@
 	  <div class="row">
 	   <div class="form-group">
 	  
-	    <div class="col-md-3">	
+	     <div class="col-md-2">	
                 <h6><b>TAN</b><h6>
-                  <input type="text"ng-model="cCctr.search.toDocumentNumber" class="form-control" placeholder="TAN" style="width:70%">
+                <input type="text" ng-model="cCctr.search.TAN" class="form-control" placeholder="TAN"style="width:100%">
 								</div>
+                 
 	<div class="col-md-2">							
             <h6><b>Financial Year</b></h6>
-           <select>
-  <option value="volvo">2018</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-</select> 
-      </div>
+             <select ng-model="cCctr.search.FY" class="form-control">
+              <option value="201920">201920</option>
+                   <option value="201819">201819</option>
+                   <option value="201718">201718</option>
+                   <option value="201617">201617</option>
+                    <option value="201516">201516</option>
+                     <option value="201415">201415</option> 
+                     <option value="201314">201314</option>
+                      <option value="201213">201213</option>
+                       <option value="201112">201112</option> 
+                       <option value="201011">201011</option>
+                        <option value="200910">200910</option>
+                         <option value="200809">200809</option>
+                         <option value="200708">200708</option>
+                   </select> 
+           </div>
+     
       
      	<div class="col-md-2">	
            <h6><b>Quarter</b><h6>
-           <input type="text" ng-model="cCctr.search.fromDocumentNumber" class="form-control" placeholder="Quarter" style="width:70%">
-       </div>
+            <select ng-model="cCctr.search.QUARTER" class="form-control">
+                   <option value="Q1">Q1</option>
+                   <option value="Q2">Q2</option>
+                   <option value="Q3">Q3</option>
+                   <option value="Q4">Q4</option>
+                   </select> 
+              </div>
+          
+     
       
+      <div class="col-md-2">	
+           <h6><b>Form</b><h6>
+             <select ng-model="cCctr.search.FORM" class="form-control">
+                   <option value="24Q">24Q</option>
+                   <option value="26Q">26Q</option>
+                   <option value="27Q">27Q</option>
+                   <option value="27EQ">27EQ</option>
+                   </select> 
+              </div>
    </div>
             
            
 	       </div>	
 	      		
 	             <div class="row" id="hide" >
-	         	  <div class="col-md-3"  style="margin-left:85%;margin-top:-70px">	
-	                          <button ng-click="cCctr.searchEntities(true,'invoice')"
+	         	  <div class="col-md-3"  style="margin-left:85%;margin-top:-50px">	
+	                          <button ng-click="cCctr.searchEntities(true,'tokenNumber')"
 									class="btn btn-success" >Search</button>
 	                 </div>					
   </div>
   
    <div class="row" id="search" >
 	         	  <div class="col-md-3" id="search">	
-	                          <button ng-click="cCctr.searchEntities(true,'invoice')"
+	                          <button ng-click="cCctr.searchEntities(true,'tokenNumber')"
 									class="btn btn-success">Search</button>
 	                 </div>					
   </div>

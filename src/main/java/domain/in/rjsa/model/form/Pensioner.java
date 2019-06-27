@@ -40,7 +40,6 @@ public class Pensioner extends CommonModelAbstract{
 	public String mobile1;
 	@Column(name = "mobile2")
 	public String mobile2;
-	
 	@Column(name = "email1")
 	public String email1;
 	@Column(name = "email2")

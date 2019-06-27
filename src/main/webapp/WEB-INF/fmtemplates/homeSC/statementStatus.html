@@ -54,60 +54,64 @@
 
 
 
-<div id="page-wrapper">
+
 	<div class="container-fluid">
-<div class="col-md-12 " style="padding-left: 0px;font-size: 12pxp; margin-top:2%">
+    <div class="col-md-12 " style="padding-left: 0px;font-size: 12pxp; margin-top:2%" >
 	<div class="heading">Statement Status</div>
-	
-
-
 	</div>
 		
 	  <br>
-	      <button class="btn btn-primary hidden visible-xs" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+	      <button class="btn btn-primary hidden visible-xs" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample" >
              Search 
           </button>
-  <div class="collapse dont-collapse-sm" id="collapseExample2"> 
+  <div class="collapse dont-collapse-sm" id="collapseExample2" > 
 	  <div class="row">
 	   <div class="form-group">
 	  
 	    <div class="col-md-3">	
-                <h6><b>PAN</b><h6>
-                  <input type="text"ng-model="cCctr.search.toDocumentNumber" class="form-control" placeholder="PAN" style="width:70%">
+                <h6><b>TAN</b><h6>
+                  <input type="text" ng-model="cCctr.search.TAN" class="form-control" placeholder="Name" style="width:100%">
 								</div>
-	<div class="col-md-2">							
-            <h6><b>Financial Year</b></h6>
-           <select>
-  <option value="volvo">2018</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-</select> 
+	  <div class="col-md-3">							
+            <h6><b>QUARTER</b></h6>
+           <select ng-model="cCctr.search.QUARTER"style="width:100%" class="form-control">
+             <option value="Q4">Q4</option>
+             <option value="pqr">pqr</option>
+             <option value="pqr1">pqr1</option>
+             <option value="pqr2">pqr2</option>
+          </select> 
+      </div>
+      							</div>
+	  <div class="col-md-3">							
+            <h6><b>FY</b></h6>
+           <select ng-model="cCctr.search.FY"style="width:100%" class="form-control">
+             <option value="201516">201516</option>
+             <option value="pqr">pqr</option>
+             <option value="pqr1">pqr1</option>
+             <option value="pqr2">pqr2</option>
+          </select> 
       </div>
       
-     	<div class="col-md-2">	
-           <h6><b>Quarter</b><h6>
-           <input type="text" ng-model="cCctr.search.fromDocumentNumber" class="form-control" placeholder="Quarter" style="width:70%">
-       </div>
-      
+     	
    </div>
             
            
 	       </div>	
+	    
 	      		
 	             <div class="row" id="hide" >
 	         	  <div class="col-md-3"  style="margin-left:85%;margin-top:-70px">	
-	                          <button ng-click="cCctr.searchEntities(true,'invoice')"
+	                          <button ng-click="cCctr.searchEntities(true,'statementStatus')"
 									class="btn btn-success" >Search</button>
 	                 </div>					
-  </div>
+  				</div>
   
-   <div class="row" id="search" >
+             <div class="row" id="search" >
 	         	  <div class="col-md-3" id="search">	
-	                          <button ng-click="cCctr.searchEntities(true,'invoice')"
-									class="btn btn-success">Search</button>
+	                <button ng-click="cCctr.searchEntities(true,'statementStatus')"
+					class="btn btn-success">Search</button>
 	                 </div>					
-  </div>
+              </div>
   </div>
  </div>
 
@@ -169,5 +173,4 @@
 	
  
 
-</div>
 </div>

@@ -88,13 +88,12 @@ public abstract class AbstractTDSDao<PK extends Serializable, T> {
 
 	@SuppressWarnings("unchecked")
 	public List<T> search(HashMap entity) {
-		CriteriaQuery criteria = createEntityCriteria(entity);
-		criteria.distinct(true);
-		List<Order> orders = new ArrayList<Order>();
-		orders.add(Order.desc("id"));
-		criteria.orderBy((orders));
-		Query query = getSession().createQuery(criteria);
-		return query.getResultList();
+		Criteria criteria = createEntityCriteria();
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
+	    Map<String, Object> propertyNameValues = new HashMap<String, Object>(entity);		
+		criteria.addOrder(Order.desc("id"));
+		criteria.add(Restrictions.allEq(propertyNameValues));
+		return (List<T>) criteria.list();
 	}
 
 	@SuppressWarnings("unchecked")

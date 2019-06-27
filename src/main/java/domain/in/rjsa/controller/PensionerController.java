@@ -52,8 +52,8 @@ ApplicationCache applicationCache;
 		ew.setPensioner(pensioner);
 		if(pensioner.getBankId()!=null || pensioner.getCaddrId()!=null || pensioner.getPaddrId()!=null) {
 			ew.setBank(bService.getByKey(pensioner.getBankId()));
-			ew.setCaddress(aService.getByKey(pensioner.caddrId));
-			ew.setPaddress(aService.getByKey(pensioner.paddrId));
+			ew.setPaddress(aService.getByKey(pensioner.getPaddrId()));
+			ew.setCaddress(aService.getByKey(pensioner.getCaddrId()));
 		}else {
 			ew.setBank(new BankAccDetail());
 			ew.setCaddress(new Address());

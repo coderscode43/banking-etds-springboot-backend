@@ -12,9 +12,9 @@
 	         <div class="form-group">
 	  
 	                 <div class="col-md-2">							
-                   <h6><b>Financial year</b></h6>
-                   <select ng-model="cCctr.search.pan" class="form-control">
-                   <option value="abcd132">abcd132</option>
+                   <h6><b>Invoice Number</b></h6>
+                   <select ng-model="cCctr.search.invoiceNumber" class="form-control">
+                   <option value="gchmn">gchmn</option>
                    <option value="pqr123">pqr123</option>
                    <option value="xyz123">xyz123</option>
                    </select> 
@@ -49,7 +49,7 @@
                 
 	             
 	         	     <div class="col-md-4" id="hide" style=" margin-top:-3%;margin-left:80%">	
-	                          <button ng-click=""
+	                          <button ng-click="cCctr.searchEntities(true,'vendorPayment')"
 							  class="btn btn-success" >Search</button>
 	                 </div>					
   				
@@ -62,7 +62,7 @@
   
              <div class="row" id="search" >
 	         	  <div class="col-md-3" id="search">	
-	                    <button ng-click=""
+	                    <button ng-click="cCctr.searchEntities(true,'vendorPayment')"
 					      class="btn btn-success">Search</button>
 	              </div>					
               </div>

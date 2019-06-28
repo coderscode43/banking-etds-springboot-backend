@@ -54,7 +54,7 @@
 	<div class="container-fluid">
 		<div class="col-md-12 "
 			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
-			<div class="heading">Form 24Q</div>
+			<div class="heading">Form 24Q Deductee Detail</div>
 
 
 
@@ -75,21 +75,62 @@
 						<h6>
 							<b>Financial Year</b>
 						</h6>
-						<select>
-							<option value="volvo">2018</option>
-							<option value="saab">Saab</option>
-							<option value="mercedes">Mercedes</option>
-							<option value="audi">Audi</option>
+						<select class="form-control" ng-model="cCctr.search.fy">
+							<option value=" " ng-selected="true">Financial Year</option>
+							<option value="201819">201920</option>
+							<option value="201819">201819</option>
+							<option value="201718">201718</option>
+							<option value="201617">201617</option>
+							<option value="201516">201516</option>
+							<option value="201415">201415</option>
+							<option value="201314">201314</option>
+							<option value="201213">201213</option>
+							<option value="201112">201112</option>
+							<option value="201011">201011</option>
+							<option value="200910">200910</option>
+							<option value="200809">200809</option>
+							<option value="200709">200709</option>
 						</select>
 					</div>
 
 					<div class="col-md-2">
 						<h6>
 							<b>Quarter</b>
+
 							<h6>
-								<input type="text" ng-model="cCctr.search.fromDocumentNumber"
-									class="form-control" placeholder="Quarter" style="width: 70%">
+								<select class="form-control" ng-model="cCctr.search.quarter">
+									<option value=" " ng-selected="true">Quarter</option>
+									<option value="Q1">Q1</option>
+									<option value="Q2">Q2</option>
+									<option value="Q3">Q3</option>
+									<option value="Q4">Q4</option>
+								</select>
 					</div>
+
+					<div class="col-md-2">
+						<h6>
+							<b>Pan</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.pan"
+									class="form-control" placeholder="Pan" style="width: 100%">
+					</div>
+
+					<div class="col-md-2">
+						<h6>
+							<b>From Date of Payment</b>
+							<h6>
+								<input type="date" ng-model="cCctr.search.fromdateOfPayment"
+									class="form-control" placeholder="Date" style="width: 100%">
+					</div>
+					
+					<div class="col-md-2">
+						<h6>
+							<b> To Date of Payment </b>
+							<h6>
+								<input type="date" ng-model="cCctr.search.todateOfPayment"
+									class="form-control" placeholder="Date" style="width: 100%">
+					</div>
+					
 
 
 				</div>
@@ -99,14 +140,14 @@
 
 			<div class="row" id="hide">
 				<div class="col-md-3" style="margin-left: 85%; margin-top: -70px">
-					<button ng-click="cCctr.searchEntities(true,'invoice')"
+					<button ng-click="cCctr.searchEntities(true,'form24Q')"
 						class="btn btn-success">Search</button>
 					<button type="button" class="btn btn-primary">Add</button>
 				</div>
 
 				<div class="row">
 					<div class="col-md-3" id="search">
-						<button ng-click="cCctr.searchEntities(true,'invoice')"
+						<button ng-click="cCctr.searchEntities(true,'form24Q')"
 							class="btn btn-success">Search</button>
 						<button type="button" class="btn btn-primary">Add</button>
 					</div>
@@ -115,10 +156,8 @@
 		</div>
 
 
-		<div class="row" style=" flex: 1;
-            overflow-x: auto;
-                 height:73vh;">
-		
+		<div class="row">
+		<div class="col-md-12" style="margin-left:-30px">
 
 				<table class=" table table-bordered  table-striped">
 
@@ -153,7 +192,7 @@
 							<th >Interest on late Deduction</th>
 							<th >FY</th>
 							<th >Quarter</th>
-							<th></th>
+							<th >Action</th>
 
 						</tr>
 					</thead>
@@ -186,10 +225,9 @@
 							<td>{{a.interestOnLateDeduction}}</td>
 							<td>{{a.fy}}</td>
 							<td>{{a.quarter}}</td>
-
-
 							<td><a ng-click="cCctr.gotoHomePageWOT(a.id,'homeWOT')"
 								style="color: blue">Work On This</a></td>
+
 							<!-- <td>{{a.total-a.amountPaid}}</td> -->
 
 						</tr>

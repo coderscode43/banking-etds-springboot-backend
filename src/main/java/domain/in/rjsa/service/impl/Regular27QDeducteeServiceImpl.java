@@ -3,12 +3,13 @@ package domain.in.rjsa.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.Regular27QDeducteeDao;
 import domain.in.rjsa.model.form.Regular27QDeductee;
 import domain.in.rjsa.service.AbstractService;
 import domain.in.rjsa.service.Regular27QDeducteeService;
-
+@Transactional("transactionManager")
 @Service("regular27QDeducteeService")
 public class Regular27QDeducteeServiceImpl extends AbstractService<Long, Regular27QDeductee, Regular27QDeducteeDao> implements Regular27QDeducteeService{
 

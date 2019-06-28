@@ -16,7 +16,11 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "regular24Q4Salary")
-public class Regular24Q4Salary {
+public class Regular24Q4Salary extends CommonModelAbstract  {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO, generator="native")
 	@GenericGenerator(name = "native", strategy = "native")

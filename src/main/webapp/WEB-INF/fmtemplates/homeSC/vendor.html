@@ -71,24 +71,29 @@
 	  <div class="row">
 	   <div class="form-group">
 	  
-	    <div class="col-md-3">	
+	    <div class="col-md-2">	
                 <h6><b>PAN</b><h6>
-                  <input type="text"ng-model="cCctr.search.toDocumentNumber" class="form-control" placeholder="PAN" style="width:100%">
+                  <input type="text"ng-model="cCctr.search.pan" class="form-control" placeholder="PAN" style="width:100%">
+                 
 								</div>
-	<div class="col-md-3">							
-            <h6><b>Financial Year</b></h6>
-           <select style="width:100%">
-  <option value="volvo">2018</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-</select> 
-      </div>
-      
-     	<div class="col-md-3">	
-           <h6><b>Quarter</b><h6>
-           <input type="text" ng-model="cCctr.search.fromDocumentNumber" class="form-control" placeholder="Quarter" style="width:100%">
+								
+							<div class="col-md-3">	
+           <h6><b>Vendor Name</b><h6>
+           <input type="vendorName" ng-model="cCctr.search.vendorName" class="form-control" placeholder="Vendor Name" style="width:100%">
        </div>
+      
+     
+     	<div class="col-md-2">	
+                <h6><b>GST No</b><h6>
+                  <input type="text"ng-model="cCctr.search.gstNo" class="form-control" placeholder="GST No" style="width:100%">
+                 
+								</div>
+								
+								<div class="col-md-3">	
+                <h6><b>Email</b><h6>
+                  <input type="text"ng-model="cCctr.search.email" class="form-control" placeholder="Email" style="width:100%">
+                 
+								</div>
       
    </div>
             
@@ -96,16 +101,16 @@
 	       </div>	
 	      		
 	             <div class="row" id="hide" >
-	         	  <div class="col-md-3"  style="margin-left:85%;margin-top:-70px">	
-	                          <button ng-click="cCctr.searchEntities(true,'invoice')"
+	         	  <div class="col-md-3"  style="margin-left:85%;margin-top:-50px">	
+	                          <button ng-click="cCctr.searchEntities(true,'vendor')"
 									class="btn btn-success" >Search</button>
 	                 </div>
 	                				
   </div>
   
    <div class="row" id="search" >
-	         	  <div class="col-md-3" id="search">	
-	                          <button ng-click="cCctr.searchEntities(true,'invoice')"
+	         	  <div class="col-md-2" id="search">	
+	                          <button ng-click="cCctr.searchEntities(true,'vendor')"
 									class="btn btn-success">Search</button>
 	                 </div>					
   </div>
@@ -120,7 +125,7 @@
     </div>
  
  					<div class="row">
-						<div class="table-responsive">
+						<!-- <div class="table-responsive"> -->
 
 							<table class="  table-bordered table-hover table-striped" role="table"
 								style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">

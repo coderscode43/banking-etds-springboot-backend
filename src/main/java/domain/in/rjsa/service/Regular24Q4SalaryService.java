@@ -1,5 +1,7 @@
 package domain.in.rjsa.service;
 
-public interface Regular24Q4SalaryService {
+import domain.in.rjsa.model.form.Regular24Q4Salary;
+
+public interface Regular24Q4SalaryService extends ServiceInterface<Long,Regular24Q4Salary> {
 
 }

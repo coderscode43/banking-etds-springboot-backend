@@ -17,10 +17,9 @@
     <!-- FONT AWESOME ICONS  -->
    	<link href="static/css/font-awesome.css" rel="stylesheet" />
 	<link rel="shortcut icon" type="image/x-icon" href="static/img/taxOsmart.ico" />
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	
 </head>
-<body style="width:100%;">
+<body style="width:100%">
 
     
 

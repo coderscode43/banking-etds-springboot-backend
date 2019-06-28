@@ -144,11 +144,21 @@
 				<div class="panel-body">
 					<div class="row" style="font-size: 13px;">
 						<div class="col-md-3">
-							<label>vendorNo &nbsp;:</label> {{cCctr.entity.vendor.vendorNo}}
+							<label>Form &nbsp;:</label> {{cCctr.entity.vendor.vendorNo}}
 						</div>
 						<div class="col-md-3">
-							<label>Vendor Name &nbsp;:</label> {{cCctr.entity.vendor.vendorName}}
+							<label>Quarter &nbsp;:</label> {{cCctr.entity.vendor.vendorName}}
 						</div>
+						<div class="col-md-3">
+							<label>Financial Year &nbsp;:</label> {{cCctr.entity.vendor.vendorName}}
+						</div>
+						<div class="col-md-3">
+							<label>Status &nbsp;:</label> {{cCctr.entity.vendor.vendorName}}
+						</div>
+						<div class="col-md-3">
+							<label>Remark &nbsp;:</label> {{cCctr.entity.vendor.vendorName}}
+						</div>
+						
 
 					</div>
 				</div>
@@ -183,13 +193,13 @@
 		
 				<div class="tab-content ">
 				
-			<div class="tab-pane active" id="vendorDtls">
+			<div class="tab-pane active" id="deductorDtls">
 			<hr>
               <div class="panel panel-default"
 				style="margin-top: -5%; border: none !important;">
 				<div class="panel-body">
 					<div class="row" style="font-size: 13px;">
-					<b>Vendor Detail</b>
+					<b>Deductor Detail</b>
 					<br><br>
 						<div class="col-md-3">
 							<label>PAN &nbsp;:</label> {{cCctr.entity.vendor.pan}}
@@ -229,46 +239,61 @@
 			</div>
 			
 			
-						<div class="tab-pane" id="addrDtls">
-			<hr>
-              <div class="panel panel-default"
-				style="margin-top: -5%; border: none !important;">
-				<div class="panel-body">
-					<b>Address Details</b>
-					<br><br>
-					<div class="row" style="font-size: 13px;">
-				
-						<div class="col-md-4">
-							<label>Address1 &nbsp;:</label> {{cCctr.entity.address.address1}}
-						</div>
-						<div class="col-md-4">
-							<label>Address2 &nbsp;:</label> {{cCctr.entity.address.address2}}
-						</div>
-						<div class="col-md-4">
-							<label>Address3 &nbsp;:</label> {{cCctr.address.vendor.address3}}
-						</div>
-					</div>
-					<br>
-					<div class="row" style="font-size: 13px;">
-						<div class="col-md-4">
-							<label>City &nbsp;:</label> {{cCctr.entity.address.city}}
-						</div>
-						<div class="col-md-4">
-							<label>State &nbsp;:</label> {{cCctr.entity.address.state}}
-						</div>
-						<div class="col-md-4">
-							<label>Pincode &nbsp;:</label> {{cCctr.entity.address.pincode}}
-						</div>
-						</div>					
-					<br>
+						<div class="tab-pane" id="challanDtls">
+				<div class="table-responsive">
+
+					<table class="  table-bordered table-hover table-striped"
+						role="table"
+						style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+						<thead>
+						<colgroup>
+							<col span="14" style="background-color: #ffffff">
+						</colgroup>
+						<tr>
+						<thead role="rowgroup">
+							<tr role="row" style="height: 40px; background-color: #81b7db">
+								<th >Sr. No.</th>
+								<th >CIN</th>
+								<th >TAN</th>
+								<th >AVAILABLE_BALENCE</th>
+								<th >AMOUNT_OF_CLALLAN</th>
+								<th >DATE_OF_DEPOSITION</th>
+								<th >AS_ON_DATE</th>
+								<th >CHALLAN_MISMATCH</th>
+								<th >SECTION</th>
+								<th >MINORHEAD</th>
+																
+							</tr>
+							
+						</thead>
+						<tbody>
+							<tr role="row"
+								ng-repeat="a in cCctr.entity.vpList track by a.id">
+								<td role="cell" class="one" style=" padding: 5px">{{$index+1}}</td>
+								<td>{{a.CIN}}</td>
+								<td>{{a.TAN}}</td>
+								<td>{{a.AVAILABLE_BALENCE}}</td>
+								<td>{{a.AMOUNT_OF_CLALLAN}}</td>
+								<td>{{a.DATE_OF_DEPOSITION}}</td>
+								<td>{{a.AS_ON_DATE}}</td>
+								<td>{{a.CHALLAN_MISMATCH}}</td>
+								<td>{{a.SECTION}}</td>
+								<td>{{a.MINORHEAD}}</td>
+								
+							
+								<!-- <td>{{a.total-a.amountPaid}}</td> -->
+
+							</tr>
+						</tbody>
+					</table>
 				</div>
+			
+			
 			</div>
 			
-			</div>
 			
 			
-			
-						<div class="tab-pane " id="ldcDtls">
+						<div class="tab-pane " id="deducteeDtls">
 
 				<div class="table-responsive">
 
@@ -283,13 +308,20 @@
 						<thead role="rowgroup">
 							<tr role="row" style="height: 40px; background-color: #81b7db">
 								<th >Sr. No.</th>
-								<th >Lower Deduction</th>
-								<th >Certificate No</th>
-								<th >Valid From</th>
-								<th >Valid To</th>
-								<th >Certificate Limit</th>
-								<th >Certificate Nature</th>
-								<th >Action</th>
+								<th >Challan Serial No</th>
+								<th >Deductee Ref No</th>
+								<th >Deductee Code</th>
+								<th >Deductee PAN</th>
+								<th >Deductee Name</th>
+								<th >Section Code</th>
+								<th >Payment date</th>
+								<th >Paid Amount</th>
+								<th >TDS</th>
+								<th >Surcharge</th>
+								<th >Education Cess</th>
+								<th >Total Tax Deduct</th>
+								<th >Total Tax Deposit</th>
+								<th >Deductee Rate</th>
 								
 							</tr>
 							
@@ -298,14 +330,21 @@
 							<tr role="row"
 								ng-repeat="a in cCctr.entity.vldcs track by a.id">
 								<td role="cell" class="one" style=" padding: 5px">{{$index+1}}</td>
-								<td>{{a.lowerDeduction}}</td>
-								<td>{{a.cerNo}}</td>
-								<td>{{a.validFrom}}</td>
-								<td>{{a.validTo}}</td>
-								<td>{{a.cerLimit}}</td>
-								<td>{{a.cerNature}}</td>
-								<td><a ng-click="cCctr.gotoHomePageWOT(1,a.id,'homeWOT')"
-									style="color: blue">Update</a></td>
+								<td>{{a.challanSrNo}}</td>
+								<td>{{a.deducteeRefNo}}</td>
+								<td>{{a.deducteeCode}}</td>
+								<td>{{a.deducteePan}}</td>
+								<td>{{a.deducteeName}}</td>
+								<td>{{a.sectionCode}}</td>
+								<td>{{a.paymentDate}}</td>
+								<td>{{a.paidAmt}}</td>
+								<td>{{a.tds}}</td>
+								<td>{{a.eduCess}}</td>
+								<td>{{a.totalTaxDeduct}}</td>
+								<td>{{a.totalTaxDeposit}}</td>
+								<td>{{a.deductDate}}</td>
+								
+								
 								<!-- <td>{{a.total-a.amountPaid}}</td> -->
 
 							</tr>
@@ -314,44 +353,7 @@
 				</div>
 			</div>
 			
-			<div class="tab-pane" id="bankDtls">
-			<hr>
-              <div class="panel panel-default"
-				style="margin-top: -5%; border: none !important;">
-				<div class="panel-body">
-				<b>Bank Details</b>
-				<br><br>
-					<div class="row" style="font-size: 13px;">
-						<div class="col-md-4">
-							<label>Bank Name &nbsp;:</label> {{cCctr.entity.bank.bankName}}
-						</div>
-						<div class="col-md-4">
-							<label>Account No &nbsp;:</label> {{cCctr.entity.bank.acNo}}
-						</div>
-						<div class="col-md-4">
-							<label>Branch &nbsp;:</label> {{cCctr.entity.bank.branch}}
-						</div>
-					</div>
-					<br>
-					<div class="row" style="font-size: 13px;">
-						<div class="col-md-4">
-							<label>IFSC &nbsp;:</label> {{cCctr.entity.bank.ifsc}}
-						</div>
-						<div class="col-md-4">
-							<label>Account Type &nbsp;:</label> {{cCctr.entity.bank.acType}}
-						</div>
-						<div class="col-md-4">
-							<label>MICR &nbsp;:</label> {{cCctr.entity.bank.micrNo}}
-						</div>
-						</div>					
-					<br>
-				</div>
-			</div>
-			
-			</div>
-			
-						<div class="tab-pane " id="vendorPaymentDtls">
-
+			<div class="tab-pane" id="salaryDtls">
 				<div class="table-responsive">
 
 					<table class="  table-bordered table-hover table-striped"
@@ -414,23 +416,8 @@
 						</tbody>
 					</table>
 				</div>
+			
 			</div>
-			
-			
-			
-			<div class="tab-pane " id="paymentDtls">
-						<hr>
-              <div class="panel panel-default"
-				style="margin-top: -2%; border: none !important;">
-				<div class="panel-body">
-										
-					
-				</div>
-			</div>
-
-			</div>
-			
-
 		</div>
 		
 		

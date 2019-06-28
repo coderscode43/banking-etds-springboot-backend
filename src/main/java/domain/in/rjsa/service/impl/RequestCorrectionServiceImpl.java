@@ -19,5 +19,10 @@ public class RequestCorrectionServiceImpl extends AbstractService<Long, RequestC
 		// TODO Auto-generated method stub
 		return dao;
 	}
+	@Override
+	public RequestCorrection getByKey(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

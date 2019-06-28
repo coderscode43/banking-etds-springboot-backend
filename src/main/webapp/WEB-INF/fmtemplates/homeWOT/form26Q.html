@@ -55,10 +55,7 @@
 			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
 			<div class="heading">Form 26Q Deductee Details</div>
 
-
-
 		</div>
-
 
 		<br>
 		<button class="btn btn-primary hidden visible-xs" type="button"
@@ -74,12 +71,21 @@
 						<h6>
 							<b>Financial Year</b>
 						</h6>
-						<select class="form-control"  ng-model="cCctr.search.fy" >
+						<select class="form-control"  ng-model="cCctr.search.fy" style="width: 100%">
 						<option value="" ng-selected=true>Year</option>
-							<option value="201918">201918</option>
-							<option value="201817">201817</option>
-							<option value="201716">201716</option>
-							<option value="201615">201615</option>
+							 <option value="201516">201920</option>
+                            <option value="201819">201819</option>
+				             <option value="201718">201718</option>
+				             <option value="201617">201617</option>
+				             <option value="201516">201516</option>
+				             <option value="201415">201415</option>
+				             <option value="201314">201314</option>
+				             <option value="201213">201213</option>
+				             <option value="201112">201112</option>
+				             <option value="201011">201011</option>
+				             <option value="200910">200910</option>
+				             <option value="200809">200809</option>
+				             <option value="200708">200708</option>
 						</select>
 					</div>
 
@@ -87,7 +93,7 @@
 						<h6>
 							<b>Quarter</b>
 							<h6>
-							<select class="form-control"   ng-model="cCctr.search.quarter" >
+							<select class="form-control"   ng-model="cCctr.search.quarter" style="width: 100%" >
 							<option value="" ng-selected=true>Quarter</option>
 							<option value="Q1">Q1</option>
 							<option value="Q2">Q2</option>
@@ -115,25 +121,37 @@
 					
 					<div class="col-md-2">
 						<h6>
-							<b>Date Of Payment</b>
+							<b>From Date</b>
 							<h6>
-								 <input type="date" ng-model="cCctr.search.paymentDate" 
+								 <input type="date" ng-model="cCctr.search.fromDate" 
 									class="form-control" placeholder="Date" style="width: 100%">
 									
 					</div>
-
+					
+					<div class="col-md-2">
+						<h6>
+							<b>To Date</b>
+							<h6>
+								 <input type="date" ng-model="cCctr.search.toDate" 
+									class="form-control" placeholder="Date" style="width: 100%">
+									
+					</div>
+								
 				</div>
 
 			</div>
 
 			<div class="row" id="hide">
-				<div class="col-md-3" style="margin-left: 90%; margin-top: -70px">
+				<div class="col-md-3" style="margin-left: 93%; margin-top: -90px">
 					<button ng-click="cCctr.searchEntities(true,'form26Q')"
 						 class="btn btn-success">Search</button>
-						 </div> 
-					 <div class="modal-header" style="margin-left: 94%; margin-bottom: -20px" >
+				 </div> 
+						 
+						 <div class="row">
+	                </div>
+					 <div class="modal-header" style="margin-left: 95%; margin-bottom: -20px" >
 					   	  <button type="button" class="btn btn-primary">Add</button>
-				 </div>
+				 </div>  
 			
 				<div class="row">
 					<div class="col-md-3" id="search">
@@ -146,15 +164,12 @@
 		</div>
 
 
-		<div class="row" >
-			
-
-				<table  class=" table table-bordered table-hover table-striped"
+	<!--	<div class="row" >-->
+			 
+				<table  class="table-bordered table-hover table-striped"
 					role="table"
 					style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
-
-
-					<thead>
+                	<thead>
 					<colgroup>
 						<col span="14" style="background-color: #ffffff">
 					</colgroup>
@@ -231,6 +246,8 @@
 
 					</tbody>
 				</table>
-			</div>
-
-		</div>
+				
+				 </div>
+			<!--</div>-->
+         
+		<!--</div> -->

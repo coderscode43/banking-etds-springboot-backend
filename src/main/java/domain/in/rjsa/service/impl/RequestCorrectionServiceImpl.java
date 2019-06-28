@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.RequestCorrectionDao;
-import domain.in.rjsa.model.form.RequestCorrection;
+import domain.in.rjsa.model.form.RequestCorrection; 
 import domain.in.rjsa.service.AbstractService;
 import domain.in.rjsa.service.RequestCorrectionService;
 
@@ -18,6 +18,11 @@ public class RequestCorrectionServiceImpl extends AbstractService<Long, RequestC
 	public RequestCorrectionDao getPrimaryDao() {
 		// TODO Auto-generated method stub
 		return dao;
+	}
+	@Override
+	public RequestCorrection getByKey(Long id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

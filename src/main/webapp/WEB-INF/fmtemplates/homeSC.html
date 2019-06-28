@@ -33,7 +33,8 @@
 				id="bs-sidebar-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><img src="static/img/tdsosmart1.png"
-						style="height: 150px; width: 90%;" ng-click="cCctr.gotoListPage('homeSCHomepage','homeSCHomepage')"></li>
+						style="height: 150px; width: 90%;"
+						ng-click="cCctr.gotoListPage('homeSCHomepage','homeSCHomepage')"></li>
 					<li><a class="dropdown-toggle"
 						ng-click="cCctr.gotoListPage('branch','branch')"
 						data-toggle="dropdown">Branch</a></li>
@@ -43,35 +44,59 @@
 					<li><a class="dropdown-toggle"
 						ng-click="cCctr.gotoListPage('vendor','vendor')"
 						data-toggle="dropdown">Vendor</a></li>
-					
-						
-					<li><a class="dropdown-toggle"
-						ng-click="cCctr.gotoListPage('employee','employee')"
-						data-toggle="dropdown">Employee</a></li>
-					<li><a class="dropdown-toggle"
-						ng-click="cCctr.gotoListPage('pensioner','pensioner')"
-						data-toggle="dropdown">Pensioner</a></li>
 
-					<li><a ng-click="cCctr.gotoListPage('salary','salary')"
-						class="dropdown-toggle" data-toggle="dropdown">Salary</a></li>
+
+					<li><a class="dropdown-toggle" data-toggle="dropdown"
+						ng-click="cCctr.gotoListPage('employee','employee')">Employee&nbsp;&nbsp;&nbsp;&nbsp;<span
+							class="caret"></span></a>
+						<ul class=" dropdown-menu forAnimate">
+							<li><a ng-click="cCctr.gotoListPage('salary','salary')">Salary
+									Details</a></li>
+						</ul></li>
+
+
+					<li><a class="dropdown-toggle" data-toggle="dropdown"
+						ng-click="cCctr.gotoListPage('pensioner','pensioner')">Pensioner&nbsp;&nbsp;&nbsp;&nbsp;<span
+							class="caret"></span></a>
+						<ul class=" dropdown-menu forAnimate">
+							<li><a ng-click="cCctr.gotoListPage('pensionerSalary','pensionerSalary')">Salary
+									Details</a></li>
+						</ul></li>
+						
+					<li><a class="dropdown-toggle" data-toggle="dropdown"
+						ng-click="cCctr.gotoListPage('salary','salary')">Salary&nbsp;&nbsp;&nbsp;&nbsp;<span
+							class="caret"></span></a>
+							
+							<ul class=" dropdown-menu forAnimate">
+							<li><a ng-click="cCctr.gotoListPage('monthlySalary','monthlySalary')">Monthly Salary
+									Details</a></li>
+									<li><a ng-click="cCctr.gotoListPage('yearlySalary','yearlySalary')">Yearly Salary
+									Details</a></li>
+									<li><a ng-click="cCctr.gotoListPage('asofNow','asofNow')">As of now
+									Details</a></li>
+						</ul></li>
+						
 					<li><a class="dropdown-toggle" data-toggle="dropdown"
 						ng-click="cCctr.gotoListPage('statementStatus','statementStatus')">Statement
 							Status</a></li>
 					<li><a class="dropdown-toggle" data-toggle="dropdown"
-						ng-click="cCctr.gotoListPage('tokenNumber','tokenNumber')">Token Number</a></li>
-						
+						ng-click="cCctr.gotoListPage('tokenNumber','tokenNumber')">Token
+							Number</a></li>
+
 					<li><a class="dropdown-toggle" data-toggle="dropdown"
-						ng-click="cCctr.gotoListPage('ghReturnStatus','ghReturnStatus')">Form 15G/15H Status
-							</a></li>
+						ng-click="cCctr.gotoListPage('ghReturnStatus','ghReturnStatus')">Form
+							15G/15H Status </a></li>
 					<li><a class="dropdown-toggle" data-toggle="dropdown"
-						ng-click="cCctr.gotoListPage('misReport','misReport')">MIS Report</a></li>
-							
-							
-<!-- 					<li><a
+						ng-click="cCctr.gotoListPage('misReport','misReport')">MIS
+							Report</a></li>
+
+
+					<!-- 					<li><a
 						ng-click="cCctr.gotoListPage('defaultSummary','defaultSummary')"
 						class="dropdown-toggle" data-toggle="dropdown">Default
 							Summary</a></li>
- -->					<li><a ng-click="cCctr.gotoListPage('logs','logs')"
+ -->
+					<li><a ng-click="cCctr.gotoListPage('logs','logs')"
 						class="dropdown-toggle" data-toggle="dropdown">Logs</a></li>
 
 					<li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Log
@@ -84,9 +109,10 @@
 		</div>
 	</nav>
 </div>
-<div ng-http-loader  methods="['GET']" ttl="1"   id="example/loader"  template="index/example-loader.tpl"></div>
+<div ng-http-loader methods="['GET']" ttl="1" id="example/loader"
+	template="index/example-loader.tpl"></div>
 <div class="main">
-<div style="margin-top: -2%" ui-view></div>
+	<div style="margin-top: -2%" ui-view></div>
 
 </div>
 
@@ -181,7 +207,7 @@ nav.sidebar, .main {
 		text-align: center;
 		width: 100%;
 		margin-left: 0px;
-		 overflow: auto;
+		overflow: auto;
 	}
 
 	/*Center Icons*/
@@ -209,7 +235,7 @@ nav.sidebar, .main {
 		border: 0;
 		-webkit-box-shadow: none;
 		box-shadow: none;
-		 overflow: auto;
+		overflow: auto;
 	}
 
 	/*allows nav box to use 100% width*/
@@ -230,7 +256,7 @@ nav.sidebar, .main {
 		float: left;
 		z-index: 8000;
 		margin-bottom: 0px;
-		 overflow: auto;	
+		overflow: auto;
 	}
 
 	/*give sidebar 100% width;*/
@@ -334,9 +360,9 @@ section {
 	background-color: #39599A;
 	color: white;
 }
+
 .navbar-nav>li>a {
-  
-    line-height: 4px;
+	line-height: 4px;
 }
 </style>
 

@@ -117,6 +117,7 @@
 							      <th width="10%">Date Of Request</th>
 							      <th width="10%" >Status</th>
 							      <th width="10%">Remark</th>
+							      <th width="10%">Action</th>
 							     
                                   </tr>
                                </thead>
@@ -129,6 +130,9 @@
 											<td>{{a.dor | date:'dd-MM-yyyy'}}</td>
 											<td>{{a.status}}</td>
 											<td>{{a.remark}}</td>
+											<td><a
+							                ng-click="cCctr.gotoDetailPage('requestCorrection',a.id,'detailRequestCorrection');"><font
+								          color="blue" style="font-size: 13px">Detail</font></a></td>
 									</tr>								
 								</tbody>
 							</table>

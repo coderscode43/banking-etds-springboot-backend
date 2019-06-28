@@ -1,0 +1,453 @@
+
+<style>
+/*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+@media only screen and (max-width: 760px) , ( min-device-width : 768px)
+	and (max-device-width: 1024px) {
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr {
+		display: block;
+	}
+
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	tr {
+		margin: 0 0 1rem 0;
+	}
+	tr:nth-child(odd) {
+		background: #ccc;
+	}
+	td {
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee;
+		position: relative;
+		padding-left: 50%;
+	}
+	td:before {
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 0;
+		left: 6px;
+		width: 45%;
+		padding-right: 10px;
+		white-space: nowrap;
+	}
+
+	/*
+		Label the data
+    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+		*/
+	td:nth-of-type(1):before {
+		content: "Sr. No.";
+	}
+	td:nth-of-type(2):before {
+		content: "Employee Code";
+	}
+	td:nth-of-type(3):before {
+		content: "Name";
+	}
+	td:nth-of-type(4):before {
+		content: "PAN";
+	}
+	td:nth-of-type(5):before {
+		content: "Designation";
+	}
+	td:nth-of-type(6):before {
+		content: "Email";
+	}
+	td:nth-of-type(7):before {
+		content: "Mobile";
+	}
+	td:nth-of-type(8):before {
+		content: "Address";
+	}
+	td:nth-of-type(9):before {
+		content: "Branch";
+	}
+	td:nth-of-type(10):before {
+		content: "Group Code";
+	}
+	td:nth-of-type(11):before {
+		content: "Action";
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.one {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.two {
+		padding: 8px;
+	}
+}
+
+@media only screen and (min-width:600px) {
+	#three {
+		display: none;
+		max-height: 0;
+		overflow: hidden;
+	}
+}
+
+@media only screen and (min-width:1000px) {
+	#search {
+		margin-left: 45%;
+		margin-top: 2px;
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	#hide {
+		display: none;
+	}
+}
+
+.table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
+	{
+	background-color: whitesmoke;
+}
+
+@media ( min-width : 768px) {
+	.collapse.dont-collapse-sm {
+		display: block;
+		height: auto !important;
+		visibility: visible;
+	}
+}
+</style>
+
+
+
+
+<div id="page-wrapper" ng-init="cCctr.entity=cCctr.getEntityData();">
+	<div class="container-fluid">
+
+		<div ng-show="cCctr.show != true">
+
+			<div class="row">
+				<h3 class="page-header" style="margin-top: 2%;">Details Of Request Correction</h3>
+			</div>
+
+			<div class="panel panel-default"
+				style="margin-top: -2%; border: none !important;">
+				<div class="panel-body">
+					<div class="row" style="font-size: 13px;">
+						<div class="col-md-3">
+							<label>vendorNo &nbsp;:</label> {{cCctr.entity.vendor.vendorNo}}
+						</div>
+						<div class="col-md-3">
+							<label>Vendor Name &nbsp;:</label> {{cCctr.entity.vendor.vendorName}}
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+
+
+
+
+	</div>
+	<div class="row">
+
+
+
+		<ul class="nav nav-tabs">
+		<li ><a data-target="#deductorDtls"
+				data-toggle="tab">Deductor Details</a></li>
+				<li ><a data-target="#challanDtls"
+				data-toggle="tab">Challan Details</a></li>
+			<li ><a data-target="#deducteeDtls"
+				data-toggle="tab">Deductee Details</a></li>
+				<li ><a data-target="#salaryDtls"
+				data-toggle="tab">Salary Details</a></li>
+				
+
+		</ul>
+		<br>
+		
+		
+				<div class="tab-content ">
+				
+			<div class="tab-pane active" id="vendorDtls">
+			<hr>
+              <div class="panel panel-default"
+				style="margin-top: -5%; border: none !important;">
+				<div class="panel-body">
+					<div class="row" style="font-size: 13px;">
+					<b>Vendor Detail</b>
+					<br><br>
+						<div class="col-md-3">
+							<label>PAN &nbsp;:</label> {{cCctr.entity.vendor.pan}}
+						</div>
+						<div class="col-md-3">
+							<label>GST No &nbsp;:</label> {{cCctr.entity.vendor.gstNo}}
+						</div>
+						<div class="col-md-3">
+							<label>Residential Status &nbsp;:</label> {{cCctr.entity.vendor.resiStatus}}
+						</div>
+						<div class="col-md-3">
+							<label>Tel No &nbsp;:</label> {{cCctr.entity.vendor.telNo}}
+						</div>
+						
+						
+
+					</div>
+					<br>
+					<div class="row" style="font-size: 13px;">
+						<div class="col-md-3">
+							<label>Mobile No &nbsp;:</label> {{cCctr.entity.vendor.mobNo}}
+						</div>
+						<div class="col-md-3">
+							<label>Email &nbsp;:</label> {{cCctr.entity.vendor.email}}
+						</div>
+						
+						
+
+					</div>
+					
+					<br>
+					
+					
+				</div>
+			</div>
+			
+			</div>
+			
+			
+						<div class="tab-pane" id="addrDtls">
+			<hr>
+              <div class="panel panel-default"
+				style="margin-top: -5%; border: none !important;">
+				<div class="panel-body">
+					<b>Address Details</b>
+					<br><br>
+					<div class="row" style="font-size: 13px;">
+				
+						<div class="col-md-4">
+							<label>Address1 &nbsp;:</label> {{cCctr.entity.address.address1}}
+						</div>
+						<div class="col-md-4">
+							<label>Address2 &nbsp;:</label> {{cCctr.entity.address.address2}}
+						</div>
+						<div class="col-md-4">
+							<label>Address3 &nbsp;:</label> {{cCctr.address.vendor.address3}}
+						</div>
+					</div>
+					<br>
+					<div class="row" style="font-size: 13px;">
+						<div class="col-md-4">
+							<label>City &nbsp;:</label> {{cCctr.entity.address.city}}
+						</div>
+						<div class="col-md-4">
+							<label>State &nbsp;:</label> {{cCctr.entity.address.state}}
+						</div>
+						<div class="col-md-4">
+							<label>Pincode &nbsp;:</label> {{cCctr.entity.address.pincode}}
+						</div>
+						</div>					
+					<br>
+				</div>
+			</div>
+			
+			</div>
+			
+			
+			
+						<div class="tab-pane " id="ldcDtls">
+
+				<div class="table-responsive">
+
+					<table class="  table-bordered table-hover table-striped"
+						role="table"
+						style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+						<thead>
+						<colgroup>
+							<col span="14" style="background-color: #ffffff">
+						</colgroup>
+						<tr>
+						<thead role="rowgroup">
+							<tr role="row" style="height: 40px; background-color: #81b7db">
+								<th >Sr. No.</th>
+								<th >Lower Deduction</th>
+								<th >Certificate No</th>
+								<th >Valid From</th>
+								<th >Valid To</th>
+								<th >Certificate Limit</th>
+								<th >Certificate Nature</th>
+								<th >Action</th>
+								
+							</tr>
+							
+						</thead>
+						<tbody>
+							<tr role="row"
+								ng-repeat="a in cCctr.entity.vldcs track by a.id">
+								<td role="cell" class="one" style=" padding: 5px">{{$index+1}}</td>
+								<td>{{a.lowerDeduction}}</td>
+								<td>{{a.cerNo}}</td>
+								<td>{{a.validFrom}}</td>
+								<td>{{a.validTo}}</td>
+								<td>{{a.cerLimit}}</td>
+								<td>{{a.cerNature}}</td>
+								<td><a ng-click="cCctr.gotoHomePageWOT(1,a.id,'homeWOT')"
+									style="color: blue">Update</a></td>
+								<!-- <td>{{a.total-a.amountPaid}}</td> -->
+
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			
+			<div class="tab-pane" id="bankDtls">
+			<hr>
+              <div class="panel panel-default"
+				style="margin-top: -5%; border: none !important;">
+				<div class="panel-body">
+				<b>Bank Details</b>
+				<br><br>
+					<div class="row" style="font-size: 13px;">
+						<div class="col-md-4">
+							<label>Bank Name &nbsp;:</label> {{cCctr.entity.bank.bankName}}
+						</div>
+						<div class="col-md-4">
+							<label>Account No &nbsp;:</label> {{cCctr.entity.bank.acNo}}
+						</div>
+						<div class="col-md-4">
+							<label>Branch &nbsp;:</label> {{cCctr.entity.bank.branch}}
+						</div>
+					</div>
+					<br>
+					<div class="row" style="font-size: 13px;">
+						<div class="col-md-4">
+							<label>IFSC &nbsp;:</label> {{cCctr.entity.bank.ifsc}}
+						</div>
+						<div class="col-md-4">
+							<label>Account Type &nbsp;:</label> {{cCctr.entity.bank.acType}}
+						</div>
+						<div class="col-md-4">
+							<label>MICR &nbsp;:</label> {{cCctr.entity.bank.micrNo}}
+						</div>
+						</div>					
+					<br>
+				</div>
+			</div>
+			
+			</div>
+			
+						<div class="tab-pane " id="vendorPaymentDtls">
+
+				<div class="table-responsive">
+
+					<table class="  table-bordered table-hover table-striped"
+						role="table"
+						style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+						<thead>
+						<colgroup>
+							<col span="14" style="background-color: #ffffff">
+						</colgroup>
+						<tr>
+						<thead role="rowgroup">
+							<tr role="row" style="height: 40px; background-color: #81b7db">
+								<th >Sr. No.</th>
+								<th >Invoice Date</th>
+								<th >Payment Done</th>
+								<th >Payment Date</th>
+								<th >Payment Mode</th>
+								<th >Invoice Number</th>
+								<th >Total Invoice Value</th>
+								<th >Taxable Value</th>
+								<th >CGST</th>
+								<th >SGST</th>
+								<th >IGST</th>
+								<th >Cess</th>
+								<th >Income Tax TDS</th>
+								<th >GST TDS</th>
+								<th >Nature of Payment</th>
+								<th >Net Amount Paid</th>								
+								<th >BGL Code</th>
+								<th >Our GST</th>
+								
+							</tr>
+							
+						</thead>
+						<tbody>
+							<tr role="row"
+								ng-repeat="a in cCctr.entity.vpList track by a.id">
+								<td role="cell" class="one" style=" padding: 5px">{{$index+1}}</td>
+								<td>{{a.invoiceDate}}</td>
+								<td>{{a.paymentDone}}</td>
+								<td>{{a.paymentDate}}</td>
+								<td>{{a.paymentMode}}</td>
+								<td>{{a.invoiceNumber}}</td>
+								<td>{{a.totalInvoiceValue}}</td>
+								<td>{{a.taxableValue}}</td>
+								<td>{{a.cgst}}</td>
+								<td>{{a.sgst}}</td>
+								<td>{{a.igst}}</td>
+								<td>{{a.cess}}</td>
+								<td>{{a.incomeTaxTds}}</td>
+								<td>{{a.gstTds}}</td>
+								<td>{{a.natureOfPayment}}</td>
+								<td>{{a.netAmountPaid}}</td>
+								<td>{{a.bglCode}}</td>
+								<td>{{a.ourGst}}</td>
+							
+								<!-- <td>{{a.total-a.amountPaid}}</td> -->
+
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			
+			
+			
+			<div class="tab-pane " id="paymentDtls">
+						<hr>
+              <div class="panel panel-default"
+				style="margin-top: -2%; border: none !important;">
+				<div class="panel-body">
+										
+					
+				</div>
+			</div>
+
+			</div>
+			
+
+		</div>
+		
+		
+		
+		
+
+		
+
+
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+

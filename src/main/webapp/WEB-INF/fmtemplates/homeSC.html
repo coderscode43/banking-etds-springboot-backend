@@ -156,7 +156,6 @@
 
 
 <style>
-
 /* remove outer padding */
 .main .row {
 	padding: 0px;
@@ -183,7 +182,7 @@ nav.sidebar, .main {
 /* .....NavBar: Icon only with coloring/layout.....*/
 
 /*small/medium side display*/
-@media ( min-width : 100px) {
+@media ( min-width : 768px) {
 	/*Allow main to be next to Nav*/
 	.main {
 		position: absolute;
@@ -207,7 +206,6 @@ nav.sidebar, .main {
 		text-align: center;
 		width: 100%;
 		margin-left: 0px;
-		overflow: auto;
 	}
 
 	/*Center Icons*/
@@ -231,11 +229,11 @@ nav.sidebar, .main {
 		float: none;
 		width: auto;
 		margin-top: 0;
-		background-color: transparent;
+		background-color: #FFEFD5;
 		border: 0;
 		-webkit-box-shadow: none;
 		box-shadow: none;
-		overflow: auto;
+		 overflow: auto;
 	}
 
 	/*allows nav box to use 100% width*/
@@ -256,7 +254,7 @@ nav.sidebar, .main {
 		float: left;
 		z-index: 8000;
 		margin-bottom: 0px;
-		overflow: auto;
+		 overflow: auto;
 	}
 
 	/*give sidebar 100% width;*/
@@ -295,8 +293,8 @@ nav.sidebar, .main {
 
 nav.sidebar .navbar-nav .open .dropdown-menu>li>a:hover, nav.sidebar .navbar-nav .open .dropdown-menu>li>a:focus
 	{
-	color: #CCC;
-	background-color: transparent;
+	color: black;
+	background-color: orange;
 }
 
 nav:hover .forAnimate {
@@ -317,11 +315,19 @@ section {
 	background-color: #ff9c33;
 }
 
+.dropdown-menu>li:focus, .dropdown-menu>li:hover
+	{
+	color: red;
+	background-color: #ff9c33;
+}
+
 .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus,
 	.navbar-inverse .navbar-nav>.open>a:hover {
 	color: #fff;
 	background-color: orange;
 }
+
+
 
 .navbar-inverse {
 	background-color: #0F316D;
@@ -362,7 +368,22 @@ section {
 }
 
 .navbar-nav>li>a {
-	line-height: 4px;
+  
+    line-height: 6px;
+}
+
+.navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
+    color: black;
+}
+
+.navbar-inverse .navbar-nav .open .dropdown-menu>li>a:hover {
+    color: black;
+}
+
+
+
+.navbar-inverse .navbar-nav .open .dropdown-menu>li>a:hover {
+    color: #fff;
 }
 </style>
 

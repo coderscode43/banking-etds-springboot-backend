@@ -42,8 +42,8 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	public String name;
 	@Column(name = "sectionCode")
 	public String sectionCode;
-	@Column(name = "dateOfPayment")
-	public Date dateOfPayment;
+	@Column(name = "date")
+	public Date date;
 	@Column(name = "amountPaid")
 	public Double amountPaid;
 	@Column(name = "tds")
@@ -94,4 +94,12 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	public String fy;
 	@Column(name = "quarter")
 	public String quarter;
+
+	
+	
+	public void setEntity(Regular27QDeductee form27Q){
+		this.date=form27Q.getDate();
+		
+	}
 }
+

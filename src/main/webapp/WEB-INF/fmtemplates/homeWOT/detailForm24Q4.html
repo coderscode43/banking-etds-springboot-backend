@@ -1,0 +1,582 @@
+
+<style>
+/*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+@media only screen and (max-width: 760px) , ( min-device-width : 768px)
+	and (max-device-width: 1024px) {
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr {
+		display: block;
+	}
+
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	tr {
+		margin: 0 0 1rem 0;
+	}
+	tr:nth-child(odd) {
+		background: #ccc;
+	}
+	td {
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee;
+		position: relative;
+		padding-left: 50%;
+	}
+	td:before {
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 0;
+		left: 6px;
+		width: 45%;
+		padding-right: 10px;
+		white-space: nowrap;
+	}
+
+	/*
+		Label the data
+    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+		*/
+	
+}
+
+@media only screen and (max-width: 1000px) {
+	.one {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.two {
+		padding: 8px;
+	}
+}
+
+@media only screen and (min-width:600px) {
+	#three {
+		display: none;
+		max-height: 0;
+		overflow: hidden;
+	}
+}
+
+@media only screen and (min-width:1000px) {
+	#search {
+		margin-left: 45%;
+		margin-top: 2px;
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	#hide {
+		display: none;
+	}
+}
+
+.table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
+	{
+	background-color: whitesmoke;
+}
+
+@media ( min-width : 768px) {
+	.collapse.dont-collapse-sm {
+		display: block;
+		height: auto !important;
+		visibility: visible;
+	}
+}
+</style>
+
+
+
+
+<div id="page-wrapper" ng-init="cCctr.entity=cCctr.getEntityData();">
+	<div class="container-fluid">
+
+		<div ng-show="cCctr.show != true">
+
+			<div class="row">
+				<h3 class="page-header" style="margin-top: 2%;">Details of Salary</h3>
+			</div>
+			<br>
+			 <div class="row">
+	 <div class="col-xs-12">
+		<div class="text-right">
+	          <button class="btn btn-primary" data-toggle="modal" ng-click="cCctr.;" >Update</button>
+		</div>
+	 </div>
+    </div>
+			
+				
+
+			<div class="panel panel-default"
+				style="margin-top: -2%; border: none !important;">
+				<div class="panel-body">
+			<br>
+			
+				
+				
+<h4>Employee Details:</h4>
+      
+      <div class="container">
+	   
+<div class="collapse dont-collapse-sm" id="collapseExample2"> 
+  		 <div class="row" style="font-size: 13px;">
+	    	<div class="col-md-6">
+				<label>PAN &nbsp;:</label> {{cCctr.entity.salary.pan}}
+			</div>
+	       	<div class="col-md-6">
+				<label>PAN Reference No. &nbsp;:</label> {{cCctr.entity.salary.panRefNo}}
+			</div>
+  		 </div>
+  		 
+  		 <div class="row" style="font-size: 13px;">
+				<div class="col-md-6">
+							<label>Name &nbsp;:</label> {{cCctr.entity.salary.name}}
+						</div>
+
+						<div class="col-md-6">
+							<label>Category &nbsp;:</label> {{cCctr.entity.salary.category}}
+						</div>
+	      	</div>	
+	          
+			  <div class="row" style="font-size: 13px;">
+			  		<div class="col-md-6">
+							<label>From Date of Employment &nbsp;:</label> {{cCctr.entity.salary.fromDateOfEmployment}}
+					</div>
+					<div class="col-md-6">
+							<label>To Date of Employment &nbsp;:</label> {{cCctr.entity.salary.toDateOfEmployment}}
+					</div>
+				</div>
+				
+				<div class="row" style="font-size: 13px;">
+					<div class="col-md-6">
+							<label>Gross Salary As Per Provision &nbsp;:</label> {{cCctr.entity.salary.grossSalaryAsPerProvision}}
+					</div>
+					<div class="col-md-6">
+							<label>Value Of Perquisites &nbsp;:</label> {{cCctr.entity.salary.valueOfPerquisites}}
+					</div>
+				</div>
+				
+				<div class="row" style="font-size: 13px;">
+					<div class="col-md-6">
+							<label>Profit In Salary &nbsp;:</label> {{cCctr.entity.salary.profitInSalary}}
+					</div>
+					<div class="col-md-6">
+							<label>Taxable Salary From Current Emp &nbsp;:</label> {{cCctr.entity.salary.taxableSalaryFromCurrentEmp}}
+					</div>
+				</div>
+				
+				<div class="row" style="font-size: 13px;">
+					<div class="col-md-6">
+							<label>Reported Salary From Other Emp &nbsp;:</label> {{cCctr.entity.salary.reportedSalaryFromOtherEmp}}
+					</div>
+					<div class="col-md-6">
+							<label>Total Amount Of Salary &nbsp;:</label> {{cCctr.entity.salary.totalAmountOfSalary}}
+					</div>
+  				</div>
+  </div>
+ </div><hr>
+ 
+ 
+ 
+ 
+ <h4>Allowance Details:</h4>
+      
+      <div class="container">
+	   
+<div class="collapse dont-collapse-sm" id="collapseExample2"> 
+  		 <div class="row" style="font-size: 13px;">
+			<div class="col-md-6">
+				<label>Leave Travel Allowance &nbsp;:</label> {{cCctr.entity.salary.leaveTravelAllowance}}
+			</div>
+			<div class="col-md-6">
+				<label>Gratuity &nbsp;:</label> {{cCctr.entity.salary.gratuity}}
+			</div>
+		</div>
+  		 
+  		 <div class="row" style="font-size: 13px;">
+			<div class="col-md-6">
+				<label>Commuted Value Of Pension &nbsp;:</label> {{cCctr.entity.salary.commutedValueOfPension}}
+			</div>
+			<div class="col-md-6">
+				<label>Leave Encashment Salary &nbsp;:</label> {{cCctr.entity.salary.leaveEncashmentSalary}}
+			</div>
+		</div>
+						
+						
+		<div class="row" style="font-size: 13px;">
+			<div class="col-md-6">
+				<label>HouseRent Allowance &nbsp;:</label> {{cCctr.entity.salary.houseRentAllowance}}
+			</div>
+			<div class="col-md-6">
+				<label>Any Other Exemptionus10 &nbsp;:</label> {{cCctr.entity.salary.anyOtherExemptionus10}}
+			</div>
+
+		</div>
+  		 
+  		 <div class="row" style="font-size: 13px;">
+			<div class="col-md-6">
+				<label>Total Amount Of Exemption &nbsp;:</label> {{cCctr.entity.salary.totalAmountOfExemption}}
+			</div>
+		</div>
+  		  
+  		 </div>
+</div><hr>
+ 
+ 
+ 
+ <h4>GHI Details:</h4>
+      
+<div class="container">
+	   
+	<div class="collapse dont-collapse-sm" id="collapseExample2"> 
+ 		
+ 		<div class="row" style="font-size: 13px;">
+ 			<div class="col-md-6">
+				<label>Entertainment Allowance &nbsp;:</label> {{cCctr.entity.salary.entertainmentAllowance}}
+			</div>
+			<div class="col-md-6">
+				<label>PTax &nbsp;:</label> {{cCctr.entity.salary.pTax}}
+			</div>
+		</div>
+		
+		<div class="row" style="font-size: 13px;">
+			<div class="col-md-6">
+				<label>Standard Deduction &nbsp;:</label> {{cCctr.entity.salary.standardDeduction}}
+			</div>
+			<div class="col-md-6">
+				<label>Total Deduction Under Section16 &nbsp;:</label> {{cCctr.entity.salary.totalDeductionUnderSection16}}
+			</div>
+			</div>
+			
+	</div>
+</div><hr> 
+ 
+ 
+ 
+ <h4>Income Details:</h4>
+      
+<div class="container">
+	   
+	<div class="collapse dont-collapse-sm" id="collapseExample2"> 
+ 
+ 		<div class="row" style="font-size: 13px;">
+ 			<div class="col-md-6">
+				<label>Income From Salary &nbsp;:</label> {{cCctr.entity.salary.incomeFromSalary}}
+			</div>
+			<div class="col-md-6">
+				<label>Income From House Property &nbsp;:</label> {{cCctr.entity.salary.incomeFromHouseProperty}}
+			</div>
+		</div>
+		
+		<div class="row" style="font-size: 13px;">
+ 			
+ 			<div class="col-md-6">
+				<label>Income From Other Sources &nbsp;:</label> {{cCctr.entity.salary.incomeFromOtherSources}}
+			</div>
+			<div class="col-md-6">
+				<label>Gross Total Income &nbsp;:</label> {{cCctr.entity.salary.grossTotalIncome}}
+			</div>
+ 			
+ 		</div>
+ 
+ 
+ </div>
+ </div><hr>
+ 
+ 
+ 
+ 
+ <h4>Deduction Details:</h4>
+      
+<div class="container">
+	   
+	<div class="collapse dont-collapse-sm" id="collapseExample2"> 
+ 
+ 		<div class="row" style="font-size: 13px;">
+ 			<div class="col-md-6">
+				<label>Deduction Us80C &nbsp;:</label> {{cCctr.entity.salary.deductionUs80C}}
+			</div>
+			<div class="col-md-6">
+				<label>Deduction Us80CCC &nbsp;:</label> {{cCctr.entity.salary.deductionUs80CCC}}
+			</div>		
+ 		</div>
+ 		<div class="row" style="font-size: 13px;">
+ 			<div class="col-md-6">
+				<label>Deduction Us80CCD1 &nbsp;:</label> {{cCctr.entity.salary.deductionUs80CCD1}}
+			</div>
+			<div class="col-md-6">
+				<label>Deduction Us80C80CCC80CCD1 &nbsp;:</label> {{cCctr.entity.salary.deductionUs80C80CCC80CCD1}}
+			</div>
+		</div>
+		<div class="row" style="font-size: 13px;">
+			<div class="col-md-6">
+				<label>Deduction Us80CCD1B &nbsp;:</label> {{cCctr.entity.salary.deductionUs80CCD1B}}
+			</div>
+			<div class="col-md-6">
+				<label>Deduction Us80CCD2 &nbsp;:</label> {{cCctr.entity.salary.deductionUs80CCD2}}
+			</div>
+		</div>
+		<div class="row" style="font-size: 13px;">
+			<div class="col-md-6">
+				<label>Deduction Us80D &nbsp;:</label> {{cCctr.entity.salary.deductionUs80D}}
+			</div>
+			<div class="col-md-6">
+				<label>Deduction Us80E &nbsp;:</label> {{cCctr.entity.salary.deductionUs80E}}
+			</div>
+		</div>
+		<div class="row" style="font-size: 13px;">
+			<div class="col-md-6">
+				<label>Deduction Us80G &nbsp;:</label> {{cCctr.entity.salary.deductionUs80G}}
+			</div>
+			<div class="col-md-6">
+				<label>Deduction Us80TTA &nbsp;:</label> {{cCctr.entity.salary.deductionUs80TTA}}
+			</div>
+		</div>
+		<div class="row" style="font-size: 13px;">
+			<div class="col-md-6">
+				<label>Amount Deductible80ccg &nbsp;:</label> {{cCctr.entity.salary.amountDeductible80ccg}}
+			</div>
+			<div class="col-md-6">
+				<label>Any Other Deduction &nbsp;:</label> {{cCctr.entity.salary.anyOtherDeduction}}
+			</div>
+		</div>
+		<div class="row" style="font-size: 13px;">
+			<div class="col-md-6">
+				<label>Total Deduction UnderChapterVIA &nbsp;:</label> {{cCctr.entity.salary.totalDeductionUnderChapterVIA}}
+			</div>
+		</div>
+ 
+ 	</div>
+</div><hr>
+
+
+<h4>Tax Details:</h4>
+      
+<div class="container"> 
+	<div class="collapse dont-collapse-sm" id="collapseExample2"> 
+ 
+ 		<div class="row" style="font-size: 13px;">
+			<div class="col-md-6">
+				<label>Total Taxable Income &nbsp;:</label> {{cCctr.entity.salary.totalTaxableIncome}}
+			</div>
+			<div class="col-md-6">
+				<label>Income Tax On Total Income &nbsp;:</label> {{cCctr.entity.salary.incomeTaxOnTotalIncome}}
+			</div>
+		</div>
+		<div class="row" style="font-size: 13px;">
+			<div class="col-md-6">
+				<label>Rebate Us87A &nbsp;:</label> {{cCctr.entity.salary.rebateUs87A}}
+			</div>
+			<div class="col-md-6">
+				<label>Surcharge &nbsp;:</label> {{cCctr.entity.salary.surcharge}}
+			</div>
+		</div>
+		<div class="row" style="font-size: 13px;">
+			<div class="col-md-6">
+				<label>Education Cess &nbsp;:</label> {{cCctr.entity.salary.educationCess}}
+			</div>
+			<div class="col-md-6">
+				<label>Income Tax ReliefUs89 &nbsp;:</label> {{cCctr.entity.salary.incomeTaxReliefUs89}}
+			</div>
+		</div>
+		<div class="row" style="font-size: 13px;">
+			<div class="col-md-6">
+				<label>Net Income Tax Payable &nbsp;:</label> {{cCctr.entity.salary.netIncomeTaxPayable}}
+			</div>
+			<div class="col-md-6">
+				<label>Tds From Current Employer &nbsp;:</label> {{cCctr.entity.salary.tdsFromCurrentEmployer}}
+			</div>
+		</div>
+		<div class="row" style="font-size: 13px;">
+			<div class="col-md-6">
+				<label>Reported Tds From Previous Employer &nbsp;:</label> {{cCctr.entity.salary.reportedTdsFromPreviousEmployer}}
+			</div>
+			<div class="col-md-6">
+				<label>Total Tds &nbsp;:</label> {{cCctr.entity.salary.totalTds}}
+			</div>
+		</div>
+		<div class="row" style="font-size: 13px;">
+			<div class="col-md-6">
+				<label>Short fall In Tax Deduction &nbsp;:</label> {{cCctr.entity.salary.shortfallInTaxDeduction}}
+			</div>
+		</div>
+						
+	</div>
+</div><hr>
+ 			
+ 
+ 
+ <h4>Landlord and Lender Details:</h4>
+      
+<div class="container"> 
+	<div class="collapse dont-collapse-sm" id="collapseExample2"> 
+ 
+ 		<div class="row" style="font-size: 13px;">
+ 			<div class="col-md-6">
+				<label>Whether Tax Deducted At Higher Rate &nbsp;:</label> {{cCctr.entity.salary.whetherTaxDeductedAtHigherRate}}
+			</div>
+			<div class="col-md-6">
+				<label>Count Of Pan Of Lender &nbsp;:</label> {{cCctr.entity.salary.countOfPanOfLandlord}}
+			</div>
+		</div>
+		<div class="row" style="font-size: 13px;">
+			<div class="col-md-6">
+				<label>Pan Of Landlord1 &nbsp;:</label> {{cCctr.entity.salary.panOfLandlord1}}
+			</div>
+			<div class="col-md-6">
+				<label>Name Of Landlord1 &nbsp;:</label> {{cCctr.entity.salary.nameOfLandlord1}}
+			</div>
+		</div>
+		<div class="row" style="font-size: 13px;">
+			<div class="col-md-6">
+				<label>Pan Of Landlord2 &nbsp;:</label> {{cCctr.entity.salary.panOfLandlord2}}
+			</div>
+			<div class="col-md-6">
+				<label>Name Of Landlord2 &nbsp;:</label> {{cCctr.entity.salary.nameOfLandlord2}}
+			</div>
+		</div>
+		<div class="row" style="font-size: 13px;">
+			<div class="col-md-6">
+				<label>Pan Of Landlord3 &nbsp;:</label> {{cCctr.entity.salary.panOfLandlord3}}
+			</div>
+			<div class="col-md-6">
+				<label>Name Of Landlord3 &nbsp;:</label> {{cCctr.entity.salary.nameOfLandlord3}}
+			</div>
+		</div>
+		<div class="row" style="font-size: 13px;">
+			<div class="col-md-6">
+				<label>Pan Of Landlord4 &nbsp;:</label> {{cCctr.entity.salary.panOfLandlord4}}
+			</div>
+			<div class="col-md-6">
+				<label>Name Of Landlord4 &nbsp;:</label> {{cCctr.entity.salary.nameOfLandlord4}}
+			</div>
+		</div>
+		<div class="row" style="font-size: 13px;">
+			<div class="col-md-6">
+				<label>Whether Interest Paid To Be Lender &nbsp;:</label> {{cCctr.entity.salary.whetherInterestPaidToBeLender}}
+			</div>
+			<div class="col-md-6">
+				<label>Count Of Pan Of Lender &nbsp;:</label> {{cCctr.entity.salary.countOfPanOfLender}}
+			</div>
+		</div>
+		<div class="row" style="font-size: 13px;">
+			<div class="col-md-6">
+				<label>Pan Of Lender1 &nbsp;:</label> {{cCctr.entity.salary.panOfLender1}}
+			</div>
+			<div class="col-md-6">
+				<label>Name Of Lender1 &nbsp;:</label> {{cCctr.entity.salary.nameOfLender1}}
+			</div>
+		</div>
+		<div class="row" style="font-size: 13px;">
+			<div class="col-md-6">
+				<label>Pan Of Lender2 &nbsp;:</label> {{cCctr.entity.salary.panOfLender2}}
+			</div>
+			<div class="col-md-6">
+				<label>Name Of Lender2 &nbsp;:</label> {{cCctr.entity.salary.nameOfLender2}}
+			</div>
+		</div>
+		<div class="row" style="font-size: 13px;">
+			<div class="col-md-6">
+				<label>Pan Of Lender3 &nbsp;:</label> {{cCctr.entity.salary.panOfLender3}}
+			</div>
+			<div class="col-md-6">
+				<label>Name Of Lender3 &nbsp;:</label> {{cCctr.entity.salary.nameOfLender3}}
+			</div>
+		</div>
+		<div class="row" style="font-size: 13px;">
+			<div class="col-md-6">
+				<label>Pan Of Lender4 &nbsp;:</label> {{cCctr.entity.salary.panOfLender4}}
+			</div>
+			<div class="col-md-6">
+				<label>Name Of Lender4 &nbsp;:</label> {{cCctr.entity.salary.nameOfLender4}}
+			</div>
+		</div>
+		<div class="row" style="font-size: 13px;">
+			<div class="col-md-6">
+				<label>Contribution Paid By Trustees &nbsp;:</label> {{cCctr.entity.salary.contributionPaidByTrustees}}
+			</div>
+			<div class="col-md-6">
+				<label>Name of the super Annuation Fund &nbsp;:</label> {{cCctr.entity.salary.nameOfTheSuperAnnuationFund}}
+			</div>
+		</div>
+		<div class="row" style="font-size: 13px;">
+			<div class="col-md-6">
+				<label>Super annuation Fund From Date &nbsp;:</label> {{cCctr.entity.salary.SuperannuationFundFromDate}}
+			</div>
+			<div class="col-md-6">
+				<label>Super annuation Fund To Date &nbsp;:</label> {{cCctr.entity.salary.SuperannuationFundToDate}}
+			</div>
+		</div>
+		<div class="row" style="font-size: 13px;">
+			<div class="col-md-6">
+				<label>Contribution Super annuation Fund &nbsp;:</label> {{cCctr.entity.salary.contributionSuperannuationFund}}
+			</div>
+			<div class="col-md-6">
+				<label>Average Rate Of Deduction &nbsp;:</label> {{cCctr.entity.salary.averageRateOfDeduction}}
+			</div>
+		</div>
+		<div class="row" style="font-size: 13px;">
+			<div class="col-md-6">
+				<label>Tax Deducted Of Super annuationFund &nbsp;:</label> {{cCctr.entity.salary.taxDeductedOfSuperannuationFund}}
+			</div>
+			<div class="col-md-6">
+				<label>Gross Total Income including Contribution &nbsp;:</label> {{cCctr.entity.salary.grossTotalIncomeincludingContribution}}
+			</div>
+		</div>
+		<div class="row" style="font-size: 13px;">
+			<div class="col-md-6">
+				<label>Warning Description &nbsp;:</label> {{cCctr.entity.salary.warningDescription}}
+			</div>
+			<div class="col-md-6">
+				<label>Short Deduction &nbsp;:</label> {{cCctr.entity.salary.shortDeduction}}
+			</div>
+		</div>
+		<div class="row" style="font-size: 13px;">	
+			<div class="col-md-6">
+				<label>Interest On Short Deduction &nbsp;:</label> {{cCctr.entity.salary.interestOnShortDeduction}}
+			</div>
+			<div class="col-md-6">
+				<label>House Rent Allowance &nbsp;:</label> {{cCctr.entity.salary.houseRentAllowance}}
+			</div>
+		</div>
+	
+	</div>
+</div><hr>
+				
+				
+				
+				
+				
+				
+				
+				
+					
+					
+				</div>
+			</div>
+
+		</div>
+
+
+
+	</div>
+	
+	</div>
+
+
+
+
+
+
+
+

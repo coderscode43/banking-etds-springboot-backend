@@ -21,5 +21,10 @@ public class Regular24Q4SalaryServiceImpl extends AbstractService<Long, Regular2
 		// TODO Auto-generated method stub
 		return dao;
 	}
+	@Override
+	public Regular24Q4Salary getByKey(Long id) {
+		// TODO Auto-generated method stub
+		return dao.getByKey(id);
+	}
 
 }

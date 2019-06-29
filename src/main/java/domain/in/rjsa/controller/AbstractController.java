@@ -119,7 +119,7 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 				}
 			}
 
-			return new ResponseEntity<>(getSearch(map), HttpStatus.OK);
+			return new ResponseEntity<>(getSearch(map,clientId), HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("Error in listALL", e);
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -127,12 +127,12 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 
 	}
 
-	public List<?> getSearch(LinkedHashMap<String, Object> map) {
+	public List<?> getSearch(LinkedHashMap<String, Object> map, Long clientId) {
 		// TODO Auto-generated method stub
 		Login l = applicationCache.getLoginDetail(getPrincipal());
 		map.put("clientId", l.getClientId());
 //		map.put("employeeId", l.getEmployeeId());
-		return getService().search(map);
+		return getService().search(map,clientId);
 	}
 
 	// ------------------- Search Single Entity ---------------------------------

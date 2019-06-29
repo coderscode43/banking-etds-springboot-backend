@@ -2,6 +2,9 @@ package domain.in.rjsa.dao;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -21,6 +24,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.transaction.annotation.Transactional;
+
 @Transactional("transactionManager")
 public abstract class AbstractNewDao<K extends Serializable, E> implements DaoInterface<K, E> {
 
@@ -33,7 +37,7 @@ public abstract class AbstractNewDao<K extends Serializable, E> implements DaoIn
 	}
 
 	@Autowired
-    @Qualifier("sessionFactory")
+	@Qualifier("sessionFactory")
 	private SessionFactory sessionFactory;
 
 	protected Session getSession() {
@@ -50,7 +54,7 @@ public abstract class AbstractNewDao<K extends Serializable, E> implements DaoIn
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<E> findall(HashMap<String,Object> constrains, int pageNo, int noOfResult) {
+	public List<E> findall(HashMap<String, Object> constrains, int pageNo, int noOfResult) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		criteria.add(Restrictions.allEq(constrains));
@@ -61,7 +65,7 @@ public abstract class AbstractNewDao<K extends Serializable, E> implements DaoIn
 
 	}
 
-	public Long findallCount(HashMap<String,Object> constrains) {
+	public Long findallCount(HashMap<String, Object> constrains) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		criteria.add(Restrictions.allEq(constrains));
@@ -91,25 +95,25 @@ public abstract class AbstractNewDao<K extends Serializable, E> implements DaoIn
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<E> search(HashMap entity) {
+	public List<E> search(HashMap entity, Long clientId) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
-//		for (Object key : entity.keySet()) {
-//			if (key.equals("fromDate")) {
-//				criteria.add(Restrictions.ge("date",
-//						Date.from(ZonedDateTime.parse((String) entity.get("fromDate")).toInstant())));
-//			} else if (key.equals("toDate")) {
-//				criteria.add(Restrictions.le("date",
-//						Date.from(ZonedDateTime.parse((String) entity.get("toDate")).toInstant())));
-//			} else {
-//				criteria.add(Restrictions.eqOrIsNull((String) key, entity.get(key)));
-//			}
-//		}
-//		
-//		criteria.addOrder(Order.desc("date"));
-		Map<String, Object> propertyNameValues = new HashMap<String, Object>(entity);		
-		criteria.addOrder(Order.desc("id"));
+		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
+		propertyNameValues.put("clientId", clientId);
 		criteria.add(Restrictions.allEq(propertyNameValues));
+//		if (entity.get("fromDate") != null) {
+//			criteria.add(Restrictions.ge("date",
+//					Date.from(ZonedDateTime.parse((String) entity.get("fromDate")).toInstant())));
+//		}
+//		if (entity.get("toDate") != null) {
+//			criteria.add(
+//					Restrictions.le("date", Date.from(ZonedDateTime.parse((String) entity.get("toDate")).toInstant())));
+//		}
+//          if(entity.get("vendorName")!=null)
+//          {
+//		criteria.add(Restrictions.eqOrIsNull("vendorName", entity.get("vendorName")));
+//          }
+//		criteria.addOrder(Order.desc("date"));
 		return (List<E>) criteria.list();
 	}
 
@@ -121,7 +125,7 @@ public abstract class AbstractNewDao<K extends Serializable, E> implements DaoIn
 		return (List<E>) criteria.list();
 	}
 
-	public List<String> ajax(String name, String term, HashMap<String ,Object>constrain) {
+	public List<String> ajax(String name, String term, HashMap<String, Object> constrain) {
 
 		Criteria criteria = createEntityCriteria();
 		criteria.add(Restrictions.allEq(constrain));

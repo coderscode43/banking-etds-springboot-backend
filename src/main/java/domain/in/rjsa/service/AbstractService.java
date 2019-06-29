@@ -44,9 +44,9 @@ public abstract class AbstractService<K extends Serializable, E, D extends DaoIn
 	}
 
 	@Override
-	public List<E> search(HashMap map) {
+	public List<E> search(HashMap map, Long clientId) {
 		// TODO Auto-generated method stub
-		return getPrimaryDao().search(map);
+		return getPrimaryDao().search(map, clientId);
 	}
 
 	@Override

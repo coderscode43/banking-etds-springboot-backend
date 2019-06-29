@@ -1,200 +1,162 @@
 <style>
- 
- 
-    @media only screen and (max-width: 1000px) {
-        .one{
-            display: none;
-          
-        }
-    }
-    
- @media only screen and (max-width: 1000px) {
-        .two{
-         
-            padding:8px;
-        }
-    }
-        
-   @media only screen and (min-width:600px) {
-            #three{
-                display: none;
-                max-height: 0;
-                overflow: hidden;
-            }
-        }
-        
-       @media only screen and (min-width:1000px) {
-            #search{
-             
-             margin-left:45%;
-             margin-top:2px;
-             display:none;
-            }
-        }
-        
-            @media only screen and (max-width: 1000px) {
-      #hide{
-            display: none;
-          
-        }
-    }
-     .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
-   background-color: whitesmoke;
-}
-@media (min-width: 768px) {
-  .collapse.dont-collapse-sm {
-    display: block;
-    height: auto !important;
-    visibility: visible;
-  }
+@media only screen and (max-width: 1000px) {
+	.one {
+		display: none;
+	}
 }
 
- .center {
-	float: none;
-	margin-left: auto;
-	margin-right: auto;
+@media only screen and (max-width: 1000px) {
+	.two {
+		padding: 8px;
+	}
 }
 
-#formPanel {
-	background-color: #e6e6e6;
-	border: 1;
-	height: 50%;
-	margin-left: auto;
-	margin-right: auto;
+@media only screen and (min-width:600px) {
+	#three {
+		display: none;
+		max-height: 0;
+		overflow: hidden;
+	}
 }
 
-.button {
-	display: inline-block;
-	border-radius: 5px;
-	background-color: #24478f;
-	border: none;
-	color: #FFFFFF;
-	text-align: center;
-	font-size: 15px;
-	padding: 20px;
-	width: 270px;
-	height: 60px;
-	transition: all 0.5s;
-	cursor: pointer;
+@media only screen and (min-width:1000px) {
+	#search {
+		margin-left: 45%;
+		margin-top: 2px;
+		display: none;
+	}
 }
 
-.button span {
-	cursor: pointer;
-	display: inline-block;
-	position: relative;
-	transition: 0.5s;
+@media only screen and (max-width: 1000px) {
+	#hide {
+		display: none;
+	}
 }
 
-.button span:after {
-	content: '\00bb';
-	position: absolute;
-	opacity: 0;
-	top: 0;
-	right: -20px;
-	transition: 0.5s;
-	color: #79BD3C;
+.table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
+	{
+	background-color: whitesmoke;
 }
 
-.button:hover span {
-	padding-right: 25px;
+@media ( min-width : 768px) {
+	.collapse.dont-collapse-sm {
+		display: block;
+		height: auto !important;
+		visibility: visible;
+	}
 }
-
-.button:hover span:after {
-	opacity: 1;
-	right: 0;
-}
- </style>
+</style>
 
 
 
-<br>
+
 <div id="page-wrapper">
 	<div class="container-fluid">
-<div class="col-md-12 " style="padding-left: 0px;font-size: 15px; margin-top:2%">
-	<div class="heading"><center><h2>MIS Report</center></h2></div>
-	
+		<div class="col-md-12 "
+			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
+			<div class="heading">MIS Report</div>
+		</div>
+
+		<br>
+		<button class="btn btn-primary hidden visible-xs" type="button"
+			data-toggle="collapse" data-target="#collapseExample2"
+			aria-expanded="false" aria-controls="collapseExample">
+			Request for MIS</button>
+		<div class="collapse dont-collapse-sm" id="collapseExample2">
+			<div class="row">
+				<div class="form-group">
 
 
-	</div>
-		
-	  <br>
-	      <button class="btn btn-primary hidden visible-xs" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
-             Search 
-          </button>
-  <div class="collapse dont-collapse-sm" id="collapseExample2"> 
-	 
-  	    <div class="row">
-	      <div class="form-group">
-  	         <div class="col-md-4" style="margin-left:30%">	
-                  <label>From Date.</label>
-                  <input type="date" ng-model="" ng-change=""
-								class="form-control" placeholder="From Date">
-			</div> 
-		</div>
-	  </div><br>
-  	    <div class="row">
-	      <div class="form-group">
-  	         <div class="col-md-4" style="margin-left:30%">	
-                  <label>To Date.</label>
-                  <input type="date" ng-model="" ng-change=""
-								class="form-control" placeholder="From Date">
-			</div> 
-		</div>
-	  </div><br>
-  	    <div class="row">
-	      <div class="form-group">
-  	         <div class="col-md-4" style="margin-left:30%">	
+
+					<div class="col-md-3">
+						<h6>
+							<b>From Date</b>
+							<h6>
+								<input type="date" ng-model="cCctr.search.fromDate"
+									class="form-control" placeholder="Name" style="width: 100%">
+					</div>
+					<div class="row">
+						<div class="col-md-3">
+							<h6>
+								<b>To Date	</b>
+								<h6>
+									<input type="date" ng-model="cCctr.search.toDate"
+										class="form-control" placeholder="Zone Code" style="width: 100%">
+						</div>
+<div class="row">
+						<div class="col-md-3">
+							<h6>
                   <label>Report Type</label>
-                  <select style="width:100%" class="form-control">
+                 <select class="form-control"  ng-model="cCctr.search.reportType" style="width: 100%">
+						<option value="" ng-selected=true>Zone</option>
                     <option value="zone">Zone</option>
                     <option value="section">Section</option>
                     <option value="branch">Branch</option>
                  </select> 
 		   </div> 
-	    </div>
-      </div>
-  	  
-  	    
-	
-	  
-	  
-   </div>
-  	       </div>	
-	      		
-	             <!-- <div class="row" id="hide" >
-	         	  <div class="col-md-4"  style="margin-left:40%;">	
-	                          <button ng-click=""
-									class="btn btn-success" >Generate Report</button>
-	                 </div>					
-  </div> -->
-  <br><br>
-  <div style="height: 50%;">
-	<div class="row" id="hide">
-		<div class="row">
-			<div class="col-md-4" style="margin-left:33%">
-				<div class="form-group">
-					<button
-						ng-click=""
-						class="button" style="vertical-align: middle">
-						<span>Generate Report</span>
-					</button>
+
+					</div>
+				</div>
+
+
+			</div>
+
+			<div class="row" id="hide">	
+				<div class="col-md-3" style="margin-left: 85%; margin-top: -60px">
+					<button ng-click="cCctr.searchEntities(true,'misReport')"
+						class="btn btn-success">Request for MIS</button>
 				</div>
 			</div>
-			
-			
+
+			<div class="row" id="search">
+				<div class="col-md-3" id="search">
+					<button ng-click="cCctr.searchEntities(true,'misReport')"
+						class="btn btn-success">Request for MIS</button>
+				</div>
+			</div>
 		</div>
-		
 	</div>
+
+
+	<div class="row">
+		<div class="table-responsive">
+
+			<table class="  table-bordered table-hover table-striped"
+				role="table"
+				style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+				<thead>
+				<colgroup>
+					<col span="14" style="background-color: #ffffff">
+				</colgroup>
+				<tr>
+				<thead role="rowgroup">
+					<tr role="row" style="height: 40px; background-color: #81b7db">
+						<th width="5%">Sr. No.</th>
+						<th width="20%">From Date</th>
+						<th width="20%">To Date</th>
+						<th width="20%">Report 	Type</th>
+                        <th width="20%">Action</th>
+
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr role="row"
+						ng-repeat="a in cCctr.getEntityListData() track by a.id">
+						<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
+						<td>{{a.fromDate| date:'dd-MM-yyyy'}}</td>
+						<td>{{a.toDate| date:'dd-MM-yyyy'}}</td>
+						<td>{{a.reportType}}</td>
+						<td><a ng-click="cCctr.gotoHomePageWOT(a.id,'homeWOT')"
+								style="color: blue">Download</a></td>
+						<!-- <td>{{a.total-a.amountPaid}}</td> -->
+
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+
 </div>
-  
-   <div class="row" id="search" >
-	         	  <div class="col-md-4" id="search">	
-	                          <button ng-click=""
-									class="btn btn-success">Generate Report</button>
-	                 </div>					
-  </div>
-  </div>
- </div>
- 
- 
- 	
+</div> 	

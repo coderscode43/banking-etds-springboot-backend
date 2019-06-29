@@ -1,5 +1,7 @@
 package domain.in.rjsa.service;
 
-public interface DEDUCTORDETAILSService {
+import domain.in.rjsa.model.tds.DEDUCTORDETAILS;
 
+public interface DEDUCTORDETAILSService extends ServiceTDSInterface<String, DEDUCTORDETAILS>{
+	 public DEDUCTORDETAILS getByKey(String tan);
 }

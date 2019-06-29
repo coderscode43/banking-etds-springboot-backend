@@ -60,13 +60,13 @@ public class VendorController extends AbstractController<Long, Vendor, VendorSer
 		Login l = applicationCache.getLoginDetail(getPrincipal());
 		Branch b=applicationCache.getBranch(id);
 		LinkedHashMap<String, Object> constrains = new LinkedHashMap<>();
-		constrains.put("clientId", l.getClientId());
+	//	constrains.put("clientId", l.getClientId());
 		constrains.put("vendorId", id);
-		List<VendorLDC> v = vldcservice.search(constrains);		
+		List<VendorLDC> v = vldcservice.search(constrains,l.getClientId());		
 		ew.setVldcs(v);
 		constrains.remove("vendorId");
 		constrains.put("branchId", b.getId());
-		List<VendorPayment> vendorPay = vpservice.search(constrains);		
+		List<VendorPayment> vendorPay = vpservice.search(constrains,l.getClientId());		
 		ew.setVpList(vendorPay);
 		
 		Vendor vendor = service.getByKey(id);

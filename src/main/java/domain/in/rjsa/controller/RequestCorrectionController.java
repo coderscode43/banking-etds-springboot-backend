@@ -44,7 +44,7 @@ public class RequestCorrectionController extends AbstractController<Long, Reques
 		LinkedHashMap<String, Object> constrains = new LinkedHashMap<>();
 		constrains.put("clientId", l.getClientId());
 		constrains.put("challanSrNo", id);
-		List<Regular26QDeductee> r26Q=r26QSercive.search(constrains);
+		List<Regular26QDeductee> r26Q=r26QSercive.search(constrains,l.getClientId());
 		ew.setRegular26QDeducteeList(r26Q);
 		
 		RequestCorrection reqCorr = service.getByKey(id);

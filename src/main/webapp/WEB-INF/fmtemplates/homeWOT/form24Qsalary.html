@@ -140,9 +140,6 @@
 				<div class="col-md-3" style="margin-left: 85%; margin-top: -70px">
 					<button ng-click="cCctr.searchEntities(true,'form24Qsalary')"
 						class="btn btn-success">Search</button>
-						</div>
-						<div>
-						<div class="modal-header" style="margin-left: 96%; margin-bottom: -20px" >
 					<button type="button" class="btn btn-primary">Add</button>
 				</div>
 
@@ -158,9 +155,10 @@
 	</div>
 
 
-	
+	<div class="row">
+		<div class="table-responsive">
 
-			<table class="table-bordered table-hover table-striped"
+			<table class="  table-bordered table-hover table-striped"
 				role="table"
 				style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
 
@@ -353,8 +351,7 @@
 						<td>{{a.interestOnShortDeduction}}</td>
 						<td>{{a.fy}}</td>
 						<td>{{a.quarter}}</td>
-						<td><a ng-click="cCctr.gotoHomePageWOT(a.id,'homeWOT')"
-							style="color: blue">Work On This</a></td>
+						<td><a ng-click="cCctr.gotoDetailPage('form24Qsalary',a.id,'detailForm24Q4')" style="color: blue">Details</a></td>
 
 						<!-- <td>{{a.total-a.amountPaid}}</td> -->
 
@@ -362,11 +359,32 @@
 
 				</tbody>
 			</table>
-	
+		</div>
 
 
 
 
 
 
-	
+	</div>
+
+
+
+</div>
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>This is a small modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

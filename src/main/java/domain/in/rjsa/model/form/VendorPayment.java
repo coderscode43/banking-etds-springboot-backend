@@ -26,6 +26,8 @@ public class VendorPayment extends CommonModelAbstract{
 	public Long clientId;
 	@Column(name = "branchId")
 	public Long branchId;
+	@Column(name = "vendorId")
+	public Long vendorId;
 	@Column(name = "vendorNo")
 	public String vendorNo;
 	@Column(name = "vendorName")
@@ -33,8 +35,8 @@ public class VendorPayment extends CommonModelAbstract{
 	@Column(name = "vendorPAN")
 	public String vendorPAN;
 	
-	@Column(name = "invoiceDate")
-	public Date invoiceDate;
+	@Column(name = "date")
+	public Date date;
 	@Column(name = "paymentDone")
 	public String paymentDone;	
 	@Column(name = "paymentDate")

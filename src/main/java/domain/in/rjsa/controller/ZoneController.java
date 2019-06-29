@@ -48,10 +48,10 @@ public class ZoneController extends AbstractController<Long, Zone, ZoneService> 
 		Login l = applicationCache.getLoginDetail(getPrincipal());
         Zone z=applicationCache.getZone(id);
 		LinkedHashMap<String, Object> constrains = new LinkedHashMap<>();
-		constrains.put("clientId", l.getClientId());
+	//	constrains.put("clientId", l.getClientId());
 		constrains.put("zonalId", z.getId());
 		List<Branch> branchs = new ArrayList<>();
-		for (ZonalBranches zb : zbService.search(constrains)) {
+		for (ZonalBranches zb : zbService.search(constrains,l.getClientId())) {
 			branchs.add(applicationCache.getBranch(zb.getBranchId()));
 		}
 		ew.setBranchList(branchs);

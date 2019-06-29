@@ -186,10 +186,7 @@
 				data-toggle="tab">Challan Details</a></li>
 			<li ><a data-target="#deducteeDtls"
 				data-toggle="tab">Deductee Details</a></li>
-				<li ><a data-target="#salaryDtls"
-				data-toggle="tab">Salary Details</a></li>
-				
-
+			
 		</ul>
 		<br>
 		
@@ -256,16 +253,31 @@
 						<thead role="rowgroup">
 							<tr role="row" style="height: 40px; background-color: #81b7db">
 								<th >Sr. No.</th>
-								<th >CIN</th>
-								<th >TAN</th>
-								<th >AVAILABLE_BALENCE</th>
-								<th >AMOUNT_OF_CLALLAN</th>
-								<th >DATE_OF_DEPOSITION</th>
-								<th >AS_ON_DATE</th>
-								<th >CHALLAN_MISMATCH</th>
-								<th >SECTION</th>
-								<th >MINORHEAD</th>
-																
+								<th >Challan No.</th>
+								<th >Deductee Ref No.</th>
+								<th >Deductee Code</th>
+								<th >Deductee PAN</th>
+								<th >Deductee Name</th>
+								<th >Section Code</th>
+								<th >Payment Date</th>
+								<th >Paid Amount</th>
+								<th >TDS</th>
+								<th >Surcharge</th>
+								<th >Edu Cess</th>
+								<th >Total Tax Deduct</th>
+								<th >Total Tax Deposit</th>
+								<th >Deduct Date</th>
+								<th >Rate Tax Deduct</th>
+								<th >Remarks</th>
+								<th >Certificate No.</th>
+								<th >Warning Description</th>
+								<th >Short Deduct</th>
+								<th >Interest on Short Deduct</th>
+								<th >Interest on Late Pay</th>
+								<th >Interest on Late Deduct</th>
+								<th >FY</th>
+								<th >Quarter</th>
+										
 							</tr>
 							
 						</thead>
@@ -273,17 +285,31 @@
 							<tr role="row"
 								ng-repeat="a in cCctr.entity.vpList track by a.id">
 								<td role="cell" class="one" style=" padding: 5px">{{$index+1}}</td>
-								<td>{{a.CIN}}</td>
-								<td>{{a.TAN}}</td>
-								<td>{{a.AVAILABLE_BALENCE}}</td>
-								<td>{{a.AMOUNT_OF_CLALLAN}}</td>
-								<td>{{a.DATE_OF_DEPOSITION}}</td>
-								<td>{{a.AS_ON_DATE}}</td>
-								<td>{{a.CHALLAN_MISMATCH}}</td>
-								<td>{{a.SECTION}}</td>
-								<td>{{a.MINORHEAD}}</td>
-								
-							
+								<td>{{a.challanSrNo}}</td>
+								<td>{{a.deducteeRefNo}}</td>
+								<td>{{a.eduCess}}</td>
+								<td>{{a.deducteeCode}}</td>
+								<td>{{a.deducteePan}}</td>
+								<td>{{a.deducteeName}}</td>
+								<td>{{a.sectionCode}}</td>
+								<td>{{a.paymentDate}}</td>
+								<td>{{a.paidAmt}}</td>
+								<td>{{a.tds}}</td>
+								<td>{{a.surcharge}}</td>
+								<td>{{a.eduCess}}</td>
+								<td>{{a.totalTaxDeduct}}</td>
+								<td>{{a.totalTaxDeposit}}</td>								
+								<td>{{a.deductDate}}</td>
+								<td>{{a.rateTaxDeduct}}</td>
+								<td>{{a.remarks}}</td>
+								<td>{{a.certificateNo}}</td>
+								<td>{{a.warningDescription}}</td>
+								<td>{{a.shortDeduct}}</td>
+								<td>{{a.interestOnShtDeduct}}</td>
+								<td>{{a.interestOnLatePay}}</td>
+								<td>{{a.interestOnLateDeduct}}</td>
+								<td>{{a.fy}}</td>
+								<td>{{a.quarter}}</td>
 								<!-- <td>{{a.total-a.amountPaid}}</td> -->
 
 							</tr>
@@ -312,19 +338,33 @@
 							<tr role="row" style="height: 40px; background-color: #81b7db">
 								<th >Sr. No.</th>
 								<th >Challan Serial No</th>
-								<th >Deductee Ref No</th>
-								<th >Deductee Code</th>
-								<th >Deductee PAN</th>
-								<th >Deductee Name</th>
-								<th >Section Code</th>
-								<th >Payment date</th>
-								<th >Paid Amount</th>
-								<th >TDS</th>
+								<th >Party Ref No.</th>
+								<th >Party Code</th>
+								<th >Party PAN</th>
+								<th >Party Name</th>
+								<th >Amount Debited</th>
+								<th >Debited Date</th>
+								<th >TCS</th>
 								<th >Surcharge</th>
 								<th >Education Cess</th>
-								<th >Total Tax Deduct</th>
+								<th >Total Tax Collect</th>
 								<th >Total Tax Deposit</th>
-								<th >Deductee Rate</th>
+								<th> Collected Date</th>								
+								<th >Total Value Purchase</th>
+								<th >Rate Tax Collected</th>
+								<th >Non Collect Reason</th>
+								<th >Section Code</th>
+								<th >Certificate No</th>
+								<th >Non Resident Deductee</th>
+								<th >Permanent Est</th>
+								<th >Warning Description</th>
+								<th >Short Deductee</th>
+								<th >Interest on Short Deduct</th>
+								<th >Interest On Late Pay</th>
+								<th >Interest On Late Deduction</th>
+								<th >FY </th>
+								<th >Quarter</th>
+								
 								
 							</tr>
 							
@@ -334,94 +374,40 @@
 								ng-repeat="a in cCctr.entity.Regular26QDeducteeList track by a.id">
 								<td role="cell" class="one" style=" padding: 5px">{{$index+1}}</td>
 								<td>{{a.challanSrNo}}</td>
-								<td>{{a.deducteeRefNo}}</td>
-								<td>{{a.deducteeCode}}</td>
-								<td>{{a.deducteePan}}</td>
-								<td>{{a.deducteeName}}</td>
-								<td>{{a.sectionCode}}</td>
-								<td>{{a.paymentDate | date:'dd-MM-yyyy'}}</td>
-								<td>{{a.paidAmt}}</td>
-								<td>{{a.tds}}</td>
+								<td>{{a.partyRefNo}}</td>
+								<td>{{a.partyCode}}</td>
+								<td>{{a.partyPan}}</td>
+								<td>{{a.partyName}}</td>
+								<td>{{a.amtDebited}}</td>
+								<td>{{a.debitedDate | date:'dd-MM-yyyy'}}</td>
+								<td>{{a.tcs}}</td>
 								<td>{{a.surcharge}}</td>
 								<td>{{a.eduCess}}</td>
-								<td>{{a.totalTaxDeduct}}</td>
+								<td>{{a.totalTaxCollect}}</td>
 								<td>{{a.totalTaxDeposit}}</td>
-								<td>{{a.deductDate | date:'dd-MM-yyyy'}}</td>
-								
-								
-								<!-- <td>{{a.total-a.amountPaid}}</td> -->
+								<td>{{a.collectedDate | date:'dd-MM-yyyy'}}</td>
+								<td>{{a.totValuePurchasec}}</td>
+								<td>{{a.rateTaxCollected}}</td>
+								<td>{{a.nonCollectReason}}</td>
+								<td>{{a.sectionCode}}</td>
+								<td>{{a.certificateNo}}</td>
+								<td>{{a.nonResidentDeductee}}</td>
+								<td>{{a.permanentEst}}</td>
+								<td>{{a.warningDescription}}</td>
+								<td>{{a.shortDeduct}}</td>
+								<td>{{a.interestOnShtDeduct}}</td>
+								<td>{{a.interestOnLatePay}}</td>
+								<td>{{a.interestOnLateDeduct}}</td>
+								<td>{{a.fy}}</td>
+								<td>{{a.quarter}}</td>
+							<!-- <td>{{a.total-a.amountPaid}}</td> -->
 
 							</tr>
 						</tbody>
 					</table>
 				</div>
 			</div>
-			
-			<div class="tab-pane" id="salaryDtls">
-				<div class="table-responsive">
 
-					<table class="  table-bordered table-hover table-striped"
-						role="table"
-						style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
-						<thead>
-						<colgroup>
-							<col span="14" style="background-color: #ffffff">
-						</colgroup>
-						<tr>
-						<thead role="rowgroup">
-							<tr role="row" style="height: 40px; background-color: #81b7db">
-								<th >Sr. No.</th>
-								<th >Invoice Date</th>
-								<th >Payment Done</th>
-								<th >Payment Date</th>
-								<th >Payment Mode</th>
-								<th >Invoice Number</th>
-								<th >Total Invoice Value</th>
-								<th >Taxable Value</th>
-								<th >CGST</th>
-								<th >SGST</th>
-								<th >IGST</th>
-								<th >Cess</th>
-								<th >Income Tax TDS</th>
-								<th >GST TDS</th>
-								<th >Nature of Payment</th>
-								<th >Net Amount Paid</th>								
-								<th >BGL Code</th>
-								<th >Our GST</th>
-								
-							</tr>
-							
-						</thead>
-						<tbody>
-							<tr role="row"
-								ng-repeat="a in cCctr.entity.vpList track by a.id">
-								<td role="cell" class="one" style=" padding: 5px">{{$index+1}}</td>
-								<td>{{a.invoiceDate}}</td>
-								<td>{{a.paymentDone}}</td>
-								<td>{{a.paymentDate}}</td>
-								<td>{{a.paymentMode}}</td>
-								<td>{{a.invoiceNumber}}</td>
-								<td>{{a.totalInvoiceValue}}</td>
-								<td>{{a.taxableValue}}</td>
-								<td>{{a.cgst}}</td>
-								<td>{{a.sgst}}</td>
-								<td>{{a.igst}}</td>
-								<td>{{a.cess}}</td>
-								<td>{{a.incomeTaxTds}}</td>
-								<td>{{a.gstTds}}</td>
-								<td>{{a.natureOfPayment}}</td>
-								<td>{{a.netAmountPaid}}</td>
-								<td>{{a.bglCode}}</td>
-								<td>{{a.ourGst}}</td>
-							
-								<!-- <td>{{a.total-a.amountPaid}}</td> -->
-
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			
-			</div>
 		</div>
 		
 		

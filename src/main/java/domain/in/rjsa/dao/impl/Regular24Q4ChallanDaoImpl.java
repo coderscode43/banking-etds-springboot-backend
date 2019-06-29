@@ -44,7 +44,7 @@ public class Regular24Q4ChallanDaoImpl extends AbstractNewDao<Long,Regular24Q4Ch
 		criteria.add(Restrictions.eqOrIsNull("quarter", entity.get("quarter")));
           }
           
-		criteria.addOrder(Order.desc("dateTaxDeposit"));
+		criteria.addOrder(Order.desc("dateOfDeposition"));
 		return (List<Regular24Q4Challan>) criteria.list();
 	}
 

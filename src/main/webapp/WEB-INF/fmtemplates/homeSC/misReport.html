@@ -81,7 +81,7 @@
 							<h6>
 								<b>To Date </b>
 								<h6>
-									<input type="date" ng-model="cCctr.search.toDate"
+									<input type="date" ng-model="cCctr.search.fromDate"
 										class="form-control" placeholder="To Date" style="width: 100%">
 						</div>
 						<div class="row">
@@ -89,10 +89,9 @@
 								<h6>
 									<label>Report Type</label> <select class="form-control"
 										ng-model="cCctr.search.reportType" style="width: 100%">
-										<option value="" ng-selected=true>Zone</option>
-										<option value="zone">Zone</option>
+										<option value="" ng-selected=true>Section</option>
 										<option value="section">Section</option>
-										<option value="branch">Branch</option>
+										<option value="monthWise">Month Wise</option>
 									</select>
 							</div>
 
@@ -145,8 +144,8 @@
 						<tr role="row"
 							ng-repeat="a in cCctr.getEntityListData() track by a.id">
 							<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
-							<td>{{a.fromDate| date:'dd-MM-yyyy'}}</td>
-							<td>{{a.toDate| date:'dd-MM-yyyy'}}</td>
+							<td>{{a.date| date:'dd-MM-yyyy'}}</td>
+							<td>{{a.date| date:'dd-MM-yyyy'}}</td>
 							<td>{{a.reportType}}</td>
 							<td><a ng-click="cCctr.gotoHomePageWOT(a.id,'homeWOT')"
 								style="color: blue">Download</a></td>

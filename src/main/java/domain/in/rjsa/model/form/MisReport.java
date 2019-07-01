@@ -28,12 +28,10 @@ public class MisReport extends CommonModelAbstract{/**
 	public Long id;		
 	@Column(name = "clientId")
 	public Long clientId;
-	@Column(name = "fromDate")
-	public Date fromDate;
-	@Column(name = "toDate")
-	public Date toDate;
+	@Column(name = "date")
+	public Date date;
 	@Column(name = "reportType")
-	public String reportType;
+	public String reportType;	
 	
 	
 

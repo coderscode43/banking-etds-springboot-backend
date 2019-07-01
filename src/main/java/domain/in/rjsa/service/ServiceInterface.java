@@ -14,11 +14,13 @@ public interface ServiceInterface<K, E> {
 
 	public Long findallCount(HashMap<String, Object> constrains);
 
-	public List<E> search(HashMap map);
+	public List<E> search(HashMap map,Long clientId);
 
 	public E uniqueSearch(HashMap map);
 
 	public List<String> ajax(String name, String term, HashMap<String, Object> constrains);
+
+//	List<E> search(HashMap map, Long clientId);
 	
 
 

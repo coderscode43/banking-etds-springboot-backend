@@ -341,16 +341,24 @@
 								<th >Education Cess</th>
 								<th >Total Tax Deduct</th>
 								<th >Total Tax Deposit</th>
-								 <th> Date Of Deduction</th>								
-								<th >Rate Tax Deduct</th>
-								<th >Remarks</th>
-								<th >Certificate No</th>
+								<th> Date Of Deduction</th>								
+								<th >Rate At Which Tax Deducted</th>
+								<th >Reason For Non Deduction</th>
+								<th >Grossing Up Indicator</th>
+								<th >No Of Certificate Under Section</th>
+								<th >Unique Acknowledge No</th>
+								<th >Country Of Residence</th>
+								<th >Email Id</th>
+								<th >Contact No Of Deductee</th>
+								<th >Address Of Deductee</th>
+								<th >Tax Identification No</th>
 								<th >Short Deduction</th>
 								<th >Interest On Short Deduction</th>
 								<th >Interest On Late Payment</th>
 								<th >Interest On Late Deduction</th>
-								<th >Finantial Year</th>
+								<th >FY </th>
 								<th >Quarter</th>
+								
 								
 							</tr>
 							
@@ -359,33 +367,37 @@
 							<tr role="row"
 								ng-repeat="a in cCctr.entity.Regular26QDeducteeList track by a.id">
 								<td role="cell" class="one" style=" padding: 5px">{{$index+1}}</td>
-								<td>{{a.challanSrNo}}</td>
+								<td>{{a.srNoInChallan}}</td>
 								<td>{{a.deducteeRefNo}}</td>
 								<td>{{a.deducteeCode}}</td>
-								<td>{{a.deducteePan}}</td>
-								<td>{{a.deducteeName}}</td>
+								<td>{{a.pan}}</td>
+								<td>{{a.name}}</td>
 								<td>{{a.sectionCode}}</td>
-								<td>{{a.paymentDate | date:'dd-MM-yyyy'}}</td>
-								<td>{{a.paidAmt}}</td>
+								<td>{{a.dateOfPayment | date:'dd-MM-yyyy'}}</td>
+								<td>{{a.amountPaid}}</td>
 								<td>{{a.tds}}</td>
 								<td>{{a.surcharge}}</td>
-								<td>{{a.eduCess}}</td>
-								<td>{{a.totalTaxDeduct}}</td>
-								<td>{{a.totalTaxDeposit}}</td>
-								<td>{{a.deductDate | date:'dd-MM-yyyy'}}</td>
-								<td>{{a.rateTaxDeduct}}</td>
-								<td>{{a.remarks}}</td>
-								<td>{{a.certificateNo}}</td>
-								<td>{{a.warningDescription}}</td>
-								<td>{{a.shortDeduct}}</td>
-								<td>{{a.interestOnShtDeduct}}</td>
-								<td>{{a.interestOnLatePay}}</td>
-								<td>{{a.interestOnLateDeduct}}</td>
+								<td>{{a.educationCess}}</td>
+								<td>{{a.totalTaxDeducted}}</td>
+								<td>{{a.totalTaxDeposited}}</td>
+								<td>{{a.dateOfDeduction | date:'dd-MM-yyyy'}}</td>
+								<td>{{a.rateAtWhichTaxDeducted}}</td>
+								<td>{{a.reasonForNonDeduction}}</td>
+								<td>{{a.grossingUpIndicator}}</td>
+								<td>{{a.noOfCertificateUnderSection}}</td>
+								<td>{{a.uniqueAcknowledgeNo}}</td>
+								<td>{{a.countryOfResidence}}</td>
+								<td>{{a.emailId}}</td>
+								<td>{{a.contactNoOfDeductee}}</td>
+								<td>{{a.addressOfDeductee}}</td>
+								<td>{{a.taxIdentificationNo}}</td>
+								<td>{{a.shortDeduction}}</td>
+								<td>{{a.interestOnShortDeduction}}</td>
+								<td>{{a.interestOnLatePayment}}</td>
+								<td>{{a.interestOnLateDeduction}}</td>
 								<td>{{a.fy}}</td>
 								<td>{{a.quarter}}</td>
-																
-								
-								<!-- <td>{{a.total-a.amountPaid}}</td> -->
+							<!-- <td>{{a.total-a.amountPaid}}</td> -->
 
 							</tr>
 						</tbody>

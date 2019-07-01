@@ -1,0 +1,172 @@
+<style>
+ 
+ 
+    @media only screen and (max-width: 1000px) {
+        .one{
+            display: none;
+          
+        }
+    }
+    
+ @media only screen and (max-width: 1000px) {
+        .two{
+         
+            padding:8px;
+        }
+    }
+        
+   @media only screen and (min-width:600px) {
+            #three{
+                display: none;
+                max-height: 0;
+                overflow: hidden;
+            }
+        }
+        
+       @media only screen and (min-width:1000px) {
+            #search{
+             
+             margin-left:45%;
+             margin-top:2px;
+             display:none;
+            }
+        }
+        
+            @media only screen and (max-width: 1000px) {
+      #hide{
+            display: none;
+          
+        }
+    }
+     .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background-color: whitesmoke;
+}
+@media (min-width: 768px) {
+  .collapse.dont-collapse-sm {
+    display: block;
+    height: auto !important;
+    visibility: visible;
+  }
+}
+ 
+ </style>
+
+
+
+
+<div id="page-wrapper">
+	<div class="container-fluid">
+<div class="col-md-12 " style="padding-left: 0px;font-size: 12pxp; margin-top:2%">
+	<div class="heading">As of Now Salary Details</div>
+	</div>
+		
+	  <br>
+	      <button class="btn btn-primary hidden visible-xs" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+             Search 
+          </button>
+  <div class="collapse dont-collapse-sm" id="collapseExample2"> 
+	  <div class="row">
+	   <div class="form-group">
+	  
+	    <div class="col-md-3">	
+                <h6><b>PAN</b><h6>
+                  <input type="text"ng-model="cCctr.search.pan" class="form-control" placeholder="PAN" style="width:80%">
+								</div>
+	<div class="col-md-3" >							
+            <h6><b>Financial Year</b></h6>
+          <input type="text"ng-model="cCctr.search.fy" class="form-control" placeholder="Financial Year" style="width:80%">
+								</div>
+      </div>
+      
+     	<div class="col-md-3">	
+           <h6><b>Quarter</b><h6>
+           <input type="text" ng-model="cCctr.search.fromDocumentNumber" class="form-control" placeholder="Quarter" style="width:80%">
+       </div>
+      
+   </div>
+            
+           
+	       </div>	
+	      		
+	             <div class="row" id="hide" >
+	         	  <div class="col-md-3"  style="margin-left:85%;margin-top:-50px">	
+	                          <button ng-click="cCctr.searchEntities(true,'salary')"
+									class="btn btn-success" >Search</button>
+	                 </div>					
+  </div>
+  
+   <div class="row" id="search" >
+	        <div class="col-md-3" id="search">	
+	          <button ng-click="cCctr.searchEntities(true,'salary')"
+			class="btn btn-success">Search</button>
+	         </div>					
+  </div>
+  </div>
+ </div>
+
+ 
+ 					<div class="row">
+						<!-- <div class="table-responsive"> -->
+							<table class="  table-bordered table-hover table-striped" role="table"
+								style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+								<thead>
+								<colgroup>
+									<col span="14" style="background-color: #ffffff">
+								</colgroup>
+							 <tr>
+							  <thead role="rowgroup">
+    <tr role="row" style="height:40px;background-color:#81b7db">
+      <th width="10%">Sr. No.</th>
+      <th width="20%">Basic Salary</th>
+      <th width="10%">HRA</th>
+      <th width="10%" >DA</th>
+      <th width="10%">CCA</th>
+      <th width="10%" >Special Allowance</th>
+      <th width="10%">Travel Allowance</th>
+      <th width="10%">Medical Allowance</th>
+      <th width="10%">EPF Employer Contribution</th>
+      <th width="10%">EPF Employee Contribution</th>
+      <th width="10%">Leave Enhancement</th>
+      <th width="10%">Horanium</th>
+      <th width="10%">Add Income</th>
+      <th width="10%">Car Perk</th>
+      <th width="10%">Loan Perk</th>
+      <th width="10%">NPS Employer Contribution</th>
+      <th width="10%">NPS Employee Contribution</th>
+      <th width="10%">TDS</th>
+      <th width="10%">Other Income</th>
+      <th width="10%">Month</th>
+    
+      </tr>
+  </thead>
+								<tbody>
+									<tr role="row" ng-repeat="a in cCctr.getEntityListData() track by a.id">
+										<td role="cell" class="one" style="height: 60px;padding:10px">{{$index+1}}</td>
+											<td>{{a.basicSalary}}</td>
+											<td>{{a.hra}}</td>
+											<td>{{a.da}}</td>
+											<td>{{a.cca}}</td>
+											<td>{{a.specialAllowance}}</td>
+											<td>{{a.travelAllowance}}</td>
+											<td>{{a.medicalAllowance}}</td>
+											<td>{{a.epfEmployerContribution}}</td>
+											<td>{{a.epfEmpContribution}}</td>
+											<td>{{a.leaveEnhancement}}</td>
+											<td>{{a.horanium}}</td>
+											<td>{{a.addIncome}}</td>
+											<td>{{a.carPerk}}</td>
+											<td>{{a.loanPerk}}</td>
+											<td>{{a.npsEmployerContribution}}</td>
+											<td>{{a.npsEmpContribution}}</td>
+											<td>{{a.tds}}</td>
+											<td>{{a.otherIncome}}</td>
+											<td>{{a.month}}</td>
+														<!-- <td>{{a.total-a.amountPaid}}</td> -->
+										
+									</tr>
+								
+								</tbody>
+							</table>
+							</div>
+</div>
+</div>

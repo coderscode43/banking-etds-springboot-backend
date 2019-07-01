@@ -27,10 +27,30 @@
 					<li><a
 						ng-click="cCctr.gotoListPage('vendorPayment','vendorPayment')"
 						class="dropdown-toggle" data-toggle="dropdown">Vendor Payment</a></li>
-					<li><a ng-click="cCctr.gotoListPage('form26Q','form26Q')"
-						class="dropdown-toggle" data-toggle="dropdown">Form 26Q</a></li>
-					<li><a ng-click="cCctr.gotoListPage('form27Q','form27Q')"
-						class="dropdown-toggle" data-toggle="dropdown">Form 27Q</a></li>
+					<li><a 
+						class="dropdown-toggle" data-toggle="dropdown">Form 26Q&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span></a>
+						
+						  <ul class=" dropdown-menu forAnimate">
+             
+                               <li><a ng-click="cCctr.gotoListPage('formchalllan26Q','formchalllan26Q')">Challan Details</a></li>
+                               		
+                               <li><a ng-click="cCctr.gotoListPage('form26Q','form26Q')">Deductee Details</a></li>
+                            </ul>
+						
+						</li>
+					<li><a
+						class="dropdown-toggle" data-toggle="dropdown">Form 27Q&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span></a>
+						
+						 <ul class=" dropdown-menu forAnimate">
+             
+                               <li><a ng-click="cCctr.gotoListPage('regular27QChallan','regular27QChallan')">Challan Details</a></li>
+                               		
+                               <li><a ng-click="cCctr.gotoListPage('form27Q','form27Q')">Deductee Details</a></li>
+                            </ul>
+						
+						
+						
+						</li>
 					<li><a 
 						class="dropdown-toggle" data-toggle="dropdown">Form 24Q&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span></a>
 						
@@ -38,15 +58,24 @@
 					        
 						     <ul class=" dropdown-menu forAnimate">
              
-                               <li><a ng-click="cCctr.gotoListPage('form24Qsalary','form24Qsalary')">Salary Details</a></li>
-                               		
+                             
+                               	    <li><a ng-click="cCctr.gotoListPage('regular24Q4Challan','regular24Q4Challan')">Challan Details</a></li>	
                                <li><a ng-click="cCctr.gotoListPage('form24Q','form24Q')">Deductee Details</a></li>
+                                 <li><a ng-click="cCctr.gotoListPage('form24Qsalary','form24Qsalary')">Salary Details</a></li>
                             </ul>
 					
 						</li>
 						
 					<li><a ng-click="cCctr.gotoListPage('requestCorrection','requestCorrection')"
 						class="dropdown-toggle" data-toggle="dropdown">Request Correction</a></li>
+						
+					<!-- 	 <li><a  data-toggle="collapse" data-target="#submenu-1"> menu <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                    <ul id="submenu-1" class="collapse" style="background-color:white;text-decoration:none">
+                        <li><a href="#"><i class="fa fa-angle-double-right"></i> abcdefhgdfgfd</a></li>
+                        <li><a href="#"><i class="fa fa-angle-double-right"></i> SUBMENU 1.2</a></li>
+                        <li><a href="#"><i class="fa fa-angle-double-right"></i> SUBMENU 1.3</a></li>
+                    </ul>
+                </li> -->
 
 					<li><a
 						ng-click="cCctr.gotoListPage('statementStatus','statementStatus')"
@@ -259,6 +288,17 @@ nav.sidebar, .main {
 		float: none;
 		width: auto;
 		margin-top: 0;
+		background-color: red;
+		border: 0;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+		 overflow: auto;
+	}
+	nav.sidebar .navbar-nav .open .dropdown-menu {
+		position: static;
+		float: none;
+		width: auto;
+		margin-top: 0;
 		background-color: #FFEFD5;
 		border: 0;
 		-webkit-box-shadow: none;
@@ -415,6 +455,39 @@ section {
 .navbar-inverse .navbar-nav .open .dropdown-menu>li>a:hover {
     color: #fff;
 }
+
+
+nav.sidebar .navbar-nav .open .collapse>li>a:hover, nav.sidebar .navbar-nav .open .collapse>li>a:focus
+	{
+	color: black;
+	background-color: orange;
+}
+
+a:focus, a:hover {
+    color: white;
+    text-decoration: underline; 
+}
+
+
+ul.collapse li a:hover, ul li a:focus {
+    color: #fff;
+    background-color: #d19b3d;
+    text-decoration:none;
+    padding:2px;
+    margin:5px;
+   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  
+   
+}
+ul.collapse li{
+   height:25px;
+
+   
+}
+
+
+
+
 </style>
 
 

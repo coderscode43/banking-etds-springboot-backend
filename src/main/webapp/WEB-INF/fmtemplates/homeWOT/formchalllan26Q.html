@@ -1,0 +1,210 @@
+<style>
+@media only screen and (max-width: 1000px) {
+	.one {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.two {
+		padding: 8px;
+	}
+}
+
+@media only screen and (min-width:600px) {
+	#three {
+		display: none;
+		max-height: 0;
+		overflow: hidden;
+	}
+}
+
+@media only screen and (min-width:1000px) {
+	#search {
+		margin-left: 45%;
+		margin-top: 2px;
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	#hide {
+		display: none;
+	}
+}
+
+.table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
+	{
+	background-color: whitesmoke;
+}
+
+@media ( min-width : 768px) {
+	.collapse.dont-collapse-sm {
+		display: block;
+		height: auto !important;
+		visibility: visible;
+	}
+}
+</style>
+
+
+
+
+<div id="page-wrapper">
+		<div class="col-md-12 "
+			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
+			<div class="heading">Form 26Q Challan Details</div>
+
+
+
+		</div>
+
+
+		<br>
+		<button class="btn btn-primary hidden visible-xs" type="button"
+			data-toggle="collapse" data-target="#collapseExample2"
+			aria-expanded="false" aria-controls="collapseExample">
+			Search</button>
+		<div class="collapse dont-collapse-sm" id="collapseExample2">
+			<div class="row">
+				<div class="form-group">
+
+
+					<div class="col-md-2">
+						<h6>
+							<b>Financial Year</b>
+						</h6>
+						<select class="form-control"  ng-model="cCctr.search.fy" >
+						<option value="" ng-selected=true>Year</option>
+							<option value="201918">201918</option>
+							<option value="201817">201817</option>
+							<option value="201716">201716</option>
+							<option value="201615">201615</option>
+						</select>
+					</div>
+
+					<div class="col-md-2">
+						<h6>
+							<b>Quarter</b>
+							<h6>
+							<select class="form-control"   ng-model="cCctr.search.quarter" >
+							<option value="" ng-selected=true>Quarter</option>
+							<option value="Q1">Q1</option>
+							<option value="Q2">Q2</option>
+							<option value="Q3">Q3</option>
+							<option value="Q4">Q4</option>
+							</select>
+							
+					</div>
+					
+					
+					<div class="col-md-2">
+						<h6>
+							<b>From Date Of Tax Deposit</b>
+							<h6>
+								 <input type="date" ng-model="cCctr.search.dateTaxDeposit" 
+									class="form-control" placeholder="Date" style="width: 100%">
+									
+					</div>
+					<div class="col-md-2">
+						<h6>
+							<b>To Date Of Tax Deposit</b>
+							<h6>
+								 <input type="date" ng-model="cCctr.search.dateTaxDeposit" 
+									class="form-control" placeholder="Date" style="width: 100%">
+									
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="row" id="hide">
+				<div class="col-md-3" style="margin-left: 90%; margin-top: -70px">
+					<button ng-click="cCctr.searchEntities(true,'formchalllan26Q')"
+						 class="btn btn-success">Search</button>
+						 </div> 
+					 <div class="modal-header" style="margin-left: 94%; margin-bottom: -20px" >
+					   	  <button type="button" class="btn btn-primary">Add</button>
+				 </div>
+			
+				<div class="row">
+					<div class="col-md-3" id="search">
+						<button ng-click="cCctr.searchEntities(true,'formchalllan26Q')"
+							class="btn btn-success">Search</button>
+						<button type="button" class="btn btn-primary">Add</button> 	
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row" >
+			
+
+				<table  class=" table table-bordered table-hover table-striped"
+					role="table"
+					style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+
+
+					<thead>
+					<colgroup>
+						<col span="14" style="background-color: #ffffff">
+					</colgroup>
+					<tr>
+					<thead role="rowgroup">
+						<tr role="row" style="height: 40px; background-color: #81b7db">
+						        <th >Sr. No.</th>
+								<th >TDS</th>
+								<th >Surcharge</th>
+								<th >Education Cess</th>
+								<th >Interest</th>
+								<th >Fee</th>
+								<th >Others</th>
+								<th >Total tax Deposit</th>
+								<th >TDS Deposit Book Entry</th>
+								<th >BSR Code</th>
+								<th >Challan Sr. No</th>
+								<th >Date Tax Deposit</th>
+								<th >Minor Head Challan</th>
+								<th >Interest Allocated</th>
+								<th >Other Amount Allocated</th>
+								<th >Nil Challan Indicator</th>
+								<th >Short Payment</th>
+								<th >Interest Short Payment</th>
+								<th >Financial Year</th>
+								<th >Quarter</th>
+
+						</tr>
+					</thead>
+					<tbody>
+						<tr role="row"
+							ng-repeat="a in cCctr.getEntityListData() track by a.id">
+							<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
+							<td>{{a.tds}}</td>
+								<td>{{a.surcharge}}</td>
+								<td>{{a.eduCess}}</td>
+								<td>{{a.interest}}</td>
+								<td>{{a.fee}}</td>
+								<td>{{a.others}}</td>
+								<td>{{a.totalTaxDeposit}}</td>
+								<td>{{a.tdsDepositBookEntry}}</td>
+								<td>{{a.bsrCode}}</td>
+								<td>{{a.challanSrNo}}</td>
+								<td>{{a.dateTaxDeposit| date:'dd-MM-yyyy'}}</td>
+								<td>{{a.minorHeadChallan}}</td>
+								<td>{{a.interestAllocated}}</td>
+								<td>{{a.otherAmtAllocated}}</td>								
+								<td>{{a.nilChallanIndicator}}</td>
+								<td>{{a.shortPayment}}</td>
+								<td>{{a.interestShortPay}}</td>
+								<td>{{a.fy}}</td>
+								<td>{{a.quarter}}</td>
+
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
+
+		</div>

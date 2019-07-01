@@ -174,6 +174,8 @@ public class Regular24Q4Salary extends CommonModelAbstract  {
 	public String nameOfLender4;
 	@Column(name = "contributionPaidByTrustees")
 	public Double contributionPaidByTrustees;
+	@Column(name = "nameOfTheSuperAnnuationFund")
+	public String nameOfTheSuperAnnuationFund;
 	@Column(name = "SuperannuationFundFromDate")
 	public Date SuperannuationFundFromDate;
 	@Column(name = "SuperannuationFundToDate")

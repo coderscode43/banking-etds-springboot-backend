@@ -349,7 +349,7 @@
    
  </ul>
 
-  <div class="tab-content">
+  <div class="tab-content" ng-init="cCctr.entity=cCctr.getEntityData();">
     <div id="home" class="tab-pane  active">
        <h3>Client Details</h3>
       
@@ -420,7 +420,7 @@
 	        <div class="col-md-4">
         
                <label>Name Of The Deductor*</label>
-               <input type="text" ng-model="" class="form-control" placeholder="Name Of The Deductor">
+               <input type="text" ng-model="cCctr.entity.deductorDetails.vendorNo" class="form-control" placeholder="Name Of The Deductor">
      
 		    </div>
 	       <div class="col-md-4">							
@@ -437,29 +437,29 @@
             <div class="row">
  	             <div class="col-md-4">	
                     <h6><b>Flat/Door/Block No*</b></h6>
-                     <input type="text"ng-model="" class="form-control" placeholder="Flat/Door/Block No">
+                     <input type="text"ng-model="cCctr.entity.deductorDetails.FLATORFLOAR" class="form-control" placeholder="Flat/Door/Block No">
                 </div>
 
 	        <div class="col-md-4">	
                   <h6><b>Name Of Premises/Building*</b></h6>
-                  <input type="text" ng-model="" 
+                  <input type="text" ng-model="cCctr.entity.deductorDetails.BUILDINGNAME" 
 								class="form-control" placeholder="Name Of Premises/Building">
 								</div>
              <div class="col-md-4">	
                  <h6><b>Road/Street/Lane*</b></h6>
-                   <input type="text" ng-model="" 
+                   <input type="text" ng-model="cCctr.entity.deductorDetails.ROADSTREET" 
 								class="form-control" placeholder="Road/Street/Lane" style="size:15px">
 									</div>
 	       </div>	
             <div class="row">
  	             <div class="col-md-4">	
                     <h6><b>Area/Locality*</b></h6>
-                     <input type="text"ng-model="" class="form-control" placeholder="Area/Locality">
+                     <input type="text"ng-model="cCctr.entity.deductorDetails.AREALOCALITY" class="form-control" placeholder="Area/Locality">
                 </div>
 
 	        <div class="col-md-4">	
                   <h6><b>Town/District/City*</b></h6>
-                  <input type="text" ng-model="" 
+                  <input type="text" ng-model="cCctr.entity.deductorDetails.CITY" 
 								class="form-control" placeholder="Town/District/City">
 								</div>
            <div class="col-md-4">	
@@ -475,17 +475,17 @@
             <div class="row">
  	             <div class="col-md-4">	
                     <h6><b>Pin Code*</b></h6>
-                     <input type="text"ng-model="" class="form-control" placeholder="Pin Code">
+                     <input type="text"ng-model="cCctr.entity.deductorDetails.PIN" class="form-control" placeholder="Pin Code">
                 </div>
 
 	        <div class="col-md-4">	
                   <h6><b>STD Code</b></h6>
-                  <input type="text" ng-model="" 
+                  <input type="text" ng-model="cCctr.entity.deductorDetails.STD" 
 								class="form-control" placeholder="STD Code">
 								</div>
 	        <div class="col-md-4">	
                   <h6><b>Telephone No</b></h6>
-                  <input type="text" ng-model="" 
+                  <input type="text" ng-model="cCctr.entity.deductorDetails.TELEPHONE" 
 								class="form-control" placeholder="Telephone No">
 								</div>
          
@@ -494,17 +494,17 @@
             <div class="row">
  	             <div class="col-md-4">	
                     <h6><b>Email ID(Alternate)</b></h6>
-                     <input type="text"ng-model="" class="form-control" placeholder="Pin Code">
+                     <input type="text" ng-model="cCctr.entity.deductorDetails.COMPANYEMAIL" class="form-control" placeholder="Pin Code">
                 </div>
 
 	        <div class="col-md-4">	
                   <h6><b>STD Code(Alternate)</b></h6>
-                  <input type="text" ng-model="" 
+                  <input type="text" ng-model="cCctr.entity.deductorDetails.STD_ALTERNATE" 
 								class="form-control" placeholder="STD Code">
 								</div>
 	        <div class="col-md-4">	
                   <h6><b>Telephone No(Alternate)</b></h6>
-                  <input type="text" ng-model="" 
+                  <input type="text" ng-model="cCctr.entity.deductorDetails.TELEPHONEALTERNATE" 
 								class="form-control" placeholder="Telephone No(Alternate)">
 								</div>
          
@@ -512,7 +512,7 @@
             <div class="row">
  	             <div class="col-md-4">	
                     <h6><b> Company Email ID(Alternate)</b></h6>
-                     <input type="email"ng-model="" class="form-control" placeholder=" Company Email ID(Alternate)">
+                     <input type="email"ng-model="cCctr.entity.deductorDetails.COMPANYEMAILALTERNATE" class="form-control" placeholder=" Company Email ID(Alternate)">
                 </div>
 
 	        <div class="col-md-4">	
@@ -525,7 +525,7 @@
 		   </div>
 	        <div class="col-md-4">	
                   <h6><b>GSTIN</b></h6>
-                  <input type="text" ng-model="" 
+                  <input type="text" ng-model="cCctr.entity.deductorDetails.GSTIN" 
 								class="form-control" placeholder="Telephone No">
 								</div>
          

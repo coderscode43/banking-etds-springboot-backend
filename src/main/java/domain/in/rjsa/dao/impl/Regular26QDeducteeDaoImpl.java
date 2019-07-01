@@ -26,12 +26,12 @@ public class Regular26QDeducteeDaoImpl  extends AbstractNewDao<Long, Regular26QD
 		propertyNameValues.put("clientId", clientId);
 		criteria.add(Restrictions.allEq(propertyNameValues));
 		if (entity.get("fromDate") != null) {
-			criteria.add(Restrictions.ge("deductDate",
+			criteria.add(Restrictions.ge("paymentDate",
 					Date.from(ZonedDateTime.parse((String) entity.get("fromDate")).toInstant())));
 		}
 		if (entity.get("toDate") != null) {
 			criteria.add(
-					Restrictions.le("deductDate", Date.from(ZonedDateTime.parse((String) entity.get("toDate")).toInstant())));
+					Restrictions.le("paymentDate", Date.from(ZonedDateTime.parse((String) entity.get("toDate")).toInstant())));
 		}
           if(entity.get("deducteePan")!=null)
           {
@@ -50,7 +50,7 @@ public class Regular26QDeducteeDaoImpl  extends AbstractNewDao<Long, Regular26QD
 		criteria.add(Restrictions.eqOrIsNull("quarter", entity.get("quarter")));
           }
           
-		criteria.addOrder(Order.desc("deductDate"));
+		criteria.addOrder(Order.desc("paymentDate"));
 		return (List< Regular26QDeductee>) criteria.list();
 	}
 }

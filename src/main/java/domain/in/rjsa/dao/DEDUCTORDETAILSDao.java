@@ -1,5 +1,9 @@
 package domain.in.rjsa.dao;
 
-public interface DEDUCTORDETAILSDao {
+import domain.in.rjsa.model.tds.DEDUCTORDETAILS;
+
+public interface DEDUCTORDETAILSDao extends DaoTDSInterface<String,  DEDUCTORDETAILS>{
+
+	
 
 }

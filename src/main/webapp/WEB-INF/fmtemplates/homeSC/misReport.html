@@ -73,90 +73,91 @@
 							<b>From Date</b>
 							<h6>
 								<input type="date" ng-model="cCctr.search.fromDate"
-									class="form-control" placeholder="Name" style="width: 100%">
+									class="form-control" placeholder="From Date"
+									style="width: 100%">
 					</div>
 					<div class="row">
 						<div class="col-md-3">
 							<h6>
-								<b>To Date	</b>
+								<b>To Date </b>
 								<h6>
 									<input type="date" ng-model="cCctr.search.toDate"
-										class="form-control" placeholder="Zone Code" style="width: 100%">
+										class="form-control" placeholder="To Date" style="width: 100%">
 						</div>
-<div class="row">
-						<div class="col-md-3">
-							<h6>
-                  <label>Report Type</label>
-                 <select class="form-control"  ng-model="cCctr.search.reportType" style="width: 100%">
-						<option value="" ng-selected=true>Zone</option>
-                    <option value="zone">Zone</option>
-                    <option value="section">Section</option>
-                    <option value="branch">Branch</option>
-                 </select> 
-		   </div> 
+						<div class="row">
+							<div class="col-md-3">
+								<h6>
+									<label>Report Type</label> <select class="form-control"
+										ng-model="cCctr.search.reportType" style="width: 100%">
+										<option value="" ng-selected=true>Zone</option>
+										<option value="zone">Zone</option>
+										<option value="section">Section</option>
+										<option value="branch">Branch</option>
+									</select>
+							</div>
 
+						</div>
+					</div>
+
+
+				</div>
+
+				<div class="row" id="hide">
+					<div class="col-md-3" style="margin-left: 85%; margin-top: -60px">
+						<button ng-click="cCctr.searchEntities(true,'misReport')"
+							class="btn btn-success">Request for MIS</button>
 					</div>
 				</div>
 
-
-			</div>
-
-			<div class="row" id="hide">	
-				<div class="col-md-3" style="margin-left: 85%; margin-top: -60px">
-					<button ng-click="cCctr.searchEntities(true,'misReport')"
-						class="btn btn-success">Request for MIS</button>
-				</div>
-			</div>
-
-			<div class="row" id="search">
-				<div class="col-md-3" id="search">
-					<button ng-click="cCctr.searchEntities(true,'misReport')"
-						class="btn btn-success">Request for MIS</button>
+				<div class="row" id="search">
+					<div class="col-md-3" id="search">
+						<button ng-click="cCctr.searchEntities(true,'misReport')"
+							class="btn btn-success">Request for MIS</button>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
 
-	<div class="row">
-		<div class="table-responsive">
+		<div class="row">
+			<div class="table-responsive">
 
-			<table class="  table-bordered table-hover table-striped"
-				role="table"
-				style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
-				<thead>
-				<colgroup>
-					<col span="14" style="background-color: #ffffff">
-				</colgroup>
-				<tr>
-				<thead role="rowgroup">
-					<tr role="row" style="height: 40px; background-color: #81b7db">
-						<th width="5%">Sr. No.</th>
-						<th width="20%">From Date</th>
-						<th width="20%">To Date</th>
-						<th width="20%">Report 	Type</th>
-                        <th width="20%">Action</th>
+				<table class="  table-bordered table-hover table-striped"
+					role="table"
+					style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+					<thead>
+					<colgroup>
+						<col span="14" style="background-color: #ffffff">
+					</colgroup>
+					<tr>
+					<thead role="rowgroup">
+						<tr role="row" style="height: 40px; background-color: #81b7db">
+							<th width="5%">Sr. No.</th>
+							<th width="20%">From Date</th>
+							<th width="20%">To Date</th>
+							<th width="20%">Report Type</th>
+							<th width="20%">Action</th>
 
 
-					</tr>
-				</thead>
-				<tbody>
-					<tr role="row"
-						ng-repeat="a in cCctr.getEntityListData() track by a.id">
-						<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
-						<td>{{a.fromDate| date:'dd-MM-yyyy'}}</td>
-						<td>{{a.toDate| date:'dd-MM-yyyy'}}</td>
-						<td>{{a.reportType}}</td>
-						<td><a ng-click="cCctr.gotoHomePageWOT(a.id,'homeWOT')"
+						</tr>
+					</thead>
+					<tbody>
+						<tr role="row"
+							ng-repeat="a in cCctr.getEntityListData() track by a.id">
+							<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
+							<td>{{a.fromDate| date:'dd-MM-yyyy'}}</td>
+							<td>{{a.toDate| date:'dd-MM-yyyy'}}</td>
+							<td>{{a.reportType}}</td>
+							<td><a ng-click="cCctr.gotoHomePageWOT(a.id,'homeWOT')"
 								style="color: blue">Download</a></td>
-						<!-- <td>{{a.total-a.amountPaid}}</td> -->
+							<!-- <td>{{a.total-a.amountPaid}}</td> -->
 
-					</tr>
+						</tr>
 
-				</tbody>
-			</table>
+					</tbody>
+				</table>
+			</div>
 		</div>
-	</div>
 
+	</div>
 </div>
-</div> 	

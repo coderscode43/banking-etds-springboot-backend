@@ -8,8 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Data;
 
@@ -38,10 +42,16 @@ public class Regular24Q4Salary extends CommonModelAbstract  {
 	public String name;
 	@Column(name = "category")
 	public String category;
+	@Temporal(TemporalType.DATE)
 	@Column(name = "fromDateOfEmployment")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	public Date fromDateOfEmployment;
+	
+	@Temporal(TemporalType.DATE)
 	@Column(name = "toDateOfEmployment")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	public Date toDateOfEmployment;
+	
 	@Column(name = "grossSalaryAsPerProvision")
 	public Double grossSalaryAsPerProvision;
 	@Column(name = "valueOfPerquisites")
@@ -175,11 +185,19 @@ public class Regular24Q4Salary extends CommonModelAbstract  {
 	@Column(name = "contributionPaidByTrustees")
 	public Double contributionPaidByTrustees;
 	@Column(name = "nameOfTheSuperAnnuationFund")
+	
 	public String nameOfTheSuperAnnuationFund;
+	@Temporal(TemporalType.DATE)
 	@Column(name = "SuperannuationFundFromDate")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	public Date SuperannuationFundFromDate;
+	
+	@Temporal(TemporalType.DATE)
 	@Column(name = "SuperannuationFundToDate")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	public Date SuperannuationFundToDate;
+	
+	
 	@Column(name = "contributionSuperannuationFund")
 	public Double contributionSuperannuationFund;
 	@Column(name = "averageRateOfDeduction")

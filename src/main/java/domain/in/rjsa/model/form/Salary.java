@@ -24,6 +24,8 @@ public class Salary extends CommonModelAbstract{
 	public Long clientId;
 	@Column(name = "employeeId")
 	public Long employeeId;
+	@Column(name = "employeeNo")
+	public Long employeeNo;
 	@Column(name = "basicSalary")
 	public Double basicSalary;
 	@Column(name = "hra")
@@ -62,6 +64,7 @@ public class Salary extends CommonModelAbstract{
 	public Double otherIncome;
 	@Column(name = "month")
 	public String month;
-	
+	@Column(name = "fy")
+	public String fy;
 	
 }

@@ -1,6 +1,6 @@
 package domain.in.rjsa.model.tds;
 
-import java.util.Date;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -35,6 +35,6 @@ public class GH15RETURNSTATUS extends CommonModelAbstract{
 	@Column(name = "STATUS")
 	public String STATUS;
 	@Column(name = "AS_ON_DATE")
-	public Date AS_ON_DATE;
+	public String AS_ON_DATE;
 	
 }

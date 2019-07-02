@@ -129,6 +129,24 @@ App.config([ '$stateProvider', '$urlRouterProvider',function($stateProvider, $ur
 					}
 				}
 		})
+		.state('home.listBranch',{
+			url : "/:entity/:page", 
+			params: {
+				entity: null,
+				page:null
+			   },
+				templateUrl : function($stateParams) {
+					return 'index/list/' + $stateParams.clientId+'/'+$stateParams.action+'/'+$stateParams.page;
+				},
+				resolve : {
+					list : function($q, $state,CommonService,$stateParams) {
+						console.log('Get List of '+$stateParams.entity);
+						var deferred = $q.defer();
+						CommonService.countFunction($stateParams.entity,$stateParams.clientId).then(deferred.resolve, deferred.resolve);
+						return deferred.promise;
+					}
+				}
+		})
 		.state('home.search',{
 			url : "/list/:entity/:page/:searchParams",
 			params: {

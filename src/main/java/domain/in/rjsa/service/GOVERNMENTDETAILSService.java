@@ -1,5 +1,8 @@
 package domain.in.rjsa.service;
 
-public interface GOVERNMENTDETAILSService {
+import domain.in.rjsa.model.tds.GOVERNMENTDETAILS;
+
+public interface GOVERNMENTDETAILSService extends ServiceTDSInterface<String, GOVERNMENTDETAILS>{
+	 public GOVERNMENTDETAILS getByKey(String tan);
 
 }

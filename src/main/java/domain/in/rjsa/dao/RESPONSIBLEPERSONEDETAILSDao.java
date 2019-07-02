@@ -1,5 +1,7 @@
 package domain.in.rjsa.dao;
 
-public interface RESPONSIBLEPERSONEDETAILSDao {
+import domain.in.rjsa.model.tds.RESPONSIBLEPERSONEDETAILS;
+
+public interface RESPONSIBLEPERSONEDETAILSDao extends DaoTDSInterface<String,  RESPONSIBLEPERSONEDETAILS>{
 
 }

@@ -5,8 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import domain.in.rjsa.model.form.Regular24Q4Deductee;
+import domain.in.rjsa.model.wrapper.SalaryDetailWrapper;
 import domain.in.rjsa.service.Regular24Q4DeducteeService;
-import domain.in.rjsa.service.Regular26QDeducteeService;
 
 @Controller
 @RequestMapping("/apiform24Q")
@@ -26,6 +26,21 @@ public class Regular24Q4DeducteeController extends AbstractController<Long,  Reg
 	public Class<Regular24Q4Deductee> getEntity() {
 		// TODO Auto-generated method stub
 		return Regular24Q4Deductee.class;
+	}
+	@Override
+	public Object getDetail(Long id, Long clientId) {
+		// TODO Auto-generated method stub
+		SalaryDetailWrapper ew = new SalaryDetailWrapper();
+	//	Login l = applicationCache.getLoginDetail(getPrincipal());
+		
+	//	LinkedHashMap<String, Object> constrains = new LinkedHashMap<>();
+	//	constrains.put("clientId", l.getClientId());
+		Regular24Q4Deductee ded = service.getByKey(id);
+		ew.setDeductee(ded);
+		
+		
+		
+		return ew;
 	}
 	
 	

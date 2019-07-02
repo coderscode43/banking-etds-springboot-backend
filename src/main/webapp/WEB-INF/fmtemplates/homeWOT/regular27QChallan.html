@@ -108,16 +108,16 @@
 
 
 
-				<div class="col-md-2">
+				<div class="col-md-3">
 					<h6>
-						<b>From Date Of Payment</b>
+						<b>From Date Of Tax Deposition</b>
 						<h6>
 							<input type="date" ng-model="cCctr.search.fromDate"
 								class="form-control" placeholder="Date" style="width: 100%">
 				</div>
-				<div class="col-md-2">
+				<div class="col-md-3">
 					<h6>
-						<b>To Date Of Payment</b>
+						<b>To Date Of Tax Deposition</b>
 						<h6>
 							<input type="date" ng-model="cCctr.search.toDate"
 								class="form-control" placeholder="Date" style="width: 100%">
@@ -184,6 +184,7 @@
 					<th>Interest Short Payment</th>
 					<th>Financial Year</th>
 					<th>Quarter</th>
+					<th>Action</th>
 
 				</tr>
 			</thead>
@@ -210,7 +211,7 @@
 					<td>{{a.interestShortPay}}</td>
 					<td>{{a.fy}}</td>
 					<td>{{a.quarter}}</td>
-
+                     <td><a ng-click="cCctr.gotoDetailPage('form24Q',a.id,'detail27qchallan')" style="color: blue">Details</a></td>
 				</tr>
 
 			</tbody>

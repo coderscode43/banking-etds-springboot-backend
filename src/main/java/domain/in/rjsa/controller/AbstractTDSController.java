@@ -167,10 +167,10 @@ public abstract class AbstractTDSController<K extends Serializable, E extends Mo
 
 	}
 
-	public Object getDetail(K id, Long clientId) {
+	public Object getDetail(K tan, Long clientId) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
-		constrains.put("id", id);
+		constrains.put("TAN", tan);
 	//	constrains.put("clientId", clientId);
 		return getService().uniqueSearch(constrains);
 	}

@@ -1,17 +1,12 @@
 package domain.in.rjsa.controller;
 
-import java.util.LinkedHashMap;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.form.Regular24Q4Salary;
-import domain.in.rjsa.model.form.Salary;
 import domain.in.rjsa.model.wrapper.SalaryDetailWrapper;
 import domain.in.rjsa.service.Regular24Q4SalaryService;
-import domain.in.rjsa.service.Regular27QDeducteeService;
 
 @Controller
 @RequestMapping("/apiform24Qsalary")

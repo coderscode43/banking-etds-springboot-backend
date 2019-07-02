@@ -8,24 +8,28 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name = "regular24Q4Deductee")
-public class Regular24Q4Deductee extends CommonModelAbstract  {
+public class Regular24Q4Deductee extends CommonModelAbstract {
 	@Id
-	@GeneratedValue(strategy= GenerationType.AUTO, generator="native")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
-	public Long id;	
+	public Long id;
 	@Column(name = "clientId")
 	public Long clientId;
 	@Column(name = "srNo")
-	public Long srNo;	
+	public Long srNo;
 	@Column(name = "challanSrNo")
 	public Long challanSrNo;
 	@Column(name = "employeeRefNo")
@@ -38,9 +42,13 @@ public class Regular24Q4Deductee extends CommonModelAbstract  {
 	public String name;
 	@Column(name = "sectionCode")
 	public String sectionCode;
+	@Temporal(TemporalType.DATE)
 	@Column(name = "dateOfPayment")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	public Date dateOfPayment;
+	@Temporal(TemporalType.DATE)
 	@Column(name = "dateOfDeduction")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	public Date dateOfDeduction;
 	@Column(name = "amountPaid")
 	public Double amountPaid;

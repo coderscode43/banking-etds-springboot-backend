@@ -1,5 +1,7 @@
 package domain.in.rjsa.dao;
 
-public interface GOVERNMENTDETAILSDao {
+import domain.in.rjsa.model.tds.GOVERNMENTDETAILS;
+
+public interface GOVERNMENTDETAILSDao extends DaoTDSInterface<String,  GOVERNMENTDETAILS>{
 
 }

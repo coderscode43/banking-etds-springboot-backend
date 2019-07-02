@@ -4,23 +4,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import domain.in.rjsa.dao.EFILLINGLOGINDao;
-import domain.in.rjsa.model.tds.EFILLINGLOGIN;
+import domain.in.rjsa.dao.CLIENTDETAILSDao;
+import domain.in.rjsa.model.tds.CLIENTDETAILS;
 import domain.in.rjsa.service.AbstractTDSService;
-import domain.in.rjsa.service.EFILLINGLOGINService;
-
+import domain.in.rjsa.service.CLIENTDETAILSService;
 @Transactional("tdsTxManager")
-@Service("EFILLINGLOGINService")
-public class EFILLINGLOGINServiceImpl extends AbstractTDSService<String, EFILLINGLOGIN, EFILLINGLOGINDao> implements EFILLINGLOGINService{
+@Service("CLIENTDETAILSService")
+public class CLIENTDETAILSServiceImpl extends AbstractTDSService<String, CLIENTDETAILS, CLIENTDETAILSDao> implements CLIENTDETAILSService{
 @Autowired
-EFILLINGLOGINDao dao;
+CLIENTDETAILSDao dao;
+	
 	@Override
-	public EFILLINGLOGINDao getPrimaryDao() {
+	public CLIENTDETAILSDao getPrimaryDao() {
 		// TODO Auto-generated method stub
 		return dao;
 	}
+
 	@Override
-	public EFILLINGLOGIN getByKay(String tan) {
+	public CLIENTDETAILS getByKey(String tan) {
 		// TODO Auto-generated method stub
 		return dao.getByKey(tan);
 	}

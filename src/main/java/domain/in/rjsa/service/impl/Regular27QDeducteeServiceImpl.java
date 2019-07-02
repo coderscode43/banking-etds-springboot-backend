@@ -22,4 +22,9 @@ public class Regular27QDeducteeServiceImpl extends AbstractService<Long, Regular
 		return dao;
 	}
 
+	@Override
+	public Regular27QDeductee getByKey(Long id) {
+		return dao.getByKey(id);
+	}
+
 }

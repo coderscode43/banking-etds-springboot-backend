@@ -27,11 +27,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
+import domain.in.rjsa.exception.CustomException;
 import domain.in.rjsa.model.form.Ajax;
 import domain.in.rjsa.model.form.ListCount;
 import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.form.Model;
 import domain.in.rjsa.service.ServiceInterface;
+import domain.in.rjsa.util.StaticData;
 import domain.in.rjsa.web.ApplicationCache;
 
 public abstract class AbstractController<K extends Serializable, E extends Model, S extends ServiceInterface<K, E>>
@@ -209,25 +211,44 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 	@RequestMapping(value = "/update/{clientId}", method = RequestMethod.PUT)
 	public ResponseEntity<?> update(@RequestBody LinkedHashMap<String, Object> entity, HttpServletResponse response,
 			UriComponentsBuilder ucBuilder) {
-		update(entity);
-		return new ResponseEntity<String>(HttpStatus.ACCEPTED);
-
+		Login l = applicationCache.getLoginDetail(getPrincipal());
+		Long clientId = Long.valueOf(entity.get("clientId").toString());
+		if (clientId == l.getClientId()) {
+			Object o = getDetail((K) Long.valueOf(entity.get("id").toString()), clientId);
+			ObjectMapper oMapper = new ObjectMapper();
+			HashMap<String, Object> map = oMapper.convertValue(o, HashMap.class);
+							update(entity);
+			return new ResponseEntity<String>(HttpStatus.CREATED);
+		}
+		else {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			
+		
+		}	
 	}
 
 	public void update(LinkedHashMap<String, Object> entity) {
+		
+		
 		Gson gson = new Gson();
 		Login l = applicationCache.getLoginDetail(getPrincipal());
-		if (entity.containsKey("clientId")) {
-			entity.put("clientId", l.getClientId());
-		}
-		if (entity.containsKey("employeeId")) {
-//		entity.put("employeeId",  l.getEmployeeId());
-		}
 		JsonElement jsonElement = gson.toJsonTree(entity);
+		getService().update(gson.fromJson(jsonElement, getEntity()));
+		
+		
+//		Gson gson = new Gson();
+//		Login l = applicationCache.getLoginDetail(getPrincipal());
+//		if (entity.containsKey("clientId")) {
+//			entity.put("clientId", l.getClientId());
+//		}
+		//if (entity.containsKey("employeeId")) {
+//		entity.put("employeeId",  l.getEmployeeId());
+		//}
+	//	JsonElement jsonElement = gson.toJsonTree(entity);
 
 		// getEntity from controller and validate that with validate method in
 		// contorller and message from Service
-		getService().update(gson.fromJson(jsonElement, getEntity()));
+		//getService().update(gson.fromJson(jsonElement, getEntity()));
 
 	}
 

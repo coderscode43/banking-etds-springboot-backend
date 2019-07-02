@@ -1,5 +1,8 @@
 package domain.in.rjsa.service;
 
-public interface RESPONSIBLEPERSONEDETAILSService {
+import domain.in.rjsa.model.tds.RESPONSIBLEPERSONEDETAILS;
+
+public interface RESPONSIBLEPERSONEDETAILSService extends ServiceTDSInterface<String, RESPONSIBLEPERSONEDETAILS>{
+	 public RESPONSIBLEPERSONEDETAILS getByKey(String tan);
 
 }

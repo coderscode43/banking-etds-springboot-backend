@@ -13,7 +13,7 @@ import domain.in.rjsa.model.tds.DEDUCTORDETAILS;
 
 @Repository("DEDUCTORDETAILSDao")
 public class DEDUCTORDETAILSDaoImpl extends AbstractTDSDao<String, DEDUCTORDETAILS> implements DEDUCTORDETAILSDao{
-	
+	@Override
 	public DEDUCTORDETAILS getByKey(String tan) {
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
 		propertyNameValues.put("TAN", tan);

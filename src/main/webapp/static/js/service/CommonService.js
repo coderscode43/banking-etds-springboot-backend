@@ -24,6 +24,7 @@ App.factory('CommonService', [
 				getEntity : getEntity,
 				download : download,
 				countFunction : countFunction,
+				countForBranchFunction : countForBranchFunction,
 				getCount : getCount,
 				deleteEntity : deleteEntity,
 				importData : importData,
@@ -207,6 +208,23 @@ App.factory('CommonService', [
 				});
 				return deferred.promise;
 			}
+			
+			function countForBranchFunction(entity, clientId, branchId) {
+				entityList = [];
+				var deferred = $q.defer();
+				$http.get(
+						REST_SERVICE_URI + entity + '/listBranch/' + clientId+'/'+branchId
+								+ '/count/').success(function(data) {
+					count = data.count;
+					entityList = data.entities;
+					deferred.resolve(data);
+				}).error(function(status) {
+					deferred.reject(status);
+				});
+				return deferred.promise;
+			}
+			
+			
 			function getCount() {
 				return count;
 			}

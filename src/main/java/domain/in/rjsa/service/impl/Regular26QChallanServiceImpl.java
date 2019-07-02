@@ -20,5 +20,10 @@ Regular26QChallanDao dao;
 		// TODO Auto-generated method stub
 		return dao;
 	}
+	@Override
+	public Regular26QChallan getByKey(Long id) {
+		// TODO Auto-generated method stub
+		return  dao.getByKey(id);
+	}
 
 }

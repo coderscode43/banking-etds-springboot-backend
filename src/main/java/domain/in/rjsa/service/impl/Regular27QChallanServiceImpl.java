@@ -20,5 +20,10 @@ public class Regular27QChallanServiceImpl extends AbstractService<Long, Regular2
 		// TODO Auto-generated method stub
 		return dao;
 	}
+	@Override
+	public Regular27QChallan getByKey(Long id) {
+		// TODO Auto-generated method stub
+		return dao.getByKey(id);
+	}
 
 }

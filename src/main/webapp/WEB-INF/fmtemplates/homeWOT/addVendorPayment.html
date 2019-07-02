@@ -5,9 +5,48 @@
 		<div class="row">
 			<h1>Add Vendor Payment Details</h1>
 		</div>
+		
+		
 		<div class="row">
 			<div class="col-md-12">
 				<form role="form" name="vendorPaymentDetailForm">
+					<div>
+		             <div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Vendor No</label> <input class="form-control"
+									type="text" name="vendorNo" placeholder="Vendor No"
+									ng-model="cCctr.entity.vendorNo" autocomplete="off"
+									ng-maxlength="50" ng-required="true"
+									ng-model-options="{updateOn: 'blur'}" />
+
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Payment Done*</label> <input class="form-control"
+									type="text" name="paymentDone" placeholder="Payment Done"
+									ng-pattern="/^[ A-Za-z\s]*$/"
+									ng-model="cCctr.entity.paymentDone" autocomplete="off"
+									ng-maxlength="100" ng-required="true"
+									ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="vendorPaymentDetailForm.submitted || vendorPaymentDetailForm.paymentDone.$dirty && vendorPaymentDetailForm.paymentDone.$invalid">
+									<span class="error"
+									ng-show="vendorPaymentDetailForm.paymentDone.$error.pattern">Please
+										enter valid Input</span> <span class="error"
+									ng-show="vendorPaymentDetailForm.paymentDone.$error.required">Payment
+										Done is Required.</span>
+								</span>
+</div>
+							</div>
+						</div>
+					</div>
+		
+		
+		
+			<div class="col-md-12">
+				
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
@@ -40,7 +79,8 @@
 						</div>
 					</div>
 
-
+</div>
+</div>
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
@@ -295,12 +335,11 @@
 								class="btn btn-primary">Cancel</button>
 						</div>
 					</div>
-				</form>
-
+			
 			</div>
 		</div>
 	</div>
-</div>
+
 <br>
 <br>
 

@@ -34,9 +34,17 @@ public class VendorPaymentDaoImpl extends AbstractNewDao<Long, VendorPayment> im
 			criteria.add(
 					Restrictions.le("date", Date.from(ZonedDateTime.parse((String) entity.get("toDate")).toInstant())));
 		}
+		if(entity.get("vendorNo")!=null)
+        {
+		criteria.add(Restrictions.eqOrIsNull("vendorNo", entity.get("vendorNo")));
+        }
           if(entity.get("vendorName")!=null)
           {
 		criteria.add(Restrictions.eqOrIsNull("vendorName", entity.get("vendorName")));
+          }
+          if(entity.get("vendorPAN")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("vendorPAN", entity.get("vendorPAN")));
           }
 		criteria.addOrder(Order.desc("date"));
 		return (List<VendorPayment>) criteria.list();

@@ -15,5 +15,6 @@ public class VendorDetailWrapper {
 	public List<VendorPayment> vpList;
 	public BankAccDetail bank;
 	public Address address;
+	public VendorPayment vendorPayment;
 	
 }

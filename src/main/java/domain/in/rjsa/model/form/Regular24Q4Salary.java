@@ -206,10 +206,7 @@ public class Regular24Q4Salary extends CommonModelAbstract  {
 	public Double taxDeductedOfSuperannuationFund;
 	@Column(name = "grossTotalIncomeincludingContribution")
 	public Double grossTotalIncomeincludingContribution;
-	@Column(name = "errorDescription")
-	public String errorDescription;
-	@Column(name = "warningDescription")
-	public String warningDescription;
+	
 	@Column(name = "shortDeduction")
 	public Double shortDeduction;
 	@Column(name = "interestOnShortDeduction")

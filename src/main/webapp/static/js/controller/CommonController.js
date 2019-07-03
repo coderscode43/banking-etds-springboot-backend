@@ -246,7 +246,72 @@ App.controller(
 										.log("Common Controller get  getEntityList");
 								return CommonService.getEntityList();
 							}
+							
+                          ///////////////////////////////////////////
+							self.update=function(valid,entity){
+								if(valid==true){
+						    	console.log("Common Controller update "+entity);
 
+						    	self.entity.clientId=$stateParams.clientId;
+						    	CommonService.update(self.entity, entity,$stateParams.clientId).then(function (data) {
+						          	 console.log(entity +' updated successfully');
+						         //	$('.modal').modal("hide");
+						          	self.gotoList(entity);
+//						          	$('#successMsg').find('.modal-header').find('.headingMsg').append("Successfull.");
+//						          	$('#successMsg').find('.modal-body').find('.msg').append("Updated Successfully.");
+//						         	 $("#successMsg").modal();
+//						         	
+						          },function(error){
+						        	  console.error('Error while updating Details, ' +status);
+//						        	  	if(error.exceptionMsg!=null || error.exceptionMsg!=undefined){
+//						        	  		if(error.exceptionMsg=='Please add reason for updation.'){
+//						        	  			$('#updateMsg').find('.modal-header').find('.headingMsg').append("Information.");
+//						        	  			$('#updateMsg').find('.modal-body').find('.msg').append("Can not Update "+error.entityName+" : "+error.exceptionMsg);
+//						            	  		$("#updateMsg").modal({keyboard: false,
+//						            	      	  backdrop: 'static'});
+//						        	  		}else if(error.exceptionMsg=="Request successfully sent for Admin Permission."){
+//						        	  			$('#successMsg').find('.modal-header').find('.headingMsg').append("Successfull.");
+//						        	          	$('#successMsg').find('.modal-body').find('.msg').append(error.exceptionMsg);
+//						        	         	 $("#successMsg").modal();
+//						        	  		}else{
+//						        	  			if(entity=='update'){
+//						        	  				$('#rejectionMsg').find('.modal-body').find('.msg').append("Can not Update "+error.entityName);
+//						            	  			self.entity.rejReason=error.exceptionMsg;
+//						                	  		$("#rejectionMsg").modal({keyboard: false,
+//						                  	      	  backdrop: 'static'});
+//						        	  			}else {
+//						        	  				$('#errorMsg').find('.modal-body').find('.msg').append("Can not Update "+error.entityName+" : "+error.exceptionMsg);
+//						                	  		$("#errorMsg").modal();
+//												}
+//						        	  		}
+//						        	  	}else{
+//						        	  		if(entity=='update'){
+//						        	  			self.entity.rejReason='';
+//						        	  			for(var i=0;i<error.fieldErrors.length;i++){
+//						        	  				var j=i+1;
+//						                      		var obj = error.fieldErrors[i];
+//						            	  			$('#rejectionMsg').find('.modal-body').find('.msg').append("Can not Update");
+//						            	  			self.entity.rejReason=self.entity.rejReason+" "+j+". "+obj.message;
+//						            	  			//$('#rejectionMsg').find('.modal-body').find('.reason').find('.rejReason').val($('#rejectionMsg').find('.modal-body').find('.reason').find('.rejReason').val()+" "+j+". "+obj.message);
+//						                	  		$("#rejectionMsg").modal({keyboard: false,
+//						                  	      	  backdrop: 'static'});
+//						                      	 }
+//						        	  		}else{
+//						        	  			for(var i=0;i<error.fieldErrors.length;i++){
+//						                      		var obj = error.fieldErrors[i];
+//						                      		document.getElementById(obj.fieldName).innerHTML=obj.message;
+//						                      	 }
+//						        	  		}
+//						        	  	}
+						      });
+							}
+							}		
+							
+							
+							
+							
+							
+							
 							self.submitFile = function(valid, entity, form,closeModalId) {
 								if (valid == true) {
 									console.log("Common Controller submit "

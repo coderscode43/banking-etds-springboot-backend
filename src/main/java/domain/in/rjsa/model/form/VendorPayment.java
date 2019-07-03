@@ -8,8 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Data;
 
@@ -35,12 +39,19 @@ public class VendorPayment extends CommonModelAbstract{
 	@Column(name = "vendorPAN")
 	public String vendorPAN;
 	
+	@Temporal(TemporalType.DATE)
 	@Column(name = "date")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	public Date date;
+	
 	@Column(name = "paymentDone")
 	public String paymentDone;	
+	
+	@Temporal(TemporalType.DATE)
 	@Column(name = "paymentDate")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	public Date paymentDate;
+	
 	@Column(name = "paymentMode")
 	public String paymentMode;
 	@Column(name = "invoiceNumber")

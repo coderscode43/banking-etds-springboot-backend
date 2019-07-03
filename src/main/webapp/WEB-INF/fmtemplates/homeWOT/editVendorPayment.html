@@ -1,6 +1,7 @@
 <br>
 <br>
-
+ <div class="container" ng-init="cCctr.entity=cCctr.getEntityData();">
+  <form role="form" name="vendorDetailForm">
 	<div class="row">
 		<div class="form-group">
 			<div class="col-md-3">							
@@ -23,7 +24,8 @@
 		<div class="form-group">
 			<div class="col-md-3">							
             	<h6><b>Invoice Date</b></h6>
-                <input type="date" name="invoiceDate" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.invoiceDate" placeholder="Invoice Date">
+                <input type="text" name="invoiceDate" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.date | date:'dd-MM-yyyy'" 
+                placeholder="Invoice Date">
 			</div>
 			<div class="col-md-3">							
             	<h6><b>Payment Done</b></h6>
@@ -31,7 +33,7 @@
 			</div>
 			<div class="col-md-3">							
             	<h6><b>Payment Date</b></h6>
-                <input type="date" name="paymentDate" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.paymentDate" placeholder="Payment Date">
+                <input type="text" name="paymentDate" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.paymentDate | date:'dd-MM-yyyy'" placeholder="Payment Date">
 			</div>
 		</div>
 	</div>
@@ -118,6 +120,8 @@
 	</div>
 	<br>
 	<button
-						ng-click="profileForm.submitted=true;cCctr.updateData(profileForm.$valid,'vendorPayment',cCctr.entity.vendorPayment,'closeU')"
+						ng-click="vendorDetailForm.submitted=true;cCctr.updateData(vendorDetailForm.$valid,'vendorPayment',cCctr.entity.vendorPayment,'closeU')"
 						class="btn btn-success">Save</button>
+						</form>
+						</div>
 	             			

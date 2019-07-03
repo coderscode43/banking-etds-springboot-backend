@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import domain.in.rjsa.model.form.Regular24Q4Challan;
 import domain.in.rjsa.model.form.VendorPayment;
-import domain.in.rjsa.service.SalaryService;
+import domain.in.rjsa.model.wrapper.SalaryDetailWrapper;
+import domain.in.rjsa.model.wrapper.VendorDetailWrapper;
 import domain.in.rjsa.service.VendorPaymentService;
 
 @Controller
@@ -23,6 +25,19 @@ public class VendorPaymentController extends AbstractController<Long, VendorPaym
 		public Class<VendorPayment> getEntity() {
 			// TODO Auto-generated method stub
 			return VendorPayment.class;
+		}
+		
+		@Override
+		public Object getDetail(Long id, Long clientId) {
+			// TODO Auto-generated method stub
+			VendorDetailWrapper ew = new VendorDetailWrapper();
+
+			VendorPayment vp = service.getByKey(id);
+			ew.setVendorPayment(vp);
+			
+			
+			
+			return ew;
 		}
 
 }

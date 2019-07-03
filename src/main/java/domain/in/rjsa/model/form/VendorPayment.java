@@ -69,4 +69,6 @@ public class VendorPayment extends CommonModelAbstract{
 	public String bglCode;
 	@Column(name = "ourGst")
 	public String ourGst;
+	@Column(name = "gstNo")
+	public String gstNo;
 }

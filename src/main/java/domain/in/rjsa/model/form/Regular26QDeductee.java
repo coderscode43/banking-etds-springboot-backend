@@ -8,8 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Data;
 
@@ -42,7 +46,9 @@ public class Regular26QDeductee extends CommonModelAbstract{
 	public String deducteeName;
 	@Column(name = "sectionCode")
 	public String sectionCode;
+	@Temporal(TemporalType.DATE)
 	@Column(name = "paymentDate")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	public Date paymentDate;
 	@Column(name = "paidAmt")
 	public Double paidAmt;
@@ -56,8 +62,9 @@ public class Regular26QDeductee extends CommonModelAbstract{
 	public Double totalTaxDeduct;
 	@Column(name = "totalTaxDeposit")
 	public Double totalTaxDeposit;
-	
+	@Temporal(TemporalType.DATE)
 	@Column(name = "deductDate")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	public Date deductDate;
 	@Column(name = "rateTaxDeduct")
 	public Double rateTaxDeduct;

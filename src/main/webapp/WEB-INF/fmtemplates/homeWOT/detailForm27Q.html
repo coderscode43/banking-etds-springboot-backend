@@ -1,0 +1,831 @@
+
+<style>
+/*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+@media only screen and (max-width: 760px) , ( min-device-width : 768px)
+	and (max-device-width: 1024px) {
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr {
+		display: block;
+	}
+
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	tr {
+		margin: 0 0 1rem 0;
+	}
+	tr:nth-child(odd) {
+		background: #ccc;
+	}
+	td {
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee;
+		position: relative;
+		padding-left: 50%;
+	}
+	td:before {
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 0;
+		left: 6px;
+		width: 45%;
+		padding-right: 10px;
+		white-space: nowrap;
+	}
+
+	/*
+		Label the data
+    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+		*/
+}
+
+@media only screen and (max-width: 1000px) {
+	.one {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.two {
+		padding: 8px;
+	}
+}
+
+@media only screen and (min-width:600px) {
+	#three {
+		display: none;
+		max-height: 0;
+		overflow: hidden;
+	}
+}
+
+@media only screen and (min-width:1000px) {
+	#search {
+		margin-left: 45%;
+		margin-top: 2px;
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	#hide {
+		display: none;
+	}
+}
+
+.table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
+	{
+	background-color: whitesmoke;
+}
+
+@media ( min-width : 768px) {
+	.collapse.dont-collapse-sm {
+		display: block;
+		height: auto !important;
+		visibility: visible;
+	}
+}
+</style>
+
+
+
+
+<div id="page-wrapper" ng-init="cCctr.entity=cCctr.getEntityData();">
+	<div class="container-fluid">
+
+		<div ng-show="cCctr.show != true">
+
+			<div class="row">
+				<h3 class="page-header" style="margin-top: 2%;">Details of
+					Deductee</h3>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="text-left">
+						<button class="btn btn-primary" data-toggle="modal"
+							onclick="test('#profile')">Edit</button>
+					</div>
+				</div>
+			</div>
+
+
+
+			<div class="panel panel-default"
+				style="margin-top: -2%; border: none !important;">
+				<div class="panel-body">
+					<br>
+
+
+
+					<h4>Deductee Details:</h4>
+
+					<div class="container">
+
+						<div class="collapse dont-collapse-sm" id="collapseExample2">
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-6">
+									<label>Deductee Sr.No. &nbsp;:</label>
+									{{cCctr.entity.deductee27.deducteeSrNo}}
+								</div>
+								<div class="col-md-6">
+									<label>Sr No. in challan &nbsp;:</label>
+									{{cCctr.entity.deductee27.srNoInChallan}}
+								</div>
+							</div>
+
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-6">
+									<label>Deductee Ref. No &nbsp;:</label>
+									{{cCctr.entity.deductee27.deducteeRefNo}}
+								</div>
+
+								<div class="col-md-6">
+								
+									<label>Deductee Code &nbsp;:</label> {{cCctr.entity.deductee27.deducteeCode}}
+								</div>
+							</div>
+
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-6">
+									<label>Pan&nbsp;:</label> {{cCctr.entity.deductee27.pan}}
+								</div>
+								<div class="col-md-6">
+									<label>Name &nbsp;:</label>
+									{{cCctr.entity.deductee27.name }}
+								</div>
+							</div>
+
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-6">
+									<label>Section Code &nbsp;:</label>
+									{{cCctr.entity.deductee27.sectionCode}}
+								</div>
+								<div class="col-md-6">
+									<label>Date of Payment &nbsp;:</label>
+									{{cCctr.entity.deductee27.date| date:'dd-MM-yyyy'}}
+								</div>
+							</div>
+
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-6">
+									<label>Paid Amount&nbsp;:</label>
+									{{cCctr.entity.deductee27.amountPaid}}
+								</div>
+								<div class="col-md-6">
+									<label>TDS&nbsp;:</label> {{cCctr.entity.deductee27.tds}}
+								</div>
+							</div>
+
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-6">
+									<label>Surcharge &nbsp;:</label>
+									{{cCctr.entity.deductee27.surcharge}}
+								</div>
+								<div class="col-md-6">
+									<label>Education Cess &nbsp;:</label>
+									{{cCctr.entity.deductee27.educationCess}}
+								</div>
+							</div>
+							
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-6">
+									<label>Address &nbsp;:</label>
+									{{cCctr.entity.deductee27.addressOfDeductee}}
+								</div>
+								<div class="col-md-6">
+									<label>Contact no &nbsp;:</label>
+									{{cCctr.entity.deductee27.contactNoOfDeductee}}
+								</div>
+							</div>
+							
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-6">
+									<label>Email &nbsp;:</label>
+									{{cCctr.entity.deductee27.emailId}}
+								</div>
+								<div class="col-md-6">
+									<label>Country &nbsp;:</label>
+									{{cCctr.entity.deductee27.countryOfResidence}}
+								</div>
+							</div>
+							
+							
+						</div>
+					</div>
+					<hr>
+
+					
+
+<div id="page-wrapper" ng-init="cCctr.entity=cCctr.getEntityData();">
+	<div class="container-fluid">
+
+		<div ng-show="cCctr.show != true">
+
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="text-left">
+						<button class="btn btn-primary" data-toggle="modal"
+							onclick="test('#other')">Edit</button>
+					</div>
+				</div>
+			</div>
+					<br>
+
+					<h4>Other Details:</h4>
+
+					<div class="container">
+
+						<div class="collapse dont-collapse-sm" id="collapseExample2">
+
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-6">
+									<label>Total Tax Deducted &nbsp;:</label>
+									{{cCctr.entity.deductee27.totalTaxDeducted}}
+								</div>
+								<div class="col-md-6">
+									<label>Total Tax Deposited &nbsp;:</label>
+									{{cCctr.entity.deductee27.totalTaxDeposited}}
+								</div>
+							</div>
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-6">
+									<label>Date of Deduction&nbsp;:</label>
+									{{cCctr.entity.deductee27.dateOfDeduction| date:'dd-MM-yyyy'}}
+								</div>
+								<div class="col-md-6">
+									<label>Rate at which tax Deducted &nbsp;:</label>
+									{{cCctr.entity.deductee27.rateAtWhichTaxDeducted}}
+								</div>
+							</div>
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-6">
+								<label>Reason for non Deduction &nbsp;:</label>
+									{{cCctr.entity.deductee27.reasonForNonDeduction}}
+								</div>
+								<div class="col-md-6">
+									<label>Grossing up Indicator &nbsp;:</label>
+									{{cCctr.entity.deductee27.grossingUpIndicator}}
+								</div>
+							</div>
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-6">
+									<label>No of certificate under section&nbsp;:</label>
+									{{cCctr.entity.deductee27.noOfCertificateUnderSection}}
+								</div>
+								<div class="col-md-6">
+									<label>Unique Knowledge No.&nbsp;:</label>
+									{{cCctr.entity.deductee27.uniqueAcknowledgeNo}}
+								</div>
+							</div>
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-6">
+									<label>TIN &nbsp;:</label>
+									{{cCctr.entity.deductee27.taxIdentificationNo}}
+								</div>
+								<div class="col-md-6">
+									<label>Error&nbsp;:</label> {{cCctr.entity.deductee27.errorDescription}}
+								</div>
+							</div>
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-6">
+									<label>Warning &nbsp;:</label>
+									{{cCctr.entity.deductee27.warningDescription}}
+								</div>
+								<div class="col-md-6">
+									<label>Short Deduction&nbsp;:</label> {{cCctr.entity.deductee27.shortDeduction}}
+								</div>
+							</div>
+							
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-6">
+									<label>Interest on short Deduction &nbsp;:</label>
+									{{cCctr.entity.deductee27.interestOnShortDeduction}}
+								</div>
+								<div class="col-md-6">
+									<label>Interest on Late Payment&nbsp;:</label> {{cCctr.entity.deductee27.interestOnLatePayment}}
+								</div>
+							</div>
+							
+							
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-6">
+									<label>Interest on Late Deduction &nbsp;:</label>
+									{{cCctr.entity.deductee27.interestOnLateDeduction}}
+								</div>
+								<div class="col-md-6">
+									<label>FY&nbsp;:</label> {{cCctr.entity.deductee27.fy}}
+								</div>
+							</div>
+							
+							
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-6">
+									<label>Quarter &nbsp;:</label>
+									{{cCctr.entity.deductee27.quarter}}
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+			<div id="profile" class="modal fade" role="dialog">
+				<div class="modal-dialog modal-lg">
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" id="closeU"
+								data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Edit Deductee Details</h4>
+						</div>
+						<div class="modal-body">
+
+							<div id="myTabContent" class="tab-content">
+								<div class="tab-pane fade active in" id="signin">
+									<form name="profileForm" class="form-horizontal"
+										enctype="multipart/form-data">
+
+
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<label>Deductee Sr.No.</label> <input class="form-control"
+														type="text" name="deducteeSrNo" placeholder="Deductee Sr.No"
+														ng-model="cCctr.entity.deductee27.deducteeSrNo"
+														autocomplete="off" ng-pattern=""
+														ng-model-options="{updateOn: 'blur'}" />
+												</div>
+											</div>
+
+											<div class="col-md-6">
+												<div class="form-group">
+													<label>Sr No. in challan</label> <input
+														class="form-control" type="text" name="srNoInChallan"
+														placeholder="Sr No. in challan"
+														ng-model="cCctr.entity.deductee27.srNoInChallan"
+														autocomplete="off" ng-pattern=""
+														ng-model-options="{updateOn: 'blur'}" />
+												</div>
+											</div>
+
+
+										</div>
+
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<label>Deductee Ref. No</label> <input
+														class="form-control" type="text" name="deducteeRefNo"
+														placeholder="Deductee Ref. No"
+														ng-model="cCctr.entity.deductee27.deducteeRefNo"
+														autocomplete="off" ng-pattern=""
+														ng-model-options="{updateOn: 'blur'}" />
+												</div>
+											</div>
+
+											<div class="col-md-6">
+												<div class="form-group">
+													<label>Deductee Code</label> <input class="form-control" type="text"
+														name="deducteeCode" placeholder="Deductee Code"
+														ng-model="cCctr.entity.deductee27.deducteeCode" autocomplete="off"
+														ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+												</div>
+											</div>
+
+
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<label>Pan</label> <input class="form-control"
+														type="text" name="pan" placeholder="Pan"
+														ng-model="cCctr.entity.deductee27.pan" autocomplete="off"
+														ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+												</div>
+											</div>
+
+											<div class="col-md-6">
+												<div class="form-group">
+													<label>Name</label> <input class="form-control"
+														type="text" name="name"
+														placeholder="Name"
+														ng-model="cCctr.entity.deductee27.name"
+														autocomplete="off" ng-pattern=""
+														ng-model-options="{updateOn: 'blur'}" />
+												</div>
+											</div>
+
+
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<label>Section Code </label> <input class="form-control"
+														type="text" name="sectionCode" placeholder="Section Code"
+														ng-model="cCctr.entity.deductee27.sectionCode|
+									date:'dd-MM-yyyy'" />
+												</div>
+											</div>
+
+											<div class="col-md-6">
+												<div class="form-group">
+													<label>Date Of Payment</label> <input
+														class="form-control" type="text" name="date"
+														placeholder="Date Of Payment"
+														ng-model="cCctr.entity.deductee27.date|
+									date:'dd-MM-yyyy'" />
+												</div>
+											</div>
+
+
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<label>Paid Amount </label> <input class="form-control"
+														type="text" name="amountPaid" placeholder="Paid Amount"
+														ng-model="cCctr.entity.deductee27.amountPaid"
+														autocomplete="off" ng-pattern=""
+														ng-model-options="{updateOn: 'blur'}" />
+												</div>
+											</div>
+
+											<div class="col-md-6">
+												<div class="form-group">
+													<label>TDS</label> <input class="form-control" type="text"
+														name="tds" placeholder="TDS"
+														ng-model="cCctr.entity.deductee27.tds" autocomplete="off"
+														ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+												</div>
+											</div>
+
+
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<label>Surcharge </label> <input class="form-control"
+														type="text" name="surcharge" placeholder="Surcharge"
+														ng-model="cCctr.entity.deductee27.surcharge"
+														autocomplete="off" ng-pattern=""
+														ng-model-options="{updateOn: 'blur'}" />
+												</div>
+											</div>
+
+											<div class="col-md-6">
+												<div class="form-group">
+													<label>Education Cess</label> <input class="form-control"
+														type="text" name="educationCess"
+														placeholder="Education Cess"
+														ng-model="cCctr.entity.deductee27.educationCess"
+														autocomplete="off" ng-pattern=""
+														ng-model-options="{updateOn: 'blur'}" />
+												</div>
+											</div>
+										</div>
+										
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<label>Address</label> <input class="form-control"
+														type="text" name="addressOfDeductee" placeholder="Address"
+														ng-model="cCctr.entity.deductee27.addressOfDeductee"
+														autocomplete="off" ng-pattern=""
+														ng-model-options="{updateOn: 'blur'}" />
+												</div>
+											</div>
+
+											<div class="col-md-6">
+												<div class="form-group">
+													<label>Contact no</label> <input class="form-control"
+														type="text" name="contactNoOfDeductee"
+														placeholder="Contact no"
+														ng-model="cCctr.entity.deductee27.contactNoOfDeductee"
+														autocomplete="off" ng-pattern=""
+														ng-model-options="{updateOn: 'blur'}" />
+												</div>
+											</div>
+
+
+										</div>
+										
+										
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<label>Email </label> <input class="form-control"
+														type="text" name="emailId" placeholder="Email"
+														ng-model="cCctr.entity.deductee27.emailId"
+														autocomplete="off" ng-pattern=""
+														ng-model-options="{updateOn: 'blur'}" />
+												</div>
+											</div>
+
+											<div class="col-md-6">
+												<div class="form-group">
+													<label>Country</label> <input class="form-control"
+														type="text" name="countryOfResidence"
+														placeholder="Country"
+														ng-model="cCctr.entity.deductee27.countryOfResidence"
+														autocomplete="off" ng-pattern=""
+														ng-model-options="{updateOn: 'blur'}" />
+												</div>
+											</div>
+
+
+										</div>
+										
+										
+										
+									</form>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button
+									ng-click="profileForm.submitted=true;cCctr.updateData(profileForm.$valid,'form27Q',cCctr.entity.deductee27,'closeU')"
+									class="btn btn-success" data-dismiss="modal">Save</button>
+								<button class="btn btn-primary" data-dismiss="modal">Back</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+
+
+			<div id="other" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" id="closeU"
+						data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Edit Deductee Other Details</h4>
+				</div>
+				<div class="modal-body">
+
+					<div id="myTabContent" class="tab-content">
+					<div class="tab-pane fade active in" id="signin">
+						<form name="profileForm" class="form-horizontal"
+							enctype="multipart/form-data">
+
+
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Total Tax Deducted</label> <input class="form-control"
+										type="text" name="totalTaxDeducted" placeholder="Total Tax Deducted"
+										ng-model="cCctr.entity.deductee27.totalTaxDeducted" autocomplete="off"
+										ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Total Tax Deposited</label> <input class="form-control"
+										type="text" name="totalTaxDeposited"
+										placeholder="Total Tax Deposited"
+										ng-model="cCctr.entity.deductee27.totalTaxDeposited"
+										autocomplete="off" ng-pattern=""
+										ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+
+
+						</div>
+
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Date of Deduction</label> <input class="form-control" type="text"
+										name="dateOfDeduction" placeholder="Date of Deduction"
+										ng-model="cCctr.entity.deductee27.dateOfDeduction" autocomplete="off"
+										ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Rate at which tax Deducted</label> <input class="form-control"
+										type="text" name="rateAtWhichTaxDeducted"
+										placeholder="Rate at which tax Deducted"
+										ng-model="cCctr.entity.deductee27.rateAtWhichTaxDeducted"
+										autocomplete="off" ng-pattern=""
+										ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+
+
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Reason for non Deduction</label> <input class="form-control"
+										type="text" name="reasonForNonDeduction"
+										placeholder="Reason for non Deduction"
+										ng-model="cCctr.entity.deductee27.reasonForNonDeduction"
+										autocomplete="off" ng-pattern=""
+										ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+
+							<div class="col-md-6">
+								<div class="form-group">
+									<label> Grossing up Indicator</label> <input class="form-control"
+										type="text" name=" grossingUpIndicator"
+										placeholder="Grossing up Indicator"
+										ng-model="cCctr.entity.deductee27.grossingUpIndicator"
+										autocomplete="off" ng-pattern=""
+										ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+
+
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>No of certificate under section</label> <input class="form-control"
+										type="text" name="noOfCertificateUnderSection"
+										placeholder="No of certificate under section"
+										ng-model="cCctr.entity.deductee27.noOfCertificateUnderSection"
+										autocomplete="off" ng-pattern=""
+										ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+
+							<div class="col-md-6">
+								<div class="form-group">
+									<label> Unique Knowledge No.</label> <input
+										class="form-control" type="text"
+										name="uniqueAcknowledgeNo"
+										placeholder="Unique Knowledge No."
+										ng-model="cCctr.entity.deductee27.uniqueAcknowledgeNo"
+										autocomplete="off" ng-pattern=""
+										ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+						</div>
+						
+						
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>TIN </label> <input class="form-control"
+										type="text" name="taxIdentificationNo"
+										placeholder="TIN"
+										ng-model="cCctr.entity.deductee27.taxIdentificationNo"
+										autocomplete="off" ng-pattern=""
+										ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+
+							<div class="col-md-6">
+								<div class="form-group">
+									<label> Error</label> <input
+										class="form-control" type="text"
+										name="errorDescription"
+										placeholder="Error"
+										ng-model="cCctr.entity.deductee27.errorDescription"
+										autocomplete="off" ng-pattern=""
+										ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+						</div>
+						
+						
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Warning</label> <input class="form-control"
+										type="text" name="warningDescription"
+										placeholder="Warning"
+										ng-model="cCctr.entity.deductee27.warningDescription"
+										autocomplete="off" ng-pattern=""
+										ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+
+							<div class="col-md-6">
+								<div class="form-group">
+									<label> short Deduction</label> <input
+										class="form-control" type="text"
+										name="shortDeduction"
+										placeholder="short Deduction"
+										ng-model="cCctr.entity.deductee27.shortDeduction"
+										autocomplete="off" ng-pattern=""
+										ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+						</div>
+						
+						
+						
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Interest On Late Payment</label> <input
+										class="form-control" type="text" name="interestOnLatePayment"
+										placeholder="Interest On Late Payment"
+										ng-model="cCctr.entity.deductee27.interestOnLatePayment"
+										autocomplete="off" ng-pattern=""
+										ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+
+							<div class="col-md-6">
+								<div class="form-group">
+									<label> Interest On Late Deduction</label> <input
+										class="form-control" type="text"
+										name="interestOnLateDeduction"
+										placeholder="Interest On Late Deduction"
+										ng-model="cCctr.entity.deductee27.interestOnLateDeduction"
+										autocomplete="off" ng-pattern=""
+										ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>FY</label> <input class="form-control" type="text"
+										name="fy" placeholder="FY" ng-model="cCctr.entity.deductee27.fy"
+										autocomplete="off" ng-pattern=""
+										ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+
+							<div class="col-md-6">
+								<div class="form-group">
+									<label> Quarter</label> <input class="form-control" type="text"
+										name="quarter" placeholder="Quarter"
+										ng-model="cCctr.entity.deductee27.quarter" autocomplete="off"
+										ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Interest on short Deduction</label> <input class="form-control" type="text"
+										name="interestOnShortDeduction" placeholder="Interest on short Deduction" ng-model="cCctr.entity.deductee27.interestOnShortDeduction"
+										autocomplete="off" ng-pattern=""
+										/="{updateOn: 'blur'}" />
+								</div>
+								</div>
+								</div>
+							
+						
+						</form>
+					</div>
+					
+				</div>
+				<div class="modal-footer">
+      <button
+						ng-click="profileForm.submitted=true;cCctr.updateData(profileForm.$valid,'form27Q',cCctr.entity.deductee27,'closeU')"
+						class="btn btn-success" data-dismiss="modal">Save</button>
+					<button class="btn btn-primary" data-dismiss="modal">Back</button>
+      </div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

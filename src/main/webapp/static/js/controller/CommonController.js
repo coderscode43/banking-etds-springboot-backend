@@ -498,12 +498,12 @@ App.controller(
 								}
 							}
 
-							self.getEmployeeDetail = function(employeeCode,
+							self.getEmployeeDetail = function(gstNo,
 									entity) {
 								console.log("Common Controller is working");
 								var map = {};
-								map.employeeCode = employeeCode;
-								if (employeeCode != null) {
+								map.gstNo = gstNo;
+								if (gstNo != null) {
 									CommonService
 											.search($stateParams.clientId,
 													entity, map)
@@ -514,11 +514,10 @@ App.controller(
 																		+ ' dynamic drop down');
 
 														var items = data;
-														self.entity.name = data.name;
-														self.entity.pan = data.pan;
-														self.entity.mobile = data.mobile;
-														self.entity.email = data.email;
-														self.entity.employeeId = data.id
+														self.entity.vendorName = data.vendorName;
+														self.entity.vendorPAN = data.vendorPAN;
+														
+														self.entity.clientId = data.id
 													
 													});
 								}

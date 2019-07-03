@@ -1,0 +1,520 @@
+
+<style>
+/*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+@media only screen and (max-width: 760px) , ( min-device-width : 768px)
+	and (max-device-width: 1024px) {
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr {
+		display: block;
+	}
+
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	tr {
+		margin: 0 0 1rem 0;
+	}
+	tr:nth-child(odd) {
+		background: #ccc;
+	}
+	td {
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee;
+		position: relative;
+		padding-left: 50%;
+	}
+	td:before {
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 0;
+		left: 6px;
+		width: 45%;
+		padding-right: 10px;
+		white-space: nowrap;
+	}
+
+	/*
+		Label the data
+    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+		*/
+	
+}
+
+@media only screen and (max-width: 1000px) {
+	.one {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.two {
+		padding: 8px;
+	}
+}
+
+@media only screen and (min-width:600px) {
+	#three {
+		display: none;
+		max-height: 0;
+		overflow: hidden;
+	}
+}
+
+@media only screen and (min-width:1000px) {
+	#search {
+		margin-left: 45%;
+		margin-top: 2px;
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	#hide {
+		display: none;
+	}
+}
+
+.table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
+	{
+	background-color: whitesmoke;
+}
+
+@media ( min-width : 768px) {
+	.collapse.dont-collapse-sm {
+		display: block;
+		height: auto !important;
+		visibility: visible;
+	}
+}
+</style>
+
+
+
+
+<div id="page-wrapper" ng-init="cCctr.entity=cCctr.getEntityData();">
+	<div class="container-fluid">
+
+		<div ng-show="cCctr.show != true">
+
+			<div class="row">
+				<h3 class="page-header" style="margin-top: 2%;">Details of Challan</h3>
+			</div>
+			 <div class="row">
+	 <div class="col-xs-12">
+		<div class="text-left">
+	          <button class="btn btn-primary" data-toggle="modal" onclick="test('#myModal')">Edit</button>
+		</div>
+	 </div>
+    </div>
+			
+				
+
+			<div class="panel panel-default"
+				style="margin-top: -2%; border: none !important;">
+				<div class="panel-body">
+			<br>
+			
+				
+				
+<h4>Employee Details:</h4>
+      
+      <div class="container">
+	   
+<div class="collapse dont-collapse-sm" id="collapseExample2"> 
+  		 <div class="row" style="font-size: 13px;">
+	    	<div class="col-md-6">
+				<label>Tds &nbsp;:</label> {{cCctr.entity.challan.tds}}
+			</div>
+	       	<div class="col-md-6">
+				<label>Surcharge. &nbsp;:</label> {{cCctr.entity.challan.surcharge}}
+			</div>
+  		 </div>
+  		 
+  		 <div class="row" style="font-size: 13px;">
+				<div class="col-md-6">
+							<label>EducationCess &nbsp;:</label> {{cCctr.entity.challan.educationCess}}
+						</div>
+
+						<div class="col-md-6">
+							<label>interest &nbsp;:</label> {{cCctr.entity.challan.interest}}
+						</div>
+	      	</div>	
+	          
+			  <div class="row" style="font-size: 13px;">
+			  		<div class="col-md-6">
+							<label>Fee &nbsp;:</label> {{cCctr.entity.challan.fee}}
+					</div>
+					<div class="col-md-6">
+							<label>Others &nbsp;:</label> {{cCctr.entity.challan.others}}
+					</div>
+				</div>
+				
+				<div class="row" style="font-size: 13px;">
+					<div class="col-md-6">
+							<label>Total Tax Deposited &nbsp;:</label> {{cCctr.entity.challan.totalTaxDeposited}}
+					</div>
+					<div class="col-md-6">
+							<label>By Book Entry &nbsp;:</label> {{cCctr.entity.challan.byBookEntry}}
+					</div>
+				</div>
+				
+				<div class="row" style="font-size: 13px;">
+					<div class="col-md-6">
+							<label>BsrCode &nbsp;:</label> {{cCctr.entity.challan.bsrCode}}
+					</div>
+					<div class="col-md-6">
+							<label>Challan Serial No &nbsp;:</label> {{cCctr.entity.challan.challanSerialNo}}
+					</div>
+				</div>
+				
+				<div class="row" style="font-size: 13px;">
+					<div class="col-md-6">
+							<label>Date Of Deposition &nbsp;:</label> {{cCctr.entity.challan.dateOfDeposition | date:'dd-MM-yyyy'}}
+					</div>
+					<div class="col-md-6">
+							<label> Minor Head Of Challan &nbsp;:</label> {{cCctr.entity.challan.minorHeadOfChallan}}
+					</div>
+  				</div>
+  				
+  				<div class="row" style="font-size: 13px;">
+					<div class="col-md-6">
+							<label>Date Of Deposition &nbsp;:</label> {{cCctr.entity.challan.dateOfDeposition | date:'dd-MM-yyyy'}}
+					</div>
+					<div class="col-md-6">
+							<label> Minor Head Of Challan &nbsp;:</label> {{cCctr.entity.challan.minorHeadOfChallan}}
+					</div>
+  				</div>
+  				
+  				<div class="row" style="font-size: 13px;">
+					<div class="col-md-6">
+							<label>Interest Allocated &nbsp;:</label> {{cCctr.entity.challan.interestAllocated}}
+					</div>
+					<div class="col-md-6">
+							<label> OtherAmtAllocated &nbsp;:</label> {{cCctr.entity.challan.otherAmtAllocated}}
+					</div>
+  				</div>
+  				
+  				<div class="row" style="font-size: 13px;">
+					<div class="col-md-6">
+							<label>Remarks &nbsp;:</label> {{cCctr.entity.challan.remarks}}
+					</div>
+					<div class="col-md-6">
+							<label> Nill Challan Indicator &nbsp;:</label> {{cCctr.entity.challan.nillChallanIndicator}}
+					</div>
+  				</div>
+  				<div class="row" style="font-size: 13px;">
+					<div class="col-md-6">
+							<label>Short Payment &nbsp;:</label> {{cCctr.entity.challan.shortPayment}}
+					</div>
+					<div class="col-md-6">
+							<label> Interest On Short Payment &nbsp;:</label> {{cCctr.entity.challan.interestOnShortPayment}}
+					</div>
+  				</div>
+  				<div class="row" style="font-size: 13px;">
+					<div class="col-md-6">
+							<label>Financial Year &nbsp;:</label> {{cCctr.entity.challan.fy}}
+					</div>
+					<div class="col-md-6">
+							<label> Quarter &nbsp;:</label> {{cCctr.entity.challan.quarter}}
+					</div>
+  				</div>
+  				
+  				
+             </div>
+           </div>
+        </div>
+	</div>
+ </div>
+</div>
+	
+	
+  <!-- Modal -->
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+        
+         <button type="button" class="close" id="closeU"
+								data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Details of Challan</h4>
+        </div>
+           <form name="challanForm" class="form-horizontal"enctype="multipart/form-data">
+        <div class="modal-body">
+     
+          <div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label> TDS</label> <input class="form-control"
+										type="text" name="tds" placeholder="TDS"
+										ng-model="cCctr.entity.challan.tds" autocomplete="off"
+										ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Surcharge</label> <input class="form-control"
+										type="text" name="surcharge"
+										placeholder="Total Tax Deposited"
+										ng-model="cCctr.entity.challan.surcharge"
+										autocomplete="off" ng-pattern=""
+										ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+
+
+			</div>
+			
+			 <div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label> EducationCess</label> <input class="form-control"
+										type="text" name="educationCess" placeholder="EducationCess"
+										ng-model="cCctr.entity.challan.educationCess" autocomplete="off"
+										ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Interest</label> <input class="form-control"
+										type="text" name="interest"
+										placeholder="Interest"
+										ng-model="cCctr.entity.challan.interest"
+										autocomplete="off" ng-pattern=""
+										ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+
+
+			</div>
+			 <div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label> fee</label> <input class="form-control"
+										type="text" name="fee" placeholder="Fee"
+										ng-model="cCctr.entity.challan.fee" autocomplete="off"
+										ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Others</label> <input class="form-control"
+										type="text" name="others"
+										placeholder="Others"
+										ng-model="cCctr.entity.challan.others"
+										autocomplete="off" ng-pattern=""
+										ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+
+
+			</div>
+			 <div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label> Total Tax Deposited</label> <input class="form-control"
+										type="text" name="totalTaxDeposited" placeholder="Total Tax Deposited"
+										ng-model="cCctr.entity.challan.totalTaxDeposited" autocomplete="off"
+										ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>By Book Entry</label> <input class="form-control"
+										type="text" name="byBookEntry"
+										placeholder="By Book Entry"
+										ng-model="cCctr.entity.challan.byBookEntry"
+										autocomplete="off" ng-pattern=""
+										ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+
+
+			</div>
+			 <div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label> BsrCode</label> <input class="form-control"
+										type="text" name="bsrCode" placeholder="bsrCode"
+										ng-model="cCctr.entity.challan.bsrCode" autocomplete="off"
+										ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Challan Serial No</label> <input class="form-control"
+										type="text" name="challanSerialNo"
+										placeholder="ChallanSerialNo"
+										ng-model="cCctr.entity.challan.challanSerialNo"
+										autocomplete="off" ng-pattern=""
+										ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+
+
+			</div>
+			 <div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label> Date Of Deposition</label> <input class="form-control"
+										type="text" name="dateOfDeposition" placeholder="DateOfDeposition"
+										ng-model="cCctr.entity.challan.dateOfDeposition|
+									date:'dd-MM-yyyy'"" autocomplete="off"
+										ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>minorHeadOfChallan</label> <input class="form-control"
+										type="text" name="minorHeadOfChallan"
+										placeholder="Minor Head Of Challan"
+										ng-model="cCctr.entity.challan.minorHeadOfChallan"
+										autocomplete="off" ng-pattern=""
+										ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+
+
+			</div>
+			 <div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label> Interest Allocated</label> <input class="form-control"
+										type="text" name="interestAllocated" placeholder="InterestAllocated"
+										ng-model="cCctr.entity.challan.interestAllocated" autocomplete="off"
+										ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Other Amt Allocated</label> <input class="form-control"
+										type="text" name="otherAmtAllocated"
+										placeholder="Other Amt Allocated"
+										ng-model="cCctr.entity.challan.otherAmtAllocated"
+										autocomplete="off" ng-pattern=""
+										ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+
+
+			</div>
+			 <div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label> Remarks</label> <input class="form-control"
+										type="text" name="remarks" placeholder="remarks"
+										ng-model="cCctr.entity.challan.remarks" autocomplete="off"
+										ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Nill Challan Indicator</label> <input class="form-control"
+										type="text" name="nillChallanIndicator"
+										placeholder="Nill Challan Indicator"
+										ng-model="cCctr.entity.challan.nillChallanIndicator"
+										autocomplete="off" ng-pattern=""
+										ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+
+
+			</div>
+			 <div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label> Short Payment</label> <input class="form-control"
+										type="text" name="shortPayment" placeholder="ShortPayment"
+										ng-model="cCctr.entity.challan.shortPayment" autocomplete="off"
+										ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Interest On Short Payment</label> <input class="form-control"
+										type="text" name="interestOnShortPayment"
+										placeholder="Interest On ShortPayment"
+										ng-model="cCctr.entity.challan.interestOnShortPayment"
+										autocomplete="off" ng-pattern=""
+										ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+
+
+			</div>
+			
+			 <div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label> financial Year</label> <input class="form-control"
+										type="text" name="fy" placeholder="financial Year"
+										ng-model="cCctr.entity.challan.fy" autocomplete="off"
+										ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Quarter</label> <input class="form-control"
+										type="text" name="quarter"
+										placeholder="quarter"
+										ng-model="cCctr.entity.challan.quarter"
+										autocomplete="off" ng-pattern=""
+										ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+
+
+			</div>
+		
+        </div>
+         </form>	
+       	<div class="modal-footer">
+             <button
+						ng-click="challanForm.submitted=true;cCctr.updateData(challanForm.$valid,'regular24Q4Challan',cCctr.entity.challan,'closeU')"
+						class="btn btn-success" data-dismiss="modal">Save</button>
+					<button class="btn btn-primary" data-dismiss="modal">Back</button>
+      </div>
+      
+    
+      </div>
+   
+    </div>
+  </div>
+  
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

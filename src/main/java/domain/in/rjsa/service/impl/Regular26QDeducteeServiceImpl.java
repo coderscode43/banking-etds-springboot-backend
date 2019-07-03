@@ -21,5 +21,10 @@ public class Regular26QDeducteeServiceImpl extends AbstractService<Long, Regular
 		// TODO Auto-generated method stub
 		return dao;
 	}
+	@Override
+	public Regular26QDeductee getByKey(Long id) {
+		// TODO Auto-generated method stub
+		return dao.getByKey(id);
+	}
 
 }

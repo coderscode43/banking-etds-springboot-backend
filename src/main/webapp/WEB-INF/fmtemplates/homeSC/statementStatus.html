@@ -48,14 +48,34 @@
     visibility: visible;
   }
 }
+/*  .sticky {
+  position: fixed;
+  top: 35;
+  width: 100%;
+
  
+ 
+ 
+}
+
+.sticky + .content {
+  padding-top: 102px;
+}
+
+.top-container {
+ 
+  padding:10px;
+ 
+} */
+
+
  </style>
 
 
 
 
 
-	<div class="container-fluid">
+	<div class="container-fluid top-container">
     <div class="col-md-12 " style="padding-left: 0px;font-size: 12pxp; margin-top:2%" >
 	<div class="heading">Statement Status</div>
 	</div>
@@ -125,11 +145,11 @@
  </div>
 
  
- 					<div class="row">
+ 					<div class="row" >
 						<!-- <div class="table-responsive"> -->
 
-							<table class="  table-bordered table-hover table-striped" role="table"
-								style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+							<table class=" table table-bordered table-hover table-striped""
+								>
 
 
 								<thead>
@@ -141,8 +161,8 @@
 									<col span="14" style="background-color: #ffffff">
 								</colgroup>
 							 <tr>
-							  <thead role="rowgroup">
-    <tr role="row" style="height:40px;background-color:#81b7db">
+							  <thead >
+    <tr role="row"  id="myHeader">
       <th width="10%">Sr. No.</th>
       <th width="10%">TAN</th>
       <th width="10%">FORM</th>
@@ -158,7 +178,7 @@
   </thead>
 								<tbody>
 									<tr role="row" ng-repeat="a in cCctr.getEntityListData() track by a.id">
-										<td role="cell" class="one" style="padding:5px">{{$index+1}}</td>
+										<td>{{$index+1}}</td>
 											<td>{{a.TAN}}</td>
 											<td>{{a.FORM}}</td>
 											<td>{{a.QUARTER}}</td>
@@ -173,13 +193,37 @@
 								</tbody>
 							</table>
 							</div>
-						
-					
- 
- 
- 
- 
-	
- 
+			</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			<script>
+			
+			
 
-</div>
+			window.onscroll = function() {myFunction()};
+
+			var header = document.getElementById("myHeader");
+			var sticky = header.offsetTop;
+
+			function myFunction() {
+			  if (window.pageYOffset > sticky) {
+			    header.classList.add("sticky");
+			  } else {
+			    header.classList.remove("sticky");
+			  }
+			}
+			
+			
+			
+			
+			</script>
+			
+			
+			
+	

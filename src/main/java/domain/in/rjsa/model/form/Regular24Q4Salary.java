@@ -184,9 +184,10 @@ public class Regular24Q4Salary extends CommonModelAbstract  {
 	public String nameOfLender4;
 	@Column(name = "contributionPaidByTrustees")
 	public Double contributionPaidByTrustees;
-	@Column(name = "nameOfTheSuperAnnuationFund")
 	
+	@Column(name = "nameOfTheSuperAnnuationFund")
 	public String nameOfTheSuperAnnuationFund;
+	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "SuperannuationFundFromDate")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")

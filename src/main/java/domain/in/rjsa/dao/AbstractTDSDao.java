@@ -63,6 +63,8 @@ public abstract class AbstractTDSDao<PK extends Serializable, T> {
 	public void delete(T entity) {
 		getSession().delete(entity);
 	}
+	
+	
 
 	protected CriteriaQuery<T> createEntityCriteria(HashMap<String, Object> property) {
 		// return getSession().createCriteria(persistentClass);

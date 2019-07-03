@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,9 +20,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 
 import domain.in.rjsa.model.form.Ajax;
 import domain.in.rjsa.model.form.ListCount;
@@ -175,8 +179,53 @@ public abstract class AbstractTDSController<K extends Serializable, E extends Mo
 		return getService().uniqueSearch(constrains);
 	}
 
+	// ------------------- Add Entity ---------------------------------
 
+		@RequestMapping(value = "/add/{clientId}", method = RequestMethod.POST)
+		public ResponseEntity<?> createEntity(@RequestBody LinkedHashMap<String, Object> entity) {
+			logger.info("Creating new Return instance");
+			create(entity);
+			return new ResponseEntity<String>(HttpStatus.CREATED);
 
+		}
+
+		public void create(LinkedHashMap<String, Object> entity) {
+			Gson gson = new Gson();
+			Login l = applicationCache.getLoginDetail(getPrincipal());
+//			if (entity.containsKey("clientId")) {
+//				entity.put("clientId", l.getClientId());
+//			}
+			//if (entity.containsKey("employeeId")) {
+//			entity.put("employeeId",  l.getEmployeeId());
+		//	}
+			JsonElement jsonElement = gson.toJsonTree(entity);
+
+			getService().save(gson.fromJson(jsonElement, getEntity()));
+
+		}
+
+	
+	
+		// ------------------- Update Entity ---------------------------------
+
+		@RequestMapping(value = "/update/{clientId}", method = RequestMethod.PUT)
+		public ResponseEntity<?> update(@RequestBody LinkedHashMap<String, Object> entity, HttpServletResponse response,
+				UriComponentsBuilder ucBuilder) {
+			
+			update(entity);
+			return new ResponseEntity<String>(HttpStatus.ACCEPTED);
+		}
+
+		public void update(LinkedHashMap<String, Object> entity) {
+			
+			
+			Gson gson = new Gson();
+			Login l = applicationCache.getLoginDetail(getPrincipal());
+			JsonElement jsonElement = gson.toJsonTree(entity);
+			getService().update(gson.fromJson(jsonElement, getEntity()));
+		}
+	
+	
 	// ------------------- ajax Entities ---------------------------------
 
 	@RequestMapping(value = "/ajax/{clientId}", method = RequestMethod.POST)

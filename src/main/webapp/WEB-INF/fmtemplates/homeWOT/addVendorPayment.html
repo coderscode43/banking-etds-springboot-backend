@@ -43,11 +43,23 @@
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>GST No.*</label> <input class="form-control"
-									type="text" name="vendorName" placeholder="GST No.*"
-									ng-model="cCctr.entity.vendorName" autocomplete="off"
-									ng-maxlength="50" ng-required="true"
-									ng-model-options="{updateOn: 'blur'}" />
+								<label>GST No.*</label><md-autocomplete
+            								md-input-name="GST No."
+            								md-input-minlength="3"
+            								md-no-cache = "true"
+            								md-input-maxlength="75"
+            								md-selected-item="cCctr.search.gstNo"
+            								md-search-text="b"
+            								md-items="item in cCctr.ajax1('vendorPayment','gstNo',b)"
+            								md-delay="2000"
+            								placeholder="GST Number">
+          								<md-item-template>
+            								<span >{{item}}</span>
+          								</md-item-template>
+          								<md-not-found>
+                     						No GST Number "{{b}}" were found.<a ng-click = "">Add new</a>
+           								</md-not-found>
+        								</md-autocomplete>
 
 							</div>
 					</div>

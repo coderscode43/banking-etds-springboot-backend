@@ -43,21 +43,24 @@
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>GST No.*</label><md-autocomplete
-            								md-input-name="GST No."
+								<label>GST No.*</label>
+								
+								<md-autocomplete
+            								md-input-name="gstNo"
             								md-input-minlength="3"
             								md-no-cache = "true"
             								md-input-maxlength="75"
-            								md-selected-item="cCctr.search.gstNo"
+            								md-selected-item="cCctr.entity.gstNo"
             								md-search-text="b"
             								md-items="item in cCctr.ajax1('vendorPayment','gstNo',b)"
+            								md-selected-item-change="cCctr.getEmployeeDetail(cCctr.entity.gstNo,'vendorPayment')"
             								md-delay="2000"
-            								placeholder="GST Number">
+            								placeholder="GST NO">
           								<md-item-template>
             								<span >{{item}}</span>
           								</md-item-template>
           								<md-not-found>
-                     						No GST Number "{{b}}" were found.<a ng-click = "">Add new</a>
+                     						No Group code with "{{b}}" were found.<a ng-click = "">Add new</a>
            								</md-not-found>
         								</md-autocomplete>
 

@@ -82,13 +82,17 @@ EFILLINGLOGINService efService;
 			Gson gson = new Gson();
 			JsonElement jsonElement = gson.toJsonTree(entity);
 			DeductorDetailWrapper dd = gson.fromJson(jsonElement, DeductorDetailWrapper.class);
-			if(dd.getDeductorDetails()!=null || dd.getDeductorDetails().getTAN()!=null)
+			if(dd.getDeductorDetails()!=null && dd.getDeductorDetails().getTAN()!=null)
 			{
 	  		service.update(dd.getDeductorDetails());
 			}
 			else
 			{
-				service.update(new DEDUCTORDETAILS());
+				DEDUCTORDETAILS deductor = new DEDUCTORDETAILS();
+				deductor.setTAN(dd.getDeductorDetails().getTAN());
+				deductor.setFLATORFLOAR(dd.getDeductorDetails().getFLATORFLOAR());
+				service.update(deductor);
+				
 			}
 			
 			if(dd.getClientDetail()!=null && dd.getClientDetail().getTAN()!=null)
@@ -97,7 +101,7 @@ EFILLINGLOGINService efService;
 			}
 			else
 			{
-				cdService.update(new CLIENTDETAILS());
+			
 			}
 			
 			if(dd.getRespersonDetails()!=null && dd.getRespersonDetails().getTAN()!=null)
@@ -106,7 +110,7 @@ EFILLINGLOGINService efService;
 			}
 			else
 			{
-				rService.update(new RESPONSIBLEPERSONEDETAILS());
+				
 			}
 			
 			if(dd.getGovtDetails()!=null && dd.getGovtDetails().getTAN()!=null)
@@ -115,7 +119,7 @@ EFILLINGLOGINService efService;
 			}
 			else
 			{
-				gService.update(new GOVERNMENTDETAILS());
+				
 			}
 			
 			if(dd.getTraces()!=null && dd.getTraces().getTAN()!=null)
@@ -131,7 +135,7 @@ EFILLINGLOGINService efService;
 				efService.update(dd.getEfiling());
 			}
 			else {
-				efService.update(new EFILLINGLOGIN());
+				
 			}
 		}
 }

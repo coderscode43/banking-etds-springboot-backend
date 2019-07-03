@@ -284,8 +284,9 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 
 	public List<?> getAjax(String name, String term, Long clientId) {
 		// TODO Auto-generated method stub
+		Login l = applicationCache.getLoginDetail(getPrincipal());
 		HashMap<String, Object> constrains = new HashMap<>();
-		constrains.put("clientId", clientId);
+		constrains.put("clientId", l.getClientId());
 		return getService().ajax(name, term, constrains);
 	}
 

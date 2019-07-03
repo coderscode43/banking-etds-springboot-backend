@@ -114,19 +114,20 @@
 			<br>
 			
 				
-	<div class="row">
+			
+<h4>Employee Details:</h4>
+      <div class="row">
 	 <div class="col-xs-12">
 		 <div class="text-left">
 	          <button class="btn btn-primary" data-toggle="modal" onclick="test('#profile')"  >Edit</button>
 		</div> 
 	 </div>
-    </div>			
-<h4>Employee Details:</h4>
-      
+    </div>	
       <div class="container">
 	   
 <div class="collapse dont-collapse-sm" id="collapseExample2"> 
   		 <div class="row" style="font-size: 13px;">
+  		 <br>
 	    	<div class="col-md-6">
 				<label>PAN &nbsp;:</label> {{cCctr.entity.salary.pan}}
 			</div>
@@ -185,19 +186,21 @@
  
  
  
- <div class="row">
+ 
+ <h4>Allowance Details:</h4>
+      
+      <div class="row">
 	 <div class="col-xs-12">
 		 <div class="text-left">
 	          <button class="btn btn-primary" data-toggle="modal" onclick="test('#allowance')">Edit</button>
 		</div> 
 	 </div>
     </div>
- <h4>Allowance Details:</h4>
-      
       <div class="container">
 	   
 <div class="collapse dont-collapse-sm" id="collapseExample2"> 
   		 <div class="row" style="font-size: 13px;">
+  		 <br>
 			<div class="col-md-6">
 				<label>Leave Travel Allowance &nbsp;:</label> {{cCctr.entity.salary.leaveTravelAllowance}}
 			</div>
@@ -236,20 +239,22 @@
 </div><hr>
  
  
- <div class="row">
+
+ <h4>GHI Details:</h4>
+      
+       <div class="row">
 	 <div class="col-xs-12">
 		 <div class="text-left">
 	          <button class="btn btn-primary" data-toggle="modal" onclick="test('#ghi')">Edit</button>
 		</div> 
 	 </div>
     </div>
- <h4>GHI Details:</h4>
-      
 <div class="container">
 	   
 	<div class="collapse dont-collapse-sm" id="collapseExample2"> 
  		
  		<div class="row" style="font-size: 13px;">
+ 		<br>
  			<div class="col-md-6">
 				<label>Entertainment Allowance &nbsp;:</label> {{cCctr.entity.salary.entertainmentAllowance}}
 			</div>
@@ -271,20 +276,22 @@
 </div><hr> 
  
  
- <div class="row">
+
+ <h4>Income Details:</h4>
+      
+       <div class="row">
 	 <div class="col-xs-12">
 		 <div class="text-left">
 	          <button class="btn btn-primary" data-toggle="modal" onclick="test('#income')"  >Edit</button>
 		</div> 
 	 </div>
     </div>
- <h4>Income Details:</h4>
-      
 <div class="container">
 	   
 	<div class="collapse dont-collapse-sm" id="collapseExample2"> 
- 
+ 		<br>
  		<div class="row" style="font-size: 13px;">
+ 		
  			<div class="col-md-6">
 				<label>Income From Salary &nbsp;:</label> {{cCctr.entity.salary.incomeFromSalary}}
 			</div>
@@ -309,7 +316,9 @@
  </div><hr>
  
  
- 
+
+ <h4>Deduction Details:</h4>
+       
  <div class="row">
 	 <div class="col-xs-12">
 		 <div class="text-left">
@@ -317,12 +326,10 @@
 		</div> 
 	 </div>
     </div>
- <h4>Deduction Details:</h4>
-      
 <div class="container">
 	   
 	<div class="collapse dont-collapse-sm" id="collapseExample2"> 
- 
+ 		<br>
  		<div class="row" style="font-size: 13px;">
  			<div class="col-md-6">
 				<label>Deduction Us80C &nbsp;:</label> {{cCctr.entity.salary.deductionUs80C}}
@@ -380,19 +387,20 @@
  	</div>
 </div><hr>
 
-<div class="row">
+
+<h4>Tax Details:</h4>
+      <div class="row">
 	 <div class="col-xs-12">
 		 <div class="text-left">
 	          <button class="btn btn-primary" data-toggle="modal" onclick="test('#tax')"  >Edit</button>
 		</div> 
 	 </div>
     </div>
-<h4>Tax Details:</h4>
-      
 <div class="container"> 
 	<div class="collapse dont-collapse-sm" id="collapseExample2"> 
  
  		<div class="row" style="font-size: 13px;">
+ 		<br>
 			<div class="col-md-6">
 				<label>Total Taxable Income &nbsp;:</label> {{cCctr.entity.salary.totalTaxableIncome}}
 			</div>
@@ -442,19 +450,20 @@
 </div><hr>
  			
  
- <div class="row">
+
+ <h4>Landlord and Lender Details:</h4>
+       <div class="row">
 	 <div class="col-xs-12">
 		 <div class="text-left">
 	          <button class="btn btn-primary" data-toggle="modal" onclick="test('#lender')" >Edit</button>
 		</div> 
 	 </div>
     </div>
- <h4>Landlord and Lender Details:</h4>
-      
 <div class="container"> 
 	<div class="collapse dont-collapse-sm" id="collapseExample2"> 
  
  		<div class="row" style="font-size: 13px;">
+ 		<br>
  			<div class="col-md-6">
 				<label>Whether Tax Deducted At Higher Rate &nbsp;:</label> {{cCctr.entity.salary.whetherTaxDeductedAtHigherRate}}
 			</div>
@@ -714,6 +723,7 @@
 							</form>
 							</div>
 							</div>
+						
       <div class="modal-footer">
        <button ng-click="employeeForm.submitted=true;cCctr.updateData(employeeForm.$valid,'form24Qsalary',cCctr.entity.salary,'closeU')" class="btn btn-success"  data-dismiss="modal">Save</button>
        <button  class="btn btn-primary" data-dismiss="modal">Back</button>
@@ -721,7 +731,7 @@
     </div>
     </div>
     </div>
-    
+   
     
     
     <!-- Allowance Details -->
@@ -1554,7 +1564,7 @@
 	
   </div>
  
-        
+       
 
 
 

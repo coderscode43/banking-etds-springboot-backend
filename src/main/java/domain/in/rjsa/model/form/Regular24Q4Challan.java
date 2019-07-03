@@ -8,8 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Data;
 
@@ -46,7 +50,9 @@ public class Regular24Q4Challan extends CommonModelAbstract{
 	public Long bsrCode;
 	@Column(name = "challanSerialNo")
 	public Long challanSerialNo;
+	@Temporal(TemporalType.DATE)
 	@Column(name = "dateOfDeposition")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	public Date dateOfDeposition;
 	@Column(name = "minorHeadOfChallan")
 	public String minorHeadOfChallan;

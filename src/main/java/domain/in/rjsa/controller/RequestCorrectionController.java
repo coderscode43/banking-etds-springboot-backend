@@ -39,16 +39,11 @@ public class RequestCorrectionController extends AbstractController<Long, Reques
 	public Object getDetail(Long id, Long clientId) {
 		// TODO Auto-generated method stub
 		RequestCorrectionWrapper ew = new RequestCorrectionWrapper();
-		Login l = applicationCache.getLoginDetail(getPrincipal());
-		Branch b=applicationCache.getBranch(id);
-		LinkedHashMap<String, Object> constrains = new LinkedHashMap<>();
-		constrains.put("clientId", l.getClientId());
-		constrains.put("challanSrNo", id);
-		List<Regular26QDeductee> r26Q=r26QSercive.search(constrains,l.getClientId());
-		ew.setRegular26QDeducteeList(r26Q);
 		
+		Branch b=applicationCache.getBranch(id);
 		RequestCorrection reqCorr = service.getByKey(id);
 		ew.setReqCorrection(reqCorr);
+	
 		
 		return ew;
 	}

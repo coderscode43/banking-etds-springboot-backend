@@ -11,21 +11,49 @@
 				<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Vendor No*</label> <input class="form-control"
-									type="text" name="vendorNo" placeholder="Vendor No"
-									ng-model="cCctr.entity.vendorNo" autocomplete="off"
-									ng-maxlength="50" ng-required="true"
-									ng-model-options="{updateOn: 'blur'}" />
+								<label>Vendor No*</label> 
+								<md-autocomplete
+            								md-input-name="vendorNo"
+            								md-input-minlength="3"
+            								md-no-cache = "true"
+            								md-input-maxlength="75"
+            								md-selected-item="cCctr.entity.vendorNo"
+            								md-search-text="a"
+            								md-items="item in cCctr.ajax1('vendorPayment','vendorNo',a)"
+            								md-selected-item-change="cCctr.getVendorDetail1(cCctr.entity.vendorNo,'vendorPayment')"
+            								md-delay="2000"
+            								placeholder="Vendor NO">
+          								<md-item-template>
+            								<span >{{item}}</span>
+          								</md-item-template>
+          								<md-not-found>
+                     						No Group code with "{{a}}" were found.<a ng-click = "">Add new</a>
+           								</md-not-found>
+        								</md-autocomplete>
 
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Vendor Name*</label> <input class="form-control"
-									type="text" name="vendorName" placeholder="Vendor Name"
-									ng-model="cCctr.entity.vendorName" autocomplete="off"
-									ng-maxlength="50" ng-required="true"
-									ng-model-options="{updateOn: 'blur'}" />
+								<label>Vendor Name*</label> 
+								<md-autocomplete
+            								md-input-name="vendorName"
+            								md-input-minlength="3"
+            								md-no-cache = "true"
+            								md-input-maxlength="75"
+            								md-selected-item="cCctr.entity.vendorName"
+            								md-search-text="b"
+            								md-items="item in cCctr.ajax1('vendorPayment','vendorName',b)"
+            								md-selected-item-change="cCctr.getVendorDetail3(cCctr.entity.vendorName,'vendorPayment')"
+            								md-delay="2000"
+            								placeholder="Vendor Name">
+          								<md-item-template>
+            								<span >{{item}}</span>
+          								</md-item-template>
+          								<md-not-found>
+                     						No Group code with "{{b}}" were found.<a ng-click = "">Add new</a>
+           								</md-not-found>
+        								</md-autocomplete>
 
 							</div>
 					</div>
@@ -33,11 +61,25 @@
 				<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Vendor Pan*</label> <input class="form-control"
-									type="text" name="vendorPAN" placeholder="Vendor Pan"
-									ng-model="cCctr.entity.vendorPAN" autocomplete="off"
-									ng-maxlength="50" ng-required="true"
-									ng-model-options="{updateOn: 'blur'}" />
+								<label>Vendor Pan*</label> 
+								<md-autocomplete
+            								md-input-name="vendorPAN"
+            								md-input-minlength="3"
+            								md-no-cache = "true"
+            								md-input-maxlength="75"
+            								md-selected-item="cCctr.entity.vendorPAN"
+            								md-search-text="c"
+            								md-items="item in cCctr.ajax1('vendorPayment','vendorPAN',c)"
+            								md-selected-item-change="cCctr.getVendorDetail2(cCctr.entity.vendorPAN,'vendorPayment')"
+            								md-delay="2000"
+            								placeholder="Vendor PAN">
+          								<md-item-template>
+            								<span >{{item}}</span>
+          								</md-item-template>
+          								<md-not-found>
+                     						No Group code with "{{c}}" were found.<a ng-click = "">Add new</a>
+           								</md-not-found>
+        								</md-autocomplete>
 
 							</div>
 						</div>
@@ -51,16 +93,16 @@
             								md-no-cache = "true"
             								md-input-maxlength="75"
             								md-selected-item="cCctr.entity.gstNo"
-            								md-search-text="b"
-            								md-items="item in cCctr.ajax1('vendorPayment','gstNo',b)"
-            								md-selected-item-change="cCctr.getEmployeeDetail(cCctr.entity.gstNo,'vendorPayment')"
+            								md-search-text="d"
+            								md-items="item in cCctr.ajax1('vendorPayment','gstNo',d)"
+            								md-selected-item-change="cCctr.getVendorDetail(cCctr.entity.gstNo,'vendorPayment')"
             								md-delay="2000"
             								placeholder="GST NO">
           								<md-item-template>
             								<span >{{item}}</span>
           								</md-item-template>
           								<md-not-found>
-                     						No Group code with "{{b}}" were found.<a ng-click = "">Add new</a>
+                     						No Group code with "{{d}}" were found.<a ng-click = "">Add new</a>
            								</md-not-found>
         								</md-autocomplete>
 

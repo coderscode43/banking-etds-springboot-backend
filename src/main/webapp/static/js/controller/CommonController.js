@@ -247,67 +247,7 @@ App.controller(
 								return CommonService.getEntityList();
 							}
 							
-                          ///////////////////////////////////////////
-							self.update=function(valid,entity){
-								if(valid==true){
-						    	console.log("Common Controller update "+entity);
 
-						    	self.entity.clientId=$stateParams.clientId;
-						    	CommonService.update(self.entity, entity,$stateParams.clientId).then(function (data) {
-						          	 console.log(entity +' updated successfully');
-						         //	$('.modal').modal("hide");
-						          	self.gotoList(entity);
-//						          	$('#successMsg').find('.modal-header').find('.headingMsg').append("Successfull.");
-//						          	$('#successMsg').find('.modal-body').find('.msg').append("Updated Successfully.");
-//						         	 $("#successMsg").modal();
-//						         	
-						          },function(error){
-						        	  console.error('Error while updating Details, ' +status);
-//						        	  	if(error.exceptionMsg!=null || error.exceptionMsg!=undefined){
-//						        	  		if(error.exceptionMsg=='Please add reason for updation.'){
-//						        	  			$('#updateMsg').find('.modal-header').find('.headingMsg').append("Information.");
-//						        	  			$('#updateMsg').find('.modal-body').find('.msg').append("Can not Update "+error.entityName+" : "+error.exceptionMsg);
-//						            	  		$("#updateMsg").modal({keyboard: false,
-//						            	      	  backdrop: 'static'});
-//						        	  		}else if(error.exceptionMsg=="Request successfully sent for Admin Permission."){
-//						        	  			$('#successMsg').find('.modal-header').find('.headingMsg').append("Successfull.");
-//						        	          	$('#successMsg').find('.modal-body').find('.msg').append(error.exceptionMsg);
-//						        	         	 $("#successMsg").modal();
-//						        	  		}else{
-//						        	  			if(entity=='update'){
-//						        	  				$('#rejectionMsg').find('.modal-body').find('.msg').append("Can not Update "+error.entityName);
-//						            	  			self.entity.rejReason=error.exceptionMsg;
-//						                	  		$("#rejectionMsg").modal({keyboard: false,
-//						                  	      	  backdrop: 'static'});
-//						        	  			}else {
-//						        	  				$('#errorMsg').find('.modal-body').find('.msg').append("Can not Update "+error.entityName+" : "+error.exceptionMsg);
-//						                	  		$("#errorMsg").modal();
-//												}
-//						        	  		}
-//						        	  	}else{
-//						        	  		if(entity=='update'){
-//						        	  			self.entity.rejReason='';
-//						        	  			for(var i=0;i<error.fieldErrors.length;i++){
-//						        	  				var j=i+1;
-//						                      		var obj = error.fieldErrors[i];
-//						            	  			$('#rejectionMsg').find('.modal-body').find('.msg').append("Can not Update");
-//						            	  			self.entity.rejReason=self.entity.rejReason+" "+j+". "+obj.message;
-//						            	  			//$('#rejectionMsg').find('.modal-body').find('.reason').find('.rejReason').val($('#rejectionMsg').find('.modal-body').find('.reason').find('.rejReason').val()+" "+j+". "+obj.message);
-//						                	  		$("#rejectionMsg").modal({keyboard: false,
-//						                  	      	  backdrop: 'static'});
-//						                      	 }
-//						        	  		}else{
-//						        	  			for(var i=0;i<error.fieldErrors.length;i++){
-//						                      		var obj = error.fieldErrors[i];
-//						                      		document.getElementById(obj.fieldName).innerHTML=obj.message;
-//						                      	 }
-//						        	  		}
-//						        	  	}
-						      });
-							}
-							}		
-							
-							
 							
 							
 							
@@ -498,7 +438,7 @@ App.controller(
 								}
 							}
 
-							self.getEmployeeDetail = function(gstNo,
+							self.getVendorDetail = function(gstNo,
 									entity) {
 								console.log("Common Controller is working");
 								var map = {};
@@ -516,12 +456,93 @@ App.controller(
 														var items = data;
 														self.entity.vendorName = data.vendorName;
 														self.entity.vendorPAN = data.vendorPAN;
-														
+														self.entity.vendorNo = data.vendorNo;
 														self.entity.clientId = data.id
 													
 													});
 								}
 							}
+							
+							
+							self.getVendorDetail1 = function(vendorNo,
+									entity) {
+								console.log("Common Controller is working");
+								var map = {};
+								map.vendorNo = vendorNo;
+								if (vendorNo != null) {
+									CommonService
+											.search($stateParams.clientId,
+													entity, map)
+											.then(
+													function(data) {
+														console
+																.log(name
+																		+ ' dynamic drop down');
+
+														var items = data;
+														self.entity.vendorName = data.vendorName;
+														self.entity.vendorPAN = data.vendorPAN;
+														self.entity.gstNo = data.gstNo;
+														self.entity.clientId = data.id
+													
+													});
+								}
+							}
+							
+							
+							self.getVendorDetail2 = function(vendorPAN,
+									entity) {
+								console.log("Common Controller is working");
+								var map = {};
+								map.vendorPAN = vendorPAN;
+								if (vendorPAN != null) {
+									CommonService
+											.search($stateParams.clientId,
+													entity, map)
+											.then(
+													function(data) {
+														console
+																.log(name
+																		+ ' dynamic drop down');
+
+														var items = data;
+														self.entity.vendorName = data.vendorName;
+														self.entity.vendorNo = data.vendorNo;
+														self.entity.gstNo = data.gstNo;
+														self.entity.clientId = data.id
+													
+													});
+								}
+							}
+							
+							
+							self.getVendorDetail3 = function(vendorName,
+									entity) {
+								console.log("Common Controller is working");
+								var map = {};
+								map.vendorName = vendorName;
+								if (vendorName != null) {
+									CommonService
+											.search($stateParams.clientId,
+													entity, map)
+											.then(
+													function(data) {
+														console
+																.log(name
+																		+ ' dynamic drop down');
+
+														var items = data;
+														self.entity.vendorPAN = data.vendorPAN;
+														self.entity.vendorNo = data.vendorNo;
+														self.entity.gstNo = data.gstNo;
+														self.entity.clientId = data.id
+													
+													});
+								}
+							}
+							
+							
+							
 							
 							self.getGroupId = function(groupCode,
 									entity) {

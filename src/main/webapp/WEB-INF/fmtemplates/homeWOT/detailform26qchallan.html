@@ -104,7 +104,7 @@
 		<div ng-show="cCctr.show != true">
 
 			<div class="row">
-				<h3 class="page-header" style="margin-top: 2%;">Details of challan26</h3>
+				<h3 class="page-header" style="margin-top: 2%;">Details Of Form26Q Challan</h3>
 			</div>
 			 <div class="row">
 	 <div class="col-xs-12">
@@ -123,7 +123,7 @@
 			
 				
 				
-<h4>Employee Details:</h4>
+<h4>Challan Details:</h4>
       
       <div class="container">
 	   
@@ -143,7 +143,7 @@
 						</div>
 
 						<div class="col-md-6">
-							<label>interest &nbsp;:</label> {{cCctr.entity.challan26.interest}}
+							<label>Interest &nbsp;:</label> {{cCctr.entity.challan26.interest}}
 						</div>
 	      	</div>	
 	          
@@ -170,7 +170,7 @@
 							<label>BsrCode &nbsp;:</label> {{cCctr.entity.challan26.bsrCode}}
 					</div>
 					<div class="col-md-6">
-							<label>challan26 Serial No &nbsp;:</label> {{cCctr.entity.challan26.challanSrNo}}
+							<label>Challan26 Serial No &nbsp;:</label> {{cCctr.entity.challan26.challanSrNo}}
 					</div>
 				</div>
 				
@@ -197,23 +197,21 @@
 							<label>Nil Challan Indicator &nbsp;:</label> {{cCctr.entity.challan26.nilChallanIndicator}}
 					</div>
 					<div class="col-md-6">
-							<label> Short Payment &nbsp;:</label> {{cCctr.entity.challan26.shortPayment}}
+							<label> Financial year &nbsp;:</label> {{cCctr.entity.challan26.fy}}
 					</div>
   				</div>
   				
   				<div class="row" style="font-size: 13px;">
-					<div class="col-md-6">
-							<label>Interest Short Pay &nbsp;:</label> {{cCctr.entity.challan26.interestShortPay}}
-					</div>
-					<div class="col-md-6">
-							<label> financial year &nbsp;:</label> {{cCctr.entity.challan26.fy}}
-					</div>
-  				</div>
-  				<div class="row" style="font-size: 13px;">
+				  				
 					<div class="col-md-6">
 							<label>Quarter &nbsp;:</label> {{cCctr.entity.challan26.quarter}}
 					</div>
 					
+  				</div>
+  				<div>
+  				<button  ng-click="challan26Form.submitted=true;cCctr.updateData(challan26Form.$valid,'formchallan26Q',cCctr.entity.challan26,'closeU')" 
+  				class="btn btn-success" data-dismiss="model" style="margin-left:780px">Save</button>
+  				<button class="btn btn-primary"ng-click="cCctr.gotoListPage('formchallan26Q','formchallan26Q');">Back</button>
   				</div>
   				
   				
@@ -243,23 +241,23 @@
      
           <div class="row">
 							<div class="col-md-6">
-								<div class="form-group">
+								
 									<label> TDS</label> <input class="form-control"
 										type="text" name="tds" placeholder="TDS"
 										ng-model="cCctr.entity.challan26.tds" autocomplete="off"
 										ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
-								</div>
+								
 							</div>
 
 							<div class="col-md-6">
-								<div class="form-group">
+								
 									<label>Surcharge</label> <input class="form-control"
 										type="text" name="surcharge"
 										placeholder="surcharge"
 										ng-model="cCctr.entity.challan26.surcharge"
 										autocomplete="off" ng-pattern=""
 										ng-model-options="{updateOn: 'blur'}" />
-								</div>
+								
 							</div>
 
 
@@ -267,220 +265,184 @@
 			
 			 <div class="row">
 							<div class="col-md-6">
-								<div class="form-group">
+								
 									<label> EducationCess</label> <input class="form-control"
 										type="text" name="eduCess" placeholder="EducationCess"
 										ng-model="cCctr.entity.challan26.eduCess" autocomplete="off"
 										ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
-								</div>
+								
 							</div>
 
 							<div class="col-md-6">
-								<div class="form-group">
+								
 									<label>Interest</label> <input class="form-control"
 										type="text" name="interest"
 										placeholder="Interest"
 										ng-model="cCctr.entity.challan26.interest"
 										autocomplete="off" ng-pattern=""
 										ng-model-options="{updateOn: 'blur'}" />
-								</div>
+								
 							</div>
 
 
 			</div>
 			 <div class="row">
 							<div class="col-md-6">
-								<div class="form-group">
+								
 									<label> Fee</label> <input class="form-control"
 										type="text" name="fee" placeholder="Fee"
 										ng-model="cCctr.entity.challan26.fee" autocomplete="off"
 										ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
-								</div>
+								
 							</div>
 
 							<div class="col-md-6">
-								<div class="form-group">
+								
 									<label>Others</label> <input class="form-control"
 										type="text" name="others"
 										placeholder="Others"
 										ng-model="cCctr.entity.challan26.others"
 										autocomplete="off" ng-pattern=""
 										ng-model-options="{updateOn: 'blur'}" />
-								</div>
+								
 							</div>
 
 
 			</div>
 			 <div class="row">
 							<div class="col-md-6">
-								<div class="form-group">
+								
 									<label> Total Tax Deposited</label> <input class="form-control"
 										type="text" name="totalTaxDeposited" placeholder="Total Tax Deposited"
 										ng-model="cCctr.entity.challan26.totalTaxDeposit" autocomplete="off"
 										ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
-								</div>
+							
 							</div>
 
 							<div class="col-md-6">
-								<div class="form-group">
+								
 									<label>By Book Entry</label> <input class="form-control"
 										type="text" name="byBookEntry"
 										placeholder="By Book Entry"
 										ng-model="cCctr.entity.challan26.tdsDepositBookEntry"
 										autocomplete="off" ng-pattern=""
 										ng-model-options="{updateOn: 'blur'}" />
-								</div>
+								
 							</div>
 
 
 			</div>
 			 <div class="row">
 							<div class="col-md-6">
-								<div class="form-group">
+								
 									<label> BsrCode</label> <input class="form-control"
 										type="text" name="bsrCode" placeholder="bsrCode"
 										ng-model="cCctr.entity.challan26.bsrCode" autocomplete="off"
 										ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
-								</div>
+								
 							</div>
 
 							<div class="col-md-6">
-								<div class="form-group">
-									<label>challan26 Serial No</label> <input class="form-control"
+								
+									<label>Challan26 Serial No</label> <input class="form-control"
 										type="text" name="challanSrNo"
 										placeholder="challan26SerialNo"
 										ng-model="cCctr.entity.challan26.challanSrNo"
 										autocomplete="off" ng-pattern=""
 										ng-model-options="{updateOn: 'blur'}" />
-								</div>
+								
 							</div>
 
 
 			</div>
 			 <div class="row">
 							<div class="col-md-6">
-								<div class="form-group">
+								
 									<label> Date Of Deposition</label> <input class="form-control"
 										type="text" name="dateTaxDeposit" placeholder="DateOfDeposition"
 										ng-model="cCctr.entity.challan26.dateTaxDeposit|
 									date:'dd-MM-yyyy'"" autocomplete="off"
 										ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
-								</div>
+								
 							</div>
 
 							<div class="col-md-6">
-								<div class="form-group">
-									<label>minor Head Of challan26</label> <input class="form-control"
+								
+									<label>Minor Head Of challan26</label> <input class="form-control"
 										type="text" name="minorHeadChallan"
 										placeholder="Minor Head Of challan26"
 										ng-model="cCctr.entity.challan26.minorHeadChallan"
 										autocomplete="off" ng-pattern=""
 										ng-model-options="{updateOn: 'blur'}" />
-								</div>
+								
 							</div>
 
 
 			</div>
 			 <div class="row">
 							<div class="col-md-6">
-								<div class="form-group">
+								
 									<label> Interest Allocated</label> <input class="form-control"
 										type="text" name="interestAllocated" placeholder="InterestAllocated"
 										ng-model="cCctr.entity.challan26.interestAllocated" autocomplete="off"
 										ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
-								</div>
+								
 							</div>
 
 							<div class="col-md-6">
-								<div class="form-group">
+								
 									<label>Other Amt Allocated</label> <input class="form-control"
 										type="text" name="otherAmtAllocated"
 										placeholder="Other Amt Allocated"
 										ng-model="cCctr.entity.challan26.otherAmtAllocated"
 										autocomplete="off" ng-pattern=""
 										ng-model-options="{updateOn: 'blur'}" />
-								</div>
+								
 							</div>
 
 
 			</div>
 			 <div class="row">
 							<div class="col-md-6">
-								<div class="form-group">
+								
 									<label> Nil Challan Indicator</label> <input class="form-control"
 										type="text" name="nilChallanIndicator" placeholder="nilChallanIndicator"
 										ng-model="cCctr.entity.challan26.nilChallanIndicator" autocomplete="off"
 										ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
-								</div>
+								
 							</div>
-
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Short Payment</label> <input class="form-control"
-										type="text" name="shortPayment"
-										placeholder="Nill challan26 shortPayment"
-										ng-model="cCctr.entity.challan26.shortPayment"
-										autocomplete="off" ng-pattern=""
-										ng-model-options="{updateOn: 'blur'}" />
-								</div>
-							</div>
-
-
-			</div>
-			 <div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label> Short Payment</label> <input class="form-control"
-										type="text" name="shortPayment" placeholder="ShortPayment"
-										ng-model="cCctr.entity.challan26.shortPayment" autocomplete="off"
+                              <div class="col-md-6">
+								
+									<label> Financial Year</label> <input class="form-control"
+										type="text" name="fy" placeholder="financial Year"
+										ng-model="cCctr.entity.challan26.fy" autocomplete="off"
 										ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
-								</div>
+								
 							</div>
-
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Interest On Short Payment</label> <input class="form-control"
-										type="text" name="interestShortPay"
-										placeholder="Interest On ShortPayment"
-										ng-model="cCctr.entity.challan26.interestShortPay"
-										autocomplete="off" ng-pattern=""
-										ng-model-options="{updateOn: 'blur'}" />
-								</div>
-							</div>
-
 
 			</div>
 			
 			 <div class="row">
+							
 							<div class="col-md-6">
-								<div class="form-group">
-									<label> financial Year</label> <input class="form-control"
-										type="text" name="fy" placeholder="financial Year"
-										ng-model="cCctr.entity.challan26.fy" autocomplete="off"
-										ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
-								</div>
-							</div>
-
-							<div class="col-md-6">
-								<div class="form-group">
+								
 									<label>Quarter</label> <input class="form-control"
 										type="text" name="quarter"
 										placeholder="quarter"
 										ng-model="cCctr.entity.challan26.quarter"
 										autocomplete="off" ng-pattern=""
 										ng-model-options="{updateOn: 'blur'}" />
-								</div>
+								
 							</div>
-
 
 			</div>
 		
         </div>
          </form>	
        	<div class="modal-footer">
-             <button ng-click="challan26Form.submitted=true;cCctr.updateData(challan26Form.$valid,'formchalllan26Q',cCctr.entity.challan26,'closeU')"
-						class="btn btn-success" data-dismiss="modal">Save</button>
-					<button class="btn btn-primary" data-dismiss="modal">Back</button>
+             <button 
+						class="btn btn-success" data-dismiss="modal">Ok</button>
+					
       </div>
       
     

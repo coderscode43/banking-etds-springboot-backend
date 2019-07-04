@@ -189,104 +189,61 @@
 									<label>Education Cess &nbsp;:</label>
 									{{cCctr.entity.deductee26.eduCess}}
 								</div>
-								
-							</div>
-							
-						</div>
-					</div>
-					<hr>
-
-					
-
-<div id="page-wrapper" ng-init="cCctr.entity=cCctr.getEntityData();">
-	<div class="container-fluid">
-
-		<div ng-show="cCctr.show != true">
-
-			<div class="row">
-				<div class="col-xs-12">
-					<div class="text-left">
-						<button class="btn btn-primary" data-toggle="modal"
-							onclick="test('#other')">Edit</button>
-					</div>
-				</div>
-			</div>
-					<br>
-
-					<h4>Other Details:</h4>
-
-					<div class="container">
-
-						<div class="collapse dont-collapse-sm" id="collapseExample2">
-
-							<div class="row" style="font-size: 13px;">
 								<div class="col-md-6">
 									<label>Total Tax Deducted &nbsp;:</label>
 									{{cCctr.entity.deductee26.totalTaxDeduct}}
 								</div>
+								
+							</div>
+							
+							<div class="row" style="font-size: 13px;">
+								
 								<div class="col-md-6">
 									<label>Total Tax Deposited &nbsp;:</label>
 									{{cCctr.entity.deductee26.totalTaxDeposit}}
 								</div>
-							</div>
-							<div class="row" style="font-size: 13px;">
 								<div class="col-md-6">
 									<label>Deduct Date&nbsp;:</label> {{cCctr.entity.deductee26.deductDate| date:'dd-MM-yyyy'}}
 								</div>
+								
+							</div>
+							<div class="row" style="font-size: 13px;">
+								
 								<div class="col-md-6">
 									<label>Rate Tax Deduct&nbsp;:</label>
 									{{cCctr.entity.deductee26.rateTaxDeduct}}
 								</div>
-							</div>
-							<div class="row" style="font-size: 13px;">
 								<div class="col-md-6">
 									<label>Remarks&nbsp;:</label>
 									{{cCctr.entity.deductee26.remarks}}
 								</div>
+								
+							</div>
+							<div class="row" style="font-size: 13px;">
+								
 								<div class="col-md-6">
 									<label>Certificate No.&nbsp;:</label>
 									{{cCctr.entity.deductee26.certificateNo}}
 								</div>
-							</div>
-							
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-6">
-									<label>Warning &nbsp;:</label>
-									{{cCctr.entity.deductee26.warningDescription}}
-								</div>
-								<div class="col-md-6">
-									<label>Short Deduction&nbsp;:</label> {{cCctr.entity.deductee26.shortDeduct}}
-								</div>
-							</div>
-							
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-6">
-									<label>Interest on Short Deduction&nbsp;:</label> {{cCctr.entity.deductee26.interestOnShtDeduct}}
-								</div>
-								<div class="col-md-6">
-									<label>Interest on Late Payment&nbsp;:</label> {{cCctr.entity.deductee26.interestOnLatePay}}
-								</div>
-							</div>
-							
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-6">
-									<label>Interest on Late Deduction &nbsp;:</label>
-									{{cCctr.entity.deductee26.interestOnLateDeduct}}
-								</div>
 								<div class="col-md-6">
 									<label>FY&nbsp;:</label> {{cCctr.entity.deductee26.fy}}
 								</div>
+								
 							</div>
-							
 							
 							<div class="row" style="font-size: 13px;">
 								<div class="col-md-6">
 								<label>Quarter &nbsp;:</label>
 									{{cCctr.entity.deductee26.quarter}}
 								</div>
-								
 							</div>
 							
+							
+							<div>
+						<button	ng-click="profileForm.submitted=true;cCctr.updateData(profileForm.$valid,'form26Q',cCctr.entity.deductee26,'closeU')" 
+							class="btn btn-success" data-dismiss="model" style="margin-left:780px">Save</button>
+							<button class="btn btn-primary" ng-click="cCctr.gotoListPage('form26Q','form26Q');">Back</button>
+							</div>
 							
 						</div>
 					</div>
@@ -316,24 +273,24 @@
 
 										<div class="row">
 											<div class="col-md-6">
-												<div class="form-group">
+												
 													<label>Challan Sr.No.</label> <input class="form-control"
 														type="text" name="challanSrNo" placeholder="Challan Sr.No."
 														ng-model="cCctr.entity.deductee26.challanSrNo"
 														autocomplete="off" ng-pattern=""
 														ng-model-options="{updateOn: 'blur'}" />
-												</div>
+												
 											</div>
 
 											<div class="col-md-6">
-												<div class="form-group">
+												
 													<label>Deductee Reference No.</label> <input
 														class="form-control" type="text" name="deducteeRefNo"
 														placeholder="Deductee Reference No."
 														ng-model="cCctr.entity.deductee26.deducteeRefNo"
 														autocomplete="off" ng-pattern=""
 														ng-model-options="{updateOn: 'blur'}" />
-												</div>
+												
 											</div>
 
 
@@ -341,91 +298,91 @@
 
 										<div class="row">
 											<div class="col-md-6">
-												<div class="form-group">
+												
 													<label>Deductee Code</label> <input
 														class="form-control" type="text" name="deducteeCode"
 														placeholder="Deductee Code"
 														ng-model="cCctr.entity.deductee26.deducteeCode"
 														autocomplete="off" ng-pattern=""
 														ng-model-options="{updateOn: 'blur'}" />
-												</div>
+												
 											</div>
 
 											<div class="col-md-6">
-												<div class="form-group">
+												
 													<label>Deductee Pan</label> <input class="form-control" type="text"
 														name="deducteePan" placeholder="Deductee Pan"
 														ng-model="cCctr.entity.deductee26.deducteePan" autocomplete="off"
 														ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
-												</div>
+												
 											</div>
 
 
 										</div>
 										<div class="row">
 											<div class="col-md-6">
-												<div class="form-group">
+												
 													<label>Deductee Name</label> <input class="form-control"
 														type="text" name="deducteeName" placeholder="Deductee Name"
 														ng-model="cCctr.entity.deductee26.deducteeName" autocomplete="off"
 														ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
-												</div>
+												
 											</div>
 
 											<div class="col-md-6">
-												<div class="form-group">
+												
 													<label>Section Code</label> <input class="form-control"
 														type="text" name="sectionCode"
 														placeholder="Section Code"
 														ng-model="cCctr.entity.deductee26.sectionCode"
 														autocomplete="off" ng-pattern=""
 														ng-model-options="{updateOn: 'blur'}" />
-												</div>
+												
 											</div>
 
 
 										</div>
 										<div class="row">
 											<div class="col-md-6">
-												<div class="form-group">
+												
 													<label>Date of Payment</label> <input
 														class="form-control" type="text" name="paymentDate"
 														placeholder="Date of Payment"
 														ng-model="cCctr.entity.deductee26.paymentDate" />
 									
-												</div>
+												
 											</div>
 
 											<div class="col-md-6">
-												<div class="form-group">
+												
 													<label>Paid Amount </label> <input class="form-control"
 														type="text" name="paidAmt" placeholder="Paid Amount"
 														ng-model="cCctr.entity.deductee26.paidAmt"
 														autocomplete="off" ng-pattern=""
 														ng-model-options="{updateOn: 'blur'}" />
-												</div>
+												
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-md-6">
-												<div class="form-group">
+												
 													<label>TDS</label> <input class="form-control" type="text"
 														name="tds" placeholder="TDS"
 														ng-model="cCctr.entity.deductee26.tds" autocomplete="off"
 														ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
-												</div>
+												
 											</div>
 
 
 
 										<div class="col-md-6">
-												<div class="form-group">
+												
 													<label>Surcharge </label> <input class="form-control"
 														type="text" name="surcharge" placeholder="Surcharge"
 														ng-model="cCctr.entity.deductee26.surcharge"
 														autocomplete="off" ng-pattern=""
 														ng-model-options="{updateOn: 'blur'}" />
-												</div>
+												
 											</div>
 
 
@@ -433,103 +390,64 @@
 										<div class="row">
 											
 											<div class="col-md-6">
-												<div class="form-group">
+												
 													<label>Education Cess</label> <input class="form-control"
 														type="text" name="eduCess"
 														placeholder="Education Cess"
 														ng-model="cCctr.entity.deductee26.eduCess"
 														autocomplete="off" ng-pattern=""
 														ng-model-options="{updateOn: 'blur'}" />
-												</div>
+												
 											</div>
-										</div>
-										
-										
-									</form>
-								</div>
-							</div>
-							<div class="modal-footer">
-								<button
-									ng-click="profileForm.submitted=true;cCctr.updateData(profileForm.$valid,'form26Q',cCctr.entity.deductee26,'closeU')"
-									class="btn btn-success" data-dismiss="modal">Save</button>
-								<button class="btn btn-primary" data-dismiss="modal">Back</button>
-							</div>
-						</div>
-					</div>
-				</div>
-
-			</div>
-
-
-
-			<div id="other" class="modal fade" role="dialog">
-		<div class="modal-dialog modal-lg">
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" id="closeU"
-						data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Edit Deductee Other Details</h4>
-				</div>
-				<div class="modal-body">
-
-					<div id="myTabContent" class="tab-content">
-					<div class="tab-pane fade active in" id="signin">
-						<form name="profileForm" class="form-horizontal"
-							enctype="multipart/form-data">
-
-
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
+											<div class="col-md-6">
+								
 									<label>Total Tax Deducted</label> <input class="form-control"
 										type="text" name="totalTaxDeduct" placeholder="Total Tax Deducted"
 										ng-model="cCctr.entity.deductee26.totalTaxDeduct" autocomplete="off"
 										ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
-								</div>
+								
 							</div>
+											
+							</div>
+							
+									
 
+						<div class="row">
 							<div class="col-md-6">
-								<div class="form-group">
+								
 									<label>Total Tax Deposited</label> <input class="form-control"
 										type="text" name="totalTaxDeposit"
 										placeholder="Total Tax Deposited"
 										ng-model="cCctr.entity.deductee26.totalTaxDeposit"
 										autocomplete="off" ng-pattern=""
 										ng-model-options="{updateOn: 'blur'}" />
-								</div>
+								
 							</div>
-
-
-						</div>
-
-						<div class="row">
-								<div class="col-md-6">
-								<div class="form-group">
+                                   <div class="col-md-6">
+								
 									<label>Deduct Date</label> <input class="form-control"
 										type="text" name="deductDate"
 										placeholder="Deduct Date"
 										ng-model="cCctr.entity.deductee26.deductDate"
 										autocomplete="off" ng-pattern=""
 										ng-model-options="{updateOn: 'blur'}" />
-								</div>
+								
 							</div>
 
+						</div>
+
+						<div class="row">
 							<div class="col-md-6">
-								<div class="form-group">
+								
 									<label>Rate Tax Deduct</label> <input class="form-control"
 										type="text" name="rateTaxDeduct"
 										placeholder="Rate Tax Deduct"
 										ng-model="cCctr.entity.deductee26.rateTaxDeduct"
 										autocomplete="off" ng-pattern=""
 										ng-model-options="{updateOn: 'blur'}" />
-								</div>
+								
 							</div>
-
-
-						</div>
-						<div class="row">
-							<div class="col-md-6">
+                              <div class="col-md-6">
 								<div class="form-group">
 									<label>Remarks</label> <input class="form-control"
 										type="text" name=" remarks"
@@ -541,104 +459,41 @@
 							</div>
 
 
+						</div>
+						<div class="row">
+							
+
 						<div class="col-md-6">
-								<div class="form-group">
+								
 									<label>Certificate No.</label> <input class="form-control"
 										type="text" name="certificateNo"
 										placeholder="Certificate No."
 										ng-model="cCctr.entity.deductee26.certificateNo"
 										autocomplete="off" ng-pattern=""
 										ng-model-options="{updateOn: 'blur'}" />
-								</div>
+								
 							</div>
-
-
-						</div>
-						<div class="row">
 							<div class="col-md-6">
-								<div class="form-group">
-									<label> Warning Description</label> <input
-										class="form-control" type="text"
-										name="warningDescription"
-										placeholder="Warning Description"
-										ng-model="cCctr.entity.deductee26.warningDescription"
-										autocomplete="off" ng-pattern=""
-										ng-model-options="{updateOn: 'blur'}" />
-								</div>
-							</div>
-
-							<div class="col-md-6">
-								<div class="form-group">
-									<label> Short Deduction</label> <input
-										class="form-control" type="text"
-										name="shortDeduct"
-										placeholder="short Deduction"
-										ng-model="cCctr.entity.deductee26.shortDeduct"
-										autocomplete="off" ng-pattern=""
-										ng-model-options="{updateOn: 'blur'}" />
-								</div>
-							</div>
-						</div>
-						
-						
-						
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Interest on short Deduction</label> <input class="form-control" type="text"
-										name="interestOnShtDeduct" placeholder="Interest on short Deduction" ng-model="cCctr.entity.deductee26.interestOnShtDeduct"
-										autocomplete="off" ng-pattern=""
-										/="{updateOn: 'blur'}" />
-								</div>
-								</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Interest On Late Payment</label> <input
-										class="form-control" type="text" name="interestOnLatePay"
-										placeholder="Interest On Late Payment"
-										ng-model="cCctr.entity.deductee26.interestOnLatePay"
-										autocomplete="off" ng-pattern=""
-										ng-model-options="{updateOn: 'blur'}" />
-								</div>
-							</div>
-						</div>
-						
-						
-						
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label> Interest On Late Deduction</label> <input
-										class="form-control" type="text"
-										name="interestOnLateDeduct"
-										placeholder="Interest On Late Deduction"
-										ng-model="cCctr.entity.deductee26.interestOnLateDeduct"
-										autocomplete="off" ng-pattern=""
-										ng-model-options="{updateOn: 'blur'}" />
-								</div>
-							</div>
-
-							<div class="col-md-6">
-								<div class="form-group">
+								
 									<label>FY</label> <input class="form-control" type="text"
 										name="fy" placeholder="FY" ng-model="cCctr.entity.deductee26.fy"
 										autocomplete="off" ng-pattern=""
 										ng-model-options="{updateOn: 'blur'}" />
-								</div>
+								
 							</div>
 						</div>
+						
 						<div class="row">
 							
 							<div class="col-md-6">
-								<div class="form-group">
+								
 									<label> Quarter</label> <input class="form-control" type="text"
 										name="quarter" placeholder="Quarter"
 										ng-model="cCctr.entity.deductee26.quarter" autocomplete="off"
 										ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
-								</div>
+								
 							</div>
 						</div>
-						
 						
 						
 						</form>
@@ -647,9 +502,9 @@
 				</div>
 				<div class="modal-footer">
       <button
-						ng-click="profileForm.submitted=true;cCctr.updateData(profileForm.$valid,'form26Q',cCctr.entity.deductee26,'closeU')"
-						class="btn btn-success" data-dismiss="modal">Save</button>
-					<button class="btn btn-primary" data-dismiss="modal">Back</button>
+						
+						class="btn btn-success" data-dismiss="modal">Ok</button>
+					
       </div>
 			</div>
 		</div>
@@ -659,9 +514,6 @@
 
 </div>
 
-</div>
-</div>
-</div>
 
 
 

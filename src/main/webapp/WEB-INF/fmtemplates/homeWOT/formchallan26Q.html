@@ -53,7 +53,7 @@
 <div id="page-wrapper">
 	<div class="col-md-12 "
 		style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
-		<div class="heading">Form 27Q Challan Details</div>
+		<div class="heading">Form 26Q Challan Details</div>
 
 
 
@@ -74,7 +74,7 @@
 						<b>Financial Year</b>
 					</h6>
 					<select class="form-control" ng-model="cCctr.search.fy">
-
+						<option value="" ng-selected=true>Year</option>
 						<option value="201516">201920</option>
 						<option value="201819">201819</option>
 						<option value="201718">201718</option>
@@ -105,44 +105,40 @@
 				</div>
 
 
-
-
-
-				<div class="col-md-3">
+				<div class="col-md-2">
 					<h6>
-						<b>From Date Of Tax Deposition</b>
+						<b>From Date Of Tax Deposit</b>
 						<h6>
 							<input type="date" ng-model="cCctr.search.fromDate"
 								class="form-control" placeholder="Date" style="width: 100%">
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-2">
 					<h6>
-						<b>To Date Of Tax Deposition</b>
+						<b>To Date Of Tax Deposit</b>
 						<h6>
 							<input type="date" ng-model="cCctr.search.toDate"
 								class="form-control" placeholder="Date" style="width: 100%">
 				</div>
-
 
 			</div>
 
 		</div>
 
 		<div class="row" id="hide">
-			<div class="col-md-3" style="margin-left: 90%; margin-top: -48px">
-				<button ng-click="cCctr.searchEntities(true,'regular27QChallan')"
+			<div class="col-md-3" style="margin-left: 90%; margin-top: -40px">
+				<button ng-click="cCctr.searchEntities(true,'formchallan26Q')"
 					class="btn btn-success">Search</button>
 			</div>
 			<div class="modal-header"
 				style="margin-left: 94%; margin-bottom: -20px">
-				<button class="btn btn-Primary" data-toggle="modal" ng-click="cCctr.gotoListPage('add27challan','add27challan');">Add</button>
+				<button type="button" class="btn btn-primary" ng-click="cCctr.gotoListPage('addForm26Qchallan','addForm26Qchallan');">Add</button>
 			</div>
 
 			<div class="row">
 				<div class="col-md-3" id="search">
-					<button ng-click="cCctr.searchEntities(true,'regular27QChallan')"
+					<button ng-click="cCctr.searchEntities(true,'formchallan26Q')"
 						class="btn btn-success">Search</button>
-					<button class="btn btn-Primary" data-toggle="modal" ng-click="cCctr.gotoListPage('add27challan','add27challan');">Add</button>
+					<button type="button" class="btn btn-primary" ng-click="cCctr.gotoListPage('addForm26Qchallan','addForm26Qchallan');">Add</button>
 				</div>
 			</div>
 		</div>
@@ -198,16 +194,16 @@
 					<td>{{a.others}}</td>
 					<td>{{a.totalTaxDeposit}}</td>
 					<td>{{a.tdsDepositBookEntry}}</td>
-					<td>{{a.bankBranchCode}}</td>
+					<td>{{a.bsrCode}}</td>
 					<td>{{a.challanSrNo}}</td>
-					<td>{{a.taxDepositDate | date:'dd-MM-yyyy'}}</td>
+					<td>{{a.dateTaxDeposit| date:'dd-MM-yyyy'}}</td>
 					<td>{{a.minorHeadChallan}}</td>
 					<td>{{a.interestAllocated}}</td>
 					<td>{{a.otherAmtAllocated}}</td>
 					<td>{{a.nilChallanIndicator}}</td>
 					<td>{{a.fy}}</td>
 					<td>{{a.quarter}}</td>
-                     <td><a ng-click="cCctr.gotoDetailPage('regular27QChallan',a.id,'detail27qchallan')" style="color: blue">Details</a></td>
+                    <td><a ng-click="cCctr.gotoDetailPage('formchallan26Q',a.id,'detailform26qchallan')" style="color: blue">Details</a></td>
 				</tr>
 
 			</tbody>

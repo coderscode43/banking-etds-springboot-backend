@@ -62,22 +62,10 @@ public class Regular24Q4Deductee extends CommonModelAbstract {
 	public String totalTds;
 	@Column(name = "totalTaxDeposited")
 	public Double totalTaxDeposited;
-	@Column(name = "remarks")
-	public String remarks;
 	@Column(name = "certificateNumber")
 	public String certificateNumber;
-	@Column(name = "errorDescription")
-	public String errorDescription;
-	@Column(name = "warningDescription")
-	public String warningDescription;
-	@Column(name = "shortDeduction")
-	public Double shortDeduction;
-	@Column(name = "interestOnShortDeduction")
-	public Double interestOnShortDeduction;
-	@Column(name = "interestOnLatePayment")
-	public Double interestOnLatePayment;
-	@Column(name = "interestOnLateDeduction")
-	public Double interestOnLateDeduction;
+	@Column(name = "remarks")
+	public String remarks;
 	@Column(name = "fy")
 	public String fy;
 	@Column(name = "quarter")

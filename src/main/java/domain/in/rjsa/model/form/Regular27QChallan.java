@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -48,6 +49,7 @@ public class Regular27QChallan extends CommonModelAbstract{
 	public Double totalTaxDeposit;
 	
 	@Column(name = "tdsDepositBookEntry")
+	@Size(min=0, max=45, message="tdsDepositBookEntry should not be greater than 45 characters.")
 	public String tdsDepositBookEntry;
 	
 	

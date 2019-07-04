@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -28,6 +29,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
 import domain.in.rjsa.exception.CustomException;
+import domain.in.rjsa.exception.FieldErrorDTO;
 import domain.in.rjsa.model.form.Ajax;
 import domain.in.rjsa.model.form.ListCount;
 import domain.in.rjsa.model.form.Login;
@@ -162,10 +164,13 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 	// ------------------- Add Entity ---------------------------------
 
 	@RequestMapping(value = "/add/{clientId}", method = RequestMethod.POST)
+	@ResponseBody
 	public ResponseEntity<?> createEntity(@RequestBody LinkedHashMap<String, Object> entity) {
+		//FieldErrorDTO ermsg=new FieldErrorDTO();
 		logger.info("Creating new Return instance");
 		create(entity);
-		return new ResponseEntity<String>(HttpStatus.CREATED);
+	//	ermsg.setMessage(" Saved Successfully");
+		return new ResponseEntity<Object>(HttpStatus.CREATED);
 
 	}
 
@@ -211,6 +216,7 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 	@RequestMapping(value = "/update/{clientId}", method = RequestMethod.PUT)
 	public ResponseEntity<?> update(@RequestBody LinkedHashMap<String, Object> entity, HttpServletResponse response,
 			UriComponentsBuilder ucBuilder) {
+		FieldErrorDTO ermsg=new FieldErrorDTO();
 		Login l = applicationCache.getLoginDetail(getPrincipal());
 		Long clientId = Long.valueOf(entity.get("clientId").toString());
 		if (clientId == l.getClientId()) {
@@ -218,7 +224,8 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 			ObjectMapper oMapper = new ObjectMapper();
 			HashMap<String, Object> map = oMapper.convertValue(o, HashMap.class);
 							update(entity);
-			return new ResponseEntity<String>(HttpStatus.CREATED);
+							ermsg.setMessage(" Updated Successfully");
+							return new ResponseEntity<String>(HttpStatus.ACCEPTED);
 		}
 		else {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

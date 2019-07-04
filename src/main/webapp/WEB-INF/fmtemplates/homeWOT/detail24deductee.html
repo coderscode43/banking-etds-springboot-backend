@@ -106,7 +106,15 @@
 				<h3 class="page-header" style="margin-top: 2%;">Details of
 					Deductee</h3>
 			</div>
-			<div class="row">
+			
+
+
+
+			<div class="panel panel-default"
+				style="margin-top: -2%; border: none !important;">
+				<div class="panel-body">
+					
+					<div class="row">
 				<div class="col-xs-12">
 					<div class="text-left">
 						<button class="btn btn-primary" data-toggle="modal"
@@ -115,14 +123,7 @@
 				</div>
 			</div>
 
-
-
-			<div class="panel panel-default"
-				style="margin-top: -2%; border: none !important;">
-				<div class="panel-body">
-					<br>
-
-
+<br><br>
 
 					
 
@@ -192,37 +193,7 @@
 									{{cCctr.entity.deductee.educationCess}}
 								</div>
 							</div>
-						</div>
-					</div>
-					<hr>
-
-					
-
-<div id="page-wrapper" ng-init="cCctr.entity=cCctr.getEntityData();">
-	<div class="container-fluid">
-
-		<div ng-show="cCctr.show != true">
-
-			<div class="row">
-				<h3 class="page-header" style="margin-top: 2%;">Other Details 
-					</h3>
-			</div>
-			<div class="row">
-				<div class="col-xs-12">
-					<div class="text-left">
-						<button class="btn btn-primary" data-toggle="modal"
-							onclick="test('#other')">Edit</button>
-					</div>
-				</div>
-			</div>
-					<br>
-
-				
-
-					<div class="container">
-
-						<div class="collapse dont-collapse-sm" id="collapseExample2">
-
+							
 							<div class="row" style="font-size: 13px;">
 								<div class="col-md-6">
 									<label>Total Tds &nbsp;:</label>
@@ -244,36 +215,6 @@
 							</div>
 							<div class="row" style="font-size: 13px;">
 								<div class="col-md-6">
-									<label>Error Description &nbsp;:</label>
-									{{cCctr.entity.deductee.errorDescription}}
-								</div>
-								<div class="col-md-6">
-									<label>warningDescription &nbsp;:</label>
-									{{cCctr.entity.deductee.warningDescription}}
-								</div>
-							</div>
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-6">
-									<label>Short Deduction &nbsp;:</label>
-									{{cCctr.entity.deductee.shortDeduction}}
-								</div>
-								<div class="col-md-6">
-									<label>Interest On Short Deduction&nbsp;:</label>
-									{{cCctr.entity.deductee.interestOnShortDeduction}}
-								</div>
-							</div>
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-6">
-									<label>Interest On Late Payment &nbsp;:</label>
-									{{cCctr.entity.deductee.interestOnLatePayment}}
-								</div>
-								<div class="col-md-6">
-									<label>Interest On Late Deduction &nbsp;:</label>
-									{{cCctr.entity.deductee.interestOnLateDeduction}}
-								</div>
-							</div>
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-6">
 									<label>FY&nbsp;:</label> {{cCctr.entity.deductee.fy}}
 								</div>
 								<div class="col-md-6">
@@ -281,11 +222,21 @@
 									{{cCctr.entity.deductee.quarter}}
 								</div>
 							</div>
+							<br>
+							
+			<hr>
+			<br>
+								<div class="row">
+       			<button ng-click="profileForm.submitted=true;cCctr.updateData(profileForm.$valid,'form24Q',cCctr.entity.deductee,'closeU')"
+									class="btn btn-success" data-dismiss="modal" style="margin-left:780px">Save</button>
+       			<button  class="btn btn-primary" ng-click="cCctr.gotoListPage('form24Q','form24Q');" >Back</button>
+      </div>
 						</div>
 					</div>
-				</div>
-			</div>
-		</div>
+					<br>
+
+					
+
 	</div>
 			<div id="profile" class="modal fade" role="dialog">
 				<div class="modal-dialog modal-lg">
@@ -443,41 +394,8 @@
 
 
 										</div>
-									</form>
-								</div>
-							</div>
-							<div class="modal-footer">
-								<button
-									ng-click="profileForm.submitted=true;cCctr.updateData(profileForm.$valid,'form24Q',cCctr.entity.deductee,'closeU')"
-									class="btn btn-success" data-dismiss="modal">Save</button>
-								<button class="btn btn-primary" data-dismiss="modal">Back</button>
-							</div>
-						</div>
-					</div>
-				</div>
-
-			</div>
-
-
-
-			<div id="other" class="modal fade" role="dialog">
-		<div class="modal-dialog modal-lg">
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" id="closeU"
-						data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Edit Other Details</h4>
-				</div>
-				<div class="modal-body">
-
-					<div id="myTabContent" class="tab-content">
-					<div class="tab-pane fade active in" id="signin">
-						<form name="profileForm" class="form-horizontal"
-							enctype="multipart/form-data">
-
-
-						<div class="row">
+										
+										<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Total TDS</label> <input class="form-control"
@@ -527,81 +445,6 @@
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-									<label>Error Description</label> <input class="form-control"
-										type="text" name="errorDescription"
-										placeholder="Error Description"
-										ng-model="cCctr.entity.deductee.errorDescription"
-										autocomplete="off" ng-pattern=""
-										ng-model-options="{updateOn: 'blur'}" />
-								</div>
-							</div>
-
-							<div class="col-md-6">
-								<div class="form-group">
-									<label> Warning Description</label> <input class="form-control"
-										type="text" name="warningDescription"
-										placeholder="Warning Description"
-										ng-model="cCctr.entity.deductee.warningDescription"
-										autocomplete="off" ng-pattern=""
-										ng-model-options="{updateOn: 'blur'}" />
-								</div>
-							</div>
-
-
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Short Deduction</label> <input class="form-control"
-										type="text" name="shortDeduction"
-										placeholder="Error Description"
-										ng-model="cCctr.entity.deductee.shortDeduction"
-										autocomplete="off" ng-pattern=""
-										ng-model-options="{updateOn: 'blur'}" />
-								</div>
-							</div>
-
-							<div class="col-md-6">
-								<div class="form-group">
-									<label> Interest On Short Deduction</label> <input
-										class="form-control" type="text"
-										name="interestOnShortDeduction"
-										placeholder="Warning Description"
-										ng-model="cCctr.entity.deductee.interestOnShortDeduction"
-										autocomplete="off" ng-pattern=""
-										ng-model-options="{updateOn: 'blur'}" />
-								</div>
-							</div>
-
-
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Interest On Late Payment</label> <input
-										class="form-control" type="text" name="interestOnLatePayment"
-										placeholder="Interest On Late Payment"
-										ng-model="cCctr.entity.deductee.interestOnLatePayment"
-										autocomplete="off" ng-pattern=""
-										ng-model-options="{updateOn: 'blur'}" />
-								</div>
-							</div>
-
-							<div class="col-md-6">
-								<div class="form-group">
-									<label> Interest On Late Deduction</label> <input
-										class="form-control" type="text"
-										name="interestOnLateDeduction"
-										placeholder="Interest On Late Deduction"
-										ng-model="cCctr.entity.deductee.interestOnLateDeduction"
-										autocomplete="off" ng-pattern=""
-										ng-model-options="{updateOn: 'blur'}" />
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
 									<label>FY</label> <input class="form-control" type="text"
 										name="fy" placeholder="FY" ng-model="cCctr.entity.deductee.fy"
 										autocomplete="off" ng-pattern=""
@@ -618,21 +461,22 @@
 								</div>
 							</div>
 						</div>
-						</form>
+										
+										
+									</form>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<!-- <button
+									ng-click="profileForm.submitted=true;cCctr.updateData(profileForm.$valid,'form24Q',cCctr.entity.deductee,'closeU')"
+									class="btn btn-success" data-dismiss="modal">Save</button> -->
+								<button class="btn btn-primary" data-dismiss="modal">OK</button>
+							</div>
+						</div>
 					</div>
-					
 				</div>
-				<div class="modal-footer">
-      <button
-						ng-click="profileForm.submitted=true;cCctr.updateData(profileForm.$valid,'form24Q',cCctr.entity.deductee,'closeU')"
-						class="btn btn-success" data-dismiss="modal">Save</button>
-					<button class="btn btn-primary" data-dismiss="modal">Back</button>
-      </div>
-			</div>
-		</div>
-	</div>
 
-</div>
+			</div>
 
 </div>
 

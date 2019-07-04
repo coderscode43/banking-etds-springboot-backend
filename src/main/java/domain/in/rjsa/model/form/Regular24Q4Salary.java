@@ -208,10 +208,6 @@ public class Regular24Q4Salary extends CommonModelAbstract  {
 	@Column(name = "grossTotalIncomeincludingContribution")
 	public Double grossTotalIncomeincludingContribution;
 	
-	@Column(name = "shortDeduction")
-	public Double shortDeduction;
-	@Column(name = "interestOnShortDeduction")
-	public Double interestOnShortDeduction;
 	@Column(name = "fy")
 	public String fy;
 	@Column(name = "quarter")

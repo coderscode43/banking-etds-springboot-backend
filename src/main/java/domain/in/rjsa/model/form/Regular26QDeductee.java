@@ -72,19 +72,7 @@ public class Regular26QDeductee extends CommonModelAbstract{
 	public String remarks;
 	@Column(name = "certificateNo")
 	public String certificateNo;
-	@Column(name = "warningDescription")
-	public String warningDescription;
 	
-	
-	@Column(name = "shortDeduct")
-	public Double shortDeduct;
-	@Column(name = "interestOnShtDeduct")
-	public Double interestOnShtDeduct;
-	
-	@Column(name = "interestOnLatePay")
-	public Double interestOnLatePay;
-	@Column(name = "interestOnLateDeduct")
-	public Double interestOnLateDeduct;
 	@Column(name = "fy")
 	public String fy;
 	@Column(name = "quarter")

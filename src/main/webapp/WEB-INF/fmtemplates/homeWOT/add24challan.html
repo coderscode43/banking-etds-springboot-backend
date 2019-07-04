@@ -186,30 +186,6 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label> Short Payment</label> <input class="form-control"
-									type="text" name="shortPayment" placeholder="ShortPayment"
-									ng-model="cCctr.entity.shortPayment" autocomplete="off"
-									ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
-							</div>
-						</div>
-
-
-						<div class="col-md-6">
-							<div class="form-group">
-								<label>Interest On Short Payment</label> <input
-									class="form-control" type="text" name="interestOnShortPayment"
-									placeholder="Interest On ShortPayment"
-									ng-model="cCctr.entity.interestOnShortPayment"
-									autocomplete="off" ng-pattern=""
-									ng-model-options="{updateOn: 'blur'}" />
-							</div>
-						</div>
-
-
-					</div>
-					<div class="row">
-						<div class="col-md-6">
-							<div class="form-group">
 								<label> financial Year</label> <input class="form-control"
 									type="text" name="fy" placeholder="financial Year"
 									ng-model="cCctr.entity.fy" autocomplete="off" ng-pattern=""
@@ -233,9 +209,7 @@
 			<button
 				ng-click="form24qchallan.submitted=true; cCctr.submit(form24qchallan.$valid,'regular24Q4Challan')"
 				class="btn btn-success" data-dismiss="modal">Save</button>
-			<button
-				ng-click="cCctr.gotoListPage('regular24Q4Challan','regular24Q4Challan"
-				class="btn btn-primary">Cancel</button>
+			<button  class="btn btn-primary" ng-click="cCctr.gotoListPage('regular24Q4Challan','regular24Q4Challan');" style="margin-left:10px">Back</button>
 		</div>
 	</div>
 </div>

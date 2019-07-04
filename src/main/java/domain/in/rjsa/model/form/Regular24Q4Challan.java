@@ -68,10 +68,6 @@ public class Regular24Q4Challan extends CommonModelAbstract{
 	public String errorDescription;
 	@Column(name = "warningDescription")
 	public String warningDescription;
-	@Column(name = "shortPayment")
-	public String shortPayment;
-	@Column(name = "interestOnShortPayment")
-	public String interestOnShortPayment;
 	@Column(name = "fy")
 	public String fy;
 	@Column(name = "quarter")

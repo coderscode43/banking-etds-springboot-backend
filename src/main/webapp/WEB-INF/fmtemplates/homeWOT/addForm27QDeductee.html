@@ -310,77 +310,6 @@
 					
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Error</label> <input class="form-control"
-									type="text" name="errorDescription" placeholder="Error"
-									ng-model="cCctr.entity.errorDescription" autocomplete="off"
-									ng-maxlength="50" 
-									ng-model-options="{updateOn: 'blur'}" /> 
-							</div>
-
-						</div>
-					</div>
-					
-					<div class="row">
-						<div class="col-md-6">
-							<div class="form-group">
-								<label>warningDescription</label> <input class="form-control"
-									type="text" name="warningDescription" placeholder="warningDescription"
-									ng-model="cCctr.entity.warningDescription" autocomplete="off"
-									ng-maxlength="50" 
-									ng-model-options="{updateOn: 'blur'}" /> 
-							</div>
-
-						</div>
-					
-						<div class="col-md-6">
-							<div class="form-group">
-								<label>Short Deduction</label> <input class="form-control"
-									type="text" name="shortDeduction" placeholder="Short Deduction"
-									ng-model="cCctr.entity.shortDeduction" autocomplete="off"
-									ng-maxlength="50" 
-									ng-model-options="{updateOn: 'blur'}" /> 							</div>
-
-						</div>
-					</div>
-					
-					<div class="row">
-						<div class="col-md-6">
-							<div class="form-group">
-								<label>Interest on short Deduction</label> <input class="form-control"
-									type="text" name="interestOnShortDeduction" placeholder="Interest on short Deduction"
-									ng-model="cCctr.entity.interestOnShortDeduction" autocomplete="off"
-									ng-maxlength="50" 
-									ng-model-options="{updateOn: 'blur'}" /> 
-							</div>
-
-						</div>
-					
-						<div class="col-md-6">
-							<div class="form-group">
-								<label>Interest on Late Payment</label> <input class="form-control"
-									type="text" name="interestOnLatePayment" placeholder="Interest on Late Payment"
-									ng-model="cCctr.entity.interestOnLatePayment" autocomplete="off"
-									ng-maxlength="50" 
-									ng-model-options="{updateOn: 'blur'}" /> 
-							</div>
-
-						</div>
-					</div>
-					
-					<div class="row">
-						<div class="col-md-6">
-							<div class="form-group">
-								<label>Interest on Late Deduction</label> <input class="form-control"
-									type="text" name="interestOnLateDeduction" placeholder="Interest on Late Deduction"
-									ng-model="cCctr.entity.interestOnLateDeduction" autocomplete="off"
-									ng-maxlength="50" 
-									ng-model-options="{updateOn: 'blur'}" /> 
-							</div>
-
-						</div>
-					
-						<div class="col-md-6">
-							<div class="form-group">
 								<label>FY</label> <input class="form-control"
 									type="text" name="fy" placeholder="FY"
 									ng-model="cCctr.entity.fy" autocomplete="off"
@@ -390,6 +319,8 @@
 
 						</div>
 					</div>
+					
+				
 					
 					<div class="row">
 						<div class="col-md-6">
@@ -404,13 +335,13 @@
 						</div>
 					</div>
 					
-					<div class="row">
+					<div class="row" style="margin-left:60%">
 						<div class="col-md-6">
 							<button
 								ng-click="deducteeDetailForm.submitted=true; cCctr.submit(deducteeDetailForm.$valid,'form27Q')"
-								class="btn btn-success" data-dismiss="modal">Submit</button>
+								class="btn btn-success" data-dismiss="modal">Submit</button>&nbsp;&nbsp;
 							<button ng-click="cCctr.gotoListPage('form27Q','form27Q');"
-								class="btn btn-primary">Cancel</button>
+								class="btn btn-danger">Cancel</button>
 						</div>
 					</div>
 				</form>

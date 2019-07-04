@@ -64,17 +64,8 @@ public class Regular26QChallan extends CommonModelAbstract{
 	public Double interestAllocated;
 	@Column(name = "otherAmtAllocated")
 	public Double otherAmtAllocated;
-	
 	@Column(name = "nilChallanIndicator")
 	public String nilChallanIndicator;
-	
-	@Column(name = "warningDescription")
-	public String warningDescription;
-	
-	@Column(name = "shortPayment")
-	public Double shortPayment;
-	@Column(name = "interestShortPay")
-	public Double interestShortPay;
 	@Column(name = "fy")
 	public String fy;
 	@Column(name = "quarter")

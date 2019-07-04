@@ -9,7 +9,7 @@ import domain.in.rjsa.model.wrapper.SalaryDetailWrapper;
 import domain.in.rjsa.service.Regular26QChallanService;
 
 @Controller
-@RequestMapping("/apiformchalllan26Q")
+@RequestMapping("/apiformchallan26Q")
 public class Regular26QChallanController extends AbstractController<Long,  Regular26QChallan,  Regular26QChallanService>  {
 @Autowired
 Regular26QChallanService service;

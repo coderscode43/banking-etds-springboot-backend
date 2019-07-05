@@ -103,7 +103,7 @@
 		<div ng-show="cCctr.show != true">
 
 			<div class="row">
-				<h3 class="page-header" style="margin-top: 2%;"><Strong>Details Of Form26Q
+				<h3 class="page-header" style="margin-top: 2%;"><Strong>Details Of Form 26Q
 					Deductee</Strong></h3>
 			</div>
 			<div class="row">
@@ -131,7 +131,7 @@
 						<div class="collapse dont-collapse-sm" id="collapseExample2">
 							<div class="row" style="font-size: 13px;">
 								<div class="col-md-6">
-									<label>Challan Sr.No. &nbsp;:</label>
+									<label>Challan Sr.No &nbsp;:</label>
 									{{cCctr.entity.deductee26.challanSrNo}}
 								</div>
 								<div class="col-md-6">
@@ -148,7 +148,7 @@
 
 								<div class="col-md-6">
 								
-									<label>Deductee Pan&nbsp;:</label> {{cCctr.entity.deductee26.deducteePan}}
+									<label>Deductee PAN&nbsp;:</label> {{cCctr.entity.deductee26.deducteePan}}
 								</div>
 							</div>
 
@@ -226,7 +226,7 @@
 									{{cCctr.entity.deductee26.certificateNo}}
 								</div>
 								<div class="col-md-6">
-									<label>FY&nbsp;:</label> {{cCctr.entity.deductee26.fy}}
+									<label>Financial Year&nbsp;:</label> {{cCctr.entity.deductee26.fy}}
 								</div>
 								
 							</div>
@@ -261,7 +261,7 @@
 						<div class="modal-header">
 							<button type="button" class="close" id="closeU"
 								data-dismiss="modal">&times;</button>
-							<h4 class="modal-title">Edit Deductee Details</h4>
+							<h4 class="modal-title"><strong>Edit Form 26Q Deductee Details</strong></h4>
 						</div>
 						<div class="modal-body">
 
@@ -274,8 +274,8 @@
 										<div class="row">
 											<div class="col-md-6">
 												
-													<label>Challan Sr.No.</label> <input class="form-control"
-														type="text" name="challanSrNo" placeholder="Challan Sr.No."
+													<label>Challan Sr.No</label> <input class="form-control"
+														type="text" name="challanSrNo" placeholder="Challan Sr.No"
 														ng-model="cCctr.entity.deductee26.challanSrNo"
 														autocomplete="off" ng-pattern="/^[0-9]*$/" ng-maxlength="15" ng-required="true"  ng-model-options="{updateOn: 'blur'}" />
 										    <span style="color: red" ng-show="profileForm.submitted ||profileForm.challanSrNo.$dirty && profileForm.challanSrNo.$invalid">
@@ -327,8 +327,8 @@
 
 											<div class="col-md-6">
 												
-													<label>Deductee Pan</label> <input class="form-control" type="text"
-														name="deducteePan" placeholder="Deductee Pan"
+													<label>Deductee PAN</label> <input class="form-control" type="text"
+														name="deducteePan" placeholder="Deductee PAN"
 														ng-model="cCctr.entity.deductee26.deducteePan" autocomplete="off"
 														ng-pattern="/^[a-zA-Z]{5}[0-9]{4}[a-zA-Z]{1}$/" ng-maxlength="45" ng-required="true" ng-model-options="{updateOn: 'blur'}" />
 														<span style="color: red" ng-show="profileForm.submitted ||profileForm.deducteePan.$dirty && profileForm.deducteePan.$invalid">
@@ -569,8 +569,8 @@
 							</div>
 							<div class="col-md-6">
 								
-									<label>FY</label> <input class="form-control" type="text"
-										name="fy" placeholder="FY" ng-model="cCctr.entity.deductee26.fy"
+									<label>Financial Year</label> <input class="form-control" type="text"
+										name="fy" placeholder="Financial Year" ng-model="cCctr.entity.deductee26.fy"
 										autocomplete="off"ng-pattern="/^[0-9]*$/" ng-maxlength="45" ng-required="true" 
 										ng-model-options="{updateOn: 'blur'}" />
 										<span style="color: red" ng-show="profileForm.submitted ||profileForm.fy.$dirty && profileForm.fy.$invalid">
@@ -611,6 +611,9 @@
       <button
 						
 						class="btn btn-success" data-dismiss="modal">Ok</button>
+						<button
+						
+						class="btn btn-danger" data-dismiss="modal">Back</button>
 					
       </div>
 			</div>

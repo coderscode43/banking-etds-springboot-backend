@@ -270,7 +270,9 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Remarks</label> <input class="form-control" type="text"
-									name="remarks" placeholder="remarks"
+									name="remarks" placeholder="Remarks"
+									ng-required="true"
+									ng-maxlength="45"
 									ng-model="cCctr.entity.remarks" autocomplete="off"
 									ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24qchallan.submitted || form24qchallan.remarks.$dirty && form24qchallan.remarks.$invalid">
@@ -289,6 +291,7 @@
 									placeholder="Nill Challan Indicator"
 									ng-model="cCctr.entity.nillChallanIndicator" autocomplete="off"
 									ng-required="true"
+									ng-maxlength="45"
 									ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24qchallan.submitted || form24qchallan.nillChallanIndicator.$dirty && form24qchallan.nillChallanIndicator.$invalid">
 									<span class="error" ng-show="form24qchallan.nillChallanIndicator.$error.pattern">Enter valid Nill Challan Indicator </span> 
@@ -306,8 +309,10 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Financial Year</label> <input class="form-control"
-									type="text" name="fy" placeholder="financial Year"
+									type="text" name="fy" placeholder="Financial Year"
 									ng-model="cCctr.entity.fy" autocomplete="off"
+									ng-required="true"
+									ng-maxlength="45"
 									ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24qchallan.submitted || form24qchallan.fy.$dirty && form24qchallan.fy.$invalid">
 									<span class="error" ng-show="form24qchallan.fy.$error.pattern">Enter valid Financial Year </span> 
@@ -322,6 +327,7 @@
 							<div class="form-group">
 								<label>Quarter</label> <input class="form-control" type="text"
 									name="quarter" placeholder="Quarter"
+									ng-required="true"
 									ng-model="cCctr.entity.quarter" autocomplete="off"
 									ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24qchallan.submitted || form24qchallan.quarter.$dirty && form24qchallan.quarter.$invalid">

@@ -209,14 +209,7 @@
 							<label> Nill Challan Indicator &nbsp;:</label> {{cCctr.entity.challan.nillChallanIndicator}}
 					</div>
   				</div>
-  				<div class="row" style="font-size: 13px;">
-					<div class="col-md-6">
-							<label>Short Payment &nbsp;:</label> {{cCctr.entity.challan.shortPayment}}
-					</div>
-					<div class="col-md-6">
-							<label> Interest On Short Payment &nbsp;:</label> {{cCctr.entity.challan.interestOnShortPayment}}
-					</div>
-  				</div>
+  				
   				<div class="row" style="font-size: 13px;">
 					<div class="col-md-6">
 							<label>Financial Year &nbsp;:</label> {{cCctr.entity.challan.fy}}
@@ -332,7 +325,7 @@
 			</div>
 			 <div class="row">
 							<div class="col-md-6">
-									<label> fee</label> <input class="form-control"
+									<label> Fee</label> <input class="form-control"
 										type="text" name="fee" placeholder="Fee"
 										ng-model="cCctr.entity.challan.fee" autocomplete="off"
 										ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
@@ -450,7 +443,7 @@
 							</div>
 
 							<div class="col-md-6">
-									<label>minorHeadOfChallan</label> <input class="form-control"
+									<label>Minor Head Of Challan</label> <input class="form-control"
 										type="text" name="minorHeadOfChallan"
 										placeholder="Minor Head Of Challan"
 										ng-model="cCctr.entity.challan.minorHeadOfChallan"
@@ -506,6 +499,7 @@
 							<div class="col-md-6">
 									<label> Remarks</label> <input class="form-control"
 										type="text" name="remarks" placeholder="remarks"
+										ng-required="true"
 										ng-model="cCctr.entity.challan.remarks" autocomplete="off"
 										ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="challanForm.submitted || challanForm.remarks.$dirty && challanForm.remarks.$invalid">
@@ -537,9 +531,10 @@
 			
 			 <div class="row">
 							<div class="col-md-6">
-									<label> financial Year</label> <input class="form-control"
+									<label> Financial Year</label> <input class="form-control"
 										type="text" name="fy" placeholder="financial Year"
 										ng-model="cCctr.entity.challan.fy" autocomplete="off"
+										ng-required="true"
 										ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="challanForm.submitted || challanForm.fy.$dirty && challanForm.fy.$invalid">
 									<span class="error" ng-show="challanForm.fy.$error.pattern">Enter valid Financial Year </span> 
@@ -554,6 +549,7 @@
 										type="text" name="quarter"
 										placeholder="quarter"
 										ng-model="cCctr.entity.challan.quarter"
+										ng-required="true"
 										autocomplete="off"
 										ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24qchallan.submitted || form24qchallan.quarter.$dirty && form24qchallan.quarter.$invalid">

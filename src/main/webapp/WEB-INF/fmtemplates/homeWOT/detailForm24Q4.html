@@ -103,8 +103,7 @@
 		<div ng-show="cCctr.show != true">
 
 			<div class="row">
-				<h3 class="page-header" style="margin-top: 2%;">Details of Form
-					24Q4 Salary</h3>
+				<h3 class="page-header" style="margin-top: 2%;">Details of Form 24Q4 Salary</h3>
 			</div>
 
 
@@ -734,7 +733,7 @@
 										ng-model="cCctr.entity.salary.panRefNo" autocomplete="off"
 										ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 										ng-required="true"
-										ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+										ng-model-options="{updateOn: 'blur'}" />
 										<span style="color: red" ng-show="employeeForm.submitted || employeeForm.panRefNo.$dirty && employeeForm.panRefNo.$invalid">
 										<span class="error" ng-show="employeeForm.panRefNo.$error.pattern">Enter valid PAN reference number </span> 
 										<span class="error" ng-show="employeeForm.panRefNo.$error.maxlength">PAN reference number should not be greater than 50 digits.</span> 
@@ -1078,7 +1077,7 @@
 										class="form-control" type="text" name="totalAmountOfExemption"
 										placeholder="Total Amount Of Exemption"
 										ng-model="cCctr.entity.salary.totalAmountOfExemption "
-										autocomplete="off" ng-pattern=""
+										autocomplete="off"
 										ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 										ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 										<span style="color: red" ng-show="allowanceForm.submitted || allowanceForm.totalAmountOfExemption.$dirty && allowanceForm.totalAmountOfExemption.$invalid">
@@ -1173,7 +1172,7 @@
 											<label>Total Deduction Under Section16</label> 
 											<input class="form-control" type="text"
 												name="totalDeductionUnderSection16" placeholder="Total Deduction Under Section16"
-												ng-model="cCctr.entity.salary.totalDeductionUnderSection16" autocomplete="off" ng-pattern=""
+												ng-model="cCctr.entity.salary.totalDeductionUnderSection16" autocomplete="off"
 												ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 												ng-required="true"
 												ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -1440,7 +1439,7 @@
 										type="text" name="deductionUs80G"
 										placeholder="Deduction Us80G "
 										ng-model="cCctr.entity.salary.deductionUs80G"
-										autocomplete="off" ng-pattern=""
+										autocomplete="off"
 										ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="deductionForm.submitted || deductionForm.deductionUs80G.$dirty && deductionForm.deductionUs80G.$invalid">
@@ -1577,7 +1576,7 @@
 										class="form-control" type="text" name="incomeTaxOnTotalIncome"
 										placeholder="Income Tax On Total Income"
 										ng-model="cCctr.entity.salary.incomeTaxOnTotalIncome"
-										autocomplete="off" ng-pattern=""
+										autocomplete="off"
 										ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-required="true"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -1803,7 +1802,7 @@
 										placeholder="Count Of Pan Of Lender"
 										ng-model="cCctr.entity.salary.countOfPanOfLandlord"
 										autocomplete="off"
-										ng-pattern="/^[0-9]$/"
+										ng-pattern="/^[0-9]*$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="lenderForm.submitted || lenderForm.countOfPanOfLandlord.$dirty && lenderForm.countOfPanOfLandlord.$invalid">
 									<span class="error" ng-show="lenderForm.countOfPanOfLandlord.$error.pattern">Enter valid Count Of Pan Of Lender </span> 
@@ -1900,7 +1899,7 @@
 										type="text" name="nameOfLandlord3"
 										placeholder="Name Of Landlord3"
 										ng-model="cCctr.entity.salary.nameOfLandlord3"
-										autocomplete="off" ng-pattern=""
+										autocomplete="off"
 										ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="lenderForm.submitted || lenderForm.nameOfLandlord3.$dirty && lenderForm.nameOfLandlord3.$invalid">
@@ -1970,8 +1969,8 @@
 										class="form-control" type="text" name="countOfPanOfLender"
 										placeholder="Count Of Pan Of Lender"
 										ng-model="cCctr.entity.salary.countOfPanOfLender"
-										autocomplete="off" ng-pattern=""
-										ng-pattern="/^[0-9]$/"
+										autocomplete="off"
+										ng-pattern="/^[0-9]*$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="lenderForm.submitted || lenderForm.countOfPanOfLender.$dirty && lenderForm.countOfPanOfLender.$invalid">
 									<span class="error" ng-show="lenderForm.countOfPanOfLender.$error.pattern">Enter valid Count Of Pan Of Lender </span> 

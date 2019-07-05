@@ -62,7 +62,7 @@
 								ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 								ng-model-options="{updateOn: 'blur'}" /> <span
 								style="color: red"
-								ng-show="form24qdeductee.submitted || form24qdeductee.employeeRefNo.$dirty && form24qdeductee.panRefNo.$invalid">
+								ng-show="form24qdeductee.submitted || form24qdeductee.panRefNo.$dirty && form24qdeductee.panRefNo.$invalid">
 								<span class="error"
 								ng-show="form24qdeductee.panRefNo.$error.pattern">Please
 									enter valid Pan Reference No. </span> <span class="error"
@@ -328,16 +328,13 @@
 									autocomplete="off" ng-maxlenght="45" ng-required="true"
 									ng-pattern="" ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
-									
-									
 									ng-show="form24qdeductee.submitted || form24qdeductee.fy.$dirty && form24qdeductee.fy.$invalid">
-									<span class="error"
-									ng-show="form24qdeductee.fy.$error.pattern">Please
+									<span class="error" ng-show="form24qdeductee.fy.$error.pattern">Please
 										enter valid FY </span> <span class="error"
-									ng-show="form24qdeductee.fy.$error.maxlength">FY
-										should not be greater than 45 characters.</span> <span class="error"
-									ng-show="form24qdeductee.fy.$error.required">FY
-										is Required.</span>
+									ng-show="form24qdeductee.fy.$error.maxlength">FY should
+										not be greater than 45 characters.</span> <span class="error"
+									ng-show="form24qdeductee.fy.$error.required">FY is
+										Required.</span>
 								</span> <span class="error" id="fy"></span>
 							</div>
 						</div>
@@ -345,11 +342,10 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label> Quarter</label> <input class="form-control" type="text"
-									name="quarter" placeholder="Quarter"
-									ng-maxlenght="45" ng-required="true"
-									ng-model="cCctr.entity.quarter" autocomplete="off"
-									ng-pattern="" ng-model-options="{updateOn: 'blur'}" /> 
-									<span
+									name="quarter" placeholder="Quarter" ng-maxlenght="45"
+									ng-required="true" ng-model="cCctr.entity.quarter"
+									autocomplete="off" ng-pattern=""
+									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
 									ng-show="form24qdeductee.submitted || form24qdeductee.quarter.$dirty && form24qdeductee.quarter.$invalid">
 									<span class="error"
@@ -359,8 +355,7 @@
 										should not be greater than 45 characters.</span> <span class="error"
 									ng-show="form24qdeductee.quarter.$error.required">Quarter
 										is Required.</span>
-								</span><span
-									class="error" id="quarter"></span>
+								</span><span class="error" id="quarter"></span>
 							</div>
 						</div>
 					</div>

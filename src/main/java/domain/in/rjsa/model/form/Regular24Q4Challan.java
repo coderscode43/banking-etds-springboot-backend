@@ -94,12 +94,6 @@ public class Regular24Q4Challan extends CommonModelAbstract{
 	@Column(name = "nillChallanIndicator")
 	@Size(min=0, max=45, message="Invalid Nill Challan Indicator")
 	public String nillChallanIndicator;
-	@Column(name = "errorDescription")
-	@Size(min=0, max=45, message="Invalid Error Description")
-	public String errorDescription;
-	@Column(name = "warningDescription")
-	@Size(min=0, max=45, message="Invalid Warning Description")
-	public String warningDescription;
 	@Column(name = "fy")
 	@Size(min=0, max=45, message="Invalid FY")
 	public String fy;

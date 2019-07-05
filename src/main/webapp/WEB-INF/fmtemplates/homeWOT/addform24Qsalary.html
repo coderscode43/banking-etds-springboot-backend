@@ -125,15 +125,17 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Gross Salary As Per Provision</label> <input class="form-control"
+								<label>Gross Salary As Per Provision*</label> <input class="form-control"
 									type="text" name="grossSalaryAsPerProvision" placeholder="Gross Salary As Per Provision"
 									ng-model="cCctr.entity.grossSalaryAsPerProvision" autocomplete="off"
+									ng-required="true"
 									ng-maxlength="100" 
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.grossSalaryAsPerProvision.$dirty && form24SalaryDetail.grossSalaryAsPerProvision.$invalid">
 									<span class="error" ng-show="form24SalaryDetail.grossSalaryAsPerProvision.$error.pattern">Enter valid Gross Salary As Per Provision </span> 
 									<span class="error" ng-show="form24SalaryDetail.grossSalaryAsPerProvision.$error.maxlength">Gross Salary As Per Provision should not be greater than 50 digits.</span> 
+									<span class="error" ng-show="form24SalaryDetail.grossSalaryAsPerProvision.$error.required">Gross Salary As Per Provision is Required.</span>
 									</span>
 									<span class="error" id="grossSalaryAsPerProvision"></span>
 							</div>
@@ -141,15 +143,17 @@
 
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Value Of Perquisites</label> <input class="form-control"
+								<label>Value Of Perquisites*</label> <input class="form-control"
 									type="text" name="valueOfPerquisites" placeholder="Value Of Perquisites"
 									ng-model="cCctr.entity.valueOfPerquisites" autocomplete="off"
+									ng-required="true"
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 									ng-maxlength="100" 
 									ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.valueOfPerquisites.$dirty && form24SalaryDetail.valueOfPerquisites.$invalid">
 									<span class="error" ng-show="form24SalaryDetail.valueOfPerquisites.$error.pattern">Enter valid Value Of Perquisites </span> 
 									<span class="error" ng-show="form24SalaryDetail.valueOfPerquisites.$error.maxlength">Value Of Perquisites should not be greater than 50 digits.</span> 
+									<span class="error" ng-show="form24SalaryDetail.valueOfPerquisites.$error.required">Value Of Perquisites is Required.</span>
 									</span>
 									<span class="error" id="valueOfPerquisites"></span>
 							</div>
@@ -159,14 +163,16 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Profit In Salary</label> <input class="form-control"
+								<label>Profit In Salary*</label> <input class="form-control"
 									type="text" name="profitInSalary" placeholder="Profit In Salary"
 									ng-model="cCctr.entity.profitInSalary" autocomplete="off"
+									ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" /> 
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.profitInSalary.$dirty && form24SalaryDetail.profitInSalary.$invalid">
 									<span class="error" ng-show="form24SalaryDetail.profitInSalary.$error.pattern">Enter valid Profit In Salary </span> 
 									<span class="error" ng-show="form24SalaryDetail.profitInSalary.$error.maxlength">Profit In Salary should not be greater than 50 digits.</span> 
+									<span class="error" ng-show="form24SalaryDetail.profitInSalary.$error.required">Profit In Salary is Required.</span>									
 									</span>
 									<span class="error" id="profitInSalary"></span>
 							</div>
@@ -241,14 +247,16 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Leave Travel Allowance</label> <input class="form-control" type="text"
+								<label>Leave Travel Allowance*</label> <input class="form-control" type="text"
 									name="leaveTravelAllowance" placeholder="Leave Travel Allowance" ng-model="cCctr.entity.leaveTravelAllowance"
 									autocomplete="off" ng-maxlength="100"
+									ng-required="true"
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 									ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.leaveTravelAllowance.$dirty && form24SalaryDetail.leaveTravelAllowance.$invalid">
 									<span class="error" ng-show="form24SalaryDetail.leaveTravelAllowance.$error.pattern">Enter valid Leave Travel Allowance </span> 
 									<span class="error" ng-show="form24SalaryDetail.leaveTravelAllowance.$error.maxlength">Leave Travel Allowance should not be greater than 50 digits.</span> 
+									<span class="error" ng-show="form24SalaryDetail.leaveTravelAllowance.$error.required">Leave Travel Allowance is Required.</span>
 									</span>
 									<span class="error" id="leaveTravelAllowance"></span>
 
@@ -259,14 +267,16 @@
 
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Gratuity</label> <input class="form-control" type="text"
+								<label>Gratuity*</label> <input class="form-control" type="text"
 									name="gratuity" placeholder="Gratuity" ng-model="cCctr.entity.gratuity"
 									autocomplete="off" 
+									ng-required="true"
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 									ng-maxlength="100" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.gratuity.$dirty && form24SalaryDetail.gratuity.$invalid">
 									<span class="error" ng-show="form24SalaryDetail.gratuity.$error.pattern">Enter valid Gratuity</span> 
 									<span class="error" ng-show="form24SalaryDetail.gratuity.$error.maxlength">Gratuity should not be greater than 50 digits.</span> 
+									<span class="error" ng-show="form24SalaryDetail.gratuity.$error.required">Gratuity is Required.</span>									
 									</span>
 									<span class="error" id="gratuity"></span>
 
@@ -277,14 +287,16 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Commuted Value Of Pension</label> <input class="form-control" type="text"
+								<label>Commuted Value Of Pension*</label> <input class="form-control" type="text"
 									name="commutedValueOfPension" placeholder="Commuted Value Of Pension" ng-model="cCctr.entity.commutedValueOfPension"
 									autocomplete="off" ng-maxlength="50" 
+									ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-model-options="{updateOn: 'blur'}" /> 
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.commutedValueOfPension.$dirty && form24SalaryDetail.commutedValueOfPension.$invalid">
 									<span class="error" ng-show="form24SalaryDetail.commutedValueOfPension.$error.pattern">Enter valid Commuted Value Of Pension </span> 
 									<span class="error" ng-show="form24SalaryDetail.commutedValueOfPension.$error.maxlength">Commuted Value Of Pension should not be greater than 50 digits.</span> 
+									<span class="error" ng-show="form24SalaryDetail.commutedValueOfPension.$error.required">Commuted Value Of Pension is Required.</span>																																				
 									</span>
 									<span class="error" id="commutedValueOfPension"></span>
 							</div>
@@ -293,14 +305,16 @@
 
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Leave Encashment Salary</label> <input class="form-control"
+								<label>Leave Encashment Salary*</label> <input class="form-control"
 									type="text" name="leaveEncashmentSalary" placeholder="Leave Encashment Salary"
 									ng-model="cCctr.entity.leaveEncashmentSalary" autocomplete="off"
+									ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" /> 
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.leaveEncashmentSalary.$dirty && form24SalaryDetail.leaveEncashmentSalary.$invalid">
 									<span class="error" ng-show="form24SalaryDetail.leaveEncashmentSalary.$error.pattern">Enter valid Leave Encashment Salary </span> 
 									<span class="error" ng-show="form24SalaryDetail.leaveEncashmentSalary.$error.maxlength">Leave Encashment Salary should not be greater than 50 digits.</span> 
+									<span class="error" ng-show="form24SalaryDetail.houseRentAllowance.$error.required">Leave Encashment Salary is Required.</span>									
 									</span>
 									<span class="error" id="leaveEncashmentSalary"></span>
 							</div>
@@ -310,14 +324,16 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>HouseRent Allowance</label> <input class="form-control" type="text"
+								<label>HouseRent Allowance*</label> <input class="form-control" type="text"
 									name="houseRentAllowance" placeholder="HouseRent Allowance"
 									ng-model="cCctr.entity.houseRentAllowance" autocomplete="off"
+									ng-required="true"
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.houseRentAllowance.$dirty && form24SalaryDetail.houseRentAllowance.$invalid">
 									<span class="error" ng-show="form24SalaryDetail.houseRentAllowance.$error.pattern">Enter valid HouseRent Allowance </span> 
 									<span class="error" ng-show="form24SalaryDetail.houseRentAllowance.$error.maxlength">HouseRent Allowance should not be greater than 50 digits.</span> 
+									<span class="error" ng-show="form24SalaryDetail.houseRentAllowance.$error.required">HouseRent Allowance is Required.</span>																											
 									</span>
 									<span class="error" id="houseRentAllowance"></span>
 							</div>
@@ -325,14 +341,16 @@
 
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Any Other Exemptionus10</label> <input class="form-control"
+								<label>Any Other Exemptionus10*</label> <input class="form-control"
 									type="text" name="anyOtherExemptionus10" placeholder="Any Other Exemptionus10"
 									ng-model="cCctr.entity.anyOtherExemptionus10" autocomplete="off"
+									ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.anyOtherExemptionus10.$dirty && form24SalaryDetail.anyOtherExemptionus10.$invalid">
 									<span class="error" ng-show="form24SalaryDetail.anyOtherExemptionus10.$error.pattern">Enter valid Any Other Exemptionus10 </span> 
 									<span class="error" ng-show="form24SalaryDetail.anyOtherExemptionus10.$error.maxlength">Any Other Exemptionus10 should not be greater than 50 digits.</span> 
+									<span class="error" ng-show="form24SalaryDetail.anyOtherExemptionus10.$error.required">Any Other Exemptionus10 is Required.</span>																		
 									</span>
 									<span class="error" id="anyOtherExemptionus10"></span>
 							</div>
@@ -342,7 +360,7 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Total Amount Of Exemption</label> <input class="form-control"
+								<label>Total Amount Of Exemption*</label> <input class="form-control"
 									type="text" name="totalAmountOfExemption" placeholder="Total Amount Of Exemption"
 									ng-model="cCctr.entity.totalAmountOfExemption" autocomplete="off"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
@@ -350,6 +368,7 @@
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.totalAmountOfExemption.$dirty && form24SalaryDetail.totalAmountOfExemption.$invalid">
 									<span class="error" ng-show="form24SalaryDetail.totalAmountOfExemption.$error.pattern">Enter valid Total Amount Of Exemption </span> 
 									<span class="error" ng-show="form24SalaryDetail.totalAmountOfExemption.$error.maxlength">Total Amount Of Exemption should not be greater than 50 digits.</span> 
+									<span class="error" ng-show="form24SalaryDetail.totalAmountOfExemption.$error.required">Total Amount Of Exemption is Required.</span>									
 									</span>
 									<span class="error" id="totalAmountOfExemption"></span>
 							</div>
@@ -402,14 +421,16 @@
 						<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Standard Deduction</label> <input class="form-control" type="text"
+								<label>Standard Deduction*</label> <input class="form-control" type="text"
 									name="standardDeduction" placeholder="Standard Deduction"
 									ng-model="cCctr.entity.standardDeduction" autocomplete="off"
+									ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.standardDeduction.$dirty && form24SalaryDetail.standardDeduction.$invalid">
 									<span class="error" ng-show="form24SalaryDetail.standardDeduction.$error.pattern">Enter valid Standard Deduction </span> 
 									<span class="error" ng-show="form24SalaryDetail.standardDeduction.$error.maxlength">Standard Deduction should not be greater than 50 digits.</span> 
+									<span class="error" ng-show="form24SalaryDetail.standardDeduction.$error.required">Total Deduction Under Section16 is Required.</span>									
 									</span>
 									<span class="error" id="standardDeduction"></span>
 							</div>
@@ -455,14 +476,16 @@
 						</div>					
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Income From House Property</label> <input class="form-control" type="text"
+								<label>Income From House Property*</label> <input class="form-control" type="text"
 									name="incomeFromHouseProperty" placeholder="Income From House Property"
 									ng-model="cCctr.entity.incomeFromHouseProperty" autocomplete="off"
+									ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.incomeFromHouseProperty.$dirty && form24SalaryDetail.incomeFromHouseProperty.$invalid">
 									<span class="error" ng-show="form24SalaryDetail.incomeFromHouseProperty.$error.pattern">Enter valid Income From House Property </span> 
 									<span class="error" ng-show="form24SalaryDetail.incomeFromHouseProperty.$error.maxlength">Income From House Property should not be greater than 50 digits.</span> 
+									<span class="error" ng-show="form24SalaryDetail.incomeFromHouseProperty.$error.required">Income From House Property is Required.</span>									
 									</span>
 									<span class="error" id="incomeFromHouseProperty"></span>
 							</div>
@@ -509,28 +532,32 @@
 						<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Deduction Us80C</label> <input class="form-control" type="text"
+								<label>Deduction Us80C*</label> <input class="form-control" type="text"
 									name="deductionUs80C" placeholder="Deduction Us80C"
 									ng-model="cCctr.entity.deductionUs80C" autocomplete="off"
+									ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.deductionUs80C.$dirty && form24SalaryDetail.deductionUs80C.$invalid">
 									<span class="error" ng-show="form24SalaryDetail.deductionUs80C.$error.pattern">Enter valid Deduction Us80C </span> 
 									<span class="error" ng-show="form24SalaryDetail.deductionUs80C.$error.maxlength">Deduction Us80C should not be greater than 50 digits.</span> 
+									<span class="error" ng-show="form24SalaryDetail.deductionUs80C.$error.required">Deduction Us80C is Required.</span>																											
 									</span>
 									<span class="error" id="deductionUs80C"></span>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Deduction Us80CCC</label> <input class="form-control" type="text"
+								<label>Deduction Us80CCC*</label> <input class="form-control" type="text"
 									name="deductionUs80CCC" placeholder="Deduction Us80CCC"
 									ng-model="cCctr.entity.deductionUs80CCC" autocomplete="off"
+									ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.deductionUs80CCC.$dirty && form24SalaryDetail.deductionUs80CCC.$invalid">
 									<span class="error" ng-show="form24SalaryDetail.deductionUs80CCC.$error.pattern">Enter valid Deduction Us80CCC </span> 
 									<span class="error" ng-show="form24SalaryDetail.deductionUs80CCC.$error.maxlength">Deduction Us80CCC should not be greater than 50 digits.</span> 
+									<span class="error" ng-show="form24SalaryDetail.deductionUs80CCC.$error.required">Deduction Us80CCC is Required.</span>																		
 									</span>
 									<span class="error" id="deductionUs80CCC"></span>
 							</div>
@@ -540,14 +567,16 @@
 						<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Deduction Us80CCD1</label> <input class="form-control" type="text"
+								<label>Deduction Us80CCD1*</label> <input class="form-control" type="text"
 									name="deductionUs80CCD1" placeholder="Deduction Us80CCD1"
 									ng-model="cCctr.entity.deductionUs80CCD1" autocomplete="off"
+									ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.deductionUs80CCD1.$dirty && form24SalaryDetail.deductionUs80CCD1.$invalid">
 									<span class="error" ng-show="form24SalaryDetail.deductionUs80CCD1.$error.pattern">Enter valid Taxable Salary From Current Emp </span> 
 									<span class="error" ng-show="form24SalaryDetail.deductionUs80CCD1.$error.maxlength">Taxable Salary From Current Emp should not be greater than 50 digits.</span> 
+									<span class="error" ng-show="form24SalaryDetail.deductionUs80CCD1.$error.required">Taxable Salary From Current Emp is Required.</span>									
 									</span>
 									<span class="error" id="deductionUs80CCD1"></span>
 							</div>
@@ -573,28 +602,32 @@
 						<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Deduction Us80CCD1B</label> <input class="form-control" type="text"
+								<label>Deduction Us80CCD1B*</label> <input class="form-control" type="text"
 									name="deductionUs80CCD1B" placeholder="Deduction Us80CCD1B"
 									ng-model="cCctr.entity.deductionUs80CCD1B" autocomplete="off"
+									ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.deductionUs80CCD1B.$dirty && form24SalaryDetail.deductionUs80CCD1B.$invalid">
 									<span class="error" ng-show="form24SalaryDetail.deductionUs80CCD1B.$error.pattern">Enter valid Deduction Us80CCD1B </span> 
 									<span class="error" ng-show="form24SalaryDetail.deductionUs80CCD1B.$error.maxlength">Deduction Us80CCD1B should not be greater than 50 digits.</span> 
+									<span class="error" ng-show="form24SalaryDetail.deductionUs80CCD1B.$error.required">Deduction Us80CCD1B is Required.</span>									
 									</span>
 									<span class="error" id="deductionUs80CCD1B"></span>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Deduction Us80CCD2</label> <input class="form-control" type="text"
+								<label>Deduction Us80CCD2*</label> <input class="form-control" type="text"
 									name="deductionUs80CCD2" placeholder="Deduction Us80CCD2"
 									ng-model="cCctr.entity.deductionUs80CCD2" autocomplete="off"
+									ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.deductionUs80CCD2.$dirty && form24SalaryDetail.deductionUs80CCD2.$invalid">
 									<span class="error" ng-show="form24SalaryDetail.deductionUs80CCD2.$error.pattern">Enter valid Deduction Us80CCD2 </span> 
 									<span class="error" ng-show="form24SalaryDetail.deductionUs80CCD2.$error.maxlength">Deduction Us80CCD2 should not be greater than 50 digits.</span> 
+									<span class="error" ng-show="form24SalaryDetail.deductionUs80CCD2.$error.required">Deduction Us80CCD2 is Required.</span>									
 									</span>
 									<span class="error" id="deductionUs80CCD2"></span>
 							</div>
@@ -606,9 +639,10 @@
 						<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Deduction Us80D</label> <input class="form-control" type="text"
+								<label>Deduction Us80D*</label> <input class="form-control" type="text"
 									name="deductionUs80D" placeholder="Deduction Us80D"
 									ng-model="cCctr.entity.deductionUs80D" autocomplete="off"
+									ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.deductionUs80D.$dirty && form24SalaryDetail.deductionUs80D.$invalid">
@@ -621,14 +655,16 @@
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Deduction Us80E</label> <input class="form-control" type="text"
+								<label>Deduction Us80E*</label> <input class="form-control" type="text"
 									name="deductionUs80E" placeholder="Deduction Us80E"
 									ng-model="cCctr.entity.deductionUs80E" autocomplete="off"
+									ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.deductionUs80E.$dirty && form24SalaryDetail.deductionUs80E.$invalid">
 									<span class="error" ng-show="form24SalaryDetail.deductionUs80E.$error.pattern">Enter valid Deduction Us80E </span> 
 									<span class="error" ng-show="form24SalaryDetail.deductionUs80E.$error.maxlength">Deduction Us80E should not be greater than 50 digits.</span> 
+									<span class="error" ng-show="form24SalaryDetail.deductionUs80E.$error.required">Deduction Us80E is Required.</span>																		
 									</span>
 									<span class="error" id="deductionUs80E"></span>
 							</div>
@@ -638,29 +674,32 @@
 						<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Deduction Us80G</label> <input class="form-control" type="text"
+								<label>Deduction Us80G*</label> <input class="form-control" type="text"
 									name="deductionUs80G" placeholder="Deduction Us80G"
 									ng-model="cCctr.entity.deductionUs80G" autocomplete="off"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+									ng-required="true"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.deductionUs80G.$dirty && form24SalaryDetail.deductionUs80G.$invalid">
 									<span class="error" ng-show="form24SalaryDetail.deductionUs80G.$error.pattern">Enter valid Deduction Us80G </span> 
 									<span class="error" ng-show="form24SalaryDetail.deductionUs80G.$error.maxlength">Deduction Us80G should not be greater than 50 digits.</span> 
-									<span class="error" ng-show="form24SalaryDetail.deductionUs80G.$error.required">Deduction Us80G is Required.</span>
+									<span class="error" ng-show="form24SalaryDetail.deductionUs80G.$error.required">Deduction Us80G is Required.</span>									
 									</span>
 									<span class="error" id="deductionUs80G"></span>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Deduction Us80TTA</label> <input class="form-control" type="text"
+								<label>Deduction Us80TTA*</label> <input class="form-control" type="text"
 									name="deductionUs80TTA" placeholder="Deduction Us80TTA"
 									ng-model="cCctr.entity.deductionUs80TTA" autocomplete="off"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+									ng-required="true"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.deductionUs80TTA.$dirty && form24SalaryDetail.deductionUs80TTA.$invalid">
 									<span class="error" ng-show="form24SalaryDetail.deductionUs80TTA.$error.pattern">Enter valid Deduction Us80TTA </span> 
 									<span class="error" ng-show="form24SalaryDetail.deductionUs80TTA.$error.maxlength">Deduction Us80TTA should not be greater than 50 digits.</span> 
+									<span class="error" ng-show="form24SalaryDetail.deductionUs80TTA.$error.required">Deduction Us80TTA is Required.</span>									
 									</span>
 									<span class="error" id="deductionUs80TTA"></span>
 							</div>
@@ -765,14 +804,16 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Rebate Us87A</label> <input class="form-control" type="text"
+								<label>Rebate Us87A*</label> <input class="form-control" type="text"
 									name="rebateUs87A" placeholder="Rebate Us87A"
 									ng-model="cCctr.entity.rebateUs87A" autocomplete="off"
+									ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.rebateUs87A.$dirty && form24SalaryDetail.rebateUs87A.$invalid">
 									<span class="error" ng-show="form24SalaryDetail.rebateUs87A.$error.pattern">Enter valid Rebate Us87A </span> 
 									<span class="error" ng-show="form24SalaryDetail.rebateUs87A.$error.maxlength">Rebate Us87A should not be greater than 50 digits.</span> 
+									<span class="error" ng-show="form24SalaryDetail.rebateUs87A.$error.required">Rebate Us87A is Required.</span>									
 									</span>
 									<span class="error" id="rebateUs87A"></span>
 							</div>
@@ -851,14 +892,16 @@
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Tds From Current Employer</label> <input class="form-control" type="text"
+								<label>Tds From Current Employer*</label> <input class="form-control" type="text"
 									name="tdsFromCurrentEmployer" placeholder="Tds From Current Employer"
 									ng-model="cCctr.entity.tdsFromCurrentEmployer" autocomplete="off"
+									ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.tdsFromCurrentEmployer.$dirty && form24SalaryDetail.tdsFromCurrentEmployer.$invalid">
 									<span class="error" ng-show="form24SalaryDetail.tdsFromCurrentEmployer.$error.pattern">Enter valid Tds From Current Employer</span> 
 									<span class="error" ng-show="form24SalaryDetail.tdsFromCurrentEmployer.$error.maxlength">Tds From Current Employer should not be greater than 50 digits.</span> 
+									<span class="error" ng-show="form24SalaryDetail.tdsFromCurrentEmployer.$error.required">Tds From Current Employer is Required.</span>									
 									</span>
 									<span class="error" id="tdsFromCurrentEmployer"></span>
 							</div>
@@ -944,14 +987,16 @@
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Count Of Pan Of Lender</label> <input class="form-control" type="text"
-									name="countOfPanOfLandlord" placeholder="Count Of Pan Of Lender"
+								<label>Count Of Pan Of Landlord*</label> <input class="form-control" type="text"
+									name="countOfPanOfLandlord" placeholder="Count Of Pan Of Landlord"
 									ng-model="cCctr.entity.countOfPanOfLandlord" autocomplete="off"
 									ng-pattern="/^[0-9]$/"
+									ng-required="true"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.countOfPanOfLandlord.$dirty && form24SalaryDetail.countOfPanOfLandlord.$invalid">
-									<span class="error" ng-show="form24SalaryDetail.countOfPanOfLandlord.$error.pattern">Enter valid Count Of Pan Of Lender </span> 
-									<span class="error" ng-show="form24SalaryDetail.countOfPanOfLandlord.$error.maxlength">Count Of Pan Of Lender should not be greater than 50 digits.</span> 
+									<span class="error" ng-show="form24SalaryDetail.countOfPanOfLandlord.$error.pattern">Enter valid Count Of Pan Of Landlord </span> 
+									<span class="error" ng-show="form24SalaryDetail.countOfPanOfLandlord.$error.maxlength">Count Of Pan Of Landlord should not be greater than 50 digits.</span> 
+									<span class="error" ng-show="form24SalaryDetail.countOfPanOfLandlord.$error.required">Count Of Pan Of Landlord is Required.</span>
 									</span>
 									<span class="error" id="countOfPanOfLandlord"></span>
 							</div>
@@ -1087,9 +1132,10 @@
 						<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Whether Interest Paid To Be Lender</label> <input class="form-control" type="text"
+								<label>Whether Interest Paid To Be Lender*</label> <input class="form-control" type="text"
 									name="whetherInterestPaidToBeLender" placeholder="Whether Interest Paid To Be Lender"
 									ng-model="cCctr.entity.whetherInterestPaidToBeLender" autocomplete="off"
+									ng-required="true"
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.whetherInterestPaidToBeLender.$dirty && form24SalaryDetail.taxableSalaryFromCurrentEmp.$invalid">
@@ -1102,14 +1148,16 @@
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Count Of Pan Of Lender</label> <input class="form-control" type="text"
+								<label>Count Of Pan Of Lender*</label> <input class="form-control" type="text"
 									name="countOfPanOfLender" placeholder="Count Of Pan Of Lender	"
 									ng-model="cCctr.entity.countOfPanOfLender" autocomplete="off"
+									ng-required="true"
 									ng-pattern="/^[0-9]$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.countOfPanOfLender.$dirty && form24SalaryDetail.countOfPanOfLender.$invalid">
 									<span class="error" ng-show="form24SalaryDetail.countOfPanOfLender.$error.pattern">Enter valid Count Of Pan Of Lender </span> 
 									<span class="error" ng-show="form24SalaryDetail.countOfPanOfLender.$error.maxlength">Count Of Pan Of Lender should not be greater than 50 digits.</span> 
+									<span class="error" ng-show="form24SalaryDetail.countOfPanOfLender.$error.required">Count Of Pan Of Lender is Required.</span>									
 									</span>
 									<span class="error" id="countOfPanOfLender"></span>
 							</div>
@@ -1206,7 +1254,6 @@
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.nameOfLender3.$dirty && form24SalaryDetail.nameOfLender3.$invalid">
 									<span class="error" ng-show="form24SalaryDetail.nameOfLender3.$error.pattern">Enter valid Name Of Lender3 </span> 
 									<span class="error" ng-show="form24SalaryDetail.nameOfLender3.$error.maxlength">Name Of Lender3 should not be greater than 50 digits.</span> 
-									<span class="error" ng-show="form24SalaryDetail.nameOfLender3.$error.required">Name Of Lender3 is Required.</span>
 									</span>
 									<span class="error" id="nameOfLender3"></span>
 							</div>
@@ -1248,14 +1295,16 @@
 						<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Contribution Paid By Trustees</label> <input class="form-control" type="text"
+								<label>Contribution Paid By Trustees*</label> <input class="form-control" type="text"
 									name="contributionPaidByTrustees" placeholder="Contribution Paid By Trustees"
 									ng-model="cCctr.entity.contributionPaidByTrustees" autocomplete="off"
+									ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.contributionPaidByTrustees.$dirty && form24SalaryDetail.contributionPaidByTrustees.$invalid">
 									<span class="error" ng-show="form24SalaryDetail.contributionPaidByTrustees.$error.pattern">Enter valid Contribution Paid By Trustees </span> 
 									<span class="error" ng-show="form24SalaryDetail.contributionPaidByTrustees.$error.maxlength">Contribution Paid By Trustees should not be greater than 50 digits.</span> 
+									<span class="error" ng-show="form24SalaryDetail.contributionPaidByTrustees.$error.required">Contribution Paid By Trustees is Required.</span>
 									</span>
 									<span class="error" id="contributionPaidByTrustees"></span>
 							</div>

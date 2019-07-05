@@ -305,7 +305,7 @@
 									ng-maxlength="10"
 									ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="challanForm.submitted || challanForm.educationCess.$dirty && challanForm.educationCess.$invalid">
-									<span class="error" ng-show="challanForm.educationCess.$error.pattern">Enter valid EducationCess </span> 
+									<span class="error" ng-show="challanForm.educationCess.$error.pattern">Enter valid EducationCess. Maximum 2 fractions allowed </span> 
 									<span class="error" ng-show="challanForm.educationCess.$error.maxlength">EducationCess should not be greater than 10 digits.</span> 
 									<span class="error" ng-show="challanForm.educationCess.$error.required">EducationCess is Required.</span>
 								</span>
@@ -439,7 +439,7 @@
 									<label> Date Of Deposition</label> <input class="form-control"
 										type="text" name="dateOfDeposition" placeholder="DateOfDeposition"
 										ng-model="cCctr.entity.challan.dateOfDeposition|
-									date:'dd-MM-yyyy'"" autocomplete="off"
+									date:'dd-MM-yyyy'" autocomplete="off"
 										ng-required="true" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="challanForm.submitted || challanForm.dateOfDeposition.$dirty && challanForm.dateOfDeposition.$invalid">
 									<span class="error" ng-show="challanForm.dateOfDeposition.$error.pattern">Enter valid Date Of Deposition </span> 

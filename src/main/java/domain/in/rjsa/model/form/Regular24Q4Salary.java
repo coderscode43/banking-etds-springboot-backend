@@ -40,9 +40,8 @@ public class Regular24Q4Salary extends CommonModelAbstract  {
 	@Column(name = "srNo")
 	public Long srNo;
 	@Column(name = "pan")
-	@NotNull(message = "PAN is a required field")
-/*	@Pattern(regexp="^([a-zA-Z]{5}[0-9]{4}[a-zA-Z]{1})|^$", message="PAN is not valid.")
-*/	@Size(min=0, max=10, message="Invalid PAN number")
+	@NotBlank(message = "PAN is required")
+	@Size(min=0, max=10, message="PAN size should not be greater than 10")
 	public String pan;
 	@Column(name = "panRefNo")
 	@NotNull(message = "PAN ref number is required")
@@ -59,34 +58,36 @@ public class Regular24Q4Salary extends CommonModelAbstract  {
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "fromDateOfEmployment")
+	@NotNull(message = "From Date Of Employment is required")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	public Date fromDateOfEmployment;
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "toDateOfEmployment")
+	@NotNull(message = "To Date Of Employment is required")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	public Date toDateOfEmployment;
 	
 	@Column(name = "grossSalaryAsPerProvision")
-	@Digits(integer = 12, fraction = 0,message="Invalid Gross Salary as per Provision")
+	@Digits(integer = 12, fraction = 2,message="Invalid Gross Salary as per Provision")
 	public Double grossSalaryAsPerProvision;
 	@Column(name = "valueOfPerquisites")
 	@Size(min=0, max=45, message="Invalid Value of Perquisites")
 	public String valueOfPerquisites;
 	@Column(name = "profitInSalary")
-	@Digits(integer = 12, fraction = 0,message="Invalid Profit in Salary")
+	@Digits(integer = 12, fraction = 2,message="Invalid Profit in Salary")
 	public Double profitInSalary;
 	@Column(name = "taxableSalaryFromCurrentEmp")
 	@NotNull(message = "Taxable Salary from Current Employee is required")
-	@Digits(integer = 12, fraction = 0,message="Invalid Taxable Salary from Current Employee")
+	@Digits(integer = 12, fraction = 2,message="Invalid Taxable Salary from Current Employee")
 	public Double taxableSalaryFromCurrentEmp;
 	@Column(name = "reportedSalaryFromOtherEmp")
 	@NotNull(message = "Reported Salary from other Employee is required")
-	@Digits(integer = 12, fraction = 0,message="Invalid Reported Salary from other Employee")
+	@Digits(integer = 12, fraction = 2,message="Invalid Reported Salary from other Employee")
 	public Double reportedSalaryFromOtherEmp;
 	@Column(name = "totalAmountOfSalary")
 	@NotNull(message = "Total amount of salary is required")
-	@Digits(integer = 12, fraction = 0,message="Invalid Total amount of salary")
+	@Digits(integer = 12, fraction = 2,message="Invalid Total amount of salary")
 	public Double totalAmountOfSalary;
 	@Column(name = "leaveTravelAllowance")
 	@Size(min=0, max=45, message="Invalid Leave Travel Allowance")
@@ -95,19 +96,19 @@ public class Regular24Q4Salary extends CommonModelAbstract  {
 	@Size(min=0, max=45, message="Invalid Gratuity")
 	public String gratuity;
 	@Column(name = "commutedValueOfPension")
-	@Digits(integer = 12, fraction = 0,message="Invalid Commuted Value of Pension")
+	@Digits(integer = 12, fraction = 2,message="Invalid Commuted Value of Pension")
 	public Double commutedValueOfPension;
 	@Column(name = "leaveEncashmentSalary")
-	@Digits(integer = 12, fraction = 0,message="Invalid Leave Encashment Salary")
+	@Digits(integer = 12, fraction = 2,message="Invalid Leave Encashment Salary")
 	public Double leaveEncashmentSalary;
 	@Column(name = "houseRentAllowance")
 	@Size(min=0, max=45, message="Invalid House Rent Allownace")
 	public String houseRentAllowance;
 	@Column(name = "anyOtherExemptionus10")
-	@Digits(integer = 12, fraction = 0,message="Invalid Any other Exemtionus 10")
+	@Digits(integer = 12, fraction = 2,message="Invalid Any other Exemtionus 10")
 	public Double anyOtherExemptionus10;
 	@Column(name = "totalAmountOfExemption")
-	@Digits(integer = 12, fraction = 0,message="Invalid Total amount of Exemption")
+	@Digits(integer = 12, fraction = 2,message="Invalid Total amount of Exemption")
 	public Double totalAmountOfExemption;
 	@Column(name = "entertainmentAllowance")
 	@NotNull(message = "Entertainment Allowance is a required field")
@@ -115,114 +116,114 @@ public class Regular24Q4Salary extends CommonModelAbstract  {
 	public String entertainmentAllowance;
 	@Column(name = "pTax")
 	@NotNull(message = "PTax is required")
-	@Digits(integer = 12, fraction = 0,message="Invalid PTax")
+	@Digits(integer = 12, fraction = 2,message="Invalid PTax")
 	public Double pTax;
 	@Column(name = "standardDeduction")
-	@Digits(integer = 12, fraction = 0,message="Invalid Standard Deduction")
+	@Digits(integer = 12, fraction = 2,message="Invalid Standard Deduction")
 	public Double standardDeduction;
 	@Column(name = "totalDeductionUnderSection16")
 	@NotNull(message = "Total Deduction Under Section 16 is required")
-	@Digits(integer = 12, fraction = 0,message="Invalid Total Deduction Under Section 16")
+	@Digits(integer = 12, fraction = 2,message="Invalid Total Deduction Under Section 16")
 	public Double totalDeductionUnderSection16;
 	@Column(name = "incomeFromSalary")
 	@NotNull(message = "Income from Salary is a required field")
-	@Digits(integer = 12, fraction = 0,message="Invalid Income from Salary")
+	@Digits(integer = 12, fraction = 2,message="Invalid Income from Salary")
 	public Double incomeFromSalary;
 	@Column(name = "incomeFromHouseProperty")
-	@Digits(integer = 12, fraction = 0,message="Invalid Income from House Property")
+	@Digits(integer = 12, fraction = 2,message="Invalid Income from House Property")
 	public Double incomeFromHouseProperty;
 	@Column(name = "incomeFromOtherSources")
 	@NotNull(message = "Income from other Sources is required")
-	@Digits(integer = 12, fraction = 0,message="Invalid Income from other Sources")
+	@Digits(integer = 12, fraction = 2,message="Invalid Income from other Sources")
 	public Double incomeFromOtherSources;
 	@Column(name = "grossTotalIncome")
 	@NotNull(message = "Gross total income is required")
-	@Digits(integer = 12, fraction = 0,message="Invalid Gross total income")
+	@Digits(integer = 12, fraction = 2,message="Invalid Gross total income")
 	public Double grossTotalIncome;
 	@Column(name = "deductionUs80C")
-	@Digits(integer = 12, fraction = 0,message="Invalid DeductionUs80C")
+	@Digits(integer = 12, fraction = 2,message="Invalid DeductionUs80C")
 	public Double deductionUs80C;
 	@Column(name = "deductionUs80CCC")
-	@Digits(integer = 12, fraction = 0,message="Invalid DeductionUs80CCC")
+	@Digits(integer = 12, fraction = 2,message="Invalid DeductionUs80CCC")
 	public Double deductionUs80CCC;
 	@Column(name = "deductionUs80CCD1")
-	@Digits(integer = 12, fraction = 0,message="Invalid DeductionUs80CCD1")
+	@Digits(integer = 12, fraction = 2,message="Invalid DeductionUs80CCD1")
 	public Double deductionUs80CCD1;
 	@Column(name = "deductionUs80C80CCC80CCD1")
 	@NotNull(message = "State is a required field")
-	@Digits(integer = 12, fraction = 0,message="Invalid deductionUs80C80CCC80CCD1")
+	@Digits(integer = 12, fraction = 2,message="Invalid deductionUs80C80CCC80CCD1")
 	public Double deductionUs80C80CCC80CCD1;
 	@Column(name = "deductionUs80CCD1B")
-	@Digits(integer = 12, fraction = 0,message="Invalid deductionUs80CCD1B")
+	@Digits(integer = 12, fraction = 2,message="Invalid deductionUs80CCD1B")
 	public Double deductionUs80CCD1B;
 	@Column(name = "deductionUs80CCD2")
-	@Digits(integer = 12, fraction = 0,message="Invalid deductionUs80CCD2")
+	@Digits(integer = 12, fraction = 2,message="Invalid deductionUs80CCD2")
 	public Double deductionUs80CCD2;	
 	@Column(name = "deductionUs80D")
-	@Digits(integer = 12, fraction = 0,message="Invalid deductionUs80D")
+	@Digits(integer = 12, fraction = 2,message="Invalid deductionUs80D")
 	public Double deductionUs80D;
 	@Column(name = "deductionUs80E")
-	@Digits(integer = 12, fraction = 0,message="Invalid deductionUs80E")
+	@Digits(integer = 12, fraction = 2,message="Invalid deductionUs80E")
 	public Double deductionUs80E;
 	@Column(name = "deductionUs80G")
-	@Digits(integer = 12, fraction = 0,message="Invalid deductionUs80G")
+	@Digits(integer = 12, fraction = 2,message="Invalid deductionUs80G")
 	public Double deductionUs80G;
 	@Column(name = "deductionUs80TTA")
-	@Digits(integer = 12, fraction = 0,message="Invalid deductionUs80TTA")
+	@Digits(integer = 12, fraction = 2,message="Invalid deductionUs80TTA")
 	public Double deductionUs80TTA;
 	@Column(name = "amountDeductible80ccg")
 	@NotNull(message = "Amount Deductible 80ccg is required")
-	@Digits(integer = 12, fraction = 0,message="Invalid Amount Deductible 80ccg")
+	@Digits(integer = 12, fraction = 2,message="Invalid Amount Deductible 80ccg")
 	public Double amountDeductible80ccg;	
 	@Column(name = "anyOtherDeduction")
 	@NotNull(message = "Any other Deduction is required")
-	@Digits(integer = 12, fraction = 0,message="Invalid any other deduction")
+	@Digits(integer = 12, fraction = 2,message="Invalid any other deduction")
 	public Double anyOtherDeduction;
 	@Column(name = "totalDeductionUnderChapterVIA")
 	@NotNull(message = "Total Deduction Under Chapter VIA is a required field")
-	@Digits(integer = 12, fraction = 0,message="Invalid Total Deduction Under Chapter VIA")
+	@Digits(integer = 12, fraction = 2,message="Invalid Total Deduction Under Chapter VIA")
 	public Double totalDeductionUnderChapterVIA;
 	@Column(name = "totalTaxableIncome")
 	@NotNull(message = "Total Taxable Income is required")
-	@Digits(integer = 12, fraction = 0,message="Invalid Total Taxable Income")
+	@Digits(integer = 12, fraction = 2,message="Invalid Total Taxable Income")
 	public Double totalTaxableIncome;
 	@Column(name = "incomeTaxOnTotalIncome")
 	@NotNull(message = "Income Taxable on total income is a required field")
-	@Digits(integer = 12, fraction = 0,message="Invalid Income Taxable on total income")
+	@Digits(integer = 12, fraction = 2,message="Invalid Income Taxable on total income")
 	public Double incomeTaxOnTotalIncome;
 	@Column(name = "rebateUs87A")
-	@Digits(integer = 12, fraction = 0,message="Invalid RebateUs87A")
+	@Digits(integer = 12, fraction = 2,message="Invalid RebateUs87A")
 	public Double rebateUs87A;
 	@Column(name = "surcharge")
 	@NotNull(message = "Surcharge is required")
-	@Digits(integer = 12, fraction = 0,message="Invalid Surcharge")
+	@Digits(integer = 12, fraction = 2,message="Invalid Surcharge")
 	public Double surcharge;
 	@Column(name = "educationCess")
 	@NotNull(message = "Education Cess is a required field")
-	@Digits(integer = 12, fraction = 0,message="Invalid Education Cess")
+	@Digits(integer = 12, fraction = 2,message="Invalid Education Cess")
 	public Double educationCess;
 	@Column(name = "incomeTaxReliefUs89")
 	@NotNull(message = "Income Tax Relief Us89 is required")
-	@Digits(integer = 12, fraction = 0,message="Invalid Income Tax Relief Us89")
+	@Digits(integer = 12, fraction = 2,message="Invalid Income Tax Relief Us89")
 	public Double incomeTaxReliefUs89;
 	@Column(name = "netIncomeTaxPayable")
 	@NotNull(message = "Net Income Tax Payable is required")
-	@Digits(integer = 12, fraction = 0,message="Invalid Net Income Tax Payable")
+	@Digits(integer = 12, fraction = 2,message="Invalid Net Income Tax Payable")
 	public Double netIncomeTaxPayable;
 	@Column(name = "tdsFromCurrentEmployer")
-	@Digits(integer = 12, fraction = 0,message="Invalid Tds From Current Employer")
+	@Digits(integer = 12, fraction = 2,message="Invalid Tds From Current Employer")
 	public Double tdsFromCurrentEmployer;
 	@Column(name = "reportedTdsFromPreviousEmployer")
 	@NotNull(message = "Reported Tds From Previous Employer is required")
-	@Digits(integer = 12, fraction = 0,message="Invalid Reported Tds From Previous Employer")
+	@Digits(integer = 12, fraction = 2,message="Invalid Reported Tds From Previous Employer")
 	public Double reportedTdsFromPreviousEmployer;
 	@Column(name = "totalTds")
 	@NotNull(message = "Total Tds is a required field")
-	@Digits(integer = 12, fraction = 0,message="Invalid Total Tds")
+	@Digits(integer = 12, fraction = 2,message="Invalid Total Tds")
 	public Double totalTds;
 	@Column(name = "shortfallInTaxDeduction")
 	@NotNull(message = "Short fall In Tax Deduction is required")
-	@Digits(integer = 12, fraction = 0,message="Invalid Short fall In Tax Deduction")
+	@Digits(integer = 12, fraction = 2,message="Invalid Short fall In Tax Deduction")
 	public Double shortfallInTaxDeduction;
 	@Column(name = "whetherTaxDeductedAtHigherRate")
 	@NotNull(message = "Whether Tax Deducted At Higher Rate is required")
@@ -286,7 +287,7 @@ public class Regular24Q4Salary extends CommonModelAbstract  {
 	@Size(min=0, max=45, message="Invalid Name Of Lender4")
 	public String nameOfLender4;
 	@Column(name = "contributionPaidByTrustees")
-	@Digits(integer = 12, fraction = 0,message="Invalid Contribution Paid By Trustees")
+	@Digits(integer = 12, fraction = 2,message="Invalid Contribution Paid By Trustees")
 	public Double contributionPaidByTrustees;
 	
 	@Column(name = "nameOfTheSuperAnnuationFund")
@@ -305,16 +306,16 @@ public class Regular24Q4Salary extends CommonModelAbstract  {
 	
 	
 	@Column(name = "contributionSuperannuationFund")
-	@Digits(integer = 12, fraction = 0,message="Invalid Contribution Super Annuation Fund")
+	@Digits(integer = 12, fraction = 2,message="Invalid Contribution Super Annuation Fund")
 	public Double contributionSuperannuationFund;
 	@Column(name = "averageRateOfDeduction")
-	@Digits(integer = 12, fraction = 0,message="Invalid Average Rate Of Deduction")
+	@Digits(integer = 12, fraction = 2,message="Invalid Average Rate Of Deduction")
 	public Double averageRateOfDeduction;
 	@Column(name = "taxDeductedOfSuperannuationFund")
-	@Digits(integer = 12, fraction = 0,message="Invalid Tax Deducted Of Super Annuation Fund")
+	@Digits(integer = 12, fraction = 2,message="Invalid Tax Deducted Of Super Annuation Fund")
 	public Double taxDeductedOfSuperannuationFund;
 	@Column(name = "grossTotalIncomeincludingContribution")
-	@Digits(integer = 12, fraction = 0,message="Invalid Gross Total Income including Contribution")
+	@Digits(integer = 12, fraction = 2,message="Invalid Gross Total Income including Contribution")
 	public Double grossTotalIncomeincludingContribution;
 	
 	@Column(name = "fy")

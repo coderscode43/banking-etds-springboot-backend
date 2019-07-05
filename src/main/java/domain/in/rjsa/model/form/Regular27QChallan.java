@@ -37,7 +37,7 @@ public class Regular27QChallan extends CommonModelAbstract{
 	
 	@Column(name = "tds")
 	@NotNull(message = "TDS Value is required")
-	@Digits(integer = 12, fraction = 0,message="The amount value is not greater than 12 digits. Maximum 2 fractions allowed.")
+	@Digits(integer = 12, fraction = 2,message="The amount value is not greater than 12 digits. Maximum 2 fractions allowed.")
 	public Double tds;
 	
 	@Column(name = "surcharge")
@@ -88,6 +88,7 @@ public class Regular27QChallan extends CommonModelAbstract{
 	@Temporal(TemporalType.DATE)
 	@Column(name = "taxDepositDate")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@NotNull(message = "Date is required")
 	public Date taxDepositDate;
 	
 	@Column(name = "minorHeadChallan")

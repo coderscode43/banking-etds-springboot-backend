@@ -64,10 +64,12 @@ public class Regular24Q4Deductee extends CommonModelAbstract {
 	@Temporal(TemporalType.DATE)
 	@Column(name = "dateOfPayment")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@NotNull(message = "Date is a required field.")
 	public Date dateOfPayment;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "dateOfDeduction")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@NotNull(message = "Date is a required field.")
 	public Date dateOfDeduction;
 	@Column(name = "amountPaid")
 	@NotNull(message = "Amount Paid is a required field.")
@@ -87,8 +89,8 @@ public class Regular24Q4Deductee extends CommonModelAbstract {
 	public Double educationCess;
 	@Column(name = "totalTds")
 	@NotNull(message = "Total Tds is a required field.")
-	@Size(min=0, max=45, message="Total Tds should not be greater than 45 characters.")
-	public String totalTds;
+	@Digits(integer = 12, fraction = 2,message="Education Cess is not proper.Maximum 2 fractions allowed.")
+	public Double totalTds;
 	@Column(name = "totalTaxDeposited")
 	@NotNull(message = "Total Tax Deposited is a required field.")
 	@Digits(integer = 12, fraction = 2,message="Total Tax Deposited value is not proper.Maximum 2 fractions allowed.")

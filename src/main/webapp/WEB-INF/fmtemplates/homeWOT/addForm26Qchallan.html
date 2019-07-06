@@ -1,8 +1,8 @@
 <br>
-<div id="page-wrapper">
+<div id="page-wrapper" >
 	<div class="container-fluid">
 		<div class="row">
-			<h1>Add Regular 26Q4Challan Details</h1>
+			<h3><Strong>Add Regular 26Q Challan Details</Strong></h3>
 		</div>
 		<div class="row">
 			<div class="col-md-12">
@@ -11,161 +11,232 @@
 
 							<div class="row">
 								<div class="col-md-6">
-								   <div class="form-group">
-									     <label> TDS</label> 
+								   
+									     <label> TDS*</label> 
 									     <input class="form-control"
-										    type="text" name="tds" placeholder="TDS"
-										    ng-model="cCctr.entity.tds" autocomplete="off"
-										    ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
-								</div>
-							
+										    type="text" name="tds" placeholder="TDS" 
+										    ng-model="cCctr.entity.tds"  autocomplete="off" ng-required="true"
+										     ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"  ng-maxlength="12"   ng-model-options="{updateOn: 'blur'}" />
+										    <span style="color: red" ng-show="form26qchallan.submitted ||form26qchallan.tds.$dirty && form26qchallan.tds.$invalid">
+									<span class="error" ng-show="form26qchallan.tds.$error.pattern">Please enter valid TDS. </span> 
+									<span class="error" ng-show="form26qchallan.tds.$error.maxlength">TDS should not be greater than 12 characters.</span> 
+									<span class="error" ng-show="form26qchallan.tds.$error.required">TDS is Required.</span>
+								</span>
+										    
+										    <span class="error" id="tds"></span>
 											</div>
 
 											<div class="col-md-6">
-												<div class="form-group">
-													<label>Surcharge</label> <input
+													<label>Surcharge*</label> <input
 														class="form-control" type="text" name="surcharge"
-														placeholder="surcharge"
-														ng-model="cCctr.entity.surcharge"
-														autocomplete="off" ng-pattern=""
+														placeholder="Surcharge"
+														ng-model="cCctr.entity.surcharge" 
+														autocomplete="off"  ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-maxlength="12" ng-required="true"
 														ng-model-options="{updateOn: 'blur'}" />
-												</div>
+														<span style="color: red" ng-show="form26qchallan.submitted ||form26qchallan.surcharge.$dirty && form26qchallan.surcharge.$invalid">
+									<span class="error" ng-show="form26qchallan.surcharge.$error.pattern">Please enter valid Surcharge. </span> 
+									<span class="error" ng-show="form26qchallan.surcharge.$error.maxlength">Surcharge should not be greater than 12.</span> 
+									<span class="error" ng-show="form26qchallan.surcharge.$error.required">Surcharges is Required.</span>
+								     </span>
+											<span class="error" id="surcharge"></span>
 											</div>
-
-
-										</div>
+									  </div>
 
 										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<label>EduCation cess </label> <input
-														class="form-control" type="text" name="eduCess"
-														placeholder="eduCess"
-														ng-model="cCctr.entity.eduCess"
-														autocomplete="off" ng-pattern=""
-														ng-model-options="{updateOn: 'blur'}" />
+												<div class="col-md-6">
+													
+														<label>Education Cess* </label> <input
+															class="form-control" type="text" name="eduCess"
+															placeholder="Education Cess"
+															ng-model="cCctr.entity.eduCess"
+															autocomplete="off" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-maxlength="12" ng-required="true"
+															ng-model-options="{updateOn: 'blur'}" />
+															<span style="color: red" ng-show="form26qchallan.submitted ||form26qchallan.eduCess.$dirty && form26qchallan.eduCess.$invalid">
+									<span class="error" ng-show="form26qchallan.eduCess.$error.pattern">Please enter valid Education Cess. </span> 
+									<span class="error" ng-show="form26qchallan.eduCess.$error.maxlength">Education Cess should not be greater than 12 characters.</span> 
+									<span class="error" ng-show="form26qchallan.eduCess.$error.required">EduCesss is Required.</span>
+								</span>
+															<span class="error" id="eduCess"></span>
+													
 												</div>
-											</div>
-
-											<div class="col-md-6">
-												<div class="form-group">
-													<label>Interest</label> <input class="form-control" type="text"
-														name="interest" placeholder="interest"
-														ng-model="cCctr.entity.interest" autocomplete="off"
-														ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+	
+												<div class="col-md-6">
+													
+														<label>Interest*</label> <input class="form-control" type="text"
+															name="interest" placeholder="Interest"
+															ng-model="cCctr.entity.interest" autocomplete="off"
+															ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-maxlength="12" ng-required="true"  ng-model-options="{updateOn: 'blur'}" />
+															<span style="color: red" ng-show="form26qchallan.submitted ||form26qchallan.interest.$dirty && form26qchallan.interest.$invalid">
+									<span class="error" ng-show="form26qchallan.interest.$error.pattern">Please enter valid Interest. </span> 
+									<span class="error" ng-show="form26qchallan.interest.$error.maxlength">Interest should not be greater than 12 characters.</span> 
+									<span class="error" ng-show="form26qchallan.interest.$error.required">Interest is Required.</span>
+								    </span>
+						           <span class="error" id="interest"></span>
 												</div>
-											</div>
-
-
 										</div>
 										<div class="row">
 											<div class="col-md-6">
-												<div class="form-group">
-													<label>Fee </label> <input class="form-control"
-														type="text" name="fee" placeholder="fee"
+												
+													<label>Fee* </label> <input class="form-control"
+														type="text" name="fee" placeholder="Fee"
 														ng-model="cCctr.entity.fee" autocomplete="off"
-														ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
-												</div>
+														ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-maxlength="12" ng-required="true" ng-model-options="{updateOn: 'blur'}" />
+														<span style="color: red" ng-show="form26qchallan.submitted ||form26qchallan.fee.$dirty && form26qchallan.fee.$invalid">
+									<span class="error" ng-show="form26qchallan.fee.$error.pattern">Please enter valid Fee. </span> 
+									<span class="error" ng-show="form26qchallan.fee.$error.maxlength">Fee should not be greater than 12 characters.</span> 
+									<span class="error" ng-show="form26qchallan.fee.$error.required">Fee is Required.</span>
+								    </span>
+														<span class="error" id="fee"></span>
+												
 											</div>
 
 											<div class="col-md-6">
-												<div class="form-group">
-													<label>Others</label> <input class="form-control"
+												
+													<label>Others*</label> <input class="form-control"
 														type="text" name="others"
-														placeholder="others"
+														placeholder="Others"
 														ng-model="cCctr.entity.others"
-														autocomplete="off" ng-pattern=""
+														autocomplete="off" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-maxlength="12" ng-required="true"
 														ng-model-options="{updateOn: 'blur'}" />
-												</div>
+														<span style="color: red" ng-show="form26qchallan.submitted ||form26qchallan.others.$dirty && form26qchallan.others.$invalid">
+									<span class="error" ng-show="form26qchallan.others.$error.pattern">Please enter valid Others. </span> 
+									<span class="error" ng-show="form26qchallan.others.$error.maxlength">Others should not be greater than 12 characters.</span> 
+									<span class="error" ng-show="form26qchallan.others.$error.required">Others is Required.</span>
+								    </span>
+														<span class="error" id="others"></span>
+												
 											</div>
 
 
 										</div>
 										<div class="row">
 											<div class="col-md-6">
-												<div class="form-group">
-													<label>TotalTaxDeposit </label> <input class="form-control"
-														type="text" name="totalTaxDeposit" placeholder="totalTaxDeposit "
-														ng-model="cCctr.entity.totalTaxDeposit" />
-												</div>
+												
+													<label>Total Tax Deposit* </label> <input class="form-control"
+														type="text" name="totalTaxDeposit" placeholder="Total Tax Deposit "
+														ng-model="cCctr.entity.totalTaxDeposit"  
+														autocomplete="off" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-maxlength="12" ng-required="true"
+														ng-model-options="{updateOn: 'blur'}" />
+														<span style="color: red" ng-show="form26qchallan.submitted ||form26qchallan.totalTaxDeposit.$dirty && form26qchallan.totalTaxDeposit.$invalid">
+									<span class="error" ng-show="form26qchallan.totalTaxDeposit.$error.pattern">Please enter valid TotalTaxDeposit. </span> 
+									<span class="error" ng-show="form26qchallan.totalTaxDeposit.$error.maxlength">TotalTaxDeposit should not be greater than 12 characters.</span> 
+									<span class="error" ng-show="form26qchallan.totalTaxDeposit.$error.required">TotalTaxDeposit is Required.</span>
+								    </span>
+												<span class="error" id="totalTaxDeposit"></span>
 											</div>
 
 											<div class="col-md-6">
-												<div class="form-group">
-													<label>TDS Deposit BookEntry</label> <input
+												
+													<label>TDS Deposit Book Entry*</label> <input
 														class="form-control" type="text" name="tdsDepositBookEntry"
-														placeholder="tdsDepositBookEntry"
-														ng-model="cCctr.entity.tdsDepositBookEntry"/>
-												</div>
+														placeholder="TDS Deposit Book Entry"
+														ng-model="cCctr.entity.tdsDepositBookEntry"
+														autocomplete="off" ng-pattern="/^[a-zA-Z0-9]*$/" ng-maxlength="45" ng-required="true"
+														ng-model-options="{updateOn: 'blur'}" />
+														<span style="color: red" ng-show="form26qchallan.submitted ||form26qchallan.tdsDepositBookEntry.$dirty && form26qchallan.tdsDepositBookEntry.$invalid">
+									<span class="error" ng-show="form26qchallan.tdsDepositBookEntry.$error.pattern">Please enter valid TDS Deposit BookEntry. </span> 
+									<span class="error" ng-show="form26qchallan.tdsDepositBookEntry.$error.maxlength">TDS Deposit BookEntry should not be greater than 45 characters.</span> 
+									<span class="error" ng-show="form26qchallan.tdsDepositBookEntry.$error.required">TDS Deposit BookEntry is Required.</span>
+								    </span>
+												<span class="error" id="tdsDepositBookEntry"></span>
 											</div>
 
 
 										</div>
 										<div class="row">
 											<div class="col-md-6">
-												<div class="form-group">
-													<label>BsrCode </label> <input class="form-control"
-														type="text" name="bsrCode" placeholder="bsrCode"
+												
+													<label>BSR Code* </label> <input class="form-control"
+														type="text" name="bsrCode" placeholder="BSR Code"
 														ng-model="cCctr.entity.bsrCode"
-														autocomplete="off" ng-pattern=""
+														autocomplete="off" ng-pattern="/^[a-zA-Z0-9]*$/" ng-maxlength="45" ng-required="true"
 														ng-model-options="{updateOn: 'blur'}" />
-												</div>
+														<span style="color: red" ng-show="form26qchallan.submitted ||form26qchallan.bsrCode.$dirty && form26qchallan.bsrCode.$invalid">
+									<span class="error" ng-show="form26qchallan.bsrCode.$error.pattern">Please enter valid BsrCode. </span> 
+									<span class="error" ng-show="form26qchallan.bsrCode.$error.maxlength">BsrCode should not be greater than 45 characters.</span> 
+									<span class="error" ng-show="form26qchallan.bsrCode.$error.required">BsrCode is Required.</span>
+								    </span>
+												<span class="error" id="bsrCode"></span>
 											</div>
 
 											<div class="col-md-6">
-												<div class="form-group">
-													<label>ChallanSrNo</label> <input class="form-control" type="text"
-														name="challanSrNo" placeholder="challanSrNo"
+												
+													<label>Challan Sr.No*</label> <input class="form-control" type="text"
+														name="challanSrNo" placeholder="Challan Sr.No"
 														ng-model="cCctr.entity.challanSrNo" autocomplete="off"
-														ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
-												</div>
+														ng-pattern="/^[0-9]*$/" ng-maxlength="25" ng-required="true" ng-model-options="{updateOn: 'blur'}" />
+														<span style="color: red" ng-show="form26qchallan.submitted ||form26qchallan.challanSrNo.$dirty && form26qchallan.challanSrNo.$invalid">
+									<span class="error" ng-show="form26qchallan.challanSrNo.$error.pattern">Please enter valid ChallanSrNo. </span> 
+									<span class="error" ng-show="form26qchallan.challanSrNo.$error.maxlength">ChallanSrNo should not be greater than 25 characters.</span> 
+									<span class="error" ng-show="form26qchallan.challanSrNo.$error.required">ChallanSrNo is Required.</span>
+								    </span>
+												<span class="error" id="challanSrNo"></span>
 											</div>
 
 
 										</div>
 										<div class="row">
 											<div class="col-md-6">
-												<div class="form-group">
-													<label>Date Tax Deposit </label> <input class="form-control"
-														type="date" name="dateTaxDeposit" placeholder="dateTaxDeposit"
+												
+													<label>Tax Deposit Date* </label> <input class="form-control"
+														type="date" name="dateTaxDeposit" placeholder="Tax Deposit Date"
 														ng-model="cCctr.entity.dateTaxDeposit"
-														autocomplete="off" ng-pattern=""
+														
+														autocomplete="off"   ng-required="true"
 														ng-model-options="{updateOn: 'blur'}" />
-												</div>
+														<span style="color: red" ng-show="form26qchallan.submitted ||form26qchallan.dateTaxDeposit.$dirty && form26qchallan.dateTaxDeposit.$invalid">
+									<span class="error" ng-show="form26qchallan.dateTaxDeposit.$error.required">Date Tax Deposit is Required.</span>
+								    </span>
+												<span class="error" id="dateTaxDeposit"></span>
 											</div>
 
 											<div class="col-md-6">
-												<div class="form-group">
-													<label>MinorHeadChallan</label> <input class="form-control"
+												
+													<label>Minor Head Of Challan*</label> <input class="form-control"
 														type="text" name="minorHeadChallan"
-														placeholder="minorHeadChallan"
+														placeholder="Minor Head Of Challan"
 														ng-model="cCctr.entity.minorHeadChallan"
-														autocomplete="off" ng-pattern=""
+														autocomplete="off" ng-pattern="/^[a-zA-Z0-9]*$/" ng-maxlength="45" ng-required="true"
 														ng-model-options="{updateOn: 'blur'}" />
-												</div>
+														<span style="color: red" ng-show="form26qchallan.submitted ||form26qchallan.minorHeadChallan.$dirty && form26qchallan.minorHeadChallan.$invalid">
+									<span class="error" ng-show="form26qchallan.minorHeadChallan.$error.pattern">Please enter valid MinorHeadChallan. </span> 
+									<span class="error" ng-show="form26qchallan.minorHeadChallan.$error.maxlength">MinorHeadChallan should not be greater than 45 characters.</span> 
+									<span class="error" ng-show="form26qchallan.minorHeadChallan.$error.required">MinorHeadChallan is Required.</span>
+								    </span>
+												<span class="error" id="minorHeadChallan"></span>
 											</div>
 
 
 										</div>
 										<div class="row">
 							<div class="col-md-6">
-								<div class="form-group">
-									<label>Interest Allocated</label> <input class="form-control"
-										type="text" name="interestAllocated" placeholder="interestAllocated"
+								
+									<label>Interest Allocated*</label> <input class="form-control"
+										type="text" name="interestAllocated" placeholder="Interest Allocated"
 										ng-model="cCctr.entity.interestAllocated" autocomplete="off"
-										ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
-								</div>
+										ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-maxlength="12" ng-required="true" ng-model-options="{updateOn: 'blur'}" />
+										<span style="color: red" ng-show="form26qchallan.submitted ||form26qchallan.interestAllocated.$dirty && form26qchallan.interestAllocated.$invalid">
+									<span class="error" ng-show="form26qchallan.interestAllocated.$error.pattern">Please enter valid Interest Allocated. </span> 
+									<span class="error" ng-show="form26qchallan.interestAllocated.$error.maxlength">Interest Allocated should not be greater than 12 characters.</span> 
+									<span class="error" ng-show="form26qchallan.interestAllocated.$error.required">Interest Allocated is Required.</span>
+								    </span>
+								<span class="error" id="interestAllocated"></span>
 							</div>
 
 							<div class="col-md-6">
-								<div class="form-group">
-									<label>otherAmtAllocated</label> <input class="form-control"
+								
+									<label>Other Amount Allocated*</label> <input class="form-control"
 										type="text" name="otherAmtAllocated"
-										placeholder="otherAmtAllocated"
+										placeholder="Other Amount Allocated"
 										ng-model="cCctr.entity.otherAmtAllocated"
-										autocomplete="off" ng-pattern=""
+										autocomplete="off"ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-maxlength="12" ng-required="true"
 										ng-model-options="{updateOn: 'blur'}" />
-								</div>
+										<span style="color: red" ng-show="form26qchallan.submitted ||form26qchallan.otherAmtAllocated.$dirty && form26qchallan.otherAmtAllocated.$invalid">
+									<span class="error" ng-show="form26qchallan.otherAmtAllocated.$error.pattern">Please enter valid OtherAmtAllocated. </span> 
+									<span class="error" ng-show="form26qchallan.otherAmtAllocated.$error.maxlength">OtherAmtAllocated should not be greater than 12 characters.</span> 
+									<span class="error" ng-show="form26qchallan.otherAmtAllocated.$error.required">OtherAmtAllocated is Required.</span>
+								    </span>
+								<span class="error" id="otherAmtAllocated"></span>
 							</div>
 
 
@@ -173,90 +244,69 @@
 
 						<div class="row">
 							<div class="col-md-6">
-								<div class="form-group">
-									<label>nilChallanIndicator</label> <input class="form-control" type="text"
-										name="nilChallanIndicator" placeholder="nilChallanIndicator"
+								
+									<label>Nil Challan Indicator*</label> <input class="form-control" type="text"
+										name="nilChallanIndicator" placeholder="Nil Challan Indicato"
 										ng-model="cCctr.entity.nilChallanIndicator" autocomplete="off"
-										ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
-								</div>
+										ng-pattern="/^[a-zA-Z0-9]*$/" ng-maxlength="45" ng-required="true" ng-model-options="{updateOn: 'blur'}" />
+										<span style="color: red" ng-show="form26qchallan.submitted ||form26qchallan.nilChallanIndicator.$dirty && form26qchallan.nilChallanIndicator.$invalid">
+									<span class="error" ng-show="form26qchallan.nilChallanIndicator.$error.pattern">Please enter valid NilChallanIndicator. </span> 
+									<span class="error" ng-show="form26qchallan.nilChallanIndicator.$error.maxlength">NilChallanIndicator should not be greater than 45 characters.</span> 
+									<span class="error" ng-show="form26qchallan.nilChallanIndicator.$error.required">NilChallanIndicator is Required.</span>
+								    </span>
+								<span class="error" id="nilChallanIndicator"></span>
 							</div>
 
 							<div class="col-md-6">
-								<div class="form-group">
-									<label>ShortPayment</label> <input class="form-control"
-										type="text" name="shortPayment"
-										placeholder="shortPayment"
-										ng-model="cCctr.entity.shortPayment"
-										autocomplete="off" ng-pattern=""
-										ng-model-options="{updateOn: 'blur'}" />
-								</div>
-							</div>
-
-
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>WarningDescription</label> <input class="form-control"
-										type="text" name="warningDescription"
-										placeholder="warningDescription"
-										ng-model="cCctr.entity.warningDescription"
-										autocomplete="off" ng-pattern=""
-										ng-model-options="{updateOn: 'blur'}" />
-								</div>
-							</div>
-
-							<div class="col-md-6">
-								<div class="form-group">
-									<label> interestShortPay</label> <input class="form-control"
-										type="text" name="interestShortPay"
-										placeholder="interestShortPay"
-										ng-model="cCctr.entity.interestShortPay"
-										autocomplete="off" ng-pattern=""
-										ng-model-options="{updateOn: 'blur'}" />
-								</div>
-							</div>
-
-
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>fy</label> <input class="form-control"
+							
+									<label>Financial Year*</label> <input class="form-control"
 										type="text" name="fy"
-										placeholder="fy"
+										placeholder="Financial Year"
 										ng-model="cCctr.entity.fy"
-										autocomplete="off" ng-pattern=""
+										autocomplete="off" ng-pattern="/^[0-9]*$/" ng-maxlength="45" ng-required="true"
 										ng-model-options="{updateOn: 'blur'}" />
-								</div>
-							</div>
-
-							<div class="col-md-6">
-								<div class="form-group">
-									<label> Quarter</label> <input
-										class="form-control" type="text"
-										name="quarter"
-										placeholder="quarter"
-										ng-model="cCctr.entity.quarter"
-										autocomplete="off" ng-pattern=""
-										ng-model-options="{updateOn: 'blur'}" />
-								</div>
+										<span style="color: red" ng-show="form26qchallan.submitted ||form26qchallan.fy.$dirty && form26qchallan.fy.$invalid">
+									<span class="error" ng-show="form26qchallan.fy.$error.pattern">Please enter valid Fy. </span> 
+									<span class="error" ng-show="form26qchallan.fy.$error.maxlength">Fy should not be greater than 45 characters.</span> 
+									<span class="error" ng-show="form26qchallan.fy.$error.required">Fy is Required.</span>
+								    </span>
+								<span class="error" id="fy"></span>
 							</div>
 
 
 						</div>
 						
+						<div class="row">
+							
+
+							<div class="col-md-6">
+								
+									<label> Quarter*</label> <input
+										class="form-control" type="text"
+										name="quarter"
+										placeholder="Quarter"
+										ng-model="cCctr.entity.quarter"
+										autocomplete="off" ng-pattern="/^[a-zA-Z0-9]*$/" ng-maxlength="45" ng-required="true"
+										ng-model-options="{updateOn: 'blur'}" />
+										<span style="color: red" ng-show="form26qchallan.submitted ||form26qchallan.quarter.$dirty && form26qchallan.quarter.$invalid">
+									<span class="error" ng-show="form26qchallan.quarter.$error.pattern">Please enter valid Quarter. </span> 
+									<span class="error" ng-show="form26qchallan.quarter.$error.maxlength">Quarter should not be greater than 45 characters.</span> 
+									<span class="error" ng-show="form26qchallan.quarter.$error.required">Quarter is Required.</span>
+								    </span>
+								<span class="error" id="quarter"></span>
+							</div>
+						</div>
 						
 									</form>
 								</div>
 							</div>
 							<div class="modal-footer">
 								<button
-									ng-click="form26qchallan.submitted=true; cCctr.submit(form26qchallan.$valid,'formchalllan26Q')"
+									ng-click="form26qchallan.submitted=true; cCctr.submit(form26qchallan.$valid,'formchallan26Q')"
 									class="btn btn-success" data-dismiss="modal">Save</button>
 								<button
-								ng-click="cCctr.gotoListPage('formchalllan26Q','formchalllan26Q');"
-								class="btn btn-primary">Cancel</button>
+								ng-click="cCctr.gotoListPage('formchallan26Q','formchallan26Q');"
+								class="btn btn-danger" ng-click="cCctr.gotoListPage('formchallan26Q','formchallan26Q');">Cancel</button>
 							</div>
 						</div>
 					</div>

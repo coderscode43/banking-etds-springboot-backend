@@ -54,7 +54,7 @@
 	<div class="container-fluid">
 		<div class="col-md-12 "
 			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
-			<div class="heading">Form 27Q Deductee Detail</div>
+			<div class="heading"> <strong>Form 27Q Deductee Details</strong></div>
 
 
 
@@ -138,10 +138,10 @@
 				
 					<div class="col-md-3">
 						<h6>
-							<b>Pan</b>
+							<b>PAN</b>
 							<h6>
 								<input type="text" ng-model="cCctr.search.pan"
-									class="form-control" placeholder="Pan" style="width: 100%">
+									class="form-control" placeholder="PAN" style="width: 100%">
 					</div>
                   </div>
 				
@@ -214,14 +214,10 @@
 						<th width="10%">Contact no</th>
 						<th width="10%">Address</th>
 						<th width="10%">TIN</th>
-						<th width="10%">Error</th>
-						<th width="10%">Warning</th>
-						<th width="10%">Short Deduction</th>
-						<th width="10%">Interest on short Deduction</th>
-						<th width="10%">Interest on Late Payment</th>
-						<th width="10%">Interest on Late Deduction</th>
 						<th width="10%">FY</th>
 						<th width="10%">Quarter</th>
+						<th width="10%">TDS Rate As Per IT Acts</th>
+						<th width="10%">Nature Of Remittance</th>
 						<th width="10%">Action</th>
 
 
@@ -256,14 +252,10 @@
 						<td>{{a.contactNoOfDeductee}}</td>
 						<td>{{a.addressOfDeductee}}</td>
 						<td>{{a.taxIdentificationNo}}</td>
-						<td>{{a.errorDescription}}</td>
-						<td>{{a.warningDescription}}</td>
-						<td>{{a.shortDeduction}}</td>
-						<td>{{a.interestOnShortDeduction}}</td>
-						<td>{{a.interestOnLatePayment}}</td>
-						<td>{{a.interestOnLateDeduction}}</td>
-						<td>{{a.fy}}</td>
+				        <td>{{a.fy}}</td>
 						<td>{{a.quarter}}</td>
+						<td>{{a.tdaRateAsPerItActs}}</td>
+						<td>{{a.natureOfRemittance}}</td>
 						<td><a ng-click="cCctr.gotoDetailPage('form27Q',a.id,'detailForm27Q')" style="color: blue">Details</a></td>
 
 

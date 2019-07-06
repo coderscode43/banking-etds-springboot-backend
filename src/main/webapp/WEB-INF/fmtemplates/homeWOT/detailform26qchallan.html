@@ -104,7 +104,7 @@
 		<div ng-show="cCctr.show != true">
 
 			<div class="row">
-				<h3 class="page-header" style="margin-top: 2%;"><Strong>Details Of Form26Q Challan</Strong></h3>
+				<h3 class="page-header" style="margin-top: 2%;"><Strong>Details Of Form 26Q Challan</Strong></h3>
 			</div>
 			 <div class="row">
 	 <div class="col-xs-12">
@@ -130,7 +130,7 @@
 <div class="collapse dont-collapse-sm" id="collapseExample2"> 
   		 <div class="row" style="font-size: 13px;">
 	    	<div class="col-md-6">
-				<label>Tds &nbsp;:</label> {{cCctr.entity.challan26.tds}}
+				<label>TDS &nbsp;:</label> {{cCctr.entity.challan26.tds}}
 			</div>
 	       	<div class="col-md-6">
 				<label>Surcharge. &nbsp;:</label> {{cCctr.entity.challan26.surcharge}}
@@ -139,7 +139,7 @@
   		 
   		 <div class="row" style="font-size: 13px;">
 				<div class="col-md-6">
-							<label>EducationCess &nbsp;:</label> {{cCctr.entity.challan26.eduCess}}
+							<label>Education Cess &nbsp;:</label> {{cCctr.entity.challan26.eduCess}}
 						</div>
 
 						<div class="col-md-6">
@@ -161,16 +161,16 @@
 							<label>Total Tax Deposited &nbsp;:</label> {{cCctr.entity.challan26.totalTaxDeposit}}
 					</div>
 					<div class="col-md-6">
-							<label>Tds Deposit BookEntry&nbsp;:</label> {{cCctr.entity.challan26.tdsDepositBookEntry}}
+							<label>TDS Deposit Book Entry&nbsp;:</label> {{cCctr.entity.challan26.tdsDepositBookEntry}}
 					</div>
 				</div>
 				
 				<div class="row" style="font-size: 13px;">
 					<div class="col-md-6">
-							<label>BsrCode &nbsp;:</label> {{cCctr.entity.challan26.bsrCode}}
+							<label>BSR Code &nbsp;:</label> {{cCctr.entity.challan26.bsrCode}}
 					</div>
 					<div class="col-md-6">
-							<label>Challan26 Serial No &nbsp;:</label> {{cCctr.entity.challan26.challanSrNo}}
+							<label>Challan Serial No &nbsp;:</label> {{cCctr.entity.challan26.challanSrNo}}
 					</div>
 				</div>
 				
@@ -179,7 +179,7 @@
 							<label>Date Tax Of Deposition &nbsp;:</label> {{cCctr.entity.challan26.dateTaxDeposit | date:'dd-MM-yyyy'}}
 					</div>
 					<div class="col-md-6">
-							<label> Minor Head Of challan26 &nbsp;:</label> {{cCctr.entity.challan26.minorHeadChallan}}
+							<label> Minor Head Of Challan &nbsp;:</label> {{cCctr.entity.challan26.minorHeadChallan}}
 					</div>
   				</div>
   				
@@ -188,7 +188,7 @@
 							<label>Interest Allocated  &nbsp;:</label> {{cCctr.entity.challan26.interestAllocated}}
 					</div>
 					<div class="col-md-6">
-							<label>Other Amt Allocated &nbsp;:</label> {{cCctr.entity.challan26.otherAmtAllocated}}
+							<label>Other Amount Allocated &nbsp;:</label> {{cCctr.entity.challan26.otherAmtAllocated}}
 					</div>
   				</div>
   				
@@ -197,7 +197,7 @@
 							<label>Nil Challan Indicator &nbsp;:</label> {{cCctr.entity.challan26.nilChallanIndicator}}
 					</div>
 					<div class="col-md-6">
-							<label> Financial year &nbsp;:</label> {{cCctr.entity.challan26.fy}}
+							<label> Financial Year &nbsp;:</label> {{cCctr.entity.challan26.fy}}
 					</div>
   				</div>
   				
@@ -234,7 +234,7 @@
         
          <button type="button" class="close" id="closeU"
 								data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Challan Details</h4>
+          <h4 class="modal-title"><strong>Edit Form 26Q Challan Details</strong></h4>
         </div>
            <form name="challan26Form" class="form-horizontal"enctype="multipart/form-data">
         <div class="modal-body">
@@ -259,7 +259,7 @@
 								
 									<label>Surcharge</label> <input class="form-control"
 										type="text" name="surcharge"
-										placeholder="surcharge"
+										placeholder="Surcharge"
 										ng-model="cCctr.entity.challan26.surcharge"
 										autocomplete="off" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-maxlength="12" ng-required="true"
 										ng-model-options="{updateOn: 'blur'}" />
@@ -278,8 +278,8 @@
 			 <div class="row">
 							<div class="col-md-6">
 								
-									<label> EducationCess</label> <input class="form-control"
-										type="text" name="eduCess" placeholder="EducationCess"
+									<label> Education Cess</label> <input class="form-control"
+										type="text" name="eduCess" placeholder="Education Cess"
 										ng-model="cCctr.entity.challan26.eduCess" autocomplete="off"
 										ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-maxlength="12" ng-required="true" ng-model-options="{updateOn: 'blur'}" />
 										<span style="color: red" ng-show="challan26Form.submitted ||challan26Form.eduCess.$dirty && challan26Form.eduCess.$invalid">
@@ -363,9 +363,9 @@
 
 							<div class="col-md-6">
 								
-									<label>TDS Deposit BookEntry</label> <input class="form-control"
+									<label>TDS Deposit Book Entry</label> <input class="form-control"
 										type="text" name="tdsDepositBookEntry"
-										placeholder="tdsDepositBookEntry"
+										placeholder="TDS Deposit Book Entry"
 										ng-model="cCctr.entity.challan26.tdsDepositBookEntry"
 										autocomplete="off" ng-pattern="/^[a-zA-Z0-9]*$/" ng-maxlength="50" ng-required="true"
 										ng-model-options="{updateOn: 'blur'}" />
@@ -381,8 +381,8 @@
 			 <div class="row">
 							<div class="col-md-6">
 								
-									<label> BsrCode</label> <input class="form-control"
-										type="text" name="bsrCode" placeholder="bsrCode"
+									<label> BSR Code</label> <input class="form-control"
+										type="text" name="bsrCode" placeholder="BSR Code"
 										ng-model="cCctr.entity.challan26.bsrCode" autocomplete="off"
 										ng-pattern="/^[a-zA-Z0-9]*$/" ng-maxlength="45" ng-required="true" ng-model-options="{updateOn: 'blur'}" />
 										<span style="color: red" ng-show="challan26Form.submitted ||challan26Form.bsrCode.$dirty && challan26Form.bsrCode.$invalid">
@@ -398,7 +398,7 @@
 								
 									<label>Challan Serial No</label> <input class="form-control"
 										type="text" name="challanSrNo"
-										placeholder="challan26SerialNo"
+										placeholder="Challan Serial No"
 										ng-model="cCctr.entity.challan26.challanSrNo"
 										autocomplete="off" ng-pattern="/^[0-9]*$/" ng-maxlength="25" ng-required="true"
 										ng-model-options="{updateOn: 'blur'}" />
@@ -416,8 +416,8 @@
 			 <div class="row">
 							<div class="col-md-6">
 								
-									<label> Date Tax Deposit</label> <input class="form-control"
-										type="date" name="dateTaxDeposit" placeholder="DateOfDeposition"
+									<label> Date Of Deposition</label> <input class="form-control"
+										type="date" name="dateTaxDeposit" placeholder="Date Of Deposition"
 										ng-model="cCctr.entity.challan26.dateTaxDeposit|
 									date:'dd-MM-yyyy'" autocomplete="off"
 										 ng-required="true" ng-model-options="{updateOn: 'blur'}" />
@@ -431,9 +431,9 @@
 
 							<div class="col-md-6">
 								
-									<label>Minor Head Of challan26</label> <input class="form-control"
+									<label>Minor Head Of Challan</label> <input class="form-control"
 										type="text" name="minorHeadChallan"
-										placeholder="Minor Head Of challan26"
+										placeholder="Minor Head Of Challan"
 										ng-model="cCctr.entity.challan26.minorHeadChallan"
 										autocomplete="off" ng-pattern="/^[a-zA-Z0-9]*$/" ng-maxlength="45" ng-required="true"
 										ng-model-options="{updateOn: 'blur'}" />
@@ -452,7 +452,7 @@
 							<div class="col-md-6">
 								
 									<label> Interest Allocated</label> <input class="form-control"
-										type="text" name="interestAllocated" placeholder="InterestAllocated"
+										type="text" name="interestAllocated" placeholder="Interest Allocated"
 										ng-model="cCctr.entity.challan26.interestAllocated" autocomplete="off"
 										ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-maxlength="12" ng-required="true" ng-model-options="{updateOn: 'blur'}" />
 										<span style="color: red" ng-show="challan26Form.submitted ||challan26Form.interestAllocated.$dirty && challan26Form.interestAllocated.$invalid">
@@ -466,9 +466,9 @@
 
 							<div class="col-md-6">
 								
-									<label>Other Amt Allocated</label> <input class="form-control"
+									<label>Other Amount Allocated</label> <input class="form-control"
 										type="text" name="otherAmtAllocated"
-										placeholder="Other Amt Allocated"
+										placeholder="Other Amount Allocated"
 										ng-model="cCctr.entity.challan26.otherAmtAllocated"
 										autocomplete="off"ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-maxlength="12" ng-required="true"
 										ng-model-options="{updateOn: 'blur'}" />
@@ -487,7 +487,7 @@
 							<div class="col-md-6">
 								
 									<label> Nil Challan Indicator</label> <input class="form-control"
-										type="text" name="nilChallanIndicator" placeholder="nilChallanIndicator"
+										type="text" name="nilChallanIndicator" placeholder="Nil Challan Indicator"
 										ng-model="cCctr.entity.challan26.nilChallanIndicator" autocomplete="off"
 										ng-pattern="/^[a-zA-Z0-9]*$/" ng-maxlength="45" ng-required="true" ng-model-options="{updateOn: 'blur'}" />
 										<span style="color: red" ng-show="challan26Form.submitted ||challan26Form.nilChallanIndicator.$dirty && challan26Form.nilChallanIndicator.$invalid">
@@ -501,7 +501,7 @@
                               <div class="col-md-6">
 								
 									<label> Financial Year</label> <input class="form-control"
-										type="text" name="fy" placeholder="financial Year"
+										type="text" name="fy" placeholder="Financial Year"
 										ng-model="cCctr.entity.challan26.fy" autocomplete="off"
 										ng-pattern="/^[0-9]*$/" ng-maxlength="45" ng-required="true" ng-model-options="{updateOn: 'blur'}" />
 										<span style="color: red" ng-show="challan26Form.submitted ||challan26Form.fy.$dirty && challan26Form.fy.$invalid">
@@ -521,7 +521,7 @@
 								
 									<label>Quarter</label> <input class="form-control"
 										type="text" name="quarter"
-										placeholder="quarter"
+										placeholder="Quarter"
 										ng-model="cCctr.entity.challan26.quarter"
 										autocomplete="off" ng-pattern="/^[a-zA-Z0-9]*$/" ng-maxlength="45" ng-required="true"
 										ng-model-options="{updateOn: 'blur'}" />
@@ -541,6 +541,8 @@
        	<div class="modal-footer">
              <button 
 						class="btn btn-success" data-dismiss="modal">Ok</button>
+						<button 
+						class="btn btn-danger" data-dismiss="modal">Back</button>
 					
       </div>
       

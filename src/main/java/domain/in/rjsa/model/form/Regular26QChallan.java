@@ -78,11 +78,13 @@ public class Regular26QChallan extends CommonModelAbstract{
 	@NotNull(message = "Challan SrNo is a required field")
 	@Digits(integer = 25, fraction = 0,message="Enter valid Challan SrNo. Challan SrNo. should not be greater than 12")
 	public Long challanSrNo;
+	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "dateTaxDeposit")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	@NotNull(message = "Date Tax Deposit is a required field")
 	public Date dateTaxDeposit;
+	
 	@Column(name = "minorHeadChallan")
 	@NotNull(message = "Minor Head Challan is a required field")
 	@Size(min=0, max=45, message="MinorHeadChallan length should be 45 characters.")

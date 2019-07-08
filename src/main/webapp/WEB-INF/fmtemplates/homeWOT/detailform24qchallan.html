@@ -248,11 +248,12 @@
 										type="text" name="tds" placeholder="TDS"
 										ng-model="cCctr.entity.challan.tds" autocomplete="off"
 										ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+										ng-maxlength="15"
 									ng-required="true"
 									ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="challanForm.submitted || challanForm.tds.$dirty && challanForm.tds.$invalid">
 									<span class="error" ng-show="challanForm.tds.$error.pattern">Enter valid TDS </span> 
-									<span class="error" ng-show="challanForm.tds.$error.maxlength">TDS should not be greater than 10 digits.</span> 
+									<span class="error" ng-show="challanForm.tds.$error.maxlength">TDS should not be greater than 15 digits.</span> 
 									<span class="error" ng-show="challanForm.tds.$error.required">TDS number is Required.</span>
 								</span>
 									<span class="error" id="tds"></span>

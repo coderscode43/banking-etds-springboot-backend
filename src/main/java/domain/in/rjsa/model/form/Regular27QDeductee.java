@@ -131,7 +131,7 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	public String emailId;
 	@Column(name = "contactNoOfDeductee")
 	@NotNull(message = "contact No Of Deductee is a required field")
-	@Size(min=0, max=20, message="contact No  should be between 0 to 10 characters.")
+	@Size(min=0, max=10, message="contact No  should be between 0 to 10 characters.")
 	public String contactNoOfDeductee;
 	@Column(name = "addressOfDeductee")
 	@NotNull(message = "address Of Deductee is a required field")

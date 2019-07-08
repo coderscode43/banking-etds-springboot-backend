@@ -497,7 +497,7 @@
 										<span class="error" ng-show="deducteeDetailForm.contactNoOfDeductee.$error.pattern">Please Enter Valid Mobile Number.</span>
 										<span class="error" ng-show="deducteeDetailForm.contactNoOfDeductee.$error.maxlength">Mobile Number should not be greater than 10 digits.</span>
 										<span class="error" ng-show="deducteeDetailForm.contactNoOfDeductee.$error.minlength">Mobile Number should not be less than 10 digits.</span>
-										<span class="error" ng-show="deducteeDetailForm.contactNoOfDeductee.$error.required">Mobile Number is Required.</span>
+										<span class="error" ng-show="deducteeDetailForm.contactNoOfDeductee.$error.required">Please Enter Mobile No</span>
 										<span class="error" id="contactNoOfDeductee"></span>
 									</span>
 									
@@ -558,7 +558,7 @@
 									ng-model="cCctr.entity.fy" 
 									  ng-required="true"
 									autocomplete="off" 
-							       ng-pattern="/^[0-9]/"
+							       ng-pattern="/^[0-9]*$/"
 									ng-maxlength="50" 
 									ng-model-options="{updateOn: 'blur'}" /> 
 									

@@ -273,12 +273,14 @@
 								<div class="col-md-6">
 									<label>FY&nbsp;:</label> {{cCctr.entity.deductee27.fy}}
 								</div>
-							</div>
-							<div class="row" style="font-size: 13px;">
 								<div class="col-md-6">
 									<label>TDS Rate As Per It Acts &nbsp;:</label>
 									{{cCctr.entity.deductee27.tdaRateAsPerItActs}}
 								</div>
+								
+							</div>
+							<div class="row" style="font-size: 13px;">
+								
 								<div class="col-md-6">
 									<label>Nature Of Remittance &nbsp;:</label>
 									{{cCctr.entity.deductee27.natureOfRemittance}}
@@ -840,12 +842,6 @@
 							</div>
 						
 						
-						
-						
-						
-						
-					
-						
 						<div class="row">
 							
 
@@ -866,12 +862,7 @@
 										<span class="error" id="quarter"></span>
 								</span>
 								</div>
-							</div>
-					
-						
-						
-						<div class="row">
-							<div class="col-md-6">
+								<div class="col-md-6">
 									<label>TDS Rate As Per IT Acts* </label> <input class="form-control"
 										type="text" name="tdaRateAsPerItActs"
 										placeholder="TDS Rate As Per IT Acts"
@@ -888,8 +879,13 @@
 										<span class="error" id="tdaRateAsPerItActs"></span>
 								</span>
 								</div>
+							</div>
+					
 						
-
+						
+						<div class="row">
+							
+						
 							<div class="col-md-6">
 									<label>Nature Of Remittance*</label> <input class="form-control" type="text"
 										name="fy" placeholder=" Nature Of Remittance" ng-model="cCctr.entity.deductee27.natureOfRemittance"
@@ -907,8 +903,6 @@
 								</div>
 						
 							</div>
-								
-							
 						
 						</form>
 					</div>
@@ -917,8 +911,8 @@
 				<div class="modal-footer">
                       <!--  <button ng-click="profileForm.submitted=true;cCctr.updateData(profileForm.$valid,'form27Q',cCctr.entity.deductee27,'closeU')"
 					 	class="btn btn-success" data-dismiss="modal">Save</button> -->
-					 	<button class="btn btn-success" ng-click="profileForm.submitted=true; cCctr.submit(profileForm.$valid,'')"
-								 >OK</button>
+					 	<button 
+						class="btn btn-success" data-dismiss="modal">Ok</button>
 					 <button class="btn btn-danger" data-dismiss="modal">Back</button>
 					 
       </div>

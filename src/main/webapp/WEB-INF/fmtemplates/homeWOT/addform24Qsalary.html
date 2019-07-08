@@ -990,7 +990,7 @@
 								<label>Count Of Pan Of Landlord*</label> <input class="form-control" type="text"
 									name="countOfPanOfLandlord" placeholder="Count Of Pan Of Landlord"
 									ng-model="cCctr.entity.countOfPanOfLandlord" autocomplete="off"
-									ng-pattern="/^[0-9]$/"
+									ng-pattern="/^[0-9]*$/"
 									ng-required="true"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.countOfPanOfLandlord.$dirty && form24SalaryDetail.countOfPanOfLandlord.$invalid">
@@ -1152,7 +1152,7 @@
 									name="countOfPanOfLender" placeholder="Count Of Pan Of Lender	"
 									ng-model="cCctr.entity.countOfPanOfLender" autocomplete="off"
 									ng-required="true"
-									ng-pattern="/^[0-9]$/"
+									ng-pattern="/^[0-9]*$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.countOfPanOfLender.$dirty && form24SalaryDetail.countOfPanOfLender.$invalid">
 									<span class="error" ng-show="form24SalaryDetail.countOfPanOfLender.$error.pattern">Enter valid Count Of Pan Of Lender </span> 
@@ -1420,8 +1420,8 @@
 						<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>FY</label> <input class="form-control" type="text"
-									name="fy" placeholder="FY"
+								<label>FY*</label> <input class="form-control" type="text"
+									name="fy" placeholder="FY" ng-required="true"
 									ng-model="cCctr.entity.fy" autocomplete="off"
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -1435,8 +1435,8 @@
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Quarter</label> <input class="form-control" type="text"
-									name="quarter" placeholder="Quarter"
+								<label>Quarter*</label> <input class="form-control" type="text"
+									name="quarter" placeholder="Quarter" ng-required="true"
 									ng-model="cCctr.entity.quarter" autocomplete="off"
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />

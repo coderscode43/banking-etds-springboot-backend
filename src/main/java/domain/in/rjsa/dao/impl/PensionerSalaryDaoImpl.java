@@ -30,10 +30,18 @@ public class PensionerSalaryDaoImpl extends AbstractNewDao<Long, PensionerSalary
 			criteria.add(
 					Restrictions.le("paymentDate", Date.from(ZonedDateTime.parse((String) entity.get("toDate")).toInstant())));
 		}*/
-       
+		 
+		if(entity.get("pensionersNo")!=null)
+	        {
+			criteria.add(Restrictions.eqOrIsNull("pensionersNo", entity.get("pensionersNo")));
+	        }
         if(entity.get("month")!=null)
         {
 		criteria.add(Restrictions.eqOrIsNull("month", entity.get("month")));
+        }
+        if(entity.get("fy")!=null)
+        {
+		criteria.add(Restrictions.eqOrIsNull("fy", entity.get("fy")));
         }
           
 		//criteria.addOrder(Order.desc("paymentDate"));

@@ -1,3 +1,5 @@
+
+
 <style>
  
  
@@ -67,6 +69,11 @@
   <div class="collapse dont-collapse-sm" id="collapseExample2"> 
 	  <div class="row">
 	   <div class="form-group">
+	   <div class="col-md-3">	
+           <h6><b>Pensioners No</b><h6>
+           <input type="text" ng-model="cCctr.search.pensionersNo" class="form-control" placeholder="Pensioners No" style="width:80%">
+       </div>
+      
 	  
 	    <div class="col-md-3">	
                 <h6><b>Month</b><h6>
@@ -74,15 +81,26 @@
 								</div>
 	<div class="col-md-3" >							
             <h6><b>Financial Year</b></h6>
-          <input type="text"ng-model="cCctr.search.fy" class="form-control" placeholder="Financial Year" style="width:80%">
-								</div>
+          <select class="form-control" ng-model="cCctr.search.fy"
+						style="width: 100%">
+						<option value="" ng-selected=true>Year</option>
+						<option value="201920">201920</option>
+						<option value="201819">201819</option>
+						<option value="201718">201718</option>
+						<option value="201617">201617</option>
+						<option value="201516">201516</option>
+						<option value="201415">201415</option>
+						<option value="201314">201314</option>
+						<option value="201213">201213</option>
+						<option value="201112">201112</option>
+						<option value="201011">201011</option>
+						<option value="200910">200910</option>
+						<option value="200809">200809</option>
+						<option value="200708">200708</option>
+					</select>
       </div>
       
-     	<div class="col-md-3">	
-           <h6><b>Quarter</b><h6>
-           <input type="text" ng-model="cCctr.search.fromDocumentNumber" class="form-control" placeholder="Quarter" style="width:80%">
-       </div>
-      
+     	
    </div>
             
            
@@ -107,7 +125,7 @@
  
  					<div class="row">
 						<!-- <div class="table-responsive"> -->
-							<table class="table table-bordered table-hover table-striped" role="table"
+							<table class="  table-bordered table-hover table-striped" role="table"
 								style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
 								<thead>
 								<colgroup>
@@ -117,6 +135,7 @@
 							  <thead role="rowgroup">
     <tr role="row" style="height:40px;background-color:#81b7db">
       <th width="10%">Sr. No.</th>
+      <th width="20%">Pensioners No</th>
       <th width="20%">Basic Salary</th>
       <th width="10%">HRA</th>
       <th width="10%" >DA</th>
@@ -136,12 +155,14 @@
       <th width="10%">TDS</th>
       <th width="10%">Other Income</th>
       <th width="10%">Month</th>
+      <th width="10%">Financial Year</th>
     
       </tr>
   </thead>
 								<tbody>
 									<tr role="row" ng-repeat="a in cCctr.getEntityListData() track by a.id">
 										<td role="cell" class="one" style="height: 60px;padding:10px">{{$index+1}}</td>
+											<td>{{a.pensionersNo}}</td>
 											<td>{{a.basicSalary}}</td>
 											<td>{{a.hra}}</td>
 											<td>{{a.da}}</td>
@@ -161,12 +182,13 @@
 											<td>{{a.tds}}</td>
 											<td>{{a.otherIncome}}</td>
 											<td>{{a.month}}</td>
+											<td>{{a.fy}}</td>
+											
 														<!-- <td>{{a.total-a.amountPaid}}</td> -->
 										
 									</tr>
-								
 								</tbody>
 							</table>
-							</div>
+						</div>
 </div>
 </div>

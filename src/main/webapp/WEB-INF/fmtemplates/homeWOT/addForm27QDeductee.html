@@ -293,7 +293,7 @@
 									ng-model-options="{updateOn: 'blur'}" /> 
 									
 									  <span style="color: red" ng-show="deducteeDetailForm.submitted || deducteeDetailForm.totalTaxDeposited.$dirty && deducteeDetailForm.totalTaxDeposited.$invalid">
-										  <span class="error" ng-show="deducteeDetailForm.totalTaxDeposited.$error.pattern">Please enter valid Total Tax Deducted</span>
+										<span class="error" ng-show="deducteeDetailForm.totalTaxDeposited.$error.pattern">Please enter valid Total Tax Deducted</span>
 										<span class="error" ng-show="deducteeDetailForm.totalTaxDeposited.$error.maxlength">Total Tax Deducted should not be greater than 10.</span>
 										<span class="error" ng-show="deducteeDetailForm.totalTaxDeposited.$error.required">Please enter Total Tax Deducted</span>
 										<span class="error" id="totalTaxDeposited"></span>
@@ -493,7 +493,7 @@
 								    ng-pattern="/^\s*$|^$|^[7-9][0-9]{9}$/"
 								    ng-model-options="{updateOn: 'blur'}" 
 								    autocomplete="off"/>
-										<span style="color:red" ng-show="deducteeDetailForm.contactNoOfDeductee.$dirty && deducteeDetailForm.contactNoOfDeductee.$invalid">
+										<span style="color:red" ng-show="deducteeDetailForm.submitted || deducteeDetailForm.contactNoOfDeductee.$dirty && deducteeDetailForm.contactNoOfDeductee.$invalid">
 										<span class="error" ng-show="deducteeDetailForm.contactNoOfDeductee.$error.pattern">Please Enter Valid Mobile Number.</span>
 										<span class="error" ng-show="deducteeDetailForm.contactNoOfDeductee.$error.maxlength">Mobile Number should not be greater than 10 digits.</span>
 										<span class="error" ng-show="deducteeDetailForm.contactNoOfDeductee.$error.minlength">Mobile Number should not be less than 10 digits.</span>

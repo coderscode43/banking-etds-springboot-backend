@@ -253,7 +253,7 @@ public class Regular24Q4Salary extends CommonModelAbstract  {
 	@Size(min=0, max=45, message="Invalid Whether Tax Deducted At Higher Rate")
 	public String whetherTaxDeductedAtHigherRate;
 	@Column(name = "countOfPanOfLandlord")
-	@NotBlank(message = "Count of PAN of Landlord is required")
+	//@NotBlank(message = "Count of PAN of Landlord is required")
 	@Digits(integer = 12, fraction = 0,message="Invalid Count Of Pan Of Landlord")
 	public Long countOfPanOfLandlord;
 	@Column(name = "panOfLandlord1")
@@ -285,7 +285,7 @@ public class Regular24Q4Salary extends CommonModelAbstract  {
 	@Size(min=0, max=45, message="Invalid Whether Interest Paid To Be Lender")
 	public String whetherInterestPaidToBeLender;
 	@Column(name = "countOfPanOfLender")
-	@NotNull(message = "Count of PAN of lender is required")
+	//@NotNull(message = "Count of PAN of lender is required")
 	@Digits(integer = 12, fraction = 0,message="Invalid Count Of Pan Of Lender")
 	public Long countOfPanOfLender;
 	@Column(name = "panOfLender1")

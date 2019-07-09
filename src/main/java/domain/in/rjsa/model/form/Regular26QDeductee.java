@@ -63,7 +63,7 @@ public class Regular26QDeductee extends CommonModelAbstract{
 	public String sectionCode;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "paymentDate")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	public Date paymentDate;
 	@Column(name = "paidAmt")
 	@Digits(integer = 12, fraction = 0,message="Enter valid Paid Amt it should not be greater than 12")
@@ -91,7 +91,7 @@ public class Regular26QDeductee extends CommonModelAbstract{
 	public Double totalTaxDeposit;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "deductDate")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	public Date deductDate;
 	@Column(name = "rateTaxDeduct")
 	@Digits(integer = 12, fraction = 0,message="Enter valid Rate Tax Deposit it should not be greater than 12")

@@ -70,7 +70,7 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	@Temporal(TemporalType.DATE)
 	@Column(name = "date")
 	@NotNull(message = "Date required field")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	public Date date;
 	@Column(name = "amountPaid")
 	@NotNull(message = "amount Paid is a required field")
@@ -99,7 +99,7 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	@Temporal(TemporalType.DATE)
 	@Column(name = "dateOfDeduction")
 	@NotNull(message = "Date is a required field")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	public Date dateOfDeduction;
 	@Column(name = "rateAtWhichTaxDeducted")
 	@NotNull(message = "Rate At Which Tax Deducted is a required field")

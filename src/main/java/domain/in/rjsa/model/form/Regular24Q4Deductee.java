@@ -63,12 +63,12 @@ public class Regular24Q4Deductee extends CommonModelAbstract {
 	public String sectionCode;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "dateOfPayment")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	@NotNull(message = "Date is a required field.")
 	public Date dateOfPayment;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "dateOfDeduction")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	@NotNull(message = "Date is a required field.")
 	public Date dateOfDeduction;
 	@Column(name = "amountPaid")

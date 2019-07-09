@@ -25,7 +25,7 @@ public class Salary extends CommonModelAbstract{
 	@Column(name = "employeeId")
 	public Long employeeId;
 	@Column(name = "employeeNo")
-	public Long employeeNo;
+	public String employeeNo;
 	@Column(name = "basicSalary")
 	public Double basicSalary;
 	@Column(name = "hra")

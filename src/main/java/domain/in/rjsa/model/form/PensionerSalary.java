@@ -30,7 +30,7 @@ public class PensionerSalary extends CommonModelAbstract{
 	@Column(name = "employeeId")
 	public Long employeeId;
 	@Column(name = "pensionersNo")
-	public Long pensionersNo;
+	public String pensionersNo;
 	@Column(name = "basicSalary")
 	public Double basicSalary;
 	@Column(name = "hra")

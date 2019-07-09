@@ -77,7 +77,7 @@ public class Regular24Q4Challan extends CommonModelAbstract{
 	public Long challanSerialNo;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "dateOfDeposition")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	public Date dateOfDeposition;
 	@Column(name = "minorHeadOfChallan")
 	@Size(min=0, max=45, message="Invalid Minor Head Of Challan")

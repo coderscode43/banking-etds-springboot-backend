@@ -8,10 +8,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import domain.in.rjsa.model.form.Login;
+import domain.in.rjsa.model.form.Regular24Q4Challan;
+import domain.in.rjsa.model.form.Regular24Q4Deductee;
+import domain.in.rjsa.model.form.Regular24Q4Salary;
 import domain.in.rjsa.model.form.Regular26QChallan;
 import domain.in.rjsa.model.form.Regular26QDeductee;
 import domain.in.rjsa.model.form.RequestCorrection;
 import domain.in.rjsa.model.wrapper.RequestCorrectionWrapper;
+import domain.in.rjsa.service.Regular24Q4ChallanService;
+import domain.in.rjsa.service.Regular24Q4DeducteeService;
+import domain.in.rjsa.service.Regular24Q4SalaryService;
 import domain.in.rjsa.service.Regular26QChallanService;
 import domain.in.rjsa.service.Regular26QDeducteeService;
 import domain.in.rjsa.service.RequestCorrectionService;
@@ -27,6 +33,15 @@ public class RequestCorrectionController extends AbstractController<Long, Reques
  
  @Autowired
  Regular26QChallanService r26QChallanService;
+ 
+ @Autowired
+ Regular24Q4ChallanService r24Q4ChallanService;
+ 
+ @Autowired
+ Regular24Q4DeducteeService r24Q4DeducteeService;
+ 
+ @Autowired
+ Regular24Q4SalaryService r24Q4SalaryService;
 	
 	@Autowired
 	ApplicationCache applicationCache;
@@ -56,6 +71,15 @@ public class RequestCorrectionController extends AbstractController<Long, Reques
 			
 			List<Regular26QChallan> reg26Qc = r26QChallanService.search(constrains,l.getClientId());		
 			ew.setRegular26QChallanList(reg26Qc);
+			
+			List<Regular24Q4Challan> reg24Qc = r24Q4ChallanService.search(constrains,l.getClientId());		
+			ew.setRegular24Q4ChallanList(reg24Qc);
+			
+			List<Regular24Q4Deductee> reg24Qd = r24Q4DeducteeService.search(constrains,l.getClientId());		
+			ew.setRegular24Q4DeducteeList(reg24Qd);
+			
+			List<Regular24Q4Salary> reg24Qs = r24Q4SalaryService.search(constrains,l.getClientId());		
+			ew.setRegular24Q4SalaryList(reg24Qs);
 		
 		RequestCorrection reqCorr = service.getByKey(id);
 		ew.setReqCorrection(reqCorr);

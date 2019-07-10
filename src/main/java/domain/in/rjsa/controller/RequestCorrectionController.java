@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import domain.in.rjsa.model.form.Branch;
 import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.form.Regular24Q4Challan;
 import domain.in.rjsa.model.form.Regular24Q4Deductee;
@@ -14,7 +15,11 @@ import domain.in.rjsa.model.form.Regular24Q4Salary;
 import domain.in.rjsa.model.form.Regular26QChallan;
 import domain.in.rjsa.model.form.Regular26QDeductee;
 import domain.in.rjsa.model.form.RequestCorrection;
+import domain.in.rjsa.model.tds.DEDUCTORDETAILS;
+import domain.in.rjsa.model.tds.RESPONSIBLEPERSONEDETAILS;
 import domain.in.rjsa.model.wrapper.RequestCorrectionWrapper;
+import domain.in.rjsa.service.DEDUCTORDETAILSService;
+import domain.in.rjsa.service.RESPONSIBLEPERSONEDETAILSService;
 import domain.in.rjsa.service.Regular24Q4ChallanService;
 import domain.in.rjsa.service.Regular24Q4DeducteeService;
 import domain.in.rjsa.service.Regular24Q4SalaryService;
@@ -42,6 +47,11 @@ public class RequestCorrectionController extends AbstractController<Long, Reques
  
  @Autowired
  Regular24Q4SalaryService r24Q4SalaryService;
+ 
+ @Autowired
+ DEDUCTORDETAILSService dservice;
+ @Autowired
+ RESPONSIBLEPERSONEDETAILSService rService;
 	
 	@Autowired
 	ApplicationCache applicationCache;
@@ -63,6 +73,8 @@ public class RequestCorrectionController extends AbstractController<Long, Reques
 		// TODO Auto-generated method stub
 		RequestCorrectionWrapper ew = new RequestCorrectionWrapper();
 		Login l = applicationCache.getLoginDetail(getPrincipal());
+		Branch b= applicationCache.getBranch(id);
+		String tan=b.getTan();
 		LinkedHashMap<String, Object> constrains = new LinkedHashMap<>();
 		//	constrains.put("clientId", l.getClientId());
 			constrains.put("id", id);
@@ -80,6 +92,11 @@ public class RequestCorrectionController extends AbstractController<Long, Reques
 			
 			List<Regular24Q4Salary> reg24Qs = r24Q4SalaryService.search(constrains,l.getClientId());		
 			ew.setRegular24Q4SalaryList(reg24Qs);
+			
+			DEDUCTORDETAILS deductor = dservice.getByKey(tan);
+			ew.setDeductorDetails(deductor);
+			RESPONSIBLEPERSONEDETAILS reaponsible = rService.getByKey(tan);
+			ew.setRespersonDetails(reaponsible);
 		
 		RequestCorrection reqCorr = service.getByKey(id);
 		ew.setReqCorrection(reqCorr);

@@ -7,13 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import domain.in.rjsa.model.form.Branch;
 import domain.in.rjsa.model.form.Login;
+import domain.in.rjsa.model.form.Regular26QChallan;
 import domain.in.rjsa.model.form.Regular26QDeductee;
 import domain.in.rjsa.model.form.RequestCorrection;
 import domain.in.rjsa.model.wrapper.RequestCorrectionWrapper;
+import domain.in.rjsa.service.Regular26QChallanService;
 import domain.in.rjsa.service.Regular26QDeducteeService;
 import domain.in.rjsa.service.RequestCorrectionService;
+import domain.in.rjsa.web.ApplicationCache;
 
 @Controller
 @RequestMapping("/apirequestCorrection")
@@ -21,7 +23,13 @@ public class RequestCorrectionController extends AbstractController<Long, Reques
  @Autowired
  RequestCorrectionService service;
  @Autowired
- Regular26QDeducteeService r26QSercive;
+ Regular26QDeducteeService r26QService;
+ 
+ @Autowired
+ Regular26QChallanService r26QChallanService;
+	
+	@Autowired
+	ApplicationCache applicationCache;
  
 	@Override
 	public RequestCorrectionService getService() {
@@ -39,8 +47,16 @@ public class RequestCorrectionController extends AbstractController<Long, Reques
 	public Object getDetail(Long id, Long clientId) {
 		// TODO Auto-generated method stub
 		RequestCorrectionWrapper ew = new RequestCorrectionWrapper();
+		Login l = applicationCache.getLoginDetail(getPrincipal());
+		LinkedHashMap<String, Object> constrains = new LinkedHashMap<>();
+		//	constrains.put("clientId", l.getClientId());
+			constrains.put("id", id);
+			List<Regular26QDeductee> reg26Qd = r26QService.search(constrains,l.getClientId());		
+			ew.setRegular26QDeducteeList(reg26Qd);
+			
+			List<Regular26QChallan> reg26Qc = r26QChallanService.search(constrains,l.getClientId());		
+			ew.setRegular26QChallanList(reg26Qc);
 		
-		Branch b=applicationCache.getBranch(id);
 		RequestCorrection reqCorr = service.getByKey(id);
 		ew.setReqCorrection(reqCorr);
 	

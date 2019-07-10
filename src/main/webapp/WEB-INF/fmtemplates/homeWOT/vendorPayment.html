@@ -34,12 +34,14 @@
 	  
 	  <div class="col-md-3">							
                    <h6><b>From Invoice Date</b></h6>
-                   <input type="date" class="form-control" style="padding-top:0px;" ng-model="cCctr.search.fromDate" placeholder="From Date">
+                   <input type="date" class="form-control" style="padding-top:0px;" ng-model="cCctr.search.fromDate" 
+                   ng-change="cCctr.search.fromDate=cCctr.date(cCctr.search.fromDate);" placeholder="From Date">
                 </div>
                      
 	                 <div class="col-md-3">							
                    <h6><b>To Invoice Date</b></h6>
-                    <input type="date" class="form-control" style="padding-top:0px;" ng-model="cCctr.search.toDate" placeholder="To Date">
+                    <input type="date" class="form-control" style="padding-top:0px;" ng-model="cCctr.search.toDate" 
+                    ng-change="cCctr.search.toDate=cCctr.date(cCctr.search.toDate);" placeholder="To Date">
                 </div>    
    </div>
   	       </div>

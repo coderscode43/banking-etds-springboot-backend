@@ -6,8 +6,12 @@ import domain.in.rjsa.model.form.Regular24Q4Deductee;
 import domain.in.rjsa.model.form.Regular24Q4Salary;
 import domain.in.rjsa.model.form.Regular26QChallan;
 import domain.in.rjsa.model.form.Regular26QDeductee;
+import domain.in.rjsa.model.form.Regular27QChallan;
+import domain.in.rjsa.model.form.Regular27QDeductee;
 import domain.in.rjsa.model.form.RequestCorrection;
+import domain.in.rjsa.model.tds.CLIENTDETAILS;
 import domain.in.rjsa.model.tds.DEDUCTORDETAILS;
+import domain.in.rjsa.model.tds.GOVERNMENTDETAILS;
 import domain.in.rjsa.model.tds.RESPONSIBLEPERSONEDETAILS;
 import lombok.Data;
 
@@ -22,5 +26,9 @@ public class RequestCorrectionWrapper {
 	public RequestCorrection reqCorrection;
 	public DEDUCTORDETAILS deductorDetails;
 	public RESPONSIBLEPERSONEDETAILS respersonDetails;
+	public GOVERNMENTDETAILS govtDetails;
+	public CLIENTDETAILS clientDetail;
+	public List<Regular27QChallan> regular27QChallan;
+	public List<Regular27QDeductee> regular27QDeductee;
 	
 }

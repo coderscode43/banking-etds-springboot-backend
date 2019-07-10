@@ -14,17 +14,25 @@ import domain.in.rjsa.model.form.Regular24Q4Deductee;
 import domain.in.rjsa.model.form.Regular24Q4Salary;
 import domain.in.rjsa.model.form.Regular26QChallan;
 import domain.in.rjsa.model.form.Regular26QDeductee;
+import domain.in.rjsa.model.form.Regular27QChallan;
+import domain.in.rjsa.model.form.Regular27QDeductee;
 import domain.in.rjsa.model.form.RequestCorrection;
+import domain.in.rjsa.model.tds.CLIENTDETAILS;
 import domain.in.rjsa.model.tds.DEDUCTORDETAILS;
+import domain.in.rjsa.model.tds.GOVERNMENTDETAILS;
 import domain.in.rjsa.model.tds.RESPONSIBLEPERSONEDETAILS;
 import domain.in.rjsa.model.wrapper.RequestCorrectionWrapper;
+import domain.in.rjsa.service.CLIENTDETAILSService;
 import domain.in.rjsa.service.DEDUCTORDETAILSService;
+import domain.in.rjsa.service.GOVERNMENTDETAILSService;
 import domain.in.rjsa.service.RESPONSIBLEPERSONEDETAILSService;
 import domain.in.rjsa.service.Regular24Q4ChallanService;
 import domain.in.rjsa.service.Regular24Q4DeducteeService;
 import domain.in.rjsa.service.Regular24Q4SalaryService;
 import domain.in.rjsa.service.Regular26QChallanService;
 import domain.in.rjsa.service.Regular26QDeducteeService;
+import domain.in.rjsa.service.Regular27QChallanService;
+import domain.in.rjsa.service.Regular27QDeducteeService;
 import domain.in.rjsa.service.RequestCorrectionService;
 import domain.in.rjsa.web.ApplicationCache;
 
@@ -55,6 +63,17 @@ public class RequestCorrectionController extends AbstractController<Long, Reques
 	
 	@Autowired
 	ApplicationCache applicationCache;
+	
+	@Autowired
+	GOVERNMENTDETAILSService gService;
+	@Autowired
+	CLIENTDETAILSService cdService;
+	
+	@Autowired
+	Regular27QDeducteeService r27QdService;
+	
+	@Autowired
+	Regular27QChallanService r27QcService;
  
 	@Override
 	public RequestCorrectionService getService() {
@@ -93,13 +112,23 @@ public class RequestCorrectionController extends AbstractController<Long, Reques
 			List<Regular24Q4Salary> reg24Qs = r24Q4SalaryService.search(constrains,l.getClientId());		
 			ew.setRegular24Q4SalaryList(reg24Qs);
 			
+			List<Regular27QChallan> reg27Qc = r27QcService.search(constrains,l.getClientId());		
+			ew.setRegular27QChallan(reg27Qc);
+			
+			List<Regular27QDeductee> reg27Qd = r27QdService.search(constrains,l.getClientId());		
+			ew.setRegular27QDeductee(reg27Qd);
+			
 			DEDUCTORDETAILS deductor = dservice.getByKey(tan);
 			ew.setDeductorDetails(deductor);
 			RESPONSIBLEPERSONEDETAILS reaponsible = rService.getByKey(tan);
 			ew.setRespersonDetails(reaponsible);
+			GOVERNMENTDETAILS govt = gService.getByKey(tan);
+			ew.setGovtDetails(govt);
+			CLIENTDETAILS cd = cdService.getByKey(tan);
+			ew.setClientDetail(cd);
 		
-		RequestCorrection reqCorr = service.getByKey(id);
-		ew.setReqCorrection(reqCorr);
+		    RequestCorrection reqCorr = service.getByKey(id);
+		    ew.setReqCorrection(reqCorr);
 	
 		
 		return ew;

@@ -22,7 +22,7 @@ public class RequestCorrectionServiceImpl extends AbstractService<Long, RequestC
 	@Override
 	public RequestCorrection getByKey(Long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.getByKey(id);
 	}
 
 }

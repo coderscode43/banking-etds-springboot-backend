@@ -247,7 +247,7 @@
 						</thead>
 						<tbody>
 							<tr role="row"
-								ng-repeat="a in cCctr.entity.vpList track by a.id">
+								ng-repeat="a in cCctr.entity.Regular24Q4ChallanList track by a.id">
 								<td  style=" padding: 5px">{{$index+1}}</td>
 								<td>{{a.tds}}</td>
 								<td>{{a.surcharge}}</td>
@@ -328,8 +328,9 @@
 						</thead>
 						<tbody>
 							<tr role="row"
-								ng-repeat="a in cCctr.entity.Regular24Q4Deductee track by a.id">
-								<td role="cell" class="one" style=" padding: 5px">{{$index+1}}</td>
+								ng-repeat="a in cCctr.entity.Regular24Q4DeducteeList track by a.id">
+								<td role="cell" class="one" style=" padding: 5px">{{
+								$index+1}}</td>
 								<td>{{a.challanSrNo}}</td>
 								<td>{{a.employeeRefNo}}</td>
 								<td>{{a.panRefNo}}</td>
@@ -389,7 +390,7 @@
 								<th >Category</th>
 								<th >From Date Of Employment</th>
 								<th >ToDate Of Employment</th>
-								<th >GrossSalaryAsPerProvision</th>
+								<th >Gross Salary As Per Provision</th>
 								<th >Value Of Perquisites</th>
 								<th >Profit In Salary</th>
 								<th >Taxable Salary From CurrentEmp</th>
@@ -423,7 +424,7 @@
 								<th >Deduction Us 80TTA</th>
 								<th >Amount Deductible 80ccg</th>
 								<th >Any Other Deduction</th>
-								<th >TotalDeductionUnderChapterVIA</th>
+								<th >Total Deduction Under Chapter VIA</th>
                                  <th>Total Taxable Income</th>
                                  <th>Income Tax On TotalIncome</th>
                                  <th>Rebate Us 87A</th>
@@ -435,36 +436,36 @@
                                  <th>Reported Tds From Previous Employer</th>
                                  <th>Total Tds</th>
                                  <th>Short fallIn TaxDeduction</th>
-                                 <th>Whether TaxDeducted At HigherRate</th>
-                                 <th>CountOf PanOf Landlord</th>
-                                 <th>PanOfLandlord1</th>
-                                 <th>NameOfLandlord1</th>
-                                 <th>PanOfLandlord2</th>
-                                 <th>NameOfLandlord2</th>
-                                 <th>PanOfLandlord3</th>
-                                 <th>NameOfLandlord3</th>
+                                 <th>Whether Tax Deducted At Higher Rate</th>
+                                 <th>Count Of Pan Of Landlord</th>
+                                 <th>Pan Of Landlord1</th>
+                                 <th>Name Of Landlord1</th>
+                                 <th>Pan Of Landlord2</th>
+                                 <th>Name Of Landlord2</th>
+                                 <th>Pan Of Landlord3</th>
+                                 <th>Name Of Landlord3</th>
                                  <th>Pan Of Landlord4</th>
-                                 <th>NameOfLandlord4</th>
-                                 <th>WhetherInterestPaidToBeLender</th>
-                                 <th>CountOfPanOfLender</th>
-                                 <th>PanOfLender1</th>
-                                 <th>NameOfLender1</th>
-                                 <th>PanOfLender2</th>
-                                 <th>NameOfLender2</th>
-                                 <th>PanOfLender3</th>
-                                 <th>NameOfLender3</th>
-                                 <th>PanOfLender4</th>
-                                 <th>NameOfLender4</th>
-                                 <th>ContributionPaidByTrustees</th>
-                                 <th>SuperannuationFundFromDate</th>
-                                 <th>SuperannuationFundToDate</th>
-                                 <th>ContributionSuperannuationFund</th>
-                                 <th>AverageRateOfDeduction</th>
-                                 <th>TaxDeductedOfSuperannuationFund</th>
-                                 <th>GrossTotalIncomeincludingContribution</th>
+                                 <th>Name Of Landlord4</th>
+                                 <th>Whether Interest Paid To Be Lender</th>
+                                 <th>Count Of Pan Of Lender</th>
+                                 <th>Pan Of Lender1</th>
+                                 <th>Name Of Lender1</th>
+                                 <th>Pan Of Lender2</th>
+                                 <th>Name Of Lender2</th>
+                                 <th>Pan Of Lender3</th>
+                                 <th>Name Of Lender3</th>
+                                 <th>Pan Of Lender4</th>
+                                 <th>Name Of Lender4</th>
+                                 <th>Contribution Paid By Trustees</th>
+                                 <th>Super annuation Fund From Date</th>
+                                 <th>Super annuation Fund To Date</th>
+                                 <th>Contribution Super annuation Fund</th>
+                                 <th>Average Rate Of Deduction</th>
+                                 <th>Tax Deducted Of Super annuation Fund</th>
+                                 <th>Gross Total Income including Contribution</th>
                                  <th>Short Deduction</th>
-                                 <th>InterestOn Short Deduction</th>
-                                 <th>finantiol year</th>
+                                 <th>Interest On Short Deduction</th>
+                                 <th>Financial Year</th>
                                  <th>Quarter</th>
                                 
 								
@@ -473,7 +474,7 @@
 						</thead>
 						<tbody>
 							<tr role="row"
-								ng-repeat="a in cCctr.entity.Regular26QDeducteeList track by a.id">
+								ng-repeat="a in cCctr.entity.Regular24Q4SalaryList track by a.id">
 								<td role="cell" class="one" style=" padding: 5px">{{$index+1}}</td>
 								<td>{{a.srNo}}</td>
 								<td>{{a.pan}}</td>

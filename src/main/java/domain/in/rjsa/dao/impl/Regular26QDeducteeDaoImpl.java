@@ -51,6 +51,7 @@ public class Regular26QDeducteeDaoImpl  extends AbstractNewDao<Long, Regular26QD
           }
           
 		criteria.addOrder(Order.desc("paymentDate"));
+		
 		return (List< Regular26QDeductee>) criteria.list();
 	}
 }

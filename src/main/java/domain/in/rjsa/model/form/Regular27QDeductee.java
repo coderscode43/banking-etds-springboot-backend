@@ -69,8 +69,8 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	public String sectionCode;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "date")
-	
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@NotNull(message = "Date required field")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	public Date date;
 	@Column(name = "amountPaid")
 	@NotNull(message = "amount Paid is a required field")
@@ -98,8 +98,8 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	public Double totalTaxDeposited;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "dateOfDeduction")
-	
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@NotNull(message = "Date is a required field")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	public Date dateOfDeduction;
 	@Column(name = "rateAtWhichTaxDeducted")
 	@NotNull(message = "Rate At Which Tax Deducted is a required field")
@@ -130,12 +130,10 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	@Size(min=0, max=45, message="Email should be between 0 to 75 characters.")
 	public String emailId;
 	@Column(name = "contactNoOfDeductee")
-	
 	@NotNull(message = "contact No Of Deductee is a required field")
-	@Size(min=0, max=20, message="contact No  should be between 0 to 10 characters.")
+	@Size(min=0, max=10, message="contact No  should be between 0 to 10 characters.")
 	public String contactNoOfDeductee;
 	@Column(name = "addressOfDeductee")
-	
 	@NotNull(message = "address Of Deductee is a required field")
 	@Size(min=0, max=45, message="address Of Deductee length should be between 1 to 100 characters.")
 	public String addressOfDeductee;
@@ -143,9 +141,6 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	@NotNull(message = "tax Identification No is a required field")
 	@Digits(integer = 20, fraction = 0,message="Enter valid tax Identification No.tax Identification No. should not be greater than 12")
 	public Long taxIdentificationNo;
-	
-	
-	
 	@Column(name = "fy")
 	@NotNull(message = "Financial Year is a required field")
 	@Size(min=0, max=45, message="address Of Deductee length should be between 1 to 100 characters.")

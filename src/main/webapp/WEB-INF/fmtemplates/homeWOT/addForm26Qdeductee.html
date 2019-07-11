@@ -32,7 +32,7 @@
 														class="form-control" type="text" name="deducteeRefNo"
 														placeholder="Deductee Ref.No"
 														ng-model="cCctr.entity.deducteeRefNo"
-														autocomplete="off" ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$//" ng-maxlength="45" ng-required="true"
+														autocomplete="off" ng-pattern="/^[0-9]*$/" ng-maxlength="45" ng-required="true"
 														ng-model-options="{updateOn: 'blur'}" />
 														<span style="color: red" ng-show="form26qdeductee.submitted ||form26qdeductee.deducteeRefNo.$dirty && form26qdeductee.deducteeRefNo.$invalid">
 									<span class="error" ng-show="form26qdeductee.deducteeRefNo.$error.pattern">Please enter valid DeducteeRefNo. </span> 
@@ -84,7 +84,7 @@
 													<label>Deductee Name</label> <input class="form-control"
 														type="text" name="deducteeName" placeholder="Deductee Name"
 														ng-model="cCctr.entity.deducteeName" autocomplete="off"
-														ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/" ng-maxlength="45" ng-required="true" ng-model-options="{updateOn: 'blur'}" />
+														ng-pattern="/^[a-zA-Z0-9]*$/" ng-maxlength="45" ng-required="true" ng-model-options="{updateOn: 'blur'}" />
 														<span style="color: red" ng-show="form26qdeductee.submitted ||form26qdeductee.deducteeName.$dirty && form26qdeductee.deducteeName.$invalid">
 									<span class="error" ng-show="form26qdeductee.deducteeName.$error.pattern">Please enter valid DeducteeName. </span> 
 									<span class="error" ng-show="form26qdeductee.deducteeName.$error.maxlength">DeducteeName should not be greater than 45 characters.</span> 

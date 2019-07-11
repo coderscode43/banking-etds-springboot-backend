@@ -37,44 +37,44 @@
 						ng-click="cCctr.gotoListPage('homeSCHomepage','homeSCHomepage')"></li>
 					<li><a class="dropdown-toggle"
 						ng-click="cCctr.gotoListPage('branch','branch')"
-						data-toggle="dropdown">Branch</a></li>
+						data-toggle="dropdown" onclick="scrollWin()">Branch</a></li>
 					<li><a class="dropdown-toggle"
 						ng-click="cCctr.gotoListPage('zone','zone')"
-						data-toggle="dropdown">Zone</a></li>
+						data-toggle="dropdown" onclick="scrollWin()">Zone</a></li>
 					<li><a class="dropdown-toggle"
 						ng-click="cCctr.gotoListPage('vendor','vendor')"
-						data-toggle="dropdown">Vendor</a></li>
+						data-toggle="dropdown" onclick="scrollWin()">Vendor</a></li>
 
 
-					<li><a class="dropdown-toggle" data-toggle="dropdown" >Employee&nbsp;&nbsp;&nbsp;&nbsp;<span
+					<li><a class="dropdown-toggle" data-toggle="dropdown">Employee&nbsp;&nbsp;&nbsp;&nbsp;<span
 							class="caret"></span></a>
 
 						<ul class=" dropdown-menu forAnimate">
 							<li><a
-								ng-click="cCctr.gotoListPage('employee','employee')">Employee Details</a></li>
+								ng-click="cCctr.gotoListPage('employee','employee')" onclick="scrollWin()">Employee Details</a></li>
 							<li><a
-								ng-click="cCctr.gotoListPage('salary','salary')">Employee Salary Details</a></li>
+								ng-click="cCctr.gotoListPage('salary','salary')" onclick="scrollWin()">Employee Salary Details</a></li>
 
 						</ul>
 						
 						
 						</li>
 					<li><a class="dropdown-toggle" data-toggle="dropdown"
-						ng-click="cCctr.gotoListPage('salary','salary')">Salary&nbsp;&nbsp;&nbsp;&nbsp;<span
+						ng-click="cCctr.gotoListPage('salary','salary')" onclick="scrollWin()">Salary&nbsp;&nbsp;&nbsp;&nbsp;<span
 							class="caret"></span></a>
 
 						<ul class=" dropdown-menu forAnimate">
 							<li><a
-								ng-click="cCctr.gotoListPage('monthlySalary','monthlySalary')">Monthly
+								ng-click="cCctr.gotoListPage('monthlySalary','monthlySalary')" onclick="scrollWin()">Monthly
 									Salary Details</a></li>
 							<li><a
-								ng-click="cCctr.gotoListPage('yearlySalary','yearlySalary')">Yearly
+								ng-click="cCctr.gotoListPage('yearlySalary','yearlySalary')" onclick="scrollWin()">Yearly
 									Salary Details</a></li>
-							<li><a ng-click="cCctr.gotoListPage('asofNow','asofNow')">As
+							<li><a ng-click="cCctr.gotoListPage('asofNow','asofNow')" onclick="scrollWin()">As
 									of now Details</a></li>
 						</ul></li>
 
-					<li><a class="dropdown-toggle" data-toggle="dropdown">Pensioner
+					<li><a class="dropdown-toggle" data-toggle="dropdown" onclick="scrollWin()">Pensioner
 							&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span>
 					</a>
 						<ul class=" dropdown-menu forAnimate">
@@ -83,25 +83,25 @@
 
 
 							<li><a
-								ng-click="cCctr.gotoListPage('pensioner','pensioner')">Pensioner Details</a></li>
-							<li><a ng-click="cCctr.gotoListPage('pensionerSalary','pensionerSalary')">Pensioner Salary Details</a></li>
+								ng-click="cCctr.gotoListPage('pensioner','pensioner')" onclick="scrollWin()">Pensioner Details</a></li>
+							<li><a ng-click="cCctr.gotoListPage('pensionerSalary','pensionerSalary')" onclick="scrollWin()">Pensioner Salary Details</a></li>
 
 						</ul></li>
 
 
 
 					<li><a class="dropdown-toggle" data-toggle="dropdown"
-						ng-click="cCctr.gotoListPage('statementStatus','statementStatus')">Statement
+						ng-click="cCctr.gotoListPage('statementStatus','statementStatus')" onclick="scrollWin()">Statement
 							Status</a></li>
 					<li><a class="dropdown-toggle" data-toggle="dropdown"
-						ng-click="cCctr.gotoListPage('tokenNumber','tokenNumber')">Token
+						ng-click="cCctr.gotoListPage('tokenNumber','tokenNumber')" onclick="scrollWin()">Token
 							Number</a></li>
 
 					<li><a class="dropdown-toggle" data-toggle="dropdown"
-						ng-click="cCctr.gotoListPage('ghReturnStatus','ghReturnStatus')">Form
+						ng-click="cCctr.gotoListPage('ghReturnStatus','ghReturnStatus')" onclick="scrollWin()">Form
 							15G/15H Status </a></li>
 					<li><a class="dropdown-toggle" data-toggle="dropdown"
-						ng-click="cCctr.gotoListPage('misReport','misReport')">MIS
+						ng-click="cCctr.gotoListPage('misReport','misReport')" onclick="scrollWin()">MIS
 							Report</a></li>
 
 
@@ -111,9 +111,9 @@
 							Summary</a></li>
  -->
 					<li><a ng-click="cCctr.gotoListPage('logs','logs')"
-						class="dropdown-toggle" data-toggle="dropdown">Logs</a></li>
+						class="dropdown-toggle" data-toggle="dropdown" onclick="scrollWin()">Logs</a></li>
 
-					<li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Log
+					<li><a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="scrollWin()">Log
 							Out</a></li>
 
 
@@ -132,7 +132,50 @@
 
 
 
-
+<div id="successMsg" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-sm">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 style="color: green;">
+					<img src="./././static/img/success.png" height="30" width="30"><span
+						class="headingMsg"></span>
+				</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="msg" style="font-size: 18px;"></div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+			</div>
+		</div>
+	</div>
+</div>
+	<div id="errorMsg" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-sm">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 style="color:red;"><span class="blink_me"> <img src="./././static/img/errorNew.png" height="30" width="30"></span>&nbsp;Error</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="msg" style="font-size: 18px;">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+			</div>
+		</div>
+	</div>
+	</div>
 <!-- <div class="row">
 	<footer style="position:fixed; bottom: 0; left: 0; right: 0; width: 100%; background-color: #0F316D; color: white">
 		<div class="container">

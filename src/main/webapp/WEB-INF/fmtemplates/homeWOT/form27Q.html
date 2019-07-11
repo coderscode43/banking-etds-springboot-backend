@@ -63,7 +63,7 @@
 		<br>
 		<button class="btn btn-primary hidden visible-xs" type="button"
 			data-toggle="collapse" data-target="#collapseExample2"
-			aria-expanded="false" aria-controls="collapseExample">
+			aria-expanded="false" aria-controls="collapseExample" onclick="scrollWin()">
 			Search</button>
 
 		<div class="collapse dont-collapse-sm" id="collapseExample2">
@@ -152,10 +152,10 @@
 			<div class="row" id="hide">
 				<div class="col-md-3" style="margin-left: 80%; margin-top: -80px">
 					<button ng-click="cCctr.searchEntities(true,'form27Q')"
-						class="btn btn-success">Search</button>
+						class="btn btn-success" onclick="scrollWin()">Search</button>
 						</div>
 					<div class="modal-header" style="margin-left: 96%; margin-bottom: -20px" >
-					<button class="btn btn-Primary" data-toggle="modal" ng-click="cCctr.gotoListPage('addForm27QDeductee','addForm27QDeductee');">Add</button>
+					<button class="btn btn-Primary" data-toggle="modal" ng-click="cCctr.gotoListPage('addForm27QDeductee','addForm27QDeductee');" onclick="scrollWin()">Add</button>
 				</div>
 				</div>
 			
@@ -163,8 +163,8 @@
 			<div class="row" id="search">
 				<div class="col-md-3" id="search">
 					<button ng-click="cCctr.searchEntities(true,'form27Q')"
-						class="btn btn-success">Search</button>
-					<button type="button" class="btn btn-primary" data-toggle="modal" ng-click="cCctr.gotoListPage('addForm27QDeductee','addForm27QDeductee');">Add</button>
+						class="btn btn-success" onclick="scrollWin()">Search</button>
+					<button type="button" class="btn btn-primary" data-toggle="modal" ng-click="cCctr.gotoListPage('addForm27QDeductee','addForm27QDeductee');" onclick="scrollWin()">Add</button>
 				</div>
 			</div>
 		</div>
@@ -256,7 +256,7 @@
 						<td>{{a.quarter}}</td>
 						<td>{{a.tdaRateAsPerItActs}}</td>
 						<td>{{a.natureOfRemittance}}</td>
-						<td><a ng-click="cCctr.gotoDetailPage('form27Q',a.id,'detailForm27Q')" style="color: blue">Details</a></td>
+						<td><a ng-click="cCctr.gotoDetailPage('form27Q',a.id,'detailForm27Q')" style="color: blue" onclick="scrollWin()">Details</a></td>
 
 
 

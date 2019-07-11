@@ -655,7 +655,14 @@ App.controller(
 								}
 							}
 							
-							
+							self.date=function(date)
+							{
+								date=new Date( date.getTime() + Math.abs(date.getTimezoneOffset()*60000));
+								//var dateString =date.toUTCString();
+								//dateString = dateString.split(' ').slice(0, 4).join(' ');
+								return date;
+								
+							}	
 							
 							
 							

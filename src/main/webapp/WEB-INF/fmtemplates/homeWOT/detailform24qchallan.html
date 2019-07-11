@@ -185,15 +185,6 @@
   				
   				<div class="row" style="font-size: 13px;">
 					<div class="col-md-6">
-							<label>Date Of Deposition &nbsp;:</label> {{cCctr.entity.challan.dateOfDeposition | date:'dd-MM-yyyy'}}
-					</div>
-					<div class="col-md-6">
-							<label> Minor Head Of Challan &nbsp;:</label> {{cCctr.entity.challan.minorHeadOfChallan}}
-					</div>
-  				</div>
-  				
-  				<div class="row" style="font-size: 13px;">
-					<div class="col-md-6">
 							<label>Interest Allocated &nbsp;:</label> {{cCctr.entity.challan.interestAllocated}}
 					</div>
 					<div class="col-md-6">
@@ -257,11 +248,12 @@
 										type="text" name="tds" placeholder="TDS"
 										ng-model="cCctr.entity.challan.tds" autocomplete="off"
 										ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+										ng-maxlength="15"
 									ng-required="true"
 									ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="challanForm.submitted || challanForm.tds.$dirty && challanForm.tds.$invalid">
 									<span class="error" ng-show="challanForm.tds.$error.pattern">Enter valid TDS </span> 
-									<span class="error" ng-show="challanForm.tds.$error.maxlength">TDS should not be greater than 10 digits.</span> 
+									<span class="error" ng-show="challanForm.tds.$error.maxlength">TDS should not be greater than 15 digits.</span> 
 									<span class="error" ng-show="challanForm.tds.$error.required">TDS number is Required.</span>
 								</span>
 									<span class="error" id="tds"></span>
@@ -568,9 +560,9 @@
        	
       <div class="modal-footer">
        <!-- <button ng-click="allowanceForm.submitted=true;cCctr.updateData(allowanceForm.$valid,'form24Qsalary',cCctr.entity.salary,'closeU')" class="btn btn-success"  data-dismiss="modal">Save</button> -->
-       <button class="btn btn-success" ng-click="challanForm.submitted=true; cCctr.submit(challanForm.$valid,'')"
-								 >OK</button>
-					 <button class="btn btn-primary" data-dismiss="modal" style="margin-left: 10px">Back</button>
+       
+								 <button class="btn btn-success" data-dismiss="modal" >Ok</button>
+					 <button class="btn btn-danger" data-dismiss="modal" style="margin-left: 10px">Back</button>
       </div>
     
       </div>

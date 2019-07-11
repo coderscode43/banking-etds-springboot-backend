@@ -110,7 +110,7 @@
 				<div class="col-xs-12">
 					<div class="text-left">
 						<button class="btn btn-primary" data-toggle="modal"
-							onclick="test('#profile')">Edit</button>
+							onclick="test('#profile');scrollWin()">Edit</button>
 					</div>
 				</div>
 			</div>
@@ -289,8 +289,8 @@
 							
 							<div class="row" style="margin-left:55%">
 							<button ng-click="profileForm.submitted=true;cCctr.updateData(profileForm.$valid,'form27Q',cCctr.entity.deductee27,'closeU')"
-					 	class="btn btn-success">Save</button>&nbsp;&nbsp;
-					  <button  class="btn btn-danger" ng-click="cCctr.gotoListPage('form27Q','form27Q');" >Back</button>
+					 	class="btn btn-success" onclick="scrollWin()">Save</button>&nbsp;&nbsp;
+					  <button  class="btn btn-danger" ng-click="cCctr.gotoListPage('form27Q','form27Q');" onclick="scrollWin()">Back</button>
 							</div>
 							
 						</div>
@@ -912,8 +912,8 @@
                       <!--  <button ng-click="profileForm.submitted=true;cCctr.updateData(profileForm.$valid,'form27Q',cCctr.entity.deductee27,'closeU')"
 					 	class="btn btn-success" data-dismiss="modal">Save</button> -->
 					 	<button 
-						class="btn btn-success" data-dismiss="modal">Ok</button>
-					 <button class="btn btn-danger" data-dismiss="modal">Back</button>
+						class="btn btn-success" data-dismiss="modal" onclick="scrollWin()">Ok</button>
+					 <button class="btn btn-danger" data-dismiss="modal" onclick="scrollWin()">Back</button>
 					 
       </div>
 			</div>

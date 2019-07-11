@@ -109,14 +109,14 @@
 					<h6>
 						<b>From Date Of Tax Deposit</b>
 						<h6>
-							<input type="date" ng-model="cCctr.search.fromDate"
+							<input type="date" ng-model="cCctr.search.fromDate" ng-change="cCctr.search.fromDate=cCctr.date(cCctr.search.fromDate);"
 								class="form-control" placeholder="Date" style="width: 100%">
 				</div>
 				<div class="col-md-2">
 					<h6>
 						<b>To Date Of Tax Deposit</b>
 						<h6>
-							<input type="date" ng-model="cCctr.search.toDate"
+							<input type="date" ng-model="cCctr.search.toDate" ng-change="cCctr.search.toDate=cCctr.date(cCctr.search.toDate);"
 								class="form-control" placeholder="Date" style="width: 100%">
 				</div>
 
@@ -126,11 +126,11 @@
 
 		<div class="row" id="hide">
 			<div class="col-md-3" style="margin-left: 90%; margin-top: -40px">
-				<button ng-click="cCctr.searchEntities(true,'formchallan26Q')"
+				<button ng-click="cCctr.searchEntities(true,'formchallan26Q','formchallan26Q')"
 					class="btn btn-success">Search</button>
 			</div>
 			<div class="modal-header"
-				style="margin-left: 94%; margin-bottom: -20px">
+				style="margin-left: 95%; margin-bottom: -35px">
 				<button type="button" class="btn btn-primary" ng-click="cCctr.gotoListPage('addForm26Qchallan','addForm26Qchallan');">Add</button>
 			</div>
 

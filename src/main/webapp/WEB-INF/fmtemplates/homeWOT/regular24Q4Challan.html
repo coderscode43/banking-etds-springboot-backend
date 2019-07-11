@@ -111,7 +111,7 @@
 					<h6>
 						<b>From Date Of Deposition</b>
 						<h6>
-							<input type="date" ng-model="cCctr.search.fromDate"
+							<input type="date" ng-model="cCctr.search.fromDate" ng-change="cCctr.search.fromDate=cCctr.date(cCctr.search.fromDate);"
 								class="form-control" placeholder="Date" style="width: 100%">
 				</div>
 
@@ -119,7 +119,7 @@
 					<h6>
 						<b>To Date Of Deposition</b>
 						<h6>
-							<input type="date" ng-model="cCctr.search.toDate"
+							<input type="date" ng-model="cCctr.search.toDate" ng-change="cCctr.search.toDate=cCctr.date(cCctr.search.toDate);"
 								class="form-control" placeholder="Date" style="width: 100%">
 				</div>
 
@@ -171,7 +171,7 @@
 					<th>Fee</th>
 					<th>Others</th>
 					<th>Total tax Deposit</th>
-					<th>TDS Deposit Book Entry</th>
+					<th>By Book Entry</th>
 					<th>BSR Code</th>
 					<th>Challan Sr. No</th>
 					<th>Date Tax Deposit</th>
@@ -214,3 +214,4 @@
 	</div>
 
 </div>
+R

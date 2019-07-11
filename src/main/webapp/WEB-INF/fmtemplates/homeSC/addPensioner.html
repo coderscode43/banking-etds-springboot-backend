@@ -41,7 +41,7 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Father Name</label> <input class="form-control"
+								<label>Father Name*</label> <input class="form-control"
 									type="text" name="fatherName" placeholder="Father Name"
 									ng-model="cCctr.entity.fatherName" autocomplete="off"
 									ng-maxlength="100" ng-pattern="/^[ A-Za-z\s]*$/"
@@ -62,7 +62,7 @@
 
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>PAN</label> <input class="form-control" type="text"
+								<label>PAN*</label> <input class="form-control" type="text"
 									name="pan" placeholder="PAN" ng-model="cCctr.entity.pan"
 									autocomplete="off" ng-maxlength="10"
 									ng-pattern="/^([A-Za-z]{5}[0-9]{4}[A-Za-z]{1})*$/"
@@ -245,12 +245,12 @@
 					</div>
 
 					<div class="row">
-						<div class="col-md-6">
+						<div class="modal-footer" >
 							<button
 								ng-click="employeeDetailForm.submitted=true; cCctr.submit(employeeDetailForm.$valid,'pensioner')"
-								class="btn btn-success">Submit</button>
+								class="btn btn-success">Save</button>
 							<button ng-click="cCctr.gotoListPage('pensioner','pensioner');"
-								class="btn btn-primary">Cancel</button>
+								class="btn btn-danger">Back</button>
 						</div>
 					</div>
 				</form>

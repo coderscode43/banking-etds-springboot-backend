@@ -63,48 +63,50 @@ public class Regular26QChallan extends CommonModelAbstract{
 	@Digits(integer = 12, fraction = 2,message="The Others is not proper.Maximum 2 fractions allowed.")
 	public Double others;
 	@Column(name = "totalTaxDeposit")
-	@NotNull(message = "TotalTaxDeposit is a required field")
+	@NotNull(message = "Total Tax Deposit is a required field")
 	@Digits(integer = 12, fraction = 2,message="The TotalTaxDeposit is not proper.Maximum 2 fractions allowed.")
 	public Double totalTaxDeposit;
 	@Column(name = "tdsDepositBookEntry")
-	@NotNull(message = "TdsDepositBookEntry is a required field")
+	@NotNull(message = "Tds Deposit BookEntry is a required field")
 	@Size(min=0, max=45, message="TdsDepositBookEntry should be between 0 to 100 characters.")
 	public String tdsDepositBookEntry;
 	@Column(name = "bsrCode")
 	@NotNull(message = "BsrCode is a required field")
-	@Size(min=0, max=45, message="BsrCode length should not be more than 45 characters.")
+	@Size(min=0, max=45, message="Bsr Code length should not be more than 45 characters.")
 	public String bsrCode;
 	@Column(name = "challanSrNo")
-	@NotNull(message = "ChallanSrNo is a required field")
+	@NotNull(message = "Challan SrNo is a required field")
 	@Digits(integer = 25, fraction = 0,message="Enter valid Challan SrNo. Challan SrNo. should not be greater than 12")
 	public Long challanSrNo;
+	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "dateTaxDeposit")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-	@NotNull(message = "DateTaxDeposit is a required field")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+	@NotNull(message = "Date Tax Deposit is a required field")
 	public Date dateTaxDeposit;
+	
 	@Column(name = "minorHeadChallan")
-	@NotNull(message = "MinorHeadChallan is a required field")
-	@Size(min=0, max=45, message="MinorHeadChallan length should be between 1 to 25 characters.")
+	@NotNull(message = "Minor Head Challan is a required field")
+	@Size(min=0, max=45, message="MinorHeadChallan length should be 45 characters.")
 	public String minorHeadChallan;
 	@Column(name = "interestAllocated")
-	@NotNull(message = "InterestAllocated is a required field")
+	@NotNull(message = "Interest Allocated is a required field")
 	@Digits(integer = 12, fraction = 2,message="The InterestAllocated is not proper.Maximum 2 fractions allowed.")
 	public Double interestAllocated;
 	@Column(name = "otherAmtAllocated")
-	@NotNull(message = "OtherAmtAllocated is a required field")
+	@NotNull(message = "Other Amt Allocated is a required field")
 	@Digits(integer = 12, fraction = 2,message="The OtherAmtAllocated is not proper.Maximum 2 fractions allowed.")
 	public Double otherAmtAllocated;
 	@Column(name = "nilChallanIndicator")
-	@NotNull(message = "NilChallanIndicator is a required field")
-	@Size(min=0, max=45, message="NilChallanIndicator length should be between 1 to 25 characters.")
+	@NotNull(message = "Nil Challan Indicator is a required field")
+	@Size(min=0, max=45, message="NilChallanIndicator length should be 45 characters.")
 	public String nilChallanIndicator;
 	@Column(name = "fy")
 	@NotNull(message = "Fy is a required field")
-	@Size(min=0, max=45, message="Fy length should be between 1 to 25 characters.")
+	@Size(min=0, max=45, message="Fy length should be 45 characters.")
 	public String fy;
 	@Column(name = "quarter")
 	@NotNull(message = "Quarter is a required field")
-	@Size(min=0, max=45, message="Quarter length should be between 1 to 25 characters.")
+	@Size(min=0, max=45, message="Quarter length should be 45 characters.")
 	public String quarter;
 }

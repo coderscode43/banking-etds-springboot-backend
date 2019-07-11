@@ -1,15 +1,34 @@
 package domain.in.rjsa.model.wrapper;
 
 import java.util.List;
-
+import domain.in.rjsa.model.form.Regular24Q4Challan;
+import domain.in.rjsa.model.form.Regular24Q4Deductee;
+import domain.in.rjsa.model.form.Regular24Q4Salary;
+import domain.in.rjsa.model.form.Regular26QChallan;
 import domain.in.rjsa.model.form.Regular26QDeductee;
+import domain.in.rjsa.model.form.Regular27QChallan;
+import domain.in.rjsa.model.form.Regular27QDeductee;
 import domain.in.rjsa.model.form.RequestCorrection;
+import domain.in.rjsa.model.tds.CLIENTDETAILS;
+import domain.in.rjsa.model.tds.DEDUCTORDETAILS;
+import domain.in.rjsa.model.tds.GOVERNMENTDETAILS;
+import domain.in.rjsa.model.tds.RESPONSIBLEPERSONEDETAILS;
 import lombok.Data;
 
 @Data
 public class RequestCorrectionWrapper {
 
 	public List<Regular26QDeductee> Regular26QDeducteeList;
+	public List<Regular26QChallan> Regular26QChallanList;
+	public List<Regular24Q4Challan> Regular24Q4ChallanList;
+	public List<Regular24Q4Deductee> Regular24Q4DeducteeList;
+	public List<Regular24Q4Salary> Regular24Q4SalaryList;
 	public RequestCorrection reqCorrection;
+	public DEDUCTORDETAILS deductorDetails;
+	public RESPONSIBLEPERSONEDETAILS respersonDetails;
+	public GOVERNMENTDETAILS govtDetails;
+	public CLIENTDETAILS clientDetail;
+	public List<Regular27QChallan> regular27QChallan;
+	public List<Regular27QDeductee> regular27QDeductee;
 	
 }

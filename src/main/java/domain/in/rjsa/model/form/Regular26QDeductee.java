@@ -42,28 +42,28 @@ public class Regular26QDeductee extends CommonModelAbstract{
 	@NotNull(message = "ChallanSrNo is a required field")
 	public Long challanSrNo;
 	@Column(name = "deducteeRefNo")
-	@Size(min=0, max=45, message="Deductee RefNo should be between 1 to 25 characters.")
+	@Size(min=0, max=45, message="Deductee RefNo should be 45 characters.")
 	@NotNull(message = "Deductee Ref No is a required field")
 	public String deducteeRefNo;
 	@Column(name = "deducteeCode")
-	@Size(min=0, max=45, message="Deductee Code should be between 1 to 25 characters.")
+	@Size(min=0, max=45, message="Deductee Code should be 45 characters.")
 	@NotNull(message = "Deductee Code is a required field")
 	public String deducteeCode;
 	@Column(name = "deducteePan")
-	@Size(min=0, max=45, message="Deductee Pan should be between 1 to 25 characters.")
+	@Size(min=0, max=45, message="Deductee Pan should be 45 characters.")
 	@NotNull(message = "Deductee Pan is a required field")
 	public String deducteePan;
 	@Column(name = "deducteeName")
-	@Size(min=0, max=45, message="Deductee Name should be between 1 to 25 characters.")
+	@Size(min=0, max=45, message="Deductee Name should be 45 characters.")
 	@NotNull(message = "Deductee name is a required field")
 	public String deducteeName;
 	@Column(name = "sectionCode")
-	@Size(min=0, max=45, message="Section Code should be between 1 to 25 characters.")
+	@Size(min=0, max=45, message="Section Code should be 45 characters.")
 	@NotNull(message = "Section Code is a required field")
 	public String sectionCode;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "paymentDate")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	public Date paymentDate;
 	@Column(name = "paidAmt")
 	@Digits(integer = 12, fraction = 0,message="Enter valid Paid Amt it should not be greater than 12")
@@ -91,26 +91,26 @@ public class Regular26QDeductee extends CommonModelAbstract{
 	public Double totalTaxDeposit;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "deductDate")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	public Date deductDate;
 	@Column(name = "rateTaxDeduct")
 	@Digits(integer = 12, fraction = 0,message="Enter valid Rate Tax Deposit it should not be greater than 12")
 	@NotNull(message = "Rate Tax Deduct is a required field")
 	public Double rateTaxDeduct;
 	@Column(name = "remarks")
-	@Size(min=0, max=45, message="Section Code should be between 1 to 25 characters.")
+	@Size(min=0, max=45, message="Section Code should be 45 characters.")
 	@NotNull(message = "Remarks is a required field")
 	public String remarks;
 	@Column(name = "certificateNo")
-	@Size(min=0, max=45, message="Certificate No should be between 1 to 25 characters.")
+	@Size(min=0, max=45, message="Certificate No should be 45 characters.")
 	@NotNull(message = "Certificate No is a required field")
 	public String certificateNo;
 	@Column(name = "fy")
-	@Size(min=0, max=45, message="Fy should be between 1 to 25 characters.")
+	@Size(min=0, max=45, message="Fy should be 45 characters.")
 	@NotNull(message = "Fy is a required field")
 	public String fy;
 	@Column(name = "quarter")
-	@Size(min=0, max=45, message="Quarter should be between 1 to 25 characters.")
+	@Size(min=0, max=45, message="Quarter should be 45 characters.")
 	@NotNull(message = "Quarter is a required field")
 	public String quarter;
 }

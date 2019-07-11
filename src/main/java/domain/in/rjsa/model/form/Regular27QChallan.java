@@ -87,7 +87,7 @@ public class Regular27QChallan extends CommonModelAbstract{
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "taxDepositDate")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	@NotNull(message = "Date is required")
 	public Date taxDepositDate;
 	

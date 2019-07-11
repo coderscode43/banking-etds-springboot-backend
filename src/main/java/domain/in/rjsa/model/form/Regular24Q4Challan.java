@@ -70,14 +70,14 @@ public class Regular24Q4Challan extends CommonModelAbstract{
 	@Size(min=0, max=45, message="Invalid By Book Entry")
 	public String byBookEntry;
 	@Column(name = "bsrCode")
-	@Digits(integer = 12, fraction = 0,message="Invalid BSR Code")
-	public Long bsrCode;
+	@Size(min=0, max=45, message="Bsr Code length should not be more than 45 characters.")
+	public String bsrCode;
 	@Column(name = "challanSerialNo")
 	@Digits(integer = 12, fraction = 0,message="Invalid Challan serial number")
 	public Long challanSerialNo;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "dateOfDeposition")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	public Date dateOfDeposition;
 	@Column(name = "minorHeadOfChallan")
 	@Size(min=0, max=45, message="Invalid Minor Head Of Challan")

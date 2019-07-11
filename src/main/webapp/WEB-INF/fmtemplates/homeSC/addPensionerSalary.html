@@ -1,0 +1,457 @@
+				<div id="page-wrapper">
+						<div class="container-fluid">
+							<div class="row">
+								<h4><strong> Add Pensioner Salary Details </strong></h4>
+							</div>
+							      <div class="row">
+									<div class="col-md-12">
+				<form role="form" name="pensionerSalaryDetailForm">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Pensioners No</label> <input class="form-control"
+									type="text" name="pensionersNo" placeholder="Pensioner No"
+									ng-model="cCctr.entity.pensionersNo" autocomplete="off"
+									ng-maxlength="50" ng-required="true"
+									ng-model-options="{updateOn: 'blur'}" />
+
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Basic Salary</label> <input class="form-control" type="text"
+									name="basicSalary" placeholder="Basic Salary" ng-model="cCctr.entity.basicSalary"
+									autocomplete="off" ng-maxlength="100" ng-required="true"
+									ng-pattern="/^[ A-Za-z\s]*$/"
+									ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="pensionerSalaryDetailForm.submitted || pensionerSalaryDetailForm.basicSalary.$dirty && pensionerSalaryDetailForm.basicSalary.$invalid">
+									<span class="error"
+									ng-show="pensionerSalaryDetailForm.basicSalary.$error.pattern">Please
+										enter valid Name</span> <span class="error"
+									ng-show="pensionerSalaryDetailForm.basicSalary.$error.maxlength">Name
+										should not be greater than 25 digit.</span> <span class="error"
+									ng-show="pensionerSalaryDetailForm.basicSalary.$error.required">Name
+										No is Required.</span>
+								</span> <span class="error" id="basicSalary"></span>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>HRA</label> <input class="form-control"
+									type="text" name="hra" placeholder="HRA"
+									ng-model="cCctr.entity.hra" autocomplete="off"
+									ng-maxlength="100" ng-pattern="/^[ A-Za-z\s]*$/"
+									ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="pensionerSalaryDetailForm.submitted || pensionerSalaryDetailForm.hra.$dirty && pensionerSalaryDetailForm.hra.$invalid">
+									<span class="error"
+									ng-show="pensionerSalaryDetailForm.hra.$error.pattern">Please
+										enter valid Name</span> <span class="error"
+									ng-show="pensionerSalaryDetailForm.hra.$error.maxlength">Name
+										should not be greater than 25 digit.</span> <span class="error"
+									ng-show="pensionerSalaryDetailForm.hra.$error.required">Name
+										No is Required.</span>
+								</span> <span class="error" id="hra"></span>
+							</div>
+						</div>
+
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>DA</label> <input class="form-control" type="text"
+									name="da" placeholder="DA" ng-model="cCctr.entity.da"
+									autocomplete="off" ng-maxlength="10"
+									ng-pattern="/^([A-Za-z]{5}[0-9]{4}[A-Za-z]{1})*$/"
+									ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="pensionerSalaryDetailForm.submitted || pensionerSalaryDetailForm.da.$dirty && pensionerSalaryDetailForm.da.$invalid">
+									<span class="error"
+									ng-show="pensionerSalaryDetailForm.da.$error.pattern">Please
+										enter valid PAN. </span> <span class="error"
+									ng-show="pensionerSalaryDetailForm.da.$error.maxlength">PAN
+										should not be greater than 10 digits.</span>
+
+								</span> <span class="error" id="da"></span>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>CCA</label> <input class="form-control"
+									type="date" name="cca" placeholder="CCA"
+									ng-model="cCctr.entity.cca" autocomplete="off"
+									ng-maxlength="10" ng-pattern=""
+									ng-model-options="{updateOn: 'blur'}" />
+
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Special Allowance</label> <input class="form-control" 
+									type="text" name="specialAllowance" placeholder="Special Allowance"
+									ng-model="cCctr.entity.specialAllowance" autocomplete="off"
+									ng-maxlength="100" ng-required="true"
+									ng-pattern="/^[ A-Za-z\s]*$/"
+									ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="pensionerSalaryDetailForm.submitted || pensionerSalaryDetailForm.specialAllowance.$dirty && pensionerSalaryDetailForm.specialAllowance.$invalid">
+									<span class="error"
+									ng-show="pensionerSalaryDetailForm.specialAllowance.$error.pattern">Please
+										enter valid Name</span> <span class="error"
+									ng-show="pensionerSalaryDetailForm.specialAllowance.$error.maxlength">Name
+										should not be greater than 25 digit.</span> <span class="error"
+									ng-show="pensionerSalaryDetailForm.specialAllowance.$error.required">Name
+										No is Required.</span>
+								</span> <span class="error" id="specialAllowance"></span>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Travel Allowance</label> <input class="form-control" type="text"
+									name="travelAllowance" placeholder="Travel Allowance "
+									ng-model="cCctr.entity.travelAllowance" autocomplete="off"
+									ng-maxlength="10" ng-required="true"
+									ng-pattern="/^([0-9]{1})([0-9]{9})$/"
+									ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="pensionerSalaryDetailForm.submitted ||pensionerSalaryDetailForm.travelAllowance.$dirty && pensionerSalaryDetailForm.travelAllowance.$invalid">
+									<span class="error"
+									ng-show="pensionerSalaryDetailForm.travelAllowance.$error.pattern">Please
+										enter valid Mobile No..</span> <span class="error"
+									ng-show="pensionerSalaryDetailForm.travelAllowance.$error.maxlength">
+										Mobile No. should not be greater than 10 characters</span>
+
+								</span>
+
+							</div>
+
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Medical Allowance</label> <input class="form-control" type="text"
+									name="medicalAllowance" placeholder="Medical Allowance"
+									ng-model="cCctr.entity.medicalAllowance" autocomplete="off"
+									ng-maxlength="10" ng-pattern="/^([0-9]{1})([0-9]{9})$/"
+									ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="pensionerSalaryDetailForm.submitted ||pensionerSalaryDetailForm.medicalAllowance.$dirty && pensionerSalaryDetailForm.medicalAllowance.$invalid">
+									<span class="error"
+									ng-show="pensionerSalaryDetailForm.medicalAllowance.$error.pattern">Please
+										enter valid Mobile No..</span> <span class="error"
+									ng-show="pensionerSalaryDetailForm.medicalAllowance.$error.maxlength">
+										Mobile No. should not be greater than 10 characters</span>
+
+								</span>
+
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>EPF Employer Contribution</label> <input class="form-control" type="text"
+									name="epfEmployerContribution" placeholder="EPF Employer Contribution"
+									ng-model="cCctr.entity.epfEmployerContribution" autocomplete="off"
+									ng-maxlength="50" ng-required="true"
+									ng-pattern="/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})*$/"
+									ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="pensionerSalaryDetailForm.submitted ||pensionerSalaryDetailForm.epfEmployerContribution.$dirty && pensionerSalaryDetailForm.epfEmployerContribution.$invalid">
+									<span class="error"
+									ng-show="pensionerSalaryDetailForm.epfEmployerContribution.$error.pattern">Please
+										enter valid Email.</span> <span class="error"
+									ng-show="pensionerSalaryDetailForm.epfEmployerContribution.$error.maxlength">
+										Email should not be greater than 50 characters</span>
+
+								</span>
+
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>EPF Employee Contribution</label> <input class="form-control" type="text"
+									name="epfEmpContribution" placeholder="EPF Employee Contribution"
+									ng-model="cCctr.entity.epfEmpContribution" autocomplete="off"
+									ng-maxlength="50"
+									ng-pattern="/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})*$/"
+									ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="pensionerSalaryDetailForm.submitted ||pensionerSalaryDetailForm.epfEmpContribution.$dirty && pensionerSalaryDetailForm.epfEmpContribution.$invalid">
+									<span class="error"
+									ng-show="pensionerSalaryDetailForm.epfEmpContribution.$error.pattern">Please
+										enter valid Email.</span> <span class="error"
+									ng-show="pensionerSalaryDetailForm.epfEmpContribution.$error.maxlength">
+										Email should not be greater than 50 characters</span>
+
+								</span>
+
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Leave Enhancement</label> <input class="form-control"
+									type="text" name="leaveEnhancement" placeholder="Leave Enhancement"
+									ng-model="cCctr.entity.leaveEnhancement" autocomplete="off"
+									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Horanium</label> <input class="form-control" type="text"
+									name="horanium" placeholder="Horanium"
+									ng-model="cCctr.entity.horanium" autocomplete="off"
+									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Add Income</label> <input class="form-control"
+									type="text" name="addIncome" placeholder="Add Income"
+									ng-model="cCctr.entity.addIncome" autocomplete="off"
+									ng-maxlength="100" ng-required="true"
+									ng-pattern="/^[ A-Za-z\s]*$/"
+									ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="pensionerSalaryDetailForm.submitted || pensionerSalaryDetailForm.addIncome.$dirty && pensionerSalaryDetailForm.addIncome.$invalid">
+									<span class="error"
+									ng-show="pensionerSalaryDetailForm.addIncome.$error.pattern">Please
+										enter valid Name</span> <span class="error"
+									ng-show="pensionerSalaryDetailForm.addIncome.$error.maxlength">Name
+										should not be greater than 25 digit.</span> <span class="error"
+									ng-show="pensionerSalaryDetailForm.addIncome.$error.required">Name
+										No is Required.</span>
+								</span> <span class="error" id="addIncome"></span>
+							</div>
+						</div>
+						
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Car Perk</label> <input class="form-control"
+									type="text" name="carPerk" placeholder="Car Perk"
+									ng-model="cCctr.entity.carPerk" autocomplete="off"
+									ng-maxlength="100" ng-required="true"
+									ng-pattern="/^[ A-Za-z\s]*$/"
+									ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="pensionerSalaryDetailForm.submitted || pensionerSalaryDetailForm.carPerk.$dirty && pensionerSalaryDetailForm.carPerk.$invalid">
+									<span class="error"
+									ng-show="pensionerSalaryDetailForm.carPerk.$error.pattern">Please
+										enter valid Name</span> <span class="error"
+									ng-show="pensionerSalaryDetailForm.carPerk.$error.maxlength">Name
+										should not be greater than 25 digit.</span> <span class="error"
+									ng-show="pensionerSalaryDetailForm.carPerk.$error.required">Name
+										No is Required.</span>
+								</span> <span class="error" id="carPerk"></span>
+							</div>
+						</div>
+					</div>
+					
+					
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Loan Perk</label> <input class="form-control"
+									type="text" name="loanPerk" placeholder="Loan Perk"
+									ng-model="cCctr.entity.loanPerk" autocomplete="off"
+									ng-maxlength="100" ng-required="true"
+									ng-pattern="/^[ A-Za-z\s]*$/"
+									ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="pensionerSalaryDetailForm.submitted || pensionerSalaryDetailForm.loanPerk.$dirty && pensionerSalaryDetailForm.loanPerk.$invalid">
+									<span class="error"
+									ng-show="pensionerSalaryDetailForm.loanPerk.$error.pattern">Please
+										enter valid Name</span> <span class="error"
+									ng-show="pensionerSalaryDetailForm.loanPerk.$error.maxlength">Name
+										should not be greater than 25 digit.</span> <span class="error"
+									ng-show="pensionerSalaryDetailForm.loanPerk.$error.required">Name
+										No is Required.</span>
+								</span> <span class="error" id="loanPerk"></span>
+							</div>
+						</div>
+						
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>NPS Employer Contribution</label> <input class="form-control"
+									type="text" name="npsEmployerContribution" placeholder="NPS Employer Contribution"
+									ng-model="cCctr.entity.npsEmployerContribution" autocomplete="off"
+									ng-maxlength="100" ng-required="true"
+									ng-pattern="/^[ A-Za-z\s]*$/"
+									ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="pensionerSalaryDetailForm.submitted || pensionerSalaryDetailForm.npsEmployerContribution.$dirty && pensionerSalaryDetailForm.npsEmployerContribution.$invalid">
+									<span class="error"
+									ng-show="pensionerSalaryDetailForm.npsEmployerContribution.$error.pattern">Please
+										enter valid Name</span> <span class="error"
+									ng-show="pensionerSalaryDetailForm.npsEmployerContribution.$error.maxlength">Name
+										should not be greater than 25 digit.</span> <span class="error"
+									ng-show="pensionerSalaryDetailForm.npsEmployerContribution.$error.required">Name
+										No is Required.</span>
+								</span> <span class="error" id="npsEmployerContribution"></span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>NPS Employee Contribution</label> <input class="form-control"
+									type="text" name="npsEmpContribution" placeholder="NPS Employee Contribution"
+									ng-model="cCctr.entity.npsEmpContribution" autocomplete="off"
+									ng-maxlength="100" ng-required="true"
+									ng-pattern="/^[ A-Za-z\s]*$/"
+									ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="pensionerSalaryDetailForm.submitted || pensionerSalaryDetailForm.npsEmpContribution.$dirty && pensionerSalaryDetailForm.npsEmpContribution.$invalid">
+									<span class="error"
+									ng-show="pensionerSalaryDetailForm.npsEmpContribution.$error.pattern">Please
+										enter valid Name</span> <span class="error"
+									ng-show="pensionerSalaryDetailForm.npsEmpContribution.$error.maxlength">Name
+										should not be greater than 25 digit.</span> <span class="error"
+									ng-show="pensionerSalaryDetailForm.npsEmpContribution.$error.required">Name
+										No is Required.</span>
+								</span> <span class="error" id="npsEmpContribution"></span>
+							</div>
+						</div>
+						
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>TDS</label> <input class="form-control"
+									type="text" name="tds" placeholder="TDS"
+									ng-model="cCctr.entity.tds" autocomplete="off"
+									ng-maxlength="100" ng-required="true"
+									ng-pattern="/^[ A-Za-z\s]*$/"
+									ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="pensionerSalaryDetailForm.submitted || pensionerSalaryDetailForm.tds.$dirty && pensionerSalaryDetailForm.tds.$invalid">
+									<span class="error"
+									ng-show="pensionerSalaryDetailForm.tds.$error.pattern">Please
+										enter valid Name</span> <span class="error"
+									ng-show="pensionerSalaryDetailForm.tds.$error.maxlength">Name
+										should not be greater than 25 digit.</span> <span class="error"
+									ng-show="pensionerSalaryDetailForm.tds.$error.required">Name
+										No is Required.</span>
+								</span> <span class="error" id="tds"></span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Other Income</label> <input class="form-control"
+									type="text" name="otherIncome" placeholder="Other Income"
+									ng-model="cCctr.entity.otherIncome" autocomplete="off"
+									ng-maxlength="100" ng-required="true"
+									ng-pattern="/^[ A-Za-z\s]*$/"
+									ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="pensionerSalaryDetailForm.submitted || pensionerSalaryDetailForm.otherIncome.$dirty && pensionerSalaryDetailForm.otherIncome.$invalid">
+									<span class="error"
+									ng-show="pensionerSalaryDetailForm.otherIncome.$error.pattern">Please
+										enter valid Name</span> <span class="error"
+									ng-show="pensionerSalaryDetailForm.otherIncome.$error.maxlength">Name
+										should not be greater than 25 digit.</span> <span class="error"
+									ng-show="pensionerSalaryDetailForm.otherIncome.$error.required">Name
+										No is Required.</span>
+								</span> <span class="error" id="otherIncome"></span>
+							</div>
+						</div>
+						
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Month</label> <input class="form-control"
+									type="text" name="month" placeholder="Month"
+									ng-model="cCctr.entity.month" autocomplete="off"
+									ng-maxlength="100" ng-required="true"
+									ng-pattern="/^[ A-Za-z\s]*$/"
+									ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="pensionerSalaryDetailForm.submitted || pensionerSalaryDetailForm.month.$dirty && pensionerSalaryDetailForm.month.$invalid">
+									<span class="error"
+									ng-show="pensionerSalaryDetailForm.month.$error.pattern">Please
+										enter valid Name</span> <span class="error"
+									ng-show="pensionerSalaryDetailForm.month.$error.maxlength">Name
+										should not be greater than 25 digit.</span> <span class="error"
+									ng-show="pensionerSalaryDetailForm.month.$error.required">Name
+										No is Required.</span>
+								</span> <span class="error" id="month"></span>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Financial Year</label> <input class="form-control"
+									type="text" name="fy" placeholder="Fy"
+									ng-model="cCctr.entity.fy" autocomplete="off"
+									ng-maxlength="100" ng-required="true"
+									ng-pattern="/^[ A-Za-z\s]*$/"
+									ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="pensionerSalaryDetailForm.submitted || pensionerSalaryDetailForm.fy.$dirty && pensionerSalaryDetailForm.fy.$invalid">
+									<span class="error"
+									ng-show="pensionerSalaryDetailForm.fy.$error.pattern">Please
+										enter valid Name</span> <span class="error"
+									ng-show="pensionerSalaryDetailForm.fy.$error.maxlength">Name
+										should not be greater than 25 digit.</span> <span class="error"
+									ng-show="pensionerSalaryDetailForm.fy.$error.required">Name
+										No is Required.</span>
+								</span> <span class="error" id="fy"></span>
+							</div>
+						</div>
+						</div>
+					
+					
+					
+
+					<div class="row">
+						<div class="modal-footer">
+							<button
+								ng-click="pensionerSalaryDetailForm.submitted=true; cCctr.submit(pensionerSalaryDetailForm.$valid,'pensionerSalary')"
+								class="btn btn-success">Save</button>
+							<button ng-click="cCctr.gotoListPage('pensionerSalary','pensionerSalary');"
+								class="btn btn-danger">Back</button>
+						</div>
+					</div>
+				</form>
+
+			</div>
+				</div>
+				</div>
+				</div>
+										    
+										    
+										    
+										    
+										    
+										    
+										    
+										    
+										  
+											      
+								                   
+										   		   
+										    
+										    	   
+										    	
+										    	  
+					
+					

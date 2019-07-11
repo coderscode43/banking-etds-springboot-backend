@@ -17,9 +17,9 @@ import domain.in.rjsa.model.form.VendorPayment;
 
 @Repository("vendorPaymentDao")
 public class VendorPaymentDaoImpl extends AbstractNewDao<Long, VendorPayment> implements VendorPaymentDao{
+
 	
-	
-	@SuppressWarnings("unchecked")
+	@Override
 	public List<VendorPayment> search(HashMap entity, Long clientId) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.

@@ -72,7 +72,7 @@
 						<h6>
 							<b>From Date</b>
 							<h6>
-								<input type="date" ng-model="cCctr.search.fromDate"
+								<input type="date" ng-model="cCctr.search.fromDate" ng-change="cCctr.search.fromDate=cCctr.date(cCctr.search.fromDate);"
 									class="form-control" placeholder="From Date"
 									style="width: 100%">
 					</div>
@@ -81,7 +81,7 @@
 							<h6>
 								<b>To Date </b>
 								<h6>
-									<input type="date" ng-model="cCctr.search.toDate"
+									<input type="date" ng-model="cCctr.search.toDate" ng-change="cCctr.search.toDate=cCctr.date(cCctr.search.toDate);"
 										class="form-control" placeholder="To Date" style="width: 100%">
 						</div>
 						<div class="row">
@@ -121,7 +121,7 @@
 		<div class="row">
 			<div class="table-responsive">
 
-				<table class="  table-bordered table-hover table-striped"
+				<table class="table table-bordered table-hover table-striped"
 					role="table"
 					style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
 					<thead>

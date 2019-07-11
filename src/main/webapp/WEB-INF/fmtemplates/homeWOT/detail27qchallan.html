@@ -110,7 +110,7 @@
 				<div class="col-xs-12">
 					<div class="text-left">
 						<button class="btn btn-primary" data-toggle="modal"
-							onclick="test('#profile')">Edit</button>
+							onclick="test('#profile');scrollWin()">Edit</button>
 					</div>
 				</div>
 			</div>
@@ -238,10 +238,10 @@
 								<div class="col-md-6">
 								<button
 									ng-click="profileForm.submitted=true;cCctr.updateData(profileForm.$valid,'regular27QChallan',cCctr.entity.challan27,'closeU')"
-									class="btn btn-success" data-dismiss="modal">Save</button>&nbsp;&nbsp;
+									class="btn btn-success" data-dismiss="modal" onclick="scrollWin()">Save</button>&nbsp;&nbsp;
 								<button
 									ng-click="cCctr.gotoListPage('regular27QChallan','regular27QChallan');"
-				class="btn btn-danger">Back</button>
+				class="btn btn-danger" onclick="scrollWin()">Back</button>
 									
 								
 								</div>
@@ -560,8 +560,8 @@
 										
 		                      <div class="modal-footer">
 								<!--  -->
-								<button class="btn btn-success" data-dismiss="modal">OK</button>
-								<button class="btn btn-danger" data-dismiss="modal">Back</button>
+								<button class="btn btn-success" data-dismiss="modal" onclick="scrollWin()">OK</button>
+								<button class="btn btn-danger" data-dismiss="modal" onclick="scrollWin()">Back</button>
 							</div>
 						</div>
 					</div>

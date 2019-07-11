@@ -64,7 +64,7 @@
 		<br>
 		<button class="btn btn-primary hidden visible-xs" type="button"
 			data-toggle="collapse" data-target="#collapseExample3"
-			aria-expanded="false" aria-controls="collapseExample">
+			aria-expanded="false" aria-controls="collapseExample" onclick="scrollWin()">
 			Search</button>
 		<div class="collapse dont-collapse-sm" id="collapseExample3">
 			<div class="row">
@@ -124,7 +124,7 @@
 
 					<div class="col-md-3" style="margin-left: 70%; margin-top: -45px">
 						<button ng-click="cCctr.searchEntities(true,'form24Qsalary')"
-							class="btn btn-success">Search</button>
+							class="btn btn-success" onclick="scrollWin()">Search</button>
 					</div>
 					
 
@@ -140,7 +140,7 @@
 				<div class="row">
 					<div class="col-md-3" id="search">
 						<button ng-click="cCctr.searchEntities(true,'form24Qsalary')"
-							class="btn btn-success">Search</button>
+							class="btn btn-success" onclick="scrollWin()">Search</button>
 						
 					</div>
 				</div>
@@ -148,7 +148,7 @@
 				
 				 <div class="row">
 	         	  <div  style="float:right">	
-	                    <button type="button" class="btn btn-primary" ng-click="cCctr.gotoListPage('addform24Qsalary','addform24Qsalary');">Add</button>
+	                    <button type="button" class="btn btn-primary" ng-click="cCctr.gotoListPage('addform24Qsalary','addform24Qsalary');" onclick="scrollWin()">Add</button>
 	              </div>					
               </div>
 				
@@ -158,7 +158,7 @@
 
 
 	<div class="row">
-		<div class="table-responsive">
+		<!-- <div class="table-responsive"> -->
 
 			<table class=" table table-bordered table-hover table-striped"
 				role="table"
@@ -343,7 +343,7 @@
 						<td>{{a.grossTotalIncomeincludingContribution}}</td>
 						<td>{{a.fy}}</td>
 						<td>{{a.quarter}}</td>
-						<td><a ng-click="cCctr.gotoDetailPage('form24Qsalary',a.id,'detailForm24Q4')" style="color: blue">Details</a></td>
+						<td><a ng-click="cCctr.gotoDetailPage('form24Qsalary',a.id,'detailForm24Q4')" style="color: blue" onclick="scrollWin()">Details</a></td>
 
 						<!-- <td>{{a.total-a.amountPaid}}</td> -->
 
@@ -369,7 +369,7 @@
           <p>This is a small modal.</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal" onclick="scrollWin()">Close</button>
         </div>
       </div>
     </div>

@@ -1,0 +1,126 @@
+<style>
+ 
+ 
+    @media only screen and (max-width: 1000px) {
+        .one{
+            display: none;
+          
+        }
+    }
+    
+ @media only screen and (max-width: 1000px) {
+        .two{
+         
+            padding:8px;
+        }
+    }
+        
+   @media only screen and (min-width:600px) {
+            #three{
+                display: none;
+                max-height: 0;
+                overflow: hidden;
+            }
+        }
+        
+       @media only screen and (min-width:1000px) {
+            #search{
+             
+             margin-left:45%;
+             margin-top:2px;
+             display:none;
+            }
+        }
+        
+            @media only screen and (max-width: 1000px) {
+      #hide{
+            display: none;
+          
+        }
+    }
+     .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background-color: whitesmoke;
+}
+@media (min-width: 768px) {
+  .collapse.dont-collapse-sm {
+    display: block;
+    height: auto !important;
+    visibility: visible;
+  }
+}
+ 
+ </style>
+
+
+
+
+
+	<div class="container-fluid">
+    <div class="col-md-12 " style="padding-left: 0px;font-size: 12pxp; margin-top:3%" >
+	<div class="heading">Ticket Details</div>
+	</div>
+		
+	  <br>
+	      <button class="btn btn-primary hidden visible-xs" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample" >
+             Search 
+          </button>
+
+ </div>
+
+              <div class="row">
+	         	  <div  style="float:right">	
+	                    <button class="btn btn-Primary" data-toggle="modal" ng-click="cCctr.gotoListPage('addTicket','addTicket');">Add</button>
+	              </div>					
+              </div>
+ 					
+					<!-- 	<div class="table-responsive"> -->
+
+							<table class=" table table-bordered table-hover table-striped" role="table"
+								style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+							<thead>
+							
+							 <tr>
+							  <thead role="rowgroup">
+							      <tr role="row" style="height:40px;background-color:#81b7db">
+							      <th width="10%">Sr. No.</th>
+							      <th width="10%">Description</th>
+							      <th width="10%">Attachment</th>
+							      <th width="10%">Financial Year</th>
+							      <th width="10%">Quarter</th>
+							      <th width="10%" >Form</th>
+							      <th width="10%" >Date Of Opening</th>
+							      <th width="10%" >Date Of Change</th>
+							      <th width="10%">Type</th>
+							      <th width="10%" >Status</th>
+							      <th width="10%" >Remarks</th>
+							     <th width="10%" >Action</th>
+                                </tr>
+                               </thead>
+								<tbody>
+									<tr role="row" ng-repeat="a in cCctr.getEntityListData() track by a.id">
+										<td role="cell" class="one" style="padding:5px">{{$index+1}}</td>
+											<td>{{a.description}}</td>
+											<td>{{a.attachment}}</td>
+											<td>{{a.fy}}</td>
+											<td>{{a.quarter}}</td>
+											<td>{{a.form}}</td>
+											<td>{{a.dateOfOpening | date:'dd-MM-yyyy'}}</td>
+											<td>{{a.dateOfChange | date:'dd-MM-yyyy'}}</td>
+											<td>{{a.type}}</td>
+											<td>{{a.status}}</td>
+											<td>{{a.remarks}}</td>
+											
+											<td><a
+							                ng-click="cCctr.gotoDetailPage('ticket',a.id,'detailticket');"><font
+								          color="blue" style="font-size: 13px">Detail</font></a></td>
+										<!-- <td>{{a.total-a.amountPaid}}</td> -->
+										
+									</tr>								
+								</tbody>
+							</table>
+							</div>
+					
+					
+
+
+

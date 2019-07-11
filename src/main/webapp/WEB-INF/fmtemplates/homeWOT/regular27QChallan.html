@@ -63,7 +63,7 @@
 	<br>
 	<button class="btn btn-primary hidden visible-xs" type="button"
 		data-toggle="collapse" data-target="#collapseExample2"
-		aria-expanded="false" aria-controls="collapseExample">Search</button>
+		aria-expanded="false" aria-controls="collapseExample" onclick="scrollWin()">Search</button>
 	<div class="collapse dont-collapse-sm" id="collapseExample2">
 		<div class="row">
 			<div class="form-group">
@@ -131,18 +131,18 @@
 		<div class="row" id="hide">
 			<div class="col-md-3" style="margin-left: 90%; margin-top: -48px">
 				<button ng-click="cCctr.searchEntities(true,'regular27QChallan')"
-					class="btn btn-success">Search</button>
+					class="btn btn-success" onclick="scrollWin()">Search</button>
 			</div>
 			<div class="modal-header"
 				style="margin-left: 94%; margin-bottom: -20px">
-				<button class="btn btn-Primary" data-toggle="modal" ng-click="cCctr.gotoListPage('add27challan','add27challan');">Add</button>
+				<button class="btn btn-Primary" data-toggle="modal" ng-click="cCctr.gotoListPage('add27challan','add27challan');" onclick="scrollWin()">Add</button>
 			</div>
 
 			<div class="row">
 				<div class="col-md-3" id="search">
 					<button ng-click="cCctr.searchEntities(true,'regular27QChallan')"
-						class="btn btn-success">Search</button>
-					<button class="btn btn-Primary" data-toggle="modal" ng-click="cCctr.gotoListPage('add27challan','add27challan');">Add</button>
+						class="btn btn-success" onclick="scrollWin()">Search</button>
+					<button class="btn btn-Primary" data-toggle="modal" ng-click="cCctr.gotoListPage('add27challan','add27challan');" onclick="scrollWin()">Add</button>
 				</div>
 			</div>
 		</div>
@@ -207,7 +207,7 @@
 					<td>{{a.nilChallanIndicator}}</td>
 					<td>{{a.fy}}</td>
 					<td>{{a.quarter}}</td>
-                     <td><a ng-click="cCctr.gotoDetailPage('regular27QChallan',a.id,'detail27qchallan')" style="color: blue">Details</a></td>
+                     <td><a ng-click="cCctr.gotoDetailPage('regular27QChallan',a.id,'detail27qchallan')" style="color: blue" onclick="scrollWin()">Details</a></td>
 				</tr>
 
 			</tbody>

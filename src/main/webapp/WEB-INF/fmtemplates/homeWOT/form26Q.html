@@ -60,7 +60,7 @@
 	<br>
 	<button class="btn btn-primary hidden visible-xs" type="button"
 		data-toggle="collapse" data-target="#collapseExample2"
-		aria-expanded="false" aria-controls="collapseExample">Search</button>
+		aria-expanded="false" aria-controls="collapseExample" onclick="scrollWin()">Search</button>
 	<div class="collapse dont-collapse-sm" id="collapseExample2">
 		<div class="row">
 			<div class="form-group">
@@ -146,7 +146,7 @@
 		<div class="row" id="hide">
 			<div class="col-md-3" style="margin-left: 80%; margin-top: -90px">
 				<button ng-click="cCctr.searchEntities(true,'form26Q')"
-					class="btn btn-success">Search</button>
+					class="btn btn-success" onclick="scrollWin()">Search</button>
 			</div>
 
 			<div class="row"></div>
@@ -158,8 +158,8 @@
 			<div class="row">
 				<div class="col-md-3" id="search">
 					<button ng-click="cCctr.searchEntities(true,'form26Q')"
-						class="btn btn-success">Search</button>
-					<button type="button" class="btn btn-primary" ng-click="cCctr.gotoListPage('addForm26Qdeductee','addForm26Qdeductee');">Add</button>
+						class="btn btn-success" onclick="scrollWin()">Search</button>
+					<button type="button" class="btn btn-primary" ng-click="cCctr.gotoListPage('addForm26Qdeductee','addForm26Qdeductee');" onclick="scrollWin()">Add</button>
 				</div>
 			</div>
 		</div>
@@ -199,7 +199,7 @@
 				
 				<th width="10%">FY</th>
 				<th width="10%">Quarter</th>
-				<th></th>
+				<th>Action</th>
 
 			</tr>
 		</thead>
@@ -231,7 +231,7 @@
 				<td>{{a.quarter}}</td>
 
 
-				<td><a ng-click="cCctr.gotoDetailPage('form26Q',a.id,'detailFormDeductee26Q')" style="color: blue">Details</a></td>
+				<td><a ng-click="cCctr.gotoDetailPage('form26Q',a.id,'detailFormDeductee26Q')" style="color: blue" onclick="scrollWin()">Details</a></td>
 				<!-- <td>{{a.total-a.amountPaid}}</td> -->
 
 			</tr>

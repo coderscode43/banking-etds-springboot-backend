@@ -67,7 +67,7 @@
 	</div>
 		
 	  <br>
-	      <button class="btn btn-primary hidden visible-xs" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+	      <button class="btn btn-primary hidden visible-xs" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample" onclick="scrollWin()">
              Search 
           </button>
   <div class="collapse dont-collapse-sm" id="collapseExample2"> 
@@ -112,7 +112,7 @@
 	             <div class="row" id="hide" >
 	         	  <div class="col-md-3"  style="margin-left:85%;margin-top:-70px">	
 	                          <button ng-click="cCctr.searchEntities(true,'pensioner')"
-									class="btn btn-success" >Search</button>
+									class="btn btn-success" onclick="scrollWin()">Search</button>
 	                 </div>	
 	                				
   </div>
@@ -120,7 +120,7 @@
    <div class="row" id="search" >
 	         	  <div class="col-md-3" id="search">	
 	                          <button ng-click="cCctr.searchEntities(true,'pensioner')"
-									class="btn btn-success">Search</button>
+									class="btn btn-success" onclick="scrollWin()">Search</button>
 	                 </div>					
   </div>
   </div>
@@ -136,7 +136,7 @@
  					<div class="row">
 					<!-- 	<div class="table-responsive"> -->
 
-							<table class="  table-bordered table-hover table-striped" role="table"
+							<table class=" table table-bordered table-hover table-striped" role="table"
 								style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
 
 
@@ -190,7 +190,7 @@
 											<td>{{a.bankName}}</td>
 											<td><a
 							                ng-click="cCctr.gotoDetailPage('pensioner',a.id,'detailpensioner');"><font
-								          color="blue" style="font-size: 13px">Detail</font></a></td>			
+								          color="blue" style="font-size: 13px" onclick="scrollWin()">Detail</font></a></td>			
 										<!-- <td>{{a.total-a.amountPaid}}</td> -->
 										
 									</tr>

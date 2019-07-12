@@ -1,5 +1,12 @@
 <br>
 <br>
+  <div class="col-md-12 " style="padding-left:2%;font-size: 12pxp; margin-top:2%" >
+	      <div class="heading">
+	    Edit Vendor Payment Detail
+	     </div>
+	  </div>
+	  <br>
+	  <br>
  <div class="container" ng-init="cCctr.entity=cCctr.getEntityData();">
   <form role="form" name="vendorDetailForm">
 	<div class="row">
@@ -122,6 +129,10 @@
 	<button
 						ng-click="vendorDetailForm.submitted=true;cCctr.updateData(vendorDetailForm.$valid,'vendorPayment',cCctr.entity.vendorPayment,'closeU')"
 						class="btn btn-success">Save</button>
+						
+						
+						
+						<button class="btn btn-danger"ng-click="cCctr.gotoListPage('vendorPayment','vendorPayment');" onclick="scrollWin()">Back</button>
 						</form>
 						</div>
 	             			

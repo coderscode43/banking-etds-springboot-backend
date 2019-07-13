@@ -23,6 +23,7 @@
             								md-selected-item-change="cCctr.getVendorDetail1(cCctr.entity.vendorNo,'vendorPayment')"
             								md-delay="2000"
             								placeholder="Vendor NO">
+            								
           								<md-item-template>
             								<span >{{item}}</span>
           								</md-item-template>
@@ -119,7 +120,13 @@
 									ng-model="cCctr.entity.invoiceDate" autocomplete="off"
 									ng-maxlength="50" ng-required="true"
 									ng-model-options="{updateOn: 'blur'}" />
-
+									<span
+									style="color: red"
+									ng-show="vendorPaymentDetailForm.submitted || vendorPaymentDetailForm.invoiceDate.$dirty && vendorPaymentDetailForm.invoiceDate.$invalid">
+									<span class="error"
+									ng-show="vendorPaymentDetailForm.invoiceDate.$error.required">Date
+										 is Required.</span>
+									</span>
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -287,6 +294,9 @@
 										enter valid Income Tax TDS.</span> <span class="error"
 									ng-show="vendorPaymentDetailForm.incomeTaxTds.$error.maxlength">Income
 										Tax TDS should not be greater than 50 characters</span>
+										<span class="error"
+									ng-show="vendorPaymentDetailForm.incomeTaxTds.$error.required">Please Enter Income
+										Tax TDS </span>
 
 								</span>
 
@@ -309,6 +319,9 @@
 										enter valid GST TDS.</span> <span class="error"
 									ng-show="vendorPaymentDetailForm.gstTds.$error.maxlength">GST
 										TDS should not be greater than 50 characters</span>
+										 <span class="error"
+									ng-show="vendorPaymentDetailForm.gstTds.$error.required">Please Enter GST
+										TDS </span>
 
 								</span> <span class="error" id="gstTds"></span>
 							</div>

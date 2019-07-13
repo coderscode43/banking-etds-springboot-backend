@@ -49,7 +49,7 @@ public class VendorPayment extends CommonModelAbstract{
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "paymentDate")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd 'T'HH:mm:ss.SSSZ")
 	public Date paymentDate;
 	
 	@Column(name = "paymentMode")

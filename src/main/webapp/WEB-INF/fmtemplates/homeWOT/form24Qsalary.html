@@ -1,4 +1,155 @@
 <style>
+
+
+
+
+ /*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+	@media
+	  only screen 
+    and (max-width: 760px), (min-device-width: 768px) 
+    and (max-device-width: 1024px)  {
+
+		/* Force table to not be like tables anymore */
+		table, thead, tbody, th, td, tr {
+			display: block;
+		}
+
+		/* Hide table headers (but not display: none;, for accessibility) */
+		thead tr {
+			position: absolute;
+			top: -9999px;
+			left: -9999px;
+		}
+
+    tr {
+      margin: 0 0 1rem 0;
+    }
+      
+    tr:nth-child(odd) {
+      background: #ccc;
+    }
+    
+		td {
+			/* Behave  like a "row" */
+			border: none;
+			border-bottom: 1px solid #eee;
+			position: relative;
+			padding-left: 50%;
+		}
+
+		td:before {
+			/* Now like a table header */
+			position: absolute;
+			/* Top/left values mimic padding */
+			top: 0;
+			left: 6px;
+			width: 45%;
+			padding-right: 10px;
+			white-space: nowrap;
+		}
+
+		/*
+		Label the data
+    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+		*/
+		td:nth-of-type(1):before { content: "Sr. No."; }
+		td:nth-of-type(2):before { content: "Pan"; }
+		td:nth-of-type(3):before { content: "Pan Ref. No."; }
+		td:nth-of-type(4):before { content: "Name"; }
+		td:nth-of-type(5):before { content: "Category"; }
+		td:nth-of-type(6):before { content: "From Date of Employment"; }
+		td:nth-of-type(7):before { content: "To Date of Employment"; }
+		td:nth-of-type(8):before { content: "Gross Salary As PerProvision"; }
+		td:nth-of-type(9):before { content: "Value Of Perquisites"; }
+		td:nth-of-type(10):before { content: "Profit InSalary"; }
+		td:nth-of-type(11):before { content: "Taxable Salary From Current Emp"; }
+		td:nth-of-type(12):before { content: "Reported Salary From Other Emp"; }
+		td:nth-of-type(13):before { content: "Total Amount Of Salary "; }
+		td:nth-of-type(14):before { content: "Leave Travel Allowance"; }
+		td:nth-of-type(15):before { content: "Gratuity"; }
+		td:nth-of-type(16):before { content: "Commuted Value Of Pension"; }
+		td:nth-of-type(17):before { content: "Leave Encashment Salary"; }
+		td:nth-of-type(18):before { content: "HouseRent Allowance"; }
+		td:nth-of-type(19):before { content: "Any Other Exemptionus10"; }
+		td:nth-of-type(20):before { content: "Total Amount Of Exemption"; }
+		td:nth-of-type(21):before { content: "Entertainment Allowance"; }
+		td:nth-of-type(22):before { content: "PTax"; }
+		td:nth-of-type(23):before { content: "Standard Deduction"; }
+		td:nth-of-type(24):before { content: "Total Deduction Under Section16"; }
+		td:nth-of-type(25):before { content: "Income From Salary"; }
+		td:nth-of-type(26):before { content: "Income From House Property"; }
+		td:nth-of-type(27):before { content: "Income From Other Sources"; }
+		td:nth-of-type(28):before { content: "Gross Total Income"; }
+		td:nth-of-type(29):before { content: "Deduction Us80C"; }
+		td:nth-of-type(30):before { content: "Deduction Us80CCC"; }
+		td:nth-of-type(31):before { content: "Deduction Us80CCD1"; }
+		td:nth-of-type(32):before { content: "Deduction Us80C80CCC80CCD1"; }
+		td:nth-of-type(33):before { content: "Deduction Us80CCD1B"; }
+		td:nth-of-type(34):before { content: "Deduction Us80CCD2"; }
+		td:nth-of-type(35):before { content: "Deduction Us80D"; }
+		td:nth-of-type(36):before { content: "Deduction Us80E"; }
+		td:nth-of-type(37):before { content: "Deduction Us80G"; }
+		td:nth-of-type(38):before { content: "Deduction Us80TTA"; }
+		td:nth-of-type(39):before { content: "Amount Deductible80ccg"; }
+		td:nth-of-type(40):before { content: "Any Other Deduction"; }
+		td:nth-of-type(41):before { content: "Total Deduction UnderChapterVIA"; }
+		td:nth-of-type(42):before { content: "Total Taxable Income"; }
+		td:nth-of-type(43):before { content: "Income Tax On Total Income"; }
+		td:nth-of-type(44):before { content: "Rebate Us87A"; }
+		td:nth-of-type(45):before { content: "Surcharge"; }
+		td:nth-of-type(46):before { content: "Education Cess"; }
+		td:nth-of-type(47):before { content: "Income Tax ReliefUs89"; }
+		td:nth-of-type(48):before { content: "Net Income Tax Payable"; }
+		td:nth-of-type(49):before { content: "Tds From Current Employer"; }
+		td:nth-of-type(50):before { content: "Reported Tds From Previous Employer"; }
+		td:nth-of-type(51):before { content: "Total Tds"; }
+		td:nth-of-type(52):before { content: "Short fall In Tax Deduction"; }
+		td:nth-of-type(53):before { content: "Whether Tax Deducted At Higher Rate"; }
+		td:nth-of-type(54):before { content: "Count Of Pan Of Lender"; }
+		td:nth-of-type(55):before { content: "Pan Of Landlord1"; }
+		td:nth-of-type(56):before { content: "Name Of Landlord1"; }
+		td:nth-of-type(57):before { content: "Pan Of Landlord2"; }
+		td:nth-of-type(58):before { content: "Name Of Landlord2"; }
+		td:nth-of-type(59):before { content: "Pan Of Landlord3"; }
+		td:nth-of-type(60):before { content: "Name Of Landlord3"; }
+		td:nth-of-type(61):before { content: "Pan Of Landlord4"; }
+		td:nth-of-type(62):before { content: "Name Of Landlord4"; }
+		td:nth-of-type(63):before { content: "Whether Interest Paid To Be Lender"; }
+		td:nth-of-type(64):before { content: "Count Of Pan Of Lender"; }
+		td:nth-of-type(65):before { content: "Pan Of Lender1"; }
+		td:nth-of-type(66):before { content: "Name Of Lender1"; }
+		td:nth-of-type(67):before { content: "Pan Of Lender2"; }
+		td:nth-of-type(68):before { content: "Name Of Lender2"; }
+		td:nth-of-type(69):before { content: "Pan Of Lender3"; }
+		td:nth-of-type(70):before { content: "Name Of Lender3"; }
+		td:nth-of-type(71):before { content: "Pan Of Lender4"; }
+		td:nth-of-type(72):before { content: "Name Of Lender4"; }
+		td:nth-of-type(73):before { content: "Contribution Paid By Trustees"; }
+		td:nth-of-type(74):before { content: "Super annuationFund FromDate"; }
+		td:nth-of-type(75):before { content: "Super annuationFund ToDate"; }
+		td:nth-of-type(76):before { content: "Contribution Super annuationFund"; }
+		td:nth-of-type(77):before { content: "Average Rate Of Deduction"; }
+		td:nth-of-type(78):before { content: "Tax Deducted Of Super annuationFund"; }
+		td:nth-of-type(79):before { content: "Gross Total Income including Contribution"; }
+		td:nth-of-type(80):before { content: "FY"; }
+		td:nth-of-type(81):before { content: "Quarter"; }
+		td:nth-of-type(82):before { content: "Action"; }
+		
+		
+		
+		
+	}
+	
+	
+	
+						
+						
+			
+					
+					
+		
 @media only screen and (max-width: 1000px) {
 	.one {
 		display: none;
@@ -160,7 +311,7 @@
 	<div class="row">
 		<!-- <div class="table-responsive"> -->
 
-			<table class=" table table-bordered table-hover table-striped"
+			<table class=" tables table-bordered table-hover table-striped"
 				role="table"
 				style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
 
@@ -172,89 +323,89 @@
 				<tr>
 				<thead role="rowgroup">
 					<tr role="row" style="height: 40px; background-color: #81b7db">
-						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ">Sr. No.</th>
-						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ">Pan</th>
-						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ">Pan Ref. No.</th>
-						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ">Name</th>
-						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ">Category</th>
-						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ">From Date of Employment</th>
-						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ">To Date of Employment</th>
-						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ">Gross Salary As PerProvision</th>
-						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ">Value Of Perquisites</th>
-						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ">Profit InSalary</th>
-						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ">Taxable Salary From Current Emp</th>
-						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ">Reported Salary From Other Emp</th>
-						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ">Total Amount Of Salary</th>
-						<th width="10%"style="background-color:#ddd9c4; color: #a80000 ">Leave Travel Allowance</th>
-						<th width="10%"style="background-color:#ddd9c4; color: #a80000 ">Gratuity</th>
+						<th width="10%"style="background-color:#b8b6fa; color: #a80000;padding:20px">Sr. No.</th>
+						<th width="10%"style="background-color:#b8b6fa; color: #a80000;padding:20px ">Pan</th>
+						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ;padding:20px ">Pan Ref. No.</th>
+						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ;padding:20px ">Name</th>
+						<th width="10%"style="background-color:#b8b6fa; color: #a80000;padding:20px  ">Category</th>
+						<th width="10%"style="background-color:#b8b6fa; color: #a80000;padding:20px  ">From Date of Employment</th>
+						<th width="10%"style="background-color:#b8b6fa; color: #a80000;padding:20px  ">To Date of Employment</th>
+						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ;padding:20px ">Gross Salary As PerProvision</th>
+						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ;padding:20px ">Value Of Perquisites</th>
+						<th width="10%"style="background-color:#b8b6fa; color: #a80000;padding:20px  ">Profit InSalary</th>
+						<th width="10%"style="background-color:#b8b6fa; color: #a80000;padding:20px  ">Taxable Salary From Current Emp</th>
+						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ;padding:20px ">Reported Salary From Other Emp</th>
+						<th width="10%"style="background-color:#b8b6fa; color: #a80000;padding:20px  ">Total Amount Of Salary</th>
+						<th width="10%"style="background-color:#ddd9c4; color: #a80000;padding:20px  ">Leave Travel Allowance</th>
+						<th width="10%"style="background-color:#ddd9c4; color: #a80000;padding:20px  ">Gratuity</th>
 
-						<th width="10%"style="background-color:#ddd9c4; color: #a80000 ">Commuted Value Of Pension</th>
-						<th width="10%"style="background-color:#ddd9c4; color: #a80000 ">Leave Encashment Salary</th>
-						<th width="10%"style="background-color:#ddd9c4; color: #a80000 ">HouseRent Allowance</th>
-						<th width="10%"style="background-color:#ddd9c4; color: #a80000 ">Any Other Exemptionus10</th>
-						<th width="10%"style="background-color:#ddd9c4; color: #a80000 ">Total Amount Of Exemption</th>
-						<th width="10%"style="background-color:#a6a6a6; color: #a80000 ">Entertainment Allowance</th>
-						<th width="10%"style="background-color:#a6a6a6; color: #a80000 ">PTax</th>
-						<th width="10%"style="background-color:#a6a6a6; color: #a80000 ">Standard Deduction</th>
-						<th width="10%"style="background-color:#a6a6a6; color: #a80000 ">Total Deduction Under Section16</th>
-						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ">Income From Salary</th>
-						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ">Income From House Property</th>
-						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ">Income From Other Sources</th>
-						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ">Gross Total Income</th>
-						<th width="10%"style="background-color:#c4d79b; color: #a80000 ">Deduction Us80C</th>
-						<th width="10%"style="background-color:#c4d79b; color: #a80000 ">Deduction Us80CCC</th>
-						<th width="10%"style="background-color:#c4d79b; color: #a80000 ">Deduction Us80CCD1</th>
-						<th width="10%"style="background-color:#c4d79b; color: #a80000 ">Deduction Us80C80CCC80CCD1</th>
-						<th width="10%"style="background-color:#c4d79b; color: #a80000 ">Deduction Us80CCD1B</th>
-						<th width="10%"style="background-color:#c4d79b; color: #a80000 ">Deduction Us80CCD2</th>
-						<th width="10%"style="background-color:#c4d79b; color: #a80000 ">Deduction Us80D</th>
-						<th width="10%"style="background-color:#c4d79b; color: #a80000 ">Deduction Us80E</th>
-						<th width="10%"style="background-color:#c4d79b; color: #a80000 ">Deduction Us80G</th>
-						<th width="10%"style="background-color:#c4d79b; color: #a80000 ">Deduction Us80TTA</th>
-						<th width="10%"style="background-color:#c4d79b; color: #a80000 ">Amount Deductible80ccg</th>
-						<th width="10%"style="background-color:#c4d79b; color: #a80000 ">Any Other Deduction</th>
-						<th width="10%"style="background-color:#c4d79b; color: #a80000 ">Total Deduction UnderChapterVIA</th>
-						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ">Total Taxable Income</th>
-						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ">Income Tax On Total Income</th>
-						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ">Rebate Us87A</th>
-						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ">Surcharge</th>
-						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ">Education Cess</th>
-						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ">Income Tax ReliefUs89</th>
-						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ">Net Income Tax Payable</th>
-						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ">Tds From Current Employer</th>
-						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ">Reported Tds From Previous Employer</th>
-						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ">Total Tds</th>
-						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ">Short fall In Tax Deduction</th>
-						<th width="10%"style="background-color:#fabf8f; color: #a80000 ">Whether Tax Deducted At Higher Rate</th>
-						<th width="10%"style="background-color:#fabf8f; color: #a80000 ">Count Of Pan Of Lender</th>
-						<th width="10%"style="background-color:#fabf8f ">Pan Of Landlord1</th>
-						<th width="10%"style="background-color:#fabf8f ">Name Of Landlord1</th>
-						<th width="10%"style="background-color:#fabf8f ">Pan Of Landlord2</th>
-						<th width="10%"style="background-color:#fabf8f ">Name Of Landlord2</th>
-						<th width="10%"style="background-color:#fabf8f ">Pan Of Landlord3</th>
-						<th width="10%"style="background-color:#fabf8f ">Name Of Landlord3</th>
-						<th width="10%"style="background-color:#fabf8f ">Pan Of Landlord4</th>
-						<th width="10%"style="background-color:#fabf8f ">Name Of Landlord4</th>
-						<th width="10%"style="background-color:#fabf8f; color:#a80000  ">Whether Interest Paid To Be Lender</th>
-						<th width="10%"style="background-color:#fabf8f; color:#a80000">Count Of Pan Of Lender</th>
-						<th width="10%"style="background-color:#fabf8f ">Pan Of Lender1</th>
-						<th width="10%"style="background-color:#fabf8f ">Name Of Lender1</th>
-						<th width="10%"style="background-color:#fabf8f ">Pan Of Lender2</th>
-						<th width="10%"style="background-color:#fabf8f ">Name Of Lender2</th>
-						<th width="10%"style="background-color:#fabf8f ">Pan Of Lender3</th>
-						<th width="10%"style="background-color:#fabf8f ">Name Of Lender3</th>
-						<th width="10%"style="background-color:#fabf8f ">Pan Of Lender4</th>
-						<th width="10%"style="background-color:#fabf8f ">Name Of Lender4</th>
-						<th width="10%"style="background-color:#fabf8f; color:#a80000 ">Contribution Paid By Trustees</th>
-						<th width="10%"style="background-color:#fabf8f ">Super annuationFund FromDate</th>
-						<th width="10%"style="background-color:#fabf8f ">Super annuationFund ToDate</th>
-						<th width="10%"style="background-color:#fabf8f ">Contribution Super annuationFund</th>
-						<th width="10%"style="background-color:#fabf8f ">Average Rate Of Deduction</th>
-						<th width="10%"style="background-color:#fabf8f ">Tax Deducted Of Super annuationFund</th>
-						<th width="10%"style="background-color:#fabf8f ">Gross Total Income including Contribution</th>
-						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ">FY</th>
-						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ">Quarter</th>
-						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ">Action</th>
+						<th width="10%"style="background-color:#ddd9c4; color: #a80000;padding:20px  ">Commuted Value Of Pension</th>
+						<th width="10%"style="background-color:#ddd9c4; color: #a80000;padding:20px  ">Leave Encashment Salary</th>
+						<th width="10%"style="background-color:#ddd9c4; color: #a80000;padding:20px  ">HouseRent Allowance</th>
+						<th width="10%"style="background-color:#ddd9c4; color: #a80000;padding:20px  ">Any Other Exemptionus10</th>
+						<th width="10%"style="background-color:#ddd9c4; color: #a80000;padding:20px  ">Total Amount Of Exemption</th>
+						<th width="10%"style="background-color:#a6a6a6; color: #a80000;padding:20px  ">Entertainment Allowance</th>
+						<th width="10%"style="background-color:#a6a6a6; color: #a80000;padding:20px  ">PTax</th>
+						<th width="10%"style="background-color:#a6a6a6; color: #a80000;padding:20px  ">Standard Deduction</th>
+						<th width="10%"style="background-color:#a6a6a6; color: #a80000;padding:20px  ">Total Deduction Under Section16</th>
+						<th width="10%"style="background-color:#b8b6fa; color: #a80000;padding:20px  ">Income From Salary</th>
+						<th width="10%"style="background-color:#b8b6fa; color: #a80000;padding:20px  ">Income From House Property</th>
+						<th width="10%"style="background-color:#b8b6fa; color: #a80000;padding:20px  ">Income From Other Sources</th>
+						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ;padding:20px ">Gross Total Income</th>
+						<th width="10%"style="background-color:#c4d79b; color: #a80000;padding:20px  ">Deduction Us80C</th>
+						<th width="10%"style="background-color:#c4d79b; color: #a80000;padding:20px  ">Deduction Us80CCC</th>
+						<th width="10%"style="background-color:#c4d79b; color: #a80000 ;padding:20px ">Deduction Us80CCD1</th>
+						<th width="10%"style="background-color:#c4d79b; color: #a80000;padding:20px  ">Deduction Us80C80CCC80CCD1</th>
+						<th width="10%"style="background-color:#c4d79b; color: #a80000;padding:20px  ">Deduction Us80CCD1B</th>
+						<th width="10%"style="background-color:#c4d79b; color: #a80000;padding:20px  ">Deduction Us80CCD2</th>
+						<th width="10%"style="background-color:#c4d79b; color: #a80000;padding:20px  ">Deduction Us80D</th>
+						<th width="10%"style="background-color:#c4d79b; color: #a80000 ;padding:20px ">Deduction Us80E</th>
+						<th width="10%"style="background-color:#c4d79b; color: #a80000;padding:20px  ">Deduction Us80G</th>
+						<th width="10%"style="background-color:#c4d79b; color: #a80000;padding:20px  ">Deduction Us80TTA</th>
+						<th width="10%"style="background-color:#c4d79b; color: #a80000;padding:20px  ">Amount Deductible80ccg</th>
+						<th width="10%"style="background-color:#c4d79b; color: #a80000;padding:20px  ">Any Other Deduction</th>
+						<th width="10%"style="background-color:#c4d79b; color: #a80000;padding:20px  ">Total Deduction UnderChapterVIA</th>
+						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ;padding:20px ">Total Taxable Income</th>
+						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ;padding:20px ">Income Tax On Total Income</th>
+						<th width="10%"style="background-color:#b8b6fa; color: #a80000;padding:20px  ">Rebate Us87A</th>
+						<th width="10%"style="background-color:#b8b6fa; color: #a80000;padding:20px  ">Surcharge</th>
+						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ;padding:20px ">Education Cess</th>
+						<th width="10%"style="background-color:#b8b6fa; color: #a80000;padding:20px  ">Income Tax ReliefUs89</th>
+						<th width="10%"style="background-color:#b8b6fa; color: #a80000;padding:20px  ">Net Income Tax Payable</th>
+						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ;padding:20px ">Tds From Current Employer</th>
+						<th width="10%"style="background-color:#b8b6fa; color: #a80000;padding:20px  ">Reported Tds From Previous Employer</th>
+						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ;padding:20px ">Total Tds</th>
+						<th width="10%"style="background-color:#b8b6fa; color: #a80000 ;padding:20px ">Short fall In Tax Deduction</th>
+						<th width="10%"style="background-color:#fabf8f; color: #a80000 ;padding:20px ">Whether Tax Deducted At Higher Rate</th>
+						<th width="10%"style="background-color:#fabf8f; color: #a80000 v">Count Of Pan Of Lender</th>
+						<th width="10%"style="background-color:#fabf8f ;padding:20px ">Pan Of Landlord1</th>
+						<th width="10%"style="background-color:#fabf8f ;padding:20px ">Name Of Landlord1</th>
+						<th width="10%"style="background-color:#fabf8f ;padding:20px ">Pan Of Landlord2</th>
+						<th width="10%"style="background-color:#fabf8f ;padding:20px ">Name Of Landlord2</th>
+						<th width="10%"style="background-color:#fabf8f;padding:20px  ">Pan Of Landlord3</th>
+						<th width="10%"style="background-color:#fabf8f;padding:20px  ">Name Of Landlord3</th>
+						<th width="10%"style="background-color:#fabf8f ;padding:20px ">Pan Of Landlord4</th>
+						<th width="10%"style="background-color:#fabf8f ;padding:20px ">Name Of Landlord4</th>
+						<th width="10%"style="background-color:#fabf8f; color:#a80000 ;padding:20px  ">Whether Interest Paid To Be Lender</th>
+						<th width="10%"style="background-color:#fabf8f; color:#a80000 ;padding:20px ">Count Of Pan Of Lender</th>
+						<th width="10%"style="background-color:#fabf8f;padding:20px  ">Pan Of Lender1</th>
+						<th width="10%"style="background-color:#fabf8f;padding:20px  ">Name Of Lender1</th>
+						<th width="10%"style="background-color:#fabf8f;padding:20px  ">Pan Of Lender2</th>
+						<th width="10%"style="background-color:#fabf8f;padding:20px  ">Name Of Lender2</th>
+						<th width="10%"style="background-color:#fabf8f ;padding:20px ">Pan Of Lender3</th>
+						<th width="10%"style="background-color:#fabf8f ;padding:20px ">Name Of Lender3</th>
+						<th width="10%"style="background-color:#fabf8f ;padding:20px ">Pan Of Lender4</th>
+						<th width="10%"style="background-color:#fabf8f ;padding:20px ">Name Of Lender4</th>
+						<th width="10%"style="background-color:#fabf8f; color:#a80000 ;padding:20px ">Contribution Paid By Trustees</th>
+						<th width="10%"style="background-color:#fabf8f ;padding:20px ">Super annuationFund FromDate</th>
+						<th width="10%"style="background-color:#fabf8f;padding:20px  ">Super annuationFund ToDate</th>
+						<th width="10%"style="background-color:#fabf8f ;padding:20px ">Contribution Super annuationFund</th>
+						<th width="10%"style="background-color:#fabf8f ;padding:20px ">Average Rate Of Deduction</th>
+						<th width="10%"style="background-color:#fabf8f ;padding:20px ">Tax Deducted Of Super annuationFund</th>
+						<th width="10%"style="background-color:#fabf8f ;padding:20px ">Gross Total Income including Contribution</th>
+						<th width="10%"style="background-color:#b8b6fa; color: #a80000;padding:20px  ">FY</th>
+						<th width="10%"style="background-color:#b8b6fa; color: #a80000;padding:20px  ">Quarter</th>
+						<th width="10%"style="background-color:#b8b6fa; color: #a80000;padding:20px  ">Action</th>
 
 
 					</tr>

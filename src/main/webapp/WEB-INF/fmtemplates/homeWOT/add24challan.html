@@ -50,7 +50,7 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label> EducationCess*</label> <input class="form-control"
+								<label>EducationCess*</label> <input class="form-control"
 									type="text" name="educationCess" placeholder="EducationCess"
 									ng-model="cCctr.entity.educationCess" autocomplete="off"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
@@ -158,7 +158,7 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label> Bsr Code*</label> <input class="form-control" type="text"
+								<label>Bsr Code*</label> <input class="form-control" type="text"
 									name="bsrCode" placeholder="bsrCode"
 									ng-model="cCctr.entity.bsrCode" autocomplete="off"
 									ng-required="true" ng-maxlength="10"
@@ -307,35 +307,42 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Financial Year*</label> <input class="form-control"
-									type="text" name="fy" placeholder="Financial Year"
-									ng-model="cCctr.entity.fy" autocomplete="off"
-									ng-required="true"
-									ng-maxlength="45"
-									ng-pattern="/^[0-9]*$/"
-									ng-model-options="{updateOn: 'blur'}" />
-									<span style="color: red" ng-show="form24qchallan.submitted || form24qchallan.fy.$dirty && form24qchallan.fy.$invalid">
-									<span class="error" ng-show="form24qchallan.fy.$error.pattern">Enter valid Financial Year </span> 
-									<span class="error" ng-show="form24qchallan.fy.$error.maxlength">Financial Year should not be greater than 10 digits.</span> 
-									<span class="error" ng-show="form24qchallan.fy.$error.required">Financial Year is Required.</span>
+								<label>Financial Year*</label> 
+								<select name="fy" class="form-control" ng-model="cCctr.entity.fy" ng-required="true" ng-model-options="{updateOn: 'blur'}">
+									<option value="201920">201920</option>
+									<option value="201819">201819</option>
+									<option value="201718">201718</option>
+									<option value="201617">201617</option>
+									<option value="201516">201516</option>
+									<option value="201415">201415</option>
+									<option value="201314">201314</option>
+									<option value="201213">201213</option>
+									<option value="201112">201112</option>
+									<option value="201011">201011</option>
+									<option value="200910">200910</option>
+									<option value="200809">200809</option>
+									<option value="200708">200708</option>
+								</select>
+								<span style="color: red" ng-show="form24qchallan.submitted || form24qchallan.fy.$dirty && form24qchallan.fy.$invalid">
+								<span class="error" ng-show="form24qchallan.fy.$error.required">Financial Year is Required.</span>
 								</span>
-									<span class="error" id="fy"></span>
+								<span class="error" id="fy"></span>
 							</div>
 						</div>
 
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Quarter*</label> <input class="form-control" type="text"
-									name="quarter" placeholder="Quarter"
-									ng-required="true" ng-pattern="/^[a-zA-Z0-9]*$/"
-									ng-model="cCctr.entity.quarter" autocomplete="off"
-									ng-model-options="{updateOn: 'blur'}" />
+								<label>Quarter*</label> 
+								<select name="quarter" class="form-control" ng-model="cCctr.entity.quarter" ng-required="true" ng-model-options="{updateOn: 'blur'}">
+									<option value="Q1">Q1</option>
+									<option value="Q2">Q2</option>
+									<option value="Q3">Q3</option>
+									<option value="Q4">Q4</option>
+								</select>
 									<span style="color: red" ng-show="form24qchallan.submitted || form24qchallan.quarter.$dirty && form24qchallan.quarter.$invalid">
-									<span class="error" ng-show="form24qchallan.quarter.$error.pattern">Enter valid Quarter</span> 
-									<span class="error" ng-show="form24qchallan.quarter.$error.maxlength">Quarter should not be greater than 10 digits.</span> 
 									<span class="error" ng-show="form24qchallan.quarter.$error.required">Quarter number is Required.</span>
 								</span>
-									<span class="error" id="quarter"></span>
+								<span class="error" id="quarter"></span>
 							</div>
 						</div>
 					</div>

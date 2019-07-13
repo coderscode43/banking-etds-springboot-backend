@@ -155,7 +155,7 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	public Double tdaRateAsPerItActs;
 	
 	@Column(name = "natureOfRemittance")
-	@NotNull(message = "amount Paid is a required field")
+	@NotBlank(message = "amount Paid is a required field")
 	@Size(min=0, max=75, message="Country Of Residence length should be between 1 to 100 characters.")
 	public String natureOfRemittance;
 	

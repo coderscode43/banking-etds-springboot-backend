@@ -1,73 +1,92 @@
 <br>
 <br>
+  <div class="col-md-12 " style="padding-left:2%;font-size: 12pxp; margin-top:2%" >
+	      <div class="heading">
+	    Edit Vendor Payment Detail
+	     </div>
+	  </div>
+	  <br>
+	  <br>
  <div class="container" ng-init="cCctr.entity=cCctr.getEntityData();">
   <form role="form" name="vendorDetailForm">
 	<div class="row">
 		<div class="form-group">
 			<div class="col-md-3">							
-            	<h6><b>Vendor Number</b></h6>
-                <input type="text" name="vendorNumber" ng-model="cCctr.entity.vendorPayment.vendorNo" class="form-control" style="padding-top:0px;" placeholder="Vendor Number">
+            	<h6><b>Vendor Number*</b></h6>
+                <input type="text" name="vendorNumber" ng-model="cCctr.entity.vendorPayment.vendorNumber" class="form-control" style="padding-top:0px;" placeholder="Vendor Number"
+          autocomplete="off" ng-pattern="/^[0-9]*$/" ng-maxlength="15" ng-required="true"  ng-model-options="{updateOn: 'blur'}" />
+										    <span style="color: red" ng-show="vendorDetailForm.submitted ||vendorDetailForm.vendorNumber.$dirty && vendorDetailForm.vendorNumber.$invalid">
+									<span class="error" ng-show="vendorDetailForm.vendorNumber.$error.pattern">Please enter valid Vendor Number. </span> 
+									<span class="error" ng-show="vendorDetailForm.vendorNumber.$error.maxlength">Vendor Number should not be greater than 15 characters.</span> 
+									<span class="error" ng-show="vendorDetailForm.vendorNumber.$error.required">Vendor Number is Required.</span>
+								    </span>
+								<span class="error" id="vendorNumber"></span>
+          
+          
             </div>
             <div class="col-md-3">							
-            	<h6><b>Vendor Name</b></h6>
-                <input type="text" name="vendorName" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.vendorName" placeholder="Vendor Name">
+            	<h6><b>Vendor Name*</b></h6>
+                <input type="text" name="vendorName" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.vendorName" placeholder="Vendor Name"
+           autocomplete="off" ng-pattern="^(?!\s)(?=$|.*[a-zA-Z0-9_-]$)[a-zA-Z0-9_\s-]*$" ng-maxlength="100" ng-required="true"  ng-model-options="{updateOn: 'blur'}" />
+										    <span style="color: red" ng-show="vendorDetailForm.submitted ||vendorDetailForm.vendorName.$dirty && vendorDetailForm.vendorName.$invalid">
+									<span class="error" ng-show="vendorDetailForm.vendorName.$error.pattern">Please enter valid Vendor Name. </span> 
+									<span class="error" ng-show="vendorDetailForm.vendorName.$error.maxlength">Vendor Name should not be greater than 100 characters.</span> 
+									<span class="error" ng-show="vendorDetailForm.vendorName.$error.required">Vendor Name is Required.</span>
+								    </span>
+								<span class="error" id="vendorName"></span>
+           
+           
             </div>
             <div class="col-md-3">							
-            	<h6><b>Vendor PAN</b></h6>
-                <input type="text" name="vendorPan" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.vendorPAN" placeholder="Vendor PAN">
+            	<h6><b>Vendor PAN*</b></h6>
+                <input type="text" name="vendorPAN" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.vendorPAN" placeholder="Vendor PAN"
+            autocomplete="off" ng-pattern="/^[a-zA-z0-9]*$/" ng-maxlength="15" ng-required="true"  ng-model-options="{updateOn: 'blur'}" />
+										    <span style="color: red" ng-show="vendorDetailForm.submitted ||vendorDetailForm.vendorPAN.$dirty && vendorDetailForm.vendorPAN.$invalid">
+									<span class="error" ng-show="vendorDetailForm.vendorPAN.$error.pattern">Please enter valid Vendor PAN. </span> 
+									<span class="error" ng-show="vendorDetailForm.vendorPAN.$error.maxlength">Vendor PAN should not be greater than 15 characters.</span> 
+									<span class="error" ng-show="vendorDetailForm.vendorPAN.$error.required">Vendor PAN is Required.</span>
+								    </span>
+								<span class="error" id="vendorPAN"></span>
+            
             </div>
 		</div>
-                
 	</div>  
-             
 	<div class="row">
 		<div class="form-group">
 			<div class="col-md-3">							
-            	<h6><b>Invoice Date</b></h6>
+            	<h6><b>Invoice Date*</b></h6>
                 <input type="text" name="invoiceDate" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.date | date:'dd-MM-yyyy'" 
-                placeholder="Invoice Date">
+                placeholder="Invoice Date" ng-required="true">
+			<span style="color: red" ng-show="vendorDetailForm.submitted ||vendorDetailForm.invoiceDate.$dirty && vendorDetailForm.invoiceDate.$invalid">
+									
+									<span class="error" ng-show="vendorDetailForm.invoiceDate.$error.required">Invoice Date is Required.</span>
+								    </span>
+								<span class="error" id="invoiceDate"></span>
 			</div>
 			<div class="col-md-3">							
-            	<h6><b>Payment Done</b></h6>
-                <input type="text" name="paymentDone" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.paymentDone" placeholder="Payment Done">
+            	<h6><b>Payment Done*</b></h6>
+                <input type="text" name="paymentDone" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.paymentDone" placeholder="Payment Done"
+			autocomplete="off" ng-pattern="/^[a-zA-Z]*$/" ng-maxlength="15" ng-required="true"  ng-model-options="{updateOn: 'blur'}" />
+										    <span style="color: red" ng-show="vendorDetailForm.submitted ||vendorDetailForm.paymentDone.$dirty && vendorDetailForm.paymentDone.$invalid">
+									<span class="error" ng-show="vendorDetailForm.paymentDone.$error.pattern">Please enter valid Payment Done. </span> 
+									<span class="error" ng-show="vendorDetailForm.paymentDone.$error.maxlength">Payment Done should not be greater than 15 characters.</span> 
+									<span class="error" ng-show="vendorDetailForm.paymentDone.$error.required">Payment Done is Required.</span>
+								    </span>
+								<span class="error" id="paymentDone"></span>
+			
+			
 			</div>
 			<div class="col-md-3">							
-            	<h6><b>Payment Date</b></h6>
-                <input type="text" name="paymentDate" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.paymentDate | date:'dd-MM-yyyy'" placeholder="Payment Date">
-			</div>
-		</div>
-	</div>
-	
-	<div class="row">
-		<div class="form-group">
-			<div class="col-md-3">							
-            	<h6><b>Payment Mode</b></h6>
-                <input type="text" name="paymentMode" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.paymentMode" placeholder="Payment Mode">
-			</div>
-			<div class="col-md-3">							
-            	<h6><b>Invoice Number</b></h6>
-                <input type="text" name="invoiceNumber" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.invoiceNumber" placeholder="Invoice Number">
-			</div>
-			<div class="col-md-3">							
-            	<h6><b>Total Invoice Value</b></h6>
-                <input type="text" name="totalInvoiceValue" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.totalInvoiceValue" placeholder="Total Invoice Value">
-			</div>
-		</div>
-	</div>
-	
-	<div class="row">
-		<div class="form-group">
-			<div class="col-md-3">							
-            	<h6><b>Taxable Value</b></h6>
-                <input type="text" name="taxableValue" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.taxableValue" placeholder="Taxable Value">
-			</div>
-			<div class="col-md-3">							
-            	<h6><b>CGST</b></h6>
-                <input type="text" name="cgst" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.cgst" placeholder="CGST">
-			</div>
-			<div class="col-md-3">							
-            	<h6><b>SGST</b></h6>
-                <input type="text" name="sgst" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.sgst" placeholder="SGST">
+            	<h6><b>Payment Date*</b></h6>
+                <input type="text" name="paymentDate" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.paymentDate | date:'dd-MM-yyyy'" placeholder="Payment Date"
+			
+			autocomplete="off" ng-pattern="/^[0-9]*$/"  ng-required="true"  ng-model-options="{updateOn: 'blur'}" />
+										    <span style="color: red" ng-show="vendorDetailForm.submitted ||vendorDetailForm.paymentDate.$dirty && vendorDetailForm.paymentDate.$invalid">
+									 
+									<span class="error" ng-show="vendorDetailForm.paymentDate.$error.required">Payment Date is Required.</span>
+								    </span>
+								<span class="error" id="paymentDate"></span>
+			
 			</div>
 		</div>
 	</div>
@@ -75,16 +94,38 @@
 	<div class="row">
 		<div class="form-group">
 			<div class="col-md-3">							
-            	<h6><b>IGST</b></h6>
-                <input type="text" name="igst" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.igst" placeholder="IGST">
+            	<h6><b>Payment Mode*</b></h6>
+                <input type="text" name="paymentMode" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.paymentMode" placeholder="Payment Mode"autocomplete="off" ng-pattern="/^[a-zA-Z]*$/" ng-maxlength="15" ng-required="true"  ng-model-options="{updateOn: 'blur'}" />
+										    <span style="color: red" ng-show="vendorDetailForm.submitted ||vendorDetailForm.paymentMode.$dirty && vendorDetailForm.paymentMode.$invalid">
+									<span class="error" ng-show="vendorDetailForm.paymentMode.$error.pattern">Please enter valid Payment Mode. </span> 
+									<span class="error" ng-show="vendorDetailForm.paymentMode.$error.maxlength">Payment Mode should not be greater than 15 characters.</span> 
+									<span class="error" ng-show="vendorDetailForm.paymentMode.$error.required">Payment Mode is Required.</span>
+								    </span>
+								<span class="error" id="paymentMode"></span>
+			
+			
 			</div>
 			<div class="col-md-3">							
-            	<h6><b>CESS</b></h6>
-                <input type="text" name="cess" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.cess" placeholder="CESS">
+            	<h6><b>Invoice Number*</b></h6>
+                <input type="text" name="invoiceNumber" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.invoiceNumber" placeholder="Invoice Number"autocomplete="off" ng-pattern="/^[0-9]*$/" ng-maxlength="15" ng-required="true"  ng-model-options="{updateOn: 'blur'}" />
+										    <span style="color: red" ng-show="vendorDetailForm.submitted ||vendorDetailForm.invoiceNumber.$dirty && vendorDetailForm.invoiceNumber.$invalid">
+									<span class="error" ng-show="vendorDetailForm.invoiceNumber.$error.pattern">Please enter valid Invoice Number. </span> 
+									<span class="error" ng-show="vendorDetailForm.invoiceNumber.$error.maxlength">Invoice Number should not be greater than 15 characters.</span> 
+									<span class="error" ng-show="vendorDetailForm.invoiceNumber.$error.required">Invoice Number is Required.</span>
+								    </span>
+								<span class="error" id="invoiceNumber"></span>
+			
+			
 			</div>
 			<div class="col-md-3">							
-            	<h6><b>Income Tax TDS</b></h6>
-                <input type="text" name="incomeTaxTds" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.incomeTaxTds" placeholder="Income Tax TDS">
+            	<h6><b>Total Invoice Value*</b></h6>
+                <input type="text" name="totalInvoiceValue" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.totalInvoiceValue" placeholder="Total Invoice Value"autocomplete="off" ng-pattern="/^[0-9]*$/" ng-maxlength="15" ng-required="true"  ng-model-options="{updateOn: 'blur'}" />
+										    <span style="color: red" ng-show="vendorDetailForm.submitted ||vendorDetailForm.totalInvoiceValue.$dirty && vendorDetailForm.totalInvoiceValue.$invalid">
+									<span class="error" ng-show="vendorDetailForm.totalInvoiceValue.$error.pattern">Please enter valid Total Invoice Value. </span> 
+									<span class="error" ng-show="vendorDetailForm.totalInvoiceValue.$error.maxlength">Total Invoice Value should not be greater than 15 characters.</span> 
+									<span class="error" ng-show="vendorDetailForm.totalInvoiceValue.$error.required">Total Invoice Value is Required.</span>
+								    </span>
+								<span class="error" id="totalInvoiceValue"></span>
 			</div>
 		</div>
 	</div>
@@ -92,16 +133,34 @@
 	<div class="row">
 		<div class="form-group">
 			<div class="col-md-3">							
-            	<h6><b>GST TDS</b></h6>
-                <input type="text" name="gstTds" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.gstTds" placeholder="GST TDS">
+            	<h6><b>Taxable Value*</b></h6>
+                <input type="text" name="taxableValue" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.taxableValue" placeholder="Taxable Value"autocomplete="off" ng-pattern="/^[0-9]*$/" ng-maxlength="15" ng-required="true"  ng-model-options="{updateOn: 'blur'}" />
+										    <span style="color: red" ng-show="vendorDetailForm.submitted ||vendorDetailForm.taxableValue.$dirty && vendorDetailForm.taxableValue.$invalid">
+									<span class="error" ng-show="vendorDetailForm.taxableValue.$error.pattern">Please enter valid Taxable Value. </span> 
+									<span class="error" ng-show="vendorDetailForm.taxableValue.$error.maxlength">Taxable Value should not be greater than 15 characters.</span> 
+									<span class="error" ng-show="vendorDetailForm.taxableValue.$error.required">Taxable Value is Required.</span>
+								    </span>
+								<span class="error" id="taxableValue"></span>
 			</div>
 			<div class="col-md-3">							
-            	<h6><b>Nature of Payment</b></h6>
-                <input type="text" name="natureOfPayment" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.natureOfPayment" placeholder="Nature of Payment">
+            	<h6><b>CGST*</b></h6>
+                <input type="text" name="cgst" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.cgst" placeholder="CGST"autocomplete="off" ng-pattern="/^[0-9]*$/" ng-maxlength="15" ng-required="true"  ng-model-options="{updateOn: 'blur'}" />
+										    <span style="color: red" ng-show="vendorDetailForm.submitted ||vendorDetailForm.cgst.$dirty && vendorDetailForm.cgst.$invalid">
+									<span class="error" ng-show="vendorDetailForm.cgst.$error.pattern">Please enter valid CGST. </span> 
+									<span class="error" ng-show="vendorDetailForm.cgst.$error.maxlength">CGST should not be greater than 15 characters.</span> 
+									<span class="error" ng-show="vendorDetailForm.cgst.$error.required">CGST is Required.</span>
+								    </span>
+								<span class="error" id="cgst"></span>
 			</div>
 			<div class="col-md-3">							
-            	<h6><b>Net Amount Paid</b></h6>
-                <input type="text" name="netAmountPaid" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.netAmountPaid" placeholder="Net Amount Paid">
+            	<h6><b>SGST*</b></h6>
+                <input type="text" name="sgst" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.sgst" placeholder="SGST"autocomplete="off" ng-pattern="/^[0-9]*$/" ng-maxlength="15" ng-required="true"  ng-model-options="{updateOn: 'blur'}" />
+										    <span style="color: red" ng-show="vendorDetailForm.submitted ||vendorDetailForm.sgst.$dirty && vendorDetailForm.sgst.$invalid">
+									<span class="error" ng-show="vendorDetailForm.sgst.$error.pattern">Please enter valid SGST. </span> 
+									<span class="error" ng-show="vendorDetailForm.sgst.$error.maxlength">SGST should not be greater than 15 characters.</span> 
+									<span class="error" ng-show="vendorDetailForm.sgst.$error.required">SGST is Required.</span>
+								    </span>
+								<span class="error" id="sgst"></span>
 			</div>
 		</div>
 	</div>
@@ -109,12 +168,95 @@
 	<div class="row">
 		<div class="form-group">
 			<div class="col-md-3">							
-            	<h6><b>BGL Code</b></h6>
-                <input type="text" name="bglCode" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.bglCode" placeholder="BGL Code">
+            	<h6><b>IGST*</b></h6>
+                <input type="text" name="igst" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.igst" placeholder="IGST"autocomplete="off" ng-pattern="/^[0-9]*$/" ng-maxlength="15" ng-required="true"  ng-model-options="{updateOn: 'blur'}" />
+										    <span style="color: red" ng-show="vendorDetailForm.submitted ||vendorDetailForm.igst.$dirty && vendorDetailForm.igst.$invalid">
+									<span class="error" ng-show="vendorDetailForm.igst.$error.pattern">Please enter valid IGST. </span> 
+									<span class="error" ng-show="vendorDetailForm.igst.$error.maxlength">IGST should not be greater than 15 characters.</span> 
+									<span class="error" ng-show="vendorDetailForm.igst.$error.required">IGST is Required.</span>
+								    </span>
+								<span class="error" id="igst"></span>
 			</div>
 			<div class="col-md-3">							
-            	<h6><b>Our GST</b></h6>
-                <input type="text" name="ourGst" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.ourGst" placeholder="Our GST">
+            	<h6><b>CESS*</b></h6>
+                <input type="text" name="cess" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.cess" placeholder="CESS"autocomplete="off" ng-pattern="/^[0-9]*$/" ng-maxlength="15" ng-required="true"  ng-model-options="{updateOn: 'blur'}" />
+										    <span style="color: red" ng-show="vendorDetailForm.submitted ||vendorDetailForm.cess.$dirty && vendorDetailForm.cess.$invalid">
+									<span class="error" ng-show="vendorDetailForm.cess.$error.pattern">Please enter valid CESS. </span> 
+									<span class="error" ng-show="vendorDetailForm.cess.$error.maxlength">CESS should not be greater than 15 characters.</span> 
+									<span class="error" ng-show="vendorDetailForm.cess.$error.required">CESS is Required.</span>
+								    </span>
+								<span class="error" id="cess"></span>
+			</div>
+			<div class="col-md-3">							
+            	<h6><b>Income Tax TDS*</b></h6>
+                <input type="text" name="incomeTaxTds" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.incomeTaxTds" placeholder="Income Tax TDS"
+                autocomplete="off" ng-pattern="/^[0-9]*$/" ng-maxlength="15" ng-required="true"  ng-model-options="{updateOn: 'blur'}" />
+										    <span style="color: red" ng-show="vendorDetailForm.submitted ||vendorDetailForm.incomeTaxTds.$dirty && vendorDetailForm.incomeTaxTds.$invalid">
+									<span class="error" ng-show="vendorDetailForm.incomeTaxTds.$error.pattern">Please enter valid Income Tax TDS. </span> 
+									<span class="error" ng-show="vendorDetailForm.incomeTaxTds.$error.maxlength">Income Tax TDS should not be greater than 15 characters.</span> 
+									<span class="error" ng-show="vendorDetailForm.incomeTaxTds.$error.required">Income Tax TDS is Required.</span>
+								    </span>
+								<span class="error" id="incomeTaxTds"></span>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="form-group">
+			<div class="col-md-3">							
+            	<h6><b>GST TDS*</b></h6>
+                <input type="text" name="gstTds" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.gstTds" placeholder="GST TDS"autocomplete="off" ng-pattern="/^[0-9]*$/" ng-maxlength="15" ng-required="true"  ng-model-options="{updateOn: 'blur'}" />
+										    <span style="color: red" ng-show="vendorDetailForm.submitted ||vendorDetailForm.gstTds.$dirty && vendorDetailForm.gstTds.$invalid">
+									<span class="error" ng-show="vendorDetailForm.gstTds.$error.pattern">Please enter valid GST TDS. </span> 
+									<span class="error" ng-show="vendorDetailForm.gstTds.$error.maxlength">GST TDS should not be greater than 15 characters.</span> 
+									<span class="error" ng-show="vendorDetailForm.gstTds.$error.required">GST TDS is Required.</span>
+								    </span>
+								<span class="error" id="gstTds"></span>
+			</div>
+			<div class="col-md-3">							
+            	<h6><b>Nature of Payment*</b></h6>
+                <input type="text" name="natureOfPayment" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.natureOfPayment" placeholder="Nature of Payment"autocomplete="off" ng-pattern="^(?!\s)(?=$|.*[a-zA-Z0-9_-]$)[a-zA-Z0-9_\s-]*$" ng-maxlength="15" ng-required="true"  ng-model-options="{updateOn: 'blur'}" />
+										    <span style="color: red" ng-show="vendorDetailForm.submitted ||vendorDetailForm.natureOfPayment.$dirty && vendorDetailForm.natureOfPayment.$invalid">
+									<span class="error" ng-show="vendorDetailForm.natureOfPayment.$error.pattern">Please enter valid Nature of Payment. </span> 
+									<span class="error" ng-show="vendorDetailForm.natureOfPayment.$error.maxlength">Nature of Payment should not be greater than 15 characters.</span> 
+									<span class="error" ng-show="vendorDetailForm.natureOfPayment.$error.required">Nature of Payment is Required.</span>
+								    </span>
+								<span class="error" id="natureOfPayment"></span>
+			</div>
+			<div class="col-md-3">							
+            	<h6><b>Net Amount Paid*</b></h6>
+                <input type="text" name="netAmountPaid" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.netAmountPaid" placeholder="Net Amount Paid"autocomplete="off" ng-pattern="/^[0-9]*$/" ng-maxlength="15" ng-required="true"  ng-model-options="{updateOn: 'blur'}" />
+										    <span style="color: red" ng-show="vendorDetailForm.submitted ||vendorDetailForm.netAmountPaid.$dirty && vendorDetailForm.netAmountPaid.$invalid">
+									<span class="error" ng-show="vendorDetailForm.netAmountPaid.$error.pattern">Please enter valid Net Amount Paid. </span> 
+									<span class="error" ng-show="vendorDetailForm.netAmountPaid.$error.maxlength">Net Amount Paid should not be greater than 15 characters.</span> 
+									<span class="error" ng-show="vendorDetailForm.netAmountPaid.$error.required">Net Amount Paid is Required.</span>
+								    </span>
+								<span class="error" id="netAmountPaid"></span>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="form-group">
+			<div class="col-md-3">							
+            	<h6><b>BGL Code*</b></h6>
+                <input type="text" name="bglCode" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.bglCode" placeholder="BGL Code"autocomplete="off" ng-pattern="^(?!\s)(?=$|.*[a-zA-Z0-9_-]$)[a-zA-Z0-9_\s-]*$" ng-maxlength="15" ng-required="true"  ng-model-options="{updateOn: 'blur'}" />
+										    <span style="color: red" ng-show="vendorDetailForm.submitted ||vendorDetailForm.bglCode.$dirty && vendorDetailForm.bglCode.$invalid">
+									<span class="error" ng-show="vendorDetailForm.bglCode.$error.pattern">Please enter valid BGL Code. </span> 
+									<span class="error" ng-show="vendorDetailForm.bglCode.$error.maxlength">BGL Code should not be greater than 15 characters.</span> 
+									<span class="error" ng-show="vendorDetailForm.bglCode.$error.required">BGL Code is Required.</span>
+								    </span>
+								<span class="error" id="bglCode"></span>
+			</div>
+			<div class="col-md-3">							
+            	<h6><b>Our GST*</b></h6>
+                <input type="text" name="ourGst" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.ourGst" placeholder="Our GST"autocomplete="off" ng-pattern="/^[0-9]*$/" ng-maxlength="15" ng-required="true"  ng-model-options="{updateOn: 'blur'}" />
+										    <span style="color: red" ng-show="vendorDetailForm.submitted ||vendorDetailForm.ourGst.$dirty && vendorDetailForm.ourGst.$invalid">
+									<span class="error" ng-show="vendorDetailForm.ourGst.$error.pattern">Please enter valid Our GST. </span> 
+									<span class="error" ng-show="vendorDetailForm.ourGst.$error.maxlength">Our GST should not be greater than 15 characters.</span> 
+									<span class="error" ng-show="vendorDetailForm.ourGst.$error.required">Our GST is Required.</span>
+								    </span>
+								<span class="error" id="ourGst"></span>
 			</div>
 		</div>
 	</div>
@@ -122,6 +264,10 @@
 	<button
 						ng-click="vendorDetailForm.submitted=true;cCctr.updateData(vendorDetailForm.$valid,'vendorPayment',cCctr.entity.vendorPayment,'closeU')"
 						class="btn btn-success">Save</button>
+						
+						
+						
+						<button class="btn btn-danger"ng-click="cCctr.gotoListPage('vendorPayment','vendorPayment');" onclick="scrollWin()">Back</button>
 						</form>
 						</div>
 	             			

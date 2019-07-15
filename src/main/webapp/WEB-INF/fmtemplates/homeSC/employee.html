@@ -1,6 +1,78 @@
 <style>
  
- 
+  /*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+	@media
+	  only screen 
+    and (max-width: 760px), (min-device-width: 768px) 
+    and (max-device-width: 1024px)  {
+
+		/* Force table to not be like tables anymore */
+		table, thead, tbody, th, td, tr {
+			display: block;
+		}
+
+		/* Hide table headers (but not display: none;, for accessibility) */
+		thead tr {
+			position: absolute;
+			top: -9999px;
+			left: -9999px;
+		}
+
+    tr {
+      margin: 0 0 1rem 0;
+    }
+      
+    tr:nth-child(odd) {
+      background: #ccc;
+    }
+    
+		td {
+			/* Behave  like a "row" */
+			border: none;
+			border-bottom: 1px solid #eee;
+			position: relative;
+			padding-left: 50%;
+		}
+
+		td:before {
+			/* Now like a table header */
+			position: absolute;
+			/* Top/left values mimic padding */
+			top: 0;
+			left: 6px;
+			width: 45%;
+			padding-right: 10px;
+			white-space: nowrap;
+		}
+
+		/*
+		Label the data
+    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+		*/
+		td:nth-of-type(1):before { content: "Sr. No."; }
+		td:nth-of-type(2):before { content: "Employee No"; }
+		td:nth-of-type(3):before { content: " Name"; }
+		td:nth-of-type(4):before { content: "Father Name"; }
+		td:nth-of-type(5):before { content: "PAN"; }
+		td:nth-of-type(6):before { content: "Date Of Birth"; }
+		td:nth-of-type(7):before { content: "Date Of Joining"; }
+		td:nth-of-type(8):before { content: "Designation"; }
+		td:nth-of-type(9):before { content: "Current Office"; }
+		td:nth-of-type(10):before { content: "Employee Grade"; }
+		td:nth-of-type(11):before { content: "Mobile 1"; }
+		td:nth-of-type(12):before { content: "Mobile 2"; }
+		td:nth-of-type(13):before { content: "Email 1"; }
+		td:nth-of-type(14):before { content: "Email 2"; }
+		td:nth-of-type(15):before { content: "Bank Account Number"; }
+		td:nth-of-type(16):before { content: "IFC Code"; }
+		td:nth-of-type(17):before { content: "Bank Name"; }
+		td:nth-of-type(18):before { content: "Action"; }
+		
+	}
+	
+	
     @media only screen and (max-width: 1000px) {
         .one{
             display: none;
@@ -109,7 +181,7 @@
 	             <div class="row" id="hide" >
 	         	  <div class="col-md-3"  style="margin-left:85%;margin-top:-74px">	
 	                          <button ng-click="cCctr.searchEntities(true,'employee')"
-									class="btn btn-success" >Search</button>
+									class="btn btn-success" onclick="scrollWin()">Search</button>
 	                 </div>		
 	                 
 	                 				
@@ -118,7 +190,7 @@
    <div class="row" id="search" >
 	         	  <div class="col-md-3" id="search">	
 	                          <button ng-click="cCctr.searchEntities(true,'employee')"
-									class="btn btn-success">Search</button>
+									class="btn btn-success" onclick="scrollWin()">Search</button>
 	                 </div>					
   </div>
   </div>
@@ -134,7 +206,7 @@
  					<div class="row">
 						<!-- <div class="table-responsive"> -->
 
-							<table class=" table table-bordered table-hover table-striped" role="table"
+							<table class=" tables table-bordered table-hover table-striped" role="table"
 								style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
 
 
@@ -148,24 +220,24 @@
 								</colgroup>
 							 <tr>
 							  <thead role="rowgroup">
-    <tr role="row" style="height:40px;background-color:#81b7db">
-      <th width="10%">Sr. No.</th>
+    <tr role="row" style="height:55px;background-color:#81b7db;text-align:center">
+      <th width="10%" class="one">Sr. No.</th>
       <th width="10%">Employee No</th>
       <th width="10%">Name</th>
       <th width="10%" >Father Name</th>
       <th width="10%">PAN</th>
-      <th width="10%" >Date Of Birth</th>
-      <th width="10%">Date Of Joining</th>
+      <th width="10%" style="padding:20px">Date Of Birth</th>
+      <th width="10%" style="padding:20px">Date Of Joining</th>
       <th width="10%">Designation</th>
-      <th width="10%">Current Office</th>
+      <th width="10%" style="padding:20px">Current Office</th>
       <th width="10%">Employee Grade</th>
       <th width="10%">Mobile 1</th>
       <th width="10%">Mobile 2</th>
        <th width="10%">Email 1</th>
        <th width="10%">Email 2</th>
-       <th width="10%">Bank Account Number</th>
-       <th width="10%">IFC Code</th>
-       <th width="10%">Bank Name</th>
+       <th width="10%" style="padding:20px">Bank Account Number</th>
+       <th width="10%" style="padding:20px">IFC Code</th>
+       <th width="10%" style="padding:20px">Bank Name</th>
          <th width="10%">Action</th>
       </tr>
   </thead>
@@ -190,7 +262,7 @@
 											<td>{{a.bankName}}</td>
 											<td><a
 							                ng-click="cCctr.gotoDetailPage('employee',a.id,'detailemployee');"><font
-								          color="blue" style="font-size: 13px">Detail</font></a></td>											
+								          color="blue" style="font-size: 13px" onclick="scrollWin()">Detail</font></a></td>											
 										<!-- <td>{{a.total-a.amountPaid}}</td> -->
 										
 									</tr>

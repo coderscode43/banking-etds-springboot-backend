@@ -1,15 +1,15 @@
  <div class="container-fluid">
       <div class="col-md-12 " style="padding-left: 0px;font-size: 12pxp; margin-top:2%" >
 	      <div class="heading">
-	    Vendor Payment
-	     </div>
-	  </div> <br>
+	            Vendor Payment
+	        </div>
+	    </div> <br>
 	         <button class="btn btn-primary hidden visible-xs" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample" >
              Search 
              </button>
         <div class="collapse dont-collapse-sm" id="collapseExample2" > 
-	      <div class="row">
-	         <div class="form-group">
+	       <div class="row">
+	          <div class="form-group">
 	  
 	                 <div class="col-md-3">							
                    <h6><b>Vendor Number</b></h6>
@@ -69,7 +69,7 @@
               </div>
 <!--  <div class="table-responsive"> -->
 
-							<table class=" table table-bordered table-hover table-striped" role="table"
+							<table class=" tables table-bordered table-hover table-striped" role="table"
 								style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
 								<thead>
 							<colgroup>
@@ -78,28 +78,28 @@
 							 <tr>
 							  <thead role="rowgroup">
 							      <tr role="row" style="height:40px;background-color:#81b7db">
-							      <th width="10%">Sr. No.</th>
-							      <th width="10%">Vendor Number</th>
-							      <th width="10%">Vendor Name</th>
-							      <th width="10%">Vendor PAN</th>
-							      <th width="10%">GST No.</th>
-							      <th width="10%">Invoice Date</th>
-							      <th width="10%">Payment Done</th>
-							      <th width="10%" >Payment Date</th>
-							      <th width="10%">Payment Mode</th>
-							      <th width="10%" >Invoice Number</th>
-							      <th width="10%">Total Invoice Value</th>
-							      <th width="10%">Taxable Value</th>
-							      <th width="10%">CGST</th>
-							      <th width="10%">SGST</th>
-							      <th width="10%">IGST</th>
-							      <th width="10%">CESS</th>
-							      <th width="10%">Income Tax TDS</th>
-							      <th width="10%">GST TDS</th>
-							      <th width="10%">Nature Of Payment</th>
-							      <th width="10%">Net Amount Paid</th>
-							      <th width="10%">BGL Code</th>
-							      <th width="10%">Our GST</th>
+							      <th width="10%"  style="padding:20px">Sr. No.</th>
+							      <th width="10%"  style="padding:20px">Vendor Number</th>
+							      <th width="10%"  style="padding:20px">Vendor Name</th>
+							      <th width="10%"  style="padding:20px">Vendor PAN</th>
+							      <th width="10%"  style="padding:20px">GST No.</th>
+							      <th width="10%"  style="padding:20px">Invoice Date</th>
+							      <th width="10%"  style="padding:20px">Payment Done</th>
+							      <th width="10%" style="padding:20px" >Payment Date</th>
+							      <th width="10%"  style="padding:20px">Payment Mode</th>
+							      <th width="10%"  style="padding:20px">Invoice Number</th>
+							      <th width="10%"  style="padding:20px">Total Invoice Value</th>
+							      <th width="10%"  style="padding:20px">Taxable Value</th>
+							      <th width="10%"  style="padding:20px">CGST</th>
+							      <th width="10%"  style="padding:20px">SGST</th>
+							      <th width="10%"  style="padding:20px">IGST</th>
+							      <th width="10%"  style="padding:20px">CESS</th>
+							      <th width="10%"  style="padding:20px">Income Tax TDS</th>
+							      <th width="10%"  style="padding:20px">GST TDS</th>
+							      <th width="10%"  style="padding:20px">Nature Of Payment</th>
+							      <th width="10%"  style="padding:20px">Net Amount Paid</th>
+							      <th width="10%"  style="padding:20px">BGL Code</th>
+							      <th width="10%"  style="padding:20px">Our GST</th>
 							      
 							      <th width="10%">Action</th>
 							     
@@ -141,7 +141,84 @@
 					
   
  <style>
- 
+  /*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+	@media
+	  only screen 
+    and (max-width: 760px), (min-device-width: 768px) 
+    and (max-device-width: 1024px)  {
+
+		/* Force table to not be like tables anymore */
+		table, thead, tbody, th, td, tr {
+			display: block;
+		}
+
+		/* Hide table headers (but not display: none;, for accessibility) */
+		thead tr {
+			position: absolute;
+			top: -9999px;
+			left: -9999px;
+		}
+
+    tr {
+      margin: 0 0 1rem 0;
+    }
+      
+    tr:nth-child(odd) {
+      background: #ccc;
+    }
+    
+		td {
+			/* Behave  like a "row" */
+			border: none;
+			border-bottom: 1px solid #eee;
+			position: relative;
+			padding-left: 50%;
+		}
+
+		td:before {
+			/* Now like a table header */
+			position: absolute;
+			/* Top/left values mimic padding */
+			top: 0;
+			left: 6px;
+			width: 45%;
+			padding-right: 10px;
+			white-space: nowrap;
+		}
+
+		/*
+		Label the data
+    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+		*/
+		td:nth-of-type(1):before { content: "Sr. No."; }
+		td:nth-of-type(2):before { content: "Vendor Number"; }
+		td:nth-of-type(3):before { content: "Vendor Name"; }
+		td:nth-of-type(4):before { content: "Vendor PAN"; }
+		td:nth-of-type(5):before { content: "GST No."; }
+		td:nth-of-type(6):before { content: "Invoice Date"; }
+		td:nth-of-type(7):before { content: "Payment Done"; }
+		td:nth-of-type(8):before { content: "Payment Date"; }
+		td:nth-of-type(9):before { content: "Payment Mode"; }
+		td:nth-of-type(10):before { content: "Invoice Number"; }
+		td:nth-of-type(11):before { content: "Total Invoice Value"; }
+		td:nth-of-type(12):before { content: "Taxable Value"; }
+		td:nth-of-type(13):before { content: "CGST"; }
+		td:nth-of-type(14):before { content: "SGST"; }
+		td:nth-of-type(15):before { content: "IGST"; }
+		td:nth-of-type(16):before { content: "CESS"; }
+		td:nth-of-type(17):before { content: "Income Tax TDS"; }
+		td:nth-of-type(18):before { content: "GST TDS"; }
+		td:nth-of-type(19):before { content: "Nature Of Payment"; }
+		td:nth-of-type(20):before { content: "Net Amount Paid"; }
+		td:nth-of-type(21):before { content: "BGL Code"; }
+		td:nth-of-type(22):before { content: "Our GST"; }
+		td:nth-of-type(23):before { content: "Action"; }
+		
+	}
+	
+	 
  
          @media only screen and (max-width: 1000px) {
            .one{

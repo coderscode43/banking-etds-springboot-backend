@@ -1,4 +1,87 @@
 <style>
+
+
+
+
+ /*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+	@media
+	  only screen 
+    and (max-width: 760px), (min-device-width: 768px) 
+    and (max-device-width: 1024px)  {
+
+		/* Force table to not be like tables anymore */
+		table, thead, tbody, th, td, tr {
+			display: block;
+		}
+
+		/* Hide table headers (but not display: none;, for accessibility) */
+		thead tr {
+			position: absolute;
+			top: -9999px;
+			left: -9999px;
+		}
+
+    tr {
+      margin: 0 0 1rem 0;
+    }
+      
+    tr:nth-child(odd) {
+      background: #ccc;
+    }
+    
+		td {
+			/* Behave  like a "row" */
+			border: none;
+			border-bottom: 1px solid #eee;
+			position: relative;
+			padding-left: 50%;
+		}
+
+		td:before {
+			/* Now like a table header */
+			position: absolute;
+			/* Top/left values mimic padding */
+			top: 0;
+			left: 6px;
+			width: 45%;
+			padding-right: 10px;
+			white-space: nowrap;
+		}
+
+		/*
+		Label the data
+    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+		*/
+		td:nth-of-type(1):before { content: "Sr. No."; }
+		td:nth-of-type(2):before { content: "Challan Sr.No."; }
+		td:nth-of-type(3):before { content: "Employee Reference No."; }
+		td:nth-of-type(4):before { content: "Pan Ref. No."; }
+		td:nth-of-type(5):before { content: "Pan"; }
+		td:nth-of-type(6):before { content: "Name"; }
+		td:nth-of-type(7):before { content: "Section Code"; }
+		td:nth-of-type(8):before { content: "Date of Payment"; }
+		td:nth-of-type(9):before { content: "Date of Deduction"; }
+		td:nth-of-type(10):before { content: "Paid Amount"; }
+		td:nth-of-type(11):before { content: "TDS"; }
+		td:nth-of-type(12):before { content: "Surcharge"; }
+		td:nth-of-type(13):before { content: "Education Cess"; }
+		td:nth-of-type(14):before { content: "Total TDS"; }
+		td:nth-of-type(15):before { content: "Total Tax Deposited"; }
+		td:nth-of-type(16):before { content: "Certificate No."; }
+		td:nth-of-type(17):before { content: "Remarks"; }
+		td:nth-of-type(18):before { content: "FY"; }
+		td:nth-of-type(19):before { content: "Quarter"; }
+		td:nth-of-type(20):before { content: "Action"; }
+		
+		
+		
+	}
+	
+		
+	
+	
 @media only screen and (max-width: 1000px) {
 	.one {
 		display: none;
@@ -143,24 +226,31 @@
 					<button ng-click="cCctr.searchEntities(true,'form24Q')"
 						class="btn btn-success">Search</button>
 						</div>
-						<div class="modal-header" style="margin-left: 96%; margin-bottom: -20px" >
+						<!-- <div class="modal-header" style="margin-left: 96%; margin-bottom: -20px" >
 					<button class="btn btn-Primary" data-toggle="modal" ng-click="cCctr.gotoListPage('add24deductee','add24deductee');">Add</button>
-				</div>
+				</div> -->
+				 </div>
 
 				<div class="row">
 					<div class="col-md-3" id="search">
 						<button ng-click="cCctr.searchEntities(true,'form24Q')"
 							class="btn btn-success">Search</button>
-						<button class="btn btn-Primary" data-toggle="modal" ng-click="cCctr.gotoListPage('add24deductee','add24deductee');">Add</button>
+						<!-- <button class="btn btn-Primary" data-toggle="modal" ng-click="cCctr.gotoListPage('add24deductee','add24deductee');">Add</button> -->
 					</div>
 				</div>
 			</div>
 		</div>
 
-
+ <div class="row">
+	 <div class="col-xs-12">
+		<div class="text-right">
+	       <button class="btn btn-Primary" data-toggle="modal" ng-click="cCctr.gotoListPage('add24deductee','add24deductee');">Add</button>
+		</div>
+	 </div>
+    </div>
 	<!-- 	<div class="row">
 		<div class="col-md-12" style="margin-left:-30px"> -->
-				<table class=" table table-bordered table-hover  table-striped"  role="table"
+				<table class=" tables table-bordered table-hover  table-striped"  role="table"
 				style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
 
 					<thead>
@@ -170,26 +260,26 @@
 					<tr>
 					<thead "rowgroup">
 						<tr role="row" style="height: 40px; background-color: #81b7db">
-							<th width="10%">Sr. No.</th>
-							<th width="10%">Challan Sr.No.</th>
-							<th width="10%">Employee Reference No.</th>
-							<th width="10%">Pan Ref. No.</th>
-							<th width="10%">Pan</th>
-							<th width="10%">Name</th>
-							<th width="10%">Section Code</th>
-							<th width="10%">Date of Payment</th>
-							<th width="10%">Date of Deduction</th>
-							<th width="10%">Paid Amount</th>
-							<th width="10%">TDS</th>
-							<th width="10%">Surcharge</th>
-							<th width="10%">Education cess</th>
-							<th width="10%">Total TDS</th>
-							<th width="10%">Total Tax Deposited</th>
-							<th width="10%">Certificate No.</th>
-							<th width="10%">Remarks</th>
-							<th width="10%">FY</th>
-							<th width="10%">Quarter</th>
-							<th width="10%">Action</th>
+							<th width="10%" style="padding:20px">Sr. No.</th>
+							<th width="10%" style="padding:20px">Challan Sr.No.</th>
+							<th width="10%" style="padding:20px">Employee Reference No.</th>
+							<th width="10%" style="padding:20px">Pan Ref. No.</th>
+							<th width="10%" style="padding:20px">Pan</th>
+							<th width="10%" style="padding:20px">Name</th>
+							<th width="10%" style="padding:20px">Section Code</th>
+							<th width="10%" style="padding:20px">Date of Payment</th>
+							<th width="10%" style="padding:20px">Date of Deduction</th>
+							<th width="10%" style="padding:20px">Paid Amount</th>
+							<th width="10%" style="padding:20px">TDS</th>
+							<th width="10%" style="padding:20px">Surcharge</th>
+							<th width="10%" style="padding:20px">Education cess</th>
+							<th width="10%" style="padding:20px">Total TDS</th>
+							<th width="10%" style="padding:20px">Total Tax Deposited</th>
+							<th width="10%" style="padding:20px">Certificate No.</th>
+							<th width="10%" style="padding:20px">Remarks</th>
+							<th width="10%" style="padding:20px">FY</th>
+							<th width="10%" style="padding:20px">Quarter</th>
+							<th width="10%" style="padding:20px">Action</th>
 
 						</tr>
 					</thead>

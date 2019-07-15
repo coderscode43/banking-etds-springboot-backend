@@ -553,20 +553,25 @@
 					
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Financial Year*</label> <input class="form-control"
-									type="text" name="fy" placeholder="Financial Year"
-									ng-model="cCctr.entity.fy" 
-									  ng-required="true"
-									autocomplete="off" 
-							       ng-pattern="/^[0-9]*$/"
-									ng-maxlength="50" 
-									ng-model-options="{updateOn: 'blur'}" /> 
-									
-									  <span style="color: red" ng-show="deducteeDetailForm.submitted || deducteeDetailForm.fy.$dirty && deducteeDetailForm.fy.$invalid">
-										  <span class="error" ng-show="deducteeDetailForm.fy.$error.pattern">Please enter valid Financial Address</span>
-										<span class="error" ng-show="deducteeDetailForm.fy.$error.maxlength">Financial Year should not be greater than 10.</span>
-										<span class="error" ng-show="deducteeDetailForm.fy.$error.required">Please enter Financial Year</span>
-										<span class="error" id="fy"></span>
+								<label>Financial Year*</label> 
+								<select name="fy" class="form-control" ng-model="cCctr.entity.fy" ng-required="true" ng-model-options="{updateOn: 'blur'}">
+									<option value="201920">201920</option>
+									<option value="201819">201819</option>
+									<option value="201718">201718</option>
+									<option value="201617">201617</option>
+									<option value="201516">201516</option>
+									<option value="201415">201415</option>
+									<option value="201314">201314</option>
+									<option value="201213">201213</option>
+									<option value="201112">201112</option>
+									<option value="201011">201011</option>
+									<option value="200910">200910</option>
+									<option value="200809">200809</option>
+									<option value="200708">200708</option>
+								</select>
+								<span style="color: red" ng-show="deducteeDetailForm.submitted || deducteeDetailForm.fy.$dirty && deducteeDetailForm.fy.$invalid">
+								<span class="error" ng-show="deducteeDetailForm.fy.$error.required">Please enter Financial Year</span>
+								<span class="error" id="fy"></span>
 								</span>
 							</div>
 
@@ -578,21 +583,17 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Quarter*</label> <input class="form-control"
-									type="text" name="quarter" placeholder="Quarter"
-									ng-model="cCctr.entity.quarter"
-									  ng-required="true"
-									autocomplete="off" 
-							      ng-pattern="/.*[a-zA-Z]+.*/"
-									ng-maxlength="10" 
-									ng-model-options="{updateOn: 'blur'}" /> 
-									
-									  <span style="color: red" ng-show="deducteeDetailForm.submitted || deducteeDetailForm.quarter.$dirty && deducteeDetailForm.quarter.$invalid">
-										  <span class="error" ng-show="deducteeDetailForm.quarter.$error.pattern">Please enter valid Quarter</span>
-										<span class="error" ng-show="deducteeDetailForm.quarter.$error.maxlength">Quarter should not be greater than 10.</span>
-										<span class="error" ng-show="deducteeDetailForm.quarter.$error.required">Please enter Quarter</span>
-										<span class="error" id="quarter"></span>
-								</span>
+								<label>Quarter*</label> 
+								<select name="quarter" class="form-control" ng-model="cCctr.entity.quarter" ng-required="true" ng-model-options="{updateOn: 'blur'}">
+								<option value="Q1">Q1</option>
+								<option value="Q2">Q2</option>
+								<option value="Q3">Q3</option>
+								<option value="Q4">Q4</option>
+							</select>
+							<span style="color: red" ng-show="deducteeDetailForm.submitted || deducteeDetailForm.quarter.$dirty && deducteeDetailForm.quarter.$invalid">
+							<span class="error" ng-show="deducteeDetailForm.quarter.$error.required">Please enter Quarter</span>
+							<span class="error" id="quarter"></span>
+							</span>
 							</div>
 
 						</div>
@@ -647,9 +648,9 @@
 						<div class="col-md-6">
 							<button
 								ng-click="deducteeDetailForm.submitted=true; cCctr.submit(deducteeDetailForm.$valid,'form27Q')"
-								class="btn btn-success" data-dismiss="modal">Submit</button>&nbsp;&nbsp;
+								class="btn btn-success" data-dismiss="modal" onclick="scrollWin()">Submit</button>&nbsp;&nbsp;
 							<button ng-click="cCctr.gotoListPage('form27Q','form27Q');"
-								class="btn btn-danger">Cancel</button>
+								class="btn btn-danger" onclick="scrollWin()">Cancel</button>
 						</div>
 					</div>
 				</form>

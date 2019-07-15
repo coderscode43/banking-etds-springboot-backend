@@ -26,26 +26,26 @@
 
 					<li><a
 						ng-click="cCctr.gotoListPage('vendorPayment','vendorPayment')"
-						class="dropdown-toggle" data-toggle="dropdown">Vendor Payment</a></li>
+						class="dropdown-toggle" data-toggle="dropdown" onclick="scrollWin()">Vendor Payment</a></li>
 					<li><a 
 						class="dropdown-toggle" data-toggle="dropdown">Form 26Q&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span></a>
 						
 						  <ul class=" dropdown-menu forAnimate">
              
-                               <li><a ng-click="cCctr.gotoListPage('formchallan26Q','formchallan26Q')">Challan Details</a></li>
+                               <li><a ng-click="cCctr.gotoListPage('formchallan26Q','formchallan26Q')" onclick="scrollWin()">Challan Details</a></li>
                                		
-                               <li><a ng-click="cCctr.gotoListPage('form26Q','form26Q')">Deductee Details</a></li>
+                               <li><a ng-click="cCctr.gotoListPage('form26Q','form26Q')" onclick="scrollWin()">Deductee Details</a></li>
                             </ul>
 						
 						</li>
 					<li><a
-						class="dropdown-toggle" data-toggle="dropdown">Form 27Q&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span></a>
+						class="dropdown-toggle" data-toggle="dropdown" >Form 27Q&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span></a>
 						
 						 <ul class=" dropdown-menu forAnimate">
              
-                               <li><a ng-click="cCctr.gotoListPage('regular27QChallan','regular27QChallan')">Challan Details</a></li>
+                               <li><a ng-click="cCctr.gotoListPage('regular27QChallan','regular27QChallan')" onclick="scrollWin()">Challan Details</a></li>
                                		
-                               <li><a ng-click="cCctr.gotoListPage('form27Q','form27Q')">Deductee Details</a></li>
+                               <li><a ng-click="cCctr.gotoListPage('form27Q','form27Q')" onclick="scrollWin()">Deductee Details</a></li>
                             </ul>
 						
 						
@@ -59,15 +59,15 @@
 						     <ul class=" dropdown-menu forAnimate">
              
                              
-                               	    <li><a ng-click="cCctr.gotoListPage('regular24Q4Challan','regular24Q4Challan')">Challan Details</a></li>	
-                               <li><a ng-click="cCctr.gotoListPage('form24Q','form24Q')">Deductee Details</a></li>
-                                 <li><a ng-click="cCctr.gotoListPage('form24Qsalary','form24Qsalary')">Salary Details</a></li>
+                               	    <li><a ng-click="cCctr.gotoListPage('regular24Q4Challan','regular24Q4Challan')" onclick="scrollWin()">Challan Details</a></li>	
+                               <li><a ng-click="cCctr.gotoListPage('form24Q','form24Q')" onclick="scrollWin()">Deductee Details</a></li>
+                                 <li><a ng-click="cCctr.gotoListPage('form24Qsalary','form24Qsalary')" onclick="scrollWin()">Salary Details</a></li>
                             </ul>
 					
 						</li>
 						
 					<li><a ng-click="cCctr.gotoListPage('requestCorrection','requestCorrection')"
-						class="dropdown-toggle" data-toggle="dropdown">Request Correction</a></li>
+						class="dropdown-toggle" data-toggle="dropdown" onclick="scrollWin()">Request Correction</a></li>
 						
 					<!-- 	 <li><a  data-toggle="collapse" data-target="#submenu-1"> menu <i class="fa fa-fw fa-angle-down pull-right"></i></a>
                     <ul id="submenu-1" class="collapse" style="background-color:white;text-decoration:none">
@@ -79,25 +79,30 @@
 
 					<li><a
 						ng-click="cCctr.gotoListPage('statementStatus','statementStatus')"
-						class="dropdown-toggle" data-toggle="dropdown">Statement
+						class="dropdown-toggle" data-toggle="dropdown" onclick="scrollWin()">Statement
 							Status </a></li>
 					<li><a
 						ng-click="cCctr.gotoListPage('tokenNumber','tokenNumber')"
-						class="dropdown-toggle" data-toggle="dropdown">Token Number
+						class="dropdown-toggle" data-toggle="dropdown" onclick="scrollWin()">Token Number
 							Status </a></li>
 					<li><a
 						ng-click="cCctr.gotoListPage('ghReturnStatus','ghReturnStatus')"
-						class="dropdown-toggle" data-toggle="dropdown">Form 15G/15H
+						class="dropdown-toggle" data-toggle="dropdown" onclick="scrollWin()">Form 15G/15H
 							Status</a></li>
 					<li><a class="dropdown-toggle" data-toggle="dropdown"
-						ng-click="cCctr.gotoListPage('misReport','misReport')">MIS
+						ng-click="cCctr.gotoListPage('misReport','misReport')" onclick="scrollWin()">MIS
 							Report</a></li>
+							
+							<li><a class="dropdown-toggle" data-toggle="dropdown"
+						ng-click="cCctr.gotoListPage('ticket','ticket')">Generate Ticket
+							</a></li>	
+							
 					<li><a class="dropdown-toggle" data-toggle="dropdown"
 					
 						ng-click="cCctr.gotoDetailPage('deductorDetails','${br.getTan()}','deductorDetails')"
-						>Deductor Details</a></li>
+						onclick="scrollWin()">Deductor Details</a></li>
 					<li><a class="dropdown-toggle" data-toggle="dropdown"
-					ng-click="cCctr.gotoHomePageSC(cCctr.clientId,'homeSC')">Select Branch</a></li>
+					ng-click="cCctr.gotoHomePageSC(cCctr.clientId,'homeSC')" onclick="scrollWin()">Select Branch</a></li>
 
 					<!-- 					<li><a ng-click="cCctr.gotoListPage('defaultSummary','defaultSummary')" class="dropdown-toggle" data-toggle="dropdown">Default
 							Summary<span style="font-size: 16px;"

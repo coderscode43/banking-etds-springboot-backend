@@ -1,4 +1,80 @@
 <style>
+
+ /*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+	@media
+	  only screen 
+    and (max-width: 760px), (min-device-width: 768px) 
+    and (max-device-width: 1024px)  {
+
+		/* Force table to not be like tables anymore */
+		table, thead, tbody, th, td, tr {
+			display: block;
+		}
+
+		/* Hide table headers (but not display: none;, for accessibility) */
+		thead tr {
+			position: absolute;
+			top: -9999px;
+			left: -9999px;
+		}
+
+    tr {
+      margin: 0 0 1rem 0;
+    }
+      
+    tr:nth-child(odd) {
+      background: #ccc;
+    }
+    
+		td {
+			/* Behave  like a "row" */
+			border: none;
+			border-bottom: 1px solid #eee;
+			position: relative;
+			padding-left: 50%;
+		}
+
+		td:before {
+			/* Now like a table header */
+			position: absolute;
+			/* Top/left values mimic padding */
+			top: 0;
+			left: 6px;
+			width: 45%;
+			padding-right: 10px;
+			white-space: nowrap;
+		}
+
+		/*
+		Label the data
+    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+		*/
+		td:nth-of-type(1):before { content: "Sr. No."; }
+		td:nth-of-type(2):before { content: "Challan Sr.No."; }
+		td:nth-of-type(3):before { content: "Deductee Reference No."; }
+		td:nth-of-type(4):before { content: "Deductee Code"; }
+		td:nth-of-type(5):before { content: "Deductee Pan"; }
+		td:nth-of-type(6):before { content: "Deductee Name"; }
+		td:nth-of-type(7):before { content: "Section Code"; }
+		td:nth-of-type(8):before { content: "Date of Payment"; }
+		td:nth-of-type(9):before { content: "Paid Amount"; }
+		td:nth-of-type(10):before { content: "TDS"; }
+		td:nth-of-type(11):before { content: "Surcharge"; }
+		td:nth-of-type(12):before { content: "Education cess"; }
+		td:nth-of-type(13):before { content: "Total Tax Deducted"; }
+		td:nth-of-type(14):before { content: "Total Tax Deposited"; }
+		td:nth-of-type(15):before { content: "Deduct Date"; }
+		td:nth-of-type(16):before { content: "Rate Tax Deduct"; }
+		td:nth-of-type(17):before { content: "Remarks"; }
+		td:nth-of-type(18):before { content: "Certificate No."; }
+		td:nth-of-type(19):before { content: "FY"; }
+		td:nth-of-type(20):before { content: "Quarter"; }
+		td:nth-of-type(21):before { content: "Action"; }
+		
+	
+	}
 @media only screen and (max-width: 1000px) {
 	.one {
 		display: none;
@@ -32,6 +108,11 @@
 		display: none;
 	}
 }
+@media only screen and (max-width: 1000px) {
+	.hide {
+		display: none;
+	}
+}
 
 .table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
 	{
@@ -60,7 +141,7 @@
 	<br>
 	<button class="btn btn-primary hidden visible-xs" type="button"
 		data-toggle="collapse" data-target="#collapseExample2"
-		aria-expanded="false" aria-controls="collapseExample">Search</button>
+		aria-expanded="false" aria-controls="collapseExample" >Search</button>
 	<div class="collapse dont-collapse-sm" id="collapseExample2">
 		<div class="row">
 			<div class="form-group">
@@ -140,35 +221,46 @@
                </div>
                
 			
+  
+   <div class="row" id="search" >
+	         	  <div class="col-md-2" id="search">	
+	                          <button ng-click="cCctr.searchEntities(true,'formchallan26Q','formchallan26Q')"
+					class="btn btn-success"onclick="scrollWin()">Search</button>
+	                 </div>					
+  </div>
 
 		
 
 		<div class="row" id="hide">
 			<div class="col-md-3" style="margin-left: 80%; margin-top: -90px">
 				<button ng-click="cCctr.searchEntities(true,'form26Q')"
-					class="btn btn-success">Search</button>
+					class="btn btn-success" onclick="scrollWin()">Search</button>
 			</div>
 
-			<div class="row"></div>
-			<div class="modal-header"
-				style="margin-left: 95%; margin-bottom: -20px">
-				<button type="button" class="btn btn-primary" ng-click="cCctr.gotoListPage('addForm26Qdeductee','addForm26Qdeductee');">Add</button>
-			</div>
-
+		
 			<div class="row">
 				<div class="col-md-3" id="search">
 					<button ng-click="cCctr.searchEntities(true,'form26Q')"
-						class="btn btn-success">Search</button>
-					<button type="button" class="btn btn-primary" ng-click="cCctr.gotoListPage('addForm26Qdeductee','addForm26Qdeductee');">Add</button>
+						class="btn btn-success" onclick="scrollWin()">Search</button>
+					
 				</div>
 			</div>
 		</div>
 	</div>
+	
+	<div class="row">
+	 <div class="col-xs-12">
+		<div class="text-right">
+	         <button type="button" class="btn btn-primary" ng-click="cCctr.gotoListPage('addForm26Qdeductee','addForm26Qdeductee');">Add</button>
+		</div>
+	 </div>
+    </div>
 
+	
 
 	<!--	<div class="row" >-->
 
-	<table class=" table table-bordered table-hover table-striped" role="table"
+	<table class=" tables table-bordered table-hover table-striped" role="table"
 		style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
 		<thead>
 		<colgroup>
@@ -177,29 +269,29 @@
 		<tr>
 		<thead role="rowgroup">
 			<tr role="row" style="height: 40px; background-color: #81b7db">
-				<th width="10%">Sr. No.</th>
-				<th width="10%">Challan Sr.No.</th>
-				<th width="10%">Deductee Reference No.</th>
-				<th width="10%">Deductee Code</th>
-				<th width="10%">Deductee Pan</th>
-				<th width="10%">Deductee Name</th>
-				<th width="10%">Section Code</th>
-				<th width="10%">Date of Payment</th>
+				<th width="10%" style="padding:20px">Sr. No.</th>
+				<th width="10%" style="padding:20px">Challan Sr.No.</th>
+				<th width="10%" style="padding:20px">Deductee Reference No.</th>
+				<th width="10%" style="padding:20px">Deductee Code</th>
+				<th width="10%" style="padding:20px">Deductee Pan</th>
+				<th width="10%" style="padding:20px">Deductee Name</th>
+				<th width="10%" style="padding:20px">Section Code</th>
+				<th width="10%" style="padding:20px">Date of Payment</th>
 
-				<th width="10%">Paid Amount</th>
-				<th width="10%">TDS</th>
-				<th width="10%">Surcharge</th>
-				<th width="10%">Education cess</th>
-				<th width="10%">Total Tax Deducted</th>
-				<th width="10%">Total Tax Deposited</th>
-				<th width="10%">Deduct Date</th>
-				<th width="10%">Rate Tax Deduct</th>
-				<th width="10%">Remarks</th>
-				<th width="10%">Certificate No.</th>
+				<th width="10%" style="padding:20px">Paid Amount</th>
+				<th width="10%" style="padding:20px">TDS</th>
+				<th width="10%" style="padding:20px">Surcharge</th>
+				<th width="10%" style="padding:20px">Education cess</th>
+				<th width="10%" style="padding:20px">Total Tax Deducted</th>
+				<th width="10%" style="padding:20px">Total Tax Deposited</th>
+				<th width="10%" style="padding:20px">Deduct Date</th>
+				<th width="10%" style="padding:20px">Rate Tax Deduct</th>
+				<th width="10%" style="padding:20px">Remarks</th>
+				<th width="10%" style="padding:20px">Certificate No.</th>
 				
-				<th width="10%">FY</th>
-				<th width="10%">Quarter</th>
-				<th></th>
+				<th width="10%" style="padding:20px">FY</th>
+				<th width="10%" style="padding:20px">Quarter</th>
+				<th style="padding:20px">Action</th>
 
 			</tr>
 		</thead>
@@ -231,7 +323,7 @@
 				<td>{{a.quarter}}</td>
 
 
-				<td><a ng-click="cCctr.gotoDetailPage('form26Q',a.id,'detailFormDeductee26Q')" style="color: blue">Details</a></td>
+				<td><a ng-click="cCctr.gotoDetailPage('form26Q',a.id,'detailFormDeductee26Q')" style="color: blue" onclick="scrollWin()">Details</a></td>
 				<!-- <td>{{a.total-a.amountPaid}}</td> -->
 
 			</tr>

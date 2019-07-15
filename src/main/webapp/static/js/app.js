@@ -33,20 +33,21 @@ App.config([ '$stateProvider', '$urlRouterProvider',function($stateProvider, $ur
 		url : "/logout",
 		templateUrl : 'index/logout',		
 		controller : "CommonController as cCctr"
-		}
-	)	
+	
+		})	
 	$stateProvider
 	.state('signIn', {
 		url : "/signIn",
 		templateUrl : 'index/home/login',
 		controller : "HomeController as hctr"
-		}
-	)	
+			
+		})	
 	
 	.state('main', {
 		url : "/home",
 		templateUrl : 'index/main',
 		controller : "CommonController as cCctr"
+		
 		}
 		
 	)
@@ -55,6 +56,7 @@ App.config([ '$stateProvider', '$urlRouterProvider',function($stateProvider, $ur
 		url : "/resetPass",
 		templateUrl : 'index/resetPass',
 		controller : "CommonController as cCctr"
+		
 		}
 		
 	)
@@ -73,6 +75,7 @@ App.config([ '$stateProvider', '$urlRouterProvider',function($stateProvider, $ur
 			},
 			
 		controller : "CommonController as cCctr"
+	
 		}
 	)
 
@@ -81,7 +84,8 @@ App.config([ '$stateProvider', '$urlRouterProvider',function($stateProvider, $ur
 			url : "/homepage",
 			templateUrl : function($stateParams) {
 					return 'index/homePage/' + $stateParams.clientId+'/'+$stateParams.action;
-			},
+			}
+			
 				
 		})
 		
@@ -106,6 +110,7 @@ App.config([ '$stateProvider', '$urlRouterProvider',function($stateProvider, $ur
 						return deferred.promise;
 					}
 				}
+			
 		})
 	
 	
@@ -128,6 +133,7 @@ App.config([ '$stateProvider', '$urlRouterProvider',function($stateProvider, $ur
 						return deferred.promise;
 					}
 				}
+				
 		})
 		.state('home.listBranch',{
 			url : "/:entity/:page", 
@@ -146,6 +152,7 @@ App.config([ '$stateProvider', '$urlRouterProvider',function($stateProvider, $ur
 						return deferred.promise;
 					}
 				}
+				
 		})
 		.state('home.search',{
 			url : "/list/:entity/:page/:searchParams",
@@ -165,6 +172,7 @@ App.config([ '$stateProvider', '$urlRouterProvider',function($stateProvider, $ur
 						return deferred.promise;
 					}
 				}
+				
 			
 		})
 		
@@ -189,6 +197,7 @@ App.config([ '$stateProvider', '$urlRouterProvider',function($stateProvider, $ur
 						return deferred.promise;
 					}
 				}
+				
 		})
 	
 
@@ -211,6 +220,7 @@ App.config([ '$stateProvider', '$urlRouterProvider',function($stateProvider, $ur
 						return deferred.promise;
 					}
 				}
+				
 		})
 
 		

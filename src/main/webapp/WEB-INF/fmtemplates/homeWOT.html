@@ -1,7 +1,213 @@
+<style>
+
+@media (min-width: 300px) and (max-width: 700px) {
+  
+ .mobile{
+       display:none;
+ }
+  
+}
+
+ @media only screen and (min-width:600px) {
+            .hide-on-desktop, * [aria-labelledby='hide-on-desktop'] {
+                display: none;
+              
+            }
+        }
+        
+        
+        .sidenavs {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenavs a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenavs a:hover {
+  color: #f1f1f1;
+}
+
+.sidenavs .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenavs {padding-top: 15px;}
+  .sidenavs a {font-size: 18px;}
+}
+</style>
 
 
 
-<div class="sidenav">
+
+
+
+
+<div id="mySidenav" class="sidenavs">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <div class="row" style="margin-top:-75px;background-color:#0F316D;height:100px">
+  
+  
+  <img src="static/img/logo4.png" style="height:105px;width:100%"  ng-click="cCctr.gotoListPage('homeWOTHomepage','homeWOTHomepage')" onclick="closeNav()">
+  </div>
+  
+   <div style="background-color:white;margin-top:8px" onclick="closeNav()" ng-click="cCctr.gotoListPage('vendorPayment','vendorPayment')">
+           <a ng-click="" class="dropdown-toggle"
+			data-toggle="dropdown"><b style="font-size:17px;color:black; " >Vendor Payment</b></a>
+  </div>
+  
+  
+	<div style="background-color:white;margin-top:1px">
+			     <a role="menuitem" tabindex="-1" data-toggle="collapse" data-parent="#accordion" data-target="#pm"><b style="font-size:17px;color:black">Form 26Q</b>
+                <i style="font-size:12px;color:black;margin-left:30%" class="glyphicon glyphicon-chevron-down"></i></div></a>
+            
+
+            <ul id="pm" class="panel-collapse collapse">
+                <p><a ><b style="font-size:18px;color:white" onclick="closeNav()" ng-click="cCctr.gotoListPage('formchallan26Q','formchallan26Q')">Challan
+							Details</b> </a>
+
+                </p>
+                <p><a ><b style="font-size:18px;color:white" onclick="closeNav()" ng-click="cCctr.gotoListPage('form26Q','form26Q')">Deductee
+							Details</b> </a>
+
+                </p>
+            </ul>
+            
+            <div style="background-color:white;margin-top:1px">
+			     <a role="menuitem" tabindex="-1" data-toggle="collapse" data-parent="#accordion" data-target="#qm"><b style="font-size:17px;color:black">Form 27Q</b>
+                <i style="font-size:12px;color:black;margin-left:40%" class="glyphicon glyphicon-chevron-down"></i></div></a>
+            
+
+            <ul id="qm" class="panel-collapse collapse">
+                <p><a ><b style="font-size:18px;color:white" onclick="closeNav()" ng-click="cCctr.gotoListPage('regular27QChallan','regular27QChallan')">Challan Details
+							</b> </a>
+
+                </p>
+                <p><a ><b style="font-size:18px;color:white" onclick="closeNav()" ng-click="cCctr.gotoListPage('form27Q','form27Q')">Deductee Details
+							</b> </a>
+
+                </p>
+                
+                 
+             
+            </ul>
+            
+            
+             <div style="background-color:white;margin-top:1px">
+			     <a role="menuitem" tabindex="-1" data-toggle="collapse" data-parent="#accordion" data-target="#rm"><b style="font-size:17px;color:black">Form 24Q</b>
+                <i style="font-size:12px;color:black;margin-left:30%" class="glyphicon glyphicon-chevron-down"></i></div></a>
+            
+
+            <ul id="rm" class="panel-collapse collapse">
+                <p><a ><b style="font-size:18px;color:white" onclick="closeNav()" ng-click="cCctr.gotoListPage('regular24Q4Challan','regular24Q4Challan')">Challan Details
+							</b> </a>
+
+                </p>
+                <p><a ><b style="font-size:18px;color:white" onclick="closeNav()"  ng-click="cCctr.gotoListPage('form24Q','form24Q')">Deductee Details
+							</b> </a>
+
+                </p>
+                <p><a ><b style="font-size:18px;color:white" onclick="closeNav()" ng-click="cCctr.gotoListPage('form24Qsalary','form24Qsalary')">Salary Details
+							</b> </a>
+
+                </p>
+                
+                
+                               	   
+              
+            </ul>
+                 <div style="background-color:white;margin-top:1px" onclick="closeNav()" ng-click="cCctr.gotoListPage('requestCorrection','requestCorrection')">
+             <a class="dropdown-toggle"
+		       	data-toggle="dropdown"><b style="font-size:17px;color:black; " >Request Correction</b></a>
+		       	</div>
+			    <div style="background-color:white;margin-top:1px" onclick="closeNav()" ng-click="cCctr.gotoListPage('statementStatus','statementStatus')">
+                  <a class="dropdown-toggle"
+			     data-toggle="dropdown"><b style="font-size:17px;color:black; " >Statement Status</b></a>
+			     </div>
+			   <div style="background-color:white;margin-top:1px" onclick="closeNav()" ng-click="cCctr.gotoListPage('tokenNumber','tokenNumber')">
+                  <a  class="dropdown-toggle"
+			      data-toggle="dropdown"><b style="font-size:17px;color:black; " >Token Number Status</b></a>
+			    </div>
+			  <div style="background-color:white;margin-top:1px" onclick="closeNav()" ng-click="cCctr.gotoListPage('ghReturnStatus','ghReturnStatus')">
+                  <a  class="dropdown-toggle"
+			     data-toggle="dropdown"><b style="font-size:17px;color:black; " >Form 15G/15H Status</b></a>
+			   </div>
+			    <div style="background-color:white;margin-top:1px" onclick="closeNav()" ng-click="cCctr.gotoListPage('misReport','misReport')">
+                    <a  class="dropdown-toggle"
+			        data-toggle="dropdown"><b style="font-size:17px;color:black; " >MISReport</b></a>
+			   </div>
+			   
+			   <div style="background-color:white;margin-top:1px" onclick="closeNav()" ng-click="cCctr.gotoListPage('ticket','ticket')">
+                   <a class="dropdown-toggle"
+		       	   data-toggle="dropdown"><b style="font-size:17px;color:black; " >Generate Ticket</b></a>
+		       </div>
+		       
+			   <div style="background-color:white;margin-top:1px" onclick="closeNav()" ng-click="cCctr.gotoDetailPage('deductorDetails','${br.getTan()}','deductorDetails')">
+                   <a class="dropdown-toggle" 
+                   data-toggle="dropdown"><b style="font-size:17px;color:black; " >Deductor Details</b></a>
+               </div>
+               
+			    <div style="background-color:white;margin-top:1px" onclick="closeNav()" ng-click="cCctr.gotoHomePageSC(cCctr.clientId,'homeSC')">
+                    <a class="dropdown-toggle"
+			        data-toggle="dropdown"><b style="font-size:17px;color:black; " >Select Branch</b></a>
+			   </div>
+ 
+</div>
+
+
+ <div class="navbar-header hide-on-desktop" style="border-bottom:1px solid">
+
+		
+                              <button type="button"  onclick="openNav()" style="margin-top:20px;background-color:#0F316D; margin-left:10px" class="pull-left navbar-toggle" data-toggle="collapse" data-target="#tejas">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                          </button> 
+
+				<a class="icon-cog" style="line-height: 0.5%;"
+					ui-sref="home.homePage"> <span class="icon-tax-o-smart"
+					style="font-size: 60px; color:#0F316D; position: relative; top: 10px;margin-top:-5px"></span>
+
+
+					<span color="whitle"
+					style="font-size: 35px; color: #0F316D; position: relative; bottom: 0px;">Tax-<strong
+						style="color: #5cb85c;">O</strong>-Smart
+				</span></a>
+	
+
+
+			</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="sidenav mobile">
 	<nav class="navbar navbar-inverse sidebar" role="navigation"
 		style="margin-top: -22px; position: fixed">
 		<div class="container-fluid"
@@ -123,9 +329,9 @@
 <div ng-http-loader  methods="['GET']" ttl="0"   id="example/loader"  template="index/example-loader.tpl"></div>
 
 
-<div class="main">
+<div class="main ">
 
-	<div class="col-md-12"
+	<div class="col-md-12 mobile"
 		style="position:fixed;z-index:2; margin-top: -25px; margin-right: 0px; background-color: #72ad00; color: white; font-size: 12px; font-family: arial">
 		<div class="col-md-4">
 			<p>
@@ -143,7 +349,7 @@
 			</p>
 		</div>
 	</div>
-	<div class="col-md-12"
+	<div class="col-md-12 mobile"
 		style=" position:fixed;z-index:2;margin-top: -10px; margin-left: 0px; margin-bottom: -20px; background-color: #72ad00; color: white; font-size: 12px; font-family: arial">
 		<div class="col-md-4">
 			<p>
@@ -163,7 +369,43 @@
 	</div>
 	
 	
+	<div class="col-md-12 hide-on-desktop"
+		style="margin-top: -10px; margin-left: 0px; margin-bottom: -20px; background-color: #72ad00; color: white; font-size: 12px; font-family: arial">
+		<div class="col-md-2">
+			<p>
+				<b> BRANCH NAME : </b>${br.getName()}
+			</p>
+		</div>
+		<div class="col-md-2">
+			<p>
+				<b> BRANCH CODE : </b> ${br.getBranchCode()}
+			</p>
+		</div>
+		<div class="col-md-2">
+			<p>
+				<b> BRANCH E-MAIL : </b> ${br.getEmail()}
+			</p>
+		</div>
+	</div>
 	
+		<div class="col-md-12 hide-on-desktop"
+		style="margin-top: -25px; margin-right: 0px; background-color: #72ad00; color: white; font-size: 12px; font-family: arial">
+		<div class="col-md-4">
+			<p>
+				<b> NAME : </b> ${cd.getName()}
+			</p>
+		</div>
+		<div class="col-md-4">
+			<p>
+				<b> PAN : </b> ${br.getPan()}
+			</p>
+		</div>
+		<div class="col-md-4">
+			<p>
+				<b> TAN : </b> ${br.getTan()}
+			</p>
+		</div>
+	</div>
 	
 
 	<div ui-view></div>

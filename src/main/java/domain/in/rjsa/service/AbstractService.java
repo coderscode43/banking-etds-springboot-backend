@@ -2,16 +2,25 @@ package domain.in.rjsa.service;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 
 import domain.in.rjsa.dao.DaoInterface;
+import domain.in.rjsa.dao.FileDetailDao;
+import domain.in.rjsa.model.form.FileDetail;
 
 public abstract class AbstractService<K extends Serializable, E, D extends DaoInterface<K, E>>
 		implements ServiceInterface<K, E> {
 //	@Autowired
 //	FileDetailDao fDao;
+	@Autowired
+	FileDetailDao fDao;
+	
 	@Override
 	public void save(E entity) {
 		// TODO Auto-generated method stub
@@ -23,6 +32,18 @@ public abstract class AbstractService<K extends Serializable, E, D extends DaoIn
 	public void update(E entity) {
 		// TODO Auto-generated method stub
 		getPrimaryDao().update(entity);
+	}
+	
+	@Override
+	public void saveFile(FileDetail file, LinkedHashMap<String, Object> map, Class<E> entity) {
+		fDao.persist(file);
+		map.put("fileId", file.getId());
+		
+		map.put("clientId", file.getClientId());
+		Gson gson = new Gson();
+		JsonElement jsonElement = gson.toJsonTree(map);
+		E ob = gson.fromJson(jsonElement,entity );
+		save(ob);
 	}
 
 	@Override

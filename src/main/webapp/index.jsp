@@ -97,5 +97,31 @@
 
 	<script src="static/js/controller/CommonController.js"></script>
     <script src="static/js/service/CommonService.js"></script>
+    
+    
+    <!-- Start of LiveChat (www.livechatinc.com) code -->
+	<script type="text/javascript">
+		var $zoho = $zoho || {};
+		$zoho.salesiq = $zoho.salesiq
+				|| {
+					widgetcode : "f13a6fe67eb039b0bdf1ac3c5e461e7573ff9a7c7311401bef2bf4edab320718",
+					values : {},
+					ready : function() {
+					}
+				};
+		var d = document;
+		s = d.createElement("script");
+		s.type = "text/javascript";
+		s.id = "zsiqscript";
+		s.defer = true;
+		s.src = "https://salesiq.zoho.com/widget";
+		t = d.getElementsByTagName("script")[0];
+		t.parentNode.insertBefore(s, t);
+		d.write("<div id='zsiqwidget'></div>");
+	</script>
+	
+	<!-- End of LiveChat code -->
+    
+    
 </body>
 </html>

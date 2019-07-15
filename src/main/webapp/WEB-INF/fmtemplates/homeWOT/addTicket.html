@@ -6,13 +6,19 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<form role="form" name="employeeDetailForm">
+			
+			<form name="employeeDetailForm" class="form-horizontal" role="form"
+							enctype="multipart/form-data">
+				
+				
+				<input type="hidden" ng-model="cCctr.entity.clientId=cCctr.clientId"
+									ng-init="cCctr.fileName.dec.clientId=cCctr.clientId">
 				
 				<input type="hidden" ng-model="cCctr.entity.status"
 									ng-init="cCctr.entity.status='Not Verified'">	
 				
 					<div class="row">
-					<div class="col-md-6">
+					<div class="col-md-4">
 							<div class="form-group">
 								<label>Form</label> 
 								<select ng-model="cCctr.search.FORM" class="form-control" required>
@@ -26,7 +32,7 @@
 							</div>
 							
 						
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<div class="form-group">
 								<label>Finacial Year</label>
 								<select class="form-control" ng-model="cCctr.search.fy" required>
@@ -47,9 +53,7 @@
 					</select>
 							</div>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<div class="form-group">
 								<label>Quarter</label> 
 								<select class="form-control" ng-model="cCctr.search.quarter" required>
@@ -61,22 +65,74 @@
 							</select>
 							</div>
 						</div>
+					</div>
+					
+					
+					<div class="row">
+					<div class="col-md-4">
+							<div class="form-group">
+								<label>Date Of Opening</label> 
+								<input class="form-control"
+									type="date" name="date"
+									placeholder="Date Of Opening"
+									ng-model="cCctr.entity.dateOfOpening" autocomplete="off"
+									ng-maxlength="50" ng-required="false"
+									
+									ng-model-options="{updateOn: 'blur'}" />
+                          </div>
+							</div>
+							
+						
+						<div class="col-md-4">
+							<div class="form-group">
+								<label>Status</label>
+								<input class="form-control"
+								type="text" name="status"
+								placeholder="Status"
+								ng-model="cCctr.entity.status"
+								autocomplete="off" ng-maxlength="45" ng-required="false"
+								ng-model-options="{updateOn: 'blur'}" />
+								
+							</div>
+						</div>
+						<div class="col-md-4">
+						<div class="control-group">
+									<label class="control-label" for="file">Attach File</label>
+									<div class="controls">
+										<input multiple id="file-upload" type="file" name="fileName"   
+											file-model="cCctr.fileName.file"  accept=".pdf,.png,.jpeg,.jpg"  >
+									</div>
+								</div>
+								</div>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="row">
+						
 						
 							<div class="col-md-6">
 							<div class="form-group">
 								<label>Description</label> 
-								<textarea class="form-control"ng-model="cCctr.entity.description" required></textarea>
+								<textarea class="form-control"ng-model="cCctr.entity.description"  style="width:100%;"required></textarea>
 
 							</div>
 						</div>
 						</div>
 					<div class="row">						
 							<button
-								ng-click="employeeDetailForm.submitted=true; cCctr.submit(employeeDetailForm.$valid,'ticket')"
+								ng-click="employeeDetailForm.submitted=true;cCctr.submitFile(employeeDetailForm.$valid,'ticket',cCctr.fileName,'close')"
 								class="btn btn-success">Save</button>
 							<button ng-click="cCctr.gotoListPage('ticket','ticket');"
 								class="btn btn-danger">Back</button>						
 					</div>
+					
+					
+					
+					
 				</form>
 
 			</div>

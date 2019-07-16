@@ -52,6 +52,9 @@ App.controller(
 								
 								
 							}
+							self.persentDate=function(){
+						 		return new Date();
+						 	}
 							self.gotoRestPqassword = function() {
 								$state.go("resetPass");
 							}

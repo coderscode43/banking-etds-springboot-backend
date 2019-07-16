@@ -100,7 +100,7 @@
     
     
     <!-- Start of LiveChat (www.livechatinc.com) code -->
-	<script type="text/javascript">
+<!-- 	<script type="text/javascript">
 		var $zoho = $zoho || {};
 		$zoho.salesiq = $zoho.salesiq
 				|| {
@@ -119,7 +119,7 @@
 		t.parentNode.insertBefore(s, t);
 		d.write("<div id='zsiqwidget'></div>");
 	</script>
-	
+ -->	
 	<!-- End of LiveChat code -->
     
     

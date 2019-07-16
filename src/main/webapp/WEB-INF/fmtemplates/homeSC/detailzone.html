@@ -1,5 +1,9 @@
 
 <style>
+
+.md-autocomplete-suggestions-container{  
+   z-index:1111 !important; /* any number of choice > 1050*/
+  }
 /*
 	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
 	*/
@@ -227,8 +231,8 @@
 </div>
 
 
-<div id="changeBranch" class="modal fade" role="dialog">
-	<div class="modal-dialog modal-lg">
+<div id="changeBranch" class="modal fade" role="dialog" ng-init="cCctr.entity=cCctr.getEntityData();">
+	<div class="modal-dialog modal-lg" >
 		<!-- Modal content-->
 		<div class="modal-content">
 			<div class="modal-header">
@@ -243,24 +247,40 @@
 							enctype="multipart/form-data">
 
 
+							 <div class="row" style="font-size: 13px;">
+	    	<div class="col-md-6">
+				<label>Branch Name &nbsp;:</label> {{cCctr.entity.branch.name}}
+			</div>
+	       	<div class="col-md-6">
+				<label>Branch code. &nbsp;:</label> {{cCctr.entity.branch.branchCode}}
+			</div>
+			
+  		 </div>
+  		 <br>
+
 							<div class="row">
 								<div class="form-group">
-									<label>Branch </label> <input class="form-control" type="text"
-										name="totalTds" placeholder="Total TDS"
-										ng-model="cCctr.entity.deductee.totalTds" autocomplete="off"
-										ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+								<div class="col-md-6">
+									<label>New Zone Code</label> 
+									 <md-autocomplete
+            								md-input-name="Zone Code"
+            								md-input-minlength="3"
+            								md-no-cache = "true"
+            								md-input-maxlength="75"
+            								md-selected-item="cCctr.entity.zoneCode"
+            								md-search-text="a"
+            								md-items="item in cCctr.ajax1('zone','zoneCode',a)"
+            								md-delay="2000"
+            								placeholder="Zone Code">
+          								<md-item-template>
+            								<span >{{item}}</span>
+          								</md-item-template>
+          								<md-not-found>
+                     						No Zone code with "{{a}}" were found.<a >Add new</a>
+           								</md-not-found>
+        								</md-autocomplete>
+
 								</div>
-
-
-
-							</div>
-
-							<div class="row">
-								<div class="form-group">
-									<label>New Zone Code</label> <input class="form-control" type="text"
-										name="remarks" placeholder="Pan"
-										ng-model="cCctr.entity.deductee.remarks" autocomplete="off"
-										ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
 								</div>
 							</div>
 
@@ -270,12 +290,15 @@
 					</div>
 
 				</div>
-				<div class="modal-footer">
+				
+			</div>
+			
+			<div class="modal-footer">
 					<button
 						ng-click="profileForm.submitted=true;cCctr.updateData(profileForm.$valid,'form24Q',cCctr.entity.deductee,'closeU')"
 						class="btn btn-success" data-dismiss="modal">Save</button>
 					<button class="btn btn-primary" data-dismiss="modal">Back</button>
 				</div>
-			</div>
 		</div>
 	</div>
+</div>

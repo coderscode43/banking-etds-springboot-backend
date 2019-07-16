@@ -1,6 +1,7 @@
 'use strict';
 
-App.controller(
+App
+		.controller(
 				'CommonController',
 				[
 						'$http',
@@ -12,12 +13,12 @@ App.controller(
 						'$q',
 						'$window',
 						function($http, restUrl, $scope, $state, $stateParams,
-								CommonService, $q,$window) {
+								CommonService, $q, $window) {
 
 							var self = this;
 							self.tan;
-							self.clientId=0;
-							self.loader='';
+							self.clientId = 0;
+							self.loader = '';
 							self.entity = {};
 							self.search = {};
 							self.entityList = [];
@@ -43,42 +44,40 @@ App.controller(
 								$state.go("logout");
 							}
 							self.changeAction = function() {
-								if( $state.current.name=='main'){
-									$window.location.reload();	
-								}
-								else{
+								if ($state.current.name == 'main') {
+									$window.location.reload();
+								} else {
 									$state.go("main");
 								}
-								
-								
+
 							}
-							self.persentDate=function(){
-						 		return new Date();
-						 	}
+							self.persentDate = function() {
+								return new Date();
+							}
 							self.gotoRestPqassword = function() {
 								$state.go("resetPass");
 							}
 
 							self.gotoHomePageSC = function(clientId, action) {
 								self.company = name;
-								self.clientId=clientId;
+								self.clientId = clientId;
 								$state.go("home.homepage", {
 									"clientId" : clientId,
 									"action" : action
 								});
 
 							}
-							
+
 							self.gotoHomePageWOT = function(id, action) {
 								self.company = name;
-								self.clientId=$stateParams.clientId;
+								self.clientId = $stateParams.clientId;
 								$state.go("home.homepage", {
-								    "branchId" :id,
+									"branchId" : id,
 									"action" : action
 								});
 
 							}
-							
+
 							self.gotoDetailPage = function(entity, detailId,
 									page) {
 								self.company = name;
@@ -90,11 +89,6 @@ App.controller(
 
 							}
 
-							
-							
-						
-							
-							
 							self.gotoDetail = function(entity, detailId) {
 								self.company = name;
 								var deferred = $q.defer();
@@ -122,31 +116,59 @@ App.controller(
 														console
 																.log(entity
 																		+ ' deleted successfully');
-													
+
 														entityList.splice(
 																index, 1);
-														
-														
-                                                         angular.element('#'+closeModalId).trigger('click');
-														
-														$('#successMsg').find('.modal-header').find('.headingMsg').append("Successfull");
-											          	$('#successMsg').find('.modal-body').find('.msg').append(" Deleted Successfully");
-											         	$("#successMsg").modal();
+
+														angular
+																.element(
+																		'#'
+																				+ closeModalId)
+																.trigger(
+																		'click');
+
+														$('#successMsg')
+																.find(
+																		'.modal-header')
+																.find(
+																		'.headingMsg')
+																.append(
+																		"Successfull");
+														$('#successMsg')
+																.find(
+																		'.modal-body')
+																.find('.msg')
+																.append(
+																		" Deleted Successfully");
+														$("#successMsg")
+																.modal();
 
 													},
 													function(error) {
 														console
 																.error('Error while deleting , '
 																		+ status);
-														if(error.exceptionMsg!=null && error.exceptionMsg!=undefined){
-											      	  		$('#errorMsg1').find('.modal-body').find('.msg').append("Can not Delete "+error.entityName+" : "+error.exceptionMsg);
-											      	  		$("#errorMsg1").modal();
-											      	  	}else{
-											      	  		for(var i=0;i<error.fieldErrors.length;i++){
-											      	  			var obj = error.fieldErrors[i];
-											      	  			document.getElementById(obj.fieldName).innerHTML=obj.message;
-											      	  		}
-											      	  	}
+														if (error.exceptionMsg != null
+																&& error.exceptionMsg != undefined) {
+															$('#errorMsg1')
+																	.find(
+																			'.modal-body')
+																	.find(
+																			'.msg')
+																	.append(
+																			"Can not Delete "
+																					+ error.entityName
+																					+ " : "
+																					+ error.exceptionMsg);
+															$("#errorMsg1")
+																	.modal();
+														} else {
+															for (var i = 0; i < error.fieldErrors.length; i++) {
+																var obj = error.fieldErrors[i];
+																document
+																		.getElementById(obj.fieldName).innerHTML = obj.message;
+															}
+														}
 													});
 
 								}
@@ -175,9 +197,9 @@ App.controller(
 									"page" : page
 								});
 
-							} 
-							
-								self.searchEntities = function(valid, entity, page) {
+							}
+
+							self.searchEntities = function(valid, entity, page) {
 								if (valid = true) {
 									$.each(self.search, function(key, value) {
 										if (value === "" || value === null) {
@@ -249,18 +271,14 @@ App.controller(
 										.log("Common Controller get  getEntityList");
 								return CommonService.getEntityList();
 							}
-							
 
-							
-							
-							
-							
-							self.submitFile = function(valid, entity, form,closeModalId) {
+							self.submitFile = function(valid, entity, form,
+									closeModalId) {
 								if (valid == true) {
 									console.log("Common Controller submit "
 											+ entity);
 									self.entity.clientId = $stateParams.clientId;
-									
+
 									progressBar();
 									CommonService
 											.saveDoc(form, entity,
@@ -271,91 +289,157 @@ App.controller(
 														console
 																.log(entity
 																		+ ' added successfully');
-														
-														angular.element('#'+closeModalId).trigger('click');
-														
-														$('#successMsg').find('.modal-header').find('.headingMsg').append("Successfull");
-											          	$('#successMsg').find('.modal-body').find('.msg').append(" Saved Successfully");
-											         	$("#successMsg").modal();
-														
+
+														angular
+																.element(
+																		'#'
+																				+ closeModalId)
+																.trigger(
+																		'click');
+
+														$('#successMsg')
+																.find(
+																		'.modal-header')
+																.find(
+																		'.headingMsg')
+																.append(
+																		"Successfull");
+														$('#successMsg')
+																.find(
+																		'.modal-body')
+																.find('.msg')
+																.append(
+																		" Saved Successfully");
+														$("#successMsg")
+																.modal();
 
 													},
-													function(error) { 
+													function(error) {
 														progressBar();
 														console
 																.error('Error while creating saving Details, '
 																		+ status);
-														if(error.exceptionMsg!=null && error.exceptionMsg!=undefined){
-											      	  		$('#errorMsg').find('.modal-body').find('.msg').append("Can not Save "+error.entityName+" : "+error.exceptionMsg);
-											      	  		$("#errorMsg").modal();
-											      	  	}else{
-											      	  		for(var i=0;i<error.fieldErrors.length;i++){
-											      	  			var obj = error.fieldErrors[i];
-											      	  			document.getElementById(obj.fieldName).innerHTML=obj.message;
-											      	  		}
-											      	  	}
+														if (error.exceptionMsg != null
+																&& error.exceptionMsg != undefined) {
+															$('#errorMsg')
+																	.find(
+																			'.modal-body')
+																	.find(
+																			'.msg')
+																	.append(
+																			"Can not Save "
+																					+ error.entityName
+																					+ " : "
+																					+ error.exceptionMsg);
+															$("#errorMsg")
+																	.modal();
+														} else {
+															for (var i = 0; i < error.fieldErrors.length; i++) {
+																var obj = error.fieldErrors[i];
+																document
+																		.getElementById(obj.fieldName).innerHTML = obj.message;
+															}
+														}
 													});
 								}
 							}
 
 							var progressBar = function() {
-								 angular.element('#viewProgressBar').trigger('click');
+								angular.element('#viewProgressBar').trigger(
+										'click');
 								// $('#myModalShower').hide();
 
 							}
 
-							self.updateFile = function(valid, entity, form,closeModalId) {
+							self.updateFile = function(valid, entity, form,
+									closeModalId) {
 								if (valid == true) {
 									console.log("Common Controller submit "
 											+ entity);
 									self.entity.clientId = $stateParams.clientId;
-									if( form.dec.status == undefined ||form.dec.status == "Pending Verification")
-									{
-									progressBar();
-									CommonService
-											.updateDoc(form, entity,
-													$stateParams.clientId)
-											.then(
-													function(data) {
-														console
-																.log(entity
-																		+ ' updated successfully');
-														progressBar();
-														angular.element('#'+closeModalId).trigger('click');
-														$('#successMsg').find('.modal-header').find('.headingMsg').append("Successfull");
-											          	$('#successMsg').find('.modal-body').find('.msg').append(" Updated Successfully");
-											         	$("#successMsg").modal();
-														
-													},
-													function(error) {
-														progressBar();
-														console
-																.error('Error while updating Details, '
-																		+ status);
-														if(error.exceptionMsg!=null && error.exceptionMsg!=undefined){
-											      	  		$('#errorMsg').find('.modal-body').find('.msg').append("Can not Update "+error.entityName+" : "+error.exceptionMsg);
-											      	  		$("#errorMsg").modal();
-											      	  	}else{
-											      	  		for(var i=0;i<error.fieldErrors.length;i++){
-											      	  			var obj = error.fieldErrors[i];
-											      	  			document.getElementById(obj.fieldName+'U').innerHTML=obj.message;
+									if (form.dec.status == undefined
+											|| form.dec.status == "Pending Verification") {
+										progressBar();
+										CommonService
+												.updateDoc(form, entity,
+														$stateParams.clientId)
+												.then(
+														function(data) {
+															console
+																	.log(entity
+																			+ ' updated successfully');
+															progressBar();
+															angular
+																	.element(
+																			'#'
+																					+ closeModalId)
+																	.trigger(
+																			'click');
+															$('#successMsg')
+																	.find(
+																			'.modal-header')
+																	.find(
+																			'.headingMsg')
+																	.append(
+																			"Successfull");
+															$('#successMsg')
+																	.find(
+																			'.modal-body')
+																	.find(
+																			'.msg')
+																	.append(
+																			" Updated Successfully");
+															$("#successMsg")
+																	.modal();
 
-											      	  		}
-											      	  	}
-														
-														
-													});
+														},
+														function(error) {
+															progressBar();
+															console
+																	.error('Error while updating Details, '
+																			+ status);
+															if (error.exceptionMsg != null
+																	&& error.exceptionMsg != undefined) {
+																$('#errorMsg')
+																		.find(
+																				'.modal-body')
+																		.find(
+																				'.msg')
+																		.append(
+																				"Can not Update "
+																						+ error.entityName
+																						+ " : "
+																						+ error.exceptionMsg);
+																$("#errorMsg")
+																		.modal();
+															} else {
+																for (var i = 0; i < error.fieldErrors.length; i++) {
+																	var obj = error.fieldErrors[i];
+																	document
+																			.getElementById(obj.fieldName
+																					+ 'U').innerHTML = obj.message;
+
+																}
+															}
+
+														});
 									}
-									
-									else
-										{
-										angular.element('#'+closeModalId).trigger('click');
-										$('#successMsg1').find('.modal-header').find('.headingMsg').append("Information");
-							          	$('#successMsg1').find('.modal-body').find('.msg').append(" Update allowed only for Pending Verification");
-							         	$("#successMsg1").modal();
-										
-										}
-									
+
+									else {
+										angular.element('#' + closeModalId)
+												.trigger('click');
+										$('#successMsg1').find('.modal-header')
+												.find('.headingMsg').append(
+														"Information");
+										$('#successMsg1')
+												.find('.modal-body')
+												.find('.msg')
+												.append(
+														" Update allowed only for Pending Verification");
+										$("#successMsg1").modal();
+
+									}
+
 								}
 							}
 
@@ -375,25 +459,49 @@ App.controller(
 																		+ ' added successfully');
 														self.gotoListPage(
 																entity, entity);
-														$('#successMsg').find('.modal-header').find('.headingMsg').append("Successfull!");
-											          	$('#successMsg').find('.modal-body').find('.msg').append(" Saved Successfully!");
-											         	$("#successMsg").modal();
+														$('#successMsg')
+																.find(
+																		'.modal-header')
+																.find(
+																		'.headingMsg')
+																.append(
+																		"Successfull!");
+														$('#successMsg')
+																.find(
+																		'.modal-body')
+																.find('.msg')
+																.append(
+																		" Saved Successfully!");
+														$("#successMsg")
+																.modal();
 
 													},
 													function(error) {
 														console
 																.error('Error while creating saving Details, '
 																		+ status);
-														if(error.exceptionMsg!=null && error.exceptionMsg!=undefined){
-											      	  		$('#errorMsg').find('.modal-body').find('.msg').append("Can not Save "+error.entityName+" : "+error.exceptionMsg);
-											      	  		$("#errorMsg").modal();
-											      	  	}else{
-											      	  		for(var i=0;i<error.fieldErrors.length;i++){
-											      	  			var obj = error.fieldErrors[i];
-											      	  			document.getElementById(obj.fieldName).innerHTML=obj.message;
-											      	  		}
-											      	  	}
-														
+														if (error.exceptionMsg != null
+																&& error.exceptionMsg != undefined) {
+															$('#errorMsg')
+																	.find(
+																			'.modal-body')
+																	.find(
+																			'.msg')
+																	.append(
+																			"Can not Save "
+																					+ error.entityName
+																					+ " : "
+																					+ error.exceptionMsg);
+															$("#errorMsg")
+																	.modal();
+														} else {
+															for (var i = 0; i < error.fieldErrors.length; i++) {
+																var obj = error.fieldErrors[i];
+																document
+																		.getElementById(obj.fieldName).innerHTML = obj.message;
+															}
+														}
+
 													});
 								}
 							}
@@ -441,8 +549,7 @@ App.controller(
 								}
 							}
 
-							self.getVendorDetail = function(gstNo,
-									entity) {
+							self.getVendorDetail = function(gstNo, entity) {
 								console.log("Common Controller is working");
 								var map = {};
 								map.gstNo = gstNo;
@@ -461,14 +568,12 @@ App.controller(
 														self.entity.vendorPAN = data.vendorPAN;
 														self.entity.vendorNo = data.vendorNo;
 														self.entity.clientId = data.id
-													
+
 													});
 								}
 							}
-							
-							
-							self.getVendorDetail1 = function(vendorNo,
-									entity) {
+
+							self.getVendorDetail1 = function(vendorNo, entity) {
 								console.log("Common Controller is working");
 								var map = {};
 								map.vendorNo = vendorNo;
@@ -487,14 +592,12 @@ App.controller(
 														self.entity.vendorPAN = data.vendorPAN;
 														self.entity.gstNo = data.gstNo;
 														self.entity.clientId = data.id
-													
+
 													});
 								}
 							}
-							
-							
-							self.getVendorDetail2 = function(vendorPAN,
-									entity) {
+
+							self.getVendorDetail2 = function(vendorPAN, entity) {
 								console.log("Common Controller is working");
 								var map = {};
 								map.vendorPAN = vendorPAN;
@@ -513,14 +616,12 @@ App.controller(
 														self.entity.vendorNo = data.vendorNo;
 														self.entity.gstNo = data.gstNo;
 														self.entity.clientId = data.id
-													
+
 													});
 								}
 							}
-							
-							
-							self.getVendorDetail3 = function(vendorName,
-									entity) {
+
+							self.getVendorDetail3 = function(vendorName, entity) {
 								console.log("Common Controller is working");
 								var map = {};
 								map.vendorName = vendorName;
@@ -539,16 +640,12 @@ App.controller(
 														self.entity.vendorNo = data.vendorNo;
 														self.entity.gstNo = data.gstNo;
 														self.entity.clientId = data.id
-													
+
 													});
 								}
 							}
-							
-							
-							
-							
-							self.getGroupId = function(groupCode,
-									entity) {
+
+							self.getGroupId = function(groupCode, entity) {
 								console.log("Common Controller is working");
 								var map = {};
 								map.groupCode = groupCode;
@@ -564,18 +661,19 @@ App.controller(
 
 														var items = data;
 														self.entity.groupId = data.id;
-													
+
 													});
 								}
 							}
 
-							self.updateData = function(valid, entity, data,closeModalId) {
+							self.updateData = function(valid, entity, data,
+									closeModalId) {
 								if (valid == true) {
 									console.log("Common Controller updateData "
 											+ entity);
 
 									self.entity.clientId = $stateParams.clientId;
-									
+
 									CommonService
 											.update(data, entity,
 													$stateParams.clientId)
@@ -584,43 +682,71 @@ App.controller(
 														console
 																.log(entity
 																		+ ' updated successfully');
-														angular.element('#'+closeModalId).trigger('click');
-													
-														$('#successMsg').find('.modal-header').find('.headingMsg').append("Successfull");
-											          	$('#successMsg').find('.modal-body').find('.msg').append(" Updated Successfully");
-											         	$("#successMsg").modal();
-														
+														angular
+																.element(
+																		'#'
+																				+ closeModalId)
+																.trigger(
+																		'click');
+
+														$('#successMsg')
+																.find(
+																		'.modal-header')
+																.find(
+																		'.headingMsg')
+																.append(
+																		"Successfull");
+														$('#successMsg')
+																.find(
+																		'.modal-body')
+																.find('.msg')
+																.append(
+																		" Updated Successfully");
+														$("#successMsg")
+																.modal();
 
 													},
 													function(error) {
 														console
 																.error('Error while updating Details, '
 																		+ status);
-														
-														if(error.exceptionMsg!=null && error.exceptionMsg!=undefined){
-											      	  		$('#errorMsg').find('.modal-body').find('.msg').append("Can not Update "+error.entityName+" : "+error.exceptionMsg);
-											      	  		$("#errorMsg").modal();
-											      	  	}else{
-											      	  		for(var i=0;i<error.fieldErrors.length;i++){
-											      	  			var obj = error.fieldErrors[i];
-											      	  			document.getElementById(obj.fieldName).innerHTML=obj.message;
-											      	  		}
-											      	  	}
-														
+
+														if (error.exceptionMsg != null
+																&& error.exceptionMsg != undefined) {
+															$('#errorMsg')
+																	.find(
+																			'.modal-body')
+																	.find(
+																			'.msg')
+																	.append(
+																			"Can not Update "
+																					+ error.entityName
+																					+ " : "
+																					+ error.exceptionMsg);
+															$("#errorMsg")
+																	.modal();
+														} else {
+															for (var i = 0; i < error.fieldErrors.length; i++) {
+																var obj = error.fieldErrors[i];
+																document
+																		.getElementById(obj.fieldName).innerHTML = obj.message;
+															}
+														}
+
 													});
-								
-								
+
 								}
 							}
-							
-							/////////////////////////\\\\\\\\\\\\\
-							self.updateStatus = function(valid, entity, data,closeModalId) {
+
+							// ///////////////////////\\\\\\\\\\\\\
+							self.updateStatus = function(valid, entity, data,
+									closeModalId) {
 								if (valid == true) {
 									console.log("Common Controller updateData "
 											+ entity);
 
 									self.entity.clientId = $stateParams.clientId;
-									
+
 									CommonService
 											.updateStatus(data, entity,
 													$stateParams.clientId)
@@ -629,131 +755,143 @@ App.controller(
 														console
 																.log(entity
 																		+ ' updated successfully');
-														angular.element('#'+closeModalId).trigger('click');
-													
-														$('#successMsg').find('.modal-header').find('.headingMsg').append("Successfull");
-											          	$('#successMsg').find('.modal-body').find('.msg').append(" Updated Successfully");
-											         	$("#successMsg").modal();
-														
+														angular
+																.element(
+																		'#'
+																				+ closeModalId)
+																.trigger(
+																		'click');
+
+														$('#successMsg')
+																.find(
+																		'.modal-header')
+																.find(
+																		'.headingMsg')
+																.append(
+																		"Successfull");
+														$('#successMsg')
+																.find(
+																		'.modal-body')
+																.find('.msg')
+																.append(
+																		" Updated Successfully");
+														$("#successMsg")
+																.modal();
 
 													},
 													function(error) {
 														console
 																.error('Error while updating Details, '
 																		+ status);
-														
-														if(error.exceptionMsg!=null && error.exceptionMsg!=undefined){
-											      	  		$('#errorMsg').find('.modal-body').find('.msg').append("Can not Update "+error.entityName+" : "+error.exceptionMsg);
-											      	  		$("#errorMsg").modal();
-											      	  	}else{
-											      	  		for(var i=0;i<error.fieldErrors.length;i++){
-											      	  			var obj = error.fieldErrors[i];
-											      	  			document.getElementById(obj.fieldName).innerHTML=obj.message;
-											      	  		}
-											      	  	}
-														
+
+														if (error.exceptionMsg != null
+																&& error.exceptionMsg != undefined) {
+															$('#errorMsg')
+																	.find(
+																			'.modal-body')
+																	.find(
+																			'.msg')
+																	.append(
+																			"Can not Update "
+																					+ error.entityName
+																					+ " : "
+																					+ error.exceptionMsg);
+															$("#errorMsg")
+																	.modal();
+														} else {
+															for (var i = 0; i < error.fieldErrors.length; i++) {
+																var obj = error.fieldErrors[i];
+																document
+																		.getElementById(obj.fieldName).innerHTML = obj.message;
+															}
+														}
+
 													});
-								
-								
+
 								}
 							}
-							
-							self.date=function(date)
-							{
-								date=new Date( date.getTime() + Math.abs(date.getTimezoneOffset()*60000));
-								//var dateString =date.toUTCString();
-								//dateString = dateString.split(' ').slice(0, 4).join(' ');
+
+							self.date = function(date) {
+								date = new Date(
+										date.getTime()
+												+ Math
+														.abs(date
+																.getTimezoneOffset() * 60000));
+								// var dateString =date.toUTCString();
+								// dateString = dateString.split(' ').slice(0,
+								// 4).join(' ');
 								return date;
-								
-							}	
-							
-							
-							
-							
-							
-							
+
+							}
 
 							self.setIndex = function(ind) {
 								self.dlIndex = ind;
 							}
-							
+
 							//view profile pic
-							
-							self.viewProfile=function(entity,id){
+
+							self.viewProfile = function(entity, id) {
 								//commonserive method to call the get File
-								self.loader='static/img/Spinner-1s-200px.gif';
-								self.loader='api'+entity+'/getFile/' + $stateParams.clientId + '/'+id+ '/'+Date.now();
+								self.loader = 'static/img/Spinner-1s-200px.gif';
+								self.loader = 'api' + entity + '/getFile/'
+										+ $stateParams.clientId + '/' + id
+										+ '/' + Date.now();
 							}
-							
-							self.viewFile=function(entity,a,modal){
+
+							self.viewFile = function(entity, a, modal) {
 								//commonserive method to call the get File
-						     //	self.loader='';
-							//	self.loader='static/img/Spinner-1s-200px.gif';
-								
-								
+								//	self.loader='';
+								//	self.loader='static/img/Spinner-1s-200px.gif';
+
 								self.temp1 = a;
-								modal = modal+'Click';
-								if(a.fileId!=null && a.fileId!=undefined ){
+								modal = modal + 'Click';
+								if (a.fileId != null && a.fileId != undefined) {
 									modalClick(modal);
 									wait(1000);
-									self.loader='api'+entity+'/getFile/' + $stateParams.clientId + '/'+a.fileId;
-								}else{
-									modalClick('no'+modal);
-							}
-								
-								
-//								modal = modal+'Click';
-//								if(a.fileId!=null && a.fileId!=undefined ){
-//
-//									
-//									
-//									  $http.get(restUrl+'static/img/Spinner-1s-200px.gif').then(res => {
-//									      self.loader = 'api'+entity+'/getFile/' + $stateParams.clientId + '/'+a.fileId;
-//									    })
-//								modalClick(modal);	
-//								}else{
-//									modalClick('no'+modal);
-//								}
+									self.loader = 'api' + entity + '/getFile/'
+											+ $stateParams.clientId + '/'
+											+ a.fileId;
+								} else {
+									modalClick('no' + modal);
+								}
 
-								
-								
-								
-								
-								
-								
+								//								modal = modal+'Click';
+								//								if(a.fileId!=null && a.fileId!=undefined ){
+								//
+								//									
+								//									
+								//									  $http.get(restUrl+'static/img/Spinner-1s-200px.gif').then(res => {
+								//									      self.loader = 'api'+entity+'/getFile/' + $stateParams.clientId + '/'+a.fileId;
+								//									    })
+								//								modalClick(modal);	
+								//								}else{
+								//									modalClick('no'+modal);
+								//								}
+
 							}
-							
-							
-							
-							
-						
-							
-							
-							
-							
-							
-							self.isFileNull=function(valid, entity, form,closeModalId){
-								if(form.file==null || form.file==undefined){
-									 document.getElementById("file-upload").innerHTML="file is required ";
-									}else{
-										self.submitFile(valid, entity, form,closeModalId);
-									}
+
+							self.isFileNull = function(valid, entity, form,
+									closeModalId) {
+								if (form.file == null || form.file == undefined) {
+									document.getElementById("file-upload").innerHTML = "file is required ";
+								} else {
+									self.submitFile(valid, entity, form,
+											closeModalId);
+								}
 							}
-							
+
 							var modalClick = function(a) {
-								 angular.element('#'+a).trigger('click');
+								angular.element('#' + a).trigger('click');
 								// $('#myModalShower').hide();
 
 							}
-							var wait=function (ms){
-								   var start = new Date().getTime();
-								   var end = start;
-								   while(end < start + ms) {
-								     end = new Date().getTime();
-								  }
+							var wait = function(ms) {
+								var start = new Date().getTime();
+								var end = start;
+								while (end < start + ms) {
+									end = new Date().getTime();
 								}
-							
-							
+							}
 
 						} ]);
 App.directive('fileModel', [ '$parse', function($parse) {

@@ -120,4 +120,14 @@ public class Regular27QChallan extends CommonModelAbstract{
 	@NotNull(message = "Quarter is required")
 	@Size(min=0, max=45, message="Nill Challan Indicator should not be greater than 45 characters.")
 	public String quarter;
+	
+	@Column(name = "amountConsumed")
+	@NotNull(message = "Amount Consumed is required")
+	@Digits(integer = 12, fraction = 2,message="The Amount Consumed value is not greater than 12 digits. Maximum 2 fractions allowed.")
+	public Double amountConsumed;
+	
+	@Column(name = "amountAvailable")
+	@NotNull(message = "Amount Available is required")
+	@Digits(integer = 12, fraction = 2,message="The Amount Available value is not greater than 12 digits. Maximum 2 fractions allowed.")
+	public Double amountAvailable;
 }

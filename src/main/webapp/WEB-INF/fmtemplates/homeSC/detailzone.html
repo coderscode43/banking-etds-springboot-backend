@@ -201,7 +201,7 @@
 						<tbody>
 							<tr role="row"
 								ng-repeat="a in cCctr.entity.branchList track by a.id">
-								<td role="cell" class="one" style=" padding: 5px">{{$index+1}}</td>
+								<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
 								<td>{{a.name}}</td>
 								<td>{{a.branchCode}}</td>
 								<td>{{a.tan}}</td>
@@ -209,7 +209,9 @@
 								<td>{{a.type}}</td>
 								<td>{{a.email}}</td>
 								<td><a ng-click="cCctr.gotoHomePageWOT(a.id,'homeWOT')"
-									style="color: blue" onclick="scrollWin()">Work On This</a></td>
+									style="color: blue" onclick="scrollWin()">Work On This</a> || <a
+									
+									style="color: Red" onclick="test('#changeBranch')" onclick="scrollWin()">Remove</a></td>
 								<!-- <td>{{a.total-a.amountPaid}}</td> -->
 
 							</tr>
@@ -225,7 +227,55 @@
 </div>
 
 
+<div id="changeBranch" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" id="closeU" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Change Branch Zone</h4>
+			</div>
+			<div class="modal-body">
+
+				<div id="myTabContent" class="tab-content">
+					<div class="tab-pane fade active in" id="signin">
+						<form name="profileForm" class="form-horizontal"
+							enctype="multipart/form-data">
+
+
+							<div class="row">
+								<div class="form-group">
+									<label>Branch </label> <input class="form-control" type="text"
+										name="totalTds" placeholder="Total TDS"
+										ng-model="cCctr.entity.deductee.totalTds" autocomplete="off"
+										ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+								</div>
 
 
 
+							</div>
 
+							<div class="row">
+								<div class="form-group">
+									<label>New Zone Code</label> <input class="form-control" type="text"
+										name="remarks" placeholder="Pan"
+										ng-model="cCctr.entity.deductee.remarks" autocomplete="off"
+										ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+								</div>
+							</div>
+
+
+
+						</form>
+					</div>
+
+				</div>
+				<div class="modal-footer">
+					<button
+						ng-click="profileForm.submitted=true;cCctr.updateData(profileForm.$valid,'form24Q',cCctr.entity.deductee,'closeU')"
+						class="btn btn-success" data-dismiss="modal">Save</button>
+					<button class="btn btn-primary" data-dismiss="modal">Back</button>
+				</div>
+			</div>
+		</div>
+	</div>

@@ -26,4 +26,7 @@ public class Zone extends CommonModelAbstract{
 	public String name;
 	@Column(name = "zoneCode")
 	public String zoneCode;
+	@Column(name = "state")
+	public String state;
+
 }

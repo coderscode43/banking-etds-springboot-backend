@@ -301,6 +301,38 @@
 								    </span>
 									<span class="error" id="quarter"></span>
 							</div>
+							
+							<div class="col-md-6">
+								
+									<label>Amount Consumed</label> <input class="form-control" type="text"
+										name="amountConsumed" placeholder="Amount Consumed"
+										ng-model="cCctr.entity.amountConsumed" autocomplete="off"
+										ng-maxlength="45" ng-model-options="{updateOn: 'blur'}" />
+										<span style="color: red" ng-show="form26qchallan.submitted ||form26qchallan.amountConsumed.$dirty && form26qchallan.amountConsumed.$invalid">
+									<span class="error" ng-show="form26qchallan.amountConsumed.$error.pattern">Please enter valid Amount Consumed. </span> 
+									<span class="error" ng-show="form26qchallan.amountConsumed.$error.maxlength">Amount Consumed should not be greater than 45 characters.</span> 
+									<span class="error" ng-show="form26qchallan.amountConsumed.$error.required">Amount Consumed is Required.</span>
+								    </span>
+								<span class="error" id="amountConsumed"></span>
+							</div>
+						</div>
+						
+						
+						<div class="row">
+							
+							<div class="col-md-6">
+								
+									<label>Amount Available</label> <input class="form-control" type="text"
+										name="amountAvailable" placeholder="Amount Available"
+										ng-model="cCctr.entity.amountAvailable" autocomplete="off"
+										ng-maxlength="45" ng-model-options="{updateOn: 'blur'}" />
+										<span style="color: red" ng-show="form26qchallan.submitted ||form26qchallan.amountAvailable.$dirty && form26qchallan.amountAvailable.$invalid">
+									<span class="error" ng-show="form26qchallan.amountAvailable.$error.pattern">Please enter valid Amount Available. </span> 
+									<span class="error" ng-show="form26qchallan.amountAvailable.$error.maxlength">Amount Available should not be greater than 45 characters.</span> 
+									<span class="error" ng-show="form26qchallan.amountAvailable.$error.required">Amount Available is Required.</span>
+								    </span>
+								<span class="error" id="amountAvailable"></span>
+							</div>
 						</div>
 						
 									</form>

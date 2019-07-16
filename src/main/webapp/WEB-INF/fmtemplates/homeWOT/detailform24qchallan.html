@@ -209,6 +209,15 @@
 							<label> Quarter &nbsp;:</label> {{cCctr.entity.challan.quarter}}
 					</div>
   				</div>
+  				
+  				<div class="row" style="font-size: 13px;">
+					<div class="col-md-6">
+							<label>Amount Consumed &nbsp;:</label> {{cCctr.entity.challan.amountConsumed}}
+					</div>
+					<div class="col-md-6">
+							<label>Amount Available &nbsp;:</label> {{cCctr.entity.challan.amountAvailable}}
+					</div>
+  				</div>
   				<hr><br>
   				
   				<div class="row">
@@ -560,6 +569,39 @@
 							</div>
 
 
+			</div>
+			
+			<div class="row">
+				<div class="col-md-6">
+					<label>Amount Consumed</label> <input class="form-control"
+							type="text" name="amountConsumed"
+							placeholder="Amount Consumed"
+							ng-model="cCctr.entity.challan.amountConsumed"
+							autocomplete="off"
+							ng-required="true"
+						ng-model-options="{updateOn: 'blur'}" />
+					<span style="color: red" ng-show="challanForm.submitted || challanForm.amountConsumed.$dirty && challanForm.amountConsumed.$invalid">
+					<span class="error" ng-show="challanForm.amountConsumed.$error.pattern">Enter valid Amount Consumed</span> 
+					<span class="error" ng-show="challanForm.amountConsumed.$error.maxlength">Amount Consumed should not be greater than 10 digits.</span> 
+					<span class="error" ng-show="challanForm.amountConsumed.$error.required">Amount Consumed is Required.</span>
+					</span>
+					<span class="error" id="amountConsumed"></span>
+				</div>
+				<div class="col-md-6">
+					<label>Amount Available</label> <input class="form-control"
+							type="text" name="amountAvailable"
+							placeholder="Amount Available"
+							ng-model="cCctr.entity.challan.amountAvailable"
+							autocomplete="off"
+							ng-required="true"
+						ng-model-options="{updateOn: 'blur'}" />
+					<span style="color: red" ng-show="challanForm.submitted || challanForm.amountAvailable.$dirty && challanForm.amountAvailable.$invalid">
+					<span class="error" ng-show="challanForm.amountAvailable.$error.pattern">Enter valid Amount Available</span> 
+					<span class="error" ng-show="challanForm.amountAvailable.$error.maxlength">Amount Available should not be greater than 10 digits.</span> 
+					<span class="error" ng-show="challanForm.amountAvailable.$error.required">Amount Available is Required.</span>
+					</span>
+					<span class="error" id="amountAvailable"></span>
+				</div>
 			</div>
 		
         </div>

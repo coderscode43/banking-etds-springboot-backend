@@ -109,4 +109,13 @@ public class Regular26QChallan extends CommonModelAbstract{
 	@NotNull(message = "Quarter is a required field")
 	@Size(min=0, max=45, message="Quarter length should be 45 characters.")
 	public String quarter;
+	
+	@Column(name = "amountConsumed")
+	@NotNull(message = "Amount Consumed is a required field")
+	@Digits(integer = 12, fraction = 2,message="Amount Consumed is not proper.Maximum 2 fractions allowed.")
+	public Double amountConsumed;
+	@Column(name = "amountAvailable")
+	@NotNull(message = "Amount Available is a required field")
+	@Digits(integer = 12, fraction = 2,message="Amount Available is not proper.Maximum 2 fractions allowed.")
+	public Double amountAvailable;
 }

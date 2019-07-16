@@ -206,7 +206,15 @@
 					<div class="col-md-6">
 							<label>Quarter &nbsp;:</label> {{cCctr.entity.challan26.quarter}}
 					</div>
-					
+					<div class="col-md-6">
+							<label>Amount Consumed &nbsp;:</label> {{cCctr.entity.challan26.amountConsumed}}
+					</div>
+  				</div>
+  				
+  				<div class="row" style="font-size: 13px;">
+					<div class="col-md-6">
+							<label>Amount Available &nbsp;:</label> {{cCctr.entity.challan26.amountAvailable}}
+					</div>
   				</div>
   				<div>
   				<button  ng-click="challan26Form.submitted=true;cCctr.updateData(challan26Form.$valid,'formchallan26Q',cCctr.entity.challan26,'closeU')" 
@@ -540,6 +548,38 @@
 									<span class="error" ng-show="challan26Form.quarter.$error.required">Quarter is Required.</span>
 								    </span>
 												<span class="error" id="quarter"></span>
+								
+							</div>
+							<div class="col-md-6">
+								
+									<label>Amount Consumed</label> <input class="form-control"
+										type="text" name="amountConsumed" placeholder="Amount Consumed"
+										ng-model="cCctr.entity.challan26.amountConsumed" autocomplete="off"
+										ng-maxlength="12" ng-model-options="{updateOn: 'blur'}" />
+										<span style="color: red" ng-show="challan26Form.submitted ||challan26Form.amountConsumed.$dirty && challan26Form.amountConsumed.$invalid">
+									<span class="error" ng-show="challan26Form.amountConsumed.$error.pattern">Please enter valid Amount Consumed. </span> 
+									<span class="error" ng-show="challan26Form.amountConsumed.$error.maxlength">Amount Consumed should not be greater than 12 characters.</span> 
+									<span class="error" ng-show="challan26Form.amountConsumed.$error.required">Amount Consumed is Required.</span>
+								    </span>
+												<span class="error" id="amountConsumed"></span>
+								
+							</div>
+
+			</div>
+			
+			 <div class="row">
+							<div class="col-md-6">
+								
+									<label>Amount Available</label> <input class="form-control"
+										type="text" name="amountAvailable" placeholder="Amount Available"
+										ng-model="cCctr.entity.challan26.amountAvailable" autocomplete="off"
+										ng-maxlength="12" ng-model-options="{updateOn: 'blur'}" />
+										<span style="color: red" ng-show="challan26Form.submitted ||challan26Form.amountAvailable.$dirty && challan26Form.amountAvailable.$invalid">
+									<span class="error" ng-show="challan26Form.amountAvailable.$error.pattern">Please enter valid Amount Available. </span> 
+									<span class="error" ng-show="challan26Form.amountAvailable.$error.maxlength">Amount Available should not be greater than 12 characters.</span> 
+									<span class="error" ng-show="challan26Form.amountAvailable.$error.required">Amount Available is Required.</span>
+								    </span>
+												<span class="error" id="amountAvailable"></span>
 								
 							</div>
 

@@ -64,10 +64,11 @@ public class VendorController extends AbstractController<Long, Vendor, VendorSer
 		LinkedHashMap<String, Object> constrains = new LinkedHashMap<>();
 	//	constrains.put("clientId", l.getClientId());
 		constrains.put("vendorId", id);
+	
 		List<VendorLDC> v = vldcservice.search(constrains,l.getClientId());		
 		ew.setVldcs(v);
-		constrains.remove("vendorId");
-		if(b.getId()!=null)
+	//	constrains.remove("vendorId");
+		if(b!=null)
 		{
 		constrains.put("branchId", b.getId());
 		List<VendorPayment> vendorPay = vpservice.search(constrains,l.getClientId());		

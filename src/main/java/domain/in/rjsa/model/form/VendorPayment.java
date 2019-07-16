@@ -24,6 +24,10 @@ import lombok.Data;
 @Entity
 @Table(name = "vendorPayment")
 public class VendorPayment extends CommonModelAbstract{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO, generator="native")
 	@GenericGenerator(name = "native", strategy = "native")

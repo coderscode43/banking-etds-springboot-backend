@@ -1,83 +1,6 @@
 
 <style>
-/*
-	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
-	*/
-@media only screen and (max-width: 760px) , ( min-device-width : 768px)
-	and (max-device-width: 1024px) {
-	/* Force table to not be like tables anymore */
-	table, thead, tbody, th, td, tr {
-		display: block;
-	}
 
-	/* Hide table headers (but not display: none;, for accessibility) */
-	thead tr {
-		position: absolute;
-		top: -9999px;
-		left: -9999px;
-	}
-	tr {
-		margin: 0 0 1rem 0;
-	}
-	tr:nth-child(odd) {
-		background: #ccc;
-	}
-	td {
-		/* Behave  like a "row" */
-		border: none;
-		border-bottom: 1px solid #eee;
-		position: relative;
-		padding-left: 50%;
-	}
-	td:before {
-		/* Now like a table header */
-		position: absolute;
-		/* Top/left values mimic padding */
-		top: 0;
-		left: 6px;
-		width: 45%;
-		padding-right: 10px;
-		white-space: nowrap;
-	}
-
-	/*
-		Label the data
-    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
-		*/
-	td:nth-of-type(1):before {
-		content: "Sr. No.";
-	}
-	td:nth-of-type(2):before {
-		content: "Employee Code";
-	}
-	td:nth-of-type(3):before {
-		content: "Name";
-	}
-	td:nth-of-type(4):before {
-		content: "PAN";
-	}
-	td:nth-of-type(5):before {
-		content: "Designation";
-	}
-	td:nth-of-type(6):before {
-		content: "Email";
-	}
-	td:nth-of-type(7):before {
-		content: "Mobile";
-	}
-	td:nth-of-type(8):before {
-		content: "Address";
-	}
-	td:nth-of-type(9):before {
-		content: "Branch";
-	}
-	td:nth-of-type(10):before {
-		content: "Group Code";
-	}
-	td:nth-of-type(11):before {
-		content: "Action";
-	}
-}
 
 @media only screen and (max-width: 1000px) {
 	.one {
@@ -222,14 +145,102 @@
 						
 
 					</div>
+				
 					
-					<br>
 					
+		 <div class="row">
+	         	  <div  style="float:right">	
+	                    <button class="btn btn-Primary" data-toggle="modal" ng-click="cCctr.gotoListPage('addVendor','addVendor');" >Add</button>
+	              </div>					
+              </div>	
+			
+			
+	<table class=" tables table-bordered table-hover table-striped" role="table"
+								style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+								<thead>
+							<colgroup>
+									<col span="14" style="background-color: #ffffff">
+								</colgroup>
+							 <tr>
+							  <thead role="rowgroup">
+							      <tr role="row" style="height:40px;background-color:#81b7db">
+							      <th width="10%"  style="padding:20px">Sr. No.</th>
+							      <th width="10%"  style="padding:20px">Vendor No</th>
+							      <th width="10%"  style="padding:20px">Vendor Name</th>
+							      <th width="10%"  style="padding:20px">Vendor PAN</th>
+							      <th width="10%"  style="padding:20px">GST No.</th>
+							      <th width="10%"  style="padding:20px">Resi Status</th>
+							   
+							      <th width="10%" style="padding:20px" >Telephone No</th>
+							      <th width="10%"  style="padding:20px">Mobile Number</th>
+							      <th width="10%"  style="padding:20px">Email</th>
+							      <th width="10%"  style="padding:20px">Contact Person Name</th>
+							      <th width="10%" style="padding:20px">Action</th>
+							     
+							         
+							     
+                                  </tr>
+                               </thead>
+								<tbody>
+									<tr role="row"  ng-repeat="a in cCctr.getEntityListData() track by a.id">
+										<td style="padding:5px">{{$index+1}}</td>
+											<td>{{a.vendorNo}}</td>
+											<td>{{a.vendorName}}</td>
+											<td>{{a.pan}}</td>
+											<td>{{a.gstNo}}</td>
+											<td>{{a.resiStatus}}</td>
+										
+											<td>{{a.telNo}}</td>
+											<td>{{a.mobNo}}</td>
+											<td>{{a.email}}</td>
+											<td>{{a.contPerName}}</td>
+											
+									       <td><a
+							               ng-click="cCctr.gotoDetailPage('vendorPayment',a.id,'editVendorPayment')"><font
+								          color="blue" style="font-size: 13px">Edit</font></a></td>
+									</tr>								
+								</tbody>
+							</table>		
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 					
 				</div>
 			</div>
 			
 			</div>
+			
+			
+		
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			
 			
 						<div class="tab-pane" id="addrDtls">
@@ -275,7 +286,7 @@
 
 				<div class="table-responsive">
 
-					<table class=" table table-bordered table-hover table-striped"
+					<table class=" tables table-bordered table-hover table-striped"
 						role="table"
 						style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
 						<thead>
@@ -300,7 +311,7 @@
 						<tbody>
 							<tr role="row"
 								ng-repeat="a in cCctr.entity.vldcs track by a.id">
-								<td role="cell" class="one" style=" padding: 5px">{{$index+1}}</td>
+								<td  style=" padding: 5px">{{$index+1}}</td>
 								<td>{{a.lowerDeduction}}</td>
 								<td>{{a.cerNo}}</td>
 								<td>{{a.validFrom}}</td>
@@ -357,7 +368,7 @@
 
 				<div class="table-responsive">
 
-					<table class=" table table-bordered table-hover table-striped"
+					<table class=" tables table-bordered table-hover table-striped"
 						role="table"
 						style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
 						<thead>
@@ -367,24 +378,24 @@
 						<tr>
 						<thead role="rowgroup">
 							<tr role="row" style="height: 40px; background-color: #81b7db">
-								<th >Sr. No.</th>
-								<th >Invoice Date</th>
-								<th >Payment Done</th>
-								<th >Payment Date</th>
-								<th >Payment Mode</th>
-								<th >Invoice Number</th>
-								<th >Total Invoice Value</th>
-								<th >Taxable Value</th>
-								<th >CGST</th>
-								<th >SGST</th>
-								<th >IGST</th>
-								<th >Cess</th>
-								<th >Income Tax TDS</th>
-								<th >GST TDS</th>
-								<th >Nature of Payment</th>
-								<th >Net Amount Paid</th>								
-								<th >BGL Code</th>
-								<th >Our GST</th>
+								<th style="padding:15px">Sr. No.</th>
+								<th style="padding:15px">Invoice Date</th>
+								<th style="padding:15px">Payment Done</th>
+								<th style="padding:15px">Payment Date</th>
+								<th style="padding:15px">Payment Mode</th>
+								<th style="padding:15px">Invoice Number</th>
+								<th style="padding:15px">Total Invoice Value</th>
+								<th style="padding:15px">Taxable Value</th>
+								<th style="padding:15px">CGST</th>
+								<th style="padding:15px">SGST</th>
+								<th style="padding:15px">IGST</th>
+								<th style="padding:15px">Cess</th>
+								<th style="padding:15px">Income Tax TDS</th>
+								<th style="padding:15px">GST TDS</th>
+								<th style="padding:15px">Nature of Payment</th>
+								<th style="padding:15px">Net Amount Paid</th>								
+								<th style="padding:15px">BGL Code</th>
+								<th style="padding:15px">Our GST</th>
 								
 							</tr>
 							
@@ -392,7 +403,7 @@
 						<tbody>
 							<tr role="row"
 								ng-repeat="a in cCctr.entity.vpList track by a.id">
-								<td role="cell" class="one" style=" padding: 5px">{{$index+1}}</td>
+								<td  style=" padding: 5px">{{$index+1}}</td>
 								<td>{{a.date| date:'dd-MM-yyyy'}}</td>
 								<td>{{a.paymentDone}}</td>
 								<td>{{a.paymentDate| date:'dd-MM-yyyy'}}</td>

@@ -73,7 +73,7 @@
 			<div class="col-md-3">							
             	<h6><b>Payment Done*</b></h6>
                 <input type="text" name="paymentDone" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.paymentDone" placeholder="Payment Done"
-			autocomplete="off" ng-pattern="^[a-zA-z\s]*$" ng-maxlength="15" ng-required="true"  ng-model-options="{updateOn: 'blur'}" />
+			autocomplete="off" ng-pattern="/^[a-zA-z\s]*$/" ng-maxlength="15" ng-required="true"  ng-model-options="{updateOn: 'blur'}" />
 										    <span style="color: red" ng-show="vendorDetailForm.submitted ||vendorDetailForm.paymentDone.$dirty && vendorDetailForm.paymentDone.$invalid">
 									
 									<span class="error" ng-show="vendorDetailForm.paymentDone.$error.maxlength">Payment Done should not be greater than 15 characters.</span> 

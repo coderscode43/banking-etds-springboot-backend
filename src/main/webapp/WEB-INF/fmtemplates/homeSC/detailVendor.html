@@ -145,14 +145,102 @@
 						
 
 					</div>
+				
 					
-					<br>
 					
+		 <div class="row">
+	         	  <div  style="float:right">	
+	                    <button class="btn btn-Primary" data-toggle="modal" ng-click="cCctr.gotoListPage('addVendor','addVendor');" >Add</button>
+	              </div>					
+              </div>	
+			
+			
+	<table class=" tables table-bordered table-hover table-striped" role="table"
+								style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+								<thead>
+							<colgroup>
+									<col span="14" style="background-color: #ffffff">
+								</colgroup>
+							 <tr>
+							  <thead role="rowgroup">
+							      <tr role="row" style="height:40px;background-color:#81b7db">
+							      <th width="10%"  style="padding:20px">Sr. No.</th>
+							      <th width="10%"  style="padding:20px">Vendor No</th>
+							      <th width="10%"  style="padding:20px">Vendor Name</th>
+							      <th width="10%"  style="padding:20px">Vendor PAN</th>
+							      <th width="10%"  style="padding:20px">GST No.</th>
+							      <th width="10%"  style="padding:20px">Resi Status</th>
+							   
+							      <th width="10%" style="padding:20px" >Telephone No</th>
+							      <th width="10%"  style="padding:20px">Mobile Number</th>
+							      <th width="10%"  style="padding:20px">Email</th>
+							      <th width="10%"  style="padding:20px">Contact Person Name</th>
+							      <th width="10%" style="padding:20px">Action</th>
+							     
+							         
+							     
+                                  </tr>
+                               </thead>
+								<tbody>
+									<tr role="row"  ng-repeat="a in cCctr.getEntityListData() track by a.id">
+										<td style="padding:5px">{{$index+1}}</td>
+											<td>{{a.vendorNo}}</td>
+											<td>{{a.vendorName}}</td>
+											<td>{{a.pan}}</td>
+											<td>{{a.gstNo}}</td>
+											<td>{{a.resiStatus}}</td>
+										
+											<td>{{a.telNo}}</td>
+											<td>{{a.mobNo}}</td>
+											<td>{{a.email}}</td>
+											<td>{{a.contPerName}}</td>
+											
+									       <td><a
+							               ng-click="cCctr.gotoDetailPage('vendorPayment',a.id,'editVendorPayment')"><font
+								          color="blue" style="font-size: 13px">Edit</font></a></td>
+									</tr>								
+								</tbody>
+							</table>		
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 					
 				</div>
 			</div>
 			
 			</div>
+			
+			
+		
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			
 			
 						<div class="tab-pane" id="addrDtls">

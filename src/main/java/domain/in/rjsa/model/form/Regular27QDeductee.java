@@ -159,6 +159,9 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	@Size(min=0, max=75, message="Country Of Residence length should be between 1 to 100 characters.")
 	public String natureOfRemittance;
 	
+	@Column(name = "verify")
+	public boolean verify = false;
+	
 	public void setEntity(Regular27QDeductee form27Q){
 		this.date=form27Q.getDate();
 		

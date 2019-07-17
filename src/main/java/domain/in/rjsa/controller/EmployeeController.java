@@ -1,6 +1,7 @@
 package domain.in.rjsa.controller;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,10 +11,12 @@ import domain.in.rjsa.model.form.Address;
 import domain.in.rjsa.model.form.BankAccDetail;
 import domain.in.rjsa.model.form.Employee;
 import domain.in.rjsa.model.form.Login;
+import domain.in.rjsa.model.form.Salary;
 import domain.in.rjsa.model.wrapper.EmployeeDetailWrapper;
 import domain.in.rjsa.service.AddressService;
 import domain.in.rjsa.service.BankAccDetailService;
 import domain.in.rjsa.service.EmployeeService;
+import domain.in.rjsa.service.SalaryService;
 import domain.in.rjsa.web.ApplicationCache;
 
 @Controller
@@ -22,6 +25,8 @@ import domain.in.rjsa.web.ApplicationCache;
 public class EmployeeController extends AbstractController<Long, Employee, EmployeeService>{
 @Autowired
 EmployeeService service;
+@Autowired
+SalaryService service1;
 @Autowired
 BankAccDetailService bService;
 @Autowired
@@ -50,6 +55,11 @@ ApplicationCache applicationCache;
        
 		LinkedHashMap<String, Object> constrains = new LinkedHashMap<>();
 		constrains.put("clientId", l.getClientId());
+
+
+		
+		Salary sal = service1.getByKey(id);
+		ew.setSalary(sal);
 		
 		Employee emp = service.getByKey(id);
 		ew.setEmployee(emp);

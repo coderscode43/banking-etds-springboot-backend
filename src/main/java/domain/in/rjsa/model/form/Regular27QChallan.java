@@ -130,4 +130,7 @@ public class Regular27QChallan extends CommonModelAbstract{
 	@NotNull(message = "Amount Available is required")
 	@Digits(integer = 12, fraction = 2,message="The Amount Available value is not greater than 12 digits. Maximum 2 fractions allowed.")
 	public Double amountAvailable;
+	
+	@Column(name = "verify")
+	public Boolean verify = false;
 }

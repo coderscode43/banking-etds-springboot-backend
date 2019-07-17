@@ -100,5 +100,13 @@ public class Regular24Q4Challan extends CommonModelAbstract{
 	@Column(name = "quarter")
 	@Size(min=0, max=45, message="Invalid Quarter")
 	public String quarter;
+	@Column(name = "amountConsumed")
+	@NotNull(message = "Amount Consumed is a required field")
+	@Digits(integer = 12, fraction = 2,message="Invalid Value")
+	public Double amountConsumed;
+	@Column(name = "amountAvailable")
+	@NotNull(message = "Amount Available is a required field")
+	@Digits(integer = 12, fraction = 2,message="Invalid Value")
+	public Double amountAvailable;
 	
 }

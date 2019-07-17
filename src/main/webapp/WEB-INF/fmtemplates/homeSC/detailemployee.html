@@ -168,10 +168,10 @@
 								<label>PAN &nbsp;:</label> {{cCctr.entity.employee.pan}}
 							</div>
 							<div class="col-md-3">
-								<label>DOB &nbsp;:</label> {{cCctr.entity.employee.dob}}
+								<label>DOB &nbsp;:</label> {{cCctr.entity.employee.dob| date:'dd-MM-yyyy'}}
 							</div>
 							<div class="col-md-3">
-								<label>DOJ &nbsp;:</label> {{cCctr.entity.employee.doj}}
+								<label>DOJ &nbsp;:</label> {{cCctr.entity.employee.doj| date:'dd-MM-yyyy'}}
 							</div>
 
 
@@ -401,7 +401,7 @@
 											<div class="col-md-6">
 
 												<label>MICR</label> <input class="form-control" type="text"
-													name="micrNo" placeholder="micrNo"
+													name="micrNo" placeholder="MICR No."
 													ng-model="cCctr.entity.bank.micrNo" autocomplete="off"
 													ng-model-options="{updateOn: 'blur'}" />
 

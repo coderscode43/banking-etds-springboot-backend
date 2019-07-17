@@ -108,5 +108,8 @@ public class Regular24Q4Challan extends CommonModelAbstract{
 	@NotNull(message = "Amount Available is a required field")
 	@Digits(integer = 12, fraction = 2,message="Invalid Value")
 	public Double amountAvailable;
+	@Column(name = "verify")
+	@NotNull(message = "Verify is a required field")
+	public Boolean verify;
 	
 }

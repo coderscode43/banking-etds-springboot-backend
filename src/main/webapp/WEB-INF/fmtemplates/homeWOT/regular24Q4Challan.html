@@ -133,7 +133,7 @@
 <div id="page-wrapper">
 	<div class="col-md-12 "
 		style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
-		<div class="heading">Form 24Q Challan Details</div>
+		<div class="heading"><strong>Form 24Q Challan Details</strong></div>
 
 
 
@@ -298,9 +298,12 @@
 					<td>{{a.nillChallanIndicator}}</td>
 					<td>{{a.fy}}</td>
 					<td>{{a.quarter}}</td>
-					<td>{{a.amountConsumed}}</td>
-					<td>{{a.amountAvailable}}</td>
-                   <td><a ng-click="cCctr.gotoDetailPage('regular24Q4Challan',a.id,'detailform24qchallan')" style="color: blue"><img src="static\img\edit.png" width="22px" height="22px" alt="Details" style="margin-top:5px; margin-bottom:5px;"/></a></td>
+					<td style="background-color: #fabf8f ">{{a.amountConsumed}}</td>
+					
+					<div><td ng-if="a.amountAvailable > 0" style="background-color:#5cb85c">{{a.amountAvailable}}</td>
+ 					<td ng-if="!(a.amountAvailable > 0)">{{a.amountAvailable}}</td></div>
+ 					
+                   <td><a ng-click="cCctr.gotoDetailPage('regular24Q4Challan',a.id,'detailform24qchallan')" style="color: blue" onclick="scrollWin()"><img src="static\img\edit.png" width="22px" height="22px" alt="Details" style="margin-top:5px; margin-bottom:5px;"/></a></td>
 				</tr>
 
 			</tbody>

@@ -81,21 +81,11 @@
    <div style="background-color:white;margin-top:1px" onclick="closeNav()" ng-click="cCctr.gotoListPage('vendor','vendor')">
  <a ng-click="" class="dropdown-toggle"
 			data-toggle="dropdown"><b style="font-size:17px;color:black; " >Vendor</b></a></div>
-	<div style="background-color:white;margin-top:1px">
-			     <a role="menuitem" tabindex="-1" data-toggle="collapse" data-parent="#accordion" data-target="#pm"><b style="font-size:17px;color:black">Employee</b>
-                <i style="font-size:12px;color:black;margin-left:30%" class="glyphicon glyphicon-chevron-down"></i></div></a>
-            
-
-            <ul id="pm" class="panel-collapse collapse">
-                <p><a ><b style="font-size:18px;color:white" onclick="closeNav()" ng-click="cCctr.gotoListPage('employee','employee')">Employee
-							Details</b> </a>
-
-                </p>
-                <p><a ><b style="font-size:18px;color:white" onclick="closeNav()" ng-click="cCctr.gotoListPage('salary','salary')">Employee Salary
-							Details</b> </a>
-
-                </p>
-            </ul>
+			
+	<div style="background-color:white;margin-top:1px" onclick="closeNav()" ng-click="cCctr.gotoListPage('employee','employee')">
+ <a class="dropdown-toggle"
+			data-toggle="dropdown"><b style="font-size:17px;color:black; " >Employee</b></a></div>
+	
             
             <div style="background-color:white;margin-top:1px">
 			     <a role="menuitem" tabindex="-1" data-toggle="collapse" data-parent="#accordion" data-target="#qm"><b style="font-size:17px;color:black">Salary</b>
@@ -103,15 +93,14 @@
             
 
             <ul id="qm" class="panel-collapse collapse">
-                <p><a ><b style="font-size:18px;color:white" onclick="closeNav()" ng-click="cCctr.gotoListPage('monthlySalary','monthlySalary')">Monthly Salary
+                <p><a ><b style="font-size:18px;color:white" onclick="closeNav()" ng-click="cCctr.gotoListPage('salary','monthlySalary')">Salary	Details</b> </a>
+
+                </p>
+                <p><a ><b style="font-size:18px;color:white" onclick="closeNav()" ng-click="cCctr.gotoListPage('salary','yearlySalary')">Yearly Salary
 							Details</b> </a>
 
                 </p>
-                <p><a ><b style="font-size:18px;color:white" onclick="closeNav()" ng-click="cCctr.gotoListPage('yearlySalary','yearlySalary')">Yearly Salary
-							Details</b> </a>
-
-                </p>
-                <p><a ><b style="font-size:18px;color:white" onclick="closeNav()" ng-click="cCctr.gotoListPage('asofNow','asofNow')">As Of Now
+                <p><a ><b style="font-size:18px;color:white" onclick="closeNav()" ng-click="cCctr.gotoListPage('salary','asofNow')">As Of Now
 							</b> </a>
 
                 </p>
@@ -128,8 +117,7 @@
 							Details</b> </a>
 
                 </p>
-                <p><a ><b style="font-size:18px;color:white" onclick="closeNav()" ng-click="cCctr.gotoListPage('pensionerSalary','pensionerSalary')">Pensioner Salary
-							Details</b> </a>
+                <p><a ><b style="font-size:18px;color:white" onclick="closeNav()" ng-click="cCctr.gotoListPage('pensionerSalary','pensionerSalary')">Pension Details</b> </a>
 
                 </p>
               
@@ -251,34 +239,18 @@
 					<li><a class="dropdown-toggle"
 						ng-click="cCctr.gotoListPage('vendor','vendor')"
 						data-toggle="dropdown" onclick="scrollWin()">Vendor</a></li>
+					<li><a class="dropdown-toggle"
+						ng-click="cCctr.gotoListPage('employee','employee')"
+						data-toggle="dropdown" onclick="scrollWin()">Employee</a></li>
 
-
-					<li><a class="dropdown-toggle" data-toggle="dropdown">Employee&nbsp;&nbsp;&nbsp;&nbsp;<span
-							class="caret"></span></a>
-
-						<ul class=" dropdown-menu forAnimate">
-							<li><a
-								ng-click="cCctr.gotoListPage('employee','employee')" onclick="scrollWin()">Employee Details</a></li>
-							<li><a
-								ng-click="cCctr.gotoListPage('salary','salary')" onclick="scrollWin()">Employee Salary Details</a></li>
-
-						</ul>
-						
-						
-						</li>
-					<li><a class="dropdown-toggle" data-toggle="dropdown"
-						ng-click="cCctr.gotoListPage('salary','salary')" onclick="scrollWin()">Salary&nbsp;&nbsp;&nbsp;&nbsp;<span
-							class="caret"></span></a>
+					<li><a class="dropdown-toggle" data-toggle="dropdown">Salary&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span></a>
 
 						<ul class=" dropdown-menu forAnimate">
 							<li><a
-								ng-click="cCctr.gotoListPage('monthlySalary','monthlySalary')" onclick="scrollWin()">Monthly
-									Salary Details</a></li>
+								ng-click="cCctr.gotoListPage('salary','salary')" onclick="scrollWin()">Salary Details</a></li>
 							<li><a
-								ng-click="cCctr.gotoListPage('yearlySalary','yearlySalary')" onclick="scrollWin()">Yearly
-									Salary Details</a></li>
-							<li><a ng-click="cCctr.gotoListPage('asofNow','asofNow')" onclick="scrollWin()">As
-									of now Details</a></li>
+								ng-click="cCctr.gotoListPage('salary','yearlySalary')" onclick="scrollWin()">Yearly Salary Details</a></li>
+							<li><a ng-click="cCctr.gotoListPage('salary','asofNow')" onclick="scrollWin()">As of now Details</a></li>
 						</ul></li>
 
 					<li><a class="dropdown-toggle" data-toggle="dropdown">Pensioner
@@ -291,7 +263,7 @@
 
 							<li><a
 								ng-click="cCctr.gotoListPage('pensioner','pensioner')" onclick="scrollWin()">Pensioner Details</a></li>
-							<li><a ng-click="cCctr.gotoListPage('pensionerSalary','pensionerSalary')" onclick="scrollWin()">Pensioner Salary Details</a></li>
+							<li><a ng-click="cCctr.gotoListPage('pensionerSalary','pensionerSalary')" onclick="scrollWin()">Pension Details</a></li>
 
 						</ul></li>
 

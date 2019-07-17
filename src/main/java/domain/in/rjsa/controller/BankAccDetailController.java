@@ -8,7 +8,7 @@ import domain.in.rjsa.model.form.BankAccDetail;
 import domain.in.rjsa.service.BankAccDetailService;
 
 @Controller
-@RequestMapping("/apibankAccDetail")
+@RequestMapping("/apibank")
 public class BankAccDetailController extends AbstractController<Long, BankAccDetail, BankAccDetailService>{
 	@Autowired
 	BankAccDetailService service;

@@ -260,7 +260,6 @@
 					<th style="padding:20px">Interest</th>
 					<th style="padding:20px">Fee</th>
 					<th style="padding:20px">Others</th>
-					<th style="padding:20px">Total tax Deposit</th>
 					<th style="padding:20px">TDS Deposit Book Entry</th>
 					<th style="padding:20px">BSR Code</th>
 					<th style="padding:20px">Challan Sr. No</th>
@@ -269,9 +268,11 @@
 					<th style="padding:20px">Other Amount Allocated</th>
 					<th style="padding:20px">Nil Challan Indicator</th>
 					<th style="padding:20px">Date Tax Deposit</th>
+					<th style="padding:20px">Total tax Deposit</th>
 					<th style="padding:20px">Amount Consumed</th>
 					<th style="padding:20px">Amount Available</th>
 					<th style="padding:20px">Financial Year</th>
+					<th style="padding:20px">Verified</th>
 					<th style="padding:20px">Action</th>
 
 				</tr>
@@ -286,7 +287,6 @@
 					<td>{{a.interest}}</td>
 					<td>{{a.fee}}</td>
 					<td>{{a.others}}</td>
-					<td>{{a.totalTaxDeposit}}</td>
 					<td>{{a.tdsDepositBookEntry}}</td>
 					<td>{{a.bankBranchCode}}</td>
 					<td>{{a.challanSrNo}}</td>
@@ -294,14 +294,16 @@
 					<td>{{a.interestAllocated}}</td>
 					<td>{{a.otherAmtAllocated}}</td>
 					<td>{{a.nilChallanIndicator}}</td>
-					
 					<td>{{a.taxDepositDate | date:'dd-MM-yyyy'}}</td>
+					<td>{{a.totalTaxDeposit}}</td>
 					<td style="background-color: #fabf8f ">{{a.amountConsumed}}</td>
 					
 					<div><td ng-if="a.amountAvailable > 0" style="background-color:#5cb85c">{{a.amountAvailable}}</td>
  					<td ng-if="!(a.amountAvailable > 0)">{{a.amountAvailable}}</td></div>
  					
 					<td>{{a.fy}}</td>
+					<div><td ng-if="a.verify == 1"><i class="fa fa-check" aria-hidden="true" style="color:#5cb85c"></i></td>
+					<td ng-if="a.verify == 0"><i class="fa fa-times" aria-hidden="true" style="color:#ff0000"></i></td></div>
                     <td><a ng-click="cCctr.gotoDetailPage('regular27QChallan',a.id,'detail27qchallan')" style="color: blue" onclick="scrollWin()"><img src="static\img\edit.png" width="22px" height="22px" alt="Details" style="margin-top:5px; margin-bottom:5px;"/></a></td>
 				</tr>
 

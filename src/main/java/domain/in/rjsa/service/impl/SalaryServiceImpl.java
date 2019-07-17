@@ -19,5 +19,10 @@ SalaryDao dao;
 		// TODO Auto-generated method stub
 		return dao;
 	}
+	@Override
+	public Salary getByKey(Long salaryId) {
+		// TODO Auto-generated method stub
+		return dao.getByKey(salaryId);
+	}
 
 }

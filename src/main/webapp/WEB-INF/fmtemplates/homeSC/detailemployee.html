@@ -44,7 +44,6 @@
 		Label the data
     You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
 		*/
-	
 }
 
 @media only screen and (max-width: 1000px) {
@@ -104,7 +103,8 @@
 		<div ng-show="cCctr.show != true">
 
 			<div class="row">
-				<h3 class="page-header" style="margin-top: 2%;">Details of Employee</h3>
+				<h3 class="page-header" style="margin-top: 2%;">Details of
+					Employee</h3>
 			</div>
 
 			<div class="panel panel-default"
@@ -112,10 +112,12 @@
 				<div class="panel-body">
 					<div class="row" style="font-size: 13px;">
 						<div class="col-md-3">
-							<label>Employee No &nbsp;:</label> {{cCctr.entity.employee.employeeNo}}
+							<label>Employee No &nbsp;:</label>
+							{{cCctr.entity.employee.employeeNo}}
 						</div>
 						<div class="col-md-3">
-							<label>Employee Name &nbsp;:</label> {{cCctr.entity.employee.name}}
+							<label>Employee Name &nbsp;:</label>
+							{{cCctr.entity.employee.name}}
 						</div>
 
 					</div>
@@ -125,457 +127,683 @@
 		</div>
 
 
-	
+
+
+
+
+	</div>
 	<div class="row">
 
 
 
 		<ul class="nav nav-tabs">
-		<li ><a data-target="#empDtls"
-				data-toggle="tab">Employee Details</a></li>
-				<li ><a data-target="#addrDtls"
-				data-toggle="tab">Address Details</a></li>
-			
-				<li ><a data-target="#bankDtls"
-				data-toggle="tab">Bank Account Detail</a></li>
-				<li ><a data-target="#paymentDtls"
-				data-toggle="tab">Payment Detail</a></li>
+			<li><a data-target="#empDtls" data-toggle="tab">Employee
+					Details</a></li>
+			<li><a data-target="#addrDtls" data-toggle="tab">Address
+					Details</a></li>
+
+			<li><a data-target="#bankDtls" data-toggle="tab">Bank
+					Account Detail</a></li>
+			<li><a data-target="#paymentDtls" data-toggle="tab">Salary
+					Detail</a></li>
 
 		</ul>
 		<br>
-		
-		
-				<div class="tab-content ">
-				
+
+
+		<div class="tab-content ">
+
 			<div class="tab-pane active" id="empDtls">
-			<hr>
-              <div class="panel panel-default"
-				style="margin-top: -5%; border: none !important;">
-				<div class="panel-body">
-				<b> Employee Details</b>
-				<br><br>
-					<div class="row" style="font-size: 13px;">
-						<div class="col-md-3">
-							<label>Father Name &nbsp;:</label> {{cCctr.entity.employee.fatherName}}
-						</div>
-						<div class="col-md-3">
-							<label>PAN &nbsp;:</label> {{cCctr.entity.employee.pan}}
-						</div>
-						<div class="col-md-3">
-							<label>DOB &nbsp;:</label> {{cCctr.entity.employee.dob}}
-						</div>
-						<div class="col-md-3">
-							<label>DOJ &nbsp;:</label> {{cCctr.entity.employee.doj}}
-						</div>
-					</div>
-					<br>
-					<div class="row" style="font-size: 13px;">
-						<div class="col-md-3">
-							<label>Designation &nbsp;:</label> {{cCctr.entity.employee.designation}}
-						</div>
-						<div class="col-md-3">
-							<label>Current Office &nbsp;:</label> {{cCctr.entity.employee.currentOffice}}
-						</div>
-						<div class="col-md-3">
-							<label>Employee Grade &nbsp;:</label> {{cCctr.entity.employee.empGrade}}
-						</div>
-						<div class="col-md-3">
-							<label>Mobile1 &nbsp;:</label> {{cCctr.entity.employee.mobile1}}
-						</div>
-								</div>
-						<br>		
-						<div class="row" style="font-size: 13px;">
-						<div class="col-md-3">
-							<label>Mobile2 &nbsp;:</label> {{cCctr.entity.employee.mobile2}}
-						</div>
-						<div class="col-md-3">
-							<label>Email1 &nbsp;:</label> {{cCctr.entity.employee.email2}}
-						</div>
-						<div class="row">
-				<div class="col-xs-12">
-					<div class="text-left">
-						<button class="btn btn-primary" data-toggle="modal" 
-							onclick="test('#empDtls1')">Edit</button>
-						</div>
-						<div class="row" style="margin-left:55%">
-								<div class="col-md-6">
-								<button
-									ng-click="employeeDetailForm.submitted=true;cCctr.updateData(employeeDetailForm.$valid,'employee',cCctr.entity.employee,'closeU')"
-									class="btn btn-success" data-dismiss="modal" onclick="scrollWin()">Save</button>&nbsp;&nbsp;
-								<button
-									ng-click="cCctr.gotoListPage('employee','employee');"
-				class="btn btn-danger" onclick="scrollWin()">Back</button>
-									
-								
-								</div>
-								
-							</div>
-					</div>
-				</div>
-			</div>		
-					<br>
-		</div>
-	</div>
-			
-	</div>
-			
-			
-						
-			<!-- Address Details-->			
-			<div class="tab-pane" id="addrDtls">
-			<hr>
-              <div class="panel panel-default"
-				style="margin-top: -5%; border: none !important;">
-				<div class="panel-body">
-			<b>	Permanent Address </b>
-					<br><br>
-					<div class="row" style="font-size: 13px;">
-						<div class="col-md-4">
-							<label>Address1 &nbsp;:</label> {{cCctr.entity.paddress.address1}}
-						</div>
-						<div class="col-md-4">
-							<label>Address2 &nbsp;:</label> {{cCctr.entity.paddress.address2}}
-						</div>
-						<div class="col-md-4">
-							<label>Address2 &nbsp;:</label> {{cCctr.entity.paddress.address3}}
-						</div>
-					</div>
-					<br>
-					<div class="row" style="font-size: 13px;">
-						<div class="col-md-4">
-							<label>City &nbsp;:</label> {{cCctr.entity.paddress.city}}
-						</div>
-						<div class="col-md-4">
-							<label>State &nbsp;:</label> {{cCctr.entity.paddress.state}}
-						</div>
-						<div class="col-md-4">
-							<label>Pincode &nbsp;:</label> {{cCctr.entity.paddress.pincode}}
-						</div>
-						</div>	
-						<br>				
-				<b>	Current Address</b>
-						<br><br>
-						<div class="row" style="font-size: 13px;">
-						<div class="col-md-4">
-							<label>Address1 &nbsp;:</label> {{cCctr.entity.taddress.address1}}
-						</div>
-						<div class="col-md-4">
-							<label>Address2 &nbsp;:</label> {{cCctr.entity.taddress.address2}}
-						</div>
-						<div class="col-md-4">
-							<label>Address3 &nbsp;:</label> {{cCctr.address.taddress.address3}}
-						</div>
-					</div>
-					<br>
-					<div class="row" style="font-size: 13px;">
-						<div class="col-md-4">
-							<label>City &nbsp;:</label> {{cCctr.entity.taddress.city}}
-						</div>
-						<div class="col-md-4">
-							<label>State &nbsp;:</label> {{cCctr.entity.taddress.state}}
-						</div>
-						<div class="col-md-4">
-							<label>Pin code &nbsp;:</label> {{cCctr.entity.taddress.pincode}}
-						</div>
-						</div>	
-						
-						<div class="row">
-				<div class="col-xs-12">
-					<div class="text-right">
-						<button class="btn btn-primary" data-toggle="modal"
-							onclick="test('#addrDtls1')">Edit</button>
-						</div>
-					</div>
-				</div>
-						
-				</div>
-			</div>
-			
-			</div>
-			
-			
-			
-						
-			
-			<div class="tab-pane" id="bankDtls">
-			<hr>
-              <div class="panel panel-default"
-				style="margin-top: -5%; border: none !important;">
-				<div class="panel-body">
-				<b>Bank Details</b>
-				<br><br>
-					<div class="row" style="font-size: 13px;">
-						<div class="col-md-4">
-							<label>Bank Name &nbsp;:</label> {{cCctr.entity.bank.bankName}}
-						</div>
-						<div class="col-md-4">
-							<label>Account No &nbsp;:</label> {{cCctr.entity.bank.acNo}}
-						</div>
-						<div class="col-md-4">
-							<label>Branch &nbsp;:</label> {{cCctr.entity.bank.branch}}
-						</div>
-					</div>
-					<br>
-					<div class="row" style="font-size: 13px;">
-						<div class="col-md-4">
-							<label>IFSC &nbsp;:</label> {{cCctr.entity.bank.ifsc}}
-						</div>
-						<div class="col-md-4">
-							<label>Account Type &nbsp;:</label> {{cCctr.entity.bank.acType}}
-						</div>
-						<div class="col-md-4">
-							<label>MICR &nbsp;:</label> {{cCctr.entity.bank.micrNo}}
-						</div>
-						</div>					
-					<br>
-				</div>
-			</div>
-			
-			</div>
-			<div class="tab-pane" id="paymentDtls">
 				<hr>
-			     <div class="panel panel-default"
-				style="margin-top: -2%; border: none !important;">
-				<div class="panel-body">
-						
+				<div class="panel panel-default"
+					style="margin-top: -5%; border: none !important;">
+					<div class="panel-body">
+						<b> Employee Details</b> <br> <br>
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-3">
+								<label>Father Name &nbsp;:</label>
+								{{cCctr.entity.employee.fatherName}}
+							</div>
+							<div class="col-md-3">
+								<label>PAN &nbsp;:</label> {{cCctr.entity.employee.pan}}
+							</div>
+							<div class="col-md-3">
+								<label>DOB &nbsp;:</label> {{cCctr.entity.employee.dob| date:'dd-MM-yyyy'}}
+							</div>
+							<div class="col-md-3">
+								<label>DOJ &nbsp;:</label> {{cCctr.entity.employee.doj| date:'dd-MM-yyyy'}}
+							</div>
+
+
+
+						</div>
+						<br>
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-3">
+								<label>Designation &nbsp;:</label>
+								{{cCctr.entity.employee.designation}}
+							</div>
+							<div class="col-md-3">
+								<label>Current Office &nbsp;:</label>
+								{{cCctr.entity.employee.currentOffice}}
+							</div>
+							<div class="col-md-3">
+								<label>Employee Grade &nbsp;:</label>
+								{{cCctr.entity.employee.empGrade}}
+							</div>
+							<div class="col-md-3">
+								<label>Mobile1 &nbsp;:</label> {{cCctr.entity.employee.mobile1}}
+							</div>
+						</div>
+						<br>
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-3">
+								<label>Mobile2 &nbsp;:</label> {{cCctr.entity.employee.mobile2}}
+							</div>
+							<div class="col-md-3">
+								<label>Email1 &nbsp;:</label> {{cCctr.entity.employee.email2}}
+							</div>
+
+						</div>
+
+						<br>
+
+
+					</div>
 				</div>
+
 			</div>
+
+
+			<div class="tab-pane" id="addrDtls">
+				<hr>
+				<div class="panel panel-default"
+					style="margin-top: -5%; border: none !important;">
+					<div class="panel-body">
+						<b> Permanent Address</b> <br> <br>
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-4">
+								<label>Address1 &nbsp;:</label>
+								{{cCctr.entity.paddress.address1}}
+							</div>
+							<div class="col-md-4">
+								<label>Address2 &nbsp;:</label>
+								{{cCctr.entity.paddress.address2}}
+							</div>
+							<div class="col-md-4">
+								<label>Address2 &nbsp;:</label>
+								{{cCctr.entity.paddress.address3}}
+							</div>
+						</div>
+						<br>
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-4">
+								<label>City &nbsp;:</label> {{cCctr.entity.paddress.city}}
+							</div>
+							<div class="col-md-4">
+								<label>State &nbsp;:</label> {{cCctr.entity.paddress.state}}
+							</div>
+							<div class="col-md-4">
+								<label>Pincode &nbsp;:</label> {{cCctr.entity.paddress.pincode}}
+							</div>
+						</div>
+						<br> <b> Current Address</b> <br> <br>
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-4">
+								<label>Address1 &nbsp;:</label>
+								{{cCctr.entity.taddress.address1}}
+							</div>
+							<div class="col-md-4">
+								<label>Address2 &nbsp;:</label>
+								{{cCctr.entity.taddress.address2}}
+							</div>
+							<div class="col-md-4">
+								<label>Address3 &nbsp;:</label>
+								{{cCctr.address.taddress.address3}}
+							</div>
+						</div>
+						<br>
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-4">
+								<label>City &nbsp;:</label> {{cCctr.entity.taddress.city}}
+							</div>
+							<div class="col-md-4">
+								<label>State &nbsp;:</label> {{cCctr.entity.taddress.state}}
+							</div>
+							<div class="col-md-4">
+								<label>Pin code &nbsp;:</label>
+								{{cCctr.entity.taddress.pincode}}
+							</div>
+						</div>
+					</div>
+				</div>
+
 			</div>
-		</div>
-		</div>
 		
-		</div>
-		
-		
-		
-		
-		
-		<!-- Employee Details -->
-		
-		<div id="empDtls1" class="modal fade" role="dialog">
+
+
+
+
+
+			<div class="tab-pane" id="bankDtls">
+				<hr>
+				<div class="panel panel-default"
+					style="margin-top: -5%; border: none !important;">
+					<div class="panel-body">
+						<b>Bank Details</b> <br> <br>
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-4">
+								<label>Bank Name &nbsp;:</label> {{cCctr.entity.bank.bankName}}
+							</div>
+							<div class="col-md-4">
+								<label>Account No &nbsp;:</label> {{cCctr.entity.bank.acNo}}
+							</div>
+							<div class="col-md-4">
+								<label>Branch &nbsp;:</label> {{cCctr.entity.bank.branch}}
+							</div>
+						</div>
+						<br>
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-4">
+								<label>IFSC &nbsp;:</label> {{cCctr.entity.bank.ifsc}}
+							</div>
+							<div class="col-md-4">
+								<label>Account Type &nbsp;:</label> {{cCctr.entity.bank.acType}}
+							</div>
+							<div class="col-md-4">
+								<label>MICR &nbsp;:</label> {{cCctr.entity.bank.micrNo}}
+							</div>
+						</div>
+						<div class="col-xs-12">
+								<div class="text-left">
+									<button class="btn btn-primary" data-toggle="modal"
+										onclick="test('#profile')">Edit</button>
+								</div>
+							</div>
+
+						
+
+						<br>
+					</div>
+
+
+				</div>
+					<div id="profile" class="modal fade" role="dialog">
 				<div class="modal-dialog modal-lg">
 					<!-- Modal content-->
 					<div class="modal-content">
 						<div class="modal-header">
 							<button type="button" class="close" id="closeU"
 								data-dismiss="modal">&times;</button>
-							<h4 class="modal-title"><strong>Edit Employee Details</strong></h4>
+							<h4 class="modal-title">Edit Employee Bank Details</h4>
 						</div>
 						<div class="modal-body">
 
 							<div id="myTabContent" class="tab-content">
 								<div class="tab-pane fade active in" id="signin">
-									<form name="employeeDetailForm" class="form-horizontal"
+									<form name="profileForm" class="form-horizontal"
 										enctype="multipart/form-data">
-             
-	<div class="row">
-		<div class="form-group">
-			<div class="col-md-3">							
-            	<h6><b>Father Name</b></h6>
-                <input type="text" class="form-control" style="padding-top:0px;" name="fatherName" ng-model="cCctr.entity.employee.fatherName" placeholder="Father Name" ng-model-options="{updateOn: 'blur'}"/>
-			</div>
-			<div class="col-md-3">							
-            	<h6><b>PAN</b></h6>
-                <input type="text" class="form-control" style="padding-top:0px;" name="pan" ng-model="cCctr.entity.employee.pan" placeholder="PAN" ng-model-options="{updateOn: 'blur'}"/>
-			</div>
-			<div class="col-md-3">							
-            	<h6><b>DOB</b></h6>
-                <input type="date" class="form-control" style="padding-top:0px;" name="dob "ng-model="cCctr.entity.employee.dob" placeholder="DOB" ng-model-options="{updateOn: 'blur'}"/>
-			</div>
-		</div>
-	</div>
-	
-	<div class="row">
-		<div class="form-group">
-			<div class="col-md-3">		
-									
-            	<h6><b>DOJ</b></h6>
-                <input type="date" class="form-control" style="padding-top:0px;" name="doj"ng-model="cCctr.entity.employee.doj" placeholder="DOJ" ng-model-options="{updateOn: 'blur'}"/>
-			</div>	
-			<div class="col-md-3">					
-            	<h6><b>Designation</b></h6>
-                <input type="text" class="form-control" style="padding-top:0px;" name="designation" ng-model="cCctr.entity.employee.designation" placeholder="Designation"ng-model-options="{updateOn: 'blur'}"/>
-			</div>
-			<div class="col-md-3">							
-            	<h6><b>Current Office</b></h6>
-                <input type="text" class="form-control" style="padding-top:0px;" name="currentOffice" ng-model="cCctr.entity.employee.currentOffice" placeholder="Current Office" ng-model-options="{updateOn: 'blur'}"/> 
-			</div>
-			
-		</div>
-	</div>
-	
-	<div class="row">
-		<div class="form-group">
-			<div class="col-md-3">							
-            	<h6><b>Employee Grade</b></h6>
-                <input type="text" class="form-control" style="padding-top:0px;" name="empGrade"ng-model="cCctr.entity.employee.empGrade" placeholder="Employee Grade" ng-model-options="{updateOn: 'blur'}"/>
-			</div>
-			<div class="col-md-3">							
-            	<h6><b>Mobile1</b></h6>
-                <input type="text" class="form-control" style="padding-top:0px;" name="mobile1" ng-model="cCctr.entity.employee.mobile1" placeholder="Mobile1" ng-model-options="{updateOn: 'blur'}"/>
-			</div>
-			<div class="col-md-3">							
-            	<h6><b>Mobile2</b></h6>
-                <input type="text" class="form-control" style="padding-top:0px;" name="mobile2" ng-model="cCctr.entity.employee.mobile2" placeholder="Mobile2" ng-model-options="{updateOn: 'blur'}"/>
-			</div>
-		</div>
-	</div>
-	
-	<div class="row">
-		<div class="form-group">
-			<div class="col-md-3">							
-            	<h6><b>Email1</b></h6>
-                <input type="text" class="form-control" style="padding-top:0px;" name="email1"ng-model="cCctr.entity.employee.email1" placeholder="Email1" ng-model-options="{updateOn: 'blur'}"/>
-			</div>
-			
-		</div>
-	</div>
-	</form>
-	</div>
-	</div>
-	
-	<div class="modal-footer">
-								
-								<button class="btn btn-success" data-dismiss="modal" onclick="scrollWin()">OK</button>
-								<button class="btn btn-danger" data-dismiss="modal" onclick="scrollWin()">Back</button>
+
+
+										<div class="row">
+											<div class="col-md-6">
+
+												<label>Bank Name</label> <input class="form-control"
+													type="text" name="bankName" placeholder="Bank Name"
+													ng-model="cCctr.entity.bank.bankName" autocomplete="off"
+													ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+
+											</div>
+
+											<div class="col-md-6">
+												<label>Account No</label> <input class="form-control"
+													type="text" name="acNo" placeholder="Account No"
+													ng-model="cCctr.entity.bank.acNo" autocomplete="off"
+													ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+											</div>
+
+										</div>
+
+										<div class="row">
+											<div class="col-md-6">
+
+												<label>Branch </label> <input class="form-control"
+													type="text" name="branch" placeholder="Branch"
+													ng-model="cCctr.entity.bank.branch" autocomplete="off"
+													ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+
+											</div>
+
+											<div class="col-md-6">
+
+												<label>IFSC</label> <input class="form-control" type="text"
+													name="ifsc" placeholder="IFSC"
+													ng-model="cCctr.entity.bank.ifsc" autocomplete="off"
+													ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+
+											</div>
+
+
+										</div>
+
+										<div class="row">
+											<div class="col-md-6">
+
+												<label>Account Type </label> <input class="form-control"
+													type="text" name="acType" placeholder="Account Type"
+													ng-model="cCctr.entity.bank.acType
+														"
+													autocomplete="off" ng-pattern=""
+													ng-model-options="{updateOn: 'blur'}" />
+											</div>
+
+
+											<div class="col-md-6">
+
+												<label>MICR</label> <input class="form-control" type="text"
+													name="micrNo" placeholder="MICR No."
+													ng-model="cCctr.entity.bank.micrNo" autocomplete="off"
+													ng-model-options="{updateOn: 'blur'}" />
+
+											</div>
+
+
+										</div>
+										</form>
+								</div>
 							</div>
-	</div>
-	</div>
-	
-	</div>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<!-- Address Details -->
-	<div id="addrDtls1" class="modal fade" role="dialog">
+						
+							<div class="modal-footer">
+								<button
+									ng-click="profileForm.submitted=true;cCctr.updateData(profileForm.$valid,'bank',cCctr.entity.bank,'closeU')"
+									class="btn btn-success" data-dismiss="modal">Save</button>
+								<button class="btn btn-danger" data-dismiss="modal">Back</button>
+							</div>
+						</div>
+					</div>
+						
+				</div>
+
+			</div>
+
+
+
+						
+						
+						
+						
+						
+
+
+			</div>
+			
+			<div class="tab-pane" id="paymentDtls">
+				<hr>
+				<div class="panel panel-default"
+					style="margin-top: -2%; border: none !important;">
+					<div class="panel-body">
+						<b>Employee Salary Details</b> <br> <br>
+						<div class="row" style="font-size: 13px;">
+							
+							<div class="row" style="font-size: 13px;">
+							<div class="col-md-4">
+								<label>Basic Salary &nbsp;:</label> {{cCctr.entity.salary.basicSalary}}
+							</div>
+							<div class="col-md-4">
+								<label>HRA &nbsp;:</label> {{cCctr.entity.salary.hra}}
+							</div>
+							<div class="col-md-4">
+								<label>DA &nbsp;:</label> {{cCctr.entity.salary.da}}
+							</div>
+						</div>
+							<div class="row" style="font-size: 13px;">
+							<div class="col-md-4">
+								<label>CCA &nbsp;:</label> {{cCctr.entity.salary.cca}}
+							</div>
+							<div class="col-md-4">
+								<label>Special Allowance &nbsp;:</label> {{cCctr.entity.salary.specialAllowance}}
+							</div>
+							<div class="col-md-4">
+								<label>Travel Allowance &nbsp;:</label> {{cCctr.entity.salary.travelAllowance}}
+							</div>
+						</div>
+					<div class="row" style="font-size: 13px;">
+							<div class="col-md-4">
+								<label>Medical Allowance &nbsp;:</label> {{cCctr.entity.salary.medicalAllowance}}
+							</div>
+							<div class="col-md-4">
+								<label>EPF Employer Contribution &nbsp;:</label> {{cCctr.entity.salary.epfEmployerContribution}}
+							</div>
+							<div class="col-md-4">
+								<label>EPF Emp Contribution &nbsp;:</label> {{cCctr.entity.salary.epfEmpContribution}}
+							</div>
+						</div>
+						
+							<div class="row" style="font-size: 13px;">
+							<div class="col-md-4">
+								<label>Leave Enhancement &nbsp;:</label> {{cCctr.entity.salary.leaveEnhancement}}
+							</div>
+							<div class="col-md-4">
+								<label>Horanium &nbsp;:</label> {{cCctr.entity.salary.horanium}}
+							</div>
+							<div class="col-md-4">
+								<label>Add Income &nbsp;:</label> {{cCctr.entity.salary.addIncome}}
+							</div>
+						</div>
+						
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-4">
+								<label>Car Perk &nbsp;:</label> {{cCctr.entity.salary.carPerk}}
+							</div>
+							<div class="col-md-4">
+								<label>Loan Perk &nbsp;:</label> {{cCctr.entity.salary.loanPerk}}
+							</div>
+							<div class="col-md-4">
+								<label>NPS Employer Contribution &nbsp;:</label> {{cCctr.entity.salary.npsEmployerContribution}}
+							</div>
+						</div>
+							<div class="row" style="font-size: 13px;">
+							<div class="col-md-4">
+								<label>NPS Emp Contribution &nbsp;:</label> {{cCctr.entity.salary.npsEmpContribution}}
+							</div>
+							<div class="col-md-4">
+								<label>TDS &nbsp;:</label> {{cCctr.entity.salary.tds}}
+							</div>
+							<div class="col-md-4">
+								<label>Other Income &nbsp;:</label> {{cCctr.entity.salary.otherIncome}}
+							</div>
+						</div>
+					
+					<div class="row" style="font-size: 13px;">
+							<div class="col-md-4">
+								<label>Month &nbsp;:</label> {{cCctr.entity.salary.month}}
+							</div>
+							<div class="col-md-4">
+								<label>Financial Year&nbsp;:</label> {{cCctr.entity.salary.fy}}
+							</div>
+							
+						</div>
+					
+					
+					
+					</div>
+					
+					
+					
+				</div>
+			</div>
+
+
+<div class="row">
+							<div class="col-xs-12">
+								<div class="text-left">
+									<button class="btn btn-primary" data-toggle="modal"
+										onclick="test('#profile1')">Edit</button>
+								</div>
+							</div>
+						</div>
+
+
+
+		</div>
+		<div id="profile1" class="modal fade" role="dialog">
 				<div class="modal-dialog modal-lg">
 					<!-- Modal content-->
 					<div class="modal-content">
 						<div class="modal-header">
 							<button type="button" class="close" id="closeU"
 								data-dismiss="modal">&times;</button>
-							<h4 class="modal-title"><strong>Edit Address Details</strong></h4>
+							<h4 class="modal-title">Edit Employee Salary Details</h4>
 						</div>
 						
+						<div class="row">
+											<div class="col-md-6">
+
+												<label>Basic Salary </label> <input class="form-control"
+													type="text" name="basicSalary" placeholder="Basic Salary"
+													ng-model="cCctr.entity.salary.basicSalary" autocomplete="off"
+													ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+
+											</div>
+
+											<div class="col-md-6">
+
+												<label>HRA</label> <input class="form-control" type="text"
+													name="hra" placeholder="HRA"
+													ng-model="cCctr.entity.salary.hra" autocomplete="off"
+													ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+
+											</div>
+
+
+										</div>
+										
+										<div class="row">
+											<div class="col-md-6">
+
+												<label>DA </label> <input class="form-control"
+													type="text" name="da" placeholder="DA"
+													ng-model="cCctr.entity.salary.da" autocomplete="off"
+													ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+
+											</div>
+
+											<div class="col-md-6">
+
+												<label>CCA</label> <input class="form-control" type="text"
+													name="cca" placeholder="cca"
+													ng-model="cCctr.entity.salary.cca" autocomplete="off"
+													ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+
+											</div>
+
+
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+
+												<label>Special Allowance </label> <input class="form-control"
+													type="text" name="specialAllowance" placeholder="Special Allowance"
+													ng-model="cCctr.entity.salary.specialAllowance" autocomplete="off"
+													ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+
+											</div>
+
+											<div class="col-md-6">
+
+												<label>Travel Allowance</label> <input class="form-control" type="text"
+													name="travelAllowance" placeholder="Travel Allowance"
+													ng-model="cCctr.entity.salary.travelAllowance" autocomplete="off"
+													ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+
+											</div>
+
+
+										</div>
+										
+										<div class="row">
+											<div class="col-md-6">
+
+												<label>Medical Allowance </label> <input class="form-control"
+													type="text" name="medicalAllowance" placeholder="Medical Allowance"
+													ng-model="cCctr.entity.salary.medicalAllowance" autocomplete="off"
+													ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+
+											</div>
+
+											<div class="col-md-6">
+
+												<label>EPF Employer Contribution</label> <input class="form-control" type="text"
+													name="epfEmployerContribution" placeholder="epfEmployerContribution"
+													ng-model="cCctr.entity.salary.epfEmployerContribution" autocomplete="off"
+													ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+
+											</div>
+
+
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+
+												<label>EPF Emp Contribution </label> <input class="form-control"
+													type="text" name="epfEmpContribution" placeholder="EPF Emp Contribution"
+													ng-model="cCctr.entity.salary.epfEmpContribution" autocomplete="off"
+													ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+
+											</div>
+
+											<div class="col-md-6">
+
+												<label>Leave Enhancement</label> <input class="form-control" type="text"
+													name="leaveEnhancement" placeholder="leaveEnhancement"
+													ng-model="cCctr.entity.salary.leaveEnhancement" autocomplete="off"
+													ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+
+											</div>
+
+
+										</div>
+											<div class="row">
+											<div class="col-md-6">
+
+												<label>Horanium </label> <input class="form-control"
+													type="text" name="horanium" placeholder="Horanium"
+													ng-model="cCctr.entity.salary.horanium" autocomplete="off"
+													ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+
+											</div>
+
+											<div class="col-md-6">
+
+												<label>Add Income</label> <input class="form-control" type="text"
+													name="addIncome" placeholder="addIncome"
+													ng-model="cCctr.entity.salary.addIncome" autocomplete="off"
+													ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+
+											</div>
+
+
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+
+												<label>Car Perk </label> <input class="form-control"
+													type="text" name="carPerk" placeholder="carPerk"
+													ng-model="cCctr.entity.salary.carPerk" autocomplete="off"
+													ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+
+											</div>
+
+											<div class="col-md-6">
+
+												<label>Loan Perk</label> <input class="form-control" type="text"
+													name="loanPerk" placeholder="loanPerk"
+													ng-model="cCctr.entity.salary.loanPerk" autocomplete="off"
+													ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+
+											</div>
+
+
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+
+												<label>NPS Employer Contribution </label> <input class="form-control"
+													type="text" name="npsEmployerContribution" placeholder="npsEmployerContribution"
+													ng-model="cCctr.entity.salary.npsEmployerContribution" autocomplete="off"
+													ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+
+											</div>
+											<div class="col-md-6">
+
+												<label>NPS EMP Contribution</label> <input class="form-control" type="text"
+													name="npsEmpContribution" placeholder="npsEmpContribution"
+													ng-model="cCctr.entity.salary.npsEmpContribution" autocomplete="off"
+													ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+
+											</div>
+
+										
+
+										</div>
+										
+											<div class="row">
+												<div class="col-md-6">
+
+												<label>TDS</label> <input class="form-control" type="text"
+													name="tds" placeholder="TDS"
+													ng-model="cCctr.entity.salary.tds" autocomplete="off"
+													ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+
+											</div>
+											
+											<div class="col-md-6">
+											
+
+												<label>Other Income </label> <input class="form-control"
+													type="text" name="otherIncome" placeholder="otherIncome"
+													ng-model="cCctr.entity.salary.otherIncome" autocomplete="off"
+													ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+
+											</div>
+
+											
+
+
+										</div>
+										<div class="row">
+												<div class="col-md-6">
+
+												<label>Month</label> <input class="form-control" type="text"
+													name="month" placeholder="Month"
+													ng-model="cCctr.entity.salary.month" autocomplete="off"
+													ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+
+											</div>
+											
+											<div class="col-md-6">
+											
+
+												<label>Financial Year </label> <input class="form-control"
+													type="text" name="fy" placeholder="Financial Year"
+													ng-model="cCctr.entity.salary.fy" autocomplete="off"
+													ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+
+											</div>
+
+											
+
+
+										</div>
+										
+										
+										
+										
+										<div class="modal-footer">
+								<button
+									ng-click="profileForm.submitted=true;cCctr.updateData(profileForm.$valid,'salary',cCctr.entity.salary,'closeU')"
+									class="btn btn-success" data-dismiss="modal">Save</button>
+								<button class="btn btn-danger" data-dismiss="modal">Back</button>
+							</div>
 						
-		<div class="row">
-		<div class="form-group">
-	<div class="col-md-3">							
-            	<h6><b>Permanents Address</b></h6>
-			</div>
-			</div>
-			</div>				
-             
-	<div class="row">
-		<div class="form-group">
-			<div class="col-md-3">							
-            	<h6><b>Address1</b></h6>
-                <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.address1" placeholder="Address1">
-			</div>
-			<div class="col-md-3">							
-            	<h6><b>Address2</b></h6>
-                <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.address2" placeholder="Address2">
-			</div>
-			<div class="col-md-3">							
-            	<h6><b>Address3</b></h6>
-                <input type="date" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.address3" placeholder="Address3">
-			</div>
-		</div>
-	</div>
-	
-	<div class="row">
-		<div class="form-group">
-					
-			<div class="col-md-3">							
-            	<h6><b>City</b></h6>
-                <input type="date" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.city" placeholder="City">
-			</div>		
-			<div class="col-md-3">			
-            	<h6><b>State</b></h6>
-                <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.state" placeholder="State">
-			</div>
-			<div class="col-md-3">							
-            	<h6><b>PinCode</b></h6>
-                <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.pincode" placeholder="PinCode">
-			</div>
-			
-		</div>
-	</div>
-	
-	
-	<div class="row">
-		<div class="form-group">
-	<div class="col-md-3">							
-            	<h6><b>Current Address</b></h6>
-                
-			</div>
-			</div>
-			</div>
-	
-	
-	<div class="row">
-		<div class="form-group">
-			<div class="col-md-3">							
-            	<h6><b>Address1</b></h6>
-                <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.address1" placeholder="Address1">
-			</div>
-			<div class="col-md-3">							
-            	<h6><b>Address2</b></h6>
-                <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.address2" placeholder="Address2">
-			</div>
-			<div class="col-md-3">							
-            	<h6><b>Address3</b></h6>
-                <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.address3" placeholder="Address3">
-			</div>
-		</div>
-	</div>
-	
-	<div class="row">
-		<div class="form-group">
-					
-			<div class="col-md-3">							
-            	<h6><b>City</b></h6>
-                <input type="date" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.city" placeholder="City">
-			</div>	
-			<div class="col-md-3">				
-            	<h6><b>State</b></h6>
-                <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.state" placeholder="State">
-			</div>
-			<div class="col-md-3">							
-            	<h6><b>PinCode</b></h6>
-                <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.pincode" placeholder="PinCode">
-			</div>
-			
-		</div>
-	</div>
-	
-	
-	</div>
-	
-	</div>
-	</div>
-	
-	
-	
-	
-	             			
-	
-	
-	
+						</div>
+						</div>
+						</div>
+		
+		
 		
 		
 
+
+
+
+
+
+
+
 	</div>
+
+</div>
 
 
 

@@ -69,8 +69,8 @@ public class VendorController extends AbstractController<Long, Vendor, VendorSer
 		List<VendorLDC> v = vldcservice.search(constrains,l.getClientId());		
 		ew.setVldcs(v);
 		
-		VendorLDC emp = vldcservice.getByKey(id);
-		ew.setVendorLDC(emp);
+//		VendorLDC emp = vldcservice.getByKey(id);
+//		ew.setVendorLDC(emp);
 	//	constrains.remove("vendorId");
 		if(b!=null)
 		{

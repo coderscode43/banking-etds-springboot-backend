@@ -443,7 +443,7 @@ App
 								}
 							}
 
-							self.submit = function(valid, entity) {
+							self.submit = function(valid, entity, closeModalId) {
 								if (valid == true) {
 									console.log("Common Controller submit "
 											+ entity);
@@ -466,6 +466,8 @@ App
 																		'.headingMsg')
 																.append(
 																		"Successfull!");
+														angular.element('#'+ closeModalId)
+														
 														$('#successMsg')
 																.find(
 																		'.modal-body')

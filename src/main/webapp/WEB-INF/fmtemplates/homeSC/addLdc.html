@@ -8,16 +8,7 @@
            						        <form role="form" name="ldcDetailForm">
 										     <div class="row">
 											       <div class="col-md-6">
-											       <div class="form-group">
-										           <label>Vendor ID*</label>
-														<input class="form-control" type="text" name="vendorId" placeholder="vendorId" ng-model="cCctr.entity.vendorId" autocomplete="off"
-														ng-maxlength="50" ng-required="true" ng-pattern="/^[0-9]*$/"  ng-model-options="{updateOn: 'blur'}" />
-														<span style="color: red" ng-show="ldcDetailForm.submitted || ldcDetailForm.vendorId.$dirty && ldcDetailForm.vendorId.$invalid">
-									                <span class="error" ng-show="ldcDetailForm.vendorId.$error.pattern">Please enter valid vendorId</span>
-									                <span class="error" ng-show="ldcDetailForm.vendorId.$error.maxlength">vendorId should not be greater than 25 digit.</span>
-									                <span class="error" ng-show="ldcDetailForm.vendorId.$error.required">vendorId is Required.</span>
-								                    </span>
-								                   </div>
+											      
 								                      </div>
 										   		    <div class="col-md-6">
 										   		    <div class="form-group">
@@ -111,7 +102,7 @@
 										    					    	   
             		<div class="row">
             			<div class="modal-footer">
-            				<button ng-click="ldcDetailForm.submitted=true; cCctr.submit(ldcDetailForm.$valid,'vendorLDC')" class="btn btn-success" onclick="scrollWin()">Save</button>
+            				<button ng-click="ldcDetailForm.submitted=true; cCctr.submit(ldcDetailForm.$valid,'vendorLDC1')" class="btn btn-success" onclick="scrollWin()">Save</button>
             				<button ng-click="cCctr.gotoListPage('vendorLDC','vendorLDC');" class="btn btn-danger" onclick="scrollWin()">Back</button>
             			</div>
             		</div>

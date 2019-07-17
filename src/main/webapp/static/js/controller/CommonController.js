@@ -459,6 +459,12 @@ App
 																		+ ' added successfully');
 														self.gotoListPage(
 																entity, entity);
+														angular
+														.element(
+																'#'
+																		+ closeModalId)
+														.trigger(
+																'click');
 														$('#successMsg')
 																.find(
 																		'.modal-header')
@@ -466,8 +472,6 @@ App
 																		'.headingMsg')
 																.append(
 																		"Successfull!");
-														angular.element('#'+ closeModalId)
-														
 														$('#successMsg')
 																.find(
 																		'.modal-body')

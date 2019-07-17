@@ -13,6 +13,7 @@ import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.form.ZonalBranches;
 import domain.in.rjsa.model.form.Zone;
 import domain.in.rjsa.model.wrapper.BranchDetailWrapper;
+import domain.in.rjsa.service.BranchService;
 import domain.in.rjsa.service.ZonalBranchesService;
 import domain.in.rjsa.service.ZoneService;
 import domain.in.rjsa.web.ApplicationCache;
@@ -28,6 +29,9 @@ public class ZoneController extends AbstractController<Long, Zone, ZoneService> 
 
 	@Autowired
 	ZonalBranchesService zbService;
+
+	@Autowired
+	BranchService bservice; 
 
 	@Override
 	public ZoneService getService() {
@@ -56,6 +60,9 @@ public class ZoneController extends AbstractController<Long, Zone, ZoneService> 
 		}
 		ew.setBranchList(branchs);
 		ew.setZone(z);
+		Branch branch = bservice.getByKey(id);
+		ew.setBranch(branch);
+		
 		return ew;
 
 	}

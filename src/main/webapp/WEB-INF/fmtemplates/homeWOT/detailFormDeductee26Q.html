@@ -237,8 +237,8 @@
 									{{cCctr.entity.deductee26.quarter}}
 								</div>
 								<div class="col-md-6">
-								<label>Verified &nbsp;:</label>
-									{{cCctr.entity.deductee26.verify}}
+								<div ng-if="cCctr.entity.deductee26.verify == 1"><label>Verified &nbsp;:&nbsp;</label><i class="fa fa-check" aria-hidden="true"  style="color:#5cb85c"></i></div>
+							<div ng-if="cCctr.entity.deductee26.verify == 0"><label>Verified &nbsp;:&nbsp;</label><i class="fa fa-times" aria-hidden="true"  style="color:#ff0000"></i></div>
 								</div>
 							</div>
 							

@@ -123,19 +123,11 @@
 					</div>
 				</div>
 			</div>
-
 		</div>
-
-
-
-
-
-
 	</div>
+	
+	
 	<div class="row">
-
-
-
 		<ul class="nav nav-tabs">
 			<li><a data-target="#empDtls" data-toggle="tab">Employee
 					Details</a></li>
@@ -149,142 +141,193 @@
 
 		</ul>
 		<br>
-
-
+		<!-- Employee Details -->
 		<div class="tab-content ">
-
 			<div class="tab-pane active" id="empDtls">
-				<hr>
-				<div class="panel panel-default"
-					style="margin-top: -5%; border: none !important;">
-					<div class="panel-body">
-						<b> Employee Details</b> <br> <br>
-						<div class="row" style="font-size: 13px;">
-							<div class="col-md-3">
-								<label>Father Name &nbsp;:</label>
-								{{cCctr.entity.employee.fatherName}}
-							</div>
-							<div class="col-md-3">
-								<label>PAN &nbsp;:</label> {{cCctr.entity.employee.pan}}
-							</div>
-							<div class="col-md-3">
-								<label>DOB &nbsp;:</label> {{cCctr.entity.employee.dob| date:'dd-MM-yyyy'}}
-							</div>
-							<div class="col-md-3">
-								<label>DOJ &nbsp;:</label> {{cCctr.entity.employee.doj| date:'dd-MM-yyyy'}}
-							</div>
-
-
-
+			<hr>
+              <div class="panel panel-default"
+				style="margin-top: -5%; border: none !important;">
+				<div class="panel-body">
+				<b> Employee Details</b>
+				<br><br>
+					<div class="row" style="font-size: 13px;">
+						<div class="col-md-3">
+							<label>Father Name &nbsp;:</label> {{cCctr.entity.employee.fatherName}}
 						</div>
-						<br>
-						<div class="row" style="font-size: 13px;">
-							<div class="col-md-3">
-								<label>Designation &nbsp;:</label>
-								{{cCctr.entity.employee.designation}}
-							</div>
-							<div class="col-md-3">
-								<label>Current Office &nbsp;:</label>
-								{{cCctr.entity.employee.currentOffice}}
-							</div>
-							<div class="col-md-3">
-								<label>Employee Grade &nbsp;:</label>
-								{{cCctr.entity.employee.empGrade}}
-							</div>
-							<div class="col-md-3">
-								<label>Mobile1 &nbsp;:</label> {{cCctr.entity.employee.mobile1}}
-							</div>
+						<div class="col-md-3">
+							<label>PAN &nbsp;:</label> {{cCctr.entity.employee.pan}}
 						</div>
-						<br>
-						<div class="row" style="font-size: 13px;">
-							<div class="col-md-3">
-								<label>Mobile2 &nbsp;:</label> {{cCctr.entity.employee.mobile2}}
-							</div>
-							<div class="col-md-3">
-								<label>Email1 &nbsp;:</label> {{cCctr.entity.employee.email2}}
-							</div>
-
+						<div class="col-md-3">
+							<label>DOB &nbsp;:</label> {{cCctr.entity.employee.dob|
+									date:'dd-MM-yyyy'}}
 						</div>
-
-						<br>
-
-
+						<div class="col-md-3">
+							<label>DOJ &nbsp;:</label> {{cCctr.entity.employee.doj|
+									date:'dd-MM-yyyy'}}
+						</div>
+					</div>
+					<br>
+					<div class="row" style="font-size: 13px;">
+						<div class="col-md-3">
+							<label>Designation &nbsp;:</label> {{cCctr.entity.employee.designation}}
+						</div>
+						<div class="col-md-3">
+							<label>Current Office &nbsp;:</label> {{cCctr.entity.employee.currentOffice}}
+						</div>
+						<div class="col-md-3">
+							<label>Employee Grade &nbsp;:</label> {{cCctr.entity.employee.empGrade}}
+						</div>
+						<div class="col-md-3">
+							<label>Mobile1 &nbsp;:</label> {{cCctr.entity.employee.mobile1}}
+						</div>
+								</div>
+						<br>		
+						<div class="row" style="font-size: 13px;">
+						<div class="col-md-3">
+							<label>Mobile2 &nbsp;:</label> {{cCctr.entity.employee.mobile2}}
+						</div>
+						<div class="col-md-3">
+							<label>Email1 &nbsp;:</label> {{cCctr.entity.employee.email1}}
+						</div>
+						<div class="col-md-3">
+							<label>Email2 &nbsp;:</label> {{cCctr.entity.employee.email2}}
+						</div>
+						<div class="row">
+				<div class="col-xs-12">
+					<div class="text-left">
+						<button class="btn btn-primary" data-toggle="modal" 
+							onclick="test('#empDtls1')">Edit</button>
+						</div>
+						<div class="row" style="margin-left:70%">
+								<div class="col-md-6">
+								<button
+									ng-click="employeeDetailForm.submitted=true;cCctr.updateData(employeeDetailForm.$valid,'employee',cCctr.entity.employee,'closeU')"
+									class="btn btn-success" data-dismiss="modal" onclick="scrollWin()">Save</button>&nbsp;&nbsp;
+								<button
+									ng-click="cCctr.gotoListPage('employee','employee');"
+				class="btn btn-danger" onclick="scrollWin()">Back</button>
+								
+								</div>
+							</div>
 					</div>
 				</div>
-
-			</div>
-
-
+			</div>		
+					<br>
+		</div>
+	</div>
+	</div>
+	
+			<!--Address Details  -->
 			<div class="tab-pane" id="addrDtls">
-				<hr>
-				<div class="panel panel-default"
-					style="margin-top: -5%; border: none !important;">
-					<div class="panel-body">
-						<b> Permanent Address</b> <br> <br>
-						<div class="row" style="font-size: 13px;">
-							<div class="col-md-4">
-								<label>Address1 &nbsp;:</label>
-								{{cCctr.entity.paddress.address1}}
-							</div>
-							<div class="col-md-4">
-								<label>Address2 &nbsp;:</label>
-								{{cCctr.entity.paddress.address2}}
-							</div>
-							<div class="col-md-4">
-								<label>Address2 &nbsp;:</label>
-								{{cCctr.entity.paddress.address3}}
-							</div>
+			<hr>
+              <div class="panel panel-default"
+				style="margin-top: -5%; border: none !important;">
+				<div class="panel-body">
+			<b>	Permanent Address </b>
+					<br><br>
+					<div class="row" style="font-size: 13px;">
+						<div class="col-md-4">
+							<label>Address1 &nbsp;:</label> {{cCctr.entity.paddress.address1}}
 						</div>
-						<br>
-						<div class="row" style="font-size: 13px;">
-							<div class="col-md-4">
-								<label>City &nbsp;:</label> {{cCctr.entity.paddress.city}}
-							</div>
-							<div class="col-md-4">
-								<label>State &nbsp;:</label> {{cCctr.entity.paddress.state}}
-							</div>
-							<div class="col-md-4">
-								<label>Pincode &nbsp;:</label> {{cCctr.entity.paddress.pincode}}
-							</div>
+						<div class="col-md-4">
+							<label>Address2 &nbsp;:</label> {{cCctr.entity.paddress.address2}}
 						</div>
-						<br> <b> Current Address</b> <br> <br>
-						<div class="row" style="font-size: 13px;">
-							<div class="col-md-4">
-								<label>Address1 &nbsp;:</label>
-								{{cCctr.entity.taddress.address1}}
-							</div>
-							<div class="col-md-4">
-								<label>Address2 &nbsp;:</label>
-								{{cCctr.entity.taddress.address2}}
-							</div>
-							<div class="col-md-4">
-								<label>Address3 &nbsp;:</label>
-								{{cCctr.address.taddress.address3}}
-							</div>
+						<div class="col-md-4">
+							<label>Address3 &nbsp;:</label> {{cCctr.entity.paddress.address3}}
 						</div>
-						<br>
-						<div class="row" style="font-size: 13px;">
-							<div class="col-md-4">
-								<label>City &nbsp;:</label> {{cCctr.entity.taddress.city}}
-							</div>
-							<div class="col-md-4">
-								<label>State &nbsp;:</label> {{cCctr.entity.taddress.state}}
-							</div>
-							<div class="col-md-4">
-								<label>Pin code &nbsp;:</label>
-								{{cCctr.entity.taddress.pincode}}
-							</div>
+					</div>
+					<br>
+					<div class="row" style="font-size: 13px;">
+						<div class="col-md-4">
+							<label>City &nbsp;:</label> {{cCctr.entity.paddress.city}}
+						</div>
+						<div class="col-md-4">
+							<label>State &nbsp;:</label> {{cCctr.entity.paddress.state}}
+						</div>
+						<div class="col-md-4">
+							<label>Pincode &nbsp;:</label> {{cCctr.entity.paddress.pincode}}
+						</div>
+						</div>	
+						<div class="row">
+				<div class="col-xs-12">
+					<div class="text-left">
+						<button class="btn btn-primary" data-toggle="modal"
+							onclick="test('#addrDtls1')">Edit</button>
 						</div>
 					</div>
 				</div>
-
+				<div class="row" style="margin-left:70%">
+								<div class="col-md-6">
+								<button
+									ng-click="addressDetailForm.submitted=true;cCctr.updateData(addressDetailForm.$valid,'address',cCctr.entity.paddress,'closeU')"
+									class="btn btn-success" data-dismiss="modal" onclick="scrollWin()">Save</button>&nbsp;&nbsp;
+								<button
+									ng-click="cCctr.gotoListPage('employee','employee');"
+				class="btn btn-danger" onclick="scrollWin()">Back</button>
+									
+								
+								</div>
+								
+							</div>
+						<br>				
+				<b>	Current Address</b>
+						<br><br>
+						<div class="row" style="font-size: 13px;">
+						<div class="col-md-4">
+							<label>Address1 &nbsp;:</label> {{cCctr.entity.taddress.address1}}
+						</div>
+						<div class="col-md-4">
+							<label>Address2 &nbsp;:</label> {{cCctr.entity.taddress.address2}}
+						</div>
+						<div class="col-md-4">
+							<label>Address3 &nbsp;:</label> {{cCctr.entity.taddress.address3}}
+						</div>
+					</div>
+					<br>
+					<div class="row" style="font-size: 13px;">
+						<div class="col-md-4">
+							<label>City &nbsp;:</label> {{cCctr.entity.taddress.city}}
+						</div>
+						<div class="col-md-4">
+							<label>State &nbsp;:</label> {{cCctr.entity.taddress.state}}
+						</div>
+						<div class="col-md-4">
+							<label>Pin code &nbsp;:</label> {{cCctr.entity.taddress.pincode}}
+						</div>
+						</div>	
+						
+						<div class="row">
+				<div class="col-xs-12">
+					<div class="text-left">
+						<button class="btn btn-primary" data-toggle="modal"
+							onclick="test('#addrDtls1')">Edit</button>
+						</div>
+					</div>
+				</div>
+				<div class="row" style="margin-left:70%">
+								<div class="col-md-6">
+								<button
+									ng-click="addressDetailForm.submitted=true;cCctr.updateData(addressDetailForm.$valid,'address',cCctr.entity.taddress,'closeU')"
+									class="btn btn-success" data-dismiss="modal" onclick="scrollWin()">Save</button>&nbsp;&nbsp;
+								<button
+									ng-click="cCctr.gotoListPage('employee','employee');"
+				class="btn btn-danger" onclick="scrollWin()">Back</button>
+									
+								
+								</div>
+								
+							</div>
+						
+				</div>
 			</div>
-		
+			
+			</div>
+					
 
 
 
 
-
+<!-- Bank Details -->
 			<div class="tab-pane" id="bankDtls">
 				<hr>
 				<div class="panel panel-default"
@@ -425,18 +468,9 @@
 				</div>
 
 			</div>
-
-
-
-						
-						
-						
-						
-						
-
-
 			</div>
 			
+			<!-- Salary Details -->
 			<div class="tab-pane" id="paymentDtls">
 				<hr>
 				<div class="panel panel-default"
@@ -523,18 +557,12 @@
 							</div>
 							
 						</div>
-					
-					
-					
 					</div>
-					
-					
-					
 				</div>
 			</div>
 
 
-<div class="row">
+                          <div class="row">
 							<div class="col-xs-12">
 								<div class="text-left">
 									<button class="btn btn-primary" data-toggle="modal"
@@ -789,20 +817,229 @@
 						</div>
 						</div>
 						</div>
+						
+						
+	<!-- Employee Details model form-->
 		
-		
-		
-		
+		<div id="empDtls1" class="modal fade" role="dialog">
+				<div class="modal-dialog modal-lg">
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" id="closeU"
+								data-dismiss="modal">&times;</button>
+							<h4 class="modal-title"><strong>Edit Employee Details</strong></h4>
+						</div>
+						<div class="modal-body">
 
-
-
-
-
-
-
-
+							<div id="myTabContent" class="tab-content">
+								<div class="tab-pane fade active in" id="signin">
+									<form name="employeeDetailForm" class="form-horizontal"
+										enctype="multipart/form-data">
+             
+	<div class="row">
+		<div class="form-group">
+			<div class="col-md-3">							
+            	<h6><b>Father Name</b></h6>
+                <input type="text" class="form-control" style="padding-top:0px;" name="fatherName" ng-model="cCctr.entity.employee.fatherName" placeholder="Father Name" ng-model-options="{updateOn: 'blur'}"/>
+			</div>
+			<div class="col-md-3">							
+            	<h6><b>PAN</b></h6>
+                <input type="text" class="form-control" style="padding-top:0px;" name="pan" ng-model="cCctr.entity.employee.pan" placeholder="PAN" ng-model-options="{updateOn: 'blur'}"/>
+			</div>
+			<div class="col-md-3">							
+            	<h6><b>DOB</b></h6>
+                <input type="date" class="form-control" style="padding-top:0px;" name="dob "ng-model="cCctr.entity.employee.dob" placeholder="DOB" ng-model-options="{updateOn: 'blur'}"/>
+			</div>
+		</div>
 	</div>
+	
+	<div class="row">
+		<div class="form-group">
+			<div class="col-md-3">		
+									
+            	<h6><b>DOJ</b></h6>
+                <input type="date" class="form-control" style="padding-top:0px;" name="doj"ng-model="cCctr.entity.employee.doj" placeholder="DOJ" ng-model-options="{updateOn: 'blur'}"/>
+			</div>	
+			<div class="col-md-3">					
+            	<h6><b>Designation</b></h6>
+                <input type="text" class="form-control" style="padding-top:0px;" name="designation" ng-model="cCctr.entity.employee.designation" placeholder="Designation"ng-model-options="{updateOn: 'blur'}"/>
+			</div>
+			<div class="col-md-3">							
+            	<h6><b>Current Office</b></h6>
+                <input type="text" class="form-control" style="padding-top:0px;" name="currentOffice" ng-model="cCctr.entity.employee.currentOffice" placeholder="Current Office" ng-model-options="{updateOn: 'blur'}"/> 
+			</div>
+			
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="form-group">
+			<div class="col-md-3">							
+            	<h6><b>Employee Grade</b></h6>
+                <input type="text" class="form-control" style="padding-top:0px;" name="empGrade"ng-model="cCctr.entity.employee.empGrade" placeholder="Employee Grade" ng-model-options="{updateOn: 'blur'}"/>
+			</div>
+			<div class="col-md-3">							
+            	<h6><b>Mobile1</b></h6>
+                <input type="text" class="form-control" style="padding-top:0px;" name="mobile1" ng-model="cCctr.entity.employee.mobile1" placeholder="Mobile1" ng-model-options="{updateOn: 'blur'}"/>
+			</div>
+			<div class="col-md-3">							
+            	<h6><b>Mobile2</b></h6>
+                <input type="text" class="form-control" style="padding-top:0px;" name="mobile2" ng-model="cCctr.entity.employee.mobile2" placeholder="Mobile2" ng-model-options="{updateOn: 'blur'}"/>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="form-group">
+			<div class="col-md-3">							
+            	<h6><b>Email1</b></h6>
+                <input type="text" class="form-control" style="padding-top:0px;" name="email1" ng-model="cCctr.entity.employee.email1" placeholder="Email1" ng-model-options="{updateOn: 'blur'}"/>
+			</div>
+			
+			<div class="col-md-3">							
+            	<h6><b>Email2</b></h6>
+                <input type="text" class="form-control" style="padding-top:0px;" name="email2"ng-model="cCctr.entity.employee.email2" placeholder="Email2" ng-model-options="{updateOn: 'blur'}"/>
+			</div>
+			
+		</div>
+	</div>
+	</form>
+	</div>
+	</div>
+	
+	                      <div class="modal-footer">
+								
+								<button class="btn btn-success" data-dismiss="modal" onclick="scrollWin()">OK</button>
+								<button class="btn btn-danger" data-dismiss="modal" onclick="scrollWin()">Back</button>
+							</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	
+	
+	
+	<!-- Address Details model form -->
+	<div id="addrDtls1" class="modal fade" role="dialog">
+				<div class="modal-dialog modal-lg">
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" id="closeU"
+								data-dismiss="modal">&times;</button>
+							<h4 class="modal-title"><strong>Edit Address Details</strong></h4>
+						</div>
+						
+		<div class="modal-body">
 
+							<div id="myTabContent" class="tab-content">
+								<div class="tab-pane fade active in" id="signin">
+									<form name="addressDetailForm" class="form-horizontal"
+										enctype="multipart/form-data">				
+		<div class="row">
+		<div class="form-group">
+	<div class="col-md-3">							
+            	<h6><b>Permanent Address</b></h6>
+			</div>
+			</div>
+			</div>				
+             
+	<div class="row">
+		<div class="form-group">
+			<div class="col-md-3">							
+            	<h6><b>Address1</b></h6>
+                <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.paddress.address1" placeholder="Address1">
+			</div>
+			<div class="col-md-3">							
+            	<h6><b>Address2</b></h6>
+                <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.paddress.address2" placeholder="Address2">
+			</div>
+			<div class="col-md-3">							
+            	<h6><b>Address3</b></h6>
+                <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.paddress.address3" placeholder="Address3">
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="form-group">
+					
+			<div class="col-md-3">							
+            	<h6><b>City</b></h6>
+                <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.paddress.city" placeholder="City">
+			</div>		
+			<div class="col-md-3">			
+            	<h6><b>State</b></h6>
+                <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.paddress.state" placeholder="State">
+			</div>
+			<div class="col-md-3">							
+            	<h6><b>PinCode</b></h6>
+                <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.paddress.pincode" placeholder="PinCode">
+			</div>
+			
+		</div>
+	</div>
+	
+	
+	<div class="row">
+		<div class="form-group">
+	<div class="col-md-3">							
+            	<h6><b>Current Address</b></h6>
+                
+			</div>
+			</div>
+			</div>
+	
+	
+	<div class="row">
+		<div class="form-group">
+			<div class="col-md-3">							
+            	<h6><b>Address1</b></h6>
+                <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.taddress.address1" placeholder="Address1">
+			</div>
+			<div class="col-md-3">							
+            	<h6><b>Address2</b></h6>
+                <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.taddress.address2" placeholder="Address2">
+			</div>
+			<div class="col-md-3">							
+            	<h6><b>Address3</b></h6>
+                <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.taddress.address3" placeholder="Address3">
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="form-group">		
+					
+			<div class="col-md-3">							
+            	<h6><b>City</b></h6>
+                <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.taddress.city" placeholder="City">
+			</div>	
+			<div class="col-md-3">				
+            	<h6><b>State</b></h6>
+                <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.taddress.state" placeholder="State">
+			</div>
+			<div class="col-md-3">							
+            	<h6><b>PinCode</b></h6>
+                <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.taddress.pincode" placeholder="PinCode">
+			</div>
+			
+		</div>
+		</div>
+		</form>
+		</div>
+	</div>
+	<div class="modal-footer">
+								
+								<button class="btn btn-success" data-dismiss="modal" onclick="scrollWin()">OK</button>
+								<button class="btn btn-danger" data-dismiss="modal" onclick="scrollWin()">Back</button>
+							</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
 </div>
 
 

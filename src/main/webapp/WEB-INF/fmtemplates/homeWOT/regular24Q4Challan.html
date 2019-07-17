@@ -264,15 +264,14 @@
 					<th style="padding:20px">By Book Entry</th>
 					<th style="padding:20px">BSR Code</th>
 					<th style="padding:20px"> Challan Sr. No</th>
-					<th style="padding:20px">Date Tax Deposit</th>
 					<th style="padding:20px">Minor Head Challan</th>
 					<th style="padding:20px">Interest Allocated</th>
 					<th style="padding:20px">Other Amount Allocated</th>
 					<th style="padding:20px">Nil Challan Indicator</th>
-					<th style="padding:20px">Financial Year</th>
-					<th style="padding:20px">Quarter</th>
+					<th style="padding:20px">Date Tax Deposit</th>
 					<th style="padding:20px">Amount Consumed</th>
 					<th style="padding:20px">Amount Available</th>
+					<th style="padding:20px">Financial Year</th>
 					<th style="padding:20px">Action</th>
 
 				</tr>
@@ -291,18 +290,17 @@
 					<td>{{a.byBookEntry}}</td>
 					<td>{{a.bsrCode}}</td>
 					<td>{{a.challanSerialNo}}</td>
-					<td>{{a.dateOfDeposition | date:'dd-MM-yyyy'}}</td>
 					<td>{{a.minorHeadOfChallan}}</td>
 					<td>{{a.interestAllocated}}</td>
 					<td>{{a.otherAmtAllocated}}</td>
 					<td>{{a.nillChallanIndicator}}</td>
-					<td>{{a.fy}}</td>
-					<td>{{a.quarter}}</td>
+					<td>{{a.dateOfDeposition | date:'dd-MM-yyyy'}}</td>
 					<td style="background-color: #fabf8f ">{{a.amountConsumed}}</td>
 					
 					<div><td ng-if="a.amountAvailable > 0" style="background-color:#5cb85c">{{a.amountAvailable}}</td>
  					<td ng-if="!(a.amountAvailable > 0)">{{a.amountAvailable}}</td></div>
  					
+					<td>{{a.fy}}</td>
                    <td><a ng-click="cCctr.gotoDetailPage('regular24Q4Challan',a.id,'detailform24qchallan')" style="color: blue" onclick="scrollWin()"><img src="static\img\edit.png" width="22px" height="22px" alt="Details" style="margin-top:5px; margin-bottom:5px;"/></a></td>
 				</tr>
 

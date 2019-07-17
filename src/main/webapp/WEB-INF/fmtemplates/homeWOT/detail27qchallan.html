@@ -233,7 +233,20 @@
 									<label>Quarter &nbsp;:</label>
 									{{cCctr.entity.challan27.quarter}}
 								</div>
-							</div><br><br>
+								<div class="col-md-6">
+									<label>Amount Consumed &nbsp;:</label>
+									{{cCctr.entity.challan27.amountConsumed}}
+								</div>
+							</div>
+							
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-6">
+									<label>Amount Available &nbsp;:</label>
+									{{cCctr.entity.challan27.amountAvailable}}
+								</div>
+							</div>
+							
+							<br><br>
 							<div class="row" style="margin-left:55%">
 								<div class="col-md-6">
 								<button
@@ -560,6 +573,35 @@
 									<span class="error" ng-show="profileForm.quarter.$error.required">Quarter is Required Field.</span>
 									<span class="error" id="quarter"></span>
 								</div>
+								<div class="col-md-6">
+									<label>Amount Consumed</label> <input class="form-control"
+										type="text" name="amountConsumed"
+										placeholder="Amount Consumed" ng-maxlength="45"
+										ng-model="cCctr.entity.challan27.amountConsumed"
+										autocomplete="off" ng-model-options="{updateOn: 'blur'}" />
+										<span style="color: red" ng-show="profileForm.submitted || profileForm.amountConsumed.$dirty && profileForm.amountConsumed.$invalid">
+									<span class="error" ng-show="profileForm.amountConsumed.$error.pattern">Please enter valid Amount Consumed.</span> 
+									<span class="error" ng-show="profileForm.amountConsumed.$error.maxlength">Amount Consumed should not be greater than 45 characters.</span> 
+									<span class="error" ng-show="profileForm.amountConsumed.$error.required">Amount Consumed is Required Field.</span>
+									
+										<span class="error" id="amountConsumed"></span>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-md-6">
+										<label>Amount Available</label> <input class="form-control"
+											type="text" name="amountAvailable"
+											placeholder="Amount Available" ng-maxlength="45"
+											ng-model="cCctr.entity.challan27.amountAvailable"
+											autocomplete="off" ng-model-options="{updateOn: 'blur'}" />
+											<span style="color: red" ng-show="profileForm.submitted || profileForm.amountAvailable.$dirty && profileForm.amountAvailable.$invalid">
+										<span class="error" ng-show="profileForm.amountAvailable.$error.pattern">Please enter valid Amount Available.</span> 
+										<span class="error" ng-show="profileForm.amountAvailable.$error.maxlength">Amount Available should not be greater than 45 characters.</span> 
+										<span class="error" ng-show="profileForm.amountAvailable.$error.required">Amount Available is Required Field.</span>
+										
+											<span class="error" id="amountAvailable"></span>
+									</div>
 							</div>
 	                                  </form>
 								    </div>

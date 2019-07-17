@@ -60,7 +60,7 @@ public class ZoneController extends AbstractController<Long, Zone, ZoneService> 
 		}
 		ew.setBranchList(branchs);
 		ew.setZone(z);
-		Branch branch = bservice.getByKey(id);
+		Branch branch = bservice.getByKey(id);		
 		ew.setBranch(branch);
 		
 		return ew;

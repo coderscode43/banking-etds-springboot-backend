@@ -279,6 +279,7 @@
 							<th width="10%" style="padding:20px">Remarks</th>
 							<th width="10%" style="padding:20px">FY</th>
 							<th width="10%" style="padding:20px">Quarter</th>
+							<th width="10%" style="padding:20px">Verified</th>
 							<th width="10%" style="padding:20px">Action</th>
 
 						</tr>
@@ -306,6 +307,8 @@
 							<td>{{a.remarks}}</td>
 							<td>{{a.fy}}</td>
 							<td>{{a.quarter}}</td>
+							<div><td ng-if="a.verify == 1"><i class="fa fa-check" aria-hidden="true"  style="color:#5cb85c"></i></td>
+								<td ng-if="a.verify == 0"><i class="fa fa-times" aria-hidden="true"  style="color:#ff0000"></i></td></div>
 							<td><a ng-click="cCctr.gotoDetailPage('form24Q',a.id,'detail24deductee')" style="color: blue"><img src="static\img\edit.png" width="22px" height="22px" alt="Details" style="margin-top:5px; margin-bottom:5px;"/></a></td>
 
 							<!-- <td>{{a.total-a.amountPaid}}</td> -->

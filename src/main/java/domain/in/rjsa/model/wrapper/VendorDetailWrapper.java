@@ -11,6 +11,7 @@ import lombok.Data;
 @Data
 public class VendorDetailWrapper {
 	public Vendor vendor;
+	public VendorLDC vendorLDC;
 	public List<VendorLDC> vldcs;
 	public List<VendorPayment> vpList;
 	public BankAccDetail bank;

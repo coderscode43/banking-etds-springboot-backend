@@ -113,4 +113,6 @@ public class Regular26QDeductee extends CommonModelAbstract{
 	@Size(min=0, max=45, message="Quarter should be 45 characters.")
 	@NotNull(message = "Quarter is a required field")
 	public String quarter;
+	@Column(name = "verify")
+	public boolean verify = false;
 }

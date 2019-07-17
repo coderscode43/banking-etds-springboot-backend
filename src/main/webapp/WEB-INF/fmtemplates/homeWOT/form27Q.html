@@ -318,6 +318,7 @@
 						<th width="10%" style="padding:20px">Quarter</th>
 						<th width="10%" style="padding:20px">TDS Rate As Per IT Acts</th>
 						<th width="10%" style="padding:20px">Nature Of Remittance</th>
+						<th width="10%" style="padding:20px">Verified</th>
 						<th width="10%" style="padding:20px">Action</th>
 
 
@@ -356,6 +357,8 @@
 						<td>{{a.quarter}}</td>
 						<td>{{a.tdaRateAsPerItActs}}</td>
 						<td>{{a.natureOfRemittance}}</td>
+						<div><td ng-if="a.verify == 1"><i class="fa fa-check" aria-hidden="true"  style="color:#5cb85c"></i></td>
+							<td ng-if="a.verify == 0"><i class="fa fa-times" aria-hidden="true"  style="color:#ff0000"></i></td></div>
 						<td><a ng-click="cCctr.gotoDetailPage('form27Q',a.id,'detailForm27Q')" style="color: blue" onclick="scrollWin()"><img src="static\img\edit.png" width="22px" height="22px" alt="Details" style="margin-top:5px; margin-bottom:5px;"/></a></td>
 
 

@@ -120,6 +120,5 @@ public class Regular26QChallan extends CommonModelAbstract{
 	public Double amountAvailable;
 	
 	@Column(name = "verify")
-	@NotNull(message = "Verify is a required field")
-	public Boolean verify;
+	public Boolean verify = false;
 }

@@ -215,6 +215,10 @@
 					<div class="col-md-6">
 							<label>Amount Available &nbsp;:</label> {{cCctr.entity.challan26.amountAvailable}}
 					</div>
+					<div class="col-md-6">
+							<div ng-if="cCctr.entity.challan26.verify == 1"><label>Verified &nbsp;:&nbsp;</label><i class="fa fa-check" aria-hidden="true"  style="color:#5cb85c"></i></div>
+							<div ng-if="cCctr.entity.challan26.verify == 0"><label>Verified &nbsp;:&nbsp;</label><i class="fa fa-times" aria-hidden="true"  style="color:#ff0000"></i></div>
+					</div>
   				</div>
   				<div>
   				<button  ng-click="challan26Form.submitted=true;cCctr.updateData(challan26Form.$valid,'formchallan26Q',cCctr.entity.challan26,'closeU')" 

@@ -226,144 +226,154 @@
 										onclick="test('#profile')">Edit</button>
 								</div>
 							</div>
-							<div id="profile" class="modal fade" role="dialog">
-				<div class="modal-dialog modal-lg">
-					<!-- Modal content-->
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" id="closeU"
-								data-dismiss="modal">&times;</button>
-							<h4 class="modal-title">Edit Employee Bank Details</h4>
-						</div>
-						<div class="modal-body">
-
-							<div id="myTabContent" class="tab-content">
-								<div class="tab-pane fade active in" id="signin">
-									<form name="profileForm" class="form-horizontal"
-										enctype="multipart/form-data">
-
-
-										<div class="row">
-											<div class="col-md-6">
-
-												<label>Father Name</label> <input class="form-control"
-													type="text" name="fatherName" placeholder="Father Name"
-													ng-model="cCctr.entity.pensioner.fatherName" autocomplete="off"
-													ng-pattern="" ng-model-options="{updateOn: 'blur'}"
-													ng-maxlength="15" />
-													
-
+								<div id="profile" class="modal fade" role="dialog">
+									<div class="modal-dialog modal-lg">
+										<!-- Modal content-->
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" id="closeU"
+													data-dismiss="modal">&times;</button>
+												<h4 class="modal-title">Edit Employee Bank Details</h4>
 											</div>
+											<div class="modal-body">
 
-											<div class="col-md-6">
-												<label>Pan</label> <input class="form-control"
-													type="text" name="pan" placeholder="pan"
-													ng-model="cCctr.entity.pensioner.pan" autocomplete="off"
-													ng-pattern="" ng-model-options="{updateOn: 'blur'}"
-													ng-maxlength="20" />
-													<span style="color: red" ng-show="profileForm.submitted || profileForm.pan.$dirty && profileForm.pan.$invalid">
-													 <span class="error" ng-show="profileForm.pan.$error.maxlength">Account Number should not be greater than 20 digit.</span>
-													 </span>
-											</div>
-
-										</div>
-
-										<div class="row">
-											<div class="col-md-6">
-
-												<label>DOB </label> <input class="form-control"
-													type="text" name="dob" placeholder="Branch"
-													ng-model="cCctr.entity.pensioner.dob|date:'dd-MM-yyyy'" autocomplete="off"
-													ng-pattern="" ng-model-options="{updateOn: 'blur'}"
-													ng-maxlength="30" />
-													
-
-											</div>
-
-											<div class="col-md-6">
-
-												<label>Employee Grade</label> <input class="form-control" type="text"
-													name="empGrade" placeholder="IFSC"
-													ng-model="cCctr.entity.pensioner.empGrade" autocomplete="off"
-													ng-pattern="" ng-model-options="{updateOn: 'blur'}"
-													ng-maxlength="20" /> 
-													
-
-											</div>
+												<div id="myTabContent" class="tab-content">
+													<div class="tab-pane fade active in" id="signin">
+														<form name="profileForm" class="form-horizontal"
+															enctype="multipart/form-data">
 
 
-										</div>
+															<div class="row">
+																<div class="col-md-6">
 
-										<div class="row">
-											<div class="col-md-6">
+																	<label>Father Name</label> <input class="form-control"
+																		type="text" name="fatherName"
+																		placeholder="Father Name"
+																		ng-model="cCctr.entity.pensioner.fatherName"
+																		autocomplete="off" ng-pattern=""
+																		ng-model-options="{updateOn: 'blur'}"
+																		ng-maxlength="15" />
 
-												<label>Mobile No.1 </label> <input class="form-control"
-													type="text" name="mobile1" placeholder="mobile1"
-													ng-model="cCctr.entity.pensioner.mobile1
+
+																</div>
+
+																<div class="col-md-6">
+																	<label>Pan</label> <input class="form-control"
+																		type="text" name="pan" placeholder="pan"
+																		ng-model="cCctr.entity.pensioner.pan"
+																		autocomplete="off" ng-pattern=""
+																		ng-model-options="{updateOn: 'blur'}"
+																		ng-maxlength="20" /> <span style="color: red"
+																		ng-show="profileForm.submitted || profileForm.pan.$dirty && profileForm.pan.$invalid">
+																		<span class="error"
+																		ng-show="profileForm.pan.$error.maxlength">Account
+																			Number should not be greater than 20 digit.</span>
+																	</span>
+																</div>
+
+															</div>
+
+															<div class="row">
+																<div class="col-md-6">
+
+																	<label>DOB </label> <input class="form-control"
+																		type="text" name="dob" placeholder="Branch"
+																		ng-model="cCctr.entity.pensioner.dob|date:'dd-MM-yyyy'"
+																		autocomplete="off" ng-pattern=""
+																		ng-model-options="{updateOn: 'blur'}"
+																		ng-maxlength="30" />
+
+
+																</div>
+
+																<div class="col-md-6">
+
+																	<label>Employee Grade</label> <input
+																		class="form-control" type="text" name="empGrade"
+																		placeholder="IFSC"
+																		ng-model="cCctr.entity.pensioner.empGrade"
+																		autocomplete="off" ng-pattern=""
+																		ng-model-options="{updateOn: 'blur'}"
+																		ng-maxlength="20" />
+
+
+																</div>
+
+
+															</div>
+
+															<div class="row">
+																<div class="col-md-6">
+
+																	<label>Mobile No.1 </label> <input class="form-control"
+																		type="text" name="mobile1" placeholder="mobile1"
+																		ng-model="cCctr.entity.pensioner.mobile1
 														"
-													autocomplete="off" ng-pattern=""
-													ng-model-options="{updateOn: 'blur'}" />
-											</div>
+																		autocomplete="off" ng-pattern=""
+																		ng-model-options="{updateOn: 'blur'}" />
+																</div>
 
 
-											<div class="col-md-6">
+																<div class="col-md-6">
 
-												<label>Mobile No.2</label> <input class="form-control" type="text"
-													name="mobile2" placeholder="mobile2."
-													ng-model="cCctr.entity.pensioner.mobile2" autocomplete="off"
-													ng-model-options="{updateOn: 'blur'}" />
+																	<label>Mobile No.2</label> <input class="form-control"
+																		type="text" name="mobile2" placeholder="mobile2."
+																		ng-model="cCctr.entity.pensioner.mobile2"
+																		autocomplete="off"
+																		ng-model-options="{updateOn: 'blur'}" />
 
-											</div>
+																</div>
 
 
-										</div>
-										
-										<div class="row">
-											<div class="col-md-6">
+															</div>
 
-												<label>Email.1 </label> <input class="form-control"
-													type="text" name="email1" placeholder="email1"
-													ng-model="cCctr.entity.pensioner.email1
+															<div class="row">
+																<div class="col-md-6">
+
+																	<label>Email.1 </label> <input class="form-control"
+																		type="text" name="email1" placeholder="email1"
+																		ng-model="cCctr.entity.pensioner.email1
 														"
-													autocomplete="off" ng-pattern=""
-													ng-model-options="{updateOn: 'blur'}" />
+																		autocomplete="off" ng-pattern=""
+																		ng-model-options="{updateOn: 'blur'}" />
+																</div>
+
+
+																<div class="col-md-6">
+
+																	<label>Email.2</label> <input class="form-control"
+																		type="text" name="mobile2" placeholder="mobile2"
+																		ng-model="cCctr.entity.pensioner.mobile2"
+																		autocomplete="off"
+																		ng-model-options="{updateOn: 'blur'}" />
+
+																</div>
+
+
+															</div>
+
+
+
+														</form>
+													</div>
+												</div>
+
+												<div class="modal-footer">
+													<button
+														ng-click="profileForm.submitted=true;cCctr.updateData(profileForm.$valid,'bank',cCctr.entity.bank,'closeU')"
+														class="btn btn-success" data-dismiss="modal">Save</button>
+													<button class="btn btn-danger" data-dismiss="modal">Back</button>
+												</div>
 											</div>
-
-
-											<div class="col-md-6">
-
-												<label>Email.2</label> <input class="form-control" type="text"
-													name="mobile2" placeholder="mobile2"
-													ng-model="cCctr.entity.pensioner.mobile2" autocomplete="off"
-													ng-model-options="{updateOn: 'blur'}" />
-
-											</div>
-
-
 										</div>
-										
-										
-										
-										</form>
+
+									</div>
+
 								</div>
-							</div>
-						
-							<div class="modal-footer">
-								<button
-									ng-click="profileForm.submitted=true;cCctr.updateData(profileForm.$valid,'bank',cCctr.entity.bank,'closeU')"
-									class="btn btn-success" data-dismiss="modal">Save</button>
-								<button class="btn btn-danger" data-dismiss="modal">Back</button>
-							</div>
-						</div>
-					</div>
-						
-				</div>
 
-			</div>
-						
-						
 
-					</div>
+
+							</div>
 					
 
 					
@@ -388,7 +398,7 @@
 							<label>Address2 &nbsp;:</label> {{cCctr.entity.paddress.address2}}
 						</div>
 						<div class="col-md-4">
-							<label>Address2 &nbsp;:</label> {{cCctr.entity.paddress.address3}}
+							<label>Address3 &nbsp;:</label> {{cCctr.entity.paddress.address3}}
 						</div>
 					</div>
 					<br>
@@ -403,6 +413,23 @@
 							<label>Pincode &nbsp;:</label> {{cCctr.entity.paddress.pincode}}
 						</div>
 						</div>	
+						<div class="col-xs-12">
+					<div class="text-left">
+						<button class="btn btn-primary" data-toggle="modal"
+							onclick="test('#addrDtls1')">Edit</button>
+						</div>
+					</div>
+					
+					<div class="row" style="margin-left:70%">
+								<div class="col-md-6">
+								<button
+									ng-click="addressDetailForm.submitted=true;cCctr.updateData(addressDetailForm.$valid,'address',cCctr.entity.paddress,'closeU')"
+									class="btn btn-success" data-dismiss="modal" onclick="scrollWin()">Save</button>&nbsp;&nbsp;
+								<button
+									ng-click="cCctr.gotoListPage('pensioner','pensioner');"
+				class="btn btn-danger" onclick="scrollWin()">Back</button>
+								</div>
+							</div>
 						<br>				
 					<div class="row" style="font-size: 13px;">
 					<b>Current Details</b>
@@ -416,7 +443,7 @@
 							<label>Address2 &nbsp;:</label> {{cCctr.entity.caddress.address2}}
 						</div>
 						<div class="col-md-4">
-							<label>Address3 &nbsp;:</label> {{cCctr.address.caddress.address3}}
+							<label>Address3 &nbsp;:</label> {{cCctr.entity.caddress.address3}}
 						</div>
 					</div>
 						<br>
@@ -432,6 +459,27 @@
 						</div>
 						</div>	
 						
+				<div class="row">
+				<div class="col-xs-12">
+					<div class="text-left">
+						<button class="btn btn-primary" data-toggle="modal"
+							onclick="test('#addrDtls2')">Edit</button>
+						</div>
+					</div>
+				</div>
+				
+				
+				
+				<div class="row" style="margin-left:70%">
+								<div class="col-md-6">
+								<button
+									ng-click="addressDetailForm1.submitted=true;cCctr.updateData(addressDetailForm1.$valid,'address',cCctr.entity.caddress,'closeU')"
+									class="btn btn-success" data-dismiss="modal" onclick="scrollWin()">Save</button>&nbsp;&nbsp;
+								<button
+									ng-click="cCctr.gotoListPage('pensioner','pensioner');"
+				class="btn btn-danger" onclick="scrollWin()">Back</button>
+								</div>
+							</div>
 						
 
 					</div>
@@ -576,8 +624,173 @@
 		
 		
 		
+<!-- Address Details model form -->
+		<div id="addrDtls1" class="modal fade" role="dialog">
+				<div class="modal-dialog modal-lg">
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" id="closeU"
+								data-dismiss="modal">&times;</button>
+							<h4 class="modal-title"><strong>Edit Address Details</strong></h4>
+						</div>
+						
+		<div class="modal-body">
 
-		
+							<div id="myTabContent" class="tab-content">
+								<div class="tab-pane fade active in" id="signin">
+									<form name="addressDetailForm1" class="form-horizontal"
+										enctype="multipart/form-data">				
+		<div class="row">
+		<div class="form-group">
+	<div class="col-md-3">							
+            	<h6><b>Permanent Address</b></h6>
+			</div>
+			</div>
+			</div>				
+             
+	<div class="row">
+		<div class="form-group">
+			<div class="col-md-3">							
+            	<h6><b>Address1</b></h6>
+                <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.paddress.address1" placeholder="Address1">
+			</div>
+			<div class="col-md-3">							
+            	<h6><b>Address2</b></h6>
+                <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.paddress.address2" placeholder="Address2">
+			</div>
+			<div class="col-md-3">							
+            	<h6><b>Address3</b></h6>
+                <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.paddress.address3" placeholder="Address3">
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="form-group">
+					
+			<div class="col-md-3">							
+            	<h6><b>City</b></h6>
+                <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.paddress.city" placeholder="City">
+			</div>		
+			<div class="col-md-3">			
+            	<h6><b>State</b></h6>
+                <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.paddress.state" placeholder="State">
+			</div>
+			<div class="col-md-3">							
+            	<h6><b>PinCode</b></h6>
+                <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.paddress.pincode" placeholder="PinCode">
+			</div>
+			
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+		</form>
+		</div>
+	</div>
+	<div class="modal-footer">
+								
+								<button class="btn btn-success" data-dismiss="modal" onclick="scrollWin()">OK</button>
+								<button class="btn btn-danger" data-dismiss="modal" onclick="scrollWin()">Back</button>
+							</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	
+	
+	
+	<div id="addrDtls2" class="modal fade" role="dialog">
+				<div class="modal-dialog modal-lg">
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" id="closeU"
+								data-dismiss="modal">&times;</button>
+							<h4 class="modal-title"><strong>Edit Address Details</strong></h4>
+						</div>
+						
+		<div class="modal-body">
+
+							<div id="myTabContent" class="tab-content">
+								<div class="tab-pane fade active in" id="signin">
+									<form name="addressDetailForm" class="form-horizontal"
+										enctype="multipart/form-data">				
+		<div class="row">
+		<div class="form-group">
+	
+			</div>
+			</div>				
+             
+	
+	
+	
+	
+	
+	<div class="row">
+		<div class="form-group">
+	<div class="col-md-3">							
+            	<h6><b>Current Address</b></h6>
+                
+			</div>
+			</div>
+			</div>
+	
+	
+	<div class="row">
+		<div class="form-group">
+			<div class="col-md-3">							
+            	<h6><b>Address1</b></h6>
+                <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.caddress.address1" placeholder="Address1">
+			</div>
+			<div class="col-md-3">							
+            	<h6><b>Address2</b></h6>
+                <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.caddress.address2" placeholder="Address2">
+			</div>
+			<div class="col-md-3">							
+            	<h6><b>Address3</b></h6>
+                <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.caddress.address3" placeholder="Address3">
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="form-group">		
+					
+			<div class="col-md-3">							
+            	<h6><b>City</b></h6>
+                <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.caddress.city" placeholder="City">
+			</div>	
+			<div class="col-md-3">				
+            	<h6><b>State</b></h6>
+                <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.caddress.state" placeholder="State">
+			</div>
+			<div class="col-md-3">							
+            	<h6><b>PinCode</b></h6>
+                <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.caddress.pincode" placeholder="PinCode">
+			</div>
+			
+		</div>
+		</div>
+		</form>
+		</div>
+	</div>
+	<div class="modal-footer">
+								
+								<button class="btn btn-success" data-dismiss="modal" onclick="scrollWin()">OK</button>
+								<button class="btn btn-danger" data-dismiss="modal" onclick="scrollWin()">Back</button>
+							</div>
+	</div>
+	</div>
+	</div>
+	</div>
 
 
 		</div>

@@ -98,7 +98,7 @@
 
 
 
-<div id="page-wrapper" ng-init="cCctr.entity=cCctr.getEntityData();">
+<div id="page-wrapper" ng-init="cCctr.entity=cCctr.getEntityData(); ">
 	<div class="container-fluid">
 
 		<div ng-show="cCctr.show != true">
@@ -128,7 +128,7 @@
       <div class="container">
 	   
 <div class="collapse dont-collapse-sm" id="collapseExample2"> 
-  		 <div class="row" style="font-size: 13px;">
+  		 <div class="row" style="font-size: 13px;" >
 	    	<div class="col-md-6">
 				<label>TDS &nbsp;:</label> {{cCctr.entity.challan26.tds}}
 			</div>
@@ -427,17 +427,11 @@
 			</div>
 			 <div class="row">
 							<div class="col-md-6">
-								
-									<label> Date Of Deposition</label> <input class="form-control"
-										type="text" name="dateTaxDeposit" placeholder="Date Of Deposition"
-										ng-model="cCctr.entity.challan26.dateTaxDeposit|
-									date:'dd-MM-yyyy'" autocomplete="off"
-										 ng-required="true" ng-model-options="{updateOn: 'blur'}" />
-										<span style="color: red" ng-show="challan26Form.submitted ||challan26Form.dateTaxDeposit.$dirty && challan26Form.dateTaxDeposit.$invalid">
-									
-									<span class="error" ng-show="challan26Form.dateTaxDeposit.$error.required">Date Tax Deposit is Required.</span>
-								    </span>
-												<span class="error" id="dateTaxDeposit"></span>
+							
+									<label> Date Of Deposition</label> 
+									 <input type="date" class="form-control" style="padding-top:0px;" name="dateTaxDeposit" value={{cCctr.entity.challan26.dateTaxDeposit}} 
+									  ng-model="cCctr.entity.challan26.dateTaxDeposit" autocomplete="off"
+									 ng-model-options="{updateOn: 'blur'}"/>
 								
 							</div>
 

@@ -1,5 +1,6 @@
 <style>
 
+
 @media (min-width: 300px) and (max-width: 700px) {
   
  .mobile{
@@ -156,9 +157,8 @@
 			        data-toggle="dropdown"><b style="font-size:17px;color:black; " >MISReport</b></a>
 			   </div>
 			   
-			   <div style="background-color:white;margin-top:1px" onclick="closeNav()" ng-click="cCctr.gotoListPage('ticket','ticket')">
-                   <a class="dropdown-toggle"
-		       	   data-toggle="dropdown"><b style="font-size:17px;color:black; " >Generate Ticket</b></a>
+			   <div style="background-color:white;margin-top:1px"  ng-click="cCctr.gotoListPage('ticket','ticket')">
+                   <a ><b style="font-size:17px;color:black; " >Generate Ticket</b></a>
 		       </div>
 		       
 			   <div style="background-color:white;margin-top:1px" onclick="closeNav()" ng-click="cCctr.gotoDetailPage('deductorDetails','${br.getTan()}','deductorDetails')">
@@ -299,7 +299,7 @@
 						ng-click="cCctr.gotoListPage('misReport','misReport')" onclick="scrollWin()">MIS
 							Report</a></li>
 							
-							<li><a class="dropdown-toggle" data-toggle="dropdown"
+							<li><a class="dropdown-toggle" data-toggle="dropdown" onclick="scrollWin()"
 						ng-click="cCctr.gotoListPage('ticket','ticket')">Generate Ticket
 							</a></li>	
 							
@@ -467,7 +467,9 @@
 	</div>
 	</div>
 	
-
+<a  id="viewFileClick" onclick="test('#viewFile')" style="z-index:1111"> </a>
+	<a  id="noviewFileClick" onclick="test('#noviewFile')" style="z-index:1111">
+	</a>
 
 <!-- 
 <div class="row">

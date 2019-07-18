@@ -24,6 +24,6 @@ public class PensionerSalaryController  extends AbstractController<Long, Pension
 			// TODO Auto-generated method stub
 			return PensionerSalary.class;
 		}
-
+	
 	}
 

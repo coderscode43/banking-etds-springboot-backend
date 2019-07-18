@@ -20,5 +20,10 @@ public class PensionerSalaryServiceImpl extends AbstractService<Long, PensionerS
 		// TODO Auto-generated method stub
 		return dao;
 	}
+	@Override
+	public PensionerSalary getByKey(Long pensionerId) {
+		// TODO Auto-generated method stub
+		return dao.getByKey(pensionerId);
+	}
 
 }

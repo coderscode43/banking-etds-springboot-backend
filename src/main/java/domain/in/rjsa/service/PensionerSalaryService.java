@@ -4,4 +4,6 @@ import domain.in.rjsa.model.form.PensionerSalary;
 
 public interface PensionerSalaryService extends ServiceInterface<Long,PensionerSalary> {
 
+	public PensionerSalary getByKey(Long id);
+
 }

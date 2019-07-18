@@ -1,19 +1,15 @@
 
 <style>
-
-
 @media only screen and (max-width: 1000px) {
 	.one {
 		display: none;
 	}
 }
-
 @media only screen and (max-width: 1000px) {
 	.two {
 		padding: 8px;
 	}
 }
-
 @media only screen and (min-width:600px) {
 	#three {
 		display: none;
@@ -21,7 +17,6 @@
 		overflow: hidden;
 	}
 }
-
 @media only screen and (min-width:1000px) {
 	#search {
 		margin-left: 45%;
@@ -29,19 +24,17 @@
 		display: none;
 	}
 }
-
-@media only screen and (max-width: 1000px) {
+ @media only screen and (max-width: 1000px) {
 	#hide {
 		display: none;
 	}
-}
-
-.table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
+ }
+ .table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
 	{
-	background-color: whitesmoke;
-}
+    	background-color: whitesmoke;
+    }
 
-@media ( min-width : 768px) {
+    @media ( min-width : 768px) {
 	.collapse.dont-collapse-sm {
 		display: block;
 		height: auto !important;
@@ -50,47 +43,39 @@
 }
 </style>
 
-
-
-
 <div id="page-wrapper" ng-init="cCctr.entity=cCctr.getEntityData();">
 	<div class="container-fluid">
-
-		<div ng-show="cCctr.show != true">
-
-			<div class="row">
+      <div ng-show="cCctr.show != true">
+        <div class="row">
 				<h3 class="page-header" style="margin-top: 2%;">Details of Vendor</h3>
-			</div>
+ 		</div>
 
 			<div class="panel panel-default"
-				style="margin-top: -2%; border: none !important;">
+			    	style="margin-top: -2%; border: none !important;">
 				<div class="panel-body">
-					<div class="row" style="font-size: 13px;">
+		   			<div class="row" style="font-size: 13px;">
 						<div class="col-md-3">
 							<label>vendorNo &nbsp;:</label> {{cCctr.entity.vendor.vendorNo}}
 						</div>
 						<div class="col-md-3">
 							<label>Vendor Name &nbsp;:</label> {{cCctr.entity.vendor.vendorName}}
+			    			</div>
+						<div class="col-md-3">
+							<label>PAN &nbsp;:</label> {{cCctr.entity.vendor.pan}}
+				 		</div>
+						<div class="col-md-3">
+							<label>GST No &nbsp;:</label> {{cCctr.entity.vendor.gstNo}}
 						</div>
-
-					</div>
+                     </div>
 				</div>
 			</div>
-
-		</div>
-
-
-
-
-
+         </div>
 
 	</div>
 	<div class="row">
 
-
-
-		<ul class="nav nav-tabs">
-		<li ><a data-target="#vendorDtls"
+      <ul class="nav nav-tabs">
+		 <li class="active"><a data-target="#vendorDtls"
 				data-toggle="tab">Vendor Details</a></li>
 				<li ><a data-target="#addrDtls"
 				data-toggle="tab">Address Details</a></li>
@@ -100,19 +85,13 @@
 				data-toggle="tab">Bank Account Detail</a></li>
 				<li ><a data-target="#vendorPaymentDtls"
 				data-toggle="tab">Vendor Payment</a></li>
-				<li ><a data-target="#paymentDtls"
-				data-toggle="tab">Payment Detail</a></li>
-
-		</ul>
+		   </ul>
 		<br>
-		
-		
-				<div class="tab-content ">
-				
+		   <div class="tab-content ">
 			<div class="tab-pane active" id="vendorDtls">
 			<hr>
               <div class="panel panel-default"
-				style="margin-top: -5%; border: none !important;">
+				  style="margin-top: -5%; border: none !important;">
 				<div class="panel-body">
 					<div class="row" style="font-size: 13px;">
 					<b>Vendor Detail</b>
@@ -129,9 +108,6 @@
 						<div class="col-md-3">
 							<label>Tel No &nbsp;:</label> {{cCctr.entity.vendor.telNo}}
 						</div>
-						
-						
-
 					</div>
 					<br>
 					<div class="row" style="font-size: 13px;">
@@ -141,57 +117,27 @@
 						<div class="col-md-3">
 							<label>Email &nbsp;:</label> {{cCctr.entity.vendor.email}}
 						</div>
-						
-						
-
 					</div>
-				
-					
-					
-		 <div class="row">
+		     <div class="row">
 	         	  <div  style="float:right">	
 	                    <button class="btn btn-Primary" data-toggle="modal" onclick="test('#ghi')" >Edit</button>
 	              </div>					
               </div>	
-			
-			
-			
-					
-				</div>
 			</div>
-			
-			</div>
-			
-			
-		
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+		 </div>
+		</div>
 			
 						<div class="tab-pane" id="addrDtls">
 			<hr>
               <div class="panel panel-default"
-				style="margin-top: -5%; border: none !important;">
+				     style="margin-top: -5%; border: none !important;">
 				<div class="panel-body">
-					<b>Address Details</b>
-					<br><br>
+					  <b>Address Details</b>
+					  <br><br>
 					<div class="row" style="font-size: 13px;">
 				
 						<div class="col-md-4">
-							<label>Address1 &nbsp;:</label> {{cCctr.entity.address.address1}}
+						 	<label>Address1 &nbsp;:</label> {{cCctr.entity.address.address1}}
 						</div>
 						<div class="col-md-4">
 							<label>Address2 &nbsp;:</label> {{cCctr.entity.address.address2}}
@@ -218,29 +164,20 @@
 	         	  <div  style="float:right">	
 	                    <button class="btn btn-Primary" data-toggle="modal" onclick="test('#address')" >Edit</button>
 	              </div>					
-              </div>
-					
-					
+                  </div>
 				</div>
+			  </div>
 			</div>
-			
-			</div>
-			
-			
-			
-						<div class="tab-pane " id="ldcDtls">
-						
-						 <div class="row">
-	 <div class="col-xs-12">
-		<div class="text-right">
+		   <div class="tab-pane " id="ldcDtls">
+		    <div class="row">
+	         <div class="col-xs-12">
+		      <div class="text-right">
 	          <button class="btn btn-primary" data-toggle="modal"  onclick="test('#addLdc')">Add</button>
-		</div>
-	 </div>
-    </div>
-
-				<div class="table-responsive">
-
-					<table class=" tables table-bordered table-hover table-striped"
+		   </div>
+	     </div>
+       </div>
+             <div class="table-responsive">
+             	<table class=" tables table-bordered table-hover table-striped"
 						role="table"
 						style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
 						<thead>
@@ -304,7 +241,7 @@
 					<br>
 					<div class="row" style="font-size: 13px;">
 						<div class="col-md-4">
-							<label>IFSC &nbsp;:</label> {{cCctr.entity.bank.ifsc}}
+							<label>IFSC Code &nbsp;:</label> {{cCctr.entity.bank.ifsc}}
 						</div>
 						<div class="col-md-4">
 							<label>Account Type &nbsp;:</label> {{cCctr.entity.bank.acType}}
@@ -327,7 +264,7 @@
 			
 						<div class="tab-pane " id="vendorPaymentDtls">
 
-				<div class="table-responsive">
+			<div class="table-responsive">
 
 					<table class=" tables table-bordered table-hover table-striped"
 						role="table"
@@ -391,43 +328,27 @@
 				</div>
 			</div>
 			
-			
-			
 			<div class="tab-pane " id="paymentDtls">
 						<hr>
               <div class="panel panel-default"
 				style="margin-top: -2%; border: none !important;">
 				<div class="panel-body">
-										
-					
-				</div>
+			 </div>
 			</div>
-
-			</div>
-			
-
-		</div>
-		
-		
-		
-		
-
-		
-
-
-		</div>
-
-	</div>
+    	  </div>
+        </div>
+      </div>
+  </div>
 
 
 
-<div id="ghi" class="modal fade" role="dialog">
+  <div id="ghi" class="modal fade" role="dialog">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" id="closeU"
 						data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Edit Vendor Details</h4>
+					<h4 class="modal-title"><b>Edit Vendor Details</b></h4>
 				</div>
 				<div class="modal-body">
 					<div id="myTabContent" class="tab-content">
@@ -441,6 +362,8 @@
 										<input
 											class="form-control" type="text"
 											name="vendorNo"
+											ng-pattern="/^[0-9]/"
+											ng-required="true"
 											placeholder="Vendor Number"
 											ng-model="cCctr.entity.vendor.vendorNo" autocomplete="off"
 											ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -453,10 +376,10 @@
 									</div>
 
 									<div class="col-md-6">
-										<label>vendor Name</label> <input class="form-control" type="text"
+										<label>Vendor Name</label> <input class="form-control" type="text"
 											name="vendorName" placeholder="vendor Name "
 											ng-model="cCctr.entity.vendor.vendorName" autocomplete="off"
-											
+										 ng-pattern="/^\s*$|^[A-Za-z\s.]+$/"	
 										ng-required="true"
 										ng-maxlength="50"
 										ng-model-options="{updateOn: 'blur'}" />
@@ -476,7 +399,7 @@
 												type="text" name="pan" placeholder="pan"
 												ng-model="cCctr.entity.vendor.pan" autocomplete="off"
 												ng-required="true"
-												
+												ng-pattern="/^[a-zA-Z]{5}[0-9]{4}[a-zA-Z]{1}$/"
 												ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 												<span style="color: red" ng-show="ghiForm.submitted || ghiForm.pan.$dirty && ghiForm.pan.$invalid">
 												<span class="error" ng-show="ghiForm.pan.$error.pattern">Enter valid PAN </span> 
@@ -504,17 +427,17 @@
 								</div>
 								<div class="row">
 									<div class="col-md-6">
-											<label>ResiStatus*</label> 
+											<label>Residential Status*</label> 
 											<input class="form-control"
-												type="text" name="resiStatus" placeholder="resiStatus"
+												type="text" name="resiStatus" placeholder="Residential Status"
 												ng-model="cCctr.entity.vendor.resiStatus" autocomplete="off"
 												ng-required="true"
 												
 												ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 												<span style="color: red" ng-show="ghiForm.submitted || ghiForm.resiStatus.$dirty && ghiForm.resiStatus.$invalid">
-												<span class="error" ng-show="ghiForm.resiStatus.$error.pattern">Enter valid Resi Status </span> 
-												<span class="error" ng-show="ghiForm.resiStatus.$error.maxlength">Resi Status should not be greater than 50 digits.</span> 
-												<span class="error" ng-show="ghiForm.resiStatus.$error.required">Resi Status is Required.</span>
+												<span class="error" ng-show="ghiForm.resiStatus.$error.pattern">Enter valid Residential Status </span> 
+												<span class="error" ng-show="ghiForm.resiStatus.$error.maxlength">Residential Status should not be greater than 50 digits.</span> 
+												<span class="error" ng-show="ghiForm.resiStatus.$error.required">Residential Status is Required.</span>
 												</span>
 												<span class="error" id="resiStatus"></span>
 									</div>
@@ -542,7 +465,7 @@
 												type="text" name="mobNo" placeholder="Mobile Number"
 												ng-model="cCctr.entity.vendor.mobNo" autocomplete="off"
 												ng-required="true"
-												ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+												 ng-pattern="/^\s*$|^$|^[7-9][0-9]{9}$/"
 												ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 												<span style="color: red" ng-show="ghiForm.submitted || ghiForm.mobNo.$dirty && ghiForm.mobNo.$invalid">
 												<span class="error" ng-show="ghiForm.mobNo.$error.pattern">Enter valid Mobile No </span> 
@@ -557,7 +480,7 @@
 											<input class="form-control" type="text"
 												name="email" placeholder="Email"
 												ng-model="cCctr.entity.vendor.email" autocomplete="off"
-												
+												ng-pattern="/^\s*$|^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})*$/"
 												ng-required="true"
 												ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 												<span style="color: red" ng-show="ghiForm.submitted || ghiForm.email.$dirty && ghiForm.email.$invalid">
@@ -575,7 +498,7 @@
 												type="text" name="contPerName" placeholder="contPerName"
 												ng-model="cCctr.entity.vendor.contPerName" autocomplete="off"
 												ng-required="true"
-											
+										      	ng-pattern="/^\s*$|^[A-Za-z\s.]+$/"
 												ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 												<span style="color: red" ng-show="ghiForm.submitted || ghiForm.contPerName.$dirty && ghiForm.contPerName.$invalid">
 												<span class="error" ng-show="ghiForm.contPerName.$error.pattern">Enter valid Contact Person Name</span> 
@@ -583,20 +506,15 @@
 												<span class="error" ng-show="ghiForm.contPerName.$error.required">Contact Person Name is Required.</span>
 												</span>
 												<span class="error" id="contPerName"></span>
-									</div>
-
-									
 								</div>
-
-							</form>
+                             </div>
+                          </form>
 						</div>
 					</div>
 					<div class="modal-footer">
 						<!--        <button ng-click="ghiForm.submitted=true;cCctr.updateData(ghiForm.$valid,'form24Qsalary',cCctr.entity.salary,'closeU')" class="btn btn-success"  data-dismiss="modal">Save</button>
  -->                      
-                      
- 
-						<button class="btn btn-success" ng-click="ghiForm.submitted=true; cCctr.updateData(ghiForm.$valid,'vendor',cCctr.entity.vendor,'closeU')">Save</button>
+                        <button class="btn btn-success" ng-click="ghiForm.submitted=true; cCctr.updateData(ghiForm.$valid,'vendor',cCctr.entity.vendor,'closeU')">Save</button>
 						<button class="btn btn-danger" data-dismiss="modal" style="margin-left: 10px">Back</button>
 					</div>
 				</div>
@@ -605,7 +523,7 @@
 	</div>
 	
 	
-<div id="address" class="modal fade" role="dialog">
+ <div id="address" class="modal fade" role="dialog">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -625,6 +543,7 @@
 										<input
 											class="form-control" type="text"
 											name="address1"
+											ng-required="true"
 											placeholder="Address 1"
 											ng-model="cCctr.entity.address.address1" autocomplete="off"
 											ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -640,8 +559,7 @@
 										<label>Address 2</label> <input class="form-control" type="text"
 											name="address2" placeholder="Address 2 "
 											ng-model="cCctr.entity.address.address2" autocomplete="off"
-											
-										ng-required="true"
+                                        ng-required="true"
 										ng-maxlength="50"
 										ng-model-options="{updateOn: 'blur'}" />
 										<span style="color: red" ng-show="addressForm.submitted || addressForm.address2.$dirty && addressForm.address2.$invalid">
@@ -675,7 +593,7 @@
 											<input class="form-control" type="text"
 												name="city" placeholder="city"
 												ng-model="cCctr.entity.address.city" autocomplete="off"
-												
+												ng-pattern="/^\s*$|^[A-Za-z\s.]+$/"
 												ng-required="true"
 												ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 												<span style="color: red" ng-show="addressForm.submitted || addressForm.city.$dirty && addressForm.city.$invalid">
@@ -693,7 +611,7 @@
 												type="text" name="state" placeholder="state"
 												ng-model="cCctr.entity.address.state" autocomplete="off"
 												ng-required="true"
-												
+												ng-pattern="/^\s*$|^[A-Za-z\s.]+$/"
 												ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 												<span style="color: red" ng-show="addressForm.submitted ||addressForm.resiStatus.$dirty && addressForm.state.$invalid">
 												<span class="error" ng-show="addressForm.state.$error.pattern">Enter valid State </span> 
@@ -708,7 +626,7 @@
 											<input class="form-control" type="text"
 												name="pincode" placeholder="Pincode"
 												ng-model="cCctr.entity.address.pincode" autocomplete="off"
-												
+												ng-pattern="/^[0-9]/"
 												ng-required="true"
 												ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 												<span style="color: red" ng-show="addressForm.submitted || addressForm.pincode.$dirty && addressForm.pincode.$invalid">
@@ -718,12 +636,9 @@
 												</span>
 												<span class="error" id="pincode"></span>
 									</div>
-								</div>
-								
-								
-
-							</form>
-						</div>
+								 </div>
+								</form>
+						    </div>
 					</div>
 					<div class="modal-footer">
 						<!--        <button ng-click="ghiForm.submitted=true;cCctr.updateData(ghiForm.$valid,'form24Qsalary',cCctr.entity.salary,'closeU')" class="btn btn-success"  data-dismiss="modal">Save</button>
@@ -753,11 +668,12 @@
 									<div class="col-md-6">
 										<label>Bank Name</label> 
 										<input
-											class="form-control" type="text"
-											name="bankName"
-											placeholder="Bank Name"
-											ng-model="cCctr.entity.bank.bankName" autocomplete="off"
-											ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
+											 class="form-control" type="text"
+											 name="bankName"
+											  placeholder="Bank Name"
+											 ng-pattern="/^\s*$|^[A-Za-z\s.]+$/"	
+											 ng-model="cCctr.entity.bank.bankName" autocomplete="off"
+											 ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 											<span style="color: red" ng-show="bankDetail.submitted || bankDetail.bankName.$dirty && bankDetail.bankName.$invalid">
 											<span class="error" ng-show="bankDetail.bankName.$error.pattern">Enter valid bank Name</span> 
 											<span class="error" ng-show="bankDetail.bankName.$error.maxlength">bankName should not be greater than 50 digits.</span> 
@@ -770,14 +686,12 @@
 										<label>Account No</label> <input class="form-control" type="text"
 											name="acNo" placeholder="acNo "
 											ng-model="cCctr.entity.bank.acNo" autocomplete="off"
-											
-										
-										ng-maxlength="50"
-										ng-model-options="{updateOn: 'blur'}" />
+											ng-maxlength="50"
+										    ng-model-options="{updateOn: 'blur'}" />
 										<span style="color: red" ng-show="bankDetail.submitted || bankDetail.acNo.$dirty && bankDetail.acNo.$invalid">
-										<span class="error" ng-show="bankDetail.acNo.$error.pattern">Enter valid Address 2 </span> 
-										<span class="error" ng-show="bankDetail.acNo.$error.maxlength">Address 2 should not be greater than 50 digits.</span> 
-										<span class="error" ng-show="bankDetail.acNo.$error.required">Address 2 is Required.</span>
+										<span class="error" ng-show="bankDetail.acNo.$error.pattern">Enter valid Account No </span> 
+										<span class="error" ng-show="bankDetail.acNo.$error.maxlength">Account No should not be greater than 50 digits.</span> 
+										<span class="error" ng-show="bankDetail.acNo.$error.required">Account No is Required.</span>
 										</span>
 										<span class="error" id="acNo"></span>
 									</div>
@@ -788,30 +702,26 @@
 										<label>Branch</label> <input class="form-control" type="text"
 											name="branch" placeholder="branch "
 											ng-model="cCctr.entity.bank.branch" autocomplete="off"
-											
-									
-										ng-maxlength="50"
-										ng-model-options="{updateOn: 'blur'}" />
+											ng-maxlength="50"
+										    ng-model-options="{updateOn: 'blur'}" />
 										<span style="color: red" ng-show="bankDetail.submitted || bankDetail.branch.$dirty && bankDetail.branch.$invalid">
-										<span class="error" ng-show="bankDetail.branch.$error.pattern">Enter valid Address 2 </span> 
-										<span class="error" ng-show="bankDetail.branch.$error.maxlength">Address 2 should not be greater than 50 digits.</span> 
-										<span class="error" ng-show="bankDetail.branch.$error.required">Address 2 is Required.</span>
+										<span class="error" ng-show="bankDetail.branch.$error.pattern">Enter valid Branch </span> 
+										<span class="error" ng-show="bankDetail.branch.$error.maxlength">Branch should not be greater than 50 digits.</span> 
+										<span class="error" ng-show="bankDetail.branch.$error.required">Branch is Required.</span>
 										</span>
 										<span class="error" id="branch"></span>
 									</div>
 
 									<div class="col-md-6">
-											<label>ifsc</label> 
+											<label>IFSC Code</label> 
 											<input class="form-control" type="text"
-												name="city" placeholder="city"
+												name="ifsc" placeholder="Ifsc code"
 												ng-model="cCctr.entity.bank.ifsc" autocomplete="off"
-												
-											
 												ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 												<span style="color: red" ng-show="bankDetail.submitted || bankDetail.ifsc.$dirty && bankDetail.ifsc.$invalid">
-												<span class="error" ng-show="bankDetail.ifsc.$error.pattern">Enter valid City </span> 
-												<span class="error" ng-show="bankDetail.ifsc.$error.maxlength">City should not be greater than 50 digits.</span> 
-												<span class="error" ng-show="bankDetail.ifsc.$error.required">City is Required.</span>
+												<span class="error" ng-show="bankDetail.ifsc.$error.pattern">Enter valid IFSC code </span> 
+												<span class="error" ng-show="bankDetail.ifsc.$error.maxlength">IFSC Code should not be greater than 50 digits.</span> 
+												<span class="error" ng-show="bankDetail.ifsc.$error.required">IFSC Code is Required.</span>
 												</span>
 												<span class="error" id="ifsc"></span>
 									</div>
@@ -822,39 +732,33 @@
 											<input class="form-control"
 												type="text" name="acType" placeholder="Account Type"
 												ng-model="cCctr.entity.bank.acType" autocomplete="off"
-												
-												
 												ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 												<span style="color: red" ng-show="bankDetail.submitted ||bankDetail.acType.$dirty && bankDetail.acType.$invalid">
-												<span class="error" ng-show="bankDetail.acType.$error.pattern">Enter valid State </span> 
-												<span class="error" ng-show="bankDetail.acType.$error.maxlength">State should not be greater than 50 digits.</span> 
-												<span class="error" ng-show="bankDetail.acType.$error.required">State is Required.</span>
+												<span class="error" ng-show="bankDetail.acType.$error.pattern">Enter valid Account Type </span> 
+												<span class="error" ng-show="bankDetail.acType.$error.maxlength">Account Type should not be greater than 50 digits.</span> 
+												<span class="error" ng-show="bankDetail.acType.$error.required">Account Type is Required.</span>
 												</span>
 												<span class="error" id="acType"></span>
 									</div>
 
 									<div class="col-md-6">
-											<label>micrNo</label> 
+											<label>MICR No</label> 
 											<input class="form-control" type="text"
 												name="micrNo" placeholder="micrNo"
 												ng-model="cCctr.entity.bank.micrNo" autocomplete="off"
-												
-												
-												ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
+											    ng-required="true"	
+											 	ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 												<span style="color: red" ng-show="bankDetail.submitted || bankDetail.micrNo.$dirty && bankDetail.micrNo.$invalid">
-												<span class="error" ng-show="bankDetail.micrNo.$error.pattern">Enter valid Pincode </span> 
-												<span class="error" ng-show="bankDetail.micrNo.$error.maxlength">Pincode should not be greater than 50 digits.</span> 
-												<span class="error" ng-show="bankDetail.micrNoe.$error.required">Total Deduction Under Section16 is Required.</span>
+												<span class="error" ng-show="bankDetail.micrNo.$error.pattern">Enter valid MICR No </span> 
+												<span class="error" ng-show="bankDetail.micrNo.$error.maxlength">MICR No should not be greater than 50 digits.</span> 
+												<span class="error" ng-show="bankDetail.micrNoe.$error.required">MICR No is Required.</span>
 												</span>
 												<span class="error" id="micrNo"></span>
 									</div>
-								</div>
-								
-								
-
-							</form>
-						</div>
-					</div>
+								  </div>
+								</form>
+						     </div>
+				     	</div>
 					<div class="modal-footer">
 						<!--        <button ng-click="ghiForm.submitted=true;cCctr.updateData(ghiForm.$valid,'form24Qsalary',cCctr.entity.salary,'closeU')" class="btn btn-success"  data-dismiss="modal">Save</button>
  -->               
@@ -871,7 +775,7 @@
 				<div class="modal-header">
 					<button type="button" class="close" id="closeq"
 						data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Edit LDC Details</h4>
+					<h4 class="modal-title"><b>Edit LDC Details</b></h4>
 				</div>
 				<div class="modal-body">
 					<div id="myTabContent" class="tab-content">
@@ -880,123 +784,99 @@
 								enctype="multipart/form-data">
 
 								<div class="row">
-									
-
 									<div class="col-md-6">
 										<label>Lower Deduction</label> <input class="form-control" type="text"
 											name="lowerDeduction" placeholder="lowerDeduction "
 											ng-model="cCctr.temp2.lowerDeduction" autocomplete="off"
-											
-										
-										ng-maxlength="50"
-										ng-model-options="{updateOn: 'blur'}" />
-										<!-- <span style="color: red" ng-show="vendorLdc.submitted || vendorLdcl.lowerDeduction.$dirty && vendorLdcl.lowerDeduction.$invalid">
-										<span class="error" ng-show="vendorLdc.lowerDeduction.$error.pattern">Enter valid lowerDeduction </span> 
-										<span class="error" ng-show="vendorLdc.lowerDeduction.$error.maxlength">lowerDeduction should not be greater than 50 digits.</span> 
-										<span class="error" ng-show="vendorLdc.lowerDeduction.$error.required">lowerDeduction is Required.</span>
-										</span>
-										<span class="error" id="lowerDeduction"></span> -->
+										    ng-required="true"	
+										    ng-maxlength="50"
+										    ng-model-options="{updateOn: 'blur'}" />
+										  <span style="color: red" ng-show="vendorLdc.submitted || vendorLdcl.lowerDeduction.$dirty && vendorLdcl.lowerDeduction.$invalid">
+										  <span class="error" ng-show="vendorLdc.lowerDeduction.$error.pattern">Enter valid lowerDeduction </span> 
+										  <span class="error" ng-show="vendorLdc.lowerDeduction.$error.maxlength">lowerDeduction should not be greater than 50 digits.</span> 
+										  <span class="error" ng-show="vendorLdc.lowerDeduction.$error.required">lowerDeduction is Required.</span>
+										 </span>
+										<span class="error" id="lowerDeduction"></span> 
 									</div>
-								</div>
-
-								<div class="row">
-									<div class="col-md-6">
-										<label>CerNo</label> <input class="form-control" type="text"
-											name="cerNo" placeholder="branch "
+										<div class="col-md-6">
+										<label>Certificate No</label> <input class="form-control" type="text"
+											name="cerNo" placeholder="Certificate No"
 											ng-model="cCctr.temp2.cerNo" autocomplete="off"
-											
+											ng-required="true"
 									
 										ng-maxlength="50"
 										ng-model-options="{updateOn: 'blur'}" />
-										<!-- <span style="color: red" ng-show="vendorLdc.submitted || bankDetail.cerNo.$dirty && bankDetail.cerNo.$invalid">
-										<span class="error" ng-show="vendorLdc.cerNo.$error.pattern">Enter valid Address 2 </span> 
-										<span class="error" ng-show="vendorLdc.cerNo.$error.maxlength">Address 2 should not be greater than 50 digits.</span> 
-										<span class="error" ng-show="vendorLdc.cerNo.$error.required">Address 2 is Required.</span>
-										</span>
-										<span class="error" id="cerNo"></span> -->
-									</div>
-
-									<div class="col-md-6">
-											<label>Valid From</label> 
-											<input class="form-control" type="date"
-												name="validFrom" placeholder="Valid From"
-												ng-model="cCctr.temp2.validFrom" autocomplete="off"
-												
-											
-												ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
-												<!-- <span style="color: red" ng-show="vendorLdc.submitted || vendorLdc.validFrom.$dirty && vendorLdc.validFrom.$invalid">
-												<span class="error" ng-show="vendorLdc.validFrom.$error.pattern">Enter valid City </span> 
-												<span class="error" ng-show="vendorLdc.validFrom.$error.maxlength">City should not be greater than 50 digits.</span> 
-												<span class="error" ng-show="vendorLdc.validFrom.$error.required">City is Required.</span>
-												</span>
-												<span class="error" id="validFrom"></span> -->
+										 <span style="color: red" ng-show="vendorLdc.submitted || bankDetail.cerNo.$dirty && bankDetail.cerNo.$invalid">
+										 <span class="error" ng-show="vendorLdc.cerNo.$error.pattern">Enter valid Certificate No </span> 
+										 <span class="error" ng-show="vendorLdc.cerNo.$error.maxlength">Certificate No should not be greater than 50 digits.</span> 
+										 <span class="error" ng-show="vendorLdc.cerNo.$error.required">Certificate No is Required.</span>
+										 </span>
+										 <span class="error" id="cerNo"></span> 
 									</div>
 								</div>
+
 								<div class="row">
+								  <div class="col-md-6">
+											<label>Valid From</label> 
+											   <input class="form-control" type="date"
+												name="validFrom" placeholder="Valid From"
+												ng-model="cCctr.temp2.validFrom" autocomplete="off"
+												ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
+												 <span style="color: red" ng-show="vendorLdc.submitted || vendorLdc.validFrom.$dirty && vendorLdc.validFrom.$invalid">
+												 <span class="error" ng-show="vendorLdc.validFrom.$error.pattern">Enter valid From Date </span> 
+												 <span class="error" ng-show="vendorLdc.validFrom.$error.required">Valid from Date is Required.</span>
+												 </span>
+												<span class="error" id="validFrom"></span>
+									</div>
 									<div class="col-md-6">
 											<label>valid To*</label> 
 											<input class="form-control"
 												type="date" name="validTo" placeholder="Account Type"
 												ng-model="cCctr.temp2.validTo" autocomplete="off"
-												
-												
 												ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
-												<!-- <span style="color: red" ng-show="vendorLdc.submitted ||vendorLdc.validTo.$dirty && vendorLdc.validTo.$invalid">
-												<span class="error" ng-show="vendorLdc.validTo.$error.pattern">Enter valid State </span> 
-												<span class="error" ng-show="vendorLdc.validTo.$error.maxlength">State should not be greater than 50 digits.</span> 
-												<span class="error" ng-show="vendorLdc.validTo.$error.required">State is Required.</span>
+												 <span style="color: red" ng-show="vendorLdc.submitted ||vendorLdc.validTo.$dirty && vendorLdc.validTo.$invalid">
+												 <span class="error" ng-show="vendorLdc.validTo.$error.pattern">Enter valid Date </span> 
+												 <span class="error" ng-show="vendorLdc.validTo.$error.required">valid To Date is Required.</span>
 												</span>
-												<span class="error" id="validTo"></span> -->
-									</div>
-
-									<div class="col-md-6">
-											<label>Cer Limit</label> 
-											<input class="form-control" type="text"
-												name="cerLimit" placeholder="cerLimit"
-												ng-model="cCctr.temp2.cerLimit" autocomplete="off"
-												
-												
-												ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
-											<!-- 	<span style="color: red" ng-show="vendorLdc.submitted || vendorLdc.cerLimit.$dirty && vendorLdc.cerLimit.$invalid">
-												<span class="error" ng-show="vendorLdc.cerLimit.$error.pattern">Enter valid Pincode </span> 
-												<span class="error" ng-show="vendorLdc.cerLimit.$error.maxlength">Pincode should not be greater than 50 digits.</span> 
-												<span class="error" ng-show="vendorLdc.cerLimit.$error.required">Total Deduction Under Section16 is Required.</span>
-												</span>
-												<span class="error" id="cerLimit"></span> -->
-									</div>
+												<span class="error" id="validTo"></span> 
+									  </div>
 								</div>
 								<div class="row">
 									<div class="col-md-6">
-											<label>Cer Nature*</label> 
-											<input class="form-control"
-												type="text" name="cerNature" placeholder="cerNature"
-												ng-model="cCctr.temp2.cerNature" autocomplete="off"
-												
-												
+											<label>Certificate Limit</label> 
+											<input class="form-control" type="text"
+												name="cerLimit" placeholder="cerLimit"
+												ng-model="cCctr.temp2.cerLimit" autocomplete="off"
+												ng-required="true"
 												ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
-												<!-- <span style="color: red" ng-show="vendorLdc.submitted ||vendorLdc.cerNature.$dirty && vendorLdc.cerNature.$invalid">
-												<span class="error" ng-show="vendorLdc.cerNature.$error.pattern">Enter valid State </span> 
-												<span class="error" ng-show="vendorLdc.cerNature.$error.maxlength">State should not be greater than 50 digits.</span> 
-												<span class="error" ng-show="vendorLdc.cerNature.$error.required">State is Required.</span>
+											 	<span style="color: red" ng-show="vendorLdc.submitted || vendorLdc.cerLimit.$dirty && vendorLdc.cerLimit.$invalid">
+												<span class="error" ng-show="vendorLdc.cerLimit.$error.pattern">Enter valid Certificate Limit </span> 
+												<span class="error" ng-show="vendorLdc.cerLimit.$error.maxlength">Certificate Limit should not be greater than 50 digits.</span> 
+												<span class="error" ng-show="vendorLdc.cerLimit.$error.required">Certificate Limit is Required.</span>
 												</span>
-												<span class="error" id="cerNature"></span> -->
+												<span class="error" id="cerLimit"></span> 
 									</div>
-
-									
-								</div>
-								
-								
-
-							
-						
-					<div class="modal-footer">
+									<div class="col-md-6">
+											<label>Certificate Nature*</label> 
+											<input class="form-control"
+												type="text" name="cerNature" placeholder="Certificate Nature"
+												ng-model="cCctr.temp2.cerNature" autocomplete="off"
+												ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
+												 <span style="color: red" ng-show="vendorLdc.submitted ||vendorLdc.cerNature.$dirty && vendorLdc.cerNature.$invalid">
+												 <span class="error" ng-show="vendorLdc.cerNature.$error.pattern">Enter valid Certificate Nature </span> 
+												 <span class="error" ng-show="vendorLdc.cerNature.$error.maxlength">Certificate Nature should not be greater than 50 digits.</span> 
+												 <span class="error" ng-show="vendorLdc.cerNature.$error.required">Certificate Nature is Required.</span>
+												 </span>
+												 <span class="error" id="cerNature"></span> 
+										</div>
+							     	</div>
+							 <div class="modal-footer">
 						<!--        <button ng-click="ghiForm.submitted=true;cCctr.updateData(ghiForm.$valid,'form24Qsalary',cCctr.entity.salary,'closeU')" class="btn btn-success"  data-dismiss="modal">Save</button>
- -->               
-					<button class="btn btn-success" ng-click="vendorLdc.submitted=true; cCctr.updateData(vendorLdc.$valid,'vendorLDC1',cCctr.temp2,'closeq')">Save</button>
-						<button class="btn btn-danger" data-dismiss="modal" style="margin-left: 10px">Back</button>
-					</div>
-					</form>
-					</div>
+ -->                                <button class="btn btn-success" ng-click="vendorLdc.submitted=true; cCctr.updateData(vendorLdc.$valid,'vendorLDC1',cCctr.temp2,'closeq')">Save</button>
+						           <button class="btn btn-danger" data-dismiss="modal" style="margin-left: 10px">Back</button>
+				            </div>
+					    </form>
+					  </div>
 					</div>
 				</div>
 			</div>
@@ -1010,7 +890,7 @@
 				<div class="modal-header">
 					<button type="button" class="close" id="closea"
 						data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Edit LDC Details</h4>
+					<h4 class="modal-title">Add LDC Details</h4>
 				</div>
 				<div class="modal-body">
 					<div id="myTabContent" class="tab-content">
@@ -1019,115 +899,102 @@
 								enctype="multipart/form-data">
 
 								<div class="row">
-									
-
-									<div class="col-md-6">
+								  <div class="col-md-6">
 										<label>Lower Deduction</label> <input class="form-control" type="text"
-											name="lowerDeduction" placeholder="lowerDeduction "
-											ng-model="cCctr.entity.lowerDeduction" autocomplete="off"
+											name="lowerDeduction" placeholder="lower Deduction "
+											ng-model="cCctr.entity.lowerDeduction" 
+											autocomplete="off"
+									    	 ng-required="true"
+										   ng-maxlength="50"
+										   ng-model-options="{updateOn: 'blur'}" />
+										 <span style="color: red" ng-show="addvendorLdc.submitted || addvendorLdc.lowerDeduction.$dirty && addvendorLdc.lowerDeduction.$invalid">
+										<span class="error" ng-show="addvendorLdc.lowerDeduction.$error.pattern">Enter valid lowerDeduction </span> 
+										<span class="error" ng-show="addvendorLdc.lowerDeduction.$error.maxlength">lower Deduction should not be greater than 50 digits.</span> 
+										<span class="error" ng-show="addvendorLdc.lowerDeduction.$error.required">lower Deduction is Required.</span>
+										</span>
+										<span class="error" id="lowerDeduction"></span> 
+									</div>
+									<div class="col-md-6">
+										<label>Certificate No</label> <input class="form-control" type="text"
+											name="cerNo" placeholder="Certificate No "
+											ng-model="cCctr.entity.cerNo" autocomplete="off"
 											
-										
+									  ng-required="true"
 										ng-maxlength="50"
 										ng-model-options="{updateOn: 'blur'}" />
-										<!-- <span style="color: red" ng-show="vendorLdc.submitted || vendorLdcl.lowerDeduction.$dirty && vendorLdcl.lowerDeduction.$invalid">
-										<span class="error" ng-show="vendorLdc.lowerDeduction.$error.pattern">Enter valid lowerDeduction </span> 
-										<span class="error" ng-show="vendorLdc.lowerDeduction.$error.maxlength">lowerDeduction should not be greater than 50 digits.</span> 
-										<span class="error" ng-show="vendorLdc.lowerDeduction.$error.required">lowerDeduction is Required.</span>
+										 <span style="color: red" ng-show="addvendorLdc.submitted || addvendorLdc.cerNo.$dirty && addvendorLdc.cerNo.$invalid">
+										<span class="error" ng-show="addvendorLdc.cerNo.$error.pattern">Enter valid Certificate No </span> 
+										<span class="error" ng-show="addvendorLdc.cerNo.$error.maxlength">Certificate No should not be greater than 50 digits.</span> 
+										<span class="error" ng-show="addvendorLdc.cerNo.$error.required">Certificate No is Required.</span>
 										</span>
-										<span class="error" id="lowerDeduction"></span> -->
+										<span class="error" id="cerNo"></span> 
 									</div>
 								</div>
 
 								<div class="row">
-									<div class="col-md-6">
-										<label>CerNo</label> <input class="form-control" type="text"
-											name="cerNo" placeholder="branch "
-											ng-model="cCctr.entity.cerNo" autocomplete="off"
-											
-									
-										ng-maxlength="50"
-										ng-model-options="{updateOn: 'blur'}" />
-										<!-- <span style="color: red" ng-show="vendorLdc.submitted || bankDetail.cerNo.$dirty && bankDetail.cerNo.$invalid">
-										<span class="error" ng-show="vendorLdc.cerNo.$error.pattern">Enter valid Address 2 </span> 
-										<span class="error" ng-show="vendorLdc.cerNo.$error.maxlength">Address 2 should not be greater than 50 digits.</span> 
-										<span class="error" ng-show="vendorLdc.cerNo.$error.required">Address 2 is Required.</span>
-										</span>
-										<span class="error" id="cerNo"></span> -->
-									</div>
-
 									<div class="col-md-6">
 											<label>Valid From</label> 
 											<input class="form-control" type="date"
 												name="validFrom" placeholder="Valid From"
 												ng-model="cCctr.entity.validFrom" autocomplete="off"
-												
+												ng-required="true"
 											
 												ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
-												<!-- <span style="color: red" ng-show="vendorLdc.submitted || vendorLdc.validFrom.$dirty && vendorLdc.validFrom.$invalid">
-												<span class="error" ng-show="vendorLdc.validFrom.$error.pattern">Enter valid City </span> 
-												<span class="error" ng-show="vendorLdc.validFrom.$error.maxlength">City should not be greater than 50 digits.</span> 
-												<span class="error" ng-show="vendorLdc.validFrom.$error.required">City is Required.</span>
+												 <span style="color: red" ng-show="addvendorLdc.submitted || addvendorLdc.validFrom.$dirty && addvendorLdc.validFrom.$invalid">
+												<span class="error" ng-show="addvendorLdc.validFrom.$error.pattern">Enter valid  From Date</span> 
+	                                                                                                                   									
+												<span class="error" ng-show="addvendorLdc.validFrom.$error.required">Valid From is Required.</span>
 												</span>
-												<span class="error" id="validFrom"></span> -->
+												<span class="error" id="validFrom"></span> 
 									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-6">
+										<div class="col-md-6">
 											<label>valid To*</label> 
 											<input class="form-control"
-												type="date" name="validTo" placeholder="Account Type"
+												type="date" name="validTo" placeholder="valid To"
 												ng-model="cCctr.entity.validTo" autocomplete="off"
 												
-												
+												ng-required="true"
 												ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
-												<!-- <span style="color: red" ng-show="vendorLdc.submitted ||vendorLdc.validTo.$dirty && vendorLdc.validTo.$invalid">
-												<span class="error" ng-show="vendorLdc.validTo.$error.pattern">Enter valid State </span> 
-												<span class="error" ng-show="vendorLdc.validTo.$error.maxlength">State should not be greater than 50 digits.</span> 
-												<span class="error" ng-show="vendorLdc.validTo.$error.required">State is Required.</span>
+												 <span style="color: red" ng-show="addvendorLdc.submitted ||addvendorLdc.validTo.$dirty && addvendorLdc.validTo.$invalid">
+												<span class="error" ng-show="addvendorLdc.validTo.$error.pattern">Enter valid To Date </span> 
+												<span class="error" ng-show="addvendorLdc.validTo.$error.required">valid To Date is Required.</span>
 												</span>
-												<span class="error" id="validTo"></span> -->
-									</div>
-
-									<div class="col-md-6">
-											<label>Cer Limit</label> 
-											<input class="form-control" type="text"
-												name="cerLimit" placeholder="cerLimit"
-												ng-model="cCctr.entity.cerLimit" autocomplete="off"
-												
-												
-												ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
-											<!-- 	<span style="color: red" ng-show="vendorLdc.submitted || vendorLdc.cerLimit.$dirty && vendorLdc.cerLimit.$invalid">
-												<span class="error" ng-show="vendorLdc.cerLimit.$error.pattern">Enter valid Pincode </span> 
-												<span class="error" ng-show="vendorLdc.cerLimit.$error.maxlength">Pincode should not be greater than 50 digits.</span> 
-												<span class="error" ng-show="vendorLdc.cerLimit.$error.required">Total Deduction Under Section16 is Required.</span>
-												</span>
-												<span class="error" id="cerLimit"></span> -->
+												<span class="error" id="validTo"></span> 
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-md-6">
-											<label>Cer Nature*</label> 
-											<input class="form-control"
-												type="text" name="cerNature" placeholder="cerNature"
-												ng-model="cCctr.entity.cerNature" autocomplete="off"
+								  <div class="col-md-6">
+											<label>Certificate Limit</label> 
+											<input class="form-control" type="text"
+												name="cerLimit" placeholder="Certificate Limit"
+												ng-model="cCctr.entity.cerLimit" autocomplete="off"
 												
+												ng-required="true"
+												ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
+											 	<span style="color: red" ng-show="addvendorLdc.submitted || addvendorLdc.cerLimit.$dirty && addvendorLdc.cerLimit.$invalid">
+												<span class="error" ng-show="addvendorLdc.cerLimit.$error.pattern">Enter valid Certificate Limit </span> 
+																						<span class="error" ng-show="addvendorLdc.cerLimit.$error.required">Certificate Limit is Required.</span>
+												</span>
+												<span class="error" id="cerLimit"></span> 
+										</div>
+											<div class="col-md-6">
+											<label>Certificate Nature*</label> 
+											<input class="form-control"
+												type="text" name="cerNature" placeholder="Certificate Nature"
+												ng-model="cCctr.entity.cerNature" autocomplete="off"
+												ng-required="true"
 												
 												ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
-												<!-- <span style="color: red" ng-show="vendorLdc.submitted ||vendorLdc.cerNature.$dirty && vendorLdc.cerNature.$invalid">
-												<span class="error" ng-show="vendorLdc.cerNature.$error.pattern">Enter valid State </span> 
-												<span class="error" ng-show="vendorLdc.cerNature.$error.maxlength">State should not be greater than 50 digits.</span> 
-												<span class="error" ng-show="vendorLdc.cerNature.$error.required">State is Required.</span>
+												 <span style="color: red" ng-show="addvendorLdc.submitted ||addvendorLdc.cerNature.$dirty && addvendorLdc.cerNature.$invalid">
+												<span class="error" ng-show="addvendorLdc.cerNature.$error.pattern">Enter valid Certificate Nature </span> 
+												 
+												<span class="error" ng-show="addvendorLdc.cerNature.$error.required">Certificate Nature is Required.</span>
 												</span>
-												<span class="error" id="cerNature"></span> -->
+												<span class="error" id="cerNature"></span> 
 									</div>
-
-									
 								</div>
-								
-								
-
 							
-						
+							
 					<div class="modal-footer">
 						<!--        <button ng-click="ghiForm.submitted=true;cCctr.updateData(ghiForm.$valid,'form24Qsalary',cCctr.entity.salary,'closeU')" class="btn btn-success"  data-dismiss="modal">Save</button>
  -->               

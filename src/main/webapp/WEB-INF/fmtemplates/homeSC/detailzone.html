@@ -271,6 +271,7 @@
             								md-search-text="a"
             								md-items="item in cCctr.ajax1('zone','zoneCode',a)"
             								md-delay="2000"
+            								ng-required="true"
             								placeholder="Zone Code">
           								<md-item-template>
             								<span >{{item}}</span>
@@ -283,22 +284,19 @@
 								</div>
 								</div>
 							</div>
-
-
-
-						</form>
-					</div>
-
-				</div>
-				
-			</div>
-			
 			<div class="modal-footer">
-					<button
-						ng-click="profileForm.submitted=true;cCctr.updateData(profileForm.$valid,'form24Q',cCctr.entity.deductee,'closeU')"
-						class="btn btn-success" data-dismiss="modal">Save</button>
+						<button
+								ng-click="profileForm.submitted=true; cCctr.submit(profileForm.$valid,'zonalBranches')"
+								class="btn btn-success">Save</button>
+						
 					<button class="btn btn-primary" data-dismiss="modal">Back</button>
 				</div>
+				
+					</form>
+				</div>	
+			</div>
+			</div>
 		</div>
+		
 	</div>
 </div>

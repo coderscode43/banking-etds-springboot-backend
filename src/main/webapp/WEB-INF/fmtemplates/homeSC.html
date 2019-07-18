@@ -93,15 +93,14 @@
             
 
             <ul id="qm" class="panel-collapse collapse">
-                <p><a ><b style="font-size:18px;color:white" onclick="closeNav()" ng-click="cCctr.gotoListPage('monthlySalary','monthlySalary')">Monthly Salary
+                <p><a ><b style="font-size:18px;color:white" onclick="closeNav()" ng-click="cCctr.gotoListPage('salary','monthlySalary')">Salary	Details</b> </a>
+
+                </p>
+                <p><a ><b style="font-size:18px;color:white" onclick="closeNav()" ng-click="cCctr.gotoListPage('salary','yearlySalary')">Yearly Salary
 							Details</b> </a>
 
                 </p>
-                <p><a ><b style="font-size:18px;color:white" onclick="closeNav()" ng-click="cCctr.gotoListPage('yearlySalary','yearlySalary')">Yearly Salary
-							Details</b> </a>
-
-                </p>
-                <p><a ><b style="font-size:18px;color:white" onclick="closeNav()" ng-click="cCctr.gotoListPage('asofNow','asofNow')">As Of Now
+                <p><a ><b style="font-size:18px;color:white" onclick="closeNav()" ng-click="cCctr.gotoListPage('salary','asofNow')">As Of Now
 							</b> </a>
 
                 </p>
@@ -118,8 +117,7 @@
 							Details</b> </a>
 
                 </p>
-                <p><a ><b style="font-size:18px;color:white" onclick="closeNav()" ng-click="cCctr.gotoListPage('pensionerSalary','pensionerSalary')">Pensioner Salary
-							Details</b> </a>
+                <p><a ><b style="font-size:18px;color:white" onclick="closeNav()" ng-click="cCctr.gotoListPage('pensionerSalary','pensionerSalary')">Pension Details</b> </a>
 
                 </p>
               
@@ -265,7 +263,7 @@
 
 							<li><a
 								ng-click="cCctr.gotoListPage('pensioner','pensioner')" onclick="scrollWin()">Pensioner Details</a></li>
-							<li><a ng-click="cCctr.gotoListPage('pensionerSalary','pensionerSalary')" onclick="scrollWin()">Pensioner Salary Details</a></li>
+							<li><a ng-click="cCctr.gotoListPage('pensionerSalary','pensionerSalary')" onclick="scrollWin()">Pension Details</a></li>
 
 						</ul></li>
 
@@ -312,7 +310,50 @@
 </div>
 
 
-
+<div id="successMsg" class="modal fade" role="dialog" class="modal hide fade in" data-keyboard="false" data-backdrop="static">
+	<div class="modal-dialog modal-sm">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 style="color: green;">
+					<img src="./././static/img/success.png" height="30" width="30"><span
+						class="headingMsg"></span>
+				</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="msg" style="font-size: 18px;"></div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cCctr.reload();">Ok</button>
+			</div>
+		</div>
+	</div>
+</div>
+	<div id="errorMsg" class="modal fade" role="dialog">
+	<div class="modal-dialog1 modal-sm">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 style="color:red;"><span class="blink_me"> <img src="./././static/img/errorNew.png" height="30" width="30"></span>&nbsp;Error</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="msg" style="font-size: 18px;">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+			</div>
+		</div>
+	</div>
+	</div>
 
 <!-- <div class="row">
 	<footer style="position:fixed; bottom: 0; left: 0; right: 0; width: 100%; background-color: #0F316D; color: white">

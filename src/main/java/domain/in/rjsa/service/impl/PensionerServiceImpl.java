@@ -21,9 +21,9 @@ PensionerDao dao;
 		return dao;
 	}
 	@Override
-	public Pensioner getByKey(Long id) {
+	public Pensioner getByKey(Long pensionerId) {
 		// TODO Auto-generated method stub
-		return dao.getByKey(id);
+		return dao.getByKey(pensionerId);
 	}
 
 }

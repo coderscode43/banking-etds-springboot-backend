@@ -144,7 +144,7 @@
 				<div class="panel-body">
 					<div class="row" style="font-size: 13px;">
 						<div class="col-md-3">
-							<label>pensionerNo &nbsp;:</label> {{cCctr.entity.pensioner.pensionNo}}
+							<label>Pensioner No &nbsp;:</label> {{cCctr.entity.pensioner.pensionNo}}
 						</div>
 						<div class="col-md-3">
 							<label>Vendor Name &nbsp;:</label> {{cCctr.entity.pensioner.name}}
@@ -173,7 +173,7 @@
 				<li ><a data-target="#bankDtls"
 				data-toggle="tab">Bank Account Detail</a></li>
 				<li ><a data-target="#paymentDtls"
-				data-toggle="tab">Payment Detail</a></li>
+				data-toggle="tab">Pensioner Salary Detail</a></li>
 
 		</ul>
 		<br>
@@ -197,7 +197,7 @@
 							<label>PAN &nbsp;:</label> {{cCctr.entity.pensioner.pan}}
 						</div>
 						<div class="col-md-3">
-							<label>DOB &nbsp;:</label> {{cCctr.entity.pensioner.dob}}
+							<label>DOB &nbsp;:</label> {{cCctr.entity.pensioner.dob|date:'dd-MM-yyyy'}}
 						</div>
 						<div class="col-md-3">
 							<label>Employee Grade &nbsp;:</label> {{cCctr.entity.pensioner.empGrade}}
@@ -220,6 +220,146 @@
 						<div class="col-md-3">
 							<label>Email 2 &nbsp;:</label> {{cCctr.entity.pensioner.email2}}
 						</div>
+						<div class="col-xs-12">
+								<div class="text-left">
+									<button class="btn btn-primary" data-toggle="modal"
+										onclick="test('#profile')">Edit</button>
+								</div>
+							</div>
+							<div id="profile" class="modal fade" role="dialog">
+				<div class="modal-dialog modal-lg">
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" id="closeU"
+								data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Edit Employee Bank Details</h4>
+						</div>
+						<div class="modal-body">
+
+							<div id="myTabContent" class="tab-content">
+								<div class="tab-pane fade active in" id="signin">
+									<form name="profileForm" class="form-horizontal"
+										enctype="multipart/form-data">
+
+
+										<div class="row">
+											<div class="col-md-6">
+
+												<label>Father Name</label> <input class="form-control"
+													type="text" name="fatherName" placeholder="Father Name"
+													ng-model="cCctr.entity.pensioner.fatherName" autocomplete="off"
+													ng-pattern="" ng-model-options="{updateOn: 'blur'}"
+													ng-maxlength="15" />
+													
+
+											</div>
+
+											<div class="col-md-6">
+												<label>Pan</label> <input class="form-control"
+													type="text" name="pan" placeholder="pan"
+													ng-model="cCctr.entity.pensioner.pan" autocomplete="off"
+													ng-pattern="" ng-model-options="{updateOn: 'blur'}"
+													ng-maxlength="20" />
+													<span style="color: red" ng-show="profileForm.submitted || profileForm.pan.$dirty && profileForm.pan.$invalid">
+													 <span class="error" ng-show="profileForm.pan.$error.maxlength">Account Number should not be greater than 20 digit.</span>
+													 </span>
+											</div>
+
+										</div>
+
+										<div class="row">
+											<div class="col-md-6">
+
+												<label>DOB </label> <input class="form-control"
+													type="text" name="dob" placeholder="Branch"
+													ng-model="cCctr.entity.pensioner.dob|date:'dd-MM-yyyy'" autocomplete="off"
+													ng-pattern="" ng-model-options="{updateOn: 'blur'}"
+													ng-maxlength="30" />
+													
+
+											</div>
+
+											<div class="col-md-6">
+
+												<label>Employee Grade</label> <input class="form-control" type="text"
+													name="empGrade" placeholder="IFSC"
+													ng-model="cCctr.entity.pensioner.empGrade" autocomplete="off"
+													ng-pattern="" ng-model-options="{updateOn: 'blur'}"
+													ng-maxlength="20" /> 
+													
+
+											</div>
+
+
+										</div>
+
+										<div class="row">
+											<div class="col-md-6">
+
+												<label>Mobile No.1 </label> <input class="form-control"
+													type="text" name="mobile1" placeholder="mobile1"
+													ng-model="cCctr.entity.pensioner.mobile1
+														"
+													autocomplete="off" ng-pattern=""
+													ng-model-options="{updateOn: 'blur'}" />
+											</div>
+
+
+											<div class="col-md-6">
+
+												<label>Mobile No.2</label> <input class="form-control" type="text"
+													name="mobile2" placeholder="mobile2."
+													ng-model="cCctr.entity.pensioner.mobile2" autocomplete="off"
+													ng-model-options="{updateOn: 'blur'}" />
+
+											</div>
+
+
+										</div>
+										
+										<div class="row">
+											<div class="col-md-6">
+
+												<label>Email.1 </label> <input class="form-control"
+													type="text" name="email1" placeholder="email1"
+													ng-model="cCctr.entity.pensioner.email1
+														"
+													autocomplete="off" ng-pattern=""
+													ng-model-options="{updateOn: 'blur'}" />
+											</div>
+
+
+											<div class="col-md-6">
+
+												<label>Email.2</label> <input class="form-control" type="text"
+													name="mobile2" placeholder="mobile2"
+													ng-model="cCctr.entity.pensioner.mobile2" autocomplete="off"
+													ng-model-options="{updateOn: 'blur'}" />
+
+											</div>
+
+
+										</div>
+										
+										
+										
+										</form>
+								</div>
+							</div>
+						
+							<div class="modal-footer">
+								<button
+									ng-click="profileForm.submitted=true;cCctr.updateData(profileForm.$valid,'bank',cCctr.entity.bank,'closeU')"
+									class="btn btn-success" data-dismiss="modal">Save</button>
+								<button class="btn btn-danger" data-dismiss="modal">Back</button>
+							</div>
+						</div>
+					</div>
+						
+				</div>
+
+			</div>
 						
 						
 
@@ -345,10 +485,85 @@
 			</div>
 			
 									<div class="tab-pane " id="paymentDtls">
+									
 						<hr>
               <div class="panel panel-default"
-				style="margin-top: -2%; border: none !important;">
+				style="margin-top: -5%; border: none !important;">
 				<div class="panel-body">
+				<br>
+					<b>Pensioner Salary Details</b>
+							<div class="row" style="font-size: 13px;">
+							<br>
+						<div class="col-md-3">
+							<label>Basic Salary &nbsp;:</label> {{cCctr.entity.psalary.basicSalary}}
+						</div>
+						<div class="col-md-3">
+							<label>HRA &nbsp;:</label> {{cCctr.entity.psalary.hra}}
+						</div>
+						<div class="col-md-3">
+							<label>DA &nbsp;:</label> {{cCctr.entity.psalary.da}}
+						</div>
+						<div class="col-md-3">
+							<label>CCA &nbsp;:</label> {{cCctr.entity.psalary.cca}}
+						</div>
+						
+						
+
+					</div>
+					<br>	
+					<div class="row" style="font-size: 13px;">
+						<div class="col-md-3">
+							<label>Special Allowance &nbsp;:</label> {{cCctr.entity.psalary.specialAllowance}}
+						</div>
+						<div class="col-md-3">
+							<label>Travel Allowance &nbsp;:</label> {{cCctr.entity.psalary.travelAllowance}}
+						</div>
+						<div class="col-md-3">
+							<label>Medical Allowance &nbsp;:</label> {{cCctr.entity.psalary.medicalAllowance}}
+						</div>
+						<div class="col-md-3">
+							<label>EPF Employer Contribution &nbsp;:</label> {{cCctr.entity.psalary.epfEmployerContribution}}
+						</div>
+						
+						
+
+					</div>
+						<br>
+						<div class="row" style="font-size: 13px;">
+						<div class="col-md-3">
+							<label>EPF Emp Contribution &nbsp;:</label> {{cCctr.entity.psalary.epfEmpContribution}}
+						</div>
+						<div class="col-md-3">
+							<label>Leave Enhancement &nbsp;:</label> {{cCctr.entity.psalary.leaveEnhancement}}
+						</div>
+						<div class="col-md-3">
+							<label>Horanium &nbsp;:</label> {{cCctr.entity.psalary.horanium}}
+						</div>
+						<div class="col-md-3">
+							<label>Add Income &nbsp;:</label> {{cCctr.entity.psalary.addIncome}}
+						</div>
+						
+						
+
+					</div>	
+					<br>
+						<div class="row" style="font-size: 13px;">
+						<div class="col-md-3">
+							<label>Car Perk &nbsp;:</label> {{cCctr.entity.psalary.carPerk}}
+						</div>
+						<div class="col-md-3">
+							<label>Loan Perk &nbsp;:</label> {{cCctr.entity.psalary.loanPerk}}
+						</div>
+						<div class="col-md-3">
+							<label>NPS Employer Contribution &nbsp;:</label> {{cCctr.entity.psalary.npsEmployerContribution}}
+						</div>
+						<div class="col-md-3">
+							<label>NPS Emp Contribution &nbsp;:</label> {{cCctr.entity.psalary.npsEmpContribution}}
+						</div>
+						
+						
+
+					</div>	
 										
 					
 				</div>

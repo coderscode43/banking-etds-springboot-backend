@@ -10,9 +10,11 @@ import domain.in.rjsa.model.form.Address;
 import domain.in.rjsa.model.form.BankAccDetail;
 import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.form.Pensioner;
+import domain.in.rjsa.model.form.PensionerSalary;
 import domain.in.rjsa.model.wrapper.PensionerDetailWrapper;
 import domain.in.rjsa.service.AddressService;
 import domain.in.rjsa.service.BankAccDetailService;
+import domain.in.rjsa.service.PensionerSalaryService;
 import domain.in.rjsa.service.PensionerService;
 import domain.in.rjsa.web.ApplicationCache;
 
@@ -21,6 +23,8 @@ import domain.in.rjsa.web.ApplicationCache;
 public class PensionerController extends AbstractController<Long, Pensioner, PensionerService>{
 @Autowired
 PensionerService service;
+@Autowired
+PensionerSalaryService service1;
 @Autowired
 BankAccDetailService bService;
 @Autowired
@@ -47,6 +51,8 @@ ApplicationCache applicationCache;
        
 		LinkedHashMap<String, Object> constrains = new LinkedHashMap<>();
 		constrains.put("clientId", l.getClientId());
+		PensionerSalary ps = service1.getByKey(id);
+		ew.setPsalary(ps);
 		
 		Pensioner pensioner = service.getByKey(id);
 		ew.setPensioner(pensioner);

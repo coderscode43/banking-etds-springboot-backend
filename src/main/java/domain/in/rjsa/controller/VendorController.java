@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import domain.in.rjsa.model.form.Address;
 import domain.in.rjsa.model.form.BankAccDetail;
 import domain.in.rjsa.model.form.Branch;
+import domain.in.rjsa.model.form.Employee;
 import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.form.Vendor;
 import domain.in.rjsa.model.form.VendorLDC;
@@ -67,6 +68,9 @@ public class VendorController extends AbstractController<Long, Vendor, VendorSer
 	
 		List<VendorLDC> v = vldcservice.search(constrains,l.getClientId());		
 		ew.setVldcs(v);
+		
+//		VendorLDC emp = vldcservice.getByKey(id);
+//		ew.setVendorLDC(emp);
 	//	constrains.remove("vendorId");
 		if(b!=null)
 		{

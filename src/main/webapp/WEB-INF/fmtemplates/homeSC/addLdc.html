@@ -1,0 +1,132 @@
+				<div id="page-wrapper">
+						<div class="container-fluid">
+							<div class="row">
+								<h1> Add LDC Details </h1>
+							</div>
+							      <div class="row">
+									<div class="col-md-12">
+           						        <form role="form" name="ldcDetailForm">
+										     <div class="row">
+											       <div class="col-md-6">
+											      
+								                      </div>
+										   		    <div class="col-md-6">
+										   		    <div class="form-group">
+										             <label>Lower Deduction*</label>
+														<input class="form-control" type="text" name="lowerDeduction" placeholder="Name" ng-model="cCctr.entity.lowerDeduction" autocomplete="off"
+														ng-maxlength="100" ng-required="true"  ng-model-options="{updateOn: 'blur'}" />
+													<span style="color: red" ng-show="ldcDetailForm.submitted || ldcDetailForm.lowerDeduction.$dirty && ldcDetailForm.lowerDeduction.$invalid">
+									                <span class="error" ng-show="ldcDetailForm.lowerDeduction.$error.pattern">Please enter valid lowerDeduction</span>
+									                <span class="error" ng-show="ldcDetailForm.name.$error.maxlength">lowerDeduction should not be greater than 25 digit.</span>
+									                <span class="error" ng-show="ldcDetailForm.lowerDeduction.$error.required">lowerDeduction is Required.</span>
+								                    </span>
+												
+								                   </div>
+										    	</div>
+										    	</div>
+										    	
+										    	   <div class="row">
+										    	     <div class="col-md-6">
+										   		    <div class="form-group">
+										             <label>Cer No</label>
+														<input class="form-control" type="text" name="fatherName" placeholder="cerNo" ng-model="cCctr.entity.cerNo" autocomplete="off"
+														ng-maxlength="100"  ng-model-options="{updateOn: 'blur'}" />
+													
+								                   </div>
+										    	</div>
+										   
+								           
+											       <div class="col-md-6">
+											       <div class="form-group">
+										           <label>Valid From</label>
+														<input class="form-control" type="date" name="validFrom" placeholder="validFrom" ng-model="cCctr.entity.validFrom" autocomplete="off"
+						                					ng-maxlength="10" 
+						                				 
+						                					ng-model-options="{updateOn: 'blur'}" />
+														<span style="color: red" ng-show="ldcDetailForm.submitted || ldcDetailForm.validFrom.$dirty && ldcDetailForm.validFrom.$invalid">
+															<span class="error" ng-show="ldcDetailForm.validFrom.$error.pattern">Please enter valid validFrom. </span> 
+															<span class="error" ng-show="ldcDetailForm.validFrom.$error.maxlength">validFrom should not be greater than 10 digits.</span> 
+															
+														</span>
+								                     
+								                   </div>
+								                   </div>
+										    	   </div>
+										    	   
+										    	   <div class="row">
+										    	    <div class="col-md-6">
+											       <div class="form-group">
+										           <label>Valid To</label>
+														<input class="form-control" type="date" name="validTo" placeholder="validTo" ng-model="cCctr.entity.validTo" autocomplete="off"
+						                					ng-maxlength="10"  ng-model-options="{updateOn: 'blur'}" />
+						                					
+						                					
+														<span style="color: red" ng-show="ldcDetailForm.submitted || ldcDetailForm.validTo.$dirty && ldcDetailForm.validTo.$invalid">
+															<span class="error" ng-show="ldcDetailForm.validTo.$error.pattern">Please enter valid Date Of Birth. </span> 
+															<span class="error" ng-show="ldcDetailForm.validTo.$error.maxlength">Date Of Birth should not be greater than 10 digits.</span> 
+															
+														</span>
+								                      <span class="error" id="validTo"></span>
+								                   </div>
+								                   </div>
+								                   
+								                    <div class="row">
+										    	     <div class="col-md-6">
+										   		    <div class="form-group">
+										             <label>CerLimit</label>
+														<input class="form-control" type="text" name="cerLimit" placeholder="Designation" ng-model="cCctr.entity.cerLimit" autocomplete="off"
+														ng-maxlength="100" ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+													
+								                   </div>
+										    	</div>
+										    	</div>
+										    	</div>
+								              
+								                   <div class="row">
+										    	     <div class="col-md-6">
+										   		    <div class="form-group">
+										             <label>CerNature</label>
+														<input class="form-control" type="text" name="cerNature" placeholder="Current Office" ng-model="cCctr.entity.cerNature" autocomplete="off"
+														ng-maxlength="100"  ng-model-options="{updateOn: 'blur'}" />
+													
+								                   </div>
+										    	</div>
+										    
+										   
+										    </div>
+										    
+										    
+										    
+										    
+										    
+										    					    	   
+            		<div class="row">
+            			<div class="modal-footer">
+            				<button ng-click="ldcDetailForm.submitted=true; cCctr.submit(ldcDetailForm.$valid,'vendorLDC1')" class="btn btn-success" onclick="scrollWin()">Save</button>
+            				<button ng-click="cCctr.gotoListPage('vendorLDC','vendorLDC');" class="btn btn-danger" onclick="scrollWin()">Back</button>
+            			</div>
+            		</div>
+	            </form>
+	            
+				</div>
+				</div>
+				</div>
+				</div>
+										    
+										    
+										    
+										    
+										    
+										    
+										    
+										    
+										  
+											      
+								                   
+										   		   
+										    
+										    	   
+										    	
+										    	  
+					
+					

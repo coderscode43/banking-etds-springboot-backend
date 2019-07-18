@@ -8,8 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Data;
 
@@ -32,7 +36,9 @@ public class Pensioner extends CommonModelAbstract{
 	public String fatherName;
 	@Column(name = "pan")
 	public String pan;
+	@Temporal(TemporalType.DATE)
 	@Column(name = "dob")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	public Date dob;
 	@Column(name = "empGrade")
 	public String empGrade;

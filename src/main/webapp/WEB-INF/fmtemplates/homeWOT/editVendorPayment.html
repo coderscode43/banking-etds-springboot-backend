@@ -7,7 +7,7 @@
 	  </div>
 	  <br>
 	  <br>
- <div class="container" ng-init="cCctr.entity=cCctr.getEntityData();">
+ <div class="container" ng-init="ictr.init();cCctr.entity=cCctr.getEntityData();cCctr.temp={};cCctr.temp3={};">
   <form role="form" name="vendorDetailForm">
 	<div class="row">
 		<div class="form-group">
@@ -62,13 +62,9 @@
 		<div class="form-group">
 			<div class="col-md-3">							
             	<h6><b>Invoice Date*</b></h6>
-                <input type="text" name="date" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.date | date:'dd-MM-yyyy'" 
-                placeholder="Invoice Date" ng-required="true">
-			<span style="color: red" ng-show="vendorDetailForm.submitted ||vendorDetailForm.invoiceDate.$dirty && vendorDetailForm.date.$invalid">
-									
-									<span class="error" ng-show="vendorDetailForm.invoiceDate.$error.required">Invoice Date is Required.</span>
-								    </span>
-								<span class="error" id="date"></span>
+                <input type="date" name="date" class="form-control" style="padding-top:0px;" value={{cCctr.entity.vendorPayment.date}}
+                 ng-model="cCctr.temp.date" ng-blur="cCctr.entity.vendorPayment.date=cCctr.temp.date" ng-model-options="{updateOn: 'blur'}" >
+
 			</div>
 			<div class="col-md-3">							
             	<h6><b>Payment Done*</b></h6>
@@ -85,14 +81,9 @@
 			</div>
 			<div class="col-md-3">							
             	<h6><b>Payment Date*</b></h6>
-                <input type="text" name="paymentDate" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.paymentDate | date:'dd-MM-yyyy'" placeholder="Payment Date"
-			
-			autocomplete="off" ng-pattern=""  ng-required="true"  ng-model-options="{updateOn: 'blur'}" />
-										    <span style="color: red" ng-show="vendorDetailForm.submitted ||vendorDetailForm.paymentDate.$dirty && vendorDetailForm.paymentDate.$invalid">
-									 
-									<span class="error" ng-show="vendorDetailForm.paymentDate.$error.required">Payment Date is Required.</span>
-								    </span>
-								<span class="error" id="paymentDate"></span>
+                <input type="date" name="paymentDate" class="form-control" style="padding-top:0px;" value={{cCctr.entity.vendorPayment.paymentDate}} ng-model="cCctr.temp3.paymentDate"
+			autocomplete="off" ng-blur="cCctr.entity.vendorPayment.paymentDate=cCctr.temp3.paymentDate"  ng-model-options="{updateOn: 'blur'}" />
+
 			
 			</div>
 		</div>

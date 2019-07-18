@@ -17,7 +17,9 @@ import javax.validation.constraints.Size;
 import org.hibernate.annotations.GenericGenerator;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import domain.in.rjsa.util.JsonDateSerializer;
 import lombok.Data;
 
 @Data
@@ -54,7 +56,7 @@ public class VendorPayment extends CommonModelAbstract{
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "date")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	public Date date;
 	
 	@Column(name = "paymentDone")
@@ -64,7 +66,7 @@ public class VendorPayment extends CommonModelAbstract{
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "paymentDate")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	public Date paymentDate;
 	
 	@Column(name = "paymentMode")
@@ -127,4 +129,20 @@ public class VendorPayment extends CommonModelAbstract{
 	@Size(min=0, max=45, message="GST No should be 45 characters.")
 	@NotNull(message = "GST No is a required field")
 	public String gstNo;
+	
+	@JsonSerialize(using=JsonDateSerializer.class)
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	
+	@JsonSerialize(using=JsonDateSerializer.class)
+	public Date getPaymentDate() {
+		return paymentDate;
+	}
+	public void setPaymentDate(Date paymentDate) {
+		this.paymentDate = paymentDate;
+	}
 }

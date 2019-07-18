@@ -10,7 +10,7 @@ import domain.in.rjsa.model.wrapper.VendorDetailWrapper;
 import domain.in.rjsa.service.VendorLDCService;
 
 @Controller
-@RequestMapping("/apivendorLDC")
+@RequestMapping("/apivendorLDC1")
 public class VendorLDCController extends AbstractController<Long, VendorLDC, VendorLDCService>{
 @Autowired
 VendorLDCService service;

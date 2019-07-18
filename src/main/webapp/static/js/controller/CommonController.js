@@ -443,7 +443,7 @@ App
 								}
 							}
 
-							self.submit = function(valid, entity) {
+							self.submit = function(valid, entity, closeModalId) {
 								if (valid == true) {
 									console.log("Common Controller submit "
 											+ entity);
@@ -459,6 +459,12 @@ App
 																		+ ' added successfully');
 														self.gotoListPage(
 																entity, entity);
+														angular
+														.element(
+																'#'
+																		+ closeModalId)
+														.trigger(
+																'click');
 														$('#successMsg')
 																.find(
 																		'.modal-header')

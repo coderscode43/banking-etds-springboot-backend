@@ -6,10 +6,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Data;
 
@@ -34,13 +38,13 @@ public class VendorLDC extends CommonModelAbstract{
 	@Size(min=0, max=45, message="Certificate Number should be 45 characters.")
 	@NotNull(message = "Certificate Number is a required field")
 	public String cerNo;
+	@Temporal(TemporalType.DATE)
 	@Column(name = "validFrom")
-	@Size(min=0, max=45, message="Valid Form should be 45 characters.")
-	@NotNull(message = "Valid Form is a required field")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	public String validFrom;
+	@Temporal(TemporalType.DATE)
 	@Column(name = "validTo")
-	@Size(min=0, max=45, message="Valid To Value should be 45 characters.")
-	@NotNull(message = "Valid To Value is a required field")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	public String validTo;
 	@Column(name = "cerLimit")
 	@Size(min=0, max=45, message="Certificate Limit should be 45 characters.")

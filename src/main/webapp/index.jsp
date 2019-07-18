@@ -23,7 +23,7 @@
   <script>
 
   function scrollWin() {
-    window.scrollTo(0, 900);
+    window.scrollTo(-400, 0);
   }
  
 

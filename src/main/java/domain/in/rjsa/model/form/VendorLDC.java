@@ -38,13 +38,9 @@ public class VendorLDC extends CommonModelAbstract{
 	@Size(min=0, max=45, message="Certificate Number should be 45 characters.")
 	@NotNull(message = "Certificate Number is a required field")
 	public String cerNo;
-	@Temporal(TemporalType.DATE)
 	@Column(name = "validFrom")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	public String validFrom;
-	@Temporal(TemporalType.DATE)
 	@Column(name = "validTo")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	public String validTo;
 	@Column(name = "cerLimit")
 	@Size(min=0, max=45, message="Certificate Limit should be 45 characters.")

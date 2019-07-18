@@ -26,6 +26,7 @@ App
 							self.dropdown = [];
 							self.ajax = [];
 							self.temp = {};
+							self.temp3 = {};
 							self.temp1 = [];
 							self.temp2 = {};
 							self.company = {};
@@ -184,6 +185,7 @@ App
 								self.dropdown = [];
 								self.ajax = [];
 								self.temp = {};
+								self.temp3 = {};
 								self.temp1 = [];
 								self.company = {};
 								self.currentPage = 1;

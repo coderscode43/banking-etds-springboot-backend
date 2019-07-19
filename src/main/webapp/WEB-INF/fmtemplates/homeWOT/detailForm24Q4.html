@@ -780,33 +780,26 @@
 							<div class="row">
 								<div class="col-md-6">
 
-									<label>From Date of Employment*</label> <input
-										class="form-control" type="text" name="fromDateOfEmployment"
-										placeholder="From Date of Employment"
-										ng-model="cCctr.entity.salary.fromDateOfEmployment"
-										autocomplete="off" 
-										ng-required="true"
-										ng-model-options="{updateOn: 'blur'}" />
-										<span style="color: red" ng-show="employeeForm.submitted || employeeForm.fromDateOfEmployment.$dirty && employeeForm.fromDateOfEmployment.$invalid">
-										<span class="error" ng-show="employeeForm.fromDateOfEmployment.$error.required">From Date of Employment is Required.</span>
-										</span>
-										<span class="error" id="fromDateOfEmployment"></span>
+									<label>From Date of Employment*</label> 
+									<input type="date" class="form-control" style="padding-top:0px;" name="fromDateOfEmployment" value={{cCctr.entity.salary.fromDateOfEmployment}} 
+									  ng-model="cCctr.entity.salary.fromDateOfEmployment" autocomplete="off"
+									 ng-model-options="{updateOn: 'blur'}"/>
+									<span style="color: red" ng-show="employeeForm.submitted || employeeForm.fromDateOfEmployment.$dirty && employeeForm.fromDateOfEmployment.$invalid">
+									<span class="error" ng-show="employeeForm.fromDateOfEmployment.$error.required">From Date of Employment is Required.</span>
+									</span>
+									<span class="error" id="fromDateOfEmployment"></span>
 								</div>
 
 								<div class="col-md-6">
 
-									<label>To Date of Employment*</label> <input
-										class="form-control" type="text" name="toDateOfEmployment"
-										placeholder="To Date of Employment "
-										ng-model="cCctr.entity.salary.toDateOfEmployment"
-										autocomplete="off" 
-										ng-required="true"
-										ng-maxlength="50"
-										ng-model-options="{updateOn: 'blur'}" />
-										<span style="color: red" ng-show="employeeForm.submitted || employeeForm.toDateOfEmployment.$dirty && employeeForm.toDateOfEmployment.$invalid">
-										<span class="error" ng-show="employeeForm.toDateOfEmployment.$error.required">From Date of Employment is Required.</span>
-										</span>
-										<span class="error" id="toDateOfEmployment"></span>
+									<label>To Date of Employment*</label> 
+									<input type="date" class="form-control" style="padding-top:0px;" name="toDateOfEmployment" value={{cCctr.entity.salary.toDateOfEmployment}} 
+									  ng-model="cCctr.entity.salary.toDateOfEmployment" autocomplete="off"
+									 ng-model-options="{updateOn: 'blur'}"/>
+									<span style="color: red" ng-show="employeeForm.submitted || employeeForm.toDateOfEmployment.$dirty && employeeForm.toDateOfEmployment.$invalid">
+									<span class="error" ng-show="employeeForm.toDateOfEmployment.$error.required">From Date of Employment is Required.</span>
+									</span>
+									<span class="error" id="toDateOfEmployment"></span>
 
 								</div>
 							</div>
@@ -2192,13 +2185,10 @@
 
 							<div class="row">
 								<div class="col-md-6">
-									<label>Super annuation Fund From Date </label> <input
-										class="form-control" type="text"
-										name="SuperannuationFundFromDate"
-										placeholder="Super annuation Fund From Date  "
-										ng-model="cCctr.entity.salary.SuperannuationFundFromDate"
-										autocomplete="off"
-										ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
+									<label>Super annuation Fund From Date </label> 
+									<input type="date" class="form-control" style="padding-top:0px;" name="SuperannuationFundFromDate" value={{cCctr.entity.salary.SuperannuationFundFromDate}} 
+									  ng-model="cCctr.entity.salary.SuperannuationFundFromDate" autocomplete="off"
+									 ng-model-options="{updateOn: 'blur'}"/>
 									<span style="color: red" ng-show="lenderForm.submitted || lenderForm.SuperannuationFundFromDate.$dirty && lenderForm.SuperannuationFundFromDate.$invalid">
 									<span class="error" ng-show="lenderForm.SuperannuationFundFromDate.$error.maxlength">Super annuation Fund From Date should not be greater than 50 digits.</span> 
 									</span>
@@ -2206,13 +2196,10 @@
 								</div>
 
 								<div class="col-md-6">
-									<label>Super annuation Fund To Date</label> <input
-										class="form-control" type="text"
-										name="SuperannuationFundToDate"
-										placeholder="Super annuation Fund To Date"
-										ng-model="cCctr.entity.salary.SuperannuationFundToDate"
-										autocomplete="off"
-										ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
+									<label>Super annuation Fund To Date</label> 
+									<input type="date" class="form-control" style="padding-top:0px;" name="SuperannuationFundToDate" value={{cCctr.entity.salary.SuperannuationFundToDate}} 
+									  ng-model="cCctr.entity.salary.SuperannuationFundToDate" autocomplete="off"
+									 ng-model-options="{updateOn: 'blur'}"/>
 									<span style="color: red" ng-show="lenderForm.submitted || lenderForm.SuperannuationFundToDate.$dirty && lenderForm.SuperannuationFundToDate.$invalid">
 									<span class="error" ng-show="lenderForm.SuperannuationFundToDate.$error.maxlength">Super annuation Fund To Date should not be greater than 50 digits.</span> 
 									</span>
@@ -2294,7 +2281,7 @@
 				<div class="modal-footer">
 					<!--        <button ng-click="lenderForm.submitted=true;cCctr.updateData(lenderForm.$valid,'form24Qsalary',cCctr.entity.salary,'closeU')" class="btn btn-success"  data-dismiss="modal">Save</button>
  -->
-					<button class="btn btn-success"  data-dismiss="model">OK</button>
+					<button class="btn btn-success"  data-dismiss="modal">OK</button>
 						<button class="btn btn-danger" data-dismiss="modal" style="margin-left: 10px">Back</button>
 				</div>
 			</div>

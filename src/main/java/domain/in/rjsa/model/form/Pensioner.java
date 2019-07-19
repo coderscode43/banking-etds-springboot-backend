@@ -14,7 +14,9 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import domain.in.rjsa.util.JsonDateSerializer;
 import lombok.Data;
 
 @Data
@@ -91,6 +93,12 @@ public class Pensioner extends CommonModelAbstract{
 	@Column(name = "bankId")
 	public Long bankId;	
 	
-	
+	@JsonSerialize(using=JsonDateSerializer.class)
+	public Date getDob() {
+		return dob;
+	}
+	public void setDob(Date dob) {
+		this.dob = dob;
+	}
 	
 }

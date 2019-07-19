@@ -19,7 +19,9 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import domain.in.rjsa.util.JsonDateSerializer;
 import lombok.Data;
 
 @Data
@@ -59,13 +61,13 @@ public class Regular24Q4Salary extends CommonModelAbstract  {
 	@Temporal(TemporalType.DATE)
 	@Column(name = "fromDateOfEmployment")
 	@NotNull(message = "From Date Of Employment is required")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	public Date fromDateOfEmployment;
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "toDateOfEmployment")
 	@NotNull(message = "To Date Of Employment is required")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	public Date toDateOfEmployment;
 	
 	@Column(name = "grossSalaryAsPerProvision")
@@ -322,12 +324,12 @@ public class Regular24Q4Salary extends CommonModelAbstract  {
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "SuperannuationFundFromDate")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	public Date SuperannuationFundFromDate;
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "SuperannuationFundToDate")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	public Date SuperannuationFundToDate;
 	
 	
@@ -352,6 +354,36 @@ public class Regular24Q4Salary extends CommonModelAbstract  {
 	public String quarter;
 	
 	
+	@JsonSerialize(using=JsonDateSerializer.class)
+	public Date getFromDateOfEmployment() {
+		return fromDateOfEmployment;
+	}
+	public void setFromDateOfEmployment(Date fromDateOfEmployment) {
+		this.fromDateOfEmployment = fromDateOfEmployment;
+	}
 	
+	@JsonSerialize(using=JsonDateSerializer.class)
+	public Date getToDateOfEmployment() {
+		return toDateOfEmployment;
+	}
+	public void setToDateOfEmployment(Date toDateOfEmployment) {
+		this.toDateOfEmployment = toDateOfEmployment;
+	}
+	
+	@JsonSerialize(using=JsonDateSerializer.class)
+	public Date getSuperannuationFundFromDate() {
+		return SuperannuationFundFromDate;
+	}
+	public void setSuperannuationFundFromDate(Date SuperannuationFundFromDate) {
+		this.SuperannuationFundFromDate = SuperannuationFundFromDate;
+	}
+	
+	@JsonSerialize(using=JsonDateSerializer.class)
+	public Date getSuperannuationFundToDate() {
+		return SuperannuationFundToDate;
+	}
+	public void setSuperannuationFundToDate(Date SuperannuationFundToDate) {
+		this.SuperannuationFundToDate = SuperannuationFundToDate;
+	}
 	
 }

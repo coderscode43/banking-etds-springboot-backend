@@ -384,10 +384,10 @@
 										<div class="row">
 											<div class="col-md-6">
 												
-													<label>Date of Payment*</label> <input
-														class="form-control" type="text" name="paymentDate"
-														placeholder="Date of Payment"
-														ng-model="cCctr.entity.deductee26.paymentDate" ng-required="true" />
+													<label>Date of Payment*</label> 
+													<input type="date" class="form-control" style="padding-top:0px;" name="paymentDate" value={{cCctr.entity.deductee26.paymentDate}} 
+									  ng-model="cCctr.entity.deductee26.paymentDate" autocomplete="off"
+									 ng-model-options="{updateOn: 'blur'}"/>
 														<span style="color: red" ng-show="profileForm.submitted ||profileForm.paymentDate.$dirty && profileForm.paymentDate.$invalid">
 														<span class="error" ng-show="profileForm.paymentDate.$error.required">Payment Date is Required.</span>
 								    					</span>
@@ -504,12 +504,10 @@
 							</div>
                                    <div class="col-md-6">
 								
-									<label>Deduct Date*</label> <input class="form-control"
-										type="text" name="deductDate"
-										placeholder="Deduct Date"
-										ng-model="cCctr.entity.deductee26.deductDate"
-										autocomplete="off" ng-required="true"
-										ng-model-options="{updateOn: 'blur'}" />
+									<label>Deduct Date*</label> 
+									<input type="date" class="form-control" style="padding-top:0px;" name="paymentDate" value={{cCctr.entity.deductee26.deductDate}} 
+									  ng-model="cCctr.entity.deductee26.deductDate" autocomplete="off"
+									 ng-model-options="{updateOn: 'blur'}"/>
 										<span style="color: red" ng-show="profileForm.submitted ||profileForm.deductDate.$dirty && profileForm.deductDate.$invalid">
 									<span class="error" ng-show="profileForm.deductDate.$error.required">DeductDate is Required.</span>
 								    </span>

@@ -19,7 +19,9 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import domain.in.rjsa.util.JsonDateSerializer;
 import lombok.Data;
 
 @Data
@@ -163,8 +165,23 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	public boolean verify = false;
 	
 	public void setEntity(Regular27QDeductee form27Q){
-		this.date=form27Q.getDate();
-		
+		this.date=form27Q.getDate();		
+	}
+	
+	@JsonSerialize(using=JsonDateSerializer.class)
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	
+	@JsonSerialize(using=JsonDateSerializer.class)
+	public Date getDateOfDeduction() {
+		return dateOfDeduction;
+	}
+	public void setDateOfDeduction(Date dateOfDeduction) {
+		this.dateOfDeduction = dateOfDeduction;
 	}
 }
 

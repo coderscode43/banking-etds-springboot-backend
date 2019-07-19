@@ -405,33 +405,26 @@
 											<div class="row">
 												<div class="col-md-6">
 
-													<label>Date Of Payment </label> <input class="form-control"
-														type="text" name="dateOfPayment" placeholder="Name"
-														ng-required="true"
-														ng-model="cCctr.entity.deductee.dateOfPayment" /> <span
-														style="color: red"
-														ng-show="profileForm.submitted || profileForm.dateOfPayment.$dirty && profileForm.dateOfPayment.$invalid">
-														<span class="error"
-														ng-show="profileForm.dateOfPayment.$error.required
-											">Date
-															Of Payment Required.</span>
+													<label>Date Of Payment </label> 
+													<input type="date" class="form-control" style="padding-top:0px;" name="dateOfPayment" value={{cCctr.entity.deductee.dateOfPayment}} 
+									  					ng-model="cCctr.entity.deductee.dateOfPayment" autocomplete="off"
+										 				ng-model-options="{updateOn: 'blur'}"/>
+									 				<span style="color: red" ng-show="profileForm.submitted || profileForm.dateOfPayment.$dirty && profileForm.dateOfPayment.$invalid">
+													<span class="error" ng-show="profileForm.dateOfPayment.$error.required">Date Of Payment Required.</span>
 													</span><span class="error" id="dateOfPayment"></span>
 
 												</div>
 
 												<div class="col-md-6">
 
-													<label>Date Of Deduction</label> <input
-														class="form-control" type="text" name="dateOfDeduction"
-														placeholder="Pan Reference No." ng-required="true"
-														ng-model="cCctr.entity.deductee.dateOfDeduction" /> <span
-														style="color: red"
-														ng-show="profileForm.submitted || profileForm.dateOfDeduction.$dirty && profileForm.dateOfDeduction.$invalid">
-														<span class="error"
-														ng-show="profileForm.dateOfDeduction.$error.required
-											">Date
-															Of Deduction is Required.</span>
-													</span> <span class="error" id="dateOfDeduction"></span>
+													<label>Date Of Deduction</label> 
+													<input type="date" class="form-control" style="padding-top:0px;" name="dateOfDeduction" value={{cCctr.entity.deductee.dateOfDeduction}} 
+									  					ng-model="cCctr.entity.deductee.dateOfDeduction" autocomplete="off"
+										 				ng-model-options="{updateOn: 'blur'}"/>
+													<span style="color: red" ng-show="profileForm.submitted || profileForm.dateOfDeduction.$dirty && profileForm.dateOfDeduction.$invalid">
+													<span class="error" ng-show="profileForm.dateOfDeduction.$error.required">Date Of Deduction is Required.</span>
+													</span> 
+													<span class="error" id="dateOfDeduction"></span>
 												</div>
 
 
@@ -608,18 +601,12 @@
 														autocomplete="off" ng-pattern=""
 														ng-model-options="{updateOn: 'blur'}" ng-maxlenght="45"
 														ng-required="true" />
-														<span
-								style="color: red"
-								ng-show="profileForm.submitted || profileForm.certificateNumber.$dirty && profileForm.certificateNumber.$invalid">
-								<span class="error"
-								ng-show="profileForm.certificateNumber.$error.pattern">Please
-									enter valid Certificate Number </span> <span class="error"
-								ng-show="profileForm.certificateNumber.$error.maxlength">Certificate
-									Number should not be greater than 45 characters.</span> <span
-								class="error"
-								ng-show="profileForm.certificateNumber.$error.required">Certificate
-									Number is Required.</span>
-							</span> <span class="error" id="certificateNumber"></span>
+														<span style="color: red" ng-show="profileForm.submitted || profileForm.certificateNumber.$dirty && profileForm.certificateNumber.$invalid">
+														<span class="error" ng-show="profileForm.certificateNumber.$error.pattern">Please enter valid Certificate Number </span> 
+														<span class="error" ng-show="profileForm.certificateNumber.$error.maxlength">Certificate Number should not be greater than 45 characters.</span> 
+														<span class="error" ng-show="profileForm.certificateNumber.$error.required">Certificate Number is Required.</span>
+														</span> 
+														<span class="error" id="certificateNumber"></span>
 
 
 												</div>

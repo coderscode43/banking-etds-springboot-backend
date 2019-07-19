@@ -436,11 +436,10 @@
 			</div>
 			 <div class="row">
 							<div class="col-md-6">
-									<label> Date Of Deposition</label> <input class="form-control"
-										type="text" name="dateOfDeposition" placeholder="DateOfDeposition"
-										ng-model="cCctr.entity.challan.dateOfDeposition|
-									date:'dd-MM-yyyy'" autocomplete="off"
-										ng-required="true" ng-model-options="{updateOn: 'blur'}" />
+									<label> Date Of Deposition</label> 
+									<input type="date" class="form-control" style="padding-top:0px;" name="dateOfDeposition" value={{cCctr.entity.challan.dateOfDeposition}} 
+									  ng-model="cCctr.entity.challan.dateOfDeposition" autocomplete="off"
+									 ng-model-options="{updateOn: 'blur'}"/>
 									<span style="color: red" ng-show="challanForm.submitted || challanForm.dateOfDeposition.$dirty && challanForm.dateOfDeposition.$invalid">
 									<span class="error" ng-show="challanForm.dateOfDeposition.$error.pattern">Enter valid Date Of Deposition </span> 
 									<span class="error" ng-show="challanForm.dateOfDeposition.$error.maxlength">Date Of Deposition should not be greater than 10 digits.</span> 

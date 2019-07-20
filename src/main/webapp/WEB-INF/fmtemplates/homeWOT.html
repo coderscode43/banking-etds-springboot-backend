@@ -1,59 +1,57 @@
 <style>
-
-
-@media (min-width: 300px) and (max-width: 700px) {
-  
- .mobile{
-       display:none;
- }
-  
+@media ( min-width : 300px) and (max-width: 700px) {
+	.mobile {
+		display: none;
+	}
 }
 
- @media only screen and (min-width:600px) {
-            .hide-on-desktop, * [aria-labelledby='hide-on-desktop'] {
-                display: none;
-              
-            }
-        }
-        
-        
-        .sidenavs {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
+@media only screen and (min-width:600px) {
+	.hide-on-desktop, * [aria-labelledby='hide-on-desktop'] {
+		display: none;
+	}
+}
+
+.sidenavs {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: #111;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 60px;
 }
 
 .sidenavs a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 25px;
+	color: #818181;
+	display: block;
+	transition: 0.3s;
 }
 
 .sidenavs a:hover {
-  color: #f1f1f1;
+	color: #f1f1f1;
 }
 
 .sidenavs .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 36px;
+	margin-left: 50px;
 }
 
 @media screen and (max-height: 450px) {
-  .sidenavs {padding-top: 15px;}
-  .sidenavs a {font-size: 18px;}
+	.sidenavs {
+		padding-top: 15px;
+	}
+	.sidenavs a {
+		font-size: 18px;
+	}
 }
 </style>
 
@@ -64,138 +62,192 @@
 
 
 <div id="mySidenav" class="sidenavs">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="margin-top:-5%;margin-left:15%;color:#fff">&times;</a>
-  <div class="row" style="margin-top:-75px;background-color:#0F316D;height:100px">
-  
-  
-  <img src="static/img/logo4.png" style="height:105px;width:100%"  ng-click="cCctr.gotoListPage('homeWOTHomepage','homeWOTHomepage')" onclick="closeNav()">
-  </div>
-  
-   <div style="background-color:white;margin-top:8px" onclick="closeNav()" ng-click="cCctr.gotoListPage('vendorPayment','vendorPayment')">
-           <a ng-click="" class="dropdown-toggle"
-			data-toggle="dropdown"><b style="font-size:17px;color:black; " >Vendor Payment</b></a>
-  </div>
-  
-  
-	<div style="background-color:white;margin-top:1px">
-			     <a role="menuitem" tabindex="-1" data-toggle="collapse" data-parent="#accordion" data-target="#pm"><b style="font-size:17px;color:black">Form 26Q</b>
-                <i style="font-size:12px;color:black;margin-left:30%" class="glyphicon glyphicon-chevron-down"></i></div></a>
-            
+	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+		style="margin-top: -5%; margin-left: 15%; color: #fff">&times;</a>
+	<div class="row"
+		style="margin-top: -75px; background-color: #0F316D; height: 100px">
 
-            <ul id="pm" class="panel-collapse collapse">
-                <p><a ><b style="font-size:18px;color:white" onclick="closeNav()" ng-click="cCctr.gotoListPage('formchallan26Q','formchallan26Q')">Challan
-							Details</b> </a>
 
-                </p>
-                <p><a ><b style="font-size:18px;color:white" onclick="closeNav()" ng-click="cCctr.gotoListPage('form26Q','form26Q')">Deductee
-							Details</b> </a>
+		<img src="static/img/logo4.png" style="height: 105px; width: 100%"
+			ng-click="cCctr.gotoListPage('homeWOTHomepage','homeWOTHomepage')"
+			onclick="closeNav()">
+	</div>
 
-                </p>
-            </ul>
-            
-            <div style="background-color:white;margin-top:1px">
-			     <a role="menuitem" tabindex="-1" data-toggle="collapse" data-parent="#accordion" data-target="#qm"><b style="font-size:17px;color:black">Form 27Q</b>
-                <i style="font-size:12px;color:black;margin-left:40%" class="glyphicon glyphicon-chevron-down"></i></div></a>
-            
+	<div style="background-color: white; margin-top: 8px"
+		onclick="closeNav()"
+		ng-click="cCctr.gotoListPage('vendorPayment','vendorPayment')">
+		<a ng-click="" class="dropdown-toggle" data-toggle="dropdown"><b
+			style="font-size: 17px; color: black;">Vendor Payment</b></a>
+	</div>
 
-            <ul id="qm" class="panel-collapse collapse">
-                <p><a ><b style="font-size:18px;color:white" onclick="closeNav()" ng-click="cCctr.gotoListPage('regular27QChallan','regular27QChallan')">Challan Details
-							</b> </a>
 
-                </p>
-                <p><a ><b style="font-size:18px;color:white" onclick="closeNav()" ng-click="cCctr.gotoListPage('form27Q','form27Q')">Deductee Details
-							</b> </a>
+	<div style="background-color: white; margin-top: 1px">
+		<a role="menuitem" tabindex="-1" data-toggle="collapse"
+			data-parent="#accordion" data-target="#pm"><b
+			style="font-size: 17px; color: black">Form 26Q</b> <i
+			style="font-size: 12px; color: black; margin-left: 30%"
+			class="glyphicon glyphicon-chevron-down"></i>
+	</div>
+	</a>
 
-                </p>
-                
-                 
-             
-            </ul>
-            
-            
-             <div style="background-color:white;margin-top:1px">
-			     <a role="menuitem" tabindex="-1" data-toggle="collapse" data-parent="#accordion" data-target="#rm"><b style="font-size:17px;color:black">Form 24Q</b>
-                <i style="font-size:12px;color:black;margin-left:30%" class="glyphicon glyphicon-chevron-down"></i></div></a>
-            
 
-            <ul id="rm" class="panel-collapse collapse">
-                <p><a ><b style="font-size:18px;color:white" onclick="closeNav()" ng-click="cCctr.gotoListPage('regular24Q4Challan','regular24Q4Challan')">Challan Details
-							</b> </a>
+	<ul id="pm" class="panel-collapse collapse">
+		<p>
+			<a><b style="font-size: 18px; color: white" onclick="closeNav()"
+				ng-click="cCctr.gotoListPage('formchallan26Q','formchallan26Q')">Challan
+					Details</b> </a>
 
-                </p>
-                <p><a ><b style="font-size:18px;color:white" onclick="closeNav()"  ng-click="cCctr.gotoListPage('form24Q','form24Q')">Deductee Details
-							</b> </a>
+		</p>
+		<p>
+			<a><b style="font-size: 18px; color: white" onclick="closeNav()"
+				ng-click="cCctr.gotoListPage('form26Q','form26Q')">Deductee
+					Details</b> </a>
 
-                </p>
-                <p><a ><b style="font-size:18px;color:white" onclick="closeNav()" ng-click="cCctr.gotoListPage('form24Qsalary','form24Qsalary')">Salary Details
-							</b> </a>
+		</p>
+	</ul>
 
-                </p>
-                
-                
-                               	   
-              
-            </ul>
-                 <div style="background-color:white;margin-top:1px" onclick="closeNav()" ng-click="cCctr.gotoListPage('requestCorrection','requestCorrection')">
-             <a class="dropdown-toggle"
-		       	data-toggle="dropdown"><b style="font-size:17px;color:black; " >Request Correction</b></a>
-		       	</div>
-			    <div style="background-color:white;margin-top:1px" onclick="closeNav()" ng-click="cCctr.gotoListPage('statementStatus','statementStatus')">
-                  <a class="dropdown-toggle"
-			     data-toggle="dropdown"><b style="font-size:17px;color:black; " >Statement Status</b></a>
-			     </div>
-			   <div style="background-color:white;margin-top:1px" onclick="closeNav()" ng-click="cCctr.gotoListPage('tokenNumber','tokenNumber')">
-                  <a  class="dropdown-toggle"
-			      data-toggle="dropdown"><b style="font-size:17px;color:black; " >Token Number Status</b></a>
-			    </div>
-			  <div style="background-color:white;margin-top:1px" onclick="closeNav()" ng-click="cCctr.gotoListPage('ghReturnStatus','ghReturnStatus')">
-                  <a  class="dropdown-toggle"
-			     data-toggle="dropdown"><b style="font-size:17px;color:black; " >Form 15G/15H Status</b></a>
-			   </div>
-			    <div style="background-color:white;margin-top:1px" onclick="closeNav()" ng-click="cCctr.gotoListPage('misReport','misReport')">
-                    <a  class="dropdown-toggle"
-			        data-toggle="dropdown"><b style="font-size:17px;color:black; " >MISReport</b></a>
-			   </div>
-			   
-			   <div style="background-color:white;margin-top:1px"  ng-click="cCctr.gotoListPage('ticket','ticket')">
-                   <a ><b style="font-size:17px;color:black; " >Generate Ticket</b></a>
-		       </div>
-		       
-			   <div style="background-color:white;margin-top:1px" onclick="closeNav()" ng-click="cCctr.gotoDetailPage('deductorDetails','${br.getTan()}','deductorDetails')">
-                   <a class="dropdown-toggle" 
-                   data-toggle="dropdown"><b style="font-size:17px;color:black; " >Deductor Details</b></a>
-               </div>
-               
-			    <div style="background-color:white;margin-top:1px" onclick="closeNav()" ng-click="cCctr.gotoHomePageSC(cCctr.clientId,'homeSC')">
-                    <a class="dropdown-toggle"
-			        data-toggle="dropdown"><b style="font-size:17px;color:black; " >Select Branch</b></a>
-			   </div>
- 
+	<div style="background-color: white; margin-top: 1px">
+		<a role="menuitem" tabindex="-1" data-toggle="collapse"
+			data-parent="#accordion" data-target="#qm"><b
+			style="font-size: 17px; color: black">Form 27Q</b> <i
+			style="font-size: 12px; color: black; margin-left: 40%"
+			class="glyphicon glyphicon-chevron-down"></i>
+	</div>
+	</a>
+
+
+	<ul id="qm" class="panel-collapse collapse">
+		<p>
+			<a><b style="font-size: 18px; color: white" onclick="closeNav()"
+				ng-click="cCctr.gotoListPage('regular27QChallan','regular27QChallan')">Challan
+					Details </b> </a>
+
+		</p>
+		<p>
+			<a><b style="font-size: 18px; color: white" onclick="closeNav()"
+				ng-click="cCctr.gotoListPage('form27Q','form27Q')">Deductee
+					Details </b> </a>
+
+		</p>
+
+
+
+	</ul>
+
+
+	<div style="background-color: white; margin-top: 1px">
+		<a role="menuitem" tabindex="-1" data-toggle="collapse"
+			data-parent="#accordion" data-target="#rm"><b
+			style="font-size: 17px; color: black">Form 24Q</b> <i
+			style="font-size: 12px; color: black; margin-left: 30%"
+			class="glyphicon glyphicon-chevron-down"></i>
+	</div>
+	</a>
+
+
+	<ul id="rm" class="panel-collapse collapse">
+		<p>
+			<a><b style="font-size: 18px; color: white" onclick="closeNav()"
+				ng-click="cCctr.gotoListPage('regular24Q4Challan','regular24Q4Challan')">Challan
+					Details </b> </a>
+
+		</p>
+		<p>
+			<a><b style="font-size: 18px; color: white" onclick="closeNav()"
+				ng-click="cCctr.gotoListPage('form24Q','form24Q')">Deductee
+					Details </b> </a>
+
+		</p>
+		<p>
+			<a><b style="font-size: 18px; color: white" onclick="closeNav()"
+				ng-click="cCctr.gotoListPage('form24Qsalary','form24Qsalary')">Salary
+					Details </b> </a>
+
+		</p>
+
+
+
+
+	</ul>
+	<div style="background-color: white; margin-top: 1px"
+		onclick="closeNav()"
+		ng-click="cCctr.gotoListPage('requestCorrection','requestCorrection')">
+		<a class="dropdown-toggle" data-toggle="dropdown"><b
+			style="font-size: 17px; color: black;">Request Correction</b></a>
+	</div>
+	<div style="background-color: white; margin-top: 1px"
+		onclick="closeNav()"
+		ng-click="cCctr.gotoListPage('statementStatus','statementStatus')">
+		<a class="dropdown-toggle" data-toggle="dropdown"><b
+			style="font-size: 17px; color: black;">Statement Status</b></a>
+	</div>
+	<div style="background-color: white; margin-top: 1px"
+		onclick="closeNav()"
+		ng-click="cCctr.gotoListPage('tokenNumber','tokenNumber')">
+		<a class="dropdown-toggle" data-toggle="dropdown"><b
+			style="font-size: 17px; color: black;">Token Number Status</b></a>
+	</div>
+	<div style="background-color: white; margin-top: 1px"
+		onclick="closeNav()"
+		ng-click="cCctr.gotoListPage('ghReturnStatus','ghReturnStatus')">
+		<a class="dropdown-toggle" data-toggle="dropdown"><b
+			style="font-size: 17px; color: black;">Form 15G/15H Status</b></a>
+	</div>
+	<div style="background-color: white; margin-top: 1px"
+		onclick="closeNav()"
+		ng-click="cCctr.gotoListPage('misReport','misReport')">
+		<a class="dropdown-toggle" data-toggle="dropdown"><b
+			style="font-size: 17px; color: black;">MISReport</b></a>
+	</div>
+
+	<div style="background-color: white; margin-top: 1px"
+		ng-click="cCctr.gotoListPage('ticket','ticket')">
+		<a><b style="font-size: 17px; color: black;">Generate Ticket</b></a>
+	</div>
+
+	<div style="background-color: white; margin-top: 1px"
+		onclick="closeNav()"
+		ng-click="cCctr.gotoDetailPage('deductorDetails','${br.getTan()}','deductorDetails')">
+		<a class="dropdown-toggle" data-toggle="dropdown"><b
+			style="font-size: 17px; color: black;">Deductor Details</b></a>
+	</div>
+
+	<div style="background-color: white; margin-top: 1px"
+		onclick="closeNav()"
+		ng-click="cCctr.gotoHomePageSC(cCctr.clientId,'homeSC')">
+		<a class="dropdown-toggle" data-toggle="dropdown"><b
+			style="font-size: 17px; color: black;">Select Branch</b></a>
+	</div>
+
 </div>
 
 
- <div class="navbar-header hide-on-desktop" style="border-bottom:1px solid">
-
-		
-                              <button type="button"  onclick="openNav()" style="margin-top:20px;background-color:#0F316D; margin-left:10px" class="pull-left navbar-toggle" data-toggle="collapse" data-target="#tejas">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                          </button> 
-
-				<a class="icon-cog" style="line-height: 0.5%;"
-					ui-sref="home.homePage"> <span class="icon-tax-o-smart"
-					style="font-size: 60px; color:#0F316D; position: relative; top: 10px;margin-top:-5px"></span>
+<div class="navbar-header hide-on-desktop"
+	style="border-bottom: 1px solid">
 
 
-					<span color="whitle"
-					style="font-size: 35px; color: #0F316D; position: relative; bottom: 0px;">Tax-<strong
-						style="color: #5cb85c;">O</strong>-Smart
-				</span></a>
-	
+	<button type="button" onclick="openNav()"
+		style="margin-top: 20px; background-color: #0F316D; margin-left: 10px"
+		class="pull-left navbar-toggle" data-toggle="collapse"
+		data-target="#tejas">
+		<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+			class="icon-bar"></span>
+	</button>
+
+	<a class="icon-cog" style="line-height: 0.5%;" ui-sref="home.homePage">
+		<span class="icon-tax-o-smart"
+		style="font-size: 60px; color: #0F316D; position: relative; top: 10px; margin-top: -5px"></span>
 
 
-			</div>
+		<span color="whitle"
+		style="font-size: 35px; color: #0F316D; position: relative; bottom: 0px;">Tax-<strong
+			style="color: #5cb85c;">O</strong>-Smart
+	</span>
+	</a>
+
+
+
+</div>
 
 
 
@@ -227,54 +279,64 @@
 			<div class="collapse navbar-collapse"
 				id="bs-sidebar-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li ng-click="cCctr.gotoListPage('homeWOTHomepage','homeWOTHomepage')"><img src="static/img/tdsosmart1.png"
-						style="height: 150px; width: 90%;"></li>
+					<li
+						ng-click="cCctr.gotoListPage('homeWOTHomepage','homeWOTHomepage')"><img
+						src="static/img/tdsosmart1.png" style="height: 150px; width: 90%;"></li>
 
 					<li><a
 						ng-click="cCctr.gotoListPage('vendorPayment','vendorPayment')"
-						class="dropdown-toggle" data-toggle="dropdown" onclick="scrollWin()">Vendor Payment</a></li>
-					<li><a 
-						class="dropdown-toggle" data-toggle="dropdown">Form 26Q&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span></a>
-						
-						  <ul class=" dropdown-menu forAnimate">
-             
-                               <li><a ng-click="cCctr.gotoListPage('formchallan26Q','formchallan26Q')" onclick="scrollWin()">Challan Details</a></li>
-                               		
-                               <li><a ng-click="cCctr.gotoListPage('form26Q','form26Q')" onclick="scrollWin()">Deductee Details</a></li>
-                            </ul>
-						
-						</li>
+						class="dropdown-toggle" data-toggle="dropdown"
+						onclick="scrollWin()">Vendor Payment</a></li>
+					<li><a class="dropdown-toggle" data-toggle="dropdown">Form
+							26Q&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span>
+					</a>
+
+						<ul class=" dropdown-menu forAnimate">
+
+							<li><a
+								ng-click="cCctr.gotoListPage('formchallan26Q','formchallan26Q')"
+								onclick="scrollWin()">Challan Details</a></li>
+
+							<li><a ng-click="cCctr.gotoListPage('form26Q','form26Q')"
+								onclick="scrollWin()">Deductee Details</a></li>
+						</ul></li>
+					<li><a class="dropdown-toggle" data-toggle="dropdown">Form
+							27Q&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span>
+					</a>
+
+						<ul class=" dropdown-menu forAnimate">
+
+							<li><a
+								ng-click="cCctr.gotoListPage('regular27QChallan','regular27QChallan')"
+								onclick="scrollWin()">Challan Details</a></li>
+
+							<li><a ng-click="cCctr.gotoListPage('form27Q','form27Q')"
+								onclick="scrollWin()">Deductee Details</a></li>
+						</ul></li>
+					<li><a class="dropdown-toggle" data-toggle="dropdown">Form
+							24Q&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span>
+					</a>
+
+
+
+						<ul class=" dropdown-menu forAnimate">
+
+
+							<li><a
+								ng-click="cCctr.gotoListPage('regular24Q4Challan','regular24Q4Challan')"
+								onclick="scrollWin()">Challan Details</a></li>
+							<li><a ng-click="cCctr.gotoListPage('form24Q','form24Q')"
+								onclick="scrollWin()">Deductee Details</a></li>
+							<li><a
+								ng-click="cCctr.gotoListPage('form24Qsalary','form24Qsalary')"
+								onclick="scrollWin()">Salary Details</a></li>
+						</ul></li>
+
 					<li><a
-						class="dropdown-toggle" data-toggle="dropdown" >Form 27Q&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span></a>
-						
-						 <ul class=" dropdown-menu forAnimate">
-             
-                               <li><a ng-click="cCctr.gotoListPage('regular27QChallan','regular27QChallan')" onclick="scrollWin()">Challan Details</a></li>
-                               		
-                               <li><a ng-click="cCctr.gotoListPage('form27Q','form27Q')" onclick="scrollWin()">Deductee Details</a></li>
-                            </ul>
-						
-						
-						
-						</li>
-					<li><a 
-						class="dropdown-toggle" data-toggle="dropdown">Form 24Q&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span></a>
-						
-						
-					        
-						     <ul class=" dropdown-menu forAnimate">
-             
-                             
-                               	    <li><a ng-click="cCctr.gotoListPage('regular24Q4Challan','regular24Q4Challan')" onclick="scrollWin()">Challan Details</a></li>	
-                               <li><a ng-click="cCctr.gotoListPage('form24Q','form24Q')" onclick="scrollWin()">Deductee Details</a></li>
-                                 <li><a ng-click="cCctr.gotoListPage('form24Qsalary','form24Qsalary')" onclick="scrollWin()">Salary Details</a></li>
-                            </ul>
-					
-						</li>
-						
-					<li><a ng-click="cCctr.gotoListPage('requestCorrection','requestCorrection')"
-						class="dropdown-toggle" data-toggle="dropdown" onclick="scrollWin()">Request Correction</a></li>
-						
+						ng-click="cCctr.gotoListPage('requestCorrection','requestCorrection')"
+						class="dropdown-toggle" data-toggle="dropdown"
+						onclick="scrollWin()">Request Correction</a></li>
+
 					<!-- 	 <li><a  data-toggle="collapse" data-target="#submenu-1"> menu <i class="fa fa-fw fa-angle-down pull-right"></i></a>
                     <ul id="submenu-1" class="collapse" style="background-color:white;text-decoration:none">
                         <li><a href="#"><i class="fa fa-angle-double-right"></i> abcdefhgdfgfd</a></li>
@@ -285,30 +347,31 @@
 
 					<li><a
 						ng-click="cCctr.gotoListPage('statementStatus','statementStatus')"
-						class="dropdown-toggle" data-toggle="dropdown" onclick="scrollWin()">Statement
-							Status </a></li>
+						class="dropdown-toggle" data-toggle="dropdown"
+						onclick="scrollWin()">Statement Status </a></li>
 					<li><a
 						ng-click="cCctr.gotoListPage('tokenNumber','tokenNumber')"
-						class="dropdown-toggle" data-toggle="dropdown" onclick="scrollWin()">Token Number
-							Status </a></li>
+						class="dropdown-toggle" data-toggle="dropdown"
+						onclick="scrollWin()">Token Number Status </a></li>
 					<li><a
 						ng-click="cCctr.gotoListPage('ghReturnStatus','ghReturnStatus')"
-						class="dropdown-toggle" data-toggle="dropdown" onclick="scrollWin()">Form 15G/15H
-							Status</a></li>
+						class="dropdown-toggle" data-toggle="dropdown"
+						onclick="scrollWin()">Form 15G/15H Status</a></li>
 					<li><a class="dropdown-toggle" data-toggle="dropdown"
-						ng-click="cCctr.gotoListPage('misReport','misReport')" onclick="scrollWin()">MIS
-							Report</a></li>
-							
-							<li><a class="dropdown-toggle" data-toggle="dropdown" onclick="scrollWin()"
-						ng-click="cCctr.gotoListPage('ticket','ticket')">Generate Ticket
-							</a></li>	
-							
+						ng-click="cCctr.gotoListPage('misReport','misReport')"
+						onclick="scrollWin()">MIS Report</a></li>
+
 					<li><a class="dropdown-toggle" data-toggle="dropdown"
-					
+						onclick="scrollWin()"
+						ng-click="cCctr.gotoListPage('ticket','ticket')">Generate
+							Ticket </a></li>
+
+					<li><a class="dropdown-toggle" data-toggle="dropdown"
 						ng-click="cCctr.gotoDetailPage('deductorDetails','${br.getTan()}','deductorDetails')"
 						onclick="scrollWin()">Deductor Details</a></li>
 					<li><a class="dropdown-toggle" data-toggle="dropdown"
-					ng-click="cCctr.gotoHomePageSC(cCctr.clientId,'homeSC')" onclick="scrollWin()">Select Branch</a></li>
+						ng-click="cCctr.gotoHomePageSC(cCctr.clientId,'homeSC')"
+						onclick="scrollWin()">Select Branch</a></li>
 
 					<!-- 					<li><a ng-click="cCctr.gotoListPage('defaultSummary','defaultSummary')" class="dropdown-toggle" data-toggle="dropdown">Default
 							Summary<span style="font-size: 16px;"
@@ -326,13 +389,14 @@
 
 
 
-<div ng-http-loader  methods="['GET']" ttl="0"   id="example/loader"  template="index/example-loader.tpl"></div>
+<div ng-http-loader methods="['GET']" ttl="0" id="example/loader"
+	template="index/example-loader.tpl"></div>
 
 
 <div class="main ">
 
 	<div class="col-md-12 mobile"
-		style="position:fixed;z-index:2; margin-top: -25px; margin-right: 0px; background-color: #72ad00; color: white; font-size: 12px; font-family: arial">
+		style="position: fixed; z-index: 2; margin-top: -25px; margin-right: 0px; background-color: #72ad00; color: white; font-size: 12px; font-family: arial">
 		<div class="col-md-4">
 			<p>
 				<b> NAME : </b> ${cd.getName()}
@@ -350,7 +414,7 @@
 		</div>
 	</div>
 	<div class="col-md-12 mobile"
-		style=" position:fixed;z-index:2;margin-top: -10px; margin-left: 0px; margin-bottom: -20px; background-color: #72ad00; color: white; font-size: 12px; font-family: arial">
+		style="position: fixed; z-index: 2; margin-top: -10px; margin-left: 0px; margin-bottom: -20px; background-color: #72ad00; color: white; font-size: 12px; font-family: arial">
 		<div class="col-md-4">
 			<p>
 				<b> BRANCH NAME : </b>${br.getName()}
@@ -367,8 +431,8 @@
 			</p>
 		</div>
 	</div>
-	
-	
+
+
 	<div class="col-md-12 hide-on-desktop"
 		style="margin-top: -10px; margin-left: 0px; margin-bottom: -20px; background-color: #72ad00; color: white; font-size: 12px; font-family: arial">
 		<div class="col-md-2">
@@ -387,8 +451,8 @@
 			</p>
 		</div>
 	</div>
-	
-		<div class="col-md-12 hide-on-desktop"
+
+	<div class="col-md-12 hide-on-desktop"
 		style="margin-top: -25px; margin-right: 0px; background-color: #72ad00; color: white; font-size: 12px; font-family: arial">
 		<div class="col-md-4">
 			<p>
@@ -406,19 +470,19 @@
 			</p>
 		</div>
 	</div>
-	
+
 
 	<div ui-view></div>
-	
 
-		
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
 
 </div>
 
@@ -445,18 +509,20 @@
 		</div>
 	</div>
 </div>
-	<div id="errorMsg" class="modal fade" role="dialog">
+<div id="errorMsg" class="modal fade" role="dialog">
 	<div class="modal-dialog modal-sm">
 		<!-- Modal content-->
 		<div class="modal-content">
 			<div class="modal-header">
-				<h4 style="color:red;"><span class="blink_me"> <img src="./././static/img/errorNew.png" height="30" width="30"></span>&nbsp;Error</h4>
+				<h4 style="color: red;">
+					<span class="blink_me"> <img
+						src="./././static/img/errorNew.png" height="30" width="30"></span>&nbsp;Error
+				</h4>
 			</div>
 			<div class="modal-body">
 				<div class="row">
 					<div class="col-sm-12">
-						<div class="msg" style="font-size: 18px;">
-						</div>
+						<div class="msg" style="font-size: 18px;"></div>
 					</div>
 				</div>
 			</div>
@@ -465,11 +531,12 @@
 			</div>
 		</div>
 	</div>
-	</div>
-	
-<a  id="viewFileClick" onclick="test('#viewFile')" style="z-index:1111"> </a>
-	<a  id="noviewFileClick" onclick="test('#noviewFile')" style="z-index:1111">
-	</a>
+</div>
+
+<a id="viewFileClick" onclick="test('#viewFile')" style="z-index: 1111">
+</a>
+<a id="noviewFileClick" onclick="test('#noviewFile')"
+	style="z-index: 1111"> </a>
 
 <!-- 
 <div class="row">
@@ -588,7 +655,7 @@ nav.sidebar, .main {
 		border: 0;
 		-webkit-box-shadow: none;
 		box-shadow: none;
-		 overflow: auto;
+		overflow: auto;
 	}
 	nav.sidebar .navbar-nav .open .dropdown-menu {
 		position: static;
@@ -599,7 +666,7 @@ nav.sidebar, .main {
 		border: 0;
 		-webkit-box-shadow: none;
 		box-shadow: none;
-		 overflow: auto;
+		overflow: auto;
 	}
 
 	/*allows nav box to use 100% width*/
@@ -620,7 +687,7 @@ nav.sidebar, .main {
 		float: left;
 		z-index: 8000;
 		margin-bottom: 0px;
-		 overflow: auto;
+		overflow: auto;
 	}
 
 	/*give sidebar 100% width;*/
@@ -681,8 +748,7 @@ section {
 	background-color: #ff9c33;
 }
 
-.dropdown-menu>li:focus, .dropdown-menu>li:hover
-	{
+.dropdown-menu>li:focus, .dropdown-menu>li:hover {
 	color: red;
 	background-color: #ff9c33;
 }
@@ -692,8 +758,6 @@ section {
 	color: #fff;
 	background-color: orange;
 }
-
-
 
 .navbar-inverse {
 	background-color: #0F316D;
@@ -734,24 +798,20 @@ section {
 }
 
 .navbar-nav>li>a {
-  
-    line-height: 6px;
+	line-height: 6px;
 }
 
 .navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
-    color: black;
+	color: black;
 }
 
 .navbar-inverse .navbar-nav .open .dropdown-menu>li>a:hover {
-    color: black;
+	color: black;
 }
-
-
 
 .navbar-inverse .navbar-nav .open .dropdown-menu>li>a:hover {
-    color: #fff;
+	color: #fff;
 }
-
 
 nav.sidebar .navbar-nav .open .collapse>li>a:hover, nav.sidebar .navbar-nav .open .collapse>li>a:focus
 	{
@@ -760,30 +820,22 @@ nav.sidebar .navbar-nav .open .collapse>li>a:hover, nav.sidebar .navbar-nav .ope
 }
 
 a:focus, a:hover {
-    color: white;
-    text-decoration: underline; 
+	color: white;
+	text-decoration: underline;
 }
-
 
 ul.collapse li a:hover, ul li a:focus {
-    color: #fff;
-    background-color: #d19b3d;
-    text-decoration:none;
-    padding:2px;
-    margin:5px;
-   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-  
-   
-}
-ul.collapse li{
-   height:25px;
-
-   
+	color: #fff;
+	background-color: #d19b3d;
+	text-decoration: none;
+	padding: 2px;
+	margin: 5px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-
-
-
+ul.collapse li {
+	height: 25px;
+}
 </style>
 
 

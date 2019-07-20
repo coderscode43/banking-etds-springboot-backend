@@ -8,17 +8,27 @@
 			<div class="col-md-12">
 				<form role="form" name="employeeDetailForm">
 					<div class="row">
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<div class="form-group">
 								<label>Pension No*</label> <input class="form-control"
 									type="text" name="pensionNo" placeholder="Pension No"
 									ng-model="cCctr.entity.pensioner.pensionNo" autocomplete="off"
-									ng-maxlength="50" ng-required="true"
+									ng-maxlength="50" ng-required="true" ng-pattern="/^[ a-zA-Z0-9]/"
 									ng-model-options="{updateOn: 'blur'}" />
+									 <span
+									style="color: red"
+									ng-show="employeeDetailForm.submitted || employeeDetailForm.pensionNo.$dirty && employeeDetailForm.pensionNo.$invalid">
+									<span class="error"
+									ng-show="employeeDetailForm.pensionNo.$error.pattern">Please
+										enter valid Pension No</span> <span class="error"
+									ng-show="employeeDetailForm.pensionNo.$error.maxlength">Pension No
+										should not be greater than 25 digit.</span> <span class="error"
+									ng-show="employeeDetailForm.pensionNo.$error.required">Pension No is Required.</span>
+								</span> <span class="error" id="pensionNo"></span>
 
 							</div>
 						</div>
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<div class="form-group">
 								<label>Name*</label> <input class="form-control" type="text"
 									name="name" placeholder="Name" ng-model="cCctr.entity.pensioner.name"
@@ -33,14 +43,11 @@
 									ng-show="employeeDetailForm.name.$error.maxlength">Name
 										should not be greater than 25 digit.</span> <span class="error"
 									ng-show="employeeDetailForm.name.$error.required">Name
-										No is Required.</span>
+										 is Required.</span>
 								</span> <span class="error" id="name"></span>
 							</div>
 						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<div class="form-group">
 								<label>Father Name*</label> <input class="form-control"
 									type="text" name="fatherName" placeholder="Father Name"
@@ -52,20 +59,23 @@
 									<span class="error"
 									ng-show="employeeDetailForm.name.$error.pattern">Please
 										enter valid Name</span> <span class="error"
-									ng-show="employeeDetailForm.name.$error.maxlength">Name
+									ng-show="employeeDetailForm.name.$error.maxlength">Father Name
 										should not be greater than 25 digit.</span> <span class="error"
-									ng-show="employeeDetailForm.name.$error.required">Name
-										No is Required.</span>
-								</span> <span class="error" id="name"></span>
+									ng-show="employeeDetailForm.name.$error.required">Father Name
+										 is Required.</span>
+								</span> <span class="error" id="fatherName"></span>
 							</div>
 						</div>
+					</div>
 
 
-						<div class="col-md-6">
+
+					<div class="row">
+						<div class="col-md-4">
 							<div class="form-group">
 								<label>PAN*</label> <input class="form-control" type="text"
 									name="pan" placeholder="PAN" ng-model="cCctr.entity.pensioner.pan"
-									autocomplete="off" ng-maxlength="10"
+									autocomplete="off" ng-maxlength="10" ng-required="true"
 									ng-pattern="/^([A-Za-z]{5}[0-9]{4}[A-Za-z]{1})*$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
@@ -75,14 +85,14 @@
 										enter valid PAN. </span> <span class="error"
 									ng-show="employeeDetailForm.pan.$error.maxlength">PAN
 										should not be greater than 10 digits.</span>
+										<span class="error"
+									ng-show="employeeDetailForm.pan.$error.required">PAN is Required </span>
 
 								</span> <span class="error" id="pan"></span>
 							</div>
 						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-md-6">
+						
+						<div class="col-md-4">
 							<div class="form-group">
 								<label>Date Of Birth</label> <input class="form-control"
 									type="date" name="dob" placeholder="Date Of Birth"
@@ -92,7 +102,7 @@
 
 							</div>
 						</div>
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<div class="form-group">
 								<label>Employee Grade*</label> <input class="form-control"
 									type="text" name="empGrade" placeholder="Employee Grade"
@@ -104,19 +114,21 @@
 									ng-show="employeeDetailForm.submitted || employeeDetailForm.name.$dirty && employeeDetailForm.name.$invalid">
 									<span class="error"
 									ng-show="employeeDetailForm.name.$error.pattern">Please
-										enter valid Name</span> <span class="error"
-									ng-show="employeeDetailForm.name.$error.maxlength">Name
+										enter valid Employee Grade</span> <span class="error"
+									ng-show="employeeDetailForm.name.$error.maxlength">Employee Grade
 										should not be greater than 25 digit.</span> <span class="error"
-									ng-show="employeeDetailForm.name.$error.required">Name
-										No is Required.</span>
-								</span> <span class="error" id="name"></span>
+									ng-show="employeeDetailForm.name.$error.required">Employee Grade
+										 is Required.</span>
+								</span> <span class="error" id="empGrade"></span>
 							</div>
 						</div>
 					</div>
 
+					
+
 
 					<div class="row">
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<div class="form-group">
 								<label>Mobile 1*</label> <input class="form-control" type="text"
 									name="mobile1" placeholder="Mobile 1"
@@ -125,19 +137,22 @@
 									ng-pattern="/^([6-9]{1})([0-9]{9})$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
-									ng-show="employeeDetailForm.submitted ||employeeDetailForm.mobile.$dirty && employeeDetailForm.mobile.$invalid">
+									ng-show="employeeDetailForm.submitted ||employeeDetailForm.mobile1.$dirty && employeeDetailForm.mobile1.$invalid">
 									<span class="error"
-									ng-show="employeeDetailForm.mobile.$error.pattern">Please
+									ng-show="employeeDetailForm.mobile1.$error.pattern">Please
 										enter valid Mobile No..</span> <span class="error"
-									ng-show="employeeDetailForm.mobile.$error.maxlength">
+									ng-show="employeeDetailForm.mobile1.$error.maxlength">
 										Mobile No. should not be greater than 10 characters</span>
+										<span class="error"
+									ng-show="employeeDetailForm.mobile1.$error.required">
+										Mobile1 is Required</span>
 
 								</span>
 
 							</div>
 
 						</div>
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<div class="form-group">
 								<label>Mobile 2</label> <input class="form-control" type="text"
 									name="mobile2" placeholder="Mobile 2"
@@ -145,21 +160,18 @@
 									ng-maxlength="10" ng-pattern="/^([6-9]{1})([0-9]{9})$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
-									ng-show="employeeDetailForm.submitted ||employeeDetailForm.mobile.$dirty && employeeDetailForm.mobile.$invalid">
+									ng-show="employeeDetailForm.submitted ||employeeDetailForm.mobile2.$dirty && employeeDetailForm.mobile2.$invalid">
 									<span class="error"
-									ng-show="employeeDetailForm.mobile.$error.pattern">Please
+									ng-show="employeeDetailForm.mobile2.$error.pattern">Please
 										enter valid Mobile No..</span> <span class="error"
-									ng-show="employeeDetailForm.mobile.$error.maxlength">
+									ng-show="employeeDetailForm.mobile2.$error.maxlength">
 										Mobile No. should not be greater than 10 characters</span>
 
 								</span>
 
 							</div>
 						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<div class="form-group">
 								<label>Email 1*</label> <input class="form-control" type="text"
 									name="email1" placeholder="Email 1"
@@ -168,19 +180,26 @@
 									ng-pattern="/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})*$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
-									ng-show="employeeDetailForm.submitted ||employeeDetailForm.email.$dirty && employeeDetailForm.email.$invalid">
+									ng-show="employeeDetailForm.submitted ||employeeDetailForm.email1.$dirty && employeeDetailForm.email1.$invalid">
 									<span class="error"
-									ng-show="employeeDetailForm.email.$error.pattern">Please
+									ng-show="employeeDetailForm.email1.$error.pattern">Please
 										enter valid Email.</span> <span class="error"
-									ng-show="employeeDetailForm.email.$error.maxlength">
+									ng-show="employeeDetailForm.email1.$error.maxlength">
 										Email should not be greater than 50 characters</span>
+										<span class="error"
+									ng-show="employeeDetailForm.email1.$error.required">
+										Email1 is required</span>
 
 								</span>
 
 							</div>
 						</div>
+					</div>
 
-						<div class="col-md-6">
+					<div class="row">
+						
+
+						<div class="col-md-4">
 							<div class="form-group">
 								<label>Email 2</label> <input class="form-control" type="text"
 									name="email2" placeholder="Email 2"
@@ -189,17 +208,17 @@
 									ng-pattern="/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})*$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
-									ng-show="employeeDetailForm.submitted ||employeeDetailForm.email.$dirty && employeeDetailForm.email.$invalid">
+									ng-show="employeeDetailForm.submitted ||employeeDetailForm.email2.$dirty && employeeDetailForm.email2.$invalid">
 									<span class="error"
-									ng-show="employeeDetailForm.email.$error.pattern">Please
+									ng-show="employeeDetailForm.email2.$error.pattern">Please
 										enter valid Email.</span> <span class="error"
-									ng-show="employeeDetailForm.email.$error.maxlength">
+									ng-show="employeeDetailForm.email2.$error.maxlength">
 										Email should not be greater than 50 characters</span>
 								</span>
 							</div>
 						</div>
 					</div>
-
+<br>
 
 	<!-------- Address Details ------->
 
@@ -208,6 +227,7 @@
 							<strong>Add Address Details</strong>
 						</h4>
 					</div>
+					<br>
 
 					<div class="row">
 						<div class="form-group">
@@ -220,7 +240,7 @@
 					</div>
 					<div class="row">
 						<div class="form-group">
-							<div class="col-md-3">
+							<div class="col-md-4">
 								<h6>
 									<b>Address1</b>
 								</h6>
@@ -230,7 +250,7 @@
 									placeholder="Address1">
 
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-4">
 								<h6>
 									<b>Address2</b>
 								</h6>
@@ -240,7 +260,7 @@
 									placeholder="Address2">
 
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-4">
 								<h6>
 									<b>Address3</b>
 								</h6>
@@ -256,34 +276,34 @@
 					<div class="row">
 						<div class="form-group">
 
-							<div class="col-md-3">
+							<div class="col-md-4">
 								<h6>
 									<b>City</b>
 								</h6>
 								<input type="text" class="form-control"
 									style="padding-top: 0px;" ng-maxlength="20" name="city"
 									ng-model="cCctr.entity.paddress.city" placeholder="City"
-									ng-pattern="/^[a-zA-z]*$/">
+									ng-pattern="/^[a-zA-z\s]*$/">
 
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-4">
 								<h6>
 									<b>State</b>
 								</h6>
 								<input type="text" class="form-control"
 									style="padding-top: 0px;" ng-maxlength="20" name="state"
 									ng-model="cCctr.entity.paddress.state" placeholder="State"
-									ng-pattern="/^[a-zA-z]*$/">
+									ng-pattern="/^[a-zA-z\s]*$/">
 
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-4">
 								<h6>
 									<b>PinCode</b>
 								</h6>
 								<input type="text" class="form-control"
 									style="padding-top: 0px;" ng-maxlength="10" name="pincode"
 									ng-model="cCctr.entity.paddress.pincode" placeholder="PinCode"
-									ng-pattern="/^[0-9]*$/">
+									ng-pattern="/^[0-9\s]*$/">
 
 							</div>
 
@@ -304,7 +324,7 @@
 
 					<div class="row">
 						<div class="form-group">
-							<div class="col-md-3">
+							<div class="col-md-4">
 								<h6>
 									<b>Address1</b>
 								</h6>
@@ -314,7 +334,7 @@
 									placeholder="Address1" ng-pattern="">
 
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-4">
 								<h6>
 									<b>Address2</b>
 								</h6>
@@ -324,7 +344,7 @@
 									placeholder="Address2" ng-pattern=" ">
 
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-4">
 								<h6>
 									<b>Address3</b>
 								</h6>
@@ -340,40 +360,40 @@
 					<div class="row">
 						<div class="form-group">
 
-							<div class="col-md-3">
+							<div class="col-md-4">
 								<h6>
 									<b>City</b>
 								</h6>
 								<input type="text" class="form-control"
 									style="padding-top: 0px;" ng-maxlength="20" name="city"
 									ng-model="cCctr.entity.caddress.city" placeholder="City"
-									ng-pattern="/^[a-zA-z]*$/">
+									ng-pattern="/^[a-zA-z\s]*$/">
 
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-4">
 								<h6>
 									<b>State</b>
 								</h6>
 								<input type="text" class="form-control"
 									style="padding-top: 0px;" ng-maxlength="20" name="state"
 									ng-model="cCctr.entity.caddress.state" placeholder="State"
-									ng-pattern="/^[a-zA-z]*$/">
+									ng-pattern="/^[a-zA-z\s]*$/">
 
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-4">
 								<h6>
 									<b>PinCode</b>
 								</h6>
 								<input type="text" class="form-control"
 									style="padding-top: 0px;" ng-maxlength="10" name="pincode"
 									ng-model="cCctr.entity.caddress.pincode" placeholder="PinCode"
-									ng-pattern="/^[0-9]*$/"> 
+									ng-pattern="/^[0-9\s]*$/"> 
 
 							</div>
 
 						</div>
 					</div>
-					
+					<br>
 <!---- --Pensioner Bank details------->
 
 					<div class="row">
@@ -381,42 +401,41 @@
 							<strong>Add Pensioner Bank Details</strong>
 						</h4>
 					</div>
+					<br>
 
 					<div class="row">
-						<div class="col-md-6">
+					<div class="form-group">
+						<div class="col-md-4">
 							<label>Bank Name</label> <input class="form-control" type="text"
 								name="bankName" placeholder="Bank Name"
 								ng-model="cCctr.entity.bank.bankName" autocomplete="off"
 								ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
 						</div>
 
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<label>Account No</label> <input class="form-control" type="text"
 								name="acNo" placeholder="Account No"
 								ng-model="cCctr.entity.bank.acNo" autocomplete="off"
 								ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
 						</div>
-					</div>
-
-
-					<div class="row">
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<label>Branch </label> <input class="form-control" type="text"
 								name="branch" placeholder="Branch"
 								ng-model="cCctr.entity.bank.branch" autocomplete="off"
 								ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
 						</div>
+					</div>
+					</div>
 
-						<div class="col-md-6">
+
+					<div class="row">
+						<div class="col-md-4">
 							<label>IFSC</label> <input class="form-control" type="text"
 								name="ifsc" placeholder="IFSC" ng-model="cCctr.entity.bank.ifsc"
 								autocomplete="off" ng-pattern=""
 								ng-model-options="{updateOn: 'blur'}" />
 						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<label>Account Type </label> <input class="form-control"
 								type="text" name="acType" placeholder="Account Type"
 								ng-model="cCctr.entity.bank.acType
@@ -424,9 +443,7 @@
 								autocomplete="off" ng-pattern=""
 								ng-model-options="{updateOn: 'blur'}" />
 						</div>
-
-
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<label>MICR</label> <input class="form-control" type="text"
 								name="micrNo" placeholder="MICR No."
 								ng-model="cCctr.entity.bank.micrNo" autocomplete="off"

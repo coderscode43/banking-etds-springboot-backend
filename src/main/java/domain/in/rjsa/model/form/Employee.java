@@ -16,7 +16,9 @@ import javax.validation.constraints.Size;
 import org.hibernate.annotations.GenericGenerator;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import domain.in.rjsa.util.JsonDateSerializer;
 import lombok.Data;
 
 @Data
@@ -81,7 +83,22 @@ public class Employee extends CommonModelAbstract{
 	@Column(name = "perAddrId")
 	public Long perAddrId;
 	
-	
 	@Column(name = "bankId")
 	public Long bankId;
+	
+	@JsonSerialize(using=JsonDateSerializer.class)
+	public Date getDob() {
+		return dob;
+	}
+	public void setDob(Date dob) {
+		this.dob = dob;
+	}
+	
+	@JsonSerialize(using=JsonDateSerializer.class)
+	public Date getDoj() {
+		return doj;
+	}
+	public void setDoj(Date doj) {
+		this.doj = doj;
+	}
 }

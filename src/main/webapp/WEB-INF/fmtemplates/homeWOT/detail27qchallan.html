@@ -425,9 +425,10 @@
 											
 											<div class="row">
                                                <div class="col-md-6">
-													<label>Tax Deposit Date</label> <input class="form-control" ng-required="true"
-														type="text" name="taxDepositDate" placeholder="Tax Deposit Date"
-														ng-model="cCctr.entity.challan27.taxDepositDate" />
+													<label>Tax Deposit Date</label> 
+													<input type="date" class="form-control" style="padding-top:0px;" name="taxDepositDate" value={{cCctr.entity.challan27.taxDepositDate}} 
+									  ng-model="cCctr.entity.challan27.taxDepositDate" autocomplete="off"
+									 ng-model-options="{updateOn: 'blur'}"/>
 														<span style="color: red" ng-show="profileForm.submitted || profileForm.taxDepositDate.$dirty && profileForm.taxDepositDate.$invalid">
 									<span class="error" ng-show="profileForm.taxDepositDate.$error.pattern">Please enter valid Tax Deposit Date. </span> 
 									<span class="error" ng-show="profileForm.taxDepositDate.$error.maxlength">Tax Deposit Date should be Proper.</span> 

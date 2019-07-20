@@ -818,10 +818,9 @@
 								<div class="row">
 								  <div class="col-md-6">
 											<label>Valid From</label> 
-											   <input class="form-control" type="date"
-												name="validFrom" placeholder="Valid From"
-												ng-model="cCctr.temp2.validFrom" autocomplete="off"
-												ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
+											<input type="date" class="form-control" style="padding-top:0px;" name="validFrom" value={{cCctr.temp2.validFrom}} 
+									  			ng-model="cCctr.temp2.validFrom" autocomplete="off"
+									 			ng-model-options="{updateOn: 'blur'}"/>
 												 <span style="color: red" ng-show="vendorLdc.submitted || vendorLdc.validFrom.$dirty && vendorLdc.validFrom.$invalid">
 												 <span class="error" ng-show="vendorLdc.validFrom.$error.pattern">Enter valid From Date </span> 
 												 <span class="error" ng-show="vendorLdc.validFrom.$error.required">Valid from Date is Required.</span>
@@ -829,11 +828,10 @@
 												<span class="error" id="validFrom"></span>
 									</div>
 									<div class="col-md-6">
-											<label>valid To*</label> 
-											<input class="form-control"
-												type="date" name="validTo" placeholder="Account Type"
-												ng-model="cCctr.temp2.validTo" autocomplete="off"
-												ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
+											<label>Valid To*</label> 
+											<input type="date" class="form-control" style="padding-top:0px;" name="validTo" value={{cCctr.temp2.validTo}} 
+									  			ng-model="cCctr.temp2.validTo" autocomplete="off"
+									 			ng-model-options="{updateOn: 'blur'}"/>
 												 <span style="color: red" ng-show="vendorLdc.submitted ||vendorLdc.validTo.$dirty && vendorLdc.validTo.$invalid">
 												 <span class="error" ng-show="vendorLdc.validTo.$error.pattern">Enter valid Date </span> 
 												 <span class="error" ng-show="vendorLdc.validTo.$error.required">valid To Date is Required.</span>

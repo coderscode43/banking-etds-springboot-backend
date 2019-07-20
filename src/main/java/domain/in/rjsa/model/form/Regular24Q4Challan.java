@@ -17,7 +17,9 @@ import javax.validation.constraints.Size;
 import org.hibernate.annotations.GenericGenerator;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import domain.in.rjsa.util.JsonDateSerializer;
 import lombok.Data;
 
 @Data
@@ -111,4 +113,11 @@ public class Regular24Q4Challan extends CommonModelAbstract{
 	@Column(name = "verify")
 	public Boolean verify = false;
 	
+	@JsonSerialize(using=JsonDateSerializer.class)
+	public Date getDateOfDeposition() {
+		return dateOfDeposition;
+	}
+	public void setDateOfDeposition(Date dateOfDeposition) {
+		this.dateOfDeposition = dateOfDeposition;
+	}
 }

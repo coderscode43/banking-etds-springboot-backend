@@ -17,7 +17,9 @@ import javax.validation.constraints.Size;
 import org.hibernate.annotations.GenericGenerator;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import domain.in.rjsa.util.JsonDateSerializer;
 import lombok.Data;
 
 @Data
@@ -115,4 +117,20 @@ public class Regular26QDeductee extends CommonModelAbstract{
 	public String quarter;
 	@Column(name = "verify")
 	public boolean verify = false;
+	
+	@JsonSerialize(using=JsonDateSerializer.class)
+	public Date getPaymentDate() {
+		return paymentDate;
+	}
+	public void setPaymentDate(Date paymentDate) {
+		this.paymentDate = paymentDate;
+	}
+	
+	@JsonSerialize(using=JsonDateSerializer.class)
+	public Date getDeductDate() {
+		return deductDate;
+	}
+	public void setDeductDate(Date deductDate) {
+		this.deductDate = deductDate;
+	}
 }

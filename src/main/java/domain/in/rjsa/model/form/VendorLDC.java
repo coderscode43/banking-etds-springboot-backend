@@ -1,5 +1,7 @@
 package domain.in.rjsa.model.form;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +16,9 @@ import javax.validation.constraints.Size;
 import org.hibernate.annotations.GenericGenerator;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import domain.in.rjsa.util.JsonDateSerializer;
 import lombok.Data;
 
 @Data
@@ -38,10 +42,17 @@ public class VendorLDC extends CommonModelAbstract{
 	@Size(min=0, max=45, message="Certificate Number should be 45 characters.")
 	@NotNull(message = "Certificate Number is a required field")
 	public String cerNo;
+	
+	@Temporal(TemporalType.DATE)
 	@Column(name = "validFrom")
-	public String validFrom;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+	public Date validFrom;
+	
+	@Temporal(TemporalType.DATE)
 	@Column(name = "validTo")
-	public String validTo;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+	public Date validTo;
+	
 	@Column(name = "cerLimit")
 	@Size(min=0, max=45, message="Certificate Limit should be 45 characters.")
 	@NotNull(message = "Certificate Limit is a required field")
@@ -50,4 +61,20 @@ public class VendorLDC extends CommonModelAbstract{
 	@Size(min=0, max=45, message="Certificate Nature should be 45 characters.")
 	@NotNull(message = "Certificate Nature is a required field")
 	public String cerNature;
+	
+	@JsonSerialize(using=JsonDateSerializer.class)
+	public Date getValidFrom() {
+		return validFrom;
+	}
+	public void setValidFrom(Date validFrom) {
+		this.validFrom = validFrom;
+	}
+	
+	@JsonSerialize(using=JsonDateSerializer.class)
+	public Date getValidTo() {
+		return validTo;
+	}
+	public void setValidTo(Date validTo) {
+		this.validTo = validTo;
+	}
 }

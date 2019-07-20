@@ -271,13 +271,10 @@
 										<div class="row">
 											<div class="col-md-6">
 
-												<label>DOB </label> <input class="form-control"
-													type="text" name="dob" placeholder="Branch"
-													ng-model="cCctr.entity.pensioner.dob|date:'dd-MM-yyyy'" autocomplete="off"
-													ng-pattern="" ng-model-options="{updateOn: 'blur'}"
-													ng-maxlength="30" />
-													
-
+												<label>DOB </label> 
+												<input type="date" class="form-control" style="padding-top:0px;" name="dob" value={{cCctr.entity.pensioner.dob}} 
+									  				ng-model="cCctr.entity.pensioner.dob" autocomplete="off"
+									 				ng-model-options="{updateOn: 'blur'}"/>
 											</div>
 
 											<div class="col-md-6">

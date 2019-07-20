@@ -136,7 +136,8 @@
 		<div ng-show="cCctr.show != true">
 
 			<div class="row">
-				<h3 class="page-header" style="margin-top: 2%;">Details of Pensioner</h3>
+				<h3 class="page-header" style="margin-top: 2%;">Details of
+					Pensioner</h3>
 			</div>
 
 			<div class="panel panel-default"
@@ -144,1095 +145,1378 @@
 				<div class="panel-body">
 					<div class="row" style="font-size: 13px;">
 						<div class="col-md-3">
-							<label>Pensioner No &nbsp;:</label> {{cCctr.entity.pensioner.pensionNo}}
+							<label>Pensioner No &nbsp;:</label>
+							{{cCctr.entity.pensioner.pensionNo}}
 						</div>
 						<div class="col-md-3">
-							<label>Vendor Name &nbsp;:</label> {{cCctr.entity.pensioner.name}}
+							<label>Vendor Name &nbsp;:</label>
+							{{cCctr.entity.pensioner.name}}
 						</div>
-
 					</div>
- 			</div>
+				</div>
+			</div>
+
+
 
 		</div>
+		<div class="row">
+			<ul class="nav nav-tabs">
+				<li><a data-target="#pensionerDtls" data-toggle="tab">Pensioner
+						Details</a></li>
+				<li><a data-target="#addrDtls" data-toggle="tab">Address
+						Detail</a></li>
+				<li><a data-target="#bankDtls" data-toggle="tab">Bank
+						Account Detail</a></li>
+				<li><a data-target="#paymentDtls" data-toggle="tab">Pensioner
+						Salary Detail</a></li>
+			</ul>
+			<br>
+
+			<div class="tab-content ">
+				<!-- Pensioner Details -->
+				<div class="tab-pane active" id="pensionerDtls">
+					<hr>
+					<div class="panel panel-default"
+						style="margin-top: -5%; border: none !important;">
+						<div class="panel-body">
+							<b>Pensioner Details</b> <br> <br>
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-3">
+									<label>Father Name &nbsp;:</label>
+									{{cCctr.entity.pensioner.fatherName}}
+								</div>
+								<div class="col-md-3">
+									<label>PAN &nbsp;:</label> {{cCctr.entity.pensioner.pan}}
+								</div>
+								<div class="col-md-3">
+									<label>DOB &nbsp;:</label>
+									{{cCctr.entity.pensioner.dob|date:'dd-MM-yyyy'}}
+								</div>
+								<div class="col-md-3">
+									<label>Employee Grade &nbsp;:</label>
+									{{cCctr.entity.pensioner.empGrade}}
+								</div>
+
+							</div>
+							<br>
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-3">
+									<label>Mobile No 1 &nbsp;:</label>
+									{{cCctr.entity.pensioner.mobile1}}
+								</div>
+								<div class="col-md-3">
+									<label>Mobile No 2 &nbsp;:</label>
+									{{cCctr.entity.pensioner.mobile2}}
+								</div>
+								<div class="col-md-3">
+									<label>Email 1 &nbsp;:</label>
+									{{cCctr.entity.pensioner.email1}}
+								</div>
+								<div class="col-md-3">
+									<label>Email 2 &nbsp;:</label>
+									{{cCctr.entity.pensioner.email2}}
+								</div>
+								<div class="col-xs-12">
+									<div class="text-left">
+										<button class="btn btn-primary" data-toggle="modal"
+											onclick="test('#profile')">Edit</button>
+									</div>
+								</div>
+								<div id="profile" class="modal fade" role="dialog">
+									<div class="modal-dialog modal-lg">
+										<!-- Modal content-->
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" id="closeU"
+													data-dismiss="modal">&times;</button>
+												<h4 class="modal-title">
+													<strong>Edit Pensioner Details</strong>
+												</h4>
+											</div>
+											<div class="modal-body">
+
+												<div id="myTabContent" class="tab-content">
+													<div class="tab-pane fade active in" id="signin">
+														<form name="profileForm" class="form-horizontal"
+															enctype="multipart/form-data">
 
 
+															<div class="row">
+																<div class="col-md-6">
+																	<label>Father Name</label> <input class="form-control"
+																		type="text" name="fatherName"
+																		placeholder="Father Name"
+																		ng-model="cCctr.entity.pensioner.fatherName"
+																		autocomplete="off"
+																		ng-model-options="{updateOn: 'blur'}"
+																		ng-maxlength="50" ng-pattern="/^[a-zA-z\s]*$/" /> <span
+																		style="color: red"
+																		ng-show="profileForm.submitted || profileForm.fatherName.$dirty && profileForm.fatherName.$invalid">
+																		<span class="error"
+																		ng-show="profileForm.fatherName.$error.pattern">Please
+																			enter valid Father Name</span> <span class="error"
+																		ng-show="profileForm.fatherName.$error.maxlength">Father
+																			Name should not be greater than 50 characters.</span>
+																	</span> <span class="error" id="fatherName"></span>
 
 
+																</div>
+
+																<div class="col-md-6">
+																	<label>Pan</label> <input class="form-control"
+																		type="text" name="pan" placeholder="pan"
+																		ng-model="cCctr.entity.pensioner.pan"
+																		autocomplete="off"
+																		ng-pattern="/^([A-Za-z]{5}[0-9]{4}[A-Za-z]{1})*$/"
+																		ng-model-options="{updateOn: 'blur'}"
+																		ng-maxlength="10" /> <span style="color: red"
+																		ng-show="profileForm.submitted || profileForm.pan.$dirty && profileForm.pan.$invalid">
+																		<span class="error"
+																		ng-show="profileForm.fatherName.$error.pattern">Please
+																			enter valid Pan</span> <span class="error"
+																		ng-show="profileForm.pan.$error.maxlength">Pan
+																			should not be greater than 10 characters</span>
+																	</span>
+																</div>
+
+															</div>
+
+															<div class="row">
+																<div class="col-md-6">
+
+																	<label>DOB </label> <input type="date"
+																		class="form-control" style="padding-top: 0px;"
+																		name="dob" value={{cCctr.entity.pensioner.dob}}
+																		ng-model="cCctr.entity.pensioner.dob"
+																		autocomplete="off"
+																		ng-model-options="{updateOn: 'blur'}" />
+																</div>
+
+																<div class="col-md-6">
+
+																	<label>Employee Grade</label> <input
+																		class="form-control" type="text" name="empGrade"
+																		placeholder="IFSC"
+																		ng-model="cCctr.entity.pensioner.empGrade"
+																		autocomplete="off" ng-pattern="/^[a-zA-z]*$/"
+																		ng-model-options="{updateOn: 'blur'}"
+																		ng-maxlength="10" /> <span style="color: red"
+																		ng-show="profileForm.submitted || profileForm.empGrade.$dirty && profileForm.empGrade.$invalid">
+																		<span class="error"
+																		ng-show="profileForm.empGrade.$error.pattern">Please
+																			enter valid Employee Grade</span> <span class="error"
+																		ng-show="profileForm.empGrade.$error.maxlength">Employee
+																			Grade should not be greater than 10 characters.</span>
+																	</span>
+																</div>
+															</div>
+
+															<div class="row">
+																<div class="col-md-6">
+
+																	<label>Mobile No.1 </label> <input class="form-control"
+																		type="text" name="mobile1" placeholder="mobile1"
+																		ng-model="cCctr.entity.pensioner.mobile1"
+																		autocomplete="off" ng-pattern="/^[0-9]*$/"
+																		ng-maxlength="10"
+																		ng-model-options="{updateOn: 'blur'}" /> <span
+																		style="color: red"
+																		ng-show="profileForm.submitted || profileForm.mobile1.$dirty && profileForm.mobile1.$invalid">
+																		<span class="error"
+																		ng-show="profileForm.mobile1.$error.pattern">Please
+																			enter valid Mobile No.1</span> <span class="error"
+																		ng-show="profileForm.mobile1.$error.maxlength">
+																			Mobile No.1 should not be greater than 10 digits.</span>
+																	</span>
+																</div>
 
 
-	</div>
-	<div class="row">
-		<ul class="nav nav-tabs">
-		<li ><a data-target="#pensionerDtls"
-				data-toggle="tab">Pensioner Details</a></li>
-				<li ><a data-target="#addrDtls"
-				data-toggle="tab">Address Detail</a></li>
-				<li ><a data-target="#bankDtls"
-				data-toggle="tab">Bank Account Detail</a></li>
-				<li ><a data-target="#paymentDtls"
-				data-toggle="tab">Pensioner Salary Detail</a></li>
-		</ul>
-		<br>
-		
-				<div class="tab-content ">
-<!-- Pensioner Details -->		
-			<div class="tab-pane active" id="pensionerDtls">
-			<hr>
-              <div class="panel panel-default"
-				style="margin-top: -5%; border: none !important;">
-				<div class="panel-body">
-				<b>Pensioner Details</b>
-				<br>
-				<br>
-					<div class="row" style="font-size: 13px;">
-						<div class="col-md-3">
-							<label>Father Name &nbsp;:</label> {{cCctr.entity.pensioner.fatherName}}
+																<div class="col-md-6">
+
+																	<label>Mobile No.2</label> <input class="form-control"
+																		type="text" name="mobile2" placeholder="mobile2."
+																		ng-model="cCctr.entity.pensioner.mobile2"
+																		autocomplete="off" ng-pattern="/^[0-9]*$/"
+																		ng-maxlength="10"
+																		ng-model-options="{updateOn: 'blur'}" /> <span
+																		style="color: red"
+																		ng-show="profileForm.submitted || profileForm.mobile1.$dirty && profileForm.mobile2.$invalid">
+																		<span class="error"
+																		ng-show="profileForm.mobile2.$error.pattern">Please
+																			enter valid Mobile No.2</span> <span class="error"
+																		ng-show="profileForm.mobile2.$error.maxlength">
+																			Mobile No.2 should not be greater than 10 digits.</span>
+																	</span>
+																</div>
+
+															</div>
+
+															<div class="row">
+																<div class="col-md-6">
+
+																	<label>Email.1 </label> <input class="form-control"
+																		type="text" name="email1" placeholder="email1"
+																		ng-model="cCctr.entity.pensioner.email1"
+																		autocomplete="off"
+																		ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/"
+																		required" 
+													ng-model-options="{updateOn: 'blur'}" />
+																	<span style="color: red"
+																		ng-show="profileForm.submitted || profileForm.email1.$dirty && profileForm.email1.$invalid">
+																		<span class="error"
+																		ng-show="profileForm.email1.$error.pattern">Please
+																			enter valid Email1</span>
+																	</span>
+																</div>
+
+
+																<div class="col-md-6">
+
+																	<label>Email.2</label> <input class="form-control"
+																		type="text" name="email2" placeholder="email2"
+																		ng-model="cCctr.entity.pensioner.email2"
+																		autocomplete="off"
+																		ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/"
+																		required"
+													ng-model-options="{updateOn: 'blur'}" />
+																	<span style="color: red"
+																		ng-show="profileForm.submitted || profileForm.email2.$dirty && profileForm.email2.$invalid">
+																		<span class="error"
+																		ng-show="profileForm.email2.$error.pattern">Please
+																			enter valid Email2</span>
+																	</span>
+																</div>
+															</div>
+
+														</form>
+													</div>
+												</div>
+
+												<div class="modal-footer">
+													<button
+														ng-click="profileForm.submitted=true;cCctr.updateData(profileForm.$valid,'pensioner',cCctr.entity.pensioner,'closeU')"
+														class="btn btn-success" data-dismiss="modal">Save</button>
+													<button class="btn btn-danger" data-dismiss="modal">Back</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
 						</div>
-						<div class="col-md-3">
-							<label>PAN &nbsp;:</label> {{cCctr.entity.pensioner.pan}}
-						</div>
-						<div class="col-md-3">
-							<label>DOB &nbsp;:</label> {{cCctr.entity.pensioner.dob|date:'dd-MM-yyyy'}}
-						</div>
-						<div class="col-md-3">
-							<label>Employee Grade &nbsp;:</label> {{cCctr.entity.pensioner.empGrade}}
-						</div>
-
 					</div>
-					<br>
-					<div class="row" style="font-size: 13px;">
-						<div class="col-md-3">
-							<label>Mobile No 1 &nbsp;:</label> {{cCctr.entity.pensioner.mobile1}}
-						</div>
-						<div class="col-md-3">
-							<label>Mobile No 2 &nbsp;:</label> {{cCctr.entity.pensioner.mobile2}}
-						</div>
-						<div class="col-md-3">
-							<label>Email 1 &nbsp;:</label> {{cCctr.entity.pensioner.email1}}
-						</div>
-						<div class="col-md-3">
-							<label>Email 2 &nbsp;:</label> {{cCctr.entity.pensioner.email2}}
-						</div>
-						<div class="col-xs-12">
+				</div>
+
+
+ <!-- Address Details -->
+				<div class="tab-pane" id="addrDtls">
+					<hr>
+					<div class="panel panel-default"
+						style="margin-top: -5%; border: none !important;">
+						<div class="panel-body">
+
+							<b> Permanent Address</b> <br>
+							<br>
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-4">
+									<label>Address1 &nbsp;:</label>
+									{{cCctr.entity.paddress.address1}}
+								</div>
+								<div class="col-md-4">
+									<label>Address2 &nbsp;:</label>
+									{{cCctr.entity.paddress.address2}}
+								</div>
+								<div class="col-md-4">
+									<label>Address3 &nbsp;:</label>
+									{{cCctr.entity.paddress.address3}}
+								</div>
+							</div>
+							<br>
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-4">
+									<label>City &nbsp;:</label> {{cCctr.entity.paddress.city}}
+								</div>
+								<div class="col-md-4">
+									<label>State &nbsp;:</label> {{cCctr.entity.paddress.state}}
+								</div>
+								<div class="col-md-4">
+									<label>Pincode &nbsp;:</label>
+									{{cCctr.entity.paddress.pincode}}
+								</div>
+							</div>
+							<div class="col-xs-12">
 								<div class="text-left">
 									<button class="btn btn-primary" data-toggle="modal"
-										onclick="test('#profile')">Edit</button>
+										onclick="test('#addrDtls1')">Edit</button>
 								</div>
 							</div>
-							<div id="profile" class="modal fade" role="dialog">
-				<div class="modal-dialog modal-lg">
-					<!-- Modal content-->
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" id="closeU"
-								data-dismiss="modal">&times;</button>
-							<h4 class="modal-title"><strong>Edit Pensioner Details</strong></h4>
+
+							<div class="row" style="margin-left: 70%">
+								<div class="col-md-6">
+									<button
+										ng-click="addressDetailForm.submitted=true;cCctr.updateData(addressDetailForm.$valid,'address',cCctr.entity.paddress,'closeU')"
+										class="btn btn-success" data-dismiss="modal"
+										onclick="scrollWin()">Save</button>
+									&nbsp;&nbsp;
+									<button ng-click="cCctr.gotoListPage('pensioner','pensioner');"
+										class="btn btn-danger" onclick="scrollWin()">Back</button>
+								</div>
+							</div>
+							<br>
+							<div class="row" style="font-size: 13px;">
+								<b>Current Details</b> <br> <br>
+								<div class="row" style="font-size: 13px;">
+									<div class="col-md-4">
+										<label>Address1 &nbsp;:</label>
+										{{cCctr.entity.caddress.address1}}
+									</div>
+									<div class="col-md-4">
+										<label>Address2 &nbsp;:</label>
+										{{cCctr.entity.caddress.address2}}
+									</div>
+									<div class="col-md-4">
+										<label>Address3 &nbsp;:</label>
+										{{cCctr.entity.caddress.address3}}
+									</div>
+								</div>
+								<br>
+								<div class="row" style="font-size: 13px;">
+									<div class="col-md-4">
+										<label>City &nbsp;:</label> {{cCctr.entity.caddress.city}}
+									</div>
+									<div class="col-md-4">
+										<label>State &nbsp;:</label> {{cCctr.entity.caddress.state}}
+									</div>
+									<div class="col-md-4">
+										<label>Pincode &nbsp;:</label>
+										{{cCctr.entity.caddress.pincode}}
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-xs-12">
+										<div class="text-left">
+											<button class="btn btn-primary" data-toggle="modal"
+												onclick="test('#addrDtls2')">Edit</button>
+										</div>
+									</div>
+								</div>
+								<div class="row" style="margin-left: 70%">
+									<div class="col-md-6">
+										<button
+											ng-click="addressDetailForm1.submitted=true;cCctr.updateData(addressDetailForm1.$valid,'address',cCctr.entity.caddress,'closeU')"
+											class="btn btn-success" data-dismiss="modal"
+											onclick="scrollWin()">Save</button>
+										&nbsp;&nbsp;
+										<button
+											ng-click="cCctr.gotoListPage('pensioner','pensioner');"
+											class="btn btn-danger" onclick="scrollWin()">Back</button>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="modal-body">
+					</div>
 
-							<div id="myTabContent" class="tab-content">
-								<div class="tab-pane fade active in" id="signin">
-									<form name="profileForm" class="form-horizontal"
-										enctype="multipart/form-data">
+				</div>
 
 
-										<div class="row">
-											<div class="col-md-6">
-												<label>Father Name</label> <input class="form-control"
-													type="text" name="fatherName" placeholder="Father Name"
-													ng-model="cCctr.entity.pensioner.fatherName" autocomplete="off"
-													 ng-model-options="{updateOn: 'blur'}"
-													ng-maxlength="50"  ng-pattern="/^[a-zA-z\s]*$/"/>
-													<span style="color: red"
-									ng-show="profileForm.submitted || profileForm.fatherName.$dirty && profileForm.fatherName.$invalid">
-								  <span class="error"	ng-show="profileForm.fatherName.$error.pattern">Please
-										enter valid Father Name</span> <span class="error"
-									ng-show="profileForm.fatherName.$error.maxlength">Father Name should not be greater than 50 characters.</span> 
-								   </span> <span class="error" id="fatherName"></span>
-													
 
+				<div id="addrDtls1" class="modal fade" role="dialog">
+					<div class="modal-dialog modal-lg">
+						<!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" id="closeU"
+									data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">
+									<strong>Edit Address Details</strong>
+								</h4>
+							</div>
+
+							<div class="modal-body">
+
+								<div id="myTabContent" class="tab-content">
+									<div class="tab-pane fade active in" id="signin">
+										<form name="addressDetailForm1" class="form-horizontal"
+											enctype="multipart/form-data">
+											<div class="row">
+												<div class="form-group">
+													<div class="col-md-3">
+														<h5>
+															<b>Permanent Address</b>
+														</h5>
+													</div>
+												</div>
 											</div>
 
-											<div class="col-md-6">
-												<label>Pan</label> <input class="form-control"
-													type="text" name="pan" placeholder="pan"
-													ng-model="cCctr.entity.pensioner.pan" autocomplete="off"
-													ng-pattern="/^([A-Za-z]{5}[0-9]{4}[A-Za-z]{1})*$/" ng-model-options="{updateOn: 'blur'}"
-													ng-maxlength="10" />
-													<span style="color: red" ng-show="profileForm.submitted || profileForm.pan.$dirty && profileForm.pan.$invalid">
-													<span class="error"
-									                ng-show="profileForm.fatherName.$error.pattern">Please enter valid Pan</span>
-													 <span class="error" ng-show="profileForm.pan.$error.maxlength">Pan should not be greater than 10 characters</span>
-													 </span>
+											<div class="row">
+												<div class="form-group">
+													<div class="col-md-3">
+														<h6>
+															<b>Address1</b>
+														</h6>
+														<input type="text" class="form-control"
+															style="padding-top: 0px;" ng-maxlength="150"
+															ng-model="cCctr.entity.paddress.address1"
+															placeholder="Address1"> <span style="color: red"
+															ng-show="addressDetailForm1.submitted ||addressDetailForm1.address1.$dirty && addressDetailForm1.address1.$invalid">
+
+															<span class="error"
+															ng-show="addressDetailForm1.address1.$error.maxlength">
+																Address1 should not be greater than 150 digits.</span>
+														</span>
+													</div>
+													<div class="col-md-3">
+														<h6>
+															<b>Address2</b>
+														</h6>
+														<input type="text" class="form-control"
+															style="padding-top: 0px;" ng-maxlength="150"
+															ng-model="cCctr.entity.paddress.address2"
+															placeholder="Address2"> <span style="color: red"
+															ng-show="addressDetailForm1.submitted || addressDetailForm1.address2.$dirty && addressDetailForm1.address2.$invalid">
+
+															<span class="error"
+															ng-show="addressDetailForm1.address2.$error.maxlength">
+																Address2 should not be greater than 150 digits.</span>
+														</span>
+													</div>
+													<div class="col-md-3">
+														<h6>
+															<b>Address3</b>
+														</h6>
+														<input type="text" class="form-control"
+															style="padding-top: 0px;" ng-maxlength="150"
+															ng-model="cCctr.entity.paddress.address3"
+															placeholder="Address3"> <span style="color: red"
+															ng-show="addressDetailForm1.submitted || addressDetailForm1.address3.$dirty && addressDetailForm1.address3.$invalid">
+
+															<span class="error"
+															ng-show="addressDetailForm1.address3.$error.maxlength">
+																Address3 should not be greater than 150 digits.</span>
+														</span>
+													</div>
+												</div>
 											</div>
 
-										</div>
+											<div class="row">
+												<div class="form-group">
 
-										<div class="row">
-											<div class="col-md-6">
+													<div class="col-md-3">
+														<h6>
+															<b>City</b>
+														</h6>
+														<input type="text" class="form-control"
+															style="padding-top: 0px;" ng-maxlength="20"
+															ng-model="cCctr.entity.paddress.city" placeholder="City"
+															ng-pattern="/^[a-zA-z]*$/"> <span
+															style="color: red"
+															ng-show="addressDetailForm1.submitted || addressDetailForm1.city.$dirty && addressDetailForm1.city.$invalid">
+															<span class="error"
+															ng-show="addressDetailForm1.city.$error.pattern">Please
+																enter valid City</span> <span class="error"
+															ng-show="addressDetailForm1.city.$error.maxlength">
+																City should not be greater than 20 digits.</span>
+														</span>
+													</div>
+													<div class="col-md-3">
+														<h6>
+															<b>State</b>
+														</h6>
+														<input type="text" class="form-control"
+															style="padding-top: 0px;" ng-maxlength="20"
+															ng-model="cCctr.entity.paddress.state"
+															placeholder="State" ng-pattern="/^[a-zA-z]*$/"> <span
+															style="color: red"
+															ng-show="addressDetailForm1.submitted || addressDetailForm1.state.$dirty && addressDetailForm1.state.$invalid">
+															<span class="error"
+															ng-show="addressDetailForm1.state.$error.pattern">Please
+																enter valid State</span> <span class="error"
+															ng-show="addressDetailForm1.state.$error.maxlength">
+																State should not be greater than 20 digits.</span>
+														</span>
+													</div>
+													<div class="col-md-3">
+														<h6>
+															<b>PinCode</b>
+														</h6>
+														<input type="text" class="form-control"
+															style="padding-top: 0px;" ng-maxlength="10"
+															ng-model="cCctr.entity.paddress.pincode"
+															placeholder="PinCode" ng-pattern="/^[0-9]*$/"> <span
+															style="color: red"
+															ng-show="addressDetailForm1.submitted || addressDetailForm1.pincode.$dirty && addressDetailForm1.pincode.$invalid">
+															<span class="error"
+															ng-show="addressDetailForm1.pincode.$error.pattern">Please
+																enter valid Pincode</span> <span class="error"
+															ng-show="addressDetailForm1.pincode.$error.maxlength">
+																Pincode should not be greater than 10 digits</span>
+														</span>
+													</div>
 
-												<label>DOB </label> 
-												<input type="date" class="form-control" style="padding-top:0px;" name="dob" value={{cCctr.entity.pensioner.dob}} 
-									  				ng-model="cCctr.entity.pensioner.dob" autocomplete="off"
-									 				ng-model-options="{updateOn: 'blur'}"/>
+												</div>
 											</div>
-
-											<div class="col-md-6">
-
-												<label>Employee Grade</label> <input class="form-control" type="text"
-													name="empGrade" placeholder="IFSC"
-													ng-model="cCctr.entity.pensioner.empGrade" autocomplete="off"
-													ng-pattern="/^[a-zA-z]*$/" ng-model-options="{updateOn: 'blur'}"
-													ng-maxlength="10" /> 
-												<span style="color: red" ng-show="profileForm.submitted || profileForm.empGrade.$dirty && profileForm.empGrade.$invalid">
-									               <span class="error" ng-show="profileForm.empGrade.$error.pattern">Please enter valid Employee Grade</span>
-													 <span class="error" ng-show="profileForm.empGrade.$error.maxlength">Employee Grade should not be greater than 10 characters.</span>
-													 </span>
-											</div>
-										</div>
-
-										<div class="row">
-											<div class="col-md-6">
-
-												<label>Mobile No.1 </label> <input class="form-control"
-													type="text" name="mobile1" placeholder="mobile1"
-													ng-model="cCctr.entity.pensioner.mobile1"
-													autocomplete="off" ng-pattern="/^[0-9]*$/" ng-maxlength="10"
-													ng-model-options="{updateOn: 'blur'}" />
-													<span style="color: red" ng-show="profileForm.submitted || profileForm.mobile1.$dirty && profileForm.mobile1.$invalid">
-									               <span class="error" ng-show="profileForm.mobile1.$error.pattern">Please enter valid Mobile No.1</span>
-													 <span class="error" ng-show="profileForm.mobile1.$error.maxlength"> Mobile No.1 should not be greater than 10 digits.</span>
-													 </span>
-											</div>
-
-
-											<div class="col-md-6">
-
-												<label>Mobile No.2</label> <input class="form-control" type="text"
-													name="mobile2" placeholder="mobile2."
-													ng-model="cCctr.entity.pensioner.mobile2" autocomplete="off"
-													 ng-pattern="/^[0-9]*$/" ng-maxlength="10"ng-model-options="{updateOn: 'blur'}" />
-												<span style="color: red" ng-show="profileForm.submitted || profileForm.mobile1.$dirty && profileForm.mobile2.$invalid">
-									               <span class="error" ng-show="profileForm.mobile2.$error.pattern">Please enter valid Mobile No.2</span>
-													 <span class="error" ng-show="profileForm.mobile2.$error.maxlength"> Mobile No.2 should not be greater than 10 digits.</span>
-													 </span>
-											</div>
-
-										</div>
-										
-										<div class="row">
-											<div class="col-md-6">
-
-												<label>Email.1 </label> <input class="form-control"
-													type="text" name="email1" placeholder="email1"
-													ng-model="cCctr.entity.pensioner.email1"
-													autocomplete="off" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required" 
-													ng-model-options="{updateOn: 'blur'}" />
-													<span style="color: red" ng-show="profileForm.submitted || profileForm.email1.$dirty && profileForm.email1.$invalid">
-									               <span class="error" ng-show="profileForm.email1.$error.pattern">Please enter valid Email1</span>
-													 </span>
-											</div>
-
-
-											<div class="col-md-6">
-
-												<label>Email.2</label> <input class="form-control" type="text"
-													name="email2" placeholder="email2"
-													ng-model="cCctr.entity.pensioner.email2" autocomplete="off" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required"
-													ng-model-options="{updateOn: 'blur'}" />
-													<span style="color: red" ng-show="profileForm.submitted || profileForm.email2.$dirty && profileForm.email2.$invalid">
-									               <span class="error" ng-show="profileForm.email2.$error.pattern">Please enter valid Email2</span>
-													 </span>
-											</div>
-										</div>
-										
 										</form>
+									</div>
 								</div>
-							</div>
-						
-							<div class="modal-footer">
-								<button
-									ng-click="profileForm.submitted=true;cCctr.updateData(profileForm.$valid,'pensioner',cCctr.entity.pensioner,'closeU')"
-									class="btn btn-success" data-dismiss="modal">Save</button>
-								<button class="btn btn-danger" data-dismiss="modal">Back</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-						
-					</div>
-				</div>
-			</div>
-			</div>
-			
-			
-<!-- Address Details -->
-			<div class="tab-pane" id="addrDtls">
-			<hr>
-              <div class="panel panel-default"
-				style="margin-top: -5%; border: none !important;">
-				<div class="panel-body">
-				
-					<b>	Permanent Address</b>
-					<br><br>
-					<div class="row" style="font-size: 13px;">
-						<div class="col-md-4">
-							<label>Address1 &nbsp;:</label> {{cCctr.entity.paddress.address1}}
-						</div>
-						<div class="col-md-4">
-							<label>Address2 &nbsp;:</label> {{cCctr.entity.paddress.address2}}
-						</div>
-						<div class="col-md-4">
-							<label>Address3 &nbsp;:</label> {{cCctr.entity.paddress.address3}}
-						</div>
-					</div>
-					<br>
-					<div class="row" style="font-size: 13px;">
-						<div class="col-md-4">
-							<label>City &nbsp;:</label> {{cCctr.entity.paddress.city}}
-						</div>
-						<div class="col-md-4">
-							<label>State &nbsp;:</label> {{cCctr.entity.paddress.state}}
-						</div>
-						<div class="col-md-4">
-							<label>Pincode &nbsp;:</label> {{cCctr.entity.paddress.pincode}}
-						</div>
-						</div>	
-						<div class="col-xs-12">
-					<div class="text-left">
-						<button class="btn btn-primary" data-toggle="modal"
-							onclick="test('#addrDtls1')">Edit</button>
-						</div>
-					</div>
-					
-					<div class="row" style="margin-left:70%">
-								<div class="col-md-6">
-								<button
-									ng-click="addressDetailForm.submitted=true;cCctr.updateData(addressDetailForm.$valid,'address',cCctr.entity.paddress,'closeU')"
-									class="btn btn-success" data-dismiss="modal" onclick="scrollWin()">Save</button>&nbsp;&nbsp;
-								<button
-									ng-click="cCctr.gotoListPage('pensioner','pensioner');"
-				class="btn btn-danger" onclick="scrollWin()">Back</button>
-								</div>
-							</div>
-						<br>				
-					<div class="row" style="font-size: 13px;">
-					<b>Current Details</b>
-				<br>
-				<br>
-						<div class="row" style="font-size: 13px;">
-						<div class="col-md-4">
-							<label>Address1 &nbsp;:</label> {{cCctr.entity.caddress.address1}}
-						</div>
-						<div class="col-md-4">
-							<label>Address2 &nbsp;:</label> {{cCctr.entity.caddress.address2}}
-						</div>
-						<div class="col-md-4">
-							<label>Address3 &nbsp;:</label> {{cCctr.entity.caddress.address3}}
-						</div>
-					</div>
-						<br>
-						<div class="row" style="font-size: 13px;">
-						<div class="col-md-4">
-							<label>City &nbsp;:</label> {{cCctr.entity.caddress.city}}
-						</div>
-						<div class="col-md-4">
-							<label>State &nbsp;:</label> {{cCctr.entity.caddress.state}}
-						</div>
-						<div class="col-md-4">
-							<label>Pincode &nbsp;:</label> {{cCctr.entity.caddress.pincode}}
-						</div>
-						</div>	
-						
-				<div class="row">
-				<div class="col-xs-12">
-					<div class="text-left">
-						<button class="btn btn-primary" data-toggle="modal"
-							onclick="test('#addrDtls2')">Edit</button>
-						</div>
-					</div>
-				</div>
-				<div class="row" style="margin-left:70%">
-								<div class="col-md-6">
-								<button
-									ng-click="addressDetailForm1.submitted=true;cCctr.updateData(addressDetailForm1.$valid,'address',cCctr.entity.caddress,'closeU')"
-									class="btn btn-success" data-dismiss="modal" onclick="scrollWin()">Save</button>&nbsp;&nbsp;
-								<button
-									ng-click="cCctr.gotoListPage('pensioner','pensioner');"
-				class="btn btn-danger" onclick="scrollWin()">Back</button>
-								</div>
-							</div>
-					</div>
-				</div>
-			</div>
-			
-			</div>
-			
-			
-			
-			<div id="addrDtls1" class="modal fade" role="dialog">
-				<div class="modal-dialog modal-lg">
-					<!-- Modal content-->
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" id="closeU"
-								data-dismiss="modal">&times;</button>
-							<h4 class="modal-title"><strong>Edit Address Details</strong></h4>
-						</div>
-						
-		<div class="modal-body">
+								<div class="modal-footer">
 
-							<div id="myTabContent" class="tab-content">
-								<div class="tab-pane fade active in" id="signin">
-									<form name="addressDetailForm1" class="form-horizontal"
-										enctype="multipart/form-data">				
-		<div class="row">
-		<div class="form-group">
-	<div class="col-md-3">							
-            	<h5><b>Permanent Address</b></h5>
-			</div>
-			</div>
-			</div>				
-             
-	<div class="row">
-		<div class="form-group">
-			<div class="col-md-3">							
-            	<h6><b>Address1</b></h6>
-                <input type="text" class="form-control" style="padding-top:0px;" ng-maxlength="150"
-                 ng-model="cCctr.entity.paddress.address1" placeholder="Address1">
-                <span style="color: red" ng-show="addressDetailForm1.submitted ||addressDetailForm1.address1.$dirty && addressDetailForm1.address1.$invalid">
-									            
-				 <span class="error" ng-show="addressDetailForm1.address1.$error.maxlength"> Address1 should not be greater than 150 digits.</span>
-				 </span>
-			</div>
-			<div class="col-md-3">							
-            	<h6><b>Address2</b></h6>
-                <input type="text" class="form-control" style="padding-top:0px;" ng-maxlength="150"
-                ng-model="cCctr.entity.paddress.address2" placeholder="Address2">
-                <span style="color: red" ng-show="addressDetailForm1.submitted || addressDetailForm1.address2.$dirty && addressDetailForm1.address2.$invalid">
-				 
-				 <span class="error" ng-show="addressDetailForm1.address2.$error.maxlength"> Address2 should not be greater than 150 digits.</span>
-				 </span>
-			</div>
-			<div class="col-md-3">							
-            	<h6><b>Address3</b></h6>
-                <input type="text" class="form-control" style="padding-top:0px;" ng-maxlength="150"
-                ng-model="cCctr.entity.paddress.address3" placeholder="Address3">
-			 <span style="color: red" ng-show="addressDetailForm1.submitted || addressDetailForm1.address3.$dirty && addressDetailForm1.address3.$invalid">
-			
-			 <span class="error" ng-show="addressDetailForm1.address3.$error.maxlength"> Address3 should not be greater than 150 digits.</span>
-			</span>
-			</div>
-		</div>
-	</div>
-	
-	<div class="row">
-		<div class="form-group">
-					
-			<div class="col-md-3">							
-            	<h6><b>City</b></h6>
-                <input type="text" class="form-control" style="padding-top:0px;" ng-maxlength="20" 
-                ng-model="cCctr.entity.paddress.city" placeholder="City" ng-pattern="/^[a-zA-z]*$/"> 
-			 <span style="color: red" ng-show="addressDetailForm1.submitted || addressDetailForm1.city.$dirty && addressDetailForm1.city.$invalid">
-			<span class="error" ng-show="addressDetailForm1.city.$error.pattern">Please enter valid City</span>
-													 <span class="error" ng-show="addressDetailForm1.city.$error.maxlength"> City should not be greater than 20 digits.</span>
-													 </span>
-			</div>		
-			<div class="col-md-3">			
-            	<h6><b>State</b></h6>
-                <input type="text" class="form-control" style="padding-top:0px;" ng-maxlength="20" 
-                ng-model="cCctr.entity.paddress.state" placeholder="State" ng-pattern="/^[a-zA-z]*$/">
-			 <span style="color: red" ng-show="addressDetailForm1.submitted || addressDetailForm1.state.$dirty && addressDetailForm1.state.$invalid">
-			<span class="error" ng-show="addressDetailForm1.state.$error.pattern">Please enter valid State</span>
-			<span class="error" ng-show="addressDetailForm1.state.$error.maxlength"> State should not be greater than 20 digits.</span>
-			 </span>
-			</div>
-			<div class="col-md-3">							
-            	<h6><b>PinCode</b></h6>
-                <input type="text" class="form-control" style="padding-top:0px;" ng-maxlength="10" 
-                ng-model="cCctr.entity.paddress.pincode" placeholder="PinCode" ng-pattern="/^[0-9]*$/">
-			<span style="color: red" ng-show="addressDetailForm1.submitted || addressDetailForm1.pincode.$dirty && addressDetailForm1.pincode.$invalid">
-			<span class="error" ng-show="addressDetailForm1.pincode.$error.pattern">Please enter valid Pincode</span>
-			<span class="error" ng-show="addressDetailForm1.pincode.$error.maxlength"> Pincode should not be greater than 10 digits</span>
-			 </span>
-			</div>
-			
-		</div>
-	</div>
-		</form>
-		</div>
-	</div>
-	<div class="modal-footer">
-								
-								<button class="btn btn-success" data-dismiss="modal" onclick="scrollWin()">OK</button>
-								<button class="btn btn-danger" data-dismiss="modal" onclick="scrollWin()">Back</button>
+									<button class="btn btn-success" data-dismiss="modal"
+										onclick="scrollWin()">OK</button>
+									<button class="btn btn-danger" data-dismiss="modal"
+										onclick="scrollWin()">Back</button>
+								</div>
 							</div>
-	</div>
-	</div>
-	</div>
-	</div>
-	
-	<div id="addrDtls2" class="modal fade" role="dialog">
-				<div class="modal-dialog modal-lg">
-					<!-- Modal content-->
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" id="closeU"
-								data-dismiss="modal">&times;</button>
-							<h4 class="modal-title"><strong>Edit Address Details</strong></h4>
 						</div>
-						
-		<div class="modal-body">
+					</div>
+				</div>
 
-							<div id="myTabContent" class="tab-content">
-								<div class="tab-pane fade active in" id="signin">
-									<form name="addressDetailForm2" class="form-horizontal"
-										enctype="multipart/form-data">				
-		<div class="row">
-		<div class="form-group">
-	
-			</div>
-			</div>				
-             
-	
-	<div class="row">
-		<div class="form-group">
-	<div class="col-md-3">							
-            	<h5><b>Current Address</b></h5>
-                
-			</div>
-			</div>
-			</div>
-	
-	
-	<div class="row">
-		<div class="form-group">
-			<div class="col-md-3">							
-            	<h6><b>Address1</b></h6>
-                <input type="text" class="form-control" style="padding-top:0px;" ng-maxlength="150"
-                ng-model="cCctr.entity.caddress.address1" placeholder="Address1" ng-pattern="">
-			 <span style="color: red" ng-show="addressDetailForm2.submitted ||addressDetailForm2.address1.$dirty && addressDetailForm2.address1.$invalid">
-             <span class="error" ng-show="addressDetailForm2.address1.$error.maxlength"> Address1 should not be greater than 150 digits.</span>
-												 </span>
-			</div>
-			<div class="col-md-3">							
-            	<h6><b>Address2</b></h6>
-                <input type="text" class="form-control" style="padding-top:0px;" ng-maxlength="150"
-                ng-model="cCctr.entity.caddress.address2" placeholder="Address2" ng-pattern=" ">
-			 <span style="color: red" ng-show="addressDetailForm2.submitted ||addressDetailForm2.address2.$dirty && addressDetailForm2.address2.$invalid">
-			<span class="error" ng-show="addressDetailForm2.address2.$error.maxlength"> Address2 should not be greater than 150 digits.</span>
-			</span>
-			</div>
-			<div class="col-md-3">							
-            	<h6><b>Address3</b></h6>
-                <input type="text" class="form-control" style="padding-top:0px;" ng-maxlength="150"
-                ng-model="cCctr.entity.caddress.address3" placeholder="Address3" ng-pattern=" ">
-                 <span style="color: red" ng-show="addressDetailForm2.submitted ||addressDetailForm2.address3.$dirty && addressDetailForm2.address3.$invalid">
-				<span class="error" ng-show="addressDetailForm2.address3.$error.maxlength"> Address3 should not be greater than 150 digits.</span>
-			   </span>
-			</div>
-		</div>
-	</div>
-	
-	<div class="row">
-		<div class="form-group">		
-					
-			<div class="col-md-3">							
-            	<h6><b>City</b></h6>
-                <input type="text" class="form-control" style="padding-top:0px;" ng-maxlength="20" 
-                ng-model="cCctr.entity.caddress.city" placeholder="City" ng-pattern="/^[a-zA-z]*$/">
-                 <span style="color: red" ng-show="addressDetailForm2.submitted || addressDetailForm2.city.$dirty && addressDetailForm2.city.$invalid">
-			<span class="error" ng-show="addressDetailForm2.city.$error.pattern">Please enter valid City</span>
-		    <span class="error" ng-show="addressDetailForm2.city.$error.maxlength"> City should not be greater than 20 digits.</span>
-			 </span>
-			</div>	
-			<div class="col-md-3">				
-            	<h6><b>State</b></h6>
-                <input type="text" class="form-control" style="padding-top:0px;" ng-maxlength="20" 
-                ng-model="cCctr.entity.caddress.state" placeholder="State" ng-pattern="/^[a-zA-z]*$/">
-			 <span style="color: red" ng-show="addressDetailForm2.submitted || addressDetailForm2.state.$dirty && addressDetailForm2.state.$invalid">
-			<span class="error" ng-show="addressDetailForm2.state.$error.pattern">Please enter valid State</span>
-			<span class="error" ng-show="addressDetailForm2.state.$error.maxlength"> State should not be greater than 20 digits.</span>
-			 </span>
-			</div>
-			<div class="col-md-3">							
-            	<h6><b>PinCode</b></h6>
-                <input type="text" class="form-control" style="padding-top:0px;" ng-maxlength="10" 
-                ng-model="cCctr.entity.caddress.pincode" placeholder="PinCode" ng-pattern="/^[0-9]*$/">
-			<span style="color: red" ng-show="addressDetailForm2.submitted || addressDetailForm2.pincode.$dirty && addressDetailForm2.pincode.$invalid">
-			<span class="error" ng-show="addressDetailForm2.pincode.$error.pattern">Please enter valid Pincode</span>
-			<span class="error" ng-show="addressDetailForm2.pincode.$error.maxlength"> Pincode should not be greater than 10 digits.</span>
-			 </span>
-			</div>
-			
-		</div>
-		</div>
-		</form>
-		</div>
-	</div>
-	<div class="modal-footer">
-								
-								<button class="btn btn-success" data-dismiss="modal" onclick="scrollWin()">OK</button>
-								<button class="btn btn-danger" data-dismiss="modal" onclick="scrollWin()">Back</button>
+				<div id="addrDtls2" class="modal fade" role="dialog">
+					<div class="modal-dialog modal-lg">
+						<!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" id="closeU"
+									data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">
+									<strong>Edit Address Details</strong>
+								</h4>
 							</div>
-	</div>
-	</div>
-	</div>
-	</div>
-	
-			
-<!-- Bank Account Details-->
-						<div class="tab-pane " id="bankDtls">
-						<hr>
-              <div class="panel panel-default"
-				style="margin-top: -2%; border: none !important;">
-				<div class="panel-body">
-					<div class="row" style="font-size: 13px;">
-						<div class="col-md-3">
-							<label>Bank Name &nbsp;:</label> {{cCctr.entity.bank.bankName}}
-						</div>
-						<div class="col-md-3">
-							<label>Account Number &nbsp;:</label> {{cCctr.entity.bank.acNo}}
-						</div>
-						<div class="col-md-3">
-							<label>Branch &nbsp;:</label> {{cCctr.entity.bank.branch}}
-						</div>
-						<div class="col-md-3">
-							<label>IFSC &nbsp;:</label> {{cCctr.entity.bank.ifsc}}
+
+							<div class="modal-body">
+
+								<div id="myTabContent" class="tab-content">
+									<div class="tab-pane fade active in" id="signin">
+										<form name="addressDetailForm2" class="form-horizontal"
+											enctype="multipart/form-data">
+											<div class="row">
+												<div class="form-group"></div>
+											</div>
+
+
+											<div class="row">
+												<div class="form-group">
+													<div class="col-md-3">
+														<h5>
+															<b>Current Address</b>
+														</h5>
+
+													</div>
+												</div>
+											</div>
+
+
+											<div class="row">
+												<div class="form-group">
+													<div class="col-md-3">
+														<h6>
+															<b>Address1</b>
+														</h6>
+														<input type="text" class="form-control"
+															style="padding-top: 0px;" ng-maxlength="150"
+															ng-model="cCctr.entity.caddress.address1"
+															placeholder="Address1" ng-pattern=""> <span
+															style="color: red"
+															ng-show="addressDetailForm2.submitted ||addressDetailForm2.address1.$dirty && addressDetailForm2.address1.$invalid">
+															<span class="error"
+															ng-show="addressDetailForm2.address1.$error.maxlength">
+																Address1 should not be greater than 150 digits.</span>
+														</span>
+													</div>
+													<div class="col-md-3">
+														<h6>
+															<b>Address2</b>
+														</h6>
+														<input type="text" class="form-control"
+															style="padding-top: 0px;" ng-maxlength="150"
+															ng-model="cCctr.entity.caddress.address2"
+															placeholder="Address2" ng-pattern=" "> <span
+															style="color: red"
+															ng-show="addressDetailForm2.submitted ||addressDetailForm2.address2.$dirty && addressDetailForm2.address2.$invalid">
+															<span class="error"
+															ng-show="addressDetailForm2.address2.$error.maxlength">
+																Address2 should not be greater than 150 digits.</span>
+														</span>
+													</div>
+													<div class="col-md-3">
+														<h6>
+															<b>Address3</b>
+														</h6>
+														<input type="text" class="form-control"
+															style="padding-top: 0px;" ng-maxlength="150"
+															ng-model="cCctr.entity.caddress.address3"
+															placeholder="Address3" ng-pattern=" "> <span
+															style="color: red"
+															ng-show="addressDetailForm2.submitted ||addressDetailForm2.address3.$dirty && addressDetailForm2.address3.$invalid">
+															<span class="error"
+															ng-show="addressDetailForm2.address3.$error.maxlength">
+																Address3 should not be greater than 150 digits.</span>
+														</span>
+													</div>
+												</div>
+											</div>
+
+											<div class="row">
+												<div class="form-group">
+
+													<div class="col-md-3">
+														<h6>
+															<b>City</b>
+														</h6>
+														<input type="text" class="form-control"
+															style="padding-top: 0px;" ng-maxlength="20"
+															ng-model="cCctr.entity.caddress.city" placeholder="City"
+															ng-pattern="/^[a-zA-z]*$/"> <span
+															style="color: red"
+															ng-show="addressDetailForm2.submitted || addressDetailForm2.city.$dirty && addressDetailForm2.city.$invalid">
+															<span class="error"
+															ng-show="addressDetailForm2.city.$error.pattern">Please
+																enter valid City</span> <span class="error"
+															ng-show="addressDetailForm2.city.$error.maxlength">
+																City should not be greater than 20 digits.</span>
+														</span>
+													</div>
+													<div class="col-md-3">
+														<h6>
+															<b>State</b>
+														</h6>
+														<input type="text" class="form-control"
+															style="padding-top: 0px;" ng-maxlength="20"
+															ng-model="cCctr.entity.caddress.state"
+															placeholder="State" ng-pattern="/^[a-zA-z]*$/"> <span
+															style="color: red"
+															ng-show="addressDetailForm2.submitted || addressDetailForm2.state.$dirty && addressDetailForm2.state.$invalid">
+															<span class="error"
+															ng-show="addressDetailForm2.state.$error.pattern">Please
+																enter valid State</span> <span class="error"
+															ng-show="addressDetailForm2.state.$error.maxlength">
+																State should not be greater than 20 digits.</span>
+														</span>
+													</div>
+													<div class="col-md-3">
+														<h6>
+															<b>PinCode</b>
+														</h6>
+														<input type="text" class="form-control"
+															style="padding-top: 0px;" ng-maxlength="10"
+															ng-model="cCctr.entity.caddress.pincode"
+															placeholder="PinCode" ng-pattern="/^[0-9]*$/"> <span
+															style="color: red"
+															ng-show="addressDetailForm2.submitted || addressDetailForm2.pincode.$dirty && addressDetailForm2.pincode.$invalid">
+															<span class="error"
+															ng-show="addressDetailForm2.pincode.$error.pattern">Please
+																enter valid Pincode</span> <span class="error"
+															ng-show="addressDetailForm2.pincode.$error.maxlength">
+																Pincode should not be greater than 10 digits.</span>
+														</span>
+													</div>
+
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+								<div class="modal-footer">
+
+									<button class="btn btn-success" data-dismiss="modal"
+										onclick="scrollWin()">OK</button>
+									<button class="btn btn-danger" data-dismiss="modal"
+										onclick="scrollWin()">Back</button>
+								</div>
+							</div>
 						</div>
 					</div>
-					<br>
-					<div class="row" style="font-size: 13px;">
-						<div class="col-md-3">
-							<label>Account Type &nbsp;:</label> {{cCctr.entity.bank.acType}}
-						</div>
-						<div class="col-md-3">
-							<label>MICR &nbsp;:</label> {{cCctr.entity.bank.micrNo}}
-						</div>
-					</div>
-					<div class="col-xs-12">
+				</div>
+
+
+ <!-- Bank Account Details-->
+				<div class="tab-pane " id="bankDtls">
+					<hr>
+					<div class="panel panel-default"
+						style="margin-top: -2%; border: none !important;">
+						<div class="panel-body">
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-3">
+									<label>Bank Name &nbsp;:</label> {{cCctr.entity.bank.bankName}}
+								</div>
+								<div class="col-md-3">
+									<label>Account Number &nbsp;:</label>
+									{{cCctr.entity.bank.acNo}}
+								</div>
+								<div class="col-md-3">
+									<label>Branch &nbsp;:</label> {{cCctr.entity.bank.branch}}
+								</div>
+								<div class="col-md-3">
+									<label>IFSC &nbsp;:</label> {{cCctr.entity.bank.ifsc}}
+								</div>
+							</div>
+							<br>
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-3">
+									<label>Account Type &nbsp;:</label>
+									{{cCctr.entity.bank.acType}}
+								</div>
+								<div class="col-md-3">
+									<label>MICR &nbsp;:</label> {{cCctr.entity.bank.micrNo}}
+								</div>
+							</div>
+							<div class="col-xs-12">
 								<div class="text-left">
 									<button class="btn btn-primary" data-toggle="modal"
 										onclick="test('#pensionerbank')">Edit</button>
 								</div>
 							</div>
-				</div>
-			</div>
-			</div>
-			
-			<div id="pensionerbank" class="modal fade" role="dialog">
-				<div class="modal-dialog modal-lg">
-					<!-- Modal content-->
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" id="closeU"
-								data-dismiss="modal">&times;</button>
-							<h4 class="modal-title"><strong>Edit Pensioner Bank Details</strong></h4>
-						</div>
-						<div class="modal-body">
-
-							<div id="myTabContent" class="tab-content">
-								<div class="tab-pane fade active in" id="signin">
-									<form name="pbankForm" class="form-horizontal"
-										enctype="multipart/form-data">
-
-
-										<div class="row">
-											<div class="col-md-6">
-
-												<label>Bank Name</label> <input class="form-control"
-													type="text" name="bankName" placeholder="Bank Name"
-													ng-model="cCctr.entity.bank.bankName" autocomplete="off"
-													ng-pattern="/^[a-zA-Z0-9\s]*$/" ng-required="" 
-													ng- maxlength="100" ng-model-options="{updateOn: 'blur'}" />
-													
-													<span style="color: red" ng-show="pbankForm.submitted || pbankForm.bankName.$dirty && pbankForm.bankName.$invalid">
-									<span class="error" ng-show="pbankForm.bankName.$error.pattern">Please enter valid Bank Name </span> 
-									<span class="error" ng-show="pbankForm.bankName.$error.maxlength">Bank Name should not be greater than 100 characters</span> 
-									
-									</span>
-									<span class="error"
-									id="bankName"></span>
-											</div>
-
-											<div class="col-md-6">
-												<label>Account Number</label> <input class="form-control"
-													type="text" name="acNo" placeholder="Account No"
-													ng-model="cCctr.entity.bank.acNo" autocomplete="off"
-													ng-pattern="/^[a-zA-Z0-9\s]*$/" ng-required="" 
-													ng- maxlength="25" ng-model-options="{updateOn: 'blur'}" />
-													
-													<span style="color: red" ng-show="pbankForm.submitted || pbankForm.acNo.$dirty && pbankForm.acNo.$invalid">
-									<span class="error" ng-show="pbankForm.acNo.$error.pattern">Please enter valid Account Number </span> 
-									<span class="error" ng-show="pbankForm.acNo.$error.maxlength">Account Number should not be greater than 25 characters</span> 
-									
-									</span>
-									<span class="error" id="acNo"></span>
-									
-											</div>
-										</div>
-
-										<div class="row">
-											<div class="col-md-6">
-
-												<label>Branch </label> <input class="form-control"
-													type="text" name="branch" placeholder="Branch"
-													ng-model="cCctr.entity.bank.branch" autocomplete="off"
-													ng-pattern="/^[a-zA-Z0-9\s]*$/" ng-required=""
-													ng- maxlength="50" ng-model-options="{updateOn: 'blur'}" />
-													
-													<span style="color: red" ng-show="pbankForm.submitted || pbankForm.branch.$dirty && pbankFrom.branch.$invalid">
-									<span class="error" ng-show="pbankForm.branch.$error.pattern">Please enter valid Branch </span> 
-									<span class="error" ng-show="pbankForm.branch.$error.maxlength">Branch should not be greater than 50 characters</span> 
-									
-									</span>
-									<span class="error" id="branch"></span>
-											</div>
-
-											<div class="col-md-6">
-												<label>IFSC</label> <input class="form-control" type="text"
-													name="ifsc" placeholder="IFSC"
-													ng-model="cCctr.entity.bank.ifsc" autocomplete="off"
-													ng-pattern="/^[a-zA-Z0-9\s]*$/" ng-required=""
-													ng- maxlength="50" ng-model-options="{updateOn: 'blur'}" />
-													
-													<span style="color: red" ng-show="pbankForm.submitted || pbankForm.ifsc.$dirty && pbankForm.ifsc.$invalid">
-									<span class="error" ng-show="pbankForm.ifsc.$error.pattern">Please enter valid IFSC </span> 
-									<span class="error" ng-show="pbankForm.ifsc.$error.maxlength">IFSC should not be greater than 50 characters</span> 
-									
-									</span>
-									<span class="error" id="ifsc"></span>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<label>Account Type </label> <input class="form-control"
-													type="text" name="acType" placeholder="Account Type"
-													ng-model="cCctr.entity.bank.acType" autocomplete="off" 
-													ng-pattern="/^[a-zA-Z0-9\s]*$/" ng-required=" "
-													ng- maxlength="50" ng-model-options="{updateOn: 'blur'}" />
-													
-													<span style="color: red" ng-show="pbankForm.submitted || pbankForm.acType.$dirty && pbankForm.acType.$invalid">
-									<span class="error" ng-show="pbankForm.acType.$error.pattern">Please enter valid Account Type </span> 
-									<span class="error" ng-show="pbankForm.acType.$error.maxlength">Account Type should not be greater than 50 characters</span> 
-									
-									</span>
-									<span class="error" id="acType"></span>
-											</div>
-											<div class="col-md-6">
-												<label>MICR</label> <input class="form-control" type="text"
-													name="micrNo" placeholder="MICR No."
-													ng-model="cCctr.entity.bank.micrNo" autocomplete="off"
-														ng-pattern="/^[a-zA-Z0-9\s]*$/" ng-required=""
-													ng- maxlength="50" ng-model-options="{updateOn: 'blur'}" />
-													
-													<span style="color: red" ng-show="pbankForm.submitted || pbankForm.micrNo.$dirty && pbankForm.micrNo.$invalid">
-									<span class="error" ng-show="pbankForm.micrNo.$error.pattern">Please enter valid MICR </span> 
-									<span class="error" ng-show="pbankForm.micrNo.$error.maxlength">MICR should not be greater than 50 characters</span> 
-									
-									</span>
-									<span class="error" id="micrNo"></span>
-											</div>
-										</div>
-										</form>
-								</div>
-							</div>
-						
-							<div class="modal-footer">
-								<button
-									ng-click="pbankForm.submitted=true;cCctr.updateData(pbankForm.$valid,'bank',cCctr.entity.bank,'closeU')"
-									class="btn btn-success" data-dismiss="modal">Save</button>
-								<button class="btn btn-danger" data-dismiss="modal">Back</button>
-							</div>
 						</div>
 					</div>
-						
 				</div>
 
-			</div>
-			
-						
-<!-- Pensioner Salary Details -->
-			<div class="tab-pane " id="paymentDtls">
-						<hr>
-              <div class="panel panel-default"
-				style="margin-top: -5%; border: none !important;">
-				<div class="panel-body">
-				<br>
-					<b>Pensioner Salary Details</b>
+				<div id="pensionerbank" class="modal fade" role="dialog">
+					<div class="modal-dialog modal-lg">
+						<!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" id="closeU"
+									data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">
+									<strong>Edit Pensioner Bank Details</strong>
+								</h4>
+							</div>
+							<div class="modal-body">
+
+								<div id="myTabContent" class="tab-content">
+									<div class="tab-pane fade active in" id="signin">
+										<form name="pbankForm" class="form-horizontal"
+											enctype="multipart/form-data">
+
+
+											<div class="row">
+												<div class="col-md-6">
+
+													<label>Bank Name</label> <input class="form-control"
+														type="text" name="bankName" placeholder="Bank Name"
+														ng-model="cCctr.entity.bank.bankName" autocomplete="off"
+														ng-pattern="/^[a-zA-Z0-9\s]*$/" ng-required="" ng-
+														maxlength="100" ng-model-options="{updateOn: 'blur'}" />
+
+													<span style="color: red"
+														ng-show="pbankForm.submitted || pbankForm.bankName.$dirty && pbankForm.bankName.$invalid">
+														<span class="error"
+														ng-show="pbankForm.bankName.$error.pattern">Please
+															enter valid Bank Name </span> <span class="error"
+														ng-show="pbankForm.bankName.$error.maxlength">Bank
+															Name should not be greater than 100 characters</span>
+
+													</span> <span class="error" id="bankName"></span>
+												</div>
+
+												<div class="col-md-6">
+													<label>Account Number</label> <input class="form-control"
+														type="text" name="acNo" placeholder="Account No"
+														ng-model="cCctr.entity.bank.acNo" autocomplete="off"
+														ng-pattern="/^[a-zA-Z0-9\s]*$/" ng-required="" ng-
+														maxlength="25" ng-model-options="{updateOn: 'blur'}" /> <span
+														style="color: red"
+														ng-show="pbankForm.submitted || pbankForm.acNo.$dirty && pbankForm.acNo.$invalid">
+														<span class="error"
+														ng-show="pbankForm.acNo.$error.pattern">Please
+															enter valid Account Number </span> <span class="error"
+														ng-show="pbankForm.acNo.$error.maxlength">Account
+															Number should not be greater than 25 characters</span>
+
+													</span> <span class="error" id="acNo"></span>
+
+												</div>
+											</div>
+
+											<div class="row">
+												<div class="col-md-6">
+
+													<label>Branch </label> <input class="form-control"
+														type="text" name="branch" placeholder="Branch"
+														ng-model="cCctr.entity.bank.branch" autocomplete="off"
+														ng-pattern="/^[a-zA-Z0-9\s]*$/" ng-required="" ng-
+														maxlength="50" ng-model-options="{updateOn: 'blur'}" /> <span
+														style="color: red"
+														ng-show="pbankForm.submitted || pbankForm.branch.$dirty && pbankFrom.branch.$invalid">
+														<span class="error"
+														ng-show="pbankForm.branch.$error.pattern">Please
+															enter valid Branch </span> <span class="error"
+														ng-show="pbankForm.branch.$error.maxlength">Branch
+															should not be greater than 50 characters</span>
+
+													</span> <span class="error" id="branch"></span>
+												</div>
+
+												<div class="col-md-6">
+													<label>IFSC</label> <input class="form-control" type="text"
+														name="ifsc" placeholder="IFSC"
+														ng-model="cCctr.entity.bank.ifsc" autocomplete="off"
+														ng-pattern="/^[a-zA-Z0-9\s]*$/" ng-required="" ng-
+														maxlength="50" ng-model-options="{updateOn: 'blur'}" /> <span
+														style="color: red"
+														ng-show="pbankForm.submitted || pbankForm.ifsc.$dirty && pbankForm.ifsc.$invalid">
+														<span class="error"
+														ng-show="pbankForm.ifsc.$error.pattern">Please
+															enter valid IFSC </span> <span class="error"
+														ng-show="pbankForm.ifsc.$error.maxlength">IFSC
+															should not be greater than 50 characters</span>
+
+													</span> <span class="error" id="ifsc"></span>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-6">
+													<label>Account Type </label> <input class="form-control"
+														type="text" name="acType" placeholder="Account Type"
+														ng-model="cCctr.entity.bank.acType" autocomplete="off"
+														ng-pattern="/^[a-zA-Z0-9\s]*$/" ng-required=" " ng-
+														maxlength="50" ng-model-options="{updateOn: 'blur'}" /> <span
+														style="color: red"
+														ng-show="pbankForm.submitted || pbankForm.acType.$dirty && pbankForm.acType.$invalid">
+														<span class="error"
+														ng-show="pbankForm.acType.$error.pattern">Please
+															enter valid Account Type </span> <span class="error"
+														ng-show="pbankForm.acType.$error.maxlength">Account
+															Type should not be greater than 50 characters</span>
+
+													</span> <span class="error" id="acType"></span>
+												</div>
+												<div class="col-md-6">
+													<label>MICR</label> <input class="form-control" type="text"
+														name="micrNo" placeholder="MICR No."
+														ng-model="cCctr.entity.bank.micrNo" autocomplete="off"
+														ng-pattern="/^[a-zA-Z0-9\s]*$/" ng-required="" ng-
+														maxlength="50" ng-model-options="{updateOn: 'blur'}" /> <span
+														style="color: red"
+														ng-show="pbankForm.submitted || pbankForm.micrNo.$dirty && pbankForm.micrNo.$invalid">
+														<span class="error"
+														ng-show="pbankForm.micrNo.$error.pattern">Please
+															enter valid MICR </span> <span class="error"
+														ng-show="pbankForm.micrNo.$error.maxlength">MICR
+															should not be greater than 50 characters</span>
+
+													</span> <span class="error" id="micrNo"></span>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+
+								<div class="modal-footer">
+									<button
+										ng-click="pbankForm.submitted=true;cCctr.updateData(pbankForm.$valid,'bank',cCctr.entity.bank,'closeU')"
+										class="btn btn-success" data-dismiss="modal">Save</button>
+									<button class="btn btn-danger" data-dismiss="modal">Back</button>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+
+
+ <!-- Pensioner Salary Details -->
+				<div class="tab-pane " id="paymentDtls">
+					<hr>
+					<div class="panel panel-default"
+						style="margin-top: -5%; border: none !important;">
+						<div class="panel-body">
+							<br> <b>Pensioner Salary Details</b>
 							<div class="row" style="font-size: 13px;">
+								<br>
+								<div class="col-md-3">
+									<label>Basic Salary &nbsp;:</label>
+									{{cCctr.entity.psalary.basicSalary}}
+								</div>
+								<div class="col-md-3">
+									<label>HRA &nbsp;:</label> {{cCctr.entity.psalary.hra}}
+								</div>
+								<div class="col-md-3">
+									<label>DA &nbsp;:</label> {{cCctr.entity.psalary.da}}
+								</div>
+								<div class="col-md-3">
+									<label>CCA &nbsp;:</label> {{cCctr.entity.psalary.cca}}
+								</div>
+							</div>
 							<br>
-						<div class="col-md-3">
-							<label>Basic Salary &nbsp;:</label> {{cCctr.entity.psalary.basicSalary}}
-						</div>
-						<div class="col-md-3">
-							<label>HRA &nbsp;:</label> {{cCctr.entity.psalary.hra}}
-						</div>
-						<div class="col-md-3">
-							<label>DA &nbsp;:</label> {{cCctr.entity.psalary.da}}
-						</div>
-						<div class="col-md-3">
-							<label>CCA &nbsp;:</label> {{cCctr.entity.psalary.cca}}
-						</div>
-					</div>
-					<br>
-						
-					<div class="row" style="font-size: 13px;">
-						<div class="col-md-3">
-							<label>Special Allowance &nbsp;:</label> {{cCctr.entity.psalary.specialAllowance}}
-						</div>
-						<div class="col-md-3">
-							<label>Travel Allowance &nbsp;:</label> {{cCctr.entity.psalary.travelAllowance}}
-						</div>
-						<div class="col-md-3">
-							<label>Medical Allowance &nbsp;:</label> {{cCctr.entity.psalary.medicalAllowance}}
-						</div>
-						<div class="col-md-3">
-							<label>EPF Employer Contribution &nbsp;:</label> {{cCctr.entity.psalary.epfEmployerContribution}}
-						</div>
-					</div>
-						<br>
-						
-						<div class="row" style="font-size: 13px;">
-						<div class="col-md-3">
-							<label>EPF Emp Contribution &nbsp;:</label> {{cCctr.entity.psalary.epfEmpContribution}}
-						</div>
-						<div class="col-md-3">
-							<label>Leave Enhancement &nbsp;:</label> {{cCctr.entity.psalary.leaveEnhancement}}
-						</div>
-						<div class="col-md-3">
-							<label>Horanium &nbsp;:</label> {{cCctr.entity.psalary.horanium}}
-						</div>
-						<div class="col-md-3">
-							<label>Add Income &nbsp;:</label> {{cCctr.entity.psalary.addIncome}}
-						</div>
-						
-						
 
-					</div>	
-					<br>
-						<div class="row" style="font-size: 13px;">
-						<div class="col-md-3">
-							<label>Car Perk &nbsp;:</label> {{cCctr.entity.psalary.carPerk}}
-						</div>
-						<div class="col-md-3">
-							<label>Loan Perk &nbsp;:</label> {{cCctr.entity.psalary.loanPerk}}
-						</div>
-						<div class="col-md-3">
-							<label>NPS Employer Contribution &nbsp;:</label> {{cCctr.entity.psalary.npsEmployerContribution}}
-						</div>
-						<div class="col-md-3">
-							<label>NPS Emp Contribution &nbsp;:</label> {{cCctr.entity.psalary.npsEmpContribution}}
-						</div>
-					</div>	
-					<br>
-					<div class="row" style="font-size: 13px;">
-						<div class="col-md-3">
-							<label>TDS &nbsp;:</label> {{cCctr.entity.psalary.tds}}
-						</div>
-						<div class="col-md-3">
-							<label>Other Income &nbsp;:</label> {{cCctr.entity.psalary.otherIncome}}
-						</div>
-						<div class="col-md-3">
-							<label>Month &nbsp;:</label> {{cCctr.entity.psalary.month}}
-						</div>
-					</div>	
-				</div>
-			</div>
-			
-			<div class="col-xs-12">
-								<div class="text-left">
-									<button class="btn btn-primary" data-toggle="modal"
-										onclick="test('#pensionerSalary')">Edit</button>
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-3">
+									<label>Special Allowance &nbsp;:</label>
+									{{cCctr.entity.psalary.specialAllowance}}
 								</div>
+								<div class="col-md-3">
+									<label>Travel Allowance &nbsp;:</label>
+									{{cCctr.entity.psalary.travelAllowance}}
 								</div>
-								
-								
-								
-				<div id="pensionerSalary" class="modal fade" role="dialog">
-				<div class="modal-dialog modal-lg">
-					<!-- Modal content-->
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" id="closeU"
-								data-dismiss="modal">&times;</button>
-							<h4 class="modal-title"><strong>Edit Pensioner Salary Details</strong></h4>
-						</div>
-						<div class="modal-body">
-
-							<div id="myTabContent" class="tab-content">
-								<div class="tab-pane fade active in" id="signin">
-									<form name="pensionerSalaryForm" class="form-horizontal"
-										enctype="multipart/form-data">
-
-
-										<div class="row">
-											<div class="col-md-6">
-
-												<label>Basic Salary</label> <input class="form-control"
-													type="text" name="basicSalary" placeholder="Basic Salary"
-													ng-model="cCctr.entity.psalary.basicSalary" autocomplete="off"
-													ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-model-options="{updateOn: 'blur'}"
-													ng-maxlength="15" />
-													<span style="color: red" ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.basicSalary.$dirty && pensionerSalaryForm.basicSalary.$invalid">
-									               <span class="error" ng-show="pensionerSalaryForm.basicSalary.$error.pattern">Please enter valid Basic Salary</span>
-									                <span class="error" ng-show="pensionerSalaryForm.basicSalary.$error.maxlength">Basic Salary should not be greater than 15 digits</span>
-													 </span>
-
-											</div>
-
-											<div class="col-md-6">
-												<label>HRA</label> <input class="form-control"
-													type="text" name="hra" placeholder="HRA"
-													ng-model="cCctr.entity.psalary.hra" autocomplete="off"
-													ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-model-options="{updateOn: 'blur'}"
-													ng-maxlength="20" />
-													<span style="color: red" ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.hra.$dirty && pensionerSalaryForm.hra.$invalid">
-													 <span class="error" ng-show="pensionSalaryForm.hra.$error.maxlength">HRA should not be greater than 20 digit.</span>
-													<span class="error" ng-show="pensionerSalaryForm.hra.$error.pattern">Please enter valid HRA</span>
-													 </span>
-											</div>
-
-										</div>
-
-										<div class="row">
-											<div class="col-md-6">
-
-												<label>DA </label> <input class="form-control"
-													type="text" name="da" placeholder="DA"
-													ng-model="cCctr.entity.psalary.da" autocomplete="off"
-													ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-model-options="{updateOn: 'blur'}"
-													ng-maxlength="30" />
-													<span style="color: red" ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.da.$dirty && pensionerSalaryForm.da.$invalid">
-													 <span class="error" ng-show="pensionSalaryForm.da.$error.maxlength">DA should not be greater than 30 digit.</span>
-													<span class="error" ng-show="pensionerSalaryForm.da.$error.pattern">Please enter valid DA</span>
-													 </span>
-											</div>
-											<div class="col-md-6">
-												<label>CCA</label> <input class="form-control" type="text"
-													name="cca" placeholder="CCA"
-													ng-model="cCctr.entity.psalary.cca" autocomplete="off"
-													ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-model-options="{updateOn: 'blur'}"
-													ng-maxlength="20" /> 
-													<span style="color: red" ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.cca.$dirty && pensionerSalaryForm.cca.$invalid">
-													 <span class="error" ng-show="pensionSalaryForm.cca.$error.maxlength">CCA should not be greater than 20 digit.</span>
-													<span class="error" ng-show="pensionerSalaryForm.cca.$error.pattern">Please enter valid CCA</span>
-													 </span>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<label>Special Allowance </label> <input class="form-control"
-													type="text" name="specialAllowance" placeholder="Special Allowance" 
-													ng-model="cCctr.entity.psalary.specialAllowance"
-													autocomplete="off" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
-													ng-model-options="{updateOn: 'blur'}" ng-maxlength="20"  />
-													<span style="color: red" ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.specialAllowance.$dirty && pensionerSalaryForm.specialAllowance.$invalid">
-													 <span class="error" ng-show="pensionSalaryForm.specialAllowance.$error.maxlength">Special Allowance should not be greater than 20 digit.</span>
-													<span class="error" ng-show="pensionerSalaryForm.specialAllowance.$error.pattern">Please enter valid Special Allowance</span>
-													 </span>
-											</div>
-											<div class="col-md-6">
-												<label>Travel Allowance</label> <input class="form-control" type="text"
-													name="travelAllowance" placeholder="Travel Allowance" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
-													ng-model="cCctr.entity.psalary.travelAllowance" autocomplete="off"
-													ng-model-options="{updateOn: 'blur'}" ng-maxlength="20" />
-												<span style="color: red" ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.travelAllowance.$dirty && pensionerSalaryForm.travelAllowance.$invalid">
-													 <span class="error" ng-show="pensionSalaryForm.travelAllowance.$error.maxlength">Travel Allowance should not be greater than 20 digit.</span>
-													<span class="error" ng-show="pensionerSalaryForm.travelAllowance.$error.pattern">Please enter valid Travel Allowance</span>
-													 </span>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<label>Medical Allowance</label> <input class="form-control"
-													type="text" name="medicalAllowance" placeholder="Medical Allowance"
-													ng-model="cCctr.entity.psalary.medicalAllowance"
-													autocomplete="off" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
-													ng-model-options="{updateOn: 'blur'}" ng-maxlength="20" />
-													<span style="color: red" ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.medicalAllowance.$dirty && pensionerSalaryForm.medicalAllowance.$invalid">
-													 <span class="error" ng-show="pensionSalaryForm.medicalAllowance.$error.maxlength">Medical Allowance should not be greater than 20 digit.</span>
-													<span class="error" ng-show="pensionerSalaryForm.medicalAllowance.$error.pattern">Please enter valid Medical Allowance</span>
-													 </span>
-											</div>
-											<div class="col-md-6">
-
-												<label>EPF Employer Contribution</label> <input class="form-control" type="text"
-													name="epfEmployerContribution" placeholder="EPF Employer Contribution" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
-													ng-model="cCctr.entity.psalary.epfEmployerContribution" autocomplete="off"
-													ng-model-options="{updateOn: 'blur'}" ng-maxlength="20" />
-													<span style="color: red" ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.epfEmployerContribution.$dirty && pensionerSalaryForm.epfEmployerContribution.$invalid">
-													 <span class="error" ng-show="pensionSalaryForm.epfEmployerContribution.$error.maxlength">EPF Employer Contribution should not be greater than 20 digit.</span>
-													<span class="error" ng-show="pensionerSalaryForm.epfEmployerContribution.$error.pattern">Please enter valid EPF Employer Contribution</span>
-													 </span>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-
-												<label>EPF Employee Contribution </label> <input class="form-control"
-													type="text" name="epfEmpContribution" placeholder="EPF Employee Contribution"
-													ng-model="cCctr.entity.psalary.epfEmpContribution"
-													autocomplete="off" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
-													ng-model-options="{updateOn: 'blur'}" ng-maxlength="20" />
-													<span style="color: red" ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.epfEmpContribution.$dirty && pensionerSalaryForm.epfEmpContribution.$invalid">
-													 <span class="error" ng-show="pensionSalaryForm.epfEmpContribution.$error.maxlength">EPF Employee Contribution should not be greater than 20 digit.</span>
-													<span class="error" ng-show="pensionerSalaryForm.epfEmpContribution.$error.pattern">Please enter valid EPF Employee Contribution</span>
-													 </span>
-											</div>
-											<div class="col-md-6">
-
-												<label>Leave Enhancement</label> <input class="form-control" type="text"
-													name="leaveEnhancement" placeholder="Leave Enhancement" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
-													ng-model="cCctr.entity.psalary.leaveEnhancement" autocomplete="off"
-													ng-model-options="{updateOn: 'blur'}" ng-maxlength="20" />
-													<span style="color: red" ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.leaveEnhancement.$dirty && pensionerSalaryForm.leaveEnhancement.$invalid">
-													 <span class="error" ng-show="pensionSalaryForm.leaveEnhancement.$error.maxlength">Leave Enhancement should not be greater than 20 digit.</span>
-													<span class="error" ng-show="pensionerSalaryForm.leaveEnhancement.$error.pattern">Please enter valid Leave Enhancement</span>
-													 </span>
-											</div>
-										</div>
-										
-										<div class="row">
-											<div class="col-md-6">
-
-												<label>Horanium </label> <input class="form-control"
-													type="text" name="horanium" placeholder="Horanium"
-													ng-model="cCctr.entity.psalary.horanium" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
-													autocomplete="off" ng-pattern=""
-													ng-model-options="{updateOn: 'blur'}" ng-maxlength="20" />
-													<span style="color: red" ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.horanium.$dirty && pensionerSalaryForm.horanium.$invalid">
-													 <span class="error" ng-show="pensionSalaryForm.horanium.$error.maxlength">Horanium  should not be greater than 20 digit.</span>
-													<span class="error" ng-show="pensionerSalaryForm.horanium.$error.pattern">Please enter valid Horanium </span>
-													 </span>
-											</div>
-											<div class="col-md-6">
-
-												<label>Add Income</label> <input class="form-control" type="text"
-													name="addIncome" placeholder="Add Income" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
-													ng-model="cCctr.entity.psalary.addIncome" autocomplete="off"
-													ng-model-options="{updateOn: 'blur'}" ng-maxlength="20" />
-													<span style="color: red" ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.addIncome.$dirty && pensionerSalaryForm.addIncome.$invalid">
-													 <span class="error" ng-show="pensionSalaryForm.addIncome.$error.maxlength">Add Income  should not be greater than 20 digit.</span>
-													<span class="error" ng-show="pensionerSalaryForm.addIncome.$error.pattern">Please enter valid Add Income </span>
-													 </span>
-											</div>
-										</div>
-										
-										<div class="row">
-											<div class="col-md-6">
-
-												<label>Car Perk</label> <input class="form-control"
-													type="text" name="carPerk" placeholder="Car Perk"
-													ng-model="cCctr.entity.psalary.carPerk"
-													autocomplete="off" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
-													ng-model-options="{updateOn: 'blur'}" ng-maxlength="20" />
-													<span style="color: red" ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.carPerk.$dirty && pensionerSalaryForm.carPerk.$invalid">
-													 <span class="error" ng-show="pensionSalaryForm.carPerk.$error.maxlength">Car Perk  should not be greater than 20 digit.</span>
-													<span class="error" ng-show="pensionerSalaryForm.carPerk.$error.pattern">Please enter valid Car Perk </span>
-													 </span>
-											</div>
-											<div class="col-md-6">
-
-												<label>Loan Perk</label> <input class="form-control" type="text"
-													name="loanPerk" placeholder="Loan Perk" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
-													ng-model="cCctr.entity.psalary.loanPerk" autocomplete="off"
-													ng-model-options="{updateOn: 'blur'}" ng-maxlength="20" />
-													<span style="color: red" ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.loanPerk.$dirty && pensionerSalaryForm.loanPerk.$invalid">
-													 <span class="error" ng-show="pensionSalaryForm.loanPerk.$error.maxlength">Loan Perk  should not be greater than 20 digit.</span>
-													<span class="error" ng-show="pensionerSalaryForm.loanPerk.$error.pattern">Please enter valid Loan Perk </span>
-													 </span>
-											</div>
-										</div>
-										
-										<div class="row">
-											<div class="col-md-6">
-
-												<label>NPS Employer Contribution</label> <input class="form-control"
-													type="text" name="npsEmployerContribution" placeholder="NPS Employer Contribution"
-													ng-model="cCctr.entity.psalary.npsEmployerContribution"
-													autocomplete="off" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
-													ng-model-options="{updateOn: 'blur'}" ng-maxlength="20" />
-													<span style="color: red" ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.npsEmployerContribution.$dirty && pensionerSalaryForm.npsEmployerContribution.$invalid">
-													 <span class="error" ng-show="pensionSalaryForm.npsEmployerContribution.$error.maxlength">NPS Employer Contribution  should not be greater than 20 digit.</span>
-													<span class="error" ng-show="pensionerSalaryForm.npsEmployerContribution.$error.pattern">Please enter valid NPS Employer Contribution </span>
-													 </span>
-											</div>
-											<div class="col-md-6">
-
-												<label>NPS Employee Contribution</label> <input class="form-control" type="text"
-													name="npsEmpContribution" placeholder="NPS Employee Contribution"
-													ng-model="cCctr.entity.psalary.npsEmpContribution" autocomplete="off" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
-													ng-model-options="{updateOn: 'blur'}" ng-maxlength="20" />
-													<span style="color: red" ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.npsEmpContribution.$dirty && pensionerSalaryForm.npsEmpContribution.$invalid">
-													 <span class="error" ng-show="pensionSalaryForm.npsEmpContribution.$error.maxlength">NPS Employee Contribution  should not be greater than 20 digit.</span>
-													<span class="error" ng-show="pensionerSalaryForm.npsEmpContribution.$error.pattern">Please enter valid NPS Employee Contribution </span>
-													 </span>
-											</div>
-										</div>
-										
-										<div class="row">
-											<div class="col-md-6">
-
-												<label>TDS</label> <input class="form-control"
-													type="text" name="tds" placeholder="TDS"
-													ng-model="cCctr.entity.psalary.tds"
-													autocomplete="off" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
-													ng-model-options="{updateOn: 'blur'}" ng-maxlength="20" />
-													<span style="color: red" ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.tds.$dirty && pensionerSalaryForm.tds.$invalid">
-													 <span class="error" ng-show="pensionSalaryForm.tds.$error.maxlength">TDS  should not be greater than 20 digit.</span>
-													<span class="error" ng-show="pensionerSalaryForm.tds.$error.pattern">Please enter valid TDS </span>
-													 </span>
-											</div>
-											<div class="col-md-6">
-
-												<label>Other Income</label> <input class="form-control" type="text"
-													name="otherIncome" placeholder="Other Income"
-													ng-model="cCctr.entity.psalary.otherIncome" autocomplete="off"
-													ng-model-options="{updateOn: 'blur'}" ng-maxlength="20" />
-													<span style="color: red" ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.otherIncome.$dirty && pensionerSalaryForm.otherIncome.$invalid">
-													 <span class="error" ng-show="pensionSalaryForm.otherIncome.$error.maxlength">Other Income  should not be greater than 20 digit.</span>
-													<span class="error" ng-show="pensionerSalaryForm.otherIncome.$error.pattern">Please enter valid Other Income </span>
-													 </span>
-											</div>
-										</div>
-										
-										<div class="row">
-											<div class="col-md-6">
-
-												<label>Month</label> <input class="form-control"
-													type="text" name="month" placeholder="Month"
-													ng-model="cCctr.entity.psalary.month"
-													autocomplete="off" ng-pattern="/^[a-zA-z]*$/"
-													ng-model-options="{updateOn: 'blur'}" />
-													<span style="color: red" ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.month.$dirty && pensionerSalaryForm.month.$invalid">
-													<span class="error" ng-show="pensionerSalaryForm.month.$error.pattern">Please enter valid Month </span>
-													 </span>
-											</div>
-											</div>
-										
-										</form>
+								<div class="col-md-3">
+									<label>Medical Allowance &nbsp;:</label>
+									{{cCctr.entity.psalary.medicalAllowance}}
+								</div>
+								<div class="col-md-3">
+									<label>EPF Employer Contribution &nbsp;:</label>
+									{{cCctr.entity.psalary.epfEmployerContribution}}
 								</div>
 							</div>
-							<div class="modal-footer">
-								<button
-									ng-click="pensionerSalaryForm.submitted=true;cCctr.updateData(pensionerSalaryForm.$valid,'pensionerSalary',cCctr.entity.psalary,'closeU')"
-									class="btn btn-success" data-dismiss="modal">Save</button>
-								<button class="btn btn-danger" data-dismiss="modal">Back</button>
+							<br>
+
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-3">
+									<label>EPF Emp Contribution &nbsp;:</label>
+									{{cCctr.entity.psalary.epfEmpContribution}}
+								</div>
+								<div class="col-md-3">
+									<label>Leave Enhancement &nbsp;:</label>
+									{{cCctr.entity.psalary.leaveEnhancement}}
+								</div>
+								<div class="col-md-3">
+									<label>Horanium &nbsp;:</label>
+									{{cCctr.entity.psalary.horanium}}
+								</div>
+								<div class="col-md-3">
+									<label>Add Income &nbsp;:</label>
+									{{cCctr.entity.psalary.addIncome}}
+								</div>
+
+
+
+							</div>
+							<br>
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-3">
+									<label>Car Perk &nbsp;:</label>
+									{{cCctr.entity.psalary.carPerk}}
+								</div>
+								<div class="col-md-3">
+									<label>Loan Perk &nbsp;:</label>
+									{{cCctr.entity.psalary.loanPerk}}
+								</div>
+								<div class="col-md-3">
+									<label>NPS Employer Contribution &nbsp;:</label>
+									{{cCctr.entity.psalary.npsEmployerContribution}}
+								</div>
+								<div class="col-md-3">
+									<label>NPS Emp Contribution &nbsp;:</label>
+									{{cCctr.entity.psalary.npsEmpContribution}}
+								</div>
+							</div>
+							<br>
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-3">
+									<label>TDS &nbsp;:</label> {{cCctr.entity.psalary.tds}}
+								</div>
+								<div class="col-md-3">
+									<label>Other Income &nbsp;:</label>
+									{{cCctr.entity.psalary.otherIncome}}
+								</div>
+								<div class="col-md-3">
+									<label>Month &nbsp;:</label> {{cCctr.entity.psalary.month}}
+								</div>
 							</div>
 						</div>
 					</div>
+
+					<div class="col-xs-12">
+						<div class="text-left">
+							<button class="btn btn-primary" data-toggle="modal"
+								onclick="test('#pensionerSalary')">Edit</button>
+						</div>
+					</div>
+
+
+
+					<div id="pensionerSalary" class="modal fade" role="dialog">
+						<div class="modal-dialog modal-lg">
+							<!-- Modal content-->
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" id="closeU"
+										data-dismiss="modal">&times;</button>
+									<h4 class="modal-title">
+										<strong>Edit Pensioner Salary Details</strong>
+									</h4>
+								</div>
+								<div class="modal-body">
+
+									<div id="myTabContent" class="tab-content">
+										<div class="tab-pane fade active in" id="signin">
+											<form name="pensionerSalaryForm" class="form-horizontal"
+												enctype="multipart/form-data">
+
+
+												<div class="row">
+													<div class="col-md-6">
+
+														<label>Basic Salary</label> <input class="form-control"
+															type="text" name="basicSalary" placeholder="Basic Salary"
+															ng-model="cCctr.entity.psalary.basicSalary"
+															autocomplete="off" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+															ng-model-options="{updateOn: 'blur'}" ng-maxlength="15" />
+														<span style="color: red"
+															ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.basicSalary.$dirty && pensionerSalaryForm.basicSalary.$invalid">
+															<span class="error"
+															ng-show="pensionerSalaryForm.basicSalary.$error.pattern">Please
+																enter valid Basic Salary</span> <span class="error"
+															ng-show="pensionerSalaryForm.basicSalary.$error.maxlength">Basic
+																Salary should not be greater than 15 digits</span>
+														</span>
+
+													</div>
+
+													<div class="col-md-6">
+														<label>HRA</label> <input class="form-control" type="text"
+															name="hra" placeholder="HRA"
+															ng-model="cCctr.entity.psalary.hra" autocomplete="off"
+															ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+															ng-model-options="{updateOn: 'blur'}" ng-maxlength="20" />
+														<span style="color: red"
+															ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.hra.$dirty && pensionerSalaryForm.hra.$invalid">
+															<span class="error"
+															ng-show="pensionSalaryForm.hra.$error.maxlength">HRA
+																should not be greater than 20 digit.</span> <span class="error"
+															ng-show="pensionerSalaryForm.hra.$error.pattern">Please
+																enter valid HRA</span>
+														</span>
+													</div>
+
+												</div>
+
+												<div class="row">
+													<div class="col-md-6">
+
+														<label>DA </label> <input class="form-control" type="text"
+															name="da" placeholder="DA"
+															ng-model="cCctr.entity.psalary.da" autocomplete="off"
+															ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+															ng-model-options="{updateOn: 'blur'}" ng-maxlength="30" />
+														<span style="color: red"
+															ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.da.$dirty && pensionerSalaryForm.da.$invalid">
+															<span class="error"
+															ng-show="pensionSalaryForm.da.$error.maxlength">DA
+																should not be greater than 30 digit.</span> <span class="error"
+															ng-show="pensionerSalaryForm.da.$error.pattern">Please
+																enter valid DA</span>
+														</span>
+													</div>
+													<div class="col-md-6">
+														<label>CCA</label> <input class="form-control" type="text"
+															name="cca" placeholder="CCA"
+															ng-model="cCctr.entity.psalary.cca" autocomplete="off"
+															ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+															ng-model-options="{updateOn: 'blur'}" ng-maxlength="20" />
+														<span style="color: red"
+															ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.cca.$dirty && pensionerSalaryForm.cca.$invalid">
+															<span class="error"
+															ng-show="pensionSalaryForm.cca.$error.maxlength">CCA
+																should not be greater than 20 digit.</span> <span class="error"
+															ng-show="pensionerSalaryForm.cca.$error.pattern">Please
+																enter valid CCA</span>
+														</span>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-md-6">
+														<label>Special Allowance </label> <input
+															class="form-control" type="text" name="specialAllowance"
+															placeholder="Special Allowance"
+															ng-model="cCctr.entity.psalary.specialAllowance"
+															autocomplete="off" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+															ng-model-options="{updateOn: 'blur'}" ng-maxlength="20" />
+														<span style="color: red"
+															ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.specialAllowance.$dirty && pensionerSalaryForm.specialAllowance.$invalid">
+															<span class="error"
+															ng-show="pensionSalaryForm.specialAllowance.$error.maxlength">Special
+																Allowance should not be greater than 20 digit.</span> <span
+															class="error"
+															ng-show="pensionerSalaryForm.specialAllowance.$error.pattern">Please
+																enter valid Special Allowance</span>
+														</span>
+													</div>
+													<div class="col-md-6">
+														<label>Travel Allowance</label> <input
+															class="form-control" type="text" name="travelAllowance"
+															placeholder="Travel Allowance"
+															ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+															ng-model="cCctr.entity.psalary.travelAllowance"
+															autocomplete="off" ng-model-options="{updateOn: 'blur'}"
+															ng-maxlength="20" /> <span style="color: red"
+															ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.travelAllowance.$dirty && pensionerSalaryForm.travelAllowance.$invalid">
+															<span class="error"
+															ng-show="pensionSalaryForm.travelAllowance.$error.maxlength">Travel
+																Allowance should not be greater than 20 digit.</span> <span
+															class="error"
+															ng-show="pensionerSalaryForm.travelAllowance.$error.pattern">Please
+																enter valid Travel Allowance</span>
+														</span>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-md-6">
+														<label>Medical Allowance</label> <input
+															class="form-control" type="text" name="medicalAllowance"
+															placeholder="Medical Allowance"
+															ng-model="cCctr.entity.psalary.medicalAllowance"
+															autocomplete="off" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+															ng-model-options="{updateOn: 'blur'}" ng-maxlength="20" />
+														<span style="color: red"
+															ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.medicalAllowance.$dirty && pensionerSalaryForm.medicalAllowance.$invalid">
+															<span class="error"
+															ng-show="pensionSalaryForm.medicalAllowance.$error.maxlength">Medical
+																Allowance should not be greater than 20 digit.</span> <span
+															class="error"
+															ng-show="pensionerSalaryForm.medicalAllowance.$error.pattern">Please
+																enter valid Medical Allowance</span>
+														</span>
+													</div>
+													<div class="col-md-6">
+
+														<label>EPF Employer Contribution</label> <input
+															class="form-control" type="text"
+															name="epfEmployerContribution"
+															placeholder="EPF Employer Contribution"
+															ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+															ng-model="cCctr.entity.psalary.epfEmployerContribution"
+															autocomplete="off" ng-model-options="{updateOn: 'blur'}"
+															ng-maxlength="20" /> <span style="color: red"
+															ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.epfEmployerContribution.$dirty && pensionerSalaryForm.epfEmployerContribution.$invalid">
+															<span class="error"
+															ng-show="pensionSalaryForm.epfEmployerContribution.$error.maxlength">EPF
+																Employer Contribution should not be greater than 20
+																digit.</span> <span class="error"
+															ng-show="pensionerSalaryForm.epfEmployerContribution.$error.pattern">Please
+																enter valid EPF Employer Contribution</span>
+														</span>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-md-6">
+
+														<label>EPF Employee Contribution </label> <input
+															class="form-control" type="text"
+															name="epfEmpContribution"
+															placeholder="EPF Employee Contribution"
+															ng-model="cCctr.entity.psalary.epfEmpContribution"
+															autocomplete="off" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+															ng-model-options="{updateOn: 'blur'}" ng-maxlength="20" />
+														<span style="color: red"
+															ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.epfEmpContribution.$dirty && pensionerSalaryForm.epfEmpContribution.$invalid">
+															<span class="error"
+															ng-show="pensionSalaryForm.epfEmpContribution.$error.maxlength">EPF
+																Employee Contribution should not be greater than 20
+																digit.</span> <span class="error"
+															ng-show="pensionerSalaryForm.epfEmpContribution.$error.pattern">Please
+																enter valid EPF Employee Contribution</span>
+														</span>
+													</div>
+													<div class="col-md-6">
+
+														<label>Leave Enhancement</label> <input
+															class="form-control" type="text" name="leaveEnhancement"
+															placeholder="Leave Enhancement"
+															ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+															ng-model="cCctr.entity.psalary.leaveEnhancement"
+															autocomplete="off" ng-model-options="{updateOn: 'blur'}"
+															ng-maxlength="20" /> <span style="color: red"
+															ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.leaveEnhancement.$dirty && pensionerSalaryForm.leaveEnhancement.$invalid">
+															<span class="error"
+															ng-show="pensionSalaryForm.leaveEnhancement.$error.maxlength">Leave
+																Enhancement should not be greater than 20 digit.</span> <span
+															class="error"
+															ng-show="pensionerSalaryForm.leaveEnhancement.$error.pattern">Please
+																enter valid Leave Enhancement</span>
+														</span>
+													</div>
+												</div>
+
+												<div class="row">
+													<div class="col-md-6">
+
+														<label>Horanium </label> <input class="form-control"
+															type="text" name="horanium" placeholder="Horanium"
+															ng-model="cCctr.entity.psalary.horanium"
+															ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" autocomplete="off"
+															ng-pattern="" ng-model-options="{updateOn: 'blur'}"
+															ng-maxlength="20" /> <span style="color: red"
+															ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.horanium.$dirty && pensionerSalaryForm.horanium.$invalid">
+															<span class="error"
+															ng-show="pensionSalaryForm.horanium.$error.maxlength">Horanium
+																should not be greater than 20 digit.</span> <span class="error"
+															ng-show="pensionerSalaryForm.horanium.$error.pattern">Please
+																enter valid Horanium </span>
+														</span>
+													</div>
+													<div class="col-md-6">
+
+														<label>Add Income</label> <input class="form-control"
+															type="text" name="addIncome" placeholder="Add Income"
+															ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+															ng-model="cCctr.entity.psalary.addIncome"
+															autocomplete="off" ng-model-options="{updateOn: 'blur'}"
+															ng-maxlength="20" /> <span style="color: red"
+															ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.addIncome.$dirty && pensionerSalaryForm.addIncome.$invalid">
+															<span class="error"
+															ng-show="pensionSalaryForm.addIncome.$error.maxlength">Add
+																Income should not be greater than 20 digit.</span> <span
+															class="error"
+															ng-show="pensionerSalaryForm.addIncome.$error.pattern">Please
+																enter valid Add Income </span>
+														</span>
+													</div>
+												</div>
+
+												<div class="row">
+													<div class="col-md-6">
+
+														<label>Car Perk</label> <input class="form-control"
+															type="text" name="carPerk" placeholder="Car Perk"
+															ng-model="cCctr.entity.psalary.carPerk"
+															autocomplete="off" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+															ng-model-options="{updateOn: 'blur'}" ng-maxlength="20" />
+														<span style="color: red"
+															ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.carPerk.$dirty && pensionerSalaryForm.carPerk.$invalid">
+															<span class="error"
+															ng-show="pensionSalaryForm.carPerk.$error.maxlength">Car
+																Perk should not be greater than 20 digit.</span> <span
+															class="error"
+															ng-show="pensionerSalaryForm.carPerk.$error.pattern">Please
+																enter valid Car Perk </span>
+														</span>
+													</div>
+													<div class="col-md-6">
+
+														<label>Loan Perk</label> <input class="form-control"
+															type="text" name="loanPerk" placeholder="Loan Perk"
+															ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+															ng-model="cCctr.entity.psalary.loanPerk"
+															autocomplete="off" ng-model-options="{updateOn: 'blur'}"
+															ng-maxlength="20" /> <span style="color: red"
+															ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.loanPerk.$dirty && pensionerSalaryForm.loanPerk.$invalid">
+															<span class="error"
+															ng-show="pensionSalaryForm.loanPerk.$error.maxlength">Loan
+																Perk should not be greater than 20 digit.</span> <span
+															class="error"
+															ng-show="pensionerSalaryForm.loanPerk.$error.pattern">Please
+																enter valid Loan Perk </span>
+														</span>
+													</div>
+												</div>
+
+												<div class="row">
+													<div class="col-md-6">
+
+														<label>NPS Employer Contribution</label> <input
+															class="form-control" type="text"
+															name="npsEmployerContribution"
+															placeholder="NPS Employer Contribution"
+															ng-model="cCctr.entity.psalary.npsEmployerContribution"
+															autocomplete="off" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+															ng-model-options="{updateOn: 'blur'}" ng-maxlength="20" />
+														<span style="color: red"
+															ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.npsEmployerContribution.$dirty && pensionerSalaryForm.npsEmployerContribution.$invalid">
+															<span class="error"
+															ng-show="pensionSalaryForm.npsEmployerContribution.$error.maxlength">NPS
+																Employer Contribution should not be greater than 20
+																digit.</span> <span class="error"
+															ng-show="pensionerSalaryForm.npsEmployerContribution.$error.pattern">Please
+																enter valid NPS Employer Contribution </span>
+														</span>
+													</div>
+													<div class="col-md-6">
+
+														<label>NPS Employee Contribution</label> <input
+															class="form-control" type="text"
+															name="npsEmpContribution"
+															placeholder="NPS Employee Contribution"
+															ng-model="cCctr.entity.psalary.npsEmpContribution"
+															autocomplete="off" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+															ng-model-options="{updateOn: 'blur'}" ng-maxlength="20" />
+														<span style="color: red"
+															ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.npsEmpContribution.$dirty && pensionerSalaryForm.npsEmpContribution.$invalid">
+															<span class="error"
+															ng-show="pensionSalaryForm.npsEmpContribution.$error.maxlength">NPS
+																Employee Contribution should not be greater than 20
+																digit.</span> <span class="error"
+															ng-show="pensionerSalaryForm.npsEmpContribution.$error.pattern">Please
+																enter valid NPS Employee Contribution </span>
+														</span>
+													</div>
+												</div>
+
+												<div class="row">
+													<div class="col-md-6">
+
+														<label>TDS</label> <input class="form-control" type="text"
+															name="tds" placeholder="TDS"
+															ng-model="cCctr.entity.psalary.tds" autocomplete="off"
+															ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+															ng-model-options="{updateOn: 'blur'}" ng-maxlength="20" />
+														<span style="color: red"
+															ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.tds.$dirty && pensionerSalaryForm.tds.$invalid">
+															<span class="error"
+															ng-show="pensionSalaryForm.tds.$error.maxlength">TDS
+																should not be greater than 20 digit.</span> <span class="error"
+															ng-show="pensionerSalaryForm.tds.$error.pattern">Please
+																enter valid TDS </span>
+														</span>
+													</div>
+													<div class="col-md-6">
+
+														<label>Other Income</label> <input class="form-control"
+															type="text" name="otherIncome" placeholder="Other Income"
+															ng-model="cCctr.entity.psalary.otherIncome"
+															autocomplete="off" ng-model-options="{updateOn: 'blur'}"
+															ng-maxlength="20" /> <span style="color: red"
+															ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.otherIncome.$dirty && pensionerSalaryForm.otherIncome.$invalid">
+															<span class="error"
+															ng-show="pensionSalaryForm.otherIncome.$error.maxlength">Other
+																Income should not be greater than 20 digit.</span> <span
+															class="error"
+															ng-show="pensionerSalaryForm.otherIncome.$error.pattern">Please
+																enter valid Other Income </span>
+														</span>
+													</div>
+												</div>
+
+												<div class="row">
+													<div class="col-md-6">
+
+														<label>Month</label> <input class="form-control"
+															type="text" name="month" placeholder="Month"
+															ng-model="cCctr.entity.psalary.month" autocomplete="off"
+															ng-pattern="/^[a-zA-z]*$/"
+															ng-model-options="{updateOn: 'blur'}" /> <span
+															style="color: red"
+															ng-show="pensionerSalaryForm.submitted || pensionerSalaryForm.month.$dirty && pensionerSalaryForm.month.$invalid">
+															<span class="error"
+															ng-show="pensionerSalaryForm.month.$error.pattern">Please
+																enter valid Month </span>
+														</span>
+													</div>
+												</div>
+
+											</form>
+										</div>
+									</div>
+									<div class="modal-footer">
+										<button
+											ng-click="pensionerSalaryForm.submitted=true;cCctr.updateData(pensionerSalaryForm.$valid,'pensionerSalary',cCctr.entity.psalary,'closeU')"
+											class="btn btn-success" data-dismiss="modal">Save</button>
+										<button class="btn btn-danger" data-dismiss="modal">Back</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
+
+
+
+
 			</div>
-		</div>
-		
-		
-		
-		
 		</div>
 	</div>
-</div>
 </div>
 
 

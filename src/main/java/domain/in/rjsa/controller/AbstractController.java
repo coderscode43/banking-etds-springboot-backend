@@ -186,9 +186,7 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 		if (entity.containsKey("clientId")) {
 			entity.put("clientId", l.getClientId());
 		}
-		if (entity.containsKey("employeeId")) {
-//		entity.put("employeeId",  l.getEmployeeId());
-		}
+
 		JsonElement jsonElement = gson.toJsonTree(entity);
 
 		getService().save(gson.fromJson(jsonElement, getEntity()));

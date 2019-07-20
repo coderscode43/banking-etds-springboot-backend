@@ -14,7 +14,9 @@
 								<input class="form-control"
 									 type="text" name="vendorNo" placeholder="Vendor No"
 									 ng-model="cCctr.entity.vendorNo" autocomplete="off"
-									 ng-maxlength="50" ng-required="true"
+									 ng-maxlength="50" 
+									  ng-pattern="/^[0-9]*$/" 
+									 ng-required="true"
 									 ng-model-options="{updateOn: 'blur'}" />
 									 <span  style="color: red"
 									 ng-show="employeeDetailForm.submitted || employeeDetailForm.vendorNo.$dirty && employeeDetailForm.vendorNo.$invalid">
@@ -71,6 +73,7 @@
 									placeholder="GST No" 
 									ng-model="cCctr.entity.gstNo"
 									autocomplete="off" 
+									 ng-pattern="/^[0-9]*$/" 
 									ng-maxlength="50" 
 									ng-required="true"
 									ng-model-options="{updateOn: 'blur'}" /> 

@@ -110,14 +110,14 @@
 									autocomplete="off" 
 									ng-maxlength="10" 
 									ng-required="true"
-									ng-pattern="/^([0-9]{1})([0-9]{9})$/"
+									ng-pattern="/^\s*$|^$|^[7-9][0-9]{9}$/"
 									ng-model-options="{updateOn: 'blur'}" /> 
-									<span style="color: red" ng-show="employeeDetailForm.submitted ||employeeDetailForm.mobile.$dirty && employeeDetailForm.mobile.$invalid">
-									<span class="error" ng-show="employeeDetailForm.mobile.$error.pattern">Please enter valid Mobile No..</span> 
-									<span class="error" ng-show="employeeDetailForm.mobile.$error.maxlength">Mobile No. should not be greater than 10 characters</span>
-                                    <span class="error" ng-show="employeeDetailForm.mobile.$error.required">Mobile is Required.</span>
+									<span style="color: red" ng-show="employeeDetailForm.submitted ||employeeDetailForm.mobNo.$dirty && employeeDetailForm.mobNo.$invalid">
+									<span class="error" ng-show="employeeDetailForm.mobNo.$error.pattern">Please enter valid Mobile No..</span> 
+									<span class="error" ng-show="employeeDetailForm.mobNo.$error.maxlength">Mobile No. should not be greater than 10 characters</span>
+                                    <span class="error" ng-show="employeeDetailForm.mobNo.$error.required">Mobile is Required.</span>
                                    </span>
-								 <span class="error" id="mobile"></span>
+								 <span class="error" id="mobNo"></span>
 							</div>
 
 						</div>
@@ -166,8 +166,8 @@
 								<label>Telephone Number</label> <input class="form-control"
 									type="text" name="telNo" placeholder="Telephone Number"
 									ng-model="cCctr.entity.telNo" autocomplete="off"
-									ng-maxlength="50" ng-required="true"
-									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
+									ng-maxlength="10" ng-required="true"
+									ng-pattern="/^\s*$|^$|^[7-9][0-9]{9}$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
 									ng-show="employeeDetailForm.telNo.$dirty && employeeDetailForm.telNo.$invalid">
@@ -346,7 +346,7 @@
 									type="text" name="acNo" placeholder="Account No"
 									ng-model="cCctr.entity.acNo" autocomplete="off"
 									ng-pattern="[0-9]{4,25}"
-									ng-maxlength="100" 
+									ng-maxlength="25" 
 								    ng-model-options="{updateOn: 'blur'}" /> 
 									<span  style="color: red"
 									ng-show="employeeDetailForm.submitted || employeeDetailForm.acNo.$dirty && employeeDetailForm.acNo.$invalid">
@@ -367,7 +367,7 @@
 									name="branch" placeholder="Branch" ng-model="cCctr.entity.branch"
 									autocomplete="off"
 									ng-pattern="/^[ A-Za-z\s]*$/" 
-									 ng-maxlength="10"
+									 ng-maxlength="20"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
 									ng-show="employeeDetailForm.submitted || employeeDetailForm.branch.$dirty && employeeDetailForm.branch.$invalid">
@@ -375,7 +375,7 @@
 									ng-show="employeeDetailForm.branch.$error.pattern">Please
 										enter valid Branch. </span> <span class="error"
 									ng-show="employeeDetailForm.branch.$error.maxlength">Branch
-										should not be greater than 10 digits.</span>
+										should not be greater than 20 digits.</span>
 
 								</span> <span class="error" id="branch"></span>
 							</div>
@@ -391,7 +391,7 @@
 									ng-model="cCctr.entity.ifsc"
 									ng-pattern="/^[0-9A-Za-z\s]{5,11}/" 
 									 autocomplete="off"
-									ng-maxlength="50" 
+									ng-maxlength="25" 
 									ng-model-options="{updateOn: 'blur'}" />
 									<span  style="color: red"
 									ng-show="employeeDetailForm.submitted || employeeDetailForm.ifsc.$dirty && employeeDetailForm.ifsc.$invalid">
@@ -410,7 +410,7 @@
 								<label> Account Type</label> <input class="form-control"
 									type="text" name="acType" placeholder="Account Type"
 									ng-model="cCctr.entity.acType" autocomplete="off"
-									ng-maxlength="100" 
+									ng-maxlength="20" 
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
 									ng-show="employeeDetailForm.submitted || employeeDetailForm.acType.$dirty && employeeDetailForm.acType.$invalid">
@@ -418,7 +418,7 @@
 									ng-show="employeeDetailForm.acType.$error.pattern">Please
 										enter valid Account Type</span> <span class="error"
 									ng-show="employeeDetailForm.acType.$error.maxlength">Account Type
-										should not be greater than 25 digit.</span> <span class="error"
+										should not be greater than 20 digit.</span> <span class="error"
 									ng-show="employeeDetailForm.acType.$error.required">Name
 										No is Required.</span>
 								</span> <span class="error" id="acType"></span>

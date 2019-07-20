@@ -431,7 +431,7 @@
 												<label>Bank Name</label> <input class="form-control"
 													type="text" name="bankName" placeholder="Bank Name"
 													ng-model="cCctr.entity.bank.bankName" autocomplete="off" ng-maxlength="100"
-													ng-pattern="/^[a-zA-Z0-9]*$/" ng-model-options="{updateOn: 'blur'}" />
+													ng-pattern="/^[ A-Za-z&-.\s]*$/" ng-model-options="{updateOn: 'blur'}" />
                                    <span style="color: red" ng-show="profileForm.submitted || profileForm.bankName.$dirty && profileForm.bankName.$invalid">
 									<span class="error" ng-show="profileForm.bankName.$error.pattern">Please enter valid Bank Name </span> 
 									<span class="error" ng-show="profileForm.bankName.$error.maxlength">Bank Name should not be greater than 100 characters</span> 

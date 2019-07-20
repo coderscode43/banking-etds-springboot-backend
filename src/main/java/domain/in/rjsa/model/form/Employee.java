@@ -70,22 +70,18 @@ public class Employee extends CommonModelAbstract{
 	public String mobile1;
 	@Column(name = "mobile2")
 	public String mobile2;
-	
 	@Column(name = "email1")
 	@Size(min=0, max=45, message="Invalid Emaiil Id")
 	@NotNull(message = "Email is a required field")
 	public String email1;
 	@Column(name = "email2")
 	public String email2;
-	
 	@Column(name = "curAddrId")
 	public Long curAddrId;
 	@Column(name = "perAddrId")
 	public Long perAddrId;
-	
 	@Column(name = "bankId")
 	public Long bankId;
-	
 	@JsonSerialize(using=JsonDateSerializer.class)
 	public Date getDob() {
 		return dob;

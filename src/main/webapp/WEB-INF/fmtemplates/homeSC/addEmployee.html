@@ -8,7 +8,7 @@
 			<div class="col-md-12">
 				<form role="form" name="employeeDetailForm">
 					<div class="row">
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<div class="form-group">
 								<label>Employee No*</label> <input class="form-control"
 									type="text" name="employeeNo" placeholder="Employee No"
@@ -28,11 +28,12 @@
 								</span>
 							</div>
 						</div>
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<div class="form-group">
 								<label>Name*</label> <input class="form-control" type="text"
-									name="name" placeholder="Name" ng-model="cCctr.entity.employee.name"
-									autocomplete="off" ng-maxlength="100" ng-required="true"
+									name="name" placeholder="Name"
+									ng-model="cCctr.entity.employee.name" autocomplete="off"
+									ng-maxlength="100" ng-required="true"
 									ng-pattern="/^[a-zA-Z]*$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
@@ -47,10 +48,10 @@
 								</span> <span class="error" id="name"></span>
 							</div>
 						</div>
-					</div>
 
-					<div class="row">
-						<div class="col-md-6">
+
+
+						<div class="col-md-4">
 							<div class="form-group">
 								<label>Father Name</label> <input class="form-control"
 									type="text" name="fatherName" placeholder="Father Name"
@@ -60,13 +61,14 @@
 
 							</div>
 						</div>
-
-
-						<div class="col-md-6">
+					</div>
+					<div class="row">
+						<div class="col-md-4">
 							<div class="form-group">
 								<label>Pan</label> <input class="form-control" type="text"
-									name="pan" placeholder="Pan" ng-model="cCctr.entity.employee.pan"
-									autocomplete="off" ng-maxlength="10"
+									name="pan" placeholder="Pan"
+									ng-model="cCctr.entity.employee.pan" autocomplete="off"
+									ng-maxlength="10"
 									ng-pattern="/^([A-Za-z]{5}[0-9]{4}[A-Za-z]{1})*$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
@@ -81,10 +83,10 @@
 
 							</div>
 						</div>
-					</div>
 
-					<div class="row">
-						<div class="col-md-6">
+
+
+						<div class="col-md-4">
 							<div class="form-group">
 								<label>Date of Birth</label> <input class="form-control"
 									type="date" name="dob" placeholder="Date Of Birth"
@@ -102,32 +104,33 @@
 							</div>
 						</div>
 
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Designation</label> <input class="form-control"
-										type="text" name="designation" placeholder="Designation"
-										ng-model="cCctr.entity.employee.designation" autocomplete="off"
-										ng-maxlength="100" ng-pattern="/^[a-zA-Z]*$/"
-										ng-model-options="{updateOn: 'blur'}" />
 
-								</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<label>Designation</label> <input class="form-control"
+									type="text" name="designation" placeholder="Designation"
+									ng-model="cCctr.entity.employee.designation" autocomplete="off"
+									ng-maxlength="100" ng-pattern="/^[a-zA-Z]*$/"
+									ng-model-options="{updateOn: 'blur'}" />
+
 							</div>
 						</div>
 					</div>
 
+
 					<div class="row">
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<div class="form-group">
 								<label>Current Office</label> <input class="form-control"
 									type="text" name="currentOffice" placeholder="Current Office"
-									ng-model="cCctr.entity.employee.currentOffice" autocomplete="off"
-									ng-maxlength="100" ng-model-options="{updateOn: 'blur'}" />
+									ng-model="cCctr.entity.employee.currentOffice"
+									autocomplete="off" ng-maxlength="100"
+									ng-model-options="{updateOn: 'blur'}" />
 
 							</div>
 						</div>
 
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<div class="form-group">
 								<label>Employee Grade*</label> <input class="form-control"
 									type="text" name="empGrade" placeholder="Employee Grade"
@@ -146,10 +149,10 @@
 								</span> <span class="error" id="empGrade"></span>
 							</div>
 						</div>
-					</div>
 
-					<div class="row">
-						<div class="col-md-6">
+
+
+						<div class="col-md-4">
 							<div class="form-group">
 								<label>Mobile 1*</label> <input class="form-control" type="text"
 									ng-required="true" name="mobile1" placeholder="Mobile 1"
@@ -171,7 +174,9 @@
 							</div>
 
 						</div>
-						<div class="col-md-6">
+					</div>
+					<div class="row">
+						<div class="col-md-4">
 							<div class="form-group">
 								<label>Mobile 2</label> <input class="form-control" type="text"
 									name="mobile2" placeholder="Mobile 2"
@@ -181,10 +186,10 @@
 
 							</div>
 						</div>
-					</div>
 
-					<div class="row">
-						<div class="col-md-6">
+
+
+						<div class="col-md-4">
 							<div class="form-group">
 								<label>Email 1*</label> <input class="form-control" type="text"
 									name="email1" placeholder="Email 1"
@@ -204,23 +209,12 @@
 								</span> <span class="error" id="email1"></span>
 							</div>
 						</div>
-
-						<div class="col-md-6">
-							<div class="form-group">
-								<label>Email 2</label> <input class="form-control" type="text"
-									name="email2" placeholder="Email 2"
-									ng-model="cCctr.entity.employee.email2" autocomplete="off"
-									ng-maxlength="50" ng-pattern=""
-									ng-model-options="{updateOn: 'blur'}" />
-
-							</div>
-						</div>
-						<div class="col-md-6">
+						<div class="col-md-4">
 
 							<label>Date of Joining</label> <input class="form-control"
 								type="date" name="doj" placeholder="Date Of Joining"
-								ng-model="cCctr.entity.employee.doj" autocomplete="off" ng-maxlength="10"
-								ng-model-options="{updateOn: 'blur'}" /> <span
+								ng-model="cCctr.entity.employee.doj" autocomplete="off"
+								ng-maxlength="10" ng-model-options="{updateOn: 'blur'}" /> <span
 								style="color: red"
 								ng-show="employeeDetailForm.submitted || employeeDetailForm.doj.$dirty && employeeDetailForm.doj.$invalid">
 								<span class="error"
@@ -228,258 +222,239 @@
 									enter valid Date Of Birth. </span> <span class="error"
 								ng-show="employeeDetailForm.doj.$error.maxlength">Date Of
 									Birth should not be greater than 10 digits.</span>
-
-							</span> <span class="error" id="doj"></span>
-						</div>
-					</div>
-
-					<div class="row">
-						<h4>
-							<strong>Permanent Address</strong>
-						</h4>
-					</div>
-					<div class="form-group">
-						<div class="col-md-6">
-							<h6>
-								<b>Address1</b>
-							</h6>
-							<input type="text" class="form-control" style="padding-top: 0px;"
-								ng-model="cCctr.entity.paddress.address1" placeholder="Address1">
-						</div>
-						<div class="col-md-6">
-							<h6>
-								<b>Address2</b>
-							</h6>
-							<input type="text" class="form-control" style="padding-top: 0px;"
-								ng-model="cCctr.entity.paddress.address2" placeholder="Address2">
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<h6>
-									<b>Address3</b>
-								</h6>
-								<input type="text" class="form-control"
-									style="padding-top: 0px;"
-									ng-model="cCctr.entity.paddress.address3"
-									placeholder="Address3">
-							</div>
-
-
-							<div class="row">
-								<div class="form-group">
-
-									<div class="col-md-6">
-										<h6>
-											<b>City</b>
-										</h6>
-										<input type="text" class="form-control"
-											style="padding-top: 0px;"
-											ng-model="cCctr.entity.paddress.city" placeholder="City">
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<h6>
-									<b>State</b>
-								</h6>
-								<input type="text" class="form-control"
-									style="padding-top: 0px;"
-									ng-model="cCctr.entity.paddress.state" placeholder="State">
-							</div>
-							<div class="col-md-6">
-								<h6>
-									<b>PinCode</b>
-								</h6>
-								<input type="text" class="form-control"
-									style="padding-top: 0px;"
-									ng-model="cCctr.entity.paddress.pincode" placeholder="PinCode">
-							</div>
-
-							<div class="row">
-								<h4>
-									<strong>Temporary Address</strong>
-								</h4>
-							</div>
-
-							<div class="row">
-
-								<div class="col-md-6">
-									<h6>
-										<b>Address1</b>
-									</h6>
-									<input type="text" class="form-control"
-										style="padding-top: 0px;"
-										ng-model="cCctr.entity.taddress.address1"
-										placeholder="Address1">
-								</div>
-								<div class="col-md-6">
-									<h6>
-										<b>Address2</b>
-									</h6>
-									<input type="text" class="form-control"
-										style="padding-top: 0px;"
-										ng-model="cCctr.entity.taddress.address2"
-										placeholder="Address2">
-								</div>
-								<div class="row">
-									<div class="col-md-6">
-										<h6>
-											<b>Address3</b>
-										</h6>
-										<input type="text" class="form-control"
-											style="padding-top: 0px;"
-											ng-model="cCctr.entity.taddress.address3"
-											placeholder="Address3">
-									</div>
-
-
-									<div class="row">
-
-
-										<div class="col-md-6">
-											<h6>
-												<b>City</b>
-											</h6>
-											<input type="text" class="form-control"
-												style="padding-top: 0px;"
-												ng-model="cCctr.entity.taddress.city" placeholder="City">
-										</div>
-									</div>
-									<div class="col-md-6">
-										<h6>
-											<b>State</b>
-										</h6>
-										<input type="text" class="form-control"
-											style="padding-top: 0px;"
-											ng-model="cCctr.entity.taddress.state" placeholder="State">
-									</div>
-									<div class="col-md-6">
-										<h6>
-											<b>PinCode</b>
-										</h6>
-										<input type="text" class="form-control"
-											style="padding-top: 0px;"
-											ng-model="cCctr.entity.taddress.pincode"
-											placeholder="PinCode">
-									</div>
-
-								</div>
-							</div>
-						</div>
-
-					</div>
-
-
-					<div class="row">
-						<h4>
-							<strong>Add Employees Bank Detail</strong>
-						</h4>
-					</div>
-
-					<div class="row">
-						<div class="col-md-6">
-							<label>Bank Name</label> <input class="form-control" type="text"
-								name="bankName" placeholder="Bank Name"
-								ng-pattern="/^\s*$|^[A-Za-z\s.]+$/"
-								ng-model="cCctr.entity.bank.bankName" autocomplete="off"
-								ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" /> <span
-								style="color: red"
-								ng-show="employeeDetailForm.submitted || employeeDetailForm.bankName.$dirty && employeeDetailForm.bankName.$invalid">
-								<span class="error"
-								ng-show="employeeDetailForm.bankName.$error.pattern">Enter
-									valid bank Name</span> <span class="error"
-								ng-show="employeeDetailForm.bankName.$error.maxlength">bankName
-									should not be greater than 50 digits.</span>
 							</span>
+
+
 						</div>
 
-						<div class="col-md-6">
-							<label>Account No</label> <input class="form-control" type="text"
-								name="acNo" placeholder="Account No "
-								ng-model="cCctr.entity.bank.acNo" autocomplete="off"
-								ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" /> <span
-								style="color: red"
-								ng-show="employeeDetailForm.submitted || employeeDetailForm.acNo.$dirty && employeeDetailForm.acNo.$invalid">
-								<span class="error"
-								ng-show="employeeDetailForm.acNo.$error.pattern">Enter
-									valid Account No </span> <span class="error"
-								ng-show="employeeDetailForm.acNo.$error.maxlength">Account
-									No should not be greater than 50 digits.</span>
-							</span>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">
-							<label>Branch</label> <input class="form-control" type="text"
-								name="branch" placeholder="Branch "
-								ng-model="cCctr.entity.bank.branch" autocomplete="off"
-								ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" /> <span
-								style="color: red"
-								ng-show="employeeDetailForm.submitted || employeeDetailForm.branch.$dirty && employeeDetailForm.branch.$invalid">
-								<span class="error"
-								ng-show="employeeDetailForm.branch.$error.pattern">Enter
-									valid Branch </span> <span class="error"
-								ng-show="employeeDetailForm.branch.$error.maxlength">Branch
-									should not be greater than 50 digits.</span>
-							</span>
-						</div>
-
-						<div class="col-md-6">
-							<label>IFSC Code</label> <input class="form-control" type="text"
-								name="ifsc" placeholder="IFSC Code" ng-model="cCctr.entity.bank.ifsc"
-								autocomplete="off" ng-maxlength="50"
-								ng-model-options="{updateOn: 'blur'}" /> <span
-								style="color: red"
-								ng-show="employeeDetailForm.submitted || employeeDetailForm.ifsc.$dirty && employeeDetailForm.ifsc.$invalid">
-								<span class="error"
-								ng-show="employeeDetailForm.ifsc.$error.pattern">Enter
-									valid IFSC code </span> <span class="error"
-								ng-show="employeeDetailForm.ifsc.$error.maxlength">IFSC
-									Code should not be greater than 50 digits.</span>
-							</span>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-md-6">
-							<label>Account Type</label> <input class="form-control"
-								type="text" name="acType" placeholder="Account Type"
-								ng-model="cCctr.entity.bank.acType" autocomplete="off"
-								ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" /> <span
-								style="color: red"
-								ng-show="employeeDetailForm.submitted ||employeeDetailForm.acType.$dirty && employeeDetailForm.acType.$invalid">
-								<span class="error"
-								ng-show="employeeDetailForm.acType.$error.pattern">Enter
-									valid Account Type </span> <span class="error"
-								ng-show="employeeDetailForm.acType.$error.maxlength">Account
-									Type should not be greater than 50 digits.</span>
-							</span>
-						</div>
-
-						<div class="col-md-6">
-							<label>MICR No</label> <input class="form-control" type="text"
-								name="micrNo" placeholder="MICR No"
-								ng-model="cCctr.entity.bank.micrNo" autocomplete="off"
-								ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" /> <span
-								style="color: red"
-								ng-show="employeeDetailForm.submitted || employeeDetailForm.micrNo.$dirty && employeeDetailForm.micrNo.$invalid">
-								<span class="error"
-								ng-show="employeeDetailForm.micrNo.$error.pattern">Enter
-									valid MICR No </span> <span class="error"
-								ng-show="employeeDetailForm.micrNo.$error.maxlength">MICR
-									No should not be greater than 50 digits.</span>
-							</span>
-						</div>
 					</div>
 			</div>
+
+			<div class="row">
+				<h4>
+					<strong>Permanent Address</strong>
+				</h4>
+			</div>
+			<div class="form-group">
+				<div class="col-md-4">
+					<h6>
+						<b>Address1</b>
+					</h6>
+					<input type="text" class="form-control" style="padding-top: 0px;"
+						ng-model="cCctr.entity.paddress.address1" placeholder="Address1">
+				</div>
+				<div class="col-md-4">
+					<h6>
+						<b>Address2</b>
+					</h6>
+					<input type="text" class="form-control" style="padding-top: 0px;"
+						ng-model="cCctr.entity.paddress.address2" placeholder="Address2">
+				</div>
+
+				<div class="col-md-4">
+					<h6>
+						<b>Address3</b>
+					</h6>
+					<input type="text" class="form-control" style="padding-top: 0px;"
+						ng-model="cCctr.entity.paddress.address3" placeholder="Address3">
+				</div>
+			</div>
+
+
+			<div class="row">
+				<div class="form-group">
+
+					<div class="col-md-4">
+						<h6>
+							<b>City</b>
+						</h6>
+						<input type="text" class="form-control" style="padding-top: 0px;"
+							ng-model="cCctr.entity.paddress.city" placeholder="City">
+					</div>
+
+				</div>
+				<div class="col-md-4">
+					<h6>
+						<b>State</b>
+					</h6>
+					<input type="text" class="form-control" style="padding-top: 0px;"
+						ng-model="cCctr.entity.paddress.state" placeholder="State">
+				</div>
+				<div class="col-md-4">
+					<h6>
+						<b>PinCode</b>
+					</h6>
+					<input type="text" class="form-control" style="padding-top: 0px;"
+						ng-model="cCctr.entity.paddress.pincode" placeholder="PinCode">
+				</div>
+			</div>
+			<div class="row">
+				<h4>
+					<strong>Temporary Address</strong>
+				</h4>
+			</div>
+
+			<div class="row">
+
+				<div class="col-md-4">
+					<h6>
+						<b>Address1</b>
+					</h6>
+					<input type="text" class="form-control" style="padding-top: 0px;"
+						ng-model="cCctr.entity.taddress.address1" placeholder="Address1">
+				</div>
+				<div class="col-md-4">
+					<h6>
+						<b>Address2</b>
+					</h6>
+					<input type="text" class="form-control" style="padding-top: 0px;"
+						ng-model="cCctr.entity.taddress.address2" placeholder="Address2">
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<h6>
+							<b>Address3</b>
+						</h6>
+						<input type="text" class="form-control" style="padding-top: 0px;"
+							ng-model="cCctr.entity.taddress.address3" placeholder="Address3">
+					</div>
+
+					<div class="row">
+						<div class="col-md-4">
+							<h6>
+								<b>City</b>
+							</h6>
+							<input type="text" class="form-control" style="padding-top: 0px;"
+								ng-model="cCctr.entity.taddress.city" placeholder="City">
+						</div>
+
+						<div class="col-md-4">
+							<h6>
+								<b>State</b>
+							</h6>
+							<input type="text" class="form-control" style="padding-top: 0px;"
+								ng-model="cCctr.entity.taddress.state" placeholder="State">
+						</div>
+						<div class="col-md-4">
+							<h6>
+								<b>PinCode</b>
+							</h6>
+							<input type="text" class="form-control" style="padding-top: 0px;"
+								ng-model="cCctr.entity.taddress.pincode" placeholder="PinCode">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+	<div class="row">
+		<h4>
+			<strong>Add Employees Bank Detail</strong>
+		</h4>
+	</div>
+
+	<div class="row">
+		<div class="form-group">
+			<div class="col-md-4">
+				<label>Bank Name</label> <input class="form-control" type="text"
+					name="bankName" placeholder="Bank Name"
+					ng-pattern="/^\s*$|^[A-Za-z\s.]+$/"
+					ng-model="cCctr.entity.bank.bankName" autocomplete="off"
+					ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" /> <span
+					style="color: red"
+					ng-show="employeeDetailForm.submitted || employeeDetailForm.bankName.$dirty && employeeDetailForm.bankName.$invalid">
+					<span class="error"
+					ng-show="employeeDetailForm.bankName.$error.pattern">Enter
+						valid bank Name</span> <span class="error"
+					ng-show="employeeDetailForm.bankName.$error.maxlength">bankName
+						should not be greater than 50 digits.</span>
+				</span>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-md-4">
+				<label>Account No</label> <input class="form-control" type="text"
+					name="acNo" placeholder="Account No " ng-pattern="[0-9]{4,25}"
+					ng-model="cCctr.entity.bank.acNo" autocomplete="off"
+					ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" /> <span
+					style="color: red"
+					ng-show="employeeDetailForm.submitted || employeeDetailForm.acNo.$dirty && employeeDetailForm.acNo.$invalid">
+					<span class="error"
+					ng-show="employeeDetailForm.acNo.$error.pattern">Enter valid
+						Account No </span> <span class="error"
+					ng-show="employeeDetailForm.acNo.$error.maxlength">Account
+						No should not be greater than 50 digits.</span>
+				</span>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-md-4">
+				<label>Branch</label> <input class="form-control" type="text"
+					name="branch" placeholder="Branch "
+					ng-model="cCctr.entity.bank.branch" autocomplete="off"
+					ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" /> <span
+					style="color: red"
+					ng-show="employeeDetailForm.submitted || employeeDetailForm.branch.$dirty && employeeDetailForm.branch.$invalid">
+					<span class="error"
+					ng-show="employeeDetailForm.branch.$error.pattern">Enter
+						valid Branch </span> <span class="error"
+					ng-show="employeeDetailForm.branch.$error.maxlength">Branch
+						should not be greater than 50 digits.</span>
+				</span>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+			<label>IFSC Code</label> <input class="form-control" type="text"
+				name="ifsc" placeholder="IFSC Code"
+				ng-model="cCctr.entity.bank.ifsc" autocomplete="off"
+				ng-maxlength="11" ng-pattern="/^[0-9A-Za-z\s]{5,11}/"
+				ng-model-options="{updateOn: 'blur'}" /> <span style="color: red"
+				ng-show="employeeDetailForm.submitted || employeeDetailForm.ifsc.$dirty && employeeDetailForm.ifsc.$invalid">
+				<span class="error" ng-show="employeeDetailForm.ifsc.$error.pattern">Enter
+					valid IFSC code </span> <span class="error"
+				ng-show="employeeDetailForm.ifsc.$error.maxlength">IFSC Code
+					should not be greater than 11 digits.</span>
+			</span>
 		</div>
 
 
 
+		<div class="col-md-4">
+			<label>Account Type</label> <input class="form-control" type="text"
+				name="acType" placeholder="Account Type"
+				ng-model="cCctr.entity.bank.acType" autocomplete="off"
+				ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" /> <span
+				style="color: red"
+				ng-show="employeeDetailForm.submitted ||employeeDetailForm.acType.$dirty && employeeDetailForm.acType.$invalid">
+				<span class="error"
+				ng-show="employeeDetailForm.acType.$error.pattern">Enter
+					valid Account Type </span> <span class="error"
+				ng-show="employeeDetailForm.acType.$error.maxlength">Account
+					Type should not be greater than 50 digits.</span>
+			</span>
+		</div>
 
-
-
-
+		<div class="col-md-4">
+			<label>MICR No</label> <input class="form-control" type="text"
+				name="micrNo" placeholder="MICR No"
+				ng-model="cCctr.entity.bank.micrNo" autocomplete="off"
+				ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" /> <span
+				style="color: red"
+				ng-show="employeeDetailForm.submitted || employeeDetailForm.micrNo.$dirty && employeeDetailForm.micrNo.$invalid">
+				<span class="error"
+				ng-show="employeeDetailForm.micrNo.$error.pattern">Enter
+					valid MICR No </span> <span class="error"
+				ng-show="employeeDetailForm.micrNo.$error.maxlength">MICR No
+					should not be greater than 50 digits.</span>
+			</span>
+		</div>
 	</div>
 
 
@@ -492,16 +467,11 @@
 				class="btn btn-danger" onclick="scrollWin()">Back</button>
 		</div>
 	</div>
-
-
 	</form>
-
 </div>
 </div>
 </div>
 </div>
-
-
 
 
 

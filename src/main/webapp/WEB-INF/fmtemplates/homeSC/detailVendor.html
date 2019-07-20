@@ -581,9 +581,9 @@
 										ng-maxlength="50"
 										ng-model-options="{updateOn: 'blur'}" />
 										<span style="color: red" ng-show="addressForm.submitted || addressForm.address3.$dirty && addressForm.address3.$invalid">
-										<span class="error" ng-show="addressForm.address3.$error.pattern">Enter valid Address 2 </span> 
-										<span class="error" ng-show="addressForm.address3.$error.maxlength">Address 2 should not be greater than 50 digits.</span> 
-										<span class="error" ng-show="addressForm.address3.$error.required">Address 2 is Required.</span>
+										<span class="error" ng-show="addressForm.address3.$error.pattern">Enter valid Address 3</span> 
+										<span class="error" ng-show="addressForm.address3.$error.maxlength">Address 3 should not be greater than 50 digits.</span> 
+										<span class="error" ng-show="addressForm.address3.$error.required">Address 3 is Required.</span>
 										</span>
 										<span class="error" id="address3"></span>
 									</div>
@@ -628,11 +628,11 @@
 												ng-model="cCctr.entity.address.pincode" autocomplete="off"
 												ng-pattern="/^[0-9]/"
 												ng-required="true"
-												ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
+												ng-maxlength="7" ng-model-options="{updateOn: 'blur'}" />
 												<span style="color: red" ng-show="addressForm.submitted || addressForm.pincode.$dirty && addressForm.pincode.$invalid">
 												<span class="error" ng-show="addressForm.pincode.$error.pattern">Enter valid Pincode </span> 
-												<span class="error" ng-show="addressForm.pincode.$error.maxlength">Pincode should not be greater than 50 digits.</span> 
-												<span class="error" ng-show="addressForm.pincode.$error.required">Total Deduction Under Section16 is Required.</span>
+												<span class="error" ng-show="addressForm.pincode.$error.maxlength">Pincode should not be greater than 7 digits.</span> 
+												<span class="error" ng-show="addressForm.pincode.$error.required">Pincode is Required.</span>
 												</span>
 												<span class="error" id="pincode"></span>
 									</div>

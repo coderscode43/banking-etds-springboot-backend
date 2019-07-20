@@ -62,34 +62,34 @@ public class Pensioner extends CommonModelAbstract{
 	
 	@Column(name = "caddrId")
 	public Long caddrId;	
-	@Column(name = "currentAddress1")
-	public String currentAddress1;
-	@Column(name = "currentAddress2")
-	public String currentAddress2;
-	@Column(name = "currentAddress3")
-	public String currentAddress3;
+//	@Column(name = "currentAddress1")
+//	public String currentAddress1;
+//	@Column(name = "currentAddress2")
+//	public String currentAddress2;
+//	@Column(name = "currentAddress3")
+//	public String currentAddress3;
 	
-	@Column(name = "currentcity")
-	public String currentcity;
-	@Column(name = "currentState")
-	public String currentState;
-	@Column(name = "currentPincode")
-	public String currentPincode;
+//	@Column(name = "currentcity")
+//	public String currentcity;
+//	@Column(name = "currentState")
+//	public String currentState;
+//	@Column(name = "currentPincode")
+//	public String currentPincode;
 	
 	@Column(name = "paddrId")
 	public Long paddrId;
-	@Column(name = "permenentAddress1")
-	public String permenentAddress1;
-	@Column(name = "permenentAddress2")
-	public String permenentAddress2;
-	@Column(name = "permenentAddress3")
-	public String permenentAddress3;
-	@Column(name = "permanentCity")
-	public String permanentCity;
-	@Column(name = "permanentState")
-	public String permanentState;
-	@Column(name = "permanentPincode")
-	public String permanentPincode;
+//	@Column(name = "permenentAddress1")
+//	public String permenentAddress1;
+//	@Column(name = "permenentAddress2")
+//	public String permenentAddress2;
+//	@Column(name = "permenentAddress3")
+//	public String permenentAddress3;
+//	@Column(name = "permanentCity")
+//	public String permanentCity;
+//	@Column(name = "permanentState")
+//	public String permanentState;
+//	@Column(name = "permanentPincode")
+//	public String permanentPincode;
 	@Column(name = "bankId")
 	public Long bankId;	
 	

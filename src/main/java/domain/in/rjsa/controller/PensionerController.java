@@ -6,11 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+
 import domain.in.rjsa.model.form.Address;
 import domain.in.rjsa.model.form.BankAccDetail;
 import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.form.Pensioner;
 import domain.in.rjsa.model.form.PensionerSalary;
+import domain.in.rjsa.model.wrapper.EmployeeDetailWrapper;
 import domain.in.rjsa.model.wrapper.PensionerDetailWrapper;
 import domain.in.rjsa.service.AddressService;
 import domain.in.rjsa.service.BankAccDetailService;
@@ -67,6 +71,24 @@ ApplicationCache applicationCache;
 		}
 		
 		return ew;
+	}
+	
+	@Override
+	public void create(LinkedHashMap<String, Object> entity) {
+		Gson gson = new Gson();
+		Login l = applicationCache.getLoginDetail(getPrincipal());
+		if (entity.containsKey("clientId")) {
+			entity.put("clientId", l.getClientId());
+		}	
+		JsonElement jsonElement = gson.toJsonTree(entity);
+		PensionerDetailWrapper pensioner = gson.fromJson(jsonElement, PensionerDetailWrapper.class);
+		pensioner.getBank().setClientId(Long.valueOf( entity.get("clientId").toString()));
+		pensioner.getPensioner().setClientId(Long.valueOf( entity.get("clientId").toString()));
+		pensioner.getCaddress().setClientId(Long.valueOf( entity.get("clientId").toString()));
+		pensioner.getPaddress().setClientId(Long.valueOf( entity.get("clientId").toString()));
+
+		getService().saveEntity(pensioner);
+
 	}
 
 }

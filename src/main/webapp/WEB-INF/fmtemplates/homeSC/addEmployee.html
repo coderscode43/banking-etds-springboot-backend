@@ -228,7 +228,7 @@
 						</div>
 
 					</div>
-			</div>
+			
 
 			<div class="row">
 				<h4>
@@ -238,10 +238,16 @@
 			<div class="form-group">
 				<div class="col-md-4">
 					<h6>
-						<b>Address1</b>
+						<b>Address1*</b>
 					</h6>
 					<input type="text" class="form-control" style="padding-top: 0px;"
-						ng-model="cCctr.entity.paddress.address1" placeholder="Address1">
+					ng-required="true" name="address1"
+						ng-model="cCctr.entity.paddress.address1" placeholder="Address1" ng-model-options="{updateOn: 'blur'}"/>
+						<span style="color: red" ng-show="employeeDetailForm.submitted || employeeDetailForm.address1.$dirty && employeeDetailForm.address1.$invalid">
+						<span class="error"
+								ng-show="employeeDetailForm.address1.$error.required">Permanent Address is a required Field </span>
+								
+								</span>
 				</div>
 				<div class="col-md-4">
 					<h6>
@@ -298,10 +304,17 @@
 
 				<div class="col-md-4">
 					<h6>
-						<b>Address1</b>
+						<b>Address1*</b>
 					</h6>
 					<input type="text" class="form-control" style="padding-top: 0px;"
-						ng-model="cCctr.entity.taddress.address1" placeholder="Address1">
+					 ng-required="true" name="address1"
+					
+						ng-model="cCctr.entity.taddress.address1" placeholder="Address1" ng-model-options="{updateOn: 'blur'}"/>
+						<span style="color: red" ng-show="employeeDetailForm.submitted || employeeDetailForm.address1.$dirty && employeeDetailForm.address1.$invalid">
+						<span class="error"
+								ng-show="employeeDetailForm.address1.$error.required">Temporary Address is a required Field.</span>
+								 <span class="error" id="address1"></span>
+								</span>
 				</div>
 				<div class="col-md-4">
 					<h6>
@@ -345,10 +358,9 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		
 
-	</div>
-
+	
 
 	<div class="row">
 		<h4>
@@ -359,8 +371,8 @@
 	<div class="row">
 		<div class="form-group">
 			<div class="col-md-4">
-				<label>Bank Name</label> <input class="form-control" type="text"
-					name="bankName" placeholder="Bank Name"
+				<label>Bank Name*</label> <input class="form-control" type="text"
+					name="bankName" placeholder="Bank Name" ng-required="true"
 					ng-pattern="/^\s*$|^[A-Za-z\s.]+$/"
 					ng-model="cCctr.entity.bank.bankName" autocomplete="off"
 					ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" /> <span
@@ -369,8 +381,11 @@
 					<span class="error"
 					ng-show="employeeDetailForm.bankName.$error.pattern">Enter
 						valid bank Name</span> <span class="error"
-					ng-show="employeeDetailForm.bankName.$error.maxlength">bankName
-						should not be greater than 50 digits.</span>
+					ng-show="employeeDetailForm.bankName.$error.maxlength">Bank
+						Name should not be greater than 50 digits.</span> <span class="error"
+					ng-show="employeeDetailForm.bankName.$error.required">Bank
+						Name is Required.</span>
+						 <span class="error" id="bankName"></span>
 				</span>
 			</div>
 		</div>
@@ -468,10 +483,17 @@
 		</div>
 	</div>
 	</form>
-</div>
-</div>
-</div>
-</div>
+	</div>
+	</div>
+	</div>
+	</div>
+
+
+
+
+
+
+
 
 
 

@@ -10,7 +10,7 @@
 					<div class="row">
 						<div class="col-md-4">
 							<div class="form-group">
-								<label>Vendor No</label> 
+								<label>Vendor No*</label> 
 								<input class="form-control"
 									 type="text" name="vendorNo" placeholder="Vendor No"
 									 ng-model="cCctr.entity.vendor.vendorNo" autocomplete="off"
@@ -31,7 +31,7 @@
 						</div>
 						<div class="col-md-4">
 							<div class="form-group">
-								<label> Vendor Name</label> <input class="form-control"
+								<label> Vendor Name*</label> <input class="form-control"
 									type="text" name="vendorName" placeholder="Vendor Name"
 									ng-model="cCctr.entity.vendor.vendorName" autocomplete="off"
 									ng-maxlength="100" ng-required="true"
@@ -47,7 +47,7 @@
 						</div>
 						<div class="col-md-4">
 							<div class="form-group">
-								<label>PAN</label> <input class="form-control" type="text"
+								<label>Pan*</label> <input class="form-control" type="text"
 									name="pan" placeholder="PAN" 
 									ng-model="cCctr.entity.vendor.pan"
 									autocomplete="off" 
@@ -69,13 +69,13 @@
 						
 						<div class="col-md-4">
 							<div class="form-group">
-								<label>GST No</label>
+								<label>GST No*</label>
 								 <input class="form-control" type="text"
 									name="gstNo" 
 									placeholder="GST No" 
 									ng-model="cCctr.entity.vendor.gstNo"
 									autocomplete="off" 
-									 ng-pattern="/^[0-9]*$/" 
+									ng-pattern="/^[0-9]*$/" 
 									ng-maxlength="50" 
 									ng-required="true"
 									ng-model-options="{updateOn: 'blur'}" /> 
@@ -89,7 +89,7 @@
 						</div>
 							<div class="col-md-4">
 							<div class="form-group">
-								<label>Email</label> <input class="form-control" type="text"
+								<label>Email*</label> <input class="form-control" type="text"
 									name="email" placeholder="Email" ng-model="cCctr.entity.vendor.email"
 									autocomplete="off" ng-maxlength="50" ng-required="true"
 									ng-pattern="/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})*$/"
@@ -106,7 +106,7 @@
 						</div>
 							<div class="col-md-4">
 							<div class="form-group">
-								<label>Mobile</label> <input class="form-control" type="text"
+								<label>Mobile*</label> <input class="form-control" type="text"
 									name="mobNo" placeholder="Mobile" 
 									ng-model="cCctr.entity.vendor.mobNo"
 									autocomplete="off" 
@@ -165,7 +165,7 @@
 						</div>
 							<div class="col-md-4">
 							<div class="form-group">
-								<label>Telephone Number</label> <input class="form-control"
+								<label>Telephone Number*</label> <input class="form-control"
 									type="text" name="telNo" placeholder="Telephone Number"
 									ng-model="cCctr.entity.vendor.telNo" autocomplete="off"
 									ng-maxlength="10" ng-required="true"
@@ -192,10 +192,11 @@
 			<div class="row">
 						<div class="col-md-4">
 							<div class="form-group">
-								<label>Address 1</label> <input class="form-control"
+								<label>Address 1*</label> <input class="form-control"
 									type="text" name="address1" placeholder="Address 1"
 									ng-model="cCctr.entity.address.address1"
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
+									ng-required="true"
 									 autocomplete="off"
 									ng-maxlength="50"
 									ng-model-options="{updateOn: 'blur'}" />
@@ -325,7 +326,7 @@
 		<div class="row">
 						<div class="col-md-4">
 							<div class="form-group">
-								<label>Bank Name</label> <input class="form-control"
+								<label>Bank Name*</label> <input class="form-control"
 									type="text" name="bankName" placeholder="Bank Name"
 									ng-model="cCctr.entity.bank.bankName"
 									ng-pattern="/^[ A-Za-z&-.\s]*$/"
@@ -346,7 +347,7 @@
 						</div>
 						<div class="col-md-4">
 							<div class="form-group">
-								<label> Account No</label> <input class="form-control"
+								<label> Account No*</label> <input class="form-control"
 									type="text" 
 									name="acNo" 
 									placeholder="Account No"

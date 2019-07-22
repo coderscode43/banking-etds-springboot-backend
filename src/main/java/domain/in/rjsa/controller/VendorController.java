@@ -112,6 +112,8 @@ public class VendorController extends AbstractController<Long, Vendor, VendorSer
 		vendor.getAddress().setClientId(Long.valueOf( entity.get("clientId").toString()));
 		vendor.getVendor().setClientId(Long.valueOf( entity.get("clientId").toString()));
 		vendor.getBank().setClientId(Long.valueOf( entity.get("clientId").toString()));
+		
+		
 
 		getService().saveEntity(vendor);
 

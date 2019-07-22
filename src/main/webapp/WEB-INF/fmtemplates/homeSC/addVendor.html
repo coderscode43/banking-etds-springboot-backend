@@ -128,7 +128,7 @@
                 	<div class="row">
 						<div class="col-md-4">
 							<div class="form-group">
-								<label>Residential Status*</label> <input class="form-control"
+								<label>Residential Status</label> <input class="form-control"
 									type="text" 
 									name="resiStatus" 
 									placeholder="Residential Status"
@@ -141,7 +141,7 @@
 									ng-show="employeeDetailForm.resiStatus.$dirty && employeeDetailForm.resiStatus.$invalid">
 									<span class="error" ng-show="employeeDetailForm.resiStatus.$error.pattern">Please enter valid Residential Status.</span>
 									<span class="error" ng-show="employeeDetailForm.resiStatus.$error.maxlength">Residential Status should not be greater than 50 characters</span>
-                                    <span class="error" ng-show="employeeDetailForm.resiStatus.$error.required">Residential Status is Required.</span>
+                                    
 								</span> <span class="error" id="resiStatus"></span>
 							</div>
 						</div>
@@ -152,23 +152,23 @@
 									placeholder="Contact Person Name"
 									ng-model="cCctr.entity.vendor.contPerName" autocomplete="off"
 									ng-maxlength="50" 
-									ng-required="true"
+									ng-required=""
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
 									ng-show="employeeDetailForm.contPerName.$dirty && employeeDetailForm.contPerName.$invalid">
 									<span class="error" ng-show="employeeDetailForm.contPerName.$error.pattern">Please enter valid Contact Person Name.</span> <span class="error"
 									ng-show="employeeDetailForm.contPerName.$error.maxlength">Contact Person Name should not be greater than 50 characters</span>
-                                     <span class="error" ng-show="employeeDetailForm.contPerName.$error.required">Contact Person Name is Required.</span>
+                                     
 								</span> <span class="error" id="contPerName"></span>
 							</div>
 						</div>
 							<div class="col-md-4">
 							<div class="form-group">
-								<label>Telephone Number*</label> <input class="form-control"
+								<label>Telephone Number</label> <input class="form-control"
 									type="text" name="telNo" placeholder="Telephone Number"
 									ng-model="cCctr.entity.vendor.telNo" autocomplete="off"
-									ng-maxlength="10" ng-required="true"
+									ng-maxlength="10" ng-required=""
 									ng-pattern="/^\s*$|^$|^[7-9][0-9]{9}$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"

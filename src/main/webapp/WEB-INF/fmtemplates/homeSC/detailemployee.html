@@ -1374,29 +1374,35 @@
 
 											<div class="col-md-3">
 												<h6>
-													<b>State</b>
+													<b>State*</b>
 												</h6>
 												<input type="text" class="form-control"
 													style="padding-top: 0px;" ng-maxlength="20" name="state"
 													ng-model="cCctr.entity.paddress.state" placeholder="State"
+													ng-required="true"
 													ng-pattern="/^[a-zA-z]*$/"> <span
 													style="color: red"
-													ng-show="addressDetailForm.submitted || addressDetailForm1.state.$dirty && addressDetailForm.state.$invalid">
+													ng-show="addressDetailForm.submitted || addressDetailForm.state.$dirty && addressDetailForm.state.$invalid">
 													<span class="error"
 													ng-show="addressDetailForm.state.$error.pattern">Please
 														enter valid State</span> <span class="error"
 													ng-show="addressDetailForm.state.$error.maxlength">
 														State should not be greater than 20 digits.</span>
+														<span class="error"
+													ng-show="addressDetailForm.state.$error.required">
+														State is a Required Field.</span>
+														
 												</span>
 											</div>
 
 											<div class="col-md-3">
 												<h6>
-													<b>PinCode</b>
+													<b>PinCode*</b>
 												</h6>
 												<input type="text" class="form-control"
 													style="padding-top: 0px;" ng-maxlength="10" name="pincode"
 													ng-model="cCctr.entity.paddress.pincode"
+													ng-required="true"
 													placeholder="PinCode" ng-pattern="/^[0-9]*$/"> <span
 													style="color: red"
 													ng-show="addressDetailForm.submitted || addressDetailForm.pincode.$dirty && addressDetailForm.pincode.$invalid">
@@ -1405,6 +1411,9 @@
 														enter valid Pincode</span> <span class="error"
 													ng-show="addressDetailForm.pincode.$error.maxlength">
 														Pincode should not be greater than 10 digits.</span>
+														<span class="error"
+													ng-show="addressDetailForm.pincode.$error.required">
+														Pincode is a Required Field.</span>
 												</span>
 											</div>
 										</div>
@@ -1461,6 +1470,7 @@
 												</h6>
 												<input type="text" class="form-control"
 													style="padding-top: 0px;" ng-maxlength="150"
+													
 													name="address1" ng-model="cCctr.entity.taddress.address1"
 													placeholder="Address1" ng-pattern=" "> <span
 													style="color: red"
@@ -1468,6 +1478,7 @@
 													<span class="error"
 													ng-show="addressDetailForm1.address1.$error.maxlength">
 														Address1 should not be greater than 150 digits.</span>
+														
 												</span>
 											</div>
 											<div class="col-md-3">
@@ -1527,11 +1538,12 @@
 
 											<div class="col-md-3">
 												<h6>
-													<b>State</b>
+													<b>State*</b>
 												</h6>
 												<input type="text" class="form-control"
 													style="padding-top: 0px;" ng-maxlength="20" name="state"
 													ng-model="cCctr.entity.taddress.state" placeholder="State"
+													ng-required="true"
 													ng-pattern="/^[a-zA-z]*$/"> <span
 													style="color: red"
 													ng-show="addressDetailForm1.submitted || addressDetailForm1.state.$dirty && addressDetailForm1.state.$invalid">
@@ -1540,16 +1552,20 @@
 														enter valid State</span> <span class="error"
 													ng-show="addressDetailForm1.state.$error.maxlength">
 														State should not be greater than 20 digits.</span>
+														<span class="error"
+													ng-show="addressDetailForm1.state.$error.required">
+														State is a Required Field.</span>
 												</span>
 											</div>
 
 											<div class="col-md-3">
 												<h6>
-													<b>PinCode</b>
+													<b>PinCode*</b>
 												</h6>
 												<input type="text" class="form-control"
 													style="padding-top: 0px;" ng-maxlength="10" name="pincode"
 													ng-model="cCctr.entity.taddress.pincode"
+													ng-required="true"
 													placeholder="PinCode" ng-pattern="/^[0-9]*$/"> <span
 													style="color: red"
 													ng-show="addressDetailForm1.submitted || addressDetailForm1.pincode.$dirty && addressDetailForm1.pincode.$invalid">
@@ -1558,6 +1574,10 @@
 														enter valid Pincode</span> <span class="error"
 													ng-show="addressDetailForm1.pincode.$error.maxlength">
 														Pincode should not be greater than 10 digits.</span>
+														<span class="error"
+													ng-show="addressDetailForm1.pincode.$error.required">
+														Pincode is a Required Field.</span>
+														
 												</span>
 											</div>
 										</div>

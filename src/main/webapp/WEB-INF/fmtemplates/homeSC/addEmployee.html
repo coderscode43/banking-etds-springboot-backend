@@ -238,31 +238,27 @@
 			<div class="form-group">
 				<div class="col-md-4">
 					<h6>
-						<b>Address1*</b>
+						<b>Line1</b>
 					</h6>
 					<input type="text" class="form-control" style="padding-top: 0px;"
-					ng-required="true" name="address1"
-						ng-model="cCctr.entity.paddress.address1" placeholder="Address1" ng-model-options="{updateOn: 'blur'}"/>
-						<span style="color: red" ng-show="employeeDetailForm.submitted || employeeDetailForm.address1.$dirty && employeeDetailForm.address1.$invalid">
-						<span class="error"
-								ng-show="employeeDetailForm.address1.$error.required">Permanent Address is a required Field </span>
-								
-								</span>
+				 name="address1"
+						ng-model="cCctr.entity.paddress.address1" placeholder="Line1" ng-model-options="{updateOn: 'blur'}"/>
+						
 				</div>
 				<div class="col-md-4">
 					<h6>
-						<b>Address2</b>
+						<b>Line2</b>
 					</h6>
-					<input type="text" class="form-control" style="padding-top: 0px;"
-						ng-model="cCctr.entity.paddress.address2" placeholder="Address2">
+					<input type="text" class="form-control" style="padding-top: 0px;"name="address2
+						ng-model="cCctr.entity.paddress.address2" placeholder="Line2">
 				</div>
 
 				<div class="col-md-4">
 					<h6>
-						<b>Address3</b>
+						<b>Line3</b>
 					</h6>
-					<input type="text" class="form-control" style="padding-top: 0px;"
-						ng-model="cCctr.entity.paddress.address3" placeholder="Address3">
+					<input type="text" class="form-control" style="padding-top: 0px;"name="address3
+						ng-model="cCctr.entity.paddress.address3" placeholder="Line3">
 				</div>
 			</div>
 
@@ -274,24 +270,34 @@
 						<h6>
 							<b>City</b>
 						</h6>
-						<input type="text" class="form-control" style="padding-top: 0px;"
+						<input type="text" class="form-control" style="padding-top: 0px;" name="city"
 							ng-model="cCctr.entity.paddress.city" placeholder="City">
 					</div>
 
 				</div>
 				<div class="col-md-4">
 					<h6>
-						<b>State</b>
+						<b>State*</b>
 					</h6>
-					<input type="text" class="form-control" style="padding-top: 0px;"
+					<input type="text" class="form-control" style="padding-top: 0px;" name="state"
+					ng-required="true"
 						ng-model="cCctr.entity.paddress.state" placeholder="State">
+							<span style="color: red" ng-show="employeeDetailForm.submitted || employeeDetailForm.state.$dirty && employeeDetailForm.state.$invalid">
+						<span class="error"
+					ng-show="employeeDetailForm.state.$error.required">State is Required.</span>
+					</span>
 				</div>
 				<div class="col-md-4">
 					<h6>
-						<b>PinCode</b>
+						<b>Pin Code*</b>
 					</h6>
-					<input type="text" class="form-control" style="padding-top: 0px;"
+					<input type="text" class="form-control" style="padding-top: 0px;" name="pincode"
+					ng-requuired="true"
 						ng-model="cCctr.entity.paddress.pincode" placeholder="PinCode">
+						<span style="color: red" ng-show="employeeDetailForm.submitted || employeeDetailForm.pincode.$dirty && employeeDetailForm.pincode.$invalid">
+						<span class="error"
+					ng-show="employeeDetailForm.pincode.$error.required">Pin Code is Required.</span>
+					</span>
 				</div>
 			</div>
 			<div class="row">
@@ -304,32 +310,31 @@
 
 				<div class="col-md-4">
 					<h6>
-						<b>Address1*</b>
+						<b>Line1</b>
 					</h6>
 					<input type="text" class="form-control" style="padding-top: 0px;"
-					 ng-required="true" name="address1"
+					 name="address1"
 					
-						ng-model="cCctr.entity.taddress.address1" placeholder="Address1" ng-model-options="{updateOn: 'blur'}"/>
+						ng-model="cCctr.entity.taddress.address1" placeholder="Line1" ng-model-options="{updateOn: 'blur'}"/>
 						<span style="color: red" ng-show="employeeDetailForm.submitted || employeeDetailForm.address1.$dirty && employeeDetailForm.address1.$invalid">
-						<span class="error"
-								ng-show="employeeDetailForm.address1.$error.required">Temporary Address is a required Field.</span>
-								 <span class="error" id="address1"></span>
+						
+								
 								</span>
 				</div>
 				<div class="col-md-4">
 					<h6>
-						<b>Address2</b>
+						<b>Line2</b>
 					</h6>
-					<input type="text" class="form-control" style="padding-top: 0px;"
-						ng-model="cCctr.entity.taddress.address2" placeholder="Address2">
+					<input type="text" class="form-control" style="padding-top: 0px;"name="address2"
+						ng-model="cCctr.entity.taddress.address2" placeholder="Line2">
 				</div>
 				<div class="row">
 					<div class="col-md-4">
 						<h6>
-							<b>Address3</b>
+							<b>Line3</b>
 						</h6>
-						<input type="text" class="form-control" style="padding-top: 0px;"
-							ng-model="cCctr.entity.taddress.address3" placeholder="Address3">
+						<input type="text" class="form-control" style="padding-top: 0px;"name="address3"
+							ng-model="cCctr.entity.taddress.address3" placeholder="Line3">
 					</div>
 
 					<div class="row">
@@ -337,23 +342,35 @@
 							<h6>
 								<b>City</b>
 							</h6>
-							<input type="text" class="form-control" style="padding-top: 0px;"
+							<input type="text" class="form-control" style="padding-top: 0px;"name="city"
 								ng-model="cCctr.entity.taddress.city" placeholder="City">
 						</div>
 
 						<div class="col-md-4">
 							<h6>
-								<b>State</b>
+								<b>State*</b>
 							</h6>
-							<input type="text" class="form-control" style="padding-top: 0px;"
-								ng-model="cCctr.entity.taddress.state" placeholder="State">
+							<input type="text" class="form-control" style="padding-top: 0px;"name="state"
+								ng-model="cCctr.entity.taddress.state" placeholder="State"	ng-required="true">
+							
+								<span style="color: red" ng-show="employeeDetailForm.submitted || employeeDetailForm.address1.$dirty && employeeDetailForm.address1.$invalid">
+						       <span class="error"
+					ng-show="employeeDetailForm.state.$error.required">State is Required.</span>
+								
+								</span>
 						</div>
 						<div class="col-md-4">
 							<h6>
-								<b>PinCode</b>
+								<b>Pin Code*</b>
 							</h6>
-							<input type="text" class="form-control" style="padding-top: 0px;"
-								ng-model="cCctr.entity.taddress.pincode" placeholder="PinCode">
+							<input type="text" class="form-control" style="padding-top: 0px;"name="pincode" 
+								ng-model="cCctr.entity.taddress.pincode" placeholder="PinCode"
+								ng-required="true">
+								<span style="color: red" ng-show="employeeDetailForm.submitted || employeeDetailForm.address1.$dirty && employeeDetailForm.address1.$invalid">
+						       <span class="error"
+					           ng-show="employeeDetailForm.pincode.$error.required">Pin Code is Required.</span>
+								
+								</span>
 						</div>
 					</div>
 				</div>
@@ -394,8 +411,13 @@
 			<div class="col-md-4">
 				<label>Account No</label> <input class="form-control" type="text"
 					name="acNo" placeholder="Account No " ng-pattern="[0-9]{4,25}"
+					ng-required="true"
 					ng-model="cCctr.entity.bank.acNo" autocomplete="off"
-					ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" /> <span
+					ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
+					<span
+					style="color: red"
+					ng-show="employeeDetailForm.submitted || employeeDetailForm.acNo.$dirty && employeeDetailForm.acNo.$invalid">
+					 <span
 					style="color: red"
 					ng-show="employeeDetailForm.submitted || employeeDetailForm.acNo.$dirty && employeeDetailForm.acNo.$invalid">
 					<span class="error"
@@ -403,6 +425,11 @@
 						Account No </span> <span class="error"
 					ng-show="employeeDetailForm.acNo.$error.maxlength">Account
 						No should not be greater than 50 digits.</span>
+						<span class="error"
+					ng-show="employeeDetailForm.acNo.$error.required">Account No.
+						 is Required.</span>
+						
+				</span>
 				</span>
 			</div>
 		</div>
@@ -411,8 +438,10 @@
 			<div class="col-md-4">
 				<label>Branch</label> <input class="form-control" type="text"
 					name="branch" placeholder="Branch "
+					ng-required="true"
 					ng-model="cCctr.entity.bank.branch" autocomplete="off"
-					ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" /> <span
+					ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" /> 
+					<span
 					style="color: red"
 					ng-show="employeeDetailForm.submitted || employeeDetailForm.branch.$dirty && employeeDetailForm.branch.$invalid">
 					<span class="error"
@@ -420,6 +449,9 @@
 						valid Branch </span> <span class="error"
 					ng-show="employeeDetailForm.branch.$error.maxlength">Branch
 						should not be greater than 50 digits.</span>
+						<span class="error"
+					ng-show="employeeDetailForm.branch.$error.required">Branch
+						 is Required.</span>
 				</span>
 			</div>
 		</div>
@@ -428,6 +460,7 @@
 		<div class="col-md-4">
 			<label>IFSC Code</label> <input class="form-control" type="text"
 				name="ifsc" placeholder="IFSC Code"
+				ng-required="true"
 				ng-model="cCctr.entity.bank.ifsc" autocomplete="off"
 				ng-maxlength="11" ng-pattern="/^[0-9A-Za-z\s]{5,11}/"
 				ng-model-options="{updateOn: 'blur'}" /> <span style="color: red"
@@ -436,6 +469,9 @@
 					valid IFSC code </span> <span class="error"
 				ng-show="employeeDetailForm.ifsc.$error.maxlength">IFSC Code
 					should not be greater than 11 digits.</span>
+					<span class="error"
+					ng-show="employeeDetailForm.ifsc.$error.required">IFSC Code
+						 is Required.</span>
 			</span>
 		</div>
 
@@ -444,6 +480,7 @@
 		<div class="col-md-4">
 			<label>Account Type</label> <input class="form-control" type="text"
 				name="acType" placeholder="Account Type"
+				ng-required="true"
 				ng-model="cCctr.entity.bank.acType" autocomplete="off"
 				ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" /> <span
 				style="color: red"
@@ -453,6 +490,10 @@
 					valid Account Type </span> <span class="error"
 				ng-show="employeeDetailForm.acType.$error.maxlength">Account
 					Type should not be greater than 50 digits.</span>
+					<span class="error"
+					ng-show="employeeDetailForm.acType.$error.required">Account
+					Type is Required.</span>
+					
 			</span>
 		</div>
 

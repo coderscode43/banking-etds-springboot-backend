@@ -260,53 +260,79 @@
         <div class="modal-body">
      
           <div class="row">
-          
-          		
-          		<div class="col-md-4">							
+          		<div class="col-md-4">	
+          		<div class="form-group">						
             	<label>Vendor Number*</label>
-                <input type="text" name="vendorNo" ng-model="cCctr.entity.vendorPayment.vendorNo" class="form-control" style="padding-top:0px;" placeholder="Vendor Number"
-          autocomplete="off" ng-pattern="/^[0-9]*$/" ng-maxlength="15" ng-required="true"  ng-model-options="{updateOn: 'blur'}" />
-										    <span style="color: red" ng-show="vendorDetailForm.submitted ||vendorDetailForm.vendorNo.$dirty && vendorDetailForm.vendorNo.$invalid">
-									<span class="error" ng-show="vendorDetailForm.vendorNo.$error.pattern">Please enter valid Vendor Number. </span> 
-									<span class="error" ng-show="vendorDetailForm.vendorNo.$error.maxlength">Vendor Number should not be greater than 15 characters.</span> 
-									<span class="error" ng-show="vendorDetailForm.vendorNo.$error.required">Vendor Number is Required.</span>
-								    </span>
-								<span class="error" id="vendorNo"></span>
-          
+               								<md-autocomplete
+               								md-width
+            								md-input-name="vendorNo" style="width:95%;"
+            								md-input-minlength="3"
+            								md-no-cache = "true"
+            								md-input-maxlength="75"
+            								md-selected-item="cCctr.entity.vendorPayment.vendorNo"
+            								md-search-text="a"
+            								md-items="item in cCctr.ajax1('vendorPayment','vendorNo',a)"
+            								md-selected-item-change="cCctr.getVendorDetail1(cCctr.entity.vendorNo,'vendorPayment')"
+            								md-delay="2000"
+            								placeholder="Vendor NO">
+            								
+          								<md-item-template>
+            								<span >{{item}}</span>
+          								</md-item-template>
+          								<md-not-found>
+                     						No Group code with "{{a}}" were found.<a ng-click = "">Add new</a>
+           								</md-not-found>
+        								</md-autocomplete>
+        								</div>
           
             </div>
-            <div class="col-md-4">							
+            <div class="col-md-4">		
+            <div class="form-group">					
             	<label>Vendor Name*</label>
-                <input type="text" name="vendorName" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.vendorName" placeholder="Vendor Name"
-           autocomplete="off" ng-pattern="^(?!\s)(?=$|.*[a-zA-Z0-9_-]$)[a-zA-Z0-9_\s-]*$" ng-maxlength="100" ng-required="true"  ng-model-options="{updateOn: 'blur'}" />
-										    <span style="color: red" ng-show="vendorDetailForm.submitted ||vendorDetailForm.vendorName.$dirty && vendorDetailForm.vendorName.$invalid">
-									<span class="error" ng-show="vendorDetailForm.vendorName.$error.pattern">Please enter valid Vendor Name. </span> 
-									<span class="error" ng-show="vendorDetailForm.vendorName.$error.maxlength">Vendor Name should not be greater than 100 characters.</span> 
-									<span class="error" ng-show="vendorDetailForm.vendorName.$error.required">Vendor Name is Required.</span>
-								    </span>
-								<span class="error" id="vendorName"></span>
-           
-           
+                                        <md-autocomplete
+            								md-input-name="vendorName" style="width:95%;"
+            								md-input-minlength="3"
+            								md-no-cache = "true"
+            								md-input-maxlength="75"
+            								md-selected-item="cCctr.entity.vendorPayment.vendorName"
+            								md-search-text="b"
+            								md-items="item in cCctr.ajax1('vendorPayment','vendorName',b)"
+            								md-selected-item-change="cCctr.getVendorDetail3(cCctr.entity.vendorName,'vendorPayment')"
+            								md-delay="2000"
+            								placeholder="Vendor Name">
+          								<md-item-template>
+            								<span >{{item}}</span>
+          								</md-item-template>
+          								<md-not-found>
+                     						No Group code with "{{b}}" were found.<a ng-click = "">Add new</a>
+           								</md-not-found>
+        								</md-autocomplete>
+        								</div>
             </div>
-            <div class="col-md-4">							
+            
+            <div class="col-md-4">	
+             <div class="form-group">						
             	<label>Vendor PAN*</label>
-                <input type="text" name="vendorPAN" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.vendorPAN" placeholder="Vendor PAN"
-            autocomplete="off" ng-pattern="/^[a-zA-z0-9]*$/" ng-maxlength="15" ng-required="true"  ng-model-options="{updateOn: 'blur'}" />
-										    <span style="color: red" ng-show="vendorDetailForm.submitted ||vendorDetailForm.vendorPAN.$dirty && vendorDetailForm.vendorPAN.$invalid">
-									<span class="error" ng-show="vendorDetailForm.vendorPAN.$error.pattern">Please enter valid Vendor PAN. </span> 
-									<span class="error" ng-show="vendorDetailForm.vendorPAN.$error.maxlength">Vendor PAN should not be greater than 15 characters.</span> 
-									<span class="error" ng-show="vendorDetailForm.vendorPAN.$error.required">Vendor PAN is Required.</span>
-								    </span>
-								<span class="error" id="vendorPAN"></span>
-            
+                					<md-autocomplete
+            								md-input-name="vendorPAN" style="width:95%;"
+            								md-input-minlength="3"
+            								md-no-cache = "true"
+            								md-input-maxlength="75"
+            								md-selected-item="cCctr.entity.vendorPayment.vendorPAN"
+            								md-search-text="c"
+            								md-items="item in cCctr.ajax1('vendorPayment','vendorPAN',c)"
+            								md-selected-item-change="cCctr.getVendorDetail3(cCctr.entity.vendorPAN,'vendorPayment')"
+            								md-delay="2000"
+            								placeholder="Vendor Pan">
+          								<md-item-template>
+            								<span >{{item}}</span>
+          								</md-item-template>
+          								<md-not-found>
+                     						No Group code with "{{b}}" were found.<a ng-click = "">Add new</a>
+           								</md-not-found>
+        								</md-autocomplete>
+										   
             </div>
-            
-          
-            
-            
-            
-            
-            
 		</div>
 	  
 	<div class="row">
@@ -496,16 +522,28 @@
 								    </span>
 								<span class="error" id="ourGst"></span>
 			</div>
-			  <div class="col-md-4">							
+			  <div class="col-md-4">
+			  <div class="form-group">							
             	<label>GST No.*</label>
-                <input type="text" name="gstNo" class="form-control" style="padding-top:0px;" ng-model="cCctr.entity.vendorPayment.gstNo" placeholder="GST No."
-            autocomplete="off" ng-pattern="/^[a-zA-z0-9]*$/" ng-maxlength="15" ng-required="true"  ng-model-options="{updateOn: 'blur'}" />
-										    <span style="color: red" ng-show="vendorDetailForm.submitted ||vendorDetailForm.gstNo.$dirty && vendorDetailForm.gstNo.$invalid">
-									<span class="error" ng-show="vendorDetailForm.gstNo.$error.pattern">Please enter valid GST No. </span> 
-									<span class="error" ng-show="vendorDetailForm.gstNo.$error.maxlength">GST No. should not be greater than 15 characters.</span> 
-									<span class="error" ng-show="vendorDetailForm.gstNo.$error.required">GST No. is Required.</span>
-								    </span>
-								<span class="error" id="gstNo"></span>
+                	
+								<md-autocomplete
+            								md-input-name="gstNo" style="width:95%;"
+            								md-input-minlength="3"
+            								md-no-cache = "true"
+            								md-input-maxlength="75"
+            								md-selected-item="cCctr.entity.vendorPayment.gstNo"
+            								md-search-text="d"
+            								md-items="item in cCctr.ajax1('vendorPayment','gstNo',d)"
+            								md-selected-item-change="cCctr.getVendorDetail(cCctr.entity.gstNo,'vendorPayment')"
+            								md-delay="2000"
+            								placeholder="GST NO">
+          								<md-item-template>
+            								<span >{{item}}</span>
+          								</md-item-template>
+          								<md-not-found>
+                     						No Group code with "{{d}}" were found.<a ng-click = "">Add new</a>
+           								</md-not-found>
+        								</md-autocomplete>
             </div>
 		</div>
         </div>

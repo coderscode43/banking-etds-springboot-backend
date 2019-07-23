@@ -244,10 +244,23 @@
 								<h6>
 									<b>Address1</b>
 								</h6>
-								<input type="text" class="form-control"
-									style="padding-top: 0px;" ng-maxlength="150" name="address1"
-									ng-model="cCctr.entity.paddress.address1"
+								<input type="text" class="form-control" ng-pattern="/^[a-zA-Z\s]/"
+									style="padding-top: 0px;" ng-maxlength="200" name="address1"
+									ng-model="cCctr.entity.paddress.address1" ng-required="true"
 									placeholder="Address1">
+									 <span
+									style="color: red"
+									ng-show="employeeDetailForm.submitted ||employeeDetailForm.address1.$dirty && employeeDetailForm.address1.$invalid">
+									<span class="error"
+									ng-show="employeeDetailForm.address1.$error.pattern">Please
+										enter valid Address1.</span> <span class="error"
+									ng-show="employeeDetailForm.address1.$error.maxlength">
+										Address1 should not be greater than 200 characters</span>
+										<span class="error"
+									ng-show="employeeDetailForm.address1.$error.required">
+										Address1 is required</span>
+
+								</span><span class="error" id="address1"></span>
 
 							</div>
 							<div class="col-md-4">
@@ -329,10 +342,23 @@
 									<b>Address1</b>
 								</h6>
 								<input type="text" class="form-control"
-									style="padding-top: 0px;" ng-maxlength="150" name="address1"
-									ng-model="cCctr.entity.caddress.address1"
-									placeholder="Address1" ng-pattern="">
+									style="padding-top: 0px;" ng-maxlength="200" name="address1"
+									ng-model="cCctr.entity.caddress.address1" ng-required="true"
+									placeholder="Address1" ng-pattern="/^[a-zA-Z\s]"> 
+								<span
+									style="color: red"
+									ng-show="employeeDetailForm.submitted ||employeeDetailForm.address1.$dirty && employeeDetailForm.address1.$invalid">
+									<span class="error"
+									ng-show="employeeDetailForm.address1.$error.pattern">Please
+										enter valid Address1.</span> <span class="error"
+									ng-show="employeeDetailForm.address1.$error.maxlength">
+										Address1 should not be greater than 200 characters</span>
+										<span class="error"
+									ng-show="employeeDetailForm.address1.$error.required">
+										Address1 is required</span>
+										<span class="error" id="address1"></span>
 
+								</span>
 							</div>
 							<div class="col-md-4">
 								<h6>
@@ -407,22 +433,49 @@
 					<div class="form-group">
 						<div class="col-md-4">
 							<label>Bank Name</label> <input class="form-control" type="text"
-								name="bankName" placeholder="Bank Name"
+								name="bankName" placeholder="Bank Name" ng-required="true"
 								ng-model="cCctr.entity.bank.bankName" autocomplete="off"
-								ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+								ng-pattern="/^[a-zA-Z\s]" ng-model-options="{updateOn: 'blur'}" />
+								<span
+									style="color: red"
+									ng-show="employeeDetailForm.submitted ||employeeDetailForm.bankName.$dirty && employeeDetailForm.bankName.$invalid">
+									<span class="error"
+									ng-show="employeeDetailForm.bankName.$error.pattern">Please
+										enter valid Bank Name.</span> <span class="error"
+									ng-show="employeeDetailForm.bankName.$error.maxlength">
+										Bank Name should not be greater than 200 characters</span>
+										<span class="error"
+									ng-show="employeeDetailForm.bankName.$error.required">
+									Bank Name is required</span>
+
+								</span>
 						</div>
 
 						<div class="col-md-4">
 							<label>Account No</label> <input class="form-control" type="text"
-								name="acNo" placeholder="Account No"
+								name="acNo" placeholder="Account No" ng-required="true" ng-maxlength="25"
 								ng-model="cCctr.entity.bank.acNo" autocomplete="off"
-								ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+								ng-pattern="/^[({0-9})({4,25})]/" ng-model-options="{updateOn: 'blur'}" />
+									<span
+									style="color: red"
+									ng-show="employeeDetailForm.submitted ||employeeDetailForm.acNo.$dirty && employeeDetailForm.acNo.$invalid">
+									<span class="error"
+									ng-show="employeeDetailForm.acNo.$error.pattern">Please
+										enter valid Account No</span> <span class="error"
+									ng-show="employeeDetailForm.acNo.$error.maxlength">
+										Account No should not be greater than 200 characters</span>
+										<span class="error"
+									ng-show="employeeDetailForm.acNo.$error.required">
+										Account No is required</span>
+
+								</span>
 						</div>
 						<div class="col-md-4">
 							<label>Branch </label> <input class="form-control" type="text"
 								name="branch" placeholder="Branch"
 								ng-model="cCctr.entity.bank.branch" autocomplete="off"
 								ng-pattern="" ng-model-options="{updateOn: 'blur'}" />
+							
 						</div>
 					</div>
 					</div>

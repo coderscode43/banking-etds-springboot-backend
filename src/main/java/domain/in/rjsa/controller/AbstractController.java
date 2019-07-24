@@ -2,6 +2,10 @@ package domain.in.rjsa.controller;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.UnknownHostException;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -35,13 +39,15 @@ import com.google.gson.JsonElement;
 
 import domain.in.rjsa.exception.CustomException;
 import domain.in.rjsa.exception.FieldErrorDTO;
+
 import domain.in.rjsa.model.form.Ajax;
 import domain.in.rjsa.model.form.FileDetail;
 import domain.in.rjsa.model.form.ListCount;
 import domain.in.rjsa.model.form.Login;
+import domain.in.rjsa.model.form.Logs;
 import domain.in.rjsa.model.form.Model;
+import domain.in.rjsa.service.LogsService;
 import domain.in.rjsa.service.ServiceInterface;
-import domain.in.rjsa.util.StaticData;
 import domain.in.rjsa.web.ApplicationCache;
 
 public abstract class AbstractController<K extends Serializable, E extends Model, S extends ServiceInterface<K, E>>
@@ -51,6 +57,10 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 
 	@Autowired
 	ApplicationCache applicationCache;
+	
+	
+	@Autowired
+	LogsService lservice;
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -175,10 +185,13 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 		//FieldErrorDTO ermsg=new FieldErrorDTO();
 		logger.info("Creating new Return instance");
 		create(entity);
+		updateLogs(entity);
 	//	ermsg.setMessage(" Saved Successfully");
 		return new ResponseEntity<Object>(HttpStatus.CREATED);
 
 	}
+
+	
 
 	public void create(LinkedHashMap<String, Object> entity) {
 		Gson gson = new Gson();
@@ -192,6 +205,30 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 		getService().save(gson.fromJson(jsonElement, getEntity()));
 
 	}
+	
+	 public void updateLogs(HashMap<String, Object> entity) {
+	    	Login l = applicationCache.getLoginDetail(getPrincipal());
+			HashMap<String, Object>constrains= new HashMap<>();
+			constrains.put("id", entity.get("id"));
+			constrains.put("clientId",l.getClientId());
+			Logs log = lservice.uniqueSearch(constrains);
+			
+		    log = new Logs();
+		    log.setClientId(l.getId());
+		    log.setIdoftheuser(l.getId());
+		    log.setIpaddrs(getIp());
+		    String s=getEntity().getName();
+		    String[] arrOfStr = s.split(".", 27); 
+		    for (String a : arrOfStr) 
+		    log.setEntity(a);
+			log.setDate(new Date(System.currentTimeMillis()));
+			log.setUsername(l.getUserName());
+			lservice.save(log);
+			
+		
+			
+		}
+
 
 	// ------------------- Get Detail ---------------------------------
 
@@ -382,5 +419,19 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 	}
 
 	public abstract Class<E> getEntity();
-
+	
+	private String getIp() {
+		try {
+			  InetAddress ipAddr = InetAddress.getLocalHost();
+			  String str=ipAddr.getHostAddress();
+			  return str;
+		} catch (UnknownHostException ex) {
+			 ex.printStackTrace(); // print Exception StackTrace
+	//		log.error("Error in application :" ,E);
+			return null;
+		}
+	}
+   	
+	
+	
 }

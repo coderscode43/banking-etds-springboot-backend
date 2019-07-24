@@ -8,8 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Data;
 
@@ -26,14 +30,16 @@ public class Logs extends CommonModelAbstract{
 	public Long clientId;
 	@Column(name = "username")
 	public String username;
+	@Temporal(TemporalType.DATE)
 	@Column(name = "date")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	public Date date;
 	@Column(name = "ipaddrs")
 	public String ipaddrs;
 	@Column(name = "entity")
 	public String entity;
 	@Column(name = "idoftheuser")
-	public String idoftheuser;
+	public Long idoftheuser;
 	@Column(name = "action")
 	public String action;
 	

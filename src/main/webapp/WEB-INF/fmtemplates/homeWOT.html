@@ -357,13 +357,14 @@
 						ng-click="cCctr.gotoListPage('ghReturnStatus','ghReturnStatus')"
 						class="dropdown-toggle" data-toggle="dropdown"
 						onclick="scrollWin()">Form 15G/15H Status</a></li>
+						
 					<li><a class="dropdown-toggle" data-toggle="dropdown"
 						ng-click="cCctr.gotoListPage('misReport','misReport')"
 						onclick="scrollWin()">MIS Report</a></li>
 
 					<li><a class="dropdown-toggle" data-toggle="dropdown"
-						onclick="scrollWin()"
-						ng-click="cCctr.gotoListPage('ticket','ticket')">Generate
+						
+						ng-click="cCctr.gotoListPage('ticket','ticket')" onclick="scrollWin()">Generate
 							Ticket </a></li>
 
 					<li><a class="dropdown-toggle" data-toggle="dropdown"
@@ -504,7 +505,7 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cCctr.reload()">Ok</button>
 			</div>
 		</div>
 	</div>

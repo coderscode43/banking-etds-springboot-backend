@@ -43,7 +43,7 @@ public class VendorServiceImpl extends AbstractService<Long, Vendor, VendorDao> 
 	
 	@Override
 	public void saveEntity(VendorDetailWrapper vendor) {
-		// TODO Auto-generated method stub
+	
 		adao.persist(vendor.getAddress());
 		bdao.persist(vendor.getBank());
 		vendor.getVendor().setBankId(vendor.getBank().getId());

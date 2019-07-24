@@ -24,8 +24,8 @@ public class Logs extends CommonModelAbstract{
 	public Long id;		
 	@Column(name = "clientId")
 	public Long clientId;
-	@Column(name = "user")
-	public String user;
+	@Column(name = "username")
+	public String username;
 	@Column(name = "date")
 	public Date date;
 	@Column(name = "ipaddrs")

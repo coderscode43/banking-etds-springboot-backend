@@ -52,7 +52,7 @@ App
 								}
 
 							}
-							self.persentDate = function() {
+							self.presentDate = function() {
 								return new Date();
 							}
 							self.gotoRestPqassword = function() {

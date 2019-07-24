@@ -28,17 +28,18 @@ public class Logs extends CommonModelAbstract{
 	public String user;
 	@Column(name = "date")
 	public Date date;
+	@Column(name = "ipaddrs")
+	public String ipaddrs;
+	@Column(name = "entity")
+	public String entity;
+	@Column(name = "idoftheuser")
+	public String idoftheuser;
 	@Column(name = "action")
 	public String action;
-	@Column(name = "fy")
-	public String fy;
-	@Column(name = "tan")
-	public String tan;
-	@Column(name = "form")
-	public String form;
-	@Column(name = "quarter")
-	public String quarter;
-	@Column(name = "time")
-	public String time;
+	
+	
+	//Entity
+	//entity
+	//Change in the 
 	
 }

@@ -214,6 +214,7 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 		constrains.put("clientId", clientId);
 		return getService().uniqueSearch(constrains);
 	}
+	
 
 	// ------------------- Update Entity ---------------------------------
 

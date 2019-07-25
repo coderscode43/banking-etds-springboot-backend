@@ -6,6 +6,12 @@ import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.UnknownHostException;
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -14,6 +20,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.exolab.castor.types.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -219,8 +226,9 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 		    String s=getEntity().getName();
 		    String[] arrOfStr = s.split(".", 27); 
 		    for (String a : arrOfStr) 
-		    log.setEntity(a);
-			log.setDate(new Date(System.currentTimeMillis()));
+		    log.setEntity(a);	
+		   
+		    log.setDate(new Date(System.currentTimeMillis()));
 			log.setUsername(l.getUserName());
 			lservice.save(log);
 		}
@@ -311,7 +319,8 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 		    String[] arrOfStr = s.split(".", 27); 
 		    for (String a : arrOfStr) 
 		    log.setEntity(a);
-			log.setDate(new Date(System.currentTimeMillis()));
+		   
+		    log.setDate(new Date(System.currentTimeMillis()));
 			log.setUsername(l.getUserName());
 			lservice.save(log);
 		}

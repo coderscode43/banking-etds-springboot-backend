@@ -1,6 +1,5 @@
 package domain.in.rjsa.model.form;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -13,6 +12,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Data;
 
@@ -30,8 +31,8 @@ public class Logs extends CommonModelAbstract{
 	@Column(name = "username")
 	public String username;
 	@Temporal(TemporalType.DATE)
-//	@Column(name = "date")
-//	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+	@Column(name = "date")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	public Date date;
 	@Column(name = "ipaddrs")
 	public String ipaddrs;

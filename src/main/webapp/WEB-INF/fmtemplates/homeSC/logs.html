@@ -145,27 +145,43 @@
 				<div class="col-md-3">
 					<h6>
 						<b>User Name</b>
-						<h6>
+						</h6>
 							<input type="text" ng-model="cCctr.search.username"
 								class="form-control" placeholder="User Name" style="width: 100%">
 				</div>
+				
 				<div class="col-md-3">
 					<h6>
-						<b>Date</b>
-					</h6>
-					<input ng-model="cCctr.search.date" class="form-control">
-						
-				</div>
-
-				<div class="col-md-3">
-					<h6>
-						<b>User ID</b>
-						<h6>
-							<input type="text" ng-model="cCctr.search.idoftheuser"
+						<b>Entity</b>
+						</h6>
+							<input type="text" ng-model="cCctr.search.entity"
 								class="form-control" placeholder="User ID" style="width: 100%">
 				</div>
 
 			</div>
+		</div>
+		
+		<div class="row">
+		<div class="col-md-3">
+					<h6>
+						<b> From Date</b>
+					</h6>
+					<input type="date" ng-model="cCctr.search.fromDate" ng-change="cCctr.search.fromDate=cCctr.date(cCctr.search.fromDate);"
+					class="form-control">
+						
+				</div>
+				
+				<div class="col-md-3">
+					<h6>
+						<b> From Date</b>
+					</h6>
+					<input type="date" ng-model="cCctr.search.toDate"  ng-change="cCctr.search.toDate=cCctr.date(cCctr.search.toDate);"
+					class="form-control">
+						
+				</div>
+				
+		
+		
 		</div>
 
 		<div class="row" id="hide">
@@ -184,7 +200,7 @@
 	</div>
 </div>
 
-
+<br>
 <!-- <div class="table-responsive"> -->
 
 <table class="tables table-bordered table-hover table-striped"

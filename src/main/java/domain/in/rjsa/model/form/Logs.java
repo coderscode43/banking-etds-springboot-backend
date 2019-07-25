@@ -1,5 +1,6 @@
 package domain.in.rjsa.model.form;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -8,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -26,14 +29,16 @@ public class Logs extends CommonModelAbstract{
 	public Long clientId;
 	@Column(name = "username")
 	public String username;
-	@Column(name = "date")
+	@Temporal(TemporalType.DATE)
+//	@Column(name = "date")
+//	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	public Date date;
 	@Column(name = "ipaddrs")
 	public String ipaddrs;
 	@Column(name = "entity")
 	public String entity;
-	@Column(name = "idoftheuser")
-	public String idoftheuser;
+//	@Column(name = "idoftheuser")
+//	public Long idoftheuser;
 	@Column(name = "action")
 	public String action;
 	

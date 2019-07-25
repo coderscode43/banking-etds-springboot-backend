@@ -185,7 +185,7 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 		//FieldErrorDTO ermsg=new FieldErrorDTO();
 		logger.info("Creating new Return instance");
 		create(entity);
-		updateLogs(entity);
+		addLogs(entity);
 	//	ermsg.setMessage(" Saved Successfully");
 		return new ResponseEntity<Object>(HttpStatus.CREATED);
 
@@ -206,16 +206,15 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 
 	}
 	
-	 public void updateLogs(HashMap<String, Object> entity) {
+	 public void addLogs(HashMap<String, Object> entity) {
 	    	Login l = applicationCache.getLoginDetail(getPrincipal());
 			HashMap<String, Object>constrains= new HashMap<>();
 			constrains.put("id", entity.get("id"));
 			constrains.put("clientId",l.getClientId());
-			Logs log = lservice.uniqueSearch(constrains);
-			
+			Logs log = lservice.uniqueSearch(constrains);			
 		    log = new Logs();
-		    log.setClientId(l.getId());
-		    log.setIdoftheuser(l.getId());
+		    log.setClientId(l.getClientId());
+		    log.setAction("Entity Added");
 		    log.setIpaddrs(getIp());
 		    String s=getEntity().getName();
 		    String[] arrOfStr = s.split(".", 27); 
@@ -224,9 +223,6 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 			log.setDate(new Date(System.currentTimeMillis()));
 			log.setUsername(l.getUserName());
 			lservice.save(log);
-			
-		
-			
 		}
 
 
@@ -265,13 +261,13 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 			ObjectMapper oMapper = new ObjectMapper();
 			HashMap<String, Object> map = oMapper.convertValue(o, HashMap.class);
 							update(entity);
+							addLogsU(entity);
+							
 							ermsg.setMessage(" Updated Successfully");
 							return new ResponseEntity<String>(HttpStatus.ACCEPTED);
 		}
 		else {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-			
-		
 		}	
 	}
 
@@ -299,6 +295,26 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 		//getService().update(gson.fromJson(jsonElement, getEntity()));
 
 	}
+	
+	
+	 public void addLogsU(HashMap<String, Object> entity) {
+	    	Login l = applicationCache.getLoginDetail(getPrincipal());
+			HashMap<String, Object>constrains= new HashMap<>();
+			constrains.put("id", Long.valueOf(entity.get("id").toString()));
+			constrains.put("clientId",l.getClientId());
+			Logs log = lservice.uniqueSearch(constrains);			
+		    log = new Logs();
+		    log.setClientId(l.getClientId());
+		    log.setAction("Entity Updated");
+		    log.setIpaddrs(getIp());
+		    String s=getEntity().getName();
+		    String[] arrOfStr = s.split(".", 27); 
+		    for (String a : arrOfStr) 
+		    log.setEntity(a);
+			log.setDate(new Date(System.currentTimeMillis()));
+			log.setUsername(l.getUserName());
+			lservice.save(log);
+		}
 
 	// ------------------- Delete Entity ---------------------------------
 
@@ -427,7 +443,7 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 			  return str;
 		} catch (UnknownHostException ex) {
 			 ex.printStackTrace(); // print Exception StackTrace
-	//		log.error("Error in application :" ,E);
+	
 			return null;
 		}
 	}

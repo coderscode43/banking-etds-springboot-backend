@@ -243,7 +243,7 @@
 
 															<div class="row">
 																<div class="col-md-6">
-																	<label>Father Name</label> <input class="form-control"
+																	<label>Father Name*</label> <input class="form-control"
 																		type="text" name="fatherName"
 																		placeholder="Father Name"
 																		ng-model="cCctr.entity.pensioner.fatherName"
@@ -263,20 +263,22 @@
 																</div>
 
 																<div class="col-md-6">
-																	<label>Pan</label> <input class="form-control"
-																		type="text" name="pan" placeholder="pan"
-																		ng-model="cCctr.entity.pensioner.pan"
-																		autocomplete="off"
-																		ng-pattern="/^([A-Za-z]{5}[0-9]{4}[A-Za-z]{1})*$/"
-																		ng-model-options="{updateOn: 'blur'}"
-																		ng-maxlength="10" /> <span style="color: red"
+																	<label>Pan*</label> <input class="form-control"
+																		type="text" name="pan" placeholder="pan" ng-model="cCctr.entity.pensioner.pan"
+																		autocomplete="off" ng-required="true" ng-pattern="/^([A-Za-z]{5}[0-9]{4}[A-Za-z]{1})*$/"
+																		ng-model-options="{updateOn: 'blur'}" ng-maxlength="10" /> 
+																		<span style="color: red"
 																		ng-show="profileForm.submitted || profileForm.pan.$dirty && profileForm.pan.$invalid">
 																		<span class="error"
-																		ng-show="profileForm.fatherName.$error.pattern">Please
-																			enter valid Pan</span> <span class="error"
-																		ng-show="profileForm.pan.$error.maxlength">Pan
-																			should not be greater than 10 characters</span>
-																	</span>
+																		ng-show="profileForm.pan.$error.pattern">Please
+																			enter valid PAN. </span> <span class="error"
+																		ng-show="profileForm.pan.$error.maxlength">PAN
+																			should not be greater than 10 digits.</span> <span
+																		class="error"
+																		ng-show="profileForm.pan.$error.required">PAN
+																			is Required </span>
+
+																	</span> <span class="error" id="pan"></span>
 																</div>
 
 															</div>
@@ -294,7 +296,7 @@
 
 																<div class="col-md-6">
 
-																	<label>Employee Grade</label> <input
+																	<label>Employee Grade*</label> <input
 																		class="form-control" type="text" name="empGrade"
 																		placeholder="IFSC"
 																		ng-model="cCctr.entity.pensioner.empGrade"
@@ -307,6 +309,8 @@
 																			enter valid Employee Grade</span> <span class="error"
 																		ng-show="profileForm.empGrade.$error.maxlength">Employee
 																			Grade should not be greater than 10 characters.</span>
+																			<span class="error"
+																		ng-show="profileForm.empGrade.$error.required">Employee Grade is Required</span>
 																	</span>
 																</div>
 															</div>
@@ -314,8 +318,9 @@
 															<div class="row">
 																<div class="col-md-6">
 
-																	<label>Mobile No.1 </label> <input class="form-control"
-																		type="text" name="mobile1" placeholder="mobile1"
+																	<label>Mobile1* </label> <input
+																		class="form-control" type="text" name="mobile1"
+																		placeholder="mobile1"
 																		ng-model="cCctr.entity.pensioner.mobile1"
 																		autocomplete="off"
 																		ng-pattern="/^([6-9]{1})([0-9]{9})$/"
@@ -325,17 +330,19 @@
 																		ng-show="profileForm.submitted || profileForm.mobile1.$dirty && profileForm.mobile1.$invalid">
 																		<span class="error"
 																		ng-show="profileForm.mobile1.$error.pattern">Please
-																			enter valid Mobile No.1</span> <span class="error"
+																			enter valid Mobile1</span> <span class="error"
 																		ng-show="profileForm.mobile1.$error.maxlength">
-																			Mobile No.1 should not be greater than 10 digits.</span>
+																			Mobile1 should not be greater than 10 digits.</span>
+																			<span class="error"
+																		ng-show="profileForm.mobile1.$error.maxlength">Mobile1 is required</span>
 																	</span>
 																</div>
 
 
 																<div class="col-md-6">
 
-																	<label>Mobile No.2</label> <input class="form-control"
-																		type="text" name="mobile2" placeholder="mobile2."
+																	<label>Mobile2</label> <input class="form-control"
+																		type="text" name="mobile2" placeholder="mobile2"
 																		ng-model="cCctr.entity.pensioner.mobile2"
 																		autocomplete="off"
 																		ng-pattern="/^([6-9]{1})([0-9]{9})$/"
@@ -345,9 +352,9 @@
 																		ng-show="profileForm.submitted || profileForm.mobile1.$dirty && profileForm.mobile2.$invalid">
 																		<span class="error"
 																		ng-show="profileForm.mobile2.$error.pattern">Please
-																			enter valid Mobile No.2</span> <span class="error"
+																			enter valid Mobile2</span> <span class="error"
 																		ng-show="profileForm.mobile2.$error.maxlength">
-																			Mobile No.2 should not be greater than 10 digits.</span>
+																			Mobile2 should not be greater than 10 digits.</span>
 																	</span>
 																</div>
 
@@ -356,31 +363,32 @@
 															<div class="row">
 																<div class="col-md-6">
 
-																	<label>Email.1 </label> <input class="form-control"
+																	<label>Email1* </label> <input class="form-control"
 																		type="text" name="email1" placeholder="email1"
 																		ng-model="cCctr.entity.pensioner.email1"
 																		autocomplete="off"
 																		ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/"
 																		required" 
-													ng-model-options="{updateOn: 'blur'}" />
+													                    ng-model-options="{updateOn: 'blur'}" />
 																	<span style="color: red"
 																		ng-show="profileForm.submitted || profileForm.email1.$dirty && profileForm.email1.$invalid">
 																		<span class="error"
 																		ng-show="profileForm.email1.$error.pattern">Please
 																			enter valid Email1</span>
+																			<span class="error"
+																		ng-show="profileForm.empGrade.$error.required"> Email1 is required</span>
 																	</span>
 																</div>
 
 
 																<div class="col-md-6">
-
-																	<label>Email.2</label> <input class="form-control"
+																	<label>Email2</label> <input class="form-control"
 																		type="text" name="email2" placeholder="email2"
 																		ng-model="cCctr.entity.pensioner.email2"
 																		autocomplete="off"
 																		ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/"
 																		required"
-													ng-model-options="{updateOn: 'blur'}" />
+													                    ng-model-options="{updateOn: 'blur'}" />
 																	<span style="color: red"
 																		ng-show="profileForm.submitted || profileForm.email2.$dirty && profileForm.email2.$invalid">
 																		<span class="error"
@@ -555,14 +563,14 @@
 															<b>Line1</b>
 														</h6>
 														<input type="text" class="form-control"
-															style="padding-top: 0px;" ng-maxlength="150"
+															style="padding-top: 0px;" ng-maxlength="300"
 															ng-model="cCctr.entity.paddress.address1"
 															placeholder="Address1"> <span style="color: red"
 															ng-show="addressDetailForm1.submitted ||addressDetailForm1.address1.$dirty && addressDetailForm1.address1.$invalid">
 
 															<span class="error"
 															ng-show="addressDetailForm1.address1.$error.maxlength">
-																Address1 should not be greater than 150 digits.</span>
+																Line1 should not be greater than 300 digits.</span>
 														</span>
 													</div>
 													<div class="col-md-3">
@@ -570,14 +578,14 @@
 															<b>Line2</b>
 														</h6>
 														<input type="text" class="form-control"
-															style="padding-top: 0px;" ng-maxlength="150"
+															style="padding-top: 0px;" ng-maxlength="300"
 															ng-model="cCctr.entity.paddress.address2"
 															placeholder="Line2"> <span style="color: red"
 															ng-show="addressDetailForm1.submitted || addressDetailForm1.address2.$dirty && addressDetailForm1.address2.$invalid">
 
 															<span class="error"
 															ng-show="addressDetailForm1.address2.$error.maxlength">
-																Line2 should not be greater than 150 digits.</span>
+																Line2 should not be greater than 300 digits.</span>
 														</span>
 													</div>
 													<div class="col-md-3">
@@ -585,14 +593,14 @@
 															<b>Line3</b>
 														</h6>
 														<input type="text" class="form-control"
-															style="padding-top: 0px;" ng-maxlength="150"
+															style="padding-top: 0px;" ng-maxlength="300"
 															ng-model="cCctr.entity.paddress.address3"
 															placeholder="Line3"> <span style="color: red"
 															ng-show="addressDetailForm1.submitted || addressDetailForm1.address3.$dirty && addressDetailForm1.address3.$invalid">
 
 															<span class="error"
 															ng-show="addressDetailForm1.address3.$error.maxlength">
-																Address3 should not be greater than 150 digits.</span>
+																Line3 should not be greater than 300 digits.</span>
 														</span>
 													</div>
 												</div>
@@ -618,26 +626,65 @@
 																City should not be greater than 20 digits.</span>
 														</span>
 													</div>
+
+
 													<div class="col-md-3">
 														<h6>
 															<b>State*</b>
 														</h6>
-														<input type="text" class="form-control"
-															style="padding-top: 0px;" ng-maxlength="20" name="state"
+														<select class="form-control" name="state"
 															ng-model="cCctr.entity.paddress.state" ng-required="true"
-															placeholder="State" ng-pattern="/^[a-zA-z\s]*$/">
-														<span style="color: red"
-															ng-show="addressDetailForm1.submitted || addressDetailForm1.state.$dirty && addressDetailForm1.state.$invalid">
+															style="width: 100%">
+															<option value="" ng-selected=true>Select State</option>
+															<option value="Andaman and Nicobar Islands">Andaman
+																and Nicobar Islands</option>
+															<option value="Andhra Pradesh">Andhra Pradesh</option>
+															<option value="Arunachal Pradesh">Arunachal
+																Pradesh</option>
+															<option value="Assam">Assam</option>
+															<option value="Bihar">Bihar</option>
+															<option value="Chandigarh">Chandigarh</option>
+															<option value="Chhattisgarh">Chhattisgarh</option>
+															<option value="Dadra and Nagar Haveli">Dadra and
+																Nagar Haveli</option>
+															<option value="Daman and Diu">Daman and Diu</option>
+															<option value="Delhi">Delhi</option>
+															<option value="Goa">Goa</option>
+															<option value="Gujarat">Gujarat</option>
+															<option value="Haryana">Haryana</option>
+															<option value="Himachal Pradesh">Himachal
+																Pradesh</option>
+															<option value="Jammu and Kashmir">Jammu and
+																Kashmir</option>
+															<option value="Jharkhand">Jharkhand</option>
+															<option value="Karnataka">Karnataka</option>
+															<option value="Kerala">Kerala</option>
+															<option value="Lakshadweep">Lakshadweep</option>
+															<option value="Madhya Pradesh">Madhya Pradesh</option>
+															<option value="Maharashtra">Maharashtra</option>
+															<option value="Manipur">Manipur</option>
+															<option value="Meghalaya">Meghalaya</option>
+															<option value="Mizoram">Mizoram</option>
+															<option value="Nagaland">Nagaland</option>
+															<option value="Orissa">Orissa</option>
+															<option value="Pondicherry">Pondicherry</option>
+															<option value="Punjab">Punjab</option>
+															<option value="Rajasthan">Rajasthan</option>
+															<option value="Sikkim">Sikkim</option>
+															<option value="Tamil Nadu">Tamil Nadu</option>
+															<option value="Tripura">Tripura</option>
+															<option value="Uttaranchal">Uttaranchal</option>
+															<option value="Uttar Pradesh">Uttar Pradesh</option>
+															<option value="West Bengal">West Bengal</option>
+														</select> <span style="color: red"
+															ng-show="employeeDetailForm.submitted ||employeeDetailForm.state.$dirty && employeeDetailForm.state.$invalid">
 															<span class="error"
-															ng-show="addressDetailForm1.state.$error.pattern">Please
-																enter valid State</span> <span class="error"
-															ng-show="addressDetailForm1.state.$error.maxlength">
-																State should not be greater than 20 digits.</span> <span
-															class="error"
-															ng-show="addressDetailForm1.state.$error.required">State
-																is Required Field</span>
+															ng-show="employeeDetailForm.state.$error.required">State
+																is required </span>
 														</span>
 													</div>
+
+
 													<div class="col-md-3">
 														<h6>
 															<b>Pin Code*</b>
@@ -718,14 +765,14 @@
 															<b>Line1</b>
 														</h6>
 														<input type="text" class="form-control"
-															style="padding-top: 0px;" ng-maxlength="150"
+															style="padding-top: 0px;" ng-maxlength="300"
 															ng-model="cCctr.entity.caddress.address1"
 															placeholder="Line1" ng-pattern=""> <span
 															style="color: red"
 															ng-show="addressDetailForm2.submitted ||addressDetailForm2.address1.$dirty && addressDetailForm2.address1.$invalid">
 															<span class="error"
 															ng-show="addressDetailForm2.address1.$error.maxlength">
-																Line1 should not be greater than 150 digits.</span>
+																Line1 should not be greater than 300 digits.</span>
 														</span>
 													</div>
 													<div class="col-md-3">
@@ -733,14 +780,14 @@
 															<b>Line2</b>
 														</h6>
 														<input type="text" class="form-control"
-															style="padding-top: 0px;" ng-maxlength="150"
+															style="padding-top: 0px;" ng-maxlength="300"
 															ng-model="cCctr.entity.caddress.address2"
 															placeholder="Line2" ng-pattern=" "> <span
 															style="color: red"
 															ng-show="addressDetailForm2.submitted ||addressDetailForm2.address2.$dirty && addressDetailForm2.address2.$invalid">
 															<span class="error"
 															ng-show="addressDetailForm2.address2.$error.maxlength">
-																Line2 should not be greater than 150 digits.</span>
+																Line2 should not be greater than 300 digits.</span>
 														</span>
 													</div>
 													<div class="col-md-3">
@@ -748,14 +795,14 @@
 															<b>Line3</b>
 														</h6>
 														<input type="text" class="form-control"
-															style="padding-top: 0px;" ng-maxlength="150"
+															style="padding-top: 0px;" ng-maxlength="300"
 															ng-model="cCctr.entity.caddress.address3"
 															placeholder="Line3" ng-pattern=" "> <span
 															style="color: red"
 															ng-show="addressDetailForm2.submitted ||addressDetailForm2.address3.$dirty && addressDetailForm2.address3.$invalid">
 															<span class="error"
 															ng-show="addressDetailForm2.address3.$error.maxlength">
-																Line3 should not be greater than 150 digits.</span>
+																Line3 should not be greater than 300 digits.</span>
 														</span>
 													</div>
 												</div>
@@ -781,26 +828,64 @@
 																City should not be greater than 20 digits.</span>
 														</span>
 													</div>
+
 													<div class="col-md-3">
 														<h6>
 															<b>State*</b>
 														</h6>
-														<input type="text" class="form-control" name="state"
-															style="padding-top: 0px;" ng-maxlength="20"
-															ng-required="true" ng-model="cCctr.entity.caddress.state"
-															placeholder="State" ng-pattern="/^[a-zA-z]*$/"> <span
-															style="color: red"
-															ng-show="addressDetailForm2.submitted || addressDetailForm2.state.$dirty && addressDetailForm2.state.$invalid">
+														<select class="form-control" name="state"
+															ng-model="cCctr.entity.caddress.state" ng-required="true"
+															style="width: 100%">
+															<option value="" ng-selected=true>Select State</option>
+															<option value="Andaman and Nicobar Islands">Andaman
+																and Nicobar Islands</option>
+															<option value="Andhra Pradesh">Andhra Pradesh</option>
+															<option value="Arunachal Pradesh">Arunachal
+																Pradesh</option>
+															<option value="Assam">Assam</option>
+															<option value="Bihar">Bihar</option>
+															<option value="Chandigarh">Chandigarh</option>
+															<option value="Chhattisgarh">Chhattisgarh</option>
+															<option value="Dadra and Nagar Haveli">Dadra and
+																Nagar Haveli</option>
+															<option value="Daman and Diu">Daman and Diu</option>
+															<option value="Delhi">Delhi</option>
+															<option value="Goa">Goa</option>
+															<option value="Gujarat">Gujarat</option>
+															<option value="Haryana">Haryana</option>
+															<option value="Himachal Pradesh">Himachal
+																Pradesh</option>
+															<option value="Jammu and Kashmir">Jammu and
+																Kashmir</option>
+															<option value="Jharkhand">Jharkhand</option>
+															<option value="Karnataka">Karnataka</option>
+															<option value="Kerala">Kerala</option>
+															<option value="Lakshadweep">Lakshadweep</option>
+															<option value="Madhya Pradesh">Madhya Pradesh</option>
+															<option value="Maharashtra">Maharashtra</option>
+															<option value="Manipur">Manipur</option>
+															<option value="Meghalaya">Meghalaya</option>
+															<option value="Mizoram">Mizoram</option>
+															<option value="Nagaland">Nagaland</option>
+															<option value="Orissa">Orissa</option>
+															<option value="Pondicherry">Pondicherry</option>
+															<option value="Punjab">Punjab</option>
+															<option value="Rajasthan">Rajasthan</option>
+															<option value="Sikkim">Sikkim</option>
+															<option value="Tamil Nadu">Tamil Nadu</option>
+															<option value="Tripura">Tripura</option>
+															<option value="Uttaranchal">Uttaranchal</option>
+															<option value="Uttar Pradesh">Uttar Pradesh</option>
+															<option value="West Bengal">West Bengal</option>
+														</select> <span style="color: red"
+															ng-show="employeeDetailForm.submitted ||employeeDetailForm.state.$dirty && employeeDetailForm.state.$invalid">
 															<span class="error"
-															ng-show="addressDetailForm2.state.$error.pattern">Please
-																enter valid State</span> <span class="error"
-															ng-show="addressDetailForm2.state.$error.maxlength">
-																State should not be greater than 20 digits.</span> <span
-															class="error"
-															ng-show="addressDetailForm2.state.$error.required">State
-																is Required Field</span>
+															ng-show="employeeDetailForm.state.$error.required">State
+																is required </span>
 														</span>
+
 													</div>
+
 													<div class="col-md-3">
 														<h6>
 															<b>PinCode*</b>

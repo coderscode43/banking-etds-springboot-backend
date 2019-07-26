@@ -52,12 +52,7 @@ public class Pensioner extends CommonModelAbstract{
 	public String email1;
 	@Column(name = "email2")
 	public String email2;
-	@Column(name = "bankAccNo")
-	public String bankAccNo;
-	@Column(name = "ifcCode")
-	public String ifcCode;
-	@Column(name = "bankName")
-	public String bankName;
+	
 	
 	
 	@Column(name = "caddrId")

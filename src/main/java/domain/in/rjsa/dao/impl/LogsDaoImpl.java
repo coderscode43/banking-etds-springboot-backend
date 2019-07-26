@@ -1,7 +1,12 @@
 package domain.in.rjsa.dao.impl;
 
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +37,23 @@ public class LogsDaoImpl extends AbstractNewDao<Long, Logs> implements LogsDao{
           {
 		criteria.add(Restrictions.eqOrIsNull("entity", entity.get("entity")));
           }
+
+//          java.util.Date date = Calendar.getInstance().getTime();  
+//	         DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");  
+//	         String strDate = dateFormat.format(date); 
+//	         java.util.Date date6;
+//			try {
+//				date6 = dateFormat.parse((String) entity.get("fromDate"));
+//				
+//			} catch (ParseException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+          
+          
+          
+          
+          
       	if (entity.get("fromDate") != null) {
 			criteria.add(Restrictions.ge("date",
 					Date.from(ZonedDateTime.parse((String) entity.get("fromDate")).toInstant())));

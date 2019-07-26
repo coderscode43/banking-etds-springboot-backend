@@ -143,16 +143,13 @@
 						<div class="row" style="font-size: 13px;">
 
 							<div class="col-md-4">
-								<label>Line 1 &nbsp;:</label>
-								{{cCctr.entity.address.address1}}
+								<label>Line 1 &nbsp;:</label> {{cCctr.entity.address.address1}}
 							</div>
 							<div class="col-md-4">
-								<label>Line 2 &nbsp;:</label>
-								{{cCctr.entity.address.address2}}
+								<label>Line 2 &nbsp;:</label> {{cCctr.entity.address.address2}}
 							</div>
 							<div class="col-md-4">
-								<label>Line 3 &nbsp;:</label>
-								{{cCctr.entity.address.address3}}
+								<label>Line 3 &nbsp;:</label> {{cCctr.entity.address.address3}}
 							</div>
 						</div>
 						<br>
@@ -559,8 +556,8 @@
 
 							<div class="row">
 								<div class="col-md-6">
-									<label>Line 1</label> <input class="form-control"
-										type="text" name="address1" placeholder="Address 1"
+									<label>Line 1</label> <input class="form-control" type="text"
+										name="address1" placeholder="Address 1"
 										ng-model="cCctr.entity.address.address1" autocomplete="off"
 										ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" /> <span
 										style="color: red"
@@ -574,8 +571,8 @@
 								</div>
 
 								<div class="col-md-6">
-									<label>Line 2</label> <input class="form-control"
-										type="text" name="address2" placeholder="Address 2 "
+									<label>Line 2</label> <input class="form-control" type="text"
+										name="address2" placeholder="Address 2 "
 										ng-model="cCctr.entity.address.address2" autocomplete="off"
 										ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" /> <span
 										style="color: red"
@@ -591,8 +588,8 @@
 
 							<div class="row">
 								<div class="col-md-6">
-									<label>Line 3</label> <input class="form-control"
-										type="text" name="address3" placeholder="Address 2 "
+									<label>Line 3</label> <input class="form-control" type="text"
+										name="address3" placeholder="Address 2 "
 										ng-model="cCctr.entity.address.address3" autocomplete="off"
 										ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" /> <span
 										style="color: red"
@@ -620,28 +617,63 @@
 									</span> <span class="error" id="city"></span>
 								</div>
 							</div>
+							
+							
 							<div class="row">
 								<div class="col-md-6">
-									<label>State*</label> <input class="form-control" type="text"
-										name="state" placeholder="state"
-										ng-model="cCctr.entity.address.state" autocomplete="off"
-										ng-required="true" ng-pattern="/^\s*$|^[A-Za-z\s.]+$/"
-										ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" /> <span
-										style="color: red"
-										ng-show="addressForm.submitted || addressForm.state.$dirty && addressForm.state.$invalid">
+									<label> State* </label> <select class="form-control"
+										name="state" ng-model="cCctr.entity.address.state"
+										ng-required="true" style="width: 100%">
+										<option value="" ng-selected=true>Select State</option>
+										<option value="Andaman and Nicobar Islands">Andaman
+											and Nicobar Islands</option>
+										<option value="Andhra Pradesh">Andhra Pradesh</option>
+										<option value="Arunachal Pradesh">Arunachal Pradesh</option>
+										<option value="Assam">Assam</option>
+										<option value="Bihar">Bihar</option>
+										<option value="Chandigarh">Chandigarh</option>
+										<option value="Chhattisgarh">Chhattisgarh</option>
+										<option value="Dadra and Nagar Haveli">Dadra and
+											Nagar Haveli</option>
+										<option value="Daman and Diu">Daman and Diu</option>
+										<option value="Delhi">Delhi</option>
+										<option value="Goa">Goa</option>
+										<option value="Gujarat">Gujarat</option>
+										<option value="Haryana">Haryana</option>
+										<option value="Himachal Pradesh">Himachal Pradesh</option>
+										<option value="Jammu and Kashmir">Jammu and Kashmir</option>
+										<option value="Jharkhand">Jharkhand</option>
+										<option value="Karnataka">Karnataka</option>
+										<option value="Kerala">Kerala</option>
+										<option value="Lakshadweep">Lakshadweep</option>
+										<option value="Madhya Pradesh">Madhya Pradesh</option>
+										<option value="Maharashtra">Maharashtra</option>
+										<option value="Manipur">Manipur</option>
+										<option value="Meghalaya">Meghalaya</option>
+										<option value="Mizoram">Mizoram</option>
+										<option value="Nagaland">Nagaland</option>
+										<option value="Orissa">Orissa</option>
+										<option value="Pondicherry">Pondicherry</option>
+										<option value="Punjab">Punjab</option>
+										<option value="Rajasthan">Rajasthan</option>
+										<option value="Sikkim">Sikkim</option>
+										<option value="Tamil Nadu">Tamil Nadu</option>
+										<option value="Tripura">Tripura</option>
+										<option value="Uttaranchal">Uttaranchal</option>
+										<option value="Uttar Pradesh">Uttar Pradesh</option>
+										<option value="West Bengal">West Bengal</option>
+									</select> <span style="color: red"
+										ng-show="employeeDetailForm.submitted ||employeeDetailForm.state.$dirty && employeeDetailForm.state.$invalid">
 										<span class="error"
-										ng-show="addressForm.state.$error.pattern">Enter
-											valid State </span> <span class="error"
-										ng-show="addressForm.state.$error.maxlength">State
-											should not be greater 50 characters.</span> <span class="error"
-										ng-show="addressForm.state.$error.required">State
-											is Required.</span>
-									</span> <span class="error" id="state"></span>
+										ng-show="employeeDetailForm.state.$error.required">State
+											is required </span>
+									</span>
+
 								</div>
 
 								<div class="col-md-6">
-									<label>Pin code*</label> <input class="form-control" type="text"
-										name="pincode" placeholder="Pincode"
+									<label>Pin code*</label> <input class="form-control"
+										type="text" name="pincode" placeholder="Pincode"
 										ng-model="cCctr.entity.address.pincode" autocomplete="off"
 										ng-pattern="/^[0-9]/" ng-required="true" ng-maxlength="7"
 										ng-model-options="{updateOn: 'blur'}" /> <span
@@ -690,25 +722,24 @@
 								<div class="col-md-6">
 									<label>Bank Name</label> <input class="form-control"
 										type="text" name="bankName" placeholder="Bank Name"
-										ng-pattern="/^\s*$|^[A-Za-z\s.]+$/"
-										ng-required="true"
+										ng-pattern="/^\s*$|^[A-Za-z\s.]+$/" ng-required="true"
 										ng-model="cCctr.entity.bank.bankName" autocomplete="off"
 										ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" /> <span
 										style="color: red"
 										ng-show="bankDetail.submitted || bankDetail.bankName.$dirty && bankDetail.bankName.$invalid">
-										<span class="error" ng-show="bankDetail.bankName.$error.pattern">Enter
+										<span class="error"
+										ng-show="bankDetail.bankName.$error.pattern">Enter
 											valid Bank Name </span> <span class="error"
-										ng-show="bankDetail.bankName.$error.maxlength">Bank Name
-											should not be greater than 50 digits.</span> <span class="error"
-										ng-show="bankDetail.bankName.$error.required">Bank Name is
-											Required.</span>
+										ng-show="bankDetail.bankName.$error.maxlength">Bank
+											Name should not be greater than 50 digits.</span> <span
+										class="error" ng-show="bankDetail.bankName.$error.required">Bank
+											Name is Required.</span>
 									</span> <span class="error" id="bankName"></span>
 								</div>
 
 								<div class="col-md-6">
 									<label>Account No</label> <input class="form-control"
-										type="text" name="acNo" placeholder="acNo "
-										ng-required="true"
+										type="text" name="acNo" placeholder="acNo " ng-required="true"
 										ng-model="cCctr.entity.bank.acNo" autocomplete="off"
 										ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" /> <span
 										style="color: red"
@@ -726,8 +757,7 @@
 							<div class="row">
 								<div class="col-md-6">
 									<label>Branch</label> <input class="form-control" type="text"
-										name="branch" placeholder="branch "
-										ng-required="true"
+										name="branch" placeholder="branch " ng-required="true"
 										ng-model="cCctr.entity.bank.branch" autocomplete="off"
 										ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" /> <span
 										style="color: red"
@@ -745,8 +775,8 @@
 									<label>IFSC Code</label> <input class="form-control"
 										type="text" name="ifsc" placeholder="Ifsc code"
 										ng-model="cCctr.entity.bank.ifsc" autocomplete="off"
-										ng-required="true"
-										ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" /> <span
+										ng-required="true" ng-maxlength="50"
+										ng-model-options="{updateOn: 'blur'}" /> <span
 										style="color: red"
 										ng-show="bankDetail.submitted || bankDetail.ifsc.$dirty && bankDetail.ifsc.$invalid">
 										<span class="error" ng-show="bankDetail.ifsc.$error.pattern">Enter
@@ -762,9 +792,9 @@
 								<div class="col-md-6">
 									<label>Account Type*</label> <input class="form-control"
 										type="text" name="acType" placeholder="Account Type"
-										ng-required="true"
-										ng-model="cCctr.entity.bank.acType" autocomplete="off"
-										ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" /> <span
+										ng-required="true" ng-model="cCctr.entity.bank.acType"
+										autocomplete="off" ng-maxlength="50"
+										ng-model-options="{updateOn: 'blur'}" /> <span
 										style="color: red"
 										ng-show="bankDetail.submitted ||bankDetail.acType.$dirty && bankDetail.acType.$invalid">
 										<span class="error" ng-show="bankDetail.acType.$error.pattern">Enter

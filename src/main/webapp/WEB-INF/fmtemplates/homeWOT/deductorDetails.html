@@ -161,7 +161,7 @@
           </div>
       
          <div class="col-md-4">	
-                  <h6><b>Type Of Deductor*</b></h6>
+                  <label><b>Type Of Deductor*</b></label>
                   <select class="form-control" ng-model="cCctr.entity.clientDetail.TYPE">
                     <option value="A">A</option>
                     <option value="B">B</option>
@@ -220,55 +220,90 @@
    </div>
             <div class="row">
  	             <div class="col-md-4">	
-                    <h6><b>Flat/Door/Block No*</b></h6>
+                    <label>Flat/Door/Block No*</label>
                      <input type="text"ng-model="cCctr.entity.deductorDetails.FLATORFLOAR" class="form-control" placeholder="Flat/Door/Block No">
                 </div>
 
 	        <div class="col-md-4">	
-                  <h6><b>Name Of Premises/Building*</b></h6>
+                  <label>Name Of Premises/Building*</label>
                   <input type="text" ng-model="cCctr.entity.deductorDetails.BUILDINGNAME" 
 								class="form-control" placeholder="Name Of Premises/Building">
 								</div>
              <div class="col-md-4">	
-                 <h6><b>Road/Street/Lane*</b></h6>
+                 <label>Road/Street/Lane*</label>
                    <input type="text" ng-model="cCctr.entity.deductorDetails.ROADSTREET" 
 								class="form-control" placeholder="Road/Street/Lane" style="size:15px">
 									</div>
 	       </div>	
             <div class="row">
  	             <div class="col-md-4">	
-                    <h6><b>Area/Locality*</b></h6>
+                    <label>Area/Locality*</label>
                      <input type="text"ng-model="cCctr.entity.deductorDetails.AREALOCALITY" class="form-control" placeholder="Area/Locality">
                 </div>
 
 	        <div class="col-md-4">	
-                  <h6><b>Town/District/City*</b></h6>
+                 <label>Town/District/City*</label>
                   <input type="text" ng-model="cCctr.entity.deductorDetails.CITY" 
 								class="form-control" placeholder="Town/District/City">
 								</div>
            <div class="col-md-4">	
-                  <h6><b>State</b></h6>
+                  <label>State</label>
                   <select class="form-control">
-                    <option value="A">A</option>
-                    <option value="B">B</option>
-                    <option value="C">C</option>
-                 </select> 
+									<option value="" ng-selected=true>Select State</option>
+									<option value="Andaman and Nicobar Islands">Andaman
+										and Nicobar Islands</option>
+									<option value="Andhra Pradesh">Andhra Pradesh</option>
+									<option value="Arunachal Pradesh">Arunachal Pradesh</option>
+									<option value="Assam">Assam</option>
+									<option value="Bihar">Bihar</option>
+									<option value="Chandigarh">Chandigarh</option>
+									<option value="Chhattisgarh">Chhattisgarh</option>
+									<option value="Dadra and Nagar Haveli">Dadra and Nagar
+										Haveli</option>
+									<option value="Daman and Diu">Daman and Diu</option>
+									<option value="Delhi">Delhi</option>
+									<option value="Goa">Goa</option>
+									<option value="Gujarat">Gujarat</option>
+									<option value="Haryana">Haryana</option>
+									<option value="Himachal Pradesh">Himachal Pradesh</option>
+									<option value="Jammu and Kashmir">Jammu and Kashmir</option>
+									<option value="Jharkhand">Jharkhand</option>
+									<option value="Karnataka">Karnataka</option>
+									<option value="Kerala">Kerala</option>
+									<option value="Lakshadweep">Lakshadweep</option>
+									<option value="Madhya Pradesh">Madhya Pradesh</option>
+									<option value="Maharashtra">Maharashtra</option>
+									<option value="Manipur">Manipur</option>
+									<option value="Meghalaya">Meghalaya</option>
+									<option value="Mizoram">Mizoram</option>
+									<option value="Nagaland">Nagaland</option>
+									<option value="Orissa">Orissa</option>
+									<option value="Pondicherry">Pondicherry</option>
+									<option value="Punjab">Punjab</option>
+									<option value="Rajasthan">Rajasthan</option>
+									<option value="Sikkim">Sikkim</option>
+									<option value="Tamil Nadu">Tamil Nadu</option>
+									<option value="Tripura">Tripura</option>
+									<option value="Uttaranchal">Uttaranchal</option>
+									<option value="Uttar Pradesh">Uttar Pradesh</option>
+									<option value="West Bengal">West Bengal</option>
+								</select>
 		   </div> 
 	       </div>	
 	      		
             <div class="row">
  	             <div class="col-md-4">	
-                    <h6><b>Pin Code*</b></h6>
+                    <label>Pin Code*</label>
                      <input type="text"ng-model="cCctr.entity.deductorDetails.PIN" class="form-control" placeholder="Pin Code">
                 </div>
 
 	        <div class="col-md-4">	
-                  <h6><b>STD Code</b></h6>
+                  <label>STD Code</label>
                   <input type="text" ng-model="cCctr.entity.deductorDetails.STD" 
 								class="form-control" placeholder="STD Code">
 								</div>
 	        <div class="col-md-4">	
-                  <h6><b>Telephone No</b></h6>
+                  <label>Telephone No</label>
                   <input type="text" ng-model="cCctr.entity.deductorDetails.TELEPHONE" 
 								class="form-control" placeholder="Telephone No">
 								</div>
@@ -277,17 +312,17 @@
 	      		
             <div class="row">
  	             <div class="col-md-4">	
-                    <h6><b>Email ID(Alternate)</b></h6>
+                    <label>Email ID(Alternate)</label>
                      <input type="text" ng-model="cCctr.entity.deductorDetails.COMPANYEMAIL" class="form-control" placeholder="Pin Code">
                 </div>
 
 	        <div class="col-md-4">	
-                  <h6><b>STD Code(Alternate)</b></h6>
+                  <label>STD Code(Alternate)</label>
                   <input type="text" ng-model="cCctr.entity.deductorDetails.STD_ALTERNATE" 
 								class="form-control" placeholder="STD Code">
 								</div>
 	        <div class="col-md-4">	
-                  <h6><b>Telephone No(Alternate)</b></h6>
+                  <label>Telephone No(Alternate)</label>
                   <input type="text" ng-model="cCctr.entity.deductorDetails.TELEPHONEALTERNATE" 
 								class="form-control" placeholder="Telephone No(Alternate)">
 								</div>
@@ -295,12 +330,12 @@
 	       </div>	
             <div class="row">
  	             <div class="col-md-4">	
-                    <h6><b> Company Email ID(Alternate)</b></h6>
+                    <label> Company Email ID(Alternate)</label>
                      <input type="email"ng-model="cCctr.entity.deductorDetails.COMPANYEMAILALTERNATE" class="form-control" placeholder=" Company Email ID(Alternate)">
                 </div>
 
 	        <div class="col-md-4">	
-                 <h6><b>Change Of Address Of Employer Since Last Return(Y/N)*</b></h6>
+                 <label>Change Of Address Of Employer Since Last Return(Y/N)*</label>
                   <select class="form-control">
                     <option value="Null">Null</option>
                     <option value="B">B</option>
@@ -308,7 +343,7 @@
                  </select> 
 		   </div>
 	        <div class="col-md-4">	
-                  <h6><b>GSTIN</b></h6>
+                  <label>GSTIN</label>
                   <input type="text" ng-model="cCctr.entity.deductorDetails.GSTIN" 
 								class="form-control" placeholder="Telephone No">
 								</div>
@@ -316,7 +351,7 @@
 	       </div>	
             <div class="row">
  	            <div class="col-md-4">	
-                  <h6><b>Deductor Status</b></h6>
+                  <label>Deductor Status</label>
                   <select class="form-control">
                     <option value="Null">Null</option>
                     <option value="B">B</option>
@@ -374,7 +409,7 @@
 	       </div>	
             <div class="row">
  	             <div class="col-md-4">	
-                    <label>Road/Stree/Lane*</label>
+                    <label>Road/Street/Lane*</label>
                      <input type="text" ng-model="cCctr.entity.respersonDetails.ROADSTREET" class="form-control" placeholder="Road/Stree/Lane">
                 </div>
 
@@ -391,12 +426,47 @@
 	       </div>	
             <div class="row">
  	            <div class="col-md-4">	
-                  <h6><b>State</b></h6>
+                  <label>State</label>
                   <select class="form-control">
-                    <option value="A">A</option>
-                    <option value="B">B</option>
-                    <option value="C">C</option>
-                 </select> 
+									<option value="" ng-selected=true>Select State</option>
+									<option value="Andaman and Nicobar Islands">Andaman
+										and Nicobar Islands</option>
+									<option value="Andhra Pradesh">Andhra Pradesh</option>
+									<option value="Arunachal Pradesh">Arunachal Pradesh</option>
+									<option value="Assam">Assam</option>
+									<option value="Bihar">Bihar</option>
+									<option value="Chandigarh">Chandigarh</option>
+									<option value="Chhattisgarh">Chhattisgarh</option>
+									<option value="Dadra and Nagar Haveli">Dadra and Nagar
+										Haveli</option>
+									<option value="Daman and Diu">Daman and Diu</option>
+									<option value="Delhi">Delhi</option>
+									<option value="Goa">Goa</option>
+									<option value="Gujarat">Gujarat</option>
+									<option value="Haryana">Haryana</option>
+									<option value="Himachal Pradesh">Himachal Pradesh</option>
+									<option value="Jammu and Kashmir">Jammu and Kashmir</option>
+									<option value="Jharkhand">Jharkhand</option>
+									<option value="Karnataka">Karnataka</option>
+									<option value="Kerala">Kerala</option>
+									<option value="Lakshadweep">Lakshadweep</option>
+									<option value="Madhya Pradesh">Madhya Pradesh</option>
+									<option value="Maharashtra">Maharashtra</option>
+									<option value="Manipur">Manipur</option>
+									<option value="Meghalaya">Meghalaya</option>
+									<option value="Mizoram">Mizoram</option>
+									<option value="Nagaland">Nagaland</option>
+									<option value="Orissa">Orissa</option>
+									<option value="Pondicherry">Pondicherry</option>
+									<option value="Punjab">Punjab</option>
+									<option value="Rajasthan">Rajasthan</option>
+									<option value="Sikkim">Sikkim</option>
+									<option value="Tamil Nadu">Tamil Nadu</option>
+									<option value="Tripura">Tripura</option>
+									<option value="Uttaranchal">Uttaranchal</option>
+									<option value="Uttar Pradesh">Uttar Pradesh</option>
+									<option value="West Bengal">West Bengal</option>
+								</select> 
 		   </div> 
 
 	        <div class="col-md-4">	
@@ -451,7 +521,7 @@
             <div class="row">
  	           
         <div class="col-md-4">	
-                  <h6><b>Change Of Add.Of Resp Person Since Last Return(Y/N)*</b></h6>
+                  <label>Change Of Add.Of Resp Person Since Last Return(Y/N)*</label>
                   <select class="form-control">
                     <option value="y">Y</option>
                     <option value="n">N</option>
@@ -459,19 +529,13 @@
                  </select> 
 		   </div>
 	        
-	       
 	       </div>	
-	      		
-	          
-  
-  
+	     
   </div>
  </div><hr>
     
     <h3>Government Details</h3>
-      
       <div class="container">
-	   
 	      <button class="btn btn-primary hidden visible-xs" type="button" data-toggle="collapse" data-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample">
              Search 
           </button>
@@ -480,12 +544,48 @@
 	     <div class="form-group">
 	      
 	        <div class="col-md-4">	
-                  <h6><b>State Name*</b></h6>
+                  <label>State Name*</label>
                   <select class="form-control" ng-model="cCctr.entity.govtDetails.STATENAME">
-                    <option value="a">A</option>
-                    <option value="b">B</option>
-                   
-                 </select> 
+                    
+									<option value="" ng-selected=true>Select State</option>
+									<option value="Andaman and Nicobar Islands">Andaman
+										and Nicobar Islands</option>
+									<option value="Andhra Pradesh">Andhra Pradesh</option>
+									<option value="Arunachal Pradesh">Arunachal Pradesh</option>
+									<option value="Assam">Assam</option>
+									<option value="Bihar">Bihar</option>
+									<option value="Chandigarh">Chandigarh</option>
+									<option value="Chhattisgarh">Chhattisgarh</option>
+									<option value="Dadra and Nagar Haveli">Dadra and Nagar
+										Haveli</option>
+									<option value="Daman and Diu">Daman and Diu</option>
+									<option value="Delhi">Delhi</option>
+									<option value="Goa">Goa</option>
+									<option value="Gujarat">Gujarat</option>
+									<option value="Haryana">Haryana</option>
+									<option value="Himachal Pradesh">Himachal Pradesh</option>
+									<option value="Jammu and Kashmir">Jammu and Kashmir</option>
+									<option value="Jharkhand">Jharkhand</option>
+									<option value="Karnataka">Karnataka</option>
+									<option value="Kerala">Kerala</option>
+									<option value="Lakshadweep">Lakshadweep</option>
+									<option value="Madhya Pradesh">Madhya Pradesh</option>
+									<option value="Maharashtra">Maharashtra</option>
+									<option value="Manipur">Manipur</option>
+									<option value="Meghalaya">Meghalaya</option>
+									<option value="Mizoram">Mizoram</option>
+									<option value="Nagaland">Nagaland</option>
+									<option value="Orissa">Orissa</option>
+									<option value="Pondicherry">Pondicherry</option>
+									<option value="Punjab">Punjab</option>
+									<option value="Rajasthan">Rajasthan</option>
+									<option value="Sikkim">Sikkim</option>
+									<option value="Tamil Nadu">Tamil Nadu</option>
+									<option value="Tripura">Tripura</option>
+									<option value="Uttaranchal">Uttaranchal</option>
+									<option value="Uttar Pradesh">Uttar Pradesh</option>
+									<option value="West Bengal">West Bengal</option>
+								</select> 
 		   </div>
 	       <div class="col-md-4">							
               <label>Ministry Name Other</label>
@@ -518,7 +618,7 @@
 	       </div>	
             <div class="row">
  	            <div class="col-md-4">	
-                  <h6><b>Ministry Name*</b></h6>
+                  <label>Ministry Name*</label>
                   <select class="form-control" ng-model="cCctr.entity.govtDetails.MINISTRYNAME">
                     <option value="a">A</option>
                     <option value="b">B</option>

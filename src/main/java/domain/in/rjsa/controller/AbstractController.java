@@ -35,8 +35,6 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 
 import domain.in.rjsa.exception.CustomException;
 import domain.in.rjsa.exception.FieldErrorDTO;
@@ -45,7 +43,9 @@ import domain.in.rjsa.model.form.FileDetail;
 import domain.in.rjsa.model.form.ListCount;
 import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.form.Logs;
+import domain.in.rjsa.model.form.LogsJson;
 import domain.in.rjsa.model.form.Model;
+import domain.in.rjsa.service.LogsJsonService;
 import domain.in.rjsa.service.LogsService;
 import domain.in.rjsa.service.ServiceInterface;
 import domain.in.rjsa.web.ApplicationCache;
@@ -61,6 +61,9 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 	
 	@Autowired
 	LogsService lservice;
+	
+	@Autowired
+	LogsJsonService ljService;
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -207,7 +210,8 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 	}
 	
 	 public void addLogs(HashMap<String, Object> entity) {
-		   
+		  LogsJson lj=new LogsJson();
+		 
 	    	Login l = applicationCache.getLoginDetail(getPrincipal());
 			HashMap<String, Object>constrains= new HashMap<>();
 			constrains.put("id", entity.get("id"));
@@ -225,10 +229,11 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 		    String json = gason.toJson(entity); 
 		    log.setDate(new Date(System.currentTimeMillis()));
 			log.setUsername(l.getUserName());
-		//	JsonParser parser = new JsonParser();
-			log.setData(json);
+			lj.setId(log.getId());
+			lj.setData(json);
 			lservice.save(log);
-		//	lservice.save((Logs) gson.fromJson(jsonElement, getEntity()));
+			ljService.save(lj);
+		
 		}
 
 
@@ -304,6 +309,7 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 	
 	
 	 public void addLogsU(HashMap<String, Object> entity) {
+		 LogsJson lj=new LogsJson();
 	    	Login l = applicationCache.getLoginDetail(getPrincipal());
 			HashMap<String, Object>constrains= new HashMap<>();
 			constrains.put("id", Long.valueOf(entity.get("id").toString()));
@@ -321,8 +327,10 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 		    String json = gason.toJson(entity); 
 		    log.setDate(new Date(System.currentTimeMillis()));
 			log.setUsername(l.getUserName());
-			log.setData(json);
+			lj.setId(log.getId());
+			lj.setData(json);
 			lservice.save(log);
+			ljService.save(lj);
 		}
 
 	// ------------------- Delete Entity ---------------------------------

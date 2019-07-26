@@ -224,8 +224,8 @@
 						</div>
 						<div class="col-md-4">
 							<div class="form-group">
-								<label> Line 2</label> <input class="form-control"
-									type="text" name="address2" placeholder="Address 2"
+								<label> Line 2</label> <input class="form-control" type="text"
+									name="address2" placeholder="Address 2"
 									ng-model="cCctr.entity.address.address2" autocomplete="off"
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 									ng-maxlength="100" ng-model-options="{updateOn: 'blur'}" /> <span
@@ -283,25 +283,61 @@
 
 							</div>
 						</div>
+
 						<div class="col-md-4">
-							<div class="form-group">
-								<label>State</label> <input class="form-control" type="text"
-									name="state" placeholder="State"
-									ng-model="cCctr.entity.address.state" autocomplete="off"
-									ng-pattern="" ng-required="true" ng-maxlength="100"
-									ng-model-options="{updateOn: 'blur'}" /> <span
-									style="color: red"
-									ng-show="employeeDetailForm.submitted || employeeDetailForm.state.$dirty && employeeDetailForm.state.$invalid">
-									<span class="error"
-									ng-show="employeeDetailForm.state.$error.pattern">Please
-										enter valid State</span> <span class="error"
-									ng-show="employeeDetailForm.state.$error.maxlength">State
-										should not be greater than 25 digit.</span> <span class="error"
-									ng-show="employeeDetailForm.state.$error.required">State
-										is Required.</span>
-								</span> <span class="error" id="state"></span>
-							</div>
+							<label>
+								<b>State*</b>
+							</label>
+							<select class="form-control" name="state"
+								ng-model="cCctr.entity.address.state" ng-required="true"
+								style="width: 100%">
+								<option value="" ng-selected=true>Select State</option>
+								<option value="Andaman and Nicobar Islands">Andaman and
+									Nicobar Islands</option>
+								<option value="Andhra Pradesh">Andhra Pradesh</option>
+								<option value="Arunachal Pradesh">Arunachal Pradesh</option>
+								<option value="Assam">Assam</option>
+								<option value="Bihar">Bihar</option>
+								<option value="Chandigarh">Chandigarh</option>
+								<option value="Chhattisgarh">Chhattisgarh</option>
+								<option value="Dadra and Nagar Haveli">Dadra and Nagar
+									Haveli</option>
+								<option value="Daman and Diu">Daman and Diu</option>
+								<option value="Delhi">Delhi</option>
+								<option value="Goa">Goa</option>
+								<option value="Gujarat">Gujarat</option>
+								<option value="Haryana">Haryana</option>
+								<option value="Himachal Pradesh">Himachal Pradesh</option>
+								<option value="Jammu and Kashmir">Jammu and Kashmir</option>
+								<option value="Jharkhand">Jharkhand</option>
+								<option value="Karnataka">Karnataka</option>
+								<option value="Kerala">Kerala</option>
+								<option value="Lakshadweep">Lakshadweep</option>
+								<option value="Madhya Pradesh">Madhya Pradesh</option>
+								<option value="Maharashtra">Maharashtra</option>
+								<option value="Manipur">Manipur</option>
+								<option value="Meghalaya">Meghalaya</option>
+								<option value="Mizoram">Mizoram</option>
+								<option value="Nagaland">Nagaland</option>
+								<option value="Orissa">Orissa</option>
+								<option value="Pondicherry">Pondicherry</option>
+								<option value="Punjab">Punjab</option>
+								<option value="Rajasthan">Rajasthan</option>
+								<option value="Sikkim">Sikkim</option>
+								<option value="Tamil Nadu">Tamil Nadu</option>
+								<option value="Tripura">Tripura</option>
+								<option value="Uttaranchal">Uttaranchal</option>
+								<option value="Uttar Pradesh">Uttar Pradesh</option>
+								<option value="West Bengal">West Bengal</option>
+							</select> <span style="color: red"
+								ng-show="employeeDetailForm.submitted ||employeeDetailForm.state.$dirty && employeeDetailForm.state.$invalid">
+								<span class="error"
+								ng-show="employeeDetailForm.state.$error.required">State
+									is required </span>
+							</span>
+
 						</div>
+
 						<div class="col-md-4">
 							<div class="form-group">
 								<label>Pin code*</label> <input class="form-control" type="text"
@@ -375,7 +411,7 @@
 						</div>
 						<div class="col-md-4">
 							<div class="form-group">
-								<label>Branch</label> <input class="form-control" type="text"
+								<label>Branch*</label> <input class="form-control" type="text"
 									name="branch" placeholder="Branch"
 									ng-model="cCctr.entity.bank.branch" ng-required="true"
 									autocomplete="off" ng-pattern="/^[ A-Za-z\s]*$/"
@@ -399,7 +435,7 @@
 					<div class="row">
 						<div class="col-md-4">
 							<div class="form-group">
-								<label>IFSC Code</label> <input class="form-control" type="text"
+								<label>IFSC Code*</label> <input class="form-control" type="text"
 									name="ifsc" placeholder="IFSC Code"
 									ng-model="cCctr.entity.bank.ifsc" ng-required="true"
 									ng-pattern="/^[0-9A-Za-z\s]{5,11}/" autocomplete="off"
@@ -421,11 +457,11 @@
 						</div>
 						<div class="col-md-4">
 							<div class="form-group">
-								<label> Account Type</label> <input class="form-control"
+								<label> Account Type*</label> <input class="form-control"
 									type="text" name="acType" placeholder="Account Type"
 									ng-model="cCctr.entity.bank.acType" autocomplete="off"
-									 ng-required="true"
-									ng-maxlength="20" ng-model-options="{updateOn: 'blur'}" /> <span
+									ng-required="true" ng-maxlength="20"
+									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
 									ng-show="employeeDetailForm.submitted || employeeDetailForm.acType.$dirty && employeeDetailForm.acType.$invalid">
 									<span class="error"

@@ -504,13 +504,14 @@
 														ng-model="cCctr.entity.deductee27.tds" 
 														  ng-required="true"
 									                     autocomplete="off" 
-							                            ng-maxlength="50" 
+							                            ng-maxlength="50" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									                    ng-model-options="{updateOn: 'blur'}" /> 
 									
 									  <span style="color: red" ng-show="profileForm.submitted || profileForm.tds.$dirty && profileForm.tds.$invalid">
 										 
 										<span class="error" ng-show="profileForm.tds.$error.maxlength">TDS should not be greater than 10.</span>
 										<span class="error" ng-show="profileForm.tds.$error.required">Please enter TDS</span>
+										<span class="error" ng-show="profileForm.tds.$error.pattern">Please enter valid TDS</span>
 										<span class="error" id="tds"></span>
 								</span>
 												</div>
@@ -525,7 +526,7 @@
 														ng-model="cCctr.entity.deductee27.surcharge"
 														 ng-required="true"
 									autocomplete="off" 
-							        ng-pattern="/^[0-9]/"
+							        ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" 
 									ng-model-options="{updateOn: 'blur'}" /> 
 									
@@ -545,7 +546,7 @@
 														ng-model="cCctr.entity.deductee27.educationCess"
 														 ng-required="true"
 									                   autocomplete="off" 
-							                          ng-pattern="/^[0-9]/"
+							                          ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									                ng-maxlength="50" 
 									                 ng-model-options="{updateOn: 'blur'}" /> 
 									
@@ -650,7 +651,7 @@
 										ng-model="cCctr.entity.deductee27.totalTaxDeducted" 
 										  ng-required="true"
 								        	autocomplete="off" 
-								         ng-pattern="/^[0-9]/"
+								         ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 							              ng-maxlength="50" 
 								        	ng-model-options="{updateOn: 'blur'}" /> 
 									
@@ -670,13 +671,13 @@
 										ng-model="cCctr.entity.deductee27.totalTaxDeposited"
 										 ng-required="true"
 									autocomplete="off" 
-							        ng-pattern="/^[0-9]/"
+							        ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" 
 									ng-model-options="{updateOn: 'blur'}" /> 
 									
 									  <span style="color: red" ng-show="profileForm.submitted || profileForm.totalTaxDeposited.$dirty && profileForm.totalTaxDeposited.$invalid">
 										  <span class="error" ng-show="profileForm.totalTaxDeposited.$error.pattern">Please enter valid Total Tax Deposited</span>
-										<span class="error" ng-show="profileForm.totalTaxDeposited.$error.maxlength">Total Tax Depositedshould not be greater than 10.</span>
+										<span class="error" ng-show="profileForm.totalTaxDeposited.$error.maxlength">Total Tax Deposited should not be greater than 10.</span>
 										<span class="error" ng-show="profileForm.totalTaxDeposited.$error.required">Please enter Total Tax Deposited</span>
 										<span class="error" id="totalTaxDeposited"></span>
 								</span>
@@ -702,14 +703,14 @@
 										ng-model="cCctr.entity.deductee27.rateAtWhichTaxDeducted"
 										  ng-required="true"
 									autocomplete="off" 
-							        ng-pattern="/^[0-9]/"
+							        ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" 
 									ng-model-options="{updateOn: 'blur'}" /> 
 									
 									  <span style="color: red" ng-show="profileForm.submitted || profileForm.rateAtWhichTaxDeducted.$dirty && profileForm.rateAtWhichTaxDeducted.$invalid">
 										  <span class="error" ng-show="profileForm.rateAtWhichTaxDeducted.$error.pattern">Please enter valid Rate OfDeduction at which tax Deducted</span>
 										<span class="error" ng-show="profileForm.rateAtWhichTaxDeducted.$error.maxlength">Rate OfDeduction at which tax Deducted should not be greater than 10.</span>
-										<span class="error" ng-show="profileForm.rateAtWhichTaxDeducted.$error.required">Please enter Rate OfDeduction at which tax Deducted</span>
+										<span class="error" ng-show="profileForm.rateAtWhichTaxDeducted.$error.required">Please enter Rate Of Deduction at which tax Deducted</span>
 										<span class="error" id="rateAtWhichTaxDeducted"></span>
 								</span>
 								</div>

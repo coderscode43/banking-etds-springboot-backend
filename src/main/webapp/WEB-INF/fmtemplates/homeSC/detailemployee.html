@@ -357,11 +357,11 @@
 											<div class="form-group">
 												<div class="col-md-3">
 													<h6>
-														<b>Employee Grade</b>
+														<b>Employee Grade*</b>
 													</h6>
 													<input type="text" class="form-control"
 														style="padding-top: 0px;" ng-pattern="/^[a-zA-Z]/"
-														ng-maxlength="10" name="empGrade"
+														ng-maxlength="10" name="empGrade" ng-required="true"
 														ng-model="cCctr.entity.employee.empGrade"
 														placeholder="Employee Grade"
 														ng-model-options="{updateOn: 'blur'}" /> <span
@@ -372,14 +372,18 @@
 															enter valid Employee Grade</span> <span class="error"
 														ng-show="employeeDetailForm.empGrade.$error.maxlength">Employee
 															Grade should not be greater than 10 characters.</span>
+															<span class="error"
+														ng-show="employeeDetailForm.empGrade.$error.required">Employee
+															Grade is Required</span>
+										
 													</span><span class="error" id="empGrade"></span>
 												</div>
 
 												<div class="col-md-3">
 													<h6>
-														<b>Mobile1</b>
+														<b>Mobile1*</b>
 													</h6>
-													<input type="text" class="form-control"
+													<input type="text" class="form-control" ng-required="true"
 														style="padding-top: 0px;" ng-pattern="/^[0-9]*$/"
 														ng-maxlength="10" name="mobile1"
 														ng-model="cCctr.entity.employee.mobile1"
@@ -392,6 +396,9 @@
 															enter valid Mobile1</span> <span class="error"
 														ng-show="employeeDetailForm.mobile1.$error.maxlength">Mobile1
 															should not be greater than 10 digits.</span>
+															<span class="error"
+														ng-show="employeeDetailForm.mobile1.$error.required">Mobile1
+															is Required</span>
 													</span><span class="error" id="mobile1"></span>
 												</div>
 
@@ -421,13 +428,12 @@
 											<div class="form-group">
 												<div class="col-md-3">
 													<h6>
-														<b>Email1</b>
+														<b>Email1*</b>
 													</h6>
 													<input type="text" class="form-control"
 														style="padding-top: 0px;"
-														ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/"
-														required"  ng-maxlength="50" name="email1"
-														ng-model="cCctr.entity.employee.email1"
+														ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required"  ng-maxlength="50" name="email1"
+														ng-model="cCctr.entity.employee.email1" ng-required="true"
 														placeholder="Email1" ng-model-options="{updateOn: 'blur'}" />
 													<span style="color: red"
 														ng-show="employeeDetailForm.submitted || employeeDetailForm.email1.$dirty && employeeDetailForm.email1.$invalid">
@@ -436,6 +442,9 @@
 															enter valid Email1</span> <span class="error"
 														ng-show="employeeDetailForm.email1.$error.maxlength">Email1
 															should not be greater than 50 characters</span>
+															<span class="error"
+														ng-show="employeeDetailForm.email1.$error.required">Email1
+															is Required</span>
 													</span> <span class="error" id="email1"></span>
 												</div>
 
@@ -537,7 +546,7 @@
 										<div class="row">
 											<div class="col-md-6">
 
-												<label>Bank Name</label> <input class="form-control"
+												<label>Bank Name*</label> <input class="form-control"
 													type="text" name="bankName" placeholder="Bank Name"
 													ng-required="true" ng-model="cCctr.entity.bank.bankName"
 													autocomplete="off" ng-maxlength="100"
@@ -557,11 +566,11 @@
 											</div>
 
 											<div class="col-md-6">
-												<label>Account No</label> <input class="form-control"
+												<label>Account No*</label> <input class="form-control"
 													type="text" name="acNo" placeholder="Account No"
 													ng-maxlength="25" ng-model="cCctr.entity.bank.acNo"
 													autocomplete="off" ng-required="true"
-													ng-pattern="/^[a-zA-Z0-9]*$/"
+													ng-pattern="/^[0-9]*$/"
 													ng-model-options="{updateOn: 'blur'}" /> <span
 													style="color: red"
 													ng-show="profileForm.submitted || profileForm.acNo.$dirty && profileForm.acNo.$invalid">
@@ -579,27 +588,24 @@
 
 										<div class="row">
 											<div class="col-md-6">
-												<label>Branch </label> <input class="form-control"
+												<label>Branch*</label> <input class="form-control"
 													type="text" name="branch" placeholder="Branch"
 													ng-maxlength="25" ng-model="cCctr.entity.bank.branch"
 													autocomplete="off" ng-pattern="/[a-zA-Z]*$/" ng-required="true"
 													ng-model-options="{updateOn: 'blur'}" /> <span
 													style="color: red"
 													ng-show="profileForm.submitted || profileForm.branch.$dirty && profileForm.branch.$invalid">
-													<span class="error"
-													ng-show="profileForm.branch.$error.pattern">Please
+													<span class="error" ng-show="profileForm.branch.$error.pattern">Please
 														enter valid Branch </span> <span class="error"
 													ng-show="profileForm.branch.$error.maxlength">Branch
 														should not be greater than 25 characters</span>
-														<span
-													class="error" ng-show="profileForm.branch.$error.required">Branch is Required</span>
-														
+													<span class="error" ng-show="profileForm.branch.$error.required">Branch is Required</span>
 												</span> <span class="error" id="branch"></span>
 											</div>
 
 											<div class="col-md-6">
 
-												<label>IFSC</label> <input class="form-control" type="text"
+												<label>IFSC*</label> <input class="form-control" type="text"
 													name="ifsc" placeholder="IFSC" ng-maxlength="25"
 													ng-model="cCctr.entity.bank.ifsc" autocomplete="off"
 													ng-required="true"
@@ -607,8 +613,7 @@
 													ng-model-options="{updateOn: 'blur'}" /> <span
 													style="color: red"
 													ng-show="profileForm.submitted || profileForm.ifsc.$dirty && profileForm.ifsc.$invalid">
-													<span class="error"
-													ng-show="profileForm.ifsc.$error.pattern">Please
+													<span class="error" ng-show="profileForm.ifsc.$error.pattern">Please
 														enter valid IFSC </span> <span class="error"
 													ng-show="profileForm.ifsc.$error.maxlength">IFSC
 														should not be greater than 25 characters</span>
@@ -620,7 +625,7 @@
 
 										<div class="row">
 											<div class="col-md-6">
-												<label>Account Type </label> <input class="form-control"
+												<label>Account Type*</label> <input class="form-control"
 													type="text" name="acType" placeholder="Account Type"
 													ng-model="cCctr.entity.bank.acType" ng-maxlength="25"
 													ng-required="true"
@@ -1376,7 +1381,7 @@
 														<h6>
 															<b>State*</b>
 														</h6> <select class="form-control"
-															name="state" ng-model="cCctr.entity.paddress.state"
+															name="state1" ng-model="cCctr.entity.paddress.state"
 															ng-required="true" style="width: 100%">
 															<option value="" ng-selected=true>Select State</option>
 															<option value="Andaman and Nicobar Islands">Andaman
@@ -1420,9 +1425,9 @@
 															<option value="Uttar Pradesh">Uttar Pradesh</option>
 															<option value="West Bengal">West Bengal</option>
 														</select> <span style="color: red"
-															ng-show="employeeDetailForm.submitted ||employeeDetailForm.state.$dirty && employeeDetailForm.state.$invalid">
+															ng-show="employeeDetailForm.submitted ||employeeDetailForm.state1.$dirty && employeeDetailForm.state1.$invalid">
 															<span class="error"
-															ng-show="employeeDetailForm.state.$error.required">State
+															ng-show="employeeDetailForm.state1.$error.required">State
 																is required </span>
 														</span>
 
@@ -1573,7 +1578,7 @@
 														<h6>
 															<b>State*</b>
 														</h6> <select class="form-control"
-															name="state" ng-model="cCctr.entity.paddress.state"
+															name="state2" ng-model="cCctr.entity.taddress.state"
 															ng-required="true" style="width: 100%">
 															<option value="" ng-selected=true>Select State</option>
 															<option value="Andaman and Nicobar Islands">Andaman
@@ -1617,9 +1622,9 @@
 															<option value="Uttar Pradesh">Uttar Pradesh</option>
 															<option value="West Bengal">West Bengal</option>
 														</select> <span style="color: red"
-															ng-show="employeeDetailForm.submitted ||employeeDetailForm.state.$dirty && employeeDetailForm.state.$invalid">
+															ng-show="employeeDetailForm.submitted ||employeeDetailForm.state2.$dirty && employeeDetailForm.state2.$invalid">
 															<span class="error"
-															ng-show="employeeDetailForm.state.$error.required">State
+															ng-show="employeeDetailForm.state2.$error.required">State
 																is required </span>
 														</span>
 

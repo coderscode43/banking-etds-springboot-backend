@@ -14,6 +14,8 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
 import lombok.Data;
 
@@ -42,6 +44,8 @@ public class Logs extends CommonModelAbstract{
 //	public Long idoftheuser;
 	@Column(name = "action")
 	public String action;
+	@Column(name = "data")
+	public String data;
 	
 	
 	//Entity

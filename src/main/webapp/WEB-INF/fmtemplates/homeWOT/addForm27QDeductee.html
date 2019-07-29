@@ -138,13 +138,13 @@
 									type="text" name="sectionCode" placeholder="Section Code"
 									ng-model="cCctr.entity.sectionCode" 
 									  ng-required="true"
-									autocomplete="off"
+									autocomplete="off" ng-maxlength="11"
 								   ng-pattern="/^[0-9]/"
 								  ng-model-options="{updateOn: 'blur'}" /> 
 								  
 								  <span style="color: red" ng-show="deducteeDetailForm.submitted || deducteeDetailForm.sectionCode.$dirty && deducteeDetailForm.sectionCode.$invalid">
 										  <span class="error" ng-show="deducteeDetailForm.sectionCode.$error.pattern">Please enter valid No Of Certificate Under Section Code</span>
-										<span class="error" ng-show="deducteeDetailForm.sectionCode.$error.maxlength">No Of Certificate Under Section Code should not be greater than 10.</span>
+										<span class="error" ng-show="deducteeDetailForm.sectionCode.$error.maxlength">No Of Certificate Under Section Code should not be greater than 11 characters</span>
 										<span class="error" ng-show="deducteeDetailForm.sectionCode.$error.required">Please enter No Of Certificate Under Section Code</span>
 										<span class="error" id="sectionCode"></span>
 								</span>

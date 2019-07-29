@@ -417,7 +417,7 @@
 							</div>
 
 							<div class="col-md-6">
-									<label>Challan Serial No</label> <input class="form-control"
+									<label>Challan Serial No*</label> <input class="form-control"
 										type="text" name="challanSerialNo"
 										placeholder="ChallanSerialNo"
 										ng-model="cCctr.entity.challan.challanSerialNo"
@@ -436,7 +436,7 @@
 			</div>
 			 <div class="row">
 							<div class="col-md-6">
-									<label> Date Of Deposition</label> 
+									<label> Date Of Deposition*</label> 
 									<input type="date" class="form-control" style="padding-top:0px;" name="dateOfDeposition" value={{cCctr.entity.challan.dateOfDeposition}} 
 									  ng-model="cCctr.entity.challan.dateOfDeposition" autocomplete="off"
 									 ng-model-options="{updateOn: 'blur'}"/>
@@ -449,9 +449,9 @@
 							</div>
 
 							<div class="col-md-6">
-									<label>Minor Head Of Challan</label> <input class="form-control"
+									<label>Minor Head Of Challan*</label> <input class="form-control"
 										type="text" name="minorHeadOfChallan"
-										placeholder="Minor Head Of Challan"
+										placeholder="Minor Head Of Challan" ng-pattern=" "
 										ng-model="cCctr.entity.challan.minorHeadOfChallan"
 										autocomplete="off"
 										ng-required="true"
@@ -468,7 +468,7 @@
 			</div>
 			 <div class="row">
 							<div class="col-md-6">
-									<label> Interest Allocated</label> <input class="form-control"
+									<label> Interest Allocated*</label> <input class="form-control"
 										type="text" name="interestAllocated" placeholder="InterestAllocated"
 										ng-model="cCctr.entity.challan.interestAllocated" autocomplete="off"
 										ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
@@ -483,7 +483,7 @@
 							</div>
 
 							<div class="col-md-6">
-									<label>Other Amount Allocated</label> <input class="form-control"
+									<label>Other Amount Allocated*</label> <input class="form-control"
 										type="text" name="otherAmtAllocated"
 										placeholder="Other Amount Allocated"
 										ng-model="cCctr.entity.challan.otherAmtAllocated"
@@ -503,7 +503,7 @@
 			</div>
 			 <div class="row">
 							<div class="col-md-6">
-									<label> Remarks</label> <input class="form-control"
+									<label> Remarks*</label> <input class="form-control"
 										type="text" name="remarks" placeholder="remarks"
 										ng-required="true"
 										ng-model="cCctr.entity.challan.remarks" autocomplete="off"
@@ -517,7 +517,7 @@
 							</div>
 
 							<div class="col-md-6">
-									<label>Nill Challan Indicator</label> <input class="form-control"
+									<label>Nill Challan Indicator*</label> <input class="form-control"
 										type="text" name="nillChallanIndicator"
 										placeholder="Nill Challan Indicator" ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 										ng-model="cCctr.entity.challan.nillChallanIndicator"
@@ -578,9 +578,9 @@
 			
 			<div class="row">
 				<div class="col-md-6">
-					<label>Amount Consumed</label> <input class="form-control"
+					<label>Amount Consumed*</label> <input class="form-control"
 							type="text" name="amountConsumed"
-							placeholder="Amount Consumed"
+							placeholder="Amount Consumed" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 							ng-model="cCctr.entity.challan.amountConsumed"
 							autocomplete="off"
 							ng-required="true"
@@ -595,7 +595,7 @@
 				<div class="col-md-6">
 					<label>Amount Available</label> <input class="form-control"
 							type="text" name="amountAvailable"
-							placeholder="Amount Available"
+							placeholder="Amount Available" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 							ng-model="cCctr.entity.challan.amountAvailable"
 							autocomplete="off"
 							ng-required="true"

@@ -297,7 +297,7 @@
 														class="form-control" type="text" name="deducteeRefNo"
 														placeholder="Deductee Reference No."
 														ng-model="cCctr.entity.deductee26.deducteeRefNo"
-														autocomplete="off" ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/" ng-maxlength="45" ng-required="true"
+														autocomplete="off" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-maxlength="45" ng-required="true"
 														ng-model-options="{updateOn: 'blur'}" />
 														<span style="color: red" ng-show="profileForm.submitted ||profileForm.deducteeRefNo.$dirty && profileForm.deducteeRefNo.$invalid">
 									<span class="error" ng-show="profileForm.deducteeRefNo.$error.pattern">Please enter valid DeducteeRefNo. </span> 
@@ -401,7 +401,7 @@
 													<label>Paid Amount*</label> <input class="form-control"
 														type="text" name="paidAmt" placeholder="Paid Amount"
 														ng-model="cCctr.entity.deductee26.paidAmt"
-														autocomplete="off" ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/" ng-maxlength="12" ng-required="true" 
+														autocomplete="off" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-maxlength="12" ng-required="true" 
 														ng-model-options="{updateOn: 'blur'}" />
 														<span style="color: red" ng-show="profileForm.submitted ||profileForm.paidAmt.$dirty && profileForm.paidAmt.$invalid">
 									<span class="error" ng-show="profileForm.paidAmt.$error.pattern">Please enter valid Paid Amt. </span> 
@@ -418,7 +418,7 @@
 													<label>TDS*</label> <input class="form-control" type="text"
 														name="tds" placeholder="TDS"
 														ng-model="cCctr.entity.deductee26.tds" autocomplete="off"
-														ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/" ng-maxlength="12" ng-required="true"
+														ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-maxlength="12" ng-required="true"
 														ng-model-options="{updateOn: 'blur'}" />
 														<span style="color: red" ng-show="profileForm.submitted ||profileForm.tds.$dirty && profileForm.tds.$invalid">
 									<span class="error" ng-show="profileForm.tds.$error.pattern">Please enter valid Tds. </span> 
@@ -436,7 +436,7 @@
 													<label>Surcharge*</label> <input class="form-control"
 														type="text" name="surcharge" placeholder="Surcharge"
 														ng-model="cCctr.entity.deductee26.surcharge"
-														autocomplete="off"ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/" ng-maxlength="12" ng-required="true"  ng-model-options="{updateOn: 'blur'}" />
+														autocomplete="off"ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-maxlength="12" ng-required="true"  ng-model-options="{updateOn: 'blur'}" />
 														<span style="color: red" ng-show="profileForm.submitted ||profileForm.surcharge.$dirty && profileForm.surcharge.$invalid">
 									<span class="error" ng-show="profileForm.surcharge.$error.pattern">Please enter valid Surcharge </span> 
 									<span class="error" ng-show="profileForm.surcharge.$error.maxlength">Surcharge should not be greater than 12 characters.</span> 
@@ -456,7 +456,7 @@
 														type="text" name="eduCess"
 														placeholder="Education Cess"
 														ng-model="cCctr.entity.deductee26.eduCess"
-														autocomplete="off" ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/" ng-maxlength="12" ng-required="true" 
+														autocomplete="off" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-maxlength="12" ng-required="true" 
 														ng-model-options="{updateOn: 'blur'}" />
 														<span style="color: red" ng-show="profileForm.submitted ||profileForm.eduCess.$dirty && profileForm.eduCess.$invalid">
 									<span class="error" ng-show="profileForm.eduCess.$error.pattern">Please enter valid Education cess . </span> 
@@ -471,7 +471,7 @@
 									<label>Total Tax Deducted*</label> <input class="form-control"
 										type="text" name="totalTaxDeduct" placeholder="Total Tax Deducted"
 										ng-model="cCctr.entity.deductee26.totalTaxDeduct" autocomplete="off"
-										ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/" ng-maxlength="12" ng-required="true" 
+										ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-maxlength="12" ng-required="true" 
 														ng-model-options="{updateOn: 'blur'}" />
 														<span style="color: red" ng-show="profileForm.submitted ||profileForm.totalTaxDeduct.$dirty && profileForm.totalTaxDeduct.$invalid">
 									<span class="error" ng-show="profileForm.totalTaxDeduct.$error.pattern">Please enter valid TotalTaxDeduct. </span> 
@@ -493,7 +493,7 @@
 										type="text" name="totalTaxDeposit"
 										placeholder="Total Tax Deposited"
 										ng-model="cCctr.entity.deductee26.totalTaxDeposit"
-										autocomplete="off" ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/" ng-maxlength="12" ng-required="true" ng-model-options="{updateOn: 'blur'}" />
+										autocomplete="off" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-maxlength="12" ng-required="true" ng-model-options="{updateOn: 'blur'}" />
 										<span style="color: red" ng-show="profileForm.submitted ||profileForm.totalTaxDeposit.$dirty && profileForm.totalTaxDeposit.$invalid">
 									<span class="error" ng-show="profileForm.totalTaxDeposit.$error.pattern">Please enter valid TotalTaxDeposit. </span> 
 									<span class="error" ng-show="profileForm.totalTaxDeposit.$error.maxlength">TotalTaxDeposit should not be greater than 12 characters.</span> 
@@ -524,7 +524,7 @@
 										type="text" name="rateTaxDeduct"
 										placeholder="Rate Tax Deduct"
 										ng-model="cCctr.entity.deductee26.rateTaxDeduct"
-										autocomplete="off" ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/" ng-maxlength="12" ng-required="true"  ng-model-options="{updateOn: 'blur'}" />
+										autocomplete="off" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-maxlength="12" ng-required="true"  ng-model-options="{updateOn: 'blur'}" />
 										<span style="color: red" ng-show="profileForm.submitted ||profileForm.rateTaxDeduct.$dirty && profileForm.rateTaxDeduct.$invalid">
 									<span class="error" ng-show="profileForm.rateTaxDeduct.$error.pattern">Please enter valid Rate Tax Deduct. </span> 
 									<span class="error" ng-show="profileForm.rateTaxDeduct.$error.maxlength">Rate Tax Deduct should not be greater than 12 characters.</span> 

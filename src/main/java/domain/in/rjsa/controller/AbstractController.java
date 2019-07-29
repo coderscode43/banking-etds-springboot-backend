@@ -3,15 +3,8 @@ package domain.in.rjsa.controller;
 import java.io.IOException;
 import java.io.Serializable;
 import java.net.InetAddress;
-import java.net.NetworkInterface;
 import java.net.UnknownHostException;
 import java.sql.Date;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -20,7 +13,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.exolab.castor.types.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,13 +38,14 @@ import com.google.gson.JsonElement;
 
 import domain.in.rjsa.exception.CustomException;
 import domain.in.rjsa.exception.FieldErrorDTO;
-
 import domain.in.rjsa.model.form.Ajax;
 import domain.in.rjsa.model.form.FileDetail;
 import domain.in.rjsa.model.form.ListCount;
 import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.form.Logs;
+import domain.in.rjsa.model.form.LogsJson;
 import domain.in.rjsa.model.form.Model;
+import domain.in.rjsa.service.LogsJsonService;
 import domain.in.rjsa.service.LogsService;
 import domain.in.rjsa.service.ServiceInterface;
 import domain.in.rjsa.web.ApplicationCache;
@@ -68,6 +61,9 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 	
 	@Autowired
 	LogsService lservice;
+	
+	@Autowired
+	LogsJsonService ljService;
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -214,6 +210,8 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 	}
 	
 	 public void addLogs(HashMap<String, Object> entity) {
+		  LogsJson lj=new LogsJson();
+		 
 	    	Login l = applicationCache.getLoginDetail(getPrincipal());
 			HashMap<String, Object>constrains= new HashMap<>();
 			constrains.put("id", entity.get("id"));
@@ -221,16 +219,21 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 			Logs log = lservice.uniqueSearch(constrains);			
 		    log = new Logs();
 		    log.setClientId(l.getClientId());
-		    log.setAction("Entity Added");
+		    log.setAction("Added");
 		    log.setIpaddrs(getIp());
 		    String s=getEntity().getName();
 		    String[] arrOfStr = s.split(".", 27); 
 		    for (String a : arrOfStr) 
 		    log.setEntity(a);	
-		   
+		    Gson gason = new Gson(); 
+		    String json = gason.toJson(entity); 
 		    log.setDate(new Date(System.currentTimeMillis()));
 			log.setUsername(l.getUserName());
+			lj.setId(log.getId());
+			lj.setData(json);
 			lservice.save(log);
+			ljService.save(lj);
+		
 		}
 
 
@@ -306,6 +309,7 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 	
 	
 	 public void addLogsU(HashMap<String, Object> entity) {
+		 LogsJson lj=new LogsJson();
 	    	Login l = applicationCache.getLoginDetail(getPrincipal());
 			HashMap<String, Object>constrains= new HashMap<>();
 			constrains.put("id", Long.valueOf(entity.get("id").toString()));
@@ -313,16 +317,20 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 			Logs log = lservice.uniqueSearch(constrains);			
 		    log = new Logs();
 		    log.setClientId(l.getClientId());
-		    log.setAction("Entity Updated");
+		    log.setAction("Updated");
 		    log.setIpaddrs(getIp());
 		    String s=getEntity().getName();
 		    String[] arrOfStr = s.split(".", 27); 
 		    for (String a : arrOfStr) 
 		    log.setEntity(a);
-		   
+		    Gson gason = new Gson(); 
+		    String json = gason.toJson(entity); 
 		    log.setDate(new Date(System.currentTimeMillis()));
 			log.setUsername(l.getUserName());
+			lj.setId(log.getId());
+			lj.setData(json);
 			lservice.save(log);
+			ljService.save(lj);
 		}
 
 	// ------------------- Delete Entity ---------------------------------

@@ -11,7 +11,7 @@
 
 					<div class="row">
 						<div class="col-md-6">
-							<label>Challan Sr. No</label> <input class="form-control"
+							<label>Challan Sr. No*</label> <input class="form-control"
 								type="text" name="challanSrNo" placeholder="Challan Sr. No"
 								ng-model="cCctr.entity.challanSrNo" autocomplete="off"
 								ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
@@ -30,7 +30,7 @@
 						</div>
 
 						<div class="col-md-6">
-							<label>Employee Reference No.</label> <input class="form-control"
+							<label>Employee Reference No*</label> <input class="form-control"
 								type="text" name="employeeRefNo"
 								placeholder="Employee Reference No."
 								ng-model="cCctr.entity.employeeRefNo" ng-required="true"
@@ -55,7 +55,7 @@
 
 					<div class="row">
 						<div class="col-md-6">
-							<label>Pan Reference No. </label> <input class="form-control"
+							<label>Pan Reference No*</label> <input class="form-control"
 								type="text" name="panRefNo" placeholder="Pan Reference No."
 								ng-model="cCctr.entity.panRefNo" ng-required="true"
 								ng-maxlength="12" autocomplete="off"
@@ -74,7 +74,7 @@
 						</div>
 
 						<div class="col-md-6">
-							<label>Pan</label> <input class="form-control" type="text"
+							<label>Pan*</label> <input class="form-control" type="text"
 								name="pan" placeholder="Pan" ng-model="cCctr.entity.pan"
 								autocomplete="off" ng-required="true" ng-maxlength="10"
 								ng-pattern="/^([A-Za-z]{5}[0-9]{4}[A-Za-z]{1})*$/"
@@ -94,7 +94,7 @@
 					</div>
 					<div class="row">
 						<div class="col-md-6">
-							<label>Name </label> <input class="form-control" type="text"
+							<label>Name*</label> <input class="form-control" type="text"
 								name="name" placeholder="Name" ng-model="cCctr.entity.name"
 								ng-required="true" ng-maxlenght="45" autocomplete="off"
 								ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
@@ -112,7 +112,7 @@
 						</div>
 
 						<div class="col-md-6">
-							<label>Section Code</label> <input class="form-control"
+							<label>Section Code*</label> <input class="form-control"
 								type="text" name="sectionCode" placeholder="Section Code"
 								ng-model="cCctr.entity.sectionCode" autocomplete="off"
 								ng-maxlenght="45" ng-required="true"
@@ -135,7 +135,7 @@
 					</div>
 					<div class="row">
 						<div class="col-md-6">
-							<label>Date Of Payment </label> <input class="form-control"
+							<label>Date Of Payment*</label> <input class="form-control"
 								type="date" name="dateOfPayment" placeholder="Date Of Payment "
 								ng-model="cCctr.entity.dateOfPayment" ng-required="true" /> <span
 								style="color: red"
@@ -148,7 +148,7 @@
 						</div>
 
 						<div class="col-md-6">
-							<label>Date Of Deduction</label> <input class="form-control"
+							<label>Date Of Deduction*</label> <input class="form-control"
 								type="date" name="dateOfDeduction"
 								placeholder="Date Of Deduction"
 								ng-model="cCctr.entity.dateOfDeduction" ng-required="true" /> <span
@@ -165,11 +165,11 @@
 					</div>
 					<div class="row">
 						<div class="col-md-6">
-							<label>Amount Paid </label> <input class="form-control"
+							<label>Amount Paid*</label> <input class="form-control"
 								type="text" name="amountPaid" placeholder="Amount Paid"
 								ng-maxlenght="45" ng-required="true"
 								ng-model="cCctr.entity.amountPaid" autocomplete="off"
-								ng-pattern="" ng-model-options="{updateOn: 'blur'}" /> <span
+								ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-model-options="{updateOn: 'blur'}" /> <span
 								style="color: red"
 								ng-show="form24qdeductee.submitted || form24qdeductee.amountPaid.$dirty && form24qdeductee.amountPaid.$invalid">
 								<span class="error"
@@ -184,9 +184,9 @@
 						</div>
 
 						<div class="col-md-6">
-							<label>TDS</label> <input class="form-control" type="text"
+							<label>TDS*</label> <input class="form-control" type="text"
 								name="tds" placeholder="TDS" ng-model="cCctr.entity.tds"
-								autocomplete="off" ng-pattern="" ng-maxlenght="45"
+								autocomplete="off" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-maxlenght="45"
 								ng-required="true" ng-model-options="{updateOn: 'blur'}" /> <span
 								style="color: red"
 								ng-show="form24qdeductee.submitted || form24qdeductee.tds.$dirty && form24qdeductee.tds.$invalid">
@@ -203,10 +203,10 @@
 					</div>
 					<div class="row">
 						<div class="col-md-6">
-							<label>Surcharge </label> <input class="form-control" type="text"
+							<label>Surcharge*</label> <input class="form-control" type="text"
 								name="surcharge" placeholder="Surcharge"
 								ng-model="cCctr.entity.surcharge" autocomplete="off"
-								ng-maxlenght="45" ng-required="true" ng-pattern=""
+								ng-maxlenght="45" ng-required="true" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 								ng-model-options="{updateOn: 'blur'}" /> <span
 								style="color: red"
 								ng-show="form24qdeductee.submitted || form24qdeductee.surcharge.$dirty && form24qdeductee.surcharge.$invalid">
@@ -221,11 +221,11 @@
 						</div>
 
 						<div class="col-md-6">
-							<label>Education Cess</label> <input class="form-control"
+							<label>Education Cess*</label> <input class="form-control"
 								type="text" name="educationCess" placeholder="Education Cess"
 								ng-maxlenght="45" ng-required="true"
 								ng-model="cCctr.entity.educationCess" autocomplete="off"
-								ng-pattern="" ng-model-options="{updateOn: 'blur'}" /> <span
+								ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-model-options="{updateOn: 'blur'}" /> <span
 								style="color: red"
 								ng-show="form24qdeductee.submitted || form24qdeductee.educationCess.$dirty && form24qdeductee.educationCess.$invalid">
 								<span class="error"
@@ -243,10 +243,10 @@
 					</div>
 					<div class="row">
 						<div class="col-md-6">
-							<label>Total TDS</label> <input class="form-control" type="text"
+							<label>Total TDS*</label> <input class="form-control" type="text"
 								name="totalTds" placeholder="Total TDS"
 								ng-model="cCctr.entity.totalTds" autocomplete="off"
-								ng-maxlenght="45" ng-required="true" ng-pattern=""
+								ng-maxlenght="45" ng-required="true" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 								ng-model-options="{updateOn: 'blur'}" /> <span
 								style="color: red"
 								ng-show="form24qdeductee.submitted || form24qdeductee.totalTds.$dirty && form24qdeductee.totalTds.$invalid">
@@ -261,11 +261,11 @@
 						</div>
 
 						<div class="col-md-6">
-							<label>Total Tax Deposited</label> <input class="form-control"
+							<label>Total Tax Deposited*</label> <input class="form-control"
 								type="text" name="totalTaxDeposited" ng-maxlenght="45"
 								ng-required="true" placeholder="Total Tax Deposited"
 								ng-model="cCctr.entity.totalTaxDeposited" autocomplete="off"
-								ng-pattern="" ng-model-options="{updateOn: 'blur'}" /> <span
+								ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-model-options="{updateOn: 'blur'}" /> <span
 								style="color: red"
 								ng-show="form24qdeductee.submitted || form24qdeductee.totalTaxDeposited.$dirty && form24qdeductee.totalTaxDeposited.$invalid">
 								<span class="error"
@@ -284,7 +284,7 @@
 
 					<div class="row">
 						<div class="col-md-6">
-							<label>Certificate Number</label> <input class="form-control"
+							<label>Certificate Number*</label> <input class="form-control"
 								type="text" name="certificateNumber" ng-maxlenght="45"
 								ng-required="true" placeholder="Certificate Number"
 								ng-model="cCctr.entity.certificateNumber" autocomplete="off"
@@ -302,7 +302,7 @@
 							</span> <span class="error" id="certificateNumber"></span>
 						</div>
 						<div class="col-md-6">
-							<label>Remarks</label> <input class="form-control" type="text"
+							<label>Remarks*</label> <input class="form-control" type="text"
 								name="remarks" placeholder="Remarks" ng-maxlenght="45"
 								ng-required="true" ng-model="cCctr.entity.remarks"
 								autocomplete="off" ng-pattern=""

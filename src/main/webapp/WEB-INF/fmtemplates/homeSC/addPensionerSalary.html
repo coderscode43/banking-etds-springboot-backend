@@ -9,7 +9,7 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Pensioners No</label> <input class="form-control"
+								<label>Pensioners No*</label> <input class="form-control"
 									type="text" name="pensionersNo" placeholder="Pensioner No"
 									ng-model="cCctr.entity.pensionersNo" autocomplete="off"
 									ng-maxlength="50" ng-pattern="/^[a-zA-Z0-9]*$/" ng-required="true"
@@ -30,9 +30,9 @@
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Basic Salary</label> <input class="form-control" type="text"
+								<label>Basic Salary*</label> <input class="form-control" type="text"
 									name="basicSalary" placeholder="Basic Salary" ng-model="cCctr.entity.basicSalary"
-									autocomplete="off" ng-maxlength="25" 
+									autocomplete="off" ng-maxlength="25"  ng-required="true" ng-maxlength="25"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
@@ -42,6 +42,9 @@
 										enter valid Basic Salary</span> <span class="error"
 									ng-show="pensionerSalaryDetailForm.basicSalary.$error.maxlength">Basic salary
 										should not be greater than 25 digit.</span>
+										<span class="error"
+									ng-show="pensionerSalaryDetailForm.basicSalary.$error.required">Basic salary
+										is Required</span>
 								</span> <span class="error" id="basicSalary"></span>
 							</div>
 						</div>
@@ -50,8 +53,8 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>HRA</label> <input class="form-control"
-									type="text" name="hra" placeholder="HRA"
+								<label>HRA*</label> <input class="form-control"
+									type="text" name="hra" placeholder="HRA" ng-required="true"
 									ng-model="cCctr.entity.hra" autocomplete="off"
 									ng-maxlength="25" ng-required=" " ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
@@ -62,6 +65,9 @@
 										enter valid HRA</span> <span class="error"
 									ng-show="pensionerSalaryDetailForm.hra.$error.maxlength">HRA
 										should not be greater than 25 digit.</span> 
+										<span class="error"
+									ng-show="pensionerSalaryDetailForm.hra.$error.required">HRA
+										is Required</span>
 								</span> <span class="error" id="hra"></span>
 							</div>
 						</div>
@@ -69,9 +75,9 @@
 
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>DA</label> <input class="form-control" type="text"
+								<label>DA*</label> <input class="form-control" type="text"
 									name="da" placeholder="DA" ng-model="cCctr.entity.da"
-									autocomplete="off" ng-maxlength="10" 
+									autocomplete="off" ng-maxlength="10"  ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
@@ -81,6 +87,9 @@
 										enter valid PAN. </span> <span class="error"
 									ng-show="pensionerSalaryDetailForm.da.$error.maxlength">PAN
 										should not be greater than 10 digits.</span>
+										<span class="error"
+									ng-show="pensionerSalaryDetailForm.da.$error.required">PAN
+										is Required</span>
 
 								</span> <span class="error" id="da"></span>
 							</div>
@@ -90,8 +99,8 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>CCA</label> <input class="form-control"
-									type="text" name="cca" placeholder="CCA"
+								<label>CCA*</label> <input class="form-control"
+									type="text" name="cca" placeholder="CCA" ng-required="true"
 									ng-model="cCctr.entity.cca" autocomplete="off"
 									ng-maxlength="10" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-model-options="{updateOn: 'blur'}" />
@@ -103,13 +112,16 @@
 										enter valid CCA</span> <span class="error"
 									ng-show="pensionerSalaryDetailForm.cca.$error.maxlength">CCA
 										should not be greater than 25 digit.</span>
+										<span class="error"
+									ng-show="pensionerSalaryDetailForm.cca.$error.required">CCA
+										is Required</span>
 								</span> <span class="error" id="cca"></span>
 
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Special Allowance</label> <input class="form-control" 
+								<label>Special Allowance*</label> <input class="form-control"   ng-required="true"
 									type="text" name="specialAllowance" placeholder="Special Allowance"
 									ng-model="cCctr.entity.specialAllowance" autocomplete="off"
 									ng-maxlength="25" ng-required=""
@@ -122,6 +134,9 @@
 										enter valid Special Allowance</span> <span class="error"
 									ng-show="pensionerSalaryDetailForm.specialAllowance.$error.maxlength">Special Allowance
 										should not be greater than 25 digit.</span>
+										<span class="error"
+									ng-show="pensionerSalaryDetailForm.specialAllowance.$error.required">Special Allowance
+										is Required</span>
 								</span> <span class="error" id="specialAllowance"></span>
 							</div>
 						</div>
@@ -131,8 +146,8 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Travel Allowance</label> <input class="form-control" type="text"
-									name="travelAllowance" placeholder="Travel Allowance "
+								<label>Travel Allowance*</label> <input class="form-control" type="text"
+									name="travelAllowance" placeholder="Travel Allowance "  ng-required="true"
 									ng-model="cCctr.entity.travelAllowance" autocomplete="off"
 									ng-maxlength="25" ng-required=" "
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
@@ -144,6 +159,9 @@
 										enter valid Travel Allowance</span> <span class="error"
 									ng-show="pensionerSalaryDetailForm.travelAllowance.$error.maxlength">
 										Travel Allowance should not be greater than 10 characters</span>
+										<span class="error"
+									ng-show="pensionerSalaryDetailForm.travelAllowance.$error.required">
+										Travel Allowance is Required</span>
 
 								</span>
 
@@ -152,8 +170,8 @@
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Medical Allowance</label> <input class="form-control" type="text"
-									name="medicalAllowance" placeholder="Medical Allowance"
+								<label>Medical Allowance*</label> <input class="form-control" type="text"
+									name="medicalAllowance" placeholder="Medical Allowance" ng-required="true"
 									ng-model="cCctr.entity.medicalAllowance" autocomplete="off"
 									ng-maxlength="25" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
@@ -164,6 +182,9 @@
 										enter valid Medical Allowance</span> <span class="error"
 									ng-show="pensionerSalaryDetailForm.medicalAllowance.$error.maxlength">
 										Medical Allowance should not be greater than 10 characters</span>
+										<span class="error"
+									ng-show="pensionerSalaryDetailForm.medicalAllowance.$error.required">
+										Medical Allowance is Required</span>
 
 								</span>
 
@@ -174,10 +195,10 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>EPF Employer Contribution</label> <input class="form-control" type="text"
+								<label>EPF Employer Contribution*</label> <input class="form-control" type="text"
 									name="epfEmployerContribution" placeholder="EPF Employer Contribution"
 									ng-model="cCctr.entity.epfEmployerContribution" autocomplete="off"
-									ng-maxlength="50" ng-required=" "
+									ng-maxlength="50" ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
@@ -187,6 +208,9 @@
 										enter valid EPF Employer Contribution</span> <span class="error"
 									ng-show="pensionerSalaryDetailForm.epfEmployerContribution.$error.maxlength">
 										EPF Employer Contribution should not be greater than 50 characters</span>
+										<span class="error"
+									ng-show="pensionerSalaryDetailForm.epfEmployerContribution.$error.required">
+										EPF Employer Contribution is Required</span>
 
 								</span>
 
@@ -195,9 +219,9 @@
 
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>EPF Employee Contribution</label> <input class="form-control" type="text"
+								<label>EPF Employee Contribution*</label> <input class="form-control" type="text"
 									name="epfEmpContribution" placeholder="EPF Employee Contribution"
-									ng-model="cCctr.entity.epfEmpContribution" autocomplete="off"
+									ng-model="cCctr.entity.epfEmpContribution" autocomplete="off" ng-required="true"
 									ng-maxlength="50"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
@@ -208,6 +232,10 @@
 										enter valid EPF Employee Contribution</span> <span class="error"
 									ng-show="pensionerSalaryDetailForm.epfEmpContribution.$error.maxlength">
 										EPF Employee Contribution should not be greater than 50 characters</span>
+										<span class="error"
+									ng-show="pensionerSalaryDetailForm.epfEmpContribution.$error.required">
+										EPF Employee Contribution is Required</span>
+										
 
 								</span>
 
@@ -217,8 +245,8 @@
 
 					<div class="row">
 						<div class="col-md-6">
-							<div class="form-group">
-								<label>Leave Enhancement</label> <input class="form-control"
+							<div class="form-group"> 
+								<label>Leave Enhancement*</label> <input class="form-control" ng-required="true"
 									type="text" name="leaveEnhancement" placeholder="Leave Enhancement"
 									ng-model="cCctr.entity.leaveEnhancement" autocomplete="off"
 									ng-maxlength="50" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-model-options="{updateOn: 'blur'}" />
@@ -230,6 +258,9 @@
 										enter valid Leave Enhancement</span> <span class="error"
 									ng-show="pensionerSalaryDetailForm.leaveEnhancement.$error.maxlength">
 										Leave Enhancement should not be greater than 50 characters</span>
+										<span class="error"
+									ng-show="pensionerSalaryDetailForm.leaveEnhancement.$error.required">
+										Leave Enhancement is Required</span>
 
 								</span>
 							</div>
@@ -237,7 +268,7 @@
 
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Horanium</label> <input class="form-control" type="text"
+								<label>Horanium</label> <input class="form-control" type="text" ng-required="true"
 									name="horanium" placeholder="Horanium"
 									ng-model="cCctr.entity.horanium" autocomplete="off"
 									ng-maxlength="50" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-model-options="{updateOn: 'blur'}" />
@@ -249,6 +280,9 @@
 										enter valid Horanium</span> <span class="error"
 									ng-show="pensionerSalaryDetailForm.horanium.$error.maxlength">
 										Horanium should not be greater than 50 characters</span>
+										<span class="error"
+									ng-show="pensionerSalaryDetailForm.horanium.$error.required">
+										Horanium is Required</span>
 
 								</span>
 							</div>
@@ -258,10 +292,10 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Add Income</label> <input class="form-control"
+								<label>Add Income</label> <input class="form-control" ng-required="true"
 									type="text" name="addIncome" placeholder="Add Income"
 									ng-model="cCctr.entity.addIncome" autocomplete="off"
-									ng-maxlength="50" ng-required=" "
+									ng-maxlength="50" 
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
@@ -270,17 +304,20 @@
 									ng-show="pensionerSalaryDetailForm.addIncome.$error.pattern">Please
 										enter valid Add Income</span> <span class="error"
 									ng-show="pensionerSalaryDetailForm.addIncome.$error.maxlength">Add Income
-										should not be greater than 50 digit.</span> 
+										should not be greater than 50 digit.</span>
+										<span class="error"
+									ng-show="pensionerSalaryDetailForm.addIncome.$error.required">Add Income
+										is Required</span> 
 								</span> <span class="error" id="addIncome"></span>
 							</div>
 						</div>
 						
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Car Perk</label> <input class="form-control"
+								<label>Car Perk*</label> <input class="form-control"
 									type="text" name="carPerk" placeholder="Car Perk"
 									ng-model="cCctr.entity.carPerk" autocomplete="off"
-									ng-maxlength="" ng-required=""
+									ng-maxlength="" ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
@@ -290,6 +327,9 @@
 										enter valid Car Perk</span> <span class="error"
 									ng-show="pensionerSalaryDetailForm.carPerk.$error.maxlength">Car Perk
 										should not be greater than 50 digit.</span> 
+										<span class="error"
+									ng-show="pensionerSalaryDetailForm.carPerk.$error.required">Car Perk
+										is Required</span> 
 								</span> <span class="error" id="carPerk"></span>
 							</div>
 						</div>
@@ -299,10 +339,10 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Loan Perk</label> <input class="form-control"
+								<label>Loan Perk*</label> <input class="form-control"
 									type="text" name="loanPerk" placeholder="Loan Perk"
 									ng-model="cCctr.entity.loanPerk" autocomplete="off"
-									ng-maxlength="50" ng-required=" "
+									ng-maxlength="50" ng-required="true "
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
@@ -312,16 +352,19 @@
 										enter valid Loan Perk</span> <span class="error"
 									ng-show="pensionerSalaryDetailForm.loanPerk.$error.maxlength">Loan Perk
 										should not be greater than 50 digit.</span> 
+										<span class="error"
+									ng-show="pensionerSalaryDetailForm.loanPerk.$error.required">Loan Perk
+										is Required</span>
 								</span> <span class="error" id="loanPerk"></span>
 							</div>
 						</div>
 						
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>NPS Employer Contribution</label> <input class="form-control"
+								<label>NPS Employer Contribution*</label> <input class="form-control"
 									type="text" name="npsEmployerContribution" placeholder="NPS Employer Contribution"
 									ng-model="cCctr.entity.npsEmployerContribution" autocomplete="off"
-									ng-maxlength="50" ng-required=" "
+									ng-maxlength="50" ng-required="true "
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
@@ -331,6 +374,9 @@
 										enter valid NPS Employer Contribution</span> <span class="error"
 									ng-show="pensionerSalaryDetailForm.npsEmployerContribution.$error.maxlength">NPS Employer Contribution
 										should not be greater than 50 digit.</span> 
+										<span class="error"
+									ng-show="pensionerSalaryDetailForm.npsEmployerContribution.$error.required">NPS Employer Contribution
+										is Required</span> 
 								</span> <span class="error" id="npsEmployerContribution"></span>
 							</div>
 						</div>
@@ -338,10 +384,10 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>NPS Employee Contribution</label> <input class="form-control"
+								<label>NPS Employee Contribution*</label> <input class="form-control"
 									type="text" name="npsEmpContribution" placeholder="NPS Employee Contribution"
 									ng-model="cCctr.entity.npsEmpContribution" autocomplete="off"
-									ng-maxlength="50" ng-required=" "
+									ng-maxlength="50" ng-required="true "
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
@@ -351,16 +397,19 @@
 										enter valid NPS Employee Contribution</span> <span class="error"
 									ng-show="pensionerSalaryDetailForm.npsEmpContribution.$error.maxlength">NPS Employee Contribution
 										should not be greater than 50 digit.</span> 
+										<span class="error"
+									ng-show="pensionerSalaryDetailForm.npsEmpContribution.$error.required">NPS Employee Contribution
+										is Required.</span> 
 								</span> <span class="error" id="npsEmpContribution"></span>
 							</div>
 						</div>
 						
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>TDS</label> <input class="form-control"
+								<label>TDS*</label> <input class="form-control"
 									type="text" name="tds" placeholder="TDS"
 									ng-model="cCctr.entity.tds" autocomplete="off"
-									ng-maxlength="50" ng-required=" "
+									ng-maxlength="50" ng-required="true "
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
@@ -370,6 +419,9 @@
 										enter valid TDS</span> <span class="error"
 									ng-show="pensionerSalaryDetailForm.tds.$error.maxlength">TDS
 										should not be greater than 50 digit.</span> 
+										<span class="error"
+									ng-show="pensionerSalaryDetailForm.tds.$error.required">TDS
+										is Required</span>
 								</span> <span class="error" id="tds"></span>
 							</div>
 						</div>
@@ -377,10 +429,10 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Other Income</label> <input class="form-control"
+								<label>Other Income*</label> <input class="form-control"
 									type="text" name="otherIncome" placeholder="Other Income"
 									ng-model="cCctr.entity.otherIncome" autocomplete="off"
-									ng-maxlength="25" ng-required=" "
+									ng-maxlength="25" ng-required="true "
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
@@ -390,16 +442,19 @@
 										enter valid Other Income</span> <span class="error"
 									ng-show="pensionerSalaryDetailForm.otherIncome.$error.maxlength">Other Income
 										should not be greater than 25 digit.</span> 
+										<span class="error"
+									ng-show="pensionerSalaryDetailForm.otherIncome.$error.required">Other Income
+										is Required</span>
 								</span> <span class="error" id="otherIncome"></span>
 							</div>
 						</div>
 						
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Month</label> <input class="form-control"
+								<label>Month*</label> <input class="form-control"
 									type="text" name="month" placeholder="Month"
 									ng-model="cCctr.entity.month" autocomplete="off"
-									ng-maxlength="10" ng-required=" "
+									ng-maxlength="10" ng-required="true "
 									ng-pattern="/^[ A-Za-z\s]*$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
@@ -409,6 +464,9 @@
 										enter valid Month</span> <span class="error"
 									ng-show="pensionerSalaryDetailForm.month.$error.maxlength">Month
 										should not be greater than 10 characters.</span> 
+										<span class="error"
+									ng-show="pensionerSalaryDetailForm.month.$error.required">Month
+										is Required</span> 
 								</span> <span class="error" id="month"></span>
 							</div>
 						</div>
@@ -417,10 +475,10 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Financial Year</label> <input class="form-control"
+								<label>Financial Year*</label> <input class="form-control"
 									type="text" name="fy" placeholder="Fy"
 									ng-model="cCctr.entity.fy" autocomplete="off"
-									ng-maxlength="10" ng-required=" "
+									ng-maxlength="10" ng-required=" true"
 									ng-pattern="/^[ 0-9]*$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
@@ -430,6 +488,9 @@
 										enter valid Financial Year</span> <span class="error"
 									ng-show="pensionerSalaryDetailForm.fy.$error.maxlength">Financial Year
 										should not be greater than 10 digit.</span> 
+										<span class="error"
+									ng-show="pensionerSalaryDetailForm.fy.$error.required">Financial Year
+										is Required</span> 
 								</span> <span class="error" id="fy"></span>
 							</div>
 						</div>
@@ -455,7 +516,7 @@
 				</div>					    
 										
 								    
-		
+		x
 		
 									    
 										    

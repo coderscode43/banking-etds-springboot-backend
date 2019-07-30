@@ -363,7 +363,7 @@
 								<label>Total Amount Of Exemption*</label> <input class="form-control"
 									type="text" name="totalAmountOfExemption" placeholder="Total Amount Of Exemption"
 									ng-model="cCctr.entity.totalAmountOfExemption" autocomplete="off"
-									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-required="true"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.totalAmountOfExemption.$dirty && form24SalaryDetail.totalAmountOfExemption.$invalid">
 									<span class="error" ng-show="form24SalaryDetail.totalAmountOfExemption.$error.pattern">Enter valid Total Amount Of Exemption </span> 

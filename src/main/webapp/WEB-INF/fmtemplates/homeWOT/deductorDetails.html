@@ -211,7 +211,7 @@
 					</div>
 					<div class="row">
 						<div class="col-md-4">
-							<label>Branch*</label> <input type="text" ng-required="true"
+							<label>Branch*</label> <input type="text" ng-required="true" name="BRANCH"
 								ng-model="cCctr.entity.clientDetail.BRANCH" class="form-control"
 								placeholder="Branch"> <span style="color: red"
 								ng-show="deductorDetailForm.submitted || deductorDetailForm.BRANCH.$dirty && deductorDetailForm.BRANCH.$invalid">
@@ -226,7 +226,7 @@
 						</div>
 
 						<div class="col-md-4">
-							<label>Pan*</label> <input type="text" ng-required="true" ng-pattern="/^([A-Za-z]{5}[0-9]{4}[A-Za-z]{1})*$/"
+							<label>Pan*</label> <input type="text" ng-required="true"name="PAN" ng-pattern="/^([A-Za-z]{5}[0-9]{4}[A-Za-z]{1})*$/"
 								ng-model="cCctr.entity.clientDetail.PAN" class="form-control"
 								placeholder="Pan"> <span style="color: red"
 								ng-show="deductorDetailForm.submitted || deductorDetailForm.PAN.$dirty && deductorDetailForm.PAN.$invalid">
@@ -239,17 +239,17 @@
 							</span>
 						</div>
 						<div class="col-md-4">
-							<label>Email ID*</label> <input type="email" ng-required="true" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/"
+							<label>Email ID*</label> <input type="email" name="EMAIL1" ng-required="true" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/"
 								ng-model="cCctr.entity.clientDetail.EMAIL" class="form-control"
 								placeholder="Email" style="size: 15px"> <span
 								style="color: red"
-								ng-show="deductorDetailForm.submitted || deductorDetailForm.EMAIL.$dirty && deductorDetailForm.EMAIL.$invalid">
+								ng-show="deductorDetailForm.submitted || deductorDetailForm.EMAIL1.$dirty && deductorDetailForm.EMAIL1.$invalid">
 								<span class="error"
-								ng-show="deductorDetailForm.EMAIL.$error.pattern">Please
+								ng-show="deductorDetailForm.EMAIL1.$error.pattern">Please
 									enter valid EMAIL</span> <span class="error"
-								ng-show="deductorDetailForm.EMAIL.$error.maxlength">EMAIL
+								ng-show="deductorDetailForm.EMAIL1.$error.maxlength">EMAIL
 									should not be greater than 50 characters.</span> <span class="error"
-								ng-show="deductorDetailForm.EMAIL.$error.required">EMAIL
+								ng-show="deductorDetailForm.EMAIL1.$error.required">EMAIL
 									is Required</span>
 							</span>
 						</div>
@@ -291,33 +291,33 @@
 								</div>
 								<div class="col-md-4">
 									<label>Permanent Account Number*</label> <input type="text" ng-required="true" ng-pattern="/^([A-Za-z]{5}[0-9]{4}[A-Za-z]{1})*$/"
-										name="PermanentAccountNumber" class="form-control"
+										name="PermanentAccountNumber1" class="form-control" ng-maxlength=" "
 										placeholder="Permanent Account Number"> <span
 										style="color: red"
-										ng-show="deductorDetailForm.submitted || deductorDetailForm.PermanentAccountNumber.$dirty && deductorDetailForm.PermanentAccountNumber.$invalid">
+										ng-show="deductorDetailForm.submitted || deductorDetailForm.PermanentAccountNumber1.$dirty && deductorDetailForm.PermanentAccountNumber1.$invalid">
 										<span class="error"
-										ng-show="deductorDetailForm.PermanentAccountNumber.$error.pattern">Please
+										ng-show="deductorDetailForm.PermanentAccountNumber1.$error.pattern">Please
 											enter valid Permanent Account Number</span> <span class="error"
-										ng-show="deductorDetailForm.PermanentAccountNumber.$error.maxlength">Permanent
+										ng-show="deductorDetailForm.PermanentAccountNumber1.$error.maxlength">Permanent
 											Account Number should not be greater than 50 characters.</span> <span
 										class="error"
-										ng-show="deductorDetailForm.PermanentAccountNumber.$error.required">Permanent
+										ng-show="deductorDetailForm.PermanentAccountNumber1.$error.required">Permanent
 											Account Number is Required</span>
 									</span>
 								</div>
 
 								<div class="col-md-4">
 									<label>Branch/Division*</label> <input type="text" ng-required="true"
-										name="Branch" class="form-control"
+										name="Branch1" class="form-control"
 										placeholder="Branch/Division"> <span
 										style="color: red"
-										ng-show="deductorDetailForm.submitted || deductorDetailForm.Branch.$dirty && deductorDetailForm.Branch.$invalid">
+										ng-show="deductorDetailForm.submitted || deductorDetailForm.Branch1.$dirty && deductorDetailForm.Branch1.$invalid">
 										<span class="error"
-										ng-show="deductorDetailForm.Branch.$error.pattern">Please
+										ng-show="deductorDetailForm.Branch1.$error.pattern">Please
 											enter valid Branch</span> <span class="error"
-										ng-show="deductorDetailForm.Branch.$error.maxlength">Branch
+										ng-show="deductorDetailForm.Branch1.$error.maxlength">Branch
 											should not be greater than 50 characters.</span> <span class="error"
-										ng-show="deductorDetailForm.Branch.$error.required">Branch
+										ng-show="deductorDetailForm.Branch1.$error.required">Branch
 											is Required</span>
 									</span>
 								</div>
@@ -376,7 +376,7 @@
 					<div class="row">
 						<div class="col-md-4">
 							<label>Area/Locality*</label> <input type="text" ng-required="true"
-								name="AREALOCALITY"
+								name="AREALOCALITY1"
 								ng-model="cCctr.entity.deductorDetails.AREALOCALITY"
 								class="form-control" placeholder="Area/Locality"> <span
 								style="color: red"
@@ -393,21 +393,21 @@
 
 						<div class="col-md-4">
 							<label>Town/District/City*</label> <input type="text" ng-required="true"
-								ng-model="cCctr.entity.deductorDetails.CITY" name="CITY"
+								ng-model="cCctr.entity.deductorDetails.CITY" name="CITY1"
 								class="form-control" placeholder="Town/District/City"> <span
 								style="color: red"
-								ng-show="deductorDetailForm.submitted || deductorDetailForm.CITY.$dirty && deductorDetailForm.CITY.$invalid">
+								ng-show="deductorDetailForm.submitted || deductorDetailForm.CITY1.$dirty && deductorDetailForm.CITY1.$invalid">
 								<span class="error"
-								ng-show="deductorDetailForm.CITY.$error.pattern">Please
+								ng-show="deductorDetailForm.CITY1.$error.pattern">Please
 									enter valid Town/District/City</span> <span class="error"
-								ng-show="deductorDetailForm.CITY.$error.maxlength">Town/District/City
+								ng-show="deductorDetailForm.CITY1.$error.maxlength">Town/District/City
 									should not be greater than 50 characters.</span> <span class="error"
-								ng-show="deductorDetailForm.CITY.$error.required">Town/District/City
+								ng-show="deductorDetailForm.CITY1.$error.required">Town/District/City
 									is Required</span>
 							</span>
 						</div>
 						<div class="col-md-4" ng-required="true">
-							<label>State*</label> <select class="form-control" name="STATE" ng-model="cCctr.entity.deductorDetails.STATE" >
+							<label>State*</label> <select class="form-control" name="STATE1" ng-model="cCctr.entity.deductorDetails.STATE" >
 								<option value="" ng-selected=true>Select State</option>
 								<option value="Andaman and Nicobar Islands">Andaman and
 									Nicobar Islands</option>
@@ -449,10 +449,10 @@
 							</select>
 							<span
 								style="color: red"
-								ng-show="deductorDetailForm.submitted || deductorDetailForm.STATE.$dirty && deductorDetailForm.STATE.$invalid">
+								ng-show="deductorDetailForm.submitted || deductorDetailForm.STATE1.$dirty && deductorDetailForm.STATE1.$invalid">
 								
 							<span class="error"
-								ng-show="deductorDetailForm.STATE.$error.required">State
+								ng-show="deductorDetailForm.STATE1.$error.required">State
 									is Required</span>
 									</span>
 						</div>
@@ -460,16 +460,16 @@
 
 					<div class="row">
 						<div class="col-md-4">
-							<label>Pin Code*</label> <input type="text" ng-required="true" name="PIN" ng-maxlength="6"
-								ng-model="cCctr.entity.deductorDetails.PIN" class="form-control"
+							<label>Pin Code*</label> <input type="text" ng-required="true" name="PIN1" ng-maxlength="6"
+								ng-model="cCctr.entity.deductorDetails.PIN" class="form-control" ng-pattern="/^[0-9]*$/"
 								placeholder="Pin Code"> <span style="color: red"
-								ng-show="deductorDetailForm.submitted || deductorDetailForm.PIN.$dirty && deductorDetailForm.PIN.$invalid">
+								ng-show="deductorDetailForm.submitted || deductorDetailForm.PIN1.$dirty && deductorDetailForm.PIN1.$invalid">
 								<span class="error"
-								ng-show="deductorDetailForm.PIN.$error.pattern">Please
+								ng-show="deductorDetailForm.PIN1.$error.pattern">Please
 									enter valid Pin Code</span> <span class="error"
-								ng-show="deductorDetailForm.PIN.$error.maxlength">Pin
-									Code should not be greater than 6 characters/span> <span
-								class="error" ng-show="deductorDetailForm.PIN.$error.required">Pin
+								ng-show="deductorDetailForm.PIN1.$error.maxlength">Pin
+									Code should not be greater than 6 characters</span> <span
+								class="error" ng-show="deductorDetailForm.PIN1.$error.required">Pin
 									Code is Required</span>
 							</span>
 						</div>
@@ -690,7 +690,7 @@
 						</div>
 					</div>
 					<div class="row" >
-						<div class="col-md-4" ng-required="true" name="STATE">
+						<div class="col-md-4" ng-required="true" name="STATE2">
 							<label>State*</label> <select class="form-control">
 								<option value="" ng-selected=true>Select State</option>
 								<option value="Andaman and Nicobar Islands">Andaman and
@@ -733,16 +733,16 @@
 							</select>
 							<span
 								style="color: red"
-								ng-show="deductorDetailForm.submitted || deductorDetailForm.STATE.$dirty && deductorDetailForm.STATE.$invalid">
+								ng-show="deductorDetailForm.submitted || deductorDetailForm.STATE2.$dirty && deductorDetailForm.STATE2.$invalid">
 								
 							<span class="error"
-								ng-show="deductorDetailForm.STATE.$error.required">State
+								ng-show="deductorDetailForm.STATE2.$error.required">State
 									is Required</span>
 									</span>
 						</div>
 
 						<div class="col-md-4">
-							<label>Pin Code*</label> <input type="text" ng-maxlength="6"
+							<label>Pin Code*</label> <input type="text" ng-maxlength="6" ng-pattern="/^[0-9]*$/"
 								ng-model="cCctr.entity.respersonDetails.PIN" name="PIN" ng-required="true"
 								class="form-control" placeholder="Pin Code"> <span
 								style="color: red"
@@ -776,7 +776,7 @@
 
 
 						<div class="col-md-4">
-							<label>Telephone No*</label> <input type="text" ng-required="true"
+							<label>Telephone No*</label> <input type="text" ng-required="true" ng-pattern="/^([6-9]{1})([0-9]{9})$/"
 								ng-model="cCctr.entity.respersonDetails.TELEPHONE" ng-maxlength="10"
 								name="TELEPHONE" class="form-control" placeholder="Telephone No">
 							<span style="color: red"
@@ -919,7 +919,7 @@
 						<div class="form-group">
 
 							<div class="col-md-4" >
-								<label>State*</label> <select class="form-control"
+								<label>State*</label> <select class="form-control" name="STATENAME"
 									ng-model="cCctr.entity.govtDetails.STATENAME" ng-required="true">
 
 									<option value="" ng-selected=true>Select State</option>

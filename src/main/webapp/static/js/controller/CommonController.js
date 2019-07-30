@@ -55,6 +55,11 @@ App
 							self.presentDate = function() {
 								return new Date();
 							}
+							
+							self.presentMonth = function() {
+								return new Date().getMonth();
+							}
+							
 							self.gotoRestPqassword = function() {
 								$state.go("resetPass");
 							}

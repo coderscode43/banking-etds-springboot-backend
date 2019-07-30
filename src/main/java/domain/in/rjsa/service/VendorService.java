@@ -1,6 +1,5 @@
 package domain.in.rjsa.service;
 
-import domain.in.rjsa.model.form.Branch;
 import domain.in.rjsa.model.form.Vendor;
 import domain.in.rjsa.model.wrapper.VendorDetailWrapper;
 

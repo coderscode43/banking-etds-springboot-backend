@@ -19,5 +19,10 @@ LogsJsonDao dao;
 		// TODO Auto-generated method stub
 		return dao;
 	}
+	@Override
+	public LogsJson getByKey(Long id) {
+		// TODO Auto-generated method stub
+		return dao.getByKey(id);
+	}
 
 }

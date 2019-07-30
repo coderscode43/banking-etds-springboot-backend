@@ -1,6 +1,9 @@
 package domain.in.rjsa.controller;
 
 import java.io.Serializable;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -30,7 +33,11 @@ import com.google.gson.JsonElement;
 import domain.in.rjsa.model.form.Ajax;
 import domain.in.rjsa.model.form.ListCount;
 import domain.in.rjsa.model.form.Login;
+import domain.in.rjsa.model.form.Logs;
+import domain.in.rjsa.model.form.LogsJson;
 import domain.in.rjsa.model.form.Model;
+import domain.in.rjsa.service.LogsJsonService;
+import domain.in.rjsa.service.LogsService;
 import domain.in.rjsa.service.ServiceTDSInterface;
 import domain.in.rjsa.web.ApplicationCache;
 
@@ -41,6 +48,12 @@ public abstract class AbstractTDSController<K extends Serializable, E extends Mo
 
 	@Autowired
 	ApplicationCache applicationCache;
+	
+	@Autowired
+	LogsService lservice;
+	
+	@Autowired
+	LogsJsonService ljService;
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -213,17 +226,45 @@ public abstract class AbstractTDSController<K extends Serializable, E extends Mo
 				UriComponentsBuilder ucBuilder) {
 			
 			update(entity);
+			addLogsU(entity);
+			
 			return new ResponseEntity<String>(HttpStatus.ACCEPTED);
 		}
 
 		public void update(LinkedHashMap<String, Object> entity) {
-			
-			
 			Gson gson = new Gson();
 			Login l = applicationCache.getLoginDetail(getPrincipal());
 			JsonElement jsonElement = gson.toJsonTree(entity);
 			getService().update(gson.fromJson(jsonElement, getEntity()));
 		}
+		
+		 public void addLogsU(HashMap<String, Object> entity) {
+			 LogsJson lj=new LogsJson();
+		    	Login l = applicationCache.getLoginDetail(getPrincipal());
+//				HashMap<String, Object>constrains= new HashMap<>();
+//				constrains.put("id", Long.valueOf(entity.get("id").toString()));
+//				constrains.put("clientId",l.getClientId());
+//				Logs log = lservice.uniqueSearch(constrains);			
+		    	Logs log = new Logs();
+			    log.setClientId(l.getClientId());
+			    log.setAction("Updated");
+			    log.setIpaddrs(getIp());
+			    String s=getEntity().getName();
+			    String[] arrOfStr = s.split(".", 28); 
+			    for (String a : arrOfStr) 
+			    log.setEntity(a);
+			    Gson gason = new Gson(); 
+			    String json = gason.toJson(entity); 
+			    log.setDate(new Date(System.currentTimeMillis()));
+				log.setUsername(l.getUserName());
+				lj.setId(log.getId());
+				lj.setData(json);
+				lservice.save(log);
+				ljService.save(lj);
+			}
+		
+		
+		
 	
 	
 	// ------------------- ajax Entities ---------------------------------
@@ -264,5 +305,17 @@ public abstract class AbstractTDSController<K extends Serializable, E extends Mo
 	}
 
 	public abstract Class<E> getEntity();
+	
+	private String getIp() {
+		try {
+			  InetAddress ipAddr = InetAddress.getLocalHost();
+			  String str=ipAddr.getHostAddress();
+			  return str;
+		} catch (UnknownHostException ex) {
+			 ex.printStackTrace(); // print Exception StackTrace
+	
+			return null;
+		}
+	}
 
 }

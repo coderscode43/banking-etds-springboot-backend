@@ -220,6 +220,7 @@
 			<th width="10%">Entity</th>
 			<!-- <th width="10%">User ID</th> -->
 			<th width="10%">Action</th>
+			<th width="10%">Action</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -232,12 +233,8 @@
 			<td>{{a.entity}}</td>
 			<!-- <td>{{a.idoftheuser}}</td> -->
 			<td>{{a.action}}</td>
-			<!--<button
-					ng-click="cCctr.gotoHomePageWOT(cCctr.clientId,a.id,'homeWOT')"
-					class="btn btn-success" onclick="scrollWin()"
-					style="height: 30px; margin-top: 10px; margin-bottom: 10px; background-color: #0f316d">Work
-					on this</button></td>
-			 <td>{{a.total-a.amountPaid}}</td> -->
+			<td><a ng-click="cCctr.gotoDetailPage('logs',a.id,'detaillogs');"><font color="blue" style="font-size: 13px" onclick="scrollWin()"><img src="static\img\edit.png" width="22px" height="22px" alt="Details"
+											 style="margin-top:5px; margin-bottom:5px;"/></font></a></td>
 
 		</tr>
 	</tbody>

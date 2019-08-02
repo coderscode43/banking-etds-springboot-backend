@@ -124,7 +124,7 @@
 
 
 
-
+<div id="page-wrapper">
 <div class="container-fluid">
 	<div class="col-md-12 "
 		style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
@@ -145,43 +145,45 @@
 				<div class="col-md-3">
 					<h6>
 						<b>User Name</b>
-						</h6>
-							<input type="text" ng-model="cCctr.search.username"
-								class="form-control" placeholder="User Name" style="width: 100%">
+					</h6>
+					<input type="text" ng-model="cCctr.search.username"
+						class="form-control" placeholder="User Name" style="width: 100%">
 				</div>
-				
+
 				<div class="col-md-3">
 					<h6>
 						<b>Entity</b>
-						</h6>
-							<input type="text" ng-model="cCctr.search.entity"
-								class="form-control" placeholder="Entity" style="width: 100%">
+					</h6>
+					<input type="text" ng-model="cCctr.search.entity"
+						class="form-control" placeholder="Entity" style="width: 100%">
 				</div>
 
 			</div>
 		</div>
-		
+
 		<div class="row">
-		<div class="col-md-3">
-					<h6>
-						<b> From Date</b>
-					</h6>
-					<input type="date" ng-model="cCctr.search.fromDate" ng-change="cCctr.search.fromDate=cCctr.date(cCctr.search.fromDate);"
+			<div class="col-md-3">
+				<h6>
+					<b> From Date</b>
+				</h6>
+				<input type="date" ng-model="cCctr.search.fromDate"
+					ng-change="cCctr.search.fromDate=cCctr.date(cCctr.search.fromDate);"
 					class="form-control">
-						
-				</div>
-				
-				<div class="col-md-3">
-					<h6>
-						<b> From Date</b>
-					</h6>
-					<input type="date" ng-model="cCctr.search.toDate"  ng-change="cCctr.search.toDate=cCctr.date(cCctr.search.toDate);"
+
+			</div>
+
+			<div class="col-md-3">
+				<h6>
+					<b> From Date</b>
+				</h6>
+				<input type="date" ng-model="cCctr.search.toDate"
+					ng-change="cCctr.search.toDate=cCctr.date(cCctr.search.toDate);"
 					class="form-control">
-						
-				</div>
-				
-		
-		
+
+			</div>
+
+
+
 		</div>
 
 		<div class="row" id="hide">
@@ -201,45 +203,98 @@
 </div>
 
 <br>
-<!-- <div class="table-responsive"> -->
 
-<table class="tables table-bordered table-hover table-striped"
-	role="table"
-	style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
-	<thead>
-	<colgroup>
-		<col span="14" style="background-color: #ffffff">
-	</colgroup>
-	<tr>
-	<thead role="rowgroup">
-		<tr role="row" style="height: 40px; background-color: #81b7db">
-			<th width="5%">Sr. No.</th>
-			<th width="10%">User Name</th>
-			<th width="10%">Date</th>
-			<th width="10%">IP Address</th>
-			<th width="10%">Entity</th>
-			<!-- <th width="10%">User ID</th> -->
-			<th width="10%">Action</th>
-			<th width="10%">Action</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr role="row"
-			ng-repeat="a in cCctr.getEntityListData() track by a.id">
-			<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
-			<td>{{a.username}}</td>
-			<td style="text-align: center">{{a.date | date:'dd-MM-yyyy'}}</td>
-			<td>{{a.ipaddrs}}</td>
-			<td>{{a.entity}}</td>
-			<!-- <td>{{a.idoftheuser}}</td> -->
-			<td>{{a.action}}</td>
-			<td><a ng-click="cCctr.gotoDetailPage('logs',a.id,'detaillogs');"><font color="blue" style="font-size: 13px" onclick="scrollWin()"><img src="static\img\edit.png" width="22px" height="22px" alt="Details"
-											 style="margin-top:5px; margin-bottom:5px;"/></font></a></td>
+<div class="panel-body" style="margin-top: -23px">
+	<div class="row">
+		<div class="table-responsive">
 
-		</tr>
-	</tbody>
-</table>
+			<table class="tables table-bordered table-hover table-striped"
+				role="table"
+				style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+				<thead>
+				<colgroup>
+					<col span="14" style="background-color: #ffffff">
+				</colgroup>
+				<tr>
+				<thead role="rowgroup">
+					<tr role="row" style="height: 40px; background-color: #81b7db">
+						<th width="5%">Sr. No.</th>
+						<th width="10%">User Name</th>
+						<th width="10%">Date</th>
+						<th width="10%">IP Address</th>
+						<th width="10%">Entity</th>
+						<!-- <th width="10%">User ID</th> -->
+						<th width="10%">Action</th>
+						<th width="10%">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+				
+					<tr role="row"
+						ng-repeat="a in cCctr.getEntityListData() track by a.id">
+						<!--  dir-paginate="a in (filteredList =(cCctr.getEntityListData()|filter:search|itemsPerPage:cCctr.ItemsPerPage))">-->
+						<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
+						<td>{{a.username}}</td>
+						<td style="text-align: center">{{a.date | date:'dd-MM-yyyy'}}</td>
+						<td>{{a.ipaddrs}}</td>
+						<td>{{a.entity}}</td>
+						<!-- <td>{{a.idoftheuser}}</td> -->
+						<td>{{a.action}}</td>
+						<td><a
+							ng-click="cCctr.gotoDetailPage('logs',a.id,'detaillogs');"><font
+								color="blue" style="font-size: 13px" onclick="scrollWin()"><img
+									src="static\img\edit.png" width="22px" height="22px"
+									alt="Details" style="margin-top: 5px; margin-bottom: 5px;" /></font></a></td>
+
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="row" ng-show="cCctr.getNoPage() > 0">
+		<div class="row" align="center">
+			<span ng-show="cCctr.currentPage != 1"> <a
+				ng-click="cCctr.getPage(true,'logs',cCctr.currentPage-1)"><strong>Previous</strong></a>
+			</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.currentPage}}</strong>&nbsp;
+				of &nbsp;<strong>{{cCctr.getNoPage()}}</strong>
+				&nbsp;&nbsp;&nbsp;&nbsp; <span
+				ng-show="cCctr.currentPage != cCctr.getNoPage()"> <a
+					ng-click="cCctr.getPage(true,'logs',cCctr.currentPage+1)"><strong>Next</strong></a>
+			</span>
+			</span>
+		</div>
+		<form role="form" name="gotoForm">
+			<div class="row" align="center">
+				<span>Go to</span> &nbsp;&nbsp;&nbsp; <input
+					style="width: 70px; text-align: center;" type="number"
+					name="pageNo" ng-model="cCctr.currentPage"
+					ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
+					ng-min="1" ng-max="cCctr.getNoPage()" ng-required="true">
+				&nbsp;&nbsp;&nbsp;
+				<button style="height: 25px;"
+					ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'logs',cCctr.currentPage)"
+					class="btn btn-primary">Go</button>
+			</div>
+			<div class="row" align="center">
+				<span style="color: red"
+					ng-show="gotoForm.submitted || gotoForm.pageNo.$dirty && gotoForm.pageNo.$invalid">
+					<span class="error" ng-show="gotoForm.pageNo.$error.min">Page
+						No. should not be less than 1.</span> <span class="error"
+					ng-show="gotoForm.pageNo.$error.max">Page No. should not be
+						greater than {{cCctr.getNoPage()}}.</span> <span class="error"
+					ng-show="gotoForm.pageNo.$error.required">Please enter page
+						number.</span>
+				</span>
+			</div>
+		</form>
+	</div>
 </div>
+
+
+</div>
+
+
 
 
 

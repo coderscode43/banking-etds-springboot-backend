@@ -1,7 +1,6 @@
 'use strict';
 
-App
-		.controller(
+App.controller(
 				'CommonController',
 				[
 						'$http',
@@ -179,6 +178,14 @@ App
 
 								}
 							}
+							
+							
+							
+							self.gotoList=function(entity){
+								self.search={};
+								self.currentPage=1;
+								$state.go("home.list",{"entity":entity});
+							}
 
 							self.gotoListPage = function(entity, page) {
 								self.company = name;
@@ -206,6 +213,24 @@ App
 
 							}
 
+							
+							
+							
+							self.getPage=function(valid,entity,pageNo){
+								if(valid=true){
+								self.currentPage=pageNo;
+								CommonService.fetch(entity,$stateParams.clientId,pageNo-1);
+								}
+							}
+							
+							
+							self.getNoPage=function(valid,entity,pageNo){
+							
+								return Math.ceil(CommonService.getCount()/100);
+							
+							}
+							
+							
 							self.searchEntities = function(valid, entity, page) {
 								if (valid = true) {
 									$.each(self.search, function(key, value) {
@@ -221,7 +246,7 @@ App
 									});
 								}
 							}
-
+									
 							self.gotoSearchDetailPage = function(entity2,
 									detailId, page2) {
 
@@ -464,6 +489,7 @@ App
 														console
 																.log(entity
 																		+ ' added successfully');
+														self.gotoList(entity);
 														self.gotoListPage(
 																entity, entity);
 														angular

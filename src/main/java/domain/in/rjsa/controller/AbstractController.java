@@ -309,7 +309,7 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 	
 	
 	 public void addLogsU(HashMap<String, Object> entity) {
-		 LogsJson lj=new LogsJson();
+		    LogsJson lj=new LogsJson();
 	    	Login l = applicationCache.getLoginDetail(getPrincipal());
 			HashMap<String, Object>constrains= new HashMap<>();
 			constrains.put("id", Long.valueOf(entity.get("id").toString()));

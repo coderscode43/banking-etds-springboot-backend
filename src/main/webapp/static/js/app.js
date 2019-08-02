@@ -26,7 +26,7 @@ App.config([ '$stateProvider', '$urlRouterProvider',function($stateProvider, $ur
 
     
     
-	$urlRouterProvider.otherwise("/home")
+	$urlRouterProvider.otherwise("/main")
    
 	$stateProvider
 	.state('logout', {
@@ -44,7 +44,7 @@ App.config([ '$stateProvider', '$urlRouterProvider',function($stateProvider, $ur
 		})	
 	
 	.state('main', {
-		url : "/home",
+		url : "/main",
 		templateUrl : 'index/main',
 		controller : "CommonController as cCctr"
 		
@@ -64,7 +64,7 @@ App.config([ '$stateProvider', '$urlRouterProvider',function($stateProvider, $ur
 		
 	//Home that contains Side bar and header
 	.state('home', {
-		url : "/:clientId/:action/:branchId",
+		url : "/home/:clientId/:action/:branchId",
 		params: {
 			clientId: null,
 			action: null,
@@ -93,7 +93,7 @@ App.config([ '$stateProvider', '$urlRouterProvider',function($stateProvider, $ur
 			//Get Details detail
 	
 	.state('home.detail',{
-			url : "/:entity/:detailId/:page", 
+			url : "/detail/:entity/:detailId/:page", 
 			params: {
 				detailId: null,
 				entity: null,
@@ -117,7 +117,7 @@ App.config([ '$stateProvider', '$urlRouterProvider',function($stateProvider, $ur
 		
 	
 	.state('home.list',{
-			url : "/:entity/:page", 
+			url : "/list/:entity/:page", 
 			params: {
 				entity: null,
 				page:null
@@ -136,7 +136,7 @@ App.config([ '$stateProvider', '$urlRouterProvider',function($stateProvider, $ur
 				
 		})
 		.state('home.listBranch',{
-			url : "/:entity/:page", 
+			url : "/listBranch/:entity/:page", 
 			params: {
 				entity: null,
 				page:null
@@ -148,14 +148,14 @@ App.config([ '$stateProvider', '$urlRouterProvider',function($stateProvider, $ur
 					list : function($q, $state,CommonService,$stateParams) {
 						console.log('Get List of '+$stateParams.entity);
 						var deferred = $q.defer();
-						CommonService.countFunction($stateParams.entity,$stateParams.clientId).then(deferred.resolve, deferred.resolve);
+						CommonService.countForBranchFunction($stateParams.entity,$stateParams.clientId,$stateParams.branchId).then(deferred.resolve, deferred.resolve);
 						return deferred.promise;
 					}
 				}
 				
 		})
 		.state('home.search',{
-			url : "/list/:entity/:page/:searchParams",
+			url : "/listSearch/:entity/:page/:searchParams",
 			params: {
 				entity: null,
 				page:null,
@@ -179,7 +179,7 @@ App.config([ '$stateProvider', '$urlRouterProvider',function($stateProvider, $ur
 		
 		
 		.state('home.search.detail2',{
-			url : "/:entity2/:detailId/:page2", 
+			url : "/searchDetail/:entity2/:detailId/:page2", 
 			params: {
 				entity2: null,
 				detailId: null,
@@ -203,7 +203,7 @@ App.config([ '$stateProvider', '$urlRouterProvider',function($stateProvider, $ur
 
 
 			.state('home.list.list2',{
-			url : "/:entity2/:page2/:searchParams",
+			url : "/list2/:entity2/:page2/:searchParams",
 			params: {
 				searchParams: null,
 				entity2: null,

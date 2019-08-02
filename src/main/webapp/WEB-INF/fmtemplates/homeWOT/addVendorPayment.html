@@ -1,6 +1,6 @@
 
 <br>
-<div id="page-wrapper">
+<div id="page-wrapper"  ng-controller="VendorController as vCtr">
 	<div class="container-fluid">
 		<div class="row">
 			<h1>Add Vendor Payment Details</h1>
@@ -8,27 +8,32 @@
 		<div class="row">
 			<div class="col-md-12">
 				<form role="form" name="vendorPaymentDetailForm">
+				
+					<!-- <input type="hidden" ng-model="vCtr.entity.branchId"
+									ng-init="vCtr.entity.branchId= $stateParams.branchId;"> -->
+				
+				
 				<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Vendor No*</label> 
+								<label>Vendor Number</label> 
 								<md-autocomplete
             								md-input-name="vendorNo"
             								md-input-minlength="3"
             								md-no-cache = "true"
             								md-input-maxlength="75"
-            								md-selected-item="cCctr.entity.vendorNo"
+            								md-selected-item="vCtr.entity.vendorNo"
             								md-search-text="a"
-            								md-items="item in cCctr.ajax1('vendorPayment','vendorNo',a)"
-            								md-selected-item-change="cCctr.getVendorDetail1(cCctr.entity.vendorNo,'vendorPayment')"
+            								md-items="item in vCtr.ajax1('vendor','vendorNo',a)"
+            								md-selected-item-change="vCtr.getVendorDetail1(vCtr.entity.vendorNo,'vendor')"
             								md-delay="2000"
-            								placeholder="Vendor NO">
+            								placeholder="Vendor Number">
             								
           								<md-item-template>
             								<span >{{item}}</span>
           								</md-item-template>
           								<md-not-found>
-                     						No Group code with "{{a}}" were found.<a ng-click = "">Add new</a>
+                     						No Vendor with Vendor Number with "{{a}}" were found.<a ng-click = "">Add new</a>
            								</md-not-found>
         								</md-autocomplete>
 
@@ -42,17 +47,17 @@
             								md-input-minlength="3"
             								md-no-cache = "true"
             								md-input-maxlength="75"
-            								md-selected-item="cCctr.entity.vendorName"
+            								md-selected-item="vCtr.entity.vendorName"
             								md-search-text="b"
-            								md-items="item in cCctr.ajax1('vendorPayment','vendorName',b)"
-            								md-selected-item-change="cCctr.getVendorDetail3(cCctr.entity.vendorName,'vendorPayment')"
+            								md-items="item in vCtr.ajax1('vendor','vendorName',b)"
+            								md-selected-item-change="vCtr.getVendorDetail3(vCtr.entity.vendorName,'vendor')"
             								md-delay="2000"
             								placeholder="Vendor Name">
           								<md-item-template>
             								<span >{{item}}</span>
           								</md-item-template>
           								<md-not-found>
-                     						No Group code with "{{b}}" were found.<a ng-click = "">Add new</a>
+                     						No Vendor Name with "{{b}}" were found.<a ng-click = "">Add new</a>
            								</md-not-found>
         								</md-autocomplete>
 
@@ -68,17 +73,17 @@
             								md-input-minlength="3"
             								md-no-cache = "true"
             								md-input-maxlength="75"
-            								md-selected-item="cCctr.entity.vendorPAN"
+            								md-selected-item="vCtr.entity.vendorPAN"
             								md-search-text="c"
-            								md-items="item in cCctr.ajax1('vendorPayment','vendorPAN',c)"
-            								md-selected-item-change="cCctr.getVendorDetail2(cCctr.entity.vendorPAN,'vendorPayment')"
+            								md-items="item in vCtr.ajax1('vendor','vendorPAN',c)"
+            								md-selected-item-change="vCtr.getVendorDetail2(vCtr.entity.vendorPAN,'vendor')"
             								md-delay="2000"
             								placeholder="Vendor PAN">
           								<md-item-template>
             								<span >{{item}}</span>
           								</md-item-template>
           								<md-not-found>
-                     						No Group code with "{{c}}" were found.<a ng-click = "">Add new</a>
+                     						No Vendor PAN with "{{c}}" were found.<a ng-click = "">Add new</a>
            								</md-not-found>
         								</md-autocomplete>
 
@@ -86,24 +91,24 @@
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>GST No.*</label>
+								<label>GSTN*</label>
 								
 								<md-autocomplete
             								md-input-name="gstNo"
             								md-input-minlength="3"
             								md-no-cache = "true"
             								md-input-maxlength="75"
-            								md-selected-item="cCctr.entity.gstNo"
+            								md-selected-item="vCtr.entity.gstNo"
             								md-search-text="d"
-            								md-items="item in cCctr.ajax1('vendorPayment','gstNo',d)"
-            								md-selected-item-change="cCctr.getVendorDetail(cCctr.entity.gstNo,'vendorPayment')"
+            								md-items="item in vCtr.ajax1('vendor','gstNo',d)"
+            								md-selected-item-change="vCtr.getVendorDetail(vCtr.entity.gstNo,'vendor')"
             								md-delay="2000"
-            								placeholder="GST NO">
+            								placeholder="GSTN">
           								<md-item-template>
             								<span >{{item}}</span>
           								</md-item-template>
           								<md-not-found>
-                     						No Group code with "{{d}}" were found.<a ng-click = "">Add new</a>
+                     						No GSTN with "{{d}}" were found.<a ng-click = "">Add new</a>
            								</md-not-found>
         								</md-autocomplete>
 
@@ -117,7 +122,7 @@
 							<div class="form-group">
 								<label>Invoice Date*</label> <input class="form-control"
 									type="date" name="invoiceDate" placeholder="Invoice Date"
-									ng-model="cCctr.entity.invoiceDate" autocomplete="off"
+									ng-model="vCtr.entity.date" autocomplete="off"
 									ng-maxlength="50" ng-required="true"
 									ng-model-options="{updateOn: 'blur'}" />
 									<span
@@ -134,7 +139,7 @@
 								<label>Payment Done*</label> <input class="form-control"
 									type="text" name="paymentDone" placeholder="Payment Done"
 									ng-pattern="/^[ A-Za-z\s]*$/"
-									ng-model="cCctr.entity.paymentDone" autocomplete="off"
+									ng-model="vCtr.entity.paymentDone" autocomplete="off"
 									ng-maxlength="100" ng-required="true"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
@@ -159,7 +164,7 @@
 							<div class="form-group">
 								<label>Payment Date*</label> <input class="form-control"
 									type="date" name="paymentDate" placeholder="Payment Date"
-									ng-model="cCctr.entity.paymentDate" autocomplete="off"
+									ng-model="vCtr.entity.paymentDate" autocomplete="off"
 									ng-maxlength="100" ng-required="true"
 									ng-model-options="{updateOn: 'blur'}" />
 									 <span
@@ -176,7 +181,7 @@
 							<div class="form-group">
 								<label>Payment Mode*</label> <input class="form-control"
 									type="text" name="paymentMode" placeholder="Payment Mode"
-									ng-model="cCctr.entity.paymentMode" autocomplete="off"
+									ng-model="vCtr.entity.paymentMode" autocomplete="off"
 									ng-maxlength="50" ng-required="true" ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
 									ng-show="vendorPaymentDetailForm.submitted || vendorPaymentDetailForm.paymentMode.$dirty && vendorPaymentDetailForm.paymentMode.$invalid">
@@ -199,7 +204,7 @@
 							<div class="form-group">
 								<label>Invoice Number*</label> <input class="form-control"
 									type="text" name="invoiceNumber" placeholder="Invoice Number"
-									ng-model="cCctr.entity.invoiceNumber" autocomplete="off"
+									ng-model="vCtr.entity.invoiceNumber" autocomplete="off"
 									ng-maxlength="50" ng-required="true" ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
 									ng-show="vendorPaymentDetailForm.submitted || vendorPaymentDetailForm.invoiceNumber.$dirty && vendorPaymentDetailForm.invoiceNumber.$invalid">
@@ -220,8 +225,8 @@
 								<label>Total Invoice Value*</label> <input class="form-control"
 									type="text" name="totalInvoiceValue"
 									placeholder="Total Invoice Value"
-									ng-model="cCctr.entity.totalInvoiceValue" autocomplete="off"
-									ng-maxlength="100" ng-required="true" ng-pattern="[0-9.]+"
+									ng-model="vCtr.entity.totalInvoiceValue" autocomplete="off"
+									ng-maxlength="100" ng-required="true" ng-pattern="/^[0-9]{1,7}$/"
 									ng-model-options="{updateOn: 'blur'}" />
 									<span
 									style="color: red"
@@ -246,8 +251,8 @@
 							<div class="form-group">
 								<label>Taxable Value*</label> <input class="form-control"
 									type="text" name="taxableValue" placeholder="Taxable Value"
-									ng-model="cCctr.entity.taxableValue" autocomplete="off"
-									ng-maxlength="100" ng-required="true" ng-pattern="[0-9.]+"
+									ng-model="vCtr.entity.taxableValue" autocomplete="off"
+									ng-maxlength="100" ng-required="true" ng-pattern="/^[0-9]{1,7}$/"
 									ng-model-options="{updateOn: 'blur'}" />
 									<span
 									style="color: red"
@@ -267,8 +272,8 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>CGST*</label> <input class="form-control" type="text"
-									name="cgst" placeholder="CGST" ng-model="cCctr.entity.cgst"
-									autocomplete="off" ng-required="true" ng-maxlength="100" ng-pattern="[0-9.]+"
+									name="cgst" placeholder="CGST" ng-model="vCtr.entity.cgst"
+									autocomplete="off" ng-required="true" ng-maxlength="100" ng-pattern="/^[0-9]{1,7}$/"
 									ng-model-options="{updateOn: 'blur'}" />
 									<span
 									style="color: red"
@@ -290,8 +295,8 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>SGST*</label> <input class="form-control" type="text"
-									name="sgst" placeholder="SGST" ng-model="cCctr.entity.sgst"
-									autocomplete="off" ng-maxlength="100" ng-required="true" ng-pattern="[0-9.]+"
+									name="sgst" placeholder="SGST" ng-model="vCtr.entity.sgst"
+									autocomplete="off" ng-maxlength="100" ng-required="true" ng-pattern="/^[0-9]{1,7}$/"
 									ng-model-options="{updateOn: 'blur'}" />
 									<span
 									style="color: red"
@@ -313,9 +318,9 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>IGST*</label> <input class="form-control" type="text"
-									name="igst" placeholder="IGST" ng-model="cCctr.entity.igst"
+									name="igst" placeholder="IGST" ng-model="vCtr.entity.igst"
 									autocomplete="off" ng-maxlength="100" ng-required="true"
-									ng-pattern="[0-9.]+" ng-model-options="{updateOn: 'blur'}" />
+									ng-pattern="/^[0-9]{1,7}$/" ng-model-options="{updateOn: 'blur'}" />
 									<span
 									style="color: red"
 									ng-show="vendorPaymentDetailForm.submitted || vendorPaymentDetailForm.invoiceNumber.$dirty && vendorPaymentDetailForm.invoiceNumber.$invalid">
@@ -336,7 +341,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>CESS*</label> <input class="form-control" type="text"
-									name="cess" placeholder="CESS" ng-model="cCctr.entity.cess"
+									name="cess" placeholder="CESS" ng-model="vCtr.entity.cess"
 									autocomplete="off" ng-maxlength="50" ng-required="true"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
@@ -360,8 +365,8 @@
 							<div class="form-group">
 								<label>Income Tax TDS*</label> <input class="form-control"
 									type="text" name="incomeTaxTds" placeholder="Income Tax TDS"
-									ng-model="cCctr.entity.incomeTaxTds" autocomplete="off"
-									ng-maxlength="50" ng-required="true" ng-pattern="[0-9.]+"
+									ng-model="vCtr.entity.incomeTaxTds" autocomplete="off"
+									ng-maxlength="50" ng-required="true" ng-pattern="/^[0-9]{1,7}$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
 									ng-show="vendorPaymentDetailForm.submitted ||vendorPaymentDetailForm.incomeTaxTds.$dirty && vendorPaymentDetailForm.incomeTaxTds.$invalid">
@@ -385,8 +390,8 @@
 							<div class="form-group">
 								<label>GST TDS*</label> <input class="form-control" type="text"
 									name="gstTds" placeholder="GST TDS"
-									ng-model="cCctr.entity.gstTds" autocomplete="off"
-									ng-maxlength="50" ng-required="true" ng-pattern="[0-9.]+"
+									ng-model="vCtr.entity.gstTds" autocomplete="off"
+									ng-maxlength="50" ng-required="true" ng-pattern="/^[0-9]{1,7}$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
 									ng-show="vendorPaymentDetailForm.submitted ||vendorPaymentDetailForm.gstTds.$dirty && vendorPaymentDetailForm.gstTds.$invalid">
@@ -408,7 +413,7 @@
 								<label>Nature of Payment*</label> <input class="form-control"
 									type="text" name="natureOfPayment"
 									placeholder="Nature of Payment"
-									ng-model="cCctr.entity.natureOfPayment"  autocomplete="off"
+									ng-model="vCtr.entity.natureOfPayment"  autocomplete="off"
 									ng-maxlength="50" ng-required="true" ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
 									ng-show="vendorPaymentDetailForm.submitted || vendorPaymentDetailForm.natureOfPayment.$dirty && vendorPaymentDetailForm.natureOfPayment.$invalid">
@@ -433,7 +438,7 @@
 							<div class="form-group">
 								<label>Net Amount Paid*</label> <input class="form-control"
 									type="text" name="netAmountPaid" placeholder="Net Amount Paid"
-									ng-model="cCctr.entity.netAmountPaid" autocomplete="off"
+									ng-model="vCtr.entity.netAmountPaid" autocomplete="off"
 									ng-maxlength="50" ng-required="true" ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
 									ng-show="vendorPaymentDetailForm.submitted || vendorPaymentDetailForm.netAmountPaid.$dirty && vendorPaymentDetailForm.netAmountPaid.$invalid">
@@ -456,7 +461,7 @@
 							<div class="form-group">
 								<label>BGL Code*</label> <input class="form-control" type="text"
 									name="bglCode" placeholder="BGL Code"
-									ng-model="cCctr.entity.bglCode" autocomplete="off"
+									ng-model="vCtr.entity.bglCode" autocomplete="off"
 									ng-maxlength="50" ng-required="true" ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
 									ng-show="vendorPaymentDetailForm.submitted || vendorPaymentDetailForm.bglCode.$dirty && vendorPaymentDetailForm.bglCode.$invalid">
@@ -480,7 +485,7 @@
 							<div class="form-group">
 								<label>Our GST*</label> <input class="form-control" type="text"
 									name="ourGst" placeholder="Our GST"
-									ng-model="cCctr.entity.ourGst" autocomplete="off"
+									ng-model="vCtr.entity.ourGst" autocomplete="off"
 									ng-maxlength="50" ng-required="true" ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
 									ng-show="vendorPaymentDetailForm.submitted || vendorPaymentDetailForm.ourGst.$dirty && vendorPaymentDetailForm.ourGst.$invalid">
@@ -505,10 +510,10 @@
 					<div class="row">
 						<div class="col-md-6">
 							<button
-								ng-click="vendorPaymentDetailForm.submitted=true; cCctr.submit(vendorPaymentDetailForm.$valid,'vendorPayment')"
+								ng-click="vendorPaymentDetailForm.submitted=true; vCtr.submit(vendorPaymentDetailForm.$valid,'vendorPayment')"
 								class="btn btn-success">Submit</button>
 							<button
-								ng-click="cCctr.gotoListPage('vendorPayment','vendorPayment');"
+								ng-click="cCctr.gotoList2Page('vendorPayment','vendorPayment');"
 								class="btn btn-danger">Cancel</button>
 						</div>
 					</div>

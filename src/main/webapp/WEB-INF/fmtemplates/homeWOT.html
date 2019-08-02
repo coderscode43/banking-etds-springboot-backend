@@ -74,9 +74,9 @@
 	</div>
 
 	<div style="background-color: white; margin-top: 8px"
-		onclick="closeNav()"
-		ng-click="cCctr.gotoListPage('vendorPayment','vendorPayment')">
-		<a ng-click="" class="dropdown-toggle" data-toggle="dropdown"><b
+		onclick="closeNav()">
+		<a 
+		ng-click="cCctr.gotoList2Page('vendorPayment','vendorPayment')"><b
 			style="font-size: 17px; color: black;">Vendor Payment</b></a>
 	</div>
 
@@ -86,9 +86,9 @@
 			data-parent="#accordion" data-target="#pm"><b
 			style="font-size: 17px; color: black">Form 26Q</b> <i
 			style="font-size: 12px; color: black; margin-left: 30%"
-			class="glyphicon glyphicon-chevron-down"></i>
+			class="glyphicon glyphicon-chevron-down"></i></a>
 	</div>
-	</a>
+	
 
 
 	<ul id="pm" class="panel-collapse collapse">
@@ -214,7 +214,7 @@
 
 	<div style="background-color: white; margin-top: 1px"
 		onclick="closeNav()"
-		ng-click="cCctr.gotoHomePageSC(cCctr.clientId,'homeSC')">
+		ng-click="cCctr.gotoHomeSCfromHomeWOT('homeSC')">
 		<a class="dropdown-toggle" data-toggle="dropdown"><b
 			style="font-size: 17px; color: black;">Select Branch</b></a>
 	</div>
@@ -284,7 +284,7 @@
 						src="static/img/tdsosmart1.png" style="height: 150px; width: 90%;"></li>
 
 					<li><a
-						ng-click="cCctr.gotoListPage('vendorPayment','vendorPayment')"
+						ng-click="cCctr.gotoList2Page('vendorPayment','vendorPayment')"
 						class="dropdown-toggle" data-toggle="dropdown"
 						onclick="scrollWin()">Vendor Payment</a></li>
 					<li><a class="dropdown-toggle" data-toggle="dropdown">Form
@@ -371,7 +371,7 @@
 						ng-click="cCctr.gotoDetailPage('deductorDetails','${br.getTan()}','deductorDetails')"
 						onclick="scrollWin()">Deductor Details</a></li>
 					<li><a class="dropdown-toggle" data-toggle="dropdown"
-						ng-click="cCctr.gotoHomePageSC(cCctr.clientId,'homeSC')"
+						ng-click="cCctr.gotoHomeSCfromHomeWOT('homeSC')"
 						onclick="scrollWin()">Select Branch</a></li>
 
 					<!-- 					<li><a ng-click="cCctr.gotoListPage('defaultSummary','defaultSummary')" class="dropdown-toggle" data-toggle="dropdown">Default

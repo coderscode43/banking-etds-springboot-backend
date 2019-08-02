@@ -1,6 +1,7 @@
 'use strict';
 
-App.controller(
+App
+		.controller(
 				'CommonController',
 				[
 						'$http',
@@ -16,7 +17,8 @@ App.controller(
 
 							var self = this;
 							self.tan;
-							self.clientId = 0;
+							self.clientId;
+							self.branchId;
 							self.loader = '';
 							self.entity = {};
 							self.search = {};
@@ -43,6 +45,7 @@ App.controller(
 							self.logout = function() {
 								$state.go("logout");
 							}
+							
 							self.changeAction = function() {
 								if ($state.current.name == 'main') {
 									$window.location.reload();
@@ -71,6 +74,13 @@ App.controller(
 									"action" : action
 								});
 
+							}
+							
+							self.gotoHomeSCfromHomeWOT=function(action){
+								$state.go("home.homepage",{
+									"clientId" : $stateParams.clientId,
+									"action" : action
+									});
 							}
 
 							self.gotoHomePageWOT = function(id, action) {
@@ -178,14 +188,6 @@ App.controller(
 
 								}
 							}
-							
-							
-							
-							self.gotoList=function(entity){
-								self.search={};
-								self.currentPage=1;
-								$state.go("home.list",{"entity":entity});
-							}
 
 							self.gotoListPage = function(entity, page) {
 								self.company = name;
@@ -213,24 +215,6 @@ App.controller(
 
 							}
 
-							
-							
-							
-							self.getPage=function(valid,entity,pageNo){
-								if(valid=true){
-								self.currentPage=pageNo;
-								CommonService.fetch(entity,$stateParams.clientId,pageNo-1);
-								}
-							}
-							
-							
-							self.getNoPage=function(valid,entity,pageNo){
-							
-								return Math.ceil(CommonService.getCount()/100);
-							
-							}
-							
-							
 							self.searchEntities = function(valid, entity, page) {
 								if (valid = true) {
 									$.each(self.search, function(key, value) {
@@ -246,7 +230,7 @@ App.controller(
 									});
 								}
 							}
-									
+
 							self.gotoSearchDetailPage = function(entity2,
 									detailId, page2) {
 
@@ -257,19 +241,10 @@ App.controller(
 								});
 							}
 
-							self.gotoList2Page = function(entity2, page2, map) {
-								if (true) {
-									$.each(map, function(key, value) {
-										if (value === "" || value === null) {
-											delete map[key];
-										}
-
-									});
-								}
-								$state.go("home.list.list2", {
-									"entity2" : entity2,
-									"page2" : page2,
-									"searchParams" : JSON.stringify(map)
+							self.gotoList2Page = function(entity2, page2) {
+								$state.go("home.listBranch", {
+									"entity" : entity2,
+									"page" : page2
 								});
 							}
 
@@ -475,6 +450,14 @@ App.controller(
 								}
 							}
 
+							self.gotoList=function(entity){
+								self.search={};
+								self.currentPage=1;
+								$state.go("home.list",{"entity":entity});
+							}		
+							
+							
+							
 							self.submit = function(valid, entity, closeModalId) {
 								if (valid == true) {
 									console.log("Common Controller submit "
@@ -862,6 +845,23 @@ App.controller(
 								return date;
 
 							}
+							
+							self.getPage=function(valid,entity,pageNo){
+								if(valid=true){
+								self.currentPage=pageNo;
+								CommonService.fetch(entity,$stateParams.clientId,pageNo-1);
+								}
+							}
+							
+							
+							self.getNoPage=function(valid,entity,pageNo){
+							
+								return Math.ceil(CommonService.getCount()/100);
+							
+							}
+							
+							
+							
 
 							self.setIndex = function(ind) {
 								self.dlIndex = ind;

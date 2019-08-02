@@ -29,7 +29,7 @@ public class Vendor extends CommonModelAbstract{
 	@Column(name = "vendorName")
 	public String vendorName;	
 	@Column(name = "pan")
-	public String pan;	
+	public String vendorPAN;	
 	@Column(name = "gstNo")
 	public String gstNo;
 	@Column(name = "resiStatus")

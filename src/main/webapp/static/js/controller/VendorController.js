@@ -13,6 +13,8 @@ App.controller('VendorController',[
 								CommonService, $q, $window) {
 							var self = this;
 							self.branchId;
+							self.vendorId;
+							self.entity = {};
 							
 							self.entity = {};
 							self.ajax = [];
@@ -50,10 +52,17 @@ App.controller('VendorController',[
 														self.entity.vendorName = data.vendorName;
 														self.entity.vendorPAN = data.vendorPAN;
 														self.entity.vendorNo = data.vendorNo;
+														self.entity.vendorId = data.id
 														self.entity.clientId = data.id
 
 													});
 								}
+							}
+							
+							self.getEntityData = function() {
+								console
+										.log("Common Controller get Entity data");
+								return CommonService.getEntity();
 							}
 
 							self.getVendorDetail1 = function(vendorNo, entity) {
@@ -74,7 +83,7 @@ App.controller('VendorController',[
 														self.entity.vendorName = data.vendorName;
 														self.entity.vendorPAN = data.vendorPAN;
 														self.entity.gstNo = data.gstNo;
-														self.entity.clientId = data.id
+														self.entity.vendorId = data.id
 
 													});
 								}
@@ -98,6 +107,7 @@ App.controller('VendorController',[
 														self.entity.vendorName = data.vendorName;
 														self.entity.vendorNo = data.vendorNo;
 														self.entity.gstNo = data.gstNo;
+														self.entity.vendorId = data.id
 														self.entity.clientId = data.id
 
 													});
@@ -106,6 +116,7 @@ App.controller('VendorController',[
 
 							self.getVendorDetail3 = function(vendorName, entity) {
 								console.log("Common Controller is working");
+								
 								var map = {};
 								map.vendorName = vendorName;
 								if (vendorName != null) {
@@ -122,6 +133,7 @@ App.controller('VendorController',[
 														self.entity.vendorPAN = data.vendorPAN;
 														self.entity.vendorNo = data.vendorNo;
 														self.entity.gstNo = data.gstNo;
+														self.entity.vendorId = data.id
 														self.entity.clientId = data.id
 
 													});
@@ -168,6 +180,7 @@ App.controller('VendorController',[
 											+ entity);
 									self.entity.branchId = $stateParams.branchId;
 									self.entity.clientId = $stateParams.clientId;
+									
 									CommonService
 											.save(self.entity, entity,
 													$stateParams.clientId)

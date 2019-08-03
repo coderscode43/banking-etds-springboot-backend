@@ -301,6 +301,24 @@
 						</div>
 
 						<div class="row">
+						
+						
+						<div class="col-md-4" >
+								
+									<label>GST No.*</label>
+									<md-autocomplete md-input-name="gstNo" style="width:100%;"
+										md-input-minlength="3" md-no-cache="true"
+										md-input-maxlength="75"
+										md-selected-item="cCctr.entity.vendorPayment.gstNo"
+										md-search-text="d"
+										md-items="item in cCctr.ajax1('vendorPayment','gstNo',d)"
+										md-selected-item-change="cCctr.getVendorDetail(cCctr.entity.vendorPayment.gstNo,'vendorPayment')"
+										md-delay="2000" placeholder="GST NO"> <md-item-template>
+									<span>{{item}}</span> </md-item-template> <md-not-found> No Group
+									code with "{{d}}" were found.<a ng-click="">Add new</a> </md-not-found> </md-autocomplete>
+									<span class="error" id="gstNo"></span>
+								
+							</div>
 							<div class="col-md-4">
 								<label>Invoice Date*</label> <input type="date" name="date"
 									class="form-control" style="padding-top: 0px;"
@@ -308,23 +326,12 @@
 									ng-model="cCctr.entity.vendorPayment.date"
 									ng-model-options="{updateOn: 'blur'}">
 							</div>
-							<div class="col-md-4">
-								<label>Payment Done*</label> <input type="text"
-									name="paymentDone" class="form-control"
-									style="padding-top: 0px;"
-									ng-model="cCctr.entity.vendorPayment.paymentDone"
-									placeholder="Payment Done" autocomplete="off"
-									ng-pattern="/^[a-zA-z\s]*$/" ng-maxlength="15"
-									ng-required="true" ng-model-options="{updateOn: 'blur'}" /> <span
-									style="color: red"
-									ng-show="vendorDetailForm.submitted ||vendorDetailForm.paymentDone.$dirty && vendorDetailForm.paymentDone.$invalid">						<span class="error"
-									ng-show="vendorDetailForm.paymentDone.$error.maxlength">Payment
-										Done should not be greater than 15 characters.</span> <span
-									class="error"
-									ng-show="vendorDetailForm.paymentDone.$error.required">Payment
-										Done is Required.</span>
-								</span> <span class="error" id="paymentDone"></span>
-							</div>
+							
+							
+							
+							
+							
+							
 							<div class="col-md-4">
 								<label>Payment Date*</label> <input type="date"
 									name="paymentDate" class="form-control"
@@ -606,23 +613,26 @@
 										GST is Required.</span>
 								</span> <span class="error" id="ourGst"></span>
 							</div>
-							<div class="col-md-4" style="margin-left: 17px">
-								<div class="form-group">
-									<label>GST No.*</label>
-									<md-autocomplete md-input-name="gstNo" style="width:88%;"
-										md-input-minlength="3" md-no-cache="true"
-										md-input-maxlength="75"
-										md-selected-item="cCctr.entity.vendorPayment.gstNo"
-										md-search-text="d"
-										md-items="item in cCctr.ajax1('vendorPayment','gstNo',d)"
-										md-selected-item-change="cCctr.getVendorDetail(cCctr.entity.vendorPayment.gstNo,'vendorPayment')"
-										md-delay="2000" placeholder="GST NO"> <md-item-template>
-									<span>{{item}}</span> </md-item-template> <md-not-found> No Group
-									code with "{{d}}" were found.<a ng-click="">Add new</a> </md-not-found> </md-autocomplete>
-									<span class="error" id="gstNo"></span>
-								</div>
+							
+							<div class="col-md-4">
+								<label>Payment Done*</label> <input type="text"
+									name="paymentDone" class="form-control"
+									style="padding-top: 0px;"
+									ng-model="cCctr.entity.vendorPayment.paymentDone"
+									placeholder="Payment Done" autocomplete="off"
+									ng-pattern="/^[a-zA-z\s]*$/" ng-maxlength="15"
+									ng-required="true" ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="vendorDetailForm.submitted ||vendorDetailForm.paymentDone.$dirty && vendorDetailForm.paymentDone.$invalid">						<span class="error"
+									ng-show="vendorDetailForm.paymentDone.$error.maxlength">Payment
+										Done should not be greater than 15 characters.</span> <span
+									class="error"
+									ng-show="vendorDetailForm.paymentDone.$error.required">Payment
+										Done is Required.</span>
+								</span> <span class="error" id="paymentDone"></span>
 							</div>
-						</div>
+							
+					</div>
 					</div>
 				</form>
 				<div class="modal-footer">

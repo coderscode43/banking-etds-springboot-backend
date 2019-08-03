@@ -31,6 +31,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
 import domain.in.rjsa.model.form.Ajax;
+import domain.in.rjsa.model.form.Branch;
 import domain.in.rjsa.model.form.ListCount;
 import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.form.Logs;
@@ -56,6 +57,62 @@ public abstract class AbstractTDSController<K extends Serializable, E extends Mo
 	LogsJsonService ljService;
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
+	
+	
+	
+	
+	
+	// ------------------- List Entity WOT ---------------------------------
+
+		public List<?> getList(Long clientId, Long branchId, int pageNo, int resultPerPage) {
+			Branch b = applicationCache.getBranch(Long.valueOf(branchId));
+
+			HashMap<String, Object> constrains = new HashMap<>();
+		//	constrains.put("clientId", applicationCache.getLoginDetail(getPrincipal()).getClientId());
+			constrains.put("TAN", b.getTan());
+
+			return getService().findAll(constrains, pageNo, resultPerPage);
+		}
+
+		// ------------------- Count Entity WOT---------------------------------
+
+		@RequestMapping(value = "/listBranch/{clientId}/{branchId}/count/", method = RequestMethod.GET)
+		public ResponseEntity<?> count(@PathVariable Long clientId, @PathVariable Long branchId,
+				HttpServletRequest request) {
+			Branch b = applicationCache.getBranch(Long.valueOf(branchId));
+			HashMap<String, Object> constrains = new HashMap<>();
+		//	constrains.put("clientId", applicationCache.getLoginDetail(getPrincipal()).getClientId());
+			constrains.put("TAN", b.getTan());
+
+			String mapping = request.getPathInfo();
+
+			try {
+				Long count = getService().findallCount(constrains);
+				List<?> list = getList(clientId, branchId, 0, 100);
+				ListCount send = new ListCount();
+				send.setCount(count);
+				send.setEntities(list);
+				return new ResponseEntity<>(send, HttpStatus.OK);
+			} catch (Exception e) {
+				logger.error("Error in listALL", e);
+				return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+
+		}
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	// ------------------- List Entity ---------------------------------
 

@@ -97,6 +97,7 @@
 
 	<script src="static/js/controller/CommonController.js"></script>
 	<script src="static/js/controller/VendorController.js"></script>
+	<script src="static/js/controller/CommonWOTController.js"></script>
     <script src="static/js/service/CommonService.js"></script>
     
     

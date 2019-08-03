@@ -1,4 +1,4 @@
- <div class="container-fluid">
+ <div class="container-fluid" ng-controller="CommonWOTController as cWctr">
       <div class="col-md-12 " style="padding-left: 0px;font-size: 12pxp; margin-top:2%" >
 	      <div class="heading">
 	            <strong>Vendor Payment</strong>
@@ -9,19 +9,23 @@
              </button>
         <div class="collapse dont-collapse-sm" id="collapseExample2" > 
 	       <div class="row">
+	       
+	      <!--  <input type="hidden" ng-model="cWctr.search"
+									ng-init="cWctr.search= $stateParams;" />  -->
+	       
 	          <div class="form-group">
 	  
 	                 <div class="col-md-3">							
                    <h6><b>Vendor Number</b></h6>
-                       <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.search.vendorNo" placeholder="Vendor Number">
+                       <input type="text" class="form-control" style="padding-top:0px;" ng-model="cWctr.search.vendorNo" placeholder="Vendor Number">
                 </div>
                 <div class="col-md-3">							
                    <h6><b>Vendor Name</b></h6>
-                       <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.search.vendorName" placeholder="Vendor Name">
+                       <input type="text" class="form-control" style="padding-top:0px;" ng-model="cWctr.search.vendorName" placeholder="Vendor Name">
                 </div>
                 <div class="col-md-3">							
                    <h6><b>Vendor PAN</b></h6>
-                       <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.search.vendorPAN" placeholder="Vendor PAN">
+                       <input type="text" class="form-control" style="padding-top:0px;" ng-model="cWctr.search.vendorPAN" placeholder="Vendor PAN">
                 </div>
 	                 
 	                
@@ -34,27 +38,27 @@
 	  
 	  <div class="col-md-3">							
                    <h6><b>From Invoice Date</b></h6>
-                   <input type="date" class="form-control" style="padding-top:0px;" ng-model="cCctr.search.fromDate" 
-                   ng-change="cCctr.search.fromDate=cCctr.date(cCctr.search.fromDate);" placeholder="From Date">
+                   <input type="date" class="form-control" style="padding-top:0px;" ng-model="cWctr.search.fromDate" 
+                   ng-change="cWctr.search.fromDate=cWctr.date(cWctr.search.fromDate);" placeholder="From Date">
                 </div>
                      
 	                 <div class="col-md-3">							
                    <h6><b>To Invoice Date</b></h6>
-                    <input type="date" class="form-control" style="padding-top:0px;" ng-model="cCctr.search.toDate" 
-                    ng-change="cCctr.search.toDate=cCctr.date(cCctr.search.toDate);" placeholder="To Date">
+                    <input type="date" class="form-control" style="padding-top:0px;" ng-model="cWctr.search.toDate" 
+                    ng-change="cWctr.search.toDate=cWctr.date(cWctr.search.toDate);" placeholder="To Date">
                 </div>    
    </div>
   	       </div>
 	             
 	         	     <div class="col-md-4" id="hide" style=" margin-top:-9%;margin-left:80%">	
-	                          <button ng-click="cCctr.searchEntities(true,'vendorPayment')"
+	                          <button ng-click="cWctr.searchEntities(true,'vendorPayment')"
 							  class="btn btn-success" onclick="scrollWin()">Search</button>
 	                 </div>					
   				
     
              <div class="row" id="search" >
 	         	  <div class="col-md-3" id="search">	
-	                    <button ng-click="cCctr.searchEntities(true,'vendorPayment')"
+	                    <button ng-click="cWctr.searchEntities(true,'vendorPayment')"
 					      class="btn btn-success">Search</button>
 	              </div>					
               </div>

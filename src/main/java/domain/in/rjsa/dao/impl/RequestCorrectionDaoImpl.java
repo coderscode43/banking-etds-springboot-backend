@@ -23,6 +23,10 @@ public class RequestCorrectionDaoImpl extends AbstractNewDao<Long, RequestCorrec
 		propertyNameValues.put("clientId", clientId);
 		criteria.add(Restrictions.allEq(propertyNameValues));
 		
+		 if(entity.get("branchId")!=null)
+         {
+		criteria.add(Restrictions.eqOrIsNull("branchId", entity.get("branchId")));
+         }
           if(entity.get("form")!=null)
           {
 		criteria.add(Restrictions.eqOrIsNull("form", entity.get("form")));

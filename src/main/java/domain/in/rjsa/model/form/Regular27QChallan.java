@@ -34,6 +34,8 @@ public class Regular27QChallan extends CommonModelAbstract{
 	public Long id;	
 	@Column(name = "clientId")
 	public Long clientId;
+	@Column(name = "branchId")
+	public Long branchId;
 	@Column(name = "srNo")
 	public Long srNo;
 	

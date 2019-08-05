@@ -37,6 +37,8 @@ public class Regular24Q4Deductee extends CommonModelAbstract {
 	public Long id;
 	@Column(name = "clientId")
 	public Long clientId;
+	@Column(name = "branchId")
+	public Long branchId;
 	@Column(name = "srNo")
 	public Long srNo;
 	@Column(name = "challanSrNo")

@@ -11,7 +11,7 @@ import domain.in.rjsa.service.Regular24Q4ChallanService;
 
 @Controller
 @RequestMapping("/apiregular24Q4Challan")
-public class Regular24Q4ChallanController extends AbstractController<Long, Regular24Q4Challan, Regular24Q4ChallanService>{
+public class Regular24Q4ChallanController extends AbstractBranchController<Long, Regular24Q4Challan, Regular24Q4ChallanService>{
 @Autowired
 Regular24Q4ChallanService service;
 	@Override

@@ -36,7 +36,9 @@ public class Regular24Q4Challan extends CommonModelAbstract{
 	@Column(name = "id")
 	public Long id;	
 	@Column(name = "clientId")
-	public Long clientId;	
+	public Long clientId;
+	@Column(name = "branchId")
+	public Long branchId;
 	@Column(name = "srNo")
 	public Long srNo;
 	@Column(name = "tds")
@@ -99,9 +101,9 @@ public class Regular24Q4Challan extends CommonModelAbstract{
 	@Column(name = "fy")
 	@Size(min=0, max=45, message="Invalid FY")
 	public String fy;
-	@Column(name = "quarter")
-	@Size(min=0, max=45, message="Invalid Quarter")
-	public String quarter;
+//	@Column(name = "quarter")
+//	@Size(min=0, max=45, message="Invalid Quarter")
+//	public String quarter;
 	@Column(name = "amountConsumed")
 	@NotNull(message = "Amount Consumed is a required field")
 	@Digits(integer = 12, fraction = 2,message="Invalid Value")

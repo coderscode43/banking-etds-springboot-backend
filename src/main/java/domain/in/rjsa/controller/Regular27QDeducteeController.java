@@ -11,7 +11,7 @@ import domain.in.rjsa.service.Regular27QDeducteeService;
 
 @Controller
 @RequestMapping("/apiform27Q")
-public class Regular27QDeducteeController extends AbstractController<Long,  Regular27QDeductee,  Regular27QDeducteeService> {
+public class Regular27QDeducteeController extends AbstractBranchController<Long,  Regular27QDeductee,  Regular27QDeducteeService> {
 
 	
 	@Autowired

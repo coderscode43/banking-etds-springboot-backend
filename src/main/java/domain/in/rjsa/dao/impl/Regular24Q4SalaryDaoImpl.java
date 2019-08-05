@@ -26,7 +26,9 @@ public class Regular24Q4SalaryDaoImpl extends AbstractNewDao<Long, Regular24Q4Sa
 		propertyNameValues.put("clientId", clientId);
 		criteria.add(Restrictions.allEq(propertyNameValues));
 		
-          
+		if (entity.get("branchId") != null) {
+			criteria.add(Restrictions.eqOrIsNull("branchId", entity.get("branchId")));
+		}
           if(entity.get("fy")!=null)
           {
 		criteria.add(Restrictions.eqOrIsNull("fy", entity.get("fy")));

@@ -1,5 +1,5 @@
 
-<div id="page-wrapper">
+<div id="page-wrapper"  ng-controller="CommonWOTController as cWctr">
 	<div class="container-fluid">
 		<div class="row">
 			<h1>Add Deductee Details</h1>
@@ -12,7 +12,7 @@
 							<div class="form-group">
 								<label>Sr. No.</label> <input class="form-control"
 									type="text" name="srNo" placeholder="Sr. No."
-									ng-model="cCctr.entity.srNo" autocomplete="off"
+									ng-model="cWctr.entity.srNo" autocomplete="off"
 									ng-maxlength="50" 
 									ng-model-options="{updateOn: 'blur'}" />
 
@@ -22,7 +22,7 @@
 							<div class="form-group">
 								<label>TDS</label> <input class="form-control"
 									type="text" name="tds" placeholder="TDS"
-									ng-model="cCctr.entity.tds" autocomplete="off"
+									ng-model="cWctr.entity.tds" autocomplete="off"
 									ng-maxlength="100" 
 									ng-model-options="{updateOn: 'blur'}" /> 
 									
@@ -33,7 +33,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Deductee Ref. No</label> <input class="form-control" type="text"
-									name="deducteeRefNo" placeholder="Deductee Ref. No" ng-model="cCctr.entity.deducteeRefNo"
+									name="deducteeRefNo" placeholder="Deductee Ref. No" ng-model="cWctr.entity.deducteeRefNo"
 									autocomplete="off" ng-maxlength="10"
 									ng-model-options="{updateOn: 'blur'}" /> 
 									
@@ -42,7 +42,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Surcharge</label> <input class="form-control" type="text"
-									name="surcharge" placeholder="Surcharge" ng-model="cCctr.entity.surcharge"
+									name="surcharge" placeholder="Surcharge" ng-model="cWctr.entity.surcharge"
 									autocomplete="off" ng-maxlength="50"
 									ng-model-options="{updateOn: 'blur'}" /> 
 							</div>
@@ -53,7 +53,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Education Cess</label> <input class="form-control" type="text"
-									name="eduCess" placeholder="Education Cess" ng-model="cCctr.entity.eduCess"
+									name="eduCess" placeholder="Education Cess" ng-model="cWctr.entity.eduCess"
 									autocomplete="off" ng-maxlength="50" 
 									ng-model-options="{updateOn: 'blur'}" /> 
 							</div>
@@ -61,7 +61,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Interest</label> <input class="form-control" type="text"
-									name="interest" placeholder="Interest" ng-model="cCctr.entity.interest"
+									name="interest" placeholder="Interest" ng-model="cWctr.entity.interest"
 									autocomplete="off" ng-maxlength="10" 
 									
 									ng-model-options="{updateOn: 'blur'}" /> 
@@ -75,7 +75,7 @@
 							<div class="form-group">
 								<label>Fee</label> <input class="form-control"
 									type="text" name="fee" placeholder="Fee"
-									ng-model="cCctr.entity.fee" autocomplete="off"
+									ng-model="cWctr.entity.fee" autocomplete="off"
 									ng-maxlength="50"
 									
 									ng-model-options="{updateOn: 'blur'}" /> 
@@ -86,7 +86,7 @@
 								<label>Others</label> <input class="form-control"
 									type="date" name="others"
 									placeholder="Others"
-									ng-model="cCctr.entity.others" autocomplete="off"
+									ng-model="cWctr.entity.others" autocomplete="off"
 									ng-maxlength="50" 
 									ng-model-options="{updateOn: 'blur'}" /> 
 							</div>
@@ -98,7 +98,7 @@
 							<div class="form-group">
 								<label>Total tax Deposit</label> <input class="form-control"
 									type="text" name="totalTaxDeposit" placeholder="Total tax Deposit"
-									ng-model="cCctr.entity.totalTaxDeposit" autocomplete="off"
+									ng-model="cWctr.entity.totalTaxDeposit" autocomplete="off"
 									ng-maxlength="50" 
 									ng-model-options="{updateOn: 'blur'}" /> 
 							</div>
@@ -109,7 +109,7 @@
 							<div class="form-group">
 								<label>TDS Deposit Book Entry</label> <input class="form-control"
 									type="text" name="tdsDepositBookEntry" placeholder="TDS Deposit Book Entry"
-									ng-model="cCctr.entity.tdsDepositBookEntry" autocomplete="off"
+									ng-model="cWctr.entity.tdsDepositBookEntry" autocomplete="off"
 									ng-maxlength="50" 
 									ng-model-options="{updateOn: 'blur'}" /> 
 							</div>
@@ -123,7 +123,7 @@
 							<div class="form-group">
 								<label>BSR Code</label> <input class="form-control"
 									type="text" name="bankBranchCode" placeholder="BSR Code"
-									ng-model="cCctr.entity.bankBranchCode" autocomplete="off"
+									ng-model="cWctr.entity.bankBranchCode" autocomplete="off"
 									ng-maxlength="50" 
 									ng-model-options="{updateOn: 'blur'}" /> 
 							</div>
@@ -135,7 +135,7 @@
 							<div class="form-group">
 								<label>Challan Sr. No</label> <input class="form-control"
 									type="text" name="challanSrNo" placeholder="Challan Sr. No"
-									ng-model="cCctr.entity.challanSrNo" autocomplete="off"
+									ng-model="cWctr.entity.challanSrNo" autocomplete="off"
 									ng-maxlength="50" 
 									ng-model-options="{updateOn: 'blur'}" /> 
 							</div>
@@ -148,7 +148,7 @@
 							<div class="form-group">
 								<label>Date Tax Deposit</label> <input class="form-control"
 									type="date" name="taxDepositDate" placeholder="Date Tax Deposit"
-									ng-model="cCctr.entity.taxDepositDate" autocomplete="off"
+									ng-model="cWctr.entity.taxDepositDate" autocomplete="off"
 									ng-maxlength="50" 
 									ng-model-options="{updateOn: 'blur'}" /> 
 							</div>
@@ -159,7 +159,7 @@
 							<div class="form-group">
 								<label>Minor Head Challan</label> <input class="form-control"
 									type="text" name="minorHeadChallan" placeholder="Minor Head Challan"
-									ng-model="cCctr.entity.minorHeadChallan" autocomplete="off"
+									ng-model="cWctr.entity.minorHeadChallan" autocomplete="off"
 									ng-maxlength="50" 
 									ng-model-options="{updateOn: 'blur'}" /> 
 							</div>
@@ -174,7 +174,7 @@
 							<div class="form-group">
 								<label>Interest Allocated</label> <input class="form-control"
 									type="date" name="interestAllocated" placeholder="Interest Allocated"
-									ng-model="cCctr.entity.interestAllocated" autocomplete="off"
+									ng-model="cWctr.entity.interestAllocated" autocomplete="off"
 									ng-maxlength="50" 
 									ng-model-options="{updateOn: 'blur'}" /> 
 							</div>
@@ -185,7 +185,7 @@
 							<div class="form-group">
 								<label>Other Amount Allocated</label> <input class="form-control"
 									type="text" name="otherAmtAllocated" placeholder="Other Amount Allocated"
-									ng-model="cCctr.entity.otherAmtAllocated" autocomplete="off"
+									ng-model="cWctr.entity.otherAmtAllocated" autocomplete="off"
 									ng-maxlength="50" 
 									ng-model-options="{updateOn: 'blur'}" /> 
 							</div>
@@ -200,7 +200,7 @@
 							<div class="form-group">
 								<label>Nil Challan Indicator</label> <input class="form-control"
 									type="text" name="nilChallanIndicator" placeholder="Nil Challan Indicator"
-									ng-model="cCctr.entity.nilChallanIndicator" autocomplete="off"
+									ng-model="cWctr.entity.nilChallanIndicator" autocomplete="off"
 									ng-maxlength="50" 
 									ng-model-options="{updateOn: 'blur'}" /> 
 							</div>
@@ -211,7 +211,7 @@
 							<div class="form-group">
 								<label>Short Payment</label> <input class="form-control"
 									type="text" name="shortPayment" placeholder="Short Payment"
-									ng-model="cCctr.entity.shortPayment" autocomplete="off"
+									ng-model="cWctr.entity.shortPayment" autocomplete="off"
 									ng-maxlength="50" 
 									ng-model-options="{updateOn: 'blur'}" /> 
 							</div>
@@ -225,7 +225,7 @@
 							<div class="form-group">
 								<label>Interest Short Payment</label> <input class="form-control"
 									type="text" name="interestShortPay" placeholder="Interest Short Payment"
-									ng-model="cCctr.entity.interestShortPay" autocomplete="off"
+									ng-model="cWctr.entity.interestShortPay" autocomplete="off"
 									ng-maxlength="50"
 									
 									ng-model-options="{updateOn: 'blur'}" /> 
@@ -237,7 +237,7 @@
 							<div class="form-group">
 								<label>Financial Year</label> <input class="form-control"
 									type="text" name="fy" placeholder="Financial Year"
-									ng-model="cCctr.entity.fy" autocomplete="off"
+									ng-model="cWctr.entity.fy" autocomplete="off"
 									ng-maxlength="50" 
 									ng-model-options="{updateOn: 'blur'}" /> 
 							</div>
@@ -251,7 +251,7 @@
 							<div class="form-group">
 								<label>Quarter</label> <input class="form-control"
 									type="text" name="quarter" placeholder="Quarter"
-									ng-model="cCctr.entity.quarter" autocomplete="off"
+									ng-model="cWctr.entity.quarter" autocomplete="off"
 									ng-maxlength="50" 
 									ng-model-options="{updateOn: 'blur'}" /> 
 							</div>
@@ -266,9 +266,9 @@
 					<div class="row">
 						<div class="col-md-6">
 							<button
-								ng-click="challanDetailForm.submitted=true; cCctr.submit(challanDetailForm.$valid,'regular27QChallan')"
+								ng-click="challanDetailForm.submitted=true; cWctr.submit(challanDetailForm.$valid,'regular27QChallan')"
 								class="btn btn-success" data-dismiss="modal">Submit</button>
-							<button ng-click="cCctr.gotoListPage('regular27QChallan','regular27QChallan');"
+							<button ng-click="cWctr.gotoList2Page('regular27QChallan','regular27QChallan');"
 								class="btn btn-primary">Cancel</button>
 						</div>
 					</div>

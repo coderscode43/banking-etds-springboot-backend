@@ -1,6 +1,6 @@
 
 <br>
-<div id="page-wrapper">
+<div id="page-wrapper" ng-controller="CommonWOTController as cWctr">
 	<div class="container-fluid">
 		<div class="row">
 			<h3>Add Form 24Q4 Salary Details:</h3>
@@ -16,7 +16,7 @@
 							<div class="form-group">
 								<label>PAN*</label> <input class="form-control"
 									type="text" name="pan" placeholder="PAN"
-									ng-model="cCctr.entity.pan" autocomplete="off"
+									ng-model="cWctr.entity.pan" autocomplete="off"
 									ng-required="true"
 									ng-pattern="/^[a-zA-Z]{5}[0-9]{4}[a-zA-Z]{1}$/"
 									ng-model-options="{updateOn: 'blur'}" />
@@ -33,7 +33,7 @@
 							<div class="form-group">
 								<label>Pan Ref No.*</label> <input class="form-control"
 									type="text" name="panRefNo" placeholder="Pan Ref No."
-									ng-model="cCctr.entity.panRefNo" autocomplete="off"
+									ng-model="cWctr.entity.panRefNo" autocomplete="off"
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 									ng-maxlength="50"
 									ng-required="true"
@@ -53,7 +53,7 @@
 							<div class="form-group">
 								<label>Name*</label> <input class="form-control"
 									type="text" name="name" placeholder="Name"
-									ng-model="cCctr.entity.name" autocomplete="off"
+									ng-model="cWctr.entity.name" autocomplete="off"
 									ng-maxlength="50"
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 									ng-required="true"
@@ -71,7 +71,7 @@
 							<div class="form-group">
 								<label>Category*</label> <input class="form-control"
 									type="text" name="category" placeholder="Category"
-									ng-model="cCctr.entity.category" autocomplete="off"
+									ng-model="cWctr.entity.category" autocomplete="off"
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 									ng-required="true"
 									ng-maxlength="50"
@@ -93,7 +93,7 @@
 							<div class="form-group">
 								<label>From Date of Employment*</label> <input class="form-control"
 									type="date" name="fromDateOfEmployment" placeholder="From Date of Employment"
-									ng-model="cCctr.entity.fromDateOfEmployment" autocomplete="off"
+									ng-model="cWctr.entity.fromDateOfEmployment" autocomplete="off"
 									ng-maxlength="50"
 									ng-required="true"
 									ng-model-options="{updateOn: 'blur'}" />
@@ -108,7 +108,7 @@
 							<div class="form-group">
 								<label>To Date of Employment*</label> <input class="form-control"
 									type="date" name="toDateOfEmployment" placeholder="To Date of Employment"
-									ng-model="cCctr.entity.toDateOfEmployment" autocomplete="off"
+									ng-model="cWctr.entity.toDateOfEmployment" autocomplete="off"
 									ng-required="true"
 									ng-maxlength="50"
 									ng-model-options="{updateOn: 'blur'}" />
@@ -127,7 +127,7 @@
 							<div class="form-group">
 								<label>Gross Salary As Per Provision*</label> <input class="form-control"
 									type="text" name="grossSalaryAsPerProvision" placeholder="Gross Salary As Per Provision"
-									ng-model="cCctr.entity.grossSalaryAsPerProvision" autocomplete="off"
+									ng-model="cWctr.entity.grossSalaryAsPerProvision" autocomplete="off"
 									ng-required="true"
 									ng-maxlength="100" 
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
@@ -145,7 +145,7 @@
 							<div class="form-group">
 								<label>Value Of Perquisites*</label> <input class="form-control"
 									type="text" name="valueOfPerquisites" placeholder="Value Of Perquisites"
-									ng-model="cCctr.entity.valueOfPerquisites" autocomplete="off"
+									ng-model="cWctr.entity.valueOfPerquisites" autocomplete="off"
 									ng-required="true"
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 									ng-maxlength="100" 
@@ -165,7 +165,7 @@
 							<div class="form-group">
 								<label>Profit In Salary*</label> <input class="form-control"
 									type="text" name="profitInSalary" placeholder="Profit In Salary"
-									ng-model="cCctr.entity.profitInSalary" autocomplete="off"
+									ng-model="cWctr.entity.profitInSalary" autocomplete="off"
 									ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" /> 
@@ -184,7 +184,7 @@
 								<label>Taxable Salary From Current Emp*</label> <input class="form-control"
 									type="text" name="taxableSalaryFromCurrentEmp"
 									placeholder="Taxable Salary From Current Emp"
-									ng-model="cCctr.entity.taxableSalaryFromCurrentEmp" autocomplete="off"
+									ng-model="cWctr.entity.taxableSalaryFromCurrentEmp" autocomplete="off"
 									ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="100"
@@ -207,7 +207,7 @@
 							<div class="form-group">
 								<label>Reported Salary From Other Emp*</label> <input class="form-control"
 									type="text" name="reportedSalaryFromOtherEmp" placeholder="Reported Salary From Other Emp"
-									ng-model="cCctr.entity.reportedSalaryFromOtherEmp" autocomplete="off"
+									ng-model="cWctr.entity.reportedSalaryFromOtherEmp" autocomplete="off"
 									ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="100"
@@ -225,7 +225,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Total Amount Of Salary*</label> <input class="form-control" type="text"
-									name="totalAmountOfSalary" placeholder="Total Amount Of Salary" ng-model="cCctr.entity.totalAmountOfSalary"
+									name="totalAmountOfSalary" placeholder="Total Amount Of Salary" ng-model="cWctr.entity.totalAmountOfSalary"
 									autocomplete="off" ng-maxlength="100"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-required="true"
@@ -248,7 +248,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Leave Travel Allowance*</label> <input class="form-control" type="text"
-									name="leaveTravelAllowance" placeholder="Leave Travel Allowance" ng-model="cCctr.entity.leaveTravelAllowance"
+									name="leaveTravelAllowance" placeholder="Leave Travel Allowance" ng-model="cWctr.entity.leaveTravelAllowance"
 									autocomplete="off" ng-maxlength="100"
 									ng-required="true"
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
@@ -268,7 +268,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Gratuity*</label> <input class="form-control" type="text"
-									name="gratuity" placeholder="Gratuity" ng-model="cCctr.entity.gratuity"
+									name="gratuity" placeholder="Gratuity" ng-model="cWctr.entity.gratuity"
 									autocomplete="off" 
 									ng-required="true"
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
@@ -288,7 +288,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Commuted Value Of Pension*</label> <input class="form-control" type="text"
-									name="commutedValueOfPension" placeholder="Commuted Value Of Pension" ng-model="cCctr.entity.commutedValueOfPension"
+									name="commutedValueOfPension" placeholder="Commuted Value Of Pension" ng-model="cWctr.entity.commutedValueOfPension"
 									autocomplete="off" ng-maxlength="50" 
 									ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
@@ -307,7 +307,7 @@
 							<div class="form-group">
 								<label>Leave Encashment Salary*</label> <input class="form-control"
 									type="text" name="leaveEncashmentSalary" placeholder="Leave Encashment Salary"
-									ng-model="cCctr.entity.leaveEncashmentSalary" autocomplete="off"
+									ng-model="cWctr.entity.leaveEncashmentSalary" autocomplete="off"
 									ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" /> 
@@ -326,7 +326,7 @@
 							<div class="form-group">
 								<label>HouseRent Allowance*</label> <input class="form-control" type="text"
 									name="houseRentAllowance" placeholder="HouseRent Allowance"
-									ng-model="cCctr.entity.houseRentAllowance" autocomplete="off"
+									ng-model="cWctr.entity.houseRentAllowance" autocomplete="off"
 									ng-required="true"
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -343,7 +343,7 @@
 							<div class="form-group">
 								<label>Any Other Exemptionus10*</label> <input class="form-control"
 									type="text" name="anyOtherExemptionus10" placeholder="Any Other Exemptionus10"
-									ng-model="cCctr.entity.anyOtherExemptionus10" autocomplete="off"
+									ng-model="cWctr.entity.anyOtherExemptionus10" autocomplete="off"
 									ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -362,7 +362,7 @@
 							<div class="form-group">
 								<label>Total Amount Of Exemption*</label> <input class="form-control"
 									type="text" name="totalAmountOfExemption" placeholder="Total Amount Of Exemption"
-									ng-model="cCctr.entity.totalAmountOfExemption" autocomplete="off"
+									ng-model="cWctr.entity.totalAmountOfExemption" autocomplete="off"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-required="true"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.totalAmountOfExemption.$dirty && form24SalaryDetail.totalAmountOfExemption.$invalid">
@@ -384,7 +384,7 @@
 							<div class="form-group">
 								<label>Entertainment Allowance*</label> <input class="form-control" type="text"
 									name="entertainmentAllowance" placeholder="Entertainment Allowance"
-									ng-model="cCctr.entity.entertainmentAllowance" autocomplete="off"
+									ng-model="cWctr.entity.entertainmentAllowance" autocomplete="off"
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 									ng-required="true"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -403,7 +403,7 @@
 							<div class="form-group">
 								<label>PTax*</label> <input class="form-control" type="text"
 									name="pTax" placeholder="PTax"
-									ng-model="cCctr.entity.pTax" autocomplete="off"
+									ng-model="cWctr.entity.pTax" autocomplete="off"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-required="true"
 									ng-maxlength="50"
@@ -423,7 +423,7 @@
 							<div class="form-group">
 								<label>Standard Deduction*</label> <input class="form-control" type="text"
 									name="standardDeduction" placeholder="Standard Deduction"
-									ng-model="cCctr.entity.standardDeduction" autocomplete="off"
+									ng-model="cWctr.entity.standardDeduction" autocomplete="off"
 									ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -439,7 +439,7 @@
 							<div class="form-group">
 								<label>Total Deduction Under Section16*</label> <input class="form-control" type="text"
 									name="totalDeductionUnderSection16" placeholder="Total Deduction Under Section16"
-									ng-model="cCctr.entity.totalDeductionUnderSection16" autocomplete="off"
+									ng-model="cWctr.entity.totalDeductionUnderSection16" autocomplete="off"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-required="true"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -462,7 +462,7 @@
 							<div class="form-group">
 								<label>Income From Salary*</label> <input class="form-control" type="text"
 									name="incomeFromSalary" placeholder="Income From Salary"
-									ng-model="cCctr.entity.incomeFromSalary" autocomplete="off"
+									ng-model="cWctr.entity.incomeFromSalary" autocomplete="off"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-required="true"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -478,7 +478,7 @@
 							<div class="form-group">
 								<label>Income From House Property*</label> <input class="form-control" type="text"
 									name="incomeFromHouseProperty" placeholder="Income From House Property"
-									ng-model="cCctr.entity.incomeFromHouseProperty" autocomplete="off"
+									ng-model="cWctr.entity.incomeFromHouseProperty" autocomplete="off"
 									ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -497,7 +497,7 @@
 							<div class="form-group">
 								<label>Income From Other Sources*</label> <input class="form-control" type="text"
 									name="incomeFromOtherSources" placeholder="Income From Other Sources"
-									ng-model="cCctr.entity.incomeFromOtherSources" autocomplete="off"
+									ng-model="cWctr.entity.incomeFromOtherSources" autocomplete="off"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-required="true"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -513,7 +513,7 @@
 							<div class="form-group">
 								<label>Gross Total Income*</label> <input class="form-control" type="text"
 									name="grossTotalIncome" placeholder="Gross Total Income"
-									ng-model="cCctr.entity.grossTotalIncome" autocomplete="off"
+									ng-model="cWctr.entity.grossTotalIncome" autocomplete="off"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-required="true"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -534,7 +534,7 @@
 							<div class="form-group">
 								<label>Deduction Us80C*</label> <input class="form-control" type="text"
 									name="deductionUs80C" placeholder="Deduction Us80C"
-									ng-model="cCctr.entity.deductionUs80C" autocomplete="off"
+									ng-model="cWctr.entity.deductionUs80C" autocomplete="off"
 									ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -550,7 +550,7 @@
 							<div class="form-group">
 								<label>Deduction Us80CCC*</label> <input class="form-control" type="text"
 									name="deductionUs80CCC" placeholder="Deduction Us80CCC"
-									ng-model="cCctr.entity.deductionUs80CCC" autocomplete="off"
+									ng-model="cWctr.entity.deductionUs80CCC" autocomplete="off"
 									ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -569,7 +569,7 @@
 							<div class="form-group">
 								<label>Deduction Us80CCD1*</label> <input class="form-control" type="text"
 									name="deductionUs80CCD1" placeholder="Deduction Us80CCD1"
-									ng-model="cCctr.entity.deductionUs80CCD1" autocomplete="off"
+									ng-model="cWctr.entity.deductionUs80CCD1" autocomplete="off"
 									ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -585,7 +585,7 @@
 							<div class="form-group">
 								<label>Deduction Us80C80CCC80CCD1*</label> <input class="form-control" type="text"
 									name="deductionUs80C80CCC80CCD1" placeholder="Deduction Us80C80CCC80CCD1"
-									ng-model="cCctr.entity.deductionUs80C80CCC80CCD1" autocomplete="off"
+									ng-model="cWctr.entity.deductionUs80C80CCC80CCD1" autocomplete="off"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-required="true"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -604,7 +604,7 @@
 							<div class="form-group">
 								<label>Deduction Us80CCD1B*</label> <input class="form-control" type="text"
 									name="deductionUs80CCD1B" placeholder="Deduction Us80CCD1B"
-									ng-model="cCctr.entity.deductionUs80CCD1B" autocomplete="off"
+									ng-model="cWctr.entity.deductionUs80CCD1B" autocomplete="off"
 									ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -620,7 +620,7 @@
 							<div class="form-group">
 								<label>Deduction Us80CCD2*</label> <input class="form-control" type="text"
 									name="deductionUs80CCD2" placeholder="Deduction Us80CCD2"
-									ng-model="cCctr.entity.deductionUs80CCD2" autocomplete="off"
+									ng-model="cWctr.entity.deductionUs80CCD2" autocomplete="off"
 									ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -641,7 +641,7 @@
 							<div class="form-group">
 								<label>Deduction Us80D*</label> <input class="form-control" type="text"
 									name="deductionUs80D" placeholder="Deduction Us80D"
-									ng-model="cCctr.entity.deductionUs80D" autocomplete="off"
+									ng-model="cWctr.entity.deductionUs80D" autocomplete="off"
 									ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -657,7 +657,7 @@
 							<div class="form-group">
 								<label>Deduction Us80E*</label> <input class="form-control" type="text"
 									name="deductionUs80E" placeholder="Deduction Us80E"
-									ng-model="cCctr.entity.deductionUs80E" autocomplete="off"
+									ng-model="cWctr.entity.deductionUs80E" autocomplete="off"
 									ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -676,7 +676,7 @@
 							<div class="form-group">
 								<label>Deduction Us80G*</label> <input class="form-control" type="text"
 									name="deductionUs80G" placeholder="Deduction Us80G"
-									ng-model="cCctr.entity.deductionUs80G" autocomplete="off"
+									ng-model="cWctr.entity.deductionUs80G" autocomplete="off"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-required="true"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -692,7 +692,7 @@
 							<div class="form-group">
 								<label>Deduction Us80TTA*</label> <input class="form-control" type="text"
 									name="deductionUs80TTA" placeholder="Deduction Us80TTA"
-									ng-model="cCctr.entity.deductionUs80TTA" autocomplete="off"
+									ng-model="cWctr.entity.deductionUs80TTA" autocomplete="off"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-required="true"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -711,7 +711,7 @@
 							<div class="form-group">
 								<label>Amount Deductible 80ccg*</label> <input class="form-control" type="text"
 									name="amountDeductible80ccg" placeholder="Amount Deductible80ccg"
-									ng-model="cCctr.entity.amountDeductible80ccg" autocomplete="off"
+									ng-model="cWctr.entity.amountDeductible80ccg" autocomplete="off"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-required="true"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -727,7 +727,7 @@
 							<div class="form-group">
 								<label>Any Other Deduction*</label> <input class="form-control" type="text"
 									name="anyOtherDeduction" placeholder="Any Other Deduction"
-									ng-model="cCctr.entity.anyOtherDeduction" autocomplete="off"
+									ng-model="cWctr.entity.anyOtherDeduction" autocomplete="off"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-required="true"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -746,7 +746,7 @@
 							<div class="form-group">
 								<label>Total Deduction Under ChapterVIA*</label> <input class="form-control" type="text"
 									name="totalDeductionUnderChapterVIA" placeholder="Total Deduction Under ChapterVIA"
-									ng-model="cCctr.entity.totalDeductionUnderChapterVIA" autocomplete="off"
+									ng-model="cWctr.entity.totalDeductionUnderChapterVIA" autocomplete="off"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-required="true"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -770,7 +770,7 @@
 							<div class="form-group">
 								<label>Total Taxable Income*</label> <input class="form-control" type="text"
 									name="totalTaxableIncome" placeholder="Total Taxable Income"
-									ng-model="cCctr.entity.totalTaxableIncome" autocomplete="off"
+									ng-model="cWctr.entity.totalTaxableIncome" autocomplete="off"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-required="true"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -786,7 +786,7 @@
 							<div class="form-group">
 								<label>Income Tax On Total Income*</label> <input class="form-control" type="text"
 									name="incomeTaxOnTotalIncome" placeholder="Income Tax On Total Income"
-									ng-model="cCctr.entity.incomeTaxOnTotalIncome" autocomplete="off"
+									ng-model="cWctr.entity.incomeTaxOnTotalIncome" autocomplete="off"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-required="true"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -806,7 +806,7 @@
 							<div class="form-group">
 								<label>Rebate Us87A*</label> <input class="form-control" type="text"
 									name="rebateUs87A" placeholder="Rebate Us87A"
-									ng-model="cCctr.entity.rebateUs87A" autocomplete="off"
+									ng-model="cWctr.entity.rebateUs87A" autocomplete="off"
 									ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -822,7 +822,7 @@
 							<div class="form-group">
 								<label>Surcharge*</label> <input class="form-control" type="text"
 									name="surcharge" placeholder="Surcharge"
-									ng-model="cCctr.entity.surcharge" autocomplete="off"
+									ng-model="cWctr.entity.surcharge" autocomplete="off"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-required="true"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -842,7 +842,7 @@
 							<div class="form-group">
 								<label>Education Cess*</label> <input class="form-control" type="text"
 									name="educationCess" placeholder="Education Cess"
-									ng-model="cCctr.entity.educationCess" autocomplete="off"
+									ng-model="cWctr.entity.educationCess" autocomplete="off"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-required="true"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -858,7 +858,7 @@
 							<div class="form-group">
 								<label>Income Tax ReliefUs89*</label> <input class="form-control" type="text"
 									name="incomeTaxReliefUs89" placeholder="Income Tax ReliefUs89"
-									ng-model="cCctr.entity.incomeTaxReliefUs89" autocomplete="off"
+									ng-model="cWctr.entity.incomeTaxReliefUs89" autocomplete="off"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-required="true"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -878,7 +878,7 @@
 							<div class="form-group">
 								<label>Net Income Tax Payable*</label> <input class="form-control" type="text"
 									name="netIncomeTaxPayable" placeholder="Net Income Tax Payable"
-									ng-model="cCctr.entity.netIncomeTaxPayable" autocomplete="off"
+									ng-model="cWctr.entity.netIncomeTaxPayable" autocomplete="off"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-required="true"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -894,7 +894,7 @@
 							<div class="form-group">
 								<label>Tds From Current Employer*</label> <input class="form-control" type="text"
 									name="tdsFromCurrentEmployer" placeholder="Tds From Current Employer"
-									ng-model="cCctr.entity.tdsFromCurrentEmployer" autocomplete="off"
+									ng-model="cWctr.entity.tdsFromCurrentEmployer" autocomplete="off"
 									ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -914,7 +914,7 @@
 							<div class="form-group">
 								<label>Reported Tds From Previous Employer*</label> <input class="form-control" type="text"
 									name="reportedTdsFromPreviousEmployer" placeholder="Reported Tds From Previous Employer"
-									ng-model="cCctr.entity.reportedTdsFromPreviousEmployer" autocomplete="off"
+									ng-model="cWctr.entity.reportedTdsFromPreviousEmployer" autocomplete="off"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-required="true"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -930,7 +930,7 @@
 							<div class="form-group">
 								<label>Total Tds*</label> <input class="form-control" type="text"
 									name="totalTds" placeholder="Total Tds"
-									ng-model="cCctr.entity.totalTds" autocomplete="off"
+									ng-model="cWctr.entity.totalTds" autocomplete="off"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-required="true"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -950,7 +950,7 @@
 							<div class="form-group">
 								<label>Short fall In Tax Deduction*</label> <input class="form-control" type="text"
 									name="shortfallInTaxDeduction" placeholder="Short fall In Tax Deduction"
-									ng-model="cCctr.entity.shortfallInTaxDeduction" autocomplete="off"
+									ng-model="cWctr.entity.shortfallInTaxDeduction" autocomplete="off"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-required="true"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -973,7 +973,7 @@
 							<div class="form-group">
 								<label>Whether Tax Deducted At Higher Rate*</label> <input class="form-control" type="text"
 									name="whetherTaxDeductedAtHigherRate" placeholder="Whether Tax Deducted At Higher Rate"
-									ng-model="cCctr.entity.whetherTaxDeductedAtHigherRate" autocomplete="off"
+									ng-model="cWctr.entity.whetherTaxDeductedAtHigherRate" autocomplete="off"
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 									ng-required="true"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -989,7 +989,7 @@
 							<div class="form-group">
 								<label>Count Of Pan Of Landlord*</label> <input class="form-control" type="text"
 									name="countOfPanOfLandlord" placeholder="Count Of Pan Of Landlord"
-									ng-model="cCctr.entity.countOfPanOfLandlord" autocomplete="off"
+									ng-model="cWctr.entity.countOfPanOfLandlord" autocomplete="off"
 									ng-pattern="/^[0-9]*$/"
 									ng-required="true"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -1008,7 +1008,7 @@
 							<div class="form-group">
 								<label>Pan Of Landlord1</label> <input class="form-control" type="text"
 									name="panOfLandlord1" placeholder="Pan Of Landlord1"
-									ng-model="cCctr.entity.panOfLandlord1" autocomplete="off"
+									ng-model="cWctr.entity.panOfLandlord1" autocomplete="off"
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.panOfLandlord1.$dirty && form24SalaryDetail.panOfLandlord1.$invalid">
@@ -1022,7 +1022,7 @@
 							<div class="form-group">
 								<label>Name Of Landlord1</label> <input class="form-control" type="text"
 									name="nameOfLandlord1" placeholder="Name Of Landlord1"
-									ng-model="cCctr.entity.nameOfLandlord1" autocomplete="off"
+									ng-model="cWctr.entity.nameOfLandlord1" autocomplete="off"
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.nameOfLandlord1.$dirty && form24SalaryDetail.nameOfLandlord1.$invalid">
@@ -1039,7 +1039,7 @@
 							<div class="form-group">
 								<label>Pan Of Landlord2</label> <input class="form-control" type="text"
 									name="panOfLandlord2" placeholder="Pan Of Landlord2"
-									ng-model="cCctr.entity.panOfLandlord2" autocomplete="off"
+									ng-model="cWctr.entity.panOfLandlord2" autocomplete="off"
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.panOfLandlord2.$dirty && form24SalaryDetail.panOfLandlord2.$invalid">
@@ -1053,7 +1053,7 @@
 							<div class="form-group">
 								<label>Name Of Landlord2</label> <input class="form-control" type="text"
 									name="nameOfLandlord2" placeholder="Name Of Landlord2"
-									ng-model="cCctr.entity.nameOfLandlord2" autocomplete="off"
+									ng-model="cWctr.entity.nameOfLandlord2" autocomplete="off"
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.nameOfLandlord2.$dirty && form24SalaryDetail.nameOfLandlord2.$invalid">
@@ -1070,7 +1070,7 @@
 							<div class="form-group">
 								<label>Pan Of Landlord3</label> <input class="form-control" type="text"
 									name="panOfLandlord3" placeholder="Pan Of Landlord3"
-									ng-model="cCctr.entity.panOfLandlord3" autocomplete="off"
+									ng-model="cWctr.entity.panOfLandlord3" autocomplete="off"
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.panOfLandlord3.$dirty && form24SalaryDetail.panOfLandlord3.$invalid">
@@ -1084,7 +1084,7 @@
 							<div class="form-group">
 								<label>Name Of Landlord3</label> <input class="form-control" type="text"
 									name="nameOfLandlord3" placeholder="Name Of Landlord3"
-									ng-model="cCctr.entity.nameOfLandlord3" autocomplete="off"
+									ng-model="cWctr.entity.nameOfLandlord3" autocomplete="off"
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.nameOfLandlord3.$dirty && form24SalaryDetail.nameOfLandlord3.$invalid">
@@ -1101,7 +1101,7 @@
 							<div class="form-group">
 								<label>Pan Of Landlord4</label> <input class="form-control" type="text"
 									name="panOfLandlord4" placeholder="Pan Of Landlord4"
-									ng-model="cCctr.entity.panOfLandlord4" autocomplete="off"
+									ng-model="cWctr.entity.panOfLandlord4" autocomplete="off"
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.panOfLandlord4.$dirty && form24SalaryDetail.panOfLandlord4.$invalid">
@@ -1116,7 +1116,7 @@
 							<div class="form-group">
 								<label>Name Of Landlord4</label> <input class="form-control" type="text"
 									name="nameOfLandlord4" placeholder="Name Of Landlord4"
-									ng-model="cCctr.entity.nameOfLandlord4" autocomplete="off"
+									ng-model="cWctr.entity.nameOfLandlord4" autocomplete="off"
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.nameOfLandlord4.$dirty && form24SalaryDetail.nameOfLandlord4.$invalid">
@@ -1134,7 +1134,7 @@
 							<div class="form-group">
 								<label>Whether Interest Paid To Be Lender*</label> <input class="form-control" type="text"
 									name="whetherInterestPaidToBeLender" placeholder="Whether Interest Paid To Be Lender"
-									ng-model="cCctr.entity.whetherInterestPaidToBeLender" autocomplete="off"
+									ng-model="cWctr.entity.whetherInterestPaidToBeLender" autocomplete="off"
 									ng-required="true"
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -1150,7 +1150,7 @@
 							<div class="form-group">
 								<label>Count Of Pan Of Lender*</label> <input class="form-control" type="text"
 									name="countOfPanOfLender" placeholder="Count Of Pan Of Lender	"
-									ng-model="cCctr.entity.countOfPanOfLender" autocomplete="off"
+									ng-model="cWctr.entity.countOfPanOfLender" autocomplete="off"
 									ng-required="true"
 									ng-pattern="/^[0-9]*$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -1169,7 +1169,7 @@
 							<div class="form-group">
 								<label>Pan Of Lender1</label> <input class="form-control" type="text"
 									name="panOfLender1" placeholder="Pan Of Lender1"
-									ng-model="cCctr.entity.panOfLender1" autocomplete="off"
+									ng-model="cWctr.entity.panOfLender1" autocomplete="off"
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.panOfLender1.$dirty && form24SalaryDetail.panOfLender1.$invalid">
@@ -1183,7 +1183,7 @@
 							<div class="form-group">
 								<label>Name Of Lender1</label> <input class="form-control" type="text"
 									name="nameOfLender1" placeholder="Name Of Lender1"
-									ng-model="cCctr.entity.nameOfLender1" autocomplete="off"
+									ng-model="cWctr.entity.nameOfLender1" autocomplete="off"
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.nameOfLender1.$dirty && form24SalaryDetail.nameOfLender1.$invalid">
@@ -1201,7 +1201,7 @@
 							<div class="form-group">
 								<label>Pan Of Lender2</label> <input class="form-control" type="text"
 									name="panOfLender2" placeholder="Pan Of Lender2"
-									ng-model="cCctr.entity.panOfLender2" autocomplete="off"
+									ng-model="cWctr.entity.panOfLender2" autocomplete="off"
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.panOfLender2.$dirty && form24SalaryDetail.panOfLender2.$invalid">
@@ -1216,7 +1216,7 @@
 							<div class="form-group">
 								<label>Name Of Lender2</label> <input class="form-control" type="text"
 									name="nameOfLender2" placeholder="Name Of Lender2"
-									ng-model="cCctr.entity.nameOfLender2" autocomplete="off"
+									ng-model="cWctr.entity.nameOfLender2" autocomplete="off"
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.nameOfLender2.$dirty && form24SalaryDetail.nameOfLender2.$invalid">
@@ -1234,7 +1234,7 @@
 							<div class="form-group">
 								<label>Pan Of Lender3</label> <input class="form-control" type="text"
 									name="panOfLender3" placeholder="Pan Of Lender3"
-									ng-model="cCctr.entity.panOfLender3" autocomplete="off"
+									ng-model="cWctr.entity.panOfLender3" autocomplete="off"
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.panOfLender3.$dirty && form24SalaryDetail.panOfLender3.$invalid">
@@ -1248,7 +1248,7 @@
 							<div class="form-group">
 								<label>Name Of Lender3</label> <input class="form-control" type="text"
 									name="nameOfLender3" placeholder="Name Of Lender3"
-									ng-model="cCctr.entity.nameOfLender3" autocomplete="off"
+									ng-model="cWctr.entity.nameOfLender3" autocomplete="off"
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.nameOfLender3.$dirty && form24SalaryDetail.nameOfLender3.$invalid">
@@ -1265,7 +1265,7 @@
 							<div class="form-group">
 								<label>Pan Of Lender4</label> <input class="form-control" type="text"
 									name="panOfLender4" placeholder="Pan Of Lender4"
-									ng-model="cCctr.entity.panOfLender4" autocomplete="off"
+									ng-model="cWctr.entity.panOfLender4" autocomplete="off"
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.panOfLender4.$dirty && form24SalaryDetail.panOfLender4.$invalid">
@@ -1280,7 +1280,7 @@
 							<div class="form-group">
 								<label>Name Of Lender4</label> <input class="form-control" type="text"
 									name="nameOfLender4" placeholder="Name Of Lender4"
-									ng-model="cCctr.entity.nameOfLender4" autocomplete="off"
+									ng-model="cWctr.entity.nameOfLender4" autocomplete="off"
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.nameOfLender4.$dirty && form24SalaryDetail.nameOfLender4.$invalid">
@@ -1297,7 +1297,7 @@
 							<div class="form-group">
 								<label>Contribution Paid By Trustees*</label> <input class="form-control" type="text"
 									name="contributionPaidByTrustees" placeholder="Contribution Paid By Trustees"
-									ng-model="cCctr.entity.contributionPaidByTrustees" autocomplete="off"
+									ng-model="cWctr.entity.contributionPaidByTrustees" autocomplete="off"
 									ng-required="true"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
@@ -1313,7 +1313,7 @@
 							<div class="form-group">
 								<label>Name of Super annuation Fund</label> <input class="form-control" type="text"
 									name="nameOfTheSuperAnnuationFund" placeholder="Name of Super annuation Fund"
-									ng-model="cCctr.entity.nameOfTheSuperAnnuationFund" autocomplete="off"
+									ng-model="cWctr.entity.nameOfTheSuperAnnuationFund" autocomplete="off"
 									ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.nameOfTheSuperAnnuationFund.$dirty && form24SalaryDetail.nameOfTheSuperAnnuationFund.$invalid">
@@ -1331,7 +1331,7 @@
 							<div class="form-group">
 								<label>Super annuation Fund From Date</label> <input class="form-control" type="date"
 									name="SuperannuationFundFromDate" placeholder="Super annuation Fund From Date"
-									ng-model="cCctr.entity.SuperannuationFundFromDate" autocomplete="off"
+									ng-model="cWctr.entity.SuperannuationFundFromDate" autocomplete="off"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.SuperannuationFundFromDate.$dirty && form24SalaryDetail.SuperannuationFundFromDate.$invalid">
 									<span class="error" ng-show="form24SalaryDetail.SuperannuationFundFromDate.$error.maxlength">Super annuation Fund From Date should not be greater than 50 digits.</span> 
@@ -1343,7 +1343,7 @@
 							<div class="form-group">
 								<label>Super annuation Fund To Date</label> <input class="form-control" type="date"
 									name="SuperannuationFundToDate" placeholder="Super annuation Fund To Date"
-									ng-model="cCctr.entity.SuperannuationFundToDate" autocomplete="off"
+									ng-model="cWctr.entity.SuperannuationFundToDate" autocomplete="off"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.SuperannuationFundToDate.$dirty && form24SalaryDetail.SuperannuationFundToDate.$invalid">
 									<span class="error" ng-show="form24SalaryDetail.SuperannuationFundToDate.$error.maxlength">Super annuation Fund To Date should not be greater than 50 digits.</span> 
@@ -1358,7 +1358,7 @@
 							<div class="form-group">
 								<label>Contribution Super annuation Fund</label> <input class="form-control" type="text"
 									name="contributionSuperannuationFund" placeholder="Contribution Super annuation Fund"
-									ng-model="cCctr.entity.contributionSuperannuationFund" autocomplete="off"
+									ng-model="cWctr.entity.contributionSuperannuationFund" autocomplete="off"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.contributionSuperannuationFund.$dirty && form24SalaryDetail.contributionSuperannuationFund.$invalid">
@@ -1373,7 +1373,7 @@
 								<label>Average Rate Of Deduction</label> <input class="form-control" type="text"
 									name="averageRateOfDeduction" placeholder="Average Rate Of Deduction"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
-									ng-model="cCctr.entity.averageRateOfDeduction" autocomplete="off"
+									ng-model="cWctr.entity.averageRateOfDeduction" autocomplete="off"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.averageRateOfDeduction.$dirty && form24SalaryDetail.averageRateOfDeduction.$invalid">
 									<span class="error" ng-show="form24SalaryDetail.averageRateOfDeduction.$error.pattern">Enter valid Average Rate Of Deduction </span> 
@@ -1389,7 +1389,7 @@
 							<div class="form-group">
 								<label>Tax Deducted Of Super annuation Fund</label> <input class="form-control" type="text"
 									name="taxDeductedOfSuperannuationFund" placeholder="Tax Deducted Of Super annuation Fund"
-									ng-model="cCctr.entity.taxDeductedOfSuperannuationFund" autocomplete="off"
+									ng-model="cWctr.entity.taxDeductedOfSuperannuationFund" autocomplete="off"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.taxDeductedOfSuperannuationFund.$dirty && form24SalaryDetail.taxDeductedOfSuperannuationFund.$invalid">
@@ -1404,7 +1404,7 @@
 							<div class="form-group">
 								<label>Gross Total Income including Contribution</label> <input class="form-control" type="text"
 									name="grossTotalIncomeincludingContribution" placeholder="Gross Total Income including Contribution"
-									ng-model="cCctr.entity.grossTotalIncomeincludingContribution" autocomplete="off"
+									ng-model="cWctr.entity.grossTotalIncomeincludingContribution" autocomplete="off"
 									ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 									ng-maxlength="50" ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="form24SalaryDetail.submitted || form24SalaryDetail.grossTotalIncomeincludingContribution.$dirty && form24SalaryDetail.grossTotalIncomeincludingContribution.$invalid">
@@ -1421,7 +1421,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Financial Year*</label> 
-								<select name="fy" class="form-control" ng-model="cCctr.entity.fy" ng-required="true" ng-model-options="{updateOn: 'blur'}">
+								<select name="fy" class="form-control" ng-model="cWctr.entity.fy" ng-required="true" ng-model-options="{updateOn: 'blur'}">
 									<option value="201920">201920</option>
 									<option value="201819">201819</option>
 									<option value="201718">201718</option>
@@ -1445,7 +1445,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Quarter*</label> 
-								<select name="quarter" class="form-control" ng-model="cCctr.entity.quarter" ng-required="true" ng-model-options="{updateOn: 'blur'}">
+								<select name="quarter" class="form-control" ng-model="cWctr.entity.quarter" ng-required="true" ng-model-options="{updateOn: 'blur'}">
 									<option value="Q1">Q1</option>
 									<option value="Q2">Q2</option>
 									<option value="Q3">Q3</option>
@@ -1463,10 +1463,10 @@
 <br>
 					<div class="row">
 							<button
-								ng-click="form24SalaryDetail.submitted=true; cCctr.submit(form24SalaryDetail.$valid,'form24Qsalary')"
+								ng-click="form24SalaryDetail.submitted=true; cWctr.submit(form24SalaryDetail.$valid,'form24Qsalary')"
 								class="btn btn-success" style="margin-left:880px">Submit</button>
 							<button
-								ng-click="cCctr.gotoListPage('form24Qsalary','form24Qsalary');"
+								ng-click="cWctr.gotoList2Page('form24Qsalary','form24Qsalary');"
 								class="btn btn-danger" style="margin-left:10px">Cancel</button>
 					</div>
 				</form>

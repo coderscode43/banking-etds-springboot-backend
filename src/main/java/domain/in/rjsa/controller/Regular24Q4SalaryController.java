@@ -10,7 +10,7 @@ import domain.in.rjsa.service.Regular24Q4SalaryService;
 
 @Controller
 @RequestMapping("/apiform24Qsalary")
-public class Regular24Q4SalaryController extends AbstractController<Long,  Regular24Q4Salary,  Regular24Q4SalaryService> {
+public class Regular24Q4SalaryController extends AbstractBranchController<Long,  Regular24Q4Salary,  Regular24Q4SalaryService> {
 
 	
 	@Autowired

@@ -1,4 +1,4 @@
-				<div id="page-wrapper">
+				<div id="page-wrapper"  ng-controller="CommonWOTController as cWctr">
 						<div class="container-fluid"  style="padding-left: 0px;font-size: 12pxp; margin-top:2%">
 							<div class="row">
 								<h1> Request Correction </h1>
@@ -10,7 +10,7 @@
 											       <div class="col-md-6">
 											       <div class="form-group">
 										           <label>Form</label>
-										           <select name="form" class="form-control" ng-model="cCctr.entity.form" ng-required="false" ng-model-options="{updateOn: 'blur'}">
+										           <select name="form" class="form-control" ng-model="cWctr.entity.form" ng-required="false" ng-model-options="{updateOn: 'blur'}">
 														<option value="24Q">24Q</option>
 														<option value="26Q">26Q</option>
 														<option value="27Q">27Q</option>
@@ -22,7 +22,7 @@
 										   		    <div class="col-md-6">
 										   		    <div class="form-group">
 										             <label>Quarter</label>
-										             <select name="quarter" class="form-control" ng-model="cCctr.entity.quarter" ng-required="false" ng-model-options="{updateOn: 'blur'}">
+										             <select name="quarter" class="form-control" ng-model="cWctr.entity.quarter" ng-required="false" ng-model-options="{updateOn: 'blur'}">
 														<option value="Q1">Q1</option>
 														<option value="Q2">Q2</option>
 														<option value="Q3">Q3</option>
@@ -40,7 +40,7 @@
 										    	    <div class="col-md-6">
 											       <div class="form-group">
 										           <label>Financial Year</label>
-										           <select name="fy" class="form-control" ng-model="cCctr.entity.fy" ng-model-options="{updateOn: 'blur'}">
+										           <select name="fy" class="form-control" ng-model="cWctr.entity.fy" ng-model-options="{updateOn: 'blur'}">
 														<option value="201920">201920</option>
 														<option value="201819">201819</option>
 														<option value="201718">201718</option>
@@ -61,7 +61,7 @@
 										    	     <div class="col-md-6">
 										   		    <div class="form-group">
 										             <label>Date Of Request</label>
-														<input class="form-control" type="date" name="dor" placeholder="Date Of Request" ng-model="cCctr.entity.dor" autocomplete="off"
+														<input class="form-control" type="date" name="dor" placeholder="Date Of Request" ng-model="cWctr.entity.dor" autocomplete="off"
 														ng-maxlength="100" ng-required="false" ng-model-options="{updateOn: 'blur'}" />
 												
 								                   </div>
@@ -72,7 +72,7 @@
 											       <div class="col-md-6">
 											       <div class="form-group">
 										           <label>Status</label>
-														<input class="form-control" type="text" name="status" placeholder="Status" ng-model="cCctr.entity.status" autocomplete="off"
+														<input class="form-control" type="text" name="status" placeholder="Status" ng-model="cWctr.entity.status" autocomplete="off"
 														ng-maxlength="50" ng-required="false"  ng-model-options="{updateOn: 'blur'}" />
 														
 								                   </div>
@@ -80,7 +80,7 @@
 										   		    <div class="col-md-6">
 										   		    <div class="form-group">
 										             <label>Remark</label>
-														<input class="form-control" type="text" name="remark" placeholder="Remark" ng-model="cCctr.entity.remark" autocomplete="off"
+														<input class="form-control" type="text" name="remark" placeholder="Remark" ng-model="cWctr.entity.remark" autocomplete="off"
 														ng-maxlength="100" ng-required="false" ng-model-options="{updateOn: 'blur'}" />
 													<span style="color: red" ng-show="employeeDetailForm.submitted || employeeDetailForm.name.$dirty && employeeDetailForm.name.$invalid">
 									                <span class="error" ng-show="employeeDetailForm.name.$error.pattern">Please enter valid Name</span>
@@ -96,8 +96,8 @@
 										    	  
 						<div class="row">
             			<div class="col-md-6">
-            				<button ng-click="employeeDetailForm.submitted=true; cCctr.submit(employeeDetailForm.$valid,'requestCorrection')" class="btn btn-success" onclick="scrollWin()"> Submit</button>
-            				<button ng-click="cCctr.gotoListPage('requestCorrection','requestCorrection');" class="btn btn-primary" onclick="scrollWin()">Cancel</button>
+            				<button ng-click="employeeDetailForm.submitted=true; cWctr.submit(employeeDetailForm.$valid,'requestCorrection')" class="btn btn-success" onclick="scrollWin()"> Submit</button>
+            				<button ng-click="cWctr.gotoList2Page('requestCorrection','requestCorrection');" class="btn btn-primary" onclick="scrollWin()">Cancel</button>
             			</div>
             		</div>
 	            </form>

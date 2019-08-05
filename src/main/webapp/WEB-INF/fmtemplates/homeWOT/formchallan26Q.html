@@ -69,7 +69,7 @@
 		td:nth-of-type(15):before { content: "Other Amount Allocated"; }
 		td:nth-of-type(16):before { content: "Nil Challan Indicator"; }
 		td:nth-of-type(17):before { content: "Financial Year"; }
-		td:nth-of-type(18):before { content: "Quarter"; }
+		
 		td:nth-of-type(19):before { content: "Action"; }
 		
 		
@@ -225,6 +225,7 @@
 		</div>
 	</div>
  -->
+ <div id="page-wrapper"  ng-controller="CommonWOTController as cWctr">
 <div class="container-fluid">
 <div class="col-md-12 " style="padding-left: 0px;font-size: 12pxp; margin-top:2%">
 	<div class="heading"><strong>Form 26Q Challan Details</strong></div>
@@ -246,7 +247,7 @@
                   <h6>
 						<b>Financial Year</b>
 					</h6>
-					<select class="form-control" ng-model="cCctr.search.fy">
+					<select class="form-control" ng-model="cWctr.search.fy">
 						<option value="" ng-selected=true>Year</option>
 						<option value="201516">201920</option>
 						<option value="201819">201819</option>
@@ -265,25 +266,25 @@
                  
 								</div>
 								
-							<div class="col-md-3">	
+						<!--  	<div class="col-md-3">	
           <h6>
 						<b>Quarter</b>
 						<h6>
-							<select class="form-control" ng-model="cCctr.search.quarter">
+							<select class="form-control" ng-model="cWctr.search.quarter">
 								<option value="" ng-selected=true>Quarter</option>
 								<option value="Q1">Q1</option>
 								<option value="Q2">Q2</option>
 								<option value="Q3">Q3</option>
 								<option value="Q4">Q4</option>
 							</select>
-       </div>
+       </div>-->
       
      
      	<div class="col-md-2">	
                <h6>
 						<b>From Date Of Tax Deposit</b>
 						<h6>
-							<input type="date" ng-model="cCctr.search.fromDate" ng-change="cCctr.search.fromDate=cCctr.date(cCctr.search.fromDate);"
+							<input type="date" ng-model="cWctr.search.fromDate" ng-change="cWctr.search.fromDate=cWctr.date(cWctr.search.fromDate);"
 								class="form-control" placeholder="Date" style="width: 100%">
                  
 								</div>
@@ -292,7 +293,7 @@
                <h6>
 						<b>To Date Of Tax Deposit</b>
 						<h6>
-							<input type="date" ng-model="cCctr.search.toDate" ng-change="cCctr.search.toDate=cCctr.date(cCctr.search.toDate);"
+							<input type="date" ng-model="cWctr.search.toDate" ng-change="cWctr.search.toDate=cWctr.date(cWctr.search.toDate);"
 								class="form-control" placeholder="Date" style="width: 100%">
                  
 								</div>
@@ -304,7 +305,7 @@
 	      		
 	             <div class="row" id="hide" >
 	         	  <div class="col-md-3"  style="margin-left:85%;margin-top:-50px">	
-	                          <button ng-click="cCctr.searchEntities(true,'formchallan26Q','formchallan26Q')"
+	                          <button ng-click="cWctr.searchEntities(true,'formchallan26Q','formchallan26Q')"
 					class="btn btn-success"onclick="scrollWin()">Search</button>
 	                 </div>
 	                				
@@ -312,7 +313,7 @@
   
    <div class="row" id="search" >
 	         	  <div class="col-md-2" id="search">	
-	                          <button ng-click="cCctr.searchEntities(true,'formchallan26Q','formchallan26Q')"
+	                          <button ng-click="cWctr.searchEntities(true,'formchallan26Q','formchallan26Q')"
 					class="btn btn-success"onclick="scrollWin()">Search</button>
 	                 </div>					
   </div>
@@ -322,7 +323,7 @@
  <div class="row">
 	 <div class="col-xs-12">
 		<div class="text-right">
-	         <button type="button" class="btn btn-primary" ng-click="cCctr.gotoListPage('addForm26Qchallan','addForm26Qchallan');">Add</button>
+	         <button type="button" class="btn btn-primary" ng-click="cCctr.gotoList2Page('addForm26Qchallan','addForm26Qchallan');">Add</button>
 		</div>
 	 </div>
     </div>

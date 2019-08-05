@@ -38,7 +38,7 @@ import domain.in.rjsa.web.ApplicationCache;
 
 @Controller
 @RequestMapping("/apirequestCorrection")
-public class RequestCorrectionController extends AbstractController<Long, RequestCorrection, RequestCorrectionService>{
+public class RequestCorrectionController extends AbstractBranchController<Long, RequestCorrection, RequestCorrectionService>{
  @Autowired
  RequestCorrectionService service;
  @Autowired

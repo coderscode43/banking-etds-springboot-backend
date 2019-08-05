@@ -205,15 +205,16 @@
 					<div class="col-md-6">
 							<label>Financial Year &nbsp;:</label> {{cCctr.entity.challan.fy}}
 					</div>
-					<div class="col-md-6">
+					<!--  <div class="col-md-6">
 							<label> Quarter &nbsp;:</label> {{cCctr.entity.challan.quarter}}
+					</div> --> 
+					<div class="col-md-6">
+							<label>Amount Consumed &nbsp;:</label> {{cCctr.entity.challan.amountConsumed}}
 					</div>
   				</div>
   				
   				<div class="row" style="font-size: 13px;">
-					<div class="col-md-6">
-							<label>Amount Consumed &nbsp;:</label> {{cCctr.entity.challan.amountConsumed}}
-					</div>
+					
 					<div class="col-md-6">
 							<label>Amount Available &nbsp;:</label> {{cCctr.entity.challan.amountAvailable}}
 					</div>
@@ -558,26 +559,8 @@
 									</span>
 									<span class="error" id="fy"></span>
 							</div>
-
+							
 							<div class="col-md-6">
-									<label>Quarter*</label> 
-									<select name="quarter" class="form-control" ng-model="cCctr.entity.challan.quarter" ng-required="true" ng-model-options="{updateOn: 'blur'}">
-										<option value="Q1">Q1</option>
-										<option value="Q2">Q2</option>
-										<option value="Q3">Q3</option>
-										<option value="Q4">Q4</option>
-									</select>
-									<span style="color: red" ng-show="form24qchallan.submitted || form24qchallan.quarter.$dirty && form24qchallan.quarter.$invalid">
-									<span class="error" ng-show="form24qchallan.quarter.$error.required">Quarter number is Required.</span>
-								</span>
-									<span class="error" id="quarter"></span>
-							</div>
-
-
-			</div>
-			
-			<div class="row">
-				<div class="col-md-6">
 					<label>Amount Consumed*</label> <input class="form-control"
 							type="text" name="amountConsumed"
 							placeholder="Amount Consumed" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
@@ -592,6 +575,26 @@
 					</span>
 					<span class="error" id="amountConsumed"></span>
 				</div>
+
+						<!--  	<div class="col-md-6">
+									<label>Quarter*</label> 
+									<select name="quarter" class="form-control" ng-model="cCctr.entity.challan.quarter" ng-required="true" ng-model-options="{updateOn: 'blur'}">
+										<option value="Q1">Q1</option>
+										<option value="Q2">Q2</option>
+										<option value="Q3">Q3</option>
+										<option value="Q4">Q4</option>
+									</select>
+									<span style="color: red" ng-show="form24qchallan.submitted || form24qchallan.quarter.$dirty && form24qchallan.quarter.$invalid">
+									<span class="error" ng-show="form24qchallan.quarter.$error.required">Quarter number is Required.</span>
+								</span>
+									<span class="error" id="quarter"></span>
+							</div> --> 
+
+
+			</div>
+			
+			<div class="row">
+				
 				<div class="col-md-6">
 					<label>Amount Available</label> <input class="form-control"
 							type="text" name="amountAvailable"

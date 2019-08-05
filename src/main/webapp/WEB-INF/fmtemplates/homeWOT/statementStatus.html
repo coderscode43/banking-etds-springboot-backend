@@ -255,12 +255,12 @@
 <div class="row" ng-show="cCctr.getNoPage() > 0">
 		<div class="row" align="center">
 			<span ng-show="cCctr.currentPage != 1"> 
-				<a ng-click="cCctr.getPage(true,'requestCorrection',cCctr.currentPage-1)"><strong>Previous</strong></a>
+				<a ng-click="cCctr.getPage(true,'statementStatus',cCctr.currentPage-1)"><strong>Previous</strong></a>
 			</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.currentPage}}</strong>&nbsp;
 				of &nbsp;<strong>{{cCctr.getNoPage()}}</strong>
 				&nbsp;&nbsp;&nbsp;&nbsp; <span
 				ng-show="cCctr.currentPage != cCctr.getNoPage()"> <a
-					ng-click="cCctr.getPage(true,'requestCorrection',cCctr.currentPage+1)"><strong>Next</strong></a>
+					ng-click="cCctr.getPage(true,'statementStatus',cCctr.currentPage+1)"><strong>Next</strong></a>
 			</span>
 			</span>
 		</div>
@@ -273,7 +273,7 @@
 					ng-min="1" ng-max="cCctr.getNoPage()" ng-required="true">
 				&nbsp;&nbsp;&nbsp;
 				<button style="height: 25px;"
-					ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'requestCorrection',cCctr.currentPage)"
+					ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'statementStatus',cCctr.currentPage)"
 					class="btn btn-primary">Go</button>
 			</div>
 			<div class="row" align="center">

@@ -12,6 +12,11 @@ App.controller('VendorController',[
 			    self.branchId;
 			    self.vendorId;
 			    self.entity = {};
+			    self.blg={};
+			    self.vendor={};
+			    self.vendorSectionAmount={};
+			    self.nop={};
+			    
 
 			    self.entity = {};
 			    self.ajax = [];
@@ -45,12 +50,12 @@ App.controller('VendorController',[
 								.log(name
 									+ ' dynamic drop down');
 
-							var items = data;
+							self.vendor = data;
 							self.entity.vendorName = data.vendorName;
 							self.entity.vendorPAN = data.vendorPAN;
 							self.entity.vendorNo = data.vendorNo;
 							self.entity.vendorId = data.id
-							self.entity.clientId = data.id
+							//self.entity.clientId = data.id
 
 						    });
 				}
@@ -76,7 +81,7 @@ App.controller('VendorController',[
 								.log(name
 									+ ' dynamic drop down');
 
-							var items = data;
+							self.vendor = data;
 							self.entity.vendorName = data.vendorName;
 							self.entity.vendorPAN = data.vendorPAN;
 							self.entity.gstNo = data.gstNo;
@@ -100,12 +105,12 @@ App.controller('VendorController',[
 								.log(name
 									+ ' dynamic drop down');
 
-							var items = data;
+							self.vendor = data;
 							self.entity.vendorName = data.vendorName;
 							self.entity.vendorNo = data.vendorNo;
 							self.entity.gstNo = data.gstNo;
-							self.entity.vendorId = data.id
-							self.entity.clientId = data.id
+							self.entity.vendorId = data.id;
+						//	self.entity.clientId = data.id
 
 						    });
 				}
@@ -126,16 +131,64 @@ App.controller('VendorController',[
 								.log(name
 									+ ' dynamic drop down');
 
-							var items = data;
+							self.vendor = data;
 							self.entity.vendorPAN = data.vendorPAN;
 							self.entity.vendorNo = data.vendorNo;
 							self.entity.gstNo = data.gstNo;
-							self.entity.vendorId = data.id
-							self.entity.clientId = data.id
+							self.entity.vendorId = data.id;
+							//self.entity.clientId = data.id
 
 						    });
 				}
 			    }
+			    
+			    self.getBLGDetail = function(blgCode, entity) {
+				console.log("Common Controller is working");
+
+				var map = {};
+				map.blgCode = blgCode;
+				if (blgCode != null) {
+				    CommonService
+					    .search($stateParams.clientId,
+						    entity, map)
+					    .then(
+						    function(data) {
+							console
+								.log(name
+									+ ' dynamic drop down');
+							 self.blg = data;
+							self.blg.blgCode = data.blgCode
+
+						    });
+				}
+			    }
+			    
+			    
+			    self.getNOPDetail = function(natureOfPayment, entity) {
+				console.log("Common Controller is working");
+
+				var map = {};
+				map.natureOfPayment = natureOfPayment;
+				if (natureOfPayment != null) {
+				    CommonService
+					    .search($stateParams.clientId,
+						    entity, map)
+					    .then(
+						    function(data) {
+							console
+								.log(name
+									+ ' dynamic drop down');
+							 self.nop = data;
+							self.nop.natureOfPayment = data.natureOfPayment;
+							self.nop.threshold=data.threshold
+							
+						    });
+				}
+			    }
+			    
+			    
+			    
+			    
 
 			    self.gotoListPage = function(entity, page) {
 				self.company = name;
@@ -312,5 +365,81 @@ App.controller('VendorController',[
 
 				}
 			    }
+			    
+			    self.autoCalTDS=function(entity){
+				var string ='';
+				if(self.vendor.id == undefined ){
+				    string = string + 'Vendor';
+				    }
+				
+				if(self.blg.blgCode == undefined)
+				    {		
+				    string = string + ' , BLG Code';
+									  
+				    }
+				if(self.nop.natureOfPayment == undefined)
+				    {	
+				    string = string + ' , Nature Of payment';
+				     				  
+				    }
+				if(string===''){
+				    
+				}else{
+				    alert("Please select "+string);	
+				}
+				
+				  var map={};
+				  
+				// map.vendorId=self.vendor.id;
+				// map.nopId=self.nop.id;
+				  CommonService
+				    .search($stateParams.clientId,
+					    'vendorSectionAmount', map)
+				    .then(
+					    function(data) {
+						console
+							.log(name
+								+ ' dynamic drop down');
+						self.vendorSectionAmount = data;
+						self.vendorSectionAmount.vendorId = data.vendorId;
+						self.vendorSectionAmount.blgId = data.blgId;
+						self.vendorSectionAmount.nopId = data.nopId;
+						
+						var cgst = self.entity.cgst;
+						var sgst = self.entity.sgst;
+						var igst = self.entity.igst;
+						var cess = self.entity.cess;
+					        var surcharge = self.entity.surcharge;
+				                self.entity.totalInvoiceValue = +cgst.valueOf() + +sgst.valueOf() + +igst.valueOf() + +cess.valueOf() + +surcharge.valueOf();
+						
+						var total=0;
+						var totalAmt = self.vendorSectionAmount.totalAmt;
+						var totTaxableValue = self.entity.taxableValue;
+						total= +totalAmt.valueOf() + +totTaxableValue.valueOf();
+						if(total > self.nop.threshold)
+						    {
+						    self.entity.incomeTaxTds = (total*self.nop.rate)/100;//income tax tds
+						    }
+						else
+						    {
+						    self.entity.incomeTaxTds = 0;//income tax tds
+						    }
+
+						if(totTaxableValue > self.nop.gstTDSThreshold)
+						    {
+						    self.entity.gstTds= (totTaxableValue*self.nop.gstTDSRate)/100;
+						    }
+						else
+						    { 
+						    self.entity.gstTds = 0;
+						    
+						    }
+						///////Net Amt Paid
+						self.entity.netAmountPaid = +(self.entity.gstTds).valueOf() + +(self.entity.incomeTaxTds).valueOf();
+						
+					    });
+				
+			    }
+			    
 
 			} ]);

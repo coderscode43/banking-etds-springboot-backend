@@ -59,10 +59,10 @@ public class VendorPayment extends CommonModelAbstract{
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	public Date date;
 	
-	@Column(name = "paymentDone")
-	@Size(min=0, max=45, message="Payment Done should be 45 characters.")
-	@NotNull(message = "Payment Done is a required field")
-	public String paymentDone;	
+//	@Column(name = "paymentDone")
+//	@Size(min=0, max=45, message="Payment Done should be 45 characters.")
+//	@NotNull(message = "Payment Done is a required field")
+//	public String paymentDone;	
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "paymentDate")
@@ -78,8 +78,8 @@ public class VendorPayment extends CommonModelAbstract{
 	@NotNull(message = "Invoice Number is a required field")
 	public String invoiceNumber;
 	@Column(name = "totalInvoiceValue")
-	@Digits(integer = 12, fraction = 0,message="Enter valid Total Invoice Value it should not be greater than 12")
-	@NotNull(message = "Total Invoice Value is a required field")
+//	@Digits(integer = 12, fraction = 0,message="Enter valid Total Invoice Value it should not be greater than 12")
+//	@NotNull(message = "Total Invoice Value is a required field")
 	public Double totalInvoiceValue;
 	@Column(name = "taxableValue")
 	@Digits(integer = 12, fraction = 0,message="Enter valid Taxable Value it should not be greater than 12")
@@ -98,33 +98,45 @@ public class VendorPayment extends CommonModelAbstract{
 	@NotNull(message = "IGST is a required field")
 	public Double igst;
 	@Column(name = "cess")
-	@Size(min=0, max=45, message="Education Cess should be 45 characters.")
-	@NotNull(message = "Education Cess is a required field")
-	public String cess;
+	@Digits(integer = 12, fraction = 0,message="Enter valid cess it should not be greater than 12")
+	@NotNull(message = "cess is a required field")
+	public Double cess;
+	
+	@Column(name = "surcharge")
+	@Digits(integer = 12, fraction = 0,message="Enter valid surcharge it should not be greater than 12")
+	@NotNull(message = "surcharge is a required field")
+	public Double surcharge;
+	
+	
 	@Column(name = "incomeTaxTds")
-	@Digits(integer = 12, fraction = 0,message="Enter valid Income Tax Tds it should not be greater than 12")
-	@NotNull(message = "Income Tax Tds is a required field")
+//	@Digits(integer = 12, fraction = 0,message="Enter valid Income Tax Tds it should not be greater than 12")
+//	@NotNull(message = "Income Tax Tds is a required field")
 	public Double incomeTaxTds;
 	@Column(name = "gstTds")
-	@Digits(integer = 12, fraction = 0,message="Enter valid GST TDS it should not be greater than 12")
-	@NotNull(message = "Income GST TDS is a required field")
+//	@Digits(integer = 12, fraction = 0,message="Enter valid GST TDS it should not be greater than 12")
+	//@NotNull(message = "Income GST TDS is a required field")
 	public Double gstTds;
 	@Column(name = "natureOfPayment")
 	@Size(min=0, max=45, message="Nature Of Payment should be 45 characters.")
 	@NotNull(message = "Nature Of Payment is a required field")
 	public String natureOfPayment;
 	@Column(name = "netAmountPaid")
-	@Digits(integer = 12, fraction = 0,message="Enter valid Net Amount Paid it should not be greater than 12")
-	@NotNull(message = "Net Amount Paid is a required field")
+//	@Digits(integer = 12, fraction = 0,message="Enter valid Net Amount Paid it should not be greater than 12")
+//	@NotNull(message = "Net Amount Paid is a required field")
 	public Double netAmountPaid;
-	@Column(name = "bglCode")
+	@Column(name = "blgCode")
 	@Size(min=0, max=45, message="BLG Code should be 45 characters.")
 	@NotNull(message = "BLG Code is a required field")
-	public String bglCode;
-	@Column(name = "ourGst")
-	@Size(min=0, max=45, message="Invoice Number should be 45 characters.")
-	@NotNull(message = "Invoice Number is a required field")
-	public String ourGst;
+	public String blgCode;
+	
+	@Column(name = "remark")
+	public String remark;
+	
+//	@Column(name = "ourGst")
+//	@Size(min=0, max=45, message="Invoice Number should be 45 characters.")
+//	@NotNull(message = "Invoice Number is a required field")
+//	public String ourGst;
+	
 	@Column(name = "gstNo")
 	@Size(min=0, max=45, message="GST No should be 45 characters.")
 	@NotNull(message = "GST No is a required field")

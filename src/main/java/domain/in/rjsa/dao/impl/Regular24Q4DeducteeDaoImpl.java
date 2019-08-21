@@ -25,6 +25,9 @@ public class Regular24Q4DeducteeDaoImpl  extends AbstractNewDao<Long, Regular24Q
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
 		propertyNameValues.put("clientId", clientId);
 		criteria.add(Restrictions.allEq(propertyNameValues));
+		if (entity.get("branchId") != null) {
+			criteria.add(Restrictions.eqOrIsNull("branchId", entity.get("branchId")));
+		}
 		if (entity.get("fromDate") != null) {
 			criteria.add(Restrictions.ge("dateOfPayment",
 					Date.from(ZonedDateTime.parse((String) entity.get("fromDate")).toInstant())));

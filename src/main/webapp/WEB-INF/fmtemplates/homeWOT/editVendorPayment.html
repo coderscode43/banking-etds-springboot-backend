@@ -1,5 +1,8 @@
 
 <style>
+.md-autocomplete-suggestions-container{  
+   z-index:1111 !important; /* any number of choice > 1050*/
+  }
 /*
 	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
 	*/
@@ -9,9 +12,7 @@
 	table, thead, tbody, th, td, tr {
 		display: block;
 	}
-	.md-autocomplete-suggestions-container {
-		z-index: 1111111 !important; /* any number of choice > 1050*/
-	}
+	
 
 	/* Hide table headers (but not display: none;, for accessibility) */
 	thead tr {
@@ -96,9 +97,9 @@
 	}
 }
 </style>
-<div id="page-wrapper" ng-init="cCctr.entity=cCctr.getEntityData();">
-	<div class="container-fluid">
-		<div ng-show="cCctr.show != true">
+<div id="page-wrapper" ng-controller="VendorController as vCtr"  >
+	<div class="container-fluid" ng-init="vCtr.entity=vCtr.getEntityData().vendorPayment;">
+		<div ng-show="vCtr.show != true">
 			<div class="row">
 				<h3 class="page-header" style="margin-top: 2%;">
 					<Strong>Details Of Vendor Payment</Strong>
@@ -122,111 +123,115 @@
 							<div class="row" style="font-size: 13px;">
 								<div class="col-md-6">
 									<label>Vendor Number &nbsp;:</label>
-									{{cCctr.entity.vendorPayment.vendorNo}}
+									{{vCtr.entity.vendorNo}}
 								</div>
 								<div class="col-md-6">
 									<label>Vendor Name &nbsp;:</label>
-									{{cCctr.entity.vendorPayment.vendorName}}
+									{{vCtr.entity.vendorName}}
 								</div>
 							</div>
 							<div class="row" style="font-size: 13px;">
 								<div class="col-md-6">
 									<label>Vendor PAN &nbsp;:</label>
-									{{cCctr.entity.vendorPayment.vendorPAN}}
+									{{vCtr.entity.vendorPAN}}
 								</div>
-								<div class="col-md-6">
-									<label>Invoice Date &nbsp;:</label>
-									{{cCctr.entity.vendorPayment.date | date:'dd-MM-yyyy'}}
-								</div>
-							</div>
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-6">
-									<label>Payment Done &nbsp;:</label>
-									{{cCctr.entity.vendorPayment.paymentDone}}
-								</div>
-								<div class="col-md-6">
-									<label>Payment Date &nbsp;:</label>
-									{{cCctr.entity.vendorPayment.paymentDate | date:'dd-MM-yyyy'}}
-								</div>
-							</div>
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-6">
-									<label>Payment Mode &nbsp;:</label>
-									{{cCctr.entity.vendorPayment.paymentMode}}
-								</div>
-								<div class="col-md-6">
-									<label>Invoice Number &nbsp;:</label>
-									{{cCctr.entity.vendorPayment.invoiceNumber}}
-								</div>
-							</div>
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-6">
-									<label>Total Invoice Value &nbsp;:</label>
-									{{cCctr.entity.vendorPayment.totalInvoiceValue}}
-								</div>
-								<div class="col-md-6">
-									<label>Taxable Value &nbsp;:</label>
-									{{cCctr.entity.vendorPayment.taxableValue}}
-								</div>
-							</div>
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-6">
-									<label>CGST &nbsp;:</label> {{cCctr.entity.vendorPayment.cgst}}
-								</div>
-								<div class="col-md-6">
-									<label>SGST &nbsp;:</label> {{cCctr.entity.vendorPayment.sgst}}
-								</div>
-							</div>
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-6">
-									<label>IGST &nbsp;:</label> {{cCctr.entity.vendorPayment.igst}}
-								</div>
-								<div class="col-md-6">
-									<label>CESS &nbsp;:</label> {{cCctr.entity.vendorPayment.cess}}
-								</div>
-							</div>
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-6">
-									<label>Income Tax TDS &nbsp;:</label>
-									{{cCctr.entity.vendorPayment.incomeTaxTds}}
-								</div>
-								<div class="col-md-6">
-									<label>GST TDS &nbsp;:</label>
-									{{cCctr.entity.vendorPayment.gstTds}}
-								</div>
-							</div>
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-6">
-									<label>Nature of Payment &nbsp;:</label>
-									{{cCctr.entity.vendorPayment.natureOfPayment}}
-								</div>
-								<div class="col-md-6">
-									<label>Net Amount Paid &nbsp;:</label>
-									{{cCctr.entity.vendorPayment.netAmountPaid}}
-								</div>
-							</div>
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-6">
-									<label>BGL Code &nbsp;:</label>
-									{{cCctr.entity.vendorPayment.bglCode}}
-								</div>
-								<div class="col-md-6">
-									<label>Our GST &nbsp;:</label>
-									{{cCctr.entity.vendorPayment.ourGst}}
-								</div>
-							</div>
-							<div class="row" style="font-size: 13px;">
 								<div class="col-md-6">
 									<label>GST Number &nbsp;:</label>
-									{{cCctr.entity.vendorPayment.gstNo}}
+									{{vCtr.entity.gstNo}}
+								</div>
+							
+							</div>
+								<div class="row" style="font-size: 13px;">
+								<div class="col-md-6">
+									<label>BLG Code &nbsp;:</label>
+									{{vCtr.entity.blgCode}}
+								</div>
+								<div class="col-md-6">
+									<label>Nature of Payment &nbsp;:</label>
+									{{vCtr.entity.natureOfPayment}}
+								</div>
+							
+							</div>
+							<div class="row" style="font-size: 13px;">
+							
+								<div class="col-md-6">
+									<label>Payment Date &nbsp;:</label>
+									{{vCtr.entity.paymentDate | date:'dd-MM-yyyy'}}
+								</div>
+								<div class="col-md-6">
+									<label>Payment Mode &nbsp;:</label>
+									{{vCtr.entity.paymentMode}}
 								</div>
 							</div>
+							<div class="row" style="font-size: 13px;">
+								
+								<div class="col-md-6">
+									<label>Invoice Number &nbsp;:</label>
+									{{vCtr.entity.invoiceNumber}}
+								</div>
+								<div class="col-md-6">
+									<label>Total Invoice Value &nbsp;:</label>
+									{{vCtr.entity.totalInvoiceValue}}
+								</div>
+							</div>
+							<div class="row" style="font-size: 13px;">
+								
+								<div class="col-md-6">
+									<label>Taxable Value &nbsp;:</label>
+									{{vCtr.entity.taxableValue}}
+								</div>
+									<div class="col-md-6">
+									<label>Invoice Date &nbsp;:</label>
+									{{vCtr.entity.date | date:'dd-MM-yyyy'}}
+								</div>
+							</div>
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-6">
+									<label>CGST &nbsp;:</label> {{vCtr.entity.cgst}}
+								</div>
+								<div class="col-md-6">
+									<label>SGST &nbsp;:</label> {{vCtr.entity.sgst}}
+								</div>
+							</div>
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-6">
+									<label>IGST &nbsp;:</label> {{vCtr.entity.igst}}
+								</div>
+								<div class="col-md-6">
+									<label>CESS &nbsp;:</label> {{vCtr.entity.cess}}
+								</div>
+							</div>
+							
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-6">
+									<label>Surcharge &nbsp;:</label>
+									{{vCtr.entity.surcharge}}
+								</div>
+								<div class="col-md-6">
+									<label>Income Tax TDS &nbsp;:</label>
+									{{vCtr.entity.incomeTaxTds}}
+								</div>
+								
+							</div>
+							
+							<div class="row" style="font-size: 13px;">							
+								<div class="col-md-6">
+									<label>GST TDS &nbsp;:</label>
+									{{vCtr.entity.gstTds}}
+								</div>
+									<div class="col-md-6">
+									<label>Net Amount Paid &nbsp;:</label>
+									{{vCtr.entity.netAmountPaid}}
+								</div>
+							</div>
+						
+					
 							<div>
 								<button
-									ng-click="vendorDetailForm.submitted=true;cCctr.updateData(vendorDetailForm.$valid,'vendorPayment',cCctr.entity.vendorPayment,'closeU')"
+									ng-click="vendorDetailForm.submitted=true;vCtr.updateData(vendorDetailForm.$valid,'vendorPayment',vCtr.entity,'closeU')"
 									class="btn btn-success" onclick="scrollWin()">Save</button>
 								<button class="btn btn-danger"
-									ng-click="cCctr.gotoListPage('vendorPayment','vendorPayment');"
+									ng-click="vCtr.gotoList2Page('vendorPayment','vendorPayment');"
 									onclick="scrollWin()">Back</button>
 							</div>
 						</div>
@@ -234,7 +239,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	
 	<!-- Modal -->
 	<div id="myModal" class="modal fade" role="dialog">
 		<div class="modal-dialog modal-lg">
@@ -257,13 +262,17 @@
 									<md-autocomplete md-input-name="vendorNo" style="width:88%;"
 										md-input-minlength="3" md-no-cache="true"
 										md-input-maxlength="75"
-										md-selected-item="cCctr.entity.vendorPayment.vendorNo"
+										md-selected-item="vCtr.entity.vendorNo"
 										md-search-text="a"
-										md-items="item in cCctr.ajax1('vendorPayment','vendorNo',a)"
-										md-selected-item-change="cCctr.getVendorDetail1(cCctr.entity.vendorPayment.vendorNo,'vendorPayment')"
-										md-delay="2000" placeholder="Vendor No"> <md-item-template>
-									<span>{{item}}</span> </md-item-template> <md-not-found> No Group
-									code with "{{a}}" were found.<a ng-click="">Add new</a> </md-not-found> </md-autocomplete>
+										md-items="item in vCtr.ajax1('vendor','vendorNo',a)"
+										md-selected-item-change="vCtr.getVendorDetail1(vCtr.entity.vendorNo,'vendor')"
+										md-delay="2000" placeholder="Vendor No"> 
+										<md-item-template>
+									  <span>{{item}}</span>
+									 </md-item-template> 
+									<md-not-found>
+									 No Vendor Number
+									with "{{a}}" were found.<a ng-click="">Add new</a> </md-not-found> </md-autocomplete>
 								</div>
 							</div>
 							<div class="col-md-4">
@@ -272,14 +281,13 @@
 									<md-autocomplete md-input-name="vendorName" style="width:88%;"
 										md-input-minlength="3" md-no-cache="true"
 										md-input-maxlength="75"
-										md-selected-item="cCctr.entity.vendorPayment.vendorName"
+										md-selected-item="vCtr.entity.vendorName"
 										md-search-text="b"
-										md-items="item in cCctr.ajax1('vendorPayment','vendorName',b)"
-										md-selected-item-change="cCctr.getVendorDetail3(cCctr.entity.vendorPayment.vendorName,'vendorPayment')"
+										md-items="item in vCtr.ajax1('vendor','vendorName',b)"
+										md-selected-item-change="vCtr.getVendorDetail3(vCtr.entity.vendorName,'vendor')"
 										md-delay="2000" placeholder="Vendor Name"> <md-item-template>
-									<span>{{item}}</span> </md-item-template> <md-not-found> No Group
-									code with "{{b}}" were found.<a ng-click="">Add new</a> </md-not-found> </md-autocomplete>
-									<span class="error" id="vendorName"></span>
+									<span>{{item}}</span> </md-item-template> <md-not-found> No Vendor Name with "{{b}}" were found.<a ng-click="">Add new</a> </md-not-found> </md-autocomplete>
+									
 								</div>
 							</div>
 							<div class="col-md-4">
@@ -288,58 +296,107 @@
 									<md-autocomplete md-input-name="vendorPAN" style="width:88%;"
 										md-input-minlength="3" md-no-cache="true"
 										md-input-maxlength="75"
-										md-selected-item="cCctr.entity.vendorPayment.vendorPAN"
+										md-selected-item="vCtr.entity.vendorPAN"
 										md-search-text="c"
-										md-items="item in cCctr.ajax1('vendorPayment','vendorPAN',c)"
-										md-selected-item-change="cCctr.getVendorDetail2(cCctr.entity.vendorPayment.vendorPAN,'vendorPayment')"
+										md-items="item in vCtr.ajax1('vendor','vendorPAN',c)"
+										md-selected-item-change="vCtr.getVendorDetail2(vCtr.entity.vendorPAN,'vendor')"
 										md-delay="2000" placeholder="Vendor Pan"> <md-item-template>
-									<span>{{item}}</span> </md-item-template> <md-not-found> No Group
-									code with "{{b}}" were found.<a ng-click="">Add new</a> </md-not-found> </md-autocomplete>
-									<span class="error" id="vendorPAN"></span>
+									<span>{{item}}</span> </md-item-template> <md-not-found> No Vendor PAN with "{{b}}" were found.<a ng-click="">Add new</a> </md-not-found> </md-autocomplete>
+									
 								</div>
 							</div>
 						</div>
 
 						<div class="row">
-							<div class="col-md-4">
-								<label>Invoice Date*</label> <input type="date" name="date"
-									class="form-control" style="padding-top: 0px;"
-									value={{cCctr.entity.vendorPayment.date}}
-									ng-model="cCctr.entity.vendorPayment.date"
-									ng-model-options="{updateOn: 'blur'}">
+						
+						
+						<div class="col-md-4" >
+								
+									<label>GST No.*</label>
+									<md-autocomplete md-input-name="gstNo" style="width:100%;"
+										md-input-minlength="3" md-no-cache="true"
+										md-input-maxlength="75"
+										md-selected-item="vCtr.entity.gstNo"
+										md-search-text="d"
+										md-items="item in vCtr.ajax1('vendor','gstNo',d)"
+										md-selected-item-change="vCtr.getVendorDetail(vCtr.entity.gstNo,'vendor')"
+										md-delay="2000" placeholder="GST NO"> <md-item-template>
+									<span>{{item}}</span> </md-item-template> <md-not-found> No GST No with "{{d}}" were found.<a ng-click="">Add new</a> </md-not-found> </md-autocomplete>
+								
+								
 							</div>
-							<div class="col-md-4">
-								<label>Payment Done*</label> <input type="text"
-									name="paymentDone" class="form-control"
-									style="padding-top: 0px;"
-									ng-model="cCctr.entity.vendorPayment.paymentDone"
-									placeholder="Payment Done" autocomplete="off"
-									ng-pattern="/^[a-zA-z\s]*$/" ng-maxlength="15"
-									ng-required="true" ng-model-options="{updateOn: 'blur'}" /> <span
-									style="color: red"
-									ng-show="vendorDetailForm.submitted ||vendorDetailForm.paymentDone.$dirty && vendorDetailForm.paymentDone.$invalid">						<span class="error"
-									ng-show="vendorDetailForm.paymentDone.$error.maxlength">Payment
-										Done should not be greater than 15 characters.</span> <span
-									class="error"
-									ng-show="vendorDetailForm.paymentDone.$error.required">Payment
-										Done is Required.</span>
-								</span> <span class="error" id="paymentDone"></span>
-							</div>
+								<div class="col-md-4">
+							
+								<label>BLG Code*</label> 
+										<md-autocomplete	
+									                       md-input-name="blgCode"
+            								   				md-input-minlength="3"
+            												md-no-cache = "true"
+            												md-input-maxlength="75"
+            												md-selected-item="vCtr.entity.blgCode"
+            												md-search-text="e"
+            												
+            												md-items="item in vCtr.ajax1('blg','blgCode',e)"
+            												md-selected-item-change="vCtr.getBLGDetail(vCtr.entity.blgCode,'blg')"
+            												md-delay="2000"
+            												placeholder="BLG Code">
+          													<md-item-template>
+            											<span >{{item}}</span>
+          													</md-item-template>
+          										<md-not-found>
+                     									No BLG code with "{{e}}" were found.<a ng-click = "">Add new</a>
+           										</md-not-found>
+        											</md-autocomplete>
+								
+							
+						</div>
+							
+						<div class="col-md-4">
+							
+							<label>Nature of Payment*</label> 
+									<md-autocomplete	
+									md-input-name="natureOfPayment"
+            								   				md-input-minlength="3"
+            												md-no-cache = "true"
+            												md-input-maxlength="75"
+            												md-selected-item="vCtr.entity.natureOfPayment"
+            												md-search-text="f"
+            												ng-required="true"
+            												md-items="item in vCtr.ajax1('nop','natureOfPayment',f)"
+            												md-selected-item-change="vCtr.getNOPDetail(vCtr.entity.natureOfPayment,'nop')"
+            												md-delay="2000"
+            												placeholder="Nature Of Payment">
+          													<md-item-template>
+            											<span >{{item}}</span>
+          													</md-item-template>
+          										<md-not-found>
+                     									No Nature Of Payment with "{{f}}" were found.<a ng-click = "">Add new</a>
+           										</md-not-found>
+        											</md-autocomplete>
+							   
+					</div>	
+							
+							
+							
+							
+							
+						
+						</div>
+						
+						<div class="row">
 							<div class="col-md-4">
 								<label>Payment Date*</label> <input type="date"
 									name="paymentDate" class="form-control"
 									style="padding-top: 0px;"
-									value={{cCctr.entity.vendorPayment.paymentDate}}
-									ng-model="cCctr.entity.vendorPayment.paymentDate"
+									value={{vCtr.entity.paymentDate}}
+									ng-model="vCtr.entity.paymentDate"
 									autocomplete="off" ng-model-options="{updateOn: 'blur'}" />
 							</div>
-						</div>
-						<div class="row">
 							<div class="col-md-4">
 								<label>Payment Mode*</label> <input type="text"
 									name="paymentMode" class="form-control"
 									style="padding-top: 0px;"
-									ng-model="cCctr.entity.vendorPayment.paymentMode"
+									ng-model="vCtr.entity.paymentMode"
 									placeholder="Payment Mode" autocomplete="off"
 									ng-pattern="/^[a-zA-Z]*$/" ng-maxlength="15" ng-required="true"
 									ng-model-options="{updateOn: 'blur'}" /> <span
@@ -359,7 +416,7 @@
 								<label>Invoice Number*</label> <input type="text"
 									name="invoiceNumber" class="form-control"
 									style="padding-top: 0px;"
-									ng-model="cCctr.entity.vendorPayment.invoiceNumber"
+									ng-model="vCtr.entity.invoiceNumber"
 									placeholder="Invoice Number" autocomplete="off"
 									ng-pattern="/^[0-9]*$/" ng-maxlength="15" ng-required="true"
 									ng-model-options="{updateOn: 'blur'}" /> <span
@@ -375,33 +432,18 @@
 										Number is Required.</span>
 								</span> <span class="error" id="invoiceNumber"></span>
 							</div>
-							<div class="col-md-4">
-								<label>Total Invoice Value*</label> <input type="text"
-									name="totalInvoiceValue" class="form-control"
-									style="padding-top: 0px;"
-									ng-model="cCctr.entity.vendorPayment.totalInvoiceValue"
-									placeholder="Total Invoice Value" autocomplete="off"
-									ng-pattern="/^[0-9]*$/" ng-maxlength="15" ng-required="true"
-									ng-model-options="{updateOn: 'blur'}" /> <span
-									style="color: red"
-									ng-show="vendorDetailForm.submitted ||vendorDetailForm.totalInvoiceValue.$dirty && vendorDetailForm.totalInvoiceValue.$invalid">
-									<span class="error"
-									ng-show="vendorDetailForm.totalInvoiceValue.$error.pattern">Please
-										enter valid Total Invoice Value. </span> <span class="error"
-									ng-show="vendorDetailForm.totalInvoiceValue.$error.maxlength">Total
-										Invoice Value should not be greater than 15 characters.</span> <span
-									class="error"
-									ng-show="vendorDetailForm.totalInvoiceValue.$error.required">Total
-										Invoice Value is Required.</span>
-								</span> <span class="error" id="totalInvoiceValue"></span>
-							</div>
+						
+						
 						</div>
+						
+						
+						
 						<div class="row">
 							<div class="col-md-4">
 								<label>Taxable Value*</label> <input type="text"
 									name="taxableValue" class="form-control"
 									style="padding-top: 0px;"
-									ng-model="cCctr.entity.vendorPayment.taxableValue"
+									ng-model="vCtr.entity.taxableValue"
 									placeholder="Taxable Value" autocomplete="off"
 									ng-pattern="/^[0-9]*$/" ng-maxlength="15" ng-required="true"
 									ng-model-options="{updateOn: 'blur'}" /> <span
@@ -417,10 +459,42 @@
 										Value is Required.</span>
 								</span> <span class="error" id="taxableValue"></span>
 							</div>
+							
+							<div class="col-md-4">
+								<label>Total Invoice Value*</label> <input type="text"
+									name="totalInvoiceValue" class="form-control"
+									style="padding-top: 0px;"
+									ng-model="vCtr.entity.totalInvoiceValue"
+									placeholder="Total Invoice Value" autocomplete="off"
+									ng-pattern="/^[0-9]*$/" ng-maxlength="15" ng-required="true"
+									ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="vendorDetailForm.submitted ||vendorDetailForm.totalInvoiceValue.$dirty && vendorDetailForm.totalInvoiceValue.$invalid">
+									<span class="error"
+									ng-show="vendorDetailForm.totalInvoiceValue.$error.pattern">Please
+										enter valid Total Invoice Value. </span> <span class="error"
+									ng-show="vendorDetailForm.totalInvoiceValue.$error.maxlength">Total
+										Invoice Value should not be greater than 15 characters.</span> <span
+									class="error"
+									ng-show="vendorDetailForm.totalInvoiceValue.$error.required">Total
+										Invoice Value is Required.</span>
+								</span> <span class="error" id="totalInvoiceValue"></span>
+							</div>
+								
+						<div class="col-md-4">
+								<label>Invoice Date*</label> <input type="date" name="date"
+									class="form-control" style="padding-top: 0px;"
+									value={{vCtr.entity.date}}
+									ng-model="vCtr.entity.date"
+									ng-model-options="{updateOn: 'blur'}">
+							</div>
+						</div>
+						<div class="row">
+							
 							<div class="col-md-4">
 								<label>CGST*</label> <input type="text" name="cgst"
 									class="form-control" style="padding-top: 0px;"
-									ng-model="cCctr.entity.vendorPayment.cgst" placeholder="CGST"
+									ng-model="vCtr.entity.cgst" placeholder="CGST"
 									autocomplete="off" ng-pattern="/^[0-9]*$/" ng-maxlength="15"
 									ng-required="true" ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
@@ -437,7 +511,7 @@
 							<div class="col-md-4">
 								<label>SGST*</label> <input type="text" name="sgst"
 									class="form-control" style="padding-top: 0px;"
-									ng-model="cCctr.entity.vendorPayment.sgst" placeholder="SGST"
+									ng-model="vCtr.entity.sgst" placeholder="SGST"
 									autocomplete="off" ng-pattern="/^[0-9]*$/" ng-maxlength="15"
 									ng-required="true" ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
@@ -451,12 +525,10 @@
 										Required.</span>
 								</span> <span class="error" id="sgst"></span>
 							</div>
-						</div>
-						<div class="row">
 							<div class="col-md-4">
 								<label>IGST*</label> <input type="text" name="igst"
 									class="form-control" style="padding-top: 0px;"
-									ng-model="cCctr.entity.vendorPayment.igst" placeholder="IGST"
+									ng-model="vCtr.entity.igst" placeholder="IGST"
 									autocomplete="off" ng-pattern="/^[0-9]*$/" ng-maxlength="15"
 									ng-required="true" ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
@@ -470,10 +542,13 @@
 										Required.</span>
 								</span> <span class="error" id="igst"></span>
 							</div>
+						</div>
+						<div class="row">
+							
 							<div class="col-md-4">
 								<label>CESS*</label> <input type="text" name="cess"
 									class="form-control" style="padding-top: 0px;"
-									ng-model="cCctr.entity.vendorPayment.cess" placeholder="CESS"
+									ng-model="vCtr.entity.cess" placeholder="CESS"
 									autocomplete="off" ng-pattern="/^[0-9]*$/" ng-maxlength="15"
 									ng-required="true" ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
@@ -487,14 +562,43 @@
 										Required.</span>
 								</span> <span class="error" id="cess"></span>
 							</div>
+							
+							<div class="col-md-4">
+								<label>Surcharge*</label> <input type="text" name="surcharge"
+									class="form-control" style="padding-top: 0px;"
+									ng-model="vCtr.entity.surcharge" placeholder="Surcharge"
+									autocomplete="off" ng-pattern="/^[0-9]*$/" ng-maxlength="15"
+									ng-required="true" ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="vendorDetailForm.submitted ||vendorDetailForm.surcharge.$dirty && vendorDetailForm.surcharge.$invalid">
+									<span class="error"
+									ng-show="vendorDetailForm.surcharge.$error.pattern">Please
+										enter valid CESS. </span> <span class="error"
+									ng-show="vendorDetailForm.surcharge.$error.maxlength">CESS
+										should not be greater than 15 characters.</span> <span class="error"
+									ng-show="vendorDetailForm.surcharge.$error.required">CESS is
+										Required.</span>
+								</span> <span class="error" id="surcharge"></span>
+							</div>
+							
+							<div class="col-md-4">
+							<div class="form-group">
+							
+						 <button name="submitButton" id="calculateTDS" class="btn btn-calc btn-green" style="float: none; background-color:#5cb85c; color:white; margin-top:20Px"
+						 ng-click="vCtr.autoCalTDS('vendorPayment')" ><i class="fa fa-check"></i><b>Auto Calculate TDS</b></button>
+						</div>
+							</div>
+						</div>		
+							
+						<div class="row">	
 							<div class="col-md-4">
 								<label>Income Tax TDS*</label> <input type="text"
 									name="incomeTaxTds" class="form-control"
 									style="padding-top: 0px;"
-									ng-model="cCctr.entity.vendorPayment.incomeTaxTds"
+									ng-model="vCtr.entity.incomeTaxTds" value={{vCtr.entity.incomeTaxTds}}
 									placeholder="Income Tax TDS" autocomplete="off"
 									ng-pattern="/^[0-9]*$/" ng-maxlength="15" ng-required="true"
-									ng-model-options="{updateOn: 'blur'}" /> <span
+									ng-model-options="{updateOn: 'blur'}" /> <!-- <span
 									style="color: red"
 									ng-show="vendorDetailForm.submitted ||vendorDetailForm.incomeTaxTds.$dirty && vendorDetailForm.incomeTaxTds.$invalid">
 									<span class="error"
@@ -505,17 +609,15 @@
 									class="error"
 									ng-show="vendorDetailForm.incomeTaxTds.$error.required">Income
 										Tax TDS is Required.</span>
-								</span> <span class="error" id="incomeTaxTds"></span>
+								</span> <span class="error" id="incomeTaxTds"></span> -->
 							</div>
-						</div>
-						<div class="row">
 							<div class="col-md-4">
 								<label>GST TDS*</label> <input type="text" name="gstTds"
 									class="form-control" style="padding-top: 0px;"
-									ng-model="cCctr.entity.vendorPayment.gstTds"
+									ng-model="vCtr.entity.gstTds"   value={{vCtr.entity.gstTds}}
 									placeholder="GST TDS" autocomplete="off"
 									ng-pattern="/^[0-9]*$/" ng-maxlength="15" ng-required="true"
-									ng-model-options="{updateOn: 'blur'}" /> <span
+									ng-model-options="{updateOn: 'blur'}" /> <!-- <span
 									style="color: red"
 									ng-show="vendorDetailForm.submitted ||vendorDetailForm.gstTds.$dirty && vendorDetailForm.gstTds.$invalid">
 									<span class="error"
@@ -525,33 +627,16 @@
 										TDS should not be greater than 15 characters.</span> <span
 									class="error" ng-show="vendorDetailForm.gstTds.$error.required">GST
 										TDS is Required.</span>
-								</span> <span class="error" id="gstTds"></span>
+								</span> <span class="error" id="gstTds"></span> -->
 							</div>
-							<div class="col-md-4">
-								<label>Nature of Payment*</label> <input type="text"
-									name="natureOfPayment" class="form-control"
-									style="padding-top: 0px;"
-									ng-model="cCctr.entity.vendorPayment.natureOfPayment"
-									placeholder="Nature of Payment" autocomplete="off"
-									ng-pattern="" ng-maxlength="15" ng-required="true"
-									ng-model-options="{updateOn: 'blur'}" /> <span
-									style="color: red"
-									ng-show="vendorDetailForm.submitted ||vendorDetailForm.natureOfPayment.$dirty && vendorDetailForm.natureOfPayment.$invalid">
-									<span class="error"
-									ng-show="vendorDetailForm.natureOfPayment.$error.pattern">Please
-										enter valid Nature of Payment. </span> <span class="error"
-									ng-show="vendorDetailForm.natureOfPayment.$error.maxlength">Nature
-										of Payment should not be greater than 15 characters.</span> <span
-									class="error"
-									ng-show="vendorDetailForm.natureOfPayment.$error.required">Nature
-										of Payment is Required.</span>
-								</span> <span class="error" id="natureOfPayment"></span>
-							</div>
+					
+						
+						
 							<div class="col-md-4">
 								<label>Net Amount Paid*</label> <input type="text"
 									name="netAmountPaid" class="form-control"
 									style="padding-top: 0px;"
-									ng-model="cCctr.entity.vendorPayment.netAmountPaid"
+									ng-model="vCtr.entity.netAmountPaid"
 									placeholder="Net Amount Paid" autocomplete="off"
 									ng-pattern="/^[0-9]*$/" ng-maxlength="15" ng-required="true"
 									ng-model-options="{updateOn: 'blur'}" /> <span
@@ -568,61 +653,7 @@
 								</span> <span class="error" id="netAmountPaid"></span>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-md-4">
-								<label>BGL Code*</label> <input type="text" name="bglCode"
-									class="form-control" style="padding-top: 0px;"
-									ng-model="cCctr.entity.vendorPayment.bglCode"
-									placeholder="BGL Code" autocomplete="off" ng-pattern=""
-									ng-maxlength="15" ng-required="true"
-									ng-model-options="{updateOn: 'blur'}" /> <span
-									style="color: red"
-									ng-show="vendorDetailForm.submitted ||vendorDetailForm.bglCode.$dirty && vendorDetailForm.bglCode.$invalid">
-									<span class="error"
-									ng-show="vendorDetailForm.bglCode.$error.pattern">Please
-										enter valid BGL Code. </span> <span class="error"
-									ng-show="vendorDetailForm.bglCode.$error.maxlength">BGL
-										Code should not be greater than 15 characters.</span> <span
-									class="error"
-									ng-show="vendorDetailForm.bglCode.$error.required">BGL
-										Code is Required.</span>
-								</span> <span class="error" id="bglCode"></span>
-							</div>
-							<div class="col-md-4">
-								<label>Our GST*</label> <input type="text" name="ourGst"
-									class="form-control" style="padding-top: 0px;"
-									ng-model="cCctr.entity.vendorPayment.ourGst"
-									placeholder="Our GST" autocomplete="off"
-									ng-pattern="/^[0-9]*$/" ng-maxlength="15" ng-required="true"
-									ng-model-options="{updateOn: 'blur'}" /> <span
-									style="color: red"
-									ng-show="vendorDetailForm.submitted ||vendorDetailForm.ourGst.$dirty && vendorDetailForm.ourGst.$invalid">
-									<span class="error"
-									ng-show="vendorDetailForm.ourGst.$error.pattern">Please
-										enter valid Our GST. </span> <span class="error"
-									ng-show="vendorDetailForm.ourGst.$error.maxlength">Our
-										GST should not be greater than 15 characters.</span> <span
-									class="error" ng-show="vendorDetailForm.ourGst.$error.required">Our
-										GST is Required.</span>
-								</span> <span class="error" id="ourGst"></span>
-							</div>
-							<div class="col-md-4" style="margin-left: 17px">
-								<div class="form-group">
-									<label>GST No.*</label>
-									<md-autocomplete md-input-name="gstNo" style="width:88%;"
-										md-input-minlength="3" md-no-cache="true"
-										md-input-maxlength="75"
-										md-selected-item="cCctr.entity.vendorPayment.gstNo"
-										md-search-text="d"
-										md-items="item in cCctr.ajax1('vendorPayment','gstNo',d)"
-										md-selected-item-change="cCctr.getVendorDetail(cCctr.entity.vendorPayment.gstNo,'vendorPayment')"
-										md-delay="2000" placeholder="GST NO"> <md-item-template>
-									<span>{{item}}</span> </md-item-template> <md-not-found> No Group
-									code with "{{d}}" were found.<a ng-click="">Add new</a> </md-not-found> </md-autocomplete>
-									<span class="error" id="gstNo"></span>
-								</div>
-							</div>
-						</div>
+						
 					</div>
 				</form>
 				<div class="modal-footer">
@@ -638,3 +669,11 @@
 	</div>
 
 </div>
+</div>
+
+
+
+
+
+
+                    

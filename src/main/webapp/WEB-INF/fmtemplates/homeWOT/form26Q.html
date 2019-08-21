@@ -131,7 +131,7 @@
 
 
 
-<div id="page-wrapper">
+<div id="page-wrapper"  ng-controller="CommonWOTController as cWctr">
 	<div class="col-md-12 "
 		style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
 		<div class="heading"><strong>Form 26Q Deductee Details</strong></div>
@@ -151,7 +151,7 @@
 					<h6>
 						<b>Financial Year</b>
 					</h6>
-					<select class="form-control" ng-model="cCctr.search.fy"
+					<select class="form-control" ng-model="cWctr.search.fy"
 						style="width: 100%">
 						<option value="" ng-selected=true>Year</option>
 						<option value="201516">201920</option>
@@ -174,7 +174,7 @@
 					<h6>
 						<b>Quarter</b>
 						<h6>
-							<select class="form-control" ng-model="cCctr.search.quarter"
+							<select class="form-control" ng-model="cWctr.search.quarter"
 								style="width: 100%">
 								<option value="" ng-selected=true>Quarter</option>
 								<option value="Q1">Q1</option>
@@ -188,7 +188,7 @@
 					<h6>
 						<b>PAN</b>
 						<h6>
-							<input type="text" ng-model="cCctr.search.deducteePan"
+							<input type="text" ng-model="cWctr.search.deducteePan"
 								class="form-control" placeholder="PAN" style="width: 100%">
 				</div>
 				</div>
@@ -199,7 +199,7 @@
 					<h6>
 						<b>Name</b>
 						<h6>
-							<input type="text" ng-model="cCctr.search.deducteeName" 
+							<input type="text" ng-model="cWctr.search.deducteeName" 
 								class="form-control" placeholder="Name" style="width: 100%">
 				</div>
 
@@ -207,7 +207,7 @@
 					<h6>
 						<b>From Date</b>
 						<h6>
-							<input type="date" ng-model="cCctr.search.fromDate" ng-change="cCctr.search.fromDate=cCctr.date(cCctr.search.fromDate);"
+							<input type="date" ng-model="cWctr.search.fromDate" ng-change="cWctr.search.fromDate=cWctr.date(cWctr.search.fromDate);"
 								class="form-control" placeholder="Date" style="width: 100%">
 				</div>
 
@@ -215,7 +215,7 @@
 					<h6>
 						<b>To Date</b>
 						<h6>
-							<input type="date" ng-model="cCctr.search.toDate" ng-change="cCctr.search.toDate=cCctr.date(cCctr.search.toDate);"
+							<input type="date" ng-model="cWctr.search.toDate" ng-change="cWctr.search.toDate=cWctr.date(cWctr.search.toDate);"
 								class="form-control" placeholder="Date" style="width: 100%">
 				</div>
                </div>
@@ -224,7 +224,7 @@
   
    <div class="row" id="search" >
 	         	  <div class="col-md-2" id="search">	
-	                          <button ng-click="cCctr.searchEntities(true,'formchallan26Q','formchallan26Q')"
+	                          <button ng-click="cWctr.searchEntities(true,'formchallan26Q','formchallan26Q')"
 					class="btn btn-success"onclick="scrollWin()">Search</button>
 	                 </div>					
   </div>
@@ -233,14 +233,14 @@
 
 		<div class="row" id="hide">
 			<div class="col-md-3" style="margin-left: 80%; margin-top: -90px">
-				<button ng-click="cCctr.searchEntities(true,'form26Q')"
+				<button ng-click="cWctr.searchEntities(true,'form26Q')"
 					class="btn btn-success" onclick="scrollWin()">Search</button>
 			</div>
 
 		
 			<div class="row">
 				<div class="col-md-3" id="search">
-					<button ng-click="cCctr.searchEntities(true,'form26Q')"
+					<button ng-click="cWctr.searchEntities(true,'form26Q')"
 						class="btn btn-success" onclick="scrollWin()">Search</button>
 					
 				</div>
@@ -259,7 +259,7 @@
 	
 
 	<div class="row" >
-	<div class="table-responsive">
+	<!-- <div class="table-responsive">  -->
 
 	<table class=" tables table-bordered table-hover table-striped" role="table"
 		style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">

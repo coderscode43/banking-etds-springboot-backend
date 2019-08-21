@@ -34,6 +34,8 @@ public class Regular27QChallan extends CommonModelAbstract{
 	public Long id;	
 	@Column(name = "clientId")
 	public Long clientId;
+	@Column(name = "branchId")
+	public Long branchId;
 	@Column(name = "srNo")
 	public Long srNo;
 	
@@ -118,11 +120,13 @@ public class Regular27QChallan extends CommonModelAbstract{
 	@Size(min=0, max=45, message="Financial Year should not be greater than 45 characters.")
 	public String fy;
 	
-	@Column(name = "quarter")
-	@NotNull(message = "Quarter is required")
-	@Size(min=0, max=45, message="Nill Challan Indicator should not be greater than 45 characters.")
-	public String quarter;
-	
+	/*
+	 * @Column(name = "quarter")
+	 * @NotNull(message = "Quarter is required")
+	 * @Size(min=0, max=45,
+	 * message="Nill Challan Indicator should not be greater than 45 characters.")
+	 * public String quarter;
+	 */
 	@Column(name = "amountConsumed")
 	@NotNull(message = "Amount Consumed is required")
 	@Digits(integer = 12, fraction = 2,message="The Amount Consumed value is not greater than 12 digits. Maximum 2 fractions allowed.")

@@ -229,21 +229,22 @@
 							
 							<div class="row" style="font-size: 13px;">
 								
-								<div class="col-md-6">
+							<!--  	<div class="col-md-6">
 									<label>Quarter &nbsp;:</label>
 									{{cCctr.entity.challan27.quarter}}
-								</div>
+								</div> -->
 								<div class="col-md-6">
 									<label>Amount Consumed &nbsp;:</label>
 									{{cCctr.entity.challan27.amountConsumed}}
 								</div>
-							</div>
-							
-							<div class="row" style="font-size: 13px;">
 								<div class="col-md-6">
 									<label>Amount Available &nbsp;:</label>
 									{{cCctr.entity.challan27.amountAvailable}}
 								</div>
+							</div>
+							
+							<div class="row" style="font-size: 13px;">
+								
 								<div class="col-md-6">
 									<div ng-if="cCctr.entity.challan27.verify == 1"><label>Verified &nbsp;:&nbsp;</label><i class="fa fa-check" aria-hidden="true"  style="color:#5cb85c"></i></div>
 							<div ng-if="cCctr.entity.challan27.verify == 0"><label>Verified &nbsp;:&nbsp;</label><i class="fa fa-times" aria-hidden="true"  style="color:#ff0000"></i></div>
@@ -566,7 +567,7 @@
                                     </div>
 						
 						<div class="row">
-							<div class="col-md-6">
+						<!--  	<div class="col-md-6">
 									<label>Quarter*</label> 
 									<select name="quarter" class="form-control" ng-model="cCctr.entity.challan27.quarter" ng-required="true" ng-model-options="{updateOn: 'blur'}">
 										<option value="Q1">Q1</option>
@@ -577,7 +578,7 @@
 									<span style="color: red" ng-show="profileForm.submitted || profileForm.quarter.$dirty && profileForm.quarter.$invalid"> 
 									<span class="error" ng-show="profileForm.quarter.$error.required">Quarter is Required Field.</span>
 									<span class="error" id="quarter"></span>
-								</div>
+								</div>--> 
 								<div class="col-md-6">
 									<label>Amount Consumed</label> <input class="form-control"
 										type="text" name="amountConsumed"
@@ -591,9 +592,7 @@
 									
 										<span class="error" id="amountConsumed"></span>
 								</div>
-							</div>
-							
-							<div class="row">
+								
 								<div class="col-md-6">
 										<label>Amount Available</label> <input class="form-control"
 											type="text" name="amountAvailable"
@@ -608,6 +607,8 @@
 											<span class="error" id="amountAvailable"></span>
 									</div>
 							</div>
+							
+							
 	                                  </form>
 								    </div>
 							     </div>

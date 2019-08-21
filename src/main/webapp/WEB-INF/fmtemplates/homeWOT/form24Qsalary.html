@@ -201,7 +201,7 @@
 
 
 
-<div id="page-wrapper">
+<div id="page-wrapper"  ng-controller="CommonWOTController as cWctr">
 	<div class="container-fluid">
 		<div class="col-md-12 "
 			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
@@ -226,7 +226,7 @@
 						<h6>
 							<b>Financial Year</b>
 						</h6>
-						<select class="form-control" ng-model="cCctr.search.fy">
+						<select class="form-control" ng-model="cWctr.search.fy">
 							<option value=" " ng-selected="true">Financial Year</option>
 							<option value="201819">201920</option>
 							<option value="201819">201819</option>
@@ -249,7 +249,7 @@
 							<b>Quarter</b>
 
 							<h6>
-								<select class="form-control" ng-model="cCctr.search.quarter">
+								<select class="form-control" ng-model="cWctr.search.quarter">
 									<option value=" " ng-selected="true">Quarter</option>
 									<option value="Q1">Q1</option>
 									<option value="Q2">Q2</option>
@@ -262,19 +262,19 @@
 						<h6>
 							<b>Pan</b>
 							<h6>
-								<input type="text" ng-model="cCctr.search.pan"
+								<input type="text" ng-model="cWctr.search.pan"
 									class="form-control" placeholder="Pan" style="width: 100%">
 					</div>
                     <div class="col-md-2">
 						<h6>
 							<b>Name</b>
 							<h6>
-								<input type="text" ng-model="cCctr.search.name"
+								<input type="text" ng-model="cWctr.search.name"
 									class="form-control" placeholder="Name" style="width: 100%">
 					</div>
 
 					<div class="col-md-3" style="margin-left: 70%; margin-top: -45px">
-						<button ng-click="cCctr.searchEntities(true,'form24Qsalary')"
+						<button ng-click="cWctr.searchEntities(true,'form24Qsalary')"
 							class="btn btn-success" onclick="scrollWin()">Search</button>
 					</div>
 					
@@ -290,7 +290,7 @@
 
 				<div class="row">
 					<div class="col-md-3" id="search">
-						<button ng-click="cCctr.searchEntities(true,'form24Qsalary')"
+						<button ng-click="cWctr.searchEntities(true,'form24Qsalary')"
 							class="btn btn-success" onclick="scrollWin()">Search</button>
 						
 					</div>
@@ -299,7 +299,7 @@
 				
 				 <div class="row">
 	         	  <div  style="float:right">	
-	                    <button type="button" class="btn btn-primary" ng-click="cCctr.gotoListPage('addform24Qsalary','addform24Qsalary');" onclick="scrollWin()">Add</button>
+	                    <button type="button" class="btn btn-primary" ng-click="cWctr.gotoList2Page('addform24Qsalary','addform24Qsalary');" onclick="scrollWin()">Add</button>
 	              </div>					
               </div>
 				
@@ -309,7 +309,7 @@
 
 
 	<div class="row">
-		<div class="table-responsive">
+		<!-- <div class="table-responsive">  -->
 			<table class=" tables table-bordered table-hover table-striped"
 				role="table"
 				style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
@@ -498,7 +498,7 @@
 					</tr>
 				</tbody>
 			</table>
-		</div>
+		
 </div>
 
 <div class="row" ng-show="cCctr.getNoPage() > 0">

@@ -38,6 +38,8 @@ public class Regular26QChallan extends CommonModelAbstract{
 	public Long id;	
 	@Column(name = "clientId")
 	public Long clientId;
+	@Column(name = "branchId")
+	public Long branchId;
 	@Column(name = "srNo")
 	public Long srNo;	
 	@Column(name = "tds")
@@ -107,10 +109,10 @@ public class Regular26QChallan extends CommonModelAbstract{
 	@NotNull(message = "Fy is a required field")
 	@Size(min=0, max=45, message="Fy length should be 45 characters.")
 	public String fy;
-	@Column(name = "quarter")
+	/*@Column(name = "quarter")
 	@NotNull(message = "Quarter is a required field")
 	@Size(min=0, max=45, message="Quarter length should be 45 characters.")
-	public String quarter;
+	public String quarter;*/
 	
 	@Column(name = "amountConsumed")
 	@NotNull(message = "Amount Consumed is a required field")

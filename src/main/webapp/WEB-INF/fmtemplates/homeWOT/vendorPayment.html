@@ -1,4 +1,4 @@
- <div class="container-fluid">
+ <div class="container-fluid" ng-controller="CommonWOTController as cWctr">
       <div class="col-md-12 " style="padding-left: 0px;font-size: 12pxp; margin-top:2%" >
 	      <div class="heading">
 	            <strong>Vendor Payment</strong>
@@ -9,19 +9,23 @@
              </button>
         <div class="collapse dont-collapse-sm" id="collapseExample2" > 
 	       <div class="row">
+	       
+	      <!--  <input type="hidden" ng-model="cWctr.search"
+									ng-init="cWctr.search= $stateParams;" />  -->
+	       
 	          <div class="form-group">
 	  
 	                 <div class="col-md-3">							
                    <h6><b>Vendor Number</b></h6>
-                       <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.search.vendorNo" placeholder="Vendor Number">
+                       <input type="text" class="form-control" style="padding-top:0px;" ng-model="cWctr.search.vendorNo" placeholder="Vendor Number">
                 </div>
                 <div class="col-md-3">							
                    <h6><b>Vendor Name</b></h6>
-                       <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.search.vendorName" placeholder="Vendor Name">
+                       <input type="text" class="form-control" style="padding-top:0px;" ng-model="cWctr.search.vendorName" placeholder="Vendor Name">
                 </div>
                 <div class="col-md-3">							
                    <h6><b>Vendor PAN</b></h6>
-                       <input type="text" class="form-control" style="padding-top:0px;" ng-model="cCctr.search.vendorPAN" placeholder="Vendor PAN">
+                       <input type="text" class="form-control" style="padding-top:0px;" ng-model="cWctr.search.vendorPAN" placeholder="Vendor PAN">
                 </div>
 	                 
 	                
@@ -34,27 +38,27 @@
 	  
 	  <div class="col-md-3">							
                    <h6><b>From Invoice Date</b></h6>
-                   <input type="date" class="form-control" style="padding-top:0px;" ng-model="cCctr.search.fromDate" 
-                   ng-change="cCctr.search.fromDate=cCctr.date(cCctr.search.fromDate);" placeholder="From Date">
+                   <input type="date" class="form-control" style="padding-top:0px;" ng-model="cWctr.search.fromDate" 
+                   ng-change="cWctr.search.fromDate=cWctr.date(cWctr.search.fromDate);" placeholder="From Date">
                 </div>
                      
 	                 <div class="col-md-3">							
                    <h6><b>To Invoice Date</b></h6>
-                    <input type="date" class="form-control" style="padding-top:0px;" ng-model="cCctr.search.toDate" 
-                    ng-change="cCctr.search.toDate=cCctr.date(cCctr.search.toDate);" placeholder="To Date">
+                    <input type="date" class="form-control" style="padding-top:0px;" ng-model="cWctr.search.toDate" 
+                    ng-change="cWctr.search.toDate=cWctr.date(cWctr.search.toDate);" placeholder="To Date">
                 </div>    
    </div>
   	       </div>
 	             
 	         	     <div class="col-md-4" id="hide" style=" margin-top:-9%;margin-left:80%">	
-	                          <button ng-click="cCctr.searchEntities(true,'vendorPayment')"
+	                          <button ng-click="cWctr.searchEntities(true,'vendorPayment')"
 							  class="btn btn-success" onclick="scrollWin()">Search</button>
 	                 </div>					
   				
     
              <div class="row" id="search" >
 	         	  <div class="col-md-3" id="search">	
-	                    <button ng-click="cCctr.searchEntities(true,'vendorPayment')"
+	                    <button ng-click="cWctr.searchEntities(true,'vendorPayment')"
 					      class="btn btn-success">Search</button>
 	              </div>					
               </div>
@@ -64,11 +68,11 @@
  
   <div class="row">
 	         	  <div  style="float:right">	
-	                    <button class="btn btn-Primary" data-toggle="modal" ng-click="cCctr.gotoListPage('vendorPayment','addVendorPayment');">Add</button>
+	                    <button class="btn btn-Primary" data-toggle="modal" ng-click="cCctr.gotoList2Page('vendorPayment','addVendorPayment');">Add</button>
 	              </div>					
               </div>
               <div class="row">
- <div class="table-responsive"> 
+ <!-- <div class="table-responsive">  -->
 							<table class=" tables table-bordered table-hover table-striped" role="table"
 								style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
 								<thead>
@@ -84,7 +88,7 @@
 							      <th width="10%"  style="padding:20px">Vendor PAN</th>
 							      <th width="10%"  style="padding:20px">GST No.</th>
 							      <th width="10%"  style="padding:20px">Invoice Date</th>
-							      <th width="10%"  style="padding:20px">Payment Done</th>
+							    
 							      <th width="10%" style="padding:20px" >Payment Date</th>
 							      <th width="10%"  style="padding:20px">Payment Mode</th>
 							      <th width="10%"  style="padding:20px">Invoice Number</th>
@@ -94,12 +98,14 @@
 							      <th width="10%"  style="padding:20px">SGST</th>
 							      <th width="10%"  style="padding:20px">IGST</th>
 							      <th width="10%"  style="padding:20px">CESS</th>
+							      <th width="10%"  style="padding:20px">Surcharge</th>
 							      <th width="10%"  style="padding:20px">Income Tax TDS</th>
 							      <th width="10%"  style="padding:20px">GST TDS</th>
 							      <th width="10%"  style="padding:20px">Nature Of Payment</th>
 							      <th width="10%"  style="padding:20px">Net Amount Paid</th>
-							      <th width="10%"  style="padding:20px">BGL Code</th>
-							      <th width="10%"  style="padding:20px">Our GST</th>
+							      <th width="10%"  style="padding:20px">BLG Code</th>
+							      <th width="10%"  style="padding:20px">Remark</th>
+							    
 							      <th width="10%">Action</th>
 							     
 							         
@@ -114,7 +120,7 @@
 											<td>{{a.vendorPAN}}</td>
 											<td>{{a.gstNo}}</td>
 											<td>{{a.date | date:'dd-MM-yyyy'}}</td>
-											<td>{{a.paymentDone}}</td>
+											
 											<td>{{a.paymentDate | date:'dd-MM-yyyy'}}</td>
 											<td>{{a.paymentMode}}</td>
 											<td>{{a.invoiceNumber}}</td>
@@ -124,19 +130,21 @@
 											<td>{{a.sgst}}</td>
 											<td>{{a.igst}}</td>
 											<td>{{a.cess}}</td>
+											<td>{{a.surcharge}}</td>
 											<td>{{a.incomeTaxTds}}</td>
 											<td>{{a.gstTds}}</td>				
 											<td>{{a.natureOfPayment}}</td>
 											<td>{{a.netAmountPaid}}</td>							
-											<td>{{a.bglCode}}</td>
-											<td>{{a.ourGst}}</td>
+											<td>{{a.blgCode}}</td>
+											<td>{{a.remark}}</td>
+											
 									       <td><a
 							               ng-click="cCctr.gotoDetailPage('vendorPayment',a.id,'editVendorPayment')"><font
 								          color="blue" style="font-size: 13px"><img src="static\img\edit.png" width="22px" height="22px" alt="Details" style="margin-top:5px; margin-bottom:5px;" onclick="scrollWin()"/></font></a></td>
 									</tr>								
 								</tbody>
 							</table>
-							</div>
+							<!-- </div> -->
 					</div>
   
   <div class="row" ng-show="cCctr.getNoPage() > 0">
@@ -257,7 +265,7 @@
 		td:nth-of-type(18):before { content: "GST TDS"; }
 		td:nth-of-type(19):before { content: "Nature Of Payment"; }
 		td:nth-of-type(20):before { content: "Net Amount Paid"; }
-		td:nth-of-type(21):before { content: "BGL Code"; }
+		td:nth-of-type(21):before { content: "BLG Code"; }
 		td:nth-of-type(22):before { content: "Our GST"; }
 		td:nth-of-type(23):before { content: "Action"; }
 		

@@ -475,7 +475,26 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Financial Year*</label> <input class="form-control"
+								<label>Financial Year*</label> 
+								<select name="fy" class="form-control"
+									ng-model="cCctr.entity.fy" ng-required="true"
+									ng-model-options="{updateOn: 'blur'}">
+									<option value="201920">201920</option>
+									<option value="201819">201819</option>
+									<option value="201718">201718</option>
+									<option value="201617">201617</option>
+									<option value="201516">201516</option>
+									<option value="201415">201415</option>
+									<option value="201314">201314</option>
+									<option value="201213">201213</option>
+									<option value="201112">201112</option>
+									<option value="201011">201011</option>
+									<option value="200910">200910</option>
+									<option value="200809">200809</option>
+									<option value="200708">200708</option>
+								</select>
+								
+							<!-- 	<input class="form-control"
 									type="text" name="fy" placeholder="Fy"
 									ng-model="cCctr.entity.fy" autocomplete="off"
 									ng-maxlength="10" ng-required=" true"
@@ -483,14 +502,14 @@
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
 									ng-show="pensionerSalaryDetailForm.submitted || pensionerSalaryDetailForm.fy.$dirty && pensionerSalaryDetailForm.fy.$invalid">
-									<span class="error"
-									ng-show="pensionerSalaryDetailForm.fy.$error.pattern">Please
-										enter valid Financial Year</span> <span class="error"
-									ng-show="pensionerSalaryDetailForm.fy.$error.maxlength">Financial Year
-										should not be greater than 10 digit.</span> 
 										<span class="error"
 									ng-show="pensionerSalaryDetailForm.fy.$error.required">Financial Year
-										is Required</span> 
+										is Required</span>  -->
+										
+										<span style="color: red" ng-show="pensionerSalaryDetailForm.submitted ||pensionerSalaryDetailForm.fy.$dirty && pensionerSalaryDetailForm.fy.$invalid">
+									<span class="error" ng-show="pensionerSalaryDetailForm.fy.$error.required">Financial Year is Required.</span>
+								    </span>
+										
 								</span> <span class="error" id="fy"></span>
 							</div>
 						</div>

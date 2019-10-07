@@ -686,15 +686,17 @@
 															<b>Pin Code*</b>
 														</h6>
 														<input type="text" class="form-control" ng-required="true"
-															style="padding-top: 0px;" ng-maxlength="6"
+															style="padding-top: 0px;" ng-maxlength="6" ng-minlength="6"
 															name="pincode" ng-model="cCctr.entity.paddress.pincode"
 															placeholder="PinCode" ng-pattern="/^[0-9\s]*$/">
 														<span style="color: red"
 															ng-show="addressDetailForm1.submitted || addressDetailForm1.pincode.$dirty && addressDetailForm1.pincode.$invalid">
 															<span class="error"
 															ng-show="addressDetailForm1.pincode.$error.pattern">Please
-																enter valid Pincode</span> <span class="error"
-															ng-show="addressDetailForm1.pincode.$error.maxlength">
+																enter valid Pincode</span>
+															<span class="error" ng-show="addressDetailForm1.pincode.$error.minlength">
+																Pincode should not be lesser than 6 digits</span>
+															 <span class="error" ng-show="addressDetailForm1.pincode.$error.maxlength">
 																Pincode should not be greater than 6 digits</span> <span
 															class="error"
 															ng-show="addressDetailForm1.pincode.$error.required">Pincode
@@ -887,7 +889,7 @@
 															<b>PinCode*</b>
 														</h6>
 														<input type="text" class="form-control" name="pincode"
-															style="padding-top: 0px;" ng-maxlength="6"
+															style="padding-top: 0px;" ng-maxlength="6" ng-minlength="6"
 															ng-required="true"
 															ng-model="cCctr.entity.caddress.pincode"
 															placeholder="PinCode" ng-pattern="/^[0-9]*$/"> <span
@@ -897,8 +899,12 @@
 															ng-show="addressDetailForm2.pincode.$error.pattern">Please
 																enter valid Pincode</span> <span class="error"
 															ng-show="addressDetailForm2.pincode.$error.maxlength">
-																Pincode should not be greater than 6 digits.</span> <span
-															class="error"
+																Pincode should not be greater than 6 digits.</span>
+																<span class="error"
+															ng-show="addressDetailForm2.pincode.$error.minlength">
+																Pincode should not be lesser than 6 digits.</span>
+																
+														 <span	class="error"
 															ng-show="addressDetailForm2.pincode.$error.required">Pincode
 																is Required Field</span>
 														</span>

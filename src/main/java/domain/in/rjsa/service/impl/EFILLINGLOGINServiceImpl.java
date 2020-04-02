@@ -20,7 +20,7 @@ EFILLINGLOGINDao dao;
 		return dao;
 	}
 	@Override
-	public EFILLINGLOGIN getByKay(String tan) {
+	public EFILLINGLOGIN getByKey(String tan) {
 		// TODO Auto-generated method stub
 		return dao.getByKey(tan);
 	}

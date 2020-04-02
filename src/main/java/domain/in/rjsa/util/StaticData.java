@@ -7,10 +7,20 @@ import java.util.List;
 public class StaticData {
 	
 	public static List<String> documentStatus= new ArrayList<String>() {{
-		add("Pending Verification");
+		add("Pending for approval");
 		add("Verified");
 		add("Rejected");
 		
+	}};
+	public static List<String> entity = new ArrayList<String>() {{
+		add("form26QDeductee");//0
+		add("form27QDeductee");//1
+		add("form24QDeductee");//2
+		add("form26QUpdateRequestDetail");//3
+		add("form27QUpdateRequestDetail");//4
+		add("form24QUpdateRequestDetail");//5
+		add("form24QSalary");//6
+		add("form24QSalaryUpdateRequestDetail");//7
 	}};
 	public static List<String> employeeStatus= new ArrayList<String>() {{
 		add("Verified");

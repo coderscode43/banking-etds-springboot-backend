@@ -1,5 +1,7 @@
 package domain.in.rjsa.web;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -8,13 +10,11 @@ import org.springframework.stereotype.Service;
 import domain.in.rjsa.model.form.Branch;
 import domain.in.rjsa.model.form.ClientDetail;
 import domain.in.rjsa.model.form.Login;
-import domain.in.rjsa.model.form.Vendor;
-import domain.in.rjsa.model.form.Zone;
+import domain.in.rjsa.model.form.UserSol;
 import domain.in.rjsa.service.BranchService;
 import domain.in.rjsa.service.ClientDetailService;
 import domain.in.rjsa.service.LoginService;
-import domain.in.rjsa.service.VendorService;
-import domain.in.rjsa.service.ZoneService;
+import domain.in.rjsa.service.UserSolService;
 
 @Service("ApplicationCache")
 public class ApplicationCache {
@@ -23,7 +23,8 @@ public class ApplicationCache {
 	private LoginService loginService;
 	private ClientDetailService cdService;
 	private BranchService branchService;
-	private ZoneService zoneService;
+	private UserSolService userSolService;
+	
 
 
 	
@@ -47,11 +48,7 @@ public class ApplicationCache {
 		return cdService.getByKey(id);
 	}
 	
-	@Cacheable(value = "zone")
-	public Zone getZone(Long id) {
-		// TODO Auto-generated method stub
-		return zoneService.getByKey(id);
-	}
+	
 
 	@Cacheable(value = "branch")
 	public Branch getBranch(Long id) {
@@ -59,6 +56,13 @@ public class ApplicationCache {
 		return branchService.getByKey(id);
 	}
 	
+	@Cacheable(value= "userSol")
+	public UserSol getUserSol(Long userId, Long clientId) {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("clientId", clientId);
+		map.put("userId", userId);
+		return userSolService.uniqueSearch(map );
+	}
 	
 	
 	@Autowired
@@ -77,9 +81,11 @@ public class ApplicationCache {
 	}
 	
 	@Autowired
-	public void setZoneService(ZoneService zoneService) {
-		this.zoneService = zoneService;
+	public void setUserSolService(UserSolService userSolService) {
+		this.userSolService = userSolService;
 	}
+	
+
 	
 
 

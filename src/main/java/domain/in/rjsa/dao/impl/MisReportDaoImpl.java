@@ -14,7 +14,6 @@ import org.springframework.stereotype.Repository;
 import domain.in.rjsa.dao.AbstractNewDao;
 import domain.in.rjsa.dao.MisReportDao;
 import domain.in.rjsa.model.form.MisReport;
-import domain.in.rjsa.model.form.Regular24Q4Challan;
 
 @Repository("misreportDao")
 public class MisReportDaoImpl extends AbstractNewDao<Long, MisReport> implements MisReportDao {

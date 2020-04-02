@@ -438,14 +438,25 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Country Of Residence*</label> <input class="form-control"
-									type="text" name="countryOfResidence" placeholder="Country Of Residence"
-									ng-model="cWctr.entity.countryOfResidence" 
-									  ng-required="true"
-									autocomplete="off" 
-							       ng-pattern ="/^[a-zA-Z\s]*$/" 
-									ng-maxlength="50" 
-									ng-model-options="{updateOn: 'blur'}" /> 
+								<label>Country Of Residence*</label>
+								<md-autocomplete
+            						md-input-name="Country Name"
+            						md-input-minlength="3"
+            						md-no-cache = "true"
+            						md-input-maxlength="75"
+            						md-selected-item="cWctr.entity.countryOfResidence"
+            						md-search-text="a"
+            						md-items="item in cWctr.ajax1('countryNames','name',a)"
+            						md-delay="2000"
+            						ng-required="true"
+            						placeholder="Country Name">
+          							<md-item-template>
+            							<span >{{item}}</span>
+          							</md-item-template>
+          							<md-not-found>
+                     					No Country with "{{a}}" name were found.
+           							</md-not-found>
+        						</md-autocomplete>
 									
 									  <span style="color: red" ng-show="deducteeDetailForm.submitted || deducteeDetailForm.countryOfResidence.$dirty && deducteeDetailForm.countryOfResidence.$invalid">
 										  <span class="error" ng-show="deducteeDetailForm.countryOfResidence.$error.pattern">Please enter valid Country Of Residence</span>

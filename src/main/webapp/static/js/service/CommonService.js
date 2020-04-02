@@ -30,7 +30,9 @@ App.factory('CommonService', [
 				importData : importData,
 				saveDoc : saveDoc,
 				updateDoc : updateDoc,
-				getFile : getFile
+				getFile : getFile,
+				approveUpdate : approveUpdate,
+				rejectUpdate : rejectUpdate
 	
 			};
 			return factory;
@@ -148,6 +150,36 @@ App.factory('CommonService', [
 				return deferred.promise;
 			}
 			
+			function approveUpdate(entitySave, entity, clientId){
+				entitySave.clientId = clientId;
+				var deferred = $q.defer();
+
+				$http.put(REST_SERVICE_URI + entity + '/approve/' + clientId,
+						entitySave).success(function(data) {
+
+					deferred.resolve(data);
+				}).error(function(status) {
+					deferred.reject(status);
+				});
+
+				return deferred.promise;
+			}
+			
+			function rejectUpdate(entitySave, entity, clientId){
+				entitySave.clientId = clientId;
+				var deferred = $q.defer();
+
+				$http.put(REST_SERVICE_URI + entity + '/reject/' + clientId,
+						entitySave).success(function(data) {
+
+					deferred.resolve(data);
+				}).error(function(status) {
+					deferred.reject(status);
+				});
+
+				return deferred.promise;
+			}
+			
 			
 			
 			
@@ -209,12 +241,11 @@ App.factory('CommonService', [
 				return deferred.promise;
 			}
 			
-			function countForBranchFunction(entity, clientId, branchId) {
+			function countForBranchFunction(entity, clientId) {
 				entityList = [];
 				var deferred = $q.defer();
 				$http.get(
-						REST_SERVICE_URI + entity + '/listBranch/' + clientId+'/'+branchId
-								+ '/count/').success(function(data) {
+						REST_SERVICE_URI + entity + '/listBranch/' + clientId+'/count/').success(function(data) {
 					count = data.count;
 					entityList = data.entities;
 					deferred.resolve(data);
@@ -310,8 +341,6 @@ App.factory('CommonService', [
 
 			}
 			}
-			
-			
 			
 			function getFile(clientId, entity, detailId) {
 				var deferred = $q.defer();

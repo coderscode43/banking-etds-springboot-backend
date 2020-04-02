@@ -1,0 +1,316 @@
+<div class="page-wrapper" id="body1"
+	ng-init="cCctr.entity=cCctr.getEntityData()">
+
+	<div id="mySidenav2" class="sidenav" ng-init="">
+		<div
+			style="text-align: center; margin-top: -50px; margin-bottom: 20px">
+			<h1>
+				<b>Remarks</b>
+			</h1>
+		</div>
+		<a href="javascript:void(0)" class="closebtn" onclick="closeRemark()">&times;</a>
+		<div class="row" style="padding-left: 20px">
+			<div class="col-md-12">
+				<table class="table table-hover table-sriped table-bordered">
+					<thead>
+						<th>Sr No.</th>
+						<th>Remark</th>
+					</thead>
+					<tbody>
+						<tr ng-repeat="a in cCctr.entity.listRemarks">
+							<td>{{$index+1}}</td>
+							<td>{{a.remark}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="container">
+		<h1>Detail Form24Q Deductee Update Request</h1>
+		<button class="btn btn-primary" style="float: right"
+			onclick="openRemark()">Previous Remark</button>
+		<br> <br>
+
+		<fieldset ng-show="cCctr.entity.newData.docId!=null">
+			<legend>Old Data:</legend>
+			<div class="row">
+				<div class="col-md-3">
+					<label>challanSrNo</label> : {{cCctr.entity.oldData.challanSrNo}}
+				</div>
+				<div class="col-md-3">
+					<label>employeeRefNo</label>
+					:{{cCctr.entity.oldData.employeeRefNo}}
+				</div>
+				<div class="col-md-3">
+					<label>panRefNo</label> :{{cCctr.entity.oldData.panRefNo}}
+				</div>
+				<div class="col-md-3">
+					<label>pan</label> : {{cCctr.entity.oldData.pan}}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<label>Name</label>: {{cCctr.entity.oldData.name}}
+				</div>
+				<div class="col-md-3">
+					<label>sectionCode</label> :{{cCctr.entity.oldData.sectionCode}}
+				</div>
+				<div class="col-md-3">
+					<label>dateOfPayment</label>
+					:{{cCctr.entity.oldData.dateOfPayment}}
+				</div>
+				<div class="col-md-3">
+					<label>dateOfDeduction</label>
+					:{{cCctr.entity.oldData.dateOfDeduction}}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<label>amountPaid</label> :{{cCctr.entity.oldData.amountPaid}}
+				</div>
+				<div class="col-md-3">
+					<label>TDS</label> :{{cCctr.entity.oldData.tds}}
+				</div>
+				<div class="col-md-3">
+					<label>Surcharge</label> :{{cCctr.entity.oldData.surcharge}}
+				</div>
+				<div class="col-md-3">
+					<label>Education Cess</label>
+					:{{cCctr.entity.oldData.educationCess}}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<label>totalTds</label> :{{cCctr.entity.oldData.totalTds}}
+				</div>
+				<div class="col-md-3">
+					<label>totalTaxDeposited</label>
+					:{{cCctr.entity.oldData.totalTaxDeposited}}
+				</div>
+				<div class="col-md-3">
+					<label>remarks</label> :{{cCctr.entity.oldData.remarks}}
+				</div>
+				<div class="col-md-3">
+					<label>certificateNumber</label>
+					:{{cCctr.entity.oldData.certificateNumber}}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<label>Financial Year</label> :{{cCctr.entity.oldData.fy}}
+				</div>
+				<div class="col-md-3">
+					<label>quarter</label> :{{cCctr.entity.oldData.quarter}}
+				</div>
+
+			</div>
+
+
+		</fieldset>
+		<br> <br> <br> <Br>
+		<fieldset>
+			<legend ng-show="cCctr.entity.newData.docId!=null">Changed
+				Data:</legend>
+			<legend ng-show="cCctr.entity.newData.docId==null">New Data</legend>
+			<div class="row">
+				<div class="col-md-3"
+					ng-class="{'give-border': cCctr.entity.oldData!=null&&cCctr.entity.oldData.challanSrNo!=cCctr.entity.newData.challanSrNo}">
+					<label>Challan Sr No</label> : {{cCctr.entity.newData.challanSrNo}}
+				</div>
+				<div class="col-md-3"
+					ng-class="{'give-border': cCctr.entity.oldData!=null&&cCctr.entity.oldData.employeeRefNo!=cCctr.entity.newData.employeeRefNo}">
+					<label>Employee Reference No</label>
+					:{{cCctr.entity.newData.employeeRefNo}}
+				</div>
+				<div class="col-md-3"
+					ng-class="{'give-border': cCctr.entity.oldData!=null&&cCctr.entity.oldData.panRefNo!=cCctr.entity.newData.panRefNo}">
+					<label>Pan Reference No</label> :{{cCctr.entity.newData.panRefNo}}
+				</div>
+				<div class="col-md-3"
+					ng-class="{'give-border': cCctr.entity.oldData!=null&&cCctr.entity.oldData.pan!=cCctr.entity.newData.pan}">
+					<label>Pan</label> : {{cCctr.entity.newData.pan}}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3"
+					ng-class="{'give-border': cCctr.entity.oldData!=null&&cCctr.entity.oldData.name!=cCctr.entity.newData.name}">
+					<label>Name</label>: {{cCctr.entity.newData.name}}
+				</div>
+				<div class="col-md-3"
+					ng-class="{'give-border': cCctr.entity.oldData!=null&&cCctr.entity.oldData.sectionCode!=cCctr.entity.newData.sectionCode}">
+					<label>Section Code</label> :{{cCctr.entity.newData.sectionCode}}
+				</div>
+				<div class="col-md-3"
+					ng-class="{'give-border': cCctr.entity.oldData!=null&&cCctr.entity.oldData.dateOfPayment!=cCctr.entity.newData.dateOfPayment}">
+					<label>Date Of Payment</label>
+					:{{cCctr.entity.newData.dateOfPayment}}
+				</div>
+				<div class="col-md-3"
+					ng-class="{'give-border': cCctr.entity.oldData!=null&&cCctr.entity.oldData.dateOfDeduction!=cCctr.entity.newData.dateOfDeduction}">
+					<label>Date Of Deduction</label>
+					:{{cCctr.entity.newData.dateOfDeduction}}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3"
+					ng-class="{'give-border': cCctr.entity.oldData!=null&&cCctr.entity.oldData.amountPaid!=cCctr.entity.newData.amountPaid}">
+					<label>Amount Paid</label> :{{cCctr.entity.newData.amountPaid}}
+				</div>
+				<div class="col-md-3"
+					ng-class="{'give-border': cCctr.entity.oldData!=null&&cCctr.entity.oldData.tds!=cCctr.entity.newData.tds}">
+					<label>TDS</label> :{{cCctr.entity.newData.tds}}
+				</div>
+				<div class="col-md-3"
+					ng-class="{'give-border': cCctr.entity.oldData!=null&&cCctr.entity.oldData.surcharge!=cCctr.entity.newData.surcharge}">
+					<label>Surcharge</label> :{{cCctr.entity.newData.surcharge}}
+				</div>
+				<div class="col-md-3"
+					ng-class="{'give-border': cCctr.entity.oldData!=null&&cCctr.entity.oldData.educationCess!=cCctr.entity.newData.educationCess}">
+					<label>Education Cess</label>
+					:{{cCctr.entity.newData.educationCess}}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3"
+					ng-class="{'give-border': cCctr.entity.oldData!=null&&cCctr.entity.oldData.totalTds!=cCctr.entity.newData.totalTds}">
+					<label>Total Tds</label> :{{cCctr.entity.newData.totalTds}}
+				</div>
+				<div class="col-md-3"
+					ng-class="{'give-border': cCctr.entity.oldData!=null&&cCctr.entity.oldData.totalTaxDeposited!=cCctr.entity.newData.totalTaxDeposited}">
+					<label>Total Tax Deposited</label>
+					:{{cCctr.entity.newData.totalTaxDeposited}}
+				</div>
+				<div class="col-md-3"
+					ng-class="{'give-border': cCctr.entity.oldData!=null&&cCctr.entity.oldData.remarks!=cCctr.entity.newData.remarks}">
+					<label>Remarks</label> :{{cCctr.entity.newData.remarks}}
+				</div>
+				<div class="col-md-3"
+					ng-class="{'give-border': cCctr.entity.oldData!=null&&cCctr.entity.oldData.certificateNumber!=cCctr.entity.newData.certificateNumber}">
+					<label>Certificate Number</label>
+					:{{cCctr.entity.newData.certificateNumber}}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3"
+					ng-class="{'give-border': cCctr.entity.oldData!=null&&cCctr.entity.oldData.fy!=cCctr.entity.newData.fy}">
+					<label>Financial Year</label> :{{cCctr.entity.newData.fy}}
+				</div>
+				<div class="col-md-3"
+					ng-class="{'give-border': cCctr.entity.oldData!=null&&cCctr.entity.oldData.quarter!=cCctr.entity.newData.quarter}">
+					<label>Quarter</label> :{{cCctr.entity.newData.quarter}}
+				</div>
+
+			</div>
+
+
+		</fieldset>
+		<br> <br>
+
+		<form name="remarkForms">
+			<div class="form-group"
+				style="width: 50%; display: block; margin-left: auto; margin-right: auto;"
+				ng-show="cCctr.entity.newData.status=='Pending for approval'">
+				<label>Remark*:</label>
+				<textarea class="form-control" rows="2" id="remarks" name="remarks"
+					ng-required="true" ng-model="cCctr.entity.newData.remarks"></textarea>
+				<span style="color: red"
+					ng-show="remarkForms.submitted || remarkForms.remarks.$dirty && remarkForms.remarks.$invalid">
+					<span class="error" ng-show="remarkForms.remarks.$error.required">Remark
+						is Required.</span>
+				</span> <span class="error" id="remarks"></span>
+			</div>
+		</form>
+
+	</div>
+
+	<div
+		style="display: flex; align-items: center; justify-content: center;"
+		ng-show="cCctr.entity.newData.status=='Pending for approval'">
+		<button class="btn btn-success" type="type"
+			ng-click="remarkForms.submitted=true;cCctr.approveUpdate(remarkForms.$valid,'form24QDeducteeUpdateRequestDetail',cCctr.entity.newData)">Approve</button>
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<button class="btn btn-danger" type="type"
+			ng-click="remarkForms.submitted=true;cCctr.rejectUpdate(remarkForms.$valid,'form24QDeducteeUpdateRequestDetail',cCctr.entity.newData)">Reject</button>
+
+
+	</div>
+	<button onclick=window.history.back(); class="btn btn-primary">Back</button>
+	<div></div>
+	<style>
+.give-border {
+	border: 1px solid red;
+}
+
+.sidenav {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	float: right;
+	right: 0;
+	background-color: #fff;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 60px;
+}
+
+.sidenav a {
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 25px;
+	color: #818181;
+	display: block;
+	transition: 0.3s;
+}
+
+.sidenav a:hover {
+	color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 36px;
+	margin-left: 50px;
+}
+
+.button {
+	position: relative;
+	background-color: #FFA500;
+	border: none;
+	font-size: 15px;
+	color: black;
+	width: 130px;
+	text-align: center;
+	-webkit-transition-duration: 0.4s; /* Safari */
+	transition-duration: 0.4s;
+	text-decoration: none;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.button:after {
+	content: "";
+	background: #f1f1f1;
+	display: block;
+	position: absolute;
+	padding-top: 300%;
+	padding-left: 350%;
+	margin-left: -20px !important;
+	margin-top: -120%;
+	opacity: 0;
+	transition: all 0.8s
+}
+
+.button:active:after {
+	padding: 0;
+	margin: 0;
+	opacity: 1;
+	transition: 0s
+}
+</style>

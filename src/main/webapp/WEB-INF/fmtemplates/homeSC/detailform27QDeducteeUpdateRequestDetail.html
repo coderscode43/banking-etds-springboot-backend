@@ -1,0 +1,333 @@
+<div class="page-wrapper" id="body1"
+	ng-init="cCctr.entity=cCctr.getEntityData()">
+	
+		<div id="mySidenav2" class="sidenav" ng-init="">
+		<div
+			style="text-align: center; margin-top: -50px; margin-bottom: 20px">
+			<h1>
+				<b>Remarks</b>
+			</h1>
+		</div>
+		<a href="javascript:void(0)" class="closebtn" onclick="closeRemark()">&times;</a>
+		<div class="row" style="padding-left: 20px">
+			<div class="col-md-12">
+				<table class="table table-hover table-sriped table-bordered">
+					<thead>
+						<th>Sr No.</th>
+						<th>Remark</th>
+					</thead>
+					<tbody>
+						<tr ng-repeat="a in cCctr.entity.listRemarks">
+							<td>{{$index+1}}</td>
+							<td>{{a.remark}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+	</div>
+
+<div class="container">
+<h1>Detail Form27Q Update Request Detail</h1>
+ <button class="btn btn-primary" style="float: right"
+			onclick="openRemark()">Previous Remark</button>
+			<br>
+		<br>
+<fieldset>
+ <legend>Old Data:</legend>
+ <div class="row">
+ <div class="col-md-3">
+ <label>Deductee Sr No</label> : {{cCctr.entity.oldData.deducteeSrNo}}
+ </div>
+ <div class="col-md-3">
+ <label>Sr No In Challan</label> :{{cCctr.entity.oldData.srNoInChallan}}
+ </div>
+ <div class="col-md-3">
+ <label>Deductee Ref No</label> :{{cCctr.entity.oldData.deducteeRefNo}}
+ </div>
+ <div class="col-md-3">
+ <label>Deductee Code</label> : {{cCctr.entity.oldData.deducteeCode}}
+ </div>
+ </div>
+  <div class="row">
+ <div class="col-md-3">
+ <label>PAN</label>: {{cCctr.entity.oldData.pan}}
+ </div>
+ <div class="col-md-3">
+ <label>Name</label> :{{cCctr.entity.oldData.name}}
+ </div>
+ <div class="col-md-3">
+ <label>Section Code</label> :{{cCctr.entity.oldData.sectionCode}}
+ </div>
+ <div class="col-md-3">
+ <label>Date</label> :{{cCctr.entity.oldData.date}}
+ </div>
+ </div>
+  <div class="row">
+ <div class="col-md-3">
+ <label>Amount Paid</label> :{{cCctr.entity.oldData.amountPaid}}
+ </div>
+ <div class="col-md-3">
+ <label>TDS</label> :{{cCctr.entity.oldData.tds}}
+ </div>
+ <div class="col-md-3">
+ <label>Surcharge</label> :{{cCctr.entity.oldData.surcharge}}
+ </div>
+ <div class="col-md-3">
+ <label>Education Cess</label> :{{cCctr.entity.oldData.educationCess}}
+ </div>
+ </div>
+ <div class="row">
+ <div class="col-md-3">
+ <label>Address Of Deductee</label> :{{cCctr.entity.oldData.addressOfDeductee}}
+ </div>
+ <div class="col-md-3">
+ <label>Contact No Of Deductee</label> :{{cCctr.entity.oldData.contactNoOfDeductee}}
+ </div>
+ <div class="col-md-3">
+ <label>Email Id</label> :{{cCctr.entity.oldData.emailId}}
+ </div>
+ <div class="col-md-3">
+ <label>Country Of Residence</label> :{{cCctr.entity.oldData.countryOfResidence}}
+ </div>
+ </div>
+ <div class="row">
+ <div class="col-md-3">
+ <label>Total Tax Deducted</label> :{{cCctr.entity.oldData.totalTaxDeducted}}
+ </div>
+ <div class="col-md-3">
+ <label>Total Tax Deposited</label> :{{cCctr.entity.oldData.totalTaxDeposited}}
+ </div>
+ <div class="col-md-3">
+ <label>Date of Deduction</label> :{{cCctr.entity.oldData.dateOfDeduction}}
+ </div>
+ <div class="col-md-3">
+ <label>Rate At Which Tax Deducted</label> :{{cCctr.entity.oldData.rateAtWhichTaxDeducted}}
+ </div>
+ </div>
+ 
+ 
+  <div class="row">
+ <div class="col-md-3">
+ <label>Reason For Non Deduction</label> :{{cCctr.entity.oldData.reasonForNonDeduction}}
+ </div>
+ <div class="col-md-3">
+ <label>Grossing Up Indicator</label> :{{cCctr.entity.oldData.grossingUpIndicator}}
+ </div>
+ <div class="col-md-3">
+ <label>No Of Certificate Under Section</label> :{{cCctr.entity.oldData.noOfCertificateUnderSection}}
+ </div>
+ <div class="col-md-3">
+ <label>Unique Acknowledge No</label> :{{cCctr.entity.oldData.uniqueAcknowledgeNo}}
+ </div>
+ </div>
+ 
+ <div class="row">
+ <div class="col-md-12">
+ <label>Remarks</label> :{{cCctr.entity.oldData.remarks}}
+ </div>
+ </div>
+</fieldset>
+<br><br><br><Br>
+<fieldset>
+ <legend>Changed Data:</legend>
+ <div class="row">
+ <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.deducteeSrNo!=cCctr.entity.newData.deducteeSrNo}">
+ <label>Deductee Sr No</label> : {{cCctr.entity.newData.deducteeSrNo}}
+ </div>
+ <div class="col-md-3"  ng-class="{'give-border': cCctr.entity.oldData.srNoInChallan!=cCctr.entity.newData.srNoInChallan}">
+ <label>Sr No In Challan</label> :{{cCctr.entity.newData.srNoInChallan}}
+ </div>
+ <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.deducteeRefNo!=cCctr.entity.newData.deducteeRefNo}">
+ <label>Deductee Reference No</label> :{{cCctr.entity.newData.deducteeRefNo}}
+ </div>
+ <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.deducteeCode!=cCctr.entity.newData.deducteeCode}">
+ <label>Deductee Code</label> : {{cCctr.entity.newData.deducteeCode}}
+ </div>
+ </div>
+  <div class="row">
+ <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.pan!=cCctr.entity.newData.pan}">
+ <label>PAN</label>: {{cCctr.entity.newData.pan}}
+ </div>
+ <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.name!=cCctr.entity.newData.name}">
+ <label>Name</label> :{{cCctr.entity.newData.name}}
+ </div>
+ <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.sectionCode!=cCctr.entity.newData.sectionCode}">
+ <label>Section Code</label> :{{cCctr.entity.newData.sectionCode}}
+ </div>
+ <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.date!=cCctr.entity.newData.date}">
+ <label>Date</label> :{{cCctr.entity.newData.date}}
+ </div>
+ </div>
+  <div class="row">
+ <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.amountPaid!=cCctr.entity.newData.amountPaid}">
+ <label>Amount Paid</label> :{{cCctr.entity.newData.amountPaid}}
+ </div>
+ <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.tds!=cCctr.entity.newData.tds}">
+ <label>TDS</label> :{{cCctr.entity.newData.tds}}
+ </div>
+ <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.surcharge!=cCctr.entity.newData.surcharge}">
+ <label>Surcharge</label> :{{cCctr.entity.newData.surcharge}}
+ </div>
+ <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.educationCess!=cCctr.entity.newData.educationCess}">
+ <label>Education Cess</label> :{{cCctr.entity.newData.educationCess}}
+ </div>
+ </div>
+ <div class="row">
+ <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.addressOfDeductee!=cCctr.entity.newData.addressOfDeductee}">
+ <label>Address Of Deductee</label> :{{cCctr.entity.newData.addressOfDeductee}}
+ </div>
+ <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.contactNoOfDeductee!=cCctr.entity.newData.contactNoOfDeductee}">
+ <label>Contact No Of Deductee</label> :{{cCctr.entity.newData.contactNoOfDeductee}}
+ </div>
+ <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.emailId!=cCctr.entity.newData.emailId}">
+ <label>Email Id</label> :{{cCctr.entity.newData.emailId}}
+ </div>
+ <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.countryOfResidence!=cCctr.entity.newData.countryOfResidence}">
+ <label>Country Of Residence</label> :{{cCctr.entity.newData.countryOfResidence}}
+ </div>
+ </div>
+ <div class="row">
+ <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.totalTaxDeducted!=cCctr.entity.newData.totalTaxDeducted}">
+ <label>Total Tax Deducted</label> :{{cCctr.entity.newData.totalTaxDeducted}}
+ </div>
+ <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.totalTaxDeposited!=cCctr.entity.newData.totalTaxDeposited}">
+ <label>Total Tax Deposited</label> :{{cCctr.entity.newData.totalTaxDeposited}}
+ </div>
+ <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.dateOfDeduction!=cCctr.entity.newData.dateOfDeduction}">
+ <label>Date of Deduction</label> :{{cCctr.entity.newData.dateOfDeduction}}
+ </div>
+ <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.rateAtWhichTaxDeducted!=cCctr.entity.newData.rateAtWhichTaxDeducted}">
+ <label>Rate At Which Tax Deducted</label> :{{cCctr.entity.newData.rateAtWhichTaxDeducted}}
+ </div>
+ </div>
+ 
+ 
+  <div class="row">
+ <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.reasonForNonDeduction!=cCctr.entity.newData.reasonForNonDeduction}">
+ <label>Reason For Non Deduction</label> :{{cCctr.entity.newData.reasonForNonDeduction}}
+ </div>
+ <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.grossingUpIndicator!=cCctr.entity.newData.grossingUpIndicator}">
+ <label>Grossing Up Indicator</label> :{{cCctr.entity.newData.grossingUpIndicator}}
+ </div>
+ <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.noOfCertificateUnderSection!=cCctr.entity.newData.noOfCertificateUnderSection}">
+ <label>No.Of Certificate Under Section</label> :{{cCctr.entity.newData.noOfCertificateUnderSection}}
+ </div>
+ <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.uniqueAcknowledgeNo!=cCctr.entity.newData.uniqueAcknowledgeNo}">
+ <label>Unique Acknowledge No</label> :{{cCctr.entity.newData.uniqueAcknowledgeNo}}
+ </div>
+ </div>
+ <div class="row">
+ <div class="col-md-12">
+ <label>Remarks</label> :{{cCctr.entity.newData.remarks}}
+ </div>
+ </div>
+</fieldset><br><br>
+
+<form name="remarkForm">
+			<div class="form-group"
+				style="width: 50%; display: block; margin-left: auto; margin-right: auto;"
+				ng-show="cCctr.entity.newData.status=='Pending for approval'">
+				<label>Remark*:</label>
+				<textarea class="form-control" rows="2" id="remarks" name="remarks"
+					ng-required="true" ng-model="cCctr.entity.newData.remarks"></textarea>
+				<span style="color: red"
+					ng-show="remarkForm.submitted || remarkForm.remarks.$dirty && remarkForm.remarks.$invalid">
+					<span
+					class="error" ng-show="remarkForm.remarks.$error.required">Remark is Required.</span>
+				</span> <span class="error" id="remarks"></span>
+			</div>
+		</form>
+
+</div>
+
+<div ng-show="cCctr.entity.newData.status=='Pending for approval'" style="display: flex; align-items: center; justify-content: center;">
+<button class="btn btn-success" type="type" ng-click="remarkForm.submitted=true;cCctr.approveUpdate(remarkForm.$valid,'form27QDeducteeUpdateRequestDetail',cCctr.entity.newData)">Approve</button> &nbsp;&nbsp;&nbsp;&nbsp;
+<button class="btn btn-danger" type="type" ng-click="remarkForm.submitted=true;cCctr.rejectUpdate(remarkForm.$valid,'form27QDeducteeUpdateRequestDetail',cCctr.entity.newData)">Reject</button>
+
+
+</div>
+<button onclick=window.history.back(); class="btn btn-primary">Back</button>
+<div>
+
+</div>
+</div>
+<style>
+.give-border{
+	border: 1px solid red;
+}
+
+
+.sidenav {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	float: right;
+	right: 0;
+	background-color: #fff;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 60px;
+}
+
+.sidenav a {
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 25px;
+	color: #818181;
+	display: block;
+	transition: 0.3s;
+}
+
+.sidenav a:hover {
+	color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 36px;
+	margin-left: 50px;
+}
+
+.button {
+	position: relative;
+	background-color: #FFA500;
+	border: none;
+	font-size: 15px;
+	color: black;
+	width: 130px;
+	text-align: center;
+	-webkit-transition-duration: 0.4s; /* Safari */
+	transition-duration: 0.4s;
+	text-decoration: none;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.button:after {
+	content: "";
+	background: #f1f1f1;
+	display: block;
+	position: absolute;
+	padding-top: 300%;
+	padding-left: 350%;
+	margin-left: -20px !important;
+	margin-top: -120%;
+	opacity: 0;
+	transition: all 0.8s
+}
+
+.button:active:after {
+	padding: 0;
+	margin: 0;
+	opacity: 1;
+	transition: 0s
+}
+</style>
+
+</style>

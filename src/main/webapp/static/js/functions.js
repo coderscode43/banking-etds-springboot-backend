@@ -174,7 +174,35 @@ function readMore() {
 
 
 
+ /* function for open and close sidenavbar*/
+ function slideIn(){
+ 	$(".page-wrapper").removeClass("toggled");
+ }
+     	
+ function slideOut(){
+ 	$(".page-wrapper").addClass("toggled");
+ 	closeRemark();
+ }
+    
 
+ 
+ 
+ 
+ 
+ function openRemark() {
+		document.getElementById("mySidenav2").style.width = "30%";
+		document.getElementById("body1").style.backgroundColor = "#c8ccc9";
+		document.getElementById("comment").style.backgroundColor = "#c8ccc9";
+		
+		slideIn();
+	}
+	function closeRemark() {
+		document.getElementById("mySidenav2").style.width = "0";
+		document.getElementById("body1").style.backgroundColor = "#fff";
+		document.getElementById("comment").style.backgroundColor = "#fff";
+		
+
+	}
 
 
 
@@ -242,4 +270,6 @@ function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
 }
 
-   
+function closeSideNavForModel(){
+	$(".page-wrapper").removeClass("toggled");
+}

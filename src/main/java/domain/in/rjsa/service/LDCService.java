@@ -1,5 +1,7 @@
 package domain.in.rjsa.service;
 
-public interface LDCService {
+import domain.in.rjsa.model.tds.LDC;
+
+public interface LDCService extends ServiceTDSInterface<Long, LDC>{
 
 }

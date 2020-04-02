@@ -73,7 +73,6 @@ App
 				if (valid == true) {
 				    console.log("Common Controller submit "
 					    + entity);
-				    self.entity.branchId = $stateParams.branchId;
 				    self.entity.clientId = $stateParams.clientId;
 				    CommonService
 					    .save(self.entity, entity,
@@ -160,7 +159,6 @@ App
 					    delete self.search[key];
 					}
 				    });
-				    self.search.branchId = $stateParams.branchId;
 				    self.search.clientId = $stateParams.clientId;
 				    $state.go("home.search", {
 					"entity" : entity,

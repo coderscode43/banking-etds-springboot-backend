@@ -10,11 +10,11 @@ import domain.in.rjsa.service.TOKENNUMBERService;
 
 @Controller
 @RequestMapping("/apighReturnStatus")
-public class GH15RETURNSTATUSController  extends AbstractTDSController<Long, GH15RETURNSTATUS, GH15RETURNSTATUSService> {
+public class GH15RETURNSTATUSController extends AbstractTDSController<Long, GH15RETURNSTATUS, GH15RETURNSTATUSService> {
 
-	
 	@Autowired
 	GH15RETURNSTATUSService service;
+
 	@Override
 	public GH15RETURNSTATUSService getService() {
 		// TODO Auto-generated method stub
@@ -24,7 +24,7 @@ public class GH15RETURNSTATUSController  extends AbstractTDSController<Long, GH1
 	@Override
 	public Class<GH15RETURNSTATUS> getEntity() {
 		// TODO Auto-generated method stub
-		return  GH15RETURNSTATUS.class;
+		return GH15RETURNSTATUS.class;
 	}
 
 }

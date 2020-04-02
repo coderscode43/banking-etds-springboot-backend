@@ -3,7 +3,6 @@ package domain.in.rjsa.model.wrapper;
 import java.util.List;
 
 import domain.in.rjsa.model.form.Branch;
-import domain.in.rjsa.model.form.Zone;
 import lombok.Data;
 
 @Data
@@ -11,7 +10,7 @@ public class BranchDetailWrapper {
 
 	
 	public List<Branch> branchList;
-	public Zone zone;
+	
 	public Branch branch;
 	
 }

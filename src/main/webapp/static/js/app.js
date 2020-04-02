@@ -148,7 +148,7 @@ App.config([ '$stateProvider', '$urlRouterProvider',function($stateProvider, $ur
 					list : function($q, $state,CommonService,$stateParams) {
 						console.log('Get List of '+$stateParams.entity);
 						var deferred = $q.defer();
-						CommonService.countForBranchFunction($stateParams.entity,$stateParams.clientId,$stateParams.branchId).then(deferred.resolve, deferred.resolve);
+						CommonService.countForBranchFunction($stateParams.entity,$stateParams.clientId).then(deferred.resolve, deferred.resolve);
 						return deferred.promise;
 					}
 				}

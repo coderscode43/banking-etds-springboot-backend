@@ -1,5 +1,8 @@
 package domain.in.rjsa.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,9 +18,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import domain.in.rjsa.model.form.Branch;
 import domain.in.rjsa.model.form.ClientDetail;
 import domain.in.rjsa.model.form.Login;
+import domain.in.rjsa.model.form.UserSol;
 import domain.in.rjsa.web.ApplicationCache;
 
 @Controller
@@ -43,15 +46,12 @@ public class IndexController {
 	// mainPage
 	@RequestMapping(value = "/{page}")
 	public String getSelectCompanyTemplate(@PathVariable String page, ModelMap model) {
-
-		
-		
-		if(page.equals("main")) {
-			String userName =getPrincipal();
-			Login login =applicationCache.getLoginDetail(userName);
+		if (page.equals("main")) {
+			String userName = getPrincipal();
+			Login login = applicationCache.getLoginDetail(userName);
 			ClientDetail cd = applicationCache.getClientDetail(login.getClientId());
-			model.addAttribute("cd", cd);	
-			if(login.getPasswordReset()==null ||login.getPasswordReset()) {
+			model.addAttribute("cd", cd);
+			if (login.getPasswordReset() == null || login.getPasswordReset()) {
 				return "firstLogin";
 			}
 		}
@@ -65,24 +65,31 @@ public class IndexController {
 	}
 
 	@RequestMapping(value = "/home/{clientId}/{action}/{branchId}")
-	public String gethome(@PathVariable Long clientId, @PathVariable String action, @PathVariable String branchId, ModelMap model) {
-		String userName =getPrincipal();
-		Login login =applicationCache.getLoginDetail(userName);
-		if(branchId!=null) {
-			
-			try {
-				Long bId = Long.valueOf(branchId);
-				Branch br = applicationCache.getBranch(bId);
-				model.addAttribute("br", br);
-			}catch(Exception e) {
-				model.addAttribute("br", new Branch());
-			}
-			ClientDetail cd = applicationCache.getClientDetail(login.getClientId());
-			model.addAttribute("cd", cd);
-			
+	public String gethome(@PathVariable Long clientId, @PathVariable String action, @PathVariable String branchId,
+			ModelMap model) {
+		String userName = getPrincipal();
+		Login login = applicationCache.getLoginDetail(userName);
+		/*
+		 * if(branchId!=null) {
+		 * 
+		 * try { Long bId = Long.valueOf(branchId); Branch br =
+		 * applicationCache.getBranch(bId); model.addAttribute("br", br);
+		 * }catch(Exception e) { model.addAttribute("br", new Branch()); } ClientDetail
+		 * cd = applicationCache.getClientDetail(login.getClientId());
+		 * model.addAttribute("cd", cd);
+		 * 
+		 * }
+		 */
+
+		ClientDetail cd = applicationCache.getClientDetail(login.getClientId());
+		UserSol us = applicationCache.getUserSol(login.getId(), cd.getId());
+		List<Long> listSolId = new ArrayList<>();
+		for (String sol : us.getSolId().split("-")) {
+			listSolId.add(Long.valueOf(sol));
 		}
-		
-		
+		model.addAttribute("cd", cd);
+		model.addAttribute("listBr", listSolId);
+
 		return action;
 //		String userName =getPrincipal();
 //		Login login =applicationCache.getLoginDetail(userName);
@@ -94,9 +101,10 @@ public class IndexController {
 //		String pageName="Home";
 //		return action+"/"+action+pageName;
 	}
+
 	@RequestMapping(value = "/homePage/{clientId}/{action}")
-	public String getHomePage(@PathVariable Long clientId,@PathVariable String action,ModelMap model) {
-		String pageName="HomePage";
+	public String getHomePage(@PathVariable Long clientId, @PathVariable String action, ModelMap model) {
+		String pageName = "HomePage";
 //		Login l = applicationCache.getLoginDetail(getPrincipal());
 //		
 //		{
@@ -152,8 +160,8 @@ public class IndexController {
 //		model.addAttribute("impDates",applicationCache.getImpDates());
 //		model.addAttribute("recentNotifications",applicationCache.getRecentNotifications(clientId));
 //		model.addAttribute("recentRemark",applicationCache.getRecentRemark(clientId));
-		
-		return action+"/"+action+pageName;
+
+		return action + "/" + action + pageName;
 		// return action+"/"+action+pageName;
 	}
 
@@ -166,6 +174,15 @@ public class IndexController {
 	@RequestMapping(value = "/list/{clientId}/{action}/{page}")
 	public String getListPage(@PathVariable Long clientId, @PathVariable String action, @PathVariable String page,
 			ModelMap model) {
+		Login login = applicationCache.getLoginDetail(getPrincipal());
+		ClientDetail cd = applicationCache.getClientDetail(login.getClientId());
+		UserSol us = applicationCache.getUserSol(login.getId(), cd.getId());
+		List<Long> listSolId = new ArrayList<>();
+		for (String sol : us.getSolId().split("-")) {
+			listSolId.add(Long.valueOf(sol));
+		}
+		model.addAttribute("cd", cd);
+		model.addAttribute("listBr", listSolId);
 		return action + "/" + page;
 	}
 

@@ -1,5 +1,6 @@
 package domain.in.rjsa.controller;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import domain.in.rjsa.model.tds.GOVERNMENTDETAILS;
 import domain.in.rjsa.model.tds.RESPONSIBLEPERSONEDETAILS;
 import domain.in.rjsa.model.tds.TRACESSLOGIN;
 import domain.in.rjsa.model.wrapper.DeductorDetailWrapper;
+import domain.in.rjsa.service.BranchService;
 import domain.in.rjsa.service.CLIENTDETAILSService;
 import domain.in.rjsa.service.DEDUCTORDETAILSService;
 import domain.in.rjsa.service.EFILLINGLOGINService;
@@ -37,7 +39,8 @@ ApplicationCache applicationCache;
 GOVERNMENTDETAILSService gService;
 @Autowired
 CLIENTDETAILSService cdService;
-
+@Autowired
+BranchService bService;
 @Autowired
 TRACESSLOGINService tlService;
 @Autowired
@@ -70,8 +73,11 @@ EFILLINGLOGINService efService;
 		ew.setClientDetail(cd);
 		TRACESSLOGIN tl=tlService.getByKey(tan);
 		ew.setTraces(tl);
-		EFILLINGLOGIN ef=efService.getByKay(tan);
+		EFILLINGLOGIN ef=efService.getByKey(tan);
 		ew.setEfiling(ef);
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("clientId", clientId);
+		ew.setListBranch(bService.search(map, clientId));
 		
 		return ew;
 	}

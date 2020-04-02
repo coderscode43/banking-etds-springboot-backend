@@ -1,5 +1,8 @@
 package domain.in.rjsa.model.wrapper;
 
+import java.util.List;
+
+import domain.in.rjsa.model.form.Branch;
 import domain.in.rjsa.model.tds.CLIENTDETAILS;
 import domain.in.rjsa.model.tds.DEDUCTORDETAILS;
 import domain.in.rjsa.model.tds.EFILLINGLOGIN;
@@ -15,4 +18,5 @@ public class DeductorDetailWrapper {
 	public CLIENTDETAILS clientDetail;
 	public TRACESSLOGIN traces;
 	public EFILLINGLOGIN efiling;
+	public List<Branch> listBranch;
 }

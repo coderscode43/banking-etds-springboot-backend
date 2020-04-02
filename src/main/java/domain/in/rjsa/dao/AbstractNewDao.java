@@ -57,6 +57,10 @@ public abstract class AbstractNewDao<K extends Serializable, E> implements DaoIn
 	public List<E> findall(HashMap<String, Object> constrains, int pageNo, int noOfResult) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
+		if(constrains.containsKey("branchId")) {
+			if(constrains.get("branchId") instanceof ArrayList)
+			criteria.add(Restrictions.in("branchId", (List<Long>)constrains.remove("branchId")));
+		}
 		criteria.add(Restrictions.allEq(constrains));
 		criteria.addOrder(Order.desc("id"));
 		criteria.setFirstResult(pageNo * noOfResult);
@@ -98,7 +102,7 @@ public abstract class AbstractNewDao<K extends Serializable, E> implements DaoIn
 	public List<E> search(HashMap entity, Long clientId) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
-		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
+		Map<String, Object> propertyNameValues = new HashMap<String, Object>(entity);
 		propertyNameValues.put("clientId", clientId);
 		criteria.add(Restrictions.allEq(propertyNameValues));
 //		if (entity.get("fromDate") != null) {

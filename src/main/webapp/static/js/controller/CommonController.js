@@ -19,7 +19,7 @@ App
 							self.tan;
 							self.clientId;
 							self.branchId;
-							self.loader = '';
+							self.loader='';
 							self.entity = {};
 							self.search = {};
 							self.entityList = [];
@@ -118,6 +118,16 @@ App
 												});
 
 							}
+							
+							self.download=function(url){
+								/*modal = modal+'Click';
+								modalClick(modal);*/
+								wait(1000);
+								self.loader=url;
+								window.open(self.loader,"_blank");
+								
+							}
+							
 							self.deleteFunction = function(valid, entityName,
 									entity, entityList, index, closeModalId) {
 								if (valid = true) {
@@ -591,6 +601,136 @@ App
 													});
 								}
 							}
+							
+
+							
+							self.approveUpdate = function(valid, entity, data){
+								if (valid == true) {
+									console.log("Common Controller approveData "
+											+ entity);
+
+									self.entity.clientId = $stateParams.clientId;
+
+									CommonService
+											.approveUpdate(data, entity,
+													$stateParams.clientId)
+											.then(
+													function(data) {
+														console
+																.log(entity
+																		+ ' updated successfully');
+														$('#successMsg')
+																.find(
+																		'.modal-header')
+																.find(
+																		'.headingMsg')
+																.append(
+																		"Successfull");
+														$('#successMsg')
+																.find(
+																		'.modal-body')
+																.find('.msg')
+																.append(
+																		" Updated Successfully");
+														$("#successMsg")
+																.modal();
+
+													},
+													function(error) {
+														console
+																.error('Error while updating Details, '
+																		+ status);
+
+														if (error.exceptionMsg != null
+																&& error.exceptionMsg != undefined) {
+															$('#errorMsg')
+																	.find(
+																			'.modal-body')
+																	.find(
+																			'.msg')
+																	.append(
+																			"Can not Update "
+																					+ error.entityName
+																					+ " : "
+																					+ error.exceptionMsg);
+															$("#errorMsg")
+																	.modal();
+														} else {
+															for (var i = 0; i < error.fieldErrors.length; i++) {
+																var obj = error.fieldErrors[i];
+																document
+																		.getElementById(obj.fieldName).innerHTML = obj.message;
+															}
+														}
+
+													});
+
+								}
+							}
+							
+							self.rejectUpdate = function(valid, entity, data){
+								if (valid == true) {
+									console.log("Common Controller rejectData "
+											+ entity);
+
+									self.entity.clientId = $stateParams.clientId;
+
+									CommonService
+											.rejectUpdate(data, entity,
+													$stateParams.clientId)
+											.then(
+													function(data) {
+														console
+																.log(entity
+																		+ ' updated successfully');
+														$('#successMsg')
+																.find(
+																		'.modal-header')
+																.find(
+																		'.headingMsg')
+																.append(
+																		"Successfull");
+														$('#successMsg')
+																.find(
+																		'.modal-body')
+																.find('.msg')
+																.append(
+																		" Updated Successfully");
+														$("#successMsg")
+																.modal();
+
+													},
+													function(error) {
+														console
+																.error('Error while updating Details, '
+																		+ status);
+
+														if (error.exceptionMsg != null
+																&& error.exceptionMsg != undefined) {
+															$('#errorMsg')
+																	.find(
+																			'.modal-body')
+																	.find(
+																			'.msg')
+																	.append(
+																			"Can not Update "
+																					+ error.entityName
+																					+ " : "
+																					+ error.exceptionMsg);
+															$("#errorMsg")
+																	.modal();
+														} else {
+															for (var i = 0; i < error.fieldErrors.length; i++) {
+																var obj = error.fieldErrors[i];
+																document
+																		.getElementById(obj.fieldName).innerHTML = obj.message;
+															}
+														}
+
+													});
+
+								}
+							}
 
 							self.updateData = function(valid, entity, data,
 									closeModalId) {
@@ -763,8 +903,6 @@ App
 								return Math.ceil(CommonService.getCount()/100);
 							
 							}
-							
-							
 							
 
 							self.setIndex = function(ind) {

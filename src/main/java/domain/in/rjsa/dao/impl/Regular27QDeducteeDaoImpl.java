@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractNewDao;
 import domain.in.rjsa.dao.Regular27QDeducteeDao;
+import domain.in.rjsa.model.form.Regular24QDeductee;
 import domain.in.rjsa.model.form.Regular27QDeductee;
 import domain.in.rjsa.model.form.VendorPayment;
 
@@ -56,6 +57,20 @@ public class Regular27QDeducteeDaoImpl extends AbstractNewDao<Long, Regular27QDe
           
 		criteria.addOrder(Order.desc("date"));
 		return (List<Regular27QDeductee>) criteria.list();
+	}
+	
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Regular27QDeductee> findall(HashMap<String, Object> constrains, int pageNo, int noOfResult) {
+		Criteria criteria = createEntityCriteria();
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
+		criteria.add(Restrictions.in("branchId", (List<Long>)constrains.remove("branchId")));
+		criteria.add(Restrictions.allEq(constrains));
+		criteria.addOrder(Order.desc("id"));
+		criteria.setFirstResult(pageNo * noOfResult);
+		criteria.setMaxResults(noOfResult);
+		return (List<Regular27QDeductee>) criteria.list();
+
 	}
 
 }

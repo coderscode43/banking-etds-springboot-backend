@@ -4,13 +4,12 @@ import java.util.List;
 
 import domain.in.rjsa.model.form.Address;
 import domain.in.rjsa.model.form.BankAccDetail;
-import domain.in.rjsa.model.form.Vendor;
 import domain.in.rjsa.model.form.VendorLDC;
 import domain.in.rjsa.model.form.VendorPayment;
 import lombok.Data;
 @Data
 public class VendorDetailWrapper {
-	public Vendor vendor;
+	
 	public VendorLDC vendorLDC;
 	public List<VendorLDC> vldcs;
 	public List<VendorPayment> vpList;

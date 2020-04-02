@@ -150,7 +150,7 @@ public abstract class AbstractTDSController<K extends Serializable, E extends Mo
 		// verify the clientId authorization
 //			applicationCache.getUserAuthorised();
 		HashMap<String, Object> constrains = new HashMap<>();
-		//constrains.put("clientId", applicationCache.getLoginDetail(getPrincipal()).getClientId());
+//		constrains.put("clientId", applicationCache.getLoginDetail(getPrincipal()).getClientId());
 //		constrains.put("employeeId", applicationCache.getLoginDetail(getPrincipal()).getEmployeeId());
 
 		String mapping = request.getPathInfo();

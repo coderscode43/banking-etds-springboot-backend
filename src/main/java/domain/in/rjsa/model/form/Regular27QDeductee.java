@@ -165,6 +165,8 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	
 	@Column(name = "verify")
 	public boolean verify = false;
+	@Column(name = "remarks")
+	public String remarks;
 	
 	public void setEntity(Regular27QDeductee form27Q){
 		this.date=form27Q.getDate();		

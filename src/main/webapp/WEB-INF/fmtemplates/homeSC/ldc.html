@@ -1,0 +1,217 @@
+
+<style>
+@media only screen and (max-width: 1000px) {
+	.one {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.two {
+		padding: 8px;
+	}
+}
+
+@media only screen and (min-width:600px) {
+	#three {
+		display: none;
+		max-height: 0;
+		overflow: hidden;
+	}
+}
+
+@media only screen and (min-width:1000px) {
+	#search {
+		margin-left: 45%;
+		margin-top: 2px;
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	#hide {
+		display: none;
+	}
+}
+
+.table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
+	{
+	background-color: whitesmoke;
+}
+
+@media ( min-width : 768px) {
+	.collapse.dont-collapse-sm {
+		display: block;
+		height: auto !important;
+		visibility: visible;
+	}
+}
+</style>
+
+
+
+
+<div id="page-wrapper">
+	<div class="container-fluid">
+		<div class="col-md-12 "
+			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
+			<div class="heading">Lower Deduction Certificate</div>
+
+
+
+		</div>
+		<div class="container" style="margin-left: -2%">
+			<br>
+			<button class="btn btn-primary hidden visible-xs" type="button"
+				data-toggle="collapse" data-target="#collapseExample2"
+				aria-expanded="false" aria-controls="collapseExample">
+				Search</button>
+			<div class="collapse dont-collapse-sm" id="collapseExample2">
+				<div class="row">
+					<div class="form-group">
+						<div class="col-md-3">
+
+							<h6>
+								<b>Financial Year</b>
+							</h6>
+							<select class="form-control" ng-model="cWctr.search.FY">
+								<option value="" ng-selected=true>Year</option>
+								<option value="201516">201920</option>
+								<option value="201819">201819</option>
+								<option value="201718">201718</option>
+								<option value="201617">201617</option>
+								<option value="201516">201516</option>
+								<option value="201415">201415</option>
+								<option value="201314">201314</option>
+								<option value="201213">201213</option>
+								<option value="201112">201112</option>
+								<option value="201011">201011</option>
+								<option value="200910">200910</option>
+								<option value="200809">200809</option>
+								<option value="200708">200708</option>
+							</select>
+
+						</div>
+
+						<div class="col-md-3">
+							<h6>
+								<b>PAN</b>
+							</h6>
+							<input type="text" ng-model="cCctr.search.PAN"
+								class="form-control" placeholder="PAN" style="width: 100%">
+						</div>
+						
+						<div class="col-md-3">
+							<h6>
+								<b>LDC Number</b>
+							</h6>
+							<input type="text" ng-model="cCctr.search.LDC_NUMBER"
+								class="form-control" placeholder="LDC Number" style="width: 100%">
+						</div>
+
+
+
+					</div>
+
+
+				</div>
+
+				<div class="row" id="hide">
+					<div class="col-md-3" style="margin-left: 85%; margin-top: -70px">
+						<button ng-click="cCctr.searchEntities(true,'ldc')"
+							class="btn btn-success">Search</button>
+					</div>
+				</div>
+
+				<div class="row" id="search">
+					<div class="col-md-3" id="search">
+						<button ng-click="cCctr.searchEntities(true,'ldc')"
+							class="btn btn-success">Search</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="text-right">
+					<button type="button" class="btn btn-primary"
+						ng-click="cCctr.gotoListPage('addLDC','addLDC');">Add</button>
+				</div>
+			</div>
+		</div>
+		<div class="panel-body" style="margin-left: -3%; width: 107%;">
+
+			<div class="row">
+				<div class="">
+
+					<table class="tables table-bordered table-hover table-striped"
+						role="table"
+						style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+
+
+						<thead>
+						<colgroup>
+							<col span="14" style="background-color: #ffffff">
+						</colgroup>
+						<tr>
+						<thead role="rowgroup">
+							<tr role="row" style="height: 40px; background-color: #81b7db">
+								<th width="3%">Sr. No.</th>
+								<th width="10%">LDC_NUMBER</th>
+								<th width="10%">NAME</th>
+								<th width="7%">TAN</th>
+								<th width="7%">PAN</th>
+								<th width="8%">Financial Year</th>
+								<th width="6%">Valid From</th>
+								<th width="6%">Valid To</th>
+								<th width="8%">Section Code</th>
+								<th width="10%">Nature of Payment</th>
+								<th width="6%">LDC Rate</th>
+								<th width="10%">Certificate Limit</th>
+								<th width="10%">Amount Consumed</th>
+								<th width="6%">Issue Date</th>
+								<th width="10%">Cancel Date</th>
+								<th width="6%">As On Date</th>
+
+
+
+							</tr>
+						</thead>
+						<tbody>
+							<tr role="row"
+								ng-repeat="a in cCctr.getEntityListData() track by a.id">
+								<td role="cell" class="one" style="height: 60px; padding: 10px">{{$index+1}}</td>
+								<td>{{a.LDC_NUMBER}}</td>
+								<td>{{a.NAME}}</td>
+								<td>{{a.TAN}}</td>
+								<td>{{a.PAN}}</td>
+								<td>{{a.FY}}</td>
+								<td>{{a.VALID_FROM | date:'dd-MM-yyyy'}}</td>
+								<td>{{a.VALID_TO | date:'dd-MM-yyyy'}}</td>
+								<td>{{a.SECTION_CODE}}</td>
+								<td>{{a.NATURE_OF_PAYMENT}}</td>
+								<td>{{a.LDC_RATE}}</td>
+								<td>{{a.CERTIFICATE_LIMIT}}</td>
+								<td>{{a.AMOUNT_CONSUMED}}</td>
+								<td>{{a.ISSUE_DATE | date:'dd-MM-yyyy'}}</td>
+								<td>{{a.CANCEL_DATE}}</td>
+								<td>{{a.AS_ON_DATE | date:'dd-MM-yyyy'}}</td>
+
+								<!-- <td>{{a.total-a.amountPaid}}</td> -->
+
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+
+
+	</div>
+</div>

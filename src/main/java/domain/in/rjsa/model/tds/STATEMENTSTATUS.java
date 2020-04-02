@@ -20,7 +20,6 @@ public class STATEMENTSTATUS extends CommonModelAbstract{
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
 	public Long id;
-
 	@Column(name = "TAN")
 	public String TAN;
 	@Column(name = "FORM")

@@ -1,7 +1,5 @@
 package domain.in.rjsa.model.tds;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,15 +11,18 @@ import org.hibernate.annotations.GenericGenerator;
 
 import domain.in.rjsa.model.form.CommonModelAbstract;
 import lombok.Data;
+
 @Data
 @Entity
 @Table(name = "GH15RETURNSTATUS")
-public class GH15RETURNSTATUS extends CommonModelAbstract{
+public class GH15RETURNSTATUS extends CommonModelAbstract {
 	@Id
-	@GeneratedValue(strategy= GenerationType.AUTO, generator="native")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "ID")
-	public String ID;
+	public Long ID;
+	@Column(name = "clientId")
+	public Long clientId;
 	@Column(name = "TAN")
 	public String TAN;
 	@Column(name = "QUARTER")
@@ -36,5 +37,5 @@ public class GH15RETURNSTATUS extends CommonModelAbstract{
 	public String STATUS;
 	@Column(name = "AS_ON_DATE")
 	public String AS_ON_DATE;
-	
+
 }

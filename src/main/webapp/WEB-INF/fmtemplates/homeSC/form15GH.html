@@ -185,6 +185,51 @@
 					</div>
 				</div>
 			</div>
+			
+			<div class="collapse  panel-collapse" id="collapseExample4">
+			
+          <div class="row">
+			<div class="col-md-3">
+				<h6>
+					<b>From Date</b>
+					<h6>
+						<input type="date" ng-model="cWctr.search.fromDate"
+							ng-change="cWctr.search.fromDate=cWctr.date(cWctr.search.fromDate);"
+							class="form-control" placeholder="Date" style="width: 100%">
+			</div>
+
+			<div class="col-md-3">
+				<h6>
+					<b>To Date</b>
+					<h6>
+						<input type="date" ng-model="cWctr.search.toDate"
+							ng-change="cWctr.search.toDate=cWctr.date(cWctr.search.toDate);"
+							class="form-control" placeholder="Date" style="width: 100%">
+			</div>
+			
+			<div class="col-md-3">
+				<h6>
+					<b>Status</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.STATUS"
+							
+							class="form-control" placeholder="Status" style="width: 100%">
+			</div>
+			
+			
+		</div>
+		
+		<div class="row">
+		<div class="col-md-3">
+				<h6>
+					<b>Return Type</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.RT"
+							
+							class="form-control" placeholder="RT" style="width: 100%">
+			</div>
+		</div>		
+		</div>
 
 			<div class="row" id="hide">
 				<div class="col-md-4" style="margin-left: 85%; margin-top: -40px">
@@ -198,6 +243,21 @@
 					<button ng-click="cCctr.searchEntities(true,'form15GH')"
 						class="btn btn-success" onclick="scrollWin()">Search</button>
 				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="text-right">
+			<button class="btn btn-secondary"
+					style="background-color: #FFA500;"
+					data-toggle="collapse" data-target="#collapseExample4"
+					aria-expanded="false" aria-controls="collapseExample">
+					Advance Search</button>
+			
+				<button class="btn btn-Primary" data-toggle="modal"
+					ng-click="cCctr.gotoListPage('addForm15GH','addForm15GH');">Add</button>
 			</div>
 		</div>
 	</div>

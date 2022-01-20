@@ -13,7 +13,6 @@ import com.google.gson.JsonElement;
 
 import domain.in.rjsa.exception.CustomException;
 import domain.in.rjsa.model.form.Login;
-import domain.in.rjsa.model.form.Regular24QDeductee;
 import domain.in.rjsa.model.form.Regular24QSalary;
 import domain.in.rjsa.model.form.Regular24QSalaryUpdateRequestDetail;
 import domain.in.rjsa.model.form.Remarks;
@@ -24,7 +23,7 @@ import domain.in.rjsa.service.RemarksService;
 import domain.in.rjsa.util.StaticData;
 
 @Controller
-@RequestMapping("/apiform24QSalary")
+@RequestMapping("/apiform24Qsalary")
 public class Regular24QSalaryController
 		extends AbstractBranchController<Long, Regular24QSalary, Regular24QSalaryService> {
 

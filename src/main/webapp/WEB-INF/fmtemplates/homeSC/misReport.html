@@ -127,7 +127,8 @@
 	      <div class="form-group">
   	         <div class="col-md-4" style="margin-left:30%">	
                   <label>From Date.</label>
-                  <input type="date" ng-model="" ng-change=""
+                  <input type="date"  ng-model="cCctr.entity.fromDate"
+									ng-change="cCctr.entity.fromDate=cCctr.date(cCctr.entity.fromDate);"
 								class="form-control" placeholder="From Date">
 			</div> 
 		</div>
@@ -136,7 +137,8 @@
 	      <div class="form-group">
   	         <div class="col-md-4" style="margin-left:30%">	
                   <label>To Date.</label>
-                  <input type="date" ng-model="" ng-change=""
+                  <input type="date"  ng-model="cCctr.entity.toDate"
+									ng-change="cCctr.entity.toDate=cCctr.date(cCctr.entity.toDate);"
 								class="form-control" placeholder="From Date">
 			</div> 
 		</div>
@@ -148,6 +150,8 @@
                   <select style="width:100%" class="form-control">
                     <option value="section">Section</option>
                     <option value="monthWise">Month Wise</option>
+                     <option value="taxAudit">Tax Audit Report</option>
+                     <option value="taxAudit"> Default Tax Audit Report</option>
                  </select> 
 		   </div> 
 	    </div>
@@ -156,8 +160,8 @@
   	    
 	 <div class="row" id="search" >
 	         	  <div class="col-md-4" id="search" style="margin-left:40%">	
-	                          <button ng-click=""
-									class="btn btn-success">Generate Report</button>
+	                          <button  
+									class="btn btn-success" ng-click="cCctr.download('apimisReport/download/'+cCctr.entity.partyDetail.clientId+'/Report/'+cCctr.temp.partyId+'/'+cCctr.datesplit(cCctr.temp.fromDate)+'/'+cCctr.datesplit(cCctr.temp.toDate)+'/customer/'+cCctr.temp.reportType)"">Generate Report</button>
 	                 </div>					
   </div>
 	  

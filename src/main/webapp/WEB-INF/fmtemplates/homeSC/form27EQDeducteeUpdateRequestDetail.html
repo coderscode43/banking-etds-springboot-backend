@@ -1,0 +1,603 @@
+<style>
+
+
+@media only screen and (min-width:1000px) {
+	#search {
+		margin-left: 45%;
+		margin-top: 2px;
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	#hide {
+		display: none;
+	}
+}
+
+.table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
+	{
+	background-color: whitesmoke;
+}
+
+@media ( min-width : 768px) {
+	.collapse.dont-collapse-sm {
+		display: block;
+		height: auto !important;
+		visibility: visible;
+	}
+}
+
+@media ( min-width : 300px) and (max-width: 700px) {
+	.mobile {
+		display: none;
+	}
+}
+
+@media only screen and (min-width:700px) {
+	.hide-on-desktop, * [aria-labelledby='hide-on-desktop'] {
+		display: none;
+	}
+}
+
+@media ( min-width : 300px) and (max-width: 700px) {
+	.mobile {
+		display: none;
+	}
+}
+
+@media only screen and (min-width:700px) {
+	.hide-on-desktop, * [aria-labelledby='hide-on-desktop'] {
+		display: none;
+	}
+}
+
+/* iPad Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+/* CSS */
+.mobile {
+		display: none;
+	}
+}
+</style>
+
+
+
+
+<div id="page-wrapper" ng-controller="CommonWOTController as cWctr">
+	<div class="container-fluid">
+		<div class="col-md-12 "
+			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
+			<div class="heading">
+				<strong>Form 27EQ Update Request Details</strong>
+			</div>
+
+
+
+		</div>
+
+		<br>
+		<button class="btn btn-primary hidden visible-xs" type="button"
+			data-toggle="collapse" data-target="#collapseExample2"
+			aria-expanded="false" aria-controls="collapseExample">
+			Search</button>
+
+		<div class="collapse dont-collapse-sm" id="collapseExample2">
+			<div class="row">
+				<div class="form-group">
+
+
+					<div class="col-md-3">
+						<h6>
+							<b>Financial Year</b>
+						</h6>
+						<select class="form-control" ng-model="cWctr.search.fy">
+							<option value=" " ng-selected="true">Financial Year</option>
+							<option value="202021">202021</option>
+							<option value="201920">201920</option>
+							<option value="201819">201819</option>
+							<option value="201718">201718</option>
+							<option value="201617">201617</option>
+							<option value="201516">201516</option>
+							<option value="201415">201415</option>
+							<option value="201314">201314</option>
+							<option value="201213">201213</option>
+							<option value="201112">201112</option>
+							<option value="201011">201011</option>
+							<option value="200910">200910</option>
+							<option value="200809">200809</option>
+							<option value="200709">200708</option>
+						</select>
+					</div>
+
+					<div class="col-md-3">
+						<h6>
+							<b>Quarter</b>
+
+							<h6>
+								<select class="form-control" ng-model="cWctr.search.quarter">
+									<option value=" " ng-selected="true">Quarter</option>
+									<option value="Q1">Q1</option>
+									<option value="Q2">Q2</option>
+									<option value="Q3">Q3</option>
+									<option value="Q4">Q4</option>
+								</select>
+					</div>
+
+
+					<div class="col-md-3">
+						<h6>
+							<b>Section Code</b>
+							<h6>
+								<input type="text" ng-model="cWctr.search.sectionCode"
+									class="form-control" placeholder="Section Code"
+									style="width: 100%">
+					</div>
+				</div>
+			</div>
+			<div class=" collapse  panel-collapse " id="collapseExample4">
+				<div class="row">
+				<div class="col-md-3">
+					<h6>
+						<b>From Date of Payment</b>
+					</h6>
+					<input type="date" ng-model="cWctr.search.fromDate"
+						ng-change="cWctr.search.fromDate=cWctr.date(cWctr.search.fromDate);"
+						class="form-control" placeholder="Date" style="width: 100%">
+				</div>
+
+				<div class="col-md-3">
+					<h6>
+						<b>To Date of Payment</b>
+					</h6>
+					<input type="date" ng-model="cWctr.search.toDate"
+						ng-change="cWctr.search.toDate=cWctr.date(cWctr.search.toDate);"
+						class="form-control" placeholder="Date" style="width: 100%">
+				</div>
+
+
+				<div class="col-md-3">
+					<h6>
+						<b>PAN</b>
+					</h6>
+					<input type="text" ng-model="cWctr.search.pan" class="form-control"
+						placeholder="PAN" style="width: 100%">
+				</div>
+				</div>
+				<div class="row">
+				<div class="form-group">
+
+
+					<div class="col-md-3">
+						<h6>
+							<b>Challan Sr.No</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.srNoInChallan"
+							class="form-control" placeholder="Challan Sr.No"
+							style="width: 100%">
+					</div>
+
+					<div class="col-md-3">
+						<h6>
+							<b>Party Reference No</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.partyReferenceNo"
+							class="form-control" placeholder="Party Reference No. "
+							style="width: 100%">
+					</div>
+
+
+					<div class="col-md-3">
+						<h6>
+							<b>Party Code</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.partyCode"
+							class="form-control" placeholder="Party Code"
+							style="width: 100%">
+					</div>
+					<div class="col-md-3">
+						<h6>
+							<b>Name of the Party </b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.nameoftheParty"
+							class="form-control" placeholder="Name of the Party "
+							style="width: 100%">
+					</div>
+					
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+
+
+					
+
+					<div class="col-md-3">
+						<h6>
+							<b>Amount Receipt/Debited</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.amountReceiptDebited"
+							class="form-control" placeholder="Amount Receipt/Debited"
+							style="width: 100%">
+					</div>
+
+
+					<div class="col-md-3">
+						<h6>
+							<b>TCS</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.tcs"
+							class="form-control" placeholder="TCS"
+							style="width: 100%">
+					</div>
+					
+					<div class="col-md-3">
+						<h6>
+							<b>Surcharge</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.surcharge"
+							class="form-control" placeholder="Surcharge"
+							style="width: 100%">
+					</div>
+
+					<div class="col-md-3">
+						<h6>
+							<b>Education Cess </b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.educationCess"
+							class="form-control" placeholder="Education Cess "
+							style="width: 100%">
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="form-group">
+
+
+					
+
+
+					<div class="col-md-3">
+						<h6>
+							<b>Total Tax Collected</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.totalTaxCollected"
+							class="form-control" placeholder="Total Tax Collected"
+							style="width: 100%">
+					</div>
+					<div class="col-md-3">
+						<h6>
+							<b>Total Tax Deposited </b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.totalTaxDeposited"
+							class="form-control" placeholder="Total Tax Deposited "
+							style="width: 100%">
+					</div>
+
+					<div class="col-md-3">
+						<h6>
+							<b>Total Value of Purchase</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.totalValueofPurchase"
+							class="form-control" placeholder="Total Value of Purchase "
+							style="width: 100%">
+					</div>
+
+
+					<div class="col-md-3">
+						<h6>
+							<b>Rate at which Tax Collected </b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.rateatwhichTaxCollected"
+							class="form-control" placeholder="Rate at which Tax Collected "
+							style="width: 100%">
+					</div>
+				</div>
+			</div>
+			
+			
+			
+			<div class="row">
+				<div class="form-group">
+
+
+					<div class="col-md-3">
+						<h6>
+							<b>Reason for Non Collection </b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.reasonforNonCollection"
+							class="form-control" placeholder="Reason for Non Collection "
+							style="width: 100%">
+					</div>
+
+					<div class="col-md-3">
+						<h6>
+							<b>Section / Collection Code</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.sectionCollectionCode"
+							class="form-control" placeholder="Section / Collection Code"
+							style="width: 100%">
+					</div>
+
+
+					<div class="col-md-3">
+						<h6>
+							<b>Certificate number</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.certificatenumber"
+							class="form-control" placeholder="Certificate number"
+							style="width: 100%">
+					</div>
+					
+					<div class="col-md-3">
+						<h6>
+							<b>Deductee is Non-Resident  </b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.deducteeisNonResident"
+							class="form-control" placeholder="Deductee is Non-Resident "
+							style="width: 100%">
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="form-group">
+
+
+					
+
+					<div class="col-md-3">
+						<h6>
+							<b>Permanent Establishment </b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.permanentEstablishment"
+							class="form-control" placeholder="Permanent Establishment "
+							style="width: 100%">
+					</div>
+
+
+					<div class="col-md-3">
+						<h6>
+							<b>Error Description</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.errorDescription"
+							class="form-control" placeholder="Error Description"
+							style="width: 100%">
+					</div>
+					
+					<div class="col-md-3">
+						<h6>
+							<b>Short Deduction</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.shortDeduction"
+							class="form-control" placeholder="Short Deduction"
+							style="width: 100%">
+					</div>
+
+					<div class="col-md-3">
+						<h6>
+							<b>Interest on Short Deduction</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.interestonShortDeduction"
+							class="form-control" placeholder="Interest on Short Deduction"
+							style="width: 100%">
+					</div>
+
+
+					<div class="col-md-3">
+						<h6>
+							<b>Interest on Late Payment</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.interestonLatePayment"
+							class="form-control" placeholder="Interest on Late Payment"
+							style="width: 100%">
+					</div>
+					
+					<div class="col-md-3">
+						<h6>
+							<b>Interest on Late Deduction</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.interestonLateDeduction"
+							class="form-control" placeholder="Interest on Late Deduction"
+							style="width: 100%">
+					</div>
+					
+				</div>
+			</div>
+		
+			</div>
+
+
+
+			<div class="row mobile" id="search">
+				<div class="col-md-2" id="search">
+					<button
+						ng-click="cWctr.searchEntities(true,'form27QDeducteeUpdateRequestDetail','form27QDeducteeUpdateRequestDetail')"
+						class="btn btn-success" onclick="scrollWin()">Search</button>
+				</div>
+			</div>
+
+
+			<div class="row" id="hide">
+				<div class="col-md-3" style="margin-left: 80%; margin-top: -50px">
+					<button
+						ng-click="cWctr.searchEntities(true,'form27EQDeducteeUpdateRequestDetail')"
+						class="btn btn-success" onclick="scrollWin()">Search</button>
+				</div>
+			</div>
+
+
+			<div class="row" id="search">
+				<div class="col-md-3" id="search">
+					<button
+						ng-click="cWctr.searchEntities(true,'form27EQDeducteeUpdateRequestDetail')"
+						class="btn btn-success" onclick="scrollWin()">Search</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div style="float: right; margin-top: -13px"></div>
+
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="text-right">
+				<button class="btn btn-secondary"
+					style="background-color: #FFA500"
+					data-toggle="collapse" data-target="#collapseExample4"
+					aria-expanded="false" aria-controls="collapseExample">
+					Advance Search</button>
+				<button type="button" class="btn btn-primary"
+					ng-click="cCctr.gotoListPage('addForm27EQDeductee','addForm27EQDeductee');">Add</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+
+		 <div class="table-responsive" style="overflow-x:inherit">
+
+		<table class="table table-bordered table-hover table-striped"
+			
+			style="font-size: 12px; width: 100%">
+
+
+			<thead>
+			<colgroup>
+				<col span="14" style="background-color: #ffffff">
+			</colgroup>
+			<tr>
+			<thead role="rowgroup">
+				<tr style="background-color: #81b7db">
+					<th>Sr. No.</th>
+					<th>Challan No</th>
+					<th>Party Reference No</th>
+					<th>Party Code</th>
+					<th>Pan of the Party</th>
+					<th>Name of The Party</th>
+					<th>Amount Receipt Debited</th>
+					<th>Date of Received Debited</th>
+					<th>TCS</th>
+					<th>Surcharge</th>
+					<th>Quarter</th>
+					<th>Financial Year</th>
+					<th>Education Cess</th>
+					<th>Total Tax Collected</th>
+					<th>Total Tax Deposited</th>
+					<th>Date Of Collected</th>
+					<th>Total Value of Purchase</th>
+					<th>Rate at Which Tax Collected</th>
+					<th >Reason for Non Collection</th>
+					<th >Section Collection Code</th>
+					<th >Certificate Number</th>
+					<th >Deductee Is Non Resident</th>
+					<th >Permanent Establishment</th>
+					<th >Error Description</th>
+					<th >Warning Description</th>
+					<th >Short Deduction</th>
+					<th >Interest on Short Deduction</th>
+					<th >Interest on LatePayment</th>
+					<th >InterestonLateDeduction</th>
+					<th>Action</th>
+					
+
+
+				</tr>
+			</thead>
+			<tbody>
+			<tr role="row"
+					ng-repeat="a in cCctr.getEntityListData() track by a.id">
+					<td role="cell">{{$index+1}}</td>
+					<td>{{a.srNoInChallan}}</td>
+					<td>{{a.PartyReferenceNo}}</td>
+					<td>{{a.partyCode}}</td>
+					<td>{{a.panoftheParty}}</td>
+					<td>{{a.nameoftheParty}}</td>
+					<td>{{a.amountReceiptDebited}}</td>
+					<td>{{a.dateofReceivedDebited| date:'dd-MM-yyyy'}}</td>
+					<td>{{a.tcs}}</td>
+					<td>{{a.surcharge}}</td>
+					<td>{{a.quarter}}</td>
+					<td>{{a.fy}}</td>
+					<td>{{a.educationCess}}</td>
+					<td>{{a.totalTaxCollected}}</td>
+					<td>{{a.totalTaxDeposited}}</td>
+					<td>{{a.dateofCollected | date:'dd-MM-yyyy'}}</td>
+					<td>{{a.totalValueofPurchase}}</td>
+					<td>{{a.rateatwhichTaxCollected}}</td>
+					<td>{{a.reasonforNonCollection}}</td>
+					<td>{{a.sectionCollectionCode}}</td>
+					<td>{{a.certificatenumber}}</td>
+					<td>{{a.deducteeisNonResident}}</td>
+					<td>{{a.permanentEstablishment}}</td>
+					<td>{{a.errorDescription}}</td>
+					<td>{{a.warningDescription}}</td>
+					<td>{{a.shortDeduction}}</td>
+					<td>{{a.interestonShortDeduction}}</td>
+					<td>{{a.interestonLatePayment}}</td>
+					<td>{{a.interestonLateDeduction}}</td>
+					
+					<div>
+						<td ng-if="a.verify == 1"><i class="fa fa-check"
+							aria-hidden="true" style="color: #5cb85c"></i></td>
+						<td ng-if="a.verify == 0"><i class="fa fa-times"
+							aria-hidden="true" style="color: #ff0000"></i></td>
+					</div>
+				
+					<td><a
+						ng-click="cCctr.gotoDetailPage('form27EQDeducteeUpdateRequestDetail',a.id,'detailForm27EQDeducteeUpdateRequestDetail')"
+						style="color: blue" onclick="scrollWin()"><img
+							src="static\img\edit.png" width="22px" height="22px"
+							alt="Details" style="margin-top: 5px; margin-bottom: 5px;" /></a></td>
+					<!-- <td>{{a.total-a.amountPaid}}</td> -->
+				</tr>
+			
+			
+			
+			</tbody>
+		</table>
+
+	</div>
+
+	<div class="row" ng-show="cCctr.getNoPage() > 0">
+		<div class="row" align="center">
+			<span ng-show="cCctr.currentPage != 1"> <a
+				ng-click="cCctr.getPage(true,'form27QDeducteeUpdateRequestDetail',cCctr.currentPage-1)"><strong>Previous</strong></a>
+			</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.currentPage}}</strong>&nbsp;
+				of &nbsp;<strong>{{cCctr.getNoPage()}}</strong>
+				&nbsp;&nbsp;&nbsp;&nbsp; <span
+				ng-show="cCctr.currentPage != cCctr.getNoPage()"> <a
+					ng-click="cCctr.getPage(true,'form27QDeducteeUpdateRequestDetail',cCctr.currentPage+1)"><strong>Next</strong></a>
+			</span>
+			</span>
+		</div>
+		<form role="form" name="gotoForm">
+			<div class="row" align="center">
+				<span>Go to</span> &nbsp;&nbsp;&nbsp; <input
+					style="width: 70px; text-align: center;" type="number"
+					name="pageNo" ng-model="cCctr.currentPage"
+					ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
+					ng-min="1" ng-max="cCctr.getNoPage()" ng-required="true">
+				&nbsp;&nbsp;&nbsp;
+				<button style="height: 25px;"
+					ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'form27QDeducteeUpdateRequestDetail',cCctr.currentPage)"
+					class="btn btn-primary">Go</button>
+			</div>
+			<div class="row" align="center">
+				<span style="color: red"
+					ng-show="gotoForm.submitted || gotoForm.pageNo.$dirty && gotoForm.pageNo.$invalid">
+					<span class="error" ng-show="gotoForm.pageNo.$error.min">Page
+						No. should not be less than 1.</span> <span class="error"
+					ng-show="gotoForm.pageNo.$error.max">Page No. should not be
+						greater than {{cCctr.getNoPage()}}.</span> <span class="error"
+					ng-show="gotoForm.pageNo.$error.required">Please enter page
+						number.</span>
+				</span>
+			</div>
+		</form>
+	</div>
+
+
+</div>
+</div>

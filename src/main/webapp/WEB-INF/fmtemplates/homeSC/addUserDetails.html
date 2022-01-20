@@ -1,0 +1,91 @@
+
+<div id="page-wrapper">
+	<div class="container-fluid">
+		<div class="row">
+			<h1>Add User Details</h1>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<form role="form" name="tokenForm">
+					<div class="row">
+						
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Branch Code</label> <input class="form-control" type="text"
+									name="NAME" placeholder="TAN" ng-model="cCctr.entity.branchCode"
+									autocomplete="off" ng-maxlength="100"
+									ng-model-options="{updateOn: 'blur'}" />
+
+							</div>
+						</div>
+						<div class="col-md-6">
+						<div class="form-group">
+								<label>Name</label> <input class="form-control" type="text"
+									name="NAME" placeholder="Name" ng-model="cCctr.entity.name"
+								 />
+
+							</div>
+						
+						
+						</div>
+					</div>
+					<div class="row">
+						
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>PAN</label> <input class="form-control" type="text"
+									name="NAME" placeholder="Name" ng-model="cCctr.entity.pan"
+								 />
+
+							</div>
+
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Zone</label> <input class="form-control" type="text"
+									name="NAME" placeholder="Name" ng-model="cCctr.entity.zone"
+								 />
+
+							</div>
+
+						</div>
+					</div>
+					
+					<div class="row">
+						
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Type</label> <input class="form-control" type="text"
+									name="NAME" placeholder="Name" ng-model="cCctr.entity.type"
+								 />
+
+							</div>
+
+						</div>
+					
+					</div>
+					
+					
+					
+					
+					
+					
+					
+
+				</form>
+
+					<div class="row">
+						<div class="modal-footer">
+							<button
+								ng-click="tokenForm.submitted=true; cCctr.submit(tokenForm.$valid,'userDetails',true)"
+								class="btn btn-success" onclick="scrollWin()">Save</button>
+							<button ng-click="cCctr.gotoListPage('userDetails','userDetails');"
+								class="btn btn-danger" onclick="scrollWin()">Back</button>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>

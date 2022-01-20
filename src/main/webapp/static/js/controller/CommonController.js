@@ -257,6 +257,14 @@ App
 									"page" : page2
 								});
 							}
+							
+							
+		self.download = function(url) {
+		wait(1000);
+		self.loader = url;
+		window.open(self.loader, "_blank");
+
+	}
 
 							self.gotoDirectList2Page = function(entity, page,
 									entity2, page2, map) {
@@ -932,6 +940,7 @@ App
 									self.loader = 'api' + entity + '/getFile/'
 											+ $stateParams.clientId + '/'
 											+ a.fileId;
+											window.open(self.loader,"_blank");
 								} else {
 									modalClick('no' + modal);
 								}

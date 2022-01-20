@@ -28,7 +28,10 @@ import domain.in.rjsa.web.ApplicationCache;
 
 @Controller
 @RequestMapping("/apideductorDetails")
-public class DEDUCTORDETAILSController extends AbstractTDSController<String, DEDUCTORDETAILS, DEDUCTORDETAILSService>{
+public class DEDUCTORDETAILSController extends AbstractTDSController<String, DEDUCTORDETAILS, DEDUCTORDETAILSService> {
+	
+	
+	
 @Autowired
 DEDUCTORDETAILSService service;
 @Autowired

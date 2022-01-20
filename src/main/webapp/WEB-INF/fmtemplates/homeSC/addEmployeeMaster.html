@@ -1,0 +1,141 @@
+
+<div id="page-wrapper">
+	<div class="container-fluid">
+		<div class="row">
+			<h1>Add Vendor</h1>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<form role="form" name="employeeForm">
+					<div class="row">
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Employee Id</label> <input class="form-control"
+									type="text" name="NAME" placeholder="Employee Id"
+									ng-model="cCctr.entity.employeeId" autocomplete="off"
+									ng-maxlength="100" ng-model-options="{updateOn: 'blur'}" />
+
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Employee Code</label> <input class="form-control"
+									type="text" name="NAME" placeholder="Employee Code"
+									ng-model="cCctr.entity.employeeCode" />
+
+							</div>
+
+
+						</div>
+					</div>
+					<div class="row">
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Name</label> <input class="form-control"
+									type="text" name="NAME" placeholder="Name"
+									ng-model="cCctr.entity.employeeName" />
+
+							</div>
+
+
+						</div>
+						
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>PAN</label> <input class="form-control"
+									type="text" name="NAME" placeholder="PAN"
+									ng-model="cCctr.entity.pan" />
+
+							</div>
+
+
+						</div>
+
+					</div>
+					
+					<div class="row">
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Date Of Birth</label> <input class="form-control"
+									type="text" name="NAME" placeholder="Name"
+									ng-model="cCctr.entity.dob" />
+
+							</div>
+
+
+						</div>
+						
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Designation</label> <input class="form-control"
+									type="text" name="NAME" placeholder="PAN"
+									ng-model="cCctr.entity.designation" />
+
+							</div>
+
+
+						</div>
+
+					</div>
+					
+					
+					<div class="row">
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Maker</label> <input class="form-control"
+									type="text" name="NAME" placeholder="Maker"
+									ng-model="cCctr.entity.maker" />
+
+							</div>
+
+
+						</div>
+						
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Checker</label> <input class="form-control"
+									type="text" name="NAME" placeholder="Checker"
+									ng-model="cCctr.entity.checker" />
+
+							</div>
+
+
+						</div>
+
+					</div>
+					
+					
+					<div class="row">
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Status</label> <input class="form-control"
+									type="text" name="NAME" placeholder="Status"
+									ng-model="cCctr.entity.status" />
+
+							</div>
+
+
+						</div>
+						</div>
+					</form>
+
+				<div class="row">
+						<div class="modal-footer">
+							<button
+								ng-click="employeeForm.submitted=true; cCctr.submit(employeeForm.$valid,'employeeMaster',true)"
+								class="btn btn-success" onclick="scrollWin()">Save</button>
+							<button ng-click="cCctr.gotoListPage('employeeMaster','employeeMaster');"
+								class="btn btn-danger" onclick="scrollWin()">Back</button>
+						</div>
+					</div>
+				
+
+			</div>
+		</div>
+	</div>
+</div>

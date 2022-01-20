@@ -203,10 +203,64 @@
 					</div>
 				</div>
 			</div>
+			
+			<div class="collapse  panel-collapse" id="collapseExample4">
+			
+          <div class="row">
+			<div class="col-md-2">
+				<h6>
+					<b>PRN</b>
+					<h6>
+						<input type="text" ng-model="cCctr.search.PRN"
+							
+							class="form-control" placeholder="PRN" style="width: 100%">
+			</div>
+
+			<div class="col-md-2">
+				<h6>
+					<b>Status</b>
+					<h6>
+						<input type="text" ng-model="cCctr.search.STATUS"
+							
+							class="form-control" placeholder="Status" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>From Date</b>
+					<h6>
+						<input type="date" ng-model="cCctr.search.fromDate"
+							ng-change="cCctr.search.fromDate=cCctr.date(cCctr.search.fromDate);"
+							class="form-control" placeholder="Date" style="width: 100%">
+			</div>
+			<div class="col-md-2">
+				<h6>
+					<b>To Date</b>
+					<h6>
+						<input type="date" ng-model="cCctr.search.toDate"
+							ng-change="cCctr.search.toDate=cCctr.date(cCctr.search.toDate);"
+							class="form-control" placeholder="Date" style="width: 100%">
+			</div>
+			
+		</div>
+		</div>
 		</div>
 	</div>
 
-
+<div class="row">
+		<div class="col-xs-12">
+			<div class="text-right">
+			<button class="btn btn-secondary"
+					style="background-color: #FFA500;"
+					data-toggle="collapse" data-target="#collapseExample4"
+					aria-expanded="false" aria-controls="collapseExample">
+					Advance Search</button>
+			
+				<button class="btn btn-Primary" data-toggle="modal"
+					ng-click="cCctr.gotoList2Page('addVendorPayment','addVendorPayment');">Add</button>
+			</div>
+		</div>
+	</div>
 	<div class="row">
 		 <div class="table-responsive"> 
 

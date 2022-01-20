@@ -25,6 +25,7 @@ public interface ServiceInterface<K, E> {
 
 	public void saveFile(FileDetail file, LinkedHashMap<String, Object> map, Class<E> entity);
 
+
 //	List<E> search(HashMap map, Long clientId);
 	
 

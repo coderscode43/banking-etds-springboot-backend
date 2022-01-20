@@ -48,6 +48,7 @@ import domain.in.rjsa.model.form.Model;
 import domain.in.rjsa.service.LogsJsonService;
 import domain.in.rjsa.service.LogsService;
 import domain.in.rjsa.service.ServiceInterface;
+import domain.in.rjsa.service.UserDetailsService;
 import domain.in.rjsa.web.ApplicationCache;
 
 public abstract class AbstractController<K extends Serializable, E extends Model, S extends ServiceInterface<K, E>>
@@ -58,6 +59,8 @@ public abstract class AbstractController<K extends Serializable, E extends Model
 	@Autowired
 	ApplicationCache applicationCache;
 	
+	@Autowired
+	UserDetailsService userDetailsService;
 	
 	@Autowired
 	LogsService lservice;

@@ -46,6 +46,26 @@
 		visibility: visible;
 	}
 }
+
+@media ( min-width : 300px) and (max-width: 700px) {
+	.mobile {
+		display: none;
+	}
+}
+
+@media only screen and (min-width:700px) {
+	.hide-on-desktop, * [aria-labelledby='hide-on-desktop'] {
+		display: none;
+	}
+}
+
+/* iPad Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+/* CSS */
+.mobile {
+		display: none;
+	}
+}
 </style>
 
 
@@ -79,7 +99,7 @@
 						</h6>
 						<select class="form-control" ng-model="cCctr.search.financial_year">
 							<option value=" " ng-selected="true">Financial Year</option>
-							<option value="201819">201920</option>
+							<option value="201920">201920</option>
 							<option value="201819">201819</option>
 							<option value="201718">201718</option>
 							<option value="201617">201617</option>
@@ -137,7 +157,7 @@
 
 			
 
-				<div class="row" id="search">
+				<div class="row mobile" id="search">
 				<div class="col-md-3" id="search">
 					<button ng-click="cCctr.searchEntities(true,'downloadCertificate')"
 						class="btn btn-success" onclick="scrollWin()">Search</button>
@@ -150,10 +170,11 @@
 
 			<div class="row">
 				<div>
-
-					<table class=" tables table-bordered table-hover  table-striped"
+            <button class="btn btn-primary" type="add" style="float:right" ng-click="cCctr.gotoListPage('addCertificate','addCertificate');">ADD</button>
+                   <div class="table-responsive" style="overflow-x:inherit">
+					<table class=" table table-bordered table-hover  table-striped"
 						role="table"
-						style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+						style="font-size: 12px; padding: 5px; margin: 5px;">
 
 
 						<thead>
@@ -162,14 +183,14 @@
 						</colgroup>
 						<tr>
 						<thead role="rowgroup">
-							<tr role="row" style="height: 40px; background-color: #81b7db">
-								<th width="10%">Sr. No.</th>
-								<th width="10%">Customer ID</th>
-								<th width="10%">PAN</th>
-								<th width="10%">Certificate Type</th>
-								<th width="10%">Financial Year</th>
-								<th width="10%">Quarter</th>
-								<th width="10%">File</th>
+							<tr role="row" style="background-color: #81b7db">
+								<th >Sr. No.</th>
+								<th >Customer ID</th>
+								<th >PAN</th>
+								<th >Certificate Type</th>
+								<th >Financial Year</th>
+								<th >Quarter</th>
+								<th >File</th>
 
 
 
@@ -178,7 +199,7 @@
 						<tbody>
 							<tr role="row"
 								ng-repeat="a in cCctr.getEntityListData() track by a.id">
-								<td role="cell" class="one" style="height: 60px; padding: 10px">{{$index+1}}</td>
+								<td>{{$index+1}}</td>
 								<td>{{a.customer_id}}</td>
 								<td>{{a.pan}}</td>
 								<td>{{a.certificate_type}}</td>

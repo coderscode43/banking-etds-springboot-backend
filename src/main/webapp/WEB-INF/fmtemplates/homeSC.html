@@ -1,12 +1,74 @@
+<style>
+@media (min-width:1456px) { /* hi-res laptops and desktops */ 
+.nav-side-menu{
+width:100%;
+}
+}
+
+@media (max-width:1456px) { /* hi-res laptops and desktops */ 
+.nav-side-menus{
+width:20%;
+}
+}
+
+/*----------------sidebar-wrapper----------------*/
+.sidebar-wrapper {
+	width: 270px;
+	height: 100%;
+	max-height: 100%;
+	position: fixed;
+	top: 0;
+	left: -300px;
+	z-index: 999;
+}
+
+.center_topButton{
+margin-left:2%;
+
+}
+
+@media ( min-width : 300px) and (max-width: 700px) {
+	.center_topButton {
+		margin-left:23%;
+	}
+}
+
+@media only screen and (min-width:700px) {
+	.hide-on-desktop, * [aria-labelledby='hide-on-desktop'] {
+		display: none;
+	}
+}
+
+@media ( min-width : 300px) and (max-width: 700px) {
+	.mobile {
+		display: none;
+	}
+}
+
+@media only screen and (min-width:700px) {
+	.hide-on-desktop, * [aria-labelledby='hide-on-desktop'] {
+		display: none;
+	}
+}
+
+/* iPad Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+/* CSS */
+.center_topButton {
+		margin-left:34%;
+	}
+}
+
+</style>
 <div class=" page-wrapper chiller-theme"
 	ng-Controller="CommonWOTController as cWctr">
 	<a id="show-sidebar" class="btn btn-primary" style="z-index: 1000">
 		<i class="fa fa-bars"></i>
 	</a>
-	<nav id="sidebar" class="sidebar-wrapper nav-side-menu"
-		style="margin-top: -3px; background-color: #0F316D;">
+	<nav id="sidebar" class="sidebar-wrapper nav-side-menu nav-side-menus"
+		style="margin-top: -3px; background-color: #0F316D">
 		<div class="sidebar-content">
-			<div class="sidebar-brand" style="height: 26%; box-shadow: 0px 5px;">
+			<div class="sidebar-brand" style="box-shadow: 0px 5px;">
 				<div
 					ng-click="cCctr.gotoListPage('homeSCHomepage','homeSCHomepage')"
 					style="color: white">
@@ -27,12 +89,15 @@
 					<li data-toggle="collapse" data-target="#newss" class="collapsed">
 						<a href="#"><i class="fa fa-shopping-cart"></i><b>Form 26Q
 						</b><i class="fa fa-chevron-down" aria-hidden="true"
-							style="float: right"></i> </a>
+							style="float: right;"></i> </a>
 					</li>
 					<ul class="sub-menu collapse" id="newss">
 						<li
 							ng-click="cCctr.gotoList2Page('form26QDeductee','form26QDeductee')"
 							onclick="scrollWin()">Deductee Details</li>
+							<li
+							ng-click="cCctr.gotoList2Page('form26QDeducteeDefault','form26QDeducteeDefault')"
+							onclick="scrollWin()">Deductee Default Details</li>
 						<li
 							ng-click="cCctr.gotoList2Page('form26QDeducteeUpdateRequestDetail','form26QDeducteeUpdateRequestDetail')"
 							onclick="scrollWin()">Update Request Details</li>
@@ -48,6 +113,9 @@
 						<li
 							ng-click="cCctr.gotoList2Page('form27QDeductee','form27QDeductee')"
 							onclick="scrollWin()">Deductee Details</li>
+							<li
+							ng-click="cCctr.gotoList2Page('form27QDeducteeDefault','form27QDeducteeDefault')"
+							onclick="scrollWin()">Deductee Default Details</li>
 						<li
 							ng-click="cCctr.gotoList2Page('form27QDeducteeUpdateRequestDetail','form27QDeducteeUpdateRequestDetail')"
 							onclick="scrollWin()">Update Request Details</li>
@@ -65,6 +133,10 @@
 						<li
 							ng-click="cCctr.gotoList2Page('form24QDeductee','form24QDeductee')"
 							onclick="scrollWin()">Deductee Details</li>
+							<li
+							ng-click="cCctr.gotoList2Page('form24QDeducteeDefault','form24QDeducteeDefault')"
+							onclick="scrollWin()">Deductee Default Details</li>
+							
 						<li
 							ng-click="cCctr.gotoList2Page('form24QDeducteeUpdateRequestDetail','form24QDeducteeUpdateRequestDetail')"
 							onclick="scrollWin()">Update Request Details</li>
@@ -75,6 +147,41 @@
 							ng-click="cCctr.gotoList2Page('form24QSalaryUpdateRequestDetail','form24QSalaryUpdateRequestDetail')"
 							onclick="scrollWin()">Salary Update Request Details</li>
 					</ul>
+					
+					
+					<li data-toggle="collapse" data-target="#form27eq" class="collapsed">
+						<a href="#"><i class="fa fa-credit-card"></i><b>Form 27EQ </b><i
+							class="fa fa-chevron-down" aria-hidden="true"
+							style="float: right"></i></a>
+					</li>
+					
+					<ul class="sub-menu collapse" id="form27eq">
+						<li
+							ng-click="cCctr.gotoList2Page('form27EQDeductee','form27EQDeductee')"
+							onclick="scrollWin()">Deductee Details</li>
+							<li
+							ng-click="cCctr.gotoList2Page('form27EQDeducteeDefault','form27EQDeducteeDefault')"
+							onclick="scrollWin()">Deductee Default Details</li>
+							
+						<li
+							ng-click="cCctr.gotoList2Page('form27EQDeducteeUpdateRequestDetail','form27EQDeducteeUpdateRequestDetail')"
+							onclick="scrollWin()">Update Request Details</li>
+
+					</ul>
+					
+					<li ng-click="cCctr.gotoListPage('vendorMaster','vendorMaster')"
+						onclick="scrollWin()"><a> <i class="fa fa-book"></i><b>Vendor Master</b>
+					</a></li>
+					<li ng-click="cCctr.gotoListPage('pensionMaster','pensionMaster')"
+						onclick="scrollWin()"><a> <i class="fa fa-book"></i><b>Pension Master</b>
+					</a></li>
+						<li ng-click="cCctr.gotoListPage('employeeMaster','employeeMaster')"
+						onclick="scrollWin()"><a> <i class="fa fa-book"></i><b>Employee Master</b>
+					</a></li>
+					
+					<li ng-click="cCctr.gotoListPage('branch','branch')"
+						onclick="scrollWin()"><a> <i class="fa fa-book"></i><b>Select Branch</b>
+					</a></li>
 
 					<li ng-click="cCctr.gotoList2Page('challanForm','challanForm')"
 						onclick="scrollWin()"><a> <i class="fa fa-book"></i><b>Challan</b>
@@ -107,10 +214,10 @@
 							class="fa fa-chevron-down" aria-hidden="true"
 							style="float: right"></i></a></li>
 					<ul class="sub-menu collapse" id="newsssss">
-						<li ng-click="cCctr.gotoList2Page('form15GH','form15GH')"
+						<li ng-click="cCctr.gotoListPage('form15GH','form15GH')"
 							onclick="scrollWin()">15G/15H Details</li>
 						<li
-							ng-click="cCctr.gotoList2Page('ghReturnStatus','ghReturnStatus')"
+							ng-click="cCctr.gotoListPage('ghReturnStatus','ghReturnStatus')"
 							onclick="scrollWin()">Update 15G/15H Request Details</li>
 
 					</ul>
@@ -123,7 +230,7 @@
 								Report</b>
 					</a></li>
 
-					<li ng-click="cCctr.gotoList2Page('ticket','ticket')"
+					<li ng-click="cCctr.gotoListPage('ticket','ticket')"
 						onclick="scrollWin()"><a> <i class="fa fa-book"></i><b>Generate
 								Ticket</b>
 					</a></li>
@@ -132,11 +239,16 @@
 						ng-click="cCctr.gotoListPage('deductorDetails','deductorDetails')"
 						onclick="scrollWin()"><a><i class="fa fa-desktop"
 							aria-hidden="true"></i><b>Deductor Details</b> </a></li>
+							
+							<li
+						ng-click="cCctr.gotoListPage('userDetails','userDetails')"
+						onclick="scrollWin()"><a><i class="fa fa-desktop"
+							aria-hidden="true"></i><b>User</b> </a></li>
 
 					<li data-toggle="collapse" data-target="#service" class="collapsed">
 						<a href="#"><b>${cd.getName()}</b><i
 							class="fa fa-chevron-down" aria-hidden="true"
-							style="float: right"></i></a>
+							style="float: right;margin-right:-2%"></i></a>
 					</li>
 					<ul class="sub-menu collapse" id="service">
 						<li ng-click="cCctr.gotoListPage('message','message')">Messages</li>
@@ -165,7 +277,7 @@
 	<!-- page-content" -->
 </div>
 
-<div class="top row col-lg-8 " style="margin-left: 5%">
+<div class="top row col-lg-8 center_topButton" >
 
 
 	<div class="top-item top1 col-lg-offset-5" style="border-radius: 5px;">

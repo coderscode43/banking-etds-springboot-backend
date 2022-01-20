@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import domain.in.rjsa.model.form.MisReport;
 import domain.in.rjsa.service.MisReportService;
 @Controller
-@RequestMapping("/apimisReport")
+@RequestMapping("/apigenerateReport")
 public class MisReportController extends AbstractController<Long, MisReport, MisReportService> {
 	@Autowired
 	MisReportService service;

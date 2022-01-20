@@ -19,10 +19,12 @@ public class DEDUCTORDETAILS extends CommonModelAbstract{
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO, generator="native")
 	@GenericGenerator(name = "native", strategy = "native")
-	@Column(name = "TAN")
-	public String TAN;
+	@Column(name = "id")
+	public Long id;
 	@Column(name = "clientId")
 	public Long clientId;
+	@Column(name = "TAN")
+	public String TAN;
 	@Column(name = "FLATORFLOAR")
 	public String FLATORFLOAR;
 	@Column(name = "BUILDINGNAME")

@@ -1,16 +1,18 @@
 package domain.in.rjsa.dao.impl;
 
+import java.time.ZonedDateTime;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractTDSDao;
 import domain.in.rjsa.dao.TOKENNUMBERDao;
-import domain.in.rjsa.model.tds.STATEMENTSTATUS;
 import domain.in.rjsa.model.tds.TOKENNUMBER;	
 @Repository("TOKENNUMBERDao")
 public class TOKENNUMBERDaoImpl extends AbstractTDSDao<Long, TOKENNUMBER> implements TOKENNUMBERDao {
@@ -21,7 +23,14 @@ public class TOKENNUMBERDaoImpl extends AbstractTDSDao<Long, TOKENNUMBER> implem
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
 		propertyNameValues.put("clientId", clientId);
 		criteria.add(Restrictions.allEq(propertyNameValues));
-		
+		if (entity.get("fromDate") != null) {
+			criteria.add(Restrictions.ge("DATEOFFILING ",
+					Date.from(ZonedDateTime.parse((String) entity.get("fromDate")).toInstant())));
+		}
+		if (entity.get("toDate") != null) {
+			criteria.add(
+					Restrictions.le("DATEOFFILING ", Date.from(ZonedDateTime.parse((String) entity.get("toDate")).toInstant())));
+		}
           if(entity.get("TAN")!=null)
           {
 		criteria.add(Restrictions.eqOrIsNull("TAN", entity.get("TAN")));
@@ -39,7 +48,7 @@ public class TOKENNUMBERDaoImpl extends AbstractTDSDao<Long, TOKENNUMBER> implem
 		criteria.add(Restrictions.eqOrIsNull("QUARTER", entity.get("QUARTER")));
           }
           
-	
+          criteria.addOrder(Order.desc("DATEOFFILING "));
 		return (List<TOKENNUMBER>) criteria.list();
 	}
 	

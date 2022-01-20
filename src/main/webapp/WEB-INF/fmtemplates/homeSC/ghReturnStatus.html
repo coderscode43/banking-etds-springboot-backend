@@ -51,7 +51,7 @@
 		content: "TAN";
 	}
 	td:nth-of-type(3):before {
-		content: "QUARTER";
+		content: "Quarter";
 	}
 	td:nth-of-type(4):before {
 		content: "FORM";
@@ -141,6 +141,7 @@
 		<div class="collapse dont-collapse-sm" id="collapseExample2">
 			<div class="row">
 				<div class="form-group">
+
 					<div class="col-md-2">
 						<h6>
 							<b>TAN</b>
@@ -174,36 +175,95 @@
 									<option value="Q4">Q4</option>
 								</select>
 					</div>
-
 					<div class="col-md-2">
 						<h6>
-							<b>PRN</b>
-							<h6>
+							<b>Return Type</b>
+						</h6>
+						<select ng-model="cCctr.search.RT" class="form-control">
+							<option value="">Return Type</option>
+							<option value="Regular">Regular</option>
+							<option value="Correction">Correction</option>
+						</select>
+					</div>
 
-								<input type="text" ng-model="cCctr.search.PRN"
-									class="form-control" placeholder="Prn" style="width: 100%">
+
+				</div>
+
+				<div class="row" id="hide">
+					<div class="col-md-4" style="margin-left: 85%; margin-top: -50px">
+						<button ng-click="cCctr.searchEntities(true,'ghReturnStatus')"
+							class="btn btn-success" onclick="scrollWin()">Search</button>
+					</div>
+				</div>
+
+				<div class="row" id="search">
+					<div class="col-md-3" id="search">
+						<button ng-click="cCctr.searchEntities(true,'ghReturnStatus')"
+							class="btn btn-success" onclick="scrollWin()">Search</button>
 					</div>
 				</div>
 			</div>
-
-			<div class="row" id="hide">
-				<div class="col-md-4" style="margin-left: 85%; margin-top: -40px">
-					<button ng-click="cCctr.searchEntities(true,'ghReturnStatus')"
-						class="btn btn-success" onclick="scrollWin()">Search</button>
-				</div>
+			
+			<div class="collapse  panel-collapse" id="collapseExample4">
+			
+          <div class="row">
+			<div class="col-md-2">
+				<h6>
+					<b>PRN</b>
+					<h6>
+						<input type="text" ng-model="cCctr.search.PRN"
+							
+							class="form-control" placeholder="PRN" style="width: 100%">
 			</div>
 
-			<div class="row" id="search">
-				<div class="col-md-3" id="search">
-					<button ng-click="cCctr.searchEntities(true,'ghReturnStatus')"
-						class="btn btn-success" onclick="scrollWin()">Search</button>
-				</div>
+			<div class="col-md-2">
+				<h6>
+					<b>Status</b>
+					<h6>
+						<input type="text" ng-model="cCctr.search.STATUS"
+							
+							class="form-control" placeholder="Status" style="width: 100%">
 			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>From Date</b>
+					<h6>
+						<input type="date" ng-model="cCctr.search.fromDate"
+							ng-change="cCctr.search.fromDate=cCctr.date(cCctr.search.fromDate);"
+							class="form-control" placeholder="Date" style="width: 100%">
+			</div>
+			<div class="col-md-2">
+				<h6>
+					<b>To Date</b>
+					<h6>
+						<input type="date" ng-model="cCctr.search.toDate"
+							ng-change="cCctr.search.toDate=cCctr.date(cCctr.search.toDate);"
+							class="form-control" placeholder="Date" style="width: 100%">
+			</div>
+			
+		</div>
+		</div>
 		</div>
 	</div>
 
+<div class="row">
+		<div class="col-xs-12">
+			<div class="text-right">
+			<button class="btn btn-secondary"
+					style="background-color: #FFA500;"
+					data-toggle="collapse" data-target="#collapseExample4"
+					aria-expanded="false" aria-controls="collapseExample">
+					Advance Search</button>
+			
+				<button class="btn btn-Primary" data-toggle="modal"
+					ng-click="cCctr.gotoList2Page('addVendorPayment','addVendorPayment');">Add</button>
+			</div>
+		</div>
+	</div>
 	<div class="row">
-		<!-- <div class="table-responsive">  -->
+		 <div class="table-responsive"> 
+
 		<table class=" tables table-bordered table-hover table-striped"
 			role="table"
 			style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
@@ -230,22 +290,24 @@
 			<tbody>
 				<tr role="row"
 					ng-repeat="a in cCctr.getEntityListData() track by a.id">
-					<td>{{$index+1}}</td>
+					<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
 					<td>{{a.TAN}}</td>
 					<td>{{a.QUARTER}}</td>
 					<td>{{a.FORM}}</td>
 					<td>{{a.RT}}</td>
 					<td>{{a.PRN}}</td>
 					<td>{{a.STATUS}}</td>
-					<td>{{a.AS_ON_DATE| date:'dd-MM-yyyy'}}</td>
+					<td>{{a.AS_ON_DATE | date:'dd-MM-yyyy'}}</td>
 					<!-- <td>{{a.total-a.amountPaid}}</td> -->
 
 				</tr>
 
 			</tbody>
 		</table>
-	
+	</div>
 </div>
+
+
 <div class="row" ng-show="cCctr.getNoPage() > 0">
 		<div class="row" align="center">
 			<span ng-show="cCctr.currentPage != 1"> <a
@@ -288,6 +350,5 @@
 
 
 
-
-
-
+</div>
+</div>

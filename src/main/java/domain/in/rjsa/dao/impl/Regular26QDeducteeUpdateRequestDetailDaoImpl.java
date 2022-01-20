@@ -40,9 +40,54 @@ public class Regular26QDeducteeUpdateRequestDetailDaoImpl
 		if (entity.get("deducteePan") != null) {
 			criteria.add(Restrictions.eqOrIsNull("deducteePan", entity.get("deducteePan")));
 		}
+		if (entity.get("remarks") != null) {
+			criteria.add(Restrictions.eqOrIsNull("remarks", entity.get("remarks")));
+		}
+		if (entity.get("fy") != null) {
+			criteria.add(Restrictions.eqOrIsNull("fy", entity.get("fy")));
+		}
+		if (entity.get("certificateNo") != null) {
+			criteria.add(Restrictions.eqOrIsNull("certificateNo", entity.get("certificateNo")));
+		}
 		if (entity.get("deducteeName") != null) {
 			criteria.add(Restrictions.eqOrIsNull("deducteeName", entity.get("deducteeName")));
 		}
+		if (entity.get("deducteeRefNo") != null) {
+			criteria.add(Restrictions.eqOrIsNull("deducteeRefNo", entity.get("deducteeRefNo")));
+		}
+		if (entity.get("deducteeCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("deducteeCode", entity.get("deducteeCode")));
+		}
+		if (entity.get("challanSrNo") != null) {
+			criteria.add(Restrictions.eqOrIsNull("challanSrNo", entity.get("challanSrNo")));
+		}
+		if (entity.get("sectionCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("sectionCode", entity.get("sectionCode")));
+		}
+		if (entity.get("paidAmt") != null) {
+			criteria.add(Restrictions.eqOrIsNull("paidAmt", Double.valueOf((String) entity.get("paidAmt"))));
+		}
+		if (entity.get("tds") != null) {
+			criteria.add(Restrictions.eqOrIsNull("tds", Double.valueOf((String) entity.get("tds"))));
+		}
+		if (entity.get("surcharge") != null) {
+			criteria.add(Restrictions.eqOrIsNull("surcharge", Double.valueOf((String) entity.get("surcharge"))));
+		}
+		if (entity.get("eduCess") != null) {
+			criteria.add(Restrictions.eqOrIsNull("eduCess", Double.valueOf((String) entity.get("eduCess"))));
+		}
+		if (entity.get("totalTaxDeduct") != null) {
+			criteria.add(Restrictions.eqOrIsNull("totalTaxDeduct", Double.valueOf((String) entity.get("totalTaxDeduct"))));
+		}
+		if (entity.get("totalTaxDeposit") != null) {
+			criteria.add(Restrictions.eqOrIsNull("totalTaxDeposit", Double.valueOf((String) entity.get("totalTaxDeposit"))));
+		}
+		if (entity.get("rateTaxDeduct") != null) {
+			criteria.add(Restrictions.eqOrIsNull("rateTaxDeduct", Double.valueOf((String) entity.get("rateTaxDeduct"))));
+		}
+		
+		
+		
 		if (entity.get("fy") != null) {
 			criteria.add(Restrictions.eqOrIsNull("fy", entity.get("fy")));
 		}

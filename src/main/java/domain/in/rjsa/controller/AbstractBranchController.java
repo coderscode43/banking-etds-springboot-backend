@@ -104,6 +104,60 @@ public abstract class AbstractBranchController<K extends Serializable, E extends
 		}
 
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	// ------------------- List Entity ---------------------------------
+
+		@RequestMapping(value = "/list/{clientId}/get/{pageNo}/{resultPerPage}", method = RequestMethod.GET)
+		public ResponseEntity<?> listAll(@PathVariable Long clientId, HttpServletRequest request, @PathVariable int pageNo,
+				@PathVariable int resultPerPage) {
+			// verify the clientId authorization
+//			applicationCache.getUserAuthorised();
+			String mapping = request.getPathInfo();
+
+			try {
+				List<?> list = getList(clientId, pageNo, resultPerPage);
+
+				return new ResponseEntity<>(list, HttpStatus.OK);
+			} catch (Exception e) {
+				logger.error("Error in listALL", e);
+				return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+
+		}
+
+		
+	
+		public List<?> getList1(Long clientId, int pageNo, int resultPerPage) {
+			// TODO Auto-generated method stub
+			HashMap<String, Object> constrains = new HashMap<>();
+//			constrains.put("clientId", applicationCache.getLoginDetail(getPrincipal()).getClientId());
+//			constrains.put("employeeId", applicationCache.getLoginDetail(getPrincipal()).getEmployeeId());
+
+			return getService().findAll(constrains, pageNo, resultPerPage);
+		}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	// ------------------- Search Entities ---------------------------------
 
@@ -234,13 +288,7 @@ public abstract class AbstractBranchController<K extends Serializable, E extends
 
 	}
 
-	public Object getDetail(K id, Long clientId) {
-		// TODO Auto-generated method stub
-		HashMap<String, Object> constrains = new HashMap<>();
-		constrains.put("id", id);
-		constrains.put("clientId", clientId);
-		return getService().uniqueSearch(constrains);
-	}
+	
 
 	// ------------------- Update Entity ---------------------------------
 
@@ -440,5 +488,15 @@ public abstract class AbstractBranchController<K extends Serializable, E extends
 			return null;
 		}
 	}
+
+	public Object getDetail(K id, Long clientId) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> constrains = new HashMap<>();
+		constrains.put("id", id);
+		constrains.put("clientId", clientId);
+		return getService().uniqueSearch(constrains);
+	}
+
+	
 
 }

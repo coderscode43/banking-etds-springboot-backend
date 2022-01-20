@@ -1,15 +1,20 @@
 package domain.in.rjsa.model.form;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import domain.in.rjsa.model.form.CommonModelAbstract;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.Data;
 
 @Data
@@ -35,7 +40,9 @@ public class Form15GH extends CommonModelAbstract {
 	public String PRN;
 	@Column(name = "STATUS")
 	public String STATUS;
+	@Temporal(TemporalType.DATE)
 	@Column(name = "AS_ON_DATE")
-	public String AS_ON_DATE;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+	public Date AS_ON_DATE;
 
 }

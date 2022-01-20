@@ -361,91 +361,786 @@
 			data-toggle="collapse" data-target="#collapseExample3"
 			aria-expanded="false" aria-controls="collapseExample"
 			onclick="scrollWin()">Search</button>
-		<div class="collapse dont-collapse-sm" id="collapseExample3">
-			<div class="row">
-				<div class="form-group">
-
-
-					<div class="col-md-2">
+		<div class="collapse dont-collapse-sm" id="collapseExample2">
+		<div class="row">
+			<div class="form-group">
+	<div class="col-md-2">
+					<h6>
+						<b>PAN</b>
 						<h6>
-							<b>Financial Year</b>
-						</h6>
-						<select class="form-control" ng-model="cWctr.search.fy">
-							<option value=" " ng-selected="true">Financial Year</option>
-							<option value="201819">201920</option>
-							<option value="201819">201819</option>
-							<option value="201718">201718</option>
-							<option value="201617">201617</option>
-							<option value="201516">201516</option>
-							<option value="201415">201415</option>
-							<option value="201314">201314</option>
-							<option value="201213">201213</option>
-							<option value="201112">201112</option>
-							<option value="201011">201011</option>
-							<option value="200910">200910</option>
-							<option value="200809">200809</option>
-							<option value="200709">200709</option>
-						</select>
-					</div>
-
+							<input type="text" ng-model="cWctr.search.pan"
+								class="form-control" placeholder="PAN" style="width: 100%">
+				</div>
 					<div class="col-md-2">
+					<h6>
+						<b>Pan Ref. No</b>
 						<h6>
-							<b>Quarter</b>
-
-							<h6>
-								<select class="form-control" ng-model="cWctr.search.quarter">
-									<option value=" " ng-selected="true">Quarter</option>
-									<option value="Q1">Q1</option>
-									<option value="Q2">Q2</option>
-									<option value="Q3">Q3</option>
-									<option value="Q4">Q4</option>
-								</select>
-					</div>
-
-					<div class="col-md-2">
-						<h6>
-							<b>Pan</b>
-							<h6>
-								<input type="text" ng-model="cWctr.search.pan"
-									class="form-control" placeholder="Pan" style="width: 100%">
-					</div>
-					<div class="col-md-2">
-						<h6>
-							<b>Name</b>
-							<h6>
-								<input type="text" ng-model="cWctr.search.name"
-									class="form-control" placeholder="Name" style="width: 100%">
-					</div>
-
-					<div class="col-md-3" style="margin-left: 70%; margin-top: -45px">
-						<button
-							ng-click="cWctr.searchEntities(true,'form24QSalaryUpdateRequestDetail')"
-							class="btn btn-success" onclick="scrollWin()">Search</button>
-					</div>
-
-
-
+							<input type="text" ng-model="cWctr.search.panRefNo"
+								class="form-control" placeholder="Pan Ref. No" style="width: 100%">
 				</div>
 
+				
 
+				<div class="col-md-2">
+					<h6>
+						<b>Name</b>
+						<h6>
+							<input type="text" ng-model="cWctr.search.name"
+								class="form-control" placeholder="Name" style="width: 100%">
+				</div>
+			</div>
+		</div>
+
+		<div class="collapse  panel-collapse" id="collapseExample4">
+			
+          <div class="row">
+			<div class="col-md-2">
+				<h6>
+					<b>Category</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.caregory"
+							
+							class="form-control" placeholder="Category" style="width: 100%">
 			</div>
 
-			<div class="row" id="hide">
+			<div class="col-md-2">
+				<h6>
+					<b>From Date of Employment</b>
+					<h6>
+						<input type="date" ng-model="cWctr.search.fromDate"
+							ng-change="cWctr.search.fromDate=cWctr.date(cWctr.search.fromDate);"
+							class="form-control" placeholder="Date" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>To Date of Employment</b>
+					<h6>
+						<input type="date" ng-model="cWctr.search.toDate"
+							ng-change="cWctr.search.toDate=cWctr.date(cWctr.search.toDate);"
+							class="form-control" placeholder="Date" style="width: 100%">
+			</div>
+			<div class="col-md-2">
+				<h6>
+					<b>Gross Salary As PerProvision</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.grossSalaryAsPerProvision"
+							
+							class="form-control" placeholder="Gross Salary As PerProvision" style="width: 100%">
+			</div>
+			
+				<div class="col-md-2">
+				<h6>
+					<b>Value Of Perquisites</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.valueOfPerquisites"
+							
+							class="form-control" placeholder="Value Of Perquisites" style="width: 100%">
+			</div>
+			<div class="col-md-2">
+				<h6>
+					<b>Profit InSalary</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.profitInSalary"
+						class="form-control" placeholder="Profit InSalary" style="width: 100%">
+			</div>
+			
+		</div>
+		
+		<div class="row">
+		
+		
+			
+		
+			
+				<div class="col-md-2">
+				<h6>
+					<b>Taxable Value</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.taxableSalaryFromCurrentEmp"
+							
+							class="form-control" placeholder="Taxable Value" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Taxable Salary From Current Emp</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.taxableSalaryFromCurrentEmp"
+							
+							class="form-control" placeholder="Taxable Salary From Current Emp" style="width: 100%">
+			</div>
+			<div class="col-md-2">
+				<h6>
+					<b>Reported Salary From Other Emp</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.reportedSalaryFromOtherEmp"
+						class="form-control" placeholder="Reported Salary From Other Emp" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Total Amount Of Salary</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.totalAmountOfSalary"
+							
+							class="form-control" placeholder="Total Amount Of Salary" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Leave Travel Allowance</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.leaveTravelAllowance"
+							
+							class="form-control" placeholder="Leave Travel Allowance" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Gratuity</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.gratuity"
+							
+							class="form-control" placeholder="Gratuity" style="width: 100%">
+			</div>
+		
+		
+		</div>
+		<div class="row">
+		   <div class="col-md-2">
+				<h6>
+					<b>Net Amount Paid</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.netAmountPaid"
+						class="form-control" placeholder="Net Amount Paid" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Commuted Value Of Pension</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.commutedValueOfPension"
+						class="form-control" placeholder="Commuted Value Of Pension" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Leave Encashment Salary</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.leaveEncashmentSalary"
+						class="form-control" placeholder="Leave Encashment Salary" style="width: 100%">
+			</div>
+			
+			 <div class="col-md-2">
+				<h6>
+					<b>HouseRent Allowance</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.houseRentAllowance"
+						class="form-control" placeholder="HouseRent Allowance" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Any Other Exemptionus10</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.anyOtherExemptionus10"
+						class="form-control" placeholder="Any Other Exemptionus10" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Total Amount Of Exemption</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.totalAmountOfExemption"
+						class="form-control" placeholder="Leave Encashment Salary" style="width: 100%">
+			</div>
+		
+		</div>
+		<div class="row">
+		   <div class="col-md-2">
+				<h6>
+					<b>Entertainment Allowance</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.entertainmentAllowance"
+						class="form-control" placeholder="Entertainment Allowance" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>PTax</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.pTax"
+						class="form-control" placeholder="PTax" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Standard Deduction</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.standardDeduction"
+						class="form-control" placeholder="Standard Deduction" style="width: 100%">
+			</div>
+			 <div class="col-md-2">
+				<h6>
+					<b>Total Deduction Under Section16</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.totalDeductionUnderSection16"
+						class="form-control" placeholder="Total Deduction Under Section16" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Income From Salary</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.incomeFromSalary"
+						class="form-control" placeholder="Income From Salary" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Income From House Property</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.incomeFromHouseProperty"
+						class="form-control" placeholder="Income From House Property" style="width: 100%">
+			</div>
+		
+		</div>
+		
+		<div class="row">
+		   <div class="col-md-2">
+				<h6>
+					<b>Income From Other Sources</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.incomeFromOtherSources"
+						class="form-control" placeholder="Income From Other Sources" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Gross Total Income</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.grossTotalIncome"
+						class="form-control" placeholder="Gross Total Income" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Deduction Us80C</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.deductionUs80C"
+						class="form-control" placeholder="Standard Deduction" style="width: 100%">
+			</div>
+			
+			 <div class="col-md-2">
+				<h6>
+					<b>Deduction Us80CCC</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.deductionUs80CCC"
+						class="form-control" placeholder="Deduction Us80CCC" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Deduction Us80CCD1</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.deductionUs80CCD1"
+						class="form-control" placeholder="Deduction Us80CCD1" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Deduction Us80C80CCC80CCD1</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.deductionUs80C80CCC80CCD1"
+						class="form-control" placeholder="Deduction Us80C80CCC80CCD1" style="width: 100%">
+			</div>
+		
+		</div>
+		<div class="row">
+		   <div class="col-md-2">
+				<h6>
+					<b>Deduction Us80CCD1B</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.deductionUs80CCD1B"
+						class="form-control" placeholder="Deduction Us80CCD1B" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Deduction Us80CCD2</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.deductionUs80CCD2"
+						class="form-control" placeholder="Deduction Us80CCD2" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Deduction Us80D</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.deductionUs80D"
+						class="form-control" placeholder="Deduction Us80D" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Deduction Us80E</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.deductionUs80E"
+						class="form-control" placeholder="Deduction Us80E" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Deduction Us80G</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.deductionUs80G"
+						class="form-control" placeholder="Deduction Us80G" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Deduction Us80TTA</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.deductionUs80TTA"
+						class="form-control" placeholder="Deduction Us80TTA" style="width: 100%">
+			</div>
+		</div>
+		<div class="row">
+		   <div class="col-md-2">
+				<h6>
+					<b>Amount Deductible80ccg</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.amountDeductible80ccg"
+						class="form-control" placeholder="Amount Deductible80ccg" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Any Other Deduction</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.anyOtherDeduction"
+						class="form-control" placeholder="Any Other Deduction" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Total Taxable Income</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.totalTaxableIncome"
+						class="form-control" placeholder="Total Taxable Income" style="width: 100%">
+			</div>
+			
+			 <div class="col-md-2">
+				<h6>
+					<b>Income Tax On Total Income</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.incomeTaxOnTotalIncome"
+						class="form-control" placeholder="Income Tax On Total Income" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Rebate Us87A</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.rebateUs87A"
+						class="form-control" placeholder="Rebate Us87A" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Total Taxable Income</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.totalTaxableIncome"
+						class="form-control" placeholder="Total Taxable Income" style="width: 100%">
+			</div>
+		
+		</div>
+		
+		<div class="row">
+		   <div class="col-md-2">
+				<h6>
+					<b>Surcharge</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.surcharge"
+						class="form-control" placeholder="Amount Deductible80ccg" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Education Cess</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.educationCess"
+						class="form-control" placeholder="Education Cess" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Income Tax ReliefUs89</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.incomeTaxReliefUs89"
+						class="form-control" placeholder="Income Tax ReliefUs89" style="width: 100%">
+			</div>
+			 <div class="col-md-2">
+				<h6>
+					<b>Net Income Tax Payable</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.netIncomeTaxPayable"
+						class="form-control" placeholder="Net Income Tax Payable" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Tds From Current Employer</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.tdsFromCurrentEmployer"
+						class="form-control" placeholder="Tds From Current Employer" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Reported Tds From Previous Employer</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.reportedTdsFromPreviousEmployer"
+						class="form-control" placeholder="Reported Tds From Previous Employer" style="width: 100%">
+			</div>
+		
+		
+		</div>
+		<div class="row">
+		   <div class="col-md-2">
+				<h6>
+					<b>Total Tds</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.totalTds"
+						class="form-control" placeholder="Total Tds" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Short fall In Tax Deduction</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.shortfallInTaxDeduction"
+						class="form-control" placeholder="Short fall In Tax Deduction" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Reported Tds From Previous Employer</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.reportedTdsFromPreviousEmployer"
+						class="form-control" placeholder="Reported Tds From Previous Employer" style="width: 100%">
+			</div>
+			
+			 <div class="col-md-2">
+				<h6>
+					<b>Whether Tax Deducted At Higher Rate</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.whetherTaxDeductedAtHigherRate"
+						class="form-control" placeholder="Whether Tax Deducted At Higher Rate" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Count Of Pan Of Lender</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.countOfPanOfLandlord"
+						class="form-control" placeholder="Count Of Pan Of Lender" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Pan Of Landlord1</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.panOfLandlord1"
+						class="form-control" placeholder="Pan Of Landlord1" style="width: 100%">
+			</div>
+		
+		</div>
+		<div class="row">
+		  
+		
+		</div>
+		<div class="row">
+		   <div class="col-md-2">
+				<h6>
+					<b>Name Of Landlord1</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.nameOfLandlord1"
+						class="form-control" placeholder="Name Of Landlord1" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Pan Of Landlord2</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.panOfLandlord2"
+						class="form-control" placeholder="Pan Of Landlord2" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Name Of Landlord2</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.nameOfLandlord2"
+						class="form-control" placeholder="Name Of Landlord2" style="width: 100%">
+			</div>
+			<div class="col-md-2">
+				<h6>
+					<b>Pan Of Landlord3</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.panOfLandlord3"
+						class="form-control" placeholder="Pan Of Landlord3" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Name Of Landlord3</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.nameOfLandlord3"
+						class="form-control" placeholder="Name Of Landlord3" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Pan Of Landlord4</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.panOfLandlord4"
+						class="form-control" placeholder="Pan Of Landlord4" style="width: 100%">
+			</div>
+			</div>
+			
+		<div class="row">
+		   <div class="col-md-2">
+				<h6>
+					<b>Whether Interest Paid To Be Lender</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.whetherInterestPaidToBeLender"
+						class="form-control" placeholder="Whether Interest Paid To Be Lender" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Count Of Pan Of Lender</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.countOfPanOfLender"
+						class="form-control" placeholder="Count Of Pan Of Lender" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Pan Of Landlord4</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.panOfLender4"
+						class="form-control" placeholder="Pan Of Landlord4" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Pan Of Lender1</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.panOfLender1"
+						class="form-control" placeholder="Pan Of Lender1" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Name Of Landlord4</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.nameOfLender4"
+						class="form-control" placeholder="Name Of Landlord2" style="width: 100%">
+			</div>
+			 <div class="col-md-2">
+				<h6>
+					<b>Name Of Lender1</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.nameOfLender1"
+						class="form-control" placeholder="Pan Of Landlord3" style="width: 100%">
+			</div>
+		
+		</div>
+		
+		<div class="row">
+		   <div class="col-md-2">
+				<h6>
+					<b>Pan Of Lender2</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.panOfLender2"
+						class="form-control" placeholder="Name Of Landlord3" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Pan Of Landlord4</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.panOfLender4"
+						class="form-control" placeholder="Pan Of Landlord4" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Name Of Lender2</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.nameOfLender2"
+						class="form-control" placeholder="Name Of Landlord2" style="width: 100%">
+			</div>
+			
+			 <div class="col-md-2">
+				<h6>
+					<b>Pan Of Landlord3</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.panOfLender3"
+						class="form-control" placeholder="Pan Of Landlord3" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Pan Of Lender3</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.panOfLender3"
+						class="form-control" placeholder="Pan Of Lender3" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Pan Of Landlord4</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.igst"
+						class="form-control" placeholder="Pan Of Landlord4" style="width: 100%">
+			</div>
+			
+		
+		</div>
+		
+		<div class="row">
+		  
+			<div class="col-md-2">
+				<h6>
+					<b>Name Of Lender3</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.nameOfLender3"
+						class="form-control" placeholder="Name Of Lender3" style="width: 100%">
+			</div>
+			 <div class="col-md-2">
+				<h6>
+					<b>Pan Of Lender4</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.panOfLender4"
+						class="form-control" placeholder="Pan Of Lender4" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Name Of Lender4</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.nameOfLender4"
+						class="form-control" placeholder="Name Of Lender4" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Pan Of Landlord4</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.igst"
+						class="form-control" placeholder="Pan Of Landlord4" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Contribution Paid By Trustees</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.contributionPaidByTrustees"
+						class="form-control" placeholder="Contribution Paid By Trustees" style="width: 100%">
+			</div>
+		
+		</div>
+		<div class="row">
+		   <div class="col-md-2">
+				<h6>
+					<b>Contribution Super annuationFund</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.netAmountPaid"
+						class="form-control" placeholder="Contribution Super annuationFund" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Average Rate Of Deduction</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.averageRateOfDeduction"
+						class="form-control" placeholder="Average Rate Of Deduction" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Tax Deducted Of Super annuationFund</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.taxDeductedOfSuperannuationFund"
+						class="form-control" placeholder="Pan Of Landlord4" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>Gross Total Income including Contribution</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.grossTotalIncomeincludingContribution"
+						class="form-control" placeholder="Gross Total Income including Contribution" style="width: 100%">
+			</div>
+		
+		</div>
+		
+		
+		
+		
+		
+		
+		
+     </div>
 
 
-				<div class="row">
-					<div class="col-md-3" id="search">
-						<button
-							ng-click="cWctr.searchEntities(true,'form24QSalaryUpdateRequestDetail')"
-							class="btn btn-success" onclick="scrollWin()">Search</button>
+		<div class="row" id="search">
+			<div class="col-md-2" id="search">
+				<button
+					ng-click="cWctr.searchEntities(true,'form24QSalaryUpdateRequestDetail','form24QSalaryUpdateRequestDetail')"
+					class="btn btn-success" onclick="scrollWin()">Search</button>
+			</div>
+		</div>
 
-					</div>
+
+
+		<div class="row" id="hide">
+			<div class="col-md-2" style="margin-left: 80%; margin-top: -90px">
+				<button
+					ng-click="cWctr.searchEntities(true,'form24QSalaryUpdateRequestDetail')"
+					class="btn btn-success" onclick="scrollWin()">Search</button>
+			</div>
+
+
+			<div class="row">
+				<div class="col-md-2" id="search">
+					<button
+						ng-click="cWctr.searchEntities(true,'form24QSalaryUpdateRequestDetail')"
+						class="btn btn-success" onclick="scrollWin()">Search</button>
+
 				</div>
-
 			</div>
 		</div>
 	</div>
-
+	</div>
+<div class="row">
+		<div class="col-xs-12">
+			<div class="text-right">
+			<button class="btn btn-secondary"
+					style="background-color: #FFA500;"
+					data-toggle="collapse" data-target="#collapseExample4"
+					aria-expanded="false" aria-controls="collapseExample">
+					Advance Search</button>
+			
+				<button class="btn btn-Primary" data-toggle="modal"
+					ng-click="cWctr.gotoList2Page('addform24QSalaryUpdateRequestDetail','addform24QSalaryUpdateRequestDetail');">Add</button>
+			</div>
+		</div>
+	</div>
 
 	<div class="row">
 		<!-- <div class="table-responsive">  -->

@@ -1,0 +1,119 @@
+
+<div id="page-wrapper">
+	<div class="container-fluid">
+		<div class="row">
+			<h1>Add Vendor</h1>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<form role="form" name="vendorForm">
+					<div class="row">
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Vendor Name</label> <input class="form-control"
+									type="text" name="NAME" placeholder="Vendor Name"
+									ng-model="cCctr.entity.vendorName" autocomplete="off"
+									ng-maxlength="100" ng-model-options="{updateOn: 'blur'}" />
+
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Vendor Code</label> <input class="form-control"
+									type="text" name="NAME" placeholder="Vendor Code"
+									ng-model="cCctr.entity.vendorCode" />
+
+							</div>
+
+
+						</div>
+					</div>
+					<div class="row">
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Address</label>
+								<textarea class="form-control" type="text" name="address"
+									placeholder="Address" ng-model="cCctr.entity.address"
+									autocomplete="off" ng-maxlength="100"
+									ng-model-options="{updateOn: 'blur'}"></textarea>
+
+							
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Maker</label>
+								<input class="form-control" type="text" name="maker"
+									placeholder="Address" ng-model="cCctr.entity.maker"
+									autocomplete="off" ng-maxlength="100"
+									ng-model-options="{updateOn: 'blur'}"/>
+
+							
+							</div>
+						</div>
+
+					</div>
+					
+					<div class="row">
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Checker</label>
+								<input class="form-control" type="text" name="checker"
+									placeholder="Checker" ng-model="cCctr.entity.checker"
+									autocomplete="off" ng-maxlength="100"
+									ng-model-options="{updateOn: 'blur'}"/>
+
+							
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Status</label>
+								<input class="form-control" type="text" name="status"
+									placeholder="Status" ng-model="cCctr.entity.status"
+									autocomplete="off" ng-maxlength="100"
+									ng-model-options="{updateOn: 'blur'}"/>
+
+							
+							</div>
+						</div>
+
+					</div>
+					
+					<div class="row">
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Vendor Id</label>
+								<input class="form-control" type="text" name="checker"
+									placeholder="Checker" ng-model="cCctr.entity.vendorId"
+									autocomplete="off" ng-maxlength="100"
+									ng-model-options="{updateOn: 'blur'}"/>
+
+							
+							</div>
+						</div>
+						
+
+					</div>
+
+				</form>
+
+				<div class="row">
+						<div class="modal-footer">
+							<button
+								ng-click="vendorForm.submitted=true; cCctr.submit(vendorForm.$valid,'vendorMaster',true)"
+								class="btn btn-success" onclick="scrollWin()">Save</button>
+							<button onclick="history.back()"
+								class="btn btn-danger" onclick="scrollWin()">Back</button>
+						</div>
+					</div>
+				
+
+			</div>
+		</div>
+	</div>
+</div>

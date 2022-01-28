@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.LogsDao;
-import domain.in.rjsa.model.form.Logs;
+import domain.in.rjsa.model.fy.Logs;
 import domain.in.rjsa.service.AbstractService;
 import domain.in.rjsa.service.LogsService;
 

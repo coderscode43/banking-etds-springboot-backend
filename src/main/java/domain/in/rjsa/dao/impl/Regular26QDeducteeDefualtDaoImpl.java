@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractNewDao;
 import domain.in.rjsa.dao.Regular26QDeducteeDefualtDao;
-import domain.in.rjsa.model.form.Regular26QDeducteeDefualt;
+import domain.in.rjsa.model.fy.Regular26QDeducteeDefualt;
 @Repository("regular26QDeducteeDefualtDao")
 public class Regular26QDeducteeDefualtDaoImpl extends AbstractNewDao<Long, Regular26QDeducteeDefualt> implements Regular26QDeducteeDefualtDao {
 	@SuppressWarnings("unchecked")

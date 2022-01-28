@@ -25,6 +25,7 @@ App.factory('CommonService', [
 				download : download,
 				countFunction : countFunction,
 				countForBranchFunction : countForBranchFunction,
+				countForFyFunction : countForFyFunction,
 				getCount : getCount,
 				deleteEntity : deleteEntity,
 				importData : importData,
@@ -246,6 +247,19 @@ App.factory('CommonService', [
 				var deferred = $q.defer();
 				$http.get(
 						REST_SERVICE_URI + entity + '/listBranch/' + clientId+'/count/').success(function(data) {
+					count = data.count;
+					entityList = data.entities;
+					deferred.resolve(data);
+				}).error(function(status) {
+					deferred.reject(status);
+				});
+				return deferred.promise;
+			}
+			function countForFyFunction(entity, clientId) {
+				entityList = [];
+				var deferred = $q.defer();
+				$http.get(
+						REST_SERVICE_URI + entity + '/listFy/' + clientId+'/count/').success(function(data) {
 					count = data.count;
 					entityList = data.entities;
 					deferred.resolve(data);

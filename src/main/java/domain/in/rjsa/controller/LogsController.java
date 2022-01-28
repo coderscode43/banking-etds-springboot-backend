@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import domain.in.rjsa.model.form.Logs;
 import domain.in.rjsa.model.form.LogsJson;
+import domain.in.rjsa.model.fy.Logs;
 import domain.in.rjsa.model.wrapper.LogsDetailWrapper;
 import domain.in.rjsa.service.LogsJsonService;
 import domain.in.rjsa.service.LogsService;

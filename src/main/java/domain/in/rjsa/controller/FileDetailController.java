@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import domain.in.rjsa.model.form.FileDetail;
+import domain.in.rjsa.model.fy.FileDetail;
 import domain.in.rjsa.service.FileDetailService;
 
 @Controller
 @RequestMapping("/apifileDetail")
-public class FileDetailController extends AbstractController<Long, FileDetail, FileDetailService>{
+public class FileDetailController extends AbstractTDSController<Long, FileDetail, FileDetailService>{
 @Autowired
 FileDetailService service;
 	@Override

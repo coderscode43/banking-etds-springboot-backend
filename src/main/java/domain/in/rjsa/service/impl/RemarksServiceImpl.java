@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.RemarksDao;
-import domain.in.rjsa.model.form.Remarks;
+import domain.in.rjsa.model.fy.Remarks;
 import domain.in.rjsa.service.AbstractService;
 import domain.in.rjsa.service.RemarksService;
 

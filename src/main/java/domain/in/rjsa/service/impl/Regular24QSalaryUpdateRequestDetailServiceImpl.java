@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.Regular24QSalaryUpdateRequestDetailDao;
-import domain.in.rjsa.model.form.Regular24QSalaryUpdateRequestDetail;
+import domain.in.rjsa.model.fy.Regular24QSalaryUpdateRequestDetail;
 import domain.in.rjsa.service.AbstractService;
 import domain.in.rjsa.service.Regular24QSalaryUpdateRequestDetailService;
 

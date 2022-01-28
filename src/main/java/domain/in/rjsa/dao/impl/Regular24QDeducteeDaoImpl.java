@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractNewDao;
 import domain.in.rjsa.dao.Regular24QDeducteeDao;
-import domain.in.rjsa.model.form.Regular24QDeductee;
+import domain.in.rjsa.model.fy.Regular24QDeductee;
 
 @Repository("regular24QDeducteeDao")
 public class Regular24QDeducteeDaoImpl extends AbstractNewDao<Long, Regular24QDeductee>
@@ -36,6 +36,47 @@ public class Regular24QDeducteeDaoImpl extends AbstractNewDao<Long, Regular24QDe
 			criteria.add(Restrictions.le("dateOfPayment",
 					Date.from(ZonedDateTime.parse((String) entity.get("toDate")).toInstant())));
 		}
+		
+		 if (entity.get("challanSrNo") != null) {
+	  			criteria.add(Restrictions.eqOrIsNull("challanSrNo", Long.valueOf((String) entity.get("challanSrNo"))));
+	  		}
+		 if (entity.get("surcharge") != null) {
+	  			criteria.add(Restrictions.eqOrIsNull("surcharge", Double.valueOf((String) entity.get("surcharge"))));
+	  		}
+		 if (entity.get("amountPaid") != null) {
+	  			criteria.add(Restrictions.eqOrIsNull("amountPaid", Double.valueOf((String) entity.get("amountPaid"))));
+	  		}
+		 if (entity.get("educationCess") != null) {
+	  			criteria.add(Restrictions.eqOrIsNull("educationCess", Double.valueOf((String) entity.get("educationCess"))));
+	  		}
+		 if (entity.get("tds") != null) {
+	  			criteria.add(Restrictions.eqOrIsNull("tds", Double.valueOf((String) entity.get("tds"))));
+	  		}
+		 if (entity.get("totalTds") != null) {
+	  			criteria.add(Restrictions.eqOrIsNull("totalTds", Double.valueOf((String) entity.get("totalTds"))));
+	  		}
+		 if (entity.get("totalTaxDeposited") != null) {
+	  			criteria.add(Restrictions.eqOrIsNull("totalTaxDeposited", Double.valueOf((String) entity.get("totalTaxDeposited"))));
+	  		}
+		 if (entity.get("remarks") != null) {
+				criteria.add(Restrictions.eqOrIsNull("remarks", entity.get("remarks")));
+			}
+		 if (entity.get("certificateNumber") != null) {
+				criteria.add(Restrictions.eqOrIsNull("certificateNumber", entity.get("certificateNumber")));
+			}
+		
+		 if (entity.get("name") != null) {
+				criteria.add(Restrictions.eqOrIsNull("name", entity.get("name")));
+			}
+		 if (entity.get("panRefNo") != null) {
+				criteria.add(Restrictions.eqOrIsNull("panRefNo", entity.get("panRefNo")));
+			}
+		 if (entity.get("employeeRefNo") != null) {
+				criteria.add(Restrictions.eqOrIsNull("employeeRefNo", entity.get("employeeRefNo")));
+			}
+		 if (entity.get("sectionCode") != null) {
+				criteria.add(Restrictions.eqOrIsNull("sectionCode", entity.get("sectionCode")));
+			}
 
 		if (entity.get("pan") != null) {
 			criteria.add(Restrictions.eqOrIsNull("pan", entity.get("pan")));

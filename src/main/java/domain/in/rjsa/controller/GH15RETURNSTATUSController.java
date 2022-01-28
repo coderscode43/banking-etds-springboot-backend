@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import domain.in.rjsa.model.tds.GH15RETURNSTATUS;
 import domain.in.rjsa.service.GH15RETURNSTATUSService;
-import domain.in.rjsa.service.TOKENNUMBERService;
 
 @Controller
 @RequestMapping("/apighReturnStatus")

@@ -1,14 +1,14 @@
 <style>
-@media (min-width:1456px) { /* hi-res laptops and desktops */ 
-.nav-side-menu{
-width:100%;
-}
+@media ( min-width :1456px) { /* hi-res laptops and desktops */
+	.nav-side-menu {
+		width: 100%;
+	}
 }
 
-@media (max-width:1456px) { /* hi-res laptops and desktops */ 
-.nav-side-menus{
-width:20%;
-}
+@media ( max-width :1456px) { /* hi-res laptops and desktops */
+	.nav-side-menus {
+		width: 20%;
+	}
 }
 
 /*----------------sidebar-wrapper----------------*/
@@ -22,14 +22,13 @@ width:20%;
 	z-index: 999;
 }
 
-.center_topButton{
-margin-left:2%;
-
+.center_topButton {
+	margin-left: 2%;
 }
 
 @media ( min-width : 300px) and (max-width: 700px) {
 	.center_topButton {
-		margin-left:23%;
+		margin-left: 23%;
 	}
 }
 
@@ -52,13 +51,13 @@ margin-left:2%;
 }
 
 /* iPad Landscape */
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-/* CSS */
-.center_topButton {
-		margin-left:34%;
+@media only screen and (min-device-width: 768px) and (max-device-width:
+	1024px) {
+	/* CSS */
+	.center_topButton {
+		margin-left: 34%;
 	}
 }
-
 </style>
 <div class=" page-wrapper chiller-theme"
 	ng-Controller="CommonWOTController as cWctr">
@@ -86,172 +85,51 @@ margin-left:2%;
 			<!-- sidebar-search  -->
 			<div class="sidebar-menu">
 				<ul id="menu-content" class="menu-list">
-					<li data-toggle="collapse" data-target="#newss" class="collapsed">
-						<a href="#"><i class="fa fa-shopping-cart"></i><b>Form 26Q
-						</b><i class="fa fa-chevron-down" aria-hidden="true"
-							style="float: right;"></i> </a>
-					</li>
-					<ul class="sub-menu collapse" id="newss">
-						<li
-							ng-click="cCctr.gotoList2Page('form26QDeductee','form26QDeductee')"
-							onclick="scrollWin()">Deductee Details</li>
-							<li
-							ng-click="cCctr.gotoList2Page('form26QDeducteeDefault','form26QDeducteeDefault')"
-							onclick="scrollWin()">Deductee Default Details</li>
-						<li
-							ng-click="cCctr.gotoList2Page('form26QDeducteeUpdateRequestDetail','form26QDeducteeUpdateRequestDetail')"
-							onclick="scrollWin()">Update Request Details</li>
 
-					</ul>
 
-					<li data-toggle="collapse" data-target="#newsss" class="collapsed">
-						<a href="#"><i class="fa fa-credit-card"></i><b>Form 27Q </b><i
-							class="fa fa-chevron-down" aria-hidden="true"
-							style="float: right"></i></a>
-					</li>
-					<ul class="sub-menu collapse" id="newsss">
-						<li
-							ng-click="cCctr.gotoList2Page('form27QDeductee','form27QDeductee')"
-							onclick="scrollWin()">Deductee Details</li>
-							<li
-							ng-click="cCctr.gotoList2Page('form27QDeducteeDefault','form27QDeducteeDefault')"
-							onclick="scrollWin()">Deductee Default Details</li>
-						<li
-							ng-click="cCctr.gotoList2Page('form27QDeducteeUpdateRequestDetail','form27QDeducteeUpdateRequestDetail')"
-							onclick="scrollWin()">Update Request Details</li>
 
-					</ul>
-
-					<li data-toggle="collapse" data-target="#newssss" class="collapsed">
-						<a href="#"><i class="fa fa-credit-card"></i><b>Form 24Q </b><i
-							class="fa fa-chevron-down" aria-hidden="true"
-							style="float: right"></i></a>
-					</li>
-					<ul class="sub-menu collapse" id="newssss">
-						<!-- <li ng-click="cCctr.gotoList2Page('regular24Q4Challan','regular24Q4Challan')"
-									onclick="scrollWin()">Challan Details</li> -->
-						<li
-							ng-click="cCctr.gotoList2Page('form24QDeductee','form24QDeductee')"
-							onclick="scrollWin()">Deductee Details</li>
-							<li
-							ng-click="cCctr.gotoList2Page('form24QDeducteeDefault','form24QDeducteeDefault')"
-							onclick="scrollWin()">Deductee Default Details</li>
-							
-						<li
-							ng-click="cCctr.gotoList2Page('form24QDeducteeUpdateRequestDetail','form24QDeducteeUpdateRequestDetail')"
-							onclick="scrollWin()">Update Request Details</li>
-						<li
-							ng-click="cCctr.gotoList2Page('form24QSalary','form24QSalary')"
-							onclick="scrollWin()">Salary Details</li>
-						<li
-							ng-click="cCctr.gotoList2Page('form24QSalaryUpdateRequestDetail','form24QSalaryUpdateRequestDetail')"
-							onclick="scrollWin()">Salary Update Request Details</li>
-					</ul>
-					
-					
-					<li data-toggle="collapse" data-target="#form27eq" class="collapsed">
-						<a href="#"><i class="fa fa-credit-card"></i><b>Form 27EQ </b><i
-							class="fa fa-chevron-down" aria-hidden="true"
-							style="float: right"></i></a>
-					</li>
-					
-					<ul class="sub-menu collapse" id="form27eq">
-						<li
-							ng-click="cCctr.gotoList2Page('form27EQDeductee','form27EQDeductee')"
-							onclick="scrollWin()">Deductee Details</li>
-							<li
-							ng-click="cCctr.gotoList2Page('form27EQDeducteeDefault','form27EQDeducteeDefault')"
-							onclick="scrollWin()">Deductee Default Details</li>
-							
-						<li
-							ng-click="cCctr.gotoList2Page('form27EQDeducteeUpdateRequestDetail','form27EQDeducteeUpdateRequestDetail')"
-							onclick="scrollWin()">Update Request Details</li>
-
-					</ul>
-					
-					<li ng-click="cCctr.gotoListPage('vendorMaster','vendorMaster')"
-						onclick="scrollWin()"><a> <i class="fa fa-book"></i><b>Vendor Master</b>
-					</a></li>
-					<li ng-click="cCctr.gotoListPage('pensionMaster','pensionMaster')"
-						onclick="scrollWin()"><a> <i class="fa fa-book"></i><b>Pension Master</b>
-					</a></li>
-						<li ng-click="cCctr.gotoListPage('employeeMaster','employeeMaster')"
-						onclick="scrollWin()"><a> <i class="fa fa-book"></i><b>Employee Master</b>
-					</a></li>
-					
 					<li ng-click="cCctr.gotoListPage('branch','branch')"
-						onclick="scrollWin()"><a> <i class="fa fa-book"></i><b>Select Branch</b>
+						onclick="scrollWin()"><a> <i class="fa fa-book"></i><b>Select
+								Branch</b>
 					</a></li>
 
 					<li ng-click="cCctr.gotoList2Page('challanForm','challanForm')"
 						onclick="scrollWin()"><a> <i class="fa fa-book"></i><b>Challan</b>
 					</a></li>
 
-					<li ng-click="cCctr.gotoListPage('ldc','ldc')"
-						onclick="scrollWin()"><a><i class="fa fa-desktop"
-							aria-hidden="true"></i><b>LDC Details</b> </a></li>
+					<li
+						ng-click="cCctr.gotoListPage('statementStatus','statementStatus')"
+						onclick="scrollWin()"><a> <i class="fa fa-book"></i><b>Statement
+								Status</b>
+					</a></li>
+
 
 					<li
-						ng-click="cCctr.gotoList2Page('downloadCertificate','downloadCertificate')"><a>
-							<i class="fa fa-book"></i><b>Download Certificate</b>
+						ng-click="cCctr.gotoListPage('ghReturnStatus','ghReturnStatus')"
+						onclick="scrollWin()"><a> <i class="fa fa-book"></i><b>Form
+								15G/15H Status</b>
 					</a></li>
-
-					<li
-						ng-click="cCctr.gotoListPage('statementStatus','statementStatus')"><a>
-							<i class="fa fa-book"></i><b>Statement Status</b>
-					</a></li>
-
-
-
-					<li ng-click="cCctr.gotoListPage('tokenNumber','tokenNumber')"
-						onclick="scrollWin()"><a> <i class="fa fa-book"></i><b>Token
-								Number</b>
-					</a></li>
-
-					<li data-toggle="collapse" data-target="#newsssss"
-						class="collapsed"><a href="#"><i
-							class="fa fa-credit-card"></i><b>Form 15G/15H </b><i
-							class="fa fa-chevron-down" aria-hidden="true"
-							style="float: right"></i></a></li>
-					<ul class="sub-menu collapse" id="newsssss">
-						<li ng-click="cCctr.gotoListPage('form15GH','form15GH')"
-							onclick="scrollWin()">15G/15H Details</li>
-						<li
-							ng-click="cCctr.gotoListPage('ghReturnStatus','ghReturnStatus')"
-							onclick="scrollWin()">Update 15G/15H Request Details</li>
-
-					</ul>
-					<!-- <li ng-click="cCctr.gotoListPage('ghReturnStatus','ghReturnStatus')" 
-						onclick="scrollWin()"><a> <i class="fa fa-book"></i><b>Form 15G/15H Status</b>
-					</a></li> -->
 
 					<li ng-click="cCctr.gotoListPage('misReport','misReport')"
-						onclick="scrollWin()"><a> <i class="fa fa-book"></i><b>MIS
-								Report</b>
-					</a></li>
-
-					<li ng-click="cCctr.gotoListPage('ticket','ticket')"
-						onclick="scrollWin()"><a> <i class="fa fa-book"></i><b>Generate
-								Ticket</b>
+						onclick="scrollWin()"><a> <i class="fa fa-book"></i><b>MISReport</b>
 					</a></li>
 
 					<li
 						ng-click="cCctr.gotoListPage('deductorDetails','deductorDetails')"
 						onclick="scrollWin()"><a><i class="fa fa-desktop"
 							aria-hidden="true"></i><b>Deductor Details</b> </a></li>
-							
-							<li
-						ng-click="cCctr.gotoListPage('userDetails','userDetails')"
+
+					<li ng-click="cCctr.gotoListPage('userDetails','userDetails')"
 						onclick="scrollWin()"><a><i class="fa fa-desktop"
 							aria-hidden="true"></i><b>User</b> </a></li>
 
 					<li data-toggle="collapse" data-target="#service" class="collapsed">
 						<a href="#"><b>${cd.getName()}</b><i
 							class="fa fa-chevron-down" aria-hidden="true"
-							style="float: right;margin-right:-2%"></i></a>
+							style="float: right; margin-right: -2%"></i></a>
 					</li>
 					<ul class="sub-menu collapse" id="service">
-						<li ng-click="cCctr.gotoListPage('message','message')">Messages</li>
+					<!-- 	<li ng-click="cCctr.gotoListPage('message','message')">Messages</li> -->
 						<li ng-click="cCctr.gotoListPage('logs','logs')">Logs</li>
 						<li ui-sref="logout"><i class="fa fa-fw fa-power-off"></i>
 							Log Out</li>
@@ -277,7 +155,7 @@ margin-left:2%;
 	<!-- page-content" -->
 </div>
 
-<div class="top row col-lg-8 center_topButton" >
+<div class="top row col-lg-8 center_topButton">
 
 
 	<div class="top-item top1 col-lg-offset-5" style="border-radius: 5px;">

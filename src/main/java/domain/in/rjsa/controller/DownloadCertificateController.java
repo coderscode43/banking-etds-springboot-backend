@@ -23,9 +23,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import domain.in.rjsa.model.form.DownloadCertificate;
 import domain.in.rjsa.model.form.ListCount;
 import domain.in.rjsa.model.form.Login;
+import domain.in.rjsa.model.fy.DownloadCertificate;
 import domain.in.rjsa.service.DownloadCertificateService;
 import domain.in.rjsa.web.ApplicationCache;
 

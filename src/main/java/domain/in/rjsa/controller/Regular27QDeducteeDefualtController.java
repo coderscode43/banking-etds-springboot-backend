@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import domain.in.rjsa.model.form.Regular27QDeducteeDefualt;
+import domain.in.rjsa.model.fy.Regular27QDeducteeDefualt;
 import domain.in.rjsa.model.wrapper.CommentsWrapper;
 import domain.in.rjsa.service.CommentsService;
 import domain.in.rjsa.service.Regular27QDeducteeDefualtService;

@@ -38,6 +38,6 @@ public class GH15RETURNSTATUS extends CommonModelAbstract {
 	@Column(name = "STATUS")
 	public String STATUS;
 	@Column(name = "AS_ON_DATE")
-	public Date AS_ON_DATE;
+	public String AS_ON_DATE;
 
 }

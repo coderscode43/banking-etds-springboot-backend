@@ -1,81 +1,181 @@
+<style>
+
+
+@media only screen and (min-width:1000px) {
+	#search {
+		margin-left: 45%;
+		margin-top: 2px;
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	#hide {
+		display: none;
+	}
+}
+
+
+@media ( min-width : 768px) {
+	.collapse.dont-collapse-sm {
+		display: block;
+		height: auto !important;
+		visibility: visible;
+	}
+}
+</style>
+
+
+
+
 <div id="page-wrapper">
-
-
-
-
+	<div class="heading">MIS Report Generate</div>
 	<div class="container-fluid">
 	
-	<button class="btn btn-primary" type="add" style="float:right" ng-click="cCctr.gotoListPage('addReport','addReport	');">ADD</button>
-      
-	<div class="row " style="font-size: 12px">
-	<div class="heading">MIS Report Generate</div>
-	
- <!-- <div class="table-responsive"> -->
-	<table class=" table table-bordered table-hover table-striped ">
-		<thead>
-			<tr  style="background-color: #81b7db;font-size:13px">
-				<th>Sr No</th>
-				<th>From Date</th>
-				<th>To Date</th>
-				<th>Report Type</th>
+	<div class="collapse dont-collapse-sm" id="collapseExample2">
+		<div class="row">
+			<div class="form-group">
+	<div class="col-md-3">
+					<h6>
+						<b>From Date</b>
+						<h6>
+							<input type="date" ng-model="cCctr.search.fromDate"
+							ng-change="cCctr.search.fromDate=cCctr.date(cCctr.search.fromDate);"
+							class="form-control" placeholder="Date" style="width: 100%">
+				</div>
+					<div class="col-md-3">
+					<h6>
+						<b> To Date</b>
+						<h6>
+								<input type="date" ng-model="cCctr.search.toDate"
+							ng-change="cCctr.search.toDate=cCctr.date(cCctr.search.toDate);"
+							class="form-control" placeholder="Date" style="width: 100%">
+				</div>
+
 				
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat="a in cCctr.getEntityListData() track by a.id" style="font-size:13px">
-				<td>{{$index+1}}</td>
-				<td>{{a.fromDate | date:'dd-MM-yyyy'}}</td>
-				<td>{{a.toDate | date:'dd-MM-yyyy'}}</td>
-				<td>{{a.reportType}}</td>
-			
-			</tr>
-		</tbody>
-	</table>
+
+				<div class="col-md-3">
+					<h6>
+						<b>Report Type</b>
+						<h6>
+							<select class="form-control" ng-model="cCctr.search.reportType">
+							<option value=" " ng-selected="true">Select Report Type</option>
+							<option value="MonthWise">Month Wise</option>
+							<option value="Yearly">Yearly</option>
+							<option value="TaxAuditReport">Tax Audit Report</option>
+							<option value="DefaultTaxAuditReport">Default Tax Audit Report</option>
+						</select>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row" id="search">
+			<div class="col-md-2" id="search">
+				<button
+					ng-click="cCctr.searchEntities(true,'generateReport','generateReport')"
+					class="btn btn-success" onclick="scrollWin()">Search</button>
+			</div>
+		</div>
+
+
+
+		<div class="row" id="hide">
+			<div class="col-md-3" style="margin-left: 80%; margin-top: -50px">
+				<button
+					ng-click="cCctr.searchEntities(true,'generateReport')"
+					class="btn btn-success" onclick="scrollWin()">Search</button>
+			</div>
+
+
+			<div class="row">
+				<div class="col-md-3" id="search">
+					<button
+						ng-click="cCctr.searchEntities(true,'generateReport')"
+						class="btn btn-success" onclick="scrollWin()">Search</button>
+
+				</div>
+			</div>
+		</div>
+		</div>
 	
-	</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="text-right">
+					<button class="btn btn-secondary"
+						style="background-color: #FFA500;" data-toggle="collapse"
+						data-target="#collapseExample4" aria-expanded="false"
+						aria-controls="collapseExample">Advance Search</button>
+
+					<button class="btn btn-Primary" data-toggle="modal"
+						ng-click="cCctr.gotoListPage('addReport','addReport	');">Add</button>
+				</div>
+			</div>
+		</div>
+		<div class="row " style="font-size: 12px">
+          <!-- <div class="table-responsive"> -->
+			<table class=" table table-bordered table-hover table-striped ">
+				<thead>
+					<tr style="background-color: #81b7db; font-size: 13px">
+						<th>Sr No</th>
+						<th>From Date</th>
+						<th>To Date</th>
+						<th>Report Type</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="a in cCctr.getEntityListData() track by a.id"
+						style="font-size: 13px">
+						<td>{{$index+1}}</td>
+						<td>{{a.fromDate | date:'dd-MM-yyyy'}}</td>
+						<td>{{a.toDate | date:'dd-MM-yyyy'}}</td>
+						<td>{{a.reportType}}</td>
+
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
 
 
 	</div>
-	
-	
+
+
 
 </div>
 </div>
 
 
 
- <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Message</h4>
-        </div>
-        <div class="modal-body">
-        <div class="row">
-        <div class="col-md-6">
-        <strong>Date:</strong> {{cCctr.temp.date | date:'dd-MM-yyyy'}}        
-        </div>
-        <div class="col-md-6">
-        <strong>Subject:</strong> {{cCctr.temp.subject}}        
-        </div>
-        </div><br>
-        <div class="row">
-        <div class="col-md-12">
-        <strong>Message:</strong>
-        {{cCctr.temp.message}}
-        </div>
-       </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+	<div class="modal-dialog">
 
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Message</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-6">
+						<strong>Date:</strong> {{cCctr.temp.date | date:'dd-MM-yyyy'}}
+					</div>
+					<div class="col-md-6">
+						<strong>Subject:</strong> {{cCctr.temp.subject}}
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-md-12">
+						<strong>Message:</strong> {{cCctr.temp.message}}
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
 
-
+		</div>
+	</div>

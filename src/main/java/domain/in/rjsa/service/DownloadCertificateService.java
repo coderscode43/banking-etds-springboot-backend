@@ -3,7 +3,7 @@ package domain.in.rjsa.service;
 import java.util.HashMap;
 import java.util.List;
 
-import domain.in.rjsa.model.form.DownloadCertificate;
+import domain.in.rjsa.model.fy.DownloadCertificate;
 
 public interface DownloadCertificateService {
 

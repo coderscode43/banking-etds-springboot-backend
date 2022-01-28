@@ -1,125 +1,5 @@
 <style>
 
-/*
-	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
-	*/
-@media only screen and (max-width: 760px) , ( min-device-width : 768px)
-	and (max-device-width: 1024px) {
-	/* Force table to not be like tables anymore */
-	table, thead, tbody, th, td, tr {
-		display: block;
-	}
-
-	/* Hide table headers (but not display: none;, for accessibility) */
-	thead tr {
-		position: absolute;
-		top: -9999px;
-		left: -9999px;
-	}
-	tr {
-		margin: 0 0 1rem 0;
-	}
-	tr:nth-child(odd) {
-		background: #ccc;
-	}
-	td {
-		/* Behave  like a "row" */
-		border: none;
-		border-bottom: 1px solid #eee;
-		position: relative;
-		padding-left: 50%;
-	}
-	td:before {
-		/* Now like a table header */
-		position: absolute;
-		/* Top/left values mimic padding */
-		top: 0;
-		left: 6px;
-		width: 45%;
-		padding-right: 10px;
-		white-space: nowrap;
-	}
-
-	/*
-		Label the data
-    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
-		*/
-	td:nth-of-type(1):before {
-		content: "Sr. No.";
-	}
-	td:nth-of-type(2):before {
-		content: "Challan Sr.No.";
-	}
-	td:nth-of-type(3):before {
-		content: "Deductee Reference No.";
-	}
-	td:nth-of-type(4):before {
-		content: "Deductee Code";
-	}
-	td:nth-of-type(5):before {
-		content: "Deductee Pan";
-	}
-	td:nth-of-type(6):before {
-		content: "Deductee Name";
-	}
-	td:nth-of-type(7):before {
-		content: "Section Code";
-	}
-	td:nth-of-type(8):before {
-		content: "Date of Payment";
-	}
-	td:nth-of-type(9):before {
-		content: "Paid Amount";
-	}
-	td:nth-of-type(10):before {
-		content: "TDS";
-	}
-	td:nth-of-type(11):before {
-		content: "Surcharge";
-	}
-	td:nth-of-type(12):before {
-		content: "Education cess";
-	}
-	td:nth-of-type(13):before {
-		content: "Total Tax Deducted";
-	}
-	td:nth-of-type(14):before {
-		content: "Total Tax Deposited";
-	}
-	td:nth-of-type(15):before {
-		content: "Deduct Date";
-	}
-	td:nth-of-type(16):before {
-		content: "Rate Tax Deduct";
-	}
-	td:nth-of-type(17):before {
-		content: "Remarks";
-	}
-	td:nth-of-type(18):before {
-		content: "Certificate No.";
-	}
-	td:nth-of-type(19):before {
-		content: "FY";
-	}
-	td:nth-of-type(20):before {
-		content: "Quarter";
-	}
-	td:nth-of-type(21):before {
-		content: "Action";
-	}
-}
-
-@media only screen and (max-width: 1000px) {
-	.one {
-		display: none;
-	}
-}
-
-@media only screen and (max-width: 1000px) {
-	.two {
-		padding: 8px;
-	}
-}
 
 @media only screen and (min-width:600px) {
 	#three {
@@ -250,7 +130,7 @@
 
 
 		<div class="row" id="hide">
-			<div class="col-md-3" style="margin-left: 80%; margin-top: -80px">
+			<div class="col-md-3" style="margin-left: 80%; margin-top: -40px">
 				<button ng-click="cCctr.searchEntities(true,'deductorDetails')"
 					class="btn btn-success" onclick="scrollWin()">Search</button>
 			</div>
@@ -274,7 +154,7 @@
 	<div class="row">
 		<!-- <div class="table-responsive">  -->
 
-		<table class=" tables table-bordered table-hover table-striped"
+		<table class=" table table-bordered table-hover table-striped"
 			role="table"
 			style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
 			<thead>
@@ -294,7 +174,7 @@
 			</thead>
 			<tbody>
 				<tr role="row" ng-repeat="a in cCctr.getEntityListData()">
-					<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
+					<td style="padding: 5px">{{$index+1}}</td>
 					<td>{{a.TAN}}</td>
 					<td>{{a.STATE}}</td>
 					<td>{{a.CITY}}</td>

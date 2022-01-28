@@ -3,11 +3,9 @@ package domain.in.rjsa.model.wrapper;
 import java.util.List;
 
 import domain.in.rjsa.model.form.Comments;
-import domain.in.rjsa.model.form.Regular24QDeducteeDefualt;
-import domain.in.rjsa.model.form.Regular26QDeducteeDefualt;
-import domain.in.rjsa.model.form.Regular27EQDeductee;
-import domain.in.rjsa.model.form.Regular27EQDeducteeDefualt;
-import domain.in.rjsa.model.form.Regular27QDeducteeDefualt;
+import domain.in.rjsa.model.fy.Regular24QDeducteeDefualt;
+import domain.in.rjsa.model.fy.Regular26QDeducteeDefualt;
+import domain.in.rjsa.model.fy.Regular27QDeducteeDefualt;
 import lombok.Data;
 
 @Data

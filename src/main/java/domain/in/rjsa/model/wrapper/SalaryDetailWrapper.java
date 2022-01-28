@@ -1,9 +1,9 @@
 package domain.in.rjsa.model.wrapper;
 
-import domain.in.rjsa.model.form.Regular24QDeductee;
-import domain.in.rjsa.model.form.Regular24QSalary;
-import domain.in.rjsa.model.form.Regular26QDeductee;
-import domain.in.rjsa.model.form.Regular27QDeductee;
+import domain.in.rjsa.model.fy.Regular24QDeductee;
+import domain.in.rjsa.model.fy.Regular24QSalary;
+import domain.in.rjsa.model.fy.Regular26QDeductee;
+import domain.in.rjsa.model.fy.Regular27QDeductee;
 import lombok.Data;
 
 @Data

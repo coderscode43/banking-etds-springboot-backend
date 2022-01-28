@@ -1,12 +1,7 @@
 package domain.in.rjsa.dao.impl;
 
 import java.sql.Date;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractNewDao;
 import domain.in.rjsa.dao.LogsDao;
-import domain.in.rjsa.model.form.Logs;
+import domain.in.rjsa.model.fy.Logs;
 @Repository("logsDao")
 public class LogsDaoImpl extends AbstractNewDao<Long, Logs> implements LogsDao{
 	@SuppressWarnings("unchecked")

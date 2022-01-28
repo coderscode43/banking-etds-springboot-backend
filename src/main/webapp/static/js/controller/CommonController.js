@@ -258,6 +258,13 @@ App
 								});
 							}
 							
+							self.gotoList3Page = function(entity2, page2) {
+								$state.go("home.listFy", {
+									"entity" : entity2,
+									"page" : page2
+								});
+							}
+							
 							
 		self.download = function(url) {
 		wait(1000);

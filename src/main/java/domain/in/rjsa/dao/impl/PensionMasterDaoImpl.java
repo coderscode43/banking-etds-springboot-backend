@@ -33,6 +33,15 @@ public class PensionMasterDaoImpl extends AbstractNewDao<Long, PensionMaster> im
 		if (entity.get("address") != null) {
 			criteria.add(Restrictions.eqOrIsNull("address", entity.get("address")));
 		}
+		if (entity.get("maker") != null) {
+			criteria.add(Restrictions.eqOrIsNull("maker", entity.get("maker")));
+		}
+		if (entity.get("checker") != null) {
+			criteria.add(Restrictions.eqOrIsNull("checker", entity.get("checker")));
+		}
+		if (entity.get("status") != null) {
+			criteria.add(Restrictions.eqOrIsNull("status", entity.get("status")));
+		}
 		if (entity.get("pensionerCode") != null) {
 			criteria.add(Restrictions.eqOrIsNull("pensionerCode", entity.get("pensionerCode")));
 		}

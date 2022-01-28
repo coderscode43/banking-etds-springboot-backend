@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractNewDao;
 import domain.in.rjsa.dao.Regular24QDeducteeUpdateRequestDetailDao;
-import domain.in.rjsa.model.form.Regular24QDeducteeUpdateRequestDetail;
+import domain.in.rjsa.model.fy.Regular24QDeducteeUpdateRequestDetail;
 
 @Repository("regular24QDeducteeUpdateRequestDetailDao")
 public class Regular24QDeducteeUpdateRequestDetailDaoImpl

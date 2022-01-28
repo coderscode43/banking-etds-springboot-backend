@@ -22,9 +22,9 @@ import com.google.gson.JsonElement;
 
 import domain.in.rjsa.exception.FieldErrorDTO;
 import domain.in.rjsa.model.form.Login;
-import domain.in.rjsa.model.form.Regular24QDeductee;
-import domain.in.rjsa.model.form.Regular24QDeducteeUpdateRequestDetail;
-import domain.in.rjsa.model.form.Remarks;
+import domain.in.rjsa.model.fy.Regular24QDeductee;
+import domain.in.rjsa.model.fy.Regular24QDeducteeUpdateRequestDetail;
+import domain.in.rjsa.model.fy.Remarks;
 import domain.in.rjsa.model.wrapper.Regular24QDeducteeUpdateRequestDetailWrapper;
 import domain.in.rjsa.service.Regular24QDeducteeService;
 import domain.in.rjsa.service.Regular24QDeducteeUpdateRequestDetailService;

@@ -1,5 +1,6 @@
 package domain.in.rjsa.controller;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -23,20 +24,27 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
+import domain.in.rjsa.exception.CustomException;
+import domain.in.rjsa.exception.FieldErrorDTO;
 import domain.in.rjsa.model.form.Ajax;
 import domain.in.rjsa.model.form.Branch;
 import domain.in.rjsa.model.form.ListCount;
 import domain.in.rjsa.model.form.Login;
-import domain.in.rjsa.model.form.Logs;
 import domain.in.rjsa.model.form.LogsJson;
 import domain.in.rjsa.model.form.Model;
+import domain.in.rjsa.model.fy.FileDetail;
+import domain.in.rjsa.model.fy.Logs;
 import domain.in.rjsa.service.LogsJsonService;
 import domain.in.rjsa.service.LogsService;
 import domain.in.rjsa.service.ServiceTDSInterface;
@@ -320,6 +328,67 @@ public abstract class AbstractTDSController<K extends Serializable, E extends Mo
 				ljService.save(lj);
 			}
 		
+		
+		// --------------------------------Upload File---------------------------
+
+			@RequestMapping(value = "/uploadFile/{clientId}", method = RequestMethod.POST)
+			public ResponseEntity<?> uploadFileMulti(@RequestParam("file") MultipartFile file, @RequestParam("dec") String dec,
+					@PathVariable Long clientId) {
+				String lFilename = file.getOriginalFilename();
+				String[] lext = lFilename.split("\\.");
+				if (!(lext[1].equalsIgnoreCase("jpeg") || lext[1].equalsIgnoreCase("png") || lext[1].equalsIgnoreCase("jpg")
+						|| lext[1].equalsIgnoreCase("pdf"))) {
+					FieldErrorDTO dto = new FieldErrorDTO();
+					Gson gson = new Gson();
+					throw new CustomException("Invalid File Format, Allowed formats('jpeg','png','jpg','pdf'");
+				} else {
+					ObjectMapper mapper = new ObjectMapper();
+					LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
+					try {
+						map = mapper.readValue(dec, new TypeReference<Map<String, String>>() {
+						});
+					} catch (JsonParseException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (JsonMappingException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+
+					}
+					for (String key : map.keySet()) {
+						if (key.endsWith("Id") || key.endsWith("id")) {
+							map.put(key, Long.valueOf((String) map.get(key)));
+						}
+					}
+					save(map, file);
+					
+					return new ResponseEntity<String>(HttpStatus.CREATED);
+				}
+
+			}
+
+			public void save(LinkedHashMap<String, Object> map, MultipartFile file) {
+				FileDetail doc = new FileDetail();
+				Login l = applicationCache.getLoginDetail(getPrincipal());
+				doc.setFileName(file.getOriginalFilename());
+				doc.setClientId(l.getClientId());
+			
+				map.put("fileId", null);
+				
+
+				try {
+					doc.setType(doc.getFileName().split("\\.")[1]);
+					doc.setFile(file.getBytes());
+					getService().saveFile(doc, map, getEntity());
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+			}
 		
 		
 	

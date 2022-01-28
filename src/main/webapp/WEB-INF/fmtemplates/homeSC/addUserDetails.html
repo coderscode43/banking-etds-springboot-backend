@@ -8,34 +8,60 @@
 			<div class="col-md-12">
 				<form role="form" name="tokenForm">
 					<div class="row">
-						
-						<div class="col-md-6">
+                       <div class="col-md-6">
 							<div class="form-group">
-								<label>Branch Code</label> <input class="form-control" type="text"
-									name="NAME" placeholder="TAN" ng-model="cCctr.entity.branchCode"
-									autocomplete="off" ng-maxlength="100"
+								<label>Branch Code</label> <input class="form-control"
+									type="text" name="NAME" placeholder="Branch Code"
+									ng-model="cCctr.entity.branchCode" autocomplete="off"
+									ng-maxlength="100" ng-required="true" ng-pattern="/^[0-9]*$/
 									ng-model-options="{updateOn: 'blur'}" />
+									<span
+									style="color: red"
+									ng-show="tokenForm.submitted || tokenForm.branchCode.$dirty && tokenForm.branchCode.$invalid">
+									<span class="error"
+									ng-show="tokenForm.branchCode.$error.pattern">Please
+										enter valid Branch Code. </span> <span class="error"
+									ng-show="tokenForm.branchCode.$error.maxlength">Branch
+										Code should not be greater than 25 digits.</span>
+										<span class="error"
+									ng-show="tokenForm.branchCode.$error.required">Branch Code
+										 is Required.</span>
+
+								</span> <span class="error" id="branchCode"></span>
 
 							</div>
 						</div>
 						<div class="col-md-6">
-						<div class="form-group">
+							<div class="form-group">
 								<label>Name</label> <input class="form-control" type="text"
-									name="NAME" placeholder="Name" ng-model="cCctr.entity.name"
-								 />
+									ng-required="true" name="name" placeholder="Name"
+									ng-model="cCctr.entity.name" ng-pattern ="/^[a-zA-Z\s]*$/"/>
+									<span
+									style="color: red"
+									ng-show="tokenForm.submitted || tokenForm.name.$dirty && tokenForm.name.$invalid">
+									<span class="error"
+									ng-show="tokenForm.name.$error.pattern">Please
+										enter valid Name. </span> <span class="error"
+									ng-show="tokenForm.name.$error.maxlength">
+										Name should not be greater than 25 digits.</span>
+										<span class="error"
+									ng-show="tokenForm.name.$error.required">Name
+										 is Required.</span>
+
+								</span> <span class="error" id="name"></span>
 
 							</div>
-						
-						
+
+
 						</div>
 					</div>
 					<div class="row">
-						
+
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>PAN</label> <input class="form-control" type="text"
-									name="NAME" placeholder="Name" ng-model="cCctr.entity.pan"
-								 />
+									ng-required="true" name="pan" placeholder="Name"
+									ng-model="cCctr.entity.pan" />
 
 							</div>
 
@@ -43,49 +69,39 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Zone</label> <input class="form-control" type="text"
-									name="NAME" placeholder="Name" ng-model="cCctr.entity.zone"
-								 />
+									ng-required="true" name="zone" placeholder="Name"
+									ng-model="cCctr.entity.zone" />
 
 							</div>
 
 						</div>
 					</div>
-					
+
 					<div class="row">
-						
+
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Type</label> <input class="form-control" type="text"
-									name="NAME" placeholder="Name" ng-model="cCctr.entity.type"
-								 />
+									ng-required="true" name="type" placeholder="Name"
+									ng-model="cCctr.entity.type" />
 
 							</div>
 
 						</div>
-					
+
 					</div>
-					
-					
-					
-					
-					
-					
-					
-
-				</form>
-
 					<div class="row">
 						<div class="modal-footer">
 							<button
 								ng-click="tokenForm.submitted=true; cCctr.submit(tokenForm.$valid,'userDetails',true)"
 								class="btn btn-success" onclick="scrollWin()">Save</button>
-							<button ng-click="cCctr.gotoListPage('userDetails','userDetails');"
+							<button
+								ng-click="cCctr.gotoListPage('userDetails','userDetails');"
 								class="btn btn-danger" onclick="scrollWin()">Back</button>
 						</div>
 					</div>
 				</form>
-
-			</div>
+            </div>
 		</div>
 	</div>
 </div>

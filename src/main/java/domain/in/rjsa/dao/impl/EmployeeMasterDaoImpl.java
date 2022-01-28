@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 import domain.in.rjsa.dao.AbstractNewDao;
 import domain.in.rjsa.dao.EmployeeMasterDao;
 import domain.in.rjsa.model.form.EmployeeMaster;
-import domain.in.rjsa.model.form.PensionMaster;
 @Repository("employeeMasterDao")
 public class EmployeeMasterDaoImpl extends AbstractNewDao<Long, EmployeeMaster> implements EmployeeMasterDao{
 	@Override
@@ -35,6 +34,15 @@ public class EmployeeMasterDaoImpl extends AbstractNewDao<Long, EmployeeMaster> 
 		}
 		if (entity.get("pan") != null) {
 			criteria.add(Restrictions.eqOrIsNull("pan", entity.get("pan")));
+		}
+		if (entity.get("maker") != null) {
+			criteria.add(Restrictions.eqOrIsNull("maker", entity.get("maker")));
+		}
+		if (entity.get("checker") != null) {
+			criteria.add(Restrictions.eqOrIsNull("checker", entity.get("checker")));
+		}
+		if (entity.get("status") != null) {
+			criteria.add(Restrictions.eqOrIsNull("status", entity.get("status")));
 		}
 		if (entity.get("designation") != null) {
 			criteria.add(Restrictions.eqOrIsNull("designation", entity.get("designation")));

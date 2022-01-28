@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.DownloadCertificateDao;
-import domain.in.rjsa.model.form.DownloadCertificate;
+import domain.in.rjsa.model.fy.DownloadCertificate;
 import domain.in.rjsa.service.DownloadCertificateService;
 
 @Transactional("transactionManager")

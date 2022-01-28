@@ -48,6 +48,47 @@
 							</span> <span class="error" id="surcharge"></span>
 						</div>
 					</div>
+					
+					
+					<div class="row">
+						<div class="col-md-6">
+
+							<label>SR No* </label> <input class="form-control"
+								type="text" name="srNo" placeholder="SR Number"
+								ng-model="cWctr.entity.srNo" autocomplete="off"
+								ng-required="true" ng-model-options="{updateOn: 'blur'}" /> <span
+								style="color: red"
+								ng-show="challanForm.submitted ||challanForm.srNo.$dirty && challanForm.srNo.$invalid">
+								<span class="error"
+								ng-show="challanForm.srNo.$error.required">SR NO is Required.</span>
+							</span> <span class="error" id="srNo"></span>
+						</div>
+
+						<!-- <div class="col-md-6">
+
+							<label>DDOSR*</label> <input class="form-control"
+								type="text" name="DDOSrNo"
+								placeholder="DDOSrNo"
+								ng-model="cWctr.entity.ddoSrNo" autocomplete="off"
+								ng-pattern="/^[a-zA-Z0-9]*$/" ng-maxlength="45"
+								ng-required="true" ng-model-options="{updateOn: 'blur'}" /> <span
+								style="color: red"
+								ng-show="challanForm.submitted ||challanForm.ddoSrNo.$dirty && challanForm.ddoSrNo.$invalid">
+								<span class="error"
+								ng-show="challanForm.ddoSrNo.$error.pattern">Please
+									enter valid MinorHeadChallan. </span> <span class="error"
+								ng-show="challanForm.ddoSrNo.$error.maxlength">MinorHeadChallan
+									should not be greater than 45 characters.</span> <span class="error"
+								ng-show="challanForm.ddoSrNo.$error.required">MinorHeadChallan
+									is Required.</span>
+							</span> <span class="error" id="ddoSrNo"></span>
+						</div> -->
+
+
+					</div>
+					
+					
+					
 
 					<div class="row">
 						<div class="col-md-6">

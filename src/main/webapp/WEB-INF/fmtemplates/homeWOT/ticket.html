@@ -249,20 +249,14 @@
 					Advance Search</button>
 			
 				
+			<button class="btn btn-primary" data-toggle="modal"
+				onclick="test('#myModal')">Add File</button>
+		
 			</div>
 		</div>
 	</div>
 
 
-
-<div class="row">
-	<div class="col-xs-12">
-		<div class="text-right">
-			<button class="btn btn-primary" data-toggle="modal"
-				onclick="test('#myModal')">Add File</button>
-		</div>
-	</div>
-</div>
 <div class="row">
 	<!-- <div class="table-responsive">  -->
 	<table class=" tables table-bordered table-hover table-striped"
@@ -293,8 +287,16 @@
 				<td>{{a.dateOfOpening | date:'dd-MM-yyyy'}}</td>
 				<td>{{a.status}}</td>
 				<td>{{a.remarks}}</td>
-				<td><a ng-click="cCctr.viewFile('fileDetail',a,'viewFile');"
-					style="color: blue">View</a></td>
+				<td><a
+							ng-click="cCctr.gotoDetailPage('ticket',a.id,'detailticket')"
+							style="color: blue"><img src="static\img\edit.png"
+								width="22px" height="22px" alt="Details"
+								style="margin-top: 5px; margin-bottom: 5px;" /></a></td>
+				
+				<!-- <td><a ng-click="cCctr.viewFile('fileDetail',a,'viewFile');"
+					style="color: blue">View</a></td> -->
+					
+					
 				<!-- <td>{{a.total-a.amountPaid}}</td> -->
 
 			</tr>

@@ -25,7 +25,7 @@ import domain.in.rjsa.service.VendorMasterService;
 import domain.in.rjsa.util.StaticData;
 @Controller
 @RequestMapping("/apivendorMaster")
-public class VendorMasterController extends AbstractController<Long, VendorMaster, VendorMasterService>{
+public class VendorMasterController extends AbstractBranchController<Long, VendorMaster, VendorMasterService>{
 	@Autowired
 	VendorMasterService service;
 	@Override
@@ -60,14 +60,14 @@ public class VendorMasterController extends AbstractController<Long, VendorMaste
 
 			Gson gson = new Gson();
 			Login l = applicationCache.getLoginDetail(getPrincipal());
-			if (entity.get("vendorId") == null || entity.get("vendorId").equals("")) {
+			if (entity.get("branchId") == null || entity.get("branchId").equals("")) {
 				entity.put("status", StaticData.documentStatus.get(1));
 				JsonElement jsonElement = gson.toJsonTree(entity);
 				service.update(gson.fromJson(jsonElement, VendorMaster.class));
 				addLogsU(entity);
-
-				entity.remove("id");
-				entity.remove("vendorId");
+                entity.remove("id");
+				entity.remove("branchId");
+				entity.remove("vendorCode");
 				jsonElement = gson.toJsonTree(entity);
 				service.save(gson.fromJson(jsonElement, VendorMaster.class));
 				return new ResponseEntity<String>(HttpStatus.ACCEPTED);
@@ -77,14 +77,21 @@ public class VendorMasterController extends AbstractController<Long, VendorMaste
 				service.update(gson.fromJson(jsonElement, VendorMaster.class));
 				entity.remove("status");
 
-				entity.put("id", entity.remove("vendorId"));
+				entity.put("id", entity.remove("branchId"));
 				jsonElement = gson.toJsonTree(entity);
 				service.update(gson.fromJson(jsonElement, VendorMaster.class));
 
 				VendorMaster status = new VendorMaster();
 				status.setClientId(l.getClientId());
 				status.setStatus(entity.get("status").toString());
-				status.setVendorId(Long.valueOf(entity.get("id").toString()));
+				status.setBranchId(Long.valueOf(entity.get("branchId").toString()));
+				status.setVendorCode(entity.get("vendorCode").toString());
+				status.setVendorId(Long.valueOf(entity.get("vendorId").toString()));
+				status.setVendorCode(entity.get("vendorCode").toString());
+				status.setVendorName(entity.get("vendorName").toString());
+				status.setAddress(entity.get("address").toString());
+				status.setMaker(entity.get("maker").toString());
+				status.setChecker(entity.get("checker").toString());
 				
 
 				return new ResponseEntity<String>(HttpStatus.ACCEPTED);
@@ -101,12 +108,22 @@ public class VendorMasterController extends AbstractController<Long, VendorMaste
 
 				VendorMaster doc = service.getByKey(Long.valueOf(entity.get("id").toString()));
 				doc.setStatus(StaticData.documentStatus.get(2));
+				    entity.remove("id");
+					entity.remove("branchId");
+					entity.remove("vendorCode");
 				service.update(doc);
 
 				VendorMaster status = new VendorMaster();
 				status.setClientId(l.getClientId());
 				status.setStatus(entity.get("status").toString());
-				status.setVendorId(Long.valueOf(entity.get("id").toString()));
+				status.setBranchId(Long.valueOf(entity.get("branchId").toString()));
+				status.setVendorCode(entity.get("vendorCode").toString());
+				status.setVendorId(Long.valueOf(entity.get("vendorId").toString()));
+				status.setVendorCode(entity.get("vendorCode").toString());
+				status.setVendorName(entity.get("vendorName").toString());
+				status.setAddress(entity.get("address").toString());
+				status.setMaker(entity.get("maker").toString());
+				status.setChecker(entity.get("checker").toString());
 				service.save(status);
 
 				addLogsU(entity);
@@ -117,6 +134,7 @@ public class VendorMasterController extends AbstractController<Long, VendorMaste
 				return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 			}
 		}
+
 	 
 	 
 

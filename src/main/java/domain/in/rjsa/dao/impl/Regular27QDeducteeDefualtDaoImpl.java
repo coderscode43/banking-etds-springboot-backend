@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractNewDao;
 import domain.in.rjsa.dao.Regular27QDeducteeDefualtDao;
-import domain.in.rjsa.model.form.Regular27QDeducteeDefualt;
+import domain.in.rjsa.model.fy.Regular27QDeducteeDefualt;
 
 @Repository("regular27QDeducteeDefualtDao")
 public class Regular27QDeducteeDefualtDaoImpl extends AbstractNewDao<Long, Regular27QDeducteeDefualt> implements Regular27QDeducteeDefualtDao {

@@ -13,9 +13,9 @@ import com.google.gson.JsonElement;
 
 import domain.in.rjsa.exception.CustomException;
 import domain.in.rjsa.model.form.Login;
-import domain.in.rjsa.model.form.Regular24QSalary;
-import domain.in.rjsa.model.form.Regular24QSalaryUpdateRequestDetail;
-import domain.in.rjsa.model.form.Remarks;
+import domain.in.rjsa.model.fy.Regular24QSalary;
+import domain.in.rjsa.model.fy.Regular24QSalaryUpdateRequestDetail;
+import domain.in.rjsa.model.fy.Remarks;
 import domain.in.rjsa.model.wrapper.SalaryDetailWrapper;
 import domain.in.rjsa.service.Regular24QSalaryService;
 import domain.in.rjsa.service.Regular24QSalaryUpdateRequestDetailService;

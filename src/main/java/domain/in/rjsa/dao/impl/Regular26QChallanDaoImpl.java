@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractNewDao;
 import domain.in.rjsa.dao.Regular26QChallanDao;
-import domain.in.rjsa.model.form.Regular26QChallan;
+import domain.in.rjsa.model.fy.Regular26QChallan;
 @Repository("Regular26QChallanDao")
 public class Regular26QChallanDaoImpl extends AbstractNewDao<Long, Regular26QChallan>
 implements Regular26QChallanDao{

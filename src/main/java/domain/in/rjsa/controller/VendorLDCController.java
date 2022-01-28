@@ -4,8 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import domain.in.rjsa.model.form.VendorLDC;
-import domain.in.rjsa.model.form.VendorPayment;
+import domain.in.rjsa.model.fy.VendorLDC;
 import domain.in.rjsa.model.wrapper.VendorDetailWrapper;
 import domain.in.rjsa.service.VendorLDCService;
 

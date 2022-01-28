@@ -1,7 +1,5 @@
 package domain.in.rjsa.dao.impl;
 
-import java.sql.Date;
-import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractNewDao;
 import domain.in.rjsa.dao.Regular24QSalaryUpdateRequestDetailDao;
-import domain.in.rjsa.model.form.Regular24QSalaryUpdateRequestDetail;
+import domain.in.rjsa.model.fy.Regular24QSalaryUpdateRequestDetail;
 
 @Repository("regular24QSalaryUpdateRequestDetailDao")
 public class Regular24QSalaryUpdateRequestDetailDaoImpl extends AbstractNewDao<Long, Regular24QSalaryUpdateRequestDetail>

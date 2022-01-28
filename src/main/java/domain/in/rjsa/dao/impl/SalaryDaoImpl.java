@@ -1,19 +1,15 @@
 package domain.in.rjsa.dao.impl;
 
-import java.sql.Date;
-import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.hibernate.Criteria;
-import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractNewDao;
 import domain.in.rjsa.dao.SalaryDao;
-import domain.in.rjsa.model.form.Regular26QDeductee;
 import domain.in.rjsa.model.form.Salary;
 @Repository("salaryDao")
 public class SalaryDaoImpl extends AbstractNewDao<Long, Salary> implements SalaryDao{

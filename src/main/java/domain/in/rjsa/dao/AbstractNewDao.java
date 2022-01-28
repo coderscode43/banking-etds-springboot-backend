@@ -2,9 +2,6 @@ package domain.in.rjsa.dao;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
-import java.sql.Date;
-import java.text.SimpleDateFormat;
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -24,7 +21,6 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.transaction.annotation.Transactional;
-
 @Transactional("transactionManager")
 public abstract class AbstractNewDao<K extends Serializable, E> implements DaoInterface<K, E> {
 

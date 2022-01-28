@@ -85,10 +85,10 @@
 							<div class="row" style="font-size: 13px;">
 								<div class="col-md-6">
 									<label>Surcharge&nbsp;:</label>
-									{{cCctr.entity.deductee27.tcs}}
+									{{cCctr.entity.surcharge}}
 								</div>
 								<div class="col-md-6">
-									<label>Education Cess &nbsp;:</label> {{cCctr.entity.surcharge}}
+									<label>Education Cess &nbsp;:</label> {{cCctr.entity.educationCess}}
 								</div>
 							</div>
 
@@ -216,7 +216,7 @@
 					<button type="button" class="close" id="closeU"
 						data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">
-						<strong>Edit Form 27EQ Deductee Details</strong>
+						<strong>Edit Form 27EQ Deductee Default Details</strong>
 					</h4>
 				</div>
 				<div class="modal-body">
@@ -528,7 +528,7 @@
 											class="form-control" type="text"
 											name="rateAtWhichTaxDeducted"
 											placeholder="Rate At Which Tax Deducted"
-											ng-model="cCctr.entity.deductee27.rateAtWhichTaxDeducted"
+											ng-model="cCctr.entity.rateAtWhichTaxDeducted"
 											ng-required="true" autocomplete="off"
 											ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-maxlength="50"
 											ng-model-options="{updateOn: 'blur'}" /> <span
@@ -686,6 +686,31 @@
 												enter Section Collection Code</span> <span class="error" id="sectionCollectionCode"></span>
 										</span>
 									</div>
+									<div class="col-md-6">
+                                 
+								<label>Month*</label> <select name="Select month"
+									class="form-control" ng-model="cCctr.entity.month"
+									ng-required="true" ng-model-options="{updateOn: 'blur'}">
+									<option value="January">January</option>
+									<option value="February">February</option>
+									<option value="March">March</option>
+									<option value="April">April</option>
+									<option value="May">May</option>
+									<option value="June">June</option>
+									<option value="Jully">Jully</option>
+									<option value="August">August</option>
+									<option value="September">September</option>
+									<option value="Octomber">Octomber</option>
+									<option value="November">November</option>
+									<option value="December">December</option>
+								</select> <span style="color: red"
+									ng-show="deducteeDetailForm.submitted || deducteeDetailForm.month.$dirty && deducteeDetailForm.month.$invalid">
+									<span class="error"
+									ng-show="deducteeDetailForm.month.$error.required">month
+										is Required.</span>
+								</span> <span class="error" id="month"></span>
+							</div>
+</div>
 
 
 									
@@ -869,31 +894,7 @@
 								</div>
 								
 								<div class="row">
-								<div class="col-md-6">
-                                 <div class="form-group">
-								<label>Month*</label> <select name="Select month"
-									class="form-control" ng-model="cCctr.entity.month"
-									ng-required="true" ng-model-options="{updateOn: 'blur'}">
-									<option value="January">January</option>
-									<option value="February">February</option>
-									<option value="March">March</option>
-									<option value="April">April</option>
-									<option value="May">May</option>
-									<option value="June">June</option>
-									<option value="Jully">Jully</option>
-									<option value="August">August</option>
-									<option value="September">September</option>
-									<option value="Octomber">Octomber</option>
-									<option value="November">November</option>
-									<option value="December">December</option>
-								</select> <span style="color: red"
-									ng-show="deducteeDetailForm.submitted || deducteeDetailForm.month.$dirty && deducteeDetailForm.month.$invalid">
-									<span class="error"
-									ng-show="deducteeDetailForm.month.$error.required">month
-										is Required.</span>
-								</span> <span class="error" id="month"></span>
-							</div>
-</div>
+								
 								
 								</div>
 

@@ -32,6 +32,12 @@ public class VendorMasterDaoImpl extends AbstractNewDao<Long, VendorMaster> impl
 		if (entity.get("vendorCode") != null) {
 			criteria.add(Restrictions.eqOrIsNull("vendorCode", entity.get("vendorCode")));
 		}
+		if (entity.get("maker") != null) {
+			criteria.add(Restrictions.eqOrIsNull("maker", entity.get("maker")));
+		}
+		if (entity.get("checker") != null) {
+			criteria.add(Restrictions.eqOrIsNull("checker", entity.get("checker")));
+		}
 		if (entity.get("vendorId") != null) {
 			criteria.add(Restrictions.eqOrIsNull("vendorId", entity.get("vendorId")));
 		}

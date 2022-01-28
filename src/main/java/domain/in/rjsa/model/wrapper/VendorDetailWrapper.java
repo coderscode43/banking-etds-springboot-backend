@@ -4,8 +4,8 @@ import java.util.List;
 
 import domain.in.rjsa.model.form.Address;
 import domain.in.rjsa.model.form.BankAccDetail;
-import domain.in.rjsa.model.form.VendorLDC;
-import domain.in.rjsa.model.form.VendorPayment;
+import domain.in.rjsa.model.fy.VendorLDC;
+import domain.in.rjsa.model.fy.VendorPayment;
 import lombok.Data;
 @Data
 public class VendorDetailWrapper {

@@ -2,9 +2,9 @@ package domain.in.rjsa.model.wrapper;
 
 import java.util.List;
 
-import domain.in.rjsa.model.form.Regular24QDeductee;
-import domain.in.rjsa.model.form.Regular24QDeducteeUpdateRequestDetail;
-import domain.in.rjsa.model.form.Remarks;
+import domain.in.rjsa.model.fy.Regular24QDeductee;
+import domain.in.rjsa.model.fy.Regular24QDeducteeUpdateRequestDetail;
+import domain.in.rjsa.model.fy.Remarks;
 import lombok.Data;
 
 @Data

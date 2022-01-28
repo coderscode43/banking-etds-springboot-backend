@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.TicketDao;
-import domain.in.rjsa.model.form.Ticket;
+import domain.in.rjsa.model.fy.Ticket;
 import domain.in.rjsa.service.AbstractService;
 import domain.in.rjsa.service.TicketService;
 

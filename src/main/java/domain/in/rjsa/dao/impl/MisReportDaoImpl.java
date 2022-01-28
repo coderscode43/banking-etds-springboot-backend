@@ -1,7 +1,5 @@
 package domain.in.rjsa.dao.impl;
 
-import java.sql.Date;
-import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,18 +23,16 @@ public class MisReportDaoImpl extends AbstractNewDao<Long, MisReport> implements
 		propertyNameValues.put("clientId", clientId);
 		criteria.add(Restrictions.allEq(propertyNameValues));
 		if (entity.get("fromDate") != null) {
-			criteria.add(Restrictions.ge("date",
-					Date.from(ZonedDateTime.parse((String) entity.get("fromDate")).toInstant())));
+			criteria.add(Restrictions.eqOrIsNull("fromDate", entity.get("fromDate")));
 		}
 		if (entity.get("toDate") != null) {
-			criteria.add(
-					Restrictions.le("date", Date.from(ZonedDateTime.parse((String) entity.get("toDate")).toInstant())));
+			criteria.add(Restrictions.eqOrIsNull("toDate", entity.get("toDate")));
 		}
 
 		if (entity.get("reportType") != null) {
 			criteria.add(Restrictions.eqOrIsNull("reportType", entity.get("reportType")));
 		}
-		criteria.addOrder(Order.desc("date"));
+		criteria.addOrder(Order.desc("fromDate"));
 		return (List<MisReport>) criteria.list();
 	}
 }

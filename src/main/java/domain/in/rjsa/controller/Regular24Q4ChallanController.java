@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import domain.in.rjsa.model.form.Regular24Q4Challan;
+import domain.in.rjsa.model.fy.Regular24Q4Challan;
 import domain.in.rjsa.service.Regular24Q4ChallanService;
 @Controller
 @RequestMapping("/apiregular24Q4Challan")

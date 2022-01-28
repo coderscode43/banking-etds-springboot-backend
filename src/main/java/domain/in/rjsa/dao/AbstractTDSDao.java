@@ -25,7 +25,6 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.transaction.annotation.Transactional;
-@Transactional("tdsTxManager")
 public abstract class AbstractTDSDao<PK extends Serializable, T> {
 
 	private final Class<T> persistentClass;

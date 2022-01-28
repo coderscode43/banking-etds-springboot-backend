@@ -2,7 +2,7 @@ package domain.in.rjsa.model.wrapper;
 
 import java.util.List;
 
-import domain.in.rjsa.model.form.Ticket;
+import domain.in.rjsa.model.fy.Ticket;
 import lombok.Data;
 
 @Data

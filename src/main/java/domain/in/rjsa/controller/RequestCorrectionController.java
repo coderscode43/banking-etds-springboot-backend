@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import domain.in.rjsa.model.form.Branch;
 import domain.in.rjsa.model.form.Login;
-import domain.in.rjsa.model.form.Regular24QDeductee;
-import domain.in.rjsa.model.form.Regular24QSalary;
-import domain.in.rjsa.model.form.Regular26QDeductee;
-import domain.in.rjsa.model.form.Regular27QDeductee;
 import domain.in.rjsa.model.form.RequestCorrection;
+import domain.in.rjsa.model.fy.Regular24QDeductee;
+import domain.in.rjsa.model.fy.Regular24QSalary;
+import domain.in.rjsa.model.fy.Regular26QDeductee;
+import domain.in.rjsa.model.fy.Regular27QDeductee;
 import domain.in.rjsa.model.tds.CLIENTDETAILS;
 import domain.in.rjsa.model.tds.DEDUCTORDETAILS;
 import domain.in.rjsa.model.tds.GOVERNMENTDETAILS;

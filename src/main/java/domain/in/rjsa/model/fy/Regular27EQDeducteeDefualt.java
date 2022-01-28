@@ -17,7 +17,7 @@ import domain.in.rjsa.model.form.CommonModelAbstract;
 import lombok.Data;
 @Data
 @Entity
-@Table(name = "regular27EQDeducteeDefualt")
+@Table(name = "FYDetails.regular27EQDeducteeDefualt")
 public class Regular27EQDeducteeDefualt extends CommonModelAbstract {
 	/**
 	 * 

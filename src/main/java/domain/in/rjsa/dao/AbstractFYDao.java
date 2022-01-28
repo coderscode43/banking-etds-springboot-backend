@@ -25,7 +25,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.transaction.annotation.Transactional;
-@Transactional("fyTxManager")
+@Transactional("transactionManager")
 public abstract class AbstractFYDao <PK extends Serializable, T>{
 	private final Class<T> persistentClass;
 
@@ -36,7 +36,7 @@ public abstract class AbstractFYDao <PK extends Serializable, T>{
 	}
 
 	@Autowired
-	@Qualifier("fySessionFactory")
+	@Qualifier("sessionFactory")
 	private SessionFactory sessionFactory;
 
 	protected Session getSession() {

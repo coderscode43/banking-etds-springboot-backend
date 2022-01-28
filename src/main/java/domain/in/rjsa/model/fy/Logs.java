@@ -20,7 +20,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "logs")
+@Table(name = "FYDetails.logs")
 public class Logs extends CommonModelAbstract{
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO, generator="native")

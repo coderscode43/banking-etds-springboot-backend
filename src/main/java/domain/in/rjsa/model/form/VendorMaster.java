@@ -13,7 +13,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "vendorMaster")
+@Table(name = "form.vendorMaster")
 public class VendorMaster extends CommonModelAbstract{
 	private static final long serialVersionUID = 1L;
 	@Id

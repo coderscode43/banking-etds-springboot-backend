@@ -17,7 +17,7 @@ import domain.in.rjsa.model.form.CommonModelAbstract;
 import lombok.Data;
 @Data
 @Entity
-@Table(name = "ticket")
+@Table(name = "FYDetails.ticket")
 public class Ticket extends CommonModelAbstract{
 	
 	@Id

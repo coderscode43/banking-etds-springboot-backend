@@ -14,7 +14,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "CLIENTDETAILS")
+@Table(name = "Taxo.CLIENTDETAILS")
 public class CLIENTDETAILS extends CommonModelAbstract{
 
 	@Id

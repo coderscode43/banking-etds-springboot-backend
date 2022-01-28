@@ -13,7 +13,7 @@ import domain.in.rjsa.model.form.CommonModelAbstract;
 import lombok.Data;
 @Data
 @Entity
-@Table(name = "REQUESTSTATUS")
+@Table(name = "Taxo.REQUESTSTATUS")
 public class REQUESTSTATUS extends CommonModelAbstract{
 
 	@Id

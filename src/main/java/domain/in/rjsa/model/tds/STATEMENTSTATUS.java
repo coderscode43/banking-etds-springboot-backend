@@ -19,7 +19,7 @@ import domain.in.rjsa.model.form.CommonModelAbstract;
 import lombok.Data;
 @Data
 @Entity
-@Table(name = "STATEMENTSTATUS")
+@Table(name = "Taxo.STATEMENTSTATUS")
 public class STATEMENTSTATUS extends CommonModelAbstract{
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO, generator="native")

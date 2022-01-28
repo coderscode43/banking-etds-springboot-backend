@@ -22,7 +22,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "GH15RETURNSTATUS")
+@Table(name = "form.GH15RETURNSTATUS")
 public class GH15RETURNSTATUS extends CommonModelAbstract {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")

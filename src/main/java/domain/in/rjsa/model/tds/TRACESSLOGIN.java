@@ -14,7 +14,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "TRACESSLOGIN")
+@Table(name = "Taxo.TRACESSLOGIN")
 public class TRACESSLOGIN extends CommonModelAbstract{
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO, generator="native")

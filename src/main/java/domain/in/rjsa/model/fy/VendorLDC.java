@@ -24,7 +24,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "vendorLDC")
+@Table(name = "FYDetails.vendorLDC")
 public class VendorLDC extends CommonModelAbstract{
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO, generator="native")

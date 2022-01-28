@@ -25,7 +25,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "CHALLAN")
+@Table(name = "Taxo.CHALLAN")
 public class CHALLAN extends CommonModelAbstract{
 
 	@Id

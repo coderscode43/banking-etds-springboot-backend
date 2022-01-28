@@ -13,7 +13,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "countryNames")
+@Table(name = "form.countryNames")
 public class CountryNames extends CommonModelAbstract {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")

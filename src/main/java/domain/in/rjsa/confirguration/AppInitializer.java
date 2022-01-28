@@ -8,7 +8,7 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[] { AppConfig.class,HibernateConfiguration.class,HibernateConfiguration3.class, SecurityConfiguration.class };
+        return new Class[] { AppConfig.class,HibernateConfiguration.class, SecurityConfiguration.class };
     }
   
     @Override

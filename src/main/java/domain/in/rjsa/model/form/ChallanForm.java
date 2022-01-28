@@ -24,7 +24,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "challanForm")
+@Table(name = "form.challanForm")
 public class ChallanForm extends CommonModelAbstract {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")

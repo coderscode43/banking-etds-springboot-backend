@@ -13,7 +13,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "DownloadCertificate")
+@Table(name = "FYDetails.downloadCertificate")
 public class DownloadCertificate {
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO, generator="native")

@@ -14,7 +14,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "DEFAULTSUMMARY")
+@Table(name = "Taxo.DEFAULTSUMMARY")
 public class DEFAULTSUMMARY extends CommonModelAbstract{
 
 	@Id

@@ -15,7 +15,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "pensionersalary")
+@Table(name = "FYDetails.pensionerSalary")
 public class PensionerSalary extends CommonModelAbstract{
 
 	/**

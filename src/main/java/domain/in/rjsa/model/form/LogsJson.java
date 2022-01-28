@@ -13,7 +13,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "logsJson")
+@Table(name = "FYDetails.logsJson")
 public class LogsJson extends CommonModelAbstract{
 	
 	@Id

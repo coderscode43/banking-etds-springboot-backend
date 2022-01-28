@@ -15,7 +15,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "employeeMaster")
+@Table(name = "form.employeeMaster")
 public class EmployeeMaster extends CommonModelAbstract{
 	private static final long serialVersionUID = 1L;
 	@Id

@@ -14,7 +14,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "Remarks")
+@Table(name = "FYDetails.reportRemarks")
 public class Remarks extends CommonModelAbstract {
 	
 	@Id

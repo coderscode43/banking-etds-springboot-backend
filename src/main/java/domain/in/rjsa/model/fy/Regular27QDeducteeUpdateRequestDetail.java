@@ -27,7 +27,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "regular27QDeducteeUpdateRequestDetail")
+@Table(name = "FYDetails.regular27QDeducteeUpdateRequestDetail")
 public class Regular27QDeducteeUpdateRequestDetail extends CommonModelAbstract{
 
 	@Id

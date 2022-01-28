@@ -15,7 +15,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "misReport")
+@Table(name = "form.misReport")
 public class MisReport extends CommonModelAbstract{/**
 	 * 
 	 */

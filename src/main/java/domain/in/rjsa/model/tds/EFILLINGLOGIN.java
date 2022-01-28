@@ -13,7 +13,7 @@ import domain.in.rjsa.model.form.CommonModelAbstract;
 import lombok.Data;
 @Data
 @Entity
-@Table(name = "EFILLINGLOGIN")
+@Table(name = "Taxo.EFILLINGLOGIN")
 public class EFILLINGLOGIN extends CommonModelAbstract{
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO, generator="native")

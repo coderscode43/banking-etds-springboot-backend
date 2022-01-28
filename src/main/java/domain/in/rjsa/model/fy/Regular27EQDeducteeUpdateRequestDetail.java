@@ -16,7 +16,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "regular27EQDeducteeUpdateRequestDetail")
+@Table(name = "FYDetails.regular27EQDeducteeUpdateRequestDetail")
 public class Regular27EQDeducteeUpdateRequestDetail extends CommonModelAbstract{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")

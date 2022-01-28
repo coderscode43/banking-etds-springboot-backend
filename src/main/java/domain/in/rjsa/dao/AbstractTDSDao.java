@@ -25,6 +25,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.transaction.annotation.Transactional;
+@Transactional("transactionManager")
 public abstract class AbstractTDSDao<PK extends Serializable, T> {
 
 	private final Class<T> persistentClass;
@@ -36,7 +37,7 @@ public abstract class AbstractTDSDao<PK extends Serializable, T> {
 	}
 
 	@Autowired
-	@Qualifier("tdsSessionFactory")
+	@Qualifier("sessionFactory")
 	private SessionFactory sessionFactory;
 
 	protected Session getSession() {

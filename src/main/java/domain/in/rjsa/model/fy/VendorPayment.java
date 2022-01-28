@@ -25,7 +25,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "vendorPayment")
+@Table(name = "FYDetails.vendorPayment")
 public class VendorPayment extends CommonModelAbstract{
 	/**
 	 * 

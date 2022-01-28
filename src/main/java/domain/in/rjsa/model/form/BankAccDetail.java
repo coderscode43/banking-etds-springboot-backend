@@ -17,7 +17,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "bankAccDetail")
+@Table(name = "form.bankAccDetail")
 public class BankAccDetail extends CommonModelAbstract {
 	/**
 	 * 

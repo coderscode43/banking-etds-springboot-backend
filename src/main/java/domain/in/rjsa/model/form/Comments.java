@@ -13,7 +13,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "Comments")
+@Table(name = "form.comments")
 public class Comments extends CommonModelAbstract {
 	
 	@Id

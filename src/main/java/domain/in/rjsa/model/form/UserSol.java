@@ -13,7 +13,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "userSol")
+@Table(name = "form.userSol")
 public class UserSol extends CommonModelAbstract{
 	
 	@Id

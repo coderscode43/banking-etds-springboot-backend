@@ -1,5 +1,7 @@
 package domain.in.rjsa.dao;
 
-public interface CHALLANDao {
+import domain.in.rjsa.model.tds.CHALLAN;
+
+public interface CHALLANDao extends DaoInterfaceTaxo<String,  CHALLAN> {
 
 }

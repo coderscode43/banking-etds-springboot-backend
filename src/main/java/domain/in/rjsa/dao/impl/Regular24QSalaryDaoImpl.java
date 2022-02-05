@@ -8,12 +8,12 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import domain.in.rjsa.dao.AbstractNewDao;
+import domain.in.rjsa.dao.AbstractDaoFY;
 import domain.in.rjsa.dao.Regular24QSalaryDao;
 import domain.in.rjsa.model.fy.Regular24QSalary;
 
 @Repository("regular24QSalaryDao")
-public class Regular24QSalaryDaoImpl extends AbstractNewDao<Long, Regular24QSalary> implements Regular24QSalaryDao {
+public class Regular24QSalaryDaoImpl extends AbstractDaoFY<Long, Regular24QSalary> implements Regular24QSalaryDao {
 	@SuppressWarnings("unchecked")
 	public List<Regular24QSalary> search(HashMap entity, Long clientId) {
 		Criteria criteria = createEntityCriteria();

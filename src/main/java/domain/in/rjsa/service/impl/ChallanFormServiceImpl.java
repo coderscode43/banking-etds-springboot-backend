@@ -6,12 +6,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.ChallanFormDao;
 import domain.in.rjsa.model.form.ChallanForm;
-import domain.in.rjsa.service.AbstractService;
+import domain.in.rjsa.service.AbstractServiceForm;
 import domain.in.rjsa.service.ChallanFormService;
 
 @Transactional("transactionManager")
 @Service("challanFormService")
-public class ChallanFormServiceImpl extends AbstractService<Long, ChallanForm, ChallanFormDao>
+public class ChallanFormServiceImpl extends AbstractServiceForm<Long, ChallanForm, ChallanFormDao>
 		implements ChallanFormService {
 	@Autowired
 	ChallanFormDao dao;

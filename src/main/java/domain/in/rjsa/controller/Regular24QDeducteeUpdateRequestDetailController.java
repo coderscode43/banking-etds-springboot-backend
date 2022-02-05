@@ -34,7 +34,7 @@ import domain.in.rjsa.util.StaticData;
 @Controller
 @RequestMapping("/apiform24QDeducteeUpdateRequestDetail")
 public class Regular24QDeducteeUpdateRequestDetailController extends
-		AbstractBranchController<Long, Regular24QDeducteeUpdateRequestDetail, Regular24QDeducteeUpdateRequestDetailService> {
+		AbstractBranchControllerFY<Long, Regular24QDeducteeUpdateRequestDetail, Regular24QDeducteeUpdateRequestDetailService> {
 
 	@Autowired
 	Regular24QDeducteeUpdateRequestDetailService service;
@@ -209,7 +209,7 @@ public class Regular24QDeducteeUpdateRequestDetailController extends
 		constrains.remove("id");
 		constrains.put("entityId", data.getNewData().getDocId());
 		constrains.put("entity", StaticData.entity.get(2));
-		data.setListRemarks(rService.search(constrains, clientId));
+		data.setListRemarks(rService.search(constrains));
 		return data;
 	}
 

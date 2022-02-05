@@ -9,7 +9,7 @@ import domain.in.rjsa.service.TestingService;
 
 @Controller
 @RequestMapping("/apitesting")
-public class TestingController extends AbstractFYController<Long, Testing, TestingService>{
+public class TestingController extends AbstractBranchControllerFY<Long, Testing, TestingService>{
 	@Autowired
 	TestingService service;
 	@Override

@@ -6,11 +6,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.TRACESSLOGINDao;
 import domain.in.rjsa.model.tds.TRACESSLOGIN;
-import domain.in.rjsa.service.AbstractTDSService;
+import domain.in.rjsa.service.AbstractServiceTaxo;
 import domain.in.rjsa.service.TRACESSLOGINService;
 @Transactional("tdsTxManager")
 @Service("TRACESSLOGINService")
-public class TRACESSLOGINServiceImpl extends AbstractTDSService<String, TRACESSLOGIN, TRACESSLOGINDao> implements TRACESSLOGINService{
+public class TRACESSLOGINServiceImpl extends AbstractServiceTaxo<String, TRACESSLOGIN, TRACESSLOGINDao> implements TRACESSLOGINService{
 @Autowired 
 TRACESSLOGINDao dao;
 	@Override

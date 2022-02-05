@@ -7,11 +7,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.Regular27QDeducteeDao;
 import domain.in.rjsa.model.fy.Regular27QDeductee;
-import domain.in.rjsa.service.AbstractService;
+import domain.in.rjsa.service.AbstractServiceFY;
 import domain.in.rjsa.service.Regular27QDeducteeService;
 @Transactional("transactionManager")
 @Service("regular27QDeducteeService")
-public class Regular27QDeducteeServiceImpl extends AbstractService<Long, Regular27QDeductee, Regular27QDeducteeDao> implements Regular27QDeducteeService{
+public class Regular27QDeducteeServiceImpl extends AbstractServiceFY<Long, Regular27QDeductee, Regular27QDeducteeDao> implements Regular27QDeducteeService{
 
 	@Autowired 
 	Regular27QDeducteeDao dao;

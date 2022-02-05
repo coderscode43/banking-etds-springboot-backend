@@ -14,7 +14,7 @@ import domain.in.rjsa.service.Regular24QDeducteeDefualtService;
 @Controller
 @RequestMapping("/apiform24QDeducteeDefault")
 public class Regular24QDeducteeDefualtController
-		extends AbstractBranchController<Long, Regular24QDeducteeDefualt, Regular24QDeducteeDefualtService> {
+		extends AbstractBranchControllerFY<Long, Regular24QDeducteeDefualt, Regular24QDeducteeDefualtService> {
 
 	@Autowired
 	Regular24QDeducteeDefualtService service;

@@ -6,12 +6,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.GOVERNMENTDETAILSDao;
 import domain.in.rjsa.model.tds.GOVERNMENTDETAILS;
-import domain.in.rjsa.service.AbstractTDSService;
+import domain.in.rjsa.service.AbstractServiceTaxo;
 import domain.in.rjsa.service.GOVERNMENTDETAILSService;
 
 @Transactional("tdsTxManager")
 @Service("GOVERNMENTDETAILSService")
-public class GOVERNMENTDETAILSServiceImpl extends AbstractTDSService<String, GOVERNMENTDETAILS, GOVERNMENTDETAILSDao> implements GOVERNMENTDETAILSService{
+public class GOVERNMENTDETAILSServiceImpl extends AbstractServiceTaxo<String, GOVERNMENTDETAILS, GOVERNMENTDETAILSDao> implements GOVERNMENTDETAILSService{
 	@Autowired
 	GOVERNMENTDETAILSDao dao;
 		@Override

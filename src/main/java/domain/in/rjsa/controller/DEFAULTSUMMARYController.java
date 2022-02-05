@@ -9,7 +9,7 @@ import domain.in.rjsa.service.DEFAULTSUMMARYService;
 
 @Controller
 @RequestMapping("/apidefaultSummary")
-public class DEFAULTSUMMARYController extends AbstractTDSController<Long, DEFAULTSUMMARY, DEFAULTSUMMARYService>{
+public class DEFAULTSUMMARYController extends AbstractControllerTaxo<Long, DEFAULTSUMMARY, DEFAULTSUMMARYService>{
 @Autowired
 DEFAULTSUMMARYService service;
 	@Override

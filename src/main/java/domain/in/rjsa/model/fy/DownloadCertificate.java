@@ -9,12 +9,13 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import domain.in.rjsa.model.form.CommonModelAbstract;
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name = "FYDetails.downloadCertificate")
-public class DownloadCertificate {
+public class DownloadCertificate extends CommonModelAbstract {
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO, generator="native")
 	@GenericGenerator(name = "native", strategy = "native")

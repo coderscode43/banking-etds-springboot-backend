@@ -6,12 +6,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.DEDUCTORDETAILSDao;
 import domain.in.rjsa.model.tds.DEDUCTORDETAILS;
-import domain.in.rjsa.service.AbstractTDSService;
+import domain.in.rjsa.service.AbstractServiceTaxo;
 import domain.in.rjsa.service.DEDUCTORDETAILSService;
 
 @Transactional("tdsTxManager")
 @Service("DEDUCTORDETAILSService")
-public class DEDUCTORDETAILSServiceImpl extends AbstractTDSService<String, DEDUCTORDETAILS, DEDUCTORDETAILSDao> implements DEDUCTORDETAILSService{
+public class DEDUCTORDETAILSServiceImpl extends AbstractServiceTaxo<String, DEDUCTORDETAILS, DEDUCTORDETAILSDao> implements DEDUCTORDETAILSService{
 @Autowired
 DEDUCTORDETAILSDao dao;
 	@Override

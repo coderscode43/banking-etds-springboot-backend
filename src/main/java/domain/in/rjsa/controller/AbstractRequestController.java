@@ -29,10 +29,10 @@ import com.google.gson.JsonElement;
 import domain.in.rjsa.model.form.ListCount;
 import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.form.Model;
-import domain.in.rjsa.service.ServiceInterface;
+import domain.in.rjsa.service.ServiceInterfaceForm;
 import domain.in.rjsa.web.ApplicationCache;
 
-public abstract class AbstractRequestController<K extends Serializable, E extends Model, S extends ServiceInterface<K, E>>
+public abstract class AbstractRequestController<K extends Serializable, E extends Model, S extends ServiceInterfaceForm<K, E>>
 implements ControllerInterface<K, E> {
 	
 	public abstract S getService();

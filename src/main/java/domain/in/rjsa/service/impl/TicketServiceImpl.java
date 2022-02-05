@@ -6,12 +6,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.TicketDao;
 import domain.in.rjsa.model.fy.Ticket;
-import domain.in.rjsa.service.AbstractService;
+import domain.in.rjsa.service.AbstractServiceFY;
 import domain.in.rjsa.service.TicketService;
 
 @Transactional("transactionManager")
 @Service("ticketService")
-public class TicketServiceImpl extends AbstractService<Long, Ticket, TicketDao> implements TicketService{
+public class TicketServiceImpl extends AbstractServiceFY<Long, Ticket, TicketDao> implements TicketService{
 @Autowired
 TicketDao dao;
 	@Override

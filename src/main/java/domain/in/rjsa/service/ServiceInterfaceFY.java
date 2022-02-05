@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-public interface ServiceFYInterface <K, E> {
+public interface ServiceInterfaceFY <K, E> {
 	
 
 	public void save(E entity);
@@ -23,11 +23,10 @@ public interface ServiceFYInterface <K, E> {
 
 	public List<String> ajax(String name, String term, HashMap<String, Object> constrains);
 
-	public List<?> search(LinkedHashMap<String, Object> map, Long clientId);
+	
+
+//	List<E> search(HashMap map, Long clientId);
 	
 
 
 }
-
-
-

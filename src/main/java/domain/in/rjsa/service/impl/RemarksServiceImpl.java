@@ -6,12 +6,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.RemarksDao;
 import domain.in.rjsa.model.fy.Remarks;
-import domain.in.rjsa.service.AbstractService;
+import domain.in.rjsa.service.AbstractServiceFY;
 import domain.in.rjsa.service.RemarksService;
 
 @Transactional("transactionManager")
 @Service("remarksService")
-public class RemarksServiceImpl extends AbstractService<Long, Remarks, RemarksDao> implements RemarksService{
+public class RemarksServiceImpl extends AbstractServiceFY<Long, Remarks, RemarksDao> implements RemarksService{
 	
 	@Autowired
 	RemarksDao dao;

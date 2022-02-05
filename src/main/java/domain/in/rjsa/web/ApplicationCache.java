@@ -8,12 +8,12 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import domain.in.rjsa.model.form.Branch;
-import domain.in.rjsa.model.form.ClientDetail;
 import domain.in.rjsa.model.form.Login;
+import domain.in.rjsa.model.form.OrganizationDetails;
 import domain.in.rjsa.model.form.UserSol;
 import domain.in.rjsa.service.BranchService;
-import domain.in.rjsa.service.ClientDetailService;
 import domain.in.rjsa.service.LoginService;
+import domain.in.rjsa.service.OrganizationDetailsService;
 import domain.in.rjsa.service.UserSolService;
 
 @Service("ApplicationCache")
@@ -21,7 +21,7 @@ public class ApplicationCache {
 
 	
 	private LoginService loginService;
-	private ClientDetailService cdService;
+	private OrganizationDetailsService organizationDetailsService;
 	private BranchService branchService;
 	private UserSolService userSolService;
 	
@@ -42,10 +42,10 @@ public class ApplicationCache {
 	}
 
 
-	@Cacheable(value = "clientDetail")
-	public ClientDetail getClientDetail(Long id) {
+	@Cacheable(value = "organizationDetails")
+	public OrganizationDetails getOrganizationDetails(Long id) {
 		// TODO Auto-generated method stub
-		return cdService.getByKey(id);
+		return organizationDetailsService.getByKey(id);
 	}
 	
 	
@@ -66,8 +66,8 @@ public class ApplicationCache {
 	
 	
 	@Autowired
-	public void setClientDetailService(ClientDetailService clientDetailService) {
-		this.cdService = clientDetailService;
+	public void setOrganizationDetailsService(OrganizationDetailsService organizationDetailsService) {
+		this.organizationDetailsService = organizationDetailsService;
 	}
 
 	@Autowired
@@ -84,9 +84,5 @@ public class ApplicationCache {
 	public void setUserSolService(UserSolService userSolService) {
 		this.userSolService = userSolService;
 	}
-	
-
-	
-
 
 }

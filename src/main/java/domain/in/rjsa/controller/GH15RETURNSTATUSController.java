@@ -9,7 +9,7 @@ import domain.in.rjsa.service.GH15RETURNSTATUSService;
 
 @Controller
 @RequestMapping("/apighReturnStatus")
-public class GH15RETURNSTATUSController extends AbstractTDSController<Long, GH15RETURNSTATUS, GH15RETURNSTATUSService> {
+public class GH15RETURNSTATUSController extends AbstractControllerTaxo<Long, GH15RETURNSTATUS, GH15RETURNSTATUSService> {
 
 	@Autowired
 	GH15RETURNSTATUSService service;

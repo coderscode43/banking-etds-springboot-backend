@@ -8,11 +8,11 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import domain.in.rjsa.dao.AbstractNewDao;
+import domain.in.rjsa.dao.AbstractDaoForm;
 import domain.in.rjsa.dao.PensionDao;
 import domain.in.rjsa.model.form.Pension;
 @Repository("pensionDao")
-public class PensionDaoImpl extends AbstractNewDao<Long, Pension> implements PensionDao{
+public class PensionDaoImpl extends AbstractDaoForm<Long, Pension> implements PensionDao{
 	@Override
 	public List<Pension> search(HashMap entity, Long clientId) {
 		Criteria criteria = createEntityCriteria();

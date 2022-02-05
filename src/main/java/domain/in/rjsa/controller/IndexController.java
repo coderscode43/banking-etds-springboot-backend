@@ -18,7 +18,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import domain.in.rjsa.model.form.ClientDetail;
+import domain.in.rjsa.model.form.OrganizationDetails;
 import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.form.UserSol;
 import domain.in.rjsa.web.ApplicationCache;
@@ -49,7 +49,7 @@ public class IndexController {
 		if (page.equals("main")) {
 			String userName = getPrincipal();
 			Login login = applicationCache.getLoginDetail(userName);
-			ClientDetail cd = applicationCache.getClientDetail(login.getClientId());
+			OrganizationDetails cd = applicationCache.getOrganizationDetails(login.getClientId());
 			model.addAttribute("cd", cd);
 			if (login.getPasswordReset() == null || login.getPasswordReset()) {
 				return "firstLogin";
@@ -81,7 +81,7 @@ public class IndexController {
 		 * }
 		 */
 
-		ClientDetail cd = applicationCache.getClientDetail(login.getClientId());
+		OrganizationDetails cd = applicationCache.getOrganizationDetails(login.getClientId());
 		UserSol us = applicationCache.getUserSol(login.getId(), cd.getId());
 		List<Long> listSolId = new ArrayList<>();
 		for (String sol : us.getSolId().split("-")) {
@@ -175,7 +175,7 @@ public class IndexController {
 	public String getListPage(@PathVariable Long clientId, @PathVariable String action, @PathVariable String page,
 			ModelMap model) {
 		Login login = applicationCache.getLoginDetail(getPrincipal());
-		ClientDetail cd = applicationCache.getClientDetail(login.getClientId());
+		OrganizationDetails cd = applicationCache.getOrganizationDetails(login.getClientId());
 		UserSol us = applicationCache.getUserSol(login.getId(), cd.getId());
 		List<Long> listSolId = new ArrayList<>();
 		for (String sol : us.getSolId().split("-")) {

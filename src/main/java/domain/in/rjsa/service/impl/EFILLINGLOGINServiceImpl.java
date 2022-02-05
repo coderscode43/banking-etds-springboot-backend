@@ -6,12 +6,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.EFILLINGLOGINDao;
 import domain.in.rjsa.model.tds.EFILLINGLOGIN;
-import domain.in.rjsa.service.AbstractTDSService;
+import domain.in.rjsa.service.AbstractServiceTaxo;
 import domain.in.rjsa.service.EFILLINGLOGINService;
 
 @Transactional("tdsTxManager")
 @Service("EFILLINGLOGINService")
-public class EFILLINGLOGINServiceImpl extends AbstractTDSService<String, EFILLINGLOGIN, EFILLINGLOGINDao> implements EFILLINGLOGINService{
+public class EFILLINGLOGINServiceImpl extends AbstractServiceTaxo<String, EFILLINGLOGIN, EFILLINGLOGINDao> implements EFILLINGLOGINService{
 @Autowired
 EFILLINGLOGINDao dao;
 	@Override

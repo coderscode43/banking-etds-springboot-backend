@@ -1,6 +1,5 @@
 package domain.in.rjsa.controller;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -24,39 +23,37 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
-import domain.in.rjsa.exception.CustomException;
 import domain.in.rjsa.exception.FieldErrorDTO;
 import domain.in.rjsa.model.form.Ajax;
-import domain.in.rjsa.model.form.Branch;
 import domain.in.rjsa.model.form.ListCount;
 import domain.in.rjsa.model.form.Login;
-import domain.in.rjsa.model.form.LogsJson;
 import domain.in.rjsa.model.form.Model;
-import domain.in.rjsa.model.fy.FileDetail;
 import domain.in.rjsa.model.fy.Logs;
+import domain.in.rjsa.model.fy.LogsJson;
 import domain.in.rjsa.service.LogsJsonService;
 import domain.in.rjsa.service.LogsService;
-import domain.in.rjsa.service.ServiceTDSInterface;
+import domain.in.rjsa.service.ServiceInterfaceForm;
+import domain.in.rjsa.service.UserDetailsService;
 import domain.in.rjsa.web.ApplicationCache;
 
-public abstract class AbstractTDSController<K extends Serializable, E extends Model, S extends ServiceTDSInterface<K, E>>
-		implements TDSControllerInterface<K, E> {
+public abstract class AbstractControllerForm<K extends Serializable, E extends Model, S extends ServiceInterfaceForm<K, E>>
+		implements ControllerInterface<K, E> {
 
 	public abstract S getService();
 
 	@Autowired
 	ApplicationCache applicationCache;
+	
+	@Autowired
+	UserDetailsService userDetailsService;
 	
 	@Autowired
 	LogsService lservice;
@@ -65,62 +62,6 @@ public abstract class AbstractTDSController<K extends Serializable, E extends Mo
 	LogsJsonService ljService;
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
-	
-	
-	
-	
-	
-	// ------------------- List Entity WOT ---------------------------------
-
-		public List<?> getList(Long clientId, Long branchId, int pageNo, int resultPerPage) {
-			Branch b = applicationCache.getBranch(Long.valueOf(branchId));
-
-			HashMap<String, Object> constrains = new HashMap<>();
-		//	constrains.put("clientId", applicationCache.getLoginDetail(getPrincipal()).getClientId());
-			constrains.put("TAN", b.getTan());
-
-			return getService().findAll(constrains, pageNo, resultPerPage);
-		}
-
-		// ------------------- Count Entity WOT---------------------------------
-
-		@RequestMapping(value = "/listBranch/{clientId}/{branchId}/count/", method = RequestMethod.GET)
-		public ResponseEntity<?> count(@PathVariable Long clientId, @PathVariable Long branchId,
-				HttpServletRequest request) {
-			Branch b = applicationCache.getBranch(Long.valueOf(branchId));
-			HashMap<String, Object> constrains = new HashMap<>();
-		//	constrains.put("clientId", applicationCache.getLoginDetail(getPrincipal()).getClientId());
-			constrains.put("TAN", b.getTan());
-
-			String mapping = request.getPathInfo();
-
-			try {
-				Long count = getService().findallCount(constrains);
-				List<?> list = getList(clientId, branchId, 0, 100);
-				ListCount send = new ListCount();
-				send.setCount(count);
-				send.setEntities(list);
-				return new ResponseEntity<>(send, HttpStatus.OK);
-			} catch (Exception e) {
-				logger.error("Error in listALL", e);
-				return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-			}
-
-		}
-		
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 	// ------------------- List Entity ---------------------------------
 
@@ -145,7 +86,7 @@ public abstract class AbstractTDSController<K extends Serializable, E extends Mo
 	public List<?> getList(Long clientId, int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
-//		constrains.put("clientId", applicationCache.getLoginDetail(getPrincipal()).getClientId());
+		constrains.put("clientId", applicationCache.getLoginDetail(getPrincipal()).getClientId());
 //		constrains.put("employeeId", applicationCache.getLoginDetail(getPrincipal()).getEmployeeId());
 
 		return getService().findAll(constrains, pageNo, resultPerPage);
@@ -158,7 +99,7 @@ public abstract class AbstractTDSController<K extends Serializable, E extends Mo
 		// verify the clientId authorization
 //			applicationCache.getUserAuthorised();
 		HashMap<String, Object> constrains = new HashMap<>();
-//		constrains.put("clientId", applicationCache.getLoginDetail(getPrincipal()).getClientId());
+		constrains.put("clientId", applicationCache.getLoginDetail(getPrincipal()).getClientId());
 //		constrains.put("employeeId", applicationCache.getLoginDetail(getPrincipal()).getEmployeeId());
 
 		String mapping = request.getPathInfo();
@@ -197,7 +138,7 @@ public abstract class AbstractTDSController<K extends Serializable, E extends Mo
 				}
 			}
 
-			return new ResponseEntity<>(getSearch(map), HttpStatus.OK);
+			return new ResponseEntity<>(getSearch(map,clientId), HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("Error in listALL", e);
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -205,12 +146,12 @@ public abstract class AbstractTDSController<K extends Serializable, E extends Mo
 
 	}
 
-	public List<?> getSearch(LinkedHashMap<String, Object> map) {
+	public List<?> getSearch(LinkedHashMap<String, Object> map, Long clientId) {
 		// TODO Auto-generated method stub
 		Login l = applicationCache.getLoginDetail(getPrincipal());
-//		map.put("clientId", l.getClientId());
+		map.put("clientId", l.getClientId());
 //		map.put("employeeId", l.getEmployeeId());
-		return getService().search(map);
+		return getService().search(map,clientId);
 	}
 
 	// ------------------- Search Single Entity ---------------------------------
@@ -230,10 +171,67 @@ public abstract class AbstractTDSController<K extends Serializable, E extends Mo
 	public E getSearchEntity(LinkedHashMap<String, Object> map, Long clientId) {
 		// TODO Auto-generated method stub
 		Login l = applicationCache.getLoginDetail(getPrincipal());
-//		map.put("clientId", l.getClientId());
+		map.put("clientId", l.getClientId());
 //		map.put("employeeId", l.getEmployeeId());
 		return getService().uniqueSearch(map);
 	}
+
+	// ------------------- Add Entity ---------------------------------
+
+	@RequestMapping(value = "/add/{clientId}", method = RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity<?> createEntity(@RequestBody LinkedHashMap<String, Object> entity) {
+		//FieldErrorDTO ermsg=new FieldErrorDTO();
+		logger.info("Creating new Return instance");
+		create(entity);
+		addLogs(entity);
+	//	ermsg.setMessage(" Saved Successfully");
+		return new ResponseEntity<Object>(HttpStatus.CREATED);
+
+	}
+
+	
+
+	public void create(LinkedHashMap<String, Object> entity) {
+		Gson gson = new Gson();
+		Login l = applicationCache.getLoginDetail(getPrincipal());
+		if (entity.containsKey("clientId")) {
+			entity.put("clientId", l.getClientId());
+		}
+
+		JsonElement jsonElement = gson.toJsonTree(entity);
+
+		getService().save(gson.fromJson(jsonElement, getEntity()));
+
+	}
+	
+	 public void addLogs(HashMap<String, Object> entity) {
+		  LogsJson lj=new LogsJson();
+		 
+	    	Login l = applicationCache.getLoginDetail(getPrincipal());
+			HashMap<String, Object>constrains= new HashMap<>();
+			constrains.put("id", entity.get("id"));
+			constrains.put("clientId",l.getClientId());
+			Logs log = lservice.uniqueSearch(constrains);			
+		    log = new Logs();
+		    log.setClientId(l.getClientId());
+		    log.setAction("Added");
+		    log.setIpaddrs(getIp());
+		    String s=getEntity().getName();
+		    String[] arrOfStr = s.split(".", 27); 
+		    for (String a : arrOfStr) 
+		    log.setEntity(a);	
+		    Gson gason = new Gson(); 
+		    String json = gason.toJson(entity); 
+		    log.setDate(new Date(System.currentTimeMillis()));
+			log.setUsername(l.getUserName());
+			lj.setId(log.getId());
+			lj.setData(json);
+			lservice.save(log);
+			ljService.save(lj);
+		
+		}
+
 
 	// ------------------- Get Detail ---------------------------------
 
@@ -249,150 +247,107 @@ public abstract class AbstractTDSController<K extends Serializable, E extends Mo
 
 	}
 
-	public Object getDetail(K tan, Long clientId) {
+	public Object getDetail(K id, Long clientId) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
-		constrains.put("TAN", tan);
-	//	constrains.put("clientId", clientId);
+		constrains.put("id", id);
+		constrains.put("clientId", clientId);
 		return getService().uniqueSearch(constrains);
 	}
 
-	// ------------------- Add Entity ---------------------------------
+	// ------------------- Update Entity ---------------------------------
 
-		@RequestMapping(value = "/add/{clientId}", method = RequestMethod.POST)
-		public ResponseEntity<?> createEntity(@RequestBody LinkedHashMap<String, Object> entity) {
-			logger.info("Creating new Return instance");
-			create(entity);
-			return new ResponseEntity<String>(HttpStatus.CREATED);
-
+	@RequestMapping(value = "/update/{clientId}", method = RequestMethod.PUT)
+	public ResponseEntity<?> update(@RequestBody LinkedHashMap<String, Object> entity, HttpServletResponse response,
+			UriComponentsBuilder ucBuilder) {
+		FieldErrorDTO ermsg=new FieldErrorDTO();
+		Login l = applicationCache.getLoginDetail(getPrincipal());
+		Long clientId = Long.valueOf(entity.get("clientId").toString());
+		if (clientId == l.getClientId()) {
+			Object o = getDetail((K) Long.valueOf(entity.get("id").toString()), clientId);
+			ObjectMapper oMapper = new ObjectMapper();
+			HashMap<String, Object> map = oMapper.convertValue(o, HashMap.class);
+							update(entity);
+							addLogsU(entity);
+							
+							ermsg.setMessage(" Updated Successfully");
+							return new ResponseEntity<String>(HttpStatus.ACCEPTED);
 		}
+		else {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}	
+	}
 
-		public void create(LinkedHashMap<String, Object> entity) {
-			Gson gson = new Gson();
-			Login l = applicationCache.getLoginDetail(getPrincipal());
-//			if (entity.containsKey("clientId")) {
-//				entity.put("clientId", l.getClientId());
-//			}
-			//if (entity.containsKey("employeeId")) {
-//			entity.put("employeeId",  l.getEmployeeId());
-		//	}
-			JsonElement jsonElement = gson.toJsonTree(entity);
+	public void update(LinkedHashMap<String, Object> entity) {
+		
+		
+		Gson gson = new Gson();
+		Login l = applicationCache.getLoginDetail(getPrincipal());
+		JsonElement jsonElement = gson.toJsonTree(entity);
+		getService().update(gson.fromJson(jsonElement, getEntity()));
+		
+		
+//		Gson gson = new Gson();
+//		Login l = applicationCache.getLoginDetail(getPrincipal());
+//		if (entity.containsKey("clientId")) {
+//			entity.put("clientId", l.getClientId());
+//		}
+		//if (entity.containsKey("employeeId")) {
+//		entity.put("employeeId",  l.getEmployeeId());
+		//}
+	//	JsonElement jsonElement = gson.toJsonTree(entity);
 
-			getService().save(gson.fromJson(jsonElement, getEntity()));
+		// getEntity from controller and validate that with validate method in
+		// contorller and message from Service
+		//getService().update(gson.fromJson(jsonElement, getEntity()));
 
-		}
-
+	}
 	
 	
-		// ------------------- Update Entity ---------------------------------
-
-		@RequestMapping(value = "/update/{clientId}", method = RequestMethod.PUT)
-		public ResponseEntity<?> update(@RequestBody LinkedHashMap<String, Object> entity, HttpServletResponse response,
-				UriComponentsBuilder ucBuilder) {
-			
-			update(entity);
-			addLogsU(entity);
-			
-			return new ResponseEntity<String>(HttpStatus.ACCEPTED);
+	 public void addLogsU(HashMap<String, Object> entity) {
+		    LogsJson lj=new LogsJson();
+	    	Login l = applicationCache.getLoginDetail(getPrincipal());
+			HashMap<String, Object>constrains= new HashMap<>();
+			constrains.put("id", Long.valueOf(entity.get("id").toString()));
+			constrains.put("clientId",l.getClientId());
+			Logs log = lservice.uniqueSearch(constrains);			
+		    log = new Logs();
+		    log.setClientId(l.getClientId());
+		    log.setAction("Updated");
+		    log.setIpaddrs(getIp());
+		    String s=getEntity().getName();
+		    String[] arrOfStr = s.split(".", 27); 
+		    for (String a : arrOfStr) 
+		    log.setEntity(a);
+		    Gson gason = new Gson(); 
+		    String json = gason.toJson(entity); 
+		    log.setDate(new Date(System.currentTimeMillis()));
+			log.setUsername(l.getUserName());
+			lj.setId(log.getId());
+			lj.setData(json);
+			lservice.save(log);
+			ljService.save(lj);
 		}
 
-		public void update(LinkedHashMap<String, Object> entity) {
-			Gson gson = new Gson();
-			Login l = applicationCache.getLoginDetail(getPrincipal());
-			JsonElement jsonElement = gson.toJsonTree(entity);
-			getService().update(gson.fromJson(jsonElement, getEntity()));
+	// ------------------- Delete Entity ---------------------------------
+
+	@RequestMapping(value = "/delete/{clientId}/{id}", method = RequestMethod.POST)
+	public ResponseEntity<?> delete(@PathVariable K id, @PathVariable Long clientId) {
+		// verify the clientId authorization
+		try {
+			getService().deleteT(id);
+			return new ResponseEntity<>(HttpStatus.OK);
+		} catch (Exception e) {
+			logger.error("Error in getting detail ", e);
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
-		
-		 public void addLogsU(HashMap<String, Object> entity) {
-			 LogsJson lj=new LogsJson();
-		    	Login l = applicationCache.getLoginDetail(getPrincipal());
-//				HashMap<String, Object>constrains= new HashMap<>();
-//				constrains.put("id", Long.valueOf(entity.get("id").toString()));
-//				constrains.put("clientId",l.getClientId());
-//				Logs log = lservice.uniqueSearch(constrains);			
-		    	Logs log = new Logs();
-			    log.setClientId(l.getClientId());
-			    log.setAction("Updated");
-			    log.setIpaddrs(getIp());
-			    String s=getEntity().getName();
-			    String[] arrOfStr = s.split(".", 28); 
-			    for (String a : arrOfStr) 
-			    log.setEntity(a);
-			    Gson gason = new Gson(); 
-			    String json = gason.toJson(entity); 
-			    log.setDate(new Date(System.currentTimeMillis()));
-				log.setUsername(l.getUserName());
-				lj.setId(log.getId());
-				lj.setData(json);
-				lservice.save(log);
-				ljService.save(lj);
-			}
-		
-		
-		// --------------------------------Upload File---------------------------
 
-			@RequestMapping(value = "/uploadFile/{clientId}", method = RequestMethod.POST)
-			public ResponseEntity<?> uploadFileMulti(@RequestParam("file") MultipartFile file, @RequestParam("dec") String dec,
-					@PathVariable Long clientId) {
-				String lFilename = file.getOriginalFilename();
-				String[] lext = lFilename.split("\\.");
-				if (!(lext[1].equalsIgnoreCase("jpeg") || lext[1].equalsIgnoreCase("png") || lext[1].equalsIgnoreCase("jpg")
-						|| lext[1].equalsIgnoreCase("pdf"))) {
-					FieldErrorDTO dto = new FieldErrorDTO();
-					Gson gson = new Gson();
-					throw new CustomException("Invalid File Format, Allowed formats('jpeg','png','jpg','pdf'");
-				} else {
-					ObjectMapper mapper = new ObjectMapper();
-					LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
-					try {
-						map = mapper.readValue(dec, new TypeReference<Map<String, String>>() {
-						});
-					} catch (JsonParseException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (JsonMappingException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-
-					}
-					for (String key : map.keySet()) {
-						if (key.endsWith("Id") || key.endsWith("id")) {
-							map.put(key, Long.valueOf((String) map.get(key)));
-						}
-					}
-					save(map, file);
-					
-					return new ResponseEntity<String>(HttpStatus.CREATED);
-				}
-
-			}
-
-			public void save(LinkedHashMap<String, Object> map, MultipartFile file) {
-				FileDetail doc = new FileDetail();
-				Login l = applicationCache.getLoginDetail(getPrincipal());
-				doc.setFileName(file.getOriginalFilename());
-				doc.setClientId(l.getClientId());
-			
-				map.put("fileId", null);
-				
-
-				try {
-					doc.setType(doc.getFileName().split("\\.")[1]);
-					doc.setFile(file.getBytes());
-					getService().saveFile(doc, map, getEntity());
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
-			}
-		
-		
+	}
 	
 	
+	
+	
+
 	// ------------------- ajax Entities ---------------------------------
 
 	@RequestMapping(value = "/ajax/{clientId}", method = RequestMethod.POST)
@@ -410,8 +365,9 @@ public abstract class AbstractTDSController<K extends Serializable, E extends Mo
 
 	public List<?> getAjax(String name, String term, Long clientId) {
 		// TODO Auto-generated method stub
+		Login l = applicationCache.getLoginDetail(getPrincipal());
 		HashMap<String, Object> constrains = new HashMap<>();
-//		constrains.put("clientId", clientId);
+		constrains.put("clientId", l.getClientId());
 		return getService().ajax(name, term, constrains);
 	}
 
@@ -443,5 +399,7 @@ public abstract class AbstractTDSController<K extends Serializable, E extends Mo
 			return null;
 		}
 	}
-
+   	
+	
+	
 }

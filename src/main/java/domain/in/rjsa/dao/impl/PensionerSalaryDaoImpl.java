@@ -8,12 +8,11 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import domain.in.rjsa.dao.AbstractNewDao;
+import domain.in.rjsa.dao.AbstractDaoFY;
 import domain.in.rjsa.dao.PensionerSalaryDao;
-import domain.in.rjsa.model.form.PensionerSalary;
-import domain.in.rjsa.model.form.Salary;
+import domain.in.rjsa.model.fy.PensionerSalary;
 @Repository("pensionsalaryDao")
-public class PensionerSalaryDaoImpl extends AbstractNewDao<Long, PensionerSalary> implements PensionerSalaryDao  {
+public class PensionerSalaryDaoImpl extends AbstractDaoFY<Long, PensionerSalary> implements PensionerSalaryDao  {
 
 	@SuppressWarnings("unchecked")
 	public List< PensionerSalary> search(HashMap entity, Long clientId) {

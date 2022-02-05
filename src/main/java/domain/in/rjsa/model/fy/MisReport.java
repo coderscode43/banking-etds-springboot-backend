@@ -11,24 +11,29 @@ import org.hibernate.annotations.GenericGenerator;
 
 import domain.in.rjsa.model.form.CommonModelAbstract;
 import lombok.Data;
+
 @Data
 @Entity
-@Table(name = "form.fileDetail")
-public class FileDetail extends CommonModelAbstract{
+@Table(name = "FYDetails.misReport")
+public class MisReport extends CommonModelAbstract{/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO, generator="native")
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
-	private Long id;
+	public Long id;		
 	@Column(name = "clientId")
-	private Long clientId;
+	public Long clientId;
+	@Column(name = "fromDate")
+	private String fromDate;
+	@Column(name = "toDate")
+	private String toDate;
+	@Column(name = "reportType")
+	public String reportType;	
 	
-	@Column(name = "type")
-	private String type;
-
-	@Column(name = "fileName")
-	private String fileName;
-	@Column(name = "file")
-	private byte[] file;
+	
 
 }

@@ -11,12 +11,12 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import domain.in.rjsa.dao.AbstractTDSDao;
+import domain.in.rjsa.dao.AbstractDaoTaxo;
 import domain.in.rjsa.dao.STATEMENTSTATUSDao;
 import domain.in.rjsa.model.tds.STATEMENTSTATUS;
 
 @Repository("STATEMENTSTATUSDao")
-public class STATEMENTSTATUSDaoImpl extends AbstractTDSDao<Long, STATEMENTSTATUS> implements STATEMENTSTATUSDao{
+public class STATEMENTSTATUSDaoImpl extends AbstractDaoTaxo<Long, STATEMENTSTATUS> implements STATEMENTSTATUSDao{
 	@SuppressWarnings("unchecked")
 	public List<STATEMENTSTATUS> search(HashMap entity, Long clientId) {
 		Criteria criteria = createEntityCriteria();

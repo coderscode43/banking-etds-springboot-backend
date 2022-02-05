@@ -8,13 +8,12 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import domain.in.rjsa.dao.AbstractTDSDao;
+import domain.in.rjsa.dao.AbstractDaoTaxo;
 import domain.in.rjsa.dao.GH15RETURNSTATUSDao;
 import domain.in.rjsa.model.tds.GH15RETURNSTATUS;
-import domain.in.rjsa.model.tds.STATEMENTSTATUS;
 
 @Repository("GH15RETURNSTATUSDao")
-public class GH15RETURNSTATUSDaoImpl extends AbstractTDSDao<Long, GH15RETURNSTATUS> implements GH15RETURNSTATUSDao {
+public class GH15RETURNSTATUSDaoImpl extends AbstractDaoTaxo<Long, GH15RETURNSTATUS> implements GH15RETURNSTATUSDao {
 	@SuppressWarnings("unchecked")
 	public List<GH15RETURNSTATUS> search(HashMap entity, Long clientId) {
 		Criteria criteria = createEntityCriteria();

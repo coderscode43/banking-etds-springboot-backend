@@ -6,11 +6,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.AdminDao;
 import domain.in.rjsa.model.form.Admin;
-import domain.in.rjsa.service.AbstractTDSService;
+import domain.in.rjsa.service.AbstractServiceForm;
 import domain.in.rjsa.service.AdminService;
 @Transactional("transactionManager")
 @Service("adminService")
-public class AdminServiceImpl extends AbstractTDSService<Long, Admin,AdminDao> implements AdminService {
+public class AdminServiceImpl extends AbstractServiceForm<Long, Admin,AdminDao> implements AdminService {
 	@Autowired
 	AdminDao dao;
 

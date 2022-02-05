@@ -11,11 +11,11 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import domain.in.rjsa.dao.AbstractNewDao;
+import domain.in.rjsa.dao.AbstractDaoFY;
 import domain.in.rjsa.dao.LogsDao;
 import domain.in.rjsa.model.fy.Logs;
 @Repository("logsDao")
-public class LogsDaoImpl extends AbstractNewDao<Long, Logs> implements LogsDao{
+public class LogsDaoImpl extends AbstractDaoFY<Long, Logs> implements LogsDao{
 	@SuppressWarnings("unchecked")
 	public List<Logs> search(HashMap entity, Long clientId) {
 		Criteria criteria = createEntityCriteria();

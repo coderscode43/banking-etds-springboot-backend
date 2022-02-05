@@ -11,13 +11,13 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import domain.in.rjsa.dao.AbstractNewDao;
+import domain.in.rjsa.dao.AbstractDaoFY;
 import domain.in.rjsa.dao.Regular24QDeducteeUpdateRequestDetailDao;
 import domain.in.rjsa.model.fy.Regular24QDeducteeUpdateRequestDetail;
 
 @Repository("regular24QDeducteeUpdateRequestDetailDao")
 public class Regular24QDeducteeUpdateRequestDetailDaoImpl
-		extends AbstractNewDao<Long, Regular24QDeducteeUpdateRequestDetail>
+		extends AbstractDaoFY<Long, Regular24QDeducteeUpdateRequestDetail>
 		implements Regular24QDeducteeUpdateRequestDetailDao {
 	@SuppressWarnings("unchecked")
 	public List<Regular24QDeducteeUpdateRequestDetail> search(HashMap entity, Long clientId) {

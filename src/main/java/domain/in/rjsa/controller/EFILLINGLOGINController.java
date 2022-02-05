@@ -11,7 +11,7 @@ import domain.in.rjsa.service.TRACESSLOGINService;
 
 @Controller
 @RequestMapping("/apiEFILLINGLOGIN")
-public class EFILLINGLOGINController extends AbstractTDSController<String, EFILLINGLOGIN, EFILLINGLOGINService>{
+public class EFILLINGLOGINController extends AbstractControllerTaxo<String, EFILLINGLOGIN, EFILLINGLOGINService>{
 @Autowired
 EFILLINGLOGINService service;
 

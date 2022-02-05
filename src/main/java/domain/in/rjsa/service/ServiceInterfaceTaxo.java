@@ -1,17 +1,9 @@
 package domain.in.rjsa.service;
 
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 
-import domain.in.rjsa.model.fy.FileDetail;
-
-public interface ServiceTDSInterface<K, E> {
-	public void save(E entity);
-
-	public void update(E entity);
-
-	public void deleteT(K key);
+public interface ServiceInterfaceTaxo<K, E> {
 
 	public List<E> findAll(HashMap<String, Object> constrains, int pageNo, int noOfResult);
 
@@ -23,7 +15,6 @@ public interface ServiceTDSInterface<K, E> {
 
 	public List<String> ajax(String name, String term, HashMap<String, Object> constrains);
 	
-	public void saveFile(FileDetail file, LinkedHashMap<String, Object> map, Class<E> entity);
 
 
 }

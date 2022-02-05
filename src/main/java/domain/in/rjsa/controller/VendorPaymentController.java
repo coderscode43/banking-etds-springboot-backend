@@ -10,7 +10,7 @@ import domain.in.rjsa.service.VendorPaymentService;
 
 @Controller
 @RequestMapping("/apivendorPayment")
-public class VendorPaymentController extends AbstractBranchController<Long, VendorPayment, VendorPaymentService>{
+public class VendorPaymentController extends AbstractBranchControllerFY<Long, VendorPayment, VendorPaymentService>{
 	@Autowired
 	VendorPaymentService service;
 		@Override

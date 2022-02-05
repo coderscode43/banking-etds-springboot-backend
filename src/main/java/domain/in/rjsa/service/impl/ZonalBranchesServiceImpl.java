@@ -6,12 +6,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.ZonalBranchesDao;
 import domain.in.rjsa.model.form.ZonalBranches;
-import domain.in.rjsa.service.AbstractService;
+import domain.in.rjsa.service.AbstractServiceForm;
 import domain.in.rjsa.service.ZonalBranchesService;
 
 @Transactional("transactionManager")
 @Service("zonalBranchesService")
-public class ZonalBranchesServiceImpl extends AbstractService<Long, ZonalBranches, ZonalBranchesDao> implements ZonalBranchesService{
+public class ZonalBranchesServiceImpl extends AbstractServiceForm<Long, ZonalBranches, ZonalBranchesDao> implements ZonalBranchesService{
 
 	@Autowired
 	ZonalBranchesDao dao;

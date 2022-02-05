@@ -93,7 +93,7 @@
 								Branch</b>
 					</a></li>
 
-					<li ng-click="cCctr.gotoList2Page('challanForm','challanForm')"
+					<li ng-click="cCctr.gotoList2Page('challan','challan')"
 						onclick="scrollWin()"><a> <i class="fa fa-book"></i><b>Challan</b>
 					</a></li>
 
@@ -110,9 +110,9 @@
 								15G/15H Status</b>
 					</a></li>
 
-					<li ng-click="cCctr.gotoListPage('misReport','misReport')"
+					<!--  <li ng-click="cCctr.gotoListPage('misReport','misReport')"
 						onclick="scrollWin()"><a> <i class="fa fa-book"></i><b>MISReport</b>
-					</a></li>
+					</a></li> -->
 
 					<li
 						ng-click="cCctr.gotoListPage('deductorDetails','deductorDetails')"
@@ -124,7 +124,7 @@
 							aria-hidden="true"></i><b>User</b> </a></li>
 
 					<li data-toggle="collapse" data-target="#service" class="collapsed">
-						<a href="#"><b>${cd.getName()}</b><i
+						<a href="#"><b>${cd.getOrganizationName()}</b><i
 							class="fa fa-chevron-down" aria-hidden="true"
 							style="float: right; margin-right: -2%"></i></a>
 					</li>
@@ -160,13 +160,13 @@
 
 	<div class="top-item top1 col-lg-offset-5" style="border-radius: 5px;">
 		<p>
-			<b>${cd.getName()}</b>
+			<b>${cd.getOrganizationName()}</b>
 		</p>
 	</div>
 	<div class="top-item top2 col-lg-offset-5"
 		style="border-radius: 5px; background-color:">
 		<p>
-			<b>${cd.getPAN()}</b>
+			<b>${cd.getOrganizationPan()}</b>
 		</p>
 	</div>
 

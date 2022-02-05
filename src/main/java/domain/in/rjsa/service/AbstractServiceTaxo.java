@@ -4,40 +4,22 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import domain.in.rjsa.dao.DaoInterface;
-
-public abstract class AbstractService<K extends Serializable, E, D extends DaoInterface<K, E>>
-		implements ServiceInterface<K, E> {
-//	@Autowired
-//	FileDetailDao fDao;
+import domain.in.rjsa.dao.DaoInterfaceTaxo;
+import domain.in.rjsa.dao.FileDetailDao;
+@Transactional("tdsTxManager")
+public abstract class AbstractServiceTaxo<K extends Serializable, E, D extends DaoInterfaceTaxo<K, E>>
+		implements ServiceInterfaceTaxo<K, E> {
+	@Autowired
+	FileDetailDao fDao;
 	
-	
-	@Override
-	public void save(E entity) {
-		// TODO Auto-generated method stub
-		getPrimaryDao().persist(entity);
-		
-	}
-
-	@Override
-	public void update(E entity) {
-		// TODO Auto-generated method stub
-		getPrimaryDao().update(entity);
-	}
-	
-
-	@Override
-	public void deleteT(K key) {
-		// TODO Auto-generated method stub
-		getPrimaryDao().deleteByKey(key);
-	}
 
 	@Override
 	public List<E> findAll(HashMap<String, Object> constrains, int pageNo, int noOfResult) {
 		// TODO Auto-generated method stub
-		return getPrimaryDao().findall(constrains, pageNo, noOfResult);
+		return getPrimaryDao().findallWithConstrain(constrains, pageNo, noOfResult);
 	}
 
 	@Override
@@ -47,9 +29,9 @@ public abstract class AbstractService<K extends Serializable, E, D extends DaoIn
 	}
 
 	@Override
-	public List<E> search(HashMap map, Long clientId) {
+	public List<E> search(HashMap map) {
 		// TODO Auto-generated method stub
-		return getPrimaryDao().search(map, clientId);
+		return getPrimaryDao().search(map);
 	}
 
 	@Override

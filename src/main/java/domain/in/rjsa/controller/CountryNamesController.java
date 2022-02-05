@@ -21,7 +21,7 @@ import domain.in.rjsa.service.CountryNamesService;
 
 @Controller
 @RequestMapping("/apicountryNames")
-public class CountryNamesController extends AbstractController<Long, CountryNames, CountryNamesService>{
+public class CountryNamesController extends AbstractControllerForm<Long, CountryNames, CountryNamesService>{
 	
 	@Autowired
 	CountryNamesService service;

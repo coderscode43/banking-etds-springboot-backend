@@ -25,7 +25,7 @@ import domain.in.rjsa.util.StaticData;
 @Controller
 @RequestMapping("/apiform24Qsalary")
 public class Regular24QSalaryController
-		extends AbstractBranchController<Long, Regular24QSalary, Regular24QSalaryService> {
+		extends AbstractBranchControllerFY<Long, Regular24QSalary, Regular24QSalaryService> {
 
 	@Autowired
 	Regular24QSalaryService service;
@@ -87,9 +87,9 @@ public class Regular24QSalaryController
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("docId", Long.valueOf(entity.get("id").toString()));
 		map.put("clientId", l.getClientId());
-		List<Regular24QSalaryUpdateRequestDetail> listReqDoc = uService.search(map, l.getClientId());
+		List<Regular24QSalaryUpdateRequestDetail> listReqDoc = uService.search(map);
 		map.put("entityId", map.remove("docId"));
-		List<Remarks> listRemarks = rService.search(map, l.getClientId());
+		List<Remarks> listRemarks = rService.search(map);
 		if (listRemarks.isEmpty() || listRemarks == null) {
 			Regular24QSalary oldEntity = service.getByKey(Long.valueOf(entity.get("id").toString()));
 			Remarks remark = new Remarks();

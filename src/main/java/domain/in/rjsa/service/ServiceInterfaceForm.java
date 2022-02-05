@@ -3,7 +3,7 @@ package domain.in.rjsa.service;
 import java.util.HashMap;
 import java.util.List;
 
-public interface ServiceInterface<K, E> {
+public interface ServiceInterfaceForm<K, E> {
 	public void save(E entity);
 
 	public void update(E entity);

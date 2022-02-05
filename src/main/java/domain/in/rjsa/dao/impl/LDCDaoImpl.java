@@ -11,12 +11,12 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import domain.in.rjsa.dao.AbstractTDSDao;
+import domain.in.rjsa.dao.AbstractDaoTaxo;
 import domain.in.rjsa.dao.LDCDao;
 import domain.in.rjsa.model.tds.LDC;
 
 @Repository("lDCDao")
-public class LDCDaoImpl extends AbstractTDSDao<Long, LDC> implements LDCDao{
+public class LDCDaoImpl extends AbstractDaoTaxo<Long, LDC> implements LDCDao{
 	@SuppressWarnings("unchecked")
 	public List<LDC> search(HashMap entity, Long clientId) {
 		Criteria criteria = createEntityCriteria();

@@ -23,7 +23,7 @@ import domain.in.rjsa.service.PensionMasterService;
 import domain.in.rjsa.util.StaticData;
 @Controller
 @RequestMapping("/apipensionMaster")
-public class PensionMasterController extends AbstractBranchController<Long, PensionMaster, PensionMasterService>{
+public class PensionMasterController extends AbstractBranchControllerForm<Long, PensionMaster, PensionMasterService>{
 	@Autowired
 	PensionMasterService service;
 	@Override

@@ -9,18 +9,20 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import domain.in.rjsa.model.form.CommonModelAbstract;
 import lombok.Data;
-
 @Data
 @Entity
-@Table(name = "form.comments")
-public class Comments extends CommonModelAbstract {
-	
+@Table(name = "form.Comments")
+public class Comments extends CommonModelAbstract{
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
 	private Long id;
+	@Column(name = "TAN")
+	private Long TAN;
 	@Column(name = "clientId")
 	private Long clientId;
 	@Column(name = "comment")

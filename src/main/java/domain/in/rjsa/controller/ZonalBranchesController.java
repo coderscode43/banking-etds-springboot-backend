@@ -20,7 +20,7 @@ import domain.in.rjsa.service.ZonalBranchesService;
 
 @Controller
 @RequestMapping("/apizonalBranches")
-public class ZonalBranchesController extends AbstractController<Long, ZonalBranches, ZonalBranchesService>{
+public class ZonalBranchesController extends AbstractControllerForm<Long, ZonalBranches, ZonalBranchesService>{
 @Autowired
 ZonalBranchesService service;
 

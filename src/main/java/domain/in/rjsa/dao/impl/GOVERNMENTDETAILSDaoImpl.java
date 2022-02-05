@@ -7,12 +7,12 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import domain.in.rjsa.dao.AbstractTDSDao;
+import domain.in.rjsa.dao.AbstractDaoTaxo;
 import domain.in.rjsa.dao.GOVERNMENTDETAILSDao;
 import domain.in.rjsa.model.tds.GOVERNMENTDETAILS;
 
 @Repository("GOVERNMENTDETAILSDao")
-public class GOVERNMENTDETAILSDaoImpl extends AbstractTDSDao<String, GOVERNMENTDETAILS> implements GOVERNMENTDETAILSDao{
+public class GOVERNMENTDETAILSDaoImpl extends AbstractDaoTaxo<String, GOVERNMENTDETAILS> implements GOVERNMENTDETAILSDao{
 
 	@Override
 	public GOVERNMENTDETAILS getByKey(String tan) {

@@ -6,12 +6,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.UserDetailsDao;
 import domain.in.rjsa.model.form.UserDetails;
-import domain.in.rjsa.service.AbstractService;
+import domain.in.rjsa.service.AbstractServiceForm;
 import domain.in.rjsa.service.UserDetailsService;
 
 @Transactional
 @Service("UserDetailsService")
-public class UserDetailsServiceImpl extends AbstractService<Long, UserDetails, UserDetailsDao> implements UserDetailsService {
+public class UserDetailsServiceImpl extends AbstractServiceForm<Long, UserDetails, UserDetailsDao> implements UserDetailsService {
 
 	
 	@Autowired

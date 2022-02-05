@@ -6,12 +6,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.AddressDao;
 import domain.in.rjsa.model.form.Address;
-import domain.in.rjsa.service.AbstractTDSService;
+import domain.in.rjsa.service.AbstractServiceForm;
 import domain.in.rjsa.service.AddressService;
 
 @Transactional("transactionManager")
 @Service("addressService")
-public class AddressServiceImpl extends AbstractTDSService<Long, Address, AddressDao> implements AddressService{
+public class AddressServiceImpl extends AbstractServiceForm<Long, Address, AddressDao> implements AddressService{
 	@Autowired
 	AddressDao dao;
 		@Override

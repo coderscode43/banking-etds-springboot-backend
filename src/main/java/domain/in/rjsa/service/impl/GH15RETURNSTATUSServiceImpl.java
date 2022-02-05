@@ -6,11 +6,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.GH15RETURNSTATUSDao;
 import domain.in.rjsa.model.tds.GH15RETURNSTATUS;
-import domain.in.rjsa.service.AbstractTDSService;
+import domain.in.rjsa.service.AbstractServiceTaxo;
 import domain.in.rjsa.service.GH15RETURNSTATUSService;
 @Transactional("tdsTxManager")
 @Service("GH15RETURNSTATUSService")
-public class GH15RETURNSTATUSServiceImpl extends AbstractTDSService<Long, GH15RETURNSTATUS, GH15RETURNSTATUSDao> implements GH15RETURNSTATUSService {
+public class GH15RETURNSTATUSServiceImpl extends AbstractServiceTaxo<Long, GH15RETURNSTATUS, GH15RETURNSTATUSDao> implements GH15RETURNSTATUSService {
 
 	
 	@Autowired 

@@ -1,5 +1,4 @@
-package domain.in.rjsa.model.tds;
-
+package domain.in.rjsa.model.form;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,26 +8,27 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import domain.in.rjsa.model.form.CommonModelAbstract;
 import lombok.Data;
+
 @Data
 @Entity
-@Table(name = "Taxo.Comments")
-public class Comments extends CommonModelAbstract{
-
+@Table(name = "form.organizationDetails")
+public class OrganizationDetails extends CommonModelAbstract {
+	/**
+	 * 
+	 */
+	//private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+	@GeneratedValue(strategy= GenerationType.AUTO, generator="native")
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
 	private Long id;
-	@Column(name = "TAN")
-	private Long TAN;
+	@Column(name = "organizationName")
+	public String organizationName;
+	@Column(name = "organizationPan")
+	public String organizationPan;
 	@Column(name = "clientId")
-	private Long clientId;
-	@Column(name = "comment")
-	private String comment;
-	@Column(name = "entity")
-	private String entity;
+	public Long clientId;
 	
 	
 }

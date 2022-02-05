@@ -6,12 +6,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.STATEMENTSTATUSDao;
 import domain.in.rjsa.model.tds.STATEMENTSTATUS;
-import domain.in.rjsa.service.AbstractTDSService;
+import domain.in.rjsa.service.AbstractServiceTaxo;
 import domain.in.rjsa.service.STATEMENTSTATUSService;
 
 @Transactional("tdsTxManager")
 @Service("STATEMENTSTATUSService")
-public class STATEMENTSTATUSServiceImpl extends AbstractTDSService<Long, STATEMENTSTATUS, STATEMENTSTATUSDao> implements STATEMENTSTATUSService{
+public class STATEMENTSTATUSServiceImpl extends AbstractServiceTaxo<Long, STATEMENTSTATUS, STATEMENTSTATUSDao> implements STATEMENTSTATUSService{
 @Autowired 
 STATEMENTSTATUSDao dao;
 	@Override

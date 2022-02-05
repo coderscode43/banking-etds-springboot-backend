@@ -10,7 +10,7 @@ import domain.in.rjsa.service.AddressService;
 
 @Controller
 @RequestMapping("/apiaddress")
-public class AddressController extends AbstractTDSController<Long, Address, AddressService>{
+public class AddressController extends AbstractControllerForm<Long, Address, AddressService>{
 	@Autowired
 	AddressService service;
 		@Override

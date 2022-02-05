@@ -6,12 +6,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.LDCDao;
 import domain.in.rjsa.model.tds.LDC;
-import domain.in.rjsa.service.AbstractTDSService;
+import domain.in.rjsa.service.AbstractServiceTaxo;
 import domain.in.rjsa.service.LDCService;
 
 @Transactional("tdsTxManager")
 @Service("lDCService")
-public class LDCServiceImpl extends AbstractTDSService<Long, LDC, LDCDao> implements LDCService{
+public class LDCServiceImpl extends AbstractServiceTaxo<Long, LDC, LDCDao> implements LDCService{
 
 	@Autowired
 	LDCDao dao;

@@ -8,11 +8,11 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import domain.in.rjsa.dao.AbstractNewDao;
+import domain.in.rjsa.dao.AbstractDaoForm;
 import domain.in.rjsa.dao.EmployeeMasterDao;
 import domain.in.rjsa.model.form.EmployeeMaster;
 @Repository("employeeMasterDao")
-public class EmployeeMasterDaoImpl extends AbstractNewDao<Long, EmployeeMaster> implements EmployeeMasterDao{
+public class EmployeeMasterDaoImpl extends AbstractDaoForm<Long, EmployeeMaster> implements EmployeeMasterDao{
 	@Override
 	public List<EmployeeMaster> search(HashMap entity, Long clientId) {
 		Criteria criteria = createEntityCriteria();

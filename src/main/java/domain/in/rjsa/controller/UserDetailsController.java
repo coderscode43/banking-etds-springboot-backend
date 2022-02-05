@@ -9,7 +9,7 @@ import domain.in.rjsa.service.UserDetailsService;
 
 @Controller
 @RequestMapping("/apiuserDetails")
-public class UserDetailsController extends AbstractController<Long, UserDetails, UserDetailsService> {
+public class UserDetailsController extends AbstractControllerForm<Long, UserDetails, UserDetailsService> {
 
 	@Autowired
 	UserDetailsService service;

@@ -5,14 +5,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.PensionerSalaryDao;
-import domain.in.rjsa.model.form.PensionerSalary;
-import domain.in.rjsa.service.AbstractService;
+import domain.in.rjsa.model.fy.PensionerSalary;
+import domain.in.rjsa.service.AbstractServiceFY;
 import domain.in.rjsa.service.PensionerSalaryService;
 
 
 @Transactional("transactionManager")
 @Service("pensionsalaryService")
-public class PensionerSalaryServiceImpl extends AbstractService<Long, PensionerSalary, PensionerSalaryDao> implements PensionerSalaryService {
+public class PensionerSalaryServiceImpl extends AbstractServiceFY<Long, PensionerSalary, PensionerSalaryDao> implements PensionerSalaryService {
 	@Autowired
 	PensionerSalaryDao dao;
 	@Override

@@ -9,7 +9,7 @@ import domain.in.rjsa.service.STATEMENTSTATUSService;
 
 @Controller
 @RequestMapping("/apistatementStatus")
-public class STATEMENTSTATUSController extends AbstractTDSController<Long, STATEMENTSTATUS, STATEMENTSTATUSService>{
+public class STATEMENTSTATUSController extends AbstractControllerTaxo<Long, STATEMENTSTATUS, STATEMENTSTATUSService>{
 
 	@Autowired
 	STATEMENTSTATUSService service;

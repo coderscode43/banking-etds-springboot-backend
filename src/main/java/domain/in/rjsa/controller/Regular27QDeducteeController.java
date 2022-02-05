@@ -33,7 +33,7 @@ import domain.in.rjsa.util.StaticData;
 @Controller
 @RequestMapping("/apiform27QDeductee")
 public class Regular27QDeducteeController
-		extends AbstractBranchController<Long, Regular27QDeductee, Regular27QDeducteeService> {
+		extends AbstractBranchControllerFY<Long, Regular27QDeductee, Regular27QDeducteeService> {
 
 	@Autowired
 	Regular27QDeducteeService service;
@@ -110,9 +110,9 @@ public class Regular27QDeducteeController
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("docId", Long.valueOf(entity.get("id").toString()));
 		map.put("clientId", l.getClientId());
-		List<Regular27QDeducteeUpdateRequestDetail> listReqDoc = uService.search(map, l.getClientId());
+		List<Regular27QDeducteeUpdateRequestDetail> listReqDoc = uService.search(map);
 		map.put("entityId", map.remove("docId"));
-		List<Remarks> listRemarks = rService.search(map, l.getClientId());
+		List<Remarks> listRemarks = rService.search(map);
 		if (listRemarks.isEmpty() || listRemarks == null) {
 			Regular27QDeductee oldEntity = service.getByKey(Long.valueOf(entity.get("id").toString()));
 			Remarks remark = new Remarks();

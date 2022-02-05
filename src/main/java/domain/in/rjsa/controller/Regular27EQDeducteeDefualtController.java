@@ -8,7 +8,7 @@ import domain.in.rjsa.model.fy.Regular27EQDeducteeDefualt;
 import domain.in.rjsa.service.Regular27EQDeducteeDefualtService;
 @Controller
 @RequestMapping("/apiform27EQDeducteeDefault")
-public class Regular27EQDeducteeDefualtController extends AbstractBranchController<Long, Regular27EQDeducteeDefualt, Regular27EQDeducteeDefualtService>{
+public class Regular27EQDeducteeDefualtController extends AbstractBranchControllerFY<Long, Regular27EQDeducteeDefualt, Regular27EQDeducteeDefualtService>{
 	
 	@Autowired
 	Regular27EQDeducteeDefualtService service;

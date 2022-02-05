@@ -36,16 +36,17 @@ import domain.in.rjsa.exception.FieldErrorDTO;
 import domain.in.rjsa.model.form.Ajax;
 import domain.in.rjsa.model.form.ListCount;
 import domain.in.rjsa.model.form.Login;
-import domain.in.rjsa.model.form.LogsJson;
 import domain.in.rjsa.model.form.Model;
 import domain.in.rjsa.model.fy.Logs;
+import domain.in.rjsa.model.fy.LogsJson;
 import domain.in.rjsa.service.BranchService;
 import domain.in.rjsa.service.LogsJsonService;
 import domain.in.rjsa.service.LogsService;
-import domain.in.rjsa.service.ServiceFYInterface;
+import domain.in.rjsa.service.ServiceInterfaceFY;
 import domain.in.rjsa.web.ApplicationCache;
 
-public abstract class AbstractFYController<K extends Serializable, E extends Model, S extends ServiceFYInterface<K, E>>  {
+public abstract class AbstractBranchControllerFY<K extends Serializable, E extends Model, S 
+extends ServiceInterfaceFY<K, E>> {
 	@Autowired
 	ApplicationCache applicationCache;
 
@@ -74,9 +75,10 @@ public abstract class AbstractFYController<K extends Serializable, E extends Mod
 
 		return getService().findAll(constrains, pageNo, resultPerPage);
 	}
+
 	// ------------------- Count Entity ---------------------------------
 
-	@RequestMapping(value = "/listFy/{clientId}/count/", method = RequestMethod.GET)
+	@RequestMapping(value = "/listBranch/{clientId}/count/", method = RequestMethod.GET)
 	public ResponseEntity<?> count(@PathVariable Long clientId, HttpServletRequest request) {
 		HashMap<String, Object> constrains = new HashMap<>();
 		constrains.put("clientId", applicationCache.getLoginDetail(getPrincipal()).getClientId());
@@ -92,7 +94,6 @@ public abstract class AbstractFYController<K extends Serializable, E extends Mod
 			return new ResponseEntity<>(send, HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("Error in listALL", e);
-			e.printStackTrace();
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
@@ -185,7 +186,7 @@ public abstract class AbstractFYController<K extends Serializable, E extends Mod
 		Login l = applicationCache.getLoginDetail(getPrincipal());
 		map.put("clientId", l.getClientId());
 //			map.put("employeeId", l.getEmployeeId());
-		return getService().search(map, clientId);
+		return getService().search(map);
 	}
 
 	// ------------------- Search Single Entity ---------------------------------
@@ -368,9 +369,53 @@ public abstract class AbstractFYController<K extends Serializable, E extends Mod
 
 	}
 
-	
+	// --------------------------------Upload File---------------------------
 
-	
+	/*
+	 * @RequestMapping(value = "/uploadFile/{clientId}", method =
+	 * RequestMethod.POST) public ResponseEntity<?>
+	 * uploadFileMulti(@RequestParam("file") MultipartFile
+	 * file, @RequestParam("dec") String dec,
+	 * 
+	 * @PathVariable Long clientId) { String lFilename = file.getOriginalFilename();
+	 * String[] lext = lFilename.split("\\."); if
+	 * (!(lext[1].equalsIgnoreCase("jpeg") || lext[1].equalsIgnoreCase("png") ||
+	 * lext[1].equalsIgnoreCase("jpg") || lext[1].equalsIgnoreCase("pdf"))) {
+	 * FieldErrorDTO dto = new FieldErrorDTO(); Gson gson = new Gson(); throw new
+	 * CustomException("Invalid File Format, Allowed formats('jpeg','png','jpg','pdf'"
+	 * ); } else { ObjectMapper mapper = new ObjectMapper(); LinkedHashMap<String,
+	 * Object> map = new LinkedHashMap<String, Object>(); try { map =
+	 * mapper.readValue(dec, new TypeReference<Map<String, String>>() { }); } catch
+	 * (JsonParseException e) { // TODO Auto-generated catch block
+	 * e.printStackTrace(); } catch (JsonMappingException e) { // TODO
+	 * Auto-generated catch block e.printStackTrace(); } catch (IOException e) { //
+	 * TODO Auto-generated catch block e.printStackTrace();
+	 * 
+	 * } for (String key : map.keySet()) { if (key.endsWith("Id") ||
+	 * key.endsWith("id")) { map.put(key, Long.valueOf((String) map.get(key))); } }
+	 * save(map, file);
+	 * 
+	 * return new ResponseEntity<String>(HttpStatus.CREATED); }
+	 * 
+	 * }
+	 */
+
+	/*
+	 * public void save(LinkedHashMap<String, Object> map, MultipartFile file) {
+	 * FileDetail doc = new FileDetail(); Login l =
+	 * applicationCache.getLoginDetail(getPrincipal());
+	 * doc.setFileName(file.getOriginalFilename());
+	 * doc.setClientId(l.getClientId());
+	 * 
+	 * map.put("fileId", null);
+	 * 
+	 * try { doc.setType(doc.getFileName().split("\\.")[1]);
+	 * doc.setFile(file.getBytes()); getService().saveFile(doc, map, getEntity()); }
+	 * catch (IOException e) { // TODO Auto-generated catch block
+	 * e.printStackTrace(); }
+	 * 
+	 * }
+	 */
 
 	// ------------------- ajax Entities ---------------------------------
 

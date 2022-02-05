@@ -8,7 +8,7 @@ import domain.in.rjsa.model.fy.Ticket;
 import domain.in.rjsa.service.TicketService;
 @Controller
 @RequestMapping("/apiticket")
-public class TicketController extends AbstractController<Long, Ticket, TicketService>{
+public class TicketController extends AbstractBranchControllerFY<Long, Ticket, TicketService>{
 	@Autowired
 	TicketService service;
 

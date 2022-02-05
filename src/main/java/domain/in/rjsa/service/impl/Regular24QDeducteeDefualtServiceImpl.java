@@ -6,12 +6,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.Regular24QDeducteeDefualtDao;
 import domain.in.rjsa.model.fy.Regular24QDeducteeDefualt;
-import domain.in.rjsa.service.AbstractService;
+import domain.in.rjsa.service.AbstractServiceFY;
 import domain.in.rjsa.service.Regular24QDeducteeDefualtService;
+
 
 @Transactional("transactionManager")
 @Service("regular24QDeducteeDefualtService")
-public class Regular24QDeducteeDefualtServiceImpl extends AbstractService<Long, Regular24QDeducteeDefualt, Regular24QDeducteeDefualtDao>
+public class Regular24QDeducteeDefualtServiceImpl extends AbstractServiceFY<Long, Regular24QDeducteeDefualt, Regular24QDeducteeDefualtDao>
 		implements Regular24QDeducteeDefualtService {
 
 	@Autowired

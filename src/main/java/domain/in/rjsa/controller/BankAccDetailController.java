@@ -10,7 +10,7 @@ import domain.in.rjsa.web.ApplicationCache;
 
 @Controller
 @RequestMapping("/apibank")
-public class BankAccDetailController extends AbstractTDSController<Long, BankAccDetail, BankAccDetailService>{
+public class BankAccDetailController extends AbstractControllerForm<Long, BankAccDetail, BankAccDetailService>{
 	@Autowired
 	BankAccDetailService service;
 	@Autowired

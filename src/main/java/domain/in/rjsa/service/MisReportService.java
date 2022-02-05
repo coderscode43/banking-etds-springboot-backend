@@ -1,7 +1,7 @@
 package domain.in.rjsa.service;
 
-import domain.in.rjsa.model.form.MisReport;
+import domain.in.rjsa.model.fy.MisReport;
 
-public interface MisReportService extends ServiceInterface<Long,MisReport> {
+public interface MisReportService extends ServiceInterfaceFY<Long,MisReport> {
 
 }

@@ -4,12 +4,14 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 
-import domain.in.rjsa.dao.DaoFYInterface;
+import domain.in.rjsa.dao.DaoInterfaceForm;
 
-public abstract class AbstractFYService <K extends Serializable, E, D extends DaoFYInterface<K, E>>
-implements ServiceFYInterface<K, E> {
+public abstract class AbstractServiceForm<K extends Serializable, E, D extends DaoInterfaceForm<K, E>>
+		implements ServiceInterfaceForm<K, E> {
 //	@Autowired
 //	FileDetailDao fDao;
+	
+	
 	@Override
 	public void save(E entity) {
 		// TODO Auto-generated method stub
@@ -22,6 +24,7 @@ implements ServiceFYInterface<K, E> {
 		// TODO Auto-generated method stub
 		getPrimaryDao().update(entity);
 	}
+	
 
 	@Override
 	public void deleteT(K key) {
@@ -42,9 +45,9 @@ implements ServiceFYInterface<K, E> {
 	}
 
 	@Override
-	public List<E> search(HashMap map) {
+	public List<E> search(HashMap map, Long clientId) {
 		// TODO Auto-generated method stub
-		return getPrimaryDao().search(map);
+		return getPrimaryDao().search(map, clientId);
 	}
 
 	@Override

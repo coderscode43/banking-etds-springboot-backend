@@ -9,12 +9,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.TestingDao;
 import domain.in.rjsa.model.fy.Testing;
-import domain.in.rjsa.service.AbstractFYService;
+import domain.in.rjsa.service.AbstractServiceFY;
 import domain.in.rjsa.service.TestingService;
 
 @Transactional("fyTxManager")
 @Service("testingService")
-public class TestingServiceImpl extends AbstractFYService<Long, Testing, TestingDao> implements TestingService{
+public class TestingServiceImpl extends AbstractServiceFY<Long, Testing, TestingDao> implements TestingService{
 	@Autowired 
 	TestingDao dao;
 	@Override
@@ -29,10 +29,6 @@ public class TestingServiceImpl extends AbstractFYService<Long, Testing, Testing
 		return dao.getByKey(id);
 	}
 
-	@Override
-	public List<?> search(LinkedHashMap<String, Object> map, Long clientId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 }

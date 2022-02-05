@@ -8,11 +8,11 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import domain.in.rjsa.dao.AbstractNewDao;
+import domain.in.rjsa.dao.AbstractDaoForm;
 import domain.in.rjsa.dao.VendorMasterDao;
 import domain.in.rjsa.model.form.VendorMaster;
 @Repository("vendorMasterDao")
-public class VendorMasterDaoImpl extends AbstractNewDao<Long, VendorMaster> implements VendorMasterDao{
+public class VendorMasterDaoImpl extends AbstractDaoForm<Long, VendorMaster> implements VendorMasterDao{
 	@Override
 	public List<VendorMaster> search(HashMap entity, Long clientId) {
 		Criteria criteria = createEntityCriteria();

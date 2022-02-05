@@ -1,7 +1,7 @@
 package domain.in.rjsa.dao;
 
-import domain.in.rjsa.model.form.LogsJson;
+import domain.in.rjsa.model.fy.LogsJson;
 
-public interface LogsJsonDao extends DaoInterface<Long,  LogsJson>{
+public interface LogsJsonDao extends DaoInterfaceFY<Long,  LogsJson>{
 
 }

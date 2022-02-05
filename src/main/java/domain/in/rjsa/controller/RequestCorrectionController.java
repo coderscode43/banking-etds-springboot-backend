@@ -33,7 +33,7 @@ import domain.in.rjsa.web.ApplicationCache;
 @Controller
 @RequestMapping("/apirequestCorrection")
 public class RequestCorrectionController
-		extends AbstractBranchController<Long, RequestCorrection, RequestCorrectionService> {
+		extends AbstractBranchControllerForm<Long, RequestCorrection, RequestCorrectionService> {
 	@Autowired
 	RequestCorrectionService service;
 	@Autowired
@@ -83,16 +83,16 @@ public class RequestCorrectionController
 		LinkedHashMap<String, Object> constrains = new LinkedHashMap<>();
 		// constrains.put("clientId", l.getClientId());
 		constrains.put("id", id);
-		List<Regular26QDeductee> reg26Qd = r26QService.search(constrains, l.getClientId());
+		List<Regular26QDeductee> reg26Qd = r26QService.search(constrains);
 		ew.setRegular26QDeducteeList(reg26Qd);
 
-		List<Regular24QDeductee> reg24Qd = r24Q4DeducteeService.search(constrains, l.getClientId());
+		List<Regular24QDeductee> reg24Qd = r24Q4DeducteeService.search(constrains);
 		ew.setRegular24Q4DeducteeList(reg24Qd);
 
-		List<Regular24QSalary> reg24Qs = r24Q4SalaryService.search(constrains, l.getClientId());
+		List<Regular24QSalary> reg24Qs = r24Q4SalaryService.search(constrains);
 		ew.setRegular24Q4SalaryList(reg24Qs);
 
-		List<Regular27QDeductee> reg27Qd = r27QdService.search(constrains, l.getClientId());
+		List<Regular27QDeductee> reg27Qd = r27QdService.search(constrains);
 		ew.setRegular27QDeductee(reg27Qd);
 
 		DEDUCTORDETAILS deductor = dservice.getByKey(tan);

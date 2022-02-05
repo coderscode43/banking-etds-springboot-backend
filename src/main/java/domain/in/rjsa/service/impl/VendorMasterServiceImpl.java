@@ -6,11 +6,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.VendorMasterDao;
 import domain.in.rjsa.model.form.VendorMaster;
-import domain.in.rjsa.service.AbstractService;
+import domain.in.rjsa.service.AbstractServiceForm;
 import domain.in.rjsa.service.VendorMasterService;
 @Transactional("transactionManager")
 @Service("vendorMasterService")
-public class VendorMasterServiceImpl extends AbstractService<Long, VendorMaster, VendorMasterDao>
+public class VendorMasterServiceImpl extends AbstractServiceForm<Long, VendorMaster, VendorMasterDao>
 implements VendorMasterService{
 	@Autowired
 	VendorMasterDao dao;

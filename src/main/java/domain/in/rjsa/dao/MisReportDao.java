@@ -1,7 +1,7 @@
 package domain.in.rjsa.dao;
 
-import domain.in.rjsa.model.form.MisReport;
+import domain.in.rjsa.model.fy.MisReport;
 
-public interface MisReportDao extends DaoInterface<Long,   MisReport> {
+public interface MisReportDao extends DaoInterfaceFY<Long,   MisReport> {
 
 }

@@ -1,4 +1,4 @@
-package domain.in.rjsa.model.form;
+package domain.in.rjsa.model.fy;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +11,7 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import domain.in.rjsa.model.form.CommonModelAbstract;
 import lombok.Data;
 
 @Data

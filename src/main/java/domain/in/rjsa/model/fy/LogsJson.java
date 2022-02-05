@@ -1,6 +1,4 @@
-package domain.in.rjsa.model.form;
-
-import java.util.Date;
+package domain.in.rjsa.model.fy;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,30 +9,20 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import domain.in.rjsa.model.form.CommonModelAbstract;
 import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "form.misReport")
-public class MisReport extends CommonModelAbstract{/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+@Table(name = "FYDetails.logsJson")
+public class LogsJson extends CommonModelAbstract{
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO, generator="native")
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
-	public Long id;		
-	@Column(name = "clientId")
-	public Long clientId;
-	@Column(name = "fromDate")
-	private String fromDate;
-	@Column(name = "toDate")
-	private String toDate;
-	@Column(name = "reportType")
-	public String reportType;	
-	
-	
+	public Long id;	
+	@Column(name = "data")
+	public String data;	
 
 }

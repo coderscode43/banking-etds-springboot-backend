@@ -11,11 +11,11 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import domain.in.rjsa.dao.AbstractNewDao;
+import domain.in.rjsa.dao.AbstractDaoFY;
 import domain.in.rjsa.dao.Regular24Q4ChallanDao;
 import domain.in.rjsa.model.fy.Regular24Q4Challan;
 @Repository("Regular24Q4ChallanDao")
-public class Regular24Q4ChallanDaoImpl extends AbstractNewDao<Long, Regular24Q4Challan>
+public class Regular24Q4ChallanDaoImpl extends AbstractDaoFY<Long, Regular24Q4Challan>
 implements Regular24Q4ChallanDao {
 	@SuppressWarnings("unchecked")
 	public List< Regular24Q4Challan> search(HashMap entity, Long clientId) {

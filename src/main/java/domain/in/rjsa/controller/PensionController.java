@@ -8,7 +8,7 @@ import domain.in.rjsa.model.form.Pension;
 import domain.in.rjsa.service.PensionService;
 @Controller
 @RequestMapping("/apipension")
-public class PensionController extends AbstractBranchController<Long, Pension, PensionService>{
+public class PensionController extends AbstractBranchControllerForm<Long, Pension, PensionService>{
 
 	@Autowired
 	PensionService service;

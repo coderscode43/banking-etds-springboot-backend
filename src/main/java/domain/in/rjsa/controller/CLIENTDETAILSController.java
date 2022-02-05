@@ -8,7 +8,7 @@ import domain.in.rjsa.model.tds.CLIENTDETAILS;
 import domain.in.rjsa.service.CLIENTDETAILSService;
 @Controller
 @RequestMapping("/apiclientDetails")
-public class CLIENTDETAILSController extends AbstractTDSController<String, CLIENTDETAILS, CLIENTDETAILSService>{
+public class CLIENTDETAILSController extends AbstractControllerTaxo<String, CLIENTDETAILS, CLIENTDETAILSService>{
 @Autowired
 CLIENTDETAILSService service;
 	@Override

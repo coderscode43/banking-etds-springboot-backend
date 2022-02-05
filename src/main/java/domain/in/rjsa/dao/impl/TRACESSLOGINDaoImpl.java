@@ -7,12 +7,12 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import domain.in.rjsa.dao.AbstractTDSDao;
+import domain.in.rjsa.dao.AbstractDaoTaxo;
 import domain.in.rjsa.dao.TRACESSLOGINDao;
 import domain.in.rjsa.model.tds.TRACESSLOGIN;
 
 @Repository("TRACESSLOGINDao")
-public class TRACESSLOGINDaoImpl extends AbstractTDSDao<String, TRACESSLOGIN> implements TRACESSLOGINDao {
+public class TRACESSLOGINDaoImpl extends AbstractDaoTaxo<String, TRACESSLOGIN> implements TRACESSLOGINDao {
 
 	@Override
 	public TRACESSLOGIN getByKey(String tan) {

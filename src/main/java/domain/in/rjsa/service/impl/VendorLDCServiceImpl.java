@@ -6,12 +6,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.VendorLDCDao;
 import domain.in.rjsa.model.fy.VendorLDC;
-import domain.in.rjsa.service.AbstractService;
+import domain.in.rjsa.service.AbstractServiceFY;
 import domain.in.rjsa.service.VendorLDCService;
 
 @Transactional("transactionManager")
 @Service("vendorLDCService")
-public class VendorLDCServiceImpl extends AbstractService<Long, VendorLDC, VendorLDCDao> implements VendorLDCService{
+public class VendorLDCServiceImpl extends AbstractServiceFY<Long, VendorLDC, VendorLDCDao> implements VendorLDCService{
 @Autowired
 VendorLDCDao dao;
 	@Override

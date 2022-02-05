@@ -5,11 +5,11 @@ import org.springframework.stereotype.Service;
 
 import domain.in.rjsa.dao.UserSolDao;
 import domain.in.rjsa.model.form.UserSol;
-import domain.in.rjsa.service.AbstractService;
+import domain.in.rjsa.service.AbstractServiceForm;
 import domain.in.rjsa.service.UserSolService;
 
 @Service("userSolService")
-public class UserSolServiceImpl extends AbstractService<Long, UserSol, UserSolDao> implements UserSolService{
+public class UserSolServiceImpl extends AbstractServiceForm<Long, UserSol, UserSolDao> implements UserSolService{
 
 	@Autowired
 	UserSolDao dao;

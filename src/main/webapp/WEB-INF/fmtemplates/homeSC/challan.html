@@ -151,7 +151,7 @@
 				<div class="row">
 					<div class="form-group">
 
-						<div class="col-md-3">
+						<!--<div class="col-md-3">
 
 							<h6>
 								<b>Financial Year</b>
@@ -173,7 +173,7 @@
 								<option value="200708">200708</option>
 							</select>
 
-						</div>
+						</div>-->
 
 						<!--  	<div class="col-md-3">	
           <h6>
@@ -189,22 +189,30 @@
        </div>-->
 
 
-						<div class="col-md-3">
-							<h6>
-								<b>From Date Of Tax Deposit</b>
-								<h6>
-									<input type="date" ng-model="cWctr.search.fromDate"
-										ng-change="cWctr.search.fromDate=cWctr.date(cWctr.search.fromDate);"
-										class="form-control" placeholder="Date" style="width: 100%">
-						</div>
+						
 
 						<div class="col-md-3">
 							<h6>
-								<b>To Date Of Tax Deposit</b>
-								<h6>
-									<input type="date" ng-model="cWctr.search.toDate"
-										ng-change="cWctr.search.toDate=cWctr.date(cWctr.search.toDate);"
-										class="form-control" placeholder="Date" style="width: 100%">
+						<b>CIN</b>
+					</h6>
+					<input type="text" ng-model="cCctr.search.CIN" class="form-control"
+						placeholder="CIN" style="width: 100%">
+						</div>
+						
+						<div class="col-md-3">
+							<h6>
+								<b>TAN</b>
+							</h6>
+							<input type="text" ng-model="cCctr.search.TAN" class="form-control"
+									placeholder="TAN" style="width: 100%">
+						</div>
+						
+						<div class="col-md-3">
+							<h6>
+						<b>Available Balance</b>
+					</h6>
+					<input type="text" ng-model="cCctr.search.AVAILABLE_BALENCE" class="form-control"
+						placeholder="Available Balance" style="width: 100%">
 						</div>
 
 					</div>
@@ -215,37 +223,29 @@
 				<div class="collapse  panel-collapse" id="collapseExample4">
 			
           <div class="row">
+			
 			<div class="col-md-3">
 				<h6>
-					<b>TDS</b>
+					<b>Amount of challan</b>
 					<h6>
-						<input type="text" ng-model="cWctr.search.tds"
-							
-							class="form-control" placeholder="TDS" style="width: 100%">
-			</div>
-
-			<div class="col-md-3">
-				<h6>
-					<b>Surcharge</b>
-					<h6>
-						<input type="text" ng-model="cWctr.search.surcharge"
+						<input type="text" ng-model="cWctr.search.AMOUNT_OF_CLALLAN"
 							
 							class="form-control" placeholder="Surcharge" style="width: 100%">
 			</div>
 			
 			<div class="col-md-3">
 				<h6>
-					<b>Remark</b>
+					<b>Date of Deposition</b>
 					<h6>
-						<input type="text" ng-model="cWctr.search.remark"
+						<input type="text" ng-model="cWctr.search.DATE_OF_DEPOSITION"
 							
 							class="form-control" placeholder="Remark" style="width: 100%">
 			</div>
 			<div class="col-md-3">
 				<h6>
-					<b>Education Cess</b>
+					<b>As on Date</b>
 					<h6>
-						<input type="text" ng-model="cWctr.search.eduCess"
+						<input type="text" ng-model="cWctr.search.AS_ON_DATE"
 							
 							class="form-control" placeholder="Education Cess" style="width: 100%">
 			</div>
@@ -254,148 +254,39 @@
 		 <div class="row">
 			<div class="col-md-3">
 				<h6>
-					<b>Interest</b>
+					<b>Challan Mismatch</b>
 					<h6>
-						<input type="text" ng-model="cWctr.search.interest"
+						<input type="text" ng-model="cWctr.search.CHALLAN_MISMATCH"
 							
 							class="form-control" placeholder="Interest" style="width: 100%">
 			</div>
 
 			<div class="col-md-3">
 				<h6>
-					<b>Fee</b>
+					<b>Section</b>
 					<h6>
-						<input type="text" ng-model="cWctr.search.fee"
+						<input type="text" ng-model="cWctr.search.SECTION"
 							
 							class="form-control" placeholder="Fee" style="width: 100%">
 			</div>
 			
 			<div class="col-md-3">
 				<h6>
-					<b>Others</b>
+					<b>Minorhead</b>
 					<h6>
-						<input type="text" ng-model="cWctr.search.others"
+						<input type="text" ng-model="cWctr.search.MINORHEAD"
 							
 							class="form-control" placeholder="Others" style="width: 100%">
-			</div>
-			<div class="col-md-3">
-				<h6>
-					<b>TDS Deposit Book Entry</b>
-					<h6>
-						<input type="text" ng-model="cWctr.search.tdsDepositBookEntry"
-							
-							class="form-control" placeholder="TDS Deposit Book Entry" style="width: 100%">
-			</div>
-			
+			</div>	
 		</div>
-		
-		 <div class="row">
-			<div class="col-md-3">
-				<h6>
-					<b>BSR Code</b>
-					<h6>
-						<input type="text" ng-model="cWctr.search.bsrCode"
-						
-							class="form-control" placeholder="BSR Code" style="width: 100%">
-			</div>
 
-			<div class="col-md-3">
-				<h6>
-					<b>Challan Sr. No</b>
-					<h6>
-						<input type="text" ng-model="cWctr.search.challanSrNo"
-						
-							class="form-control" placeholder="Challan Sr. No" style="width: 100%">
-			</div>
-			<!-- 
-			<div class="col-md-3">
-				<h6>
-					<b>Minor Head Challan</b>
-					<h6>
-						<input type="text" ng-model="cWctr.search.minorHeadChallan"
-							
-							class="form-control" placeholder="Minor Head Challan" style="width: 100%">
-			</div> -->
-			<div class="col-md-3">
-				<h6>
-					<b>Interest Allocated</b>
-					<h6>
-						<input type="text" ng-model="cWctr.search.interestAllocated"
-							
-							class="form-control" placeholder="Interest Allocated" style="width: 100%">
-			</div>
-			
-		</div>
-		
-		<div class="row">
-			<div class="col-md-3">
-				<h6>
-					<b>Other Amount Allocated</b>
-					<h6>
-						<input type="text" ng-model="cWctr.search.otherAmtAllocated"
-						
-							class="form-control" placeholder="Other Amount Allocated" style="width: 100%">
-			</div>
-
-			<div class="col-md-3">
-				<h6>
-					<b>Nil Challan Indicator</b>
-					<h6>
-						<input type="text" ng-model="cWctr.search.nilChallanIndicator"
-						
-							class="form-control" placeholder="Nil Challan Indicator" style="width: 100%">
-			</div>
-			
-			<div class="col-md-3">
-				<h6>
-					<b>Minor Head Challan</b>
-					<h6>
-						<input type="text" ng-model="cWctr.search.minorHeadChallan"
-							
-							class="form-control" placeholder="Minor Head Challan" style="width: 100%">
-			</div>
-			<div class="col-md-3">
-				<h6>
-					<b>Total tax Deposit</b>
-					<h6>
-						<input type="text" ng-model="cWctr.search.totalTaxDeposit"
-							
-							class="form-control" placeholder="Total tax Deposit" style="width: 100%">
-			</div>
-			
-		</div>
-		
-		
-		<div class="row">
-			<div class="col-md-3">
-				<h6>
-					<b>Amount Consumed</b>
-					<h6>
-						<input type="text" ng-model="cWctr.search.amountConsumed"
-						
-							class="form-control" placeholder="Amount Consumed" style="width: 100%">
-			</div>
-
-			<div class="col-md-3">
-				<h6>
-					<b>Amount Available</b>
-					<h6>
-						<input type="text" ng-model="cWctr.search.amountAvailable"
-						
-							class="form-control" placeholder="Amount Available" style="width: 100%">
-			</div>
-			
-			
-			
-			
-		</div>
 		
 		</div>
 
 				<div class="row" id="hide">
 					<div class="col-md-3" style="margin-left: 85%; margin-top: -50px">
 						<button
-							ng-click="cWctr.searchEntities(true,'challanForm','challanForm')"
+							ng-click="cWctr.searchEntities(true,'challan','challan')"
 							class="btn btn-success" onclick="scrollWin()">Search</button>
 					</div>
 
@@ -404,7 +295,7 @@
 				<div class="row" id="search">
 					<div class="col-md-2" id="search">
 						<button
-							ng-click="cWctr.searchEntities(true,'challanForm','challanForm')"
+							ng-click="cWctr.searchEntities(true,'challan','challan')"
 							class="btn btn-success" onclick="scrollWin()">Search</button>
 					</div>
 				</div>
@@ -423,8 +314,8 @@
 					aria-expanded="false" aria-controls="collapseExample">
 					Advance Search</button>
 			
-				<button class="btn btn-Primary" data-toggle="modal"
-					ng-click="cCctr.gotoList2Page('addChallanForm','addChallanForm');">Add</button>
+				 <!--<button class="btn btn-Primary" data-toggle="modal"
+					ng-click="cCctr.gotoList2Page('addchallan','addchallan');">Add</button>-->
 			</div>
 		</div>
 	</div>
@@ -444,60 +335,30 @@
 				<thead role="rowgroup">
 					<tr role="row" style="height: 40px; background-color: #81b7db">
 						<th>Sr. No.</th>
-						<th>Sol ID</th>
-						<th>TDS</th>
-						<th>Surcharge</th>
-						<th>Education Cess</th>
-						<th>Interest</th>
-						<th>Fee</th>
-						<th>Others</th>
-						<th>TDS Deposit Book Entry</th>
-						<th>BSR Code</th>
-						<th>Challan Sr. No</th>
-						<th style="padding: 25px">Minor Head Challan</th>
-						<th>Interest Allocated</th>
-						<th>Other Amount Allocated</th>
-						<th>Nil Challan Indicator</th>
-						<th>Date Tax Deposit</th>
-						<th>Total tax Deposit</th>
-						<th>Amount Consumed</th>
-						<th>Amount Available</th>
-						<th>Financial Year</th>
-						<th>Verified</th>
-						<th>Action</th>
-
+						<th>CIN</th>
+						<th>TAN</th>
+						<th>Available Balance</th>
+						<th>Amount of challan</th>
+						<th>Date of Deposition</th>
+						<th>As on Date</th>
+						<th>Challan Mismatch</th>
+						<th>Section</th>
+						<th>Minorhead</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr role="row"
-						ng-repeat="a in cCctr.getEntityListData() track by a.id">
+						ng-repeat="a in cCctr.getEntityListData()">
 						<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
-						<td>{{a.branchId}}</td>
-						<td>{{a.tds}}</td>
-						<td>{{a.surcharge}}</td>
-						<td>{{a.eduCess}}</td>
-						<td>{{a.interest}}</td>
-						<td>{{a.fee}}</td>
-						<td>{{a.others}}</td>
-						<td>{{a.tdsDepositBookEntry}}</td>
-						<td>{{a.bsrCode}}</td>
-						<td>{{a.challanSrNo}}</td>
-						<td>{{a.minorHeadChallan}}</td>
-						<td>{{a.interestAllocated}}</td>
-						<td>{{a.otherAmtAllocated}}</td>
-						<td>{{a.nilChallanIndicator}}</td>
-						<td>{{a.dateTaxDeposit| date:'dd-MM-yyyy'}}</td>
-						<td>{{a.totalTaxDeposit}}</td>
-						<td style="background-color: #fabf8f">{{a.amountConsumed}}</td>
-
-						<div>
-							<td ng-if="a.amountAvailable > 0"
-								style="background-color: #5cb85c">{{a.amountAvailable}}</td>
-							<td ng-if="!(a.amountAvailable > 0)">{{a.amountAvailable}}</td>
-						</div>
-
-						<td>{{a.fy}}</td>
-
+						<td>{{a.CIN}}</td>
+						<td>{{a.TAN}}</td>
+						<td>{{a.AVAILABLE_BALENCE}}</td>
+						<td>{{a.AMOUNT_OF_CLALLAN}}</td>
+						<td>{{a.DATE_OF_DEPOSITION}}</td>
+						<td>{{a.AS_ON_DATE}}</td>
+						<td>{{a.CHALLAN_MISMATCH}}</td>
+						<td>{{a.SECTION}}</td>
+						<td>{{a.MINORHEAD}}</td>
 						<div>
 							<td ng-if="a.verify == 1"><i class="fa fa-check"
 								aria-hidden="true" style="color: #5cb85c"></i></td>
@@ -505,7 +366,7 @@
 								aria-hidden="true" style="color: #ff0000"></i></td>
 						</div>
 						<td><a
-							ng-click="cCctr.gotoDetailPage('challanForm',a.id,'detailChallanForm')"
+							ng-click="cCctr.gotoDetailPage('challan',a.id,'detailchallan')"
 							style="color: blue" onclick="scrollWin()"><img
 								src="static\img\edit.png" width="22px" height="22px"
 								alt="Details" style="margin-top: 5px; margin-bottom: 5px;" /></a></td>
@@ -518,12 +379,12 @@
 		<div class="row" ng-show="cCctr.getNoPage() > 0">
 			<div class="row" align="center">
 				<span ng-show="cCctr.currentPage != 1"> <a
-					ng-click="cCctr.getPage(true,'challanForm',cCctr.currentPage-1)"><strong>Previous</strong></a>
+					ng-click="cCctr.getPage(true,'challan',cCctr.currentPage-1)"><strong>Previous</strong></a>
 				</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.currentPage}}</strong>&nbsp;
 					of &nbsp;<strong>{{cCctr.getNoPage()}}</strong>
 					&nbsp;&nbsp;&nbsp;&nbsp; <span
 					ng-show="cCctr.currentPage != cCctr.getNoPage()"> <a
-						ng-click="cCctr.getPage(true,'challanForm',cCctr.currentPage+1)"><strong>Next</strong></a>
+						ng-click="cCctr.getPage(true,'challan',cCctr.currentPage+1)"><strong>Next</strong></a>
 				</span>
 				</span>
 			</div>
@@ -536,7 +397,7 @@
 						ng-min="1" ng-max="cCctr.getNoPage()" ng-required="true">
 					&nbsp;&nbsp;&nbsp;
 					<button style="height: 25px;"
-						ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'challanForm',cCctr.currentPage)"
+						ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'challan',cCctr.currentPage)"
 						class="btn btn-primary">Go</button>
 				</div>
 				<div class="row" align="center">

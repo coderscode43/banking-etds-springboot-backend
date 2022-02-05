@@ -31,7 +31,7 @@ import domain.in.rjsa.util.StaticData;
 @Controller
 @RequestMapping("/apiform24QSalaryUpdateRequestDetail")
 public class Regular24QSalaryUpdateRequestDetailController extends
-		AbstractBranchController<Long, Regular24QSalaryUpdateRequestDetail, Regular24QSalaryUpdateRequestDetailService> {
+AbstractBranchControllerFY<Long, Regular24QSalaryUpdateRequestDetail, Regular24QSalaryUpdateRequestDetailService> {
 
 	@Autowired
 	Regular24QSalaryUpdateRequestDetailService service;
@@ -135,7 +135,7 @@ public class Regular24QSalaryUpdateRequestDetailController extends
 		constrains.remove("id");
 		constrains.put("entityId", data.getNewData().getDocId());
 		constrains.put("entity", StaticData.entity.get(6));
-		data.setListRemarks(rService.search(constrains, clientId));
+		data.setListRemarks(rService.search(constrains));
 		return data;
 	}
 

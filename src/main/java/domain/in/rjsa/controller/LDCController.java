@@ -9,7 +9,7 @@ import domain.in.rjsa.service.LDCService;
 
 @Controller
 @RequestMapping("/apildc")
-public class LDCController extends AbstractTDSController<Long, LDC, LDCService>{
+public class LDCController extends AbstractControllerTaxo<Long, LDC, LDCService>{
 
 	@Autowired
 	LDCService service;

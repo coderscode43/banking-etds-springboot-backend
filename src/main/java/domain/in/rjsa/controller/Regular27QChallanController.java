@@ -8,7 +8,7 @@ import domain.in.rjsa.model.fy.Regular27QChallan;
 import domain.in.rjsa.service.Regular27QChallanService;
 @Controller
 @RequestMapping("/apiregular27QChallan")
-public class Regular27QChallanController extends AbstractBranchController<Long, Regular27QChallan, Regular27QChallanService>{
+public class Regular27QChallanController extends AbstractBranchControllerFY<Long, Regular27QChallan, Regular27QChallanService>{
 
 	
 	@Autowired

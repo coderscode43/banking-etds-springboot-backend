@@ -6,12 +6,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.BankAccDetailDao;
 import domain.in.rjsa.model.form.BankAccDetail;
-import domain.in.rjsa.service.AbstractTDSService;
+import domain.in.rjsa.service.AbstractServiceForm;
 import domain.in.rjsa.service.BankAccDetailService;
 
 @Transactional("transactionManager")
 @Service("bankAccDetailService")
-public class BankAccDetailServiceImpl extends AbstractTDSService<Long, BankAccDetail, BankAccDetailDao> implements BankAccDetailService{
+public class BankAccDetailServiceImpl extends AbstractServiceForm<Long, BankAccDetail, BankAccDetailDao> implements BankAccDetailService{
 	@Autowired
 	BankAccDetailDao dao;
 		@Override

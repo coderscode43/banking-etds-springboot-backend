@@ -28,7 +28,7 @@ import domain.in.rjsa.web.ApplicationCache;
 
 @Controller
 @RequestMapping("/apideductorDetails")
-public class DEDUCTORDETAILSController extends AbstractTDSController<String, DEDUCTORDETAILS, DEDUCTORDETAILSService> {
+public class DEDUCTORDETAILSController extends AbstractControllerTaxo<String, DEDUCTORDETAILS, DEDUCTORDETAILSService> {
 	
 	
 	
@@ -86,65 +86,5 @@ EFILLINGLOGINService efService;
 	}
      
     
-     @Override   
-     public void update(LinkedHashMap<String, Object> entity) {
-			Gson gson = new Gson();
-			JsonElement jsonElement = gson.toJsonTree(entity);
-			DeductorDetailWrapper dd = gson.fromJson(jsonElement, DeductorDetailWrapper.class);
-			if(dd.getDeductorDetails()!=null && dd.getDeductorDetails().getTAN()!=null)
-			{
-	  		service.update(dd.getDeductorDetails());
-			}
-			else
-			{
-				DEDUCTORDETAILS deductor = new DEDUCTORDETAILS();
-				deductor.setTAN(dd.getDeductorDetails().getTAN());
-				deductor.setFLATORFLOAR(dd.getDeductorDetails().getFLATORFLOAR());
-				service.update(deductor);
-				
-			}
-			
-			if(dd.getClientDetail()!=null && dd.getClientDetail().getTAN()!=null)
-			{
-	  		cdService.update(dd.getClientDetail());
-			}
-			else
-			{
-			
-			}
-			
-			if(dd.getRespersonDetails()!=null && dd.getRespersonDetails().getTAN()!=null)
-			{
-	  		rService.update(dd.getRespersonDetails());
-			}
-			else
-			{
-				
-			}
-			
-			if(dd.getGovtDetails()!=null && dd.getGovtDetails().getTAN()!=null)
-			{
-	  		gService.update(dd.getGovtDetails());
-			}
-			else
-			{
-				
-			}
-			
-			if(dd.getTraces()!=null && dd.getTraces().getTAN()!=null)
-			{
-				tlService.update(dd.getTraces());	
-			}
-			else {
-				
-			}
-			
-			if(dd.getEfiling()!=null && dd.getEfiling()!=null)
-			{
-				efService.update(dd.getEfiling());
-			}
-			else {
-				
-			}
-		}
+    
 }

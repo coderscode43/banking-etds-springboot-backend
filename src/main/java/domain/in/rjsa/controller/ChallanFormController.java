@@ -9,7 +9,7 @@ import domain.in.rjsa.service.ChallanFormService;
 
 @Controller
 @RequestMapping("/apichallanForm")
-public class ChallanFormController extends AbstractBranchController<Long, ChallanForm, ChallanFormService> {
+public class ChallanFormController extends AbstractBranchControllerForm<Long, ChallanForm, ChallanFormService> {
 	
 	@Autowired
 	ChallanFormService service;

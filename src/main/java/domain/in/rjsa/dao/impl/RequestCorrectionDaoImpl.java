@@ -8,12 +8,12 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import domain.in.rjsa.dao.AbstractNewDao;
+import domain.in.rjsa.dao.AbstractDaoForm;
 import domain.in.rjsa.dao.RequestCorrectionDao;
 import domain.in.rjsa.model.form.RequestCorrection;
 
 @Repository("requestCorrectionDao")
-public class RequestCorrectionDaoImpl extends AbstractNewDao<Long, RequestCorrection> implements RequestCorrectionDao{
+public class RequestCorrectionDaoImpl extends AbstractDaoForm<Long, RequestCorrection> implements RequestCorrectionDao{
 
 	@SuppressWarnings("unchecked")
 	public List<RequestCorrection> search(HashMap entity, Long clientId) {

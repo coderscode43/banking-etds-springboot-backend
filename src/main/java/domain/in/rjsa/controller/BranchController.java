@@ -9,7 +9,7 @@ import domain.in.rjsa.service.BranchService;
 
 @Controller
 @RequestMapping("/apibranch")
-public class BranchController extends AbstractController<Long, Branch, BranchService>{
+public class BranchController extends AbstractControllerForm<Long, Branch, BranchService>{
 	
 	@Autowired
 	BranchService service;

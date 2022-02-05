@@ -6,12 +6,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.CommentsDao;
 import domain.in.rjsa.model.form.Comments;
-import domain.in.rjsa.service.AbstractService;
+import domain.in.rjsa.service.AbstractServiceForm;
 import domain.in.rjsa.service.CommentsService;
 
 @Transactional("transactionManager")
 @Service("commentsService")
-public class CommentsServiceImpl extends AbstractService<Long, Comments, CommentsDao> implements CommentsService{
+public class CommentsServiceImpl extends AbstractServiceForm<Long, Comments, CommentsDao> implements CommentsService{
 	@Autowired
 	CommentsDao dao;
 	@Override

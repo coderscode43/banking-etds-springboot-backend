@@ -9,7 +9,7 @@ import domain.in.rjsa.service.TRACESSLOGINService;
 
 @Controller
 @RequestMapping("/apiTRACESSLOGIN")
-public class TRACESSLOGINController extends AbstractTDSController<String, TRACESSLOGIN, TRACESSLOGINService> {
+public class TRACESSLOGINController extends AbstractControllerTaxo<String, TRACESSLOGIN, TRACESSLOGINService> {
 @Autowired
 TRACESSLOGINService service;
 	@Override

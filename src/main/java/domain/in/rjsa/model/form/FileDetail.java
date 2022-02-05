@@ -9,22 +9,26 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import domain.in.rjsa.model.form.CommonModelAbstract;
 import lombok.Data;
-
 @Data
 @Entity
-@Table(name = "form.clientDetail")
-public class ClientDetail extends CommonModelAbstract {
+@Table(name = "form.fileDetail")
+public class FileDetail extends CommonModelAbstract{
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO, generator="native")
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
 	private Long id;
-	@Column(name = "name")
-	private String name;
-	@Column(name = "PAN")
-	private String PAN;
-	@Column(name = "address")
-	private String address;
+	@Column(name = "clientId")
+	private Long clientId;
+	
+	@Column(name = "type")
+	private String type;
+
+	@Column(name = "fileName")
+	private String fileName;
+	@Column(name = "file")
+	private byte[] file;
 
 }

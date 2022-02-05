@@ -6,11 +6,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.EmployeeMasterDao;
 import domain.in.rjsa.model.form.EmployeeMaster;
-import domain.in.rjsa.service.AbstractService;
+import domain.in.rjsa.service.AbstractServiceForm;
 import domain.in.rjsa.service.EmployeeMasterService;
 @Transactional("transactionManager")
 @Service("EmployeeMasterService")
-public class EmployeeMasterServiceImpl extends AbstractService<Long, EmployeeMaster, EmployeeMasterDao>
+public class EmployeeMasterServiceImpl extends AbstractServiceForm<Long, EmployeeMaster, EmployeeMasterDao>
 implements EmployeeMasterService{
    
 	@Autowired

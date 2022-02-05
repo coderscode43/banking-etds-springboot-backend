@@ -8,7 +8,7 @@ import domain.in.rjsa.model.form.Comments;
 import domain.in.rjsa.service.CommentsService;
 @Controller
 @RequestMapping("/apicomments")
-public class CommentsController extends AbstractController<Long, Comments, CommentsService>{
+public class CommentsController extends AbstractControllerForm<Long, Comments, CommentsService>{
 	@Autowired
 	CommentsService service;
 	@Override

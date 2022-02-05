@@ -4,11 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import domain.in.rjsa.model.form.PensionerSalary;
+import domain.in.rjsa.model.fy.PensionerSalary;
 import domain.in.rjsa.service.PensionerSalaryService;
 @Controller
 @RequestMapping("/apipensionerSalary")
-public class PensionerSalaryController  extends AbstractController<Long, PensionerSalary, PensionerSalaryService>{
+public class PensionerSalaryController  extends AbstractControllerFY<Long, PensionerSalary, PensionerSalaryService>{
 	
 	
 	@Autowired

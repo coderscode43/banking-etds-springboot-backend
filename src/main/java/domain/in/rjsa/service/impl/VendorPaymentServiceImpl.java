@@ -6,12 +6,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.VendorPaymentDao;
 import domain.in.rjsa.model.fy.VendorPayment;
-import domain.in.rjsa.service.AbstractService;
+import domain.in.rjsa.service.AbstractServiceFY;
 import domain.in.rjsa.service.VendorPaymentService;
 
 @Transactional("transactionManager")
 @Service("vendorPaymentService")
-public class VendorPaymentServiceImpl extends AbstractService<Long, VendorPayment, VendorPaymentDao>
+public class VendorPaymentServiceImpl extends AbstractServiceFY<Long, VendorPayment, VendorPaymentDao>
 		implements VendorPaymentService {
 	@Autowired
 	VendorPaymentDao dao;

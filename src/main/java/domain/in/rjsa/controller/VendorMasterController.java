@@ -25,7 +25,7 @@ import domain.in.rjsa.service.VendorMasterService;
 import domain.in.rjsa.util.StaticData;
 @Controller
 @RequestMapping("/apivendorMaster")
-public class VendorMasterController extends AbstractBranchController<Long, VendorMaster, VendorMasterService>{
+public class VendorMasterController extends AbstractBranchControllerForm<Long, VendorMaster, VendorMasterService>{
 	@Autowired
 	VendorMasterService service;
 	@Override

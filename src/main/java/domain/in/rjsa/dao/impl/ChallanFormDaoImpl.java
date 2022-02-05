@@ -11,12 +11,12 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import domain.in.rjsa.dao.AbstractNewDao;
+import domain.in.rjsa.dao.AbstractDaoForm;
 import domain.in.rjsa.dao.ChallanFormDao;
 import domain.in.rjsa.model.form.ChallanForm;
 
 @Repository("challanFormDao")
-public class ChallanFormDaoImpl extends AbstractNewDao<Long, ChallanForm> implements ChallanFormDao {
+public class ChallanFormDaoImpl extends AbstractDaoForm<Long, ChallanForm> implements ChallanFormDao {
 	
 	@SuppressWarnings("unchecked")
 	public List<ChallanForm> search(HashMap entity, Long clientId) {

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public interface DaoInterface<K, E> {
+public interface DaoInterfaceForm<K, E> {
 
 	public E getByKey(K key);
 	public List<E> findall(HashMap<String,Object> constrains, int pageNo, int noOfResult);

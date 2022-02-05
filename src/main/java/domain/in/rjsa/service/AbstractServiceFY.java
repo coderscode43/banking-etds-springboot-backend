@@ -2,23 +2,15 @@ package domain.in.rjsa.service;
 
 import java.io.Serializable;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
+import domain.in.rjsa.dao.DaoInterfaceFY;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-
-import domain.in.rjsa.dao.DaoTDSInterface;
-import domain.in.rjsa.dao.FileDetailDao;
-import domain.in.rjsa.model.fy.FileDetail;
-@Transactional("tdsTxManager")
-public abstract class AbstractTDSService<K extends Serializable, E, D extends DaoTDSInterface<K, E>>
-		implements ServiceTDSInterface<K, E> {
-	@Autowired
-	FileDetailDao fDao;
+public abstract class AbstractServiceFY<K extends Serializable, E, D extends DaoInterfaceFY<K, E>>
+		implements ServiceInterfaceFY<K, E> {
+//	@Autowired
+//	FileDetailDao fDao;
+	
 	
 	@Override
 	public void save(E entity) {
@@ -32,19 +24,6 @@ public abstract class AbstractTDSService<K extends Serializable, E, D extends Da
 		// TODO Auto-generated method stub
 		getPrimaryDao().update(entity);
 	}
-	
-	@Override
-	public void saveFile(FileDetail file, LinkedHashMap<String, Object> map, Class<E> entity) {
-		fDao.persist(file);
-		map.put("fileId", file.getId());
-		
-		map.put("clientId", file.getClientId());
-		Gson gson = new Gson();
-		JsonElement jsonElement = gson.toJsonTree(map);
-		E ob = gson.fromJson(jsonElement,entity );
-		save(ob);
-	}
-	
 	
 
 	@Override

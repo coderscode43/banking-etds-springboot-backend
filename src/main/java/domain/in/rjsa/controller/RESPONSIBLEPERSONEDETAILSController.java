@@ -12,7 +12,7 @@ import domain.in.rjsa.web.ApplicationCache;
 
 @Controller
 @RequestMapping("/apiRESPONSIBLEPERSONEDETAILS")
-public class RESPONSIBLEPERSONEDETAILSController extends AbstractTDSController<String, RESPONSIBLEPERSONEDETAILS, RESPONSIBLEPERSONEDETAILSService>{
+public class RESPONSIBLEPERSONEDETAILSController extends AbstractControllerTaxo<String, RESPONSIBLEPERSONEDETAILS, RESPONSIBLEPERSONEDETAILSService>{
 	@Autowired
 	RESPONSIBLEPERSONEDETAILSService service;
 	@Autowired

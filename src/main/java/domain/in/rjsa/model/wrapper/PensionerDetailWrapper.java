@@ -2,7 +2,7 @@ package domain.in.rjsa.model.wrapper;
 
 import domain.in.rjsa.model.form.Address;
 import domain.in.rjsa.model.form.BankAccDetail;
-import domain.in.rjsa.model.form.PensionerSalary;
+import domain.in.rjsa.model.fy.PensionerSalary;
 import lombok.Data;
 @Data
 public class PensionerDetailWrapper {

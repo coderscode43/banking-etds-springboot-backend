@@ -1,7 +1,7 @@
 package domain.in.rjsa.service;
 
-import domain.in.rjsa.model.fy.FileDetail;
+import domain.in.rjsa.model.form.FileDetail;
 
-public interface FileDetailService extends ServiceTDSInterface<Long,FileDetail>{
+public interface FileDetailService extends ServiceInterfaceForm<Long,FileDetail>{
 
 }

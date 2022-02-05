@@ -23,7 +23,7 @@ import domain.in.rjsa.service.EmployeeMasterService;
 import domain.in.rjsa.util.StaticData;
 @Controller
 @RequestMapping("/apiemployeeMaster")
-public class EmployeeMasterController extends AbstractBranchController<Long, EmployeeMaster, EmployeeMasterService>{
+public class EmployeeMasterController extends AbstractBranchControllerForm<Long, EmployeeMaster, EmployeeMasterService>{
 	@Autowired
 	EmployeeMasterService service;
 	@Override

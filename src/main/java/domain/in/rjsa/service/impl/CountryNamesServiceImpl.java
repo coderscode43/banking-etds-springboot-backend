@@ -6,12 +6,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.CountryNamesDao;
 import domain.in.rjsa.model.form.CountryNames;
-import domain.in.rjsa.service.AbstractService;
+import domain.in.rjsa.service.AbstractServiceForm;
 import domain.in.rjsa.service.CountryNamesService;
 
 @Transactional("transactionManager")
 @Service("countryNamesService")
-public class CountryNamesServiceImpl extends AbstractService<Long, CountryNames, CountryNamesDao>
+public class CountryNamesServiceImpl extends AbstractServiceForm<Long, CountryNames, CountryNamesDao>
 		implements CountryNamesService {
 
 	@Autowired

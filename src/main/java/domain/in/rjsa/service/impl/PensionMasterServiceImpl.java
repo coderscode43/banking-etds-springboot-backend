@@ -6,11 +6,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.PensionMasterDao;
 import domain.in.rjsa.model.form.PensionMaster;
-import domain.in.rjsa.service.AbstractService;
+import domain.in.rjsa.service.AbstractServiceForm;
 import domain.in.rjsa.service.PensionMasterService;
 @Transactional("transactionManager")
 @Service("pensionMasterService")
-public class PensionMasterServiceImpl extends AbstractService<Long, PensionMaster, PensionMasterDao>
+public class PensionMasterServiceImpl extends AbstractServiceForm<Long, PensionMaster, PensionMasterDao>
 implements PensionMasterService{
 	@Autowired
 	PensionMasterDao dao;

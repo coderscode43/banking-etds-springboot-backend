@@ -11,11 +11,11 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import domain.in.rjsa.dao.AbstractNewDao;
+import domain.in.rjsa.dao.AbstractDaoFY;
 import domain.in.rjsa.dao.Regular26QChallanDao;
 import domain.in.rjsa.model.fy.Regular26QChallan;
 @Repository("Regular26QChallanDao")
-public class Regular26QChallanDaoImpl extends AbstractNewDao<Long, Regular26QChallan>
+public class Regular26QChallanDaoImpl extends AbstractDaoFY<Long, Regular26QChallan>
 implements Regular26QChallanDao{
 
 	public List< Regular26QChallan> search(HashMap entity, Long clientId) {

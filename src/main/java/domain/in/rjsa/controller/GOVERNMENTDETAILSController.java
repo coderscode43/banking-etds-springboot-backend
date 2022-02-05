@@ -13,7 +13,7 @@ import domain.in.rjsa.web.ApplicationCache;
 
 @Controller
 @RequestMapping("/apiGOVERNMENTDETAILS")
-public class GOVERNMENTDETAILSController extends AbstractTDSController<String, GOVERNMENTDETAILS, GOVERNMENTDETAILSService>{
+public class GOVERNMENTDETAILSController extends AbstractControllerTaxo<String, GOVERNMENTDETAILS, GOVERNMENTDETAILSService>{
 	@Autowired
 	GOVERNMENTDETAILSService service;
 	@Autowired

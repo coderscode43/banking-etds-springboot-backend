@@ -9,7 +9,7 @@ import domain.in.rjsa.model.tds.STATEMENTSTATUS;
 import domain.in.rjsa.service.AbstractServiceTaxo;
 import domain.in.rjsa.service.STATEMENTSTATUSService;
 
-@Transactional("tdsTxManager")
+@Transactional("transactionManager")
 @Service("STATEMENTSTATUSService")
 public class STATEMENTSTATUSServiceImpl extends AbstractServiceTaxo<Long, STATEMENTSTATUS, STATEMENTSTATUSDao> implements STATEMENTSTATUSService{
 @Autowired 

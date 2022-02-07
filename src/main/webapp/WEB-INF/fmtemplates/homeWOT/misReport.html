@@ -1,204 +1,181 @@
 <style>
- 
- 
-    @media only screen and (max-width: 1000px) {
-        .one{
-            display: none;
-          
-        }
-    }
-    
- @media only screen and (max-width: 1000px) {
-        .two{
-         
-            padding:8px;
-        }
-    }
-        
-   @media only screen and (min-width:600px) {
-            #three{
-                display: none;
-                max-height: 0;
-                overflow: hidden;
-            }
-        }
-        
-       @media only screen and (min-width:1000px) {
-            #search{
-             
-             margin-left:45%;
-             margin-top:2px;
-             display:none;
-            }
-        }
-        
-            @media only screen and (max-width: 1000px) {
-      #hide{
-            display: none;
-          
-        }
-    }
-     .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
-   background-color: whitesmoke;
-}
-@media (min-width: 768px) {
-  .collapse.dont-collapse-sm {
-    display: block;
-    height: auto !important;
-    visibility: visible;
-  }
+
+
+@media only screen and (min-width:1000px) {
+	#search {
+		margin-left: 45%;
+		margin-top: 2px;
+		display: none;
+	}
 }
 
- .center {
-	float: none;
-	margin-left: auto;
-	margin-right: auto;
+@media only screen and (max-width: 1000px) {
+	#hide {
+		display: none;
+	}
 }
 
-#formPanel {
-	background-color: #e6e6e6;
-	border: 1;
-	height: 50%;
-	margin-left: auto;
-	margin-right: auto;
+
+@media ( min-width : 768px) {
+	.collapse.dont-collapse-sm {
+		display: block;
+		height: auto !important;
+		visibility: visible;
+	}
 }
-
-.button {
-	display: inline-block;
-	border-radius: 5px;
-	background-color: #24478f;
-	border: none;
-	color: #FFFFFF;
-	text-align: center;
-	font-size: 15px;
-	padding: 20px;
-	width: 270px;
-	height: 60px;
-	transition: all 0.5s;
-	cursor: pointer;
-}
-
-.button span {
-	cursor: pointer;
-	display: inline-block;
-	position: relative;
-	transition: 0.5s;
-}
-
-.button span:after {
-	content: '\00bb';
-	position: absolute;
-	opacity: 0;
-	top: 0;
-	right: -20px;
-	transition: 0.5s;
-	color: #79BD3C;
-}
-
-.button:hover span {
-	padding-right: 25px;
-}
-
-.button:hover span:after {
-	opacity: 1;
-	right: 0;
-}
- </style>
+</style>
 
 
 
-<br>
+
 <div id="page-wrapper">
+	<div class="heading">MIS Report Generate</div>
 	<div class="container-fluid">
-<div class="col-md-12 " style="padding-left: 0px;font-size: 15px; margin-top:2%">
-	<div class="heading"><center><strong>MIS Report</strong></center></div>
 	
-
-
-	</div>
-		
-	  <br>
-	      <button class="btn btn-primary hidden visible-xs" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
-             Search 
-          </button>
-  <div class="collapse dont-collapse-sm" id="collapseExample2"> 
-	 
-  	    <div class="row">
-	      <div class="form-group">
-  	         <div class="col-md-4" style="margin-left:30%">	
-                  <label>From Date.</label>
-                  <input type="date"  ng-model="cCctr.entity.fromDate"
-									ng-change="cCctr.entity.fromDate=cCctr.date(cCctr.entity.fromDate);"
-								class="form-control" placeholder="From Date">
-			</div> 
-		</div>
-	  </div><br>
-  	    <div class="row">
-	      <div class="form-group">
-  	         <div class="col-md-4" style="margin-left:30%">	
-                  <label>To Date.</label>
-                  <input type="date"  ng-model="cCctr.entity.toDate"
-									ng-change="cCctr.entity.toDate=cCctr.date(cCctr.entity.toDate);"
-								class="form-control" placeholder="From Date">
-			</div> 
-		</div>
-	  </div><br>
-  	    <div class="row">
-	      <div class="form-group">
-  	         <div class="col-md-4" style="margin-left:30%">	
-                  <label>Report Type</label>
-                  <select style="width:100%" class="form-control">
-                    <option value="section">Section</option>
-                    <option value="monthWise">Month Wise</option>
-                     <option value="taxAudit">Tax Audit Report</option>
-                     <option value="taxAudit"> Default Tax Audit Report</option>
-                 </select> 
-		   </div> 
-	    </div>
-      </div>
-  	  
-  	    
-	 <div class="row" id="search" >
-	         	  <div class="col-md-4" id="search" style="margin-left:40%">	
-	                          <button  
-									class="btn btn-success" ng-click="cCctr.download('apireport/download/'+cCctr.entity.partyDetail.clientId+'/Report/'+cCctr.temp.partyId+'/'+cCctr.datesplit(cCctr.temp.fromDate)+'/'+cCctr.datesplit(cCctr.temp.toDate)+'/vendor/'+cCctr.temp.reportType)">Generate Report</button>
-	                 </div>					
-  </div>
-	  
-	  
- 
-  	     
-	      		
-	             <!-- <div class="row" id="hide" >
-	         	  <div class="col-md-4"  style="margin-left:40%;">	
-	                          <button ng-click=""
-									class="btn btn-success" >Generate Report</button>
-	                 </div>					
-  </div> -->
-  <br><br>
-  <div style="height: 50%;">
-	<div class="row" id="hide">
+	<div class="collapse dont-collapse-sm" id="collapseExample2">
 		<div class="row">
-			<div class="col-md-4" style="margin-left:33%">
-				<div class="form-group">
-					<button
-						ng-click=""
-						class="button" style="vertical-align: middle">
-						<span>Generate Report</span>
-					</button>
+			<div class="form-group">
+	<div class="col-md-3">
+					<h6>
+						<b>From Date</b>
+						<h6>
+							<input type="date" ng-model="cCctr.search.fromDate"
+							ng-change="cCctr.search.fromDate=cCctr.date(cCctr.search.fromDate);"
+							class="form-control" placeholder="Date" style="width: 100%">
+				</div>
+					<div class="col-md-3">
+					<h6>
+						<b> To Date</b>
+						<h6>
+								<input type="date" ng-model="cCctr.search.toDate"
+							ng-change="cCctr.search.toDate=cCctr.date(cCctr.search.toDate);"
+							class="form-control" placeholder="Date" style="width: 100%">
+				</div>
+
+				
+
+				<div class="col-md-3">
+					<h6>
+						<b>Report Type</b>
+						<h6>
+							<select class="form-control" ng-model="cCctr.search.reportType">
+							<option value=" " ng-selected="true">Select Report Type</option>
+							<option value="MonthWise">Month Wise</option>
+							<option value="Yearly">Yearly</option>
+							<option value="TaxAuditReport">Tax Audit Report</option>
+							<option value="DefaultTaxAuditReport">Default Tax Audit Report</option>
+						</select>
 				</div>
 			</div>
-			
-			
 		</div>
 		
+		<div class="row" id="search">
+			<div class="col-md-2" id="search">
+				<button
+					ng-click="cCctr.searchEntities(true,'generateReport','generateReport')"
+					class="btn btn-success" onclick="scrollWin()">Search</button>
+			</div>
+		</div>
+
+
+
+		<div class="row" id="hide">
+			<div class="col-md-3" style="margin-left: 80%; margin-top: -50px">
+				<button
+					ng-click="cCctr.searchEntities(true,'generateReport')"
+					class="btn btn-success" onclick="scrollWin()">Search</button>
+			</div>
+
+
+			<div class="row">
+				<div class="col-md-3" id="search">
+					<button
+						ng-click="cCctr.searchEntities(true,'generateReport')"
+						class="btn btn-success" onclick="scrollWin()">Search</button>
+
+				</div>
+			</div>
+		</div>
+		</div>
+	
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="text-right">
+					<button class="btn btn-secondary"
+						style="background-color: #FFA500;" data-toggle="collapse"
+						data-target="#collapseExample4" aria-expanded="false"
+						aria-controls="collapseExample">Advance Search</button>
+
+					<button class="btn btn-Primary" data-toggle="modal"
+						ng-click="cCctr.gotoListPage('addReport','addReport	');">Add</button>
+				</div>
+			</div>
+		</div>
+		<div class="row " style="font-size: 12px">
+          <!-- <div class="table-responsive"> -->
+			<table class=" table table-bordered table-hover table-striped ">
+				<thead>
+					<tr style="background-color: #81b7db; font-size: 13px">
+						<th>Sr No</th>
+						<th>From Date</th>
+						<th>To Date</th>
+						<th>Report Type</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="a in cCctr.getEntityListData() track by a.id"
+						style="font-size: 13px">
+						<td>{{$index+1}}</td>
+						<td>{{a.fromDate | date:'dd-MM-yyyy'}}</td>
+						<td>{{a.toDate | date:'dd-MM-yyyy'}}</td>
+						<td>{{a.reportType}}</td>
+
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+
+
 	</div>
-  </div>
- 	
- 
-  </div>
- </div>
- </div>
+
+
+
 </div>
- 
- 	
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Message</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-6">
+						<strong>Date:</strong> {{cCctr.temp.date | date:'dd-MM-yyyy'}}
+					</div>
+					<div class="col-md-6">
+						<strong>Subject:</strong> {{cCctr.temp.subject}}
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-md-12">
+						<strong>Message:</strong> {{cCctr.temp.message}}
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>

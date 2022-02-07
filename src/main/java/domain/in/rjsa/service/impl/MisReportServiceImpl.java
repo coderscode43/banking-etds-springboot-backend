@@ -9,7 +9,7 @@ import domain.in.rjsa.model.fy.MisReport;
 import domain.in.rjsa.service.AbstractServiceFY;
 import domain.in.rjsa.service.MisReportService;
 @Transactional("transactionManager")
-@Service("misreportService")
+@Service("misReportService")
 public class MisReportServiceImpl extends AbstractServiceFY<Long,  MisReport,  MisReportDao> implements  MisReportService {
 	@Autowired
 	MisReportDao dao;
@@ -17,6 +17,11 @@ public class MisReportServiceImpl extends AbstractServiceFY<Long,  MisReport,  M
 	public MisReportDao getPrimaryDao() {
 		// TODO Auto-generated method stub
 		return dao;
+	}
+	@Override
+	public MisReport getByKey(Long id) {
+		// TODO Auto-generated method stub
+		return dao.getByKey(id);
 	}
 
 }

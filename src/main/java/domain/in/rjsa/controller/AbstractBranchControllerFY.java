@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -67,11 +66,11 @@ extends ServiceInterfaceFY<K, E>> {
 		Login login = applicationCache.getLoginDetail(getPrincipal());
 		HashMap<String, Object> constrains = new HashMap<>();
 		constrains.put("clientId", applicationCache.getLoginDetail(getPrincipal()).getClientId());
-		List<Long> listBranchId = new ArrayList<Long>();
+		
 		for (String sol : applicationCache.getUserSol(login.getId(), clientId).getSolId().split("-")) {
-			listBranchId.add(Long.valueOf(sol));
+			
 		}
-		constrains.put("branchId", listBranchId);
+	
 
 		return getService().findAll(constrains, pageNo, resultPerPage);
 	}

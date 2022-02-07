@@ -34,7 +34,7 @@ import domain.in.rjsa.util.StaticData;
 @RequestMapping("/apiform26QDeductee")
 public class Regular26QDeducteeController
 		extends AbstractBranchControllerFY<Long, Regular26QDeductee, Regular26QDeducteeService> {
-
+	
 	@Autowired
 	Regular26QDeducteeService service;
 	@Autowired

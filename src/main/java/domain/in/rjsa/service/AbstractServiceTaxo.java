@@ -5,11 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.DaoInterfaceTaxo;
 import domain.in.rjsa.dao.FileDetailDao;
-@Transactional("tdsTxManager")
+
 public abstract class AbstractServiceTaxo<K extends Serializable, E, D extends DaoInterfaceTaxo<K, E>>
 		implements ServiceInterfaceTaxo<K, E> {
 	@Autowired

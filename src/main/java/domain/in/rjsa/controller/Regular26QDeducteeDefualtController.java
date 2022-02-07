@@ -1,13 +1,11 @@
 package domain.in.rjsa.controller;
 
-import java.util.HashMap;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import domain.in.rjsa.model.fy.Regular26QDeducteeDefualt;
-import domain.in.rjsa.model.wrapper.CommentsWrapper;
+import domain.in.rjsa.model.wrapper.SalaryDetailWrapper;
 import domain.in.rjsa.service.CommentsService;
 import domain.in.rjsa.service.Regular26QDeducteeDefualtService;
 
@@ -34,17 +32,19 @@ public class Regular26QDeducteeDefualtController
 		return Regular26QDeducteeDefualt.class;
 	}
 
-	 @Override	
-		public Object getDetail(Long id, Long clientId) {
-			// TODO Auto-generated method stub
-		    CommentsWrapper ew = new CommentsWrapper();
-		    Regular26QDeducteeDefualt deducteedefualt26 = service.getByKey(id);
-		    ew.setDeducteedefualt26(deducteedefualt26);
-	    	HashMap<String, Object> map = new HashMap<>();
-			map.put("clientId", clientId);
-			ew.setListComments(rService.search(map, clientId));
-			return ew;
-		}
+	@Override
+	public Object getDetail(Long id, Long clientId) {
+		// TODO Auto-generated method stub
+		SalaryDetailWrapper ew = new SalaryDetailWrapper();
+		// Login l = applicationCache.getLoginDetail(getPrincipal());
+
+		// LinkedHashMap<String, Object> constrains = new LinkedHashMap<>();
+		// constrains.put("clientId", l.getClientId());
+		Regular26QDeducteeDefualt deductee2 = service.getByKey(id);
+		ew.setDeductee2(deductee2);
+
+		return ew;
+	}
 
 
 }

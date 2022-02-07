@@ -117,8 +117,7 @@ public class Regular26QDeducteeDefualt extends CommonModelAbstract{
 	@Size(min=0, max=45, message="Fy should be 45 characters.")
 	@NotNull(message = "Fy is a required field")
 	public String fy;
-	@Column(name = "comments")
-	public String comments;
+	
 	
 	@Column(name = "quarter")
 	@Size(min=0, max=45, message="Quarter should be 45 characters.")

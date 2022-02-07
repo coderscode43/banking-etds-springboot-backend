@@ -13,7 +13,7 @@ import domain.in.rjsa.dao.AbstractDaoFY;
 import domain.in.rjsa.dao.MisReportDao;
 import domain.in.rjsa.model.fy.MisReport;
 
-@Repository("misreportDao")
+@Repository("misReportDao")
 public class MisReportDaoImpl extends AbstractDaoFY<Long, MisReport> implements MisReportDao {
 	@SuppressWarnings("unchecked")
 	public List<MisReport> search(HashMap entity, Long clientId) {

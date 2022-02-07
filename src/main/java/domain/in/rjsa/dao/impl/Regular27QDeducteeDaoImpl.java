@@ -154,18 +154,21 @@ public class Regular27QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27QDed
 		return (List<Regular27QDeductee>) criteria.list();
 	}
 	
-	@Override
-	@SuppressWarnings("unchecked")
-	public List<Regular27QDeductee> findall(HashMap<String, Object> constrains, int pageNo, int noOfResult) {
-		Criteria criteria = createEntityCriteria();
-		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
-		criteria.add(Restrictions.in("branchId", (List<Long>)constrains.remove("branchId")));
-		criteria.add(Restrictions.allEq(constrains));
-		criteria.addOrder(Order.desc("id"));
-		criteria.setFirstResult(pageNo * noOfResult);
-		criteria.setMaxResults(noOfResult);
-		return (List<Regular27QDeductee>) criteria.list();
-
-	}
+	/*
+	 * @Override
+	 * 
+	 * @SuppressWarnings("unchecked") public List<Regular27QDeductee>
+	 * findall(HashMap<String, Object> constrains, int pageNo, int noOfResult) {
+	 * Criteria criteria = createEntityCriteria();
+	 * criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid
+	 * duplicates. criteria.add(Restrictions.in("branchId",
+	 * (List<Long>)constrains.remove("branchId")));
+	 * criteria.add(Restrictions.allEq(constrains));
+	 * criteria.addOrder(Order.desc("id")); criteria.setFirstResult(pageNo *
+	 * noOfResult); criteria.setMaxResults(noOfResult); return
+	 * (List<Regular27QDeductee>) criteria.list();
+	 * 
+	 * }
+	 */
 
 }

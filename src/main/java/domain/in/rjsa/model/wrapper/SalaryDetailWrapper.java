@@ -1,8 +1,10 @@
 package domain.in.rjsa.model.wrapper;
 
 import domain.in.rjsa.model.fy.Regular24QDeductee;
+import domain.in.rjsa.model.fy.Regular24QDeducteeDefualt;
 import domain.in.rjsa.model.fy.Regular24QSalary;
 import domain.in.rjsa.model.fy.Regular26QDeductee;
+import domain.in.rjsa.model.fy.Regular26QDeducteeDefualt;
 import domain.in.rjsa.model.fy.Regular27QDeductee;
 import lombok.Data;
 
@@ -11,6 +13,8 @@ public class SalaryDetailWrapper {
 
 	public Regular24QSalary salary;
 	public Regular24QDeductee deductee;
+	public Regular24QDeducteeDefualt deductee24;
 	public Regular27QDeductee deductee27;
 	public Regular26QDeductee deductee26;
+	public Regular26QDeducteeDefualt deductee2;
 }

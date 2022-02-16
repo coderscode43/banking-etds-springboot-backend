@@ -36,16 +36,10 @@ public class Regular24QDeductee extends CommonModelAbstract {
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
 	public Long id;
-	@Column(name = "clientId")
-	public Long clientId;
-	@Column(name = "branchId")
-	public Long branchId;
-	@Column(name = "srNo")
-	public Long srNo;
-	@Column(name = "challanSrNo")
-	@NotNull(message = "Challan Sr. No. is a required field.")
-	@Digits(integer = 12, fraction = 0, message = "Enter valid Challan No. Challan No. should not be greater than 12")
-	public Long challanSrNo;
+	@Column(name = "deducteeId")
+	public Long deducteeId;
+	@Column(name = "challanHeading")
+	public String challanHeading;
 	@Column(name = "employeeRefNo")
 	@NotNull(message = "Employee No. is a required field.")
 	@Size(min = 0, max = 45, message = "Employee No should not be greater than 45 characters.")
@@ -116,6 +110,22 @@ public class Regular24QDeductee extends CommonModelAbstract {
 	@NotNull(message = "Quarter is a required field.")
 	@Size(min = 0, max = 45, message = "Quarter should not be greater than 45 characters.")
 	public String quarter;
+	@Column(name = "branchCode")
+	public Long branchCode;
+	@Column(name = "accNo")
+	public Long accNo;
+	@Column(name = "idNo")
+	public Long idNo;
+	@Column(name = "cif")
+	public String cif;
+	@Column(name = "type")
+	public String type;
+	@Column(name = "month")
+	public String month;  
+	@Column(name = "staffId")
+	public Long staffId;
+	@Column(name = "uniqueRefNo")
+	public Long uniqueRefNo;
 	@Column(name = "verify")
 	public boolean verify = false;
 

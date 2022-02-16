@@ -38,7 +38,7 @@ public class Regular26QChallan extends CommonModelAbstract{
 	@Column(name = "srNo")
 	public Long srNo;
 	@Column(name = "tds")
-	public Double tds;
+	public Long tds;
 	@Column(name = "surcharge")
 	public Double surcharge;
 	@Column(name = "eduCess")

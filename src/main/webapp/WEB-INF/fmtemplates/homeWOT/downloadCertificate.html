@@ -1,24 +1,5 @@
 
 <style>
-@media only screen and (max-width: 1000px) {
-	.one {
-		display: none;
-	}
-}
-
-@media only screen and (max-width: 1000px) {
-	.two {
-		padding: 8px;
-	}
-}
-
-@media only screen and (min-width:600px) {
-	#three {
-		display: none;
-		max-height: 0;
-		overflow: hidden;
-	}
-}
 
 @media only screen and (min-width:1000px) {
 	#search {
@@ -32,11 +13,6 @@
 	#hide {
 		display: none;
 	}
-}
-
-.table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
-	{
-	background-color: whitesmoke;
 }
 
 @media ( min-width : 768px) {
@@ -97,8 +73,9 @@
 						<h6>
 							<b>Financial Year</b>
 						</h6>
-						<select class="form-control" ng-model="cCctr.search.financial_year">
+						<select class="form-control" ng-model="cCctr.search.financialyear">
 							<option value=" " ng-selected="true">Financial Year</option>
+							<option value="202021">202021</option>
 							<option value="201920">201920</option>
 							<option value="201819">201819</option>
 							<option value="201718">201718</option>
@@ -138,6 +115,31 @@
 					</div>
 				</div>
 			</div>
+			
+			<div class="collapse  panel-collapse" id="collapseExample4">
+			
+          <div class="row">
+			
+			
+			<div class="col-md-3">
+				<h6>
+					<b>Customer Id</b>
+					<h6>
+						<input type="text" ng-model="cCctr.search.customerid"
+							
+							class="form-control" placeholder="Customer Id" style="width: 100%">
+			</div>
+			<div class="col-md-3">
+				<h6>
+					<b>Certificate Type</b>
+					<h6>
+						<input type="text" ng-model="cCctr.search.certificatetype"
+							
+							class="form-control" placeholder="Certificate type" style="width: 100%">
+			</div>
+			
+		</div>
+		</div>
 				
 				<div class="row" id="search" >
 				         	  <div class="col-md-2" id="search">	
@@ -166,14 +168,25 @@
 			</div>
 		</div>
 		
-		<div class="panel-body" style="margin-left: -3%; width: 107%;">
+		<div class="panel-body">
 
 			<div class="row">
-				<div>
-            <button class="btn btn-primary" type="add" style="float:right" ng-click="cCctr.gotoListPage('addCertificate','addCertificate');">ADD</button>
-                   <div class="table-responsive" style="overflow-x:inherit">
-					<table class=" table table-bordered table-hover  table-striped"
-						role="table"
+		<div class="col-xs-12">
+			<div class="text-right">
+			<button class="btn btn-secondary"
+					style="background-color: #FFA500;"
+					data-toggle="collapse" data-target="#collapseExample4"
+					aria-expanded="false" aria-controls="collapseExample">
+					Advance Search</button>
+			
+				<button class="btn btn-Primary" data-toggle="modal"
+					ng-click="cCctr.gotoList2Page('addCertificate','addCertificate');">Add</button>
+			</div>
+		</div>
+	</div>
+	<div class="table-responsive" >
+					<table class="table table-bordered table-hover  table-striped"
+						
 						style="font-size: 12px; padding: 5px; margin: 5px;">
 
 
@@ -183,7 +196,7 @@
 						</colgroup>
 						<tr>
 						<thead role="rowgroup">
-							<tr role="row" style="background-color: #81b7db">
+							<tr style="background-color: #81b7db">
 								<th >Sr. No.</th>
 								<th >Customer ID</th>
 								<th >PAN</th>
@@ -200,10 +213,10 @@
 							<tr role="row"
 								ng-repeat="a in cCctr.getEntityListData() track by a.id">
 								<td>{{$index+1}}</td>
-								<td>{{a.customer_id}}</td>
+								<td>{{a.customerid}}</td>
 								<td>{{a.pan}}</td>
-								<td>{{a.certificate_type}}</td>
-								<td>{{a.financial_year}}</td>
+								<td>{{a.certificatetype}}</td>
+								<td>{{a.financialyear}}</td>
 								<td>{{a.quarter}}</td>
 								<td><a
 									ng-click="cCctr.download('apifileDetail/getFile/'+a.clientId+'/'+a.fileId);"

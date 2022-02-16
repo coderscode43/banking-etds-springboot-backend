@@ -37,18 +37,12 @@
 <fieldset>
  <legend>Old Data:</legend>
  <div class="row">
- <div class="col-md-3">
- <label>Deductee Sr No</label> : {{cCctr.entity.oldData.deducteeSrNo}}
- </div>
+
  <div class="col-md-3">
  <label>Sr No In Challan</label> :{{cCctr.entity.oldData.srNoInChallan}}
  </div>
- <div class="col-md-3">
- <label>Deductee Ref No</label> :{{cCctr.entity.oldData.deducteeRefNo}}
- </div>
- <div class="col-md-3">
- <label>Deductee Code</label> : {{cCctr.entity.oldData.deducteeCode}}
- </div>
+
+ 
  </div>
   <div class="row">
  <div class="col-md-3">
@@ -61,7 +55,7 @@
  <label>Section Code</label> :{{cCctr.entity.oldData.sectionCollectionCode}}
  </div>
  <div class="col-md-3">
- <label>Date</label> :{{cCctr.entity.oldData.dateofCollected}}
+ <label>Date</label> :{{cCctr.entity.oldData.dateofCollected | date:'MM/dd/yyyy'}}
  </div>
  </div>
   <div class="row">
@@ -79,18 +73,10 @@
  </div>
  </div>
  <div class="row">
- <div class="col-md-3">
- <label>Address Of Deductee</label> :{{cCctr.entity.oldData.addressOfDeductee}}
- </div>
- <div class="col-md-3">
- <label>Contact No Of Deductee</label> :{{cCctr.entity.oldData.contactNoOfDeductee}}
- </div>
- <div class="col-md-3">
- <label>Email Id</label> :{{cCctr.entity.oldData.emailId}}
- </div>
- <div class="col-md-3">
- <label>Country Of Residence</label> :{{cCctr.entity.oldData.countryOfResidence}}
- </div>
+
+
+ 
+
  </div>
  <div class="row">
  <div class="col-md-3">
@@ -100,7 +86,7 @@
  <label>Total Tax Deposited</label> :{{cCctr.entity.oldData.totalTaxDeposited}}
  </div>
  <div class="col-md-3">
- <label>Date of Deduction</label> :{{cCctr.entity.oldData.dateofCollected}}
+ <label>Date of Deduction</label> :{{cCctr.entity.oldData.dateofCollected| date:'MM/dd/yyyy'}}
  </div>
  <div class="col-md-3">
  <label>Rate At Which Tax Deducted</label> :{{cCctr.entity.oldData.rateatwhichTaxCollected}}
@@ -112,15 +98,11 @@
  <div class="col-md-3">
  <label>Reason For Non Deduction</label> :{{cCctr.entity.oldData.reasonforNonCollection}}
  </div>
- <div class="col-md-3">
- <label>Grossing Up Indicator</label> :{{cCctr.entity.oldData.grossingUpIndicator}}
- </div>
+
  <div class="col-md-3">
  <label>No Of Certificate Under Section</label> :{{cCctr.entity.oldData.certificatenumber}}
  </div>
- <div class="col-md-3">
- <label>Unique Acknowledge No</label> :{{cCctr.entity.oldData.uniqueAcknowledgeNo}}
- </div>
+ 
  </div>
  
  <div class="row">
@@ -133,32 +115,23 @@
 <fieldset>
  <legend>Changed Data:</legend>
  <div class="row">
- <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.deducteeSrNo!=cCctr.entity.neData.deducteeSrNo}">
- <label>Deductee Sr No</label> : {{cCctr.entity.neData.deducteeSrNo}}
- </div>
+
  <div class="col-md-3"  ng-class="{'give-border': cCctr.entity.oldData.srNoInChallan!=cCctr.entity.neData.srNoInChallan}">
  <label>Sr No In Challan</label> :{{cCctr.entity.neData.srNoInChallan}}
  </div>
- <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.deducteeRefNo!=cCctr.entity.neData.deducteeRefNo}">
- <label>Deductee Reference No</label> :{{cCctr.entity.neData.deducteeRefNo}}
- </div>
- <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.deducteeCode!=cCctr.entity.neData.deducteeCode}">
- <label>Deductee Code</label> : {{cCctr.entity.neData.deducteeCode}}
- </div>
+
  </div>
   <div class="row">
  <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.pan!=cCctr.entity.neData.pan}">
  <label>PAN</label>: {{cCctr.entity.neData.panoftheParty}}
  </div>
- <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.name!=cCctr.entity.neData.name}">
+ <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.nameoftheParty!=cCctr.entity.neData.nameoftheParty}">
  <label>Name</label> :{{cCctr.entity.neData.nameoftheParty}}
  </div>
- <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.sectionCode!=cCctr.entity.neData.sectionCode}">
+ <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.sectionCollectionCode!=cCctr.entity.neData.sectionCollectionCode}">
  <label>Section Code</label> :{{cCctr.entity.neData.sectionCollectionCode}}
  </div>
- <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.date!=cCctr.entity.neData.date}">
- <label>Date</label> :{{cCctr.entity.neData.date}}
- </div>
+ 
  </div>
   <div class="row">
  <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.amountPaid!=cCctr.entity.neData.amountPaid}">
@@ -174,29 +147,16 @@
  <label>Education Cess</label> :{{cCctr.entity.neData.educationCess}}
  </div>
  </div>
+ 
  <div class="row">
- <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.addressOfDeductee!=cCctr.entity.neData.addressOfDeductee}">
- <label>Address Of Deductee</label> :{{cCctr.entity.neData.addressOfDeductee}}
- </div>
- <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.contactNoOfDeductee!=cCctr.entity.neData.contactNoOfDeductee}">
- <label>Contact No Of Deductee</label> :{{cCctr.entity.neData.contactNoOfDeductee}}
- </div>
- <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.emailId!=cCctr.entity.neData.emailId}">
- <label>Email Id</label> :{{cCctr.entity.neData.emailId}}
- </div>
- <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.countryOfResidence!=cCctr.entity.neData.countryOfResidence}">
- <label>Country Of Residence</label> :{{cCctr.entity.neData.countryOfResidence}}
- </div>
- </div>
- <div class="row">
- <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.totalTaxDeducted!=cCctr.entity.neData.totalTaxDeducted}">
- <label>Total Tax Deducted</label> :{{cCctr.entity.neData.totalTaxDeducted}}
+ <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.totalTaxCollected!=cCctr.entity.neData.totalTaxCollected}">
+ <label>Total Tax Deducted</label> :{{cCctr.entity.neData.totalTaxCollected}}
  </div>
  <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.totalTaxDeposited!=cCctr.entity.neData.totalTaxDeposited}">
  <label>Total Tax Deposited</label> :{{cCctr.entity.neData.totalTaxDeposited}}
  </div>
  <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.dateOfDeduction!=cCctr.entity.neData.dateOfDeduction}">
- <label>Date of Deduction</label> :{{cCctr.entity.neData.dateofCollected}}
+ <label>Date of Deduction</label> :{{cCctr.entity.neData.dateofCollected| date:'MM/dd/yyyy'}}
  </div>
  <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.rateAtWhichTaxDeducted!=cCctr.entity.neData.rateAtWhichTaxDeducted}">
  <label>Rate At Which Tax Deducted</label> :{{cCctr.entity.neData.rateatwhichTaxCollected}}
@@ -205,18 +165,14 @@
  
  
   <div class="row">
- <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.reasonForNonDeduction!=cCctr.entity.neData.reasonForNonDeduction}">
- <label>Reason For Non Deduction</label> :{{cCctr.entity.neData.reasonForNonDeduction}}
+ <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.reasonforNonCollection!=cCctr.entity.neData.reasonforNonCollection}">
+ <label>Reason For Non Deduction</label> :{{cCctr.entity.neData.reasonforNonCollection}}
  </div>
- <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.grossingUpIndicator!=cCctr.entity.neData.grossingUpIndicator}">
- <label>Grossing Up Indicator</label> :{{cCctr.entity.neData.grossingUpIndicator}}
- </div>
+ 
  <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.noOfCertificateUnderSection!=cCctr.entity.neData.noOfCertificateUnderSection}">
- <label>No.Of Certificate Under Section</label> :{{cCctr.entity.neData.noOfCertificateUnderSection}}
+ <label>No.Of Certificate Under Section</label> :{{cCctr.entity.neData.certificatenumber}}
  </div>
- <div class="col-md-3" ng-class="{'give-border': cCctr.entity.oldData.uniqueAcknowledgeNo!=cCctr.entity.neData.uniqueAcknowledgeNo}">
- <label>Unique Acknowledge No</label> :{{cCctr.entity.neData.uniqueAcknowledgeNo}}
- </div>
+ 
  </div>
  <div class="row">
  <div class="col-md-12">

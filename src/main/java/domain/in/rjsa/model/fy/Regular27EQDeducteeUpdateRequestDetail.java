@@ -87,6 +87,9 @@ public class Regular27EQDeducteeUpdateRequestDetail extends CommonModelAbstract{
    	public String remarks;
     @Column(name = "status")
    	public String status;
-    
+    @Column(name = "deducteeId")
+	public Long deducteeId;
+	@Column(name = "challanHeading")
+	public String challanHeading;
 	
 }

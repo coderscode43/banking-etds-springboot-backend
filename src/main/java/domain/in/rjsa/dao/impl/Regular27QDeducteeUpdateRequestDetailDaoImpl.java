@@ -21,11 +21,11 @@ public class Regular27QDeducteeUpdateRequestDetailDaoImpl
 		implements Regular27QDeducteeUpdateRequestDetailDao {
 
 	@SuppressWarnings("unchecked")
-	public List<Regular27QDeducteeUpdateRequestDetail> search(HashMap entity, Long clientId) {
+	public List<Regular27QDeducteeUpdateRequestDetail> search(HashMap entity) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
-		propertyNameValues.put("clientId", clientId);
+		//propertyNameValues.put("clientId", clientId);
 		criteria.add(Restrictions.allEq(propertyNameValues));
 		if (entity.get("branchId") != null) {
 			criteria.add(Restrictions.eqOrIsNull("branchId", entity.get("branchId")));
@@ -147,6 +147,13 @@ public class Regular27QDeducteeUpdateRequestDetailDaoImpl
          {
 		criteria.add(Restrictions.eqOrIsNull("reasonForNonDeduction", entity.get("reasonForNonDeduction")));
          }
+         if(entity.get("deducteeId")!=null)
+         {
+		criteria.add(Restrictions.eqOrIsNull("deducteeId",Long.valueOf((String) entity.get("deducteeId"))));
+         }
+         if (entity.get("challanHeading") != null) {
+ 			criteria.add(Restrictions.eqOrIsNull("challanHeading",  entity.get("challanHeading")));
+ 		}
          
 		criteria.addOrder(Order.desc("date"));
 		return (List<Regular27QDeducteeUpdateRequestDetail>) criteria.list();

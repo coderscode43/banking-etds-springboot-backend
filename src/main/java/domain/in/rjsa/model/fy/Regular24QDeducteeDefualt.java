@@ -36,16 +36,10 @@ public class Regular24QDeducteeDefualt extends CommonModelAbstract {
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
 	public Long id;
-	@Column(name = "clientId")
-	public Long clientId;
-	@Column(name = "branchId")
-	public Long branchId;
-	@Column(name = "srNo")
-	public Long srNo;
-	@Column(name = "challanSrNo")
-	@NotNull(message = "Challan Sr. No. is a required field.")
-	@Digits(integer = 12, fraction = 0, message = "Enter valid Challan No. Challan No. should not be greater than 12")
-	public Long challanSrNo;
+	@Column(name = "deducteeId")
+	public Long deducteeId;
+	@Column(name = "challanHeading")
+	public String challanHeading;
 	@Column(name = "employeeRefNo")
 	@NotNull(message = "Employee No. is a required field.")
 	@Size(min = 0, max = 45, message = "Employee No should not be greater than 45 characters.")
@@ -125,6 +119,31 @@ public class Regular24QDeducteeDefualt extends CommonModelAbstract {
 	public String quarter;
 	@Column(name = "comments")
 	public String comments;
+	@Column(name = "branchCode")
+	public Long branchCode;
+	@Column(name = "accNo")
+	public Long accNo;
+	@Column(name = "idNo")
+	public Long idNo;
+	@Column(name = "type")
+	public String type;
+	@Column(name = "staffId")
+	public Long staffId;
+	@Column(name = "uniqueRefNo")
+	public Long uniqueRefNo;
+	@Column(name = "errorDescription")
+	public String errorDescription;
+	@Column(name = "warningDescription")
+	public String warningDescription;
+	@Column(name = "shortDeduction")
+	public Long shortDeduction;
+	@Column(name = "interestOnShortDeduction")
+	public Long interestOnShortDeduction;
+	@Column(name = "interestOnLatePayment")
+	public Long interestOnLatePayment;
+	@Column(name = "interestOnLateDeduction")
+	public Long interestOnLateDeduction;
+	
 	@Column(name = "verify")
 	public boolean verify = false;
 

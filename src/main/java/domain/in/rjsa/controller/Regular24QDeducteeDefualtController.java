@@ -1,13 +1,11 @@
 package domain.in.rjsa.controller;
 
-import java.util.HashMap;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import domain.in.rjsa.model.fy.Regular24QDeducteeDefualt;
-import domain.in.rjsa.model.wrapper.CommentsWrapper;
+import domain.in.rjsa.model.wrapper.SalaryDetailWrapper;
 import domain.in.rjsa.service.CommentsService;
 import domain.in.rjsa.service.Regular24QDeducteeDefualtService;
 
@@ -35,17 +33,19 @@ public class Regular24QDeducteeDefualtController
 		return Regular24QDeducteeDefualt.class;
 	}
 	
-	 @Override	
-		public Object getDetail(Long id, Long clientId) {
-			// TODO Auto-generated method stub
-		    CommentsWrapper ew = new CommentsWrapper();
-		    Regular24QDeducteeDefualt deducteedefualt24 = service.getByKey(id);
-		    ew.setDeducteedefualt24(deducteedefualt24);
-	    	HashMap<String, Object> map = new HashMap<>();
-			map.put("clientId", clientId);
-			ew.setListComments(rService.search(map, clientId));
-			return ew;
-		}
+	@Override
+	public Object getDetail(Long id, Long clientId) {
+		// TODO Auto-generated method stub
+		SalaryDetailWrapper ew = new SalaryDetailWrapper();
+		// Login l = applicationCache.getLoginDetail(getPrincipal());
+
+		// LinkedHashMap<String, Object> constrains = new LinkedHashMap<>();
+		// constrains.put("clientId", l.getClientId());
+		Regular24QDeducteeDefualt deducteeDefault24 = service.getByKey(id);
+		ew.setDeducteeDefault24(deducteeDefault24);
+
+		return ew;
+	}
 
 	
 	

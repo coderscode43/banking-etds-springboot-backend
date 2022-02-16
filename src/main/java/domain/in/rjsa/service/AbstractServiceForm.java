@@ -45,9 +45,9 @@ public abstract class AbstractServiceForm<K extends Serializable, E, D extends D
 	}
 
 	@Override
-	public List<E> search(HashMap map, Long clientId) {
+	public List<E> search(HashMap map) {
 		// TODO Auto-generated method stub
-		return getPrimaryDao().search(map, clientId);
+		return getPrimaryDao().search(map);
 	}
 
 	@Override

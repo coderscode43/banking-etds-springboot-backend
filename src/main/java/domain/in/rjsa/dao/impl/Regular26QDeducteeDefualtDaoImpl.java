@@ -14,25 +14,26 @@ import org.springframework.stereotype.Repository;
 import domain.in.rjsa.dao.AbstractDaoFY;
 import domain.in.rjsa.dao.Regular26QDeducteeDefualtDao;
 import domain.in.rjsa.model.fy.Regular26QDeducteeDefualt;
+
 @Repository("regular26QDeducteeDefualtDao")
 public class Regular26QDeducteeDefualtDaoImpl extends AbstractDaoFY<Long, Regular26QDeducteeDefualt> implements Regular26QDeducteeDefualtDao {
 	@SuppressWarnings("unchecked")
-	public List< Regular26QDeducteeDefualt> search(HashMap entity, Long clientId) {
+	public List< Regular26QDeducteeDefualt> search(HashMap entity) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
-		propertyNameValues.put("clientId", clientId);
+		//propertyNameValues.put("clientId", clientId);
 		criteria.add(Restrictions.allEq(propertyNameValues));
 		if (entity.get("branchId") != null) {
 			criteria.add(Restrictions.eqOrIsNull("branchId", entity.get("branchId")));
 		}
-		if (entity.get("fromDate") != null) {
+		if (entity.get("paymentDate") != null) {
 			criteria.add(Restrictions.ge("paymentDate",
-					Date.from(ZonedDateTime.parse((String) entity.get("fromDate")).toInstant())));
+					Date.from(ZonedDateTime.parse((String) entity.get("paymentDate")).toInstant())));
 		}
-		if (entity.get("toDate") != null) {
+		if (entity.get("deductDate") != null) {
 			criteria.add(
-					Restrictions.le("paymentDate", Date.from(ZonedDateTime.parse((String) entity.get("toDate")).toInstant())));
+					Restrictions.le("deductDate", Date.from(ZonedDateTime.parse((String) entity.get("deductDate")).toInstant())));
 		}
           if(entity.get("deducteePan")!=null)
           {
@@ -60,10 +61,7 @@ public class Regular26QDeducteeDefualtDaoImpl extends AbstractDaoFY<Long, Regula
           {
 		criteria.add(Restrictions.eqOrIsNull("deducteeCode", entity.get("deducteeCode")));
           }
-          
-         
-          
-          if (entity.get("challanSrNo") != null) {
+           if (entity.get("challanSrNo") != null) {
     			criteria.add(Restrictions.eqOrIsNull("challanSrNo", Long.valueOf((String) entity.get("challanSrNo"))));
     		}
           
@@ -118,6 +116,34 @@ public class Regular26QDeducteeDefualtDaoImpl extends AbstractDaoFY<Long, Regula
 		criteria.add(Restrictions.eqOrIsNull("certificateNo", entity.get("certificateNo")));
           }
           
+          if(entity.get("type")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("type", entity.get("type")));
+          }
+          if(entity.get("month")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("month", entity.get("month")));
+          }
+          if(entity.get("cif")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("cif", entity.get("cif")));
+          }
+          if (entity.get("branchCode") != null) {
+  			criteria.add(Restrictions.eqOrIsNull("branchCode", Long.valueOf((String) entity.get("branchCode"))));
+  		}
+          if (entity.get("accNo") != null) {
+    			criteria.add(Restrictions.eqOrIsNull("accNo", Long.valueOf((String) entity.get("accNo"))));
+    		}
+          if (entity.get("idNo") != null) {
+  			criteria.add(Restrictions.eqOrIsNull("idNo", Long.valueOf((String) entity.get("idNo"))));
+  		}  
+          if(entity.get("deducteeId")!=null)
+          {
+ 		criteria.add(Restrictions.eqOrIsNull("deducteeId",Long.valueOf((String) entity.get("deducteeId"))));
+          }
+          if (entity.get("challanHeading") != null) {
+  			criteria.add(Restrictions.eqOrIsNull("challanHeading",  entity.get("challanHeading")));
+  		}
 		criteria.addOrder(Order.desc("paymentDate"));
 		
 		return (List< Regular26QDeducteeDefualt>) criteria.list();

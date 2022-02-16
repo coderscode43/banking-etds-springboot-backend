@@ -23,14 +23,14 @@ public class DownloadCertificate extends CommonModelAbstract {
 	public Long id;
 	@Column(name = "clientId")
 	private Long clientId;
-	@Column(name = "customer_id")
-	public Long customer_id;
+	@Column(name = "customerid")
+	public Long customerid;
 	@Column(name = "pan")
 	public String pan;
-	@Column(name = "certificate_type")
-	public String certificate_type;
-	@Column(name = "financial_year")
-	public String financial_year;
+	@Column(name = "certificatetype")
+	public String certificatetype;
+	@Column(name = "financialyear")
+	public String financialyear;
 	@Column(name = "quarter")
 	public String quarter;
 	@Column(name = "fileId")

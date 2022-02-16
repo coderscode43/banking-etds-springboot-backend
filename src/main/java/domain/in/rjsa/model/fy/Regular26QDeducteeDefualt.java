@@ -36,16 +36,10 @@ public class Regular26QDeducteeDefualt extends CommonModelAbstract{
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
 	public Long id;	
-	@Column(name = "clientId")
-	public Long clientId;
-	@Column(name = "branchId")
-	public Long branchId;
-	@Column(name = "srNo")
-	public Long srNo;	
-	@Column(name = "challanSrNo")
-	@Digits(integer = 15, fraction = 0,message="Enter valid Challan SrNo. Challan SrNo. should not be greater than 12")
-	@NotNull(message = "ChallanSrNo is a required field")
-	public Long challanSrNo;
+	@Column(name = "deducteeId")
+	public Long deducteeId;
+	@Column(name = "challanHeading")
+	public String challanHeading;
 	@Column(name = "deducteeRefNo")
 	@Size(min=0, max=45, message="Deductee RefNo should be 45 characters.")
 	@NotNull(message = "Deductee Ref No is a required field")
@@ -58,9 +52,6 @@ public class Regular26QDeducteeDefualt extends CommonModelAbstract{
 	@Size(min=0, max=45, message="Deductee Pan should be 45 characters.")
 	@NotNull(message = "Deductee Pan is a required field")
 	public String deducteePan;
-	@Column(name = "month")
-	public String month;
-	
 	@Column(name = "deducteeName")
 	@Size(min=0, max=45, message="Deductee Name should be 45 characters.")
 	@NotNull(message = "Deductee name is a required field")
@@ -68,7 +59,7 @@ public class Regular26QDeducteeDefualt extends CommonModelAbstract{
 	@Column(name = "sectionCode")
 	@Size(min=0, max=45, message="Section Code should be 45 characters.")
 	@NotNull(message = "Section Code is a required field")
-	public Long sectionCode;
+	public String sectionCode;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "paymentDate")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
@@ -80,11 +71,11 @@ public class Regular26QDeducteeDefualt extends CommonModelAbstract{
 	@Column(name = "tds")
 	@Digits(integer = 12, fraction = 0,message="Enter valid Tds it should not be greater than 12")
 	@NotNull(message = "Tds is a required field")
-	public Double tds;
+	public String tds;
 	@Column(name = "surcharge")
 	@Digits(integer = 12, fraction = 0,message="Enter valid Surcharge it should not be greater than 12")
 	@NotNull(message = "Surcharge is a required field")
-	public Double surcharge;
+	public Long surcharge;
 	@Column(name = "eduCess")
 	@Digits(integer = 12, fraction = 0,message="Enter valid Education Cess it should not be greater than 12")
 	@NotNull(message = "Education Cess is a required field")
@@ -116,13 +107,46 @@ public class Regular26QDeducteeDefualt extends CommonModelAbstract{
 	@Column(name = "fy")
 	@Size(min=0, max=45, message="Fy should be 45 characters.")
 	@NotNull(message = "Fy is a required field")
-	public String fy;
-	
-	
+	public Long fy;
 	@Column(name = "quarter")
 	@Size(min=0, max=45, message="Quarter should be 45 characters.")
 	@NotNull(message = "Quarter is a required field")
 	public String quarter;
+	@Column(name = "branchCode")
+	public Long branchCode;
+	@Column(name = "accNo")
+	public Long accNo;
+	@Column(name = "idNo")
+	public Long idNo;
+	@Column(name = "cif")
+	public String cif;
+	@Column(name = "type")
+	public String type;
+	@Column(name = "month")
+	public String month;
+	@Column(name = "customerId")
+	public Long customerId;
+	@Column(name = "uniqueRefNo")
+	public Long uniqueRefNo;
+	@Column(name = "cashWithdrawal194N")
+	public String cashWithdrawal194N;
+	@Column(name = "cashWithdrawal194N20Lto1Cr")
+	public String cashWithdrawal194N20Lto1Cr;
+	@Column(name = "cashWithdrawal194N1Cr")
+	public String cashWithdrawal194N1Cr;
+	@Column(name = "errorDescription")
+	public String errorDescription;
+	@Column(name = "warningDescription")
+	public String warningDescription;
+	@Column(name = "shortDeduction")
+	public Long shortDeduction;
+	@Column(name = "interestOnShortDeduction")
+	public Long interestOnShortDeduction;
+	@Column(name = "interestOnLatePayment")
+	public Long interestOnLatePayment;
+	@Column(name = "interestOnLateDeduction")
+	public Long interestOnLateDeduction;
+	
 	@Column(name = "verify")
 	public boolean verify = false;
 	

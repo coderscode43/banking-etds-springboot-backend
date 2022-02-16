@@ -28,12 +28,6 @@ public class Regular27EQDeductee extends CommonModelAbstract {
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
 	public Long id;
-	@Column(name = "clientId")
-	public Long clientId;
-	@Column(name = "branchId")
-	public Long branchId;
-	@Column(name = "srNoInChallan")
-	public Long srNoInChallan;
     @Column(name = "partyReferenceNo")
 	public Long partyReferenceNo;
     @Column(name = "partyCode")
@@ -55,7 +49,6 @@ public class Regular27EQDeductee extends CommonModelAbstract {
    	public String quarter;
     @Column(name = "fy")
    	public Long fy;
-   
     @Column(name = "educationCess")
    	public String educationCess;
     @Column(name = "totalTaxCollected")
@@ -79,18 +72,30 @@ public class Regular27EQDeductee extends CommonModelAbstract {
    	public String deducteeisNonResident;
     @Column(name = "permanentEstablishment")
     public String permanentEstablishment;
-    @Column(name = "errorDescription")
-    public String errorDescription;
-    @Column(name = "warningDescription")
-    public String warningDescription;
-    @Column(name = "shortDeduction")
-   	public String shortDeduction;
-    @Column(name = "interestonShortDeduction")
-   	public Long interestonShortDeduction;
-    @Column(name = "interestonLatePayment")
-   	public Long interestonLatePayment;
-    @Column(name = "interestonLateDeduction")
-   	public Long interestonLateDeduction;
-    
-    
+    @Column(name = "branchCode")
+	public Long branchCode;
+	@Column(name = "accNo")
+	public Long accNo;
+	@Column(name = "idNo")
+	public Long idNo;
+	@Column(name = "cif")
+	public String cif;
+	@Column(name = "type")
+	public String type;
+	@Column(name = "month")
+	public String month;
+	@Column(name = "deducteeId")
+	public Long deducteeId;
+	@Column(name = "challanHeading")
+	public String challanHeading;
+	@Column(name = "customerId")
+	public Long customerId;
+	@Column(name = "uniqueRefNo")
+	public Long uniqueRefNo;
+	@Column(name = "reasonForNonCollectionForG")
+	public String reasonForNonCollectionForG;
+	@Column(name = "ifAnswerTo681AisyesthenChallanNumber")
+	public String ifAnswerTo681AisyesthenChallanNumber;
+	@Column(name = "ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment")
+	public String ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment;
 }

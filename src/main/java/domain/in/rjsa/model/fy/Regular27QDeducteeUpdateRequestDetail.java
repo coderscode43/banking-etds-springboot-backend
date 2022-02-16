@@ -39,6 +39,10 @@ public class Regular27QDeducteeUpdateRequestDetail extends CommonModelAbstract{
 	public Long clientId;
 	@Column(name = "branchId")
 	public Long branchId;
+	@Column(name = "deducteeId")
+	public Long deducteeId;
+	@Column(name = "challanHeading")
+	public String challanHeading;
 	@Column(name = "deducteeSrNo")
 	@NotNull(message = "Deductee Sr No is a required field")
 	@Digits(integer = 15, fraction = 0,message="Enter valid Deductee Sr No. Deductee Sr No. should not be greater than 12")

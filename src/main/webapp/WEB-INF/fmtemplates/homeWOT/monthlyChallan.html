@@ -1,0 +1,229 @@
+
+<style>
+
+@media only screen and (min-width:1000px) {
+	#search {
+		margin-left: 45%;
+		margin-top: 2px;
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	#hide {
+		display: none;
+	}
+}
+
+@media ( min-width : 768px) {
+	.collapse.dont-collapse-sm {
+		display: block;
+		height: auto !important;
+		visibility: visible;
+	}
+}
+
+@media ( min-width : 300px) and (max-width: 700px) {
+	.mobile {
+		display: none;
+	}
+}
+
+@media only screen and (min-width:700px) {
+	.hide-on-desktop, * [aria-labelledby='hide-on-desktop'] {
+		display: none;
+	}
+}
+
+/* iPad Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+/* CSS */
+.mobile {
+		display: none;
+	}
+}
+</style>
+
+
+
+
+<div id="page-wrapper">
+	<div class="container-fluid">
+		
+		<div class="col-md-12 "
+			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
+			<div class="heading"><strong> Monthly Challan Details</strong></div>
+
+
+
+		</div>
+
+
+		<br>
+		<button class="btn btn-primary hidden visible-xs" type="button"
+			data-toggle="collapse" data-target="#collapseExample2"
+			aria-expanded="false" aria-controls="collapseExample">
+			Search</button>
+		<div class="collapse dont-collapse-sm" id="collapseExample2">
+			<div class="row">
+				<div class="form-group">
+
+
+					<div class="col-md-3">
+						<h6>
+							<b>Branch Code</b>
+							</h6>
+								<input type="text" ng-model="cCctr.search.branchCode"
+									class="form-control" placeholder="branch Code" style="width: 100%">
+					</div>
+
+					<div class="col-md-3">
+						<label>Month*</label> <select name="month"
+								class="form-control" ng-model="cCctr.search.month"
+								ng-required="true" ng-model-options="{updateOn: 'blur'}">
+								  <option selected value='Janaury'>Janaury</option>
+								    <option value='February'>February</option>
+								    <option value='March'>March</option>
+								    <option value='April'>April</option>
+								    <option value='May'>May</option>
+								    <option value='June'>June</option>
+								    <option value='July'>July</option>
+								    <option value='August'>August</option>
+								    <option value='September'>September</option>
+								    <option value='October'>October</option>
+								    <option value='November'>November</option>
+								    <option value='December'>December</option>
+															</select> 
+					</div>
+
+					<div class="col-md-3">
+						<h6>
+							<b>Challan Heading</b>
+							</h6>
+								<input type="text" ng-model="cCctr.search.challanHeading"
+									class="form-control" placeholder="Challan Heading" style="width: 100%">
+					</div>
+				</div>
+			</div>
+			
+			<div class="collapse  panel-collapse" id="collapseExample4">
+			
+          <div class="row">
+			
+			
+			<div class="col-md-3">
+				<h6>
+					<b>Amount As Per Finacle</b>
+					<h6>
+						<input type="text" ng-model="cCctr.search.amtAsPerFinacle"
+							
+							class="form-control" placeholder="Amount As Per Finacle" style="width: 100%">
+			</div>
+			<div class="col-md-3">
+				<h6>
+					<b>Amount As Per Tax Calculation</b>
+					<h6>
+						<input type="text" ng-model="cCctr.search.amtAsPerTaxCalculation"
+							
+							class="form-control" placeholder="amtAsPerTaxCalculation" style="width: 100%">
+			</div>
+			
+		</div>
+		</div>
+				
+				<div class="row" id="search" >
+				         	  <div class="col-md-2" id="search">	
+				                          <button ng-click="cCctr.searchEntities(true,'monthlyChallan','monthlyChallan')"
+								class="btn btn-success"onclick="scrollWin()">Search</button>
+				                 </div>					
+			  </div>
+			
+
+			<div class="row" id="hide">
+				<div class="col-md-3" style="margin-left: 80%; margin-top: -80px">
+					<button ng-click="cCctr.searchEntities(true,'monthlyChallan')"
+						class="btn btn-success" onclick="scrollWin()">Search</button>
+						</div>
+				</div>
+
+
+			
+
+				<div class="row mobile" id="search">
+				<div class="col-md-3" id="search">
+					<button ng-click="cCctr.searchEntities(true,'monthlyChallan')"
+						class="btn btn-success" onclick="scrollWin()">Search</button>
+				</div>
+			</div>
+			</div>
+		</div>
+		
+		<div class="panel-body">
+
+			<div class="row">
+		<div class="col-xs-12">
+			<div class="text-right">
+			<button class="btn btn-secondary"
+					style="background-color: #FFA500;"
+					data-toggle="collapse" data-target="#collapseExample4"
+					aria-expanded="false" aria-controls="collapseExample">
+					Advance Search</button>
+			
+				<!--  <button class="btn btn-Primary" data-toggle="modal"
+					ng-click="cCctr.gotoList2Page('addMonthlyChallan','addMonthlyChallan');">Add</button>-->
+			</div>
+		</div>
+	</div>
+	<div class="table-responsive" >
+					<table class="table table-bordered table-hover  table-striped"
+						
+						style="font-size: 12px; padding: 5px; margin: 5px;">
+
+
+						<thead>
+						<colgroup>
+							<col span="14" style="background-color: #ffffff">
+						</colgroup>
+						<tr>
+						<thead role="rowgroup">
+							<tr style="background-color: #81b7db">
+								<th >Sr No</th>
+								<th >Branch Code</th>
+								<th>Section Code</th>
+								<th >Month</th>
+								<th >Challan Heading</th>
+								<th >Amount As Per Finacle</th>
+								<th >Amount As Per Tax Calculation</th>
+								
+
+
+
+							</tr>
+						</thead>
+						<tbody>
+							<tr role="row"
+								ng-repeat="a in cCctr.getEntityListData() track by a.id">
+								<td>{{$index+1}}</td>
+								<td>{{a.branchCode}}</td>
+								<td>{{a.sectionCode}}</td>
+								<td>{{a.month}}</td>
+								<td>{{a.challanHeading}}</td>
+								<td>{{a.amtAsPerFinacle}}</td>
+								<td>{{a.amtAsPerTaxCalculation}}</td>
+								
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+
+
+	</div>
+</div>

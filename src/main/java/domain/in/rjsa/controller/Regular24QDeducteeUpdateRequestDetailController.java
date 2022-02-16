@@ -146,7 +146,6 @@ public class Regular24QDeducteeUpdateRequestDetailController extends
 			dService.update(gson.fromJson(jsonElement, Regular24QDeductee.class));
 
 			Remarks remark = new Remarks();
-			remark.setClientId(l.getClientId());
 			remark.setEntity(StaticData.entity.get(2));
 			remark.setRemark(entity.get("remarks").toString());
 			remark.setEntityId(Long.valueOf(entity.get("id").toString()));
@@ -169,7 +168,6 @@ public class Regular24QDeducteeUpdateRequestDetailController extends
 			service.update(doc);
 
 			Remarks remark = new Remarks();
-			remark.setClientId(clientId);
 			remark.setEntity(StaticData.entity.get(2));
 			remark.setRemark(entity.get("remarks").toString());
 			remark.setEntityId(doc.getDocId());

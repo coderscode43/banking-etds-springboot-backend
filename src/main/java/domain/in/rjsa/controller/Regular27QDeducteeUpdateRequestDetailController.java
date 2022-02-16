@@ -157,7 +157,6 @@ AbstractBranchControllerFY<Long, Regular27QDeducteeUpdateRequestDetail, Regular2
 			dService.update(gson.fromJson(jsonElement, Regular27QDeductee.class));
 
 			Remarks remark = new Remarks();
-			remark.setClientId(l.getClientId());
 			remark.setEntity(StaticData.entity.get(1));
 			remark.setRemark(entity.get("remarks").toString());
 			remark.setEntityId(Long.valueOf(entity.get("id").toString()));
@@ -180,7 +179,6 @@ AbstractBranchControllerFY<Long, Regular27QDeducteeUpdateRequestDetail, Regular2
 			service.update(doc);
 
 			Remarks remark = new Remarks();
-			remark.setClientId(clientId);
 			remark.setEntity(StaticData.entity.get(1));
 			remark.setRemark(entity.get("remarks").toString());
 			remark.setEntityId(doc.getDocId());

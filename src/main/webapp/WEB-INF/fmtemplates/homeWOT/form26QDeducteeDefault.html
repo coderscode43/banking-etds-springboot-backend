@@ -394,24 +394,113 @@
 						<input type="text" ng-model="cWctr.search.remarks"
 							class="form-control" placeholder="Remarks" style="width: 100%">
 			</div>
+			<div class="col-md-3">
+				<h6>
+					<b>ID Number</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.idNo"
+							class="form-control" placeholder="ID Number" style="width: 100%">
+			</div>
 			
 		</div>
 		
 		
-		 <div class="row">
-			
-
+		<div class="row">
 			<div class="col-md-3">
 				<h6>
 					<b>Certificate No</b>
 					<h6>
 						<input type="text" ng-model="cWctr.search.certificateNo"
-							
-							class="form-control" placeholder="Certificate No" style="width: 100%">
+							class="form-control" placeholder="certificateNo" style="width: 100%">
 			</div>
+			<div class="col-md-3">
+				<h6>
+					<b>Branch Code</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.branchCode"
+							class="form-control" placeholder="BranchCode" style="width: 100%">
+			</div>
+			<div class="col-md-3">
+				<h6>
+					<b>Account Number</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.accNo"
+							class="form-control" placeholder="Account Number" style="width: 100%">
+			</div>
+			
+			
 
 			
 		</div>
+		
+		
+		
+		<div class="row">
+			
+			<div class="col-md-3">
+				<h6>
+					<b>CIF</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.cif"
+							class="form-control" placeholder="CIF" style="width: 100%">
+			</div>
+			
+			<div class="col-md-3">
+
+							<label>Type*</label> <select name="type"
+								class="form-control" ng-model="cWctr.search.type"
+								 ng-model-options="{updateOn: 'blur'}">
+								<option value="cbs">Core Banking System</option>
+								<option value="vps">Vendor Payment System</option>
+								<option value="hrms">Human Resource Management System</option>
+								<option value="cpps">Central Pension Payment System</option>
+							</select> 
+						</div>
+						
+						<div class="col-md-3">
+
+							<label>Month*</label> <select name="month"
+								class="form-control" ng-model="cWctr.search.month"
+								ng-required="true" ng-model-options="{updateOn: 'blur'}">
+  <option selected value='1'>Janaury</option>
+    <option value='2'>February</option>
+    <option value='3'>March</option>
+    <option value='4'>April</option>
+    <option value='5'>May</option>
+    <option value='6'>June</option>
+    <option value='7'>July</option>
+    <option value='8'>August</option>
+    <option value='9'>September</option>
+    <option value='10'>October</option>
+    <option value='11'>November</option>
+    <option value='12'>December</option>
+							</select> <span style="color: red"
+								ng-show="form26qdeductee.submitted ||form26qdeductee.month.$dirty && form26qdeductee.month.$invalid">
+								<span class="error"
+								ng-show="form26qdeductee.month.$error.required">Month
+									is Required.</span>
+							</span> <span class="error" id="month"></span>
+						</div>
+			
+
+			
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<h6>
+					<b>Deductee ID</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.deducteeId"
+							class="form-control" placeholder="Deductee ID" style="width: 100%">
+			</div>
+			<div class="col-md-3">
+				<h6>
+					<b>Challan Heading</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.challanHeading"
+							class="form-control" placeholder="Challan Heading" style="width: 100%">
+			</div>
+</div>
 		
 		
 		
@@ -479,18 +568,18 @@
 			</colgroup>
 			<tr>
 			<thead role="rowgroup">
-				<tr role="row" style="background-color: #81b7db">
+				<tr role="row" style="background-color: #81b7db"><th></th>
 					<th>Sr. No.</th>
-					<th>Sol ID</th>
-					<th>Challan Sr.No.</th>
-					<th>Deductee Reference No.</th>
+					<th>Branch Code</th>
+					<th>VenCust Id</th>
+					<th>Unique Ref No</th>
+					<th>Deductee Ref No</th>
 					<th>Deductee Code</th>
 					<th>Deductee Pan</th>
 					<th>Deductee Name</th>
 					<th>Month</th>
 					<th>Section Code</th>
 					<th>Date of Payment</th>
-
 					<th>Paid Amount</th>
 					<th>TDS</th>
 					<th>Surcharge</th>
@@ -501,11 +590,25 @@
 					<th>Rate Tax Deduct</th>
 					<th>Remarks</th>
 					<th>Certificate No.</th>
-
+					<th>Deductee ID</th>
+					<th>Challan Heading</th>
+					<th>Id No</th>
+					<th>Account Number</th>
+					<th>Type</th>
 					<th>FY</th>
+					<th>cashWithdrawl194N</th>
+					<th>cashWithdrawl194N20Lto1cr </th>
+					<th>cashWithdrawl194N1cr</th>
+					<th>Error Description</th>
+					<th>Warning Description</th>
+					<th>Short Deduction</th>
+					<th>Interest On Short Deduction</th>
+					<th>Interest On Late Payment</th>
+					<th>InterestOnLateDeduction</th>
 					<th>Quarter</th>
 					<th >Verified</th>
 					<th >Action</th>
+					
 
 				</tr>
 			</thead>
@@ -513,17 +616,16 @@
 				<tr role="row"
 					ng-repeat="a in cCctr.getEntityListData() track by a.id">
 					<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
-					<td>{{a.branchId}}</td>
-					<td>{{a.challanSrNo}}</td>
+					<td>{{a.branchCode}}</td>
+					<td>{{a.customerId}}</td>
+					<td>{{a.uniqueRefNo}}</td>
 					<td>{{a.deducteeRefNo}}</td>
 					<td>{{a.deducteeCode}}</td>
-
 					<td>{{a.deducteePan}}</td>
 					<td>{{a.deducteeName}}</td>
 					<td>{{a.month}}</td>
 					<td>{{a.sectionCode}}</td>
 					<td>{{a.paymentDate | date:'dd-MM-yyyy'}}</td>
-
 					<td>{{a.paidAmt}}</td>
 					<td>{{a.tds}}</td>
 					<td>{{a.surcharge}}</td>
@@ -534,8 +636,21 @@
 					<td>{{a.rateTaxDeduct}}</td>
 					<td>{{a.remarks}}</td>
 					<td>{{a.certificateNo}}</td>
-
+					<td>{{a.deducteeId}}</td>
+					<td>{{a.challanHeading}}</td>
+					<td>{{a.idNo}}</td>
+					<td>{{a.accNo}}</td>
+					<td>{{a.type}}</td>
 					<td>{{a.fy}}</td>
+					<td>{{a.cashWithdrawal194N}}</td>
+					<td>{{a.cashWithdrawal194N20Lto1Cr}}</td>
+					<td>{{a.cashWithdrawal194N1Cr}}</td>
+					<td>{{a.errorDescription}}</td>
+					<td>{{a.warningDescription}}</td>
+					<td>{{a.shortDeduction}}</td>
+					<td>{{a.interestOnShortDeduction}}</td>
+					<td>{{a.interestOnLatePayment}}</td>
+					<td>{{a.interestOnLateDeduction}}</td>
 					<td>{{a.quarter}}</td>
 
 					<div>

@@ -15,11 +15,11 @@ import domain.in.rjsa.model.fy.Regular24QSalary;
 @Repository("regular24QSalaryDao")
 public class Regular24QSalaryDaoImpl extends AbstractDaoFY<Long, Regular24QSalary> implements Regular24QSalaryDao {
 	@SuppressWarnings("unchecked")
-	public List<Regular24QSalary> search(HashMap entity, Long clientId) {
+	public List<Regular24QSalary> search(HashMap entity) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
-		propertyNameValues.put("clientId", clientId);
+		//propertyNameValues.put("clientId", clientId);
 		criteria.add(Restrictions.allEq(propertyNameValues));
 
 		if (entity.get("branchId") != null) {

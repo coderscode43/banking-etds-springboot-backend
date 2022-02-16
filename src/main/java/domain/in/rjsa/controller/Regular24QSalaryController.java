@@ -93,7 +93,6 @@ public class Regular24QSalaryController
 		if (listRemarks.isEmpty() || listRemarks == null) {
 			Regular24QSalary oldEntity = service.getByKey(Long.valueOf(entity.get("id").toString()));
 			Remarks remark = new Remarks();
-			remark.setClientId(l.getClientId());
 			remark.setEntity(StaticData.entity.get(6));
 			remark.setEntityId(Long.valueOf(entity.get("id").toString()));
 			remark.setRemark(oldEntity.getRemarks());
@@ -106,7 +105,6 @@ public class Regular24QSalaryController
 			uService.save(gson.fromJson(jsonElement, Regular24QSalaryUpdateRequestDetail.class));
 
 			Remarks remark = new Remarks();
-			remark.setClientId(l.getClientId());
 			remark.setEntity(StaticData.entity.get(6));
 			remark.setEntityId(Long.valueOf(entity.get("docId").toString()));
 			remark.setRemark(entity.get("remarks").toString());
@@ -123,7 +121,6 @@ public class Regular24QSalaryController
 			JsonElement jsonElement = gson.toJsonTree(entity);
 			uService.save(gson.fromJson(jsonElement, Regular24QSalaryUpdateRequestDetail.class));
 			Remarks remark = new Remarks();
-			remark.setClientId(l.getClientId());
 			remark.setEntity(StaticData.entity.get(6));
 			remark.setEntityId(Long.valueOf(entity.get("docId").toString()));
 			remark.setRemark(entity.get("remarks").toString());

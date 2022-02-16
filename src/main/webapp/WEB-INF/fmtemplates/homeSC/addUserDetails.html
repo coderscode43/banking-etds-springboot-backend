@@ -1,107 +1,332 @@
+<style>
+/*
+ CSS for the main interaction
+*/
+.tabset > input[type="radio"] {
+  position: absolute;
+  left: -200vw;
+}
 
-<div id="page-wrapper">
-	<div class="container-fluid">
-		<div class="row">
-			<h1>Add User Details</h1>
+.tabset .tab-panel {
+  display: none;
+}
+
+.tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+.tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+.tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+.tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+.tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+.tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+  display: block;
+}
+
+/*
+ Styling
+*/
+body {
+  font: 16px/1.5em "Overpass", "Open Sans", Helvetica, sans-serif;
+  color: #333;
+  font-weight: 300;
+}
+
+.tabset > label {
+  position: relative;
+  display: inline-block;
+  padding: 15px 15px 25px;
+  border: 1px solid transparent;
+  border-bottom: 0;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.tabset > label::after {
+  content: "";
+  position: absolute;
+  left: 15px;
+  bottom: 10px;
+  width: 22px;
+  height: 4px;
+  background: #8d8d8d;
+}
+
+.tabset > label:hover,
+.tabset > input:focus + label {
+  color: #06c;
+}
+
+.tabset > label:hover::after,
+.tabset > input:focus + label::after,
+.tabset > input:checked + label::after {
+  background: #06c;
+}
+
+.tabset > input:checked + label {
+  border-color: #ccc;
+  border-bottom: 1px solid #fff;
+  margin-bottom: -1px;
+}
+
+.tab-panel {
+  padding: 30px 0;
+  border-top: 1px solid #ccc;
+}
+
+/*
+ Demo purposes only
+*/
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 30px;
+}
+
+.tabset {
+  max-width: 65em;
+}
+
+</style>
+
+<div class="tabset">
+  <!-- Tab 1 -->
+  <input type="radio" name="tabset" id="tab1" aria-controls="marzen" checked>
+  <label for="tab1">Permision</label>
+  <!-- Tab 2 -->
+  <input type="radio" name="tabset" id="tab2" aria-controls="rauchbier">
+  <label for="tab2">Branch</label>
+ 
+  
+  <div class="tab-panels">
+    <section id="marzen" class="tab-panel">
+      <h2>Entity</h2>
+      <div class="row">
+		<div class="col-md-4">
+		<input type="checkbox" id="check" name="check" value="okay">
+		<labal>Regular26QDeductee</labal>
+		
+		</div>
+		<div class="col-md-4">
+		<input type="checkbox" id="check" name="check" value="okay">
+		<labal>Regular26QDeducteeDefault</labal>
+		
+		</div>
+		<div class="col-md-4">
+		<input type="checkbox" id="check" name="check" value="okay">
+		<labal>Regular27QDeductee</labal>
+		
+		</div>
+		
 		</div>
 		<div class="row">
-			<div class="col-md-12">
-				<form role="form" name="tokenForm">
-					<div class="row">
-                       <div class="col-md-6">
-							<div class="form-group">
-								<label>Branch Code</label> <input class="form-control"
-									type="text" name="NAME" placeholder="Branch Code"
-									ng-model="cCctr.entity.branchCode" autocomplete="off"
-									ng-maxlength="100" ng-required="true" ng-pattern="/^[0-9]*$/
-									ng-model-options="{updateOn: 'blur'}" />
-									<span
-									style="color: red"
-									ng-show="tokenForm.submitted || tokenForm.branchCode.$dirty && tokenForm.branchCode.$invalid">
-									<span class="error"
-									ng-show="tokenForm.branchCode.$error.pattern">Please
-										enter valid Branch Code. </span> <span class="error"
-									ng-show="tokenForm.branchCode.$error.maxlength">Branch
-										Code should not be greater than 25 digits.</span>
-										<span class="error"
-									ng-show="tokenForm.branchCode.$error.required">Branch Code
-										 is Required.</span>
-
-								</span> <span class="error" id="branchCode"></span>
-
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<label>Name</label> <input class="form-control" type="text"
-									ng-required="true" name="name" placeholder="Name"
-									ng-model="cCctr.entity.name" ng-pattern ="/^[a-zA-Z\s]*$/"/>
-									<span
-									style="color: red"
-									ng-show="tokenForm.submitted || tokenForm.name.$dirty && tokenForm.name.$invalid">
-									<span class="error"
-									ng-show="tokenForm.name.$error.pattern">Please
-										enter valid Name. </span> <span class="error"
-									ng-show="tokenForm.name.$error.maxlength">
-										Name should not be greater than 25 digits.</span>
-										<span class="error"
-									ng-show="tokenForm.name.$error.required">Name
-										 is Required.</span>
-
-								</span> <span class="error" id="name"></span>
-
-							</div>
-
-
-						</div>
-					</div>
-					<div class="row">
-
-						<div class="col-md-6">
-							<div class="form-group">
-								<label>PAN</label> <input class="form-control" type="text"
-									ng-required="true" name="pan" placeholder="Name"
-									ng-model="cCctr.entity.pan" />
-
-							</div>
-
-						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<label>Zone</label> <input class="form-control" type="text"
-									ng-required="true" name="zone" placeholder="Name"
-									ng-model="cCctr.entity.zone" />
-
-							</div>
-
-						</div>
-					</div>
-
-					<div class="row">
-
-						<div class="col-md-6">
-							<div class="form-group">
-								<label>Type</label> <input class="form-control" type="text"
-									ng-required="true" name="type" placeholder="Name"
-									ng-model="cCctr.entity.type" />
-
-							</div>
-
-						</div>
-
-					</div>
-					<div class="row">
-						<div class="modal-footer">
-							<button
-								ng-click="tokenForm.submitted=true; cCctr.submit(tokenForm.$valid,'userDetails',true)"
-								class="btn btn-success" onclick="scrollWin()">Save</button>
-							<button
-								ng-click="cCctr.gotoListPage('userDetails','userDetails');"
-								class="btn btn-danger" onclick="scrollWin()">Back</button>
-						</div>
-					</div>
-				</form>
-            </div>
+		<div class="col-md-4">
+		<input type="checkbox" id="check" name="check" value="okay">
+		<labal>Regular27QDeducteeDefault</labal>
+		
 		</div>
-	</div>
+		<div class="col-md-4">
+		<input type="checkbox" id="check" name="check" value="okay">
+		<labal>Regular24QDeductee</labal>
+		
+		</div>
+		<div class="col-md-4">
+		<input type="checkbox" id="check" name="check" value="okay">
+		<labal>Regular24QDeducteeDefault</labal>
+		
+		</div>
+		
+		</div>
+		<div class="row">
+		<div class="col-md-4">
+		<input type="checkbox" id="check" name="check" value="okay">
+		<labal>Regular27EQDeductee</labal>
+		
+		</div>
+		<div class="col-md-4">
+		<input type="checkbox" id="check" name="check" value="okay">
+		<labal>Regular27EQDeducteeDefault</labal>
+		
+		</div>
+		<div class="col-md-4">
+		<input type="checkbox" id="check" name="check" value="okay">
+		<labal>Vendor Master</labal>
+		
+		</div>
+		
+		</div>
+		<div class="row">
+		<div class="col-md-4">
+		<input type="checkbox" id="check" name="check" value="okay">
+		<labal>Employee Details</labal>
+		
+		</div>
+		<div class="col-md-4">
+		<input type="checkbox" id="check" name="check" value="okay">
+		<labal>Pension Details</labal>
+		
+		</div>
+		<div class="col-md-4">
+		<input type="checkbox" id="check" name="check" value="okay">
+		<labal>Vendor Details</labal>
+		
+		</div>
+		
+		</div>
+		<div class="row">
+		<div class="col-md-4">
+		<input type="checkbox" id="check" name="check" value="okay">
+		<labal>Vendor Payment Details</labal>
+		
+		</div>
+		<div class="col-md-4">
+		<input type="checkbox" id="check" name="check" value="okay">
+		<labal>Pensioner Details</labal>
+		
+		</div>
+		<div class="col-md-4">
+		<input type="checkbox" id="check" name="check" value="okay">
+		<labal>Vendor Details</labal>
+		
+		</div>
+		
+		</div>
+		<div class="row">
+		<div class="col-md-4">
+		<input type="checkbox" id="check" name="check" value="okay">
+		<labal>LDC</labal>
+		
+		</div>
+		<div class="col-md-4">
+		<input type="checkbox" id="check" name="check" value="okay">
+		<labal>Downloaad Certificate</labal>
+		
+		</div>
+		<div class="col-md-4">
+		<input type="checkbox" id="check" name="check" value="okay">
+		<labal>Generate Ticket</labal>
+		
+		</div>
+		
+		</div>
+		<div class="row">
+		<div class="col-md-4">
+		<input type="checkbox" id="check" name="check" value="okay">
+		<labal>MIS Report</labal>
+		
+		</div>
+		<div class="col-md-4">
+		<input type="checkbox" id="check" name="check" value="okay">
+		<labal>Challan</labal>
+		
+		</div>
+		<div class="col-md-4">
+		<input type="checkbox" id="check" name="check" value="okay">
+		<labal>Statement Status</labal>
+		
+		</div>
+		
+		</div>
+		<div class="row">
+		<div class="col-md-4">
+		<input type="checkbox" id="check" name="check" value="okay">
+		<labal>Deductor Details</labal>
+		
+		</div>
+		
+		
+		</div>
+  </section>
+    <section id="rauchbier" class="tab-panel" style="width:100%">
+      <h2>Branch</h2>
+      <div class="table-responsive"> 
+
+							<table class="table table-bordered table-hover table-striped" role="table"
+								style="font-size: 12px">
+								<thead>
+							<colgroup>
+									<col span="14" style="background-color: #ffffff">
+								</colgroup>
+							 <tr>
+							  <thead role="rowgroup">
+							      <tr style="height:40px;background-color:#81b7db">
+							      <th >Sr. No.</th>
+							      <th >Branch Name</th>
+							      <th >Branch Code</th>
+							      <th  >Tan</th>
+							      <th >Pan</th>
+							      <th  >Type Of Deductor</th>
+							      <th >Email</th>
+							      <th >Action</th>
+                                  </tr>
+                               </thead>
+								<tbody>
+									<tr>
+										<td >1</td>
+											<td>Pune</td>
+											<td>123</td>
+											<td>RJRT1546F</td>
+											<td>BZBPN1644D</td>
+											<td>K-Company</td>
+											<td>raju456@gmail.com</td>
+											<td><button  class="btn btn-success" onclick="scrollWin()" style="height:30px; margin-top:10px; margin-bottom:10px; background-color:#0f316d">Allow</button></td>
+										
+										
+									</tr>	
+									<tr>
+										<td >2</td>
+											<td>Mumbai</td>
+											<td>156</td>
+											<td>SBIJ1546F</td>
+											<td>BZBPN4544D</td>
+											<td>D-Company</td>
+											<td>ram456@gmail.com</td>
+											<td><button  class="btn btn-success" onclick="scrollWin()" style="height:30px; margin-top:10px; margin-bottom:10px; background-color:#0f316d">Allow</button></td>
+										
+										
+									</tr>	
+									<tr>
+										<td >2</td>
+											<td>Delhi</td>
+											<td>186</td>
+											<td>HSIYB154D</td>
+											<td>DHSTN4544D</td>
+											<td>D-Company</td>
+											<td>shubham456@gmail.com</td>
+											<td><button  class="btn btn-success" onclick="scrollWin()" style="height:30px; margin-top:10px; margin-bottom:10px; background-color:#0f316d">Allow</button></td>
+										
+										
+									</tr>
+									<tr>
+										<td >3</td>
+											<td>Baramati</td>
+											<td>986</td>
+											<td>HIDSA1546N</td>
+											<td>BZAGD1546D</td>
+											<td>D-Company</td>
+											<td>rohit456@gmail.com</td>
+											<td><button  class="btn btn-success" onclick="scrollWin()" style="height:30px; margin-top:10px; margin-bottom:10px; background-color:#0f316d">Allow</button></td>
+										
+										
+									</tr>
+									<tr>
+										<td >3</td>
+											<td>Solapur</td>
+											<td>98656</td>
+											<td>TIKSA1546N</td>
+											<td>BHJGD1546D</td>
+											<td>D-Company</td>
+											<td>sandip456@gmail.com</td>
+											<td><button  class="btn btn-success" onclick="scrollWin()" style="height:30px; margin-top:10px; margin-bottom:10px; background-color:#0f316d">Allow</button></td>
+										
+										
+									</tr>						
+								</tbody>
+							</table>
+							</div>
+    </section>
+   
+  </div>
+  
 </div>

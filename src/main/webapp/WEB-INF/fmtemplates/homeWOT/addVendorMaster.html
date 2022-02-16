@@ -1,5 +1,5 @@
 
-<div id="page-wrapper">
+<div id="page-wrapper" ng-controller="CommonWOTController as cWctr">
 	<div class="container-fluid">
 		<div class="row">
 			<h1>Add Vendor</h1>
@@ -13,7 +13,7 @@
 							<div class="form-group">
 								<label>Vendor Name</label> <input class="form-control"
 									type="text" name="NAME" placeholder="Vendor Name"
-									ng-model="cCctr.entity.vendorName" autocomplete="off"
+									ng-model="cWctr.entity.vendorName" autocomplete="off"
 									ng-maxlength="100" ng-model-options="{updateOn: 'blur'}" />
 
 							</div>
@@ -22,7 +22,7 @@
 							<div class="form-group">
 								<label>Vendor Code</label> <input class="form-control"
 									type="text" name="NAME" placeholder="Vendor Code"
-									ng-model="cCctr.entity.vendorCode" />
+									ng-model="cWctr.entity.vendorCode" />
 
 							</div>
 
@@ -35,7 +35,7 @@
 							<div class="form-group">
 								<label>Address</label>
 								<textarea class="form-control" type="text" name="address"
-									placeholder="Address" ng-model="cCctr.entity.address"
+									placeholder="Address" ng-model="cWctr.entity.address"
 									autocomplete="off" ng-maxlength="100"
 									ng-model-options="{updateOn: 'blur'}"></textarea>
 
@@ -46,7 +46,7 @@
 							<div class="form-group">
 								<label>Maker</label>
 								<input class="form-control" type="text" name="maker"
-									placeholder="Address" ng-model="cCctr.entity.maker"
+									placeholder="Address" ng-model="cWctr.entity.maker"
 									autocomplete="off" ng-maxlength="100"
 									ng-model-options="{updateOn: 'blur'}"/>
 
@@ -62,7 +62,7 @@
 							<div class="form-group">
 								<label>Checker</label>
 								<input class="form-control" type="text" name="checker"
-									placeholder="Checker" ng-model="cCctr.entity.checker"
+									placeholder="Checker" ng-model="cWctr.entity.checker"
 									autocomplete="off" ng-maxlength="100"
 									ng-model-options="{updateOn: 'blur'}"/>
 
@@ -73,7 +73,7 @@
 							<div class="form-group">
 								<label>Status</label>
 								<input class="form-control" type="text" name="status"
-									placeholder="Status" ng-model="cCctr.entity.status"
+									placeholder="Status" ng-model="cWctr.entity.status"
 									autocomplete="off" ng-maxlength="100"
 									ng-model-options="{updateOn: 'blur'}"/>
 
@@ -89,7 +89,7 @@
 							<div class="form-group">
 								<label>Vendor Id</label>
 								<input class="form-control" type="text" name="checker"
-									placeholder="Checker" ng-model="cCctr.entity.vendorId"
+									placeholder="Checker" ng-model="cWctr.entity.vendorId"
 									autocomplete="off" ng-maxlength="100"
 									ng-model-options="{updateOn: 'blur'}"/>
 
@@ -105,7 +105,7 @@
 				<div class="row">
 						<div class="modal-footer">
 							<button
-								ng-click="vendorForm.submitted=true; cCctr.submit(vendorForm.$valid,'vendorMaster',true)"
+								ng-click="vendorForm.submitted=true; cWctr.submit(vendorForm.$valid,'vendorMaster',true)"
 								class="btn btn-success" onclick="scrollWin()">Save</button>
 							<button onclick="history.back()"
 								class="btn btn-danger" onclick="scrollWin()">Back</button>

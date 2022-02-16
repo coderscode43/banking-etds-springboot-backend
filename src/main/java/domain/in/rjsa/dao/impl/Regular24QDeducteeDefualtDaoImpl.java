@@ -19,11 +19,11 @@ import domain.in.rjsa.model.fy.Regular24QDeducteeDefualt;
 public class Regular24QDeducteeDefualtDaoImpl extends AbstractDaoFY<Long, Regular24QDeducteeDefualt>
 		implements Regular24QDeducteeDefualtDao {
 	@SuppressWarnings("unchecked")
-	public List<Regular24QDeducteeDefualt> search(HashMap entity, Long clientId) {
+	public List<Regular24QDeducteeDefualt> search(HashMap entity) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
-		propertyNameValues.put("clientId", clientId);
+		//propertyNameValues.put("clientId", clientId);
 		criteria.add(Restrictions.allEq(propertyNameValues));
 		if (entity.get("branchId") != null) {
 			criteria.add(Restrictions.eqOrIsNull("branchId", entity.get("branchId")));
@@ -109,6 +109,59 @@ public class Regular24QDeducteeDefualtDaoImpl extends AbstractDaoFY<Long, Regula
 		if (entity.get("quarter") != null) {
 			criteria.add(Restrictions.eqOrIsNull("quarter", entity.get("quarter")));
 		}
+		 if(entity.get("type")!=null)
+         {
+		criteria.add(Restrictions.eqOrIsNull("type", entity.get("type")));
+         }
+         if(entity.get("month")!=null)
+         {
+		criteria.add(Restrictions.eqOrIsNull("month", entity.get("month")));
+         }
+         if(entity.get("cif")!=null)
+         {
+		criteria.add(Restrictions.eqOrIsNull("cif", entity.get("cif")));
+         }
+         if (entity.get("branchCode") != null) {
+ 			criteria.add(Restrictions.eqOrIsNull("branchCode", Long.valueOf((String) entity.get("branchCode"))));
+ 		}
+         if (entity.get("accNo") != null) {
+   			criteria.add(Restrictions.eqOrIsNull("accNo", Long.valueOf((String) entity.get("accNo"))));
+   		}
+         if (entity.get("idNo") != null) {
+ 			criteria.add(Restrictions.eqOrIsNull("idNo", Long.valueOf((String) entity.get("idNO"))));
+ 		}
+         if(entity.get("deducteeId")!=null)
+         {
+		criteria.add(Restrictions.eqOrIsNull("deducteeId",Long.valueOf((String) entity.get("deducteeId"))));
+         }
+         if (entity.get("challanHeading") != null) {
+ 			criteria.add(Restrictions.eqOrIsNull("challanHeading",  entity.get("challanHeading")));
+ 		}
+         if (entity.get("staffId") != null) {
+   			criteria.add(Restrictions.eqOrIsNull("staffId", Long.valueOf((String) entity.get("staffId"))));
+   		}
+          if (entity.get("uniqueRefNo") != null) {
+   			criteria.add(Restrictions.eqOrIsNull("uniqueRefNo", Long.valueOf((String) entity.get("uniqueRefNo"))));
+   		}
+          if (entity.get("errorDescription") != null) {
+   			criteria.add(Restrictions.eqOrIsNull("errorDescription",  entity.get("errorDescription")));
+   		}
+          if (entity.get("warningDescription") != null) {
+   			criteria.add(Restrictions.eqOrIsNull("warningDescription",  entity.get("warningDescription")));
+   		} 
+          if (entity.get("shortDeduction") != null) {
+     			criteria.add(Restrictions.eqOrIsNull("shortDeduction", Long.valueOf((String) entity.get("shortDeduction"))));
+     		}
+            if (entity.get("interestOnShortDeduction") != null) {
+     			criteria.add(Restrictions.eqOrIsNull("interestOnShortDeduction", Long.valueOf((String) entity.get("interestOnShortDeduction"))));
+     		}
+            if (entity.get("interestOnLatePayment") != null) {
+       			criteria.add(Restrictions.eqOrIsNull("interestOnLatePayment", Long.valueOf((String) entity.get("interestOnLatePayment"))));
+       		}
+              if (entity.get("interestOnLateDeduction") != null) {
+       			criteria.add(Restrictions.eqOrIsNull("interestOnLateDeduction", Long.valueOf((String) entity.get("interestOnLateDeduction"))));
+       		}
+         
 
 		criteria.addOrder(Order.desc("dateOfPayment"));
 		return (List<Regular24QDeducteeDefualt>) criteria.list();

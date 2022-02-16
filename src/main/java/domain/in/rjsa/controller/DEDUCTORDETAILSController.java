@@ -80,7 +80,7 @@ EFILLINGLOGINService efService;
 		ew.setEfiling(ef);
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("clientId", clientId);
-		ew.setListBranch(bService.search(map, clientId));
+		ew.setListBranch(bService.search(map));
 		
 		return ew;
 	}

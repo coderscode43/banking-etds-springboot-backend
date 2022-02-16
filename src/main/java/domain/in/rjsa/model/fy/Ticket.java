@@ -13,6 +13,8 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import domain.in.rjsa.model.form.CommonModelAbstract;
 import lombok.Data;
 @Data
@@ -25,10 +27,8 @@ public class Ticket extends CommonModelAbstract{
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
 	public Long id;		
-	@Column(name = "clientId")
-	public Long clientId;
-	@Column(name = "branchId")
-	public Long branchId;
+	@Column(name = "branchCode")
+	public Long branchCode;
 	@Column(name = "fy")
 	//@NotNull(message = "Fy is a required field")
 	//@Size(min=0, max=45, message="Fy length should not be more than 45 characters.")
@@ -59,12 +59,12 @@ public class Ticket extends CommonModelAbstract{
 	public String attachment;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "dateOfOpening")
-	//@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
-	//@NotNull(message = "Date Tax Deposit is a required field")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	public Date dateOfOpening;
+	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "dateOfChange")
-//	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	//@NotNull(message = "Date Tax Deposit is a required field")
 	public Date dateOfChange;
 	@Column(name = "remarks")

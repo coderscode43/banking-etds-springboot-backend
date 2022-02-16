@@ -14,11 +14,11 @@ import domain.in.rjsa.model.form.VendorMaster;
 @Repository("vendorMasterDao")
 public class VendorMasterDaoImpl extends AbstractDaoForm<Long, VendorMaster> implements VendorMasterDao{
 	@Override
-	public List<VendorMaster> search(HashMap entity, Long clientId) {
+	public List<VendorMaster> search(HashMap entity) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
-		propertyNameValues.put("clientId", clientId);
+		//propertyNameValues.put("clientId", clientId);
 		criteria.add(Restrictions.allEq(propertyNameValues));
 		if (entity.get("branchId") != null) {
 			criteria.add(Restrictions.eqOrIsNull("branchId", entity.get("branchId")));
@@ -41,7 +41,9 @@ public class VendorMasterDaoImpl extends AbstractDaoForm<Long, VendorMaster> imp
 		if (entity.get("vendorId") != null) {
 			criteria.add(Restrictions.eqOrIsNull("vendorId", entity.get("vendorId")));
 		}
-		
+		if (entity.get("status") != null) {
+			criteria.add(Restrictions.eqOrIsNull("status", entity.get("status")));
+		}
 		return (List<VendorMaster>) criteria.list();
 	}
 

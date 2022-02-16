@@ -28,12 +28,6 @@ public class Regular27EQDeducteeDefualt extends CommonModelAbstract {
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
 	public Long id;
-	@Column(name = "clientId")
-	public Long clientId;
-	@Column(name = "branchId")
-	public Long branchId;
-	@Column(name = "srNoInChallan")
-	public Long srNoInChallan;
     @Column(name = "partyReferenceNo")
 	public Long partyReferenceNo;
     @Column(name = "partyCode")
@@ -92,6 +86,18 @@ public class Regular27EQDeducteeDefualt extends CommonModelAbstract {
    	public Long interestonLatePayment;
     @Column(name = "interestonLateDeduction")
    	public Long interestonLateDeduction;
-    
-    
+    @Column(name = "deducteeId")
+	public Long deducteeId;
+	@Column(name = "challanHeading")
+	public String challanHeading;
+	@Column(name = "customerId")
+	public Long customerId;
+	@Column(name = "uniqueRefNo")
+	public Long uniqueRefNo;
+	@Column(name = "reasonForNonCollectionForG")
+	public String reasonForNonCollectionForG;
+	@Column(name = "ifAnswerTo681AisyesthenChallanNumber")
+	public String ifAnswerTo681AisyesthenChallanNumber;
+	@Column(name = "ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment")
+	public String ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment;
 }

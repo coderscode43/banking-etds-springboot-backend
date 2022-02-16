@@ -1,6 +1,94 @@
 <style>
+@media only screen and (max-width: 760px) , ( min-device-width : 768px)
+	and (max-device-width: 1024px) {
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr {
+		display: block;
+	}
+
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	tr {
+		margin: 0 0 1rem 0;
+	}
+	tr:nth-child(odd) {
+		background: #ccc;
+	}
+	td {
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee;
+		position: relative;
+		padding-left: 50%;
+	}
+	td:before {
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 0;
+		left: 6px;
+		width: 45%;
+		padding-right: 10px;
+		white-space: nowrap;
+	}
+
+	/*
+		Label the data
+    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+		*/
+	td:nth-of-type(1):before {
+		content: "CIN";
+	}
+	td:nth-of-type(2):before {
+		content: "TAN";
+	}
+	td:nth-of-type(3):before {
+		content: "Available Balance";
+	}
+	td:nth-of-type(4):before {
+		content: "Amount of challan";
+	}
+	td:nth-of-type(5):before {
+		content: "Date of Deposition";
+	}
+	td:nth-of-type(6):before {
+		content: "As on Date";
+	}
+	td:nth-of-type(7):before {
+		content: "Challan Mismatch";
+	}
+	td:nth-of-type(8):before {
+		content: "Section";
+	}
+	td:nth-of-type(9):before {
+		content: "Minorhead";
+	}
+}
 
 
+@media only screen and (max-width: 1000px) {
+	.one {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.two {
+		padding: 8px;
+	}
+}
+
+@media only screen and (min-width:600px) {
+	#three {
+		display: none;
+		max-height: 0;
+		overflow: hidden;
+	}
+}
 
 @media only screen and (min-width:1000px) {
 	#search {
@@ -144,10 +232,9 @@
 
 			<br>
 			<button class="btn btn-primary hidden visible-xs" type="button"
-				data-toggle="collapse" data-target="#collapseExample2"
-				aria-expanded="false" aria-controls="collapseExample">
-				Search</button>
-			<div class="collapse dont-collapse-sm" id="collapseExample2">
+		data-toggle="collapse" data-target="#collapseExample2"
+		aria-expanded="false" aria-controls="collapseExample">Search</button>
+	<div class="collapse dont-collapse-sm" id="collapseExample2">
 				<div class="row">
 					<div class="form-group">
 
@@ -230,24 +317,24 @@
 					<h6>
 						<input type="text" ng-model="cWctr.search.AMOUNT_OF_CLALLAN"
 							
-							class="form-control" placeholder="Surcharge" style="width: 100%">
+							class="form-control" placeholder="Amount of challan" style="width: 100%">
 			</div>
 			
 			<div class="col-md-3">
 				<h6>
 					<b>Date of Deposition</b>
 					<h6>
-						<input type="text" ng-model="cWctr.search.DATE_OF_DEPOSITION"
-							
-							class="form-control" placeholder="Remark" style="width: 100%">
+						<input type="Date" ng-model="cWctr.search.DATE_OF_DEPOSITION"
+							ng-change="cWctr.search.DATE_OF_DEPOSITION=cWctr.date(cWctr.search.DATE_OF_DEPOSITION);"
+							class="form-control" placeholder="Date of Deposition" style="width: 100%">
 			</div>
 			<div class="col-md-3">
 				<h6>
 					<b>As on Date</b>
 					<h6>
-						<input type="text" ng-model="cWctr.search.AS_ON_DATE"
-							
-							class="form-control" placeholder="Education Cess" style="width: 100%">
+						<input type="date" ng-model="cWctr.search.AS_ON_DATE"
+							ng-change="cWctr.search.AS_ON_DATE=cWctr.date(cWctr.search.AS_ON_DATE);"
+							class="form-control" placeholder="As on Date" style="width: 100%">
 			</div>
 			
 		</div>
@@ -258,7 +345,7 @@
 					<h6>
 						<input type="text" ng-model="cWctr.search.CHALLAN_MISMATCH"
 							
-							class="form-control" placeholder="Interest" style="width: 100%">
+							class="form-control" placeholder="Challan Mismatch" style="width: 100%">
 			</div>
 
 			<div class="col-md-3">
@@ -267,7 +354,7 @@
 					<h6>
 						<input type="text" ng-model="cWctr.search.SECTION"
 							
-							class="form-control" placeholder="Fee" style="width: 100%">
+							class="form-control" placeholder="Section" style="width: 100%">
 			</div>
 			
 			<div class="col-md-3">
@@ -276,7 +363,7 @@
 					<h6>
 						<input type="text" ng-model="cWctr.search.MINORHEAD"
 							
-							class="form-control" placeholder="Others" style="width: 100%">
+							class="form-control" placeholder="Minorhead" style="width: 100%">
 			</div>	
 		</div>
 
@@ -284,27 +371,20 @@
 		</div>
 
 				<div class="row" id="hide">
-					<div class="col-md-3" style="margin-left: 85%; margin-top: -50px">
-						<button
-							ng-click="cWctr.searchEntities(true,'challan','challan')"
-							class="btn btn-success" onclick="scrollWin()">Search</button>
-					</div>
-
+				<div class="col-md-4" style="margin-left: 85%; margin-top: -50px">
+					<button ng-click="cCctr.searchEntities(true,'challan')"
+						class="btn btn-success" onclick="scrollWin()">Search</button>
 				</div>
+			</div>
 
-				<div class="row" id="search">
-					<div class="col-md-2" id="search">
-						<button
-							ng-click="cWctr.searchEntities(true,'challan','challan')"
-							class="btn btn-success" onclick="scrollWin()">Search</button>
-					</div>
+			<div class="row" id="search">
+				<div class="col-md-3" id="search">
+					<button ng-click="cCctr.searchEntities(true,'challan')"
+						class="btn btn-success" onclick="scrollWin()">Search</button>
 				</div>
 			</div>
 		</div>
-
-		
-		
-		
+	</div>
 <div class="row">
 		<div class="col-xs-12">
 			<div class="text-right">
@@ -313,12 +393,19 @@
 					data-toggle="collapse" data-target="#collapseExample4"
 					aria-expanded="false" aria-controls="collapseExample">
 					Advance Search</button>
+					</div>
+				</div>
+			</div>
+		
+
+		
+		
+		
+
 			
 				 <!--<button class="btn btn-Primary" data-toggle="modal"
 					ng-click="cCctr.gotoList2Page('addchallan','addchallan');">Add</button>-->
-			</div>
-		</div>
-	</div>
+			
 
 
 		<div class="row">
@@ -344,6 +431,7 @@
 						<th>Challan Mismatch</th>
 						<th>Section</th>
 						<th>Minorhead</th>
+					<!-- 	<th>Action</th> -->
 					</tr>
 				</thead>
 				<tbody>
@@ -365,11 +453,11 @@
 							<td ng-if="a.verify == 0"><i class="fa fa-times"
 								aria-hidden="true" style="color: #ff0000"></i></td>
 						</div>
-						<td><a
+						<!-- <td><a
 							ng-click="cCctr.gotoDetailPage('challan',a.id,'detailchallan')"
 							style="color: blue" onclick="scrollWin()"><img
 								src="static\img\edit.png" width="22px" height="22px"
-								alt="Details" style="margin-top: 5px; margin-bottom: 5px;" /></a></td>
+								alt="Details" style="margin-top: 5px; margin-bottom: 5px;" /></a></td> -->
 					</tr>
 				</tbody>
 			</table>

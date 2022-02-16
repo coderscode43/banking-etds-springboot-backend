@@ -33,5 +33,7 @@ public class UserDetails extends CommonModelAbstract{
 	String zone;
 	@Column(name = "type")
 	String type;
+	@Column(name = "entityDetail")
+	String entityDetail;
 }
 

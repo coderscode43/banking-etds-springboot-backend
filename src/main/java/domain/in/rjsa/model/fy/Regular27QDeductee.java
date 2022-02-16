@@ -38,19 +38,10 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
 	public Long id;
-	@Column(name = "clientId")
-	public Long clientId;
-	@Column(name = "branchId")
-	public Long branchId;
-	@Column(name = "deducteeSrNo")
-	@NotNull(message = "Deductee Sr No is a required field")
-	@Digits(integer = 15, fraction = 0,message="Enter valid Deductee Sr No. Deductee Sr No. should not be greater than 12")
-	public Long deducteeSrNo;
-	@Column(name = "srNoInChallan")
-	@NotNull(message = "Sr No In Challan is a required field")
-	@Digits(integer = 15, fraction = 0,message="Enter valid Sr No In Challan. Sr No In Challan. should not be greater than 12")
-	public Long srNoInChallan;
-	
+	@Column(name = "deducteeId")
+	public Long deducteeId;
+	@Column(name = "challanHeading")
+	public String challanHeading;
 	@Column(name = "deducteeRefNo")
 	@NotNull(message = "Deductee Ref No is a required field")
 	@Digits(integer = 15, fraction = 0,message="Enter valid Deductee Ref No.Deductee Ref No. should not be greater than 12")
@@ -163,6 +154,28 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	@NotBlank(message = "amount Paid is a required field")
 	@Size(min=0, max=75, message="Country Of Residence length should be between 1 to 100 characters.")
 	public String natureOfRemittance;
+	@Column(name = "branchCode")
+	public Long branchCode;
+	@Column(name = "accNo")
+	public Long accNo;
+	@Column(name = "idNo")
+	public Long idNo;
+	@Column(name = "type")
+	public String type;
+	@Column(name = "month")
+	public String month;
+	@Column(name = "customerId")
+	public Long customerId;
+	@Column(name = "uniqueRefNo")
+	public Long uniqueRefNo;
+	@Column(name = "cashWithdrawal194N")
+	public String cashWithdrawal194N;
+	@Column(name = "cashWithdrawal194N20Lto1Cr")
+	public String cashWithdrawal194N20Lto1Cr;
+	@Column(name = "cashWithdrawal194N1Cr")
+	public String cashWithdrawal194N1Cr;
+	
+	
 	
 	@Column(name = "verify")
 	public boolean verify = false;

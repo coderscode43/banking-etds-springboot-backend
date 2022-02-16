@@ -1,66 +1,157 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<style>
+@media only screen and (max-width: 760px) , ( min-device-width : 768px)
+	and (max-device-width: 1024px) {
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr {
+		display: block;
+	}
+
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	tr {
+		margin: 0 0 1rem 0;
+	}
+	tr:nth-child(odd) {
+		background: #ccc;
+	}
+	td {
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee;
+		position: relative;
+		padding-left: 50%;
+	}
+	td:before {
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 0;
+		left: 6px;
+		width: 45%;
+		padding-right: 10px;
+		white-space: nowrap;
+	}
+
+	/*
+		Label the data
+    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+		*/
+	td:nth-of-type(1):before {
+		content: "Sr. No.";
+	}
+	td:nth-of-type(2):before {
+		content: "username";
+	}
+	td:nth-of-type(3):before {
+		content: "ipaddrs";
+	}
+	
+}
+
+@media only screen and (max-width: 1000px) {
+	.one {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.two {
+		padding: 8px;
+	}
+}
+
+@media only screen and (min-width:600px) {
+	#three {
+		display: none;
+		max-height: 0;
+		overflow: hidden;
+	}
+}
+
+@media only screen and (min-width:1000px) {
+	#search {
+		margin-left: 45%;
+		margin-top: 2px;
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	#hide {
+		display: none;
+	}
+}
+
+.table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
+	{
+	background-color: whitesmoke;
+}
+
+@media ( min-width : 768px) {
+	.collapse.dont-collapse-sm {
+		display: block;
+		height: auto !important;
+		visibility: visible;
+	}
+}
+</style>
 
 
-</head>
-<body>
+
+
+<div id="page-wrapper">
+
 	<div class="container-fluid">
-		<h2 class="card-title" style="margin-left: 2%;">User Details</h2>
-		<div class="row">
-			<div class="col-md-8">
-				<br>
-				<md-autocomplete md-input-name="Name" md-input-minlength="3"
-					md-no-cache="true" md-input-maxlength="75" style="height:20%"
-					md-selected-item="cCctr.search.username" md-search-text="b"
-					md-items="item in cCctr.ajax1('logs','username',b)" md-delay="0"
-					placeholder="Name"> <md-item-template>
-				<span>{{item}}</span> </md-item-template> <md-not-found> No Name with
-				"{{b}}" were found.<a ng-click="">Add new</a> </md-not-found> </md-autocomplete>
+		<div class="col-md-12 "
+			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
+			<div class="heading">
+				<strong>Logs</strong>
 			</div>
-			
-			<div class="row" id="hide">
-				<div class="col-md-4" style="margin-top:2%">
+		</div>
+
+		<br>
+		<button class="btn btn-primary hidden visible-xs" type="button"
+			data-toggle="collapse" data-target="#collapseExample2"
+			aria-expanded="false" aria-controls="collapseExample">
+			Search</button>
+		<div class="collapse dont-collapse-sm" id="collapseExample2">
+			<div class="row">
+				<div class="form-group">
+
+					<div class="col-md-2">
+						<h6>
+							<b>Name</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.username"
+									class="form-control" placeholder="Name" style="width: 100%">
+					</div>
+					<div class="col-md-3">
+						<h6>
+							<b>IP-Address</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.ipaddrs"
+									class="form-control" placeholder="ipaddrs" style="width: 100%">
+					</div>
+				<div class="row" id="hide">
+				<div class="col-md-4" style="margin-left: 85%; margin-top: -50px">
 					<button ng-click="cCctr.searchEntities(true,'logs')"
 						class="btn btn-success" onclick="scrollWin()">Search</button>
 				</div>
 			</div>
 
-			<!-- <div class="col-md-3" style="margin-top: 1.6%">
-				<button ng-click="cCctr.searchEntities(true,'logs')"
-					class="btn btn-primary px-3">Search</button>
-			</div>
- -->
-			<div class="col-md-12 collapse  panel-collapse "
-				id="collapseExample4" style="margin-top: -5%">
-
-				<div class="col-md-4">
-
-
-					<label>IP-Address</label> <input type="text"
-						ng-model="cCctr.search.ipaddrs" class="form-control"
-						placeholder="IP-Address">
+			<div class="row" id="search">
+				<div class="col-md-3" id="search">
+					<button ng-click="cCctr.searchEntities(true,'logs')"
+						class="btn btn-success" onclick="scrollWin()">Search</button>
 				</div>
-	
 			</div>
 		</div>
+	</div>
 
-		<div class="row">
-		<div class="col-xs-12">
-			<div class="text-right">
-			<button class="btn btn-secondary"
-					style="background-color: #FFA500;"
-					data-toggle="collapse" data-target="#collapseExample4"
-					aria-expanded="false" aria-controls="collapseExample">
-					Advance Search</button>
-			
-			<!-- 	<button class="btn btn-Primary" data-toggle="modal"
-					ng-click="cCctr.gotoListPage('addlogs','addlogs');">Add</button>
-			 -->
-			 </div>
-		</div>
 	</div>
 		<div class="row"
 			ng-init="cCctr.entity=cCctr.getEntityListData('logs')">

@@ -31,8 +31,6 @@ public class VendorLDC extends CommonModelAbstract{
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
 	public Long id;		
-	@Column(name = "clientId")
-	public Long clientId;
 	@Column(name = "vendorId")
 	public Long vendorId;
 	@Column(name = "lowerDeduction")

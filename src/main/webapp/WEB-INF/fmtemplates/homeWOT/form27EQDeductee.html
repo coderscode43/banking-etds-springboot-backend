@@ -342,6 +342,26 @@
 					<input type="text" ng-model="cWctr.search.tin" class="form-control"
 						placeholder="TIN" style="width: 100%">
 				</div>
+				<div class="col-md-3">
+
+						<label>Month*</label> <select name="month" class="form-control"
+							ng-model="cWctr.search.month" ng-required="true"
+							ng-model-options="{updateOn: 'blur'}">
+							<option selected value='1'>Janaury</option>
+							<option value='2'>February</option>
+							<option value='3'>March</option>
+							<option value='4'>April</option>
+							<option value='5'>May</option>
+							<option value='6'>June</option>
+							<option value='7'>July</option>
+							<option value='8'>August</option>
+							<option value='9'>September</option>
+							<option value='10'>October</option>
+							<option value='11'>November</option>
+							<option value='12'>December</option>
+						</select>
+					</div>
+				
 				
 					
 				</div>
@@ -357,13 +377,80 @@
 						
 						class="form-control" placeholder="Nature Of Remittance" style="width: 100%">
 				</div>
+				<div class="col-md-3">
+						<h6>
+							<b>Account Number</b>
+							<h6>
+								<input type="text" ng-model="cWctr.search.accNo"
+									class="form-control" placeholder="Account Number"
+									style="width: 100%">
+					</div>
+					 <div class="col-md-3">
+						<h6>
+							<b>Branch Code</b>
+							<h6>
+								<input type="text" ng-model="cWctr.search.branchCode"
+									class="form-control" placeholder="BranchCode"
+									style="width: 100%">
+					</div>
+					
+
+					<div class="col-md-3">
+						<h6>
+							<b>ID Number</b>
+							<h6>
+								<input type="text" ng-model="cWctr.search.idNo"
+									class="form-control" placeholder="ID Number"
+									style="width: 100%">
+					</div>
+					<div class="col-md-3">
+						<h6>
+							<b>Branch Code</b>
+							<h6>
+								<input type="text" ng-model="cWctr.search.branchCode"
+									class="form-control" placeholder="BranchCode"
+									style="width: 100%">
+					</div>
 
 			
 				</div>
 				
-				
-				
-				
+					<div class="row">
+
+                       
+					<div class="col-md-3">
+						<h6>
+							<b>CIF</b>
+							<h6>
+								<input type="text" ng-model="cWctr.search.cif"
+									class="form-control" placeholder="CIF" style="width: 100%">
+					</div>
+
+					<div class="col-md-3">
+
+						<label>Type*</label> <select name="type" class="form-control"
+							ng-model="cWctr.search.type"
+							ng-model-options="{updateOn: 'blur'}">
+							<option value="cbs">Core Banking System</option>
+							<option value="vps">Vendor Payment System</option>
+							<option value="hrms">Human Resource Management System</option>
+							<option value="cpps">Central Pension Payment System</option>
+						</select>
+					</div>
+
+
+				</div>
+
+
+
+				<div class="row">
+
+					
+
+					
+
+
+				</div>
 			</div>
 
 
@@ -385,7 +472,7 @@
 
 			<div class="row mobile ipad-landscape" id="search">
 				<div class="col-md-3" id="search">
-					<button ng-click="cWctr.searchEntities(true,'form27QDeductee')"
+					<button ng-click="cWctr.searchEntities(true,'form27QEDeductee')"
 						class="btn btn-success" onclick="scrollWin()">Search</button>
 					<!-- <button type="button" class="btn btn-primary" data-toggle="modal" ng-click="cWctr.gotoListPage('addForm27QDeductee','addForm27QDeductee');" onclick="scrollWin()">Add</button> -->
 				</div>
@@ -426,8 +513,14 @@
 					<thead role="rowgroup">
 						<tr style="background-color: #81b7db">
 							<th>Sr.No</th>
-							<th>Sol ID</th>
-							<th>Challan Sr.No</th>
+							<th>BranchCode</th>
+							<th>Id No</th>
+							<th>Account Number</th>
+							<th>Type</th>
+							<th>Month</th>
+							<th>Deductee Id</th>
+							<th>Vend Cust Id</th>
+							<th>Unique Ref No</th>
 							<th>Party Reference No.</th>
 							<th>Party Code</th>
 							<th>PAN of the Party</th>
@@ -439,6 +532,7 @@
 							<th>Quarter</th>
 							<th>Financial Year</th>
 							<th>Education Cess</th>
+							<th>Challan Heading</th>
 							<th>Total Tax Collected</th>
 							<th>Total Tax Deposited</th>
 							<th>Date of Collected</th>
@@ -449,12 +543,9 @@
 							<th>Certificate number</th>
 							<th>Deductee is Non-Resident</th>
 							<th>Permanent Establishment</th>
-							<th>Error Description</th>
-							<th>Warning Description</th>
-							<th>Short Deduction</th>
-							<th>Interest on Short Deduction</th>
-							<th>Interest on Late Payment</th>
-							<th>Interest on Late Deduction</th>
+							<th>Reason For NonCollection F or G</th>
+							<th>if Answer to 681A is Yes Then Challan Number</th>
+							<th>if Answer to 681A is Yes Then Date Of Payment Of TDS To Central Government</th>
 							<th>Action</th>
 
 
@@ -465,8 +556,14 @@
 						<tr role="row"
 							ng-repeat="a in cCctr.getEntityListData() track by a.id">
 							<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
-							<td>{{a.branchId}}</td>
-							<td>{{a.srNoInChallan}}</td>
+							<td>{{a.branchCode}}</td>
+							<td>{{a.idNo}}</td>
+							<td>{{a.accNo}}</td>
+							<td>{{a.type}}</td>
+							<td>{{a.month}}</td>
+							<td>{{a.deducteeId}}</td>
+							<td>{{a.vendCustId}}</td>
+							<td>{{a.UniqueRefNo}}</td>
 							<td>{{a.partyReferenceNo}}</td>
 							<td>{{a.partyCode}}</td>
 							<td>{{a.panoftheParty}}</td>
@@ -478,6 +575,7 @@
 							<td>{{a.quarter}}</td>
 							<td>{{a.fy}}</td>
 							<td>{{a.educationCess}}</td>
+							<td>{{a.challanHeading}}</td>
 							<td>{{a.totalTaxCollected}}</td>
 							<td>{{a.totalTaxDeposited}}</td>
 							<td>{{a.dateofCollected| date:'dd-MM-yyyy'}}</td>
@@ -488,12 +586,10 @@
 							<td>{{a.certificatenumber}}</td>
 							<td>{{a.deducteeisNonResident}}</td>
 							<td>{{a.permanentEstablishment}}</td>
-							<td>{{a.errorDescription}}</td>
-							<td>{{a.warningDescription}}</td>
-							<td>{{a.shortDeduction}}</td>
-							<td>{{a.interestonShortDeduction}}</td>
-							<td>{{a.interestonLatePayment}}</td>
-							<td>{{a.interestonLateDeduction}}</td>
+							<td>{{a.reasonforNonCollection F or G}}</td>
+							<td>{{a.ifAnswerto681AisYesThenChallanNumber}}</td>
+							<td>{{a.ifAnswerto681AisYesThenDateOfPaymentOfTDSToCentralGovernment}}</td>
+							
 
 							<div>
 								<td ng-if="a.verify == 1"><i class="fa fa-check"

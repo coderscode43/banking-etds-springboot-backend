@@ -1,6 +1,4 @@
 <style>
-
-
 @media only screen and (min-width:1000px) {
 	#search {
 		margin-left: 45%;
@@ -15,12 +13,38 @@
 	}
 }
 
-
 @media ( min-width : 768px) {
 	.collapse.dont-collapse-sm {
 		display: block;
 		height: auto !important;
 		visibility: visible;
+	}
+	td:nth-of-type(1):before {
+		content: "totalInvoiceValue";
+	}
+	td:nth-of-type(2):before {
+		content: "TAN";
+	}
+	td:nth-of-type(3):before {
+		content: "Available Balance";
+	}
+	td:nth-of-type(4):before {
+		content: "Amount of challan";
+	}
+	td:nth-of-type(5):before {
+		content: "Date of Deposition";
+	}
+	td:nth-of-type(6):before {
+		content: "As on Date";
+	}
+	td:nth-of-type(7):before {
+		content: "Challan Mismatch";
+	}
+	td:nth-of-type(8):before {
+		content: "Section";
+	}
+	td:nth-of-type(9):before {
+		content: "Minorhead";
 	}
 }
 </style>
@@ -46,38 +70,39 @@
 
 
 <div class="collapse dont-collapse-sm" id="collapseExample2">
-		<div class="row">
-			<div class="form-group">
-	<div class="col-md-3">
+	<div class="row">
+		<div class="form-group">
+			<div class="col-md-3">
+				<h6>
+					<b>Name</b>
 					<h6>
-						<b>Name</b>
-						<h6>
-							<input type="text" ng-model="cWctr.search.vendorName"
-								class="form-control" placeholder="Vendor Name" style="width: 100%">
-				</div>
-					<div class="col-md-3">
+						<input type="text" ng-model="cWctr.search.vendorName"
+							class="form-control" placeholder="Vendor Name"
+							style="width: 100%">
+			</div>
+			<div class="col-md-3">
+				<h6>
+					<b> Vendor PAN</b>
 					<h6>
-						<b> Vendor PAN</b>
-						<h6>
-							<input type="text" ng-model="cWctr.search.vendorPAN"
-								class="form-control" placeholder="Vendor Pan" style="width: 100%">
-				</div>
+						<input type="text" ng-model="cWctr.search.vendorPAN"
+							class="form-control" placeholder="Vendor Pan" style="width: 100%">
+			</div>
 
-				
 
-				<div class="col-md-3">
+
+			<div class="col-md-3">
+				<h6>
+					<b>GST Number</b>
 					<h6>
-						<b>GST Number</b>
-						<h6>
-							<input type="text" ng-model="cWctr.search.gstNo"
-								class="form-control" placeholder="GST Number" style="width: 100%">
-				</div>
+						<input type="text" ng-model="cWctr.search.gstNo"
+							class="form-control" placeholder="GST Number" style="width: 100%">
 			</div>
 		</div>
+	</div>
 
-		<div class="collapse  panel-collapse" id="collapseExample4">
-			
-          <div class="row">
+	<div class="collapse  panel-collapse" id="collapseExample4">
+
+		<div class="row">
 			<div class="col-md-3">
 				<h6>
 					<b>From Date</b>
@@ -95,13 +120,12 @@
 							ng-change="cWctr.search.toDate=cWctr.date(cWctr.search.toDate);"
 							class="form-control" placeholder="Date" style="width: 100%">
 			</div>
-			
+
 			<div class="col-md-3">
 				<h6>
 					<b>Remark</b>
 					<h6>
 						<input type="text" ng-model="cWctr.search.remark"
-							
 							class="form-control" placeholder="Remark" style="width: 100%">
 			</div>
 			<div class="col-md-3">
@@ -109,182 +133,249 @@
 					<b>Payment Mode</b>
 					<h6>
 						<input type="text" ng-model="cWctr.search.paymentMode"
-							
-							class="form-control" placeholder="Payment Mode" style="width: 100%">
+							class="form-control" placeholder="Payment Mode"
+							style="width: 100%">
 			</div>
-			
+
 		</div>
-		
+
 		<div class="row">
-		
-		
-			
+
+
+
 			<div class="col-md-3">
 				<h6>
 					<b>Invoice Number</b>
 					<h6>
 						<input type="text" ng-model="cWctr.search.invoiceNumber"
-							
-							class="form-control" placeholder="Invoice Number" style="width: 100%">
+							class="form-control" placeholder="Invoice Number"
+							style="width: 100%">
 			</div>
 			<div class="col-md-3">
 				<h6>
 					<b>Total Invoice Value</b>
 					<h6>
 						<input type="text" ng-model="cWctr.search.totalInvoiceValue"
-						class="form-control" placeholder="Total Invoice Value" style="width: 100%">
+							class="form-control" placeholder="Total Invoice Value"
+							style="width: 100%">
 			</div>
-			
-				<div class="col-md-3">
+
+			<div class="col-md-3">
 				<h6>
 					<b>Taxable Value</b>
 					<h6>
 						<input type="text" ng-model="cWctr.search.taxableValue"
-							
-							class="form-control" placeholder="Taxable Value" style="width: 100%">
+							class="form-control" placeholder="Taxable Value"
+							style="width: 100%">
 			</div>
-			
+
 			<div class="col-md-3">
 				<h6>
 					<b>Surcharge</b>
 					<h6>
 						<input type="text" ng-model="cWctr.search.surcharge"
-							
 							class="form-control" placeholder="Surcharge" style="width: 100%">
 			</div>
-		
+
 		</div>
-		
-		
+
+
 		<div class="row">
-		
-	
-			
-			
+
+
+
+
 			<div class="col-md-3">
 				<h6>
 					<b>Vendor Number</b>
 					<h6>
 						<input type="text" ng-model="cWctr.search.vendorNo"
-						class="form-control" placeholder="vendorNo" style="width: 100%">
+							class="form-control" placeholder="vendorNo" style="width: 100%">
 			</div>
-			
+
 			<div class="col-md-3">
 				<h6>
 					<b>Nature Of Payment</b>
 					<h6>
 						<input type="text" ng-model="cWctr.search.natureOfPayment"
-							
-							class="form-control" placeholder="Nature Of Payment" style="width: 100%">
+							class="form-control" placeholder="Nature Of Payment"
+							style="width: 100%">
 			</div>
-			
+
 			<div class="col-md-3">
 				<h6>
 					<b>Blg Code</b>
 					<h6>
 						<input type="text" ng-model="cWctr.search.blgCode"
-							
 							class="form-control" placeholder="Blg Code" style="width: 100%">
 			</div>
-			
+
 			<div class="col-md-3">
 				<h6>
 					<b>SGST</b>
 					<h6>
 						<input type="text" ng-model="cWctr.search.sgst"
-							
 							class="form-control" placeholder="SGST" style="width: 100%">
 			</div>
-		
+
 		</div>
-		
-		
+
+
 		<div class="row">
-		
-		
+
+
 			<div class="col-md-3">
 				<h6>
 					<b>Net Amount Paid</b>
 					<h6>
 						<input type="text" ng-model="cWctr.search.netAmountPaid"
-						class="form-control" placeholder="Net Amount Paid" style="width: 100%">
+							class="form-control" placeholder="Net Amount Paid"
+							style="width: 100%">
 			</div>
-			
+
 			<div class="col-md-3">
 				<h6>
 					<b>CGST</b>
 					<h6>
 						<input type="text" ng-model="cWctr.search.cgst"
-						class="form-control" placeholder="cgst" style="width: 100%">
+							class="form-control" placeholder="cgst" style="width: 100%">
 			</div>
-			
+
 			<div class="col-md-3">
 				<h6>
 					<b>IGST</b>
 					<h6>
 						<input type="text" ng-model="cWctr.search.igst"
-						class="form-control" placeholder="igst" style="width: 100%">
-			</div>
-		
-		</div>
-		
-		
-		
-		
-		
-     </div>
-
-
-		<div class="row" id="search">
-			<div class="col-md-2" id="search">
-				<button
-					ng-click="cWctr.searchEntities(true,'vendorPayment','vendorPayment')"
-					class="btn btn-success" onclick="scrollWin()">Search</button>
-			</div>
-		</div>
-
-
-
-		<div class="row" id="hide">
-			<div class="col-md-3" style="margin-left: 80%; margin-top: -90px">
-				<button
-					ng-click="cWctr.searchEntities(true,'vendorPayment')"
-					class="btn btn-success" onclick="scrollWin()">Search</button>
+							class="form-control" placeholder="igst" style="width: 100%">
 			</div>
 
-
-			<div class="row">
-				<div class="col-md-3" id="search">
-					<button
-						ng-click="cWctr.searchEntities(true,'vendorPayment')"
-						class="btn btn-success" onclick="scrollWin()">Search</button>
-
-				</div>
-			</div>
 		</div>
 	</div>
+	<div class="row">
+		<div class="col-md-3">
+			<h6>
+				<b>Branch Code</b>
+				<h6>
+					<input type="text" ng-model="cWctr.search.branchCode"
+						class="form-control" placeholder="BranchCode" style="width: 100%">
+		</div>
+		<div class="col-md-3">
+			<h6>
+				<b>Account Number</b>
+				<h6>
+					<input type="text" ng-model="cWctr.search.accNo"
+						class="form-control" placeholder="Account Number"
+						style="width: 100%">
+		</div>
+
+		<div class="col-md-3">
+			<h6>
+				<b>ID Number</b>
+				<h6>
+					<input type="text" ng-model="cWctr.search.idNo"
+						class="form-control" placeholder="ID Number" style="width: 100%">
+		</div>
+
+
+	</div>
+
+
+
+	<div class="row">
+
+		<div class="col-md-3">
+			<h6>
+				<b>CIF</b>
+				<h6>
+					<input type="text" ng-model="cWctr.search.cif" class="form-control"
+						placeholder="CIF" style="width: 100%">
+		</div>
+
+		<div class="col-md-3">
+
+			<label>Type*</label> <select name="type" class="form-control"
+				ng-model="cWctr.search.type" ng-model-options="{updateOn: 'blur'}">
+				<option value="cbs">Core Banking System</option>
+				<option value="vps">Vendor Payment System</option>
+				<option value="hrms">Human Resource Management System</option>
+				<option value="cpps">Central Pension Payment System</option>
+			</select>
+		</div>
+
+		<div class="col-md-3">
+
+			<label>Month*</label> <select name="month" class="form-control"
+				ng-model="cWctr.search.month" ng-required="true"
+				ng-model-options="{updateOn: 'blur'}">
+				<option selected value='1'>Janaury</option>
+				<option value='2'>February</option>
+				<option value='3'>March</option>
+				<option value='4'>April</option>
+				<option value='5'>May</option>
+				<option value='6'>June</option>
+				<option value='7'>July</option>
+				<option value='8'>August</option>
+				<option value='9'>September</option>
+				<option value='10'>October</option>
+				<option value='11'>November</option>
+				<option value='12'>December</option>
+			</select>
+		</div>
+
+
+
+	</div>
+
+</div>
+
+
+
+<div class="row" id="search">
+	<div class="col-md-2" id="search">
+		<button
+			ng-click="cWctr.searchEntities(true,'vendorPayment','vendorPayment')"
+			class="btn btn-success" onclick="scrollWin()">Search</button>
+	</div>
+</div>
+
+
+
+<div class="row" id="hide">
+	<div class="col-md-3" style="margin-left: 80%; margin-top: -90px">
+		<button ng-click="cWctr.searchEntities(true,'vendorPayment')"
+			class="btn btn-success" onclick="scrollWin()">Search</button>
+	</div>
+
+
+	<div class="row">
+		<div class="col-md-3" id="search">
+			<button ng-click="cWctr.searchEntities(true,'vendorPayment')"
+				class="btn btn-success" onclick="scrollWin()">Search</button>
+
+		</div>
+	</div>
+</div>
+</div>
 
 
 
 <div class="row">
-		<div class="col-xs-12">
-			<div class="text-right">
-			<button class="btn btn-secondary"
-					style="background-color: #FFA500;"
-					data-toggle="collapse" data-target="#collapseExample4"
-					aria-expanded="false" aria-controls="collapseExample">
-					Advance Search</button>
-			
-				<button class="btn btn-Primary" data-toggle="modal"
-					ng-click="cCctr.gotoList2Page('addVendorPayment','addVendorPayment');">Add</button>
-			</div>
+	<div class="col-xs-12">
+		<div class="text-right">
+			<button class="btn btn-secondary" style="background-color: #FFA500;"
+				data-toggle="collapse" data-target="#collapseExample4"
+				aria-expanded="false" aria-controls="collapseExample">
+				Advance Search</button>
+
+			<button class="btn btn-Primary" data-toggle="modal"
+				ng-click="cCctr.gotoList2Page('addVendorPayment','addVendorPayment');">Add</button>
 		</div>
 	</div>
+</div>
 <div class="row">
 	<!-- <div class="table-responsive">  -->
 	<table class="table table-bordered table-hover table-striped"
-		role="table"
-		style="font-size: 12px">
+		role="table" style="font-size: 12px">
 		<thead>
 
 			<tr>
@@ -294,10 +385,16 @@
 				<th>Vendor No</th>
 				<th>Vendor Name</th>
 				<th>Vendor PAN</th>
+				<th>BranchCode</th>
+				<th>CIF</th>
+				<th>Id No</th>
+				<th>Account Number</th>
+				<th>Type</th>
+				<th>Month</th>
 				<th>Date</th>
 				<th>Payment Date</th>
 				<th>Payment Mode</th>
-				<th> Invoice Number</th>
+				<th>Invoice Number</th>
 				<th>Total Invoice Value</th>
 				<th>Taxable Value</th>
 				<th>CGST</th>
@@ -306,7 +403,7 @@
 				<th>CESS</th>
 				<th>Surcharge</th>
 				<th>Income Tax Tds</th>
-			    <th>GST Tds</th>
+				<th>GST Tds</th>
 				<th>Nature Of Payment</th>
 				<th>Net Amount Paid</th>
 				<th>Blg Code</th>
@@ -322,6 +419,12 @@
 				<td>{{a.vendorNo}}</td>
 				<td>{{a.vendorName}}</td>
 				<td>{{a.vendorPAN}}</td>
+				<td>{{a.branchCode}}</td>
+				<td>{{a.cif}}</td>
+				<td>{{a.idNo}}</td>
+				<td>{{a.accNo}}</td>
+				<td>{{a.type}}</td>
+				<td>{{a.month}}</td>
 				<td>{{a.date | date:'dd-MM-yyyy'}}</td>
 				<td>{{a.paymentDate}}</td>
 				<td>{{a.paymentMode}}</td>
@@ -340,13 +443,13 @@
 				<td>{{a.blgCode}}</td>
 				<td>{{a.remark}}</td>
 				<td>{{a.gstNo}}</td>
-			
+
 				<td><a
-						ng-click="cCctr.gotoDetailPage('vendorPayment',a.id,'detailvendorPayment')"
-						style="color: blue" onclick="scrollWin()"><img
-							src="static\img\edit.png" width="22px" height="22px"
-							alt="Details" style="margin-top: 5px; margin-bottom: 5px;" /></a></td>
-				</tr>
+					ng-click="cCctr.gotoDetailPage('vendorPayment',a.id,'detailvendorPayment')"
+					style="color: blue" onclick="scrollWin()"><img
+						src="static\img\edit.png" width="22px" height="22px" alt="Details"
+						style="margin-top: 5px; margin-bottom: 5px;" /></a></td>
+			</tr>
 			</tr>
 		</tbody>
 	</table>

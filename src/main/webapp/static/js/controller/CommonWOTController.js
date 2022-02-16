@@ -73,7 +73,7 @@ App
 				if (valid == true) {
 				    console.log("Common Controller submit "
 					    + entity);
-				    self.entity.clientId = $stateParams.clientId;
+				    self.entity.branchId = $stateParams.clientId;
 				    CommonService
 					    .save(self.entity, entity,
 						    $stateParams.clientId)

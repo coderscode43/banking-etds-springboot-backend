@@ -20,11 +20,11 @@ public class Regular24QDeducteeUpdateRequestDetailDaoImpl
 		extends AbstractDaoFY<Long, Regular24QDeducteeUpdateRequestDetail>
 		implements Regular24QDeducteeUpdateRequestDetailDao {
 	@SuppressWarnings("unchecked")
-	public List<Regular24QDeducteeUpdateRequestDetail> search(HashMap entity, Long clientId) {
+	public List<Regular24QDeducteeUpdateRequestDetail> search(HashMap entity) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
-		propertyNameValues.put("clientId", clientId);
+		//propertyNameValues.put("clientId", clientId);
 		criteria.add(Restrictions.allEq(propertyNameValues));
 		if (entity.get("branchId") != null) {
 			criteria.add(Restrictions.eqOrIsNull("branchId", entity.get("branchId")));
@@ -51,6 +51,13 @@ public class Regular24QDeducteeUpdateRequestDetailDaoImpl
 			criteria.add(Restrictions.eqOrIsNull("docId", entity.get("docId")));
 		}
 
+		 if(entity.get("deducteeId")!=null)
+         {
+		criteria.add(Restrictions.eqOrIsNull("deducteeId",Long.valueOf((String) entity.get("deducteeId"))));
+         }
+         if (entity.get("challanHeading") != null) {
+ 			criteria.add(Restrictions.eqOrIsNull("challanHeading",  entity.get("challanHeading")));
+ 		}
 		criteria.addOrder(Order.desc("dateOfPayment"));
 		return (List<Regular24QDeducteeUpdateRequestDetail>) criteria.list();
 	}

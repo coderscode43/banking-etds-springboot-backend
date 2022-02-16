@@ -186,7 +186,7 @@ extends ServiceInterfaceForm<K, E>> {
 		Login l = applicationCache.getLoginDetail(getPrincipal());
 		map.put("clientId", l.getClientId());
 //			map.put("employeeId", l.getEmployeeId());
-		return getService().search(map, clientId);
+		return getService().search(map);
 	}
 
 	// ------------------- Search Single Entity ---------------------------------

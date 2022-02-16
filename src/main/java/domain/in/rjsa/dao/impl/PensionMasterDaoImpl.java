@@ -15,11 +15,11 @@ import domain.in.rjsa.model.form.PensionMaster;
 @Repository("pensionMasterDao")
 public class PensionMasterDaoImpl extends AbstractDaoForm<Long, PensionMaster> implements PensionMasterDao{
 	@Override
-	public List<PensionMaster> search(HashMap entity, Long clientId) {
+	public List<PensionMaster> search(HashMap entity) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
-		propertyNameValues.put("clientId", clientId);
+		//propertyNameValues.put("clientId", clientId);
 		criteria.add(Restrictions.allEq(propertyNameValues));
 		if (entity.get("branchId") != null) {
 			criteria.add(Restrictions.eqOrIsNull("branchId", entity.get("branchId")));

@@ -39,6 +39,10 @@ public class Regular24QDeducteeUpdateRequestDetail extends CommonModelAbstract {
 	public Long branchId;
 	@Column(name = "srNo")
 	public Long srNo;
+	@Column(name = "deducteeId")
+	public Long deducteeId;
+	@Column(name = "challanHeading")
+	public String challanHeading;
 	@Column(name = "challanSrNo")
 	@NotNull(message = "Challan Sr. No. is a required field.")
 	@Digits(integer = 12, fraction = 0, message = "Enter valid Challan No. Challan No. should not be greater than 12")

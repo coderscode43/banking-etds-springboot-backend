@@ -1,3 +1,4 @@
+
 package domain.in.rjsa.model.fy;
 
 import javax.persistence.Column;
@@ -22,8 +23,6 @@ public class Remarks extends CommonModelAbstract {
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
 	private Long id;
-	@Column(name = "clientId")
-	private Long clientId;
 	@Column(name = "entity")
 	private String entity;
 	@Column(name = "remark")

@@ -15,7 +15,7 @@ public interface DaoInterfaceForm<K, E> {
 	public void delete(E entity);
 	public void deleteByKey(K key);
 	public void update(E entity);
-	public List<E> search(HashMap map, Long clientId);
+	public List<E> search(HashMap map);
 	public E uniqueSearch(HashMap map);
 	public List<String> ajax(String name, String term,HashMap<String, Object>constrain);
 	public Long getMaxValue(String name,Map<String, Object> propertyNameValues);

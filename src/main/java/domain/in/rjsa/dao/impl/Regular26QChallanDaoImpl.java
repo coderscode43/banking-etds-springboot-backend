@@ -18,11 +18,11 @@ import domain.in.rjsa.model.fy.Regular26QChallan;
 public class Regular26QChallanDaoImpl extends AbstractDaoFY<Long, Regular26QChallan>
 implements Regular26QChallanDao{
 
-	public List< Regular26QChallan> search(HashMap entity, Long clientId) {
+	public List< Regular26QChallan> search(HashMap entity) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
-		propertyNameValues.put("clientId", clientId);
+		//propertyNameValues.put("clientId", clientId);
 		criteria.add(Restrictions.allEq(propertyNameValues));
 		if (entity.get("branchId") != null) {
 			criteria.add(Restrictions.eqOrIsNull("branchId", entity.get("branchId")));
@@ -39,7 +39,7 @@ implements Regular26QChallanDao{
 				criteria.add(Restrictions.eqOrIsNull("fy", entity.get("fy")));
 			}
 	        if (entity.get("tds") != null) {
-				criteria.add(Restrictions.eqOrIsNull("tds", Double.valueOf((String) entity.get("tds"))));
+				criteria.add(Restrictions.eqOrIsNull("tds", Long.valueOf((String) entity.get("tds"))));
 			}
 	        if (entity.get("surcharge") != null) {
 				criteria.add(Restrictions.eqOrIsNull("surcharge", Double.valueOf((String) entity.get("surcharge"))));

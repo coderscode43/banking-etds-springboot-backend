@@ -95,11 +95,11 @@ public abstract class AbstractDaoForm<K extends Serializable, E> implements DaoI
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<E> search(HashMap entity, Long clientId) {
+	public List<E> search(HashMap entity) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>(entity);
-		propertyNameValues.put("clientId", clientId);
+		
 		criteria.add(Restrictions.allEq(propertyNameValues));
 //		if (entity.get("fromDate") != null) {
 //			criteria.add(Restrictions.ge("date",

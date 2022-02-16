@@ -84,7 +84,6 @@ AbstractBranchControllerFY<Long, Regular24QSalaryUpdateRequestDetail, Regular24Q
 			rUService.update(gson.fromJson(jsonElement, Regular24QSalary.class));
 
 			Remarks remark = new Remarks();
-			remark.setClientId(l.getClientId());
 			remark.setEntity(StaticData.entity.get(6));
 			remark.setRemark(entity.get("remarks").toString());
 			remark.setEntityId(Long.valueOf(entity.get("id").toString()));
@@ -107,7 +106,6 @@ AbstractBranchControllerFY<Long, Regular24QSalaryUpdateRequestDetail, Regular24Q
 			service.update(doc);
 
 			Remarks remark = new Remarks();
-			remark.setClientId(clientId);
 			remark.setEntity(StaticData.entity.get(6));
 			remark.setRemark(entity.get("remarks").toString());
 			remark.setEntityId(doc.getDocId());

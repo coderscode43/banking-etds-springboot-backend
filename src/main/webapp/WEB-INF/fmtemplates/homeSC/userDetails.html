@@ -68,10 +68,10 @@
 					data-toggle="collapse" data-target="#collapseExample4"
 					aria-expanded="false" aria-controls="collapseExample">
 					Advance Search</button>
-			
-			<!-- 	<button class="btn btn-Primary" data-toggle="modal"
+			<button class="btn btn-Primary" data-toggle="modal"
 					ng-click="cCctr.gotoListPage('addUserDetails','addUserDetails');">Add</button>
-			 -->
+			
+						<div class="table-responsive">
 			 </div>
 		</div>
 	</div>
@@ -80,8 +80,8 @@
 			<div class="col-12" ng-show="cCctr.getEntityListData('UserDetails')">
 				<div class="">
 					<div class="">
+									<tr role="row">
 					
-						<div class="table-responsive">
 						  <table class="table  table-bordered table-sm"
 								style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
 								<thead align="center">
@@ -93,6 +93,7 @@
 										
 										<th><b>Zone</b></th>
 										<th><b>Type</b></th>
+										
 									</tr>
 								</thead>
 								<tbody style="text-align: center"
@@ -101,8 +102,7 @@
 
 									</tr>
 								</tbody>
-								<tbody style="text-align: center">
-									<tr role="row"
+								<tbody style="text-align: center"
 										ng-repeat="a in cCctr.getEntityListData() track by a.id">
 										<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
 										<td>{{a.branchCode}}</td>

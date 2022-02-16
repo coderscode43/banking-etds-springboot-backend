@@ -19,14 +19,14 @@ import domain.in.rjsa.model.fy.Regular27QDeducteeDefualt;
 public class Regular27QDeducteeDefualtDaoImpl extends AbstractDaoFY<Long, Regular27QDeducteeDefualt> implements Regular27QDeducteeDefualtDao {
 
 	@SuppressWarnings("unchecked")
-	public List<Regular27QDeducteeDefualt> search(HashMap entity, Long clientId) {
+	public List<Regular27QDeducteeDefualt> search(HashMap entity) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
-		propertyNameValues.put("clientId", clientId);
+		//propertyNameValues.put("clientId", clientId);
 		criteria.add(Restrictions.allEq(propertyNameValues));
 		if (entity.get("branchId") != null) {
-			criteria.add(Restrictions.eqOrIsNull("branchId", entity.get("branchId")));
+			criteria.add(Restrictions.eqOrIsNull("branchId",Long.valueOf((String) entity.get("branchId"))));
 		}
 		if (entity.get("fromDate") != null) {
 			criteria.add(Restrictions.ge("date",
@@ -58,19 +58,161 @@ public class Regular27QDeducteeDefualtDaoImpl extends AbstractDaoFY<Long, Regula
          if(entity.get("remarks")!=null)
          {
 		criteria.add(Restrictions.eqOrIsNull("remarks", entity.get("remarks")));
-		
          }
           
           if(entity.get("quarter")!=null)
           {
 		criteria.add(Restrictions.eqOrIsNull("quarter", entity.get("quarter")));
           }
+          if (entity.get("tds") != null) {
+    			criteria.add(Restrictions.eqOrIsNull("tds", Double.valueOf((String) entity.get("tds"))));
+    		}
+          
+          if(entity.get("deducteeSrNo")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("deducteeSrNo",Long.valueOf((String) entity.get("deducteeSrNo"))));
+          }
+          if(entity.get("srNoInChallan")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("srNoInChallan", Long.valueOf((String) entity.get("srNoInChallan"))));
+          }
+          if(entity.get("deducteeRefNo")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("deducteeRefNo",Long.valueOf((String) entity.get("deducteeRefNo"))));
+          }
+          if(entity.get("deducteeCode")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("deducteeCode", entity.get("deducteeCode")));
+          }
+          if(entity.get("name")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("name", entity.get("name")));
+          }
+          
+          if(entity.get("amountPaid")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("amountPaid",Double.valueOf((String) entity.get("amountPaid"))));
+          }
+          if(entity.get("surcharge")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("surcharge",Double.valueOf((String) entity.get("surcharge"))));
+          }
+          if(entity.get("educationCess")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("educationCess",Double.valueOf((String) entity.get("educationCess"))));
+          }
+          if(entity.get("totalTaxDeducted")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("totalTaxDeducted",Double.valueOf((String) entity.get("totalTaxDeducted"))));
+          }
+          if(entity.get("totalTaxDeposited")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("totalTaxDeposited",Double.valueOf((String) entity.get("totalTaxDeposited"))));
+          }
+          if(entity.get("dateOfDeduction")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("dateOfDeduction", entity.get("dateOfDeduction")));
+          }
+          if(entity.get("rateAtWhichTaxDeducted")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("rateAtWhichTaxDeducted",Double.valueOf((String) entity.get("rateAtWhichTaxDeducted"))));
+          }
+          if(entity.get("reasonForNonDeduction")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("reasonForNonDeduction", entity.get("reasonForNonDeduction")));
+          }
+          if(entity.get("grossingUpIndicator")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("grossingUpIndicator", entity.get("grossingUpIndicator")));
+          }
+          if(entity.get("bookEntry")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("bookEntry", entity.get("bookEntry")));
+          }
+          if(entity.get("noOfCertificateUnderSection")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("noOfCertificateUnderSection",Long.valueOf((String) entity.get("noOfCertificateUnderSection"))));
+          }
+          if(entity.get("tdaRateAsPerItActs")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("tdaRateAsPerItActs",Double.valueOf((String) entity.get("tdaRateAsPerItActs"))));
+          }
+          if(entity.get("natureOfRemittance")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("natureOfRemittance", entity.get("natureOfRemittance")));
+          }
+          if(entity.get("uniqueAcknowledgeNo")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("uniqueAcknowledgeNo", Long.valueOf((String) entity.get("uniqueAcknowledgeNo"))));
+          }
+          if(entity.get("countryOfResidence")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("countryOfResidence", entity.get("countryOfResidence")));
+          }
+          if(entity.get("emailId")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("emailId", entity.get("emailId")));
+          }
+          if(entity.get("contactNoOfDeductee")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("contactNoOfDeductee", entity.get("contactNoOfDeductee")));
+          }
+          if(entity.get("addressOfDeductee")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("addressOfDeductee", entity.get("addressOfDeductee")));
+          }
+          if(entity.get("taxIdentificationNo")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("taxIdentificationNo", Long.valueOf((String) entity.get("taxIdentificationNo"))));
+          }
+          if(entity.get("clientId")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("clientId",Long.valueOf((String) entity.get("clientId"))));
+          }
+          if(entity.get("verify")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("verify", entity.get("verify")));
+          }
+          if(entity.get("comments")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("comments", entity.get("comments")));
+          }
+          if(entity.get("branchCode")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("branchCode",Long.valueOf((String) entity.get("branchCode"))));
+          }
+          if(entity.get("idNo")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("idNo",Long.valueOf((String) entity.get("idNo"))));
+          }
+          if(entity.get("cif")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("cif", entity.get("cif")));
+          }
+          if(entity.get("type")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("type", entity.get("type")));
+          }
+          if(entity.get("accNo")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("accNo",Long.valueOf((String) entity.get("accNo"))));
+          }
+          if(entity.get("deducteeId")!=null)
+          {
+ 		criteria.add(Restrictions.eqOrIsNull("deducteeId",Long.valueOf((String) entity.get("deducteeId"))));
+          }
+          if (entity.get("challanHeading") != null) {
+  			criteria.add(Restrictions.eqOrIsNull("challanHeading",  entity.get("challanHeading")));
+  		}
+          
+        
+          
           
 		criteria.addOrder(Order.desc("date"));
 		return (List<Regular27QDeducteeDefualt>) criteria.list();
 	}
 	
-	/*
+	/*tdaRateAsPerItActs
 	 * @Override
 	 * 
 	 * @SuppressWarnings("unchecked") public List<Regular27QDeducteeDefualt>

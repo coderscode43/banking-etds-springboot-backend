@@ -14,7 +14,7 @@ public interface ServiceInterfaceForm<K, E> {
 
 	public Long findallCount(HashMap<String, Object> constrains);
 
-	public List<E> search(HashMap map,Long clientId);
+	public List<E> search(HashMap map);
 
 	public E uniqueSearch(HashMap map);
 

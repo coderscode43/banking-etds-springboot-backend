@@ -83,7 +83,7 @@
 						</h6>
 						<select class="form-control" ng-model="cWctr.search.fy">
 							<option value=" " ng-selected="true">Financial Year</option>
-							<option value="201819">201920</option>
+							<option value="201920">201920</option>
 							<option value="201819">201819</option>
 							<option value="201718">201718</option>
 							<option value="201617">201617</option>
@@ -235,7 +235,7 @@
 					<h6>
 						<b>Education Cess</b>
 					</h6>
-					<input type="text" ng-model="cWctr.search.eduCess" class="form-control"
+					<input type="text" ng-model="cWctr.search.educationCess" class="form-control"
 						placeholder="Education Cess" style="width: 100%">
 				</div>
 				</div>
@@ -342,9 +342,17 @@
 					<h6>
 						<b>TIN</b>
 					</h6>
-					<input type="text" ng-model="cWctr.search.tin" class="form-control"
+					<input type="text" ng-model="cWctr.search.taxIdentificationNo" class="form-control"
 						placeholder="TIN" style="width: 100%">
 				</div>
+				
+			<div class="col-md-3">
+				<h6>
+					<b>CIF</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.cif"
+							class="form-control" placeholder="CIF" style="width: 100%">
+			</div>
 				
 					
 				</div>
@@ -360,9 +368,67 @@
 						
 						class="form-control" placeholder="Nature Of Remittance" style="width: 100%">
 				</div>
+				<div class="col-md-3">
+				<h6>
+					<b>Branch Code</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.branchCode"
+							class="form-control" placeholder="BranchCode" style="width: 100%">
+			</div>
+			<div class="col-md-3">
+				<h6>
+					<b>Account Number</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.accNo"
+							class="form-control" placeholder="Account Number" style="width: 100%">
+			</div>
+			
+			<div class="col-md-3">
+				<h6>
+					<b>ID Number</b>
+					<h6>
+						<input type="text" ng-model="cWctr.search.idNo"
+							class="form-control" placeholder="ID Number" style="width: 100%">
+			</div>
 
 			
 				</div>
+				
+				<div class="row">
+			
+			
+			<div class="col-md-3">
+
+							<label>Type*</label> <select name="type"
+								class="form-control" ng-model="cWctr.search.type"
+								 ng-model-options="{updateOn: 'blur'}">
+								<option value="cbs">Core Banking System</option>
+								<option value="vps">Vendor Payment System</option>
+								<option value="hrms">Human Resource Management System</option>
+								<option value="cpps">Central Pension Payment System</option>
+							</select> 
+						</div>
+						
+						<div class="col-md-3">
+
+							<label>Month*</label> <select name="month"
+								class="form-control" ng-model="cWctr.search.month"
+								ng-required="true" ng-model-options="{updateOn: 'blur'}">
+  <option selected value='1'>Janaury</option>
+    <option value='2'>February</option>
+    <option value='3'>March</option>
+    <option value='4'>April</option>
+    <option value='5'>May</option>
+    <option value='6'>June</option>
+    <option value='7'>July</option>
+    <option value='8'>August</option>
+    <option value='9'>September</option>
+    <option value='10'>October</option>
+    <option value='11'>November</option>
+    <option value='12'>December</option>
+							</select> 
+						</div>
+		</div>
 				
 				
 				
@@ -430,9 +496,14 @@
 			<thead role="rowgroup">
 				<tr style="background-color: #81b7db">
 					<th>Sr. No.</th>
-					<th>Sol ID</th>
+					<th>BranchCode</th>
+					<th>Id No</th>
+					<th>VendCustId</th>
+					<th>Unique Ref Number</th>
+					<th>Account Number</th>
+					<th>Type</th>
+					<th>Month</th>
 					<th>Deductee Sr.No.</th>
-					<th>Sr No. in challan</th>
 					<th>Deductee Ref. No</th>
 					<th>Deductee Code</th>
 					<th>Pan</th>
@@ -443,6 +514,7 @@
 					<th>TDS</th>
 					<th>Surcharge</th>
 					<th>Education Cess</th>
+					<th>Book Entry</th>
 					<th>Total Tax Deducted</th>
 					<th>Total Tax Deposited</th>
 					<th>Date of Deduction</th>
@@ -472,9 +544,15 @@
 				<tr role="row"
 					ng-repeat="a in cCctr.getEntityListData() track by a.id">
 					<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
-					<td>{{a.branchId}}</td>
+					
+					<td>{{a.branchCode}}</td>
+					<td>{{a.idNo}}</td>
+					<td>{{a.vendCustId}}</td>
+					<td>{{a.uniqueRefNumber}}</td>
+					<td>{{a.accNo}}</td>
+					<td>{{a.type}}</td>
+					<td>{{a.month}}</td>
 					<td>{{a.deducteeSrNo}}</td>
-					<td>{{a.srNoInChallan}}</td>
 					<td>{{a.deducteeRefNo}}</td>
 					<td>{{a.deducteeCode}}</td>
 					<td>{{a.pan}}</td>
@@ -485,6 +563,7 @@
 					<td>{{a.tds}}</td>
 					<td>{{a.surcharge}}</td>
 					<td>{{a.educationCess}}</td>
+					<td>{{a.bookEntry}}</td>
 					<td>{{a.totalTaxDeducted}}</td>
 					<td>{{a.totalTaxDeposited}}</td>
 					<td>{{a.dateOfDeduction| date:'dd-MM-yyyy'}}</td>

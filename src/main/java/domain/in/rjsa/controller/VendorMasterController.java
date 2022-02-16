@@ -48,7 +48,7 @@ public class VendorMasterController extends AbstractBranchControllerForm<Long, V
 		    ew.setVendorMaster(vendorMaster);
 	    	HashMap<String, Object> map = new HashMap<>();
 			map.put("clientId", clientId);
-			ew.setListVendorMaster(service.search(map, clientId));
+			ew.setListVendorMaster(service.search(map));
 			return ew;
 		}
 	 

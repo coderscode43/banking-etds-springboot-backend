@@ -25,8 +25,8 @@ public class MisReport extends CommonModelAbstract{/**
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
 	public Long id;		
-	@Column(name = "clientId")
-	public Long clientId;
+	@Column(name = "branchCode")
+	public Long branchCode;
 	@Column(name = "fromDate")
 	private String fromDate;
 	@Column(name = "toDate")

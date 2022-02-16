@@ -151,7 +151,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 		Login l = applicationCache.getLoginDetail(getPrincipal());
 		map.put("clientId", l.getClientId());
 //		map.put("employeeId", l.getEmployeeId());
-		return getService().search(map,clientId);
+		return getService().search(map);
 	}
 
 	// ------------------- Search Single Entity ---------------------------------

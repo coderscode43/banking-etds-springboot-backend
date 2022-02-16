@@ -18,11 +18,11 @@ import domain.in.rjsa.model.fy.Regular27EQDeductee;
 public class Regular27EQDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27EQDeductee> implements Regular27EQDeducteeDao {
 
 	@SuppressWarnings("unchecked")
-	public List<Regular27EQDeductee> search(HashMap entity, Long clientId) {
+	public List<Regular27EQDeductee> search(HashMap entity) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
-		propertyNameValues.put("clientId", clientId);
+		//propertyNameValues.put("clientId", clientId);
 		criteria.add(Restrictions.allEq(propertyNameValues));
 		if (entity.get("branchId") != null) {
 			criteria.add(Restrictions.eqOrIsNull("branchId", entity.get("branchId")));
@@ -178,8 +178,34 @@ public class Regular27EQDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27EQD
           {
 		criteria.add(Restrictions.eqOrIsNull("reasonForNonDeduction", entity.get("reasonForNonDeduction")));
           }
-          
-          
+          if(entity.get("type")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("type", entity.get("type")));
+          }
+          if(entity.get("month")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("month", entity.get("month")));
+          }
+          if(entity.get("cif")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("cif", entity.get("cif")));
+          }
+          if (entity.get("branchCode") != null) {
+  			criteria.add(Restrictions.eqOrIsNull("branchCode", Long.valueOf((String) entity.get("branchCode"))));
+  		}
+          if (entity.get("accNo") != null) {
+    			criteria.add(Restrictions.eqOrIsNull("accNo", Long.valueOf((String) entity.get("accNo"))));
+    		}
+          if (entity.get("idNo") != null) {
+  			criteria.add(Restrictions.eqOrIsNull("idNo", Long.valueOf((String) entity.get("idNO"))));
+  		}
+          if(entity.get("deducteeId")!=null)
+          {
+ 		criteria.add(Restrictions.eqOrIsNull("deducteeId",Long.valueOf((String) entity.get("deducteeId"))));
+          }
+          if (entity.get("challanHeading") != null) {
+  			criteria.add(Restrictions.eqOrIsNull("challanHeading",  entity.get("challanHeading")));
+  		}
 		criteria.addOrder(Order.desc("date"));
 		return (List<Regular27EQDeductee>) criteria.list();
 	

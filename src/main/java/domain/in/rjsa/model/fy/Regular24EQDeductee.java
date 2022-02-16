@@ -36,12 +36,14 @@ public class Regular24EQDeductee extends CommonModelAbstract {
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
 	public Long id;
-	@Column(name = "clientId")
-	public Long clientId;
-	@Column(name = "branchId")
-	public Long branchId;
+	@Column(name = "branchCode")
+	public Long branchCode;
 	@Column(name = "srNo")
 	public Long srNo;
+	@Column(name = "deducteeId")
+	public Long deducteeId;
+	@Column(name = "challanHeading")
+	public String challanHeading;
 	@Column(name = "challanSrNo")
 	@NotNull(message = "Challan Sr. No. is a required field.")
 	@Digits(integer = 12, fraction = 0, message = "Enter valid Challan No. Challan No. should not be greater than 12")
@@ -118,6 +120,7 @@ public class Regular24EQDeductee extends CommonModelAbstract {
 	public String quarter;
 	@Column(name = "verify")
 	public boolean verify = false;
+	
 
 	@JsonSerialize(using = JsonDateSerializer.class)
 	public Date getDateOfPayment() {

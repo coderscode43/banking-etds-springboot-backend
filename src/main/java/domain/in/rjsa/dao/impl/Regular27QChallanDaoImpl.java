@@ -18,11 +18,11 @@ import domain.in.rjsa.model.fy.Regular27QChallan;
 public class Regular27QChallanDaoImpl extends AbstractDaoFY<Long, Regular27QChallan>
 implements Regular27QChallanDao{
 	@SuppressWarnings("unchecked")
-	public List< Regular27QChallan> search(HashMap entity, Long clientId) {
+	public List< Regular27QChallan> search(HashMap entity) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
-		propertyNameValues.put("clientId", clientId);
+		//propertyNameValues.put("clientId", clientId);
 		criteria.add(Restrictions.allEq(propertyNameValues));
 		if (entity.get("branchId") != null) {
 			criteria.add(Restrictions.eqOrIsNull("branchId", entity.get("branchId")));

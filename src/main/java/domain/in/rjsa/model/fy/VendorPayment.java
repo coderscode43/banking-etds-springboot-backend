@@ -36,12 +36,12 @@ public class VendorPayment extends CommonModelAbstract{
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
 	public Long id;		
-	@Column(name = "clientId")
-	public Long clientId;
-	@Column(name = "branchId")
-	public Long branchId;
 	@Column(name = "vendorId")
 	public Long vendorId;
+	@Column(name = "deducteeId")
+	public Long deducteeId;
+	@Column(name = "challanHeading")
+	public String challanHeading;
 	@Column(name = "vendorNo")
 	@Size(min=0, max=15, message="Vendor No should be 15 characters.")
 	@NotNull(message = "Vendor No is a required field")
@@ -79,8 +79,8 @@ public class VendorPayment extends CommonModelAbstract{
 	@NotNull(message = "Invoice Number is a required field")
 	public String invoiceNumber;
 	@Column(name = "totalInvoiceValue")
-//	@Digits(integer = 12, fraction = 0,message="Enter valid Total Invoice Value it should not be greater than 12")
-//	@NotNull(message = "Total Invoice Value is a required field")
+	@Digits(integer = 12, fraction = 0,message="Enter valid Total Invoice Value it should not be greater than 12")
+	@NotNull(message = "Total Invoice Value is a required field")
 	public Double totalInvoiceValue;
 	@Column(name = "taxableValue")
 	@Digits(integer = 12, fraction = 0,message="Enter valid Taxable Value it should not be greater than 12")
@@ -129,7 +129,18 @@ public class VendorPayment extends CommonModelAbstract{
 	@Size(min=0, max=45, message="BLG Code should be 45 characters.")
 	@NotNull(message = "BLG Code is a required field")
 	public String blgCode;
-	
+	@Column(name = "branchCode")
+	public Long branchCode;
+	@Column(name = "accNo")
+	public Long accNo;
+	@Column(name = "idNo")
+	public Long idNo;
+	@Column(name = "cif")
+	public String cif;
+	@Column(name = "type")
+	public String type;
+	@Column(name = "month")
+	public String month;
 	@Column(name = "remark")
 	public String remark;
 	

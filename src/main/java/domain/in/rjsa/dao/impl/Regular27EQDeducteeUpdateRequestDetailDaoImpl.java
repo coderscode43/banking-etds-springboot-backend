@@ -19,11 +19,11 @@ import domain.in.rjsa.model.fy.Regular27EQDeducteeUpdateRequestDetail;
 public class Regular27EQDeducteeUpdateRequestDetailDaoImpl extends AbstractDaoFY<Long, Regular27EQDeducteeUpdateRequestDetail> implements Regular27EQDeducteeUpdateRequestDetailDao{
 
 	@SuppressWarnings("unchecked")
-	public List< Regular27EQDeducteeUpdateRequestDetail> search(HashMap entity, Long clientId) {
+	public List< Regular27EQDeducteeUpdateRequestDetail> search(HashMap entity) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
-		propertyNameValues.put("clientId", clientId);
+		//propertyNameValues.put("clientId", clientId);
 		criteria.add(Restrictions.allEq(propertyNameValues));
 		if (entity.get("branchId") != null) {
 			criteria.add(Restrictions.eqOrIsNull("branchId", entity.get("branchId")));
@@ -52,7 +52,13 @@ public class Regular27EQDeducteeUpdateRequestDetailDaoImpl extends AbstractDaoFY
           {
 		criteria.add(Restrictions.eqOrIsNull("quarter", entity.get("quarter")));
           }
-          
+          if(entity.get("deducteeId")!=null)
+          {
+ 		criteria.add(Restrictions.eqOrIsNull("deducteeId",Long.valueOf((String) entity.get("deducteeId"))));
+          }
+          if (entity.get("challanHeading") != null) {
+  			criteria.add(Restrictions.eqOrIsNull("challanHeading",  entity.get("challanHeading")));
+  		}
 		criteria.addOrder(Order.desc("dateofReceivedDebited"));
 		
 		return (List<Regular27EQDeducteeUpdateRequestDetail>) criteria.list();

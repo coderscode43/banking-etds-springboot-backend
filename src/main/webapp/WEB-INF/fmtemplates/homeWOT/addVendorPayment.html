@@ -199,6 +199,139 @@
 							</div>
 						</div>
 					</div>
+					
+					<div class="row">
+						<div class="col-md-6">
+
+							<label> Branch Code*</label> <input class="form-control"
+								type="text" name="branchCode" placeholder="Branch Code"
+								ng-model="cWctr.entity.branchCode" autocomplete="off"
+								ng-pattern="/^[0-9]*$/" ng-maxlength="15" ng-required="true"
+								ng-model-options="{updateOn: 'blur'}" /> <span
+								style="color: red"
+								ng-show="form26qdeductee.submitted ||form26qdeductee.challanSrNo.$dirty && form26qdeductee.challanSrNo.$invalid">
+								<span class="error"
+								ng-show="form26qdeductee.branchCode.$error.pattern">Please
+									enter valid branchCode. </span> <span class="error"
+								ng-show="form26qdeductee.branchCode.$error.maxlength">branchCode
+									should not be greater than 15 characters.</span> <span class="error"
+								ng-show="form26qdeductee.branchCode.$error.required">branchCode
+									is Required.</span>
+							</span> <span class="error" id="branchCode"></span>
+
+						</div>
+
+						<div class="col-md-6">
+
+							<label>Account Number*</label> <input class="form-control"
+								type="text" name="Account Number" placeholder="Account Number"
+								ng-model="cWctr.entity.accNo" autocomplete="off"
+								ng-pattern="/^[0-9]*$/" ng-maxlength="12" ng-required="true"
+								ng-model-options="{updateOn: 'blur'}" /> <span
+								style="color: red"
+								ng-show="form26qdeductee.submitted ||form26qdeductee.accNo.$dirty && form26qdeductee.accNo.$invalid">
+								<span class="error"
+								ng-show="form26qdeductee.accNo.$error.pattern">Please
+									enter valid Account Number. </span> <span class="error"
+								ng-show="form26qdeductee.accNo.$error.maxlength">Account
+									Number should not be greater than 12 characters.</span> <span
+								class="error" ng-show="form26qdeductee.accNo.$error.required">Account
+									Number is Required.</span>
+							</span> <span class="error" id="accNo"></span>
+						</div>
+
+
+					</div>
+
+
+					
+
+					<div class="row">
+						<div class="col-md-6">
+
+							<label>ID Number*</label> <input class="form-control" type="text"
+								name="idNo" placeholder="Id Number" ng-model="cWctr.entity.idNo"
+								autocomplete="off" ng-pattern="/^[0-9]*$/" ng-maxlength="15"
+								ng-required="true" ng-model-options="{updateOn: 'blur'}" /> <span
+								style="color: red"
+								ng-show="form26qdeductee.submitted ||form26qdeductee.idNo.$dirty && form26qdeductee.idNo.$invalid">
+								<span class="error"
+								ng-show="form26qdeductee.idNo.$error.pattern">Please
+									enter valid idNo. </span> <span class="error"
+								ng-show="form26qdeductee.idNo.$error.maxlength">idNo
+									should not be greater than 15 characters.</span> <span class="error"
+								ng-show="form26qdeductee.idNo.$error.required">idNo is
+									Required.</span>
+							</span> <span class="error" id="idNo"></span>
+
+						</div>
+
+						<div class="col-md-6">
+
+							<label>CIF*</label> <input class="form-control" type="text"
+								name="CIF" placeholder="CIF" ng-model="cWctr.entity.cif"
+								autocomplete="off" 
+								ng-maxlength="12" ng-required="true"
+								ng-model-options="{updateOn: 'blur'}" /> <span
+								style="color: red"
+								ng-show="form26qdeductee.submitted ||form26qdeductee.accNo.$dirty && form26qdeductee.accNo.$invalid">
+								<span class="error" ng-show="form26qdeductee.cif.$error.pattern">Please
+									enter valid CIF. </span> <span class="error"
+								ng-show="form26qdeductee.cif.$error.maxlength">cif should
+									not be greater than 12 characters.</span> <span class="error"
+								ng-show="form26qdeductee.cif.$error.required">cif is
+									Required.</span>
+							</span> <span class="error" id="cif"></span>
+						</div>
+
+
+					</div>
+
+
+					<div class="row">
+						<div class="col-md-6">
+
+							<label>Type*</label> <select name="type"
+								class="form-control" ng-model="cWctr.entity.type"
+								ng-required="true" ng-model-options="{updateOn: 'blur'}">
+								<option value="cbs">Core Banking System</option>
+								<option value="vps">Vendor Payment System</option>
+								<option value="hrms">Human Resource Management System</option>
+								<option value="cpps">Central Pension Payment System</option>
+							</select> <span style="color: red"
+								ng-show="form26qdeductee.submitted ||form26qdeductee.type.$dirty && form26qdeductee.type.$invalid">
+								<span class="error"
+								ng-show="form26qdeductee.type.$error.required">type
+									is Required.</span>
+							</span> <span class="error" id="type"></span>
+						</div>
+						<div class="col-md-6">
+
+							<label>Month*</label> <select name="quarter"
+								class="form-control" ng-model="cWctr.entity.month"
+								ng-required="true" ng-model-options="{updateOn: 'blur'}">
+  <option selected value='1'>Janaury</option>
+    <option value='2'>February</option>
+    <option value='3'>March</option>
+    <option value='4'>April</option>
+    <option value='5'>May</option>
+    <option value='6'>June</option>
+    <option value='7'>July</option>
+    <option value='8'>August</option>
+    <option value='9'>September</option>
+    <option value='10'>October</option>
+    <option value='11'>November</option>
+    <option value='12'>December</option>
+							</select> <span style="color: red"
+								ng-show="form26qdeductee.submitted ||form26qdeductee.month.$dirty && form26qdeductee.month.$invalid">
+								<span class="error"
+								ng-show="form26qdeductee.month.$error.required">Month
+									is Required.</span>
+							</span> <span class="error" id="month"></span>
+						</div>
+
+					</div>
+					
 
 
 					<div class="row">

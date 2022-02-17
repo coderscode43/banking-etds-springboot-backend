@@ -68,9 +68,6 @@ extends ServiceInterfaceForm<K, E>> {
 		HashMap<String, Object> constrains = new HashMap<>();
 		constrains.put("clientId", applicationCache.getLoginDetail(getPrincipal()).getClientId());
 		List<Long> listBranchId = new ArrayList<Long>();
-		for (String sol : applicationCache.getUserSol(login.getId(), clientId).getSolId().split("-")) {
-			listBranchId.add(Long.valueOf(sol));
-		}
 		constrains.put("branchId", listBranchId);
 
 		return getService().findAll(constrains, pageNo, resultPerPage);

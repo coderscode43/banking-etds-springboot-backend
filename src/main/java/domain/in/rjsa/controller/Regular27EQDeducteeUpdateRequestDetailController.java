@@ -10,7 +10,7 @@ import domain.in.rjsa.model.fy.Regular27EQDeducteeUpdateRequestDetail;
 import domain.in.rjsa.model.wrapper.Regular27EQDeducteeUpdateRequestDetailWrapper;
 import domain.in.rjsa.service.Regular27EQDeducteeService;
 import domain.in.rjsa.service.Regular27EQDeducteeUpdateRequestDetailService;
-import domain.in.rjsa.service.RemarksService;
+//import domain.in.rjsa.service.RemarksService;
 import domain.in.rjsa.util.StaticData;
 
 @Controller
@@ -22,8 +22,8 @@ AbstractBranchControllerFY<Long, Regular27EQDeducteeUpdateRequestDetail, Regular
 	Regular27EQDeducteeUpdateRequestDetailService service;
 	@Autowired
 	Regular27EQDeducteeService dService;
-	@Autowired
-	RemarksService rService;
+	/*@Autowired
+	RemarksService rService;*/
 	
 	@Override
 	public Class<Regular27EQDeducteeUpdateRequestDetail> getEntity() {
@@ -50,7 +50,7 @@ AbstractBranchControllerFY<Long, Regular27EQDeducteeUpdateRequestDetail, Regular
 		constrains.remove("id");
 		constrains.put("entityId", data.getNeData().getId());
 		constrains.put("entity", StaticData.entity.get(1));
-		data.setListRemarks(rService.search(constrains));
+		//data.setListRemarks(rService.search(constrains));
 		return data;
 	}
 }

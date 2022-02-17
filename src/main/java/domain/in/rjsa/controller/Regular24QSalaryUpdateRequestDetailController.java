@@ -21,11 +21,11 @@ import domain.in.rjsa.exception.FieldErrorDTO;
 import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.fy.Regular24QSalary;
 import domain.in.rjsa.model.fy.Regular24QSalaryUpdateRequestDetail;
-import domain.in.rjsa.model.fy.Remarks;
+//import domain.in.rjsa.model.fy.Remarks;
 import domain.in.rjsa.model.wrapper.Regular24QSalaryUpdateRequestDetailWrapper;
 import domain.in.rjsa.service.Regular24QSalaryService;
 import domain.in.rjsa.service.Regular24QSalaryUpdateRequestDetailService;
-import domain.in.rjsa.service.RemarksService;
+//import domain.in.rjsa.service.RemarksService;
 import domain.in.rjsa.util.StaticData;
 
 @Controller
@@ -37,8 +37,8 @@ AbstractBranchControllerFY<Long, Regular24QSalaryUpdateRequestDetail, Regular24Q
 	Regular24QSalaryUpdateRequestDetailService service;
 	@Autowired
 	Regular24QSalaryService rUService;
-	@Autowired
-	RemarksService rService;
+	/*@Autowired
+	RemarksService rService;*/
 
 	@Override
 	public Regular24QSalaryUpdateRequestDetailService getService() {
@@ -83,11 +83,11 @@ AbstractBranchControllerFY<Long, Regular24QSalaryUpdateRequestDetail, Regular24Q
 			jsonElement = gson.toJsonTree(entity);
 			rUService.update(gson.fromJson(jsonElement, Regular24QSalary.class));
 
-			Remarks remark = new Remarks();
+			/*Remarks remark = new Remarks();
 			remark.setEntity(StaticData.entity.get(6));
 			remark.setRemark(entity.get("remarks").toString());
 			remark.setEntityId(Long.valueOf(entity.get("id").toString()));
-			rService.save(remark);
+			rService.save(remark);*/
 
 			return new ResponseEntity<String>(HttpStatus.ACCEPTED);
 		}
@@ -105,7 +105,7 @@ AbstractBranchControllerFY<Long, Regular24QSalaryUpdateRequestDetail, Regular24Q
 			doc.setStatus(StaticData.documentStatus.get(2));
 			service.update(doc);
 
-			Remarks remark = new Remarks();
+			/*Remarks remark = new Remarks();
 			remark.setEntity(StaticData.entity.get(6));
 			remark.setRemark(entity.get("remarks").toString());
 			remark.setEntityId(doc.getDocId());
@@ -113,7 +113,7 @@ AbstractBranchControllerFY<Long, Regular24QSalaryUpdateRequestDetail, Regular24Q
 
 			addLogsU(entity);
 
-			ermsg.setMessage("Updated Successfully");
+			ermsg.setMessage("Updated Successfully");*/
 			return new ResponseEntity<String>(HttpStatus.ACCEPTED);
 		} else {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -133,7 +133,7 @@ AbstractBranchControllerFY<Long, Regular24QSalaryUpdateRequestDetail, Regular24Q
 		constrains.remove("id");
 		constrains.put("entityId", data.getNewData().getDocId());
 		constrains.put("entity", StaticData.entity.get(6));
-		data.setListRemarks(rService.search(constrains));
+		//data.setListRemarks(rService.search(constrains));
 		return data;
 	}
 

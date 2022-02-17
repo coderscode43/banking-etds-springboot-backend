@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import domain.in.rjsa.model.fy.Regular24QDeducteeDefualt;
 import domain.in.rjsa.model.wrapper.SalaryDetailWrapper;
-import domain.in.rjsa.service.CommentsService;
 import domain.in.rjsa.service.Regular24QDeducteeDefualtService;
 
 @Controller
@@ -17,8 +16,6 @@ public class Regular24QDeducteeDefualtController
 	@Autowired
 	Regular24QDeducteeDefualtService service;
 	
-	@Autowired
-	CommentsService rService;
 
 
 	@Override

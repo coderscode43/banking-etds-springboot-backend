@@ -24,11 +24,11 @@ import domain.in.rjsa.exception.FieldErrorDTO;
 import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.fy.Regular26QDeductee;
 import domain.in.rjsa.model.fy.Regular26QDeducteeUpdateRequestDetail;
-import domain.in.rjsa.model.fy.Remarks;
+//import domain.in.rjsa.model.fy.Remarks;
 import domain.in.rjsa.model.wrapper.Regular26QDeducteeUpdateRequestDetailWrapper;
 import domain.in.rjsa.service.Regular26QDeducteeService;
 import domain.in.rjsa.service.Regular26QDeducteeUpdateRequestDetailService;
-import domain.in.rjsa.service.RemarksService;
+//import domain.in.rjsa.service.RemarksService;
 import domain.in.rjsa.util.StaticData;
 
 @Controller
@@ -40,8 +40,8 @@ AbstractBranchControllerFY<Long, Regular26QDeducteeUpdateRequestDetail, Regular2
 	Regular26QDeducteeUpdateRequestDetailService service;
 	@Autowired
 	Regular26QDeducteeService dService;
-	@Autowired
-	RemarksService rService;
+	/*@Autowired
+	RemarksService rService;*/
 
 	@Override
 	public Class<Regular26QDeducteeUpdateRequestDetail> getEntity() {
@@ -146,11 +146,11 @@ AbstractBranchControllerFY<Long, Regular26QDeducteeUpdateRequestDetail, Regular2
 			jsonElement = gson.toJsonTree(entity);
 			dService.update(gson.fromJson(jsonElement, Regular26QDeductee.class));
 
-			Remarks remark = new Remarks();
+			/*Remarks remark = new Remarks();
 			remark.setEntity(StaticData.entity.get(0));
 			remark.setRemark(entity.get("remarks").toString());
 			remark.setEntityId(Long.valueOf(entity.get("id").toString()));
-			rService.save(remark);
+			rService.save(remark);*/
 
 			return new ResponseEntity<String>(HttpStatus.ACCEPTED);
 		}
@@ -168,7 +168,7 @@ AbstractBranchControllerFY<Long, Regular26QDeducteeUpdateRequestDetail, Regular2
 			doc.setStatus(StaticData.documentStatus.get(2));
 			service.update(doc);
 
-			Remarks remark = new Remarks();
+			/*Remarks remark = new Remarks();
 			remark.setEntity(StaticData.entity.get(0));
 			remark.setRemark(entity.get("remarks").toString());
 			remark.setEntityId(doc.getDocId());
@@ -176,7 +176,7 @@ AbstractBranchControllerFY<Long, Regular26QDeducteeUpdateRequestDetail, Regular2
 
 			addLogsU(entity);
 
-			ermsg.setMessage("Updated Successfully");
+			ermsg.setMessage("Updated Successfully");*/
 			return new ResponseEntity<String>(HttpStatus.ACCEPTED);
 		} else {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -206,7 +206,7 @@ AbstractBranchControllerFY<Long, Regular26QDeducteeUpdateRequestDetail, Regular2
 		constrains.remove("id");
 		constrains.put("entityId", data.getNewData().getDocId());
 		constrains.put("entity", StaticData.entity.get(0));
-		data.setListRemarks(rService.search(constrains));
+		//data.setListRemarks(rService.search(constrains));
 		return data;
 	}
 

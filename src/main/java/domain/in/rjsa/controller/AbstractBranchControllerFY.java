@@ -67,9 +67,6 @@ extends ServiceInterfaceFY<K, E>> {
 		HashMap<String, Object> constrains = new HashMap<>();
 		constrains.put("clientId", applicationCache.getLoginDetail(getPrincipal()).getClientId());
 		
-		for (String sol : applicationCache.getUserSol(login.getId(), clientId).getSolId().split("-")) {
-			
-		}
 	
 
 		return getService().findAll(constrains, pageNo, resultPerPage);

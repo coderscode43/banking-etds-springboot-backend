@@ -24,11 +24,9 @@ import domain.in.rjsa.exception.FieldErrorDTO;
 import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.fy.Regular24QDeductee;
 import domain.in.rjsa.model.fy.Regular24QDeducteeUpdateRequestDetail;
-import domain.in.rjsa.model.fy.Remarks;
 import domain.in.rjsa.model.wrapper.Regular24QDeducteeUpdateRequestDetailWrapper;
 import domain.in.rjsa.service.Regular24QDeducteeService;
 import domain.in.rjsa.service.Regular24QDeducteeUpdateRequestDetailService;
-import domain.in.rjsa.service.RemarksService;
 import domain.in.rjsa.util.StaticData;
 
 @Controller
@@ -40,8 +38,6 @@ public class Regular24QDeducteeUpdateRequestDetailController extends
 	Regular24QDeducteeUpdateRequestDetailService service;
 	@Autowired
 	Regular24QDeducteeService dService;
-	@Autowired
-	RemarksService rService;
 
 	@Override
 	public Class<Regular24QDeducteeUpdateRequestDetail> getEntity() {
@@ -145,12 +141,6 @@ public class Regular24QDeducteeUpdateRequestDetailController extends
 			jsonElement = gson.toJsonTree(entity);
 			dService.update(gson.fromJson(jsonElement, Regular24QDeductee.class));
 
-			Remarks remark = new Remarks();
-			remark.setEntity(StaticData.entity.get(2));
-			remark.setRemark(entity.get("remarks").toString());
-			remark.setEntityId(Long.valueOf(entity.get("id").toString()));
-			rService.save(remark);
-
 			return new ResponseEntity<String>(HttpStatus.ACCEPTED);
 		}
 	}
@@ -166,12 +156,6 @@ public class Regular24QDeducteeUpdateRequestDetailController extends
 			Regular24QDeducteeUpdateRequestDetail doc = service.getByKey(Long.valueOf(entity.get("id").toString()));
 			doc.setStatus(StaticData.documentStatus.get(2));
 			service.update(doc);
-
-			Remarks remark = new Remarks();
-			remark.setEntity(StaticData.entity.get(2));
-			remark.setRemark(entity.get("remarks").toString());
-			remark.setEntityId(doc.getDocId());
-			rService.save(remark);
 
 			addLogsU(entity);
 
@@ -207,7 +191,6 @@ public class Regular24QDeducteeUpdateRequestDetailController extends
 		constrains.remove("id");
 		constrains.put("entityId", data.getNewData().getDocId());
 		constrains.put("entity", StaticData.entity.get(2));
-		data.setListRemarks(rService.search(constrains));
 		return data;
 	}
 

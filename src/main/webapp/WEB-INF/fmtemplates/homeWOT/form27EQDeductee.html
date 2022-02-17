@@ -180,13 +180,13 @@
 				</div>
 
 
-				<div class="col-md-3">
+				<!-- <div class="col-md-3">
 					<h6>
 						<b>Sr No. in challan</b>
 					</h6>
 					<input type="text" ng-model="cWctr.search.srNoInChallan" class="form-control"
 						placeholder="Sr No. in challan" style="width: 100%">
-				</div>
+				</div> -->
 				
 					<div class="col-md-3">
 					<h6>
@@ -195,12 +195,6 @@
 					<input type="text" ng-model="cWctr.search.deducteeRefNo" class="form-control"
 						placeholder="Deductee Ref. No" style="width: 100%">
 				</div>
-				</div>
-				
-				
-				
-				
-				<div class="row">
 				<div class="col-md-3">
 					<h6>
 						<b>Deductee Code</b>
@@ -209,14 +203,21 @@
 						
 						class="form-control" placeholder="deducteeCode" style="width: 100%">
 				</div>
-
+				
+				</div>
+				
+				
+				
+				
+				<div class="row">
+				
 				<div class="col-md-3">
 					<h6>
-						<b>TDS</b>
+						<b>TCS</b>
 					</h6>
-					<input type="text" ng-model="cWctr.search.tds"
+					<input type="text" ng-model="cWctr.search.tcs"
 						
-						class="form-control" placeholder="Deductee Sr.No." style="width: 100%">
+						class="form-control" placeholder="TCS" style="width: 100%">
 				</div>
 
 
@@ -235,6 +236,14 @@
 					<input type="text" ng-model="cWctr.search.eduCess" class="form-control"
 						placeholder="Education Cess" style="width: 100%">
 				</div>
+				<div class="col-md-3">
+						<h6>
+							<b>Vend Cust Id</b>
+							<h6>
+								<input type="text" ng-model="cWctr.search.vendCustId"
+									class="form-control" placeholder="Vend Cust Id"
+									style="width: 100%">
+					</div>
 				</div>
 				
 				
@@ -281,29 +290,29 @@
 				<div class="row">
 				<div class="col-md-3">
 					<h6>
-						<b>Grossing up Indicator</b>
+						<b>Total Value of Purchase</b>
 					</h6>
-					<input type="text" ng-model="cWctr.search.grossingUpIndicator"
+					<input type="text" ng-model="cWctr.search.totalValueofPurchase"
 						
-						class="form-control" placeholder="Grossing up Indicator" style="width: 100%">
+						class="form-control" placeholder="Total Value of Purchase" style="width: 100%">
 				</div>
 
 				<div class="col-md-3">
 					<h6>
-						<b>No of certificate under section</b>
+						<b>Certificate Number</b>
 					</h6>
-					<input type="text" ng-model="cWctr.search.noOfCertificateUnderSection"
+					<input type="text" ng-model="cWctr.search.certificatenumber"
 						
-						class="form-control" placeholder="No of certificate under section" style="width: 100%">
+						class="form-control" placeholder="Certificate Number" style="width: 100%">
 				</div>
 
 
 				<div class="col-md-3">
 					<h6>
-						<b>Unique Knowledge No</b>
+						<b>Unique Reference No</b>
 					</h6>
-					<input type="text" ng-model="cWctr.search.uniqueAcknowledgeNo" class="form-control"
-						placeholder="uniqueAcknowledgeNo" style="width: 100%">
+					<input type="text" ng-model="cWctr.search.uniqueRefNo" class="form-control"
+						placeholder="Unique Reference No" style="width: 100%">
 				</div>
 				
 					<div class="col-md-3">
@@ -343,8 +352,10 @@
 						placeholder="TIN" style="width: 100%">
 				</div>
 				<div class="col-md-3">
-
-						<label>Month*</label> <select name="month" class="form-control"
+						<h6>
+						<label>Month*</label> 
+						</h6>
+						<select name="month" class="form-control"
 							ng-model="cWctr.search.month" ng-required="true"
 							ng-model-options="{updateOn: 'blur'}">
 							<option selected value='1'>Janaury</option>
@@ -361,21 +372,15 @@
 							<option value='12'>December</option>
 						</select>
 					</div>
-				
-				
-					
 				</div>
-				
-				
-				
 				<div class="row">
 				<div class="col-md-3">
 					<h6>
-						<b>Nature Of Remittance</b>
+						<b>Total Tax Collected</b>
 					</h6>
-					<input type="text" ng-model="cWctr.search.natureOfRemittance"
+					<input type="text" ng-model="cWctr.search.totalTaxCollected"
 						
-						class="form-control" placeholder="Nature Of Remittance" style="width: 100%">
+						class="form-control" placeholder="Total Tax Collected" style="width: 100%">
 				</div>
 				<div class="col-md-3">
 						<h6>
@@ -385,14 +390,14 @@
 									class="form-control" placeholder="Account Number"
 									style="width: 100%">
 					</div>
-					 <div class="col-md-3">
+					<!--   <div class="col-md-3">
 						<h6>
 							<b>Branch Code</b>
 							<h6>
 								<input type="text" ng-model="cWctr.search.branchCode"
 									class="form-control" placeholder="BranchCode"
 									style="width: 100%">
-					</div>
+					</div>-->
 					
 
 					<div class="col-md-3">
@@ -411,24 +416,27 @@
 									class="form-control" placeholder="BranchCode"
 									style="width: 100%">
 					</div>
-
-			
-				</div>
-				
-					<div class="row">
-
-                       
 					<div class="col-md-3">
 						<h6>
-							<b>CIF</b>
+							<b>Reason For NonCollection F or G</b>
 							<h6>
-								<input type="text" ng-model="cWctr.search.cif"
-									class="form-control" placeholder="CIF" style="width: 100%">
+								<input type="text" ng-model="cWctr.search.reasonforNonCollection F or G"
+									class="form-control" placeholder="Reason For NonCollection F or G" style="width: 100%">
 					</div>
-
+					<div class="col-md-3">
+					<h6>
+						<b>if Answer to 681A is Yes Then Challan Number</b>
+					</h6>
+					<input type="text" ng-model="cWctr.search.ifAnswerto681AisYesThenChallanNumber"
+						
+						class="form-control" placeholder="if Answer to 681A is Yes Then Challan Number" style="width: 100%">
+				</div>
+					
 					<div class="col-md-3">
 
-						<label>Type*</label> <select name="type" class="form-control"
+						<h6>
+						<b>Type</b>
+					</h6> <select name="type" class="form-control"
 							ng-model="cWctr.search.type"
 							ng-model-options="{updateOn: 'blur'}">
 							<option value="cbs">Core Banking System</option>
@@ -437,20 +445,55 @@
 							<option value="cpps">Central Pension Payment System</option>
 						</select>
 					</div>
-
-
+					<div class="col-md-3">
+						<h6>
+							<b>Challan Heading</b>
+							<h6>
+								<input type="text" ng-model="cWctr.search.challanHeading"
+									class="form-control" placeholder="Challan Heading"
+									style="width: 100%">
+					</div>
 				</div>
-
-
-
-				<div class="row">
-
+				
+					<div class="row">
+					<div class="col-md-3">
 					
-
-					
-
-
+						
+							<h6>
+								<b> if Answer to 681A is Yes Then Date Of Payment Of TDS To Central Government</b>
+							</h6>
+								<input type="text" ng-model ="cWctr.search.ifAnswerto681AisYesThenDateOfPaymentOfTDSToCentralGovernment"				
+									class ="form-control" placeholder = "if Answer to 681A is Yes Then Date Of Payment Of TDS To Central Government" style="width:100%">
+					</div>
+					<div class="col-md-3">
+						<h6>
+								<b> Permanent Establishment</b>
+							</h6>	
+							<input type="text" ng-model ="cWctr.search.permanentEstablishment"				
+								class ="form-control" placeholder = "Permanent Establishment" style="width:100%">
+					</div>
+						<div class="col-md-3">
+						<h6>
+							<b>Deductee is Non-Resident</b>
+							<h6>
+								<input type="text" ng-model="cWctr.search.deducteeisNonResident"
+									class="form-control" placeholder="Deductee is Non-Resident"
+									style="width: 100%">
+					</div>
 				</div>
+				<div class ="row">
+					<div class="col-md-3">
+						<h6>
+							<b>Amount Receipt/Debited</b>
+							<h6>
+								<input type="text" ng-model="cWctr.search.amountReceiptDebited"
+									class="form-control" placeholder="Amount Receipt/Debited"
+									style="width: 100%">
+					</div>
+					
+					 
+				</div>
+				
 			</div>
 
 
@@ -520,11 +563,11 @@
 							<th>Month</th>
 							<th>Deductee Id</th>
 							<th>Vend Cust Id</th>
-							<th>Unique Ref No</th>
-							<th>Party Reference No.</th>
-							<th>Party Code</th>
-							<th>PAN of the Party</th>
-							<th>Name of the Party</th>
+							<th>Unique Reference No</th>
+							<th>Deductee Reference No.</th>
+							<th>Deductee Code</th>
+							<th>PAN of the Deductee</th>
+							<th>Name of the Deductee</th>
 							<th>Amount Receipt/Debited</th>
 							<th>Date of Received/Debited</th>
 							<th>TCS</th>
@@ -537,10 +580,10 @@
 							<th>Total Tax Deposited</th>
 							<th>Date of Collected</th>
 							<th>Total Value of Purchase</th>
-							<th>Rate at which Tax Collected</th>
-							<th>Reason for Non Collection</th>
+							<th>Rate at which Tax Deducted</th>
+							<th>Reason for Non Deduction</th>
 							<th>Section / Collection Code</th>
-							<th>Certificate number</th>
+							<th>Certificate Number</th>
 							<th>Deductee is Non-Resident</th>
 							<th>Permanent Establishment</th>
 							<th>Reason For NonCollection F or G</th>
@@ -564,10 +607,10 @@
 							<td>{{a.deducteeId}}</td>
 							<td>{{a.vendCustId}}</td>
 							<td>{{a.UniqueRefNo}}</td>
-							<td>{{a.partyReferenceNo}}</td>
-							<td>{{a.partyCode}}</td>
-							<td>{{a.panoftheParty}}</td>
-							<td>{{a.nameoftheParty}}</td>
+							<td>{{a.deducteeReferenceNo}}</td>
+							<td>{{a.deducteeCode}}</td>
+							<td>{{a.panofthedeDeductee}}</td>
+							<td>{{a.nameoftheDeductee}}</td>
 							<td>{{a.amountReceiptDebited}}</td>
 							<td>{{a.dateofReceivedDebited}}</td>
 							<td>{{a.tcs}}</td>
@@ -580,8 +623,8 @@
 							<td>{{a.totalTaxDeposited}}</td>
 							<td>{{a.dateofCollected| date:'dd-MM-yyyy'}}</td>
 							<td>{{a.totalValueofPurchase}}</td>
-							<td>{{a.rateatwhichTaxCollected}}</td>
-							<td>{{a.reasonforNonCollection}}</td>
+							<td>{{a.rateatwhichTaxDeducted}}</td>
+							<td>{{a.reasonforNonDeduction}}</td>
 							<td>{{a.sectionCollectionCode}}</td>
 							<td>{{a.certificatenumber}}</td>
 							<td>{{a.deducteeisNonResident}}</td>

@@ -20,19 +20,21 @@ public class Branch extends CommonModelAbstract {
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
 	private Long id;
-	@Column(name = "clientId")
-	private Long clientId;
-	@Column(name = "tan")
-	public String tan;
-	@Column(name = "name")
-	public String name;
+	@Column(name = "ROCode")
+	private Long ROCode;
 	@Column(name = "branchCode")
 	public String branchCode;
-	@Column(name = "pan")
-	public String pan;
-	@Column(name = "type")
-	public String type;
-	@Column(name = "email")
-	public String email;
+	@Column(name = "branchName")
+	public String branchName;
+	@Column(name = "branchEmail")
+	public String branchEmail;
+	@Column(name = "branchContactNo")
+	public String branchContactNo;
+	@Column(name = "branchAddress")
+	public String branchAddress;
+	@Column(name = "branchPinCode")
+	public String branchPinCode;
+	@Column(name = "branchState")
+	public String branchState;
 
 }

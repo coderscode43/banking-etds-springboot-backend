@@ -66,7 +66,6 @@ public abstract class AbstractControllerTaxo<K extends Serializable, E extends M
 
 			HashMap<String, Object> constrains = new HashMap<>();
 		//	constrains.put("clientId", applicationCache.getLoginDetail(getPrincipal()).getClientId());
-			constrains.put("TAN", b.getTan());
 
 			return getService().findAll(constrains, pageNo, resultPerPage);
 		}
@@ -79,7 +78,6 @@ public abstract class AbstractControllerTaxo<K extends Serializable, E extends M
 			Branch b = applicationCache.getBranch(Long.valueOf(branchId));
 			HashMap<String, Object> constrains = new HashMap<>();
 		//	constrains.put("clientId", applicationCache.getLoginDetail(getPrincipal()).getClientId());
-			constrains.put("TAN", b.getTan());
 
 			String mapping = request.getPathInfo();
 

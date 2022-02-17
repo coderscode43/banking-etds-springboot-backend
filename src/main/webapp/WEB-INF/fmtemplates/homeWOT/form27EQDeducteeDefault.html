@@ -144,21 +144,31 @@
 
 					<div class="col-md-3">
 						<h6>
+							<b>Vend Cust Id</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.vendCustId"
+							class="form-control" placeholder="Vend Cust Id" style="width: 100%">
+					</div>
+					
+					
+					<div class="col-md-3">
+						<h6>
 							<b>PAN</b>
 						</h6>
 						<input type="text" ng-model="cWctr.search.pan"
 							class="form-control" placeholder="PAN" style="width: 100%">
 					</div>
+					
 
 
-					<div class="col-md-3">
+					<!--  <div class="col-md-3">
 						<h6>
 							<b>Challan Sr.No</b>
 						</h6>
 						<input type="text" ng-model="cWctr.search.srNoInChallan"
 							class="form-control" placeholder="Challan Sr.No"
 							style="width: 100%">
-					</div>
+					</div>-->
 				</div>
 				<div class="row">
 					<div class="form-group">
@@ -205,10 +215,6 @@
 				</div>
 				<div class="row">
 					<div class="form-group">
-
-
-
-
 						<div class="col-md-3">
 							<h6>
 								<b>TCS</b>
@@ -252,8 +258,6 @@
 
 				<div class="row">
 					<div class="form-group">
-
-
 						<div class="col-md-3">
 							<h6>
 								<b>Total Tax Deposited </b>
@@ -291,16 +295,12 @@
 								class="form-control" placeholder="Reason for Non Collection "
 								style="width: 100%">
 						</div>
-
 					</div>
 				</div>
 
 
 				<div class="row">
 					<div class="form-group">
-
-
-
 						<div class="col-md-3">
 							<h6>
 								<b>Section / Collection Code</b>
@@ -341,11 +341,6 @@
 
 				<div class="row">
 					<div class="form-group">
-
-
-
-
-
 						<div class="col-md-3">
 							<h6>
 								<b>Error Description</b>
@@ -420,21 +415,31 @@
 									class="form-control" placeholder="ID Number"
 									style="width: 100%">
 					</div>
+					<div class="col-md-3">
+						<h6>
+							<b>If Answer to 681A is Yes then Challan Number</b>
+							<h6>
+								<input type="text" ng-model="cWctr.search.ifAnswerto681AisYesThenChallanNumber"
+									class="form-control" placeholder="If Answer to 681A is Yes then Challan Number"
+									style="width: 100%">
+					</div>
 					</div>
 				</div>
 				<div class="row">
 
-					<div class="col-md-3">
+					<!--  <div class="col-md-3">
 						<h6>
 							<b>CIF</b>
 							<h6>
 								<input type="text" ng-model="cWctr.search.cif"
 									class="form-control" placeholder="CIF" style="width: 100%">
-					</div>
+					</div>-->
 
 					<div class="col-md-3">
-
-						<label>Type*</label> <select name="type" class="form-control"
+						<h6>
+						<label>Type*</label> 
+						</h6>
+						<select name="type" class="form-control"
 							ng-model="cWctr.search.type"
 							ng-model-options="{updateOn: 'blur'}">
 							<option value="cbs">Core Banking System</option>
@@ -445,8 +450,9 @@
 					</div>
 
 					<div class="col-md-3">
-
-						<label>Month*</label> <select name="month" class="form-control"
+						<h6>
+							<label>Month*</label>
+						</h6> <select name="month" class="form-control"
 							ng-model="cWctr.search.month" ng-required="true"
 							ng-model-options="{updateOn: 'blur'}">
 							<option selected value='1'>Janaury</option>
@@ -463,17 +469,42 @@
 							<option value='12'>December</option>
 						</select>
 					</div>
-
-
-
+					<div class="col-md-3">
+						<h6>
+							<b>If Answer to 681A is Yes then Date of Payment Of TDS Centeral Government</b>
+							<h6>
+								<input type="text" ng-model="cWctr.search.ifAnswerto681AisYesThenDateOfPaymentOfTDSToCentralGovernment"
+									class="form-control" placeholder="If Answer to 681A is Yes then Date of Payment Of TDS Centeral Government"
+									style="width: 100%">
+					</div>
+					<div class="col-md-3">
+							<h6>
+								<b>Warning Description</b>
+							<h6>
+								<input type="text" ng-model="cWctr.search.warningDescription"
+									class="form-control" placeholder="Warning Description"
+									style="width: 100%">
+					</div>
 				</div>
-
-
-
-
+				<div class="row">
+					<div class="col-md-3">
+							<h6>
+								<b>BranchCode</b>
+							<h6>
+								<input type="text" ng-model="cWctr.search.branchCode"
+									class="form-control" placeholder="BranchCode"
+									style="width: 100%">
+					</div>
+					<div class="col-md-3">
+							<h6>
+								<b>Unique Reference Number</b>
+							<h6>
+								<input type="text" ng-model="cWctr.search.uniqueRefNo"
+									class="form-control" placeholder="Unique Reference Number"
+									style="width: 100%">
+					</div>
 			</div>
-
-
+			
 			<div class="row mobile" id="search">
 				<div class="col-md-2" id="search">
 					<button
@@ -543,7 +574,6 @@
 						<th>Account Number</th>
 						<th>Type</th>
 						<th>Month</th>
-						<th>Challan Sr.No</th>
 						<th>Party Reference No.</th>
 						<th>Party Code</th>
 						<th>PAN of the Party</th>

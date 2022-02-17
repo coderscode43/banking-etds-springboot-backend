@@ -203,24 +203,28 @@
 							  <thead role="rowgroup">
 							      <tr style="height:40px;background-color:#81b7db">
 							      <th width="10%">Sr. No.</th>
-							      <th width="10%">Branch Name</th>
+							      <th width="10%">ROCode</th>
 							      <th width="10%">Branch Code</th>
-							      <th width="10%" >Tan</th>
-							      <th width="10%">Pan</th>
-							      <th width="10%" >Type Of Deductor</th>
-							      <th width="10%">Email</th>
+							      <th width="10%" >Branch Name</th>
+							      <th width="10%">Branch Email</th>
+							      <th width="10%" >Branch ContactNo</th>
+							      <th width="10%">Branch Address</th>
+							      <th width="10%">Branch PIN Code</th>
+							       <th width="10%">Branch State</th>
 							      <th width="10%">Action</th>
                                   </tr>
                                </thead>
 								<tbody>
 									<tr  ng-repeat="a in cCctr.getEntityListData() track by a.id">
 										<td >{{$index+1}}</td>
-											<td>{{a.name}}</td>
+											<td>{{a.ROCode}}</td>
 											<td>{{a.branchCode}}</td>
-											<td>{{a.tan}}</td>
-											<td>{{a.pan}}</td>
-											<td>{{a.type}}</td>
-											<td>{{a.email}}</td>
+											<td>{{a.branchName}}</td>
+											<td>{{a.branchEmail}}</td>
+											<td>{{a.branchContactNo}}</td>
+											<td>{{a.branchAddress}}</td>
+											<td>{{a.branchPinCode}}</td>
+											<td>{{a.branchState}}</td>
 											<td><button ng-click="cCctr.gotoHomePageWOT(a.id,'homeWOT')" class="btn btn-success" onclick="scrollWin()" style="height:30px; margin-top:10px; margin-bottom:10px; background-color:#0f316d">Work on this</button></td>
 										<!-- <td>{{a.total-a.amountPaid}}</td> -->
 										

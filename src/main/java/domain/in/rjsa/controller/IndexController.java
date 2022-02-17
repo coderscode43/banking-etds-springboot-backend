@@ -18,9 +18,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import domain.in.rjsa.model.form.OrganizationDetails;
 import domain.in.rjsa.model.form.Login;
-import domain.in.rjsa.model.form.UserSol;
+import domain.in.rjsa.model.form.OrganizationDetails;
 import domain.in.rjsa.web.ApplicationCache;
 
 @Controller
@@ -82,11 +81,7 @@ public class IndexController {
 		 */
 
 		OrganizationDetails cd = applicationCache.getOrganizationDetails(login.getClientId());
-		UserSol us = applicationCache.getUserSol(login.getId(), cd.getId());
 		List<Long> listSolId = new ArrayList<>();
-		for (String sol : us.getSolId().split("-")) {
-			listSolId.add(Long.valueOf(sol));
-		}
 		model.addAttribute("cd", cd);
 		model.addAttribute("listBr", listSolId);
 
@@ -176,11 +171,7 @@ public class IndexController {
 			ModelMap model) {
 		Login login = applicationCache.getLoginDetail(getPrincipal());
 		OrganizationDetails cd = applicationCache.getOrganizationDetails(login.getClientId());
-		UserSol us = applicationCache.getUserSol(login.getId(), cd.getId());
 		List<Long> listSolId = new ArrayList<>();
-		for (String sol : us.getSolId().split("-")) {
-			listSolId.add(Long.valueOf(sol));
-		}
 		model.addAttribute("cd", cd);
 		model.addAttribute("listBr", listSolId);
 		return action + "/" + page;

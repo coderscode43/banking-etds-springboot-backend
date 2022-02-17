@@ -4,15 +4,10 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import domain.in.rjsa.dao.DaoInterfaceTaxo;
-import domain.in.rjsa.dao.FileDetailDao;
 
 public abstract class AbstractServiceTaxo<K extends Serializable, E, D extends DaoInterfaceTaxo<K, E>>
 		implements ServiceInterfaceTaxo<K, E> {
-	@Autowired
-	FileDetailDao fDao;
 	
 
 	@Override

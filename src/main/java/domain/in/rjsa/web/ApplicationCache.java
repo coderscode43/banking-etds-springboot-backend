@@ -1,7 +1,5 @@
 package domain.in.rjsa.web;
 
-import java.util.HashMap;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -10,11 +8,9 @@ import org.springframework.stereotype.Service;
 import domain.in.rjsa.model.form.Branch;
 import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.form.OrganizationDetails;
-import domain.in.rjsa.model.form.UserSol;
 import domain.in.rjsa.service.BranchService;
 import domain.in.rjsa.service.LoginService;
 import domain.in.rjsa.service.OrganizationDetailsService;
-import domain.in.rjsa.service.UserSolService;
 
 @Service("ApplicationCache")
 public class ApplicationCache {
@@ -23,7 +19,6 @@ public class ApplicationCache {
 	private LoginService loginService;
 	private OrganizationDetailsService organizationDetailsService;
 	private BranchService branchService;
-	private UserSolService userSolService;
 	
 
 
@@ -56,13 +51,6 @@ public class ApplicationCache {
 		return branchService.getByKey(id);
 	}
 	
-	@Cacheable(value= "userSol")
-	public UserSol getUserSol(Long userId, Long clientId) {
-		HashMap<String, Object> map = new HashMap<>();
-		map.put("clientId", clientId);
-		map.put("userId", userId);
-		return userSolService.uniqueSearch(map );
-	}
 	
 	
 	@Autowired
@@ -78,11 +66,6 @@ public class ApplicationCache {
 	@Autowired
 	public void setBranchService(BranchService branchService) {
 		this.branchService = branchService;
-	}
-	
-	@Autowired
-	public void setUserSolService(UserSolService userSolService) {
-		this.userSolService = userSolService;
 	}
 
 }

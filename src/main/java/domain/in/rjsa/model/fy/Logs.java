@@ -31,8 +31,6 @@ public class Logs extends CommonModelAbstract{
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
 	public Long id;		
-	@Column(name = "clientId")
-	public Long clientId;
 	@Column(name = "username")
 	public String username;
 	@Temporal(TemporalType.DATE)

@@ -118,8 +118,6 @@ public class Regular26QDeductee extends CommonModelAbstract{
 	public Long accNo;
 	@Column(name = "idNo")
 	public Long idNo;
-	@Column(name = "cif")
-	public String cif;
 	@Column(name = "type")
 	public String type;
 	@Column(name = "month")
@@ -134,6 +132,20 @@ public class Regular26QDeductee extends CommonModelAbstract{
 	public String cashWithdrawal194N20Lto1Cr;
 	@Column(name = "cashWithdrawal194N1Cr")
 	public String cashWithdrawal194N1Cr;
+	@Column(name = "TAN")
+	public String TAN ;
+	@Column(name = "errorDescription")
+	public String errorDescription ;
+	@Column(name = "warningDescription")
+	public String warningDescription ;
+	@Column(name = "ShortDeduction")
+	public Double ShortDeduction;
+	@Column(name = "InterestOnShortDeduction")
+	public Double InterestOnShortDeduction ;
+	@Column(name = "InterestOnLatePayment")
+	public Double InterestOnLatePayment;
+	@Column(name = "InterestOnLateDeduction")
+	public Double InterestOnLateDeduction;
 	
 	@Column(name = "verify")
 	public boolean verify = false;

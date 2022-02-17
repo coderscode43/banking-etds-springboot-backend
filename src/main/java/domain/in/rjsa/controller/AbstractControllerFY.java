@@ -38,9 +38,7 @@ import domain.in.rjsa.model.form.ListCount;
 import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.form.Model;
 import domain.in.rjsa.model.fy.Logs;
-import domain.in.rjsa.model.fy.LogsJson;
 import domain.in.rjsa.service.BranchService;
-import domain.in.rjsa.service.LogsJsonService;
 import domain.in.rjsa.service.LogsService;
 import domain.in.rjsa.service.ServiceInterfaceFY;
 import domain.in.rjsa.web.ApplicationCache;
@@ -55,8 +53,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 	@Autowired
 	LogsService lservice;
 
-	@Autowired
-	LogsJsonService ljService;
+	
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -67,9 +64,6 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 		HashMap<String, Object> constrains = new HashMap<>();
 		constrains.put("clientId", applicationCache.getLoginDetail(getPrincipal()).getClientId());
 		List<Long> listBranchId = new ArrayList<Long>();
-		for (String sol : applicationCache.getUserSol(login.getId(), clientId).getSolId().split("-")) {
-			listBranchId.add(Long.valueOf(sol));
-		}
 		constrains.put("branchId", listBranchId);
 
 		return getService().findAll(constrains, pageNo, resultPerPage);
@@ -241,7 +235,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 	}
 
 	public void addLogs(HashMap<String, Object> entity) {
-		LogsJson lj = new LogsJson();
+	
 
 		Login l = applicationCache.getLoginDetail(getPrincipal());
 		HashMap<String, Object> constrains = new HashMap<>();
@@ -249,7 +243,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 		constrains.put("clientId", l.getClientId());
 		Logs log = lservice.uniqueSearch(constrains);
 		log = new Logs();
-		log.setClientId(l.getClientId());
+		
 		log.setAction("Added");
 		log.setIpaddrs(getIp());
 		String s = getEntity().getName();
@@ -260,10 +254,9 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 		String json = gason.toJson(entity);
 		log.setDate(new Date(System.currentTimeMillis()));
 		log.setUsername(l.getUserName());
-		lj.setId(log.getId());
-		lj.setData(json);
+		
 		lservice.save(log);
-		ljService.save(lj);
+		
 
 	}
 
@@ -329,14 +322,14 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 	}
 
 	public void addLogsU(HashMap<String, Object> entity) {
-		LogsJson lj = new LogsJson();
+	
 		Login l = applicationCache.getLoginDetail(getPrincipal());
 		HashMap<String, Object> constrains = new HashMap<>();
 		constrains.put("id", Long.valueOf(entity.get("id").toString()));
 		constrains.put("clientId", l.getClientId());
 		Logs log = lservice.uniqueSearch(constrains);
 		log = new Logs();
-		log.setClientId(l.getClientId());
+		
 		log.setAction("Updated");
 		log.setIpaddrs(getIp());
 		String s = getEntity().getName();
@@ -347,10 +340,9 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 		String json = gason.toJson(entity);
 		log.setDate(new Date(System.currentTimeMillis()));
 		log.setUsername(l.getUserName());
-		lj.setId(log.getId());
-		lj.setData(json);
+		
 		lservice.save(log);
-		ljService.save(lj);
+		
 	}
 
 	// ------------------- Delete Entity ---------------------------------

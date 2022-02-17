@@ -78,8 +78,6 @@ public class Regular27EQDeductee extends CommonModelAbstract {
 	public Long accNo;
 	@Column(name = "idNo")
 	public Long idNo;
-	@Column(name = "cif")
-	public String cif;
 	@Column(name = "type")
 	public String type;
 	@Column(name = "month")
@@ -98,4 +96,20 @@ public class Regular27EQDeductee extends CommonModelAbstract {
 	public String ifAnswerTo681AisyesthenChallanNumber;
 	@Column(name = "ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment")
 	public String ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment;
+	@Column(name = "TAN")
+	public String TAN ;
+	@Column(name = "collectionCode")
+	public String collectionCode ;
+	@Column(name = "errorDescription")
+	public String errorDescription ;
+	@Column(name = "warningDescription")
+	public String warningDescription ;
+	@Column(name = "ShortDeduction")
+	public Double ShortDeduction;
+	@Column(name = "InterestOnShortDeduction")
+	public Double InterestOnShortDeduction ;
+	@Column(name = "InterestOnLatePayment")
+	public Double InterestOnLatePayment;
+	@Column(name = "InterestOnLateDeduction")
+	public Double InterestOnLateDeduction;
 }

@@ -21,8 +21,8 @@ public class MonthlyChallan extends CommonModelAbstract{
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
 	public Long id;		
-	@Column(name = "sectionCode")
-	public Long sectionCode;	
+	@Column(name = "section")
+	public Long section;	
 	@Column(name = "branchCode")
 	public String branchCode;
 	@Column(name = "month")

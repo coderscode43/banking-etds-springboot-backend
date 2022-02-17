@@ -33,8 +33,6 @@ import domain.in.rjsa.model.form.ListCount;
 import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.form.Model;
 import domain.in.rjsa.model.fy.Logs;
-import domain.in.rjsa.model.fy.LogsJson;
-import domain.in.rjsa.service.LogsJsonService;
 import domain.in.rjsa.service.LogsService;
 import domain.in.rjsa.service.ServiceInterfaceTaxo;
 import domain.in.rjsa.web.ApplicationCache;
@@ -50,8 +48,7 @@ public abstract class AbstractControllerTaxo<K extends Serializable, E extends M
 	@Autowired
 	LogsService lservice;
 	
-	@Autowired
-	LogsJsonService ljService;
+
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
@@ -248,14 +245,14 @@ public abstract class AbstractControllerTaxo<K extends Serializable, E extends M
 	
 		
 		 public void addLogsU(HashMap<String, Object> entity) {
-			 LogsJson lj=new LogsJson();
+			
 		    	Login l = applicationCache.getLoginDetail(getPrincipal());
 //				HashMap<String, Object>constrains= new HashMap<>();
 //				constrains.put("id", Long.valueOf(entity.get("id").toString()));
 //				constrains.put("clientId",l.getClientId());
 //				Logs log = lservice.uniqueSearch(constrains);			
 		    	Logs log = new Logs();
-			    log.setClientId(l.getClientId());
+			  
 			    log.setAction("Updated");
 			    log.setIpaddrs(getIp());
 			    String s=getEntity().getName();
@@ -266,10 +263,9 @@ public abstract class AbstractControllerTaxo<K extends Serializable, E extends M
 			    String json = gason.toJson(entity); 
 			    log.setDate(new Date(System.currentTimeMillis()));
 				log.setUsername(l.getUserName());
-				lj.setId(log.getId());
-				lj.setData(json);
+				
 				lservice.save(log);
-				ljService.save(lj);
+				
 			}
 		
 		

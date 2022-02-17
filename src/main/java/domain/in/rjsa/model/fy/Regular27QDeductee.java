@@ -114,9 +114,7 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	@Digits(integer = 15, fraction = 0,message="No Of Certificate Under Section .No Of Certificate Under Section . should not be greater than 12")
 	public Long noOfCertificateUnderSection;
 	@Column(name = "uniqueAcknowledgeNo")
-	@NotNull(message = "Unique Acknowledge No Under Section is a required field")
-	@Digits(integer = 15, fraction = 0,message="Enter valid Unique Acknowledge.Unique Acknowledge. should not be greater than 12")
-	public Long uniqueAcknowledgeNo;
+	public String uniqueAcknowledgeNo;
 	@Column(name = "countryOfResidence")
 	@NotNull(message = "Country Of Residence is a required field")
 	@Size(min=0, max=45, message="Country Of Residence length should be between 1 to 100 characters.")
@@ -128,7 +126,7 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	@Column(name = "contactNoOfDeductee")
 	@NotNull(message = "contact No Of Deductee is a required field")
 	@Size(min=0, max=10, message="contact No  should be between 0 to 10 characters.")
-	public String contactNoOfDeductee;
+	public Long contactNoOfDeductee;
 	@Column(name = "addressOfDeductee")
 	@NotNull(message = "address Of Deductee is a required field")
 	@Size(min=0, max=45, message="address Of Deductee length should be between 1 to 100 characters.")
@@ -174,8 +172,20 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	public String cashWithdrawal194N20Lto1Cr;
 	@Column(name = "cashWithdrawal194N1Cr")
 	public String cashWithdrawal194N1Cr;
-	
-	
+	@Column(name = "TAN")
+	public String TAN ;
+	@Column(name = "errorDescription")
+	public String errorDescription ;
+	@Column(name = "warningDescription")
+	public String warningDescription ;
+	@Column(name = "ShortDeduction")
+	public Double ShortDeduction;
+	@Column(name = "InterestOnShortDeduction")
+	public Double InterestOnShortDeduction ;
+	@Column(name = "InterestOnLatePayment")
+	public Double InterestOnLatePayment;
+	@Column(name = "InterestOnLateDeduction")
+	public Double InterestOnLateDeduction;
 	
 	@Column(name = "verify")
 	public boolean verify = false;

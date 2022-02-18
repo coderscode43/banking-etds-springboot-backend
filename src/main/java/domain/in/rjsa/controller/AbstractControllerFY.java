@@ -70,7 +70,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 	}
 	// ------------------- Count Entity ---------------------------------
 
-	@RequestMapping(value = "/listFy/{clientId}/count/", method = RequestMethod.GET)
+	@RequestMapping(value = "/list/{clientId}/count/", method = RequestMethod.GET)
 	public ResponseEntity<?> count(@PathVariable Long clientId, HttpServletRequest request) {
 		HashMap<String, Object> constrains = new HashMap<>();
 		constrains.put("clientId", applicationCache.getLoginDetail(getPrincipal()).getClientId());

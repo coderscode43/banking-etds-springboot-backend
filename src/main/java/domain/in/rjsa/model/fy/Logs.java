@@ -45,7 +45,8 @@ public class Logs extends CommonModelAbstract{
 //	public Long idoftheuser;
 	@Column(name = "action")
 	public String action;
-	
+	@Column(name = "details")
+	public String details;
 	
 	//Entity
 	//entity

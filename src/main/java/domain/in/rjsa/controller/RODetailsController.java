@@ -8,7 +8,7 @@ import domain.in.rjsa.model.form.RODetails;
 import domain.in.rjsa.service.RODetailsService;
 
 @Controller
-@RequestMapping("/apiroDetails")
+@RequestMapping("/apiRODetails")
 public class RODetailsController extends AbstractControllerForm<Long, RODetails, RODetailsService>{
 	@Autowired
 	RODetailsService service;

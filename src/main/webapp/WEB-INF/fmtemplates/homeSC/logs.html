@@ -124,17 +124,41 @@
 
 					<div class="col-md-2">
 						<h6>
-							<b>Name</b>
+							<b> User Name</b>
 							<h6>
 								<input type="text" ng-model="cCctr.search.username"
 									class="form-control" placeholder="Name" style="width: 100%">
+				
 					</div>
+					
+					<div class="col-md-2">
+						<h6>
+							<b> Entity</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.entity"
+									class="form-control" placeholder="Name" style="width: 100%">
+				
+					</div>
+					
+					
+					
 					<div class="col-md-3">
 						<h6>
 							<b>IP-Address</b>
 							<h6>
 								<input type="text" ng-model="cCctr.search.ipaddrs"
-									class="form-control" placeholder="ipaddrs" style="width: 100%">
+									class="form-control" placeholder="ipaddrs" style="width: 100%">					
+					</div>
+					
+				
+					
+					
+					<div class="col-md-3">
+						<h6>
+							<b> From Date to Date</b>
+							<h6>
+								<input type="date" ng-model="cCctr.search.date"
+									class="form-control" placeholder="Date" style="width: 100%">					
 					</div>
 				<div class="row" id="hide">
 				<div class="col-md-4" style="margin-left: 85%; margin-top: -50px">
@@ -143,12 +167,19 @@
 				</div>
 			</div>
 
-			<div class="row" id="search">
-				<div class="col-md-3" id="search">
-					<button ng-click="cCctr.searchEntities(true,'logs')"
-						class="btn btn-success" onclick="scrollWin()">Search</button>
+		
+			<div class="row">
+		<div class="col-xs-12">
+			<div class="text-right">
+			<button class="btn btn-secondary"
+					style="background-color: #FFA500;"
+					data-toggle="collapse" data-target="#collapseExample4"
+					aria-expanded="false" aria-controls="collapseExample">
+					Advance Search</button>
+					</div>
 				</div>
 			</div>
+		
 		</div>
 	</div>
 

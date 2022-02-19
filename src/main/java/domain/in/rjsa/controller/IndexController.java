@@ -64,7 +64,7 @@ public class IndexController {
 
 	@RequestMapping(value = "/homePageWOT")
 	public String getHomePageWOT( ModelMap model) {
-		return  "homeSC/homeWOTHomepage";
+		return  "homeWOT/homeWOTHomepage";
 	}
 	
 	

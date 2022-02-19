@@ -64,10 +64,10 @@ App
 							}
 							
 
-							self.gotoHomePageWOT = function(id, fy) {
-								$state.go("home.homepage", {
+							self.gotoHomePageWOTOFPresentFY = function(id) {
+								$state.go("homeWot.homepage", {
 									"branchId" : id,
-									"fy" : fy
+									"fy" : '2021-22'
 								});
 							}
 

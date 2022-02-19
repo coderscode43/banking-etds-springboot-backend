@@ -125,73 +125,73 @@
  
  </style>
 
-
-
-
-
-	<div class="container-fluid">
-    <div class="col-md-12 " style="padding-left: 0px;font-size: 12pxp; margin-top:2%" >
-	<div class="heading"><strong>Branch Details</strong></div>
+<div class="container-fluid">
+	<div class="col-md-12 "
+		style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
+		<div class="heading">
+			<strong>Branch Details</strong>
+		</div>
 	</div>
-		
-	  <br>
-	     <!--  <button class="btn btn-primary hidden visible-xs" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample" >
-             Search 
-          </button> -->
-     <!--  <div class="collapse dont-collapse-sm" id="collapseExample2" > 
-	    <div class="row">
-	     <div class="form-group">
-	      <div class="col-md-3">	
-                  <h6><b>Name</b><h6>
-                  <input type="text" ng-model="cCctr.search.name" class="form-control" placeholder="Name" style="width:100%">
-			</div>
-	  <div class="col-md-3">							
-            <h6><b>TAN</b></h6>
-             <input type="text"ng-model="cCctr.search.tan" class="form-control" placeholder="TAN" style="width:100%">
-      </div>
-      
-     	<div class="col-md-3">	
-           <h6><b>Email</b><h6>
-           <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" ng-model="cCctr.search.email" class="form-control" placeholder="Email" style="width:100%">
-       </div>
-      
-   </div>
-            
-           
-	       </div>	
-	       <div class="row">
-	   <div class="form-group">
-	  
-	    <div class="col-md-3">	
-                <h6><b>Branch Code</b><h6>
-                  <input type="text"ng-model="cCctr.search.branchCode" class="form-control" placeholder="Branch" style="width:100%">
-								</div>
-	<div class="col-md-3">							
-            <h6><b>PAN</b></h6>
-           <input type="text"ng-model="cCctr.search.pan" class="form-control" placeholder="PAN" style="width:100%">
-      </div>
-   </div>
- </div>
-	      		
-	             <div class="row" id="hide" >
-	         	  <div class="col-md-3"  style="margin-left:85%;margin-top:-70px">	
-	                          <button ng-click="cCctr.searchEntities(true,'branch')"
-									class="btn btn-success" onclick="scrollWin()">Search</button>
-	                 </div>					
-  				</div>
-  
-             <div class="row" id="search" >
-	         	  <div class="col-md-3" id="search">	
-	                <button ng-click="cCctr.searchEntities(true,'branch')"
-					class="btn btn-success" onclick="scrollWin()">Search</button>
-	                 </div>					
-              </div>
-  </div> -->
- </div>
 
- 
- 					
-					<!-- 	<div class="table-responsive"> -->
+	<br>
+	<button class="btn btn-primary hidden visible-xs" type="button"
+		data-toggle="collapse" data-target="#collapseExample2"
+		aria-expanded="false" aria-controls="collapseExample">
+		Search</button>
+	<div class="collapse dont-collapse-sm" id="collapseExample2">
+		<div class="row">
+			<div class="form-group">
+				<div class="col-md-3">
+					<h6>
+						<b>Name</b>
+						<h6>
+							<input type="text" ng-model="cCctr.search.name"
+								class="form-control" placeholder="Name" style="width: 100%">
+				</div>
+
+			</div>
+
+
+		</div>
+		<div class="row">
+			<div class="form-group">
+
+				<div class="col-md-3">
+					<h6>
+						<b>Branch Code</b>
+						<h6>
+							<input type="text" ng-model="cCctr.search.branchCode"
+								class="form-control" placeholder="Branch" style="width: 100%">
+				</div>
+				<div class="col-md-3">
+					<h6>
+						<b>PAN</b>
+					</h6>
+					<input type="text" ng-model="cCctr.search.pan" class="form-control"
+						placeholder="PAN" style="width: 100%">
+				</div>
+			</div>
+		</div>
+
+		<div class="row" id="hide">
+			<div class="col-md-3" style="margin-left: 85%; margin-top: -70px">
+				<button ng-click="cCctr.searchEntities(true,'branch')"
+					class="btn btn-success" onclick="scrollWin()">Search</button>
+			</div>
+		</div>
+
+		<div class="row" id="search">
+			<div class="col-md-3" id="search">
+				<button ng-click="cCctr.searchEntities(true,'branch')"
+					class="btn btn-success" onclick="scrollWin()">Search</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<!-- 	<div class="table-responsive"> -->
 
 							<table class=" tables table-bordered table-hover table-striped" role="table"
 								style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
@@ -203,8 +203,8 @@
 							  <thead role="rowgroup">
 							      <tr style="height:40px;background-color:#81b7db">
 							      <th width="10%">Sr. No.</th>
-							      <th width="10%">ROCode</th>
 							      <th width="10%">Branch Code</th>
+							      <th width="10%">ROCode</th>
 							      <th width="10%" >Branch Name</th>
 							      <th width="10%">Branch Email</th>
 							      <th width="10%" >Branch ContactNo</th>
@@ -217,15 +217,15 @@
 								<tbody>
 									<tr  ng-repeat="a in cCctr.getEntityListData() track by a.id">
 										<td >{{$index+1}}</td>
-											<td>{{a.ROCode}}</td>
 											<td>{{a.branchCode}}</td>
+											<td>{{a.rocode}}</td>
 											<td>{{a.branchName}}</td>
 											<td>{{a.branchEmail}}</td>
 											<td>{{a.branchContactNo}}</td>
 											<td>{{a.branchAddress}}</td>
 											<td>{{a.branchPinCode}}</td>
 											<td>{{a.branchState}}</td>
-											<td><button ng-click="cCctr.gotoHomePageWOT(a.id,'homeWOT')" class="btn btn-success" onclick="scrollWin()" style="height:30px; margin-top:10px; margin-bottom:10px; background-color:#0f316d">Work on this</button></td>
+											<td><button ng-click="cCctr.gotoHomePageWOTOFPresentFY(a.id)" class="btn btn-success" onclick="scrollWin()" style="height:30px; margin-top:10px; margin-bottom:10px; background-color:#0f316d">Work on this</button></td>
 										<!-- <td>{{a.total-a.amountPaid}}</td> -->
 										
 									</tr>								

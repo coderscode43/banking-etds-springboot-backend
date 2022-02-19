@@ -33,11 +33,11 @@ public class BranchController {
 	@Autowired
 	ApplicationCache applicationCache;
 	
-	@RequestMapping(value = "/list/{clientId}/get/{pageNo}/{resultPerPage}", method = RequestMethod.GET)
-	public ResponseEntity<?> listAll(@PathVariable Long clientId, HttpServletRequest request, @PathVariable int pageNo,
+	@RequestMapping(value = "/list/get/{pageNo}/{resultPerPage}", method = RequestMethod.GET)
+	public ResponseEntity<?> listAll( HttpServletRequest request, @PathVariable int pageNo,
 			@PathVariable int resultPerPage) {
 		try {
-			List<?> list = getList(clientId, pageNo, resultPerPage);
+			List<?> list = getList( pageNo, resultPerPage);
 
 			return new ResponseEntity<>(list, HttpStatus.OK);
 		} catch (Exception e) {
@@ -47,7 +47,7 @@ public class BranchController {
 
 	}
 
-	public List<?> getList(Long clientId, int pageNo, int resultPerPage) {
+	public List<?> getList( int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
 
@@ -67,8 +67,8 @@ public class BranchController {
 		return userName;
 
 	}
-	@RequestMapping(value = "/list/{clientId}/count/", method = RequestMethod.GET)
-	public ResponseEntity<?> count(@PathVariable Long clientId, HttpServletRequest request) {
+	@RequestMapping(value = "/list/count/", method = RequestMethod.GET)
+	public ResponseEntity<?> count( HttpServletRequest request) {
 		// verify the clientId authorization
 //			applicationCache.getUserAuthorised();
 		HashMap<String, Object> constrains = new HashMap<>();
@@ -77,7 +77,7 @@ public class BranchController {
 
 		try {
 			Long count = service.findallCount(constrains);
-			List<?> list = getList(clientId, 0, 100);
+			List<?> list = getList( 0, 100);
 			ListCount send = new ListCount();
 			send.setCount(count);
 			send.setEntities(list);

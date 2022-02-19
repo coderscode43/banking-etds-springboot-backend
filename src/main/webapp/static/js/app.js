@@ -105,7 +105,7 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 				page: null
 			},
 			templateUrl: function($stateParams) {
-				return 'index/list/homeSC/' + '/' + $stateParams.page;
+				return 'index/list/homeSC/'  + $stateParams.page;
 			},
 			resolve: {
 				list: function($q, $state, CommonService, $stateParams) {

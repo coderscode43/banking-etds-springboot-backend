@@ -108,6 +108,37 @@ App
 
 							}
 
+
+							self.gotoWFYListPage = function(entity, page) {
+								self.show = false;
+								self.entity = {};
+								self.search = {};
+								self.entityList = [];
+								// self.ItemsPerPage=100;
+								self.dropdown = [];
+								self.ajax = [];
+								self.temp = {};
+								self.temp3 = {};
+								self.temp1 = [];
+								self.company = {};
+								self.currentPage = 1;
+								self.batchColor = {};
+								self.goodsColor = [];
+								self.b = [];
+								self.fileName = new FormData();
+
+								$state.go("homeWot.list", {
+									"entity" : entity,
+									"page" : page
+								});
+
+							}
+
+
+
+
+
+
 							self.searchEntities = function(valid, entity, page) {
 								if (valid = true) {
 									$.each(self.search, function(key, value) {

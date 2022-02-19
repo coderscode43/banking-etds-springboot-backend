@@ -242,11 +242,11 @@ App.factory('CommonService', [
 				return deferred.promise;
 			}
 			
-			function countForBranchFunction(entity, clientId) {
+			function countForBranchFunction(entity, clientId,barchCode) {
 				entityList = [];
 				var deferred = $q.defer();
 				$http.get(
-						REST_SERVICE_URI + entity + '/listBranch/' + clientId+'/count/').success(function(data) {
+						REST_SERVICE_URI + entity + '/listBranch/' + clientId + barchCode +'/count/').success(function(data) {
 					count = data.count;
 					entityList = data.entities;
 					deferred.resolve(data);

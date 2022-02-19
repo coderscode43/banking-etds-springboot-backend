@@ -43,114 +43,114 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	@Column(name = "challanHeading")
 	public String challanHeading;
 	@Column(name = "deducteeRefNo")
-	@NotNull(message = "Deductee Ref No is a required field")
-	@Digits(integer = 15, fraction = 0,message="Enter valid Deductee Ref No.Deductee Ref No. should not be greater than 12")
-	public Long deducteeRefNo;
+	//@NotNull(message = "Deductee Ref No is a required field")
+	//@Digits(integer = 15, fraction = 0,message="Enter valid Deductee Ref No.Deductee Ref No. should not be greater than 12")
+	public String deducteeRefNo;
 	@Column(name = "deducteeCode")
-	@NotNull(message = "Deductee Code  is a required field")
-	@Size(min=0, max=45, message="Deductee Code  should not be greater than 45 characters.")
+	//@NotNull(message = "Deductee Code  is a required field")
+	//@Size(min=0, max=45, message="Deductee Code  should not be greater than 45 characters.")
 	public String deducteeCode;
 	@Column(name = "pan")
-	@NotNull(message = "PAN In Deductee is a required field")
-	@Pattern(regexp="^([a-zA-Z]{5}[0-9]{4}[a-zA-Z]{1})|^$", message="PAN is not valid.")
-	@Size(min=0, max=45, message="PAN should be between 0 to 10 characters.")
+	//@NotNull(message = "PAN In Deductee is a required field")
+	//@Pattern(regexp="^([a-zA-Z]{5}[0-9]{4}[a-zA-Z]{1})|^$", message="PAN is not valid.")
+	//@Size(min=0, max=45, message="PAN should be between 0 to 10 characters.")
 	public String pan;
 	@Column(name = "name")
-	@NotNull(message = "Name is a required field")
-	@Size(min=0, max=45, message=" Name length should be between 1 to 100 characters.")
+	//@NotNull(message = "Name is a required field")
+	//@Size(min=0, max=45, message=" Name length should be between 1 to 100 characters.")
 	public String name;
 	@Column(name = "sectionCode")
-	@NotNull(message = "Section Code is a required field")
-	@Size(min=0, max=45, message="section Code should not be greater than 45 characters.")
+	//@NotNull(message = "Section Code is a required field")
+	//@Size(min=0, max=45, message="section Code should not be greater than 45 characters.")
 	public String sectionCode;
-	@Temporal(TemporalType.DATE)
+	//@Temporal(TemporalType.DATE)
 	@Column(name = "date")
-	@NotNull(message = "Date required field")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+	//@NotNull(message = "Date required field")
+	//@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	public Date date;
 	@Column(name = "amountPaid")
-	@NotNull(message = "amount Paid is a required field")
-	@Digits(integer = 12, fraction = 2,message="amount Paid is not proper.Maximum 2 fractions allowed.")
+	//@NotNull(message = "amount Paid is a required field")
+	//@Digits(integer = 12, fraction = 2,message="amount Paid is not proper.Maximum 2 fractions allowed.")
 	public Double amountPaid;
 	@Column(name = "tds")
-	@NotNull(message = "tds is a required field")
-	@Digits(integer = 12, fraction = 2,message="tds is not proper.Maximum 2 fractions allowed.")
+	//@NotNull(message = "tds is a required field")
+	//@Digits(integer = 12, fraction = 2,message="tds is not proper.Maximum 2 fractions allowed.")
 	public Double tds;
 	@Column(name = "surcharge")
-	@NotNull(message = "surcharge is a required field")
-	@Digits(integer = 12, fraction = 2,message="surcharge is not proper.Maximum 2 fractions allowed.")
+	//@NotNull(message = "surcharge is a required field")
+	//@Digits(integer = 12, fraction = 2,message="surcharge is not proper.Maximum 2 fractions allowed.")
 	public Double surcharge;
 	@Column(name = "educationCess")
-	@NotNull(message = "educationCess is a required field")
-	@Digits(integer = 12, fraction = 2,message="educationCess is not proper.Maximum 2 fractions allowed.")
+	//@NotNull(message = "educationCess is a required field")
+	//@Digits(integer = 12, fraction = 2,message="educationCess is not proper.Maximum 2 fractions allowed.")
 	public Double educationCess;
 	@Column(name = "totalTaxDeducted")
-	@NotNull(message = "totalTaxDeducted is a required field")
-	@Digits(integer = 12, fraction = 2,message="totalTaxDeducted is not proper.Maximum 2 fractions allowed.")
+	//@NotNull(message = "totalTaxDeducted is a required field")
+	//@Digits(integer = 12, fraction = 2,message="totalTaxDeducted is not proper.Maximum 2 fractions allowed.")
 	public Double totalTaxDeducted;
 	@Column(name = "totalTaxDeposited")
-	@NotNull(message = "Total Tax Deposited is a required field")
-	@Digits(integer = 12, fraction = 2,message="totalTaxDepositedis not proper.Maximum 2 fractions allowed.")
+	//@NotNull(message = "Total Tax Deposited is a required field")
+	//@Digits(integer = 12, fraction = 2,message="totalTaxDepositedis not proper.Maximum 2 fractions allowed.")
 	public Double totalTaxDeposited;
-	@Temporal(TemporalType.DATE)
+	//@Temporal(TemporalType.DATE)
 	@Column(name = "dateOfDeduction")
-	@NotNull(message = "Date is a required field")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+	//@NotNull(message = "Date is a required field")
+	//@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	public Date dateOfDeduction;
 	@Column(name = "rateAtWhichTaxDeducted")
-	@NotNull(message = "Rate At Which Tax Deducted is a required field")
-	@Digits(integer = 12, fraction = 2,message="Rate At Which Tax Deducted  is not proper.Maximum 2 fractions allowed.")
+	//@NotNull(message = "Rate At Which Tax Deducted is a required field")
+	//@Digits(integer = 12, fraction = 2,message="Rate At Which Tax Deducted  is not proper.Maximum 2 fractions allowed.")
 	public Double rateAtWhichTaxDeducted;
 	@Column(name = "reasonForNonDeduction")
-	@NotNull(message = "Reason For Non Deduction is a required field")
-	@Size(min=0, max=45, message="section Code should not be greater than 45 characters.")
+	//@NotNull(message = "Reason For Non Deduction is a required field")
+	//@Size(min=0, max=45, message="section Code should not be greater than 45 characters.")
 	public String reasonForNonDeduction;
 	@Column(name = " grossingUpIndicator")
-	@NotNull(message = "Grossing Up Indicator is a required field")
-	@Size(min=0, max=45, message="grossingUpIndicator should not be greater than 45 characters.")
+	//@NotNull(message = "Grossing Up Indicator is a required field")
+	//@Size(min=0, max=45, message="grossingUpIndicator should not be greater than 45 characters.")
 	public String grossingUpIndicator;
 	@Column(name = "noOfCertificateUnderSection")
-	@NotNull(message = "No Of Certificate Under Section is a required field")
-	@Digits(integer = 15, fraction = 0,message="No Of Certificate Under Section .No Of Certificate Under Section . should not be greater than 12")
+	//@NotNull(message = "No Of Certificate Under Section is a required field")
+	//@Digits(integer = 15, fraction = 0,message="No Of Certificate Under Section .No Of Certificate Under Section . should not be greater than 12")
 	public Long noOfCertificateUnderSection;
 	@Column(name = "uniqueAcknowledgeNo")
 	public String uniqueAcknowledgeNo;
 	@Column(name = "countryOfResidence")
-	@NotNull(message = "Country Of Residence is a required field")
-	@Size(min=0, max=45, message="Country Of Residence length should be between 1 to 100 characters.")
+	//@NotNull(message = "Country Of Residence is a required field")
+	//@Size(min=0, max=45, message="Country Of Residence length should be between 1 to 100 characters.")
 	public String countryOfResidence;
 	@Column(name = "emailId")
-	@NotNull(message = "Email is a required field")
-	@Size(min=0, max=45, message="Email should be between 0 to 75 characters.")
+	//@NotNull(message = "Email is a required field")
+	//@Size(min=0, max=45, message="Email should be between 0 to 75 characters.")
 	public String emailId;
 	@Column(name = "contactNoOfDeductee")
-	@NotNull(message = "contact No Of Deductee is a required field")
-	@Size(min=0, max=10, message="contact No  should be between 0 to 10 characters.")
+	//@NotNull(message = "contact No Of Deductee is a required field")
+	//@Size(min=0, max=10, message="contact No  should be between 0 to 10 characters.")
 	public Long contactNoOfDeductee;
 	@Column(name = "addressOfDeductee")
-	@NotNull(message = "address Of Deductee is a required field")
-	@Size(min=0, max=45, message="address Of Deductee length should be between 1 to 100 characters.")
+	//@NotNull(message = "address Of Deductee is a required field")
+	//@Size(min=0, max=45, message="address Of Deductee length should be between 1 to 100 characters.")
 	public String addressOfDeductee;
 	@Column(name = "taxIdentificationNo")
-	@NotNull(message = "tax Identification No is a required field")
-	@Digits(integer = 20, fraction = 0,message="Enter valid tax Identification No.tax Identification No. should not be greater than 12")
-	public Long taxIdentificationNo;
+	//@NotNull(message = "tax Identification No is a required field")
+	//@Digits(integer = 20, fraction = 0,message="Enter valid tax Identification No.tax Identification No. should not be greater than 12")
+	public String taxIdentificationNo;
 	@Column(name = "fy")
-	@NotNull(message = "Financial Year is a required field")
-	@Size(min=0, max=45, message="address Of Deductee length should be between 1 to 100 characters.")
-	public String fy;
-	@Column(name = "quarter")
-	@NotNull(message = "Quarter is a required field")
-	@Size(min=0, max=45, message="address Of Deductee length should be between 1 to 100 characters.")
-	public String quarter;
-	@Column(name = "tdaRateAsPerItActs")
-	@NotNull(message = "amount Paid is a required field")
-	@Digits(integer = 12, fraction = 2,message="amount Paid is not proper.Maximum 2 fractions allowed.")
-	public Double tdaRateAsPerItActs;
+	//@NotNull(message = "Financial Year is a required field")
+	//@Size(min=0, max=45, message="address Of Deductee length should be between 1 to 100 characters.")
+	public Long fy;
+	@Column(name = "quater")
+	//@NotNull(message = "Quarter is a required field")
+	//@Size(min=0, max=45, message="address Of Deductee length should be between 1 to 100 characters.")
+	public String quater;
+	@Column(name = "tdsRateAsPerItActs")
+	//@NotNull(message = "amount Paid is a required field")
+	//@Digits(integer = 12, fraction = 2,message="amount Paid is not proper.Maximum 2 fractions allowed.")
+	public Double tdsRateAsPerItActs;
 	
 	@Column(name = "natureOfRemittance")
-	@NotBlank(message = "amount Paid is a required field")
-	@Size(min=0, max=75, message="Country Of Residence length should be between 1 to 100 characters.")
+	//@NotBlank(message = "amount Paid is a required field")
+	//@Size(min=0, max=75, message="Country Of Residence length should be between 1 to 100 characters.")
 	public String natureOfRemittance;
 	@Column(name = "branchCode")
 	public Long branchCode;
@@ -162,16 +162,16 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	public String type;
 	@Column(name = "month")
 	public String month;
-	@Column(name = "customerId")
-	public Long customerId;
+	@Column(name = "custVendId")
+	public Long custVendId;
 	@Column(name = "uniqueRefNo")
 	public Long uniqueRefNo;
 	@Column(name = "cashWithdrawal194N")
-	public String cashWithdrawal194N;
+	public Double cashWithdrawal194N;
 	@Column(name = "cashWithdrawal194N20Lto1Cr")
-	public String cashWithdrawal194N20Lto1Cr;
+	public Double cashWithdrawal194N20Lto1Cr;
 	@Column(name = "cashWithdrawal194N1Cr")
-	public String cashWithdrawal194N1Cr;
+	public Double cashWithdrawal194N1Cr;
 	@Column(name = "TAN")
 	public String TAN ;
 	@Column(name = "errorDescription")

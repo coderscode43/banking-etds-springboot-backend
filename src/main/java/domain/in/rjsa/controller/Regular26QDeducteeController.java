@@ -16,13 +16,7 @@ public class Regular26QDeducteeController
 	@Autowired
 	Regular26QDeducteeService service;
 	
-
-	@Override
-	public Regular26QDeducteeService getService() {
-		// TODO Auto-generated method stub
-		return service;
-	}
-
+	@Autowired
 	@Override
 	public Class<Regular26QDeductee> getEntity() {
 		// TODO Auto-generated method stub
@@ -30,18 +24,14 @@ public class Regular26QDeducteeController
 	}
 
 	@Override
-	public Object getDetail(Long id, Long clientId) {
+	public Regular26QDeducteeService getService() {
 		// TODO Auto-generated method stub
-		SalaryDetailWrapper ew = new SalaryDetailWrapper();
-		// Login l = applicationCache.getLoginDetail(getPrincipal());
-
-		// LinkedHashMap<String, Object> constrains = new LinkedHashMap<>();
-		// constrains.put("clientId", l.getClientId());
-		Regular26QDeductee deductee26 = service.getByKey(id);
-		ew.setDeductee26(deductee26);
-
-		return ew;
+		return service;
 	}
+
+	
+	
+	
 
 	
 

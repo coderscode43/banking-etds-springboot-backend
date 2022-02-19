@@ -37,18 +37,15 @@ import domain.in.rjsa.model.form.ListCount;
 import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.form.Model;
 import domain.in.rjsa.model.fy.Logs;
-import domain.in.rjsa.service.BranchService;
 import domain.in.rjsa.service.LogsService;
 import domain.in.rjsa.service.ServiceInterfaceFY;
 import domain.in.rjsa.web.ApplicationCache;
 
 public abstract class AbstractBranchControllerFY<K extends Serializable, E extends Model, S 
 extends ServiceInterfaceFY<K, E>> {
+	public abstract S getService();
 	@Autowired
 	ApplicationCache applicationCache;
-
-	@Autowired
-	BranchService bservice;
 
 	@Autowired
 	LogsService lservice;
@@ -56,55 +53,11 @@ extends ServiceInterfaceFY<K, E>> {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
-	// ------------------- List Entity ---------------------------------
-
-	public List<?> getList(Long clientId, int pageNo, int resultPerPage) {
-		Login login = applicationCache.getLoginDetail(getPrincipal());
-		HashMap<String, Object> constrains = new HashMap<>();
-		constrains.put("clientId", applicationCache.getLoginDetail(getPrincipal()).getClientId());
-		
-	
-
-		return getService().findAll(constrains, pageNo, resultPerPage);
-	}
-
-	// ------------------- Count Entity ---------------------------------
-
-	@RequestMapping(value = "/listBranch/{clientId}/count/", method = RequestMethod.GET)
-	public ResponseEntity<?> count(@PathVariable Long clientId, HttpServletRequest request) {
-		HashMap<String, Object> constrains = new HashMap<>();
-		constrains.put("clientId", applicationCache.getLoginDetail(getPrincipal()).getClientId());
-
-		String mapping = request.getPathInfo();
-
-		try {
-			Long count = getService().findallCount(constrains);
-			List<?> list = getList(clientId, 0, 100);
-			ListCount send = new ListCount();
-			send.setCount(count);
-			send.setEntities(list);
-			return new ResponseEntity<>(send, HttpStatus.OK);
-		} catch (Exception e) {
-			logger.error("Error in listALL", e);
-			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	// ------------------- List Entity ---------------------------------
 
-		@RequestMapping(value = "/list/{clientId}/get/{pageNo}/{resultPerPage}", method = RequestMethod.GET)
+		@RequestMapping(value = "/listBranch/{clientId}/get/{pageNo}/{resultPerPage}", method = RequestMethod.GET)
 		public ResponseEntity<?> listAll(@PathVariable Long clientId, HttpServletRequest request, @PathVariable int pageNo,
 				@PathVariable int resultPerPage) {
 			// verify the clientId authorization
@@ -124,7 +77,7 @@ extends ServiceInterfaceFY<K, E>> {
 
 		
 	
-		public List<?> getList1(Long clientId, int pageNo, int resultPerPage) {
+		public List<?> getList(Long clientId, int pageNo, int resultPerPage) {
 			// TODO Auto-generated method stub
 			HashMap<String, Object> constrains = new HashMap<>();
 //			constrains.put("clientId", applicationCache.getLoginDetail(getPrincipal()).getClientId());
@@ -133,7 +86,31 @@ extends ServiceInterfaceFY<K, E>> {
 			return getService().findAll(constrains, pageNo, resultPerPage);
 		}
 	
-	
+		// ------------------- Count Entity ---------------------------------
+
+		@RequestMapping(value = "/listBranch/{clientId}/count/", method = RequestMethod.GET)
+		public ResponseEntity<?> count(@PathVariable Long clientId, HttpServletRequest request) {
+			// verify the clientId authorization
+//				applicationCache.getUserAuthorised();
+			HashMap<String, Object> constrains = new HashMap<>();
+//			constrains.put("clientId", applicationCache.getLoginDetail(getPrincipal()).getClientId());
+//			constrains.put("employeeId", applicationCache.getLoginDetail(getPrincipal()).getEmployeeId());
+
+			String mapping = request.getPathInfo();
+
+			try {
+				Long count = getService().findallCount(constrains);
+				List<?> list = getList(clientId, 0, 100);
+				ListCount send = new ListCount();
+				send.setCount(count);
+				send.setEntities(list);
+				return new ResponseEntity<>(send, HttpStatus.OK);
+			} catch (Exception e) {
+				logger.error("Error in listALL", e);
+				return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+
+		}
 	
 	
 	
@@ -271,7 +248,13 @@ extends ServiceInterfaceFY<K, E>> {
 		}
 
 	}
-
+	public Object getDetail(K id, Long clientId) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> constrains = new HashMap<>();
+		constrains.put("id", id);
+		constrains.put("clientId", clientId);
+		return getService().uniqueSearch(constrains);
+	}
 	
 
 	// ------------------- Update Entity ---------------------------------
@@ -443,8 +426,7 @@ extends ServiceInterfaceFY<K, E>> {
 
 	public abstract Class<E> getEntity();
 
-	public abstract S getService();
-
+	
 	private String getIp() {
 		try {
 			InetAddress ipAddr = InetAddress.getLocalHost();
@@ -457,13 +439,7 @@ extends ServiceInterfaceFY<K, E>> {
 		}
 	}
 
-	public Object getDetail(K id, Long clientId) {
-		// TODO Auto-generated method stub
-		HashMap<String, Object> constrains = new HashMap<>();
-		constrains.put("id", id);
-		constrains.put("clientId", clientId);
-		return getService().uniqueSearch(constrains);
-	}
+
 
 	
 

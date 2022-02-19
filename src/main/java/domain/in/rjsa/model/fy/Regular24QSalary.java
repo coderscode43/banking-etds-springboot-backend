@@ -37,8 +37,6 @@ public class Regular24QSalary extends CommonModelAbstract {
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
 	public Long id;
-	@Column(name = "clientId")
-	public Long clientId;
 	@Column(name = "branchId")
 	public Long branchId;
 	@Column(name = "srNo")
@@ -350,8 +348,7 @@ public class Regular24QSalary extends CommonModelAbstract {
 	public String remarks;
 
 	@Column(name = "fy")
-	@Size(min = 0, max = 45, message = "Invalid fy")
-	public String fy;
+	public Long fy;
 	@Column(name = "quarter")
 	@Size(min = 0, max = 45, message = "Invalid quarter")
 	public String quarter;

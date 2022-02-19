@@ -33,7 +33,8 @@ public class MisReport extends CommonModelAbstract{/**
 	private String toDate;
 	@Column(name = "reportType")
 	public String reportType;	
-	
+	@Column(name = "fy")
+	public Long fy;
 	
 
 }

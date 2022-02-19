@@ -33,5 +33,7 @@ public class MonthlyChallan extends CommonModelAbstract{
 	public Long amtAsPerTaxCalculation;
 	@Column(name = "challanHeading")
 	public String challanHeading;
+	@Column(name = "fy")
+	public Long fy;
 
 }

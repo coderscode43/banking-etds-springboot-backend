@@ -51,7 +51,7 @@
 
 
 
-<div id="page-wrapper" ng-controller="CommonWOTController as cWctr">
+<div id="page-wrapper" ng-controller="CommonController as cCctr">
 	<div class="container-fluid">
 		<div class="col-md-12 "
 			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
@@ -78,7 +78,7 @@
 						<h6>
 							<b>Financial Year</b>
 						</h6>
-						<select class="form-control" ng-model="cWctr.search.fy">
+						<select class="form-control" ng-model="cCctr.search.fy">
 							<option value=" " ng-selected="true">Financial Year</option>
 							<option value="201819">201920</option>
 							<option value="201819">201819</option>
@@ -101,7 +101,7 @@
 							<b>Quarter</b>
 
 						</h6>
-						<select class="form-control" ng-model="cWctr.search.quarter">
+						<select class="form-control" ng-model="cCctr.search.quarter">
 							<option value=" " ng-selected="true">Quarter</option>
 							<option value="Q1">Q1</option>
 							<option value="Q2">Q2</option>
@@ -115,7 +115,7 @@
 						<h6>
 							<b>Section Code</b>
 						</h6>
-						<input type="text" ng-model="cWctr.search.sectionCode"
+						<input type="text" ng-model="cCctr.search.sectionCode"
 							class="form-control" placeholder="Section Code"
 							style="width: 100%">
 					</div>
@@ -128,8 +128,8 @@
 					<h6>
 						<b>From Date of Payment</b>
 					</h6>
-					<input type="date" ng-model="cWctr.search.fromDate"
-						ng-change="cWctr.search.fromDate=cWctr.date(cWctr.search.fromDate);"
+					<input type="date" ng-model="cCctr.search.fromDate"
+						ng-change="cCctr.search.fromDate=cCctr.date(cCctr.search.fromDate);"
 						class="form-control" placeholder="Date" style="width: 100%">
 				</div>
 
@@ -137,8 +137,8 @@
 					<h6>
 						<b>To Date of Payment</b>
 					</h6>
-					<input type="date" ng-model="cWctr.search.toDate"
-						ng-change="cWctr.search.toDate=cWctr.date(cWctr.search.toDate);"
+					<input type="date" ng-model="cCctr.search.toDate"
+						ng-change="cCctr.search.toDate=cCctr.date(cCctr.search.toDate);"
 						class="form-control" placeholder="Date" style="width: 100%">
 				</div>
 
@@ -147,14 +147,14 @@
 					<h6>
 						<b>PAN</b>
 					</h6>
-					<input type="text" ng-model="cWctr.search.pan" class="form-control"
+					<input type="text" ng-model="cCctr.search.pan" class="form-control"
 						placeholder="PAN" style="width: 100%">
 				</div>
 				<div class="col-md-3">
 					<h6>
 						<b>TDS Rate As Per IT Acts</b>
 					</h6>
-					<input type="text" ng-model="cWctr.search.tdaRateAsPerItActs" class="form-control"
+					<input type="text" ng-model="cCctr.search.tdaRateAsPerItActs" class="form-control"
 						placeholder="TDS Rate As Per IT Acts" style="width: 100%">
 				</div>
 				
@@ -165,7 +165,7 @@
 					<h6>
 						<b>Name</b>
 					</h6>
-					<input type="text" ng-model="cWctr.search.name"
+					<input type="text" ng-model="cCctr.search.name"
 						
 						class="form-control" placeholder="Name" style="width: 100%">
 				</div>
@@ -174,7 +174,7 @@
 					<h6>
 						<b>Deductee Sr.No.</b>
 					</h6>
-					<input type="text" ng-model="cWctr.search.deducteeSrNo"
+					<input type="text" ng-model="cCctr.search.deducteeSrNo"
 						
 						class="form-control" placeholder="Deductee Sr.No." style="width: 100%">
 				</div>
@@ -184,7 +184,7 @@
 					<h6>
 						<b>Sr No. in challan</b>
 					</h6>
-					<input type="text" ng-model="cWctr.search.srNoInChallan" class="form-control"
+					<input type="text" ng-model="cCctr.search.srNoInChallan" class="form-control"
 						placeholder="Sr No. in challan" style="width: 100%">
 				</div> -->
 				
@@ -192,14 +192,14 @@
 					<h6>
 						<b>Deductee Ref. No</b>
 					</h6>
-					<input type="text" ng-model="cWctr.search.deducteeRefNo" class="form-control"
+					<input type="text" ng-model="cCctr.search.deducteeRefNo" class="form-control"
 						placeholder="Deductee Ref. No" style="width: 100%">
 				</div>
 				<div class="col-md-3">
 					<h6>
 						<b>Deductee Code</b>
 					</h6>
-					<input type="text" ng-model="cWctr.search.deducteeCode"
+					<input type="text" ng-model="cCctr.search.deducteeCode"
 						
 						class="form-control" placeholder="deducteeCode" style="width: 100%">
 				</div>
@@ -215,7 +215,7 @@
 					<h6>
 						<b>TCS</b>
 					</h6>
-					<input type="text" ng-model="cWctr.search.tcs"
+					<input type="text" ng-model="cCctr.search.tcs"
 						
 						class="form-control" placeholder="TCS" style="width: 100%">
 				</div>
@@ -225,7 +225,7 @@
 					<h6>
 						<b>Surcharge</b>
 					</h6>
-					<input type="text" ng-model="cWctr.search.surcharge" class="form-control"
+					<input type="text" ng-model="cCctr.search.surcharge" class="form-control"
 						placeholder="Surcharge" style="width: 100%">
 				</div>
 				
@@ -233,14 +233,14 @@
 					<h6>
 						<b>Education Cess</b>
 					</h6>
-					<input type="text" ng-model="cWctr.search.eduCess" class="form-control"
+					<input type="text" ng-model="cCctr.search.eduCess" class="form-control"
 						placeholder="Education Cess" style="width: 100%">
 				</div>
 				<div class="col-md-3">
 						<h6>
 							<b>Vend Cust Id</b>
 							<h6>
-								<input type="text" ng-model="cWctr.search.vendCustId"
+								<input type="text" ng-model="cCctr.search.vendCustId"
 									class="form-control" placeholder="Vend Cust Id"
 									style="width: 100%">
 					</div>
@@ -253,7 +253,7 @@
 					<h6>
 						<b>Total Tax Deducted</b>
 					</h6>
-					<input type="text" ng-model="cWctr.search.totalTaxDeducted"
+					<input type="text" ng-model="cCctr.search.totalTaxDeducted"
 						
 						class="form-control" placeholder="Total Tax Deducted" style="width: 100%">
 				</div>
@@ -262,7 +262,7 @@
 					<h6>
 						<b>Total Tax Deposited</b>
 					</h6>
-					<input type="text" ng-model="cWctr.search.totalTaxDeposited"
+					<input type="text" ng-model="cCctr.search.totalTaxDeposited"
 						
 						class="form-control" placeholder="Total Tax Deposited" style="width: 100%">
 				</div>
@@ -272,7 +272,7 @@
 					<h6>
 						<b>Rate at which tax Deducted</b>
 					</h6>
-					<input type="text" ng-model="cWctr.search.rateAtWhichTaxDeducted" class="form-control"
+					<input type="text" ng-model="cCctr.search.rateAtWhichTaxDeducted" class="form-control"
 						placeholder="Rate at which tax Deducted" style="width: 100%">
 				</div>
 				
@@ -280,7 +280,7 @@
 					<h6>
 						<b>Reason for non Deduction</b>
 					</h6>
-					<input type="text" ng-model="cWctr.search.reasonForNonDeduction" class="form-control"
+					<input type="text" ng-model="cCctr.search.reasonForNonDeduction" class="form-control"
 						placeholder="Reason for non Deduction" style="width: 100%">
 				</div>
 				</div>
@@ -292,7 +292,7 @@
 					<h6>
 						<b>Total Value of Purchase</b>
 					</h6>
-					<input type="text" ng-model="cWctr.search.totalValueofPurchase"
+					<input type="text" ng-model="cCctr.search.totalValueofPurchase"
 						
 						class="form-control" placeholder="Total Value of Purchase" style="width: 100%">
 				</div>
@@ -301,7 +301,7 @@
 					<h6>
 						<b>Certificate Number</b>
 					</h6>
-					<input type="text" ng-model="cWctr.search.certificatenumber"
+					<input type="text" ng-model="cCctr.search.certificatenumber"
 						
 						class="form-control" placeholder="Certificate Number" style="width: 100%">
 				</div>
@@ -311,7 +311,7 @@
 					<h6>
 						<b>Unique Reference No</b>
 					</h6>
-					<input type="text" ng-model="cWctr.search.uniqueRefNo" class="form-control"
+					<input type="text" ng-model="cCctr.search.uniqueRefNo" class="form-control"
 						placeholder="Unique Reference No" style="width: 100%">
 				</div>
 				
@@ -319,7 +319,7 @@
 					<h6>
 						<b>Country</b>
 					</h6>
-					<input type="text" ng-model="cWctr.search.countryOfResidence" class="form-control"
+					<input type="text" ng-model="cCctr.search.countryOfResidence" class="form-control"
 						placeholder="Country" style="width: 100%">
 				</div>
 				</div>
@@ -329,7 +329,7 @@
 					<h6>
 						<b>Email</b>
 					</h6>
-					<input type="text" ng-model="cWctr.search.email"
+					<input type="text" ng-model="cCctr.search.email"
 						
 						class="form-control" placeholder="email" style="width: 100%">
 				</div>
@@ -338,7 +338,7 @@
 					<h6>
 						<b>Contact no</b>
 					</h6>
-					<input type="text" ng-model="cWctr.search.contactNoOfDeductee"
+					<input type="text" ng-model="cCctr.search.contactNoOfDeductee"
 						
 						class="form-control" placeholder="Contact no" style="width: 100%">
 				</div>
@@ -348,7 +348,7 @@
 					<h6>
 						<b>TIN</b>
 					</h6>
-					<input type="text" ng-model="cWctr.search.tin" class="form-control"
+					<input type="text" ng-model="cCctr.search.tin" class="form-control"
 						placeholder="TIN" style="width: 100%">
 				</div>
 				<div class="col-md-3">
@@ -356,7 +356,7 @@
 						<label>Month*</label> 
 						</h6>
 						<select name="month" class="form-control"
-							ng-model="cWctr.search.month" ng-required="true"
+							ng-model="cCctr.search.month" ng-required="true"
 							ng-model-options="{updateOn: 'blur'}">
 							<option selected value='1'>Janaury</option>
 							<option value='2'>February</option>
@@ -378,7 +378,7 @@
 					<h6>
 						<b>Total Tax Collected</b>
 					</h6>
-					<input type="text" ng-model="cWctr.search.totalTaxCollected"
+					<input type="text" ng-model="cCctr.search.totalTaxCollected"
 						
 						class="form-control" placeholder="Total Tax Collected" style="width: 100%">
 				</div>
@@ -386,7 +386,7 @@
 						<h6>
 							<b>Account Number</b>
 							<h6>
-								<input type="text" ng-model="cWctr.search.accNo"
+								<input type="text" ng-model="cCctr.search.accNo"
 									class="form-control" placeholder="Account Number"
 									style="width: 100%">
 					</div>
@@ -394,7 +394,7 @@
 						<h6>
 							<b>Branch Code</b>
 							<h6>
-								<input type="text" ng-model="cWctr.search.branchCode"
+								<input type="text" ng-model="cCctr.search.branchCode"
 									class="form-control" placeholder="BranchCode"
 									style="width: 100%">
 					</div>-->
@@ -404,7 +404,7 @@
 						<h6>
 							<b>ID Number</b>
 							<h6>
-								<input type="text" ng-model="cWctr.search.idNo"
+								<input type="text" ng-model="cCctr.search.idNo"
 									class="form-control" placeholder="ID Number"
 									style="width: 100%">
 					</div>
@@ -412,7 +412,7 @@
 						<h6>
 							<b>Branch Code</b>
 							<h6>
-								<input type="text" ng-model="cWctr.search.branchCode"
+								<input type="text" ng-model="cCctr.search.branchCode"
 									class="form-control" placeholder="BranchCode"
 									style="width: 100%">
 					</div>
@@ -420,14 +420,14 @@
 						<h6>
 							<b>Reason For NonCollection F or G</b>
 							<h6>
-								<input type="text" ng-model="cWctr.search.reasonforNonCollection F or G"
+								<input type="text" ng-model="cCctr.search.reasonforNonCollection F or G"
 									class="form-control" placeholder="Reason For NonCollection F or G" style="width: 100%">
 					</div>
 					<div class="col-md-3">
 					<h6>
 						<b>if Answer to 681A is Yes Then Challan Number</b>
 					</h6>
-					<input type="text" ng-model="cWctr.search.ifAnswerto681AisYesThenChallanNumber"
+					<input type="text" ng-model="cCctr.search.ifAnswerto681AisYesThenChallanNumber"
 						
 						class="form-control" placeholder="if Answer to 681A is Yes Then Challan Number" style="width: 100%">
 				</div>
@@ -437,7 +437,7 @@
 						<h6>
 						<b>Type</b>
 					</h6> <select name="type" class="form-control"
-							ng-model="cWctr.search.type"
+							ng-model="cCctr.search.type"
 							ng-model-options="{updateOn: 'blur'}">
 							<option value="cbs">Core Banking System</option>
 							<option value="vps">Vendor Payment System</option>
@@ -449,7 +449,7 @@
 						<h6>
 							<b>Challan Heading</b>
 							<h6>
-								<input type="text" ng-model="cWctr.search.challanHeading"
+								<input type="text" ng-model="cCctr.search.challanHeading"
 									class="form-control" placeholder="Challan Heading"
 									style="width: 100%">
 					</div>
@@ -462,21 +462,21 @@
 							<h6>
 								<b> if Answer to 681A is Yes Then Date Of Payment Of TDS To Central Government</b>
 							</h6>
-								<input type="text" ng-model ="cWctr.search.ifAnswerto681AisYesThenDateOfPaymentOfTDSToCentralGovernment"				
+								<input type="text" ng-model ="cCctr.search.ifAnswerto681AisYesThenDateOfPaymentOfTDSToCentralGovernment"				
 									class ="form-control" placeholder = "if Answer to 681A is Yes Then Date Of Payment Of TDS To Central Government" style="width:100%">
 					</div>
 					<div class="col-md-3">
 						<h6>
 								<b> Permanent Establishment</b>
 							</h6>	
-							<input type="text" ng-model ="cWctr.search.permanentEstablishment"				
+							<input type="text" ng-model ="cCctr.search.permanentEstablishment"				
 								class ="form-control" placeholder = "Permanent Establishment" style="width:100%">
 					</div>
 						<div class="col-md-3">
 						<h6>
 							<b>Deductee is Non-Resident</b>
 							<h6>
-								<input type="text" ng-model="cWctr.search.deducteeisNonResident"
+								<input type="text" ng-model="cCctr.search.deducteeisNonResident"
 									class="form-control" placeholder="Deductee is Non-Resident"
 									style="width: 100%">
 					</div>
@@ -486,7 +486,7 @@
 						<h6>
 							<b>Amount Receipt/Debited</b>
 							<h6>
-								<input type="text" ng-model="cWctr.search.amountReceiptDebited"
+								<input type="text" ng-model="cCctr.search.amountReceiptDebited"
 									class="form-control" placeholder="Amount Receipt/Debited"
 									style="width: 100%">
 					</div>
@@ -499,7 +499,7 @@
 
 			<div class="row" id="search">
 				<div class="col-md-2" id="search">
-					<button ng-click="cWctr.searchEntities(true,'form27EQDeductee','form27EQDeductee')"
+					<button ng-click="cCctr.searchEntities(true,'form27EQDeductee','form27EQDeductee')"
 						class="btn btn-success" onclick="scrollWin()">Search</button>
 				</div>
 			</div>
@@ -507,7 +507,7 @@
 
 			<div class="row" id="hide">
 				<div class="col-md-3" style="margin-left: 80%; margin-top: -35px">
-					<button ng-click="cWctr.searchEntities(true,'form27EQDeductee')"
+					<button ng-click="cCctr.searchEntities(true,'form27EQDeductee')"
 						class="btn btn-success" onclick="scrollWin()">Search</button>
 				</div>
 			</div>
@@ -515,9 +515,9 @@
 
 			<div class="row mobile ipad-landscape" id="search">
 				<div class="col-md-3" id="search">
-					<button ng-click="cWctr.searchEntities(true,'form27QEDeductee')"
+					<button ng-click="cCctr.searchEntities(true,'form27QEDeductee')"
 						class="btn btn-success" onclick="scrollWin()">Search</button>
-					<!-- <button type="button" class="btn btn-primary" data-toggle="modal" ng-click="cWctr.gotoListPage('addForm27QDeductee','addForm27QDeductee');" onclick="scrollWin()">Add</button> -->
+					<!-- <button type="button" class="btn btn-primary" data-toggle="modal" ng-click="cCctr.gotoListPage('addForm27QDeductee','addForm27QDeductee');" onclick="scrollWin()">Add</button> -->
 				</div>
 			</div>
 		</div>

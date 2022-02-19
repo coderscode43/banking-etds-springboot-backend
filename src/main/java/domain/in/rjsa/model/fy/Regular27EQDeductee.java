@@ -13,7 +13,10 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import domain.in.rjsa.model.form.CommonModelAbstract;
+import domain.in.rjsa.util.JsonDateSerializer;
 import lombok.Data;
 @Data
 @Entity
@@ -28,40 +31,40 @@ public class Regular27EQDeductee extends CommonModelAbstract {
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
 	public Long id;
-    @Column(name = "partyReferenceNo")
-	public Long partyReferenceNo;
-    @Column(name = "partyCode")
-  	public Long partyCode;
-    @Column(name = "panoftheParty")
-	public String panoftheParty;
+    @Column(name = "deducteeReferenceNo")
+	public Long deducteeReferenceNo;
+    @Column(name = "deducteeCode")
+  	public Long deducteeCode;
+    @Column(name = "panofthedeductee")
+	public String panofthedeductee;
     @Column(name = "nameoftheParty")
 	public String nameoftheParty;
     @Column(name = "amountReceiptDebited")
-   	public Long amountReceiptDebited;
+   	public Double amountReceiptDebited;
     @Temporal(TemporalType.DATE)
     @Column(name = "dateofReceivedDebited")
 	public Date dateofReceivedDebited;
     @Column(name = "tcs")
-   	public String tcs;
+   	public Double tcs;
     @Column(name = "surcharge")
-   	public String surcharge;
-    @Column(name = "quarter")
-   	public String quarter;
+   	public Double surcharge;
+    @Column(name = "quater")
+   	public String quater;
     @Column(name = "fy")
    	public Long fy;
     @Column(name = "educationCess")
-   	public String educationCess;
+   	public Double educationCess;
     @Column(name = "totalTaxCollected")
-   	public Long totalTaxCollected;
+   	public Double totalTaxCollected;
     @Column(name = "totalTaxDeposited")
-   	public Long totalTaxDeposited;
+   	public Double totalTaxDeposited;
     @Temporal(TemporalType.DATE)
     @Column(name = "dateofCollected")
    	public Date dateofCollected;
     @Column(name = "totalValueofPurchase")
-   	public Long totalValueofPurchase;
+   	public Double totalValueofPurchase;
     @Column(name = "rateatwhichTaxCollected")
-   	public Long rateatwhichTaxCollected;
+   	public Double rateatwhichTaxCollected;
     @Column(name = "reasonforNonCollection")
    	public String reasonforNonCollection;
     @Column(name = "sectionCollectionCode")
@@ -86,20 +89,21 @@ public class Regular27EQDeductee extends CommonModelAbstract {
 	public Long deducteeId;
 	@Column(name = "challanHeading")
 	public String challanHeading;
-	@Column(name = "customerId")
-	public Long customerId;
+	@Column(name = "custVendId")
+	public Long custVendId;
 	@Column(name = "uniqueRefNo")
-	public Long uniqueRefNo;
+	public String uniqueRefNo;
 	@Column(name = "reasonForNonCollectionForG")
 	public String reasonForNonCollectionForG;
 	@Column(name = "ifAnswerTo681AisyesthenChallanNumber")
 	public String ifAnswerTo681AisyesthenChallanNumber;
+	@Temporal(TemporalType.DATE)
 	@Column(name = "ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment")
-	public String ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment;
+	public Date ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment;
 	@Column(name = "TAN")
 	public String TAN ;
 	@Column(name = "collectionCode")
-	public String collectionCode ;
+	public Long collectionCode ;
 	@Column(name = "errorDescription")
 	public String errorDescription ;
 	@Column(name = "warningDescription")
@@ -112,4 +116,31 @@ public class Regular27EQDeductee extends CommonModelAbstract {
 	public Double InterestOnLatePayment;
 	@Column(name = "InterestOnLateDeduction")
 	public Double InterestOnLateDeduction;
+	
+	
+	
+	
+	@Column(name = "verify")
+	public boolean verify = false;
+
+	@JsonSerialize(using = JsonDateSerializer.class)
+	public Date getdateofReceivedDebited() {
+		return dateofReceivedDebited;
+	}
+
+	public void setdateofReceivedDebited(Date dateofReceivedDebited) {
+		this.dateofReceivedDebited = dateofReceivedDebited;
+	}
+
+	@JsonSerialize(using = JsonDateSerializer.class)
+	public Date getdateofCollected() {
+		return dateofCollected;
+	}
+
+	public void setdateofCollected(Date dateofCollected) {
+		this.dateofCollected = dateofCollected;
+	}
+	
+	
 }
+

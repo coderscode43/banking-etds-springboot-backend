@@ -54,9 +54,9 @@ public abstract class AbstractDaoFY<K extends Serializable, E> implements DaoInt
 	public List<E> findall(HashMap<String, Object> constrains, int pageNo, int noOfResult) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
-		if (constrains.containsKey("branchId")) {
-			if (constrains.get("branchId") instanceof ArrayList)
-				criteria.add(Restrictions.in("branchId", (List<Long>) constrains.remove("branchId")));
+		if (constrains.containsKey("branchCode")) {
+			if (constrains.get("branchCode") instanceof ArrayList)
+				criteria.add(Restrictions.in("branchCode", (List<Long>) constrains.remove("branchCode")));
 		}
 		criteria.add(Restrictions.allEq(constrains));
 		criteria.addOrder(Order.desc("id"));
@@ -165,7 +165,7 @@ public abstract class AbstractDaoFY<K extends Serializable, E> implements DaoInt
 			i++;
 		}
 
-		hql.append(" WHERE clientId = :clientId");
+		hql.append(" WHERE branchCode = :branchCode");
 		List<String> listKey = new ArrayList<String>(propertyNameValues.keySet());
 		for (String key : listKey) {
 			hql.append(" and a." + key + " = :" + key);

@@ -30,9 +30,7 @@ public class Ticket extends CommonModelAbstract{
 	@Column(name = "branchCode")
 	public Long branchCode;
 	@Column(name = "fy")
-	//@NotNull(message = "Fy is a required field")
-	//@Size(min=0, max=45, message="Fy length should not be more than 45 characters.")
-	public String fy;
+	public Long fy;
 	@Column(name = "quarter")
 	//@NotNull(message = "Quarter is a required field")
 	//@Size(min=0, max=45, message="Quarter length should not be more than 45 characters.")

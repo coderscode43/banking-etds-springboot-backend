@@ -62,15 +62,15 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	// ------------------- List Entity ---------------------------------
 
-	@RequestMapping(value = "/list/{clientId}/get/{pageNo}/{resultPerPage}", method = RequestMethod.GET)
-	public ResponseEntity<?> listAll(@PathVariable Long clientId, HttpServletRequest request, @PathVariable int pageNo,
+	@RequestMapping(value = "/list/get/{pageNo}/{resultPerPage}", method = RequestMethod.GET)
+	public ResponseEntity<?> listAll( HttpServletRequest request, @PathVariable int pageNo,
 			@PathVariable int resultPerPage) {
 		// verify the clientId authorization
 //		applicationCache.getUserAuthorised();
 		String mapping = request.getPathInfo();
 
 		try {
-			List<?> list = getList(clientId, pageNo, resultPerPage);
+			List<?> list = getList( pageNo, resultPerPage);
 
 			return new ResponseEntity<>(list, HttpStatus.OK);
 		} catch (Exception e) {
@@ -80,30 +80,27 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	}
 
-	public List<?> getList(Long clientId, int pageNo, int resultPerPage) {
+	public List<?> getList( int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
-		constrains.put("clientId", applicationCache.getLoginDetail(getPrincipal()).getClientId());
-//		constrains.put("employeeId", applicationCache.getLoginDetail(getPrincipal()).getEmployeeId());
 
 		return getService().findAll(constrains, pageNo, resultPerPage);
 	}
 
 	// ------------------- Count Entity ---------------------------------
 
-	@RequestMapping(value = "/list/{clientId}/count/", method = RequestMethod.GET)
-	public ResponseEntity<?> count(@PathVariable Long clientId, HttpServletRequest request) {
+	@RequestMapping(value = "/list/count/", method = RequestMethod.GET)
+	public ResponseEntity<?> count( HttpServletRequest request) {
 		// verify the clientId authorization
 //			applicationCache.getUserAuthorised();
 		HashMap<String, Object> constrains = new HashMap<>();
-		constrains.put("clientId", applicationCache.getLoginDetail(getPrincipal()).getClientId());
 //		constrains.put("employeeId", applicationCache.getLoginDetail(getPrincipal()).getEmployeeId());
 
 		String mapping = request.getPathInfo();
 
 		try {
 			Long count = getService().findallCount(constrains);
-			List<?> list = getList(clientId, 0, 100);
+			List<?> list = getList( 0, 100);
 			ListCount send = new ListCount();
 			send.setCount(count);
 			send.setEntities(list);
@@ -117,8 +114,8 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	// ------------------- Search Entities ---------------------------------
 
-	@RequestMapping(value = "/search/{clientId}/{json}", method = RequestMethod.GET)
-	public ResponseEntity<?> search(@PathVariable String json, @PathVariable Long clientId) {
+	@RequestMapping(value = "/search/{json}", method = RequestMethod.GET)
+	public ResponseEntity<?> search(@PathVariable String json) {
 		// verify the clientId authorization
 		try {
 			ObjectMapper mapper = new ObjectMapper();
@@ -135,7 +132,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 				}
 			}
 
-			return new ResponseEntity<>(getSearch(map,clientId), HttpStatus.OK);
+			return new ResponseEntity<>(getSearch(map), HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("Error in listALL", e);
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -143,21 +140,20 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	}
 
-	public List<?> getSearch(LinkedHashMap<String, Object> map, Long clientId) {
+	public List<?> getSearch(LinkedHashMap<String, Object> map) {
 		// TODO Auto-generated method stub
 		Login l = applicationCache.getLoginDetail(getPrincipal());
-		map.put("clientId", l.getClientId());
 //		map.put("employeeId", l.getEmployeeId());
 		return getService().search(map);
 	}
 
 	// ------------------- Search Single Entity ---------------------------------
 
-	@RequestMapping(value = "/searchEntity/{clientId}", method = RequestMethod.POST)
-	public ResponseEntity<?> searchEntity(@RequestBody LinkedHashMap<String, Object> map, @PathVariable Long clientId) {
+	@RequestMapping(value = "/searchEntity", method = RequestMethod.POST)
+	public ResponseEntity<?> searchEntity(@RequestBody LinkedHashMap<String, Object> map) {
 		// verify the clientId authorization
 		try {
-			return new ResponseEntity<>(getSearchEntity(map, clientId), HttpStatus.OK);
+			return new ResponseEntity<>(getSearchEntity(map), HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("Error in listALL", e);
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -165,17 +161,16 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	}
 
-	public E getSearchEntity(LinkedHashMap<String, Object> map, Long clientId) {
+	public E getSearchEntity(LinkedHashMap<String, Object> map) {
 		// TODO Auto-generated method stub
 		Login l = applicationCache.getLoginDetail(getPrincipal());
-		map.put("clientId", l.getClientId());
 //		map.put("employeeId", l.getEmployeeId());
 		return getService().uniqueSearch(map);
 	}
 
 	// ------------------- Add Entity ---------------------------------
 
-	@RequestMapping(value = "/add/{clientId}", method = RequestMethod.POST)
+	@RequestMapping(value = "/add/", method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<?> createEntity(@RequestBody LinkedHashMap<String, Object> entity) {
 		//FieldErrorDTO ermsg=new FieldErrorDTO();
@@ -192,9 +187,6 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 	public void create(LinkedHashMap<String, Object> entity) {
 		Gson gson = new Gson();
 		Login l = applicationCache.getLoginDetail(getPrincipal());
-		if (entity.containsKey("clientId")) {
-			entity.put("clientId", l.getClientId());
-		}
 
 		JsonElement jsonElement = gson.toJsonTree(entity);
 
@@ -208,7 +200,6 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 	    	Login l = applicationCache.getLoginDetail(getPrincipal());
 			HashMap<String, Object>constrains= new HashMap<>();
 			constrains.put("id", entity.get("id"));
-			constrains.put("clientId",l.getClientId());
 			Logs log = lservice.uniqueSearch(constrains);			
 		    log = new Logs();
 		    log.setAction("Added");
@@ -229,11 +220,11 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	// ------------------- Get Detail ---------------------------------
 
-	@RequestMapping(value = "/detail/{clientId}/{id}", method = RequestMethod.GET)
-	public ResponseEntity<?> getDetailController(@PathVariable K id, @PathVariable Long clientId) {
+	@RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
+	public ResponseEntity<?> getDetailController(@PathVariable K id) {
 		// verify the clientId authorization
 		try {
-			return new ResponseEntity<>(getDetail(id, clientId), HttpStatus.OK);
+			return new ResponseEntity<>(getDetail(id), HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("Error in getting detail ", e);
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
@@ -241,24 +232,21 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	}
 
-	public Object getDetail(K id, Long clientId) {
+	public Object getDetail(K id) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
 		constrains.put("id", id);
-		constrains.put("clientId", clientId);
 		return getService().uniqueSearch(constrains);
 	}
 
 	// ------------------- Update Entity ---------------------------------
 
-	@RequestMapping(value = "/update/{clientId}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/update/", method = RequestMethod.PUT)
 	public ResponseEntity<?> update(@RequestBody LinkedHashMap<String, Object> entity, HttpServletResponse response,
 			UriComponentsBuilder ucBuilder) {
 		FieldErrorDTO ermsg=new FieldErrorDTO();
 		Login l = applicationCache.getLoginDetail(getPrincipal());
-		Long clientId = Long.valueOf(entity.get("clientId").toString());
-		if (clientId == l.getClientId()) {
-			Object o = getDetail((K) Long.valueOf(entity.get("id").toString()), clientId);
+			Object o = getDetail((K) Long.valueOf(entity.get("id").toString()));
 			ObjectMapper oMapper = new ObjectMapper();
 			HashMap<String, Object> map = oMapper.convertValue(o, HashMap.class);
 							update(entity);
@@ -266,10 +254,6 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 							
 							ermsg.setMessage(" Updated Successfully");
 							return new ResponseEntity<String>(HttpStatus.ACCEPTED);
-		}
-		else {
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-		}	
 	}
 
 	public void update(LinkedHashMap<String, Object> entity) {
@@ -303,7 +287,6 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 	    	Login l = applicationCache.getLoginDetail(getPrincipal());
 			HashMap<String, Object>constrains= new HashMap<>();
 			constrains.put("id", Long.valueOf(entity.get("id").toString()));
-			constrains.put("clientId",l.getClientId());
 			Logs log = lservice.uniqueSearch(constrains);			
 		    log = new Logs();
 		    log.setAction("Updated");
@@ -321,8 +304,8 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	// ------------------- Delete Entity ---------------------------------
 
-	@RequestMapping(value = "/delete/{clientId}/{id}", method = RequestMethod.POST)
-	public ResponseEntity<?> delete(@PathVariable K id, @PathVariable Long clientId) {
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
+	public ResponseEntity<?> delete(@PathVariable K id) {
 		// verify the clientId authorization
 		try {
 			getService().deleteT(id);
@@ -340,11 +323,11 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	// ------------------- ajax Entities ---------------------------------
 
-	@RequestMapping(value = "/ajax/{clientId}", method = RequestMethod.POST)
-	public ResponseEntity<?> ajax(@RequestBody Ajax ajax, @PathVariable Long clientId) {
+	@RequestMapping(value = "/ajax", method = RequestMethod.POST)
+	public ResponseEntity<?> ajax(@RequestBody Ajax ajax) {
 		// verify the clientId authorization
 		try {
-			List<?> list = getAjax(ajax.getName(), ajax.getTerm(), clientId);
+			List<?> list = getAjax(ajax.getName(), ajax.getTerm());
 			return new ResponseEntity<>(list, HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("Error in listALL", e);
@@ -353,11 +336,10 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	}
 
-	public List<?> getAjax(String name, String term, Long clientId) {
+	public List<?> getAjax(String name, String term) {
 		// TODO Auto-generated method stub
 		Login l = applicationCache.getLoginDetail(getPrincipal());
 		HashMap<String, Object> constrains = new HashMap<>();
-		constrains.put("clientId", l.getClientId());
 		return getService().ajax(name, term, constrains);
 	}
 

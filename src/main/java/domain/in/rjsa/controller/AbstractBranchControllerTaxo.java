@@ -38,7 +38,7 @@ import domain.in.rjsa.service.ServiceInterfaceTaxo;
 import domain.in.rjsa.web.ApplicationCache;
 
 public abstract class AbstractBranchControllerTaxo<K extends Serializable, E extends Model, S extends ServiceInterfaceTaxo<K, E>>
-		implements TDSControllerInterface<K, E> {
+		 {
 
 	public abstract S getService();
 

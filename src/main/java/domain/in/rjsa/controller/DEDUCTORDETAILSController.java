@@ -46,7 +46,7 @@ TRACESSLOGINService tlService;
 	}
 	
      @Override	
-	public Object getDetail(String id, Long clientId) {
+	public Object getDetail(String id) {
 		// TODO Auto-generated method stub
     	String tan =id;
 		DeductorDetailWrapper ew = new DeductorDetailWrapper();
@@ -57,7 +57,6 @@ TRACESSLOGINService tlService;
 		TRACESSLOGIN tl=tlService.getByKey(tan);
 		ew.setTraces(tl);
 		HashMap<String, Object> map = new HashMap<>();
-		map.put("clientId", clientId);
 		ew.setListBranch(bService.search(map));
 		
 		return ew;

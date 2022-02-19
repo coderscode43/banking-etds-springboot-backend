@@ -43,7 +43,7 @@ import domain.in.rjsa.service.UserDetailsService;
 import domain.in.rjsa.web.ApplicationCache;
 
 public abstract class AbstractControllerForm<K extends Serializable, E extends Model, S extends ServiceInterfaceForm<K, E>>
-		implements ControllerInterface<K, E> {
+		 {
 
 	public abstract S getService();
 

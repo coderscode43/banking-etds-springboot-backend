@@ -38,11 +38,11 @@ App.factory('CommonService', [
 			};
 			return factory;
 
-			function fetch(entity, pageNo) {
+			function fetch(entity, fy, pageNo) {
 				entityList = [];
 				var deferred = $q.defer();
 				$http.get(
-						REST_SERVICE_URI + entity + '/list' 
+						REST_SERVICE_URI + entity + '/list/' + fy
 								+ '/get/' + pageNo + '/100').success(
 						function(data) {
 							entityList = data;
@@ -54,10 +54,10 @@ App.factory('CommonService', [
 				return deferred.promise;
 			}
 
-			function save(entitySave, entity ) {
+			function save(entitySave, entity, fy) {
 				var deferred = $q.defer();
 
-				$http.post(REST_SERVICE_URI + entity + '/add',
+				$http.post(REST_SERVICE_URI + entity + '/add/' + fy,
 						entitySave).success(function(data) {
 
 					deferred.resolve(data);
@@ -68,10 +68,10 @@ App.factory('CommonService', [
 				return deferred.promise;
 			}
 
-			function detail( entity, detailId) {
+			function detail(fy, entity, detailId) {
 				var deferred = $q.defer();
 				$http.get(
-						REST_SERVICE_URI + entity + '/detail/' + 
+						REST_SERVICE_URI + entity + '/detail/' + fy + '/'
 								+ detailId).success(function(data) {
 					entityData = data;
 					deferred.resolve(data);
@@ -83,12 +83,12 @@ App.factory('CommonService', [
 
 			}
 
-			function search(, entity, map) {
+			function search(fy, entity, map) {
 				var deferred = $q.defer();
 				$http
 						.post(
 								REST_SERVICE_URI + entity + '/searchEntity/'
-										+ , map).success(
+										+ fy, map).success(
 								function(data) {
 									entityData = data;
 									deferred.resolve(data);
@@ -100,11 +100,11 @@ App.factory('CommonService', [
 
 			}
 
-			function searchEntities(, entity, map) {
+			function searchEntities(fy, entity, map) {
 				entityList = [];
 				var deferred = $q.defer();
 				$http.get(
-						REST_SERVICE_URI + entity + '/search/' +  + '/'
+						REST_SERVICE_URI + entity + '/search/' + fy + '/'
 								+ map).success(function(data) {
 					count = 0;
 					entityList = data;
@@ -117,9 +117,9 @@ App.factory('CommonService', [
 
 			}
 
-			function ajax(entity, ajax, ) {
+			function ajax(entity, ajax, fy) {
 				var deferred = $q.defer();
-				$http.post(REST_SERVICE_URI + entity + '/ajax/' + ,
+				$http.post(REST_SERVICE_URI + entity + '/ajax/' + fy,
 						ajax).success(function(data) {
 					deferred.resolve(data);
 				}).error(function(status) {
@@ -137,10 +137,10 @@ App.factory('CommonService', [
 				return entityData;
 			}
 
-			function update(entitySave, entity, ) {
+			function update(entitySave, entity, fy) {
 				var deferred = $q.defer();
 
-				$http.put(REST_SERVICE_URI + entity + '/update/' + ,
+				$http.put(REST_SERVICE_URI + entity + '/update/' + fy,
 						entitySave).success(function(data) {
 
 					deferred.resolve(data);
@@ -151,11 +151,11 @@ App.factory('CommonService', [
 				return deferred.promise;
 			}
 			
-			function approveUpdate(entitySave, entity, ){
-				entitySave. = ;
+			function approveUpdate(entitySave, entity, fy){
+				entitySave.fy = fy;
 				var deferred = $q.defer();
 
-				$http.put(REST_SERVICE_URI + entity + '/approve/' + ,
+				$http.put(REST_SERVICE_URI + entity + '/approve/' + fy,
 						entitySave).success(function(data) {
 
 					deferred.resolve(data);
@@ -166,28 +166,11 @@ App.factory('CommonService', [
 				return deferred.promise;
 			}
 			
-			function rejectUpdate(entitySave, entity, ){
-				entitySave. = ;
+			function rejectUpdate(entitySave, entity, fy){
+				entitySave.fy = fy;
 				var deferred = $q.defer();
 
-				$http.put(REST_SERVICE_URI + entity + '/reject/' + ,
-						entitySave).success(function(data) {
-
-					deferred.resolve(data);
-				}).error(function(status) {
-					deferred.reject(status);
-				});
-
-				return deferred.promise;
-			}
-			
-			
-			
-			
-			function updateStatus(entitySave, entity, ) {
-				var deferred = $q.defer();
-
-				$http.put(REST_SERVICE_URI + entity + '/updateStatus/' + ,
+				$http.put(REST_SERVICE_URI + entity + '/reject/' + fy,
 						entitySave).success(function(data) {
 
 					deferred.resolve(data);
@@ -201,15 +184,32 @@ App.factory('CommonService', [
 			
 			
 			
+			function updateStatus(entitySave, entity, fy) {
+				var deferred = $q.defer();
+
+				$http.put(REST_SERVICE_URI + entity + '/updateStatus/' + fy,
+						entitySave).success(function(data) {
+
+					deferred.resolve(data);
+				}).error(function(status) {
+					deferred.reject(status);
+				});
+
+				return deferred.promise;
+			}
+			
+			
+			
+			
 			
 			
 			
 
-			function download(, entity, map, fileName) {
+			function download(fy, entity, map, fileName) {
 				var deferred = $q.defer();
 				$http.post(
 						REST_SERVICE_URI + entity + '/download/' + fileName
-								+ '/' + , map, {
+								+ '/' + fy, map, {
 							responseType : 'blob'
 						}).success(function(data) {
 					console.log("Dude dude dude ");
@@ -227,11 +227,11 @@ App.factory('CommonService', [
 
 			}
 
-			function countFunction(entity, ) {
+			function countFunction(entity, fy) {
 				entityList = [];
 				var deferred = $q.defer();
 				$http.get(
-						REST_SERVICE_URI + entity + '/list/' + 
+						REST_SERVICE_URI + entity + '/list/' + fy
 								+ '/count/').success(function(data) {
 					count = data.count;
 					entityList = data.entities;
@@ -242,11 +242,11 @@ App.factory('CommonService', [
 				return deferred.promise;
 			}
 			
-			function countForBranchFunction(entity, ,barchCode) {
+			function countForBranchFunction(entity, fy,barchCode) {
 				entityList = [];
 				var deferred = $q.defer();
 				$http.get(
-						REST_SERVICE_URI + entity + '/listBranch/' +  + barchCode +'/count/').success(function(data) {
+						REST_SERVICE_URI + entity + '/listBranch/' + fy + barchCode +'/count/').success(function(data) {
 					count = data.count;
 					entityList = data.entities;
 					deferred.resolve(data);
@@ -255,11 +255,11 @@ App.factory('CommonService', [
 				});
 				return deferred.promise;
 			}
-			function countForFyFunction(entity, ) {
+			function countForFyFunction(entity, fy) {
 				entityList = [];
 				var deferred = $q.defer();
 				$http.get(
-						REST_SERVICE_URI + entity + '/listFy/' + +'/count/').success(function(data) {
+						REST_SERVICE_URI + entity + '/listFy/' + fy+'/count/').success(function(data) {
 					count = data.count;
 					entityList = data.entities;
 					deferred.resolve(data);
@@ -274,10 +274,10 @@ App.factory('CommonService', [
 				return count;
 			}
 
-			function deleteEntity(, entity, deleteId) {
+			function deleteEntity(fy, entity, deleteId) {
 				var deferred = $q.defer();
 				$http.post(
-						REST_SERVICE_URI + entity + '/delete/' +  + '/'
+						REST_SERVICE_URI + entity + '/delete/' + fy + '/'
 								+ deleteId).success(function(data) {
 					entityData = data;
 					deferred.resolve(data);
@@ -289,10 +289,10 @@ App.factory('CommonService', [
 
 			}
 
-			function importData(entitySearch, , entity, type) {
+			function importData(entitySearch, fy, entity, type) {
 				var deferred = $q.defer();
 				$http.get(
-						REST_SERVICE_URI + entity + '/import/' +  + '/'
+						REST_SERVICE_URI + entity + '/import/' + fy + '/'
 								+ type, entitySearch).success(function(data) {
 					entityData = data;
 					deferred.resolve(data);
@@ -303,18 +303,18 @@ App.factory('CommonService', [
 				return deferred.promise;
 
 			}
-			function saveDoc(entitySave, entity, ) {
-				entitySave.dec.=;
+			function saveDoc(entitySave, entity, fy) {
+				entitySave.dec.fy=fy;
 				var dat = new FormData();
 				if(entitySave.file==null || entitySave.file==undefined){
-				return save(entitySave.dec, entity, )
+				return save(entitySave.dec, entity, fy)
 				}else{
 				      dat.append('file', entitySave.file)
 				dat.append('dec', JSON.stringify(entitySave.dec));
 				
 				var deferred = $q.defer();
 				$http.post(
-						REST_SERVICE_URI + entity + '/uploadFile/' + ,
+						REST_SERVICE_URI + entity + '/uploadFile/' + fy,
 						dat, {
 							transformRequest: angular.identity,
 				            headers: {'Content-Type': undefined}
@@ -328,11 +328,11 @@ App.factory('CommonService', [
 				return deferred.promise;
 
 			} }
-			function updateDoc(entitySave, entity, ) {
-				entitySave.dec.=;
+			function updateDoc(entitySave, entity, fy) {
+				entitySave.dec.fy=fy;
 				var datt = new FormData();
 				if(entitySave.file==null || entitySave.file==undefined){
-				return update(entitySave.dec, entity, )
+				return update(entitySave.dec, entity, fy)
 				}else{
 					datt.append('file',entitySave.file)
 				 
@@ -340,7 +340,7 @@ App.factory('CommonService', [
 				
 				var deferred = $q.defer();
 				$http.post(
-						REST_SERVICE_URI + entity + '/updateFile/' + ,
+						REST_SERVICE_URI + entity + '/updateFile/' + fy,
 						datt, {
 							transformRequest: angular.identity,
 				            headers: {'Content-Type': undefined}
@@ -356,10 +356,10 @@ App.factory('CommonService', [
 			}
 			}
 			
-			function getFile(, entity, detailId) {
+			function getFile(fy, entity, detailId) {
 				var deferred = $q.defer();
 				$http.get(
-						REST_SERVICE_URI + entity + '/getFile/' +  + '/'
+						REST_SERVICE_URI + entity + '/getFile/' + fy + '/'
 								+ detailId,{responseType:'arraybuffer'}).success(function(data) {
 									var file = new Blob([response], {type: 'application/pdf'});
 								       var fileURL = URL.createObjectURL(file);

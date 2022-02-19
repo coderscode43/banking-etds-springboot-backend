@@ -17,7 +17,6 @@ App
 
 							var self = this;
 							self.tan;
-							self.clientId;
 							self.branchId;
 							self.loader='';
 							self.entity = {};
@@ -46,14 +45,6 @@ App
 								$state.go("logout");
 							}
 							
-							self.changeAction = function() {
-								if ($state.current.name == 'main') {
-									$window.location.reload();
-								} else {
-									$state.go("main");
-								}
-
-							}
 							self.presentDate = function() {
 								return new Date();
 							}
@@ -66,36 +57,22 @@ App
 								$state.go("resetPass");
 							}
 
-							self.gotoHomePageSC = function(clientId, action) {
-								self.company = name;
-								self.clientId = clientId;
+							self.gotoHomePage = function() {
 								$state.go("home.homepage", {
-									"clientId" : clientId,
-									"action" : action
 								});
 
 							}
 							
-							self.gotoHomeSCfromHomeWOT=function(action){
-								$state.go("home.homepage",{
-									"clientId" : $stateParams.clientId,
-									"action" : action
-									});
-							}
 
-							self.gotoHomePageWOT = function(id, action) {
-								self.company = name;
-								self.clientId = $stateParams.clientId;
+							self.gotoHomePageWOT = function(id, fy) {
 								$state.go("home.homepage", {
 									"branchId" : id,
-									"action" : action
+									"fy" : fy
 								});
-
 							}
 
 							self.gotoDetailPage = function(entity, detailId,
 									page) {
-								self.company = name;
 								$state.go("home.detail", {
 									"entity" : entity,
 									"detailId" : detailId,
@@ -103,104 +80,10 @@ App
 								});
 
 							}
-
-							self.gotoDetail = function(entity, detailId) {
-								self.company = name;
-								var deferred = $q.defer();
-								return CommonService
-										.detail($stateParams.clientId, entity,
-												detailId)
-										.then(
-												function(data) {
-													console
-															.log('Common Controller get Detail..');
-													return data;
-												});
-
-							}
 							
-							self.download=function(url){
-								/*modal = modal+'Click';
-								modalClick(modal);*/
-								wait(1000);
-								self.loader=url;
-								window.open(self.loader,"_blank");
-								
-							}
 							
-							self.deleteFunction = function(valid, entityName,
-									entity, entityList, index, closeModalId) {
-								if (valid = true) {
-
-									CommonService
-											.deleteEntity(
-													$stateParams.clientId,
-													entityName, entity.id)
-											.then(
-													function(data) {
-														console
-																.log(entity
-																		+ ' deleted successfully');
-
-														entityList.splice(
-																index, 1);
-
-														angular
-																.element(
-																		'#'
-																				+ closeModalId)
-																.trigger(
-																		'click');
-
-														$('#successMsg')
-																.find(
-																		'.modal-header')
-																.find(
-																		'.headingMsg')
-																.append(
-																		"Successfull");
-														$('#successMsg')
-																.find(
-																		'.modal-body')
-																.find('.msg')
-																.append(
-																		" Deleted Successfully");
-														$("#successMsg")
-																.modal();
-
-													},
-													function(error) {
-														console
-																.error('Error while deleting , '
-																		+ status);
-														if (error.exceptionMsg != null
-																&& error.exceptionMsg != undefined) {
-															$('#errorMsg1')
-																	.find(
-																			'.modal-body')
-																	.find(
-																			'.msg')
-																	.append(
-																			"Can not Delete "
-																					+ error.entityName
-																					+ " : "
-																					+ error.exceptionMsg);
-															$("#errorMsg1")
-																	.modal();
-														} else {
-															for (var i = 0; i < error.fieldErrors.length; i++) {
-																var obj = error.fieldErrors[i];
-																document
-																		.getElementById(obj.fieldName).innerHTML = obj.message;
-															}
-														}
-													});
-
-								}
-							}
 
 							self.gotoListPage = function(entity, page) {
-								self.company = name;
 								self.show = false;
 								self.entity = {};
 								self.search = {};
@@ -241,62 +124,6 @@ App
 								}
 							}
 
-							self.gotoSearchDetailPage = function(entity2,
-									detailId, page2) {
-
-								$state.go("home.search.detail2", {
-									"entity2" : entity2,
-									"detailId" : detailId,
-									"page2" : page2
-								});
-							}
-
-							self.gotoList2Page = function(entity2, page2) {
-								$state.go("home.listBranch", {
-									"entity" : entity2,
-									"page" : page2
-								});
-							}
-							
-							self.gotoList3Page = function(entity2, page2) {
-								$state.go("home.listFy", {
-									"entity" : entity2,
-									"page" : page2
-								});
-							}
-							
-							
-		self.download = function(url) {
-		wait(1000);
-		self.loader = url;
-		window.open(self.loader, "_blank");
-
-	}
-
-							self.gotoDirectList2Page = function(entity, page,
-									entity2, page2, map) {
-								if (true) {
-									$.each(map, function(key, value) {
-										if (value === "" || value === null) {
-											delete map[key];
-										}
-									});
-								}
-								$state.go("home.list.list2", {
-									"entity" : entity,
-									"page" : page,
-									"entity2" : entity2,
-									"page2" : page2,
-									"searchParams" : JSON.stringify(map)
-								});
-							}
-
-							self.activetab2 = function(en) {
-								if (en == $stateParams.entity2) {
-									return true;
-								}
-								return false;
-							}
 
 							self.getEntityListData = function() {
 								console
@@ -309,12 +136,10 @@ App
 								if (valid == true) {
 									console.log("Common Controller submit "
 											+ entity);
-									self.entity.clientId = $stateParams.clientId;
 
 									progressBar();
 									CommonService
-											.saveDoc(form, entity,
-													$stateParams.clientId)
+											.saveDoc(form, entity)
 											.then(
 													function(data) {
 														progressBar();
@@ -388,13 +213,11 @@ App
 								if (valid == true) {
 									console.log("Common Controller submit "
 											+ entity);
-									self.entity.clientId = $stateParams.clientId;
 									if (form.dec.status == undefined
 											|| form.dec.status == "Pending Verification") {
 										progressBar();
 										CommonService
-												.updateDoc(form, entity,
-														$stateParams.clientId)
+												.updateDoc(form, entity)
 												.then(
 														function(data) {
 															console
@@ -475,11 +298,6 @@ App
 								}
 							}
 
-							self.gotoList=function(entity){
-								self.search={};
-								self.currentPage=1;
-								$state.go("home.list",{"entity":entity});
-							}		
 							
 							
 							
@@ -488,10 +306,8 @@ App
 									console.log("Common Controller submit "
 											+ entity);
 
-									self.entity.clientId = $stateParams.clientId;
 									CommonService
-											.save(self.entity, entity,
-													$stateParams.clientId)
+											.save(self.entity, entity)
 											.then(
 													function(data) {
 														console
@@ -564,8 +380,7 @@ App
 								ajax.name = name;
 								ajax.term = term;
 								var deferred = $q.defer();
-								return CommonService.ajax(entity, ajax,
-										$stateParams.clientId).then(
+								return CommonService.ajax(entity, ajax).then(
 										function(data) {
 											console.log(name
 													+ ' dynamic drop down');
@@ -575,177 +390,7 @@ App
 										});
 							}
 
-							self.getEmployeeId = function(employeeCode, entity) {
-								console.log("Common Controller is working");
-								var map = {};
-								map.employeeCode = employeeCode;
-								if (employeeCode != null) {
-									CommonService
-											.search($stateParams.clientId,
-													entity, map)
-											.then(
-													function(data) {
-														console
-																.log(name
-																		+ ' dynamic drop down');
-
-														var items = data;
-														self.search.employeeId = data.id;
-
-													});
-								}
-							}
-
-							self.getGroupId = function(groupCode, entity) {
-								console.log("Common Controller is working");
-								var map = {};
-								map.groupCode = groupCode;
-								if (groupCode != null) {
-									CommonService
-											.search($stateParams.clientId,
-													entity, map)
-											.then(
-													function(data) {
-														console
-																.log(name
-																		+ ' dynamic drop down');
-
-														var items = data;
-														self.entity.groupId = data.id;
-
-													});
-								}
-							}
 							
-
-							
-							self.approveUpdate = function(valid, entity, data){
-								if (valid == true) {
-									console.log("Common Controller approveData "
-											+ entity);
-
-									self.entity.clientId = $stateParams.clientId;
-
-									CommonService
-											.approveUpdate(data, entity,
-													$stateParams.clientId)
-											.then(
-													function(data) {
-														console
-																.log(entity
-																		+ ' updated successfully');
-														$('#successMsg')
-																.find(
-																		'.modal-header')
-																.find(
-																		'.headingMsg')
-																.append(
-																		"Successfull");
-														$('#successMsg')
-																.find(
-																		'.modal-body')
-																.find('.msg')
-																.append(
-																		" Updated Successfully");
-														$("#successMsg")
-																.modal();
-
-													},
-													function(error) {
-														console
-																.error('Error while updating Details, '
-																		+ status);
-
-														if (error.exceptionMsg != null
-																&& error.exceptionMsg != undefined) {
-															$('#errorMsg')
-																	.find(
-																			'.modal-body')
-																	.find(
-																			'.msg')
-																	.append(
-																			"Can not Update "
-																					+ error.entityName
-																					+ " : "
-																					+ error.exceptionMsg);
-															$("#errorMsg")
-																	.modal();
-														} else {
-															for (var i = 0; i < error.fieldErrors.length; i++) {
-																var obj = error.fieldErrors[i];
-																document
-																		.getElementById(obj.fieldName).innerHTML = obj.message;
-															}
-														}
-
-													});
-
-								}
-							}
-							
-							self.rejectUpdate = function(valid, entity, data){
-								if (valid == true) {
-									console.log("Common Controller rejectData "
-											+ entity);
-
-									self.entity.clientId = $stateParams.clientId;
-
-									CommonService
-											.rejectUpdate(data, entity,
-													$stateParams.clientId)
-											.then(
-													function(data) {
-														console
-																.log(entity
-																		+ ' updated successfully');
-														$('#successMsg')
-																.find(
-																		'.modal-header')
-																.find(
-																		'.headingMsg')
-																.append(
-																		"Successfull");
-														$('#successMsg')
-																.find(
-																		'.modal-body')
-																.find('.msg')
-																.append(
-																		" Updated Successfully");
-														$("#successMsg")
-																.modal();
-
-													},
-													function(error) {
-														console
-																.error('Error while updating Details, '
-																		+ status);
-
-														if (error.exceptionMsg != null
-																&& error.exceptionMsg != undefined) {
-															$('#errorMsg')
-																	.find(
-																			'.modal-body')
-																	.find(
-																			'.msg')
-																	.append(
-																			"Can not Update "
-																					+ error.entityName
-																					+ " : "
-																					+ error.exceptionMsg);
-															$("#errorMsg")
-																	.modal();
-														} else {
-															for (var i = 0; i < error.fieldErrors.length; i++) {
-																var obj = error.fieldErrors[i];
-																document
-																		.getElementById(obj.fieldName).innerHTML = obj.message;
-															}
-														}
-
-													});
-
-								}
-							}
 
 							self.updateData = function(valid, entity, data,
 									closeModalId) {
@@ -753,11 +398,9 @@ App
 									console.log("Common Controller updateData "
 											+ entity);
 
-									self.entity.clientId = $stateParams.clientId;
 
 									CommonService
-											.update(data, entity,
-													$stateParams.clientId)
+											.update(data, entity)
 											.then(
 													function(data) {
 														console
@@ -826,11 +469,9 @@ App
 									console.log("Common Controller updateData "
 											+ entity);
 
-									self.entity.clientId = $stateParams.clientId;
 
 									CommonService
-											.updateStatus(data, entity,
-													$stateParams.clientId)
+											.updateStatus(data, entity)
 											.then(
 													function(data) {
 														console
@@ -908,7 +549,7 @@ App
 							self.getPage=function(valid,entity,pageNo){
 								if(valid=true){
 								self.currentPage=pageNo;
-								CommonService.fetch(entity,$stateParams.clientId,pageNo-1);
+								CommonService.fetch(entity,pageNo-1);
 								}
 							}
 							
@@ -919,76 +560,6 @@ App
 							
 							}
 							
-
-							self.setIndex = function(ind) {
-								self.dlIndex = ind;
-							}
-
-							//view profile pic
-
-							self.viewProfile = function(entity, id) {
-								//commonserive method to call the get File
-								self.loader = 'static/img/Spinner-1s-200px.gif';
-								self.loader = 'api' + entity + '/getFile/'
-										+ $stateParams.clientId + '/' + id
-										+ '/' + Date.now();
-							}
-
-							self.viewFile = function(entity, a, modal) {
-								//commonserive method to call the get File
-								//	self.loader='';
-								//	self.loader='static/img/Spinner-1s-200px.gif';
-
-								self.temp1 = a;
-								modal = modal + 'Click';
-								if (a.fileId != null && a.fileId != undefined) {
-									modalClick(modal);
-									wait(1000);
-									self.loader = 'api' + entity + '/getFile/'
-											+ $stateParams.clientId + '/'
-											+ a.fileId;
-											window.open(self.loader,"_blank");
-								} else {
-									modalClick('no' + modal);
-								}
-
-								//								modal = modal+'Click';
-								//								if(a.fileId!=null && a.fileId!=undefined ){
-								//
-								//									
-								//									
-								//									  $http.get(restUrl+'static/img/Spinner-1s-200px.gif').then(res => {
-								//									      self.loader = 'api'+entity+'/getFile/' + $stateParams.clientId + '/'+a.fileId;
-								//									    })
-								//								modalClick(modal);	
-								//								}else{
-								//									modalClick('no'+modal);
-								//								}
-
-							}
-
-							self.isFileNull = function(valid, entity, form,
-									closeModalId) {
-								if (form.file == null || form.file == undefined) {
-									document.getElementById("file-upload").innerHTML = "file is required ";
-								} else {
-									self.submitFile(valid, entity, form,
-											closeModalId);
-								}
-							}
-
-							var modalClick = function(a) {
-								angular.element('#' + a).trigger('click');
-								// $('#myModalShower').hide();
-
-							}
-							var wait = function(ms) {
-								var start = new Date().getTime();
-								var end = start;
-								while (end < start + ms) {
-									end = new Date().getTime();
-								}
-							}
 
 						} ]);
 App.directive('fileModel', [ '$parse', function($parse) {

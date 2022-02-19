@@ -42,122 +42,20 @@ public class IndexController {
 										// show login screen again.
 	}
 
-	// mainPage
-	@RequestMapping(value = "/{page}")
-	public String getSelectCompanyTemplate(@PathVariable String page, ModelMap model) {
-		if (page.equals("main")) {
-			String userName = getPrincipal();
-			Login login = applicationCache.getLoginDetail(userName);
-			OrganizationDetails cd = applicationCache.getOrganizationDetails(login.getClientId());
-			model.addAttribute("cd", cd);
-			if (login.getPasswordReset() == null || login.getPasswordReset()) {
-				return "firstLogin";
-			}
-		}
-		return page;
-	}
-
 	@RequestMapping(value = "/resetPass")
 	public String resetPassword(ModelMap model) {
 		String pageName = "resetPass";
 		return pageName;
 	}
 
-	@RequestMapping(value = "/home/{clientId}/{action}/{branchId}")
-	public String gethome(@PathVariable Long clientId, @PathVariable String action, @PathVariable String branchId,
-			ModelMap model) {
-		String userName = getPrincipal();
-		Login login = applicationCache.getLoginDetail(userName);
-		/*
-		 * if(branchId!=null) {
-		 * 
-		 * try { Long bId = Long.valueOf(branchId); Branch br =
-		 * applicationCache.getBranch(bId); model.addAttribute("br", br);
-		 * }catch(Exception e) { model.addAttribute("br", new Branch()); } ClientDetail
-		 * cd = applicationCache.getClientDetail(login.getClientId());
-		 * model.addAttribute("cd", cd);
-		 * 
-		 * }
-		 */
-
-		OrganizationDetails cd = applicationCache.getOrganizationDetails(login.getClientId());
-		List<Long> listSolId = new ArrayList<>();
-		model.addAttribute("cd", cd);
-		model.addAttribute("listBr", listSolId);
-
-		return action;
-//		String userName =getPrincipal();
-//		Login login =applicationCache.getLoginDetail(userName);
-//		Branch br = applicationCache.getClientDetail(login.getClientId());
-//		model.addAttribute("cd", cd);	
-//		model.addAttribute("employeeId", login.getEmployeeId());
-//		model.addAttribute("userName", login.getUserName());
-//		
-//		String pageName="Home";
-//		return action+"/"+action+pageName;
+	@RequestMapping(value = "/home")
+	public String gethome(ModelMap model) {
+		return "homeSC";
 	}
 
-	@RequestMapping(value = "/homePage/{clientId}/{action}")
-	public String getHomePage(@PathVariable Long clientId, @PathVariable String action, ModelMap model) {
-		String pageName = "HomePage";
-//		Login l = applicationCache.getLoginDetail(getPrincipal());
-//		
-//		{
-//		HashMap<String, Object>constrains= new HashMap<>();
-//		constrains.put("clientId",l.getClientId());
-//		DeclarationTotalCount dtc=dtcs.uniqueSearch(constrains);
-//		if(dtc!=null)
-//		{
-//			model.addAttribute("totalEmpDeclaration",dtc.getTotalEmpDeclaration());
-//			model.addAttribute("totalApprovedEmpDeclaration",dtc.getTotalApprovedEmpDeclaration());
-//			model.addAttribute("totalPendingEmpDeclaration",dtc.getTotalPendingEmpDeclaration());
-//			model.addAttribute("totalRejectedEmpDeclaration",dtc.getTotalRejectedEmpDeclaration());
-//			model.addAttribute("totalEmpReimbursement",dtc.getTotalEmpReimbursement());
-//			model.addAttribute("totalPendingEmpReimbursement",dtc.getTotalPendingEmpReimbursement());
-//			model.addAttribute("totalRejectedEmpReimbursement",dtc.getTotalRejectedEmpReimbursement());
-//		}
-//		else {
-//			model.addAttribute("totalEmpDeclaration",0L);
-//			model.addAttribute("totalApprovedEmpDeclaration",0L);
-//			model.addAttribute("totalPendingEmpDeclaration",0L);
-//			model.addAttribute("totalRejectedEmpDeclaration",0L);
-//			model.addAttribute("totalEmpReimbursement",0L);
-//			model.addAttribute("totalPendingEmpReimbursement",0L);
-//			model.addAttribute("totalRejectedEmpReimbursement",0L);
-//			
-//		}
-//		}
-//		
-//		HashMap<String, Object>constrains= new HashMap<>();
-//		constrains.put("clientId",l.getClientId());
-//		constrains.put("employeeId",l.getEmployeeId());
-//		DeclarationCount dc=dcs.uniqueSearch(constrains);
-//		if(dc!=null)
-//		{
-//			model.addAttribute("totalDeclaration",dc.getTotalDeclaration());
-//			model.addAttribute("totalApprovedDeclaration",dc.getTotalApprovedDeclaration());
-//			model.addAttribute("totalPendingDeclaration",dc.getTotalPendingDeclaration());
-//			model.addAttribute("totalRejectedDeclaration",dc.getTotalRejectedDeclaration());
-//			model.addAttribute("totalReimbursement",dc.getTotalReimbursement());
-//			model.addAttribute("totalPendingReimbursement",dc.getTotalPendingReimbursement());
-//			model.addAttribute("totalRejectedReimbursement",dc.getTotalRejectedReimbursement());
-//		}
-//		else {
-//			model.addAttribute("totalDeclaration",0L);
-//			model.addAttribute("totalApprovedDeclaration",0L);
-//			model.addAttribute("totalPendingDeclaration",0L);
-//			model.addAttribute("totalRejectedDeclaration",0L);
-//			model.addAttribute("totalReimbursement",0L);
-//			model.addAttribute("totalPendingReimbursement",0L);
-//			model.addAttribute("totalRejectedReimbursement",0L);
-//			
-//		}
-//		model.addAttribute("impDates",applicationCache.getImpDates());
-//		model.addAttribute("recentNotifications",applicationCache.getRecentNotifications(clientId));
-//		model.addAttribute("recentRemark",applicationCache.getRecentRemark(clientId));
-
-		return action + "/" + action + pageName;
-		// return action+"/"+action+pageName;
+	@RequestMapping(value = "/homePage")
+	public String getHomePage( ModelMap model) {
+		return  "homeSC/homeSCHomepage";
 	}
 
 	@RequestMapping(value = "/detail/{clientId}/{action}/{page}")
@@ -166,15 +64,15 @@ public class IndexController {
 		return action + "/" + page;
 	}
 
-	@RequestMapping(value = "/list/{clientId}/{action}/{page}")
-	public String getListPage(@PathVariable Long clientId, @PathVariable String action, @PathVariable String page,
+	@RequestMapping(value = "/list/{entity}/{page}")
+	public String getListPage(@PathVariable Long clientId, @PathVariable String entity, @PathVariable String page,
 			ModelMap model) {
 		Login login = applicationCache.getLoginDetail(getPrincipal());
 		OrganizationDetails cd = applicationCache.getOrganizationDetails(login.getClientId());
 		List<Long> listSolId = new ArrayList<>();
 		model.addAttribute("cd", cd);
 		model.addAttribute("listBr", listSolId);
-		return action + "/" + page;
+		return entity + "/" + page;
 	}
 
 	/**

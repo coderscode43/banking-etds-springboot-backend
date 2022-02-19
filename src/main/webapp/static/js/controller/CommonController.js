@@ -20,7 +20,7 @@ App
 							self.branchId;
 							self.loader='';
 							self.entity = {};
-							self.search = {};
+							self.search = {};//Pranay
 							self.entityList = [];
 							// self.ItemsPerPage=100;
 							self.dropdown = [];
@@ -108,21 +108,38 @@ App
 
 							}
 
-							self.searchEntities = function(valid, entity, page) {
-								if (valid = true) {
-									$.each(self.search, function(key, value) {
-										if (value === "" || value === null) {
-											delete self.search[key];
-										}
-									});
-									$state.go("home.search", {
-										"entity" : entity,
-										"page" : page,
-										"searchParams" : JSON
-												.stringify(self.search)
-									});
-								}
+
+							self.gotoWFYListPage = function(entity, page) {
+								self.show = false;
+								self.entity = {};
+								self.search = {};
+								self.entityList = [];
+								// self.ItemsPerPage=100;
+								self.dropdown = [];
+								self.ajax = [];
+								self.temp = {};
+								self.temp3 = {};
+								self.temp1 = [];
+								self.company = {};
+								self.currentPage = 1;
+								self.batchColor = {};
+								self.goodsColor = [];
+								self.b = [];
+								self.fileName = new FormData();
+
+								$state.go("homeWot.list", {
+									"entity" : entity,
+									"page" : page
+								});
+
 							}
+
+
+
+
+
+
+							
 
 
 							self.getEntityListData = function() {
@@ -374,22 +391,35 @@ App
 										.log("Common Controller get Entity data");
 								return CommonService.getEntity();
 							}
-
-							self.ajax1 = function(entity, name, term) {
+							/*Pranay*/
+							self.ajax = function(entity, name, term) {
 								var ajax = {};
 								ajax.name = name;
 								ajax.term = term;
 								var deferred = $q.defer();
-								return CommonService.ajax(entity, ajax).then(
-										function(data) {
-											console.log(name
-													+ ' dynamic drop down');
-											var items = data;
-											self.ajax = data;
-											return data;
-										});
+								return CommonService.ajax(entity, ajax).then(function(data) {
+									console.log(name + ' dynamic drop down');
+									var items = data;
+									self.ajax = data;
+									return data;
+								});
 							}
-
+							self.searchEntities = function(valid, entity, page) {
+								if (valid = true) {
+									$.each(self.search, function(key, value) {
+										if (value === "" || value === null) {
+											delete self.search[key];
+										}
+									});
+									$state.go("home.search", {
+										"entity" : entity,
+										"page" : page,
+										"searchParams" : JSON
+												.stringify(self.search)
+									});
+								}
+							}
+				
 							
 
 							self.updateData = function(valid, entity, data,

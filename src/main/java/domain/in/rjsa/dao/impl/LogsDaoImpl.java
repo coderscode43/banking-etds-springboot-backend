@@ -11,11 +11,11 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import domain.in.rjsa.dao.AbstractDaoFY;
+import domain.in.rjsa.dao.AbstractDaoForm;
 import domain.in.rjsa.dao.LogsDao;
 import domain.in.rjsa.model.fy.Logs;
 @Repository("logsDao")
-public class LogsDaoImpl extends AbstractDaoFY<Long, Logs> implements LogsDao{
+public class LogsDaoImpl extends AbstractDaoForm<Long, Logs> implements LogsDao{
 	@SuppressWarnings("unchecked")
 	public List<Logs> search(HashMap entity, Long clientId) {
 		Criteria criteria = createEntityCriteria();
@@ -28,11 +28,16 @@ public class LogsDaoImpl extends AbstractDaoFY<Long, Logs> implements LogsDao{
           {
 		criteria.add(Restrictions.eqOrIsNull("username", entity.get("username")));
           }
+          
           if(entity.get("entity")!=null)
           {
 		criteria.add(Restrictions.eqOrIsNull("entity", entity.get("entity")));
           }
 
+          if(entity.get("ipaddrs")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("ipaddrs", entity.get("ipaddrs")));
+          }
 //          java.util.Date date = Calendar.getInstance().getTime();  
 //	         DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");  
 //	         String strDate = dateFormat.format(date); 

@@ -1,10 +1,12 @@
 package domain.in.rjsa.dao.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -40,5 +42,23 @@ public class RODetailsDaoImpl extends AbstractDaoForm<Long, RODetails> implement
 			criteria.add(Restrictions.eqOrIsNull("roPincode", entity.get("roPincode")));
 		}
 		return (List<RODetails>) criteria.list();
-}
+	}
+	@Override
+	public List<RODetails> findall(HashMap<String, Object> constrains, int pageNo, int noOfResult) {
+		Criteria criteria = createEntityCriteria();
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
+		if(constrains.containsKey("roCode")) {
+			if(constrains.get("roCode") instanceof ArrayList)
+			criteria.add(Restrictions.in("roCode", (List<Long>)constrains.remove("roCode")));
+		}
+		criteria.add(Restrictions.allEq(constrains));
+		criteria.addOrder(Order.desc("id"));
+		criteria.setFirstResult(pageNo * noOfResult);
+		criteria.setMaxResults(noOfResult);
+		return (List<RODetails>) criteria.list();
+	}
+	
+	
+	
+	
 }

@@ -1,5 +1,7 @@
 package domain.in.rjsa.model.tds;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,9 +31,9 @@ public class CHALLAN extends CommonModelAbstract{
 	@Column(name = "AMOUNT_OF_CLALLAN")
 	public String AMOUNT_OF_CLALLAN;
 	@Column(name = "DATE_OF_DEPOSITION")
-	public String DATE_OF_DEPOSITION;
+	public Date DATE_OF_DEPOSITION;
 	@Column(name = "AS_ON_DATE")
-	public String AS_ON_DATE;
+	public Date AS_ON_DATE;
 	@Column(name = "CHALLAN_MISMATCH")
 	public String CHALLAN_MISMATCH;
 	@Column(name = "SECTION")

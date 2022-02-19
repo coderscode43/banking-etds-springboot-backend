@@ -209,10 +209,10 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 				return 'index/list/homeWOT/' + $stateParams.page;
 			},
 			resolve: {
-				list: function($q, $state, CommonService, $stateParams) {
+				list: function($q, $state, CommonServiceFY, $stateParams) {
 					console.log('Get List of ' + $stateParams.entity);
 					var deferred = $q.defer();
-					CommonService.countFunction($stateParams.entity, $stateParams.clientId).then(deferred.resolve, deferred.resolve);
+					CommonServiceFY.countFunction($stateParams.entity, $stateParams.fy).then(deferred.resolve, deferred.resolve);
 					return deferred.promise;
 				}
 			}

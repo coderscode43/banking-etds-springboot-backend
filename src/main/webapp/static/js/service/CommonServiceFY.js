@@ -1,6 +1,6 @@
 'use strict';
 
-App.factory('CommonService', [
+App.factory('CommonServiceFY', [
 		'$http',
 		'$q',
 		'restUrl',

@@ -125,14 +125,12 @@ public abstract class AbstractDaoForm<K extends Serializable, E> implements DaoI
 		return (List<E>) criteria.list();
 	}
 
-	public List<String> ajax(String name, String term, HashMap<String, Object> constrain) {
-
+	@Override
+	public List<String> ajax(String name, String term) {
 		Criteria criteria = createEntityCriteria();
-		criteria.add(Restrictions.allEq(constrain));
 		criteria.setProjection(Projections.property(name));
 		criteria.add(Restrictions.ilike(name, term.toUpperCase(), MatchMode.START));
 		return criteria.list();
-
 	}
 
 	@SuppressWarnings("unchecked")

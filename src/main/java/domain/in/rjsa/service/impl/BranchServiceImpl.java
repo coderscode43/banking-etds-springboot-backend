@@ -1,5 +1,7 @@
 package domain.in.rjsa.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +25,12 @@ public class BranchServiceImpl extends AbstractServiceForm<Long, Branch, BranchD
 	public Branch getByKey(Long id) {
 		// TODO Auto-generated method stub
 		return dao.getByKey(id);
+	}
+	
+	@Override
+	public List<String> ajax(String name, String term) {
+		// TODO Auto-generated method stub
+		return dao.ajax(name, term);
 	}
 
 }

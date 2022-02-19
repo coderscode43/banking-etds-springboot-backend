@@ -57,9 +57,9 @@ public abstract class AbstractServiceForm<K extends Serializable, E, D extends D
 	}
 
 	@Override
-	public List<String> ajax(String name, String term, HashMap<String, Object> constrains) {
+	public List<String> ajax(String name, String term) {
 		// TODO Auto-generated method stub
-		return getPrimaryDao().ajax(name, term, constrains);
+		return getPrimaryDao().ajax(name, term);
 	}
 	
 	public abstract D getPrimaryDao();

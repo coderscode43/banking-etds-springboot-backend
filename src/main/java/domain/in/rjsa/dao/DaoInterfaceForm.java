@@ -17,7 +17,7 @@ public interface DaoInterfaceForm<K, E> {
 	public void update(E entity);
 	public List<E> search(HashMap map);
 	public E uniqueSearch(HashMap map);
-	public List<String> ajax(String name, String term,HashMap<String, Object>constrain);
+	public List<String> ajax(String name, String term);
 	public Long getMaxValue(String name,Map<String, Object> propertyNameValues);
 	public void changeValue(Map<String, Object> propertyNameValuesToUpdate,String operator, Map<String, Object> propertyNameValues);
 	public List<E> searchIn(HashSet set,String property);

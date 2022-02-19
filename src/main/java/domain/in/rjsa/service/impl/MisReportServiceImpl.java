@@ -6,11 +6,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.MisReportDao;
 import domain.in.rjsa.model.fy.MisReport;
-import domain.in.rjsa.service.AbstractServiceFY;
+import domain.in.rjsa.service.AbstractServiceForm;
 import domain.in.rjsa.service.MisReportService;
 @Transactional("transactionManager")
 @Service("misReportService")
-public class MisReportServiceImpl extends AbstractServiceFY<Long, MisReport, MisReportDao> implements  MisReportService {
+public class MisReportServiceImpl extends AbstractServiceForm<Long, MisReport, MisReportDao> implements  MisReportService {
 	@Autowired
 	MisReportDao dao;
 	@Override

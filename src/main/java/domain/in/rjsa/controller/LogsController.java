@@ -9,7 +9,7 @@ import domain.in.rjsa.service.LogsService;
 
 @Controller
 @RequestMapping("/apilogs")
-public class LogsController extends AbstractControllerFY<Long, Logs, LogsService>{
+public class LogsController extends AbstractControllerForm<Long, Logs, LogsService>{
 
 	@Autowired
 	LogsService service;

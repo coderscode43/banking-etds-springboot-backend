@@ -9,7 +9,7 @@ import domain.in.rjsa.service.TicketRemarkService;
 
 @Controller
 @RequestMapping("/apiticketRemark")
-public class TicketRemarkController extends AbstractBranchControllerFY<Long, TicketRemark, TicketRemarkService>{
+public class TicketRemarkController extends AbstractControllerForm<Long, TicketRemark, TicketRemarkService>{
 	@Autowired
 	TicketRemarkService service;
 

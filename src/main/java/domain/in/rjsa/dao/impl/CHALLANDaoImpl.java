@@ -26,7 +26,18 @@ public class CHALLANDaoImpl extends AbstractDaoTaxo<String, CHALLAN> implements 
          {
 		criteria.add(Restrictions.eqOrIsNull("CIN", entity.get("CIN")));
          }
-		
+		 if(entity.get("TAN")!=null)
+         {
+		criteria.add(Restrictions.eqOrIsNull("TAN", entity.get("TAN")));
+         }
+		 if(entity.get("AMOUNT_OF_CLALLAN")!=null)
+         {
+		criteria.add(Restrictions.eqOrIsNull("AMOUNT_OF_CLALLAN", entity.get("AMOUNT_OF_CLALLAN")));
+         }
+		 if(entity.get("CHALLAN_MISMATCH")!=null)
+         {
+		criteria.add(Restrictions.eqOrIsNull("CHALLAN_MISMATCH", entity.get("AMOUNT_OF_CLALLAN")));
+         }
 		
 		return (List< CHALLAN>) criteria.list();
 	}

@@ -218,7 +218,7 @@
 		</div>
 	</div>
  -->
-	<div id="page-wrapper" ng-controller="CommonWOTController as cWctr">
+	<div id="page-wrapper" ng-controller="CommonController as cCctr">
 		<div class="container-fluid">
 			<div class="col-md-12 "
 				style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
@@ -243,7 +243,7 @@
 							<h6>
 								<b>Financial Year</b>
 							</h6>
-							<select class="form-control" ng-model="cWctr.search.fy">
+							<select class="form-control" ng-model="cCctr.search.fy">
 								<option value="" ng-selected=true>Year</option>
 								<option value="201516">201920</option>
 								<option value="201819">201819</option>
@@ -266,7 +266,7 @@
           <h6>
 						<b>Quarter</b>
 						<h6>
-							<select class="form-control" ng-model="cWctr.search.quarter">
+							<select class="form-control" ng-model="cCctr.search.quarter">
 								<option value="" ng-selected=true>Quarter</option>
 								<option value="Q1">Q1</option>
 								<option value="Q2">Q2</option>
@@ -295,12 +295,13 @@
 						</div>
 						
 						<div class="col-md-3">
-							<h6>
-						<b>Available Balance</b>
-					</h6>
-					<input type="text" ng-model="cCctr.search.AVAILABLE_BALENCE" class="form-control"
-						placeholder="Available Balance" style="width: 100%">
-						</div>
+				<h6>
+					<b>Challan Mismatch</b>
+					<h6>
+						<input type="text" ng-model="cCctr.search.CHALLAN_MISMATCH"
+							
+							class="form-control" placeholder="Challan Mismatch" style="width: 100%">
+			</div>
 
 					</div>
 
@@ -315,7 +316,7 @@
 				<h6>
 					<b>Amount of challan</b>
 					<h6>
-						<input type="text" ng-model="cWctr.search.AMOUNT_OF_CLALLAN"
+						<input type="text" ng-model="cCctr.search.AMOUNT_OF_CLALLAN"
 							
 							class="form-control" placeholder="Amount of challan" style="width: 100%">
 			</div>
@@ -324,47 +325,24 @@
 				<h6>
 					<b>Date of Deposition</b>
 					<h6>
-						<input type="Date" ng-model="cWctr.search.DATE_OF_DEPOSITION"
-							ng-change="cWctr.search.DATE_OF_DEPOSITION=cWctr.date(cWctr.search.DATE_OF_DEPOSITION);"
+						<input type="Date" ng-model="cCctr.search.DATE_OF_DEPOSITION"
+							ng-change="cCctr.search.DATE_OF_DEPOSITION=cCctr.date(cCctr.search.DATE_OF_DEPOSITION);"
 							class="form-control" placeholder="Date of Deposition" style="width: 100%">
 			</div>
 			<div class="col-md-3">
 				<h6>
 					<b>As on Date</b>
 					<h6>
-						<input type="date" ng-model="cWctr.search.AS_ON_DATE"
-							ng-change="cWctr.search.AS_ON_DATE=cWctr.date(cWctr.search.AS_ON_DATE);"
+						<input type="date" ng-model="cCctr.search.AS_ON_DATE"
+							ng-change="cCctr.search.AS_ON_DATE=cCctr.date(cCctr.search.AS_ON_DATE);"
 							class="form-control" placeholder="As on Date" style="width: 100%">
 			</div>
 			
 		</div>
 		 <div class="row">
-			<div class="col-md-3">
-				<h6>
-					<b>Challan Mismatch</b>
-					<h6>
-						<input type="text" ng-model="cWctr.search.CHALLAN_MISMATCH"
-							
-							class="form-control" placeholder="Challan Mismatch" style="width: 100%">
-			</div>
-
-			<div class="col-md-3">
-				<h6>
-					<b>Section</b>
-					<h6>
-						<input type="text" ng-model="cWctr.search.SECTION"
-							
-							class="form-control" placeholder="Section" style="width: 100%">
-			</div>
 			
-			<div class="col-md-3">
-				<h6>
-					<b>Minorhead</b>
-					<h6>
-						<input type="text" ng-model="cWctr.search.MINORHEAD"
-							
-							class="form-control" placeholder="Minorhead" style="width: 100%">
-			</div>	
+
+			
 		</div>
 
 		
@@ -424,13 +402,12 @@
 						<th>Sr. No.</th>
 						<th>CIN</th>
 						<th>TAN</th>
-						<th>Available Balance</th>
+						
 						<th>Amount of challan</th>
 						<th>Date of Deposition</th>
 						<th>As on Date</th>
 						<th>Challan Mismatch</th>
-						<th>Section</th>
-						<th>Minorhead</th>
+						
 					<!-- 	<th>Action</th> -->
 					</tr>
 				</thead>
@@ -440,13 +417,11 @@
 						<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
 						<td>{{a.CIN}}</td>
 						<td>{{a.TAN}}</td>
-						<td>{{a.AVAILABLE_BALENCE}}</td>
 						<td>{{a.AMOUNT_OF_CLALLAN}}</td>
 						<td>{{a.DATE_OF_DEPOSITION}}</td>
 						<td>{{a.AS_ON_DATE}}</td>
 						<td>{{a.CHALLAN_MISMATCH}}</td>
-						<td>{{a.SECTION}}</td>
-						<td>{{a.MINORHEAD}}</td>
+						
 						<div>
 							<td ng-if="a.verify == 1"><i class="fa fa-check"
 								aria-hidden="true" style="color: #5cb85c"></i></td>

@@ -11,11 +11,11 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import domain.in.rjsa.dao.AbstractDaoFY;
+import domain.in.rjsa.dao.AbstractDaoForm;
 import domain.in.rjsa.dao.TicketRemarkDao;
 import domain.in.rjsa.model.fy.TicketRemark;
 @Repository("ticketRemarkDao")
-public class TicketRemarkDaoImpl extends AbstractDaoFY<Long, TicketRemark> implements TicketRemarkDao{
+public class TicketRemarkDaoImpl extends AbstractDaoForm<Long, TicketRemark> implements TicketRemarkDao{
 	
 	@SuppressWarnings("unchecked")
 	public List<TicketRemark> search(HashMap entity, Long clientId) {

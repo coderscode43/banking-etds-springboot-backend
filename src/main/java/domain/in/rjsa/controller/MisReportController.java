@@ -8,7 +8,7 @@ import domain.in.rjsa.model.fy.MisReport;
 import domain.in.rjsa.service.MisReportService;
 @Controller
 @RequestMapping("/apimisReport")
-public class MisReportController extends AbstractControllerFY<Long, MisReport, MisReportService> {
+public class MisReportController extends AbstractControllerForm<Long, MisReport, MisReportService> {
 	@Autowired
 	MisReportService service;
 

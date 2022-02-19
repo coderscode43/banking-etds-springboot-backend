@@ -9,7 +9,7 @@ import domain.in.rjsa.service.MonthlyChallanService;
 
 @Controller
 @RequestMapping("/apimonthlyChallan")
-public class MonthlyChallanController extends AbstractBranchControllerFY<Long, MonthlyChallan, MonthlyChallanService>{
+public class MonthlyChallanController extends AbstractControllerFY<Long, MonthlyChallan, MonthlyChallanService>{
 	@Autowired
 	MonthlyChallanService service;
 	

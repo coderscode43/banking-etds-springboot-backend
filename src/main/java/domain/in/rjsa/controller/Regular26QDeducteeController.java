@@ -5,13 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import domain.in.rjsa.model.fy.Regular26QDeductee;
-import domain.in.rjsa.model.wrapper.SalaryDetailWrapper;
 import domain.in.rjsa.service.Regular26QDeducteeService;
 
 @Controller
 @RequestMapping("/apiform26QDeductee")
 public class Regular26QDeducteeController
-		extends AbstractBranchControllerFY<Long, Regular26QDeductee, Regular26QDeducteeService> {
+		extends AbstractControllerFY<Long, Regular26QDeductee, Regular26QDeducteeService> {
 	
 	@Autowired
 	Regular26QDeducteeService service;

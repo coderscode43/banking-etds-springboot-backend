@@ -19,7 +19,7 @@ import domain.in.rjsa.util.StaticData;
 @Controller
 @RequestMapping("/apiform24Qsalary")
 public class Regular24QSalaryController
-		extends AbstractBranchControllerFY<Long, Regular24QSalary, Regular24QSalaryService> {
+		extends AbstractControllerFY<Long, Regular24QSalary, Regular24QSalaryService> {
 
 	@Autowired
 	Regular24QSalaryService service;

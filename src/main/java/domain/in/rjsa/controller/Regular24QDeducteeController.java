@@ -29,19 +29,7 @@ public class Regular24QDeducteeController
 		return Regular24QDeductee.class;
 	}
 
-	@Override
-	public Object getDetail(Long id, Long clientId) {
-		// TODO Auto-generated method stub
-		SalaryDetailWrapper ew = new SalaryDetailWrapper();
-		// Login l = applicationCache.getLoginDetail(getPrincipal());
-
-		// LinkedHashMap<String, Object> constrains = new LinkedHashMap<>();
-		// constrains.put("clientId", l.getClientId());
-		Regular24QDeductee ded = service.getByKey(id);
-		ew.setDeductee(ded);
-
-		return ew;
-	}
+	
 
 	
 

@@ -127,14 +127,14 @@
 
 				<div class="row" id="hide">
 					<div class="col-md-3" style="margin-left: 85%; margin-top: -70px">
-						<button ng-click="cCctr.searchEntities(true,'ldc')"
+						<button ng-click="cCctr.searchEntities(true,'RODetails')"
 							class="btn btn-success">Search</button>
 					</div>
 				</div>
 
 				<div class="row" id="search">
 					<div class="col-md-3" id="search">
-						<button ng-click="cCctr.searchEntities(true,'ldc')"
+						<button ng-click="cCctr.searchEntities(true,'RODetails')"
 							class="btn btn-success">Search</button>
 					</div>
 				</div>
@@ -150,8 +150,8 @@
 					aria-expanded="false" aria-controls="collapseExample">
 					Advance Search</button>
 			
-				<!--  <button class="btn btn-Primary" data-toggle="modal"
-					ng-click="cCctr.gotoListPage('add','addLDC');">Add</button>-->
+				  <button class="btn btn-Primary" data-toggle="modal"
+					ng-click="cCctr.gotoListPage('addRODetails','addRODetails');">Add</button>
 			</div>
 		</div>
 	</div>
@@ -180,6 +180,7 @@
 								<th>RO Email</th>
 								<th>RO State</th>
 								<th>RO Pincode</th>
+								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -193,8 +194,19 @@
 								<td>{{a.roState}}</td>
 								<td>{{a.roPincode}}</td>
 								
+							<div>
+							<td ng-if="a.verify == 1"><i class="fa fa-check"
+								aria-hidden="true" style="color: #5cb85c"></i></td>
+							<td ng-if="a.verify == 0"><i class="fa fa-times"
+								aria-hidden="true" style="color: #ff0000"></i></td>
+						</div>
+						<td><a
+							ng-click="cCctr.gotoDetailPage('RODetails',a.id,'UpdateRODetails')"
+							style="color: blue"><img src="static\img\edit.png"
+								width="22px" height="22px" alt="Details"
+								style="margin-top: 5px; margin-bottom: 5px;" /></a></td>
 
-								<!-- <td>{{a.total-a.amountPaid}}</td> -->
+								
 
 							</tr>
 
@@ -210,12 +222,12 @@
 <div class="row" ng-show="cCctr.getNoPage() > 0">
 		<div class="row" align="center">
 			<span ng-show="cCctr.currentPage != 1"> <a
-				ng-click="cCctr.getPage(true,'ldc',cCctr.currentPage-1)"><strong>Previous</strong></a>
+				ng-click="cCctr.getPage(true,'RODetails',cCctr.currentPage-1)"><strong>Previous</strong></a>
 			</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.currentPage}}</strong>&nbsp;
 				of &nbsp;<strong>{{cCctr.getNoPage()}}</strong>
 				&nbsp;&nbsp;&nbsp;&nbsp; <span
 				ng-show="cCctr.currentPage != cCctr.getNoPage()"> <a
-					ng-click="cCctr.getPage(true,'ldc',cCctr.currentPage+1)"><strong>Next</strong></a>
+					ng-click="cCctr.getPage(true,'RODetails',cCctr.currentPage+1)"><strong>Next</strong></a>
 			</span>
 			</span>
 		</div>
@@ -228,7 +240,7 @@
 					ng-min="1" ng-max="cCctr.getNoPage()" ng-required="true">
 				&nbsp;&nbsp;&nbsp;
 				<button style="height: 25px;"
-					ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'ldc',cCctr.currentPage)"
+					ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'RODetails',cCctr.currentPage)"
 					class="btn btn-primary">Go</button>
 			</div>
 			<div class="row" align="center">

@@ -10,10 +10,11 @@ App
 						'$state',
 						'$stateParams',
 						'CommonService',
+						'CommonServiceFY',
 						'$q',
 						'$window',
 						function($http, restUrl, $scope, $state, $stateParams,
-								CommonService, $q, $window) {
+								CommonService,CommonServiceFY, $q, $window) {
 
 							var self = this;
 							self.tan;
@@ -168,7 +169,11 @@ App
 
 
 
-
+							self.getEntityListDataFY = function() {
+								console
+										.log("Common Controller get  getEntityList");
+								return CommonServiceFY.getEntityList();
+							}
 
 
 							

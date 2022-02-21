@@ -26,7 +26,7 @@ public class MisReport extends CommonModelAbstract{/**
 	@Column(name = "id")
 	public Long id;		
 	@Column(name = "branchCode")
-	public Long branchCode;
+	public String branchCode;
 	@Column(name = "fromDate")
 	private String fromDate;
 	@Column(name = "toDate")
@@ -34,7 +34,7 @@ public class MisReport extends CommonModelAbstract{/**
 	@Column(name = "reportType")
 	public String reportType;	
 	@Column(name = "fy")
-	public Long fy;
+	public String fy;
 	
 
 }

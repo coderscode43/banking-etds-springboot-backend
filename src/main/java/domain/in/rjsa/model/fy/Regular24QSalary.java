@@ -348,7 +348,7 @@ public class Regular24QSalary extends CommonModelAbstract {
 	public String remarks;
 
 	@Column(name = "fy")
-	public Long fy;
+	public String fy;
 	@Column(name = "quarter")
 	@Size(min = 0, max = 45, message = "Invalid quarter")
 	public String quarter;

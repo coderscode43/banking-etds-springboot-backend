@@ -119,273 +119,88 @@
 </style>
 
 <head>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.4/angular.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.4/angular.js"></script>
 </head>
-
-
-<div id="page-wrapper">
-	<!-- 	<div class="col-md-12 "
-		style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
-		<div class="heading"><Strong>Form 26Q Challan Details</div>
-
-
-
-	</div>
-
-
-	<br>
-	<button class="btn btn-primary hidden visible-xs" type="button"
-		data-toggle="collapse" data-target="#collapseExample2"
-		aria-expanded="false" aria-controls="collapseExample">Search</button> -->
-	<!-- <div class="collapse dont-collapse-sm" id="collapseExample2">
-		<div class="row">
-			<div class="form-group">
-
-
-				<div class="col-md-2">
-					<h6>
-						<b>Financial Year</b>
-					</h6>
-					<select class="form-control" ng-model="cCctr.search.fy">
-						<option value="" ng-selected=true>Year</option>
-						<option value="201516">201920</option>
-						<option value="201819">201819</option>
-						<option value="201718">201718</option>
-						<option value="201617">201617</option>
-						<option value="201516">201516</option>
-						<option value="201415">201415</option>
-						<option value="201314">201314</option>
-						<option value="201213">201213</option>
-						<option value="201112">201112</option>
-						<option value="201011">201011</option>
-						<option value="200910">200910</option>
-						<option value="200809">200809</option>
-						<option value="200708">200708</option>
-					</select>
-				</div>
-
-				<div class="col-md-2">
-					<h6>
-						<b>Quarter</b>
-						<h6>
-							<select class="form-control" ng-model="cCctr.search.quarter">
-								<option value="" ng-selected=true>Quarter</option>
-								<option value="Q1">Q1</option>
-								<option value="Q2">Q2</option>
-								<option value="Q3">Q3</option>
-								<option value="Q4">Q4</option>
-							</select>
-				</div>
-
-
-				<div class="col-md-2">
-					<h6>
-						<b>From Date Of Tax Deposit</b>
-						<h6>
-							<input type="date" ng-model="cCctr.search.fromDate" ng-change="cCctr.search.fromDate=cCctr.date(cCctr.search.fromDate);"
-								class="form-control" placeholder="Date" style="width: 100%">
-				</div>
-				<div class="col-md-2">
-					<h6>
-						<b>To Date Of Tax Deposit</b>
-						<h6>
-							<input type="date" ng-model="cCctr.search.toDate" ng-change="cCctr.search.toDate=cCctr.date(cCctr.search.toDate);"
-								class="form-control" placeholder="Date" style="width: 100%">
-				</div>
-
-			</div>
-
-		</div>
-
-		<div class="row" id="hide">
-			<div class="col-md-3" style="margin-left: 90%; margin-top: -40px">
-				<button ng-click="cCctr.searchEntities(true,'formchallan26Q','formchallan26Q')"
-					class="btn btn-success"onclick="scrollWin()">Search</button>
-			</div>
-			<div class="modal-header"
-				style="margin-left: 95%; margin-bottom: -35px">
-				<button type="button" class="btn btn-primary" ng-click="cCctr.gotoListPage('addForm26Qchallan','addForm26Qchallan');" onclick="scrollWin()">Add</button>
-			</div>
-
-			<div class="row">
-				<div class="col-md-3" id="search">
-					<button ng-click="cCctr.searchEntities(true,'formchallan26Q')"
-						class="btn btn-success" onclick="scrollWin()">Search</button>
-					<button type="button" class="btn btn-primary" ng-click="cCctr.gotoListPage('addForm26Qchallan','addForm26Qchallan');">Add</button>
-				</div>
-			</div>
-		</div>
-	</div>
- -->
 	<div id="page-wrapper" ng-controller="CommonController as cCctr">
 		<div class="container-fluid">
-			<div class="col-md-12 "
-				style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
+			<div class="col-md-12 "style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
 				<div class="heading">
 					<strong>Challan Details</strong>
 				</div>
-
-
-
 			</div>
-
 			<br>
 			<button class="btn btn-primary hidden visible-xs" type="button"
-		data-toggle="collapse" data-target="#collapseExample2"
-		aria-expanded="false" aria-controls="collapseExample">Search</button>
-	<div class="collapse dont-collapse-sm" id="collapseExample2">
+					data-toggle="collapse" data-target="#collapseExample2"
+					aria-expanded="false" aria-controls="collapseExample">Search
+			</button>
+			<div class="collapse dont-collapse-sm" id="collapseExample2">
 				<div class="row">
 					<div class="form-group">
-
-						<!--<div class="col-md-3">
-
-							<h6>
-								<b>Financial Year</b>
-							</h6>
-							<select class="form-control" ng-model="cCctr.search.fy">
-								<option value="" ng-selected=true>Year</option>
-								<option value="201516">201920</option>
-								<option value="201819">201819</option>
-								<option value="201718">201718</option>
-								<option value="201617">201617</option>
-								<option value="201516">201516</option>
-								<option value="201415">201415</option>
-								<option value="201314">201314</option>
-								<option value="201213">201213</option>
-								<option value="201112">201112</option>
-								<option value="201011">201011</option>
-								<option value="200910">200910</option>
-								<option value="200809">200809</option>
-								<option value="200708">200708</option>
-							</select>
-
-						</div>-->
-
-						<!--  	<div class="col-md-3">	
-          <h6>
-						<b>Quarter</b>
-						<h6>
-							<select class="form-control" ng-model="cCctr.search.quarter">
-								<option value="" ng-selected=true>Quarter</option>
-								<option value="Q1">Q1</option>
-								<option value="Q2">Q2</option>
-								<option value="Q3">Q3</option>
-								<option value="Q4">Q4</option>
-							</select>
-       </div>-->
-
-
-						
-
 						<div class="col-md-3">
-							<h6>
-						<b>CIN</b>
-					</h6>
-					<input type="text" ng-model="cCctr.search.CIN" class="form-control"
-						placeholder="CIN" style="width: 100%">
+							<h6><b>CIN</b></h6>
+							<input type="text" ng-model="cCctr.search.CIN" class="form-control"placeholder="CIN" style="width: 100%">
 						</div>
-						
 						<div class="col-md-3">
-							<h6>
-								<b>TAN</b>
-							</h6>
-							<input type="text" ng-model="cCctr.search.TAN" class="form-control"
-									placeholder="TAN" style="width: 100%">
+							<h6><b>TAN</b></h6>
+							<input type="text" ng-model="cCctr.search.TAN" class="form-control"placeholder="TAN" style="width: 100%">
 						</div>
-						
 						<div class="col-md-3">
-				<h6>
-					<b>Challan Mismatch</b>
-					<h6>
-						<input type="text" ng-model="cCctr.search.CHALLAN_MISMATCH"
-							
-							class="form-control" placeholder="Challan Mismatch" style="width: 100%">
-			</div>
-
+							<h6><b>Challan Mismatch</b><h6>
+							<input type="text" ng-model="cCctr.search.CHALLAN_MISMATCH"class="form-control" placeholder="Challan Mismatch" style="width: 100%">
+						</div>
 					</div>
-
-
 				</div>
-				
 				<div class="collapse  panel-collapse" id="collapseExample4">
-			
-          <div class="row">
-			
-			<div class="col-md-3">
-				<h6>
-					<b>Amount of challan</b>
-					<h6>
-						<input type="text" ng-model="cCctr.search.AMOUNT_OF_CLALLAN"
-							
-							class="form-control" placeholder="Amount of challan" style="width: 100%">
-			</div>
-			
-			<div class="col-md-3">
-				<h6>
-					<b>Date of Deposition</b>
-					<h6>
-						<input type="Date" ng-model="cCctr.search.DATE_OF_DEPOSITION"
-							ng-change="cCctr.search.DATE_OF_DEPOSITION=cCctr.date(cCctr.search.DATE_OF_DEPOSITION);"
-							class="form-control" placeholder="Date of Deposition" style="width: 100%">
-			</div>
-			<div class="col-md-3">
-				<h6>
-					<b>As on Date</b>
-					<h6>
+          			<div class="row">
+						<div class="col-md-3">
+							<h6><b>Amount of challan</b><h6>
+							<input type="text" ng-model="cCctr.search.AMOUNT_OF_CLALLAN"class="form-control" placeholder="Amount of challan" style="width: 100%">
+						</div>
+						<div class="col-md-3">
+				<h6><b>Date of Deposition</b><h6>
+						<input type="Date" ng-model="cCctr.search.DATE_OF_DEPOSITION"ng-change="cCctr.search.DATE_OF_DEPOSITION=cCctr.date(cCctr.search.DATE_OF_DEPOSITION);"
+								class="form-control" placeholder="Date of Deposition" style="width: 100%">
+						</div>
+						<div class="col-md-3">
+				<h6><b>As on Date</b><h6>
 						<input type="date" ng-model="cCctr.search.AS_ON_DATE"
 							ng-change="cCctr.search.AS_ON_DATE=cCctr.date(cCctr.search.AS_ON_DATE);"
 							class="form-control" placeholder="As on Date" style="width: 100%">
-			</div>
-			
-		</div>
-		 <div class="row">
-			
-
-			
-		</div>
-
+						</div>
+					</div>
 		
-		</div>
-
+				</div>
+				<div class="row" id="search">
+					<div class="col-md-2" id="search">
+						<button ng-click="cCctr.searchEntities(true,'challan','challan')"
+								class="btn btn-success" onclick="scrollWin()">Search</button>
+					</div>
+				</div>
 				<div class="row" id="hide">
-				<div class="col-md-4" style="margin-left: 85%; margin-top: -50px">
-					<button ng-click="cCctr.searchEntities(true,'challan')"
-						class="btn btn-success" onclick="scrollWin()">Search</button>
+					<div class="col-md-4" style="margin-left: 85%; margin-top: -50px">
+						<button ng-click="cCctr.searchEntities(true,'challan')"
+								class="btn btn-success" onclick="scrollWin()">Search</button>
+					</div>
 				</div>
-			</div>
-
-			<div class="row" id="search">
-				<div class="col-md-3" id="search">
-					<button ng-click="cCctr.searchEntities(true,'challan')"
-						class="btn btn-success" onclick="scrollWin()">Search</button>
-				</div>
-			</div>
-		</div>
-	</div>
-<div class="row">
-		<div class="col-xs-12">
-			<div class="text-right">
-			<button class="btn btn-secondary"
-					style="background-color: #FFA500;"
-					data-toggle="collapse" data-target="#collapseExample4"
-					aria-expanded="false" aria-controls="collapseExample">
-					Advance Search</button>
+				<div class="row" id="search">
+					<div class="col-md-3" id="search">
+						<button ng-click="cCctr.searchEntities(true,'challan')"
+							class="btn btn-success" onclick="scrollWin()">Search</button>
 					</div>
 				</div>
 			</div>
-		
-
-		
-		
-		
-
-			
-				 <!--<button class="btn btn-Primary" data-toggle="modal"
-					ng-click="cCctr.gotoList2Page('addchallan','addchallan');">Add</button>-->
-			
-
-
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="text-right">
+					<button class="btn btn-secondary"
+							style="background-color: #FFA500;"
+							data-toggle="collapse" data-target="#collapseExample4"
+							aria-expanded="false" aria-controls="collapseExample">
+							Advance Search</button>
+				</div>
+			</div>
+		</div>	
 		<div class="row">
 	 <!--   <div class=" table-responsive">  -->
 			<table class=" table table-bordered table-hover table-striped"

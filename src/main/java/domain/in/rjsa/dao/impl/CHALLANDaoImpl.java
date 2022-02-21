@@ -42,15 +42,7 @@ public class CHALLANDaoImpl extends AbstractDaoTaxo<String, CHALLAN> implements 
 		return (List< CHALLAN>) criteria.list();
 	}
 
-	@Override
-	public CHALLAN getByKey(String tan) {
-		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
-		propertyNameValues.put("TAN", tan);
-		Criteria crit = createEntityCriteria();
-		crit.add(Restrictions.allEq(propertyNameValues));
-
-		return (CHALLAN) crit.uniqueResult();
-	}
+	
 
 	
 

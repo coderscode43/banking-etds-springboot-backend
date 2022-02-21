@@ -13,7 +13,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "FYDetails.monthlyChallan")
+@Table(name = "FYDetails.monthlyChallan1")
 public class MonthlyChallan extends CommonModelAbstract{
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -21,12 +21,12 @@ public class MonthlyChallan extends CommonModelAbstract{
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
 	public Long id;		
-	@Column(name = "section")
-	public Long section;	
+	@Column(name = "sectionCode")
+	public String sectionCode;	
 	@Column(name = "branchCode")
 	public String branchCode;
-	@Column(name = "month")
-	public String month;
+	@Column(name = "monthFY")
+	public String monthFY;
 	@Column(name = "amtAsPerFinacle")
 	public Long amtAsPerFinacle;
 	@Column(name = "amtAsPerTaxCalculation")
@@ -34,6 +34,6 @@ public class MonthlyChallan extends CommonModelAbstract{
 	@Column(name = "challanHeading")
 	public String challanHeading;
 	@Column(name = "fy")
-	public Long fy;
+	public String fy;
 
 }

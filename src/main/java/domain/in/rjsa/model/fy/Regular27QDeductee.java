@@ -138,7 +138,7 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	@Column(name = "fy")
 	//@NotNull(message = "Financial Year is a required field")
 	//@Size(min=0, max=45, message="address Of Deductee length should be between 1 to 100 characters.")
-	public Long fy;
+	public String fy;
 	@Column(name = "quater")
 	//@NotNull(message = "Quarter is a required field")
 	//@Size(min=0, max=45, message="address Of Deductee length should be between 1 to 100 characters.")
@@ -153,7 +153,7 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	//@Size(min=0, max=75, message="Country Of Residence length should be between 1 to 100 characters.")
 	public String natureOfRemittance;
 	@Column(name = "branchCode")
-	public Long branchCode;
+	public String branchCode;
 	@Column(name = "accNo")
 	public Long accNo;
 	@Column(name = "idNo")

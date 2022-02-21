@@ -105,13 +105,13 @@ public class Regular24QDeductee extends CommonModelAbstract {
 	@Column(name = "fy")
 	@NotNull(message = "FY is a required field.")
 	@Size(min = 0, max = 45, message = "FY should not be greater than 45 characters.")
-	public Long fy;
+	public String fy;
 	@Column(name = "quarter")
 	@NotNull(message = "Quarter is a required field.")
 	@Size(min = 0, max = 45, message = "Quarter should not be greater than 45 characters.")
 	public String quarter;
 	@Column(name = "branchCode")
-	public Long branchCode;
+	public String branchCode;
 	@Column(name = "accNo")
 	public Long accNo;
 	@Column(name = "idNo")

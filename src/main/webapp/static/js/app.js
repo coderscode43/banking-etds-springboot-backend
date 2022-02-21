@@ -151,9 +151,9 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 		
 
 		.state('homeWot', {
-			url: "/homeWot/:branchId/:fy",
+			url: "/homeWot/:branchCode/:fy",
 			params: {
-				branchId: null,
+				branchCode: null,
 				fy: null,
 			},
 			templateUrl: function($stateParams) {
@@ -212,7 +212,7 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 				list: function($q, $state, CommonServiceFY, $stateParams) {
 					console.log('Get List of ' + $stateParams.entity);
 					var deferred = $q.defer();
-					CommonServiceFY.countFunction($stateParams.entity, $stateParams.fy).then(deferred.resolve, deferred.resolve);
+					CommonServiceFY.countFunction($stateParams.entity, $stateParams.fy, $stateParams.branchCode).then(deferred.resolve, deferred.resolve);
 					return deferred.promise;
 				}
 			}

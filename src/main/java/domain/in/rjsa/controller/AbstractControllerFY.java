@@ -4,14 +4,12 @@ import java.io.Serializable;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,14 +23,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
-import domain.in.rjsa.exception.FieldErrorDTO;
 import domain.in.rjsa.model.form.Ajax;
 import domain.in.rjsa.model.form.ListCount;
 import domain.in.rjsa.model.form.Login;
@@ -68,6 +64,8 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 	public ResponseEntity<?> count(@PathVariable String fy, @PathVariable String branchCode,
 			HttpServletRequest request) {
 		HashMap<String, Object> constrains = new HashMap<>();
+		constrains.put("fy",fy);
+		constrains.put("branchCode",branchCode);
 		try {
 			Long count = getService().findallCount(constrains);
 			List<?> list = getList(fy, branchCode, 0, 100);

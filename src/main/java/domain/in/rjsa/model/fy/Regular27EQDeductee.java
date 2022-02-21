@@ -51,7 +51,7 @@ public class Regular27EQDeductee extends CommonModelAbstract {
     @Column(name = "quater")
    	public String quater;
     @Column(name = "fy")
-   	public Long fy;
+   	public String fy;
     @Column(name = "educationCess")
    	public Double educationCess;
     @Column(name = "totalTaxCollected")
@@ -67,8 +67,6 @@ public class Regular27EQDeductee extends CommonModelAbstract {
    	public Double rateatwhichTaxCollected;
     @Column(name = "reasonforNonCollection")
    	public String reasonforNonCollection;
-    @Column(name = "sectionCollectionCode")
-   	public Long sectionCollectionCode;
     @Column(name = "certificatenumber")
    	public Long certificatenumber;
     @Column(name = "deducteeisNonResident")
@@ -76,7 +74,7 @@ public class Regular27EQDeductee extends CommonModelAbstract {
     @Column(name = "permanentEstablishment")
     public String permanentEstablishment;
     @Column(name = "branchCode")
-	public Long branchCode;
+	public String branchCode;
 	@Column(name = "accNo")
 	public Long accNo;
 	@Column(name = "idNo")
@@ -103,7 +101,7 @@ public class Regular27EQDeductee extends CommonModelAbstract {
 	@Column(name = "TAN")
 	public String TAN ;
 	@Column(name = "collectionCode")
-	public Long collectionCode ;
+	public String collectionCode ;
 	@Column(name = "errorDescription")
 	public String errorDescription ;
 	@Column(name = "warningDescription")

@@ -37,8 +37,8 @@ public class Regular27EQDeductee extends CommonModelAbstract {
   	public Long deducteeCode;
     @Column(name = "panofthedeductee")
 	public String panofthedeductee;
-    @Column(name = "nameoftheParty")
-	public String nameoftheParty;
+    @Column(name = "nameoftheDeductee")
+	public String nameoftheDeductee;
     @Column(name = "amountReceiptDebited")
    	public Double amountReceiptDebited;
     @Temporal(TemporalType.DATE)
@@ -118,9 +118,9 @@ public class Regular27EQDeductee extends CommonModelAbstract {
 	
 	
 	
-	@Column(name = "verify")
-	public boolean verify = false;
-
+	/*
+	 * @Column(name = "verify") public boolean verify = false;
+	 */
 	@JsonSerialize(using = JsonDateSerializer.class)
 	public Date getdateofReceivedDebited() {
 		return dateofReceivedDebited;

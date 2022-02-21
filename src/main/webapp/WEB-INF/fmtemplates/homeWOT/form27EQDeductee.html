@@ -420,8 +420,8 @@
 						<h6>
 							<b>Reason For NonCollection F or G</b>
 							<h6>
-								<input type="text" ng-model="cCctr.search.reasonforNonCollection F or G"
-									class="form-control" placeholder="Reason For NonCollection F or G" style="width: 100%">
+								<input type="text" ng-model="cCctr.search.reasonforNonCollectionForG"
+									class="form-control" placeholder="Reason For NonCollectionForG" style="width: 100%">
 					</div>
 					<div class="col-md-3">
 					<h6>
@@ -597,7 +597,7 @@
 					</thead>
 					<tbody>
 						<tr role="row"
-							ng-repeat="a in cCctr.getEntityListData() track by a.id">
+							ng-repeat="a in cCctr.getEntityListDataFY() track by a.id">
 							<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
 							<td>{{a.branchCode}}</td>
 							<td>{{a.idNo}}</td>
@@ -629,7 +629,7 @@
 							<td>{{a.certificatenumber}}</td>
 							<td>{{a.deducteeisNonResident}}</td>
 							<td>{{a.permanentEstablishment}}</td>
-							<td>{{a.reasonforNonCollection F or G}}</td>
+							<td>{{a.reasonforNonCollectionForG}}</td>
 							<td>{{a.ifAnswerto681AisYesThenChallanNumber}}</td>
 							<td>{{a.ifAnswerto681AisYesThenDateOfPaymentOfTDSToCentralGovernment}}</td>
 							

@@ -485,7 +485,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="a in cCctr.getEntityListData() track by a.id">
+					<tr ng-repeat="a in cCctr.getEntityListDataFY() track by a.id">
 						<td>{{$index+1}}</td>
 						<td>{{a.branchCode}}</td>
 						<td>{{a.staffId}}</td>
@@ -513,6 +513,7 @@
 						<td>{{a.month}}</td>
 						<td>{{a.fy}}</td>
 						<td>{{a.quarter}}</td>
+						
 						
 						<div>
 							<td ng-if="a.verify == 1"><i class="fa fa-check"

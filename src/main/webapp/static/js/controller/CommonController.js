@@ -58,15 +58,47 @@ App
 							}
 
 							self.gotoHomePage = function() {
+								self.show = false;
+								self.entity = {};
+								self.search = {};
+								self.entityList = [];
+								// self.ItemsPerPage=100;
+								self.dropdown = [];
+								self.ajax = [];
+								self.temp = {};
+								self.temp3 = {};
+								self.temp1 = [];
+								self.company = {};
+								self.currentPage = 1;
+								self.batchColor = {};
+								self.goodsColor = [];
+								self.b = [];
+								self.fileName = new FormData();
 								$state.go("home.homepage", {
 								});
 
 							}
 							
 
-							self.gotoHomePageWOTOFPresentFY = function(id) {
+							self.gotoHomePageWOTOFPresentFY = function(branchCode) {
+								self.show = false;
+								self.entity = {};
+								self.search = {};
+								self.entityList = [];
+								// self.ItemsPerPage=100;
+								self.dropdown = [];
+								self.ajax = [];
+								self.temp = {};
+								self.temp3 = {};
+								self.temp1 = [];
+								self.company = {};
+								self.currentPage = 1;
+								self.batchColor = {};
+								self.goodsColor = [];
+								self.b = [];
+								self.fileName = new FormData();
 								$state.go("homeWot.homepage", {
-									"branchId" : id,
+									"branchCode" : branchCode,
 									"fy" : '2021-22'
 								});
 							}

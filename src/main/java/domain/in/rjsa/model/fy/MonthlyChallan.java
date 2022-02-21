@@ -22,7 +22,7 @@ public class MonthlyChallan extends CommonModelAbstract{
 	@Column(name = "id")
 	public Long id;		
 	@Column(name = "section")
-	public Long section;	
+	public String section;	
 	@Column(name = "branchCode")
 	public String branchCode;
 	@Column(name = "month")
@@ -34,6 +34,6 @@ public class MonthlyChallan extends CommonModelAbstract{
 	@Column(name = "challanHeading")
 	public String challanHeading;
 	@Column(name = "fy")
-	public Long fy;
+	public String fy;
 
 }

@@ -138,55 +138,82 @@
 		data-toggle="collapse" data-target="#collapseExample2"
 		aria-expanded="false" aria-controls="collapseExample">
 		Search</button>
+	<!-- Search-Pranay -->
 	<div class="collapse dont-collapse-sm" id="collapseExample2">
 		<div class="row">
 			<div class="form-group">
-				<div class="col-md-3">
-					<h6>
-						<b>Name</b>
-						<h6>
-							<input type="text" ng-model="cCctr.search.name"
-								class="form-control" placeholder="Name" style="width: 100%">
-				</div>
+				<div class="col-md-12">
+					<form class="form-inline" name="BranchForm">
+						<div class="col-md-6">
+							<div style="margin-left: 2%">
+								<md-autocomplete md-input-name="heading" md-input-minlength="3"
+									md-no-cache="true" md-input-maxlength="75" style="height:20%"
+									md-selected-item="cCctr.search.heading" 
+									md-search-text="b"
+									md-items="item in cCctr.ajax('branch','heading',b)"
+									md-delay="0" placeholder="Branch Code"> 
+										<md-item-template>
+											<span>{{item}}</span> 
+										</md-item-template> 
+										<md-not-found> No Branch Code with "{{b}}" were found.
+											<a ng-click="">Add new</a> 
+										</md-not-found> 
+								</md-autocomplete>
+							</div>
+						</div><!-- class="col-md-6" -->
+						
+						<div class="row" id="hide">
+									<div class="col-md-6">
+										<button
+											ng-click="cCctr.searchEntities(true,'branch','branch')"
+											class="btn btn-success"
+											style="background: #6c5dd3; border: 1px solid #6c5dd3">Search</button>
 
-			</div>
+										<div style="float: right; margin-right: 5%">
 
+											<button class="panel-heading mobile"
+												style="background-color: #FFA500; height: 30px; border: 1px solid black"
+												data-toggle="collapse" data-target="#collapseExample4"
+												aria-expanded="false" aria-controls="collapseExample">
+												Advance Search</button>
 
-		</div>
-		<div class="row">
-			<div class="form-group">
+											<button class="panel-heading hide-on-desktop"
+												style="background-color: #FFA500; height: 30px; border: 1px solid black"
+												data-toggle="collapse" data-target="#collapseE"
+												aria-expanded="false" aria-controls="collapseExample">
+												Advance Search</button>
+										</div>
+									</div>
+							</div><!-- id=hide -->
+							<div class="row collapse dont-collapse-sm panel-collapse collapse"
+									id="collapseExample4" style="padding: 1%; margin-left: 1%">
+									<div class="col-md-4">
+										<label>Course Id:</label> <input type="text"
+											ng-model="cCctr.search.id"  name="CourseId" class="form-control"
+											placeholder="Course Id" style="size: 15px" ng-pattern="/^[0-9]*$/" ><br>
+											<span ng-show="CourseForm.CourseId.$error.pattern" style="color:red; margin-left:25%">Not a valid Lesson Id.</span>
+									</div>
+									<div class="col-md-4">
+										<label>Course Id:</label> <input type="text"
+											ng-model="cCctr.search.id"  name="CourseId" class="form-control"
+											placeholder="Course Id" style="size: 15px" ng-pattern="/^[0-9]*$/" ><br>
+											<span ng-show="CourseForm.CourseId.$error.pattern" style="color:red; margin-left:25%">Not a valid Lesson Id.</span>
+									</div>
+							</div><!-- row collapse dont-collapse-sm panel-collapse collapse -->
+							<div class="row" id="search">
+									<div class="col-md-3" id="search"
+										style="text-align: center; margin-top: 5%">
+										<button ng-click="cCctr.searchEntities(true,'course', 'course')"
+											class="btn btn-success">Search</button>
+									</div>
+							</div>
+					</form>
+				</div><!-- class="col-md-12" -->
 
-				<div class="col-md-3">
-					<h6>
-						<b>Branch Code</b>
-						<h6>
-							<input type="text" ng-model="cCctr.search.branchCode"
-								class="form-control" placeholder="Branch" style="width: 100%">
-				</div>
-				<div class="col-md-3">
-					<h6>
-						<b>PAN</b>
-					</h6>
-					<input type="text" ng-model="cCctr.search.pan" class="form-control"
-						placeholder="PAN" style="width: 100%">
-				</div>
-			</div>
-		</div>
-
-		<div class="row" id="hide">
-			<div class="col-md-3" style="margin-left: 85%; margin-top: -70px">
-				<button ng-click="cCctr.searchEntities(true,'branch')"
-					class="btn btn-success" onclick="scrollWin()">Search</button>
-			</div>
-		</div>
-
-		<div class="row" id="search">
-			<div class="col-md-3" id="search">
-				<button ng-click="cCctr.searchEntities(true,'branch')"
-					class="btn btn-success" onclick="scrollWin()">Search</button>
 			</div>
 		</div>
 	</div>
+	<!-- Search-Pranay -->
 </div>
 
 

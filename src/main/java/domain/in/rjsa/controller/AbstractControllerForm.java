@@ -338,9 +338,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	public List<?> getAjax(String name, String term) {
 		// TODO Auto-generated method stub
-		Login l = applicationCache.getLoginDetail(getPrincipal());
-		HashMap<String, Object> constrains = new HashMap<>();
-		return getService().ajax(name, term, constrains);
+		return getService().ajax(name, term);
 	}
 
 	// ------------------- Other Methods ---------------------------------

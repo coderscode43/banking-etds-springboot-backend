@@ -16,9 +16,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import domain.in.rjsa.dao.BranchDao;
+import domain.in.rjsa.model.form.Ajax;
 import domain.in.rjsa.model.form.ListCount;
 import domain.in.rjsa.service.BranchService;
 import domain.in.rjsa.web.ApplicationCache;
@@ -29,9 +32,28 @@ public class BranchController {
 	
 	@Autowired
 	BranchService service;
+	
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	@Autowired
 	ApplicationCache applicationCache;
+	
+	/* pranay */
+	@RequestMapping(value = "/ajax", method = RequestMethod.POST)
+	public ResponseEntity<?> ajax(@RequestBody Ajax ajax) {
+		// verify the clientId authorization
+		try {
+			List<String> list = getAjax(ajax.getName(), ajax.getTerm());
+			return new ResponseEntity<>(list, HttpStatus.OK);
+		} catch (Exception e) {
+//			logger.error("Error in listALL", e);
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+	}
+	public List<String> getAjax(String name, String term) {
+		// TODO Auto-generated method stub
+		return service.ajax(name, term);
+	}
 	
 	@RequestMapping(value = "/list/get/{pageNo}/{resultPerPage}", method = RequestMethod.GET)
 	public ResponseEntity<?> listAll( HttpServletRequest request, @PathVariable int pageNo,
@@ -53,6 +75,8 @@ public class BranchController {
 
 		return service.findAll(constrains, pageNo, resultPerPage);
 	}
+	
+	
 	
 	
 	public String getPrincipal() {

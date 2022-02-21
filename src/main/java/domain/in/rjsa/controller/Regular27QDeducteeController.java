@@ -11,7 +11,7 @@ import domain.in.rjsa.service.Regular27QDeducteeService;
 @Controller
 @RequestMapping("/apiform27QDeductee")
 public class Regular27QDeducteeController
-		extends AbstractBranchControllerFY<Long, Regular27QDeductee, Regular27QDeducteeService> {
+		extends AbstractControllerFY<Long, Regular27QDeductee, Regular27QDeducteeService> {
 
 	@Autowired
 	Regular27QDeducteeService service;
@@ -29,18 +29,6 @@ public class Regular27QDeducteeController
 		return Regular27QDeductee.class;
 	}
 
-	@Override
-	public Object getDetail(Long id, Long clientId) {
-		// TODO Auto-generated method stub
-		SalaryDetailWrapper ew = new SalaryDetailWrapper();
-		// Login l = applicationCache.getLoginDetail(getPrincipal());
-
-		// LinkedHashMap<String, Object> constrains = new LinkedHashMap<>();
-		// constrains.put("clientId", l.getClientId());
-		Regular27QDeductee ded27 = service.getByKey(id);
-		ew.setDeductee27(ded27);
-		return ew;
-	}
 
 	
 }

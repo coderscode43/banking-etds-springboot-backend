@@ -19,7 +19,7 @@ import domain.in.rjsa.util.StaticData;
 @Controller
 @RequestMapping("/apiform24Qsalary")
 public class Regular24QSalaryController
-		extends AbstractBranchControllerFY<Long, Regular24QSalary, Regular24QSalaryService> {
+		extends AbstractControllerFY<Long, Regular24QSalary, Regular24QSalaryService> {
 
 	@Autowired
 	Regular24QSalaryService service;
@@ -40,19 +40,6 @@ public class Regular24QSalaryController
 		return Regular24QSalary.class;
 	}
 
-	@Override
-	public Object getDetail(Long id, Long clientId) {
-		// TODO Auto-generated method stub
-		SalaryDetailWrapper ew = new SalaryDetailWrapper();
-		// Login l = applicationCache.getLoginDetail(getPrincipal());
-
-		// LinkedHashMap<String, Object> constrains = new LinkedHashMap<>();
-		// constrains.put("clientId", l.getClientId());
-		Regular24QSalary sal = service.getByKey(id);
-		ew.setSalary(sal);
-
-		return ew;
-	}
 
 	public void create(LinkedHashMap<String, Object> entity) {
 		Gson gson = new Gson();
@@ -71,19 +58,5 @@ public class Regular24QSalaryController
 
 	}
 
-	@Override
-	public void update(LinkedHashMap<String, Object> entity) {
-
-		Gson gson = new Gson();
-		Login l = applicationCache.getLoginDetail(getPrincipal());
-		HashMap<String, Object> map = new HashMap<>();
-		map.put("docId", Long.valueOf(entity.get("id").toString()));
-		map.put("clientId", l.getClientId());
-		
-		map.put("entityId", map.remove("docId"));
-		
-		
-		entity.put("id", entity.remove("docId"));
-	}
 
 }

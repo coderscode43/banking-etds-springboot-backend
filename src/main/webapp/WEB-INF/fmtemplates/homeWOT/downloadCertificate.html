@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
 <style>
 
 
@@ -64,6 +69,8 @@
 	margin-top: -85px;
 }
 </style>
+</head>
+<body>
 <div class="row">
 	<div class="col-md-4"></div>
 	<div class="col-md-4 " id="download">
@@ -88,10 +95,10 @@
 									<label>Select Following: </label>
 								</div>
 							</div>
-							<label > 
-								<input type="radio" id="chkPan" name="chkPassPort" onclick="myFunction()"/> PAN
+							<label for="chkPan"> 
+								<input type="radio" id="chkPan" name="chkPassPort" onclick="myFunction()"checked/> PAN
 							</label> 
-							<label> 
+							<label for="chkId"> 
 								<input type="radio" id="chkId" name="chkPassPort" onclick="myFunction()"/> ID
 							</label>
 							<br>
@@ -108,7 +115,8 @@
 										ng-required="true" 
 										ng-pattern="/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/"
 										required="required" 
-										style="font-size: 15px"> 
+										style="font-size: 15px">
+										
 										<span
 												style="color: red"
 												ng-show="downloadCertificateFrom.submitted || downloadCertificateFrom.pan.$dirty && downloadCertificateFrom.pan.$invalid">
@@ -134,9 +142,8 @@
 										ng-model="cWctr.entity.DownloadCertificate.id"
 										ng-required="true"
 										ng-pattern="/^[0-9]/"
-										required="required" style="font-size: 15px"
+										required="required" style="font-size: 15px"> 
 										
-										> 
 										<span style="color: red"
 											ng-show="downloadCertificateFrom.submitted || downloadCertificateFrom.id.$dirty && downloadCertificateFrom.id.$invalid">
 												<span class="error"
@@ -149,44 +156,29 @@
 								</div>
 							</div> 
 							</div>
-						<script>
-							function myFunction() {
-								$("input[name='chkPassPort']").click(
-										function() {
-											if ($("#chkPan").is(":checked")) {
-													$("#pan").show();
-													$("#id").hide();
-											} else {
-													$("#id").show();
-													$("#pan").hide();
-											}
-										});
-							}
-						</script>
-
 							<br>
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
 										<label>Type of Deductee*</label> 
 												<select 
-													name="typeofCertificate"
-													id="typeofCertificate"
+													name="typeofDeductee"
+													id="typeofDeductee"
 													class="form-control" 
-													ng-model="cWctr.entity.DownloadCertificate.typeofCertificate"
+													ng-model="cWctr.entity.DownloadCertificate.typeofDeductee"
 													ng-required="true" 
 													required="required" 
 													ng-model-options="{updateOn: 'blur'}"
-												>
-												<option disabled value="">Select Type of Deductee</option>
+												><option disabled value="">Select Deductee</option>
 												<#list typeOfDeductee as Deductee>
+												
 													<option value="${Deductee}">${Deductee}</option>
 												</#list>
 												</select> 
 									<span style="color:red"
-										ng-show="downloadCertificateFrom.submitted ||downloadCertificateFrom.typeofCertificate.$dirty && downloadCertificateFrom.typeofCertificate.$invalid">
+										ng-show="downloadCertificateFrom.submitted ||downloadCertificateFrom.typeofDeductee.$dirty && downloadCertificateFrom.typeofDeductee.$invalid">
 										<span class="error"
-											ng-show="downloadCertificateFrom.typeofCertificate.$error.required">Type of Deductee is Required.
+											ng-show="downloadCertificateFrom.typeofDeductee.$error.required">Type of Certificate is Required.
 										</span>
 									</span>
 									</div>
@@ -196,25 +188,28 @@
 								<div class="col-md-12">
 									<div class="form-group">
 										<label>Type of Certificate*</label> 
-											<select name="formType"
+											<select name="typeofCertificate"
+											id="typeofCertificate"
 												class="form-control" 
-												ng-model="cWctr.entity.DownloadCertificate.formType"
+												ng-model="cWctr.entity.DownloadCertificate.typeofCertificate"
 												ng-required="true" 
 												ng-model-options="{updateOn: 'blur'}">
-												<option disabled value="">Select Type of Certificate</option>
-												<#list typeOfCertificate as Certificate>
+												<option disabled value="">Select Certificate</option>
+													<#list typeOfCertificate as Certificate>
+													
 													<option value="${Certificate}">${Certificate}</option>
-												</#list>	
+												</#list>
 											</select> 
 								<span style="color: red"
-									ng-show="downloadCertificateFrom.submitted ||downloadCertificateFrom.formType.$dirty && downloadCertificateFrom.formType.$invalid">
+									ng-show="downloadCertificateFrom.submitted ||downloadCertificateFrom.typeofCertificate.$dirty && downloadCertificateFrom.typeofCertificate.$invalid">
 								<span class="error"
-									ng-show="downloadCertificateFrom.formType.$error.required">Type of Certificate is Required.</span>
+									ng-show="downloadCertificateFrom.typeofCertificate.$error.required">type ofCertificate is Required.</span>
 								</span> 
 									</div>
 								</div>
 							</div>
-							<div class="row">
+							<!-- financial year code -->
+														<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
 										<label>Financial Year*</label> 
@@ -223,10 +218,11 @@
 												ng-model="cWctr.entity.DownloadCertificate.financialYear"
 												ng-required="true" 
 												ng-model-options="{updateOn: 'blur'}">
-												<option disabled value="">Select Financial Year</option>
-												<#list financialYear as year>
-													<option value="${year}">${year}</option>
-												</#list>
+												<option disabled value="">Select financial Year</option>
+											<#list financialYear as year>
+											
+											<option value="${year}">${year}</option>
+											</#list>
 										</select> 
 								<span style="color: red"
 									ng-show="downloadCertificateFrom.submitted ||downloadCertificateFrom.financialYear.$dirty && downloadCertificateFrom.financialYear.$invalid">
@@ -245,7 +241,7 @@
 											ng-model="cWctr.entity.DownloadCertificate.quarter"
 											ng-required="true" 
 											ng-model-options="{updateOn: 'blur'}">
-												<option disabled value="">Select Type of Quarter</option>
+											<option disabled value="">Select Quarter</option>
 												<#list Quarter as quarter>
 													<option value="${quarter}">${quarter}</option>
 												</#list>
@@ -259,7 +255,6 @@
 									</div>
 								</div>
 							</div>
-							<!-- ng-click="cCctr.download('apifileDetail/getFile/'+1+'/'+1);" -->
 							<button   margin-left:35%" class="btn btn-success"
 								ng-click="downloadCertificateFrom.submitted=true;
 								cWctr.getCertificate(
@@ -275,16 +270,22 @@
 			</div>
 		</div>
 	</div>
-<!-- <script>
-    function getCurrentFinancialYear() {
-        var financial_year = "";
-        var today = new Date();
-        if ((today.getMonth() + 1) <= 3) {
-            financial_year = (today.getFullYear() - 1) + "-" + today.getFullYear()
-        } else {
-            financial_year = today.getFullYear() + "-" + (today.getFullYear() + 1)
-        }
-        return financial_year;
-    }
-    alert(getCurrentFinancialYear());
-</script> -->
+							
+</body>
+</html>
+
+	
+			<script>
+							function myFunction() {
+								$("input[name='chkPassPort']").click(
+										function() {
+											if ($("#chkPan").is(":checked")) {
+													$("#pan").show();
+													$("#id").hide();
+											} else {
+													$("#id").show();
+													$("#pan").hide();
+											}
+										});
+							}
+						</script>		

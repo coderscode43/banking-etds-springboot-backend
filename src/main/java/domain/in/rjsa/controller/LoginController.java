@@ -1,11 +1,8 @@
 package domain.in.rjsa.controller;
 
-import java.util.HashMap;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -34,16 +31,19 @@ public class LoginController {
 	// ------------------- Authentication User ---------------------------------
 	
 	
-	
-	@RequestMapping(value = "/add/{clientId}", method = RequestMethod.POST)
-    public ResponseEntity<?> updatePassword(@RequestBody HashMap<String,Object> credentails) {
-		//Update Password	
-		logger.info("Update Passwword");
-		Login login = applicationCache.getLoginDetail(getPrincipal());
-		loginService.updatePassword(login,credentails.get("password").toString());
-        HttpHeaders headers = new HttpHeaders();
-        return new ResponseEntity<String>(headers, HttpStatus.OK);
-    }
+	@RequestMapping(value = "/changePassword", method = RequestMethod.POST)
+	public ResponseEntity<?> updatePassword(@RequestBody String password) {
+		try {
+			Login login = applicationCache.getLoginDetail(getPrincipal());
+			login.setPassword(password);
+			loginService.updatePassword(login, password);
+			return new ResponseEntity<>(HttpStatus.OK);
+		} catch (Exception e) {
+//			logger.error("Error in listALL", e);
+			e.printStackTrace();
+			return new ResponseEntity<Object>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 	
 	private String getPrincipal() {
 		String userName = null;

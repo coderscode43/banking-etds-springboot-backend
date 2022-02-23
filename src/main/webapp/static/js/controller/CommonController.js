@@ -54,7 +54,6 @@ App
 								return new Date().getMonth();
 							}
 							
-
 							self.gotoHomePage = function() {
 								self.show = false;
 								self.entity = {};
@@ -76,7 +75,7 @@ App
 								});
 
 							}
-						self.gotoRestPassword = function(){
+							self.gotoRestPassword = function(){
 								self.entity={};
 								$state.go("resetPass");
 							}
@@ -115,7 +114,6 @@ App
 										});
 									}
 								}//
-							
 							
 
 							self.gotoHomePageWOTOFPresentFY = function(branchCode) {

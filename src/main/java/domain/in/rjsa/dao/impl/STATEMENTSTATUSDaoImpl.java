@@ -34,19 +34,19 @@ public class STATEMENTSTATUSDaoImpl extends AbstractDaoTaxo<Long, STATEMENTSTATU
 		}
           if(entity.get("TAN")!=null)
           {
-		criteria.add(Restrictions.eqOrIsNull("TAN", entity.get("TAN")));
+		criteria.add(Restrictions.eqOrIsNull("TAN" ,String.valueOf((String) entity.get("TAN"))));
           }
           if(entity.get("FORM")!=null)
           {
-		criteria.add(Restrictions.eqOrIsNull("FORM", entity.get("FORM")));
+		criteria.add(Restrictions.eqOrIsNull("FORM",String.valueOf((String) entity.get("FORM"))));
           }
           if(entity.get("FY")!=null)
           {
-		criteria.add(Restrictions.eqOrIsNull("FY", entity.get("FY")));
+		criteria.add(Restrictions.eqOrIsNull("FY",String.valueOf((String) entity.get("FY"))));
           }
           if(entity.get("QUARTER")!=null)
           {
-		criteria.add(Restrictions.eqOrIsNull("QUARTER", entity.get("QUARTER")));
+		criteria.add(Restrictions.eqOrIsNull("QUARTER", String.valueOf((String) entity.get("QUARTER"))));
           }
           
           criteria.addOrder(Order.desc("AS_ON_DATE"));

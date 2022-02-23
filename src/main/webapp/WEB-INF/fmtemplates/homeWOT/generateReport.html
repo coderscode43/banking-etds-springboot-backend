@@ -92,9 +92,21 @@
 					<button
 						ng-click="cCctr.searchEntities(true,'generateReport')"
 						class="btn btn-success" onclick="scrollWin()">Search</button>
+						<button type="button" class="btn btn-primary"
+						ng-click="cCctr.gotoListPage('addForm27EQDeductee','addForm27EQDeductee');">Add</button>
+				</div>		
+			</div>
+			<div style="float: right; margin-top: -13px"></div>
 
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="text-right">
+					
+					<button type="button" class="btn btn-primary"
+						ng-click="cCctr.gotoListPage('addGenerateReport','addGenerateReport');">Add</button>
 				</div>
 			</div>
+		</div>
 		</div>
 		</div>
 	
@@ -105,16 +117,21 @@
 				<thead>
 					<tr style="background-color: #81b7db; font-size: 13px">
 						<th>Sr No</th>
+						<th>Branch Code</th>
+						<th>F Y</th>
 						<th>From Date</th>
 						<th>To Date</th>
 						<th>Report Type</th>
+						
 
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="a in cCctr.getEntityListData() track by a.id"
+					<tr ng-repeat="a in cCctr.getEntityListDataFY() track by a.id"
 						style="font-size: 13px">
 						<td>{{$index+1}}</td>
+						<td>{{a.branchCode}}</td>
+						<td>{{a.fy}}</td>
 						<td>{{a.fromDate | date:'dd-MM-yyyy'}}</td>
 						<td>{{a.toDate | date:'dd-MM-yyyy'}}</td>
 						<td>{{a.reportType}}</td>

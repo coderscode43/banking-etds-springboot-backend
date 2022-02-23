@@ -18,10 +18,10 @@ public class MisReportServiceImpl extends AbstractServiceForm<Long, MisReport, M
 		// TODO Auto-generated method stub
 		return dao;
 	}
-	@Override
-	public MisReport getByKey(Long id) {
-		// TODO Auto-generated method stub
-		return dao.getByKey(id);
-	}
+//	@Override
+//	public MisReport getByKey(Long id) {
+//		// TODO Auto-generated method stub
+//		return dao.getByKey(id);
+//	}
 
 }

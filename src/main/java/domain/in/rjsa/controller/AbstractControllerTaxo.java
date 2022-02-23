@@ -28,7 +28,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 
 import domain.in.rjsa.model.form.Ajax;
-import domain.in.rjsa.model.form.Branch;
 import domain.in.rjsa.model.form.ListCount;
 import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.form.Model;

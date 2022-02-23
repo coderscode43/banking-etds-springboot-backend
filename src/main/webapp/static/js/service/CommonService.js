@@ -22,6 +22,7 @@ App.factory('CommonService', [
 				getEntity : getEntity,
 				countFunction : countFunction,
 				getCount : getCount,
+				changePassword :changePassword,
 				deleteEntity : deleteEntity
 	
 			};
@@ -56,6 +57,21 @@ App.factory('CommonService', [
 
 				return deferred.promise;
 			}
+			
+			function changePassword(password) {
+				var deferred = $q.defer();
+				$http.post(REST_SERVICE_URI + 'login/changePassword', password)
+					.success(function(data) {
+						deferred.resolve(data);
+					}).error(function(status) {
+						deferred.reject(status);
+					});
+				return deferred.promise;
+			}//
+			
+			
+			
+			
 
 			function detail( entity, detailId) {
 				var deferred = $q.defer();

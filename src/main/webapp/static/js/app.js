@@ -70,10 +70,19 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 
 
 		})
-
+		
+		.state('home.add',{
+			url: "/add/:page",
+				params:{
+					page:null,
+				},
+			templateUrl: function($stateParams){
+				return 'index/add/' + $stateParams.page;
+			},
+			controller : "CommonController as cCctr",
+		})
 
 		//Get Details detail
-
 		.state('home.detail', {
 			url: "/detail/:entity/:detailId/:page",
 			params: {
@@ -88,16 +97,12 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 				list: function($q, $state, CommonService, $stateParams) {
 					console.log('Get Detail  ' + $stateParams.detailId);
 					var deferred = $q.defer();
-					CommonService.detail($stateParams.clientId, $stateParams.entity, $stateParams.detailId).then(deferred.resolve, deferred.resolve);
+					CommonService.detail($stateParams.entity, $stateParams.detailId).then(deferred.resolve, deferred.resolve);
 					return deferred.promise;
 				}
 			}
 
 		})
-
-
-
-
 		.state('home.list', {
 			url: "/list/:entity/:page",
 			params: {
@@ -117,9 +122,6 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 			}
 
 		})
-		
-		
-		
 		.state('home.search',{
 			url : "/listSearch/:entity/:page/:searchParams",
 			params: {
@@ -128,28 +130,23 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 				searchParams:null
 			   },
 			   templateUrl : function($stateParams) {
-					return 'index/list/homeSC/'+$stateParams.entity +'/'+$stateParams.page;
+					return 'index/list/'+$stateParams.entity +'/'+$stateParams.page;
+					/*return 'index/list/homeSC/'+$stateParams.entity +'/'+$stateParams.page;*/
 				},
 				resolve : {
 					list : function($q, $state,CommonService,$stateParams) {
 						console.log('Get Search List of '+$stateParams.entity);
 						var deferred = $q.defer();
-						CommonService.searchEntities($stateParams.clientId,$stateParams.entity,$stateParams.searchParams).then(deferred.resolve, deferred.resolve);
+						CommonService.searchEntities(
+											$stateParams.entity,
+											$stateParams.searchParams).then(deferred.resolve, deferred.resolve);
 						return deferred.promise;
 					}
 				}
 				
 			
 		})
-		
-		
-		
-		
-		
-		
-		
-		
-
+		//homeWot-sideMenu for Branch
 		.state('homeWot', {
 			url: "/homeWot/:branchCode/:fy",
 			params: {
@@ -160,11 +157,9 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 				return 'index/homeWot/' + $stateParams.fy;
 			},
 			controller: "CommonController as cCctr"
-
 		}
 		)
-
-		//HomePage that is main homePage
+		//homepage for Branch
 		.state('homeWot.homepage', {
 			url: "/homepage",
 			templateUrl: 'index/homePageWOT/',

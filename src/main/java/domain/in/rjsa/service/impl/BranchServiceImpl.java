@@ -1,5 +1,6 @@
 package domain.in.rjsa.service.impl;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,18 @@ public class BranchServiceImpl extends AbstractServiceForm<Long, Branch, BranchD
 	public List<String> ajax(String name, String term) {
 		// TODO Auto-generated method stub
 		return dao.ajax(name, term);
+	}
+
+	/* pranay */
+	@Override
+	public Long findSearchCount(LinkedHashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return dao.findSearchCount(map);
+	}
+	@Override
+	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+		// TODO Auto-generated method stub
+		return dao.search(map, pageNo, resultPerPage);
 	}
 
 }

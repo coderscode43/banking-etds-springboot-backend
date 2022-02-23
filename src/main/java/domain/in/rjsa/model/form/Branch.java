@@ -20,8 +20,8 @@ public class Branch extends CommonModelAbstract {
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
 	private Long id;
-	@Column(name = "ROCode")
-	private Long ROCode;
+	@Column(name = "roCode")
+	private String roCode;
 	@Column(name = "branchCode")
 	public String branchCode;
 	@Column(name = "branchName")

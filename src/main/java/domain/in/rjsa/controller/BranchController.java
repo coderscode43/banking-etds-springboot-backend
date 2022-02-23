@@ -2,8 +2,11 @@ package domain.in.rjsa.controller;
 
 
 
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,14 +18,24 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.AntPathMatcher;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.HandlerMapping;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 
 import domain.in.rjsa.dao.BranchDao;
 import domain.in.rjsa.model.form.Ajax;
+import domain.in.rjsa.model.form.Branch;
 import domain.in.rjsa.model.form.ListCount;
+import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.service.BranchService;
 import domain.in.rjsa.web.ApplicationCache;
 
@@ -55,29 +68,104 @@ public class BranchController {
 		return service.ajax(name, term);
 	}
 	
-	@RequestMapping(value = "/list/get/{pageNo}/{resultPerPage}", method = RequestMethod.GET)
-	public ResponseEntity<?> listAll( HttpServletRequest request, @PathVariable int pageNo,
-			@PathVariable int resultPerPage) {
+	@RequestMapping(value = "/search/get/{pageNo}/{resultPerPage}/{json}/**", method = RequestMethod.GET)
+	public ResponseEntity<?> search(@PathVariable String json, HttpServletRequest request,
+			@PathVariable int pageNo, @PathVariable int resultPerPage) {
 		try {
-			List<?> list = getList( pageNo, resultPerPage);
+			final String path = request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE).toString();
+			final String bestMatchingPattern = request.getAttribute(HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE)
+					.toString();
 
-			return new ResponseEntity<>(list, HttpStatus.OK);
+			String arguments = new AntPathMatcher().extractPathWithinPattern(bestMatchingPattern, path);
+
+			String searchParam;
+			if (null != arguments && !arguments.isEmpty()) {
+				searchParam = json + '/' + arguments;
+			} else {
+				searchParam = json;
+			}
+			ObjectMapper mapper = new ObjectMapper();
+
+			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
+
+			// convert JSON string to Map
+			map = mapper.readValue(searchParam, new TypeReference<Map<String, String>>() {
+			});
+
+			Long count = service.findSearchCount(map);
+			List<?> list = getSearch(map, pageNo, resultPerPage);
+			ListCount send = new ListCount();
+			send.setCount(count);
+			send.setEntities(list);
+
+			return new ResponseEntity<>(send, HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("Error in listALL", e);
-			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
 	}
-
-	public List<?> getList( int pageNo, int resultPerPage) {
+	public List<?> getSearch(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
-		HashMap<String, Object> constrains = new HashMap<>();
-
-		return service.findAll(constrains, pageNo, resultPerPage);
+		return service.search(map, pageNo, resultPerPage);
 	}
 	
+	// ------------------- Add Entity ---------------------------------
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity<?> createEntity(@RequestBody LinkedHashMap<String, Object> entity) {
+		logger.info("Creating new Return instance");
+		create(entity);
+		return new ResponseEntity<Object>(HttpStatus.CREATED);
+
+	}
+	public void create(LinkedHashMap<?, ?> entity) {
+		Gson gson = new Gson();
+		JsonElement jsonElement = gson.toJsonTree(entity);
+		ObjectMapper om = new ObjectMapper();
+		try {
+			service.save(om.readValue(gson.toJson(entity), Branch.class));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
+	// ------------------- Get Detail ---------------------------------
+		@RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
+		public ResponseEntity<?> getDetailController(@PathVariable String id) {
+			// verify the clientId authorization
+			try {
+				return new ResponseEntity<>(getDetail(id), HttpStatus.OK);
+			} catch (Exception e) {
+				logger.error("Error in getting detail ", e);
+				return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+			}
+
+		}
+
+		public Object getDetail(String id) {
+			// TODO Auto-generated method stub
+			HashMap<String, Object> constrains = new HashMap<>();
+			constrains.put("branchCode", id);
+			return service.uniqueSearch(constrains);
+		}
+
+	/* END-pranay */
 	
+//	@RequestMapping(value = "/list/get/{pageNo}/{resultPerPage}", method = RequestMethod.GET)
+//	public ResponseEntity<?> listAll( HttpServletRequest request, @PathVariable int pageNo,
+//			@PathVariable int resultPerPage) {
+//		try {
+//			List<?> list = getList( pageNo, resultPerPage);
+//
+//			return new ResponseEntity<>(list, HttpStatus.OK);
+//		} catch (Exception e) {
+//			logger.error("Error in listALL", e);
+//			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+//		}
+//
+//	}
 	
 	public String getPrincipal() {
 		String userName = null;
@@ -112,8 +200,9 @@ public class BranchController {
 		}
 
 	}
-	
-	
-	
+	public List<?> getList( int pageNo, int resultPerPage) {
+		HashMap<String, Object> constrains = new HashMap<>();
+		return service.findAll(constrains, pageNo, resultPerPage);
+	}
 
 }

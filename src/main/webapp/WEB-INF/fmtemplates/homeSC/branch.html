@@ -146,11 +146,11 @@
 					<form class="form-inline" name="BranchForm">
 						<div class="col-md-6">
 							<div style="margin-left: 2%">
-								<md-autocomplete md-input-name="heading" md-input-minlength="3"
+								<md-autocomplete md-input-name="branchCode" md-input-minlength="3"
 									md-no-cache="true" md-input-maxlength="75" style="height:20%"
-									md-selected-item="cCctr.search.heading" 
+									md-selected-item="cCctr.search.branchCode" 
 									md-search-text="b"
-									md-items="item in cCctr.ajax('branch','heading',b)"
+									md-items="item in cCctr.ajax('branch','branchCode',b)"
 									md-delay="0" placeholder="Branch Code"> 
 										<md-item-template>
 											<span>{{item}}</span> 
@@ -160,12 +160,12 @@
 										</md-not-found> 
 								</md-autocomplete>
 							</div>
+							
 						</div><!-- class="col-md-6" -->
 						
 						<div class="row" id="hide">
 									<div class="col-md-6">
-										<button
-											ng-click="cCctr.searchEntities(true,'branch','branch')"
+										<button ng-click="cCctr.searchEntities(true,'branch','branch')"
 											class="btn btn-success"
 											style="background: #6c5dd3; border: 1px solid #6c5dd3">Search</button>
 
@@ -176,6 +176,10 @@
 												data-toggle="collapse" data-target="#collapseExample4"
 												aria-expanded="false" aria-controls="collapseExample">
 												Advance Search</button>
+												
+												<button class="btn btn-Primary" data-toggle="modal"
+													ng-click="cCctr.gotoAddPage('addBranch')">Add Branch
+												</button>
 
 											<button class="panel-heading hide-on-desktop"
 												style="background-color: #FFA500; height: 30px; border: 1px solid black"
@@ -188,28 +192,24 @@
 							<div class="row collapse dont-collapse-sm panel-collapse collapse"
 									id="collapseExample4" style="padding: 1%; margin-left: 1%">
 									<div class="col-md-4">
-										<label>Course Id:</label> <input type="text"
-											ng-model="cCctr.search.id"  name="CourseId" class="form-control"
-											placeholder="Course Id" style="size: 15px" ng-pattern="/^[0-9]*$/" ><br>
-											<span ng-show="CourseForm.CourseId.$error.pattern" style="color:red; margin-left:25%">Not a valid Lesson Id.</span>
+										<label>Branch ROCode:</label> <input type="text"
+											ng-model="cCctr.search.ROCode"  name="ROCode" class="form-control"
+											placeholder="ROCode" style="size: 15px" ><br>
 									</div>
 									<div class="col-md-4">
-										<label>Course Id:</label> <input type="text"
-											ng-model="cCctr.search.id"  name="CourseId" class="form-control"
-											placeholder="Course Id" style="size: 15px" ng-pattern="/^[0-9]*$/" ><br>
-											<span ng-show="CourseForm.CourseId.$error.pattern" style="color:red; margin-left:25%">Not a valid Lesson Id.</span>
+										<label>Branch Name:</label> <input type="text"
+											ng-model="cCctr.search.branchName"  name="branchName" class="form-control"
+											placeholder="Branch Name" style="size: 15px"><br>
 									</div>
+									<div class="col-md-4">
+										<label>Branch State:</label> <input type="text"
+											ng-model="cCctr.search.branchState"  name="Branch State" class="form-control"
+											placeholder="Branch State" style="size: 15px" ><br>
+									</div>
+									
 							</div><!-- row collapse dont-collapse-sm panel-collapse collapse -->
-							<div class="row" id="search">
-									<div class="col-md-3" id="search"
-										style="text-align: center; margin-top: 5%">
-										<button ng-click="cCctr.searchEntities(true,'course', 'course')"
-											class="btn btn-success">Search</button>
-									</div>
-							</div>
 					</form>
 				</div><!-- class="col-md-12" -->
-
 			</div>
 		</div>
 	</div>
@@ -237,7 +237,8 @@
 							      <th width="10%" >Branch ContactNo</th>
 							      <th width="10%">Branch Address</th>
 							      <th width="10%">Branch PIN Code</th>
-							       <th width="10%">Branch State</th>
+							      <th width="10%">Branch State</th>
+							      <th width ="10%">Branch Edit</th>
 							      <th width="10%">Action</th>
                                   </tr>
                                </thead>
@@ -245,22 +246,26 @@
 									<tr  ng-repeat="a in cCctr.getEntityListData() track by a.id">
 										<td >{{$index+1}}</td>
 											<td>{{a.branchCode}}</td>
-											<td>{{a.rocode}}</td>
+											<td>{{a.roCode}}</td>
 											<td>{{a.branchName}}</td>
 											<td>{{a.branchEmail}}</td>
 											<td>{{a.branchContactNo}}</td>
 											<td>{{a.branchAddress}}</td>
 											<td>{{a.branchPinCode}}</td>
 											<td>{{a.branchState}}</td>
+											<div>
+												<td ng-if="a.verify == 1"><i class="fa fa-check"
+													aria-hidden="true" style="color: #5cb85c"></i></td>
+												<td ng-if="a.verify == 0"><i class="fa fa-times"
+													aria-hidden="true" style="color: #ff0000"></i></td>
+											</div>
+											<td><a
+												ng-click="cCctr.gotoDetailPage('branch',a.branchCode,'DetailsBranch')"
+												style="color: blue"><img src="static\img\edit.png"
+												width="22px" height="22px" alt="Details"
+												style="margin-top: 5px; margin-bottom: 5px;" /></a></td>
 											<td><button ng-click="cCctr.gotoHomePageWOTOFPresentFY(a.branchCode)" class="btn btn-success" onclick="scrollWin()" style="height:30px; margin-top:10px; margin-bottom:10px; background-color:#0f316d">Work on this</button></td>
-										<!-- <td>{{a.total-a.amountPaid}}</td> -->
-										
 									</tr>								
 								</tbody>
 							</table>
 							</div>
-					
-					
-
-
-

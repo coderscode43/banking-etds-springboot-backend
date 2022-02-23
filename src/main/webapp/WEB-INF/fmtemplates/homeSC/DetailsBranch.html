@@ -1,0 +1,344 @@
+<style>
+/*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+@media only screen and (max-width: 760px) , ( min-device-width : 768px)
+	and (max-device-width: 1024px) {
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr {
+		display: block;
+	}
+
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	tr {
+		margin: 0 0 1rem 0;
+	}
+	tr:nth-child(odd) {
+		background: #ccc;
+	}
+	td {
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee;
+		position: relative;
+		padding-left: 50%;
+	}
+	td:before {
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 0;
+		left: 6px;
+		width: 45%;
+		padding-right: 10px;
+		white-space: nowrap;
+	}
+
+	/*
+		Label the data
+    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+		*/
+}
+
+@media only screen and (max-width: 1000px) {
+	.one {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.two {
+		padding: 8px;
+	}
+}
+
+@media only screen and (min-width:600px) {
+	#three {
+		display: none;
+		max-height: 0;
+		overflow: hidden;
+	}
+}
+
+@media only screen and (min-width:1000px) {
+	#search {
+		margin-left: 45%;
+		margin-top: 2px;
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	#hide {
+		display: none;
+	}
+}
+
+.table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
+	{
+	background-color: whitesmoke;
+}
+
+@media ( min-width : 768px) {
+	.collapse.dont-collapse-sm {
+		display: block;
+		height: auto !important;
+		visibility: visible;
+	}
+}
+</style>
+<div id="page-wrapper" ng-init="cCctr.entity=cCctr.getEntityData();">
+	<div class="container-fluid">
+	
+	<div ng-show="cCctr.show != true">
+	
+	<div class="row">
+				<h3 class="page-header" style="margin-top: 2%;"><strong>Branch Details</strong></h3>
+			</div>
+	<div class="panel panel-default"
+				style="margin-top: -2%; border: none !important;">
+				<div class="panel-body">
+
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="text-left">
+								<button class="btn btn-primary" data-toggle="modal"
+									onclick="test('#profile')">Edit</button>
+							</div>
+						</div>
+					</div>
+					
+					<div class ="container">
+						<div class="collapse dont-collapse-sm" id="collapseExample2">
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-6">
+									<label>RO Code &nbsp;:</label>
+									{{cCctr.entity.roCode}}
+								</div>
+								<div class="col-md-6">
+									<label>Branch Code. &nbsp;:</label>
+									{{cCctr.entity.branchName}}
+								</div>
+							</div>
+
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-6">
+									<label>Branch Name &nbsp;:</label>
+									{{cCctr.entity.branchName}}
+								</div>
+
+								<div class="col-md-6">
+									<label>Branch Email &nbsp;:</label> {{cCctr.entity.branchEmail}}
+								</div>
+							</div>
+
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-6">
+									<label>Branch Contact No &nbsp;:</label> {{cCctr.entity.branchContactNo}}
+								</div>
+								<div class="col-md-6">
+									<label>Branch Address &nbsp;:</label>
+									{{cCctr.entity.branchAddress }}
+								</div>
+							</div>
+							<div class ="row" style="font-size:13px;">
+								<div class ="col-md-6">
+									<label>Branch Pincode &nbsp;:</label>
+									{{cCctr.entity.branchPinCode}}
+								</div>
+								<div class ="col-md-6">
+									<label>Branch State &nbsp;:</label>
+									{{cCctr.entity.branchState}}
+								</div>
+							</div>
+							<hr>
+							<div class="row">
+								<button
+								ng-click="profileForm.submitted=true; cCctr.updateData(true,'branch')"
+								class="btn btn-success" onclick="scrollWin('branch')">Update</button>
+								<button onclick="history.back()"
+								class="btn btn-danger" onclick="scrollWin('branch')">Back</button>
+						</div>
+					</div>
+				</div>
+			<br>
+		</div>
+		
+			<div id="profile" class="modal fade" role="dialog">
+					<div class="modal-dialog modal-lg">
+						<!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close"
+									data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">Edit Branch Details</h4>
+							</div>
+							<div class="modal-body">
+
+								<div id="myTabContent" class="tab-content">
+									<div class="tab-pane fade active in" id="signin">
+										<form name="profileForm" class="form-horizontal"
+											enctype="multipart/form-data">
+											
+											<div class="row">
+												<div class="col-md-6">
+													<label>ROCode*</label> <input class="form-control"
+														type="text" name="ROCode" placeholder="RO Code"
+														ng-model="cCctr.entity.roCode"
+														autocomplete="off" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+														ng-required="true" ng-maxlength="12"
+														ng-model-options="{updateOn: 'blur'}" /> <span
+														style="color: red"
+														ng-show="profileForm.submitted || profileForm.ROCode.$dirty && profileForm.ROCode.$invalid">
+														<span class="error"
+														ng-show="profileForm.ROCode.$error.pattern">Please
+															enter valid RO Code </span> <span class="error"
+														ng-show="profileForm.ROCode.$error.maxlength">RO Code should not be greater than 12 characters.</span> <span
+														class="error"
+														ng-show="profileForm.ROCode.$error.required">RO
+															Code is Required.</span>
+													</span> 
+													<span class="error" id="ROCode"></span>
+													</div>
+													<div class="col-md-6">
+													<label>Branch Code*</label> <input class="form-control"
+														type="text" name="branchCode" placeholder="Branch Code"
+														ng-model="cCctr.entity.branchCode"
+														autocomplete="off" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+														ng-required="true" ng-maxlength="12"
+														ng-model-options="{updateOn: 'blur'}" /> <span
+														style="color: red"
+														ng-show="profileForm.submitted || profileForm.branchCode.$dirty && profileForm.branchCode.$invalid">
+														<span class="error"
+														ng-show="profileForm.branchCode.$error.pattern">Please
+															enter valid Branch Code </span> <span class="error"
+														ng-show="profileForm.branchCode.$error.maxlength">Branch Code should not be greater than 12 characters.</span> <span
+														class="error"
+														ng-show="profileForm.branchCode.$error.required">Branch
+															Code is Required.</span>
+													</span> 
+													<span class="error" id="ROCode"></span>
+													</div>
+												</div>
+												<div class ="row">
+													<div class ="col-md-6">
+														<label>Branch Name</label>
+														<input class="form-control" type="text"
+															name="branchName" placeholder ="Branch Name"
+															ng-model="cCctr.entity.branchName" autocomplete="off"
+															ng-required="true" ng-maxlength="50"
+															ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
+															ng-model-options="{updateOn: 'blur'}"/>
+															<span style="color:red" ng-show="profileForm.submitted|| profileForm.branchName.$dirty && profileForm.branchName.$invalid">
+															<span class ="error" ng-show ="profileForm.branchName.$error.pattern">Enter valid Branch Name.</span>
+															<span class="error" ng-show="profileForm.branchName.$error.maxlength"> Branch Name should not be greater than 50</span>
+															<span class ="error" ng-show="profileForm.branchName.$error.required"> Branch Name is Required</span>
+															</span>
+															<span class ="error" id= "branchName"></span>
+														</div>
+														
+														<div class ="col-md-6">
+														<label>Branch Email</label>
+														<input class="form-control" type="text"
+															name="branchEmail" placeholder ="Branch Email"
+															ng-model="cCctr.entity.branchEmail" autocomplete="off"
+															ng-required="true" ng-maxlength="50"
+															ng-pattern="/^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$/" 
+															ng-model-options="{updateOn: 'blur'}"/>
+															<span style="color:red" ng-show="profileForm.submitted || profileForm.branchEmail.$dirty && profileForm.branchEmail.$invalid">
+															<span class="error" ng-show ="profileForm.roEmail.$error.pattern">Enter valid Email Id</span>
+															<span class ="error" ng-show = "profileForm.branchEmail.$error.maxlength">Email should not be greater than 10.</span>
+															<span class ="error" ng-show ="profileForm.branchEmail.$error.required">Email Id is Required</span>
+															</span>
+															<span class="error" id="branchEmail"></span>
+														</div>
+													</div>
+													
+													<div class ="row">
+														<div class ="col-md-6">
+															<label>Branch Contact No</label>
+															<input class="form-control" type="text"
+																name="branchContactNo" placeholder ="Branch Contact No"
+																ng-model="cCctr.entity.branchContactNo" autocomplete="off"
+																ng-required="true" ng-maxlength="10"
+																ng-pattern="/^[7-9][0-9]{9}$/"
+																ng-model-options="{updateOn:'blur'}"/>
+																<span style="color:red" ng-show="profileForm.submitted||profileForm.branchContactNo.$dirty && profileForm.branchContactNo.$invalid">
+																<span class ="error" ng-show = "profileForm.branchContactNo.$error.pattern">Enter Valid Branch Contact No.</span>
+																<span class ="error" ng-show = "profileForm.branchContactNo.$error.maxlength">Branch Contact No should not br grater than 50.</span>
+																<span class ="error" ng-show = "profileForm.branchContactNo.$error.required">Branch Contact No is Required</span>
+																</span>
+																<span class ="error" id ="branchContactNo"></span>
+																</div>
+																
+																<div class ="col-md-6">
+																	<label>Branch Address</label>
+																	<input class="form-control" type="textarea"
+																		name="branchAddress" placeholder ="Branch Address"
+																		ng-model="cCctr.entity.branchAddress" autocomplete="off"
+																		ng-required="true" ng-maxlength="50"
+																		ng-model-options="{updateOn:'blur'}"/>
+																		<span style ="color:red" ng-show="profileForm.submitted || profileForm.branchAddress.$dirty && profileForm.branchAddress.$invalid">
+																		<!--  <span class="error" ng-show="formRODetails.roPincode.$error.pattern">Enter Valid Pincode</span>-->
+																		<span class ="error" ng-show ="profileForm.branchAddress.$error.maxlength">Branch Address should not be Greater than 10.</span>
+																		<span class ="error" ng-show ="profileForm.branchAddress.$error.required">Branch Address is Required.</span>
+																	</span>
+																		<span class ="error" id ="branchAddress"></span>
+																	</div>
+																</div>
+																	<div class ="row">
+																		<div class ="col-md-6">
+																			<label>Branch Pincode</label>
+																			<input class="form-control" type="text"
+																				name="branchPinCode" placeholder ="Branch Contact No"
+																				ng-model="cCctr.entity.branchPinCode" autocomplete="off"
+																				ng-required="true" ng-maxlength="10"
+																				ng-pattern="/^[7-9][0-9]{9}$/"
+																				ng-model-options="{updateOn:'blur'}"/>
+																				<span style="color:red" ng-show="profileForm.submitted||profileForm.branchPinCode.$dirty && profileForm.branchPinCode.$invalid">
+																				<span class ="error" ng-show = "profileForm.branchPinCode.$error.pattern">Enter Valid Branch Contact No.</span>
+																				<span class ="error" ng-show = "profileForm.branchPinCode.$error.maxlength">Branch Contact No should not br grater than 50.</span>
+																				</span>
+																				<span class ="error" id ="branchContactNo"></span>
+																				</div>
+																		<div class ="col-md-6">
+																		<label>Branch State</label>
+																		<input class ="form-control" type ="text"
+																		name = "branchState" placeholder = "Branch State"
+																		ng-model = "cCctr.entity.branchState" ng-maxlength="10"
+																		ng-required="true" ng-model-options="{updateOn:'blur'}"/>
+																		<span style="color:red" ng-show ="profileForm.submitted || profileForm.branchState.$dirty && profileForm.branchState.$invalid">
+																		<span class ="error" ng-show="profileForm.branchState.$error.maxlength">Branch State should not be greater than 10.</span>
+																		<span class ="error" ng-show="profileForm.branchState.$error.required">Branch State is Required</span>
+																		</span>
+																		<span class ="error" id ="branchState"></span>
+																		</div>
+																	</div>	
+															</form>
+															<div class="modal-footer">
+															<!-- <button
+																ng-click="profileForm.submitted=true;cCctr.updateData(profileForm.$valid,'form24Q',cCctr.entity.deductee,'closeU')"
+																class="btn btn-success" data-dismiss="modal">Save</button> -->
+																<button class="btn btn-success" data-dismiss="modal">OK</button>
+																<button class="btn btn-danger" data-dismiss="modal">Back</button>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+	
+
+												
+					
+

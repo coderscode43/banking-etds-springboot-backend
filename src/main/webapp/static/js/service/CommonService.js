@@ -22,6 +22,7 @@ App.factory('CommonService', [
 				getEntity : getEntity,
 				countFunction : countFunction,
 				getCount : getCount,
+				changePassword :changePassword,
 				deleteEntity : deleteEntity
 	
 			};
@@ -57,7 +58,22 @@ App.factory('CommonService', [
 				return deferred.promise;
 			}
 
-			function detail( entity, detailId) {
+			function changePassword(password) {
+				var deferred = $q.defer();
+				$http.post(REST_SERVICE_URI + 'login/changePassword', password)
+					.success(function(data) {
+						deferred.resolve(data);
+					}).error(function(status) {
+						deferred.reject(status);
+					});
+				return deferred.promise;
+			}//
+			
+			
+			
+			
+
+			function detail(entity, detailId) {
 				var deferred = $q.defer();
 				$http.get(
 						REST_SERVICE_URI + entity + '/detail/' + 
@@ -93,9 +109,12 @@ App.factory('CommonService', [
 				entityList = [];
 				var deferred = $q.defer();
 				$http.get(
-						REST_SERVICE_URI + entity + '/search/'+ map).success(function(data) {
-					count = 0;
-					entityList = data;
+						REST_SERVICE_URI + entity + '/search/get/0/10/'+map).success(function(data) {
+					/*count = 0;-pranay*/
+					count = data.count;
+					/*resultPerPage = 10;*/
+					/*entityList = data;--Pranay*/ 
+					entityList = data.entities;
 					deferred.resolve(data);
 				}).error(function(status) {
 					deferred.reject(status);
@@ -104,11 +123,10 @@ App.factory('CommonService', [
 				return deferred.promise;
 
 			}
-
+			/*//Pranay*/
 			function ajax(entity, ajax) {
 				var deferred = $q.defer();
-				$http.post(REST_SERVICE_URI + entity + '/ajax/' +
-						ajax).success(function(data) {
+				$http.post(REST_SERVICE_URI + entity + '/ajax' ,ajax).success(function(data) {
 					deferred.resolve(data);
 				}).error(function(status) {
 					deferred.reject(status);

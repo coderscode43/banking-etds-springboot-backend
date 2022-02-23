@@ -1,5 +1,7 @@
 package domain.in.rjsa.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,6 +17,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import domain.in.rjsa.model.form.Login;
+import domain.in.rjsa.model.form.OrganizationDetails;
+import domain.in.rjsa.model.form.StaticData;
 import domain.in.rjsa.web.ApplicationCache;
 
 @Controller
@@ -42,7 +47,7 @@ public class IndexController {
 		String pageName = "resetPass";
 		return pageName;
 	}
-
+	
 	@RequestMapping(value = "/home")
 	public String gethome(ModelMap model) {
 		model.addAttribute("organizationName", "R J SONI and Associates");
@@ -67,8 +72,14 @@ public class IndexController {
 		return  "homeWOT/homeWOTHomepage";
 	}
 	
+	@RequestMapping(value = "/add/{page}")
+	public String getAddPage(ModelMap model, @PathVariable String page ) {
+		logger.info("Get add page for " + page);
+		return "homeSC/"+ page;
+	}
 	
-
+	
+	
 	@RequestMapping(value = "/detail/{action}/{page}")
 	public String getPage( @PathVariable String action, @PathVariable String page,
 			ModelMap model) {
@@ -78,6 +89,53 @@ public class IndexController {
 	@RequestMapping(value = "/list/{action}/{page}")
 	public String getListPage( @PathVariable String action, @PathVariable String page,
 			ModelMap model) {
+		Login login = applicationCache.getLoginDetail(getPrincipal());
+		OrganizationDetails cd = applicationCache.getOrganizationDetails(login.getClientId());
+		//pranay
+		List<StaticData> list = applicationCache.getStaticList(login.getId());
+		String[] stringArray;
+		String xString;
+		for (StaticData list1 : list) {
+		    String key = list1.getKey();
+		    switch (key) {
+			case "financialYear":
+					xString = list1.getValue();
+			        stringArray = xString.split(",");
+			        model.addAttribute("financialYear", stringArray);
+			break;
+			case "typeOfDeductee":
+				 xString = list1.getValue();
+				 stringArray = xString.split(",");
+				 model.addAttribute("typeOfDeductee", stringArray);
+		    break;
+		    
+			case "typeOfCertificate":
+				 xString = list1.getValue();
+				 stringArray = xString.split(",");
+				 model.addAttribute("typeOfCertificate", stringArray);
+		    break;
+		    
+			case "Quarter":
+				 xString = list1.getValue();
+				 stringArray = xString.split(",");
+				 model.addAttribute("Quarter", stringArray);
+		    break;
+		    
+			case "certificateLocation":
+				 xString = list1.getValue();
+				 stringArray = xString.split(",");
+				 model.addAttribute("certificateLocation", stringArray);
+		    break;
+			
+			default:
+				System.out.println("Not Match");
+				break;
+			}
+		}
+		//pranay
+//		model.addAttribute("cd", cd);
+//		model.addAttribute("listBr", listSolId);
+		
 		return action + "/" + page;
 	}
 
@@ -96,5 +154,6 @@ public class IndexController {
 		return userName;
 
 	}
+	
 
 }

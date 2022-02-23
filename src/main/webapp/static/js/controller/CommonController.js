@@ -54,9 +54,6 @@ App
 								return new Date().getMonth();
 							}
 							
-							self.gotoRestPqassword = function() {
-								$state.go("resetPass");
-							}
 
 							self.gotoHomePage = function() {
 								self.show = false;
@@ -79,6 +76,46 @@ App
 								});
 
 							}
+						self.gotoRestPassword = function(){
+								self.entity={};
+								$state.go("resetPass");
+							}
+							
+							self.changePassword = function(valid,password) {
+								if (valid == true) {
+									CommonService.changePassword(password).then(function(data) {
+										console.log('Course added successfully');
+										$('#successMsg')
+												.find('.modal-header')
+												.find('.headingMsg')
+												.append("Successfull!");
+										$('#successMsg')
+												.find('.modal-body')
+												.find('.msg')
+												.append(" Saved Successfully!");
+										$("#successMsg").modal();
+										$state.go("home.homepage");
+									},
+									function(error) {
+										console.error('Error while creating saving Details, '+ status);
+										if (error.exceptionMsg != null
+												&& error.exceptionMsg != undefined) {
+											$('#errorMsg')
+													.find('.modal-body')
+													.find('.msg')
+													.append("Can not Save "+ error.entityName+ " : "
+																	+ error.exceptionMsg);
+											$("#errorMsg").modal();
+										} else {
+											for (var i = 0; i < error.fieldErrors.length; i++) {
+												var obj = error.fieldErrors[i];
+												document.getElementById(obj.fieldName).innerHTML = obj.message;
+												}
+											}
+										});
+									}
+								}//
+							
 							
 
 							self.gotoHomePageWOTOFPresentFY = function(branchCode) {
@@ -174,10 +211,6 @@ App
 										.log("Common Controller get  getEntityList");
 								return CommonServiceFY.getEntityList();
 							}
-
-
-							
-
 
 							self.getEntityListData = function() {
 								console
@@ -351,22 +384,15 @@ App
 
 								}
 							}
-
-							
-							
-							
-							self.submit = function(valid, entity, closeModalId) {
+							self.submit = function(valid,object,entity) {//remove closeModalId-pranay
 								if (valid == true) {
-									console.log("Common Controller submit "
-											+ entity);
-
+									console.log("Common Controller submit "+ entity);
+									self.object = object;
 									CommonService
-											.save(self.entity, entity)
+											.save(self.object, entity)
 											.then(
 													function(data) {
-														console
-																.log(entity
-																		+ ' added successfully');
+														console.log(entity+ ' added successfully');
 														self.gotoList(entity);
 														self.gotoListPage(
 																entity, entity);
@@ -448,15 +474,21 @@ App
 											delete self.search[key];
 										}
 									});
+									self.lastSearch = self.search;
+									var param = JSON.stringify(self.search);
 									$state.go("home.search", {
 										"entity" : entity,
 										"page" : page,
-										"searchParams" : JSON
-												.stringify(self.search)
+										"searchParams":  param
 									});
 								}
 							}
-				
+							self.gotoAddPage = function(page) {
+								self.entity = {};
+								$state.go("home.add", 
+									{ "page": page });
+							}
+							/*pranay*/
 							
 
 							self.updateData = function(valid, entity, data,

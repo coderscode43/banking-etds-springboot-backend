@@ -156,8 +156,6 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	public String accNo;
 	@Column(name = "idNo")
 	public Long idNo;
-	@Column(name = "type")
-	public String type;
 	@Column(name = "month")
 	public String month;
 	@Column(name = "custVendId")
@@ -189,7 +187,7 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	@Column(name = "verify")
 	public boolean verify = false;
 	@Column(name = "resolved")
-	public boolean resolved = false;
+	public boolean resolved;
 	@Column(name = "remarks")
 	public String remarks;
 	

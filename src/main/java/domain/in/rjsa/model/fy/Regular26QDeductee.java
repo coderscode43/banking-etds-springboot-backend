@@ -152,7 +152,7 @@ public class Regular26QDeductee extends CommonModelAbstract{
 	@Column(name = "verify")
 	public boolean verify = false;
 	@Column(name = "resolved")
-	public boolean resolved = false;
+	public boolean resolved;
 	
 	@JsonSerialize(using=JsonDateSerializer.class)
 	public Date getPaymentDate() {

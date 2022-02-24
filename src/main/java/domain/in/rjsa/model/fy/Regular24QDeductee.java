@@ -144,7 +144,7 @@ public class Regular24QDeductee extends CommonModelAbstract {
 
 	
 	@Column(name = "resolved")
-	public boolean resolved = false;
+	public boolean resolved;
 
 	@JsonSerialize(using = JsonDateSerializer.class)
 	public Date getDateOfPayment() {

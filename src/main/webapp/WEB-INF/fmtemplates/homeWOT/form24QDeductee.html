@@ -201,10 +201,7 @@
 
 
 			<div class="row" id="hide">
-				<div class="col-md-3" style="margin-left: 80%; margin-top: -50px">
-					<button ng-click="cCctr.searchEntities(true,'form24QDeductee')"
-						class="btn btn-success" onclick="scrollWin()">Search</button>
-				</div>
+				
 			</div>
 
 
@@ -223,7 +220,12 @@
 
 	<div class="row">
 		<div class="col-xs-12">
-			<div class="text-right">
+		<div class="col-md-3" style="margin-top: 5px">
+					<button ng-click="cCctr.searchEntities(true,cCctr.search,'form24QDeductee')"
+						class="btn btn-success" onclick="scrollWin()">Search</button>
+				</div>
+			<div class="text-right" style="width:99%">
+				
 				<button class="btn btn-secondary" style="background-color: #FFA500"
 					data-toggle="collapse" data-target="#collapseExample4"
 					aria-expanded="false" aria-controls="collapseExample">
@@ -321,11 +323,12 @@
 							<td ng-if="a.verify == 0"><i class="fa fa-times"
 								aria-hidden="true" style="color: #ff0000"></i></td>
 						</div> -->
-						<td><a
+						
+							<td><a
 							ng-click="cCctr.gotoWFYDetailPage('form24QDeductee',a.id,'detailForm24QDeductee')"
-							style="color: blue"><img src="static\img\edit.png"
-								width="22px" height="22px" alt="Details"
-								style="margin-top: 5px; margin-bottom: 5px;" /></a></td>
+							style="color: blue" onclick="scrollWin()"><img
+								src="static\img\edit.png" width="22px" height="22px"
+								alt="Details" style="margin-top: 5px; margin-bottom: 5px;" /></a></td>
 
 						<!-- <td>{{a.total-a.amountPaid}}</td> -->
 

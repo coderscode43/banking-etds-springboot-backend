@@ -45,5 +45,10 @@ public class BranchServiceImpl extends AbstractServiceForm<Long, Branch, BranchD
 		// TODO Auto-generated method stub
 		return dao.search(map, pageNo, resultPerPage);
 	}
+	@Override
+	public void update(Branch fromJson, String branchId) {
+		getPrimaryDao().update(fromJson);
+		
+	}
 
 }

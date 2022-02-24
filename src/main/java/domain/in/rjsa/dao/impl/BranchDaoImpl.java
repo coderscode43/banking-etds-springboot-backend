@@ -25,8 +25,8 @@ public class BranchDaoImpl extends AbstractDaoForm<Long, Branch> implements Bran
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
 		criteria.add(Restrictions.allEq(propertyNameValues));
-		if (entity.get("ROCode") != null) {
-			criteria.add(Restrictions.eqOrIsNull("ROCode", Long.valueOf(entity.get("ROCode").toString())));
+		if (entity.get("roCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("roCode", entity.get("roCode").toString()));
 		}
 		if (entity.get("branchName") != null) {
 			criteria.add(Restrictions.eqOrIsNull("branchName", entity.get("branchName").toString()));
@@ -53,8 +53,8 @@ public class BranchDaoImpl extends AbstractDaoForm<Long, Branch> implements Bran
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
 		criteria.add(Restrictions.allEq(propertyNameValues));
-		if (entity.get("ROCode") != null) {
-			criteria.add(Restrictions.eqOrIsNull("ROCode", Long.valueOf(entity.get("ROCode").toString())));
+		if (entity.get("roCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("roCode",  entity.get("roCode").toString()));
 		}
 		if (entity.get("branchName") != null) {
 			criteria.add(Restrictions.eqOrIsNull("branchName", entity.get("branchName").toString()));

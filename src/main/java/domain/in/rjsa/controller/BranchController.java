@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.HandlerMapping;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -32,6 +34,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
 import domain.in.rjsa.dao.BranchDao;
+import domain.in.rjsa.exception.FieldErrorDTO;
 import domain.in.rjsa.model.form.Ajax;
 import domain.in.rjsa.model.form.Branch;
 import domain.in.rjsa.model.form.ListCount;
@@ -133,8 +136,9 @@ public class BranchController {
 	
 	// ------------------- Get Detail ---------------------------------
 		@RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
-		public ResponseEntity<?> getDetailController(@PathVariable String id) {
+		public ResponseEntity<?> getDetailController(@PathVariable Long id) {
 			// verify the clientId authorization
+			
 			try {
 				return new ResponseEntity<>(getDetail(id), HttpStatus.OK);
 			} catch (Exception e) {
@@ -144,28 +148,37 @@ public class BranchController {
 
 		}
 
-		public Object getDetail(String id) {
+		public Object getDetail(Long id) {
 			// TODO Auto-generated method stub
 			HashMap<String, Object> constrains = new HashMap<>();
-			constrains.put("branchCode", id);
+			constrains.put("id", id);
 			return service.uniqueSearch(constrains);
 		}
+		
+		// ------------------- Update Entity ---------------------------------
+		@RequestMapping(value = "/update/{branchId}", method = RequestMethod.PUT)
+		public ResponseEntity<?> update(@RequestBody LinkedHashMap<?, ?> entity, HttpServletResponse response,
+			@PathVariable String branchId, UriComponentsBuilder ucBuilder) {
+			FieldErrorDTO ermsg = new FieldErrorDTO();
+			update(entity, branchId);
+			ermsg.setMessage("Updated Successfully");
+			return new ResponseEntity<String>(HttpStatus.ACCEPTED);
 
+		}
+		public void update(LinkedHashMap<?, ?> entity, String branchId) {
+			Gson gson = new Gson();
+			JsonElement jsonElement = gson.toJsonTree(entity);
+			ObjectMapper om = new ObjectMapper();
+			try {
+				service.update( gson.fromJson(jsonElement, Branch.class), branchId);
+				
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+		}
+	
 	/* END-pranay */
 	
-//	@RequestMapping(value = "/list/get/{pageNo}/{resultPerPage}", method = RequestMethod.GET)
-//	public ResponseEntity<?> listAll( HttpServletRequest request, @PathVariable int pageNo,
-//			@PathVariable int resultPerPage) {
-//		try {
-//			List<?> list = getList( pageNo, resultPerPage);
-//
-//			return new ResponseEntity<>(list, HttpStatus.OK);
-//		} catch (Exception e) {
-//			logger.error("Error in listALL", e);
-//			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-//		}
-//
-//	}
 	
 	public String getPrincipal() {
 		String userName = null;

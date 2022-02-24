@@ -91,8 +91,7 @@ App.factory('CommonService', [
 			function detail(entity, detailId) {
 				var deferred = $q.defer();
 				$http.get(
-						REST_SERVICE_URI + entity + '/detail/' + 
-								+ detailId).success(function(data) {
+						REST_SERVICE_URI + entity + '/detail/' + detailId).success(function(data) {
 					entityData = data;
 					deferred.resolve(data);
 				}).error(function(status) {
@@ -158,10 +157,10 @@ App.factory('CommonService', [
 				return entityData;
 			}
 
-			function update(entitySave, entity ) {
+			function update(entitySave, entity) {
 				var deferred = $q.defer();
 
-				$http.put(REST_SERVICE_URI + entity + '/update/' + 
+				$http.put(REST_SERVICE_URI + entity + '/update/'+entitySave.id, 
 						entitySave).success(function(data) {
 
 					deferred.resolve(data);

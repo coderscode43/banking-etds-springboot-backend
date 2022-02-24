@@ -477,7 +477,7 @@ App
 
 								}
 							}
-							self.submit = function(valid,object,entity,closeModalId) {//remove closeModalId-pranay
+							self.submit = function(valid,object,entity) {//remove closeModalId-pranay
 								if (valid == true) {
 									console.log("Common Controller submit "+ entity);
 									self.object = object;

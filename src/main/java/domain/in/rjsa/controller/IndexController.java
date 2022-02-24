@@ -75,6 +75,25 @@ public class IndexController {
 	@RequestMapping(value = "/add/{page}")
 	public String getAddPage(ModelMap model, @PathVariable String page ) {
 		logger.info("Get add page for " + page);
+		//add Branch State
+		model.addAttribute("State", page);
+		//pranay
+					List<StaticData> list = applicationCache.getStaticList();
+					String[] stringArray;
+					String xString;
+					for (StaticData list1 : list) {
+					    String key = list1.getKey();
+					    switch (key) {
+						case "State":
+								xString = list1.getValue();
+						        stringArray = xString.split(",");
+						        model.addAttribute("State", stringArray);
+						break;
+						default:
+							System.out.println("Not Match");
+							break;
+						}
+					}
 		return "homeSC/"+ page;
 	}
 	
@@ -89,10 +108,8 @@ public class IndexController {
 	@RequestMapping(value = "/list/{action}/{page}")
 	public String getListPage( @PathVariable String action, @PathVariable String page,
 			ModelMap model) {
-		Login login = applicationCache.getLoginDetail(getPrincipal());
-		OrganizationDetails cd = applicationCache.getOrganizationDetails(login.getClientId());
 		//pranay
-		List<StaticData> list = applicationCache.getStaticList(login.getId());
+		List<StaticData> list = applicationCache.getStaticList();
 		String[] stringArray;
 		String xString;
 		for (StaticData list1 : list) {

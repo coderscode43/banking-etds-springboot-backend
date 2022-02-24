@@ -55,8 +55,6 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 	
 	@Autowired
 	LogsService lservice;
-	
-	
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -249,11 +247,10 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 			Object o = getDetail((K) Long.valueOf(entity.get("id").toString()));
 			ObjectMapper oMapper = new ObjectMapper();
 			HashMap<String, Object> map = oMapper.convertValue(o, HashMap.class);
-							update(entity);
-							addLogsU(entity);
-							
-							ermsg.setMessage(" Updated Successfully");
-							return new ResponseEntity<String>(HttpStatus.ACCEPTED);
+			update(entity);
+			addLogsU(entity);
+			ermsg.setMessage(" Updated Successfully");
+			return new ResponseEntity<String>(HttpStatus.ACCEPTED);
 	}
 
 	public void update(LinkedHashMap<String, Object> entity) {

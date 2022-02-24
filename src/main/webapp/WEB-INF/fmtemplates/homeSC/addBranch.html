@@ -32,7 +32,7 @@
 								<label>Branch Code*</label></h6> <input class="form-control" type="text"
 									name="branchCode" placeholder="Branch Code"
 									ng-model="cCctr.entity.branchCode" autocomplete="off"
-									ng-required="true" ng-maxlength="45"
+									ng-required="true" 
 									ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="formBranchDetails.submitted || formBranchDetails.branchCode.$dirty && formBranchDetails.branchCode.$invalid">
 									<span class="error" ng-show="formBranchDetails.branchCode.$error.maxlength">Branch Code should not be greater than 45 characters.</span> 
@@ -140,28 +140,34 @@
 								<span class ="error" id="branchPinCode"></span>
 							</div>
 						</div>
-						<div class ="col-md-6">
-							<div class ="form-group">
-								<h6>
-									<label>Branch State*</label>
-								</h6>
-								<input class ="form-control" type ="text"
-								name = "branchState" placeholder = "Branch State"
-								ng-model = "cCctr.entity.branchState" 
-								ng-required="true" ng-model-options="{updateOn:'blur'}"/>
-								<span style="color:red" ng-show ="formBranchDetails.submitted || formBranchDetails.branchState.$dirty && formBranchDetails.branchState.$invalid">
-								<span class ="error" ng-show="formBranchDetails.branchState.$error.maxlength">Branch State should not be greater than 10.</span>
-								<span class ="error" ng-show="formBranchDetails.branchState.$error.required">Branch State is Required</span>
-								</span>
-								<span class ="error" id ="branchState"></span>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Branch State*</label> <select name="branchState"
+										id="branchState" class="form-control"
+										ng-model="cCctr.entity.branchState" ng-required="true"
+										ng-model-options="{updateOn: 'blur'}">
+										<option disabled value="">Select State</option>
+										<#list State as state>
+
+										<option value="${state}">${state}</option>
+										</#list>
+									</select> <span style="color: red"
+										ng-show="formBranchDetails.submitted ||formBranchDetails.branchState.$dirty && formBranchDetails.branchState.$invalid">
+										<span class="error"
+										ng-show="formBranchDetails.branchState.$error.required">
+											branchState is Required. </span>
+									</span>
+								</div>
 							</div>
+
 						</div>
 					</div>
 					
 						<div class="row">
 						<div class="modal-footer">
 							<button
-								ng-click="formBranchDetails.submitted=true; cCctr.submit(true,cCctr.entity,'branch')"
+								ng-click="formBranchDetails.submitted=true; cCctr.submit(formBranchDetails.$valid,cCctr.entity,'branch')"
 								class="btn btn-success" >Save</button>
 							<button onclick="history.back()"
 								class="btn btn-danger" onclick="scrollWin(/'branch'/)">Back</button>						

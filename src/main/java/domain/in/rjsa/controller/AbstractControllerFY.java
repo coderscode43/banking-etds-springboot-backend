@@ -154,7 +154,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 		// FieldErrorDTO ermsg=new FieldErrorDTO();
 		logger.info("Creating new Return instance");
 		create(entity);
-		addLogs(entity);
+//		addLogs(entity);
 		// ermsg.setMessage(" Saved Successfully");
 		return new ResponseEntity<Object>(HttpStatus.CREATED);
 

@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import domain.in.rjsa.model.fy.Regular24QDeductee;
-import domain.in.rjsa.model.wrapper.SalaryDetailWrapper;
 import domain.in.rjsa.service.Regular24QDeducteeService;
 
 @Controller

@@ -1,5 +1,9 @@
 package domain.in.rjsa.service.impl;
 
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,9 +24,24 @@ public class CHALLANServiceImpl extends AbstractServiceTaxo<String, CHALLAN, CHA
 			return dao;
 		}
 		@Override
-		public CHALLAN getByKey(String tan) {
+		public CHALLAN getByKey(Long id) {
 			// TODO Auto-generated method stub
-			return dao.getByKey(tan);
+			return dao.getByKey(id);
 		}
-
+		
+		@Override
+		public Long findSearchCount(LinkedHashMap<String, Object> map) {
+			// TODO Auto-generated method stub
+			return dao.findSearchCount(map);
+		}
+		@Override
+		public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+			// TODO Auto-generated method stub
+			return dao.search(map, pageNo, resultPerPage);
+		}
+		@Override
+		public List<String> ajax(String name, String term, HashMap<String, Object> constrains) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 	}

@@ -48,8 +48,8 @@ public class Regular27EQDeductee extends CommonModelAbstract {
    	public Double tcs;
     @Column(name = "surcharge")
    	public Double surcharge;
-    @Column(name = "quater")
-   	public String quater;
+    @Column(name = "quarter")
+   	public String quarter;
     @Column(name = "fy")
    	public String fy;
     @Column(name = "educationCess")
@@ -79,8 +79,6 @@ public class Regular27EQDeductee extends CommonModelAbstract {
 	public String accNo;
 	@Column(name = "idNo")
 	public Long idNo;
-	@Column(name = "type")
-	public String type;
 	@Column(name = "month")
 	public String month;
 	@Column(name = "deducteeId")

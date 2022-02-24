@@ -120,8 +120,7 @@ public class Regular26QDeductee extends CommonModelAbstract{
 	public String accNo;
 	@Column(name = "idNo")
 	public Long idNo;
-	@Column(name = "type")
-	public String type;
+
 	@Column(name = "month")
 	public String month;
 	@Column(name = "custVendId")

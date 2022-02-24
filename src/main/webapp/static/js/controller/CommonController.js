@@ -242,6 +242,74 @@ App
 										.log("Common Controller get  getEntityList");
 								return CommonService.getEntityList();
 							}
+							
+						self.addRemark = function(valid,entity,object,closeModalId) {
+								if (valid == true) {
+									console.log("Common Controller submit "
+											+ entity);
+
+									progressBar();
+									CommonServiceFY.add(object,entity,$stateParams.fy,$stateParams.branchCode)
+											.then(
+													function(data) {
+														progressBar();
+														console
+																.log(entity
+																		+ ' added successfully');
+
+														angular
+																.element(
+																		'#'
+																				+ closeModalId)
+																.trigger(
+																		'click');
+
+														$('#successMsg')
+																.find(
+																		'.modal-header')
+																.find(
+																		'.headingMsg')
+																.append(
+																		"Successfull");
+														$('#successMsg')
+																.find(
+																		'.modal-body')
+																.find('.msg')
+																.append(
+																		" Saved Successfully");
+														$("#successMsg")
+																.modal();
+
+													},
+													function(error) {
+														progressBar();
+														console
+																.error('Error while creating saving Details, '
+																		+ status);
+														if (error.exceptionMsg != null
+																&& error.exceptionMsg != undefined) {
+															$('#errorMsg')
+																	.find(
+																			'.modal-body')
+																	.find(
+																			'.msg')
+																	.append(
+																			"Can not Save "
+																					+ error.entityName
+																					+ " : "
+																					+ error.exceptionMsg);
+															$("#errorMsg")
+																	.modal();
+														} else {
+															for (var i = 0; i < error.fieldErrors.length; i++) {
+																var obj = error.fieldErrors[i];
+																document
+																		.getElementById(obj.fieldName).innerHTML = obj.message;
+															}
+														}
+													});
+								}
+							}
 
 							self.submitFile = function(valid, entity, form,
 									closeModalId) {
@@ -409,7 +477,7 @@ App
 
 								}
 							}
-							self.submit = function(valid,object,entity) {//remove closeModalId-pranay
+							self.submit = function(valid,object,entity,closeModalId) {//remove closeModalId-pranay
 								if (valid == true) {
 									console.log("Common Controller submit "+ entity);
 									self.object = object;
@@ -417,10 +485,9 @@ App
 											.save(self.object, entity)
 											.then(
 													function(data) {
-														console.log(entity+ ' added successfully');
-														self.gotoList(entity);
-														self.gotoListPage(
-																entity, entity);
+														console.log(entity + ' Add successfully');
+														self.gotoListPage(entity, entity);
+														$('.modal').modal("hide");
 														angular
 														.element(
 																'#'
@@ -518,17 +585,16 @@ App
 								$state.go("home.add", 
 									{ "page": page });
 							}
-							self.updateData = function(valid, object, entity) {//--remove closeModalId-pranay
+							self.updateData = function(valid, object,entity) {//--remove closeModalId-pranay
 								if (valid == true) {
 									console.log("Common Controller updateData "+ entity);
 									self.object = object;
+									
 									CommonService
-											.update(object, entity)
-											.then(
-													function(data) {
-														console
-																.log(entity
-																		+ ' updated successfully');
+											.update(object, entity).then(function(data) {
+														console.log(entity + ' updated successfully');
+														self.gotoListPage(entity, entity);
+														$('.modal').modal("hide");
 														$('#successMsg')
 																.find(
 																		'.modal-header')
@@ -544,7 +610,7 @@ App
 																		" Updated Successfully");
 														$("#successMsg")
 																.modal();
-
+														
 													},
 													function(error) {
 														console

@@ -38,8 +38,6 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
 	public Long id;
-	@Column(name = "deducteeId")
-	public Long deducteeId;
 	@Column(name = "challanHeading")
 	public String challanHeading;
 	@Column(name = "deducteeRefNo")
@@ -112,13 +110,13 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	@Column(name = "noOfCertificateUnderSection")
 	//@NotNull(message = "No Of Certificate Under Section is a required field")
 	//@Digits(integer = 15, fraction = 0,message="No Of Certificate Under Section .No Of Certificate Under Section . should not be greater than 12")
-	public Long noOfCertificateUnderSection;
+	public String noOfCertificateUnderSection;
 	@Column(name = "uniqueAcknowledgeNo")
-	public String uniqueAcknowledgeNo;
+	public Long uniqueAcknowledgeNo;
 	@Column(name = "countryOfResidence")
 	//@NotNull(message = "Country Of Residence is a required field")
 	//@Size(min=0, max=45, message="Country Of Residence length should be between 1 to 100 characters.")
-	public String countryOfResidence;
+	public Long countryOfResidence;
 	@Column(name = "emailId")
 	//@NotNull(message = "Email is a required field")
 	//@Size(min=0, max=45, message="Email should be between 0 to 75 characters.")
@@ -134,7 +132,7 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	@Column(name = "taxIdentificationNo")
 	//@NotNull(message = "tax Identification No is a required field")
 	//@Digits(integer = 20, fraction = 0,message="Enter valid tax Identification No.tax Identification No. should not be greater than 12")
-	public String taxIdentificationNo;
+	public Long taxIdentificationNo;
 	@Column(name = "fy")
 	//@NotNull(message = "Financial Year is a required field")
 	//@Size(min=0, max=45, message="address Of Deductee length should be between 1 to 100 characters.")
@@ -146,16 +144,16 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	@Column(name = "tdsRateAsPerItActs")
 	//@NotNull(message = "amount Paid is a required field")
 	//@Digits(integer = 12, fraction = 2,message="amount Paid is not proper.Maximum 2 fractions allowed.")
-	public Double tdsRateAsPerItActs;
+	public String tdsRateAsPerItActs;
 	
 	@Column(name = "natureOfRemittance")
 	//@NotBlank(message = "amount Paid is a required field")
 	//@Size(min=0, max=75, message="Country Of Residence length should be between 1 to 100 characters.")
-	public String natureOfRemittance;
+	public Long natureOfRemittance;
 	@Column(name = "branchCode")
 	public String branchCode;
 	@Column(name = "accNo")
-	public Long accNo;
+	public String accNo;
 	@Column(name = "idNo")
 	public Long idNo;
 	@Column(name = "type")
@@ -163,9 +161,9 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	@Column(name = "month")
 	public String month;
 	@Column(name = "custVendId")
-	public Long custVendId;
+	public String custVendId;
 	@Column(name = "uniqueRefNo")
-	public Long uniqueRefNo;
+	public String uniqueRefNo;
 	@Column(name = "cashWithdrawal194N")
 	public Double cashWithdrawal194N;
 	@Column(name = "cashWithdrawal194N20Lto1Cr")
@@ -187,8 +185,11 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	@Column(name = "InterestOnLateDeduction")
 	public Double InterestOnLateDeduction;
 	
+	
 	@Column(name = "verify")
 	public boolean verify = false;
+	@Column(name = "resolved")
+	public boolean resolved = false;
 	@Column(name = "remarks")
 	public String remarks;
 	

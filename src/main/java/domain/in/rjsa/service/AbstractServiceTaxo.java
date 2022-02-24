@@ -13,7 +13,7 @@ public abstract class AbstractServiceTaxo<K extends Serializable, E, D extends D
 	@Override
 	public List<E> findAll(HashMap<String, Object> constrains, int pageNo, int noOfResult) {
 		// TODO Auto-generated method stub
-		return getPrimaryDao().findall(constrains, pageNo, noOfResult);
+		return getPrimaryDao().findallWithConstrain(constrains, pageNo, noOfResult);
 	}
 	@Override
 	public Long findallCount(HashMap<String, Object> constrains) {

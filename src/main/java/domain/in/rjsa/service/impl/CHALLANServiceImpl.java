@@ -39,9 +39,4 @@ public class CHALLANServiceImpl extends AbstractServiceTaxo<String, CHALLAN, CHA
 			// TODO Auto-generated method stub
 			return dao.search(map, pageNo, resultPerPage);
 		}
-		@Override
-		public List<String> ajax(String name, String term, HashMap<String, Object> constrains) {
-			// TODO Auto-generated method stub
-			return null;
-		}
 	}

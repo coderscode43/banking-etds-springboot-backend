@@ -227,7 +227,7 @@ public abstract class AbstractControllerTaxo<K extends Serializable, E extends M
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
 //		constrains.put("clientId", clientId);
-		return getService().ajax(name, term, constrains);
+		return getService().ajax(name, term);
 	}
 
 	// ------------------- Other Methods ---------------------------------

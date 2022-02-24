@@ -36,8 +36,6 @@ public class Regular24QDeductee extends CommonModelAbstract {
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
 	public Long id;
-	@Column(name = "deducteeId")
-	public Long deducteeId;
 	@Column(name = "challanHeading")
 	public String challanHeading;
 	@Column(name = "employeeRefNo")
@@ -113,17 +111,15 @@ public class Regular24QDeductee extends CommonModelAbstract {
 	@Column(name = "branchCode")
 	public String branchCode;
 	@Column(name = "accNo")
-	public Long accNo;
+	public String accNo;
 	@Column(name = "idNo")
 	public Long idNo;
-	@Column(name = "type")
-	public String type;
 	@Column(name = "month")
 	public String month;  
 	@Column(name = "staffId")
-	public Long staffId;
+	public String staffId;
 	@Column(name = "uniqueRefNo")
-	public Long uniqueRefNo;
+	public String uniqueRefNo;
 	@Column(name = "TAN")
 	public String TAN ;
 	@Column(name = "errorDescription")
@@ -143,10 +139,12 @@ public class Regular24QDeductee extends CommonModelAbstract {
 	
 	
 	
-	
-	
 	@Column(name = "verify")
 	public boolean verify = false;
+
+	
+	@Column(name = "resolved")
+	public boolean resolved;
 
 	@JsonSerialize(using = JsonDateSerializer.class)
 	public Date getDateOfPayment() {

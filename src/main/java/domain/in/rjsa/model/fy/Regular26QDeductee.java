@@ -36,18 +36,20 @@ public class Regular26QDeductee extends CommonModelAbstract{
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
 	public Long id;	
-	@Column(name = "deducteeId")
-	public Long deducteeId;
+	/*
+	 * @Column(name = "deducteeId")
+	 *  public Long deducteeId;
+	 */
 	@Column(name = "challanHeading")
 	public String challanHeading;
 	@Column(name = "deducteeRefNo")
 	//@Size(min=0, max=45, message="Deductee RefNo should be 45 characters.")
 	//@NotNull(message = "Deductee Ref No is a required field")
-	public String deducteeRefNo;
+	public Long deducteeRefNo;
 	@Column(name = "deducteeCode")
 	//@Size(min=0, max=45, message="Deductee Code should be 45 characters.")
 	//@NotNull(message = "Deductee Code is a required field")
-	public String deducteeCode;
+	public Long deducteeCode;
 	@Column(name = "deducteePan")
 	//@Size(min=0, max=45, message="Deductee Pan should be 45 characters.")
 	//@NotNull(message = "Deductee Pan is a required field")
@@ -123,9 +125,9 @@ public class Regular26QDeductee extends CommonModelAbstract{
 	@Column(name = "month")
 	public String month;
 	@Column(name = "custVendId")
-	public Long custVendId;
+	public String custVendId;
 	@Column(name = "uniqueRefNo")
-	public Long uniqueRefNo;
+	public String uniqueRefNo;
 	@Column(name = "cashWithdrawal194N")
 	public Double cashWithdrawal194N;
 	@Column(name = "cashWithdrawal194N20Lto1Cr")
@@ -149,6 +151,8 @@ public class Regular26QDeductee extends CommonModelAbstract{
 	
 	@Column(name = "verify")
 	public boolean verify = false;
+	@Column(name = "resolved")
+	public boolean resolved;
 	
 	@JsonSerialize(using=JsonDateSerializer.class)
 	public Date getPaymentDate() {

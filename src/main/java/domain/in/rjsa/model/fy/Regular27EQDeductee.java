@@ -68,7 +68,7 @@ public class Regular27EQDeductee extends CommonModelAbstract {
     @Column(name = "reasonforNonCollection")
    	public String reasonforNonCollection;
     @Column(name = "certificatenumber")
-   	public Long certificatenumber;
+   	public String certificatenumber;
     @Column(name = "deducteeisNonResident")
    	public String deducteeisNonResident;
     @Column(name = "permanentEstablishment")
@@ -76,7 +76,7 @@ public class Regular27EQDeductee extends CommonModelAbstract {
     @Column(name = "branchCode")
 	public String branchCode;
 	@Column(name = "accNo")
-	public Long accNo;
+	public String accNo;
 	@Column(name = "idNo")
 	public Long idNo;
 	@Column(name = "type")
@@ -88,13 +88,13 @@ public class Regular27EQDeductee extends CommonModelAbstract {
 	@Column(name = "challanHeading")
 	public String challanHeading;
 	@Column(name = "custVendId")
-	public Long custVendId;
+	public String custVendId;
 	@Column(name = "uniqueRefNo")
 	public String uniqueRefNo;
 	@Column(name = "reasonForNonCollectionForG")
 	public String reasonForNonCollectionForG;
 	@Column(name = "ifAnswerTo681AisyesthenChallanNumber")
-	public String ifAnswerTo681AisyesthenChallanNumber;
+	public Long ifAnswerTo681AisyesthenChallanNumber;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment")
 	public Date ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment;
@@ -115,7 +115,8 @@ public class Regular27EQDeductee extends CommonModelAbstract {
 	@Column(name = "InterestOnLateDeduction")
 	public Double InterestOnLateDeduction;
 	
-	
+	@Column(name = "resolved")
+	public boolean resolved;
 	
 	
 	/*

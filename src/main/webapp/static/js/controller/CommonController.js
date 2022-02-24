@@ -201,6 +201,7 @@ App
 								});
 
 							}
+							
 
 
 							self.gotoWFYListPage = function(entity, page) {
@@ -477,6 +478,11 @@ App
 								console
 										.log("Common Controller get Entity data");
 								return CommonService.getEntity();
+							}
+							self.getEntityDataFY = function() {
+								console
+										.log("Common Controller get Entity data");
+								return CommonServiceFY.getEntity();
 							}
 							/*Pranay*/
 							self.ajax = function(entity, name, term) {

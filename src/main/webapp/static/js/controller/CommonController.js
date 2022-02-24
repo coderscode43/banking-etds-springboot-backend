@@ -146,8 +146,34 @@ App
 									"detailId" : detailId,
 									"page" : page
 								});
+							}
+							self.gotoWFYDetailPage = function(entity,detailId, page) {
+								self.show = false;
+								self.entity = {};
+								self.search = {};
+								self.entityList = [];
+								// self.ItemsPerPage=100;
+								self.dropdown = [];
+								self.ajax = [];
+								self.temp = {};
+								self.temp3 = {};
+								self.temp1 = [];
+								self.company = {};
+								self.currentPage = 1;
+								self.batchColor = {};
+								self.goodsColor = [];
+								self.b = [];
+								self.fileName = new FormData();
+
+								$state.go("homeWot.detail", {
+									"entity" : entity,
+									"detailId" : detailId,
+									"page" : page,
+									
+								});
 
 							}
+
 							
 							
 
@@ -486,30 +512,17 @@ App
 								$state.go("home.add", 
 									{ "page": page });
 							}
-							/*pranay*/
-							
-
-							self.updateData = function(valid, entity, data,
-									closeModalId) {
+							self.updateData = function(valid, object, entity) {//--remove closeModalId-pranay
 								if (valid == true) {
-									console.log("Common Controller updateData "
-											+ entity);
-
-
+									console.log("Common Controller updateData "+ entity);
+									self.object = object;
 									CommonService
-											.update(data, entity)
+											.update(object, entity)
 											.then(
 													function(data) {
 														console
 																.log(entity
 																		+ ' updated successfully');
-														angular
-																.element(
-																		'#'
-																				+ closeModalId)
-																.trigger(
-																		'click');
-
 														$('#successMsg')
 																.find(
 																		'.modal-header')
@@ -558,7 +571,8 @@ App
 
 								}
 							}
-
+							/*pranay*/
+							
 							// ///////////////////////\\\\\\\\\\\\\
 							self.updateStatus = function(valid, entity, data,
 									closeModalId) {

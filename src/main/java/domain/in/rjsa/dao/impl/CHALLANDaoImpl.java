@@ -13,7 +13,6 @@ import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractDaoTaxo;
 import domain.in.rjsa.dao.CHALLANDao;
-import domain.in.rjsa.model.fy.Logs;
 import domain.in.rjsa.model.tds.CHALLAN;
 
 @Repository("CHALLANDao")

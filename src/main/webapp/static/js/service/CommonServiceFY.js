@@ -63,11 +63,10 @@ App.factory('CommonServiceFY', [
 			return deferred.promise;
 		}
 
-		function detail(fy, entity, detailId, branchCode) {
+		function detail(entity, detailId, branchCode, fy) {
 			var deferred = $q.defer();
 			$http.get(
-				REST_SERVICE_URI + entity + '/detail/' + fy + '/' + branchCode + '/'
-				+ detailId).success(function(data) {
+				REST_SERVICE_URI + entity + '/detail/' + fy + "/" + branchCode + "/" + detailId).success(function(data) {
 					entityData = data;
 					deferred.resolve(data);
 				}).error(function(status) {

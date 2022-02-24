@@ -146,8 +146,34 @@ App
 									"detailId" : detailId,
 									"page" : page
 								});
+							}
+							self.gotoWFYDetailPage = function(entity,detailId, page) {
+								self.show = false;
+								self.entity = {};
+								self.search = {};
+								self.entityList = [];
+								// self.ItemsPerPage=100;
+								self.dropdown = [];
+								self.ajax = [];
+								self.temp = {};
+								self.temp3 = {};
+								self.temp1 = [];
+								self.company = {};
+								self.currentPage = 1;
+								self.batchColor = {};
+								self.goodsColor = [];
+								self.b = [];
+								self.fileName = new FormData();
+
+								$state.go("homeWot.detail", {
+									"entity" : entity,
+									"detailId" : detailId,
+									"page" : page,
+									
+								});
 
 							}
+
 							
 							
 
@@ -175,6 +201,7 @@ App
 								});
 
 							}
+							
 
 
 							self.gotoWFYListPage = function(entity, page) {
@@ -451,6 +478,11 @@ App
 								console
 										.log("Common Controller get Entity data");
 								return CommonService.getEntity();
+							}
+							self.getEntityDataFY = function() {
+								console
+										.log("Common Controller get Entity data");
+								return CommonServiceFY.getEntity();
 							}
 							/*Pranay*/
 							self.ajax = function(entity, name, term) {

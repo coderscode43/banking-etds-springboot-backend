@@ -14,6 +14,8 @@ public interface ServiceInterfaceTaxo<K, E> {
 	public E uniqueSearch(HashMap map);
 
 	public List<String> ajax(String name, String term, HashMap<String, Object> constrains);
+
+	public List<String> ajax(String name, String term);
 	
 
 

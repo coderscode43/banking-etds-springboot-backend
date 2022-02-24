@@ -12,6 +12,7 @@ public interface DaoInterfaceTaxo<K, E> {
 	public List<E> findallWithConstrain(HashMap<String,Object> constrains, int pageNo, int noOfResult);
 	public Long findallCount(HashMap<String, Object> constrains);
 	public List<String> ajax(String name, String term, HashMap<String, Object> constrain) ;
+	public List<E> findall(HashMap<String,Object> constrains, int pageNo, int noOfResult);
 	
 
 }

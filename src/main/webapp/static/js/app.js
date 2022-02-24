@@ -175,16 +175,16 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 			params: {
 				detailId: null,
 				entity: null,
-				page: null
+				page: null,
 			},
 			templateUrl: function($stateParams) {
 				return 'index/detail/homeWOT/' + $stateParams.page;
 			},
 			resolve: {
-				list: function($q, $state, CommonService, $stateParams) {
+				list: function($q, $state, CommonServiceFY, $stateParams) {
 					console.log('Get Detail  ' + $stateParams.detailId);
 					var deferred = $q.defer();
-					CommonService.detail($stateParams.clientId, $stateParams.entity, $stateParams.detailId).then(deferred.resolve, deferred.resolve);
+					CommonServiceFY.detail($stateParams.entity, $stateParams.detailId, $stateParams.branchCode, $stateParams.fy).then(deferred.resolve, deferred.resolve);
 					return deferred.promise;
 				}
 			}

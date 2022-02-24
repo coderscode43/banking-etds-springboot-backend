@@ -139,10 +139,10 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	//@NotNull(message = "Financial Year is a required field")
 	//@Size(min=0, max=45, message="address Of Deductee length should be between 1 to 100 characters.")
 	public String fy;
-	@Column(name = "quater")
+	@Column(name = "quarter")
 	//@NotNull(message = "Quarter is a required field")
 	//@Size(min=0, max=45, message="address Of Deductee length should be between 1 to 100 characters.")
-	public String quater;
+	public String quarter;
 	@Column(name = "tdsRateAsPerItActs")
 	//@NotNull(message = "amount Paid is a required field")
 	//@Digits(integer = 12, fraction = 2,message="amount Paid is not proper.Maximum 2 fractions allowed.")

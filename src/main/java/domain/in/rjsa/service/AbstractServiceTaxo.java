@@ -35,14 +35,11 @@ public abstract class AbstractServiceTaxo<K extends Serializable, E, D extends D
 	@Override
 	public List<String> ajax(String name, String term) {
 		// TODO Auto-generated method stub
-		return getPrimaryDao().ajax(name, term);
+		HashMap<String, Object> constrain = new HashMap<String, Object>();
+		return getPrimaryDao().ajax(name, term,constrain);
 	}
 	
 	public abstract D getPrimaryDao();
-	public List<String> ajax(String name, String term) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 //	@Override
 //	public void saveFile(FileDetail file, LinkedHashMap<String, Object> map, Class<E> entity) {

@@ -74,13 +74,15 @@
 							<b>Branch Code</b>
 							</h6>
 								<input type="text" ng-model="cCctr.search.branchCode"
-									class="form-control" placeholder="branch Code" style="width: 100%">
+									class="form-control" placeholder="branch Code" style="width: 100%;">
 					</div>
-
-					<div class="col-md-3">
-						<label>Month*</label> <select name="month"
+					<div class ="col-md-3">
+						<h6>
+						<label>Month*</label>
+						</h6>
+							<select name="month"
 								class="form-control" ng-model="cCctr.search.month"
-								ng-required="true" ng-model-options="{updateOn: 'blur'}">
+								ng-required="true" ng-model-options="{updateOn: 'blur'}"  style="width:100%;margin-top:-5px">
 								  <option selected value='Janaury'>Janaury</option>
 								    <option value='February'>February</option>
 								    <option value='March'>March</option>
@@ -93,8 +95,9 @@
 								    <option value='October'>October</option>
 								    <option value='November'>November</option>
 								    <option value='December'>December</option>
-															</select> 
+						</select>
 					</div>
+					
 
 					<div class="col-md-3">
 						<h6>
@@ -131,40 +134,45 @@
 		</div>
 		</div>
 				
-				<div class="row" id="search" >
+				<!-- <div class="row" id="search" >
 				         	  <div class="col-md-2" id="search">	
 				                          <button ng-click="cCctr.searchEntities(true,'monthlyChallan','monthlyChallan')"
 								class="btn btn-success"onclick="scrollWin()">Search</button>
 				                 </div>					
-			  </div>
+			  </div> -->
 			
 
-			<div class="row" id="hide">
+		<!-- 	<div class="row" id="hide">
 				<div class="col-md-3" style="margin-left: 80%; margin-top: -80px">
 					<button ng-click="cCctr.searchEntities(true,'monthlyChallan')"
 						class="btn btn-success" onclick="scrollWin()">Search</button>
 						</div>
-				</div>
+				</div> -->
 
 
 			
 
-				<div class="row mobile" id="search">
+			<!-- 	<div class="row mobile" id="search">
 				<div class="col-md-3" id="search">
 					<button ng-click="cCctr.searchEntities(true,'monthlyChallan')"
 						class="btn btn-success" onclick="scrollWin()">Search</button>
 				</div>
-			</div>
+			</div> -->
 			</div>
 		</div>
 		
 		<div class="panel-body">
 
 			<div class="row">
-		<div class="col-xs-12">
+		<div class="col-md-3" style="margin-top:5px;margin-left: -15px;">
+				<button
+					ng-click="cCctr.searchFYEntities(true,'monthlyChallan','monthlyChallan')"
+					class="btn btn-success" onclick="scrollWin()" style="margin-left: 13px;margin-top:-6px;">Search</button>
+											
+			</div>
 			<div class="text-right">
 			<button class="btn btn-secondary"
-					style="background-color: #FFA500;"
+					style="background-color: #FFA500;margin-right: 15px;"
 					data-toggle="collapse" data-target="#collapseExample4"
 					aria-expanded="false" aria-controls="collapseExample">
 					Advance Search</button>

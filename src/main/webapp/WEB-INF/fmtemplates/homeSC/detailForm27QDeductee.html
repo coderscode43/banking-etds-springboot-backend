@@ -97,7 +97,8 @@
 
 
 
-<div id="page-wrapper" ng-init="cCctr.entity=cCctr.getEntityData().deductee;">
+<div id="page-wrapper"
+	ng-init="cCctr.entity=cCctr.getEntityData().deductee;">
 	<div class="container-fluid">
 
 		<div ng-show="cCctr.show != true">
@@ -118,282 +119,303 @@
 
 					<div class="container">
 
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-3">
-									<label>Quarter &nbsp;</label></div><div class="col-md-3"> :
-									 {{cCctr.entity.quarter}}
-								</div>
-								<div class="col-md-3">
-									<label>Grossing up Indicator &nbsp;</label></div><div class="col-md-3"> :
-									{{cCctr.entity.grossingUpIndicator}}
-								</div>
-								<!-- <div class="col-md-3">
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-3">
+								<label>Quarter &nbsp;</label>
+							</div>
+							<div class="col-md-3">: {{cCctr.entity.quarter}}</div>
+							<div class="col-md-3">
+								<label>Grossing up Indicator &nbsp;</label>
+							</div>
+							<div class="col-md-3">:
+								{{cCctr.entity.grossingUpIndicator}}</div>
+							<!-- <div class="col-md-3">
 
 									<label>Deductee Code &nbsp;:</label>
 									{{cCctr.entity.deducteeCode}}
 								</div> -->
+						</div>
+
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-3">
+								<label>Month&nbsp;</label>
+							</div>
+							<div class="col-md-3">: {{cCctr.entity.month}}</div>
+							<div class="col-md-3">
+								<label>No of certificate under section&nbsp;</label>
+							</div>
+							<div class="col-md-3">:
+								{{cCctr.entity.noOfCertificateUnderSection}}</div>
+						</div>
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-3">
+								<label>Branch Code&nbsp;</label>
+							</div>
+							<div class="col-md-3">: {{cCctr.entity.branchCode}}</div>
+							<div class="col-md-3">
+								<label>TDS Rate As Per It Acts &nbsp;</label>
+							</div>
+							<div class="col-md-3">: {{cCctr.entity.tdsRateAsPerItActs}}
+							</div>
+						</div>
+
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-3">
+								<label>Vend/Cust Id&nbsp;</label>
+							</div>
+							<div class="col-md-3">: {{cCctr.entity.custVendId}}</div>
+							<div class="col-md-3">
+								<label>Nature Of Remittance &nbsp;</label>
+							</div>
+							<div class="col-md-3">: {{cCctr.entity.natureOfRemittance}}
+							</div>
+						</div>
+
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-3">
+								<label>Unique Ref Number&nbsp;</label>
+							</div>
+							<div class="col-md-3">: {{cCctr.entity.uniqueRefNo}}</div>
+							<div class="col-md-3">
+								<label>Unique Knowledge No.&nbsp;</label>
+							</div>
+							<div class="col-md-3">:
+								{{cCctr.entity.uniqueAcknowledgeNo}}</div>
+						</div>
+
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-3">
+								<label>Account Number&nbsp;</label>
+							</div>
+							<div class="col-md-3">: {{cCctr.entity.accNo}}</div>
+							<div class="col-md-3">
+								<label>Country &nbsp;</label>
+							</div>
+							<div class="col-md-3">: {{cCctr.entity.countryOfResidence}}
 							</div>
 
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-3">
-									<label>Month&nbsp;</label></div><div class="col-md-3"> :
-									 {{cCctr.entity.month}}
-								</div>
-								<div class="col-md-3">
-									<label>No of certificate under section&nbsp;</label></div><div class="col-md-3"> :
-									{{cCctr.entity.noOfCertificateUnderSection}}
-								</div>
+						</div>
+
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-3">
+								<label>Challan Heading&nbsp;</label>
 							</div>
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-3">
-									<label>Branch Code&nbsp;</label></div><div class="col-md-3"> :
-									 {{cCctr.entity.branchCode}}
-								</div>
-								<div class="col-md-3">
-									<label>TDS Rate As Per It Acts &nbsp;</label></div><div class="col-md-3"> :
-									{{cCctr.entity.tdsRateAsPerItActs}}
-								</div>
+							<div class="col-md-3">: {{cCctr.entity.challanHeading}}</div>
+							<div class="col-md-3">
+								<label>Email &nbsp;</label>
 							</div>
-							
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-3">
-									<label>Vend/Cust Id&nbsp;</label></div><div class="col-md-3"> :
-									 {{cCctr.entity.custVendId}}
-								</div>
-								<div class="col-md-3">
-									<label>Nature Of Remittance &nbsp;</label></div><div class="col-md-3"> :
-									{{cCctr.entity.natureOfRemittance}}
-								</div>
+							<div class="col-md-3">: {{cCctr.entity.emailId}}</div>
+						</div>
+
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-3">
+								<label>Deductee Ref. No &nbsp;</label>
 							</div>
-							
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-3">
-									<label>Unique Ref Number&nbsp;</label></div><div class="col-md-3"> :
-									 {{cCctr.entity.uniqueRefNo}}
-								</div>
-								<div class="col-md-3">
-									<label>Unique Knowledge No.&nbsp;</label></div><div class="col-md-3"> :
-									{{cCctr.entity.uniqueAcknowledgeNo}}
-								</div>
+							<div class="col-md-3">: {{cCctr.entity.deducteeRefNo}}</div>
+							<div class="col-md-3">
+								<label>Contact no &nbsp;</label>
 							</div>
-							
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-3">
-									<label>Account Number&nbsp;</label></div><div class="col-md-3"> :
-									 {{cCctr.entity.accNo}}
-								</div>
-								<div class="col-md-3">
-									<label>Country &nbsp;</label></div><div class="col-md-3"> :
-									{{cCctr.entity.countryOfResidence}}
-								</div>
-								
+							<div class="col-md-3">:
+								{{cCctr.entity.contactNoOfDeductee}}</div>
+
+						</div>
+
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-3">
+								<label>Deductee Code &nbsp;</label>
 							</div>
-							
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-3">
-									<label>Challan Heading&nbsp;</label></div><div class="col-md-3"> :
-									{{cCctr.entity.challanHeading}}
-								</div>
-								<div class="col-md-3">
-									<label>Email &nbsp;</label></div><div class="col-md-3"> : {{cCctr.entity.emailId}}
-								</div>
+							<div class="col-md-3">: {{cCctr.entity.deducteeCode}}</div>
+							<div class="col-md-3">
+								<label>Address &nbsp;</label>
+							</div>
+							<div class="col-md-3">: {{cCctr.entity.addressOfDeductee}}
 							</div>
 
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-3">
-									<label>Deductee Ref. No &nbsp;</label></div><div class="col-md-3"> :
-									{{cCctr.entity.deducteeRefNo}}
-								</div>
-								<div class="col-md-3">
-									<label>Contact no &nbsp;</label></div><div class="col-md-3"> :
-									{{cCctr.entity.contactNoOfDeductee}}
-								</div>
-								
+						</div>
+
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-3">
+								<label>Pan&nbsp;</label>
 							</div>
-							
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-3">
-									<label>Deductee Code &nbsp;</label></div><div class="col-md-3"> :
-									{{cCctr.entity.deducteeCode}}
-								</div>
-								<div class="col-md-3">
-									<label>Address &nbsp;</label></div><div class="col-md-3"> :
-									{{cCctr.entity.addressOfDeductee}}
-								</div>
-								
+							<div class="col-md-3">: {{cCctr.entity.pan}}</div>
+							<div class="col-md-3">
+								<label>Tax Identification Number &nbsp;</label>
 							</div>
-
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-3">
-									<label>Pan&nbsp;</label></div><div class="col-md-3"> : {{cCctr.entity.pan}}
-								</div>
-								<div class="col-md-3">
-									<label>Tax Identification Number &nbsp;</label></div><div class="col-md-3"> :
-									 {{cCctr.entity.taxIdentificationNo}}
-								</div>
+							<div class="col-md-3">:
+								{{cCctr.entity.taxIdentificationNo}}</div>
+						</div>
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-3">
+								<label>Name &nbsp;</label>
 							</div>
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-3">
-									<label>Name &nbsp;</label></div><div class="col-md-3"> : {{cCctr.entity.name }}
-								</div>
-								<div class="col-md-3">
-									<label>Cash Withdrawl (194N) &nbsp;</label></div><div class="col-md-3"> : {{cCctr.entity.cashWithdrawal194N}}
-								</div>
-								
-
+							<div class="col-md-3">: {{cCctr.entity.name }}</div>
+							<div class="col-md-3">
+								<label>Cash Withdrawl (194N) &nbsp;</label>
 							</div>
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-3">
-									<label>Section Code &nbsp;</label></div><div class="col-md-3"> :
-									{{cCctr.entity.sectionCode}}
-								</div>
-								<div class="col-md-3">
-									<label>Cash Withdrawl 194N(20L to 1cr) &nbsp;</label></div><div class="col-md-3"> :
-									 {{cCctr.entity.cashWithdrawal194N20Lto1Cr}}
-								</div>
-								
-
-							</div>
-
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-3">
-									<label>Date of Payment &nbsp;</label></div><div class="col-md-3"> :
-									 {{cCctr.entity.date|date:'dd-MM-yyyy'}}
-								</div>
-								<div class="col-md-3">
-									<label>Cash Withdrawl 194N(>1cr &nbsp;</label></div><div class="col-md-3"> :
-									 {{cCctr.entity.cashWithdrawal194N1Cr}}
-								</div>
-
-
-							</div>
-
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-3">
-									<label>Paid Amount&nbsp;</label></div><div class="col-md-3"> : {{cCctr.entity.amountPaid}}
-								</div>
-								<div class="col-md-3">
-									<label>Error Description&nbsp;</label></div><div class="col-md-3"> : {{cCctr.entity.errorDescription}}
-								</div>
-								
-								
-							</div>
-
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-3">
-									<label>TDS&nbsp;</label></div><div class="col-md-3"> : {{cCctr.entity.tds}}
-								</div>
-								<div class="col-md-3">
-									<label>Warning Description&nbsp;</label></div><div class="col-md-3"> : {{cCctr.entity.warningDescription}}
-								</div>
-								
-								
+							<div class="col-md-3">: {{cCctr.entity.cashWithdrawal194N}}
 							</div>
 
 
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-3">
-									<label>Surcharge &nbsp;</label></div><div class="col-md-3"> : {{cCctr.entity.surcharge}}
-								</div>
-								<div class="col-md-3">
-									<label>Short Deduction&nbsp;</label></div><div class="col-md-3"> : {{cCctr.entity.ShortDeduction}}
-								</div>
-
+						</div>
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-3">
+								<label>Section Code &nbsp;</label>
 							</div>
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-3">
-									<label>Education Cess &nbsp;</label></div><div class="col-md-3"> :
-									{{cCctr.entity.educationCess}}
-								</div>
-								<div class="col-md-3">
-									<label>Interest on Short Deduction &nbsp;</label></div><div class="col-md-3"> :
-									 {{cCctr.entity.ShortDeduction}}
-								</div>
-
-							
+							<div class="col-md-3">: {{cCctr.entity.sectionCode}}</div>
+							<div class="col-md-3">
+								<label>Cash Withdrawl 194N(20L to 1cr) &nbsp;</label>
 							</div>
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-3">
-									<label>Total Tax Deducted &nbsp;</label></div><div class="col-md-3"> :
-									{{cCctr.entity.totalTaxDeducted}}
-								</div>
-								<div class="col-md-3">
-									<label>Interest on Late Payment&nbsp;</label></div><div class="col-md-3"> :
-									 {{cCctr.entity.ShortDeduction}}
-								</div>
+							<div class="col-md-3">:
+								{{cCctr.entity.cashWithdrawal194N20Lto1Cr}}</div>
 
-								
-								
-							</div>
-							
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-3">
-									<label>Total Tax Deposited &nbsp;</label></div><div class="col-md-3"> :
-									{{cCctr.entity.totalTaxDeposited}}
-								</div>
-								<div class="col-md-3">
-									<label>Interest on Late Deduction&nbsp;</label></div><div class="col-md-3"> :
-									 {{cCctr.entity.ShortDeduction}}
-								</div>
-								
-								
-								
-							</div>
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-3">
-									<label>Date Of Deduction &nbsp;</label></div><div class="col-md-3"> :
-									 {{cCctr.entity.dateOfDeduction}}
-								</div>
-								<div class="col-md-3">
-									<label>Reason for non Deduction &nbsp;</label></div><div class="col-md-3"> :
-									{{cCctr.entity.reasonForNonDeduction}}
-								</div>
-								
 
-							</div>
-							
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-3">
-									<label>Rate at which tax Deducted &nbsp;</label></div><div class="col-md-3"> :
-									{{cCctr.entity.rateAtWhichTaxDeducted}}
-								</div>
-								
-								
+						</div>
 
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-3">
+								<label>Date of Payment &nbsp;</label>
+							</div>
+							<div class="col-md-3">:
+								{{cCctr.entity.date|date:'dd-MM-yyyy'}}</div>
+							<div class="col-md-3">
+								<label>Cash Withdrawl 194N(>1cr &nbsp;</label>
+							</div>
+							<div class="col-md-3">:
+								{{cCctr.entity.cashWithdrawal194N1Cr}}</div>
+
+
+						</div>
+
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-3">
+								<label>Paid Amount&nbsp;</label>
+							</div>
+							<div class="col-md-3">: {{cCctr.entity.amountPaid}}</div>
+							<div class="col-md-3">
+								<label>Error Description&nbsp;</label>
+							</div>
+							<div class="col-md-3">: {{cCctr.entity.errorDescription}}</div>
+
+
+						</div>
+
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-3">
+								<label>TDS&nbsp;</label>
+							</div>
+							<div class="col-md-3">: {{cCctr.entity.tds}}</div>
+							<div class="col-md-3">
+								<label>Warning Description&nbsp;</label>
+							</div>
+							<div class="col-md-3">: {{cCctr.entity.warningDescription}}
 							</div>
 
-							
-							<div class="row" style="font-size: 13px;">
 
-								
-								
-								
+						</div>
+
+
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-3">
+								<label>Surcharge &nbsp;</label>
 							</div>
-							
-														<div class="row">
-								<form role="form" name="remark">
-									<input
-										ng-model="cCctr.newEntity.deducteeId = cCctr.entity.id"
-										id="deducteeId" name="deducteeId" style="display: none">
+							<div class="col-md-3">: {{cCctr.entity.surcharge}}</div>
+							<div class="col-md-3">
+								<label>Short Deduction&nbsp;</label>
+							</div>
+							<div class="col-md-3">: {{cCctr.entity.ShortDeduction}}</div>
 
-									<input ng-model="cCctr.newEntity.fy = cCctr.entity.fy"
-										id="fy" name="fy" style="display: none"> <input
-										ng-model="cCctr.newEntity.deducteeForm ='27Q'"
-										id="deducteeForm" name="deducteeForm" style="display: none">
+						</div>
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-3">
+								<label>Education Cess &nbsp;</label>
+							</div>
+							<div class="col-md-3">: {{cCctr.entity.educationCess}}</div>
+							<div class="col-md-3">
+								<label>Interest on Short Deduction &nbsp;</label>
+							</div>
+							<div class="col-md-3">: {{cCctr.entity.ShortDeduction}}</div>
 
-									<input class="form-control"
-										ng-model="cCctr.newEntity.branchCode = cCctr.entity.branchCode"
-										id="branchCode" name="branchCode" style="display: none">
 
-									<button data-toggle="modal" data-target="#myModal"
-										class="btn btn-success" style="margin-left: 50%">Add
-										Remark</button>
+						</div>
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-3">
+								<label>Total Tax Deducted &nbsp;</label>
+							</div>
+							<div class="col-md-3">: {{cCctr.entity.totalTaxDeducted}}</div>
+							<div class="col-md-3">
+								<label>Interest on Late Payment&nbsp;</label>
+							</div>
+							<div class="col-md-3">: {{cCctr.entity.ShortDeduction}}</div>
 
-									<button class="btn btn-danger"
-										ng-click="cCctr.gotoListPage('form27QDeductee','form27QDeductee')">Back</button>
 
-									<button class="btn btn-primary">Resolved</button>
-								</form>
+
+						</div>
+
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-3">
+								<label>Total Tax Deposited &nbsp;</label>
+							</div>
+							<div class="col-md-3">: {{cCctr.entity.totalTaxDeposited}}
+							</div>
+							<div class="col-md-3">
+								<label>Interest on Late Deduction&nbsp;</label>
+							</div>
+							<div class="col-md-3">: {{cCctr.entity.ShortDeduction}}</div>
+
+
+
+						</div>
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-3">
+								<label>Date Of Deduction &nbsp;</label>
+							</div>
+							<div class="col-md-3">: {{cCctr.entity.dateOfDeduction}}</div>
+							<div class="col-md-3">
+								<label>Reason for non Deduction &nbsp;</label>
+							</div>
+							<div class="col-md-3">:
+								{{cCctr.entity.reasonForNonDeduction}}</div>
+
+
+						</div>
+
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-3">
+								<label>Rate at which tax Deducted &nbsp;</label>
+							</div>
+							<div class="col-md-3">:
+								{{cCctr.entity.rateAtWhichTaxDeducted}}</div>
+
+
+
+						</div>
+
+
+						<div class="row" style="font-size: 13px;"></div>
+
+						<div class="row">
+							<form role="form" name="remark">
+								<input ng-model="cCctr.newEntity.deducteeId = cCctr.entity.id"
+									id="deducteeId" name="deducteeId" style="display: none">
+
+								<input ng-model="cCctr.newEntity.fy = cCctr.entity.fy" id="fy"
+									name="fy" style="display: none"> <input
+									ng-model="cCctr.newEntity.deducteeForm ='27Q'"
+									id="deducteeForm" name="deducteeForm" style="display: none">
+
+								<input class="form-control"
+									ng-model="cCctr.newEntity.branchCode = cCctr.entity.branchCode"
+									id="branchCode" name="branchCode" style="display: none">
+
+								<button data-toggle="modal" data-target="#myModal"
+									class="btn btn-success" style="margin-left: 50%">Add
+									Remark</button>
+
+								<button class="btn btn-danger"
+									ng-click="cCctr.gotoListPage('form27QDeductee','form27QDeductee')">Back</button>
+
+								<button class="btn btn-primary">Resolved</button>
+
 
 								<div class="modal fade" id="myModal" role="dialog">
 									<div class="modal-dialog">
@@ -410,113 +432,115 @@
 												</div>
 												<textarea ng-model="cCctr.newEntity.remark" id="remark"
 													name="remark"
-													style="width: 90%; height: 20%; font-size: 15px; margin-left: 5%;"></textarea>
-												<!-- 	<span style="color: red" class="error"
-											ng-show="remark.submitted || remark.remark.$dirty && remark.remark.$invalid">Please
-									enter valid Remark</span> -->
+													style="width: 90%; height: 20%; font-size: 15px; margin-left: 5%;"
+													ng-required="true"></textarea>
+												<span style="color: red; margin-left: 5%;" class="error"
+													ng-show="remark.submitted || remark.remark.$dirty && remark.remark.$invalid">Please
+													enter valid Remark</span> <span class="error" id="remark"></span>
 											</div>
 											<div class="modal-footer">
 												<button type="button" class="btn btn-success "
-													ng-click="cCctr.addRemark(true,'remark',cCctr.newEntity,'close')"
+													ng-click="remark.submitted=true;cCctr.addRemark(remark.$valid,'remark',cCctr.newEntity,'close')"
 													data-dismiss="modal" style="margin: 2% 5% 0 0; width: 15%;">Add</button>
 											</div>
 										</div>
 
 									</div>
 								</div>
-							</div>
-						</div>
-					</div>
-					<br>
-					<div>
-						<div class="table-responsive" style="overflow-x: inherit">
-							<!-- 	<div class="col-md-12" style="margin-left:-30px"> -->
-							<table class=" table table-bordered table-hover  table-striped"
-								role="table"
-								style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
-
-								<thead>
-								<colgroup>
-									<col span="14" style="background-color: #ffffff">
-								</colgroup>
-								<tr>
-								<thead>
-									<tr role="row" style="height: 40px; background-color: #81b7db">
-										<th>Sr.No</th>
-										<th style="width: 50%">Remark</th>
-										<th>Remark By</th>
-										<th>Date & Time</th>
-
-									</tr>
-
-								</thead>
-								<tbody>
-									<tr ng-repeat="a in cCctr.getEntityListData().remark">
-										<th>{{$index+1}}</th>
-										<th>{{a.remark}}</th>
-										<th>{{a.userName}}</th>
-										<th>{{a.dateTime | date:'dd-MM-yyyyTHH:mm:ss'}}</th>
-									</tr>
-								</tbody>
-							</table>
-
-						</div>
-					</div>
-						</div>
-					</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-
-	
-
-
-
-																		
-
-									
-									
-
-
-									
-
-									
-
-
-
-
-									
-									
-
-
-
-																		
-
-
-									
-
-
-									
-
-
-
-
-
-									
 							</form>
 						</div>
+					</div>
+				</div>
+				<br>
+				<div>
+					<div class="table-responsive" style="overflow-x: inherit">
+						<!-- 	<div class="col-md-12" style="margin-left:-30px"> -->
+						<table class=" table table-bordered table-hover  table-striped"
+							role="table"
+							style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+
+							<thead>
+							<colgroup>
+								<col span="14" style="background-color: #ffffff">
+							</colgroup>
+							<tr>
+							<thead>
+								<tr role="row" style="height: 40px; background-color: #81b7db">
+									<th>Sr.No</th>
+									<th style="width: 50%">Remark</th>
+									<th>Remark By</th>
+									<th>Date & Time</th>
+
+								</tr>
+
+							</thead>
+							<tbody>
+								<tr ng-repeat="a in cCctr.getEntityListData().remark">
+									<th>{{$index+1}}</th>
+									<th>{{a.remark}}</th>
+									<th>{{a.userName}}</th>
+									<th>{{a.dateTime | date:'dd-MM-yyyyTHH:mm:ss'}}</th>
+								</tr>
+							</tbody>
+						</table>
 
 					</div>
 				</div>
 			</div>
 		</div>
-
 	</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</form>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
 
 </div>
 

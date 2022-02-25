@@ -75,25 +75,23 @@ public class IndexController {
 	@RequestMapping(value = "/add/{page}")
 	public String getAddPage(ModelMap model, @PathVariable String page ) {
 		logger.info("Get add page for " + page);
-		//add Branch State
-		model.addAttribute("State", page);
-		//pranay
-					List<StaticData> list = applicationCache.getStaticList();
-					String[] stringArray;
-					String xString;
-					for (StaticData list1 : list) {
-					    String key = list1.getKey();
-					    switch (key) {
-						case "State":
-								xString = list1.getValue();
-						        stringArray = xString.split(",");
-						        model.addAttribute("State", stringArray);
-						break;
-						default:
-							System.out.println("Not Match");
-							break;
-						}
-					}
+		//add Branch State-pranay
+		List<StaticData> list = applicationCache.getStaticList();
+		String[] stringArray;
+		String xString;
+		for (StaticData list1 : list) {
+			String key = list1.getKey();
+			switch (key) {
+			case "State":
+				xString = list1.getValue();
+				stringArray = xString.split(",");
+				model.addAttribute("State", stringArray);
+				break;
+			default:
+				System.out.println("Not Match");
+				break;
+			}
+		}
 		return "homeSC/"+ page;
 	}
 	
@@ -102,6 +100,24 @@ public class IndexController {
 	@RequestMapping(value = "/detail/{action}/{page}")
 	public String getPage( @PathVariable String action, @PathVariable String page,
 			ModelMap model) {
+		//add Branch State-pranay
+				List<StaticData> list = applicationCache.getStaticList();
+				String[] stringArray;
+				String xString;
+				for (StaticData list1 : list) {
+					String key = list1.getKey();
+					switch (key) {
+					case "State":
+						xString = list1.getValue();
+						stringArray = xString.split(",");
+						model.addAttribute("State", stringArray);
+						break;
+					default:
+						System.out.println("Not Match");
+						break;
+					}
+				}
+		
 		return action + "/" + page;
 	}
 

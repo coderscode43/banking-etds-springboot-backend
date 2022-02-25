@@ -296,18 +296,26 @@
 																				</span>
 																				<span class ="error" id ="branchContactNo"></span>
 																				</div>
-																		<div class ="col-md-6">
-																		<label>Branch State</label>
-																		<input class ="form-control" type ="text"
-																		name = "branchState" placeholder = "Branch State"
-																		ng-model = "cCctr.entity.branchState" 
-																		ng-required="true" ng-model-options="{updateOn:'blur'}"/>
-																		<span style="color:red" ng-show ="profileForm.submitted || profileForm.branchState.$dirty && profileForm.branchState.$invalid">
-																		<span class ="error" ng-show="profileForm.branchState.$error.required">Branch State is Required</span>
-																		</span>
-																		<span class ="error" id ="branchState"></span>
+																		<div class="col-md-6">
+																			<div class="form-group">
+																				<label>Branch State*</label> <select name="branchState"
+																					id="branchState" class="form-control"
+																					ng-model="cCctr.entity.branchState" ng-required="true"
+																					ng-model-options="{updateOn: 'blur'}">
+																					<option disabled value="">Select State</option>
+																					<#list State as state>
+			
+																					<option value="${state}">${state}</option>
+																					</#list>
+																				</select> <span style="color: red"
+																					ng-show="profileForm.submitted ||profileForm.branchState.$dirty && profileForm.branchState.$invalid">
+																					<span class="error"
+																					ng-show="profileForm.branchState.$error.required">
+																						branchState is Required. </span>
+																				</span>
+																			</div>
 																		</div>
-																	</div>
+														</div>
 																	<br><br>
 																	<div class ="row">
 																		<div class ="col-md-6">

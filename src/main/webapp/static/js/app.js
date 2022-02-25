@@ -103,6 +103,28 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 			}
 
 		})
+		.state('home.detailForm', {
+			url: "/detail/:entity/:detailId/:fy/:branchCode/:page",
+			params: {
+				detailId:null,
+				fy: null,
+				entity: null,
+				branchCode:null,
+				page: null
+			},
+			templateUrl: function($stateParams) {
+				return 'index/detail/homeSC/' + $stateParams.page;
+			},
+			resolve: {
+				list: function($q, $state, CommonService, $stateParams) {
+					console.log('Get Detail  ' + $stateParams.detailId);
+					var deferred = $q.defer();
+					CommonService.detailForm($stateParams.entity, $stateParams.fy, $stateParams.branchCode,$stateParams.detailId).then(deferred.resolve, deferred.resolve);
+					return deferred.promise;
+				}
+			}
+
+		})
 		.state('home.list', {
 			url: "/list/:entity/:page",
 			params: {

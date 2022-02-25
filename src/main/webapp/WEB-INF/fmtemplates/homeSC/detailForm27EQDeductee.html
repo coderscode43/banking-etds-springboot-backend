@@ -1,0 +1,381 @@
+<style>
+/*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+@media only screen and (max-width: 760px) , ( min-device-width : 768px)
+	and (max-device-width: 1024px) {
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr {
+		display: block;
+	}
+
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	tr {
+		margin: 0 0 1rem 0;
+	}
+	tr:nth-child(odd) {
+		background: #ccc;
+	}
+	td {
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee;
+		position: relative;
+		padding-left: 50%;
+	}
+	td:before {
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 0;
+		left: 6px;
+		width: 45%;
+		padding-right: 10px;
+		white-space: nowrap;
+	}
+
+	/*
+		Label the data
+    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+		*/
+}
+
+@media only screen and (max-width: 1000px) {
+	.one {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.two {
+		padding: 8px;
+	}
+}
+
+@media only screen and (min-width:600px) {
+	#three {
+		display: none;
+		max-height: 0;
+		overflow: hidden;
+	}
+}
+
+@media only screen and (min-width:1000px) {
+	#search {
+		margin-left: 45%;
+		margin-top: 2px;
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	#hide {
+		display: none;
+	}
+}
+
+.table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
+	{
+	background-color: whitesmoke;
+}
+
+@media ( min-width : 768px) {
+	.collapse.dont-collapse-sm {
+		display: block;
+		height: auto !important;
+		visibility: visible;
+	}
+}
+</style>
+
+<div id ="page-warapper" ng-init ="cCctr.entity=cCctr.getEntityData().deductee;">
+	<div class="container-fluid">
+		<div ng-show="cCctr.show != true">
+			<h3 class="page-header" style="margin-top: 2%;">Details of
+				27EQ Deductee</h3>
+		</div>
+		<div class ="panel panel-default" style="margin-top:-2%; border:none !important;">
+			<div class ="panel-body">
+				<br>
+				<h4>Dedcutee Details</h4>
+					<div class="container">
+					<div class="collapse dont-collapse-sm" id="collapseExample2">
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-3">
+								<label>Quarter. &nbsp;</label></div><div class="col-md-3"> :
+								{{cCctr.entity.quarter}}
+							</div>
+							<div class ="col-md-3">
+								<label>Month. &nbsp;</label></div><div class="col-md-3"> :
+								{{cCctr.entity.month}}
+							</div>
+						</div>
+						<div class ="row" style="font-size:13px;">
+							<div class ="col-md-3">
+								<label>Branch Code. &nbsp;</label></div><div class="col-md-3"> :
+								{{cCctr.entity.branchCode}}
+							</div>
+							<div class ="col-md-3">
+								<label>Vend/Cust Id. &nbsp;</label></div><div class="col-md-3"> :
+								{{cCctr.entity.custVendId}}
+							</div>
+						</div>
+						<div class ="row" style="font-size:13px;">
+							<div class ="col-md-3">
+								<label>Unique Ref No. &nbsp;</label></div><div class="col-md-3"> :
+								{{cCctr.entity.uniqueRefNo}}
+							</div>
+							<div class="col-md-3">
+								<label>Account Number. &nbsp;</label></div><div class="col-md-3"> :
+								{{cCctr.entity.accNo}}
+							</div>
+						</div>
+						<div class ="row" style="font-size:13px;">
+							<div class ="col-md-3">
+								<label>Challan Heading. &nbsp;</label></div><div class="col-md-3"> :
+								{{cCctr.entity.challanHeading}}
+							</div>
+							<div class ="col-md-3">
+								<label>Party Reference No. &nbsp;</label></div><div class="col-md-3"> :
+								{{cCctr.entity.deducteeReferenceNo}}
+							</div>
+						</div>
+						<div class ="row" style="font-size:13px;">
+							<div class ="col-md-3">
+								<label>Party Code. &nbsp;</label></div><div class="col-md-3"> :
+								{{cCctr.entity.deducteeCode}}
+							</div>
+							<div class ="col-md-3">
+								<label>PAN of the Party. &nbsp;</label></div><div class="col-md-3"> :
+								{{cCctr.entity.panofthedeDeductee}}
+							</div>
+						</div>
+						<div class ="row" style="font-size:13px;">	
+							<div class ="col-md-3">
+								<label>Name of the Party. &nbsp;</label></div><div class="col-md-3"> :
+								{{cCctr.entity.nameoftheDeductee}}
+							</div>
+							<div class ="col-md-3">
+								<label>Amount Receipt/Debited. &nbsp;</label></div><div class="col-md-3"> :
+								{{cCctr.entity.amountReceiptDebited}}
+							</div>
+						</div>
+						<div class ="row" style="font-size:13px;">
+							<div class ="col-md-3">
+								<label>Date of Received/Debited. &nbsp;</label></div><div class="col-md-3"> :
+								{{cCctr.entity.dateofReceivedDebited}}
+							</div>
+						
+								<div class ="col-md-3">
+									<label>TCS. &nbsp;</label></div><div class="col-md-3"> :
+									{{cCctr.entity.tcs}}
+								</div>
+						</div>
+						<div class ="row" style="font-size:13px;">
+							<div class ="col-md-3">
+								<label>Surcharge. &nbsp;</label></div><div class="col-md-3"> :
+								{{cCctr.entity.surcharge}}
+							</div>
+							<div class ="col-md-3">
+								<label>Education Cess. &nbsp;</label></div><div class="col-md-3"> :
+								{{cCctr.entity.educationCess}}
+							</div>
+						</div>
+						<div class ="row" style="font-size:13px;">
+							<div class ="col-md-3">
+								<label>Total Tax Collected. &nbsp;</label></div><div class="col-md-3"> :
+								{{cCctr.entitytotalTaxCollected}}
+							</div>
+							<div class ="col-md-3">
+								<label>Total Tax Deposited. &nbsp;</label></div><div class="col-md-3"> :
+								{{cCctr.entity.totalTaxDeposited}}
+							</div>
+						</div>
+						<div class ="row" style="font-size:13px;">
+							<div class ="col-md-3">
+								<label>Date of Collected. &nbsp;</label></div><div class="col-md-3"> :
+								{{cCctr.entity.dateofCollected}}
+							</div>
+							<div class ="col-md-3">
+								<label>Total Value of Purchase. &nbsp;</label></div><div class="col-md-3"> :
+								{{cCctr.entity.totalValueofPurchase}}
+							</div>
+						</div>
+						<div class ="row" style="font-size:13px;">
+							<div class="col-md-3">
+								<label>Rate at which Tax Collected. &nbsp;</label></div><div class="col-md-3"> :
+								{{cCctr.entity.rateatwhichTaxCollected}}
+							</div>
+							<div class ="col-md-3">
+								<label>Reason for Non Collection. &nbsp;</label></div><div class="col-md-3"> :
+								{{cCctr.entity.reasonforNonCollection}}
+							</div>
+						</div>
+						<div class ="row" style="font-size:13px;">
+							<div class ="col-md-3">
+								<label>Section / Collection Code. &nbsp;</label></div><div class="col-md-3"> :
+								{{cCctr.entity.sectionCollectionCode}}
+							</div>
+							<div class ="col-md-3">
+								<label>Certificate Number. &nbsp;</label></div><div class="col-md-3"> :
+								{{cCctr.entity.certificatenumber}}
+							</div>
+						</div>
+						<div class ="row" style="font-size:13px;">
+							<div class ="col-md-3">
+								<label>Deductee is Non-Resident. &nbsp;</label></div><div class="col-md-3"> :
+								{{cCctr.entity.deducteeisNonResident}}
+							</div>
+							<div class ="col-md-3">
+								<label>Permanent Establishment. &nbsp;</label></div><div class="col-md-3"> :
+								{{cCctr.entity.permanentEstablishment}}
+							</div>
+						</div>
+						<div class ="row" style="font-size:13px;">
+							<div class="col-md-3">
+								<label>Reason For NonCollection F or G. &nbsp;</label></div><div class="col-md-3"> :
+								{{cCctr.entity.reasonforNonCollectionForG}}
+							</div>
+							<div class ="col-md-3">
+								<label>if Answer to 681A is Yes Then Challan Number. &nbsp;</label></div><div class="col-md-3"> :
+								{{cCctr.entity.ifAnswerto681AisYesThenChallanNumber}}
+							</div>
+						</div>
+						<div class ="row" style="font-size:13px;">
+							<div class ="col-md-3">
+								<label>if Answer to 681A is Yes Then Date Of Payment Of TDS To Central Government. &nbsp;</label></div><div class="col-md-3"> :
+								{{cCctr.entity.ifAnswerto681AisYesThenDateOfPaymentOfTDSToCentralGovernment}}
+							</div>
+							<div class ="col-md-3">
+								<label>Error Description. &nbsp;</label></div><div class="col-md-3"> :
+								{{cCctr.entity.errorDescription}}
+							</div>
+						</div>
+						<div class ="row" style="font-size:13px;">
+							<div class = "col-md-3">
+								<label>Warning Description. &nbsp;</label></div><div class="col-md-3"> :
+								{{cCctr.entity.warningDescription}}
+							</div>
+							<div class ="col-md-3">
+								<label>Short Deduction. &nbsp;</label></div><div class="col-md-3"> :
+								{{cCctr.entity.ShortDeduction}}
+							</div>
+						</div>
+						<div class ="row" style="font-size:13px;">
+							<div class ="col-md-3">
+								<label>Interest on Short Deduction. &nbsp;</label></div><div class="col-md-3"> :
+								{{cCctr.entity.InterestOnShortDeduction}}
+							</div>
+							<div class ="col-md-3">
+								<label>Interest on Late Payment. &nbsp;</label></div><div class="col-md-3"> :
+								{{cCctr.entity.InterestOnLatePayment}}
+							</div>
+						</div>
+						<div class ="row" style="font-size:13px;">
+							<div class="col-md-3">
+								<label>Interest on Late Deduction. &nbsp;</label></div><div class="col-md-3"> :
+								{{cCctr.entity.InterestOnLateDeduction}}
+							</div>
+						</div>
+						
+						
+											<div class="row">
+								<form role="form" name="remark">
+									<input
+										ng-model="cCctr.newEntity.deducteeId = cCctr.entity.id"
+										id="deducteeId" name="deducteeId" style="display: none">
+
+									<input ng-model="cCctr.newEntity.fy = cCctr.entity.fy"
+										id="fy" name="fy" style="display: none"> <input
+										ng-model="cCctr.newEntity.deducteeForm ='27EQ'"
+										id="deducteeForm" name="deducteeForm" style="display: none">
+
+									<input class="form-control"
+										ng-model="cCctr.newEntity.branchCode = cCctr.entity.branchCode"
+										id="branchCode" name="branchCode" style="display: none">
+
+									<button data-toggle="modal" data-target="#myModal"
+										class="btn btn-success" style="margin-left: 50%">Add
+										Remark</button>
+
+									<button class="btn btn-danger"
+										ng-click="cCctr.gotoListPage('form27EQDeductee','form27EQDeductee')">Back</button>
+
+									<button class="btn btn-primary">Resolved</button>
+								</form>
+								<div class="modal fade" id="myModal" role="dialog">
+									<div class="modal-dialog">
+
+										<!-- Modal content-->
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+												<h4 class="modal-title">Add Remark</h4>
+											</div>
+											<div class="col-md-12">
+												<div class="col-md-12">
+													<label style="font-size: 13px; margin-top: 2%">Remarks&nbsp;:</label>
+												</div>
+												<textarea ng-model="cCctr.newEntity.remark" id="remark"
+													name="remark"
+													style="width: 90%; height: 20%; font-size: 15px; margin-left: 5%;"></textarea>
+												<!-- 	<span style="color: red" class="error"
+											ng-show="remark.submitted || remark.remark.$dirty && remark.remark.$invalid">Please
+									enter valid Remark</span> -->
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-success "
+													ng-click="cCctr.addRemark(true,'remark',cCctr.newEntity,'close')"
+													data-dismiss="modal" style="margin: 2% 5% 0 0; width: 15%;">Add</button>
+											</div>
+										</div>
+
+									</div>
+								</div>
+						</div>
+					</div>
+				</div>
+				<br>
+				<div>
+						<div class="table-responsive" style="overflow-x: inherit">
+							<!-- 	<div class="col-md-12" style="margin-left:-30px"> -->
+							<table class=" table table-bordered table-hover  table-striped"
+								role="table"
+								style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+
+								<thead>
+								<colgroup>
+									<col span="14" style="background-color: #ffffff">
+								</colgroup>
+								<tr>
+								<thead>
+									<tr role="row" style="height: 40px; background-color: #81b7db">
+										<th>Sr.No</th>
+										<th style="width: 50%">Remark</th>
+										<th>Remark By</th>
+										<th>Date & Time</th>
+
+									</tr>
+
+								</thead>
+								<tbody>
+									<tr ng-repeat="a in cCctr.getEntityListData().remark">
+										<th>{{$index+1}}</th>
+										<th>{{a.remark}}</th>
+										<th>{{a.userName}}</th>
+										<th>{{a.dateTime | date:'dd-MM-yyyyTHH:mm:ss'}}</th>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+			

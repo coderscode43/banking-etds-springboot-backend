@@ -147,6 +147,15 @@ App
 									"page" : page
 								});
 							}
+							self.gotoDetailFormPage = function(entity,detailId,fy,branchCode,page) {
+								$state.go("home.detailForm", {
+									"entity" : entity,
+									"fy" : fy,
+									"detailId":detailId,
+									"branchCode" :branchCode,
+									"page" : page
+								});
+							}
 							self.gotoWFYDetailPage = function(entity,detailId, page) {
 								self.show = false;
 								self.entity = {};

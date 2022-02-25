@@ -15,6 +15,7 @@ App.factory('CommonService', [
 				search : search,
 				searchEntities : searchEntities,
 				detail : detail,
+				detailForm:detailForm,
 				update : update,
 				save : save,
 				ajax : ajax,
@@ -97,6 +98,20 @@ App.factory('CommonService', [
 				}).error(function(status) {
 					deferred.reject(status);
 				});
+
+				return deferred.promise;
+
+			}
+			function detailForm(entity, fy, branchCode, detailId) {
+				var deferred = $q.defer();
+				$http.get(
+					REST_SERVICE_URI + entity + '/detail/' + fy + "/" + branchCode + "/" + detailId).success(function(data) {
+						entityData = data;
+						entityList= data;
+						deferred.resolve(data);
+					}).error(function(status) {
+						deferred.reject(status);
+					});
 
 				return deferred.promise;
 

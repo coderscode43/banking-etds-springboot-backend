@@ -123,12 +123,12 @@ App.factory('CommonService', [
 				entityList = [];
 				var deferred = $q.defer();
 				$http.get(
-						REST_SERVICE_URI + entity + '/search/get/0/10/'+map).success(function(data) {
+						REST_SERVICE_URI + entity + '/search/get/0/100/'+map).success(function(data) {
 					/*count = 0;-pranay*/
-					count = data.count;
+					count = 0;
 					/*resultPerPage = 10;*/
 					/*entityList = data;--Pranay*/ 
-					entityList = data.entities;
+					entityList = data;
 					deferred.resolve(data);
 				}).error(function(status) {
 					deferred.reject(status);
@@ -160,7 +160,7 @@ App.factory('CommonService', [
 			function update(entitySave, entity) {
 				var deferred = $q.defer();
 
-				$http.put(REST_SERVICE_URI + entity + '/update/'+entitySave.id, 
+				$http.put(REST_SERVICE_URI + entity + '/update', 
 						entitySave).success(function(data) {
 
 					deferred.resolve(data);

@@ -580,6 +580,22 @@ App
 									});
 								}
 							}
+							self.searchFYEntities = function(valid, entity, page) {
+								if (valid = true) {
+									$.each(self.search, function(key, value) {
+										if (value === "" || value === null) {
+											delete self.search[key];
+										}
+									});
+									self.lastSearch = self.search;
+									var param = JSON.stringify(self.search);
+									$state.go("homeWot.search", {
+										"entity" : entity,
+										"page" : page,
+										"searchParams":  param
+									});
+								}
+							}
 							self.gotoAddPage = function(page) {
 								self.entity = {};
 								$state.go("home.add", 

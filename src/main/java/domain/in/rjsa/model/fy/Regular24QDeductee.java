@@ -117,7 +117,7 @@ public class Regular24QDeductee extends CommonModelAbstract {
 	@Column(name = "month")
 	public String month;  
 	@Column(name = "staffId")
-	public String staffId;
+	public Long staffId;
 	@Column(name = "uniqueRefNo")
 	public String uniqueRefNo;
 	@Column(name = "TAN")

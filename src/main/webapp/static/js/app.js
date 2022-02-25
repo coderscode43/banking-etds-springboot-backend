@@ -223,13 +223,13 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 				searchParams:null
 			   },
 			   templateUrl : function($stateParams) {
-					return 'index/list/homeWOT/'+$stateParams.entity +'/'+$stateParams.page;
+					return 'index/list/homeWOT/'+$stateParams.page;
 				},
 				resolve : {
-					list : function($q, $state,CommonService,$stateParams) {
+					list : function($q, $state,CommonServiceFY,$stateParams) {
 						console.log('Get Search List of '+$stateParams.entity);
 						var deferred = $q.defer();
-						CommonService.searchEntities($stateParams.clientId,$stateParams.entity,$stateParams.searchParams).then(deferred.resolve, deferred.resolve);
+						CommonServiceFY.searchEntities($stateParams.fy,$stateParams.entity,$stateParams.searchParams,$stateParams.branchCode).then(deferred.resolve, deferred.resolve);
 						return deferred.promise;
 					}
 				}

@@ -21,13 +21,13 @@ import domain.in.rjsa.service.RemarkService;
 public class Regular24QDeducteeController
 		extends AbstractControllerFY<Long, Regular24QDeductee, Regular24QDeducteeService> {
 	
-	private final Logger logger = LoggerFactory.getLogger(getClass());
+	
 	
 	@Autowired
 	Regular24QDeducteeService service;
 	@Autowired
 	RemarkService rService;
-	
+	private final Logger logger = LoggerFactory.getLogger(getClass());
 
 	@Override
 	public Regular24QDeducteeService getService() {

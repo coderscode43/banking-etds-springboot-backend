@@ -20,6 +20,8 @@ import com.google.gson.JsonElement;
 
 import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.fy.Remark;
+import domain.in.rjsa.service.Regular24QDeducteeService;
+import domain.in.rjsa.service.Regular26QDeducteeService;
 import domain.in.rjsa.service.RemarkService;
 
 @Controller
@@ -29,6 +31,10 @@ public class RemarkController extends AbstractControllerFY<Long, Remark, RemarkS
 	
 	@Autowired
 	RemarkService service;
+	@Autowired
+	Regular24QDeducteeService r24qService;
+	@Autowired
+	Regular26QDeducteeService r26qService;
 	@Override
 	public RemarkService getService() {
 		// TODO Auto-generated method stub
@@ -45,11 +51,23 @@ public class RemarkController extends AbstractControllerFY<Long, Remark, RemarkS
 	public ResponseEntity<?> createEntity(@RequestBody LinkedHashMap<String, Object> entity) {
 		// FieldErrorDTO ermsg=new FieldErrorDTO();
 		logger.info("Creating new Return instance");
-		String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss").format(Calendar.getInstance().getTime());
+		String timeStamp = new SimpleDateFormat("dd-MM-yyyy'T'HH:mm:ss").format(Calendar.getInstance().getTime());
 		entity.put("dateTime", timeStamp);
 		Login l = applicationCache.getLoginDetail(getPrincipal());
 		entity.put("userName", l.getUserName());
 		create(entity);
+//		int ID = (int) entity.get("deducteeId");
+//		Long id = new Long(ID); 
+//		if(entity.get("deducteeForm")=="24Q") {
+//			Regular24QDeductee r24q = r24qService.getByKey(id);
+//			r24q.setResolved(false);
+//		}
+//		else if(entity.get("deducteeForm")=="26Q") {
+//			Regular26QDeductee r26q = r26qService.getByKey(id);
+//			r26q.setResolved(false);
+//		}
+			
+			
 //		addLogs(entity);
 		// ermsg.setMessage(" Saved Successfully");
 		return new ResponseEntity<Object>(HttpStatus.CREATED);

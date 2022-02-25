@@ -69,6 +69,7 @@ App.factory('CommonServiceFY', [
 			$http.get(
 				REST_SERVICE_URI + entity + '/detail/' + fy + "/" + branchCode + "/" + detailId).success(function(data) {
 					entityData = data;
+					entityList= data;
 					deferred.resolve(data);
 				}).error(function(status) {
 					deferred.reject(status);

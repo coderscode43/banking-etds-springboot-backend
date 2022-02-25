@@ -13,7 +13,6 @@ public interface BranchService extends ServiceInterfaceForm<Long, Branch> {
 
 	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage);
 
-	public void update(Branch fromJson, String branchId);
 	
 
 }

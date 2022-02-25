@@ -25,7 +25,7 @@ public class RODetails extends CommonModelAbstract {
 		@Column(name = "id")
 		private Long id;
 		@Column(name = "roCode")
-		private Long roCode;
+		private String roCode;
 		@Column(name = "roName")
 		private String roName;
 		@Column(name = "roAddress")
@@ -34,4 +34,7 @@ public class RODetails extends CommonModelAbstract {
 		private String roState;
 		@Column(name = "roPincode")
 		private Long roPincode;
+		@Column(name = "roEmail")
+		private String roEmail;
+		
 }

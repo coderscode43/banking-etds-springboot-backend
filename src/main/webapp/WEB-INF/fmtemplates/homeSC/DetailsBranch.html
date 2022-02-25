@@ -180,8 +180,11 @@
 														type="text" id="roCode" name="roCode" placeholder="RO Code"
 														ng-model="cCctr.entity.roCode"
 														autocomplete="off" 
-														ng-required="true" 
-														ng-model-options="{updateOn: 'blur'}" /> <span
+														ng-required="true"
+														ng-maxlength="10"
+														ng-pattern="/^[a-zA-Z0-9]*$/" 
+														ng-model-options="{updateOn: 'blur'}" /> 
+													<span
 														style="color: red"
 														ng-show="profileForm.submitted || profileForm.roCode.$dirty && profileForm.roCode.$invalid">
 														<span class="error"
@@ -201,6 +204,8 @@
 														ng-model="cCctr.entity.branchCode"
 														autocomplete="off" 
 														ng-required="true"
+														ng-maxlength="10"
+														ng-pattern="/^[a-zA-Z0-9]*$/" 
 														ng-model-options="{updateOn: 'blur'}" /> <span
 														style="color: red"
 														ng-show="profileForm.submitted || profileForm.branchCode.$dirty && profileForm.branchCode.$invalid">
@@ -315,7 +320,7 @@
 																				</span>
 																			</div>
 																		</div>
-														</div>
+																	</div>
 																	<br><br>
 																	<div class ="row">
 																		<div class ="col-md-6">

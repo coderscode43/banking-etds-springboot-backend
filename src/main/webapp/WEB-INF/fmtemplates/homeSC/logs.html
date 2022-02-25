@@ -180,31 +180,15 @@
 		
 		</div>
 
-		<div class="row" id="search">
-			<div class="col-md-2" id="search">
-				<button
-					ng-click="cCctr.searchEntities(true,'logs','logs')"
-					class="btn btn-success" onclick="scrollWin()">Search</button>
-			</div>
-		</div>
+		
 
 
 
 		<div class="row" id="hide">
 			<div class="col-md-3" style="margin-left: 80%; margin-top: -40px">
 				<button
-					ng-click="cCctr.searchEntities(true,'logs')"
+					ng-click="cCctr.searchEntities(true,'logs','logs')"
 					class="btn btn-success" onclick="scrollWin()">Search</button>
-			</div>
-
-
-			<div class="row">
-				<div class="col-md-3" id="search">
-					<button
-						ng-click="cCctr.searchEntities(true,'logs')"
-						class="btn btn-success" onclick="scrollWin()">Search</button>
-
-				</div>
 			</div>
 		</div>
 	</div>
@@ -228,39 +212,41 @@
 
 
 		<div class="row"
-			ng-init="cCctr.entity=cCctr.getEntityListData('logs')">
-			<div class="col-12" ng-show="cCctr.getEntityListData('logs')">
+			ng-init="cCctr.entity=cCctr.getEntityListData()">
+			<div class="col-12" ng-show="cCctr.getEntityListData()">
 				<div class="">
 					<div class="">
-					
+
 						<div class="table-responsive">
-						  <table class=" table table-bordered table-hover table-striped ">
-		<thead>
-			<tr  style="height:40px;background-color: #81b7db;font-size:13px">
-				<th>Sr No</th>
-				<th>User Name</th>
-				<th>IP Address</th>
-				<th>Entity</th>
-				<th>Date</th>
-				<th>Details</th>
-				<th>Action</th>
-				
-				
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat="a in cCctr.getEntityListData()" style="font-size:13px">
-				<td>{{$index+1}}</td>
-				<td>{{a.username}}</td>
-				<td>{{a.ipaddrs}}</td>
-				<td>{{a.entity}}</td>
-				<td>{{a.date | date:'dd-MM-yyyy'}}</td>
-				<td>{{a.details}}</td>
-				<td>{{a.action}}</td>
-				
-			</tr>
-		</tbody>
-	</table>
+							<table class=" table table-bordered table-hover table-striped ">
+								<thead>
+									<tr
+										style="height: 40px; background-color: #81b7db; font-size: 13px">
+										<th>Sr No</th>
+										<th>User Name</th>
+										<th>IP Address</th>
+										<th>Entity</th>
+										<th>Date</th>
+										<th>Details</th>
+										<th>Action</th>
+
+
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="a in cCctr.getEntityListData()"
+										style="font-size: 13px">
+										<td>{{$index+1}}</td>
+										<td>{{a.username}}</td>
+										<td>{{a.ipaddrs}}</td>
+										<td>{{a.entity}}</td>
+										<td>{{a.date | date:'dd-MM-yyyy'}}</td>
+										<td>{{a.details}}</td>
+										<td>{{a.action}}</td>
+
+									</tr>
+								</tbody>
+							</table>
 						</div>
 						<!--end table-->
 					</div>

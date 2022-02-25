@@ -14,8 +14,9 @@
 								<label>RO Code*</label></h6> <input class="form-control" type="text"
 									name="roCode" id="roCode" placeholder="ROCode"
 									ng-model="cCctr.entity.roCode" autocomplete="off"
-									ng-required="true" ng-maxlength="10"
-									
+									ng-required="true" 
+									ng-maxlength="10"
+									ng-pattern="/^[a-zA-Z0-9]*$/" 
 									 ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="formBranchDetails.submitted || formBranchDetails.roCode.$dirty && formBranchDetails.roCode.$invalid">
 									<span class="error" ng-show="formRODetails.roCode.$error.pattern">Enter valid RO Code </span> 
@@ -32,9 +33,12 @@
 								<label>Branch Code*</label></h6> <input class="form-control" type="text"
 									name="branchCode" placeholder="Branch Code"
 									ng-model="cCctr.entity.branchCode" autocomplete="off"
-									ng-required="true" 
+									ng-required="true"
+									ng-maxlength="10"
+									ng-pattern="/^[a-zA-Z0-9]*$/"  
 									ng-model-options="{updateOn: 'blur'}" />
 									<span style="color: red" ng-show="formBranchDetails.submitted || formBranchDetails.branchCode.$dirty && formBranchDetails.branchCode.$invalid">
+									<span class="error" ng-show="formRODetails.roCode.$error.pattern">Enter valid Branch Code </span>
 									<span class="error" ng-show="formBranchDetails.branchCode.$error.maxlength">Branch Code should not be greater than 45 characters.</span> 
 									<span class="error" ng-show="formBranchDetails.branchCode.$error.required">Branch Code is Required.</span>
 								</span>
@@ -129,7 +133,7 @@
 									<label>Branch Pincode*</label>
 								</h6><input class ="form-control" type ="text"
 								name ="branchPinCode" placeholder="Branch Pincode"
-								ng-model ="cCctr.entity.branchPinCode" ng-maxlength = "50"
+								ng-model ="cCctr.entity.branchPinCode" 
 								ng-required = "true" ng-pattern="/^[0-9]{6}$/"
 								ng-model-options="{updateOn:'blur'}"/>
 								<span style="color:red" ng-show = "formBranchDetails.submitted || formBranchDetails.branchPinCode.$dirty && formBranchDetails.branchPinCode.$invalid">
@@ -149,7 +153,6 @@
 										ng-model-options="{updateOn: 'blur'}">
 										<option disabled value="">Select State</option>
 										<#list State as state>
-
 										<option value="${state}">${state}</option>
 										</#list>
 									</select> <span style="color: red"

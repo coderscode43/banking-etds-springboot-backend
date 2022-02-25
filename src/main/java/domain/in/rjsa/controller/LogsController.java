@@ -87,11 +87,11 @@ public class LogsController extends AbstractControllerForm<Long, Logs, LogsServi
 
 			Long count = service.findSearchCount(map);
 			List<?> list = getSearch(map, pageNo, resultPerPage);
-			ListCount send = new ListCount();
-			send.setCount(count);
-			send.setEntities(list);
+//		ListCount send = new ListCount();
+//			send.setCount(count);
+//			send.setEntities(list);
 
-			return new ResponseEntity<>(send, HttpStatus.OK);
+			return new ResponseEntity<>(getSearch(map, pageNo, resultPerPage), HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("Error in listALL", e);
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

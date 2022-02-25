@@ -97,11 +97,11 @@ public class BranchController {
 
 			Long count = service.findSearchCount(map);
 			List<?> list = getSearch(map, pageNo, resultPerPage);
-			ListCount send = new ListCount();
-			send.setCount(count);
-			send.setEntities(list);
+//			ListCount send = new ListCount();
+//			send.setCount(count);
+//			send.setEntities(list);
 
-			return new ResponseEntity<>(send, HttpStatus.OK);
+			return new ResponseEntity<>(getSearch(map, pageNo, resultPerPage), HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("Error in listALL", e);
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -156,25 +156,20 @@ public class BranchController {
 		}
 		
 		// ------------------- Update Entity ---------------------------------
-		@RequestMapping(value = "/update/{branchId}", method = RequestMethod.PUT)
+		@RequestMapping(value = "/update", method = RequestMethod.PUT)
 		public ResponseEntity<?> update(@RequestBody LinkedHashMap<?, ?> entity, HttpServletResponse response,
-			@PathVariable String branchId, UriComponentsBuilder ucBuilder) {
+			 UriComponentsBuilder ucBuilder) {
 			FieldErrorDTO ermsg = new FieldErrorDTO();
-			update(entity, branchId);
+			Long id = Long.valueOf(entity.get("id").toString());
+			update(entity,id);
 			ermsg.setMessage("Updated Successfully");
 			return new ResponseEntity<String>(HttpStatus.ACCEPTED);
 
 		}
-		public void update(LinkedHashMap<?, ?> entity, String branchId) {
+		public void update(LinkedHashMap<?, ?> entity ,Long id) {
 			Gson gson = new Gson();
 			JsonElement jsonElement = gson.toJsonTree(entity);
-			ObjectMapper om = new ObjectMapper();
-			try {
-				service.update( gson.fromJson(jsonElement, Branch.class), branchId);
-				
-			} catch (Exception e) {
-				System.out.println(e);
-			}
+			service.update( gson.fromJson(jsonElement, Branch.class));
 		}
 	
 	/* END-pranay */

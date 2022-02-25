@@ -153,7 +153,7 @@ public class Regular27QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27QDed
 		criteria.add(Restrictions.eqOrIsNull("cif", entity.get("cif")));
           }
           if (entity.get("accNo") != null) {
-  			criteria.add(Restrictions.eqOrIsNull("accNo", Long.valueOf((String) entity.get("accNo"))));
+  			criteria.add(Restrictions.eqOrIsNull("accNo",entity.get("accNo")));
   		}
           if(entity.get("branchCode")!=null)
           {

@@ -142,8 +142,8 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 					map.put(key, Long.valueOf((String) map.get(key)));
 				}
 			}
-//			map.put("fy", fy);
-//			map.put("branchCode", branchCode);
+			map.put("fy", fy);
+			map.put("branchCode", branchCode);
 			return new ResponseEntity<>(getSearch(map), HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("Error in listALL", e);

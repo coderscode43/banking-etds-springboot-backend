@@ -123,12 +123,12 @@ App.factory('CommonService', [
 				entityList = [];
 				var deferred = $q.defer();
 				$http.get(
-						REST_SERVICE_URI + entity + '/search/get/0/10/'+map).success(function(data) {
+						REST_SERVICE_URI + entity + '/search/get/0/100/'+map).success(function(data) {
 					/*count = 0;-pranay*/
-					count = data.count;
+					count = 0;
 					/*resultPerPage = 10;*/
 					/*entityList = data;--Pranay*/ 
-					entityList = data.entities;
+					entityList = data;
 					deferred.resolve(data);
 				}).error(function(status) {
 					deferred.reject(status);

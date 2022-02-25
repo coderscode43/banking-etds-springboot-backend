@@ -130,7 +130,7 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 				searchParams:null
 			   },
 			   templateUrl : function($stateParams) {
-					return 'index/list/'+$stateParams.entity +'/'+$stateParams.page;
+					return 'index/list/homeSC/'+$stateParams.page;
 					/*return 'index/list/homeSC/'+$stateParams.entity +'/'+$stateParams.page;*/
 				},
 				resolve : {

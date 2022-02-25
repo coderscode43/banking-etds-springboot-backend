@@ -3,9 +3,11 @@ package domain.in.rjsa.dao.impl;
 import java.sql.Date;
 import java.time.ZonedDateTime;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.hibernate.criterion.Projections;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
@@ -137,7 +139,52 @@ public class Regular26QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular26QDed
 		
 		return (List< Regular26QDeductee>) criteria.list();
 	}
+	@Override
+	public List<Regular26QDeductee> search(HashMap entity, int pageNo, int noOfResult) {
+		Criteria criteria = createEntityCriteria();
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
+		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
+		criteria.add(Restrictions.allEq(propertyNameValues));
+		if (entity.get("branchCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("branchCode", entity.get("branchCode").toString()));
+		}
+		if (entity.get("branchName") != null) {
+			criteria.add(Restrictions.eqOrIsNull("branchName", entity.get("branchName").toString()));
+		}
+		if (entity.get("branchCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("branchCode", entity.get("branchCode").toString()));
+		}
+		if (entity.get("branchState") != null) {
+			criteria.add(Restrictions.eqOrIsNull("branchState", entity.get("branchState").toString()));
+		}
+//		if (entity.get("active") != null) {
+//			criteria.add(Restrictions.eqOrIsNull("active", Boolean.valueOf(entity.get("active").toString())));
+//		}
+		criteria.addOrder(Order.desc("id"));
+		criteria.setFirstResult(pageNo * noOfResult);
+		criteria.setMaxResults(noOfResult);
+		return (List<Regular26QDeductee>) criteria.list();
+	}
 	
+	@Override
+	public Long findSearchCount(LinkedHashMap<String, Object> entity) {
+		Criteria criteria = createEntityCriteria();
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
+		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
+		criteria.add(Restrictions.allEq(propertyNameValues));
+		if (entity.get("roCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("roCode",  entity.get("roCode").toString()));
+		}
+		if (entity.get("branchName") != null) {
+			criteria.add(Restrictions.eqOrIsNull("branchName", entity.get("branchName").toString()));
+		}
+		if (entity.get("branchCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("branchCode", entity.get("branchCode").toString()));
+		}
+		if (entity.get("branchState") != null) {
+			criteria.add(Restrictions.eqOrIsNull("branchState", entity.get("branchState").toString()));
+		}
+		return (Long) criteria.setProjection(Projections.rowCount()).uniqueResult();
 	
-	
+	}
 }

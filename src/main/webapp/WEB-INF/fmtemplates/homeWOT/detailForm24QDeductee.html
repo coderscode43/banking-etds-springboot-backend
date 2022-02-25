@@ -106,7 +106,7 @@ table {
 
 
 
-<div id="page-wrapper" ng-init="cCctr.entity=cCctr.getEntityDataFY();">
+<div id="page-wrapper" ng-init="cCctr.entity=cCctr.getEntityDataFY().deductee;">
 	<div class="container-fluid">
 
 		<div ng-show="cCctr.show != true">
@@ -144,47 +144,47 @@ table {
 									<label>Challan Sr.No. &nbsp;</label>
 								</div>
 								<div class="col-md-3">:
-									{{cCctr.entity.deductee.challanHeading}}</div>
+									{{cCctr.entity.challanHeading}}</div>
 								<div class="col-md-3">
 									<label>Employee Reference No. &nbsp;</label>
 								</div>
 								<div class="col-md-3">:
-									{{cCctr.entity.deductee.employeeRefNo}}</div>
+									{{cCctr.entity.employeeRefNo}}</div>
 							</div>
 
 							<div class="row" style="font-size: 13px;">
 								<div class="col-md-3">
 									<label>Pan Reference No &nbsp;</label>
 								</div>
-								<div class="col-md-3">: {{cCctr.entity.deductee.panRefNo}}
+								<div class="col-md-3">: {{cCctr.entity.panRefNo}}
 								</div>
 
 								<div class="col-md-3">
 									<label>Pan &nbsp;</label>
 								</div>
-								<div class="col-md-3">: {{cCctr.entity.deductee.pan}}</div>
+								<div class="col-md-3">: {{cCctr.entity.pan}}</div>
 							</div>
 							<div class="row" style="font-size: 13px;">
 								<div class="col-md-3">
 									<label>Deductee Id &nbsp;</label>
 								</div>
-								<div class="col-md-3">: {{cCctr.entity.deductee.id}}</div>
+								<div class="col-md-3">: {{cCctr.entity.id}}</div>
 								<div class="col-md-3">
 									<label>Challan Heading&nbsp;</label>
 								</div>
 								<div class="col-md-3">:
-									{{cCctr.entity.deductee.challanHeading}}</div>
+									{{cCctr.entity.challanHeading}}</div>
 							</div>
 							<div class="row" style="font-size: 13px;">
 								<div class="col-md-3">
 									<label>Name &nbsp;</label>
 								</div>
-								<div class="col-md-3">: {{cCctr.entity.deductee.name}}</div>
+								<div class="col-md-3">: {{cCctr.entity.name}}</div>
 								<div class="col-md-3">
 									<label>Section Code &nbsp;</label>
 								</div>
 								<div class="col-md-3">:
-									{{cCctr.entity.deductee.sectionCode }}</div>
+									{{cCctr.entity.sectionCode }}</div>
 							</div>
 
 							<div class="row" style="font-size: 13px;">
@@ -192,12 +192,12 @@ table {
 									<label>Date Of Payment &nbsp;</label>
 								</div>
 								<div class="col-md-3">:
-									{{cCctr.entity.deductee.dateOfPayment| date:'dd-MM-yyyy'}}</div>
+									{{cCctr.entity.dateOfPayment| date:'dd-MM-yyyy'}}</div>
 								<div class="col-md-3">
 									<label>Date of Deduction &nbsp;</label>
 								</div>
 								<div class="col-md-3">:
-									{{cCctr.entity.deductee.dateOfDeduction| date:'dd-MM-yyyy'}}</div>
+									{{cCctr.entity.dateOfDeduction| date:'dd-MM-yyyy'}}</div>
 							</div>
 
 							<div class="row" style="font-size: 13px;">
@@ -205,7 +205,7 @@ table {
 									<label>Amount Paid &nbsp;</label>
 								</div>
 								<div class="col-md-3">:
-									{{cCctr.entity.deductee.amountPaid}}</div>
+									{{cCctr.entity.amountPaid}}</div>
 								<div class="col-md-3">
 									<label>TDS&nbsp;</label>
 								</div>
@@ -217,12 +217,12 @@ table {
 									<label>Surcharge &nbsp;</label>
 								</div>
 								<div class="col-md-3">:
-									{{cCctr.entity.deductee.surcharge}}</div>
+									{{cCctr.entity.surcharge}}</div>
 								<div class="col-md-3">
 									<label>Education Cess &nbsp;</label>
 								</div>
 								<div class="col-md-3">:
-									{{cCctr.entity.deductee.educationCess}}</div>
+									{{cCctr.entity.educationCess}}</div>
 							</div>
 
 							<div class="row" style="font-size: 13px;">
@@ -230,11 +230,11 @@ table {
 									<label>Branch Code&nbsp;</label>
 								</div>
 								<div class="col-md-3">:
-									{{cCctr.entity.deductee.branchCode}}</div>
+									{{cCctr.entity.branchCode}}</div>
 								<div class="col-md-3">
 									<label>Month&nbsp;</label>
 								</div>
-								<div class="col-md-3">: {{cCctr.entity.deductee.month}}</div>
+								<div class="col-md-3">: {{cCctr.entity.month}}</div>
 								<!-- <div class="col-md-6">
 									<label>CIF&nbsp;:</label> {{cCctr.entity.cif}}
 								</div> -->
@@ -243,11 +243,11 @@ table {
 								<div class="col-md-3">
 									<label>Id Number&nbsp;</label>
 								</div>
-								<div class="col-md-3">: {{cCctr.entity.deductee.idNo}}</div>
+								<div class="col-md-3">: {{cCctr.entity.idNo}}</div>
 								<div class="col-md-3">
 									<label>Account Number&nbsp;</label>
 								</div>
-								<div class="col-md-3">: {{cCctr.entity.deductee.accNo}}</div>
+								<div class="col-md-3">: {{cCctr.entity.accNo}}</div>
 							</div>
 							<div class="row" style="font-size: 13px;">
 								<!-- <div class="col-md-6">
@@ -260,13 +260,13 @@ table {
 								<div class="col-md-3">
 									<label>Total Tds &nbsp;</label>
 								</div>
-								<div class="col-md-3">: {{cCctr.entity.deductee.totalTds}}
+								<div class="col-md-3">: {{cCctr.entity.totalTds}}
 								</div>
 								<div class="col-md-3">
 									<label>Total Tax Deposited &nbsp;</label>
 								</div>
 								<div class="col-md-3">:
-									{{cCctr.entity.deductee.totalTaxDeposited}}</div>
+									{{cCctr.entity.totalTaxDeposited}}</div>
 							</div>
 							<div class="row" style="font-size: 13px;">
 								<!-- <div class="col-md-3">
@@ -276,18 +276,18 @@ table {
 									<label>Certificate Number &nbsp;</label>
 								</div>
 								<div class="col-md-3">:
-									{{cCctr.entity.deductee.certificateNumber}}</div>
+									{{cCctr.entity.certificateNumber}}</div>
 								<div class="col-md-3">
 									<label>FY&nbsp;</label>
 								</div>
-								<div class="col-md-3">: {{cCctr.entity.deductee.fy}}</div>
+								<div class="col-md-3">: {{cCctr.entity.fy}}</div>
 							</div>
 							<div class="row" style="font-size: 13px;">
 
 								<div class="col-md-3">
 									<label>Quarter &nbsp;</label>
 								</div>
-								<div class="col-md-3">: {{cCctr.entity.deductee.quarter}}
+								<div class="col-md-3">: {{cCctr.entity.quarter}}
 								</div>
 							</div>
 							<!-- <div class="row" style="font-size: 13px;">
@@ -308,16 +308,16 @@ table {
 							<div class="row">
 								<form role="form" name="remark">
 									<input
-										ng-model="cCctr.newEntity.deducteeId = cCctr.entity.deductee.id"
+										ng-model="cCctr.newEntity.deducteeId = cCctr.entity.id"
 										id="deducteeId" name="deducteeId" style="display: none">
 
-									<input ng-model="cCctr.newEntity.fy = cCctr.entity.deductee.fy"
+									<input ng-model="cCctr.newEntity.fy = cCctr.entity.fy"
 										id="fy" name="fy" style="display: none"> <input
 										ng-model="cCctr.newEntity.deducteeForm ='24Q'"
 										id="deducteeForm" name="deducteeForm" style="display: none">
 
 									<input class="form-control"
-										ng-model="cCctr.newEntity.branchCode = cCctr.entity.deductee.branchCode"
+										ng-model="cCctr.newEntity.branchCode = cCctr.entity.branchCode"
 										id="branchCode" name="branchCode" style="display: none">
 
 									<button data-toggle="modal" data-target="#myModal"

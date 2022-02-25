@@ -17,13 +17,12 @@ import domain.in.rjsa.model.tds.CHALLAN;
 
 @Repository("CHALLANDao")
 public class CHALLANDaoImpl extends AbstractDaoTaxo<String, CHALLAN> implements CHALLANDao{
-	//@SuppressWarnings("unchecked")
+	@SuppressWarnings("unchecked")
 	@Override
 	public List< CHALLAN> search(HashMap entity, int pageNo, int noOfResult) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
-
 		criteria.add(Restrictions.allEq(propertyNameValues));
 		
 		 if(entity.get("CIN")!=null)
@@ -43,14 +42,14 @@ public class CHALLANDaoImpl extends AbstractDaoTaxo<String, CHALLAN> implements 
 		criteria.add(Restrictions.eqOrIsNull("CHALLAN_MISMATCH", entity.get("AMOUNT_OF_CLALLAN")));
          }
 		
-		 criteria.addOrder(Order.desc("id"));
+		 criteria.addOrder(Order.desc("CIN"));
 			criteria.setFirstResult(pageNo * noOfResult);
 			criteria.setMaxResults(noOfResult);
 			return (List<CHALLAN>) criteria.list();
 	}
 
 	@Override
-	public Long findSearchCount(LinkedHashMap<String, Object> entity) {
+	public String findSearchCount(LinkedHashMap<String, Object> entity) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
@@ -74,12 +73,12 @@ public class CHALLANDaoImpl extends AbstractDaoTaxo<String, CHALLAN> implements 
 	criteria.add(Restrictions.eqOrIsNull("CHALLAN_MISMATCH", entity.get("AMOUNT_OF_CLALLAN")));
     }
 	
-		return (Long) criteria.setProjection(Projections.rowCount()).uniqueResult();
+		return (String) criteria.setProjection(Projections.rowCount()).uniqueResult();
 
 }
 
 	@Override
-	public CHALLAN getByKey(Long key) {
+	public CHALLAN getByKey(String key) {
 		// TODO Auto-generated method stub
 		return null;
 	}

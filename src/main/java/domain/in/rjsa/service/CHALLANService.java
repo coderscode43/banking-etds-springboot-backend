@@ -6,9 +6,9 @@ import java.util.List;
 import domain.in.rjsa.model.tds.CHALLAN;
 
 public interface CHALLANService extends ServiceInterfaceTaxo<String, CHALLAN>{
-	public CHALLAN getByKey(Long id);
+	public CHALLAN getByKey(String CIN);
 	
-	public Long findSearchCount(LinkedHashMap<String, Object> map);
+	public String findSearchCount(LinkedHashMap<String, Object> map);
 
 	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage);
 

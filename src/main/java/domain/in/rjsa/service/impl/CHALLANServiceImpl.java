@@ -1,6 +1,5 @@
 package domain.in.rjsa.service.impl;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -13,9 +12,9 @@ import domain.in.rjsa.model.tds.CHALLAN;
 import domain.in.rjsa.service.AbstractServiceTaxo;
 import domain.in.rjsa.service.CHALLANService;
 
-@Transactional("tdsTxManager")
+@Transactional("transactionManager")
 @Service("CHALLANService")
-public class CHALLANServiceImpl extends AbstractServiceTaxo<String, CHALLAN, CHALLANDao> implements CHALLANService{
+public  class CHALLANServiceImpl extends AbstractServiceTaxo<String, CHALLAN, CHALLANDao> implements CHALLANService{
 	@Autowired
 	CHALLANDao dao;
 		@Override
@@ -23,14 +22,9 @@ public class CHALLANServiceImpl extends AbstractServiceTaxo<String, CHALLAN, CHA
 			// TODO Auto-generated method stub
 			return dao;
 		}
-		@Override
-		public CHALLAN getByKey(Long id) {
-			// TODO Auto-generated method stub
-			return dao.getByKey(id);
-		}
 		
 		@Override
-		public Long findSearchCount(LinkedHashMap<String, Object> map) {
+		public String findSearchCount(LinkedHashMap<String, Object> map) {
 			// TODO Auto-generated method stub
 			return dao.findSearchCount(map);
 		}
@@ -39,4 +33,11 @@ public class CHALLANServiceImpl extends AbstractServiceTaxo<String, CHALLAN, CHA
 			// TODO Auto-generated method stub
 			return dao.search(map, pageNo, resultPerPage);
 		}
+		
+		@Override
+		public CHALLAN getByKey(String CIN) {
+			// TODO Auto-generated method stub
+			return dao.getByKey(CIN);
+		}
+		
 	}

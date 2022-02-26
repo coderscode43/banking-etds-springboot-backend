@@ -73,12 +73,12 @@ public class IndexController {
 		return  "homeWOT/homeWOTHomepage";
 	}
 	
-	@RequestMapping(value = "/add/{page}")
-	public String getAddPage(ModelMap model, @PathVariable String page ) {
+	@RequestMapping(value = "/add/{action}/{page}")
+	public String getAddPage(ModelMap model, @PathVariable String page ,@PathVariable String action) {
 		logger.info("Get add page for " + page);
 		//add Branch State-pranay
 		staticData(model);
-		return "homeSC/"+ page;
+		return action + "/" + page;
 	}
 	@RequestMapping(value = "/detail/{action}/{page}")
 	public String getPage( @PathVariable String action, @PathVariable String page,

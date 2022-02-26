@@ -47,9 +47,9 @@ public class Regular27EQDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27EQD
           {
 		criteria.add(Restrictions.eqOrIsNull("fy", entity.get("fy")));
           }
-          if(entity.get("name")!=null)
+          if(entity.get("nameoftheDeductee")!=null)
           {
-		criteria.add(Restrictions.eqOrIsNull("name", entity.get("name")));
+		criteria.add(Restrictions.eqOrIsNull("nameoftheDeductee", entity.get("nameoftheDeductee")));
           }
           
           if(entity.get("quarter")!=null)

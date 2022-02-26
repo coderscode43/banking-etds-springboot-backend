@@ -1,14 +1,16 @@
 package domain.in.rjsa.controller;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 import domain.in.rjsa.model.fy.MisReport;
 import domain.in.rjsa.service.MisReportService;
 @Controller
-@RequestMapping("/apimisReport")
-public class MisReportController extends AbstractControllerForm<Long, MisReport, MisReportService> {
+@RequestMapping("/apigenerateReport")
+public class MisReportController extends AbstractControllerFY<Long, MisReport, MisReportService> {
 	@Autowired
 	MisReportService service;
 
@@ -23,7 +25,8 @@ public class MisReportController extends AbstractControllerForm<Long, MisReport,
 		// TODO Auto-generated method stub
 		return MisReport.class;
 	}
+
 	
-	}
+}
 
 

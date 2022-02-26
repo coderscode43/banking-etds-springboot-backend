@@ -33,7 +33,7 @@ public class RODetails extends CommonModelAbstract {
 		@Column(name = "roState")
 		private String roState;
 		@Column(name = "roPincode")
-		private Long roPincode;
+		private String roPincode;
 		@Column(name = "roEmail")
 		private String roEmail;
 		

@@ -389,6 +389,75 @@ App
 													});
 								}
 							}
+							self.submitFileFY = function(valid, entity, form,
+									closeModalId) {
+								if (valid == true) {
+									console.log("Common Controller submit "
+											+ entity);
+
+									progressBar();
+									CommonServiceFY
+											.save(form, entity)
+											.then(
+													function(data) {
+														progressBar();
+														console
+																.log(entity
+																		+ ' added successfully');
+
+														angular
+																.element(
+																		'#'
+																				+ closeModalId)
+																.trigger(
+																		'click');
+
+														$('#successMsg')
+																.find(
+																		'.modal-header')
+																.find(
+																		'.headingMsg')
+																.append(
+																		"Successfull");
+														$('#successMsg')
+																.find(
+																		'.modal-body')
+																.find('.msg')
+																.append(
+																		" Saved Successfully");
+														$("#successMsg")
+																.modal();
+
+													},
+													function(error) {
+														progressBar();
+														console
+																.error('Error while creating saving Details, '
+																		+ status);
+														if (error.exceptionMsg != null
+																&& error.exceptionMsg != undefined) {
+															$('#errorMsg')
+																	.find(
+																			'.modal-body')
+																	.find(
+																			'.msg')
+																	.append(
+																			"Can not Save "
+																					+ error.entityName
+																					+ " : "
+																					+ error.exceptionMsg);
+															$("#errorMsg")
+																	.modal();
+														} else {
+															for (var i = 0; i < error.fieldErrors.length; i++) {
+																var obj = error.fieldErrors[i];
+																document
+																		.getElementById(obj.fieldName).innerHTML = obj.message;
+															}
+														}
+													});
+								}
+							}
 
 							var progressBar = function() {
 								angular.element('#viewProgressBar').trigger(
@@ -486,7 +555,7 @@ App
 
 								}
 							}
-							self.submit = function(valid,object,entity) {//remove closeModalId-pranay
+							self.submit = function(valid,object,entity,closeModalId) {//remove closeModalId-pranay
 								if (valid == true) {
 									console.log("Common Controller submit "+ entity);
 									self.object = object;
@@ -533,13 +602,76 @@ App
 																			'.msg')
 																	.append(
 																			"Can not Save "
-																					+ error.entityName
+																					+ error.entity
 																					+ " : "
 																					+ error.exceptionMsg);
 															$("#errorMsg")
 																	.modal();
 														} else {
 															for (var i = 0; i < error.fieldErrors.length; i++) {
+																var obj = error.fieldErrors[i];
+																document
+																		.getElementById(obj.fieldName).innerHTML = obj.message;
+															}
+														}
+
+													});
+								}
+							}
+							self.submitFY = function(valid,object,entity,closeModalId) {
+								if (valid == true) {
+									console.log("Common Controller submit "+ entity);
+									
+									CommonServiceFY
+											.save(object, entity)
+											.then(
+													function(data) {
+														console.log(entity + ' Add successfully');
+														self.gotoWFYListPage(entity, entity);
+														$('.modal').modal("hide");
+														angular
+														.element(
+																'#'
+																		+ closeModalId)
+														.trigger(
+																'click');
+														$('#successMsg')
+																.find(
+																		'.modal-header')
+																.find(
+																		'.headingMsg')
+																.append(
+																		"Successfull!");
+														$('#successMsg')
+																.find(
+																		'.modal-body')
+																.find('.msg')
+																.append(
+																		" Saved Successfully!");
+														$("#successMsg")
+																.modal();
+
+													},
+													function(error) {
+														console
+																.error('Error while creating saving Details, '
+																		+ status);
+														if (error.exceptionMsg != null
+																&& error.exceptionMsg != undefined) {
+															$('#errorMsg')
+																	.find(
+																			'.modal-body')
+																	.find(
+																			'.msg')
+																	.append(
+																			"Can not Save "
+																					+ error.entity
+																					+ " : "
+																					+ error.exceptionMsg);
+															$("#errorMsg")
+																	.modal();
+							   							} else {
+							   								for (var i = 0; i < error.fieldErrors.length; i++) {
 																var obj = error.fieldErrors[i];
 																document
 																		.getElementById(obj.fieldName).innerHTML = obj.message;

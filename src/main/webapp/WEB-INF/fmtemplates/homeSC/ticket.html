@@ -493,12 +493,10 @@
 								<form name="fileForm" class="form-horizontal" role="form"
 									enctype="multipart/form-data">
 									<fieldset>
-										<input type="hidden"
-											ng-model="cCctr.entity.dateOfOpening"
+										<input type="hidden" ng-model="cCctr.entity.dateOfOpening"
 											ng-init="cCctr.entity.dateOfOpening=cCctr.presentDate()">
 
-										<input type="hidden"
-											ng-model="cCctr.entity.dateOfChange"
+										<input type="hidden" ng-model="cCctr.entity.dateOfChange"
 											ng-init="cCctr.entity.dateOfChange=cCctr.presentDate()">
 
 										<input type="hidden" ng-model="cCctr.entity.dec.status"
@@ -509,8 +507,7 @@
 												<div>
 													<label>Form</label>
 													<div class="form-group">
-														<select ng-model="cCctr.entity.form"
-															class="form-control">
+														<select ng-model="cCctr.entity.form" class="form-control">
 															<option disabled value="">Select Form</option>
 															<option value="24Q">24Q</option>
 															<option value="26Q">26Q</option>
@@ -524,12 +521,19 @@
 												<span style="color: red"
 													ng-show="fileForm.submitted || fileForm.entity.$dirty && fileForm.entity.$invalid">
 													<span class="error"
-													ng-show="fileForm.entity.$error.required">PAN
-														Number Required </span> <span class="error"
-													ng-show="fileForm.entity.$error.pattern">PAN
-														number should be capital and valid </span>
+													ng-show="fileForm.entity.$error.required">PAN Number
+														Required </span> <span class="error"
+													ng-show="fileForm.entity.$error.pattern">PAN number
+														should be capital and valid </span>
 												</span>
 
+											</div>
+											<div class="col-md-4">
+												<b>Brnach Code</b>
+													<input name="branchCode"  
+														id="branchCode" type="text" ng-model="cCctr.entity.branchCode"
+														class="form-control" placeholder="Status"
+														style="width: 100%">
 											</div>
 
 											<div class="col-md-4">

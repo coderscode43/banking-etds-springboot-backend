@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import domain.in.rjsa.model.form.Login;
+import domain.in.rjsa.model.form.Model;
 import domain.in.rjsa.model.form.OrganizationDetails;
 import domain.in.rjsa.model.form.StaticData;
 import domain.in.rjsa.web.ApplicationCache;
@@ -75,29 +76,57 @@ public class IndexController {
 	@RequestMapping(value = "/add/{page}")
 	public String getAddPage(ModelMap model, @PathVariable String page ) {
 		logger.info("Get add page for " + page);
+		//add Branch State-pranay
+		staticData(model);
 		return "homeSC/"+ page;
 	}
-	
-	
-	
 	@RequestMapping(value = "/detail/{action}/{page}")
 	public String getPage( @PathVariable String action, @PathVariable String page,
 			ModelMap model) {
+		//detail Branch State-pranay
+		staticData(model);
+		
 		return action + "/" + page;
 	}
 
 	@RequestMapping(value = "/list/{action}/{page}")
 	public String getListPage( @PathVariable String action, @PathVariable String page,
 			ModelMap model) {
-		Login login = applicationCache.getLoginDetail(getPrincipal());
-		OrganizationDetails cd = applicationCache.getOrganizationDetails(login.getClientId());
-		//pranay
-		List<StaticData> list = applicationCache.getStaticList(login.getId());
+		//download certificate-Pranay
+		staticData(model);
+		return action + "/" + page;
+	}
+
+	/**
+	 * This method returns the principal[user-name] of logged-in user.
+	 */
+	private String getPrincipal() {
+		String userName = null;
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+		if (principal instanceof UserDetails) {
+			userName = ((UserDetails) principal).getUsername();
+		} else {
+			userName = principal.toString();
+		}
+		return userName;
+
+	}
+	
+	//Pranay
+	private void staticData(ModelMap model) {
+		
+		List<StaticData> list = applicationCache.getStaticList();
 		String[] stringArray;
 		String xString;
 		for (StaticData list1 : list) {
 		    String key = list1.getKey();
 		    switch (key) {
+		    case "State":
+				xString = list1.getValue();
+				stringArray = xString.split(",");
+				model.addAttribute("State", stringArray);
+			break;
 			case "financialYear":
 					xString = list1.getValue();
 			        stringArray = xString.split(",");
@@ -132,27 +161,6 @@ public class IndexController {
 				break;
 			}
 		}
-		//pranay
-//		model.addAttribute("cd", cd);
-//		model.addAttribute("listBr", listSolId);
-		
-		return action + "/" + page;
-	}
-
-	/**
-	 * This method returns the principal[user-name] of logged-in user.
-	 */
-	private String getPrincipal() {
-		String userName = null;
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-		if (principal instanceof UserDetails) {
-			userName = ((UserDetails) principal).getUsername();
-		} else {
-			userName = principal.toString();
-		}
-		return userName;
-
 	}
 	
 

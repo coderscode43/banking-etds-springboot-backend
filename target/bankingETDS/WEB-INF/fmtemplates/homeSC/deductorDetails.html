@@ -1,0 +1,236 @@
+<style>
+
+
+@media only screen and (min-width:600px) {
+	#three {
+		display: none;
+		max-height: 0;
+		overflow: hidden;
+	}
+}
+
+@media only screen and (min-width:1000px) {
+	#search {
+		margin-left: 45%;
+		margin-top: 2px;
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	#hide {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.hide {
+		display: none;
+	}
+}
+
+.table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
+	{
+	background-color: whitesmoke;
+}
+
+@media ( min-width : 768px) {
+	.collapse.dont-collapse-sm {
+		display: block;
+		height: auto !important;
+		visibility: visible;
+	}
+}
+
+@media ( max-width : 1200px) {
+	.collapse.dont-collapse-sm {
+		display: block;
+		height: auto !important;
+		visibility: visible;
+	}
+}
+
+@media ( min-width : 300px) and (max-width: 700px) {
+	.mobile {
+		display: none;
+	}
+}
+
+@media only screen and (min-width:700px) {
+	.hide-on-desktop, * [aria-labelledby='hide-on-desktop'] {
+		display: none;
+	}
+}
+
+/* iPad Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+/* CSS */
+.mobile {
+		display: none;
+	}
+}
+</style>
+
+
+
+
+<div id="page-wrapper" ng-controller="CommonWOTController as cWctr">
+	<div class="col-md-12 "
+		style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
+		<div class="heading">
+			<strong>Deductor Details</strong>
+		</div>
+
+	</div>
+
+	<br>
+	<button class="btn btn-primary hidden visible-xs" type="button"
+		data-toggle="collapse" data-target="#collapseExample2"
+		aria-expanded="false" aria-controls="collapseExample">Search</button>
+
+	<div class="collapse dont-collapse-sm" id="collapseExample2">
+		<div class="row">
+			<div class="form-group">
+
+				<div class="col-md-3">
+					<h6>
+						<b>TAN</b>
+					</h6>
+					<input type="text" ng-model="cCctr.search.TAN" class="form-control"
+						placeholder="TAN" style="width: 100%">
+				</div>
+
+				<div class="col-md-3">
+					<h6>
+						<b>State</b>
+					</h6>
+					<input type="text" ng-model="cCctr.search.STATE" class="form-control"
+						placeholder="STATE" style="width: 100%">
+				</div>
+
+				<div class="col-md-3">
+					<h6>
+						<b>City</b>
+
+					</h6>
+					<input type="text" ng-model="cCctr.search.CITY" class="form-control"
+						placeholder="CITY" style="width: 100%">
+				</div>
+
+			</div>
+		</div>
+
+		<div class="row mobile" id="search">
+			<div class="col-md-2" id="search">
+				<button
+					ng-click="cCctr.searchEntities(true,'deductorDetails','deductorDetails')"
+					class="btn btn-success" onclick="scrollWin()">Search</button>
+			</div>
+		</div>
+
+
+		<div class="row" id="hide">
+			<div class="col-md-3" style="margin-left: 80%; margin-top: -40px">
+				<button ng-click="cCctr.searchEntities(true,'deductorDetails')"
+					class="btn btn-success" onclick="scrollWin()">Search</button>
+			</div>
+		</div>
+
+
+
+
+		<div class="row" id="search">
+			<div class="col-md-3" id="search">
+				<button ng-click="cCctr.searchEntities(true,'deductorDetails')"
+					class="btn btn-success" onclick="scrollWin()">Search</button>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+	<div class="row">
+		<!-- <div class="table-responsive">  -->
+
+		<table class=" table table-bordered table-hover table-striped"
+			role="table"
+			style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+			<thead>
+			<colgroup>
+				<col span="14" style="background-color: #ffffff">
+			</colgroup>
+			<tr>
+			<thead role="rowgroup">
+				<tr role="row" style="height: 40px; background-color: #81b7db">
+					<th>Sr. No.</th>
+					<th>TAN</th>
+					<th>State</th>
+					<th>City</th>
+					<!--  <th>Action</th>-->
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr role="row" ng-repeat="a in cCctr.getEntityListData()">
+					<td style="padding: 5px">{{$index+1}}</td>
+					<td>{{a.TAN}}</td>
+					<td>{{a.STATE}}</td>
+					<td>{{a.CITY}}</td>
+					<!--  <td><a
+						ng-click="cCctr.gotoDetailPage('deductorDetails',a.TAN,'detailDeductorDetails')"
+						style="color: blue" onclick="scrollWin()"><img
+							src="static\img\edit.png" width="22px" height="22px"
+							alt="Details" style="margin-top: 5px; margin-bottom: 5px;" /></a></td>-->
+				</tr>
+
+			</tbody>
+		</table>
+
+		<div class="row" ng-show="cCctr.getNoPage() > 0">
+			<div class="row" align="center">
+				<span ng-show="cCctr.currentPage != 1"> <a
+					ng-click="cCctr.getPage(true,'deductorDetails',cCctr.currentPage-1)"><strong>Previous</strong></a>
+				</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.currentPage}}</strong>&nbsp;
+					of &nbsp;<strong>{{cCctr.getNoPage()}}</strong>
+					&nbsp;&nbsp;&nbsp;&nbsp; <span
+					ng-show="cCctr.currentPage != cCctr.getNoPage()"> <a
+						ng-click="cCctr.getPage(true,'deductorDetails',cCctr.currentPage+1)"><strong>Next</strong></a>
+				</span>
+				</span>
+			</div>
+			<form role="form" name="gotoForm">
+				<div class="row" align="center">
+					<span>Go to</span> &nbsp;&nbsp;&nbsp; <input
+						style="width: 70px; text-align: center;" type="number"
+						name="pageNo" ng-model="cCctr.currentPage"
+						ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
+						ng-min="1" ng-max="cCctr.getNoPage()" ng-required="true">
+					&nbsp;&nbsp;&nbsp;
+					<button style="height: 25px;"
+						ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'deductorDetails',cCctr.currentPage)"
+						class="btn btn-primary">Go</button>
+				</div>
+				<div class="row" align="center">
+					<span style="color: red"
+						ng-show="gotoForm.submitted || gotoForm.pageNo.$dirty && gotoForm.pageNo.$invalid">
+						<span class="error" ng-show="gotoForm.pageNo.$error.min">Page
+							No. should not be less than 1.</span> <span class="error"
+						ng-show="gotoForm.pageNo.$error.max">Page No. should not be
+							greater than {{cCctr.getNoPage()}}.</span> <span class="error"
+						ng-show="gotoForm.pageNo.$error.required">Please enter page
+							number.</span>
+					</span>
+				</div>
+			</form>
+		</div>
+
+
+	</div>
+</div>
+
+</div>
+<!--</div>-->
+
+<!--</div> -->

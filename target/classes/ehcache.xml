@@ -1,0 +1,30 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="ehcache.xsd" updateCheck="true"
+	monitoring="autodetect" dynamicConfig="true">
+
+	<diskStore path="java.io.tmpdir" />
+
+	<cache name="organizationDetails" maxEntriesLocalHeap="20"
+		eternal="true">
+		<persistence strategy="localTempSwap" />
+	</cache>
+	<cache name="branch" maxEntriesLocalHeap="20"
+		eternal="true">
+		<persistence strategy="localTempSwap" />
+	</cache>
+	
+	<cache name="zone" maxEntriesLocalHeap="20"
+		eternal="true">
+		<persistence strategy="localTempSwap" />
+	</cache>
+
+	<cache name="login" maxEntriesLocalHeap="20" eternal="true">
+		<persistence strategy="localTempSwap" />
+	</cache>
+	
+	<cache name="StaticData" maxEntriesLocalHeap="20" eternal="true">
+		<persistence strategy="localTempSwap" />
+	</cache>
+
+
+</ehcache>

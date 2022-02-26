@@ -100,10 +100,10 @@ public class Regular24QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular24QDed
 		criteria.add(Restrictions.eqOrIsNull("cif", entity.get("cif")));
          }
          if (entity.get("branchCode") != null) {
- 			criteria.add(Restrictions.eqOrIsNull("branchCode", Long.valueOf((String) entity.get("branchCode"))));
+ 			criteria.add(Restrictions.eqOrIsNull("branchCode",  entity.get("branchCode")));
  		}
          if (entity.get("accNo") != null) {
-   			criteria.add(Restrictions.eqOrIsNull("accNo", Long.valueOf((String) entity.get("accNo"))));
+   			criteria.add(Restrictions.eqOrIsNull("accNo", entity.get("accNo")));
    		}
          if (entity.get("idNo") != null) {
  			criteria.add(Restrictions.eqOrIsNull("idNo", Long.valueOf((String) entity.get("idNO"))));
@@ -116,11 +116,17 @@ public class Regular24QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular24QDed
  			criteria.add(Restrictions.eqOrIsNull("challanHeading",  entity.get("challanHeading")));
  		}
          if (entity.get("staffId") != null) {
-  			criteria.add(Restrictions.eqOrIsNull("staffId", Long.valueOf((String) entity.get("staffId"))));
+  			criteria.add(Restrictions.eqOrIsNull("staffId", entity.get("staffId")));
   		}
          if (entity.get("uniqueRefNo") != null) {
   			criteria.add(Restrictions.eqOrIsNull("uniqueRefNo", Long.valueOf((String) entity.get("uniqueRefNo"))));
   		}
+         if (entity.get("warningDescription") != null) {
+   			criteria.add(Restrictions.eqOrIsNull("warningDescription",  entity.get("warningDescription")));
+   		}
+         if (entity.get("errorDescription") != null) {
+    			criteria.add(Restrictions.eqOrIsNull("errorDescription",  entity.get("errorDescription")));
+    		}
 		criteria.addOrder(Order.desc("dateOfPayment"));
 		return (List<Regular24QDeductee>) criteria.list();
 	}

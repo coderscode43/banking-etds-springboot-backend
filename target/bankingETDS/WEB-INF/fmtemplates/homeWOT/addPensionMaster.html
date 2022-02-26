@@ -1,0 +1,108 @@
+
+<div id="page-wrapper" ng-controller="CommonWOTController as cWctr">
+	<div class="container-fluid">
+		<div class="row">
+			<h1>Add Pension</h1>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<form role="form" name="pensionForm">
+					<div class="row">
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Pensioner Name</label> <input class="form-control"
+									type="text" name="NAME" placeholder="Pensioner Name"
+									ng-model="cWctr.entity.pensionerName" autocomplete="off"
+									ng-maxlength="100" ng-model-options="{updateOn: 'blur'}" />
+
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Pensioner Code</label> <input class="form-control"
+									type="text" name="NAME" placeholder="Pensioner Code"
+									ng-model="cWctr.entity.pensionerCode" />
+
+							</div>
+
+
+						</div>
+					</div>
+					<div class="row">
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Pensioner Id</label> <input class="form-control"
+									type="text" name="NAME" placeholder="Pensioner id"
+									ng-model="cWctr.entity.pensionerId" autocomplete="off"
+									ng-maxlength="100" ng-model-options="{updateOn: 'blur'}" />
+
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Maker</label> <input class="form-control"
+									type="text" name="NAME" placeholder="Maker"
+									ng-model="cWctr.entity.maker" />
+
+							</div>
+
+
+						</div>
+					</div>
+					<div class="row">
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Checker</label> <input class="form-control"
+									type="text" name="NAME" placeholder="Checker"
+									ng-model="cWctr.entity.checker" autocomplete="off"
+									ng-maxlength="100" ng-model-options="{updateOn: 'blur'}" />
+
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Status</label> <input class="form-control"
+									type="text" name="NAME" placeholder="Status"
+									ng-model="cWctr.entity.status" />
+
+							</div>
+
+
+						</div>
+					</div>
+					<div class="row">
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Address</label>
+								<textarea class="form-control" type="text" name="address"
+									placeholder="Address" ng-model="cWctr.entity.address"
+									autocomplete="off" ng-maxlength="100"
+									ng-model-options="{updateOn: 'blur'}"></textarea>
+
+							
+							</div>
+						</div>
+
+					</div>
+
+				</form>
+
+				<div class="row">
+						<div class="modal-footer">
+							<button
+								ng-click="pensionForm.submitted=true; cWctr.submit(true,'pensionMaster')"
+								class="btn btn-success" onclick="scrollWin()">Save</button>
+							<button onclick="history.back()"
+								class="btn btn-danger" onclick="scrollWin()">Back</button>
+						</div>
+					</div>
+				
+
+			</div>
+		</div>
+	</div>
+</div>

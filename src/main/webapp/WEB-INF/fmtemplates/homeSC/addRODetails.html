@@ -14,14 +14,17 @@
 								<label>RO Code*</label></h6> <input class="form-control" type="text"
 									name="roCode" placeholder="ROCode"
 									ng-model="cCctr.entity.roCode" autocomplete="off"
-									ng-required="true" ng-maxlength="10"
-									ng-pattern="/^[a-zA-Z0-9]*$/" ng-model-options="{updateOn: 'blur'}" />
+									ng-required="true" 
+									ng-maxlength="10"
+									ng-pattern="/^[a-zA-Z0-9]*$/" 
+									ng-model-options="{updateOn: 'blur'}" 
+									/>
 									<span style="color: red" ng-show="formRODetails.submitted || formRODetails.roCode.$dirty && formRODetails.roCode.$invalid">
-									<span class="error" ng-show="formRODetails.roCode.$error.pattern">Enter valid RO Code </span> 
-									<span class="error" ng-show="formRODetails.roCode.$error.maxlength">RO Code should not be greater than 10 digits.</span> 
-									<span class="error" ng-show="formRODetails.roCode.$error.required">RO Code is Required.</span>
-								</span>
-									<span class="error" id="roCode"></span>
+										<span class="error" ng-show="formRODetails.roCode.$error.pattern">Enter valid RO Code </span> 
+										<span class="error" ng-show="formRODetails.roCode.$error.maxlength">RO Code should not be greater than 10 digits.</span> 
+										<span class="error" ng-show="formRODetails.roCode.$error.required">RO Code is Required.</span>
+									</span>
+									
 							</div>
 						</div>
 						
@@ -31,8 +34,11 @@
 								<label>RO Name*</label></h6> <input class="form-control" type="text"
 									name="roName" placeholder="ROName"
 									ng-model="cCctr.entity.roName" autocomplete="off"
-									ng-required="true" ng-maxlength="45"
-									ng-pattern="/^[a-zA-Z0-9]*$/" ng-model-options="{updateOn: 'blur'}" />
+									ng-required="true" 
+									ng-maxlength="45"
+									ng-pattern="/^[a-zA-Z0-9]*$/" 
+									ng-model-options="{updateOn: 'blur'}" 
+									/>
 									<span style="color: red" ng-show="formRODetails.submitted || formRODetails.roName.$dirty && formRODetails.roName.$invalid">
 									<span class="error" ng-show="formRODetails.roName.$error.pattern">Enter valid RO Name </span> 
 									<span class="error" ng-show="formRODetails.roName.$error.maxlength">RO Name should not be greater than 45 characters.</span> 
@@ -46,12 +52,14 @@
 						<div class ="col-md-6">
 							<div class="form-group">
 								<h6>
-									<label>RO Address*</label>
-								</h6><input class="form-control" type="text"
+								<label>RO Address*</label>
+								</h6>
+								<textarea class="form-control" type="text"
 								name="roAddress" placeholder ="RO Address"
 								ng-model="cCctr.entity.roAddress" autocomplete="off"
 								ng-required="true" ng-maxlength="50"
-								ng-model-options="{updateOn: 'blur'}"/>
+								ng-model-options="{updateOn: 'blur'}"/></textarea>
+								
 								<span style="color:red" ng-show="formRODetails.submitted|| formRODeatils.roAddress.$dirty && formRODetails.roAddress.$invalid">
 								<span class="error" ng-show="formRODetails.roAddress.$error.maxlength">RO Address should not be greater than 50</span>
 								<span class ="error" ng-show="formRODetails.roAddress.$error.required">RO Address is Required</span>
@@ -59,23 +67,26 @@
 								<span class ="error" id= "roAddress"></span>
 							</div>
 						</div>
-						
 						<div class ="col-md-6">
 							<div class = "form-group">
-								<h6>
-									<label>RO Email*</label>
-								</h6><input class="form-control" type="text"
-								name="roEmail" placeholder ="RO Email"
-								ng-model="cCctr.entity.roEmail" autocomplete="off"
-								ng-required="true" ng-maxlength="50"
+								<h6><label>RO Email*</label></h6>
+								<input 
+								class="form-control" type="text"
+								name="roEmail" id="roEmail" placeholder="RO Email"
+								ng-model="cCctr.entity.roEmail" 
+								ng-required="true" 
 								ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
 								ng-model-options="{updateOn: 'blur'}"/>
-								<span style="color:red" ng-show="formRODetails.submitted || formRODetails.roEmail.$dirty && formRODetails.roEmail.$invalid">
-								<span class="error" ng-show ="formRODeatils.roEmail.$error.pattern">Enter valid Email Id</span>
-								<span class ="error" ng-show = "formRODetails.roEmail.$error.maxlength">Email should not be greater than 10.</span>
-								<span class ="error" ng-show ="formRODetails.roEmail.$error.required">Email Id is Required</span>
+								<span style="color: red"
+										ng-show="formRODetails.submitted || formRODetails.roEmail.$dirty && formRODetails.roEmail.$invalid">
+										<span class="error" ng-show="formRODetails.roEmail.$error.required">Email
+												ID  is Required: 
+										</span> 
+										<span
+											class="error" ng-show="formRODetails.roEmail.$error.pattern">Email
+											ID is invalid: 
+										</span>
 								</span>
-								<span class="error" id="roEmail"></span>
 							</div>
 						</div>
 					</div>
@@ -83,17 +94,24 @@
 						<div class ="col-md-6">
 							<div class ="form-group">
 								<h6>
-									<label>RO State*</label>
-								</h6><input class="form-control" type="text"
+								<label>RO State*</label>
+								</h6>
+								<select class="form-control" 
 								name="roState" placeholder ="RO State"
 								ng-model="cCctr.entity.roState" autocomplete="off"
 								ng-required="true" ng-maxlength="50"
-								ng-model-options="{updateOn:'blur'}"/>
-								<span style="color:red" ng-show="formRODetails.submitted||formRODetails.roState.$dirty && formRODetails.roState.$invalid">
-								<span class ="error" ng-show = "formRoDetails.roState.$error.maxlength">RO State should not br grater than 50.</span>
-								<span class ="error" ng-show = "fornRODetails.roSate.$error.required">RO State is Required</span>
-								</span>
-								<span class ="error" id ="roState"></span>
+								ng-model-options="{updateOn:'blur'}">
+									<option disabled value="">Select State</option>
+									<#list State as state>
+										<option value="${state}">${state}</option>
+									</#list>
+								</select>
+								<span style="color: red"
+										ng-show="formRODetails.submitted ||formRODetails.roState.$dirty && formRODetails.roState.$invalid">
+										<span class="error"
+										ng-show="formRODetails.roState.$error.required">
+											RO State is Required. </span>
+									</span>
 							</div>
 						</div>
 						<div class ="col-md-6">
@@ -103,10 +121,11 @@
 								</h6><input class="form-control" type="text"
 								name="roPincode" placeholder ="RO State"
 								ng-model="cCctr.entity.roPincode" autocomplete="off"
-								ng-required="true" ng-maxlength="50"
+								ng-required="true" 
+								ng-pattern="/^[0-9]{6}$/"
 								ng-model-options="{updateOn:'blur'}"/>
 								<span style ="color:red" ng-show="formRODetails.submitted || formRODetails.roPincode.$dirty && formRODetails.roPincode.$invalid">
-								<!--  <span class="error" ng-show="formRODetails.roPincode.$error.pattern">Enter Valid Pincode</span>-->
+								 <span class="error" ng-show="formRODetails.roPincode.$error.pattern">Enter Valid Pincode</span>
 								<span class ="error" ng-show ="formRODetails.roPincode.$error.maxlength">RO Pincode should not be Greater than 10.</span>
 								<span class ="error" ng-show ="formRODetails.roPincode.$error.required">RO Pincode is Required.</span>
 								</span>
@@ -118,8 +137,8 @@
 						<div class="row">
 						<div class="modal-footer">
 							<button
-								ng-click="formRODetails.submitted=true; cCctr.submit(formRODetails.$valid,'RODetails',true)"
-								class="btn btn-success" onclick="scrollWin()">Save</button>
+								ng-click="formRODetails.submitted=true; cCctr.submit(formRODetails.$valid,cCctr.entity,'RODetails')"
+								class="btn btn-success" >Save</button>
 							<button ng-click="cCctr.gotoList2Page('RODetails','RODetails');"
 								class="btn btn-danger" onclick="scrollWin()">Back</button>
 						</div>

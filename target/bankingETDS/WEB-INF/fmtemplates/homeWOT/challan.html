@@ -1,0 +1,182 @@
+
+<style>
+ 
+ 
+    @media only screen and (max-width: 1000px) {
+        .one{
+            display: none;
+          
+        }
+    }
+    
+ @media only screen and (max-width: 1000px) {
+        .two{
+         
+            padding:8px;
+        }
+    }
+        
+   @media only screen and (min-width:600px) {
+            #three{
+                display: none;
+                max-height: 0;
+                overflow: hidden;
+            }
+        }
+        
+       @media only screen and (min-width:1000px) {
+            #search{
+             
+             margin-left:45%;
+             margin-top:2px;
+             display:none;
+            }
+        }
+        
+            @media only screen and (max-width: 1000px) {
+      #hide{
+            display: none;
+          
+        }
+    }
+     .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background-color: whitesmoke;
+}
+@media (min-width: 768px) {
+  .collapse.dont-collapse-sm {
+    display: block;
+    height: auto !important;
+    visibility: visible;
+  }
+}
+ 
+ </style>
+
+
+
+
+<div id="page-wrapper">
+	<div class="container-fluid">
+<div class="col-md-12 " style="padding-left: 0px;font-size: 12pxp; margin-top:2%">
+	<div class="heading">Lower Deduction Certificate</div>
+	
+
+
+	</div>
+		<div class="container" style="margin-left:-2%">
+	  <br>
+	      <button class="btn btn-primary hidden visible-xs" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+             Search 
+          </button>
+  <div class="collapse dont-collapse-sm" id="collapseExample2"> 
+	  <div class="row">
+	   <div class="form-group">
+	   <div class="col-md-3">	
+                   <h6><b>From Date</b><h6>
+                     <input type="date" ng-model="cCctr.search.toDocumentNumber" class="form-control" placeholder="Form" style="width:70%">
+                </div> 
+	  <div class="col-md-3">	
+                   <h6><b>to Date</b><h6>
+                     <input type="date" ng-model="cCctr.search.toDocumentNumber" class="form-control" placeholder="Form" style="width:70%">
+                </div> 
+      
+    	
+      
+   </div>
+            
+           
+	       </div>	
+	      		
+	             <div class="row" id="hide" >
+	         	  <div class="col-md-3"  style="margin-left:85%;margin-top:-70px">	
+	                          <button ng-click="cCctr.searchEntities(true,'invoice')"
+									class="btn btn-success" >Search</button>
+	                 </div>					
+  </div>
+  
+   <div class="row" id="search" >
+	         	  <div class="col-md-3" id="search">	
+	                          <button ng-click="cCctr.searchEntities(true,'invoice')"
+									class="btn btn-success">Search</button>
+	                 </div>					
+  </div>
+  </div>
+ </div>
+ <div class="panel-body" style="margin-left:-3%; width: 107%;">	
+ 
+ 					<div class="row">
+						<div class="table-responsive">
+
+							<table class="  table-bordered table-hover table-striped" role="table"
+								style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+
+
+								<thead>
+
+								
+									
+									
+								<colgroup>
+									<col span="14" style="background-color: #ffffff">
+								</colgroup>
+							 <tr>
+							  <thead role="rowgroup">
+    <tr role="row" style="height:40px;background-color:#81b7db">
+      <th width="10%">Sr. No.</th>
+      <th width="10%">LDC_NUMBER</th>
+      <th width="10%">NAME</th>
+      <th width="10%" >TAN</th>
+      <th width="10%">PAN</th>
+      <th width="10%" >FY</th>
+      <th width="10%">VALID_FROM</th>
+      <th width="10%">VALID_TO</th>
+      <th width="10%">SECTION_CODE</th>
+      <th width="10%">NATURE_OF_PAYMENT</th>
+      <th width="10%">LDC_RATE</th>
+      <th width="10%">CERTIFICATE_LIMIT</th>
+      <th width="10%">AMOUNT_CONSUMED</th>
+      <th width="10%">ISSUE_DATE</th>
+      <th width="10%">CANCEL_DATE</th>
+      <th width="10%">AS_ON_DATE</th>
+    
+     
+     
+    </tr>
+  </thead>
+								<tbody>
+									<tr role="row" ng-repeat="a in cCctr.getEntityListData() track by a.id">
+										<td role="cell" class="one" style="height: 60px;padding:10px">{{$index+1}}</td>
+											<td>{{a.LDC_NUMBER}}</td>
+											<td>{{a.NAME}}</td>
+											<td>{{a.TAN}}</td>
+											<td>{{a.PAN}}</td>
+											<td>{{a.FY}}</td>
+											<td>{{a.VALID_FROM}}</td>
+											<td>{{a.VALID_TO}}</td>
+											<td>{{a.SECTION_CODE}}</td>
+											<td>{{a.NATURE_OF_PAYMENT}}</td>
+											<td>{{a.LDC_RATE}}</td>
+											<td>{{a.CERTIFICATE_LIMIT}}</td>
+											<td>{{a.AMOUNT_CONSUMED}}</td>
+											<td>{{a.ISSUE_DATE}}</td>
+											<td>{{a.CANCEL_DATE}}</td>
+											<td>{{a.AS_ON_DATE}}</td>
+											
+										<!-- <td>{{a.total-a.amountPaid}}</td> -->
+										
+									</tr>
+								
+								</tbody>
+							</table>
+							</div>
+						</div>
+					</div>
+ 
+ 
+ 
+ 
+	
+ 
+
+</div>
+</div>

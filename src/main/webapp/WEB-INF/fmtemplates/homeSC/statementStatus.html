@@ -192,63 +192,58 @@
 					</select>
 				</div>
 			</div>
-			
-			<div class="collapse  panel-collapse" id="collapseExample4">
-			
-          <div class="row">
-			<div class="col-md-3">
-				<h6>
-					<b>From Date</b>
-					<h6>
-						<input type="date" ng-model="cWctr.search.fromDate"
-							ng-change="cWctr.search.fromDate=cWctr.date(cWctr.search.fromDate);"
-							class="form-control" placeholder="Date" style="width: 100%">
-			</div>
 
-			<div class="col-md-3">
-				<h6>
-					<b>To Date</b>
-					<h6>
-						<input type="date" ng-model="cWctr.search.toDate"
-							ng-change="cWctr.search.toDate=cWctr.date(cWctr.search.toDate);"
-							class="form-control" placeholder="Date" style="width: 100%">
-			</div>
-			
-			<div class="col-md-3">
+			<div class="collapse  panel-collapse" id="collapseExample4">
+
+				<div class="row">
+					<div class="col-md-3">
+						<h6>
+							<b>From Date</b>
+							<h6>
+								<input type="date" ng-model="cWctr.search.fromDate"
+									ng-change="cWctr.search.fromDate=cWctr.date(cWctr.search.fromDate);"
+									class="form-control" placeholder="Date" style="width: 100%">
+					</div>
+
+					<div class="col-md-3">
+						<h6>
+							<b>To Date</b>
+							<h6>
+								<input type="date" ng-model="cWctr.search.toDate"
+									ng-change="cWctr.search.toDate=cWctr.date(cWctr.search.toDate);"
+									class="form-control" placeholder="Date" style="width: 100%">
+					</div>
+
+					<div class="col-md-3">
 						<h6>
 							<b>Status</b>
 							<h6>
 								<input type="text" ng-model="cCctr.search.STATUS"
 									class="form-control" placeholder="Status" style="width: 100%">
 					</div>
-			
-			
-			
-			
-		</div>
-		<div class="row">
-			
-			
-			<div class="col-md-3">
+
+
+
+
+				</div>
+				<div class="row">
+
+
+					<div class="col-md-3">
 						<h6>
 							<b>RT</b>
 							<h6>
 								<input type="text" ng-model="cCctr.search.RT"
 									class="form-control" placeholder="RT" style="width: 100%">
 					</div>
-			
-			
-			
-			
-		</div>
-		
-		</div>
-				<div class="row" id="search">
-					<div class="col-md-2" id="search">
-						<button ng-click="cCctr.searchEntities(true,'statementStatus','statementStatus')"
-								class="btn btn-success" onclick="scrollWin()">Search</button>
-					</div>
+
+
+
+
 				</div>
+
+			</div>
+
 			<div class="row" id="hide">
 				<div class="col-md-4" style="margin-left: 85%; margin-top: -50px">
 					<button ng-click="cCctr.searchEntities(true,'statementStatus')"
@@ -256,29 +251,23 @@
 				</div>
 			</div>
 
-			<div class="row" id="search">
-				<div class="col-md-3" id="search">
-					<button ng-click="cCctr.searchEntities(true,'statementStatus')"
-						class="btn btn-success" onclick="scrollWin()">Search</button>
-				</div>
-			</div>
+
 		</div>
 	</div>
-<div class="row">
+	<div class="row">
 		<div class="col-xs-12">
 			<div class="text-right">
-			<button class="btn btn-secondary"
-					style="background-color: #FFA500;"
+				<button class="btn btn-secondary" style="background-color: #FFA500;"
 					data-toggle="collapse" data-target="#collapseExample4"
 					aria-expanded="false" aria-controls="collapseExample">
 					Advance Search</button>
-			
-				
+
+
 			</div>
 		</div>
 	</div>
 	<div class="row">
-	<!-- 	<div class="table-responsive">  -->
+		<!-- 	<div class="table-responsive">  -->
 
 		<table class=" tables table-bordered table-hover table-striped"
 			role="table"
@@ -317,13 +306,13 @@
 				</tr>
 			</tbody>
 		</table>
-	
-</div>
 
-<div class="row" ng-show="cCctr.getNoPage() > 0">
+	</div>
+
+	<div class="row" ng-show="cCctr.getNoPage() > 0">
 		<div class="row" align="center">
-			<span ng-show="cCctr.currentPage != 1"> 
-				<a ng-click="cCctr.getPage(true,'statementStatus',cCctr.currentPage-1)"><strong>Previous</strong></a>
+			<span ng-show="cCctr.currentPage != 1"> <a
+				ng-click="cCctr.getPage(true,'statementStatus',cCctr.currentPage-1)"><strong>Previous</strong></a>
 			</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.currentPage}}</strong>&nbsp;
 				of &nbsp;<strong>{{cCctr.getNoPage()}}</strong>
 				&nbsp;&nbsp;&nbsp;&nbsp; <span

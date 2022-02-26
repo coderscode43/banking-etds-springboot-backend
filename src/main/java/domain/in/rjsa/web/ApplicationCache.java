@@ -31,9 +31,8 @@ public class ApplicationCache {
 	private StaticDataDao dao;
 
 	@Cacheable(value = "StaticData")
-	public List<StaticData> getStaticList(long id) {	
+	public List<StaticData> getStaticList() {	
 		HashMap<String , Object> sd =new HashMap<String, Object>();
-		sd.put("clientId", id);
 		List<StaticData> list = dao.findall(sd, 0, 100);
 		return list;
 	}

@@ -1,0 +1,333 @@
+<style>
+@media only screen and (min-width:1000px) {
+	#search {
+		margin-left: 45%;
+		margin-top: 2px;
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	#hide {
+		display: none;
+	}
+}
+
+@media ( min-width : 768px) {
+	.collapse.dont-collapse-sm {
+		display: block;
+		height: auto !important;
+		visibility: visible;
+	}
+}
+
+.nav-tabs {
+	display: inline-flex;
+	width: 100%;
+	overflow-x: auto;
+	border-bottom: 2px solid #DDD;
+	-ms-overflow-style: none;
+	//
+	IE
+	10+
+	overflow
+	:
+	-moz-scrollbars-none;
+	//
+	Firefox
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover
+	{
+	border-width: 0;
+}
+
+.nav-tabs>li>a {
+	border: none;
+	color: #666;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li>a:hover {
+	border: none;
+	color: #4285F4 !important;
+	background: transparent;
+}
+
+.nav-tabs>li>a::after {
+	content: "";
+	background: #4285F4;
+	height: 2px;
+	position: absolute;
+	width: 100%;
+	left: 0px;
+	bottom: 1px;
+	transition: all 250ms ease 0s;
+	transform: scale(0);
+}
+
+.nav-tabs>li.active>a::after, .nav-tabs>li:hover>a::after {
+	transform: scale(1);
+}
+
+.tab-nav>li>a::after {
+	background: #21527d none repeat scroll 0% 0%;
+	color: #fff;
+}
+
+.tab-pane {
+	padding: 15px 0;
+}
+
+.tab-content {
+	padding: 20px
+}
+
+.nav-tabs::-webkit-scrollbar {
+	display: none;
+	//
+	Safari
+	and
+	Chrome
+}
+
+.card {
+	background: #FFF none repeat scroll 0% 0%;
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+	margin-bottom: 30px;
+}
+
+body {
+	background: #EDECEC;
+}
+
+.nav-tabs {
+	display: inline-flex;
+	width: 100%;
+	overflow-x: auto;
+	border-bottom: 2px solid #DDD;
+	-ms-overflow-style: none;
+	//
+	IE
+	10+
+	overflow
+	:
+	-moz-scrollbars-none;
+	//
+	Firefox
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover
+	{
+	border-width: 0;
+}
+
+.nav-tabs>li>a {
+	border: none;
+	color: #666;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li>a:hover {
+	border: none;
+	color: #4285F4 !important;
+	background: transparent;
+}
+
+.nav-tabs>li>a::after {
+	content: "";
+	background: #4285F4;
+	height: 2px;
+	position: absolute;
+	width: 100%;
+	left: 0px;
+	bottom: 1px;
+	transition: all 250ms ease 0s;
+	transform: scale(0);
+}
+
+.nav-tabs>li.active>a::after, .nav-tabs>li:hover>a::after {
+	transform: scale(1);
+}
+
+.tab-nav>li>a::after {
+	background: #21527d none repeat scroll 0% 0%;
+	color: #fff;
+}
+
+.tab-pane {
+	padding: 15px 0;
+}
+
+.tab-content {
+	padding: 20px
+}
+
+.nav-tabs::-webkit-scrollbar {
+	display: none;
+	//
+	Safari
+	and
+	Chrome
+}
+
+.card {
+	background: #FFF none repeat scroll 0% 0%;
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+	margin-bottom: 30px;
+}
+
+body {
+	background: #EDECEC;
+}
+</style>
+
+
+<div id="page-wrapper">
+	<div class="container-fluid">
+		<div class="heading">Employee Master</div>
+		<div class="collapse dont-collapse-sm" id="collapseExample2">
+			<div class="row">
+				<div class="form-group">
+					<div class="col-md-3">
+						<h6>
+							<b>Employee Name</b>
+							<h6>
+								<input type="text" ng-model="cWctr.search.employeeName"
+									class="form-control" placeholder="Employee Name"
+									style="width: 100%">
+					</div>
+					<div class="col-md-3">
+						<h6>
+							<b> Employee Code</b>
+							<h6>
+								<input type="text" ng-model="cWctr.search.employeeCode"
+									class="form-control" placeholder="Employee Code"
+									style="width: 100%">
+					</div>
+
+
+
+					<div class="col-md-3">
+						<h6>
+							<b>Employee Id</b>
+							<h6>
+								<input type="text" ng-model="cWctr.search.employeeId"
+									class="form-control" placeholder="Employee Id"
+									style="width: 100%">
+					</div>
+				</div>
+			</div>
+
+			<div class="collapse  panel-collapse" id="collapseExample4">
+
+				<div class="row">
+                    <div class="col-md-3">
+						<h6>
+							<b>Maker</b>
+							<h6>
+								<input type="text" ng-model="cWctr.search.maker"
+									class="form-control" placeholder="maker" style="width: 100%">
+					</div>
+					 <div class="col-md-3">
+						<h6>
+							<b>Checker</b>
+							<h6>
+								<input type="text" ng-model="cWctr.search.checker"
+									class="form-control" placeholder="Checker" style="width: 100%">
+					</div>
+					 <div class="col-md-3">
+						<h6>
+							<b>Status</b>
+							<h6>
+								<input type="text" ng-model="cWctr.search.status"
+									class="form-control" placeholder="Status" style="width: 100%">
+					</div>
+
+				</div>
+			</div>
+
+
+			<div class="row" id="search">
+				<div class="col-md-2" id="search">
+					<button
+						ng-click="cWctr.searchEntities(true,'employeeMaster','employeeMaster')"
+						class="btn btn-success" onclick="scrollWin()">Search</button>
+				</div>
+			</div>
+
+
+
+			<div class="row" id="hide">
+				<div class="col-md-3" style="margin-left: 80%; margin-top: -90px">
+					<button ng-click="cWctr.searchEntities(true,'employeeMaster')"
+						class="btn btn-success" onclick="scrollWin()">Search</button>
+				</div>
+
+
+				<div class="row">
+					<div class="col-md-3" id="search">
+						<button ng-click="cWctr.searchEntities(true,'employeeMaster')"
+							class="btn btn-success" onclick="scrollWin()">Search</button>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="text-right">
+					<button class="btn btn-secondary"
+						style="background-color: #FFA500;" data-toggle="collapse"
+						data-target="#collapseExample4" aria-expanded="false"
+						aria-controls="collapseExample">Advance Search</button>
+					<button class="btn btn-Primary" data-toggle="modal"
+						style="float: right"
+						ng-click="cCctr.gotoList2Page('addemployeeMaster','addemployeeMaster');">Add</button>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="container-fluid">
+			<div class="row " style="font-size: 12px">
+
+
+				<!-- <div class="table-responsive"> -->
+				<table class=" table table-bordered table-hover table-striped ">
+					<thead>
+						<tr style="background-color: #81b7db; font-size: 13px">
+							<th>Sr No</th>
+							<th>Employee Id</th>
+							<th>Employee Code</th>
+							<th>Employee Name</th>
+							<th>PAN</th>
+							<th>Date Of Birth</th>
+							<th>Designation</th>
+							<th>Maker</th>
+							<th>Checker</th>
+							<th>Status</th>
+
+
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="a in cCctr.getEntityListData() track by a.id"
+							style="font-size: 13px">
+							<td>{{$index+1}}</td>
+							<td>{{a.employeeId}}</td>
+							<td>{{a.employeeCode}}</td>
+							<td>{{a.employeeName}}</td>
+							<td>{{a.pan}}</td>
+							<td>{{a.dob}}</td>
+							<td>{{a.designation}}</td>
+							<td>{{a.maker}}</td>
+							<td>{{a.checker}}</td>
+							<td>{{a.status}}</td>
+						</tr>
+
+					</tbody>
+				</table>
+
+			</div>
+
+
+		</div>

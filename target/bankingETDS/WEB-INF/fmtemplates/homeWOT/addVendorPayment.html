@@ -1,0 +1,741 @@
+
+<br>
+<div id="page-wrapper"  ng-controller="VendorController as vCtr">
+	<div class="container-fluid" >
+		<div class="row">
+			<h1>Add Vendor Payment Details</h1>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<form role="form" name="vendorPaymentDetailForm">
+		
+				<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Vendor Number</label> 
+								<md-autocomplete
+            								md-input-name="vendorNo"
+            								md-input-minlength="3"
+            								md-no-cache = "true"
+            								md-input-maxlength="75"
+            								md-selected-item="vCtr.entity.vendorNo"
+            								md-search-text="a"
+            								ng-required="true"
+            								md-items="item in vCtr.ajax1('vendorPayment','vendorNo',a)"
+            								md-selected-item-change="vCtr.getVendorDetail1(vCtr.entity.vendorNo,'vendorPayment')"
+            								md-delay="2000"
+            								placeholder="Vendor Number">
+            								
+          								<md-item-template>
+            								<span >{{item}}</span>
+          								</md-item-template>
+          								<md-not-found>
+                     						No Vendor with Vendor Number with "{{a}}" were found.<a ng-click = "">Add new</a>
+           								</md-not-found>
+        								</md-autocomplete>
+        								 <span
+									style="color: red"
+									ng-show="vendorPaymentDetailForm.submitted || vendorPaymentDetailForm.vendorNo.$dirty && vendorPaymentDetailForm.vendorNo.$invalid">
+									<span class="error"
+									ng-show="vendorPaymentDetailForm.vendorNo.$error.required">Vendor Number is Required </span>
+										</span>
+
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Vendor Name*</label> 
+								<md-autocomplete
+            								md-input-name="vendorName"
+            								md-input-minlength="3"
+            								md-no-cache = "true"
+            								md-input-maxlength="75"
+            								md-selected-item="vCtr.entity.vendorName"
+            								md-search-text="b"
+            								ng-required="true"
+            								md-items="item in vCtr.ajax1('vendorPayment','vendorName',b)"
+            								md-selected-item-change="vCtr.getVendorDetail3(vCtr.entity.vendorName,'vendorPayment')"
+            								md-delay="2000"
+            								placeholder="Vendor Name">
+          								<md-item-template>
+            								<span >{{item}}</span>
+          								</md-item-template>
+          								<md-not-found>
+                     						No Vendor Name with "{{b}}" were found.<a ng-click = "">Add new</a>
+           								</md-not-found>
+        								</md-autocomplete>
+        								 <span
+									style="color: red"
+									ng-show="vendorPaymentDetailForm.submitted || vendorPaymentDetailForm.vendorName.$dirty && vendorPaymentDetailForm.vendorName.$invalid">
+									<span class="error"
+									ng-show="vendorPaymentDetailForm.vendorName.$error.required">Vendor Name is Required </span>
+										</span>
+
+							</div>
+					</div>
+				</div>
+				<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Vendor Pan*</label> 
+								<md-autocomplete
+            								md-input-name="vendorPAN"
+            								md-input-minlength="3"
+            								md-no-cache = "true"
+            								md-input-maxlength="75"
+            								md-selected-item="vCtr.entity.vendorPAN"
+            								md-search-text="c"
+            								ng-required="true"
+            								md-items="item in vCtr.ajax1('vendorPayment','vendorPAN',c)"
+            								md-selected-item-change="vCtr.getVendorDetail2(vCtr.entity.vendorPAN,'vendor')"
+            								md-delay="2000"
+            								placeholder="Vendor PAN">
+          								<md-item-template>
+            								<span >{{item}}</span>
+          								</md-item-template>
+          								<md-not-found>
+                     						No Vendor PAN with "{{c}}" were found.<a ng-click = "">Add new</a>
+           								</md-not-found>
+        								</md-autocomplete>
+        								 <span
+									style="color: red"
+									ng-show="vendorPaymentDetailForm.submitted || vendorPaymentDetailForm.vendorPAN.$dirty && vendorPaymentDetailForm.vendorPAN.$invalid">
+									<span class="error"
+									ng-show="vendorPaymentDetailForm.vendorPAN.$error.required">Vendor PAN is Required </span>
+										</span>
+
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>GSTN*</label>								
+								<md-autocomplete
+            								md-input-name="gstNo"
+            								md-input-minlength="3"
+            								md-no-cache = "true"
+            								md-input-maxlength="75"
+            								md-selected-item="vCtr.entity.gstNo"
+            								md-search-text="d"
+            								ng-required="true"
+            								md-items="item in vCtr.ajax1('vendorPayment','gstNo',d)"
+            								md-selected-item-change="vCtr.getVendorDetail(vCtr.entity.gstNo,'vendor')"
+            								md-delay="2000"
+            								placeholder="GSTN">
+          								<md-item-template>
+            								<span >{{item}}</span>
+          								</md-item-template>
+          								<md-not-found>
+                     						No GSTN with "{{d}}" were found.<a ng-click = "">Add new</a>
+           								</md-not-found>
+        								</md-autocomplete>
+        								 <span
+									style="color: red"
+									ng-show="vendorPaymentDetailForm.submitted || vendorPaymentDetailForm.gstNo.$dirty && vendorPaymentDetailForm.gstNo.$invalid">
+									<span class="error"
+									ng-show="vendorPaymentDetailForm.gstNo.$error.required">GSTN is Required </span>
+										</span>
+							     </div>
+					</div>
+				</div>
+				
+				
+					<div class="row">
+					<div class="col-md-6">
+							<div class="form-group">
+								<label>BLG Code*</label> 
+									<md-autocomplete	
+									md-input-name="blgCode"
+            								   				md-input-minlength="3"
+            												md-no-cache = "true"
+            												md-input-maxlength="75"
+            												md-selected-item="vCtr.entity.blgCode"
+            												md-search-text="e"
+            												
+            												md-items="item in vCtr.ajax1('blg','blgCode',e)"
+            												md-selected-item-change="vCtr.getBLGDetail(vCtr.entity.blgCode,'blg')"
+            												md-delay="2000"
+            												placeholder="BLG Code">
+          													<md-item-template>
+            											<span >{{item}}</span>
+          													</md-item-template>
+          										<md-not-found>
+                     									No BLG code with "{{e}}" were found.<a ng-click = "">Add new</a>
+           										</md-not-found>
+        											</md-autocomplete>
+        										
+        						
+								
+							</div>
+						</div>
+							<div class="col-md-6">
+							<div class="form-group">
+								<label>Nature of Payment*</label> 
+								<md-autocomplete	
+									md-input-name="natureOfPayment"
+            								   				md-input-minlength="3"
+            												md-no-cache = "true"
+            												md-input-maxlength="75"
+            												md-selected-item="vCtr.entity.natureOfPayment"
+            												md-search-text="f"
+            												ng-required="true"
+            												md-items="item in vCtr.ajax1('nop','natureOfPayment',f)"
+            												md-selected-item-change="vCtr.getNOPDetail(vCtr.entity.natureOfPayment,'nop')"
+            												md-delay="2000"
+            												placeholder="Nature Of Payment">
+          													<md-item-template>
+            											<span >{{item}}</span>
+          													</md-item-template>
+          										<md-not-found>
+                     									No Nature Of Payment with "{{f}}" were found.<a ng-click = "">Add new</a>
+           										</md-not-found>
+        											</md-autocomplete>
+        											 <span
+									style="color: red"
+									ng-show="vendorPaymentDetailForm.submitted || vendorPaymentDetailForm.natureOfPayment.$dirty && vendorPaymentDetailForm.natureOfPayment.$invalid">
+									<span class="error"
+									ng-show="vendorPaymentDetailForm.natureOfPayment.$error.required">Nature Of Payment is Required </span>
+										</span>
+								
+							</div>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-md-6">
+
+							<label> Branch Code*</label> <input class="form-control"
+								type="text" name="branchCode" placeholder="Branch Code"
+								ng-model="cWctr.entity.branchCode" autocomplete="off"
+								ng-pattern="/^[0-9]*$/" ng-maxlength="15" ng-required="true"
+								ng-model-options="{updateOn: 'blur'}" /> <span
+								style="color: red"
+								ng-show="form26qdeductee.submitted ||form26qdeductee.challanSrNo.$dirty && form26qdeductee.challanSrNo.$invalid">
+								<span class="error"
+								ng-show="form26qdeductee.branchCode.$error.pattern">Please
+									enter valid branchCode. </span> <span class="error"
+								ng-show="form26qdeductee.branchCode.$error.maxlength">branchCode
+									should not be greater than 15 characters.</span> <span class="error"
+								ng-show="form26qdeductee.branchCode.$error.required">branchCode
+									is Required.</span>
+							</span> <span class="error" id="branchCode"></span>
+
+						</div>
+
+						<div class="col-md-6">
+
+							<label>Account Number*</label> <input class="form-control"
+								type="text" name="Account Number" placeholder="Account Number"
+								ng-model="cWctr.entity.accNo" autocomplete="off"
+								ng-pattern="/^[0-9]*$/" ng-maxlength="12" ng-required="true"
+								ng-model-options="{updateOn: 'blur'}" /> <span
+								style="color: red"
+								ng-show="form26qdeductee.submitted ||form26qdeductee.accNo.$dirty && form26qdeductee.accNo.$invalid">
+								<span class="error"
+								ng-show="form26qdeductee.accNo.$error.pattern">Please
+									enter valid Account Number. </span> <span class="error"
+								ng-show="form26qdeductee.accNo.$error.maxlength">Account
+									Number should not be greater than 12 characters.</span> <span
+								class="error" ng-show="form26qdeductee.accNo.$error.required">Account
+									Number is Required.</span>
+							</span> <span class="error" id="accNo"></span>
+						</div>
+
+
+					</div>
+
+
+					
+
+					<div class="row">
+						<div class="col-md-6">
+
+							<label>ID Number*</label> <input class="form-control" type="text"
+								name="idNo" placeholder="Id Number" ng-model="cWctr.entity.idNo"
+								autocomplete="off" ng-pattern="/^[0-9]*$/" ng-maxlength="15"
+								ng-required="true" ng-model-options="{updateOn: 'blur'}" /> <span
+								style="color: red"
+								ng-show="form26qdeductee.submitted ||form26qdeductee.idNo.$dirty && form26qdeductee.idNo.$invalid">
+								<span class="error"
+								ng-show="form26qdeductee.idNo.$error.pattern">Please
+									enter valid idNo. </span> <span class="error"
+								ng-show="form26qdeductee.idNo.$error.maxlength">idNo
+									should not be greater than 15 characters.</span> <span class="error"
+								ng-show="form26qdeductee.idNo.$error.required">idNo is
+									Required.</span>
+							</span> <span class="error" id="idNo"></span>
+
+						</div>
+
+						<div class="col-md-6">
+
+							<label>CIF*</label> <input class="form-control" type="text"
+								name="CIF" placeholder="CIF" ng-model="cWctr.entity.cif"
+								autocomplete="off" 
+								ng-maxlength="12" ng-required="true"
+								ng-model-options="{updateOn: 'blur'}" /> <span
+								style="color: red"
+								ng-show="form26qdeductee.submitted ||form26qdeductee.accNo.$dirty && form26qdeductee.accNo.$invalid">
+								<span class="error" ng-show="form26qdeductee.cif.$error.pattern">Please
+									enter valid CIF. </span> <span class="error"
+								ng-show="form26qdeductee.cif.$error.maxlength">cif should
+									not be greater than 12 characters.</span> <span class="error"
+								ng-show="form26qdeductee.cif.$error.required">cif is
+									Required.</span>
+							</span> <span class="error" id="cif"></span>
+						</div>
+
+
+					</div>
+
+
+					<div class="row">
+						<div class="col-md-6">
+
+							<label>Type*</label> <select name="type"
+								class="form-control" ng-model="cWctr.entity.type"
+								ng-required="true" ng-model-options="{updateOn: 'blur'}">
+								<option value="cbs">Core Banking System</option>
+								<option value="vps">Vendor Payment System</option>
+								<option value="hrms">Human Resource Management System</option>
+								<option value="cpps">Central Pension Payment System</option>
+							</select> <span style="color: red"
+								ng-show="form26qdeductee.submitted ||form26qdeductee.type.$dirty && form26qdeductee.type.$invalid">
+								<span class="error"
+								ng-show="form26qdeductee.type.$error.required">type
+									is Required.</span>
+							</span> <span class="error" id="type"></span>
+						</div>
+						<div class="col-md-6">
+
+							<label>Month*</label> <select name="quarter"
+								class="form-control" ng-model="cWctr.entity.month"
+								ng-required="true" ng-model-options="{updateOn: 'blur'}">
+  <option selected value='1'>Janaury</option>
+    <option value='2'>February</option>
+    <option value='3'>March</option>
+    <option value='4'>April</option>
+    <option value='5'>May</option>
+    <option value='6'>June</option>
+    <option value='7'>July</option>
+    <option value='8'>August</option>
+    <option value='9'>September</option>
+    <option value='10'>October</option>
+    <option value='11'>November</option>
+    <option value='12'>December</option>
+							</select> <span style="color: red"
+								ng-show="form26qdeductee.submitted ||form26qdeductee.month.$dirty && form26qdeductee.month.$invalid">
+								<span class="error"
+								ng-show="form26qdeductee.month.$error.required">Month
+									is Required.</span>
+							</span> <span class="error" id="month"></span>
+						</div>
+
+					</div>
+					
+
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Payment Date*</label> <input class="form-control"
+									type="date" name="paymentDate" placeholder="Payment Date"
+									ng-model="vCtr.entity.paymentDate" autocomplete="off"
+									ng-maxlength="100" ng-required="true"
+									ng-model-options="{updateOn: 'blur'}" />
+									 <span
+									style="color: red"
+									ng-show="vendorPaymentDetailForm.submitted || vendorPaymentDetailForm.paymentDate.$dirty && vendorPaymentDetailForm.paymentDate.$invalid">
+									<span class="error"
+									ng-show="vendorPaymentDetailForm.paymentDate.$error.required">Payment Date is Required </span>
+										</span>
+							</div>
+						</div>
+
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Payment Mode*</label> <input class="form-control"
+									type="text" name="paymentMode" placeholder="Payment Mode"
+									ng-model="vCtr.entity.paymentMode" autocomplete="off"
+									ng-maxlength="50" ng-required="true" ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="vendorPaymentDetailForm.submitted || vendorPaymentDetailForm.paymentMode.$dirty && vendorPaymentDetailForm.paymentMode.$invalid">
+									<span class="error"
+									ng-show="vendorPaymentDetailForm.paymentMode.$error.pattern">Please
+										enter valid Payment Mode. </span> <span class="error"
+									ng-show="vendorPaymentDetailForm.paymentMode.$error.maxlength">Payment
+										Mode should not be greater than 25 digits.</span>
+										<span class="error"
+									ng-show="vendorPaymentDetailForm.paymentMode.$error.required">Payment Mode
+										 is Required.</span>
+
+								</span> <span class="error" id="paymentMode"></span>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Invoice Number*</label> <input class="form-control"
+									type="text" name="invoiceNumber" placeholder="Invoice Number"
+									ng-model="vCtr.entity.invoiceNumber" autocomplete="off"
+									ng-maxlength="50" ng-required="true" ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="vendorPaymentDetailForm.submitted || vendorPaymentDetailForm.invoiceNumber.$dirty && vendorPaymentDetailForm.invoiceNumber.$invalid">
+									<span class="error"
+									ng-show="vendorPaymentDetailForm.invoiceNumber.$error.maxlength">Invoice Number should not be greater than 10 digits.</span>
+										<span class="error"
+									ng-show="vendorPaymentDetailForm.invoiceNumber.$error.pattern">Please Enter Valid Invoice Number</span>
+										<span class="error"
+									ng-show="vendorPaymentDetailForm.invoiceNumber.$error.required">Invoice Number  is Required.</span>
+
+								</span> <span class="error" id="invoiceNumber"></span>
+							</div>
+						</div>
+						
+						
+							<div class="col-md-6">
+							<div class="form-group">
+								<label>Invoice Date*</label> <input class="form-control"
+									type="date" name="invoiceDate" placeholder="Invoice Date"
+									ng-model="vCtr.entity.date" autocomplete="off"
+									ng-maxlength="50" ng-required="true"
+									ng-model-options="{updateOn: 'blur'}" />
+									<span
+									style="color: red"
+									ng-show="vendorPaymentDetailForm.submitted || vendorPaymentDetailForm.invoiceDate.$dirty && vendorPaymentDetailForm.invoiceDate.$invalid">
+									<span class="error"
+									ng-show="vendorPaymentDetailForm.invoiceDate.$error.required">Invoice Date
+										 is Required.</span>
+									</span>
+							</div>
+						</div>		
+						
+
+
+					</div>
+
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Taxable Value*</label> <input class="form-control"
+									type="text" name="taxableValue" placeholder="Taxable Value"
+									ng-model="vCtr.entity.taxableValue" autocomplete="off"
+									ng-maxlength="100" ng-required="true" ng-pattern="/^[0-9]{1,7}$/"
+									ng-model-options="{updateOn: 'blur'}" />
+									<span
+									style="color: red"
+									ng-show="vendorPaymentDetailForm.submitted || vendorPaymentDetailForm.invoiceNumber.$dirty && vendorPaymentDetailForm.invoiceNumber.$invalid">
+									<span class="error"
+									ng-show="vendorPaymentDetailForm.invoiceNumber.$error.maxlength">Taxable Value should not be greater than 10 digits.</span>
+										<span class="error"
+									ng-show="vendorPaymentDetailForm.invoiceNumber.$error.pattern">Please Enter Valid Taxable Value</span>
+										<span class="error"
+									ng-show="vendorPaymentDetailForm.invoiceNumber.$error.required">Taxable Value is Required.</span>
+
+								</span> <span class="error" id="invoiceNumber"></span>
+
+							</div>
+						</div>
+						
+						
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Surcharge*</label> <input class="form-control" type="text"
+									name="surcharge" placeholder="Surcharge" ng-model="vCtr.entity.surcharge"
+									autocomplete="off" ng-maxlength="50" ng-pattern="/^[0-9]{1,7}$/" ng-required="true"
+									ng-model-options="{updateOn: 'blur'}" /> 	<span
+									style="color: red"
+									ng-show="vendorPaymentDetailForm.submitted || vendorPaymentDetailForm.surcharge.$dirty && vendorPaymentDetailForm.surcharge.$invalid">
+									<span class="error"
+									ng-show="vendorPaymentDetailForm.surcharge.$error.maxlength">Surcharge should not be greater than 10 digits.</span>
+										<span class="error"
+									ng-show="vendorPaymentDetailForm.surcharge.$error.pattern">Please Enter Valid Surcharge</span>
+										<span class="error"
+									ng-show="vendorPaymentDetailForm.surcharge.$error.required">Surcharge is Required</span>
+
+								</span> <span class="error" id="surcharge"></span>
+							</div>
+						</div>	
+				
+						
+						
+						
+
+						
+					</div>
+					<div class="row">
+					<div class="col-md-6">
+							<div class="form-group">
+								<label>CGST*</label> <input class="form-control" type="text"
+									name="cgst" placeholder="CGST" ng-model="vCtr.entity.cgst"
+									autocomplete="off" ng-required="true" ng-maxlength="100" ng-pattern="/^[0-9]{1,7}$/"
+									ng-model-options="{updateOn: 'blur'}" />
+									<span
+									style="color: red"
+									ng-show="vendorPaymentDetailForm.submitted || vendorPaymentDetailForm.invoiceNumber.$dirty && vendorPaymentDetailForm.invoiceNumber.$invalid">
+									<span class="error"
+									ng-show="vendorPaymentDetailForm.invoiceNumber.$error.maxlength">CGST should not be greater than 10 digits.</span>
+										<span class="error"
+									ng-show="vendorPaymentDetailForm.invoiceNumber.$error.pattern">Please Enter Valid CGST </span>
+										<span class="error"
+									ng-show="vendorPaymentDetailForm.invoiceNumber.$error.required">CGST is Required.</span>
+
+								</span> <span class="error" id="invoiceNumber"></span>
+
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>SGST*</label> <input class="form-control" type="text"
+									name="sgst" placeholder="SGST" ng-model="vCtr.entity.sgst"
+									autocomplete="off" ng-maxlength="100" ng-required="true" ng-pattern="/^[0-9]{1,7}$/"
+									ng-model-options="{updateOn: 'blur'}" />
+									<span
+									style="color: red"
+									ng-show="vendorPaymentDetailForm.submitted || vendorPaymentDetailForm.invoiceNumber.$dirty && vendorPaymentDetailForm.invoiceNumber.$invalid">
+									<span class="error"
+									ng-show="vendorPaymentDetailForm.invoiceNumber.$error.maxlength">SGST should not be greater than 10 digits.</span>
+										<span class="error"
+									ng-show="vendorPaymentDetailForm.invoiceNumber.$error.pattern">Please Enter Valid SGST</span>
+										<span class="error"
+									ng-show="vendorPaymentDetailForm.invoiceNumber.$error.required">SGST is Required</span>
+
+								</span> <span class="error" id="invoiceNumber"></span>
+
+							</div>
+						</div>
+						
+						
+					</div>
+
+					<div class="row">
+						
+
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>IGST*</label> <input class="form-control" type="text"
+									name="igst" placeholder="IGST" ng-model="vCtr.entity.igst"
+									autocomplete="off" ng-maxlength="100" ng-required="true"
+									ng-pattern="/^[0-9]{1,7}$/" ng-model-options="{updateOn: 'blur'}" />
+									<span
+									style="color: red"
+									ng-show="vendorPaymentDetailForm.submitted || vendorPaymentDetailForm.invoiceNumber.$dirty && vendorPaymentDetailForm.invoiceNumber.$invalid">
+									<span class="error"
+									ng-show="vendorPaymentDetailForm.invoiceNumber.$error.maxlength">IGST should not be greater than 10 digits.</span>
+										<span class="error"
+									ng-show="vendorPaymentDetailForm.invoiceNumber.$error.pattern">Please Enter Valid IGST</span>
+										<span class="error"
+									ng-show="vendorPaymentDetailForm.invoiceNumber.$error.required">IGST is Required</span>
+
+								</span> <span class="error" id="invoiceNumber"></span>
+
+							</div>
+						</div>
+					
+					
+					<div class="col-md-6">
+							<div class="form-group">
+								<label>CESS*</label> <input class="form-control" type="text"
+									name="cess" placeholder="CESS" ng-model="vCtr.entity.cess"
+									autocomplete="off" ng-maxlength="50" ng-pattern="/^[0-9]{1,7}$/" ng-required="true"
+									ng-model-options="{updateOn: 'blur'}" /> 	<span
+									style="color: red"
+									ng-show="vendorPaymentDetailForm.submitted || vendorPaymentDetailForm.cess.$dirty && vendorPaymentDetailForm.cess.$invalid">
+									<span class="error"
+									ng-show="vendorPaymentDetailForm.cess.$error.maxlength">Cess Amount should not be greater than 10 digits.</span>
+										<span class="error"
+									ng-show="vendorPaymentDetailForm.cess.$error.pattern">Please Enter Valid Cess</span>
+										<span class="error"
+									ng-show="vendorPaymentDetailForm.cess.$error.required">Cess is Required</span>
+
+								</span> <span class="error" id="cess"></span>
+							</div>
+						</div>
+					
+					</div>
+					<div class="row">
+					
+					
+					
+						<div class="col-md-6">
+							<div class="form-group">
+							
+						  <button name="submitButton" id="calculateTDS" class="btn btn-calc btn-green" style="float: none; background-color:#5cb85c; color:white; margin-top:20Px"
+						 ng-click="vCtr.autoCalTDS('vendorPayment')" ><i class="fa fa-check"></i><b>Auto Calculate TDS</b></button>
+						
+						 
+						</div>
+						</div>
+					
+				
+						
+				<div class="col-md-6">
+							<div class="form-group">
+								<label>Total Invoice Value*</label> <input class="form-control"
+									type="text" name="totalInvoiceValue"
+									placeholder="Total Invoice Value"
+									ng-model="vCtr.entity.totalInvoiceValue"  value={{vCtr.entity.totalInvoiceValue}} autocomplete="off"
+									ng-maxlength="100" ng-required="false" ng-pattern=""
+									ng-model-options="{updateOn: 'blur'}" />
+									<!-- <span
+									style="color: red"
+									ng-show="vendorPaymentDetailForm.submitted || vendorPaymentDetailForm.invoiceNumber.$dirty && vendorPaymentDetailForm.invoiceNumber.$invalid">
+									<span class="error"
+									ng-show="vendorPaymentDetailForm.invoiceNumber.$error.maxlength">Total Invoice Value should not be greater than 10 digits.</span>
+										<span class="error"
+									ng-show="vendorPaymentDetailForm.invoiceNumber.$error.pattern">Please Enter Valid Total Invoice Value </span>
+										<span class="error"
+									ng-show="vendorPaymentDetailForm.invoiceNumber.$error.required">Total Invoice Value is Required.</span>
+
+								</span> <span class="error" id="invoiceNumber"></span> -->
+
+
+							</div>
+						</div>		
+						
+						
+						
+					
+					</div>
+					
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Income Tax TDS*</label> <input class="form-control"
+									type="text" name="incomeTaxTds" placeholder="Income Tax TDS"
+									ng-model="vCtr.entity.incomeTaxTds" value={{vCtr.entity.incomeTaxTds}} autocomplete="off"
+									ng-maxlength="50" ng-required="false" ng-pattern=""
+									ng-model-options="{updateOn: 'blur'}" /> <!-- <span
+									style="color: red"
+									ng-show="vendorPaymentDetailForm.submitted ||vendorPaymentDetailForm.incomeTaxTds.$dirty && vendorPaymentDetailForm.incomeTaxTds.$invalid">
+									<span class="error"
+									ng-show="vendorPaymentDetailForm.incomeTaxTds.$error.pattern">Please
+										enter valid Income Tax TDS.</span> <span class="error"
+									ng-show="vendorPaymentDetailForm.incomeTaxTds.$error.maxlength">Income
+										Tax TDS should not be greater than 50 characters</span>
+										<span class="error"
+									ng-show="vendorPaymentDetailForm.incomeTaxTds.$error.required">Income
+										Tax TDS is Required</span>
+
+								</span> -->
+
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>GST TDS*</label> <input class="form-control" type="text"
+									name="gstTds" placeholder="GST TDS"
+									ng-model="vCtr.entity.gstTds"  value={{vCtr.entity.gstTds}} autocomplete="off"
+									ng-maxlength="50" ng-required="false" ng-pattern=""
+									ng-model-options="{updateOn: 'blur'}" /> 
+									<!-- <span
+									style="color: red"
+									ng-show="vendorPaymentDetailForm.submitted ||vendorPaymentDetailForm.gstTds.$dirty && vendorPaymentDetailForm.gstTds.$invalid">
+									<span class="error"
+									ng-show="vendorPaymentDetailForm.gstTds.$error.pattern">Please
+										enter valid GST TDS.</span> <span class="error"
+									ng-show="vendorPaymentDetailForm.gstTds.$error.maxlength">GST
+										TDS should not be greater than 50 characters</span>
+										 <span class="error"
+									ng-show="vendorPaymentDetailForm.gstTds.$error.required"> GST
+										TDS is Required </span>
+
+							<span class="error" id="gstTds"></span> -->
+							</div>
+						</div>
+						
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Net Amount Paid*</label> <input class="form-control"
+									type="text" name="netAmountPaid" placeholder="Net Amount Paid"
+									ng-model="vCtr.entity.netAmountPaid" value={{vCtr.entity.netAmountPaid}} autocomplete="off"
+									ng-maxlength="50" ng-pattern="" ng-required="false" ng-model-options="{updateOn: 'blur'}" /> 
+									
+									<!--  <span
+									style="color: red"
+									ng-show="vendorPaymentDetailForm.submitted || vendorPaymentDetailForm.netAmountPaid.$dirty && vendorPaymentDetailForm.netAmountPaid.$invalid">
+									<span class="error"
+									ng-show="vendorPaymentDetailForm.netAmountPaid.$error.maxlength">Net
+										Amount Paid should not be greater than 10 digits.</span>
+										<span class="error"
+									ng-show="vendorPaymentDetailForm.netAmountPaid.$error.pattern">Please Enter valid Net
+										Amount Paid .</span>
+										<span class="error"
+									ng-show="vendorPaymentDetailForm.netAmountPaid.$error.required">Net
+										Amount Paid is Required</span>
+
+								</span> <span class="error" id="netAmountPaid"></span>  -->
+							</div>
+						</div>
+						
+	                      <div class="col-md-6">
+							<div class="form-group">
+								<label>Remark</label> <input class="form-control" type="text"
+									name="remark" placeholder="Remark"
+									ng-model="vCtr.entity.remark"  autocomplete="off"
+									ng-maxlength="50" ng-required="false" ng-pattern=""
+									ng-model-options="{updateOn: 'blur'}" /> 
+									<!-- <span
+									style="color: red"
+									ng-show="vendorPaymentDetailForm.submitted ||vendorPaymentDetailForm.gstTds.$dirty && vendorPaymentDetailForm.gstTds.$invalid">
+									<span class="error"
+									ng-show="vendorPaymentDetailForm.gstTds.$error.pattern">Please
+										enter valid GST TDS.</span> <span class="error"
+									ng-show="vendorPaymentDetailForm.gstTds.$error.maxlength">GST
+										TDS should not be greater than 50 characters</span>
+										 <span class="error"
+									ng-show="vendorPaymentDetailForm.gstTds.$error.required"> GST
+										TDS is Required </span>
+
+							<span class="error" id="gstTds"></span> -->
+							</div>
+						</div>
+
+						
+					</div>
+					<div class="row">
+				
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<button
+								ng-click="vendorPaymentDetailForm.submitted=true; vCtr.submit(vendorPaymentDetailForm.$valid,'vendorPayment')"
+								class="btn btn-success">Submit</button>
+							<button
+								ng-click="cCctr.gotoList2Page('vendorPayment','vendorPayment');"
+								class="btn btn-danger">Cancel</button>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+<br>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

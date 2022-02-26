@@ -1,0 +1,142 @@
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation"
+	style="background-color: white;">
+
+	<div class="col-lg-4"></div>
+	<div class="col-lg-4">
+
+		<!-- Brand and toggle get grouped for better mobile display -->
+
+		<a class="icon-cog" style="line-height: 0.5%; text-decoration: none;"
+			ng-click="cCctr.homepage('homepage')"> <span
+			class="icon-tax-o-smart"
+			style="font-size: 90px; color: #0F316D; position: relative; top: 20px;"></span>
+
+			<span color="whitle"
+			style="font-size: 40px; color: #0F316D; position: relative; bottom: 20px;"><b>Tax-</b><strong
+				style="color: #79BD3C;"><b>O</b></strong><b>-Smart</b> </span>
+
+		</a> <br> <span color="whitle" class="serif"
+			style="font-size: 15px; color: #79BD3C; position: relative; bottom: 15px;">&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;&emsp;<b>Technology empowering your business</b>
+		</span>
+
+
+	</div>
+	<div class="col-lg-4">
+		<div style="z-index: 4000; padding-right: 0px;" class="pull-right">
+			<h3>
+				<span class="glyphicon glyphicon-th-list pull-right "
+					style="color: #080892;" data-toggle="collapse"
+					data-target="#changePass"></span>
+			</h3>
+			<br>
+			<div class="collapse" id="changePass"
+				ng-init="cCctr.clientId=${cd.getId()};">
+				<ul class="menu-content menu-list"
+					style="font-size: 11px; background-color: #A9CD7F; color: white; width: 170px; height: 25px;">
+					<a ng-click="cCctr.gotoRestPqassword();"><li
+						style="padding-top: 5px;">Change Password</li></a>
+							<a ><li ui-sref="logout" 
+						style="padding-top: 5px; "><b><strong>Log Out</strong></b></li></a>
+						
+				</ul>
+			</div>
+		</div>
+	</div>
+
+</nav>
+
+
+<div style="height: 80%;">
+	<div class="row">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="form-group" align="center">
+					<button
+						ng-click="cCctr.gotoHomePageSC(cCctr.clientId,'homeSC')"
+						class="button" style="margin-top: 150; vertical-align: middle">
+						<span>TDS</span>
+					</button>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+
+<div ui-view></div>
+
+<footer
+	style="position: absolute; bottom: 0; left: 0; right: 0; width: 100%; background-color: #24478f; color: white">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				By continuing past this page, you agree to our <a
+					ui-sref="home.terms" style="color: #79BD3C">Terms and
+					Conditions</a> and <a ui-sref="home.privacy" style="color: #79BD3C">Privacy
+					Policy</a> | Copyright &copy; 2019 taxOsmart.com| All Rights Reserved |</br>
+				<strong>Email: </strong>info@rjsa.in &nbsp;&nbsp; <strong>Support:
+				</strong>+91-9967646171.
+
+			</div>
+		</div>
+	</div>
+</footer>
+<style>
+.center {
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#formPanel {
+	background-color: #e6e6e6;
+	border: 1;
+	height: 50%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.button {
+	display: inline-block;
+	border-radius: 5px;
+	background-color: #24478f;
+	border: none;
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 15px;
+	padding: 20px;
+	width: 270px;
+	height: 60px;
+	transition: all 0.5s;
+	cursor: pointer;
+}
+
+.button span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+}
+
+.button span:after {
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.5s;
+	color: #79BD3C;
+}
+
+.button:hover span {
+	padding-right: 25px;
+}
+
+.button:hover span:after {
+	opacity: 1;
+	right: 0;
+}
+</style>

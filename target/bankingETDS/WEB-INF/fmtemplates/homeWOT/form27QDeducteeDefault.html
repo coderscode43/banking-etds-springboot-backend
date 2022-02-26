@@ -1,0 +1,792 @@
+<style>
+
+/*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+@media only screen and (max-width: 760px) , ( min-device-width : 768px)
+	and (max-device-width: 1024px) {
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr {
+		display: block;
+	}
+
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	tr {
+		margin: 0 0 1rem 0;
+	}
+	tr:nth-child(odd) {
+		background: #ccc;
+	}
+	td {
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee;
+		position: relative;
+		padding-left: 50%;
+	}
+	td:before {
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 0;
+		left: 6px;
+		width: 45%;
+		padding-right: 10px;
+		white-space: nowrap;
+	}
+
+	/*
+		Label the data
+    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+		*/
+	td:nth-of-type(1):before {
+		content: "Sr. No.";
+	}
+	td:nth-of-type(2):before {
+		content: "Challan Sr.No.";
+	}
+	td:nth-of-type(3):before {
+		content: "Deductee Reference No.";
+	}
+	td:nth-of-type(4):before {
+		content: "Deductee Code";
+	}
+	td:nth-of-type(5):before {
+		content: "Deductee Pan";
+	}
+	td:nth-of-type(6):before {
+		content: "Deductee Name";
+	}
+	td:nth-of-type(7):before {
+		content: "Section Code";
+	}
+	td:nth-of-type(8):before {
+		content: "Date of Payment";
+	}
+	td:nth-of-type(9):before {
+		content: "Paid Amount";
+	}
+	td:nth-of-type(10):before {
+		content: "TDS";
+	}
+	td:nth-of-type(11):before {
+		content: "surcharge";
+	}
+	td:nth-of-type(12):before {
+		content: "EdCess";
+	}
+	td:nth-of-type(13):before {
+		content: "Total Tax Deducted";
+	}
+	td:nth-of-type(14):before {
+		content: "Total Tax Deposited";
+	}
+	td:nth-of-type(15):before {
+		content: "Deduct Date";
+	}
+	td:nth-of-type(16):before {
+		content: "Rate Tax Deduct";
+	}
+	td:nth-of-type(17):before {
+		content: "Remarks";
+	}
+	td:nth-of-type(18):before {
+		content: "Certificate No.";
+	}
+	td:nth-of-type(19):before {
+		content: "FY";
+	}
+	td:nth-of-type(20):before {
+		content: "Quarter";
+	}
+	td:nth-of-type(21):before {
+		content: "Action";
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.one {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.two {
+		padding: 8px;
+	}
+}
+
+@media only screen and (min-width:600px) {
+	#three {
+		display: none;
+		max-height: 0;
+		overflow: hidden;
+	}
+}
+
+@media only screen and (min-width:1000px) {
+	#search {
+		margin-left: 45%;
+		margin-top: 2px;
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	#hide {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.hide {
+		display: none;
+	}
+}
+
+.table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
+	{
+	background-color: whitesmoke;
+}
+
+@media ( min-width : 768px) {
+	.collapse.dont-collapse-sm {
+		display: block;
+		height: auto !important;
+		visibility: visible;
+	}
+}
+
+@media ( max-width : 1200px) {
+	.collapse.dont-collapse-sm {
+		display: block;
+		height: auto !important;
+		visibility: visible;
+	}
+}
+</style>
+
+
+
+
+<div id="page-wrapper" ng-controller="CommonWOTController as cWctr">
+	<div class="container-fluid">
+		<div class="col-md-12 "
+			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
+			<div class="heading">
+				<strong>Form 27Q Deductee Default Details</strong>
+			</div>
+
+
+
+		</div>
+
+		<br>
+		<button class="btn btn-primary hidden visible-xs" type="button"
+			data-toggle="collapse" data-target="#collapseExample2"
+			aria-expanded="false" aria-controls="collapseExample">
+			Search</button>
+
+		<div class="collapse dont-collapse-sm" id="collapseExample2">
+			<div class="row">
+				<div class="form-group">
+
+
+					<div class="col-md-3">
+						<h6>
+							<b>Financial Year</b>
+						</h6>
+						<select class="form-control" ng-model="cWctr.search.fy">
+							<option value=" " ng-selected="true">Financial Year</option>
+							<option value="201819">201920</option>
+							<option value="201819">201819</option>
+							<option value="201718">201718</option>
+							<option value="201617">201617</option>
+							<option value="201516">201516</option>
+							<option value="201415">201415</option>
+							<option value="201314">201314</option>
+							<option value="201213">201213</option>
+							<option value="201112">201112</option>
+							<option value="201011">201011</option>
+							<option value="200910">200910</option>
+							<option value="200809">200809</option>
+							<option value="200709">200708</option>
+						</select>
+					</div>
+
+					<div class="col-md-3">
+						<h6>
+							<b>Quarter</b>
+
+						</h6>
+						<select class="form-control" ng-model="cWctr.search.quarter">
+							<option value=" " ng-selected="true">Quarter</option>
+							<option value="Q1">Q1</option>
+							<option value="Q2">Q2</option>
+							<option value="Q3">Q3</option>
+							<option value="Q4">Q4</option>
+						</select>
+					</div>
+
+
+					<div class="col-md-3">
+						<h6>
+							<b>Section Code</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.sectionCode"
+							class="form-control" placeholder="Section Code"
+							style="width: 100%">
+					</div>
+				</div>
+			</div>
+			<div class=" collapse  panel-collapse " id="collapseExample4">
+
+				<div class="row">
+					<div class="col-md-3">
+						<h6>
+							<b>From Date of Payment</b>
+						</h6>
+						<input type="date" ng-model="cWctr.search.fromDate"
+							ng-change="cWctr.search.fromDate=cWctr.date(cWctr.search.fromDate);"
+							class="form-control" placeholder="Date" style="width: 100%">
+					</div>
+
+					<div class="col-md-3">
+						<h6>
+							<b>To Date of Payment</b>
+						</h6>
+						<input type="date" ng-model="cWctr.search.toDate"
+							ng-change="cWctr.search.toDate=cWctr.date(cWctr.search.toDate);"
+							class="form-control" placeholder="Date" style="width: 100%">
+					</div>
+
+
+					<div class="col-md-3">
+						<h6>
+							<b>PAN</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.pan"
+							class="form-control" placeholder="PAN" style="width: 100%">
+					</div>
+					<div class="col-md-3">
+						<h6>
+							<b>TDS Rate As Per IT Acts</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.tdaRateAsPerItActs"
+							class="form-control" placeholder="TDS Rate As Per IT Acts"
+							style="width: 100%">
+					</div>
+
+				</div>
+
+				<div class="row">
+					<div class="col-md-3">
+						<h6>
+							<b>Name</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.name"
+							class="form-control" placeholder="Name" style="width: 100%">
+					</div>
+
+					<div class="col-md-3">
+						<h6>
+							<b>Deductee Sr.No.</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.deducteeSrNo"
+							class="form-control" placeholder="Deductee Sr.No."
+							style="width: 100%">
+					</div>
+
+
+					<div class="col-md-3">
+						<h6>
+							<b>Sr No. in challan</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.srNoInChallan"
+							class="form-control" placeholder="Sr No. in challan"
+							style="width: 100%">
+					</div>
+
+					<div class="col-md-3">
+						<h6>
+							<b>Deductee Ref. No</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.deducteeRefNo"
+							class="form-control" placeholder="Deductee Ref. No"
+							style="width: 100%">
+					</div>
+				</div>
+
+
+
+
+				<div class="row">
+					<div class="col-md-3">
+						<h6>
+							<b>Deductee Code</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.deducteeCode"
+							class="form-control" placeholder="deducteeCode"
+							style="width: 100%">
+					</div>
+
+					<div class="col-md-3">
+						<h6>
+							<b>TDS</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.tds"
+							class="form-control" placeholder="Deductee Sr.No."
+							style="width: 100%">
+					</div>
+
+
+					<div class="col-md-3">
+						<h6>
+							<b>Surcharge</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.surcharge"
+							class="form-control" placeholder="Surcharge" style="width: 100%">
+					</div>
+
+					<div class="col-md-3">
+						<h6>
+							<b>Education Cess</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.eduCess"
+							class="form-control" placeholder="Education Cess"
+							style="width: 100%">
+					</div>
+				</div>
+
+
+
+				<div class="row">
+					<div class="col-md-3">
+						<h6>
+							<b>Total Tax Deducted</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.totalTaxDeducted"
+							class="form-control" placeholder="Total Tax Deducted"
+							style="width: 100%">
+					</div>
+
+					<div class="col-md-3">
+						<h6>
+							<b>Total Tax Deposited</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.totalTaxDeposited"
+							class="form-control" placeholder="Total Tax Deposited"
+							style="width: 100%">
+					</div>
+
+
+					<div class="col-md-3">
+						<h6>
+							<b>Rate at which tax Deducted</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.rateAtWhichTaxDeducted"
+							class="form-control" placeholder="Rate at which tax Deducted"
+							style="width: 100%">
+					</div>
+
+					<div class="col-md-3">
+						<h6>
+							<b>Reason for non Deduction</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.reasonForNonDeduction"
+							class="form-control" placeholder="Reason for non Deduction"
+							style="width: 100%">
+					</div>
+				</div>
+
+
+
+				<div class="row">
+					<div class="col-md-3">
+						<h6>
+							<b>Grossing up Indicator</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.grossingUpIndicator"
+							class="form-control" placeholder="Grossing up Indicator"
+							style="width: 100%">
+					</div>
+
+					<div class="col-md-3">
+						<h6>
+							<b>No of certificate under section</b>
+						</h6>
+						<input type="text"
+							ng-model="cWctr.search.noOfCertificateUnderSection"
+							class="form-control"
+							placeholder="No of certificate under section" style="width: 100%">
+					</div>
+
+
+					<div class="col-md-3">
+						<h6>
+							<b>Unique Knowledge No</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.uniqueAcknowledgeNo"
+							class="form-control" placeholder="uniqueAcknowledgeNo"
+							style="width: 100%">
+					</div>
+
+					<div class="col-md-3">
+						<h6>
+							<b>Country</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.countryOfResidence"
+							class="form-control" placeholder="Country" style="width: 100%">
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-3">
+						<h6>
+							<b>Email</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.email"
+							class="form-control" placeholder="email" style="width: 100%">
+					</div>
+
+					<div class="col-md-3">
+						<h6>
+							<b>Contact no</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.contactNoOfDeductee"
+							class="form-control" placeholder="Contact no" style="width: 100%">
+					</div>
+
+					<div class="col-md-3">
+						<h6>
+							<b>Nature Of Remittance</b>
+						</h6>
+						<input type="text" ng-model="cWctr.search.natureOfRemittance"
+							class="form-control" placeholder="Nature Of Remittance"
+							style="width: 100%">
+					</div>
+					<div class="col-md-3">
+						<h6>
+							<b>Branch Code</b>
+							<h6>
+								<input type="text" ng-model="cWctr.search.branchCode"
+									class="form-control" placeholder="BranchCode"
+									style="width: 100%">
+					</div>
+
+				</div>
+
+				<div class="row">
+
+					
+					<div class="col-md-3">
+						<h6>
+							<b>Account Number</b>
+							<h6>
+								<input type="text" ng-model="cWctr.search.accNo"
+									class="form-control" placeholder="Account Number"
+									style="width: 100%">
+					</div>
+
+					<div class="col-md-3">
+						<h6>
+							<b>ID Number</b>
+							<h6>
+								<input type="text" ng-model="cWctr.search.idNo"
+									class="form-control" placeholder="ID Number"
+									style="width: 100%">
+					</div>
+
+
+				</div>
+
+
+
+				<div class="row">
+
+					<div class="col-md-3">
+						<h6>
+							<b>CIF</b>
+							<h6>
+								<input type="text" ng-model="cWctr.search.cif"
+									class="form-control" placeholder="CIF" style="width: 100%">
+					</div>
+
+					<div class="col-md-3">
+
+						<label>Type*</label> <select name="type" class="form-control"
+							ng-model="cWctr.search.type"
+							ng-model-options="{updateOn: 'blur'}">
+							<option value="cbs">Core Banking System</option>
+							<option value="vps">Vendor Payment System</option>
+							<option value="hrms">Human Resource Management System</option>
+							<option value="cpps">Central Pension Payment System</option>
+						</select>
+					</div>
+
+					<div class="col-md-3">
+
+						<label>Month*</label> <select name="month" class="form-control"
+							ng-model="cWctr.search.month" ng-required="true"
+							ng-model-options="{updateOn: 'blur'}">
+							<option selected value='1'>Janaury</option>
+							<option value='2'>February</option>
+							<option value='3'>March</option>
+							<option value='4'>April</option>
+							<option value='5'>May</option>
+							<option value='6'>June</option>
+							<option value='7'>July</option>
+							<option value='8'>August</option>
+							<option value='9'>September</option>
+							<option value='10'>October</option>
+							<option value='11'>November</option>
+							<option value='12'>December</option>
+						</select>
+					</div>
+
+
+
+				</div>
+
+
+
+
+
+
+			</div>
+
+
+			<div class="row" id="search">
+				<div class="col-md-2" id="search">
+					<button
+						ng-click="cWctr.searchEntities(true,'form27QDeducteeDefault','form27QDeducteeDefault')"
+						class="btn btn-success" onclick="scrollWin()">Search</button>
+				</div>
+			</div>
+
+
+			<div class="row" id="hide">
+				<div class="col-md-3" style="margin-left: 80%; margin-top: -80px">
+					<button
+						ng-click="cWctr.searchEntities(true,'form27QDeducteeDefault')"
+						class="btn btn-success" onclick="scrollWin()">Search</button>
+				</div>
+			</div>
+
+
+			<div class="row mobile ipad-landscape" id="search">
+				<div class="col-md-3" id="search">
+					<button
+						ng-click="cWctr.searchEntities(true,'form27QDeducteeDefault')"
+						class="btn btn-success" onclick="scrollWin()">Search</button>
+					<!-- <button type="button" class="btn btn-primary" data-toggle="modal" ng-click="cWctr.gotoListPage('addform27QDeducteeDefault','addform27QDeducteeDefault');" onclick="scrollWin()">Add</button> -->
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div style="float: right; margin-top: -13px"></div>
+
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="text-right">
+				<button class="btn btn-secondary" style="background-color: #FFA500"
+					data-toggle="collapse" data-target="#collapseExample4"
+					aria-expanded="false" aria-controls="collapseExample">
+					Advance Search</button>
+				<button type="button" class="btn btn-primary"
+					ng-click="cCctr.gotoListPage('addform27QDeducteeDefault','addform27QDeducteeDefault');">Add</button>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="row">
+
+		<div class="table-responsive" style="overflow-x: inherit">
+
+			<table class=" table table-bordered table-hover table-striped"
+				role="table"
+				style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+
+
+				<thead>
+				<colgroup>
+					<col span="14" style="background-color: #ffffff">
+				</colgroup>
+				<tr>
+				<thead role="rowgroup">
+					<tr style="background-color: #81b7db">
+						<th>Sr. No.</th>
+						<th>BranchCode</th>
+						<th>Id No</th>
+						<th>Deductee Id</th>
+						<th>Account Number</th>
+						<th>Type</th>
+						<th>Month</th>
+						<th>Vend Cust Id</th>
+						<th>Unique Ref No</th>
+						<th>Deductee Sr.No.</th>
+						<th>Deductee Ref. No</th>
+						<th>Deductee Code</th>
+						<th>Pan</th>
+						<th>Name</th>
+						<th>Section Code</th>
+						<th>Date of Payment</th>
+						<th>Paid Amount</th>
+						<th>TDS</th>
+						<th>Surcharge</th>
+						<th>Education Cess</th>
+						<th>Total Tax Deducted</th>
+						<th>Total Tax Deposited</th>
+						<th>Date of Deduction</th>
+						<th>Rate at which tax Deducted</th>
+						<th>Reason for non Deduction</th>
+						<th>Grossing up Indicator</th>
+						<th>No of certificate under section</th>
+						<th>Unique Knowledge No.</th>
+						<th>Book Entry</th>
+						<th>Country</th>
+						<th>Email</th>
+						<th>Contact no</th>
+						<th>Address</th>
+						<th>TIN</th>
+						<th>FY</th>
+						<th>Quarter</th>
+						<th>Remarks</th>
+						<th>TDS Rate As Per IT Acts</th>
+						<th>Nature Of Remittance</th>
+						<th>Verified</th>
+						<th>Comments</th>
+						<th>Challan Heading</th>
+						<th>Error</th>
+						<th>Warning</th>
+						<th>Short Deduction</th>
+						<th>Interest On Short Deduction</th>
+						<th>Interest On Late Payment</th>
+						<th>Interest On Late Deduction</th>
+						<th>Cash Withdrawal 194N</th>
+						<th>Cash Withdrawal 194N(20L to 1CR)</th>
+						<th>Cash Withdrawal 194N(>1CR)</th>
+						<th>Action</th>
+
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr role="row"
+						ng-repeat="a in cCctr.getEntityListData() track by a.id">
+						<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
+						
+						<td>{{a.branchCode}}</td>
+						<td>{{a.idNo}}</td>
+						<td>{{a.deducteeId}}</td>
+						<td>{{a.accNo}}</td>
+						<td>{{a.type}}</td>
+						<td>{{a.month}}</td>
+						<td>{{a.vendCustId}}</td>
+						<td>{{a.UniqueRefNo}}</td>
+						<td>{{a.deducteeSrNo}}</td>
+						<td>{{a.deducteeRefNo}}</td>
+						<td>{{a.deducteeCode}}</td>
+						<td>{{a.pan}}</td>
+						<td>{{a.name}}</td>
+						<td>{{a.sectionCode}}</td>
+						<td>{{a.date | date:'dd-MM-yyyy'}}</td>
+						<td>{{a.amountPaid}}</td>
+						<td>{{a.tds}}</td>
+						<td>{{a.surcharge}}</td>
+						<td>{{a.educationCess}}</td>
+						<td>{{a.totalTaxDeducted}}</td>
+						<td>{{a.totalTaxDeposited}}</td>
+						<td>{{a.dateOfDeduction| date:'dd-MM-yyyy'}}</td>
+						<td>{{a.rateAtWhichTaxDeducted}}</td>
+						<td>{{a.reasonForNonDeduction}}</td>
+						<td>{{a.grossingUpIndicator}}</td>
+						<td>{{a.noOfCertificateUnderSection}}</td>
+						<td>{{a.uniqueAcknowledgeNo}}</td>
+						<td>{{a.bookEntery}}</td>
+						<td>{{a.countryOfResidence}}</td>
+						<td>{{a.emailId}}</td>
+						<td>{{a.contactNoOfDeductee}}</td>
+						<td>{{a.addressOfDeductee}}</td>
+						<td>{{a.taxIdentificationNo}}</td>
+						<td>{{a.fy}}</td>
+						<td>{{a.quarter}}</td>
+						<td>{{a.tdaRateAsPerItActs}}</td>
+						<td>{{a.comments}}</td>
+						<td>{{a.challanHeading}}</td>
+						<td>{{a.Error}}</td>
+						<td>{{a.Warning}}</td>
+						<td>{{a.ShortDeduction}}</td>
+						<td>{{a.InterestOnShortDeduction}}</td>
+						<td>{{a.InterestOnLatePayment}}</td>
+						<td>{{a.InterestOnLateDeduction}}</td>
+						<td>{{a.cashWithdrawal194N}}</td>
+						<td>{{a.cashWithdrawal194N20Lto1cr}}</td>
+						<td>{{a.cashWithdrawal194N1cr}}</td>
+						<td>{{a.}}</td>
+						<div>
+							<td ng-if="a.verify == 1"><i class="fa fa-check"
+								aria-hidden="true" style="color: #5cb85c"></i></td>
+							<td ng-if="a.verify == 0"><i class="fa fa-times"
+								aria-hidden="true" style="color: #ff0000"></i></td>
+						</div>
+						<td><a
+							ng-click="cCctr.gotoDetailPage('form27QDeducteeDefault',a.id,'detailForm27QDeducteeDefault')"
+							style="color: blue" onclick="scrollWin()"><img
+								src="static\img\edit.png" width="22px" height="22px"
+								alt="Details" style="margin-top: 5px; margin-bottom: 5px;" /></a></td>
+						<!-- <td>{{a.total-a.amountPaid}}</td> -->
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+
+		<div class="row" ng-show="cCctr.getNoPage() > 0">
+			<div class="row" align="center">
+				<span ng-show="cCctr.currentPage != 1"> <a
+					ng-click="cCctr.getPage(true,'form27QDeducteeDefault',cCctr.currentPage-1)"><strong>Previous</strong></a>
+				</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.currentPage}}</strong>&nbsp;
+					of &nbsp;<strong>{{cCctr.getNoPage()}}</strong>
+					&nbsp;&nbsp;&nbsp;&nbsp; <span
+					ng-show="cCctr.currentPage != cCctr.getNoPage()"> <a
+						ng-click="cCctr.getPage(true,'form27QDeducteeDefault',cCctr.currentPage+1)"><strong>Next</strong></a>
+				</span>
+				</span>
+			</div>
+			<form role="form" name="gotoForm">
+				<div class="row" align="center">
+					<span>Go to</span> &nbsp;&nbsp;&nbsp; <input
+						style="width: 70px; text-align: center;" type="number"
+						name="pageNo" ng-model="cCctr.currentPage"
+						ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
+						ng-min="1" ng-max="cCctr.getNoPage()" ng-required="true">
+					&nbsp;&nbsp;&nbsp;
+					<button style="height: 25px;"
+						ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'form27QDeducteeDefault',cCctr.currentPage)"
+						class="btn btn-primary">Go</button>
+				</div>
+				<div class="row" align="center">
+					<span style="color: red"
+						ng-show="gotoForm.submitted || gotoForm.pageNo.$dirty && gotoForm.pageNo.$invalid">
+						<span class="error" ng-show="gotoForm.pageNo.$error.min">Page
+							No. should not be less than 1.</span> <span class="error"
+						ng-show="gotoForm.pageNo.$error.max">Page No. should not be
+							greater than {{cCctr.getNoPage()}}.</span> <span class="error"
+						ng-show="gotoForm.pageNo.$error.required">Please enter page
+							number.</span>
+					</span>
+				</div>
+			</form>
+		</div>
+
+
+	</div>
+</div>

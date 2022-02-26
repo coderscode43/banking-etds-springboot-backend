@@ -1,0 +1,59 @@
+function calTotal(a){var h=a.parentNode.parentNode.rowIndex;
+var e=h-1;
+var b=1.5;
+var l=1.5;
+var k=3;
+var j=0;
+var f=document.getElementById("state1").value.split("-");
+var d=document.getElementById("state2").value.split("-");
+window.state1=f[0];
+window.state2=d[0];
+var g=document.getElementsByClassName("quantity")[e].value;
+var i=document.getElementsByClassName("rate")[e].value;
+var c=Math.round(g*i);
+document.getElementsByClassName("amount")[e].value=c;
+if(state1=="Maharashtra"&&state2=="Maharashtra"){cgstAmt=Math.round(c*b/100);
+sgstAmt=Math.round(c*l/100);
+igstAmt=0;
+j=+c.valueOf()+ +cgstAmt.valueOf()+ +sgstAmt.valueOf()+ +igstAmt.valueOf();
+document.getElementsByClassName("cgstRate")[e].value=b;
+document.getElementsByClassName("cgstAmt")[e].value=cgstAmt;
+document.getElementsByClassName("sgstRate")[e].value=l;
+document.getElementsByClassName("sgstAmt")[e].value=sgstAmt;
+document.getElementsByClassName("igstRate")[e].value=0;
+document.getElementsByClassName("igstAmt")[e].value=igstAmt;
+document.getElementsByClassName("total")[e].value=j
+}else{cgstAmt=0;
+sgstAmt=0;
+igstAmt=Math.round(c*k/100);
+j=Math.round(+c.valueOf()+ +cgstAmt.valueOf()+ +sgstAmt.valueOf()+ +igstAmt.valueOf());
+document.getElementsByClassName("cgstRate")[e].value=0;
+document.getElementsByClassName("cgstAmt")[e].value=cgstAmt;
+document.getElementsByClassName("sgstRate")[e].value=0;
+document.getElementsByClassName("sgstAmt")[e].value=sgstAmt;
+document.getElementsByClassName("igstRate")[e].value=k;
+document.getElementsByClassName("igstAmt")[e].value=igstAmt;
+document.getElementsByClassName("total")[e].value=j
+}calGrandTotal()
+}function calGrandTotal(){var e=0;
+var f=0;
+var d=0;
+var a=0;
+var g=0;
+var c=document.getElementsByClassName("amount");
+for(var b=0;
+b<c.length;
+b++){e=e+ +(c[b].value).valueOf()
+}if(state1=="Maharashtra"&&state2=="Maharashtra"){f=Math.round(e*1.5/100);
+d=Math.round(e*1.5/100);
+a=0
+}else{a=Math.round(e*3/100);
+f=0;
+d=0
+}g=Math.round(+e.valueOf()+ +f.valueOf()+ +d.valueOf()+ +a.valueOf());
+document.getElementById("subTotal").value=e;
+document.getElementById("cgstTotal").value=f;
+document.getElementById("sgstTotal").value=d;
+document.getElementById("igstTotal").value=a;
+document.getElementById("grandTotal").value=g
+};

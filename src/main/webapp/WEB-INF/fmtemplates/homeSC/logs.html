@@ -114,15 +114,15 @@
 		</div>
 
 		<br>
-		 <button class="btn btn-primary hidden visible-xs" type="button"
-			data-toggle="collapse" data-target="#collapseExample2"
-			aria-expanded="false" aria-controls="collapseExample">
-			Search</button> 
-		<div class="collapse dont-collapse-sm" id="collapseExample2">
-			<div class="row">
-				<div class="form-group">
+		<button class="btn btn-primary hidden visible-xs" type="button"
+		data-toggle="collapse" data-target="#collapseExample2"
+		aria-expanded="false" aria-controls="collapseExample">Search</button>
+	<div class="collapse dont-collapse-sm" id="collapseExample2">
+		<div class="row">
+			<div class="form-group">
 
-					<div class="col-md-2">
+
+				<div class="col-md-3">
 						<h6>
 							<b> User Name</b>
 							<h6>
@@ -130,108 +130,123 @@
 									class="form-control" placeholder="Name" style="width: 100%">
 				
 					</div>
-					
-					<div class="col-md-2">
-						<h6>
+				<div class="col-md-3">
+					<h6>
 							<b> Entity</b>
 							<h6>
 								<input type="text" ng-model="cCctr.search.entity"
 									class="form-control" placeholder="Entity" style="width: 100%">
+				</div>
+
 				
-					</div>
-					
-					
-					
-					<div class="col-md-3">
-						<h6>
-							<b>IP-Address</b>
-							<h6>
-								<input type="text" ng-model="cCctr.search.ipaddrs"
-									class="form-control" placeholder="ipaddrs" style="width: 100%">					
-					</div>
-					
-				 <div class="row">
+			</div>
+		</div>
+
+		<div class=" collapse  panel-collapse" id="collapseExample4">
+			
+			<div class="row">
 			<div class="col-md-3">
-				<h6>
+					<h6>
 					<b>From Date</b>
 					<h6>
-						<input type="date" ng-model="cWctr.search.fromDate"
+						<input type="date" ng-model="cCctr.search.fromDate"
 							ng-change="cWctr.search.fromDate=cWctr.date(cWctr.search.fromDate);"
 							class="form-control" placeholder="Date" style="width: 100%">
-			</div>
-			
+				</div>
 			<div class="col-md-3">
 				<h6>
 					<b>To Date</b>
 					<h6>
-						<input type="date" ng-model="cWctr.search.toDate"
+						<input type="date" ng-model="cCctr.search.toDate"
 							ng-change="cWctr.search.toDate=cWctr.date(cWctr.search.toDate);"
 							class="form-control" placeholder="Date" style="width: 100%">
 			</div>
 
-				<div class="row" id="hide">
-				<div class="col-md-4" style="margin-left: 85%; margin-top: -50px">
-					<button ng-click="cCctr.searchEntities(true,'logs')"
-						class="btn btn-success" onclick="scrollWin()">Search</button>
-				</div>
+			
+			<div class="col-md-3">
+				<h6>
+					<b>IP-Address</b><h6>
+						<input type="text" ng-model="cCctr.search.ipaddrs"
+						class="form-control" placeholder="ipaddrs" style="width: 100%">	
 			</div>
- 
+		</div>
 		
-			<div class="row">
+		
+	
+		
+		
+		
+		
+		
+		</div>
+
+		
+
+
+
+		<div class="row" id="hide">
+			<div class="col-md-3" style="margin-left: 80%; margin-top: -40px">
+				<button
+					ng-click="cCctr.searchEntities(true,'logs','logs')"
+					class="btn btn-success" onclick="scrollWin()">Search</button>
+			</div>
+		</div>
+	</div>
+
+	<div style="float: right; margin-top: -13px"></div>
+
+	<div class="row">
 		<div class="col-xs-12">
 			<div class="text-right">
-			<button class="btn btn-secondary"
+				<button class="btn btn-secondary"
 					style="background-color: #FFA500;"
 					data-toggle="collapse" data-target="#collapseExample4"
 					aria-expanded="false" aria-controls="collapseExample">
 					Advance Search</button>
-					 <div id="collapse1" class="panel-collapse collapse">
-           <div class="panel-body">From Date</div>
-           <div class="panel-footer">To Date</div>
-          </div>
-					</div>
-				</div>
+				<!-- <button type="button" class="btn btn-primary"
+					ng-click="cCctr.gotoListPage('form26QDeductee','addForm26QDeductee');">Add</button> -->
 			</div>
-		
 		</div>
 	</div>
 
-	</div> 
-	
+
+
 		<div class="row"
-			ng-init="cCctr.entity=cCctr.getEntityListData('logs')">
-			<div class="col-12" ng-show="cCctr.getEntityListData('logs')">
+			ng-init="cCctr.entity=cCctr.getEntityListData()">
+			<div class="col-12" ng-show="cCctr.getEntityListData()">
 				<div class="">
 					<div class="">
-					
+
 						<div class="table-responsive">
-						  <table class=" table table-bordered table-hover table-striped ">
-		<thead>
-			<tr  style="height:40px;background-color: #81b7db;font-size:13px">
-				<th>Sr No</th>
-				<th>User Name</th>
-				<th>IP Address</th>
-				<th>Entity</th>
-				<th>Date</th>
-				<th>Details</th>
-				<th>Action</th>
-				
-				
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat="a in cCctr.getEntityListData()" style="font-size:13px">
-				<td>{{$index+1}}</td>
-				<td>{{a.username}}</td>
-				<td>{{a.ipaddrs}}</td>
-				<td>{{a.entity}}</td>
-				<td>{{a.date | date:'dd-MM-yyyy'}}</td>
-				<td>{{a.details}}</td>
-				<td>{{a.action}}</td>
-				
-			</tr>
-		</tbody>
-	</table>
+							<table class=" table table-bordered table-hover table-striped ">
+								<thead>
+									<tr
+										style="height: 40px; background-color: #81b7db; font-size: 13px">
+										<th>Sr No</th>
+										<th>User Name</th>
+										<th>IP Address</th>
+										<th>Entity</th>
+										<th>Date</th>
+										<th>Details</th>
+										<th>Action</th>
+
+
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="a in cCctr.getEntityListData()"
+										style="font-size: 13px">
+										<td>{{$index+1}}</td>
+										<td>{{a.username}}</td>
+										<td>{{a.ipaddrs}}</td>
+										<td>{{a.entity}}</td>
+										<td>{{a.date | date:'dd-MM-yyyy'}}</td>
+										<td>{{a.details}}</td>
+										<td>{{a.action}}</td>
+
+									</tr>
+								</tbody>
+							</table>
 						</div>
 						<!--end table-->
 					</div>

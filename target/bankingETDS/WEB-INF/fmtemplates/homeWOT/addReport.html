@@ -1,0 +1,66 @@
+
+<div id="page-wrapper">
+	<div class="container-fluid">
+		<div class="row">
+			<h1>Add MIS Report</h1>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<form role="form" name="messageForm">
+					<div class="row">
+						
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>From Date</label> <input class="form-control" type="date"
+									name="NAME" placeholder="Name" ng-model="cCctr.entity.fromDate"
+									autocomplete="off" ng-maxlength="100"
+									ng-model-options="{updateOn: 'blur'}" />
+
+							</div>
+						</div>
+						<div class="col-md-6">
+						<div class="form-group">
+								<label>To Date</label> <input class="form-control" type="date"
+									name="NAME" placeholder="Name" ng-model="cCctr.entity.toDate"
+								 />
+
+							</div>
+						
+						
+						</div>
+					</div>
+					
+					<div class="row">
+					
+							<div class="form-group">
+  	         <div class="col-md-6">	
+                  <label>Report Type</label>
+                  <select style="width:100%" class="form-control" ng-model="cCctr.entity.reportType">
+                    <option value="section">Section</option>
+                    <option value="Month Wise">Month Wise</option>
+                     <option value="Tax Audit Report">Tax Audit Report</option>
+                     <option value="Default Tax Audit Report"> Default Tax Audit Report</option>
+                 </select> 
+		   </div> 
+	    </div>
+						</div>
+					
+					</div>
+
+				</form>
+
+					<div class="row">
+						<div class="modal-footer">
+							<button
+								ng-click="messageForm.submitted=true; cCctr.submit(messageForm.$valid,'generateReport',true)"
+								class="btn btn-success" onclick="scrollWin()">Save</button>
+							<button ng-click="cCctr.gotoListPage('generateReport','generateReport');"
+								class="btn btn-danger" onclick="scrollWin()">Back</button>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>

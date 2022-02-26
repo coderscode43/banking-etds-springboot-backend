@@ -1,0 +1,354 @@
+<style>
+
+/*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+@media only screen and (max-width: 760px) , ( min-device-width : 768px)
+	and (max-device-width: 1024px) {
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr {
+		display: block;
+	}
+
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	tr {
+		margin: 0 0 1rem 0;
+	}
+	tr:nth-child(odd) {
+		background: #ccc;
+	}
+	td {
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee;
+		position: relative;
+		padding-left: 50%;
+	}
+	td:before {
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 0;
+		left: 6px;
+		width: 45%;
+		padding-right: 10px;
+		white-space: nowrap;
+	}
+
+	/*
+		Label the data
+    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+		*/
+	td:nth-of-type(1):before {
+		content: "Sr. No.";
+	}
+	td:nth-of-type(2):before {
+		content: "TAN";
+	}
+	td:nth-of-type(3):before {
+		content: "Quarter";
+	}
+	td:nth-of-type(4):before {
+		content: "FORM";
+	}
+	td:nth-of-type(5):before {
+		content: "RT";
+	}
+	td:nth-of-type(6):before {
+		content: "PRN";
+	}
+	td:nth-of-type(7):before {
+		content: "STATUS";
+	}
+	td:nth-of-type(8):before {
+		content: "AS_ON_DATE";
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.one {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.two {
+		padding: 8px;
+	}
+}
+
+@media only screen and (min-width:600px) {
+	#three {
+		display: none;
+		max-height: 0;
+		overflow: hidden;
+	}
+}
+
+@media only screen and (min-width:1000px) {
+	#search {
+		margin-left: 45%;
+		margin-top: 2px;
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	#hide {
+		display: none;
+	}
+}
+
+.table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
+	{
+	background-color: whitesmoke;
+}
+
+@media ( min-width : 768px) {
+	.collapse.dont-collapse-sm {
+		display: block;
+		height: auto !important;
+		visibility: visible;
+	}
+}
+</style>
+
+
+
+
+<div id="page-wrapper">
+	<div class="container-fluid">
+		<div class="col-md-12 "
+			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
+			<div class="heading">
+				<strong>Form 15G/15H Status</strong>
+			</div>
+
+
+
+		</div>
+
+		<br>
+		<button class="btn btn-primary hidden visible-xs" type="button"
+			data-toggle="collapse" data-target="#collapseExample2"
+			aria-expanded="false" aria-controls="collapseExample">
+			Search</button>
+		<div class="collapse dont-collapse-sm" id="collapseExample2">
+			<div class="row">
+				<div class="form-group">
+
+					<div class="col-md-2">
+						<h6>
+							<b>TAN</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.TAN"
+									class="form-control" placeholder="Tan" style="width: 100%">
+					</div>
+
+
+					<div class="col-md-2">
+						<h6>
+							<b>Form</b>
+						</h6>
+						<select ng-model="cCctr.search.FORM" class="form-control">
+							<option value="">Form</option>
+							<option value="15G">15G</option>
+							<option value="15H">15H</option>
+						</select>
+					</div>
+
+
+					<div class="col-md-2">
+						<h6>
+							<b>Quarter</b>
+							<h6>
+								<select ng-model="cCctr.search.QUARTER" class="form-control">
+									<option value="">Quarter</option>
+									<option value="Q1">Q1</option>
+									<option value="Q2">Q2</option>
+									<option value="Q3">Q3</option>
+									<option value="Q4">Q4</option>
+								</select>
+					</div>
+					<div class="col-md-2">
+						<h6>
+							<b>Return Type</b>
+						</h6>
+						<select ng-model="cCctr.search.RT" class="form-control">
+							<option value="">Return Type</option>
+							<option value="Regular">Regular</option>
+							<option value="Correction">Correction</option>
+						</select>
+					</div>
+
+
+				</div>
+
+				<div class="row" id="hide">
+					<div class="col-md-4" style="margin-left: 85%; margin-top: -50px">
+						<button ng-click="cCctr.searchEntities(true,'ghReturnStatus')"
+							class="btn btn-success" onclick="scrollWin()">Search</button>
+					</div>
+				</div>
+
+				<div class="row" id="search">
+					<div class="col-md-3" id="search">
+						<button ng-click="cCctr.searchEntities(true,'ghReturnStatus')"
+							class="btn btn-success" onclick="scrollWin()">Search</button>
+					</div>
+				</div>
+			</div>
+			
+			<div class="collapse  panel-collapse" id="collapseExample4">
+			
+          <div class="row">
+			<div class="col-md-2">
+				<h6>
+					<b>PRN</b>
+					<h6>
+						<input type="text" ng-model="cCctr.search.PRN"
+							
+							class="form-control" placeholder="PRN" style="width: 100%">
+			</div>
+
+			<div class="col-md-2">
+				<h6>
+					<b>Status</b>
+					<h6>
+						<input type="text" ng-model="cCctr.search.STATUS"
+							
+							class="form-control" placeholder="Status" style="width: 100%">
+			</div>
+			
+			<div class="col-md-2">
+				<h6>
+					<b>From Date</b>
+					<h6>
+						<input type="date" ng-model="cCctr.search.fromDate"
+							ng-change="cCctr.search.fromDate=cCctr.date(cCctr.search.fromDate);"
+							class="form-control" placeholder="Date" style="width: 100%">
+			</div>
+			<div class="col-md-2">
+				<h6>
+					<b>To Date</b>
+					<h6>
+						<input type="date" ng-model="cCctr.search.toDate"
+							ng-change="cCctr.search.toDate=cCctr.date(cCctr.search.toDate);"
+							class="form-control" placeholder="Date" style="width: 100%">
+			</div>
+			
+		</div>
+		</div>
+		</div>
+	</div>
+
+<div class="row">
+		<div class="col-xs-12">
+			<div class="text-right">
+			<button class="btn btn-secondary"
+					style="background-color: #FFA500;"
+					data-toggle="collapse" data-target="#collapseExample4"
+					aria-expanded="false" aria-controls="collapseExample">
+					Advance Search</button>
+			
+				<button class="btn btn-Primary" data-toggle="modal"
+					ng-click="cCctr.gotoList2Page('addVendorPayment','addVendorPayment');">Add</button>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		 <div class="table-responsive"> 
+
+		<table class=" tables table-bordered table-hover table-striped"
+			role="table"
+			style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+
+
+			<thead>
+			<colgroup>
+				<col span="14" style="background-color: #ffffff">
+			</colgroup>
+			<tr>
+			<thead role="rowgroup">
+				<tr role="row" style="height: 40px; background-color: #81b7db">
+					<th width="10%">Sr. No.</th>
+					<th width="10%">TAN</th>
+					<th width="10%">QUARTER</th>
+					<th width="10%">FORM</th>
+					<th width="10%">RT</th>
+					<th width="10%">PRN</th>
+					<th width="10%">STATUS</th>
+					<th width="10%">AS_ON_DATE</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr role="row"
+					ng-repeat="a in cCctr.getEntityListData() track by a.id">
+					<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
+					<td>{{a.TAN}}</td>
+					<td>{{a.QUARTER}}</td>
+					<td>{{a.FORM}}</td>
+					<td>{{a.RT}}</td>
+					<td>{{a.PRN}}</td>
+					<td>{{a.STATUS}}</td>
+					<td>{{a.AS_ON_DATE | date:'dd-MM-yyyy'}}</td>
+					<!-- <td>{{a.total-a.amountPaid}}</td> -->
+
+				</tr>
+
+			</tbody>
+		</table>
+	</div>
+</div>
+
+
+<div class="row" ng-show="cCctr.getNoPage() > 0">
+		<div class="row" align="center">
+			<span ng-show="cCctr.currentPage != 1"> <a
+				ng-click="cCctr.getPage(true,'ghReturnStatus',cCctr.currentPage-1)"><strong>Previous</strong></a>
+			</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.currentPage}}</strong>&nbsp;
+				of &nbsp;<strong>{{cCctr.getNoPage()}}</strong>
+				&nbsp;&nbsp;&nbsp;&nbsp; <span
+				ng-show="cCctr.currentPage != cCctr.getNoPage()"> <a
+					ng-click="cCctr.getPage(true,'ghReturnStatus',cCctr.currentPage+1)"><strong>Next</strong></a>
+			</span>
+			</span>
+		</div>
+		<form role="form" name="gotoForm">
+			<div class="row" align="center">
+				<span>Go to</span> &nbsp;&nbsp;&nbsp; <input
+					style="width: 70px; text-align: center;" type="number"
+					name="pageNo" ng-model="cCctr.currentPage"
+					ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
+					ng-min="1" ng-max="cCctr.getNoPage()" ng-required="true">
+				&nbsp;&nbsp;&nbsp;
+				<button style="height: 25px;"
+					ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'ghReturnStatus',cCctr.currentPage)"
+					class="btn btn-primary">Go</button>
+			</div>
+			<div class="row" align="center">
+				<span style="color: red"
+					ng-show="gotoForm.submitted || gotoForm.pageNo.$dirty && gotoForm.pageNo.$invalid">
+					<span class="error" ng-show="gotoForm.pageNo.$error.min">Page
+						No. should not be less than 1.</span> <span class="error"
+					ng-show="gotoForm.pageNo.$error.max">Page No. should not be
+						greater than {{cCctr.getNoPage()}}.</span> <span class="error"
+					ng-show="gotoForm.pageNo.$error.required">Please enter page
+						number.</span>
+				</span>
+			</div>
+		</form>
+	</div>
+
+
+
+
+
+</div>
+</div>

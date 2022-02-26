@@ -103,6 +103,28 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 			}
 
 		})
+		.state('home.detailForm', {
+			url: "/detail/:entity/:detailId/:fy/:branchCode/:page",
+			params: {
+				detailId:null,
+				fy: null,
+				entity: null,
+				branchCode:null,
+				page: null
+			},
+			templateUrl: function($stateParams) {
+				return 'index/detail/homeSC/' + $stateParams.page;
+			},
+			resolve: {
+				list: function($q, $state, CommonService, $stateParams) {
+					console.log('Get Detail  ' + $stateParams.detailId);
+					var deferred = $q.defer();
+					CommonService.detailForm($stateParams.entity, $stateParams.fy, $stateParams.branchCode,$stateParams.detailId).then(deferred.resolve, deferred.resolve);
+					return deferred.promise;
+				}
+			}
+
+		})
 		.state('home.list', {
 			url: "/list/:entity/:page",
 			params: {
@@ -130,7 +152,7 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 				searchParams:null
 			   },
 			   templateUrl : function($stateParams) {
-					return 'index/list/'+$stateParams.entity +'/'+$stateParams.page;
+					return 'index/list/homeSC/'+$stateParams.page;
 					/*return 'index/list/homeSC/'+$stateParams.entity +'/'+$stateParams.page;*/
 				},
 				resolve : {
@@ -223,13 +245,13 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 				searchParams:null
 			   },
 			   templateUrl : function($stateParams) {
-					return 'index/list/homeWOT/'+$stateParams.entity +'/'+$stateParams.page;
+					return 'index/list/homeWOT/'+$stateParams.page;
 				},
 				resolve : {
-					list : function($q, $state,CommonService,$stateParams) {
+					list : function($q, $state,CommonServiceFY,$stateParams) {
 						console.log('Get Search List of '+$stateParams.entity);
 						var deferred = $q.defer();
-						CommonService.searchEntities($stateParams.clientId,$stateParams.entity,$stateParams.searchParams).then(deferred.resolve, deferred.resolve);
+						CommonServiceFY.searchEntities($stateParams.fy,$stateParams.entity,$stateParams.searchParams,$stateParams.branchCode).then(deferred.resolve, deferred.resolve);
 						return deferred.promise;
 					}
 				}

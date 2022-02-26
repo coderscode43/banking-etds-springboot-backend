@@ -1,0 +1,241 @@
+
+<style>
+
+@media only screen and (min-width:1000px) {
+	#search {
+		margin-left: 45%;
+		margin-top: 2px;
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	#hide {
+		display: none;
+	}
+}
+
+@media ( min-width : 768px) {
+	.collapse.dont-collapse-sm {
+		display: block;
+		height: auto !important;
+		visibility: visible;
+	}
+}
+
+@media ( min-width : 300px) and (max-width: 700px) {
+	.mobile {
+		display: none;
+	}
+}
+
+@media only screen and (min-width:700px) {
+	.hide-on-desktop, * [aria-labelledby='hide-on-desktop'] {
+		display: none;
+	}
+}
+
+/* iPad Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+/* CSS */
+.mobile {
+		display: none;
+	}
+}
+</style>
+
+
+
+
+<div id="page-wrapper">
+	<div class="container-fluid">
+		
+		<div class="col-md-12 "
+			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
+			<div class="heading"><strong>Download Certificate</strong></div>
+
+
+
+		</div>
+
+
+		<br>
+		<button class="btn btn-primary hidden visible-xs" type="button"
+			data-toggle="collapse" data-target="#collapseExample2"
+			aria-expanded="false" aria-controls="collapseExample">
+			Search</button>
+		<div class="collapse dont-collapse-sm" id="collapseExample2">
+			<div class="row">
+				<div class="form-group">
+
+
+					<div class="col-md-3">
+						<h6>
+							<b>Financial Year</b>
+						</h6>
+						<select class="form-control" ng-model="cCctr.search.financialyear">
+							<option value=" " ng-selected="true">Financial Year</option>
+							<option value="202021">202021</option>
+							<option value="201920">201920</option>
+							<option value="201819">201819</option>
+							<option value="201718">201718</option>
+							<option value="201617">201617</option>
+							<option value="201516">201516</option>
+							<option value="201415">201415</option>
+							<option value="201314">201314</option>
+							<option value="201213">201213</option>
+							<option value="201112">201112</option>
+							<option value="201011">201011</option>
+							<option value="200910">200910</option>
+							<option value="200809">200809</option>
+							<option value="200709">200709</option>
+						</select>
+					</div>
+
+					<div class="col-md-3">
+						<h6>
+							<b>Quarter</b>
+
+							</h6>
+								<select class="form-control" ng-model="cCctr.search.quarter">
+									<option value=" " ng-selected="true">Quarter</option>
+									<option value="Q1">Q1</option>
+									<option value="Q2">Q2</option>
+									<option value="Q3">Q3</option>
+									<option value="Q4">Q4</option>
+								</select>
+					</div>
+
+					<div class="col-md-3">
+						<h6>
+							<b>Pan</b>
+							</h6>
+								<input type="text" ng-model="cCctr.search.pan"
+									class="form-control" placeholder="Pan" style="width: 100%">
+					</div>
+				</div>
+			</div>
+			
+			<div class="collapse  panel-collapse" id="collapseExample4">
+			
+          <div class="row">
+			
+			
+			<div class="col-md-3">
+				<h6>
+					<b>Customer Id</b>
+					<h6>
+						<input type="text" ng-model="cCctr.search.customerid"
+							
+							class="form-control" placeholder="Customer Id" style="width: 100%">
+			</div>
+			<div class="col-md-3">
+				<h6>
+					<b>Certificate Type</b>
+					<h6>
+						<input type="text" ng-model="cCctr.search.certificatetype"
+							
+							class="form-control" placeholder="Certificate type" style="width: 100%">
+			</div>
+			
+		</div>
+		</div>
+				
+				<div class="row" id="search" >
+				         	  <div class="col-md-2" id="search">	
+				                          <button ng-click="cCctr.searchEntities(true,'downloadCertificate','downloadCertificate')"
+								class="btn btn-success"onclick="scrollWin()">Search</button>
+				                 </div>					
+			  </div>
+			
+
+			<div class="row" id="hide">
+				<div class="col-md-3" style="margin-left: 80%; margin-top: -80px">
+					<button ng-click="cCctr.searchEntities(true,'downloadCertificate')"
+						class="btn btn-success" onclick="scrollWin()">Search</button>
+						</div>
+				</div>
+
+
+			
+
+				<div class="row mobile" id="search">
+				<div class="col-md-3" id="search">
+					<button ng-click="cCctr.searchEntities(true,'downloadCertificate')"
+						class="btn btn-success" onclick="scrollWin()">Search</button>
+				</div>
+			</div>
+			</div>
+		</div>
+		
+		<div class="panel-body">
+
+			<div class="row">
+		<div class="col-xs-12">
+			<div class="text-right">
+			<button class="btn btn-secondary"
+					style="background-color: #FFA500;"
+					data-toggle="collapse" data-target="#collapseExample4"
+					aria-expanded="false" aria-controls="collapseExample">
+					Advance Search</button>
+			<!-- 
+				<button class="btn btn-Primary" data-toggle="modal"
+					ng-click="cCctr.gotoList2Page('addCertificate','addCertificate');">Add</button> -->
+			</div>
+		</div>
+	</div>
+	
+	<div class="table-responsive" >
+					<table class="table table-bordered table-hover  table-striped"
+						
+						style="font-size: 12px; padding: 5px; margin: 5px;">
+
+
+						<thead>
+						<colgroup>
+							<col span="14" style="background-color: #ffffff">
+						</colgroup>
+						<tr>
+						<thead role="rowgroup">
+							<tr style="background-color: #81b7db">
+								<th >Sr. No.</th>
+								<th >Customer ID</th>
+								<th >PAN</th>
+								<th >Certificate Type</th>
+								<th >Financial Year</th>
+								<th >Quarter</th>
+								<th >File</th>
+
+
+
+							</tr>
+						</thead>
+						<tbody>
+							<tr role="row"
+								ng-repeat="a in cCctr.getEntityListData() track by a.id">
+								<td>{{$index+1}}</td>
+								<td>{{a.customerid}}</td>
+								<td>{{a.pan}}</td>
+								<td>{{a.certificatetype}}</td>
+								<td>{{a.financialyear}}</td>
+								<td>{{a.quarter}}</td>
+								<td><a
+									ng-click="cCctr.download('apifileDetail/getFile/'+a.clientId+'/'+a.fileId);"
+									style="color: blue" download="fileName">Download</a></td>
+
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+
+
+	</div>
+</div>

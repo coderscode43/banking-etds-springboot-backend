@@ -191,10 +191,10 @@ public class Regular27EQDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27EQD
 		criteria.add(Restrictions.eqOrIsNull("cif", entity.get("cif")));
           }
           if (entity.get("branchCode") != null) {
-  			criteria.add(Restrictions.eqOrIsNull("branchCode", Long.valueOf((String) entity.get("branchCode"))));
+  			criteria.add(Restrictions.eqOrIsNull("branchCode",  entity.get("branchCode")));
   		}
           if (entity.get("accNo") != null) {
-    			criteria.add(Restrictions.eqOrIsNull("accNo", Long.valueOf((String) entity.get("accNo"))));
+    			criteria.add(Restrictions.eqOrIsNull("accNo",  entity.get("accNo")));
     		}
           if (entity.get("idNo") != null) {
   			criteria.add(Restrictions.eqOrIsNull("idNo", Long.valueOf((String) entity.get("idNO"))));
@@ -206,7 +206,7 @@ public class Regular27EQDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27EQD
           if (entity.get("challanHeading") != null) {
   			criteria.add(Restrictions.eqOrIsNull("challanHeading",  entity.get("challanHeading")));
   		}
-		criteria.addOrder(Order.desc("date"));
+		criteria.addOrder(Order.desc("dateofReceivedDebited"));
 		return (List<Regular27EQDeductee>) criteria.list();
 	
 	

@@ -134,7 +134,7 @@
 	</div>
 
 	<br>
-	<button class="btn btn-primary hidden visible-xs" type="button"
+	<button  class="btn btn-primary hidden visible-xs" type="button"
 		data-toggle="collapse" data-target="#collapseExample2"
 		aria-expanded="false" aria-controls="collapseExample">
 		Search</button>
@@ -192,8 +192,9 @@
 							<div class="row collapse dont-collapse-sm panel-collapse collapse"
 									id="collapseExample4" style="padding: 1%; margin-left: 1%">
 									<div class="col-md-4">
-										<label>Branch ROCode:</label> <input type="text"
-											ng-model="cCctr.search.ROCode"  name="ROCode" class="form-control"
+										<label>ROCode:</label> 
+										<input type="text"
+											ng-model="cCctr.search.roCode"  name="roCode" class="form-control"
 											placeholder="ROCode" style="size: 15px" ><br>
 									</div>
 									<div class="col-md-4">
@@ -260,10 +261,11 @@
 													aria-hidden="true" style="color: #ff0000"></i></td>
 											</div>
 											<td><a
-												ng-click="cCctr.gotoDetailPage('branch',a.branchCode,'DetailsBranch')"
+												ng-click="cCctr.gotoDetailPage('branch',a.id,'DetailsBranch')"
 												style="color: blue"><img src="static\img\edit.png"
 												width="22px" height="22px" alt="Details"
 												style="margin-top: 5px; margin-bottom: 5px;" /></a></td>
+												
 											<td><button ng-click="cCctr.gotoHomePageWOTOFPresentFY(a.branchCode)" class="btn btn-success" onclick="scrollWin()" style="height:30px; margin-top:10px; margin-bottom:10px; background-color:#0f316d">Work on this</button></td>
 									</tr>								
 								</tbody>

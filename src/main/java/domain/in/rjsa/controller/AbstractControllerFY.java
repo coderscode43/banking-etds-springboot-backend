@@ -60,6 +60,37 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 	}
 
 	// ------------------- Count Entity ---------------------------------
+	@RequestMapping(value = "/list/count/", method = RequestMethod.GET)
+	public ResponseEntity<?> count( HttpServletRequest request) {
+		// verify the clientId authorization
+//			applicationCache.getUserAuthorised();
+		HashMap<String, Object> constrains = new HashMap<>();
+//		constrains.put("employeeId", applicationCache.getLoginDetail(getPrincipal()).getEmployeeId());
+
+		String mapping = request.getPathInfo();
+
+		try {
+			Long count = getService().findallCount(constrains);
+			List<?> list = getList( 0, 100);
+			ListCount send = new ListCount();
+			send.setCount(count);
+			send.setEntities(list);
+			return new ResponseEntity<>(send, HttpStatus.OK);
+		} catch (Exception e) {
+			logger.error("Error in listALL", e);
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+	}
+	public List<?> getList( int pageNo, int resultPerPage) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> constrains = new HashMap<>();
+
+		return getService().findAll(constrains, pageNo, resultPerPage);
+	}
+
+	
+	
 	@RequestMapping(value = "/list/{fy}/{branchCode}/count/", method = RequestMethod.GET)
 	public ResponseEntity<?> count(@PathVariable String fy, @PathVariable String branchCode,
 			HttpServletRequest request) {
@@ -100,8 +131,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 	// ------------------- Search Entities ---------------------------------
 
 	@RequestMapping(value = "/search/{fy}/{branchCode}/{json}", method = RequestMethod.GET)
-	public ResponseEntity<?> search(@PathVariable String fy, @PathVariable String branchCode, @PathVariable String json,
-			@PathVariable Long clientId) {
+	public ResponseEntity<?> search(@PathVariable String fy, @PathVariable String branchCode, @PathVariable String json) {
 		try {
 			ObjectMapper mapper = new ObjectMapper();
 			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
@@ -154,7 +184,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 		// FieldErrorDTO ermsg=new FieldErrorDTO();
 		logger.info("Creating new Return instance");
 		create(entity);
-		addLogs(entity);
+//		addLogs(entity);
 		// ermsg.setMessage(" Saved Successfully");
 		return new ResponseEntity<Object>(HttpStatus.CREATED);
 

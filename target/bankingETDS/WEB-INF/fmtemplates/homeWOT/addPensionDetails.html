@@ -1,0 +1,101 @@
+
+<div id="page-wrapper" ng-controller="CommonWOTController as cWctr">
+	<div class="container-fluid">
+		<div class="row">
+			<h1>Add Pension Details</h1>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<form role="form" name="pensionForm">
+					<div class="row">
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Pension Name</label> <input class="form-control"
+									type="text" name="NAME" placeholder="pension Name"
+									ng-model="cWctr.entity.pensionName" autocomplete="off"
+									ng-maxlength="100" ng-model-options="{updateOn: 'blur'}" />
+
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Pension Code</label> <input class="form-control"
+									type="text" name="NAME" placeholder="pension Code"
+									ng-model="cWctr.entity.pensionCode" />
+
+							</div>
+
+
+						</div>
+					</div>
+					<div class="row">
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Address</label>
+								<textarea class="form-control" type="text" name="address"
+									placeholder="Address" ng-model="cWctr.entity.address"
+									autocomplete="off" ng-maxlength="100"
+									ng-model-options="{updateOn: 'blur'}"></textarea>
+
+							
+							</div>
+						</div>
+						
+							<div class="col-md-6">
+							<div class="form-group">
+								<label>Status</label>
+								<input class="form-control" type="text" name="status"
+									placeholder="Status" ng-model="cWctr.entity.status"
+									autocomplete="off" ng-maxlength="100"
+									ng-model-options="{updateOn: 'blur'}"/>
+
+							
+							</div>
+						</div>
+						
+
+					</div>
+					
+					<div class="row">
+
+						
+					
+
+					</div>
+					
+					<div class="row">
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>pension Id</label>
+								<input class="form-control" type="text" name="checker"
+									placeholder="Checker" ng-model="cWctr.entity.pensionId"
+									autocomplete="off" ng-maxlength="100"
+									ng-model-options="{updateOn: 'blur'}"/>
+
+							
+							</div>
+						</div>
+						
+
+					</div>
+
+				</form>
+
+				<div class="row">
+						<div class="modal-footer">
+							<button
+								ng-click="pensionForm.submitted=true; cWctr.submit(true,'pension',true)"
+								class="btn btn-success" onclick="scrollWin()">Save</button>
+							<button 
+								class="btn btn-danger"  onclick="history.back()">Back</button>
+						</div>
+					</div>
+				
+
+			</div>
+		</div>
+	</div>
+</div>

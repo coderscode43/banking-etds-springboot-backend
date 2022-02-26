@@ -1,0 +1,102 @@
+
+<div id="page-wrapper" ng-controller="CommonWOTController as cWctr">
+	<div class="container-fluid">
+		<div class="row">
+			<h1>Add Monthly Challan</h1>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<form role="form" name="tokenForm">
+					<div class="row">
+						
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Branch Code</label> <input class="form-control" type="text"
+									name="NAME" placeholder="Customer ID" ng-model="cWctr.entity.branchCode"
+									autocomplete="off" ng-maxlength="100"
+									ng-model-options="{updateOn: 'blur'}" />
+
+							</div>
+						</div>
+						<div class="col-md-6">
+						<div class="form-group">
+								<label>Month*</label> <select name="month"
+								class="form-control" ng-model="cWctr.entity.month"
+								ng-required="true" ng-model-options="{updateOn: 'blur'}">
+								  <option selected value='Janaury'>Janaury</option>
+								    <option value='February'>February</option>
+								    <option value='March'>March</option>
+								    <option value='April'>April</option>
+								    <option value='May'>May</option>
+								    <option value='June'>June</option>
+								    <option value='July'>July</option>
+								    <option value='August'>August</option>
+								    <option value='September'>September</option>
+								    <option value='October'>October</option>
+								    <option value='November'>November</option>
+								    <option value='December'>December</option>
+															</select>
+							</div>
+						
+						
+						</div>
+					</div>
+					<div class="row">
+						
+						<div class="col-md-6">
+						<div class="form-group">
+								<label>Challan Heading</label> <input class="form-control" type="text"
+									name="NAME" placeholder="Certificate Type" ng-model="cWctr.entity.challanHeading"
+								 />
+
+							</div>
+						
+						
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+							<label>Amount As Per Finacle</label> <input class="form-control" type="text"
+									name="NAME" placeholder="Certificate Type" ng-model="cWctr.entity.amtAsPerFinacle"
+								 />
+								
+							</div>
+
+						</div>
+					</div>
+					
+					
+					
+					<div class="row">
+						
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Amount As Per Tax Calculation</label> <input class="form-control" type="text"
+									name="NAME" placeholder="Certificate Type" ng-model="cWctr.entity.amtAsPerTaxCalculation"
+								 />
+							</div>
+
+						</div>
+						</div>
+					
+					
+					
+					
+					
+
+				</form>
+
+					<div class="row">
+						<div class="modal-footer">
+							<button
+								ng-click="tokenForm.submitted=true; cWctr.submit(true,'monthlyChallan',true)"
+								class="btn btn-success" onclick="scrollWin()">Save</button>
+							<button
+								class="btn btn-danger" onclick="history.back()">Back</button>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>

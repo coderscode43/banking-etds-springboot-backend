@@ -3,11 +3,13 @@ package domain.in.rjsa.dao.impl;
 import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -18,11 +20,10 @@ import domain.in.rjsa.model.tds.STATEMENTSTATUS;
 @Repository("STATEMENTSTATUSDao")
 public class STATEMENTSTATUSDaoImpl extends AbstractDaoTaxo<Long, STATEMENTSTATUS> implements STATEMENTSTATUSDao{
 	@SuppressWarnings("unchecked")
-	public List<STATEMENTSTATUS> search(HashMap entity, Long clientId) {
+	public List<STATEMENTSTATUS> search(HashMap entity, int pageNo, int noOfResult) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
-		propertyNameValues.put("clientId", clientId);
 		criteria.add(Restrictions.allEq(propertyNameValues));
 		if (entity.get("fromDate") != null) {
 			criteria.add(Restrictions.ge("AS_ON_DATE",
@@ -34,7 +35,7 @@ public class STATEMENTSTATUSDaoImpl extends AbstractDaoTaxo<Long, STATEMENTSTATU
 		}
           if(entity.get("TAN")!=null)
           {
-		criteria.add(Restrictions.eqOrIsNull("TAN" ,String.valueOf((String) entity.get("TAN"))));
+		criteria.add(Restrictions.eqOrIsNull("TAN" ,entity.get("TAN")));
           }
           if(entity.get("FORM")!=null)
           {
@@ -49,9 +50,35 @@ public class STATEMENTSTATUSDaoImpl extends AbstractDaoTaxo<Long, STATEMENTSTATU
 		criteria.add(Restrictions.eqOrIsNull("QUARTER", String.valueOf((String) entity.get("QUARTER"))));
           }
           
-          criteria.addOrder(Order.desc("AS_ON_DATE"));
+          criteria.addOrder(Order.desc("id"));
+  		criteria.setFirstResult(pageNo * noOfResult);
+  		criteria.setMaxResults(noOfResult);
 		return (List<STATEMENTSTATUS>) criteria.list();
 	}
 	
+	
+	
+	
+	@Override
+	public Long findSearchCount(LinkedHashMap<String, Object> entity) {
+		Criteria criteria = createEntityCriteria();
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
+		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
+		criteria.add(Restrictions.allEq(propertyNameValues));
+		if (entity.get("roCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("roCode",  entity.get("roCode").toString()));
+		}
+		if (entity.get("branchName") != null) {
+			criteria.add(Restrictions.eqOrIsNull("branchName", entity.get("branchName").toString()));
+		}
+		if (entity.get("branchCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("branchCode", entity.get("branchCode").toString()));
+		}
+		if (entity.get("branchState") != null) {
+			criteria.add(Restrictions.eqOrIsNull("branchState", entity.get("branchState").toString()));
+		}
+	
+		return (Long) criteria.setProjection(Projections.rowCount()).uniqueResult();
+	}
 
 }

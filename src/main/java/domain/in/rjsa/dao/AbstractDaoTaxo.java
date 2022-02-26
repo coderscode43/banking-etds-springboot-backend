@@ -26,13 +26,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.transaction.annotation.Transactional;
 @Transactional("transactionManager")
-public abstract class AbstractDaoTaxo<PK extends Serializable, T> implements DaoInterfaceTaxo<PK, T> {
+public abstract class AbstractDaoTaxo<K extends Serializable, E> implements DaoInterfaceTaxo<K, E> {
 
-	private final Class<T> persistentClass;
+	private final Class<E> persistentClass;
 
 	@SuppressWarnings("unchecked")
 	public AbstractDaoTaxo() {
-		this.persistentClass = (Class<T>) ((ParameterizedType) this.getClass().getGenericSuperclass())
+		this.persistentClass = (Class<E>) ((ParameterizedType) this.getClass().getGenericSuperclass())
 				.getActualTypeArguments()[1];
 	}
 
@@ -44,85 +44,20 @@ public abstract class AbstractDaoTaxo<PK extends Serializable, T> implements Dao
 		return sessionFactory.getCurrentSession();
 	}
 
-	public T getByKey(PK key) {
-		return (T) getSession().get(persistentClass, key);
+	public E getByKey(K key) {
+		return (E) getSession().get(persistentClass, key);
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<T> findall() {
-		CriteriaQuery<T> criteria = createEntityCriteria(new HashMap<String, Object>());
-		criteria.distinct(true);
-		Query query = getSession().createQuery(criteria);
-		return query.getResultList();
-	}
-
-	public void persist(T entity) {
-		getSession().saveOrUpdate(entity);
-	}
-
-	public void delete(T entity) {
-		getSession().delete(entity);
-	}
-	
-	
-
-	protected CriteriaQuery<T> createEntityCriteria(HashMap<String, Object> property) {
-		// return getSession().createCriteria(persistentClass);
-		CriteriaBuilder cb = getSession().getCriteriaBuilder();
-		CriteriaQuery<T> cr = cb.createQuery(persistentClass);
-		Root<T> root = cr.from(persistentClass);
-		List<Predicate> predicates = new ArrayList<Predicate>();
-
-		for (String prop : property.keySet()) {
-			predicates.add(cb.equal(root.get(prop), property.get(prop)));
-		}
-		cr.select(root).where(predicates.toArray(new Predicate[] {}));
-		return cr;
-	}
-
-	public void deleteByKey(PK key) {
-		getSession().delete(getByKey(key));
-	}
-
-	public void update(T entity) {
-		getSession().update(entity);
-	}
-
-	@SuppressWarnings("unchecked")
-	public List<T> search(HashMap entity) {
-		Criteria criteria = createEntityCriteria();
-		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
-	    Map<String, Object> propertyNameValues = new HashMap<String, Object>(entity);		
-		criteria.addOrder(Order.desc("id"));
-		criteria.add(Restrictions.allEq(propertyNameValues));
-		return (List<T>) criteria.list();
-	}
-
-	@SuppressWarnings("unchecked")
-	public T uniqueSearch(HashMap entity) {
-		CriteriaQuery criteria = createEntityCriteria(entity);
-		criteria.distinct(true);
-		Query query = getSession().createQuery(criteria);
-		List<T> list = query.getResultList();
-		if (list == null || list.isEmpty()) {
-			return null;
-		}
-		return list.get(0);
-	}
-
-	protected Criteria createEntityCriteria() {
-		return getSession().createCriteria(persistentClass);
-	}
-
-	@SuppressWarnings("unchecked")
-	public List<T> findallWithConstrain(HashMap<String, Object> constrains, int pageNo, int noOfResult) {
+	public List<E> findall(HashMap<String, Object> constrains, int pageNo, int noOfResult) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		criteria.add(Restrictions.allEq(constrains));
 		criteria.addOrder(Order.desc("id"));
 		criteria.setFirstResult(pageNo * noOfResult);
 		criteria.setMaxResults(noOfResult);
-		return (List<T>) criteria.list();
+		return (List<E>) criteria.list();
+
 	}
 
 	public Long findallCount(HashMap<String, Object> constrains) {
@@ -132,6 +67,84 @@ public abstract class AbstractDaoTaxo<PK extends Serializable, T> implements Dao
 		return (Long) criteria.setProjection(Projections.rowCount()).uniqueResult();
 
 	}
+	
+	
+	@SuppressWarnings("unchecked")
+	public List<E> search(HashMap entity) {
+		Criteria criteria = createEntityCriteria();
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
+		Map<String, Object> propertyNameValues = new HashMap<String, Object>(entity);
+		
+		criteria.add(Restrictions.allEq(propertyNameValues));
+		return (List<E>) criteria.list();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<E> searchIn(HashSet set, String property) {
+		Criteria criteria = createEntityCriteria();
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
+		criteria.add(Restrictions.in(property, set));
+		return (List<E>) criteria.list();
+	}
+	@Override
+	public List<String> ajax(String name, String term) {
+		Criteria criteria = createEntityCriteria();
+		criteria.setProjection(Projections.property(name));
+		criteria.add(Restrictions.ilike(name, term.toUpperCase(), MatchMode.START));
+		return criteria.list();
+	}
+	@SuppressWarnings("unchecked")
+	public E uniqueSearch(HashMap entity) {
+		Criteria criteria = createEntityCriteria();
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
+		criteria.add(Restrictions.allEq(entity));
+		return (E) criteria.uniqueResult();
+	}
+	
+	
+	
+	
+	
+	
+	public void persist(E entity) {
+		getSession().saveOrUpdate(entity);
+	}
+
+	
+	
+
+	protected CriteriaQuery<E> createEntityCriteria(HashMap<String, Object> property) {
+		// return getSession().createCriteria(persistentClass);
+		CriteriaBuilder cb = getSession().getCriteriaBuilder();
+		CriteriaQuery<E> cr = cb.createQuery(persistentClass);
+		Root<E> root = cr.from(persistentClass);
+		List<Predicate> predicates = new ArrayList<Predicate>();
+
+		for (String prop : property.keySet()) {
+			predicates.add(cb.equal(root.get(prop), property.get(prop)));
+		}
+		cr.select(root).where(predicates.toArray(new Predicate[] {}));
+		return cr;
+	}
+
+
+
+	protected Criteria createEntityCriteria() {
+		return getSession().createCriteria(persistentClass);
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<E> findallWithConstrain(HashMap<String, Object> constrains, int pageNo, int noOfResult) {
+		Criteria criteria = createEntityCriteria();
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
+		criteria.add(Restrictions.allEq(constrains));
+		criteria.addOrder(Order.desc("id"));
+		criteria.setFirstResult(pageNo * noOfResult);
+		criteria.setMaxResults(noOfResult);
+		return (List<E>) criteria.list();
+	}
+
+	
 
 	public List<String> ajax(String name, String term, HashMap<String, Object> constrain) {
 
@@ -141,14 +154,6 @@ public abstract class AbstractDaoTaxo<PK extends Serializable, T> implements Dao
 		criteria.add(Restrictions.ilike(name, term.toUpperCase(), MatchMode.START));
 		return criteria.list();
 
-	}
-
-	@SuppressWarnings("unchecked")
-	public List<T> searchIn(HashSet set, String property) {
-		Criteria criteria = createEntityCriteria();
-		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
-		criteria.add(Restrictions.in(property, set));
-		return (List<T>) criteria.list();
 	}
 
 	public Long getMaxValue(String name, Map<String, Object> propertyNameValues) {

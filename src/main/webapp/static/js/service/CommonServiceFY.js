@@ -18,7 +18,7 @@ App.factory('CommonServiceFY', [
 			update: update,
 			save: save,
 			ajax: ajax,
-			//	        deleteEntity:deleteEntity,
+			//deleteEntity:deleteEntity,
 			getEntityList: getEntityList,
 			updateStatus: updateStatus,
 			getEntity: getEntity,
@@ -28,7 +28,8 @@ App.factory('CommonServiceFY', [
 			importData: importData,
 			getFile: getFile,
 			approveUpdate: approveUpdate,
-			rejectUpdate: rejectUpdate
+			rejectUpdate: rejectUpdate,
+			add:add
 
 		};
 		return factory;
@@ -68,6 +69,7 @@ App.factory('CommonServiceFY', [
 			$http.get(
 				REST_SERVICE_URI + entity + '/detail/' + fy + "/" + branchCode + "/" + detailId).success(function(data) {
 					entityData = data;
+					entityList= data;
 					deferred.resolve(data);
 				}).error(function(status) {
 					deferred.reject(status);
@@ -93,6 +95,20 @@ App.factory('CommonServiceFY', [
 			return deferred.promise;
 
 		}
+		function add(entitySave, entity, fy, branchCode) {
+			var deferred = $q.defer();
+
+			$http.post(REST_SERVICE_URI + entity + '/add/' + fy + '/' + branchCode,
+				entitySave).success(function(data) {
+
+					deferred.resolve(data);
+				}).error(function(status) {
+					deferred.reject(status);
+				});
+
+			return deferred.promise;
+		}
+
 
 		function searchEntities(fy, entity, map, branchCode) {
 			entityList = [];

@@ -30,7 +30,7 @@ public class StaticDataDaoImpl extends AbstractDaoForm<Long, StaticData> impleme
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		criteria.add(Restrictions.allEq(constrains));
-		//criteria.addOrder(Order.desc("id"));
+		criteria.addOrder(Order.desc("id"));
 		criteria.setFirstResult(pageNo * resultPerPage);
 		criteria.setMaxResults(resultPerPage);
 		return (List<StaticData>) criteria.list();

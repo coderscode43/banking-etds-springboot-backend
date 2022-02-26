@@ -1,6 +1,5 @@
 package domain.in.rjsa.controller;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import com.google.gson.JsonElement;
 
 import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.fy.Regular24QSalary;
-import domain.in.rjsa.model.wrapper.SalaryDetailWrapper;
 import domain.in.rjsa.service.Regular24QSalaryService;
 import domain.in.rjsa.util.StaticData;
 

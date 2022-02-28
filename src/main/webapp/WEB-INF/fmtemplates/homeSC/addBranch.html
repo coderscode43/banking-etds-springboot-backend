@@ -1,179 +1,195 @@
 <br>
-<div id ="page-wrapper">
+<div id="page-wrapper">
 	<div class="container-fluid">
 		<div class="row">
 			<h1>Add Branch Details</h1>
 		</div>
-		<div class ="row">
-			<div class ="col-md-12">
-				<form role ="form" name ="formBranchDetails">
+		<div class="row">
+			<div class="col-md-12">
+				<form role="form" name="formBranchDetails">
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
 								<h6>
-								<label>RO Code*</label></h6> <input class="form-control" type="text"
-									name="roCode" id="roCode" placeholder="ROCode"
-									ng-model="cCctr.entity.roCode" autocomplete="off"
-									ng-required="true" 
-									ng-maxlength="10"
-									ng-pattern="/^[a-zA-Z0-9]*$/" 
-									 ng-model-options="{updateOn: 'blur'}" />
-									<span style="color: red" ng-show="formBranchDetails.submitted || formBranchDetails.roCode.$dirty && formBranchDetails.roCode.$invalid">
-									<span class="error" ng-show="formRODetails.roCode.$error.pattern">Enter valid RO Code </span> 
-									<span class="error" ng-show="formBranchDetails.roCode.$error.maxlength">RO Code should not be greater than 10 digits.</span> 
-									<span class="error" ng-show="formBranchDetails.roCode.$error.required">RO Code is Required.</span>
-								</span>
-									<span class="error" id="roCode"></span>
+									<label>RO Code*</label>
+								</h6>
+								<input class="form-control" type="text" name="roCode"
+									id="roCode" placeholder="ROCode" ng-model="cCctr.entity.roCode"
+									autocomplete="off" ng-required="true" ng-maxlength="10"
+									ng-pattern="/^[a-zA-Z0-9]*$/"
+									ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="formBranchDetails.submitted || formBranchDetails.roCode.$dirty && formBranchDetails.roCode.$invalid">
+									<span class="error"
+									ng-show="formRODetails.roCode.$error.pattern">Enter
+										valid RO Code </span> <span class="error"
+									ng-show="formBranchDetails.roCode.$error.maxlength">RO
+										Code should not be greater than 10 digits.</span> <span class="error"
+									ng-show="formBranchDetails.roCode.$error.required">RO
+										Code is Required.</span>
+								</span> <span class="error" id="roCode"></span>
 							</div>
 						</div>
-						
+
 						<div class="col-md-6">
 							<div class="form-group">
 								<h6>
-								<label>Branch Code*</label></h6> <input class="form-control" type="text"
-									name="branchCode" placeholder="Branch Code"
-									ng-model="cCctr.entity.branchCode" autocomplete="off"
-									ng-required="true"
-									ng-maxlength="10"
-									ng-pattern="/^[a-zA-Z0-9]*$/"  
-									ng-model-options="{updateOn: 'blur'}" />
-									<span style="color: red" ng-show="formBranchDetails.submitted || formBranchDetails.branchCode.$dirty && formBranchDetails.branchCode.$invalid">
-									<span class="error" ng-show="formRODetails.roCode.$error.pattern">Enter valid Branch Code </span>
-									<span class="error" ng-show="formBranchDetails.branchCode.$error.maxlength">Branch Code should not be greater than 45 characters.</span> 
-									<span class="error" ng-show="formBranchDetails.branchCode.$error.required">Branch Code is Required.</span>
-								</span>
-									<span class="error" id="branchCode"></span>
+									<label>Branch Code*</label>
+								</h6>
+								<input class="form-control" type="text" name="branchCode"
+									placeholder="Branch Code" ng-model="cCctr.entity.branchCode"
+									autocomplete="off" ng-required="true" ng-maxlength="10"
+									ng-pattern="/^[a-zA-Z0-9]*$/"
+									ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="formBranchDetails.submitted || formBranchDetails.branchCode.$dirty && formBranchDetails.branchCode.$invalid">
+									<span class="error"
+									ng-show="formRODetails.roCode.$error.pattern">Enter
+										valid Branch Code </span> <span class="error"
+									ng-show="formBranchDetails.branchCode.$error.maxlength">Branch
+										Code should not be greater than 45 characters.</span> <span
+									class="error"
+									ng-show="formBranchDetails.branchCode.$error.required">Branch
+										Code is Required.</span>
+								</span> <span class="error" id="branchCode"></span>
 							</div>
 						</div>
 					</div>
-					<div class ="row">
-						<div class ="col-md-6">
+					<div class="row">
+						<div class="col-md-6">
 							<div class="form-group">
 								<h6>
 									<label>Branch Name*</label>
-								</h6><input class="form-control" type="text"
-								name="branchName" placeholder ="Branch Name"
-								ng-model="cCctr.entity.branchName" autocomplete="off"
-								ng-required="true"
-								
-								ng-model-options="{updateOn: 'blur'}"/>
-								<span style="color:red" ng-show="formBranchDetails.submitted|| formBranchDetails.branchName.$dirty && formBranchDetails.branchName.$invalid">
-								<span class ="error" ng-show="formBranchDetails.branchName.$error.required"> Branch Name is Required</span>
-								</span>
-								<span class ="error" id= "branchName"></span>
+								</h6>
+								<input class="form-control" type="text" name="branchName"
+									placeholder="Branch Name" ng-model="cCctr.entity.branchName"
+									autocomplete="off" ng-required="true"
+									ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="formBranchDetails.submitted|| formBranchDetails.branchName.$dirty && formBranchDetails.branchName.$invalid">
+									<span class="error"
+									ng-show="formBranchDetails.branchName.$error.required">
+										Branch Name is Required</span>
+								</span> <span class="error" id="branchName"></span>
 							</div>
 						</div>
-						
-						<div class ="col-md-6">
-							<div class = "form-group">
+
+						<div class="col-md-6">
+							<div class="form-group">
 								<h6>
 									<label>Branch Email*</label>
 								</h6>
-								<input class="form-control" type="text"
-									name="branchEmail" placeholder ="Branch Email"
-									ng-model="cCctr.entity.branchEmail" 
-									ng-required="true" 
+								<input class="form-control" type="text" name="branchEmail"
+									placeholder="Branch Email" ng-model="cCctr.entity.branchEmail"
+									ng-required="true"
 									ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
-									ng-model-options="{updateOn: 'blur'}"/>
-									<span style="color: red"
-										ng-show="formBranchDetails.submitted || formBranchDetails.branchEmail.$dirty && formBranchDetails.branchEmail.$invalid">
-										<span class="error"
-												ng-show="formBranchDetails.branchEmail.$error.required">Email
-												ID  is Required: 
-										</span> 
-										<span
-											class="error" ng-show="formBranchDetails.branchEmail.$error.pattern">Email
-											ID is invalid: 
-										</span>
-									</span>
+									ng-model-options="{updateOn: 'blur'}" /> <span
+									style="color: red"
+									ng-show="formBranchDetails.submitted || formBranchDetails.branchEmail.$dirty && formBranchDetails.branchEmail.$invalid">
+									<span class="error"
+									ng-show="formBranchDetails.branchEmail.$error.required">Email
+										ID is Required: </span> <span class="error"
+									ng-show="formBranchDetails.branchEmail.$error.pattern">Email
+										ID is invalid: </span>
+								</span>
 							</div>
 						</div>
 					</div>
-					<div class ="row">
-						<div class ="col-md-6">
-							<div class ="form-group">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
 								<h6>
 									<label>Branch Contact No*</label>
-								</h6><input class="form-control" type="text"
-								name="branchContactNo" placeholder ="Branch Contact No"
-								ng-model="cCctr.entity.branchContactNo" autocomplete="off"
-								ng-required="true" 
-								ng-pattern="/^[0-9]{10}$/"
-								ng-model-options="{updateOn:'blur'}"/>
-								<span style="color:red" ng-show="formBranchDetails.submitted||formBranchDetails.branchContactNo.$dirty && formBranchDetails.branchContactNo.$invalid">
-								<span class ="error" ng-show = "formBranchDetails.branchContactNo.$error.pattern">Enter Valid Branch Contact No.</span>
-								<span class ="error" ng-show = "formBranchDetails.branchContactNo.$error.required">Branch Contact No is Required</span>
-								</span>
-								<span class ="error" id ="branchContactNo"></span>
+								</h6>
+								<input class="form-control" type="text" name="branchContactNo"
+									placeholder="Branch Contact No"
+									ng-model="cCctr.entity.branchContactNo" autocomplete="off"
+									ng-required="true" ng-pattern="/^[0-9]{10}$/"
+									ng-model-options="{updateOn:'blur'}" /> <span
+									style="color: red"
+									ng-show="formBranchDetails.submitted||formBranchDetails.branchContactNo.$dirty && formBranchDetails.branchContactNo.$invalid">
+									<span class="error"
+									ng-show="formBranchDetails.branchContactNo.$error.pattern">Enter
+										Valid Branch Contact No.</span> <span class="error"
+									ng-show="formBranchDetails.branchContactNo.$error.required">Branch
+										Contact No is Required</span>
+								</span> <span class="error" id="branchContactNo"></span>
 							</div>
 						</div>
-						<div class ="col-md-6">
-							<div class ="form-group">
+						<div class="col-md-6">
+							<div class="form-group">
 								<h6>
-								<label>Branch Address*</label>
+									<label>Branch Address*</label>
 								</h6>
-								<textarea class="form-control" 
-										name="branchAddress" placeholder ="Branch Address"
-										ng-model="cCctr.entity.branchAddress" autocomplete="off"
-										ng-required="true" ng-maxlength="50"
-										ng-model-options="{updateOn:'blur'}"
-								></textarea>
-								<span style ="color:red" ng-show="formBranchDetails.submitted || formBranchDetails.branchAddress.$dirty && formBranchDetails.branchAddress.$invalid">
-								<span class ="error" ng-show ="formBranchDetails.branchAddress.$error.maxlength">Branch Address should not be Greater than 10.</span>
-								<span class ="error" ng-show ="formBranchDetails.branchAddress.$error.required">Branch Address is Required.</span>
-								</span>
-								<span class ="error" id ="branchAddress"></span>
+								<textarea class="form-control" name="branchAddress"
+									placeholder="Branch Address"
+									ng-model="cCctr.entity.branchAddress" autocomplete="off"
+									ng-required="true" ng-maxlength="50"
+									ng-model-options="{updateOn:'blur'}"></textarea>
+								<span style="color: red"
+									ng-show="formBranchDetails.submitted || formBranchDetails.branchAddress.$dirty && formBranchDetails.branchAddress.$invalid">
+									<span class="error"
+									ng-show="formBranchDetails.branchAddress.$error.maxlength">Branch
+										Address should not be Greater than 10.</span> <span class="error"
+									ng-show="formBranchDetails.branchAddress.$error.required">Branch
+										Address is Required.</span>
+								</span> <span class="error" id="branchAddress"></span>
 							</div>
 						</div>
 					</div>
-					<div class ="row">
-						<div class ="col-md-6">
-							<div class ="form-group">
+					<div class="row">
+						<div class="col-md-6" style="margin-top: -21px;">
+							<div class="form-group">
 								<h6>
 									<label>Branch Pincode*</label>
-								</h6><input class ="form-control" type ="text"
-								name ="branchPinCode" placeholder="Branch Pincode"
-								ng-model ="cCctr.entity.branchPinCode" 
-								ng-required = "true" ng-pattern="/^[0-9]{6}$/"
-								ng-model-options="{updateOn:'blur'}"/>
-								<span style="color:red" ng-show = "formBranchDetails.submitted || formBranchDetails.branchPinCode.$dirty && formBranchDetails.branchPinCode.$invalid">
-								<span class ="error" ng-show = "formBranchDetails.branchPinCode.$error.pattern">Enter Valid Branch Pincode.</span>
-								<span class ="error" ng-show = "formBranchDetails.branchPinCode.$error.maxlength">Branch Pincode should not be Greater than 10 digits.</span>
-								<span class ="error" ng-show = "formBranchDetails.branchPinCode.$error.required">Branch Pincode is Required</span>
-								</span>
-								<span class ="error" id="branchPinCode"></span>
+								</h6>
+								<input class="form-control" type="text" name="branchPinCode"
+									placeholder="Branch Pincode"
+									ng-model="cCctr.entity.branchPinCode" ng-required="true"
+									ng-pattern="/^[0-9]{6}$/" ng-model-options="{updateOn:'blur'}" />
+								<span style="color: red"
+									ng-show="formBranchDetails.submitted || formBranchDetails.branchPinCode.$dirty && formBranchDetails.branchPinCode.$invalid">
+									<span class="error"
+									ng-show="formBranchDetails.branchPinCode.$error.pattern">Enter
+										Valid Branch Pincode.</span> <span class="error"
+									ng-show="formBranchDetails.branchPinCode.$error.maxlength">Branch
+										Pincode should not be Greater than 10 digits.</span> <span
+									class="error"
+									ng-show="formBranchDetails.branchPinCode.$error.required">Branch
+										Pincode is Required</span>
+								</span> <span class="error" id="branchPinCode"></span>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Branch State*</label> <select name="branchState"
-										id="branchState" class="form-control"
-										ng-model="cCctr.entity.branchState" ng-required="true"
-										ng-model-options="{updateOn: 'blur'}">
-										<option disabled value="">Select State</option>
-										<#list State as state>
-										<option value="${state}">${state}</option>
-										</#list>
-									</select> <span style="color: red"
-										ng-show="formBranchDetails.submitted ||formBranchDetails.branchState.$dirty && formBranchDetails.branchState.$invalid">
-										<span class="error"
-										ng-show="formBranchDetails.branchState.$error.required">
-											branchState is Required. </span>
-									</span>
-								</div>
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label style="font-size:12px">Branch State*</label> <select name="branchState"
+									id="branchState" class="form-control"
+									ng-model="cCctr.entity.branchState" ng-required="true"
+									ng-model-options="{updateOn: 'blur'}">
+									<option disabled value="">Select State</option>
+									<#list State as state>
+									<option value="${state}">${state}</option>
+									</#list>
+								</select> <span style="color: red"
+									ng-show="formBranchDetails.submitted ||formBranchDetails.branchState.$dirty && formBranchDetails.branchState.$invalid">
+									<span class="error"
+									ng-show="formBranchDetails.branchState.$error.required">
+										branchState is Required. </span>
+								</span>
 							</div>
+
 
 						</div>
 					</div>
-					
-						<div class="row">
+
+					<div class="row">
 						<div class="modal-footer">
 							<button
 								ng-click="formBranchDetails.submitted=true; cCctr.submit(formBranchDetails.$valid,cCctr.entity,'branch')"
-								class="btn btn-success" >Save</button>
+								class="btn btn-success">Save</button>
 							<button ng-click="cCctr.gotoListPage('branch','branch')"
-								class="btn btn-danger" onclick="scrollWin(/'branch'/)">Back</button>						
+								class="btn btn-danger" onclick="scrollWin(/'branch'/)">Back</button>
 						</div>
 					</div>
 				</form>
@@ -182,51 +198,51 @@
 	</div>
 </div>
 <div id="successMsg" class="modal fade" role="dialog"
-		style="z-index: 9999">
-		<div class="modal-dialog" style="z-index: 9999;">
+	style="z-index: 9999">
+	<div class="modal-dialog" style="z-index: 9999;">
 
-			<div class="modal-content"
-				style="width: auto; align: center; background: #f5f5f5; color: #0F316D; z-index: 9999">
-				<div class="modal-header" style="padding: 0% 5% 4% 3%;">
-					<h4 style="color: green; line-height: 15px;">
-						<!-- <img src="./././static/img/success.png" height="20" width="20"> -->
-						<i class="" aria-hidden="true"
-							style="font-size: 50px; font-style: tahoma; margin-left: 115%;">
-						</i>&nbsp;&nbsp;<span class="headingMsg mobile"
-							style="margin-left: 110%;"></span><span
-							class="headingMsg hide-on-desktop" style="margin-left: 64%;"></span>
-					</h4>
-				</div>
-				<div class="modal-body" style="background: #ffffff;">
-					<div class="row">
-						<div class="col-sm-3">
-							<!-- <img src="assets/images/Succ.webp" height="120"> -->
-							<img class="hide-on-desktop" src="assets/images/success.gif"
-								style="width: 62%; height: auto; margin-left: 20%">
-							<svg class="checkmark mobile" xmlns="http://www.w3.org/2000/svg"
-								viewBox="0 0 52 52">
+		<div class="modal-content"
+			style="width: auto; align: center; background: #f5f5f5; color: #0F316D; z-index: 9999">
+			<div class="modal-header" style="padding: 0% 5% 4% 3%;">
+				<h4 style="color: green; line-height: 15px;">
+					<!-- <img src="./././static/img/success.png" height="20" width="20"> -->
+					<i class="" aria-hidden="true"
+						style="font-size: 50px; font-style: tahoma; margin-left: 115%;">
+					</i>&nbsp;&nbsp;<span class="headingMsg mobile"
+						style="margin-left: 110%;"></span><span
+						class="headingMsg hide-on-desktop" style="margin-left: 64%;"></span>
+				</h4>
+			</div>
+			<div class="modal-body" style="background: #ffffff;">
+				<div class="row">
+					<div class="col-sm-3">
+						<!-- <img src="assets/images/Succ.webp" height="120"> -->
+						<img class="hide-on-desktop" src="assets/images/success.gif"
+							style="width: 62%; height: auto; margin-left: 20%">
+						<svg class="checkmark mobile" xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 52 52">
 									  <circle class="checkmark__circle" cx="26" cy="26" r="25"
-									fill="none" />
+								fill="none" />
 									  <path class="checkmark__check" fill="none"
-									d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+								d="M14.1 27.2l7.1 7.2 16.7-16.8" />
 									</svg>
-						</div>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<div class="col-sm-9">
-							<div class="msg mobile"
-								style="font-size: 20px; margin: 7% -17% 2% 40%;"></div>
-							<div class="msg hide-on-desktop "
-								style="font-size: 20px; margin: -3% -18% 2% 22%;"></div>
-						</div>
+					</div>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<div class="col-sm-9">
+						<div class="msg mobile"
+							style="font-size: 20px; margin: 7% -17% 2% 40%;"></div>
+						<div class="msg hide-on-desktop "
+							style="font-size: 20px; margin: -3% -18% 2% 22%;"></div>
 					</div>
 				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-success" data-dismiss="modal"
-						style="font-size: 18px; margin-right: 32%; padding: 2% 18% 2% 15%"
-						id="reloadPage">
-						<b>Ok</b>
-					</button>
-				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-success" data-dismiss="modal"
+					style="font-size: 18px; margin-right: 32%; padding: 2% 18% 2% 15%"
+					id="reloadPage">
+					<b>Ok</b>
+				</button>
 			</div>
 		</div>
 	</div>
+</div>

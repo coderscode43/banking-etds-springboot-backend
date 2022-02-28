@@ -134,6 +134,9 @@ public class Regular26QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular26QDed
           if (entity.get("challanHeading") != null) {
   			criteria.add(Restrictions.eqOrIsNull("challanHeading",  entity.get("challanHeading")));
   		}
+          if (entity.get("custVendId") != null) {
+  			criteria.add(Restrictions.eqOrIsNull("custVendId",  entity.get("custVendId")));
+  		}
           
           criteria.addOrder(Order.desc("paymentDate"));
 		

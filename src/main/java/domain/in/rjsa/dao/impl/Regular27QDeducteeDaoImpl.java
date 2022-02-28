@@ -177,6 +177,19 @@ public class Regular27QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27QDed
           if (entity.get("challanHeading") != null) {
   			criteria.add(Restrictions.eqOrIsNull("challanHeading",  entity.get("challanHeading")));
   		}
+          if (entity.get("custVendId") != null) {
+    			criteria.add(Restrictions.eqOrIsNull("custVendId",  entity.get("custVendId")));
+    		}
+          if (entity.get("errorDescription") != null) {
+    			criteria.add(Restrictions.eqOrIsNull("errorDescription",  entity.get("errorDescription")));
+    		}
+          if (entity.get("warningDescription") != null) {
+    			criteria.add(Restrictions.eqOrIsNull("warningDescription",  entity.get("warningDescription")));
+    		}
+          
+          
+          
+          
 		criteria.addOrder(Order.desc("date"));
 		return (List<Regular27QDeductee>) criteria.list();
 	}

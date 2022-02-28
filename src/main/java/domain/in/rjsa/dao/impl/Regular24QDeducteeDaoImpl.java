@@ -75,7 +75,7 @@ public class Regular24QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular24QDed
 				criteria.add(Restrictions.eqOrIsNull("employeeRefNo", entity.get("employeeRefNo")));
 			}
 		 if (entity.get("sectionCode") != null) {
-				criteria.add(Restrictions.eqOrIsNull("sectionCode", entity.get("sectionCode")));
+				criteria.add(Restrictions.eqOrIsNull("sectionCode",   entity.get("sectionCode")));
 			}
 
 		if (entity.get("pan") != null) {

@@ -74,7 +74,6 @@
 <div class="row">
 	<div class="col-md-4"></div>
 	<div class="col-md-4 " id="download">
-
 		<div id="page-wrapper">
 			<div class="container-fluid ">
 				<div id="download-row"
@@ -209,7 +208,7 @@
 								</div>
 							</div>
 							<!-- financial year code -->
-														<div class="row">
+							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
 										<label>Financial Year*</label> 
@@ -219,11 +218,10 @@
 												ng-required="true" 
 												ng-model-options="{updateOn: 'blur'}">
 												<option disabled value="">Select financial Year</option>
-											<#list financialYear as year>
-											
-											<option value="${year}">${year}</option>
-											</#list>
-										</select> 
+												<#list financialYear as year>
+												<option value="${year}">${year}</option>
+												</#list>
+											</select> 
 								<span style="color: red"
 									ng-show="downloadCertificateFrom.submitted ||downloadCertificateFrom.financialYear.$dirty && downloadCertificateFrom.financialYear.$invalid">
 								<span class="error"

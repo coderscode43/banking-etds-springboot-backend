@@ -39,22 +39,22 @@ import domain.in.rjsa.model.form.ListCount;
 import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.form.Model;
 import domain.in.rjsa.model.fy.Logs;
+import domain.in.rjsa.model.fy.Ticket;
 import domain.in.rjsa.service.LogsService;
 import domain.in.rjsa.service.ServiceInterfaceForm;
 import domain.in.rjsa.service.UserDetailsService;
 import domain.in.rjsa.web.ApplicationCache;
 
-public abstract class AbstractControllerForm<K extends Serializable, E extends Model, S extends ServiceInterfaceForm<K, E>>
-		 {
+public abstract class AbstractControllerForm<K extends Serializable, E extends Model, S extends ServiceInterfaceForm<K, E>> {
 
 	public abstract S getService();
 
 	@Autowired
 	ApplicationCache applicationCache;
-	
+
 	@Autowired
 	UserDetailsService userDetailsService;
-	
+
 	@Autowired
 	LogsService lservice;
 
@@ -63,14 +63,14 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 	// ------------------- List Entity ---------------------------------
 
 	@RequestMapping(value = "/list/get/{pageNo}/{resultPerPage}", method = RequestMethod.GET)
-	public ResponseEntity<?> listAll( HttpServletRequest request, @PathVariable int pageNo,
+	public ResponseEntity<?> listAll(HttpServletRequest request, @PathVariable int pageNo,
 			@PathVariable int resultPerPage) {
 		// verify the clientId authorization
 //		applicationCache.getUserAuthorised();
 		String mapping = request.getPathInfo();
 
 		try {
-			List<?> list = getList( pageNo, resultPerPage);
+			List<?> list = getList(pageNo, resultPerPage);
 
 			return new ResponseEntity<>(list, HttpStatus.OK);
 		} catch (Exception e) {
@@ -80,7 +80,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	}
 
-	public List<?> getList( int pageNo, int resultPerPage) {
+	public List<?> getList(int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
 
@@ -90,7 +90,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 	// ------------------- Count Entity ---------------------------------
 
 	@RequestMapping(value = "/list/count/", method = RequestMethod.GET)
-	public ResponseEntity<?> count( HttpServletRequest request) {
+	public ResponseEntity<?> count(HttpServletRequest request) {
 		// verify the clientId authorization
 //			applicationCache.getUserAuthorised();
 		HashMap<String, Object> constrains = new HashMap<>();
@@ -100,7 +100,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 		try {
 			Long count = getService().findallCount(constrains);
-			List<?> list = getList( 0, 100);
+			List<?> list = getList(0, 100);
 			ListCount send = new ListCount();
 			send.setCount(count);
 			send.setEntities(list);
@@ -115,8 +115,8 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 	// ------------------- Search Entities ---------------------------------
 
 	@RequestMapping(value = "/search/get/{pageNo}/{resultPerPage}/{json}/**", method = RequestMethod.GET)
-	public ResponseEntity<?> search(@PathVariable String json, HttpServletRequest request,
-			@PathVariable int pageNo, @PathVariable int resultPerPage) {
+	public ResponseEntity<?> search(@PathVariable String json, HttpServletRequest request, @PathVariable int pageNo,
+			@PathVariable int resultPerPage) {
 		try {
 			final String path = request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE).toString();
 			final String bestMatchingPattern = request.getAttribute(HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE)
@@ -151,6 +151,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 		}
 
 	}
+
 	public List<?> getSearch(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
 		return getService().search(map);
@@ -189,16 +190,15 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<?> createEntity(@RequestBody LinkedHashMap<String, Object> entity) {
-		//FieldErrorDTO ermsg=new FieldErrorDTO();
+		// FieldErrorDTO ermsg=new FieldErrorDTO();
 		logger.info("Creating new Return instance");
+		Ticket ticket = new Ticket();
 		create(entity);
 		addLogs(entity);
-	//	ermsg.setMessage(" Saved Successfully");
+		// ermsg.setMessage(" Saved Successfully");
 		return new ResponseEntity<Object>(HttpStatus.CREATED);
 
 	}
-
-	
 
 	public void create(LinkedHashMap<String, Object> entity) {
 		Gson gson = new Gson();
@@ -209,30 +209,27 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 		getService().save(gson.fromJson(jsonElement, getEntity()));
 
 	}
-	
-	 public void addLogs(HashMap<String, Object> entity) {
-		
-		 
-	    	Login l = applicationCache.getLoginDetail(getPrincipal());
-			HashMap<String, Object>constrains= new HashMap<>();
-			constrains.put("id", entity.get("id"));
-			Logs log = lservice.uniqueSearch(constrains);			
-		    log = new Logs();
-		    log.setAction("Added");
-		    log.setIpaddrs(getIp());
-		    String s=getEntity().getName();
-		    String[] arrOfStr = s.split(".", 27); 
-		    for (String a : arrOfStr) 
-		    log.setEntity(a);	
-		    Gson gason = new Gson(); 
-		    String json = gason.toJson(entity); 
-		    log.setDate(new Date(System.currentTimeMillis()));
-			log.setUsername(l.getUserName());
-			lservice.save(log);
-			
-		
-		}
 
+	public void addLogs(HashMap<String, Object> entity) {
+
+		Login l = applicationCache.getLoginDetail(getPrincipal());
+		HashMap<String, Object> constrains = new HashMap<>();
+		constrains.put("id", entity.get("id"));
+		Logs log = lservice.uniqueSearch(constrains);
+		log = new Logs();
+		log.setAction("Added");
+		log.setIpaddrs(getIp());
+		String s = getEntity().getName();
+		String[] arrOfStr = s.split(".", 27);
+		for (String a : arrOfStr)
+			log.setEntity(a);
+		Gson gason = new Gson();
+		String json = gason.toJson(entity);
+		log.setDate(new Date(System.currentTimeMillis()));
+		log.setUsername(l.getUserName());
+		lservice.save(log);
+
+	}
 
 	// ------------------- Get Detail ---------------------------------
 
@@ -254,68 +251,65 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 		constrains.put("id", id);
 		return getService().uniqueSearch(constrains);
 	}
-
-	// ------------------- Update Entity ---------------------------------
+	
+	 // ------------------- Update Entity ---------------------------------
 
 	@RequestMapping(value = "/update", method = RequestMethod.PUT)
 	public ResponseEntity<?> update(@RequestBody LinkedHashMap<String, Object> entity, HttpServletResponse response,
 			UriComponentsBuilder ucBuilder) {
-		FieldErrorDTO ermsg=new FieldErrorDTO();
+		FieldErrorDTO ermsg = new FieldErrorDTO();
 		Login l = applicationCache.getLoginDetail(getPrincipal());
-			Object o = getDetail((K) Long.valueOf(entity.get("id").toString()));
-			ObjectMapper oMapper = new ObjectMapper();
-			HashMap<String, Object> map = oMapper.convertValue(o, HashMap.class);
-			update(entity);
-			addLogsU(entity);
-			ermsg.setMessage(" Updated Successfully");
-			return new ResponseEntity<String>(HttpStatus.ACCEPTED);
+		Object o = getDetail((K) Long.valueOf(entity.get("id").toString()));
+		ObjectMapper oMapper = new ObjectMapper();
+		HashMap<String, Object> map = oMapper.convertValue(o, HashMap.class);
+		update(entity);
+		addLogsU(entity);
+		ermsg.setMessage(" Updated Successfully");
+		return new ResponseEntity<String>(HttpStatus.ACCEPTED);
 	}
 
 	public void update(LinkedHashMap<String, Object> entity) {
-		
-		
+
 		Gson gson = new Gson();
 		Login l = applicationCache.getLoginDetail(getPrincipal());
 		JsonElement jsonElement = gson.toJsonTree(entity);
 		getService().update(gson.fromJson(jsonElement, getEntity()));
-		
-		
+
 //		Gson gson = new Gson();
 //		Login l = applicationCache.getLoginDetail(getPrincipal());
 //		if (entity.containsKey("clientId")) {
 //			entity.put("clientId", l.getClientId());
 //		}
-		//if (entity.containsKey("employeeId")) {
+		// if (entity.containsKey("employeeId")) {
 //		entity.put("employeeId",  l.getEmployeeId());
-		//}
-	//	JsonElement jsonElement = gson.toJsonTree(entity);
+		// }
+		// JsonElement jsonElement = gson.toJsonTree(entity);
 
 		// getEntity from controller and validate that with validate method in
 		// contorller and message from Service
-		//getService().update(gson.fromJson(jsonElement, getEntity()));
+		// getService().update(gson.fromJson(jsonElement, getEntity()));
 
 	}
-	
-	
-	 public void addLogsU(HashMap<String, Object> entity) {
-		 
-	    	Login l = applicationCache.getLoginDetail(getPrincipal());
-			HashMap<String, Object>constrains= new HashMap<>();
-			constrains.put("id", Long.valueOf(entity.get("id").toString()));
-			Logs log = lservice.uniqueSearch(constrains);			
-		    log = new Logs();
-		    log.setAction("Updated");
-		    log.setIpaddrs(getIp());
-		    String s=getEntity().getName();
-		    String[] arrOfStr = s.split(".", 27); 
-		    for (String a : arrOfStr) 
-		    log.setEntity(a);
-		    Gson gason = new Gson(); 
-		    String json = gason.toJson(entity); 
-		    log.setDate(new Date(System.currentTimeMillis()));
-			log.setUsername(l.getUserName());
-			lservice.save(log);
-		}
+
+	public void addLogsU(HashMap<String, Object> entity) {
+
+		Login l = applicationCache.getLoginDetail(getPrincipal());
+		HashMap<String, Object> constrains = new HashMap<>();
+		constrains.put("id", Long.valueOf(entity.get("id").toString()));
+		Logs log = lservice.uniqueSearch(constrains);
+		log = new Logs();
+		log.setAction("Updated");
+		log.setIpaddrs(getIp());
+		String s = getEntity().getName();
+		String[] arrOfStr = s.split(".", 27);
+		for (String a : arrOfStr)
+			log.setEntity(a);
+		Gson gason = new Gson();
+		String json = gason.toJson(entity);
+		log.setDate(new Date(System.currentTimeMillis()));
+		log.setUsername(l.getUserName());
+		lservice.save(log);
+	}
 
 	// ------------------- Delete Entity ---------------------------------
 
@@ -331,10 +325,6 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 		}
 
 	}
-	
-	
-	
-	
 
 	// ------------------- ajax Entities ---------------------------------
 
@@ -372,19 +362,17 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 	}
 
 	public abstract Class<E> getEntity();
-	
+
 	private String getIp() {
 		try {
-			  InetAddress ipAddr = InetAddress.getLocalHost();
-			  String str=ipAddr.getHostAddress();
-			  return str;
+			InetAddress ipAddr = InetAddress.getLocalHost();
+			String str = ipAddr.getHostAddress();
+			return str;
 		} catch (UnknownHostException ex) {
-			 ex.printStackTrace(); // print Exception StackTrace
-	
+			ex.printStackTrace(); // print Exception StackTrace
+
 			return null;
 		}
 	}
-   	
-	
-	
+
 }

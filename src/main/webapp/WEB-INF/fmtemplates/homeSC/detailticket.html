@@ -131,7 +131,7 @@
 
 
 <div id="page-wrapper"
-	ng-init="cCctr.entity=cCctr.getEntityDataFY().deductee;">
+	ng-init="cCctr.entity=cCctr.getEntityData().deductee;">
 	<div class="container-fluid">
 
 		<div ng-show="cCctr.show != true">
@@ -227,7 +227,7 @@
 								Remark</button>
 
 							<button class="btn btn-danger"
-								ng-click="cCctr.gotoWFYListPage('ticket','ticket')">Back</button>
+								ng-click="cCctr.gotoListPage('ticket','ticket')">Back</button>
 
 							<button class="btn btn-primary">Resolved</button>
 
@@ -288,7 +288,7 @@
 
 								</thead>
 								<tbody>
-									<tr ng-repeat="a in cCctr.getEntityListDataFY().remark">
+									<tr ng-repeat="a in cCctr.getEntityListData().remark">
 										<th>{{$index+1}}</th>
 										<th>{{a.remark}}</th>
 										<th>{{a.userName}}</th>

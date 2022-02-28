@@ -191,14 +191,14 @@
 
 				<div class="row" id="hide">
 					<div class="col-md-4" style="margin-left: 85%; margin-top: -50px">
-						<button ng-click="cCctr.searchEntities(true,'ghReturnStatus')"
+						<button ng-click="cCctr.searchEntities(true,'')"
 							class="btn btn-success" onclick="scrollWin()">Search</button>
 					</div>
 				</div>
 
 				<div class="row" id="search">
 					<div class="col-md-3" id="search">
-						<button ng-click="cCctr.searchEntities(true,'ghReturnStatus')"
+						<button ng-click="cCctr.searchEntities(true,'')"
 							class="btn btn-success" onclick="scrollWin()">Search</button>
 					</div>
 				</div>
@@ -255,14 +255,14 @@
 					data-toggle="collapse" data-target="#collapseExample4"
 					aria-expanded="false" aria-controls="collapseExample">
 					Advance Search</button>
-			
+			<!-- 
 				<button class="btn btn-Primary" data-toggle="modal"
-					ng-click="cCctr.gotoList2Page('addVendorPayment','addVendorPayment');">Add</button>
+					ng-click="cCctr.gotoList2Page('addVendorPayment','addVendorPayment');">Add</button> -->
 			</div>
 		</div>
 	</div>
 	<div class="row">
-		 <div class="table-responsive"> 
+		 <div class="table-responsive" style="overflow-x: inherit"> 
 
 		<table class=" tables table-bordered table-hover table-striped"
 			role="table"
@@ -274,7 +274,7 @@
 				<col span="14" style="background-color: #ffffff">
 			</colgroup>
 			<tr>
-			<thead role="rowgroup">
+			<thead role="rowgroup" >
 				<tr role="row" style="height: 40px; background-color: #81b7db">
 					<th width="10%">Sr. No.</th>
 					<th width="10%">TAN</th>
@@ -289,7 +289,7 @@
 			</thead>
 			<tbody>
 				<tr role="row"
-					ng-repeat="a in cCctr.getEntityListData() track by a.id">
+					ng-repeat="a in cCctr.getEntityListDataFY() track by a.id">
 					<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
 					<td>{{a.TAN}}</td>
 					<td>{{a.QUARTER}}</td>

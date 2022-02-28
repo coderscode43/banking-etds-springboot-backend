@@ -178,7 +178,7 @@
 				<h6>
 					<b>Amount Consumed</b>
 					<h6>
-						<input type="text" ng-model="cCctr.search.AMOUNT_CONSUMED"
+						<input type="text" ng-model="cCctr.search.LDC.AMOUNT_CONSUMED"
 							
 							class="form-control" placeholder="Amount Consumed" style="width: 100%">
 			</div>
@@ -215,18 +215,14 @@
 					ng-click="cCctr.gotoListPage('addLDC','addLDC');">Add</button> -->
 			</div>
 		</div>
-	</div>
-		
+	</div>	
 		<div class="panel-body" style="margin-left: -3%; width: 107%;">
-
 			<div class="row">
 				 <div class="table-responsive" style="overflow-x:inherit">
 
 					<table class="table table-bordered table-hover table-striped"
 						role="table"
 						style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
-
-
 						<thead>
 						<colgroup>
 							<col span="14" style="background-color: #ffffff">
@@ -250,14 +246,11 @@
 								<th >Issue Date</th>
 								<th >Cancel Date</th>
 								<th >As On Date</th>
-
-
-
 							</tr>
 						</thead>
 						<tbody>
 							<tr role="row"
-								ng-repeat="a in cCctr.getEntityListData() track by a.id">
+								ng-repeat="a in cCctr.getEntityListDataFY() track by a.id">
 								<td role="cell" class="one" style="height: 60px; padding: 10px">{{$index+1}}</td>
 								<td>{{a.LDC_NUMBER}}</td>
 								<td>{{a.NAME}}</td>
@@ -278,7 +271,6 @@
 								<!-- <td>{{a.total-a.amountPaid}}</td> -->
 
 							</tr>
-
 						</tbody>
 					</table>
 				</div>

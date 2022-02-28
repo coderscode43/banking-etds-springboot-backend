@@ -77,7 +77,7 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 					page:null,
 				},
 			templateUrl: function($stateParams){
-				return 'index/add/' + $stateParams.page;
+				return 'index/add/homeSC/' + $stateParams.page;
 			},
 			controller : "CommonController as cCctr",
 		})

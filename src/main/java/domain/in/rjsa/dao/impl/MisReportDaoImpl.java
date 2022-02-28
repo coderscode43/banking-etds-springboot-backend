@@ -9,12 +9,13 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
+import domain.in.rjsa.dao.AbstractDaoFY;
 import domain.in.rjsa.dao.AbstractDaoForm;
 import domain.in.rjsa.dao.MisReportDao;
 import domain.in.rjsa.model.fy.MisReport;
 
 @Repository("misReportDao")
-public class MisReportDaoImpl extends AbstractDaoForm<Long, MisReport> implements MisReportDao {
+public class MisReportDaoImpl extends AbstractDaoFY<Long, MisReport> implements MisReportDao {
 	@SuppressWarnings("unchecked")
 	public List<MisReport> search(HashMap entity, Long clientId) {
 		Criteria criteria = createEntityCriteria();

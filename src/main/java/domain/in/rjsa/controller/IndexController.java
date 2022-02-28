@@ -155,6 +155,11 @@ public class IndexController {
 				 stringArray = xString.split(",");
 				 model.addAttribute("certificateLocation", stringArray);
 		    break;
+			case "Month":
+				 xString = list1.getValue();
+				 stringArray = xString.split(",");
+				 model.addAttribute("Month", stringArray);
+		    break;
 			
 			default:
 				System.out.println("Not Match");

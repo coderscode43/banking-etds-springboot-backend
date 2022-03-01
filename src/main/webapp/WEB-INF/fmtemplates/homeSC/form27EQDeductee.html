@@ -83,14 +83,13 @@
 					<h6>
 						<b>Quarter</b>
 						<h6>
-							<select class="form-control" ng-model="cCctr.search.quarter"
-								style="width: 100%">
-								<option value="" ng-selected=true>Quarter</option>
-								<option value="Q1">Q1</option>
-								<option value="Q2">Q2</option>
-								<option value="Q3">Q3</option>
-								<option value="Q4">Q4</option>
-							</select>
+							<select class="form-control"
+													ng-model="cCctr.entity.quarter" required>
+													<option disabled value="">Select Quarter</option>
+													<#list Quarter as quarter>
+													<option value="${quarter}">${quarter}</option>
+													</#list>
+												</select>
 				</div>
 
 				<div class="col-md-3">
@@ -293,7 +292,7 @@
 							<td>{{a.challanHeading}}</td>
 							<td>{{a.deducteeReferenceNo}}</td>
 							<td>{{a.deducteeCode}}</td>
-							<td>{{a.panofthedeDeductee}}</td>
+							<td>{{a.panofthedeductee}}</td>
 							<td>{{a.nameoftheDeductee}}</td>
 							<td>{{a.amountReceiptDebited}}</td>
 							<td>{{a.dateofReceivedDebited}}</td>
@@ -306,13 +305,13 @@
 							<td>{{a.totalValueofPurchase}}</td>
 							<td>{{a.rateatwhichTaxCollected}}</td>
 							<td>{{a.reasonforNonCollection}}</td>
-							<td>{{a.sectionCollectionCode}}</td>
+							<td>{{a.collectionCode}}</td>
 							<td>{{a.certificatenumber}}</td>
 							<td>{{a.deducteeisNonResident}}</td>
 							<td>{{a.permanentEstablishment}}</td>
-							<td>{{a.reasonforNonCollectionForG}}</td>
-							<td>{{a.ifAnswerto681AisYesThenChallanNumber}}</td>
-							<td>{{a.ifAnswerto681AisYesThenDateOfPaymentOfTDSToCentralGovernment}}</td>
+							<td>{{a.reasonForNonCollectionForG}}</td>
+							<td>{{a.ifAnswerTo681AisyesthenChallanNumber}}</td>
+							<td>{{a.ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment| date:'dd-MM-yyyy'}}</td>
 							<td>{{a.errorDescription}}</td>
 							<td>{{a.warningDescription}}</td>
 							<td>{{a.ShortDeduction}}</td>

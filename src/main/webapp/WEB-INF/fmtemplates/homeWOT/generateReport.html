@@ -128,6 +128,7 @@
 					<th>From Date</th>
 					<th>To Date</th>
 					<th>Report Type</th>
+					<th>User Name</th>
 					<th>Action</th>
 
 
@@ -142,7 +143,13 @@
 					<td>{{a.fromDate | date:'dd-MM-yyyy'}}</td>
 					<td>{{a.toDate | date:'dd-MM-yyyy'}}</td>
 					<td>{{a.reportType}}</td>
-
+					<td>{{a.userName}}</td>
+					<td>
+						<button class="btn btn-outline-primary waves-effect waves-light"
+							ng-click="pctr.download('${path}/generateReport/'+a.branchCode)"
+							style="cursor: pointer; display: block; margin: auto; justify-content: center; font-size: small;">Download
+						</button>
+					</td>
 				</tr>
 			</tbody>
 		</table>
@@ -181,7 +188,7 @@
 											ng-model="cCctr.entity.dateOfOpening"
 											ng-init="cCctr.entity.dateOfOpening=cCctr.presentDate()">-->
 
-										<!-- <input type="hidden"ng-model="cCctr.entity.fy=">
+								<!-- <input type="hidden"ng-model="cCctr.entity.fy=">
 
 										<input type="hidden" ng-model="cCctr.entity.branchCode=">  -->
 
@@ -189,7 +196,7 @@
 									<div class="col-md-4">
 										<div>
 											<label>Section</label> <select
-												ng-model="cCctr.entity.section" class="form-control"
+												ng-model="cCctr.entity.reportType" class="form-control"
 												required>
 												<option value="section">Section</option>
 												<option value="Month Wise">Month Wise</option>
@@ -203,21 +210,19 @@
 									<div class="col-md-4">
 										<div>
 											<label>From Date</label> <input class="form-control"
-											type="date"
-												ng-model="cCctr.entity.fromDate" required>
-												
+												type="date" ng-model="cCctr.entity.fromDate" required>
+
 										</div>
 									</div>
 									<div class="col-md-4">
 										<div>
 											<label>To Date</label> <input class="form-control"
-											type="date"
-												ng-model="cCctr.entity.toDate" required>
-												
+												type="date" ng-model="cCctr.entity.toDate" required>
+
 										</div>
 									</div>
 								</div>
-								
+
 								<br>
 								<div class="control-group">
 									<label class="control-label" for="save"></label>

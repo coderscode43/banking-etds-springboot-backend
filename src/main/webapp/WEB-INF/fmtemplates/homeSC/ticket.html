@@ -129,13 +129,16 @@
 		<div class="collapse dont-collapse-sm" id="collapseExample2">
 			<div class="row">
 				<div class="form-group">
-
 					<div class="col-md-2">
 						<h6>
 							<b>Status</b>
 							<h6>
-								<input type="text" ng-model="cCctr.search.status"
+								<select type="text" ng-model="cCctr.search.status"
 									class="form-control" placeholder="Status" style="width: 100%">
+									<option disabled value="">Select Status</option>
+									<option value="open">open</option>
+									<option value="close">close</option>
+								</select>
 					</div>
 					<div class="col-md-2">
 						<h6>
@@ -236,7 +239,7 @@
 
 
 					<button class="btn btn-primary" data-toggle="modal"
-						onclick="test('#myModal')">Add</button>
+						onclick="test('#myModal')">Add Ticket</button>
 
 				</div>
 			</div>
@@ -259,7 +262,7 @@
 						<th width="10%">Form</th>
 						<th width="10%">Date Of Opening</th>
 						<th width="10%">Status</th>
-						<th width="10%">Remarks</th>
+						<th width="10%">User</th>
 						<th width="10%">Action</th>
 					</tr>
 				</thead>
@@ -272,7 +275,7 @@
 						<td>{{a.form}}</td>
 						<td>{{a.dateOfOpening | date:'dd-MM-yyyy'}}</td>
 						<td>{{a.status}}</td>
-						<td>{{a.remarks}}</td>
+						<td>{{a.userName}}</td>
 						<!-- ng-click="cCctr.gotoDetailPage('ticket',a.id,a.fy,a.branchCode,'detailticket')" -->
 						<td><a
 							ng-click="cCctr.gotoDetailFormPage('ticket',a.id,a.fy,a.branchCode,'detailTicket')"
@@ -492,95 +495,102 @@
 							<div class="tab-pane fade active in">
 								<form name="fileForm" class="form-horizontal" role="form"
 									enctype="multipart/form-data">
-									<fieldset>
-										<input type="hidden" ng-model="cCctr.entity.dateOfOpening"
-											ng-init="cCctr.entity.dateOfOpening=cCctr.presentDate()">
+									<!-- Hidden Filed -->
+									<input type="hidden" ng-model="cCctr.entity.dateOfOpening"
+										ng-init="cCctr.entity.dateOfOpening=cCctr.presentDate()">
 
-										<input type="hidden" ng-model="cCctr.entity.dateOfChange"
-											ng-init="cCctr.entity.dateOfChange=cCctr.presentDate()">
+									<input type="hidden" ng-model="cCctr.entity.dateOfChange"
+										ng-init="cCctr.entity.dateOfChange=cCctr.presentDate()">
 
-										<input type="hidden" ng-model="cCctr.entity.dec.status"
-											ng-init="cCctr.entity.status='Open'">
-
-										<div class="row">
-											<div class="col-md-4">
-												<div>
-													<label>Form</label>
-													<div class="form-group">
-														<select ng-model="cCctr.entity.form" class="form-control">
-															<option disabled value="">Select Form</option>
-															<option value="24Q">24Q</option>
-															<option value="26Q">26Q</option>
-															<option value="27Q">27Q</option>
-															<option value="27EQ">27EQ</option>
-															<option value="15G">15G</option>
-															<option value="15H">15H</option>
-														</select>
-													</div>
-												</div>
-												<span style="color: red"
-													ng-show="fileForm.submitted || fileForm.entity.$dirty && fileForm.entity.$invalid">
-													<span class="error"
-													ng-show="fileForm.entity.$error.required">PAN Number
-														Required </span> <span class="error"
-													ng-show="fileForm.entity.$error.pattern">PAN number
-														should be capital and valid </span>
-												</span>
-
-											</div>
-											<div class="col-md-4">
-												<b>Brnach Code</b>
-													<input name="branchCode"  
-														id="branchCode" type="text" ng-model="cCctr.entity.branchCode"
-														class="form-control" placeholder="Status"
-														style="width: 100%">
-											</div>
-
-											<div class="col-md-4">
-												<div>
-													<label>Finacial Year</label> <select class="form-control"
-														ng-model="cCctr.entity.fy" required>
-														<option disabled value="">Select financial Year</option>
-														<#list financialYear as year>
-														<option value="${year}">${year}</option>
-														</#list>
+									<input type="hidden" ng-model="cCctr.entity.status"
+										ng-init="cCctr.entity.status='Open'">
+									<div class="row">
+										<div class="col-md-4">
+											<div>
+												<label>Form</label>
+												<div class="form-group">
+													<select ng-model="cCctr.entity.form" class="form-control">
+														<option disabled value="">Select Form</option>
+														<option value="24Q">24Q</option>
+														<option value="26Q">26Q</option>
+														<option value="27Q">27Q</option>
+														<option value="27EQ">27EQ</option>
+														<option value="15G">15G</option>
+														<option value="15H">15H</option>
 													</select>
 												</div>
 											</div>
-											<div class="col-md-4">
-												<div>
-													<label>Quarter</label> <select class="form-control"
-														ng-model="cCctr.entity.quarter" required>
-														<option disabled value="">Select Quarter</option>
-														<#list Quarter as quarter>
-														<option value="${quarter}">${quarter}</option>
-														</#list>
-													</select>
-												</div>
-											</div>
+											<span style="color: red"
+												ng-show="fileForm.submitted || fileForm.entity.$dirty && fileForm.entity.$invalid">
+												<span class="error"
+												ng-show="fileForm.entity.$error.required">PAN Number
+													Required </span> <span class="error"
+												ng-show="fileForm.entity.$error.pattern">PAN number
+													should be capital and valid </span>
+											</span>
+
 										</div>
 
-										<div class="row">
-											<div class="col-md-12">
-												<div class="">
-													<label>Description</label>
-													<textarea class="form-control"
-														ng-model="cCctr.entity.description" style="width: 100%;"
-														required></textarea>
+										<div class="col-md-4">
+											<div>
+												<label>Finacial Year</label> <select class="form-control"
+													ng-model="cCctr.entity.fy" required>
+													<option disabled value="">Select financial Year</option>
+													<#list financialYear as year>
+													<option value="${year}">${year}</option>
+													</#list>
+												</select>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div>
+												<label>Quarter</label> <select class="form-control"
+													ng-model="cCctr.entity.quarter" required>
+													<option disabled value="">Select Quarter</option>
+													<#list Quarter as quarter>
+													<option value="${quarter}">${quarter}</option>
+													</#list>
+												</select>
+											</div>
+										</div>
+										<!-- md-selected-item="cCctr.entity.branchCode" -->
+										<div class="col-md-12">
+											<b>Brnach Code</b>
+											<md-autocomplete md-input-name="branchCode"
+												md-input-minlength="3" md-no-cache="true"
+												md-input-maxlength="75" style="height:20%"
+												md-selected-item="cCctr.entity.branchCode"
+												md-search-text="b"
+												md-items="item in cCctr.ajax('branch','branchCode',b)"
+												md-delay="0" placeholder="branch Code"> <md-item-template>
+											<span>{{item}}</span> </md-item-template> <md-not-found> No
+											branchCode Name with "{{b}}" were found. </md-autocomplete>
+										</div>
+									</div>
 
-												</div>
+									<div class="row">
+										<div class="col-md-12">
+											<div class="">
+												<label>Description</label>
+												<textarea class="form-control"
+													ng-model="cCctr.entity.description" style="width: 100%;"
+													required></textarea>
+
 											</div>
 										</div>
-										<BR>
-										<div class="control-group">
-											<label class="control-label" for="save"></label>
-											<div class="controls">
-												<button id="add" name="add"
-													class="btn btn-success btn-block btn-primary"
-													ng-click="fileForm.submitted=true;cCctr.submit(true,cCctr.entity,'ticket')">Add</button>
-											</div>
+									</div>
+
+									<BR>
+									<div class="control-group">
+										<label class="control-label" for="save"></label>
+										<div class="controls">
+											<button id="add" name="add"
+												class="btn btn-success btn-block btn-primary"
+												ng-click="fileForm.submitted=true;cCctr.submit(true,cCctr.entity,'ticket')">Add</button>
 										</div>
-									</fieldset>
+									</div>
+
+
 								</form>
 
 							</div>

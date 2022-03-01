@@ -105,14 +105,13 @@
 						<h6>
 							<b>Quarter</b>
 							<h6>
-								<select class="form-control" ng-model="cCctr.search.quarter"
-									style="width: 100%">
-									<option value="" ng-selected=true>Quarter</option>
-									<option value="Q1">Q1</option>
-									<option value="Q2">Q2</option>
-									<option value="Q3">Q3</option>
-									<option value="Q4">Q4</option>
-								</select>
+								<select class="form-control"
+													ng-model="cCctr.entity.quarter" required>
+													<option disabled value="">Select Quarter</option>
+													<#list Quarter as quarter>
+													<option value="${quarter}">${quarter}</option>
+													</#list>
+						</select>
 					</div>
 
 					<div class="col-md-3">
@@ -148,7 +147,8 @@
 							<b>Staff ID</b>
 							<h6>
 								<input type="text" ng-model="cCctr.search.staffId"
-									class="form-control" placeholder="Staff ID" style="width: 100%">
+									class="form-control" placeholder="Staff ID"
+									style="width: 100%">
 					</div>
 				</div>
 				<div class="row">

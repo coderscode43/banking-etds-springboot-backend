@@ -74,22 +74,13 @@
 							<h6>
 								<b>Financial Year</b>
 							</h6>
-							<select class="form-control" ng-model="cCctr.search.FY">
-								<option value="" ng-selected=true>Year</option>
-								<option value="201516">201920</option>
-								<option value="201819">201819</option>
-								<option value="201718">201718</option>
-								<option value="201617">201617</option>
-								<option value="201516">201516</option>
-								<option value="201415">201415</option>
-								<option value="201314">201314</option>
-								<option value="201213">201213</option>
-								<option value="201112">201112</option>
-								<option value="201011">201011</option>
-								<option value="200910">200910</option>
-								<option value="200809">200809</option>
-								<option value="200708">200708</option>
-							</select>
+							<select ng-model="cCctr.search.FY" style="width: 100%"
+						class="form-control">
+						<option disabled value="">Select financial Year</option>
+						<#list financialYear as year>
+						<option value="${year}">${year}</option>
+						</#list>
+						</select>
 
 						</div>
 
@@ -178,7 +169,7 @@
 				<h6>
 					<b>Amount Consumed</b>
 					<h6>
-						<input type="text" ng-model="cCctr.search.LDC.AMOUNT_CONSUMED"
+						<input type="text" ng-model="cCctr.search.AMOUNT_CONSUMED"
 							
 							class="form-control" placeholder="Amount Consumed" style="width: 100%">
 			</div>
@@ -188,15 +179,15 @@
 
 				<div class="row" id="hide">
 					<div class="col-md-3" style="margin-left: 85%; margin-top: -70px">
-						<button ng-click="cCctr.searchEntities(true,'ldc')"
-							class="btn btn-success">Search</button>
+						<button ng-click="cCctr.searchFYEntities(true,'ldc','ldc')"
+							class="btn btn-success" onclick="scrollWin()">Search</button>
 					</div>
 				</div>
 
 				<div class="row" id="search">
 					<div class="col-md-3" id="search">
-						<button ng-click="cCctr.searchEntities(true,'ldc')"
-							class="btn btn-success">Search</button>
+						<button ng-click="cCctr.searchFYEntities(true,'ldc','ldc')"
+							class="btn btn-success" onclick="scrollWin()">Search</button>
 					</div>
 				</div>
 			</div>
@@ -215,14 +206,18 @@
 					ng-click="cCctr.gotoListPage('addLDC','addLDC');">Add</button> -->
 			</div>
 		</div>
-	</div>	
+	</div>
+		
 		<div class="panel-body" style="margin-left: -3%; width: 107%;">
+
 			<div class="row">
 				 <div class="table-responsive" style="overflow-x:inherit">
 
 					<table class="table table-bordered table-hover table-striped"
 						role="table"
 						style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+
+
 						<thead>
 						<colgroup>
 							<col span="14" style="background-color: #ffffff">
@@ -246,6 +241,9 @@
 								<th >Issue Date</th>
 								<th >Cancel Date</th>
 								<th >As On Date</th>
+
+
+
 							</tr>
 						</thead>
 						<tbody>
@@ -271,6 +269,7 @@
 								<!-- <td>{{a.total-a.amountPaid}}</td> -->
 
 							</tr>
+
 						</tbody>
 					</table>
 				</div>

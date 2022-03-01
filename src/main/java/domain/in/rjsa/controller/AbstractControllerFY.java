@@ -137,11 +137,11 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
 			map = mapper.readValue(json, new TypeReference<Map<String, String>>() {
 			});
-			for (String key : map.keySet()) {
-				if (key.endsWith("Id")) {
-					map.put(key, Long.valueOf((String) map.get(key)));
-				}
-			}
+//			for (String key : map.keySet()) {
+//				if (key.endsWith("Id")) {
+//					map.put(key, Long.valueOf((String) map.get(key)));
+//				}
+//			}
 			map.put("fy", fy);
 			map.put("branchCode", branchCode);
 			return new ResponseEntity<>(getSearch(map), HttpStatus.OK);

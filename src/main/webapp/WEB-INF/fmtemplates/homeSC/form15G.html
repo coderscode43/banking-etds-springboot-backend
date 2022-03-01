@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+@media only screen and (max-width: 1000px) {
+	.one {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.two {
+		padding: 8px;
+	}
+}
+
+@media only screen and (min-width:600px) {
+	#three {
+		display: none;
+		max-height: 0;
+		overflow: hidden;
+	}
+}
+
+@media only screen and (min-width:1000px) {
+	#search {
+		margin-left: 45%;
+		margin-top: 2px;
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	#hide {
+		display: none;
+	}
+}
+
+.table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
+	{
+	background-color: whitesmoke;
+}
+
+@media ( min-width : 768px) {
+	.collapse.dont-collapse-sm {
+		display: block;
+		height: auto !important;
+		visibility: visible;
+	}
+}
+
+@media ( min-width : 300px) and (max-width: 700px) {
+	.mobile {
+		display: none;
+	}
+}
+
+@media only screen and (min-width:700px) {
+	.hide-on-desktop, * [aria-labelledby='hide-on-desktop'] {
+		display: none;
+	}
+}
+
+/* iPad Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width:
+	1024px) {
+	/* CSS */
+	.mobile {
+		display: none;
+	}
+}
+</style>
+</head>
+<body>
+<div id="page-wrapper" ng-controller="CommonController as cCctr">
+	<div class="container-fluid">
+		<div class="col-md-12 "
+			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
+			<div class="heading">
+				<strong>Form 15G</strong>
+			</div>
+
+
+
+		</div>
+
+
+		<br>
+		<button class="btn btn-primary hidden visible-xs" type="button"
+			data-toggle="collapse" data-target="#collapseExample2"
+			aria-expanded="false" aria-controls="collapseExample">Search</button>
+		<div class="collapse dont-collapse-sm" id="collapseExample2">
+			<div class="row">
+				<div class="form-group">
+
+
+					<div class="col-md-3">
+						<h6>
+							<b>Name</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.nameofAssesseeDeclarant"
+									class="form-control" placeholder="Name" style="width: 100%">
+					</div>
+					<div class="col-md-3">
+						<h6>
+							<b>PAN</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.panoftheAssessee"
+									class="form-control" placeholder="PAN" style="width: 100%">
+					</div>
+
+					
+				</div>
+			</div>
+
+			<div class=" collapse  panel-collapse" id="collapseExample4">
+
+				<div class="row">
+					<div class="col-md-3">
+						<h6>
+							<b>Aadhar No</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.aadhaarNumber"
+									class="form-control" placeholder="Aadhar No"
+									style="width: 100%">
+					</div>
+
+					<div class="col-md-3">
+						<h6>
+							<b> Error</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.error"
+									class="form-control" placeholder="Error"
+									style="width: 100%">
+					</div>
+					<div class="col-md-3">
+						<h6>
+							<b>Warning</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.warning"
+									class="form-control" placeholder="Warning"
+									style="width: 100%">
+					</div>
+				</div>
+			</div>
+			<div class="row text-right" id="hide">
+				<div class="col-md-3" style="margin-left: 75%; margin-top: -44px">
+					<button
+						ng-click="cCctr.searchEntities(true,'form15G','form15G')"
+						class="btn btn-success" onclick="scrollWin()">Search</button>
+						<button class="btn btn-secondary"
+							style="background-color: #FFA500" data-toggle="collapse"
+							data-target="#collapseExample4" aria-expanded="false"
+							aria-controls="collapseExample">Advance Search</button>
+				</div>
+				<div class="col-md-3">
+					<div class="text-right">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div style="float: right; margin-top: -13px"></div>
+
+	<div class="row"></div>
+
+	<div class="row">
+		<div class="table-responsive" style="overflow-x: inherit">
+			<!-- 	<div class="col-md-12" style="margin-left:-30px"> -->
+			<table class=" table table-bordered table-hover  table-striped"
+				role="table"
+				style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+
+				<thead>
+				<colgroup>
+					<col span="14" style="background-color: #ffffff">
+				</colgroup>
+				<tr>
+				<thead"rowgroup">
+					<tr role="row" style="height: 40px; background-color: #81b7db">
+						<th>Sr. No.</th>
+						<th>Unique Identification No</th>
+						<th>Identification number of relevant investment/account, etc.</th>
+						<th>Nature of income</th>
+						<th>Section under which tax is deductible</th>
+						<th>Amount of income</th>
+						<th>Name of Assessee (Declarant)</th>
+						<th>PAN of the Assessee</th>
+						<th>Aadhaar Number</th>
+						<th>Status</th>
+						<th>Sub-Status</th>
+						<th>Previous year (P.Y.) (for which declaration is being made)</th>
+						<th>Residential Status</th>
+						<th>Country</th>
+						<th>Flat / Door / Building</th>
+						<th>Road / Street / Block / Sector</th>
+						<th>Pincode</th>
+						<th>Post Office</th>
+						<th>Area/ Locality</th>
+						<th>District</th>
+						<th>State</th>
+						<th>Email</th>
+						<th>Telephone No.</th>
+						<th>Mobile No.</th>
+						<th>Whether assessed to tax under the Income-tax Act, 1961</th>
+						<th>If yes, latest assessment year for which assessed</th>
+						<th>Estimated income for which this declaration is made</th>
+						<th>Estimated total income of the P.Y. (including income for which this declaration is made)</th>
+						<th>Total No. of Form No. 15G filed</th>
+						<th>Aggregate amount of income for which Form No.15G filed</th>
+						<th>Date on which Declaration is received</th>
+						<th>Amount of income paid</th>
+						<th>Date on which the income has been paid/credited</th>
+						<th>Warning</th>
+						<th>Error</th>
+						<!-- <th>Action</th>
+ -->
+
+
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="a in cCctr.getEntityListData() track by a.id">
+						<td>{{$index+1}}</td>
+						<td>{{a.uniqueIdentificationNo}}</td>
+						<td>{{a.identificationNumberofRelevantInvestmentAccount}}</td>
+						<td>{{a.natureofIncome}}</td>
+						<td>{{a.sectionUnderWhichTaxisDeductible}}</td>
+						<td>{{a.amountofIncome}}</td>
+						<td>{{a.nameofAssesseeDeclarant}}</td>
+						<td>{{a.panoftheAssessee}}</td>
+						<td>{{a.aadhaarNumber}}</td>
+						<td>{{a.status}}</td>
+						<td>{{a.subStatus}}</td>
+						<td>{{a.previousYearforwhichdeclarationisbeingmade}}</td>
+						<td>{{a.residentialStatus}}</td>
+						<td>{{a.country}}</td>
+						<td>{{a.flatDoorBuilding}}</td>
+						<td>{{a.roadStreetBlockSector}}</td>
+						<td>{{a.pincode}}</td>
+						<td>{{a.postOffice}}</td>
+						<td>{{a.areaLocality}}</td>
+						<td>{{a.district}}</td>
+						<td>{{a.state}}</td>
+						<td>{{a.email}}</td>
+						<td>{{a.telephoneNo}}</td>
+						<td>{{a.mobileNo}}</td>
+						<td>{{a.whetherAssessedtotaxundertheIncometaxAct1961}}</td>
+						<td>{{a.ifyeslatestassessmentyearforwhichassessed}}</td>
+						<td>{{a.estimatedIncomeforwhichthisdeclarationismade}}</td>
+						<td>{{a.estimatedtotalincomeofthePY}}</td>
+						<td>{{a.totalNoofFormNo15Gfiled}}</td>
+						<td>{{a.aggregateAmountofincomeforwhichFormNo15Gfiled}}</td>
+						<td>{{a.dateonwhichDeclarationisreceived | date:'dd-MM-yyyy'}}</td>
+						<td>{{a.amountofincomepaid}}</td>
+						<td>{{a.dateonwhichtheincomehasbeenpaidcredited | date:'dd-MM-yyyy'}}</td>
+						<td>{{a.warning}}</td>
+						<td>{{a.error}}</td>
+						<!-- <td><a
+							ng-click="cCctr.gotoDetailFormPage('form15g',a.id,a.fy,a.branchCode,'detailform15G')"
+							style="color: blue" onclick="scrollWin()"><img src="static\img\edit.png"
+								width="22px" height="22px" alt="Details"
+								style="margin-top: 5px; margin-bottom: 5px;" /></a></td> -->
+
+						<!-- <td>{{a.total-a.amountPaid}}</td> -->
+
+					</tr>
+
+				</tbody>
+			</table>
+
+		</div>
+
+		<div class="row" ng-show="cCctr.getNoPage() > 0">
+			<div class="row" align="center">
+				<span ng-show="cCctr.currentPage != 1"> <a
+					ng-click="cCctr.getPage(true,'form15g',cCctr.currentPage-1)"><strong>Previous</strong></a>
+				</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.currentPage}}</strong>&nbsp;
+					of &nbsp;<strong>{{cCctr.getNoPage()}}</strong>
+					&nbsp;&nbsp;&nbsp;&nbsp; <span
+					ng-show="cCctr.currentPage != cCctr.getNoPage()"> <a
+						ng-click="cCctr.getPage(true,'form15G',cCctr.currentPage+1)"><strong>Next</strong></a>
+				</span>
+				</span>
+			</div>
+			<form role="form" name="gotoForm">
+				<div class="row" align="center">
+					<span>Go to</span> &nbsp;&nbsp;&nbsp; <input
+						style="width: 70px; text-align: center;" type="number"
+						name="pageNo" ng-model="cCctr.currentPage"
+						ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
+						ng-min="1" ng-max="cCctr.getNoPage()" ng-required="true">
+					&nbsp;&nbsp;&nbsp;
+					<button style="height: 25px;"
+						ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'form15G',cCctr.currentPage)"
+						class="btn btn-primary">Go</button>
+				</div>
+				<div class="row" align="center">
+					<span style="color: red"
+						ng-show="gotoForm.submitted || gotoForm.pageNo.$dirty && gotoForm.pageNo.$invalid">
+						<span class="error" ng-show="gotoForm.pageNo.$error.min">Page
+							No. should not be less than 1.</span> <span class="error"
+						ng-show="gotoForm.pageNo.$error.max">Page No. should not be
+							greater than {{cCctr.getNoPage()}}.</span> <span class="error"
+						ng-show="gotoForm.pageNo.$error.required">Please enter page
+							number.</span>
+					</span>
+				</div>
+			</form>
+		</div>
+
+
+	</div>
+</body>
+</html>

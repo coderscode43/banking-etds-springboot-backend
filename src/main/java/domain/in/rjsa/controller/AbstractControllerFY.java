@@ -178,22 +178,22 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 
 	// ------------------- Add Entity ---------------------------------
 
-	@RequestMapping(value = "/add/{fy}/{branchCode}", method = RequestMethod.POST)
-	@ResponseBody
-	public ResponseEntity<?> createEntity(@RequestBody LinkedHashMap<String, Object> entity,
-			@PathVariable String branchCode, @PathVariable String fy) {
-		// FieldErrorDTO ermsg=new FieldErrorDTO();
-		logger.info("Creating new Return instance");
-		entity.put("branchCode", branchCode);
-		entity.put("fy", fy);
-		String userName = getPrincipal();
-		entity.put("userName", userName);
-		create(entity);
-//		addLogs(entity);
-		// ermsg.setMessage(" Saved Successfully");
-		return new ResponseEntity<Object>(HttpStatus.CREATED);
-
-	}
+	/*
+	 * @RequestMapping(value = "/add/{fy}/{branchCode}", method =
+	 * RequestMethod.POST)
+	 * 
+	 * @ResponseBody public ResponseEntity<?> createEntity(@RequestBody
+	 * LinkedHashMap<String, Object> entity,
+	 * 
+	 * @PathVariable String branchCode, @PathVariable String fy) { // FieldErrorDTO
+	 * ermsg=new FieldErrorDTO(); logger.info("Creating new Return instance");
+	 * entity.put("branchCode", branchCode); entity.put("fy", fy); String userName =
+	 * getPrincipal(); entity.put("userName", userName); create(entity); //
+	 * addLogs(entity); // ermsg.setMessage(" Saved Successfully"); return new
+	 * ResponseEntity<Object>(HttpStatus.CREATED);
+	 * 
+	 * }
+	 */
 
 	public void create(LinkedHashMap<String, Object> entity) {
 		Gson gson = new Gson();

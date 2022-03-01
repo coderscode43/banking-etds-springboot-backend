@@ -35,17 +35,17 @@ public class Regular27EQDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27EQD
 			criteria.add(
 					Restrictions.le("date", Date.from(ZonedDateTime.parse((String) entity.get("toDate")).toInstant())));
 		}
-          if(entity.get("pan")!=null)
+          if(entity.get("panofthedeductee")!=null)
           {
-		criteria.add(Restrictions.eqOrIsNull("pan", entity.get("pan")));
+		criteria.add(Restrictions.eqOrIsNull("panofthedeductee", entity.get("panofthedeductee")));
           }
-          if(entity.get("sectionCode")!=null)
+          if(entity.get("collectionCode")!=null)
           {
-		criteria.add(Restrictions.eqOrIsNull("sectionCode", entity.get("sectionCode")));
+		criteria.add(Restrictions.eqOrIsNull("collectionCode", entity.get("collectionCode")));
           }
           if(entity.get("fy")!=null)
           {
-		criteria.add(Restrictions.eqOrIsNull("fy", entity.get("fy")));
+		criteria.add(Restrictions.eqOrIsNull("fy", Long.valueOf((String) entity.get("fy"))));
           }
           if(entity.get("nameoftheDeductee")!=null)
           {

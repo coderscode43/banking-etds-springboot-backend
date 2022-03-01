@@ -25,6 +25,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.fy.Regular24QDeductee;
+import domain.in.rjsa.model.fy.Remark;
 import domain.in.rjsa.service.Regular24QDeducteeService;
 import domain.in.rjsa.service.RemarkService;
 
@@ -32,9 +33,7 @@ import domain.in.rjsa.service.RemarkService;
 @RequestMapping("/apiform24QDeductee")
 public class Regular24QDeducteeController<E>
 		extends AbstractControllerFY<Long, Regular24QDeductee, Regular24QDeducteeService> {
-	
-	
-	
+
 	@Autowired
 	Regular24QDeducteeService service;
 	@Autowired
@@ -52,7 +51,7 @@ public class Regular24QDeducteeController<E>
 		// TODO Auto-generated method stub
 		return Regular24QDeductee.class;
 	}
-	
+
 	@RequestMapping(value = "/detail/{fy}/{branchCode}/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> getDetailController(@PathVariable Long id, @PathVariable String fy,
 			@PathVariable String branchCode) {
@@ -65,6 +64,7 @@ public class Regular24QDeducteeController<E>
 		}
 
 	}
+
 	public HashMap<String, Object> getDetail(Long id, String fy, String branchCode) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
@@ -72,12 +72,14 @@ public class Regular24QDeducteeController<E>
 		constrains.put("fy", fy);
 		constrains.put("branchCode", branchCode);
 		HashMap<String, Object> map = new HashMap<>();
-		map.put("deductee",getService().uniqueSearch(constrains));
+		map.put("deductee", getService().uniqueSearch(constrains));
 		constrains.remove("id", id);
-		constrains.put("deducteeId",id);
-		map.put("remark",rService.findAll(constrains, 0, 100));
-		return map; 
+		constrains.put("deducteeId", id);
+		List<Remark> remark = rService.findForm(constrains, 0, 100,"24Qform");
+		map.put("remark",remark);
+		return map;
 	}
+
 	// ------------------- Search Single Entity ---------------------------------
 	@RequestMapping(value = "/search/get/{pageNo}/{resultPerPage}/{json}/**", method = RequestMethod.GET)
 	public ResponseEntity<?> search(@PathVariable String json, HttpServletRequest request, @PathVariable int pageNo,

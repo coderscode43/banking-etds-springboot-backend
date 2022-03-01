@@ -2,6 +2,7 @@ package domain.in.rjsa.dao.impl;
 
 import java.sql.Date;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -190,4 +191,6 @@ public class Regular26QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular26QDed
 		return (Long) criteria.setProjection(Projections.rowCount()).uniqueResult();
 	
 	}
+	
+	
 }

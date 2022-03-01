@@ -19,6 +19,8 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
 import domain.in.rjsa.model.form.Login;
+import domain.in.rjsa.model.fy.Regular24QDeductee;
+import domain.in.rjsa.model.fy.Regular26QDeductee;
 import domain.in.rjsa.model.fy.Remark;
 import domain.in.rjsa.service.Regular24QDeducteeService;
 import domain.in.rjsa.service.Regular26QDeducteeService;

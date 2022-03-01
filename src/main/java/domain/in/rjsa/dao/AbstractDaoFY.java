@@ -65,6 +65,25 @@ public abstract class AbstractDaoFY<K extends Serializable, E> implements DaoInt
 		return (List<E>) criteria.list();
 
 	}
+	public List<E> findForm(HashMap<String, Object> constrains, int pageNo, int noOfResult,String type) {
+		Criteria criteria = createEntityCriteria();
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
+		if (constrains.containsKey("branchCode")) {
+			if (constrains.get("branchCode") instanceof ArrayList)
+				criteria.add(Restrictions.in("branchCode", (List<Long>) constrains.remove("branchCode")));
+		}
+		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
+		
+		criteria.add(Restrictions.allEq(constrains));
+		propertyNameValues.put("deducteeForm",type);
+		criteria.add(Restrictions.allEq(propertyNameValues));
+		criteria.addOrder(Order.desc("id"));
+		criteria.setFirstResult(pageNo * noOfResult);
+		criteria.setMaxResults(noOfResult);
+		return (List<E>) criteria.list();
+
+	}
+	
 
 	public Long findallCount(HashMap<String, Object> constrains) {
 		Criteria criteria = createEntityCriteria();

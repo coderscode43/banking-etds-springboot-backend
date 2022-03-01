@@ -28,6 +28,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
 import domain.in.rjsa.model.form.ListCount;
+import domain.in.rjsa.model.fy.Remark;
 import domain.in.rjsa.model.fy.Ticket;
 import domain.in.rjsa.service.RemarkService;
 import domain.in.rjsa.service.TicketService;
@@ -172,7 +173,8 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 		map.put("deductee",getService().uniqueSearch(constrains));
 		constrains.remove("id", id);
 		constrains.put("deducteeId",id);
-		map.put("remark",rService.findAll(constrains, 0, 100));
+		List<Remark> remark = rService.findForm(constrains, 0, 100,"ticket");
+		map.put("remark",remark);
 		return map; 
 	}
 	

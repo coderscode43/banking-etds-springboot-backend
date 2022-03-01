@@ -33,9 +33,14 @@ public abstract class AbstractServiceFY<K extends Serializable, E, D extends Dao
 	}
 
 	@Override
-	public List<E> findAll(HashMap<String, Object> constrains, int pageNo, int noOfResult) {
+	public List<E> findall(HashMap<String, Object> constrains, int pageNo, int noOfResult) {
 		// TODO Auto-generated method stub
 		return getPrimaryDao().findall(constrains, pageNo, noOfResult);
+	}
+	@Override
+	public List<E> findForm(HashMap<String, Object> constrains, int pageNo, int noOfResult,String type) {
+		// TODO Auto-generated method stub
+		return getPrimaryDao().findForm(constrains, pageNo, noOfResult,type);
 	}
 
 	@Override

@@ -22,8 +22,9 @@ import org.springframework.web.servlet.HandlerMapping;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 
-import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.fy.Regular24QDeductee;
 import domain.in.rjsa.model.fy.Remark;
 import domain.in.rjsa.service.Regular24QDeducteeService;
@@ -78,6 +79,33 @@ public class Regular24QDeducteeController<E>
 		List<Remark> remark = rService.findForm(constrains, 0, 100,"24Qform");
 		map.put("remark",remark);
 		return map;
+	}
+	
+	@RequestMapping(value = "/update", method = RequestMethod.PUT)
+	public ResponseEntity<?> updateTestimonial(@RequestBody LinkedHashMap<?, ?> entity) {
+		try {
+			update(entity);
+			return new ResponseEntity<String>(HttpStatus.ACCEPTED);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	private void update (LinkedHashMap<?, ?> entity) {
+		Gson gson = new Gson();
+		JsonElement jsonElement = gson.toJsonTree(entity);
+//		Testimonials testimonial = gson.fromJson(jsonElement, Testimonials.class);
+//		Testimonials oldTestimonial = service.getByKey(testimonial.getId());
+		Regular24QDeductee regular24qDeductee = gson.fromJson(jsonElement, Regular24QDeductee.class);
+		String bool = (String) entity.get("resolved");
+		
+		if(bool == "false") {
+			regular24qDeductee.setResolved(true);
+		}
+		else {
+			regular24qDeductee.setResolved(false);
+		}
+		service.update(regular24qDeductee);
 	}
 
 	// ------------------- Search Single Entity ---------------------------------

@@ -79,6 +79,22 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 			@RequestBody LinkedHashMap<String, Object> entity) {
 		// FieldErrorDTO ermsg=new FieldErrorDTO();
 		logger.info("Creating new Return instance");
+		String userName = getPrincipal();
+		entity.put("userName", userName);
+		entity.put("branchCode",branchCode);
+		create(entity);
+//		addLogs(entity);
+		// ermsg.setMessage(" Saved Successfully");
+		return new ResponseEntity<Object>(HttpStatus.CREATED);
+	}
+	@RequestMapping(value = "/add/{fy}/{branchCode}", method = RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity<?> createFYEntity(@PathVariable String branchCode,@PathVariable String fy,
+			@RequestBody LinkedHashMap<String, Object> entity) {
+		// FieldErrorDTO ermsg=new FieldErrorDTO();
+		logger.info("Creating new Return instance");
+		String userName = getPrincipal();
+		entity.put("userName", userName);
 		entity.put("branchCode",branchCode);
 		create(entity);
 //		addLogs(entity);

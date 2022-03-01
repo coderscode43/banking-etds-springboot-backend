@@ -1,4 +1,4 @@
-<style>
+	<style>
 
 /*
 	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
@@ -185,7 +185,7 @@
 					<div class="col-md-3">
 						<h6>
 							<b>From Date Of Opening</b>
-							<h6>
+							</h6>
 								<input type="date" ng-model="cCctr.search.fromDate"
 									ng-change="cCctr.search.fromDate=cCctr.date(cCctr.search.fromDate);"
 									class="form-control" placeholder="Date" style="width: 100%">
@@ -194,7 +194,7 @@
 					<div class="col-md-3">
 						<h6>
 							<b>To Date Of Opening</b>
-							<h6>
+							</h6>
 								<input type="date" ng-model="cCctr.search.toDate"
 									ng-change="cCctr.search.toDate=cCctr.date(cCctr.search.toDate);"
 									class="form-control" placeholder="Date" style="width: 100%">
@@ -203,15 +203,10 @@
 					<div class="col-md-3">
 						<h6>
 							<b>Remark</b>
-							<h6>
+							</h6>
 								<input type="text" ng-model="cCctr.search.remarks"
 									class="form-control" placeholder="Remark" style="width: 100%">
 					</div>
-
-
-
-
-
 				</div>
 			</div>
 
@@ -239,7 +234,7 @@
 
 
 					<button class="btn btn-primary" data-toggle="modal"
-						onclick="test('#myModal')">Add Ticket</button>
+						ng-click="cCctr.gotoAddPage('addTicket')">Add Ticket</button>
 
 				</div>
 			</div>
@@ -330,279 +325,6 @@
 					</span>
 				</div>
 			</form>
-		</div>
-
-
-
-		<div class="modal fade1" id="viewFile"
-			style="background-color: rgba(0, 0, 0, .7); float: right; z-index: 11111">
-			<div class="modal-dialog1" ng-it="cCctr.getEntityData();">
-				<div class="modal-content" style="margin-left: 10%;">
-					<!-- Modal Header -->
-					<div class="modal-body row">
-						<div class="col-md-8">
-
-							<div style="width: 100%;"></div>
-
-							<iframe id="iframe1" ng-src="{{cCctr.loader}}" width="100%"
-								height="100%"></iframe>
-
-
-						</div>
-						<div class="col-md-4" style="font-size: 11px;">
-
-
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal"
-									style="color: red">
-									<i class="fa fa-times fa-1x" aria-hidden="true"></i>
-								</button>
-								<br>
-								<h5 class="modal-title"
-									style="font-family: Times New Roman, Times, serif">
-									<b>Ticket Details1</b>
-								</h5>
-							</div>
-							<br>
-							<div class="row col-sm-12>">
-								<div class="row" style="margin-top: 15px;">
-									<div class="col-sm-4">
-										<label>Financial Year</label>
-									</div>
-									<div class="col-sm-8">{{cCctr.temp1.fy}}</div>
-								</div>
-								<div class="row" style="margin-top: 15px;">
-									<div class="col-sm-4">
-										<label>Quarter</label>
-									</div>
-									<div class="col-sm-8">{{cCctr.temp1.quarter}}</div>
-								</div>
-								<div class="row" style="margin-top: 15px;">
-									<div class="col-sm-4">
-										<label>Form</label>
-									</div>
-									<div class="col-sm-8">{{cCctr.temp1.form}}</div>
-								</div>
-								<div class="row" style="margin-top: 15px;">
-									<div class="col-sm-4">
-										<label>Status</label>
-									</div>
-									<div class="col-sm-8">{{cCctr.temp1.status}}</div>
-								</div>
-								<div class="row" style="margin-top: 15px;">
-									<div class="col-sm-4">
-										<label>Discription</label>
-									</div>
-									<div class="col-sm-8">{{cCctr.temp1.description}}</div>
-								</div>
-								<div class="row" style="margin-top: 15px;">
-									<div class="col-sm-4">
-										<label>Remark </label>
-									</div>
-									<div class="col-sm-8">{{cCctr.temp1.remarks}}</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="modal fade1" id="noviewFile"
-			style="background-color: rgba(0, 0, 0, .7);">
-			<div class="modal-dialog1" ng-it="cCctr.getEntityData();">
-				<div class="modal-content" style="margin-left: 10%;">
-					<!-- Modal Header -->
-					<div class="modal-body row">
-						<div class="col-md-8">
-							<div style="width: 100%; margin-top: 0px;">
-
-								<h1>No File Uploaded</h1>
-
-
-							</div>
-						</div>
-						<div class="col-md-4" style="font-size: 11px;">
-
-
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal"
-									style="color: red">
-									<i class="fa fa-times fa-1x" aria-hidden="true"></i>
-								</button>
-								<br>
-								<h5 class="modal-title"
-									style="font-family: Times New Roman, Times, serif">
-									<b>Ticket Details</b>
-								</h5>
-							</div>
-							<br>
-							<div class="row col-sm-12>">
-								<div class="row" style="margin-top: 15px;">
-									<div class="col-sm-4">
-										<label>Financial Year</label>
-									</div>
-									<div class="col-sm-8">{{cCctr.temp1.fy}}</div>
-								</div>
-								<div class="row" style="margin-top: 15px;">
-									<div class="col-sm-4">
-										<label>Quarter</label>
-									</div>
-									<div class="col-sm-8">{{cCctr.temp1.quarter}}</div>
-								</div>
-								<div class="row" style="margin-top: 15px;">
-									<div class="col-sm-4">
-										<label>Form</label>
-									</div>
-									<div class="col-sm-8">{{cCctr.temp1.form}}</div>
-								</div>
-								<div class="row" style="margin-top: 15px;">
-									<div class="col-sm-4">
-										<label>Status</label>
-									</div>
-									<div class="col-sm-8">{{cCctr.temp1.status}}</div>
-								</div>
-								<div class="row" style="margin-top: 15px;">
-									<div class="col-sm-4">
-										<label>Discription</label>
-									</div>
-									<div class="col-sm-8">{{cCctr.temp1.description}}</div>
-								</div>
-								<div class="row" style="margin-top: 15px;">
-									<div class="col-sm-4">
-										<label>Remark </label>
-									</div>
-									<div class="col-sm-8">{{cCctr.temp1.remarks}}</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-
-		<!-- add modal     -->
-
-		<div class="modal fade bs-modal-sm" id="myModal" tabindex="-1"
-			style="background-color: rgba(0, 0, 0, .7);" role="dialog"
-			aria-labelledby="mySmallModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-lg">
-				<div class="modal-content" style="margin-left: 10%;">
-					<br>
-					<div class="modal-body">
-						<div id="myTabContent" class="tab-content">
-							<div class="tab-pane fade active in">
-								<form name="fileForm" class="form-horizontal" role="form"
-									enctype="multipart/form-data">
-									<!-- Hidden Filed -->
-									<input type="hidden" ng-model="cCctr.entity.dateOfOpening"
-										ng-init="cCctr.entity.dateOfOpening=cCctr.presentDate()">
-
-									<input type="hidden" ng-model="cCctr.entity.dateOfChange"
-										ng-init="cCctr.entity.dateOfChange=cCctr.presentDate()">
-
-									<input type="hidden" ng-model="cCctr.entity.status"
-										ng-init="cCctr.entity.status='Open'">
-									<div class="row">
-										<div class="col-md-4">
-											<div>
-												<label>Form</label>
-												<div class="form-group">
-													<select ng-model="cCctr.entity.form" class="form-control">
-														<option disabled value="">Select Form</option>
-														<option value="24Q">24Q</option>
-														<option value="26Q">26Q</option>
-														<option value="27Q">27Q</option>
-														<option value="27EQ">27EQ</option>
-														<option value="15G">15G</option>
-														<option value="15H">15H</option>
-													</select>
-												</div>
-											</div>
-											<span style="color: red"
-												ng-show="fileForm.submitted || fileForm.entity.$dirty && fileForm.entity.$invalid">
-												<span class="error"
-												ng-show="fileForm.entity.$error.required">PAN Number
-													Required </span> <span class="error"
-												ng-show="fileForm.entity.$error.pattern">PAN number
-													should be capital and valid </span>
-											</span>
-
-										</div>
-
-										<div class="col-md-4">
-											<div>
-												<label>Finacial Year</label> <select class="form-control"
-													ng-model="cCctr.entity.fy" required>
-													<option disabled value="">Select financial Year</option>
-													<#list financialYear as year>
-													<option value="${year}">${year}</option>
-													</#list>
-												</select>
-											</div>
-										</div>
-										<div class="col-md-4">
-											<div>
-												<label>Quarter</label> <select class="form-control"
-													ng-model="cCctr.entity.quarter" required>
-													<option disabled value="">Select Quarter</option>
-													<#list Quarter as quarter>
-													<option value="${quarter}">${quarter}</option>
-													</#list>
-												</select>
-											</div>
-										</div>
-										<!-- md-selected-item="cCctr.entity.branchCode" -->
-										<div class="col-md-12">
-											<b>Brnach Code</b>
-											<md-autocomplete md-input-name="branchCode"
-												md-input-minlength="3" md-no-cache="true"
-												md-input-maxlength="75" style="height:20%"
-												md-selected-item="cCctr.entity.branchCode"
-												md-search-text="b"
-												md-items="item in cCctr.ajax('branch','branchCode',b)"
-												md-delay="0" placeholder="branch Code"> <md-item-template>
-											<span>{{item}}</span> </md-item-template> <md-not-found> No
-											branchCode Name with "{{b}}" were found. </md-autocomplete>
-										</div>
-									</div>
-
-									<div class="row">
-										<div class="col-md-12">
-											<div class="">
-												<label>Description</label>
-												<textarea class="form-control"
-													ng-model="cCctr.entity.description" style="width: 100%;"
-													required></textarea>
-
-											</div>
-										</div>
-									</div>
-
-									<BR>
-									<div class="control-group">
-										<label class="control-label" for="save"></label>
-										<div class="controls">
-											<button id="add" name="add"
-												class="btn btn-success btn-block btn-primary"
-												ng-click="fileForm.submitted=true;cCctr.submit(true,cCctr.entity,'ticket')">Add</button>
-										</div>
-									</div>
-
-
-								</form>
-
-							</div>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" id="close"
-							data-dismiss="modal">Close</button>
-					</div>
-				</div>
-			</div>
-
 		</div>
 	</div>
 </div>

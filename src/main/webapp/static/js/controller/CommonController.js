@@ -14,14 +14,14 @@ App
 						'$q',
 						'$window',
 						function($http, restUrl, $scope, $state, $stateParams,
-								CommonService,CommonServiceFY, $q, $window) {
+								CommonService, CommonServiceFY, $q, $window) {
 
 							var self = this;
 							self.tan;
 							self.branchId;
-							self.loader='';
+							self.loader = '';
 							self.entity = {};
-							self.search = {};//Pranay
+							self.search = {};// Pranay
 							self.entityList = [];
 							// self.ItemsPerPage=100;
 							self.dropdown = [];
@@ -45,15 +45,15 @@ App
 							self.logout = function() {
 								$state.go("logout");
 							}
-							
+
 							self.presentDate = function() {
 								return new Date();
 							}
-							
+
 							self.presentMonth = function() {
 								return new Date().getMonth();
 							}
-							
+
 							self.gotoHomePage = function() {
 								self.show = false;
 								self.entity = {};
@@ -71,52 +71,71 @@ App
 								self.goodsColor = [];
 								self.b = [];
 								self.fileName = new FormData();
-								$state.go("home.homepage", {
-								});
+								$state.go("home.homepage", {});
 
 							}
-							self.gotoRestPassword = function(){
-								self.entity={};
+							self.gotoRestPassword = function() {
+								self.entity = {};
 								$state.go("resetPass");
 							}
-							
-							self.changePassword = function(valid,password) {
-								if (valid == true) {
-									CommonService.changePassword(password).then(function(data) {
-										console.log('Course added successfully');
-										$('#successMsg')
-												.find('.modal-header')
-												.find('.headingMsg')
-												.append("Successfull!");
-										$('#successMsg')
-												.find('.modal-body')
-												.find('.msg')
-												.append(" Saved Successfully!");
-										$("#successMsg").modal();
-										$state.go("home.homepage");
-									},
-									function(error) {
-										console.error('Error while creating saving Details, '+ status);
-										if (error.exceptionMsg != null
-												&& error.exceptionMsg != undefined) {
-											$('#errorMsg')
-													.find('.modal-body')
-													.find('.msg')
-													.append("Can not Save "+ error.entityName+ " : "
-																	+ error.exceptionMsg);
-											$("#errorMsg").modal();
-										} else {
-											for (var i = 0; i < error.fieldErrors.length; i++) {
-												var obj = error.fieldErrors[i];
-												document.getElementById(obj.fieldName).innerHTML = obj.message;
-												}
-											}
-										});
-									}
-								}//
-							
 
-							self.gotoHomePageWOTOFPresentFY = function(branchCode) {
+							self.changePassword = function(valid, password) {
+								if (valid == true) {
+									CommonService
+											.changePassword(password)
+											.then(
+													function(data) {
+														console
+																.log('Course added successfully');
+														$('#successMsg')
+																.find(
+																		'.modal-header')
+																.find(
+																		'.headingMsg')
+																.append(
+																		"Successfull!");
+														$('#successMsg')
+																.find(
+																		'.modal-body')
+																.find('.msg')
+																.append(
+																		" Saved Successfully!");
+														$("#successMsg")
+																.modal();
+														$state
+																.go("home.homepage");
+													},
+													function(error) {
+														console
+																.error('Error while creating saving Details, '
+																		+ status);
+														if (error.exceptionMsg != null
+																&& error.exceptionMsg != undefined) {
+															$('#errorMsg')
+																	.find(
+																			'.modal-body')
+																	.find(
+																			'.msg')
+																	.append(
+																			"Can not Save "
+																					+ error.entityName
+																					+ " : "
+																					+ error.exceptionMsg);
+															$("#errorMsg")
+																	.modal();
+														} else {
+															for (var i = 0; i < error.fieldErrors.length; i++) {
+																var obj = error.fieldErrors[i];
+																document
+																		.getElementById(obj.fieldName).innerHTML = obj.message;
+															}
+														}
+													});
+								}
+							}//
+
+							self.gotoHomePageWOTOFPresentFY = function(
+									branchCode) {
 								self.show = false;
 								self.entity = {};
 								self.search = {};
@@ -147,16 +166,18 @@ App
 									"page" : page
 								});
 							}
-							self.gotoDetailFormPage = function(entity,detailId,fy,branchCode,page) {
+							self.gotoDetailFormPage = function(entity,
+									detailId, fy, branchCode, page) {
 								$state.go("home.detailForm", {
 									"entity" : entity,
 									"fy" : fy,
-									"detailId":detailId,
-									"branchCode" :branchCode,
+									"detailId" : detailId,
+									"branchCode" : branchCode,
 									"page" : page
 								});
 							}
-							self.gotoWFYDetailPage = function(entity,detailId, page) {
+							self.gotoWFYDetailPage = function(entity, detailId,
+									page) {
 								self.show = false;
 								self.entity = {};
 								self.search = {};
@@ -178,13 +199,10 @@ App
 									"entity" : entity,
 									"detailId" : detailId,
 									"page" : page,
-									
+
 								});
 
 							}
-
-							
-							
 
 							self.gotoListPage = function(entity, page) {
 								self.show = false;
@@ -210,8 +228,6 @@ App
 								});
 
 							}
-							
-
 
 							self.gotoWFYListPage = function(entity, page) {
 								self.show = false;
@@ -238,8 +254,6 @@ App
 
 							}
 
-
-
 							self.getEntityListDataFY = function() {
 								console
 										.log("Common Controller get  getEntityList");
@@ -251,14 +265,18 @@ App
 										.log("Common Controller get  getEntityList");
 								return CommonService.getEntityList();
 							}
-							
-						self.addRemark = function(valid,entity,object,closeModalId) {
+
+							self.addRemark = function(valid, entity, object,
+									closeModalId) {
 								if (valid == true) {
 									console.log("Common Controller submit "
 											+ entity);
 
 									progressBar();
-									CommonServiceFY.add(object,entity,$stateParams.fy,$stateParams.branchCode)
+									CommonServiceFY
+											.add(object, entity,
+													$stateParams.fy,
+													$stateParams.branchCode)
 											.then(
 													function(data) {
 														progressBar();
@@ -555,23 +573,30 @@ App
 
 								}
 							}
-							self.submit = function(valid,object,entity,closeModalId) {//remove closeModalId-pranay
+							self.submit = function(valid, object, entity,
+									closeModalId) {// remove
+								// closeModalId-pranay
 								if (valid == true) {
-									console.log("Common Controller submit "+ entity);
+									console.log("Common Controller submit "
+											+ entity);
 									self.object = object;
 									CommonService
 											.save(self.object, entity)
 											.then(
 													function(data) {
-														console.log(entity + ' Add successfully');
-														self.gotoListPage(entity, entity);
-														$('.modal').modal("hide");
+														console
+																.log(entity
+																		+ ' Add successfully');
+														self.gotoListPage(
+																entity, entity);
+														$('.modal').modal(
+																"hide");
 														angular
-														.element(
-																'#'
-																		+ closeModalId)
-														.trigger(
-																'click');
+																.element(
+																		'#'
+																				+ closeModalId)
+																.trigger(
+																		'click');
 														$('#successMsg')
 																.find(
 																		'.modal-header')
@@ -618,23 +643,29 @@ App
 													});
 								}
 							}
-							self.submitFY = function(valid,object,entity,closeModalId) {
+							self.submitFY = function(valid, object, entity,
+									closeModalId) {
 								if (valid == true) {
-									console.log("Common Controller submit "+ entity);
-									
+									console.log("Common Controller submit "
+											+ entity);
+
 									CommonServiceFY
 											.save(object, entity)
 											.then(
 													function(data) {
-														console.log(entity + ' Add successfully');
-														self.gotoWFYListPage(entity, entity);
-														$('.modal').modal("hide");
+														console
+																.log(entity
+																		+ ' Add successfully');
+														self.gotoWFYListPage(
+																entity, entity);
+														$('.modal').modal(
+																"hide");
 														angular
-														.element(
-																'#'
-																		+ closeModalId)
-														.trigger(
-																'click');
+																.element(
+																		'#'
+																				+ closeModalId)
+																.trigger(
+																		'click');
 														$('#successMsg')
 																.find(
 																		'.modal-header')
@@ -670,8 +701,8 @@ App
 																					+ error.exceptionMsg);
 															$("#errorMsg")
 																	.modal();
-							   							} else {
-							   								for (var i = 0; i < error.fieldErrors.length; i++) {
+														} else {
+															for (var i = 0; i < error.fieldErrors.length; i++) {
 																var obj = error.fieldErrors[i];
 																document
 																		.getElementById(obj.fieldName).innerHTML = obj.message;
@@ -692,18 +723,20 @@ App
 										.log("Common Controller get Entity data");
 								return CommonServiceFY.getEntity();
 							}
-							/*Pranay*/
+							/* Pranay */
 							self.ajax = function(entity, name, term) {
 								var ajax = {};
 								ajax.name = name;
 								ajax.term = term;
 								var deferred = $q.defer();
-								return CommonService.ajax(entity, ajax).then(function(data) {
-									console.log(name + ' dynamic drop down');
-									var items = data;
-									self.ajax = data;
-									return data;
-								});
+								return CommonService.ajax(entity, ajax).then(
+										function(data) {
+											console.log(name
+													+ ' dynamic drop down');
+											var items = data;
+											self.ajax = data;
+											return data;
+										});
 							}
 							self.searchEntities = function(valid, entity, page) {
 								if (valid = true) {
@@ -717,11 +750,12 @@ App
 									$state.go("home.search", {
 										"entity" : entity,
 										"page" : page,
-										"searchParams":  param
+										"searchParams" : param
 									});
 								}
 							}
-							self.searchFYEntities = function(valid, entity, page) {
+							self.searchFYEntities = function(valid, entity,
+									page) {
 								if (valid = true) {
 									$.each(self.search, function(key, value) {
 										if (value === "" || value === null) {
@@ -733,25 +767,40 @@ App
 									$state.go("homeWot.search", {
 										"entity" : entity,
 										"page" : page,
-										"searchParams":  param
+										"searchParams" : param
 									});
 								}
 							}
 							self.gotoAddPage = function(page) {
 								self.entity = {};
-								$state.go("home.add", 
-									{ "page": page });
+								$state.go("home.add", {
+									"page" : page
+								});
 							}
-							self.updateData = function(valid, object,entity) {//--remove closeModalId-pranay
+							self.gotoAddWFYPage = function(page) {
+								self.entity = {};
+								$state.go("homeWot.add", {
+									"page" : page
+								});
+							}
+							self.updateData = function(valid, object, entity) {// --remove
+								// closeModalId-pranay
 								if (valid == true) {
-									console.log("Common Controller updateData "+ entity);
+									console.log("Common Controller updateData "
+											+ entity);
 									self.object = object;
-									
+
 									CommonService
-											.update(object, entity).then(function(data) {
-														console.log(entity + ' updated successfully');
-														self.gotoListPage(entity, entity);
-														$('.modal').modal("hide");
+											.update(object, entity)
+											.then(
+													function(data) {
+														console
+																.log(entity
+																		+ ' updated successfully');
+														self.gotoListPage(
+																entity, entity);
+														$('.modal').modal(
+																"hide");
 														$('#successMsg')
 																.find(
 																		'.modal-header')
@@ -767,7 +816,7 @@ App
 																		" Updated Successfully");
 														$("#successMsg")
 																.modal();
-														
+
 													},
 													function(error) {
 														console
@@ -800,15 +849,14 @@ App
 
 								}
 							}
-							/*pranay*/
-							
+							/* pranay */
+
 							// ///////////////////////\\\\\\\\\\\\\
 							self.updateStatus = function(valid, entity, data,
 									closeModalId) {
 								if (valid == true) {
 									console.log("Common Controller updateData "
 											+ entity);
-
 
 									CommonService
 											.updateStatus(data, entity)
@@ -872,6 +920,20 @@ App
 
 								}
 							}
+							self.download = function(url) {
+								wait(1000);
+								self.fileLoader = url;
+								window.open(self.fileLoader, "_blank");
+
+							}
+
+							var wait = function(ms) {
+								var start = new Date().getTime();
+								var end = start;
+								while (end < start + ms) {
+									end = new Date().getTime();
+								}
+							}
 
 							self.date = function(date) {
 								date = new Date(
@@ -885,21 +947,20 @@ App
 								return date;
 
 							}
-							
-							self.getPage=function(valid,entity,pageNo){
-								if(valid=true){
-								self.currentPage=pageNo;
-								CommonService.fetch(entity,pageNo-1);
+
+							self.getPage = function(valid, entity, pageNo) {
+								if (valid = true) {
+									self.currentPage = pageNo;
+									CommonService.fetch(entity, pageNo - 1);
 								}
 							}
-							
-							
-							self.getNoPage=function(valid,entity,pageNo){
-							
-								return Math.ceil(CommonService.getCount()/100);
-							
+
+							self.getNoPage = function(valid, entity, pageNo) {
+
+								return Math
+										.ceil(CommonService.getCount() / 100);
+
 							}
-							
 
 						} ]);
 App.directive('fileModel', [ '$parse', function($parse) {

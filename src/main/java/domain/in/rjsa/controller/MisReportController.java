@@ -9,11 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import domain.in.rjsa.exception.FieldErrorDTO;
 import domain.in.rjsa.model.fy.MisReport;
 import domain.in.rjsa.model.fy.Ticket;
 import domain.in.rjsa.service.MisReportService;
@@ -37,10 +39,17 @@ public class MisReportController extends AbstractControllerFY<Long, MisReport, M
 		return MisReport.class;
 	}
 	
-
-	
-
-	
+	  @RequestMapping(value = "/add/{fy}/{branchCode}", method =RequestMethod.POST)
+	  @ResponseBody public ResponseEntity<?> createEntity(@RequestBody LinkedHashMap<String, Object> entity,
+	  @PathVariable String branchCode, @PathVariable String fy) 
+	  { 
+	  FieldErrorDTO ermsg = new FieldErrorDTO(); logger.info("Creating new Return instance");
+	  entity.put("branchCode", branchCode); entity.put("fy", fy); 
+	  String userName = getPrincipal(); 
+	  entity.put("userName", userName); 
+	  create(entity); 
+	  //addLogs(entity); // ermsg.setMessage(" Saved Successfully"); 
+	  return new ResponseEntity<Object>(HttpStatus.CREATED);
+	  
+	  }
 }
-
-

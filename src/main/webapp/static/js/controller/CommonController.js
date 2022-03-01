@@ -575,7 +575,7 @@ App
 							}
 							self.submit = function(valid, object, entity,
 									closeModalId) {// remove
-													// closeModalId-pranay
+								// closeModalId-pranay
 								if (valid == true) {
 									console.log("Common Controller submit "
 											+ entity);
@@ -784,7 +784,7 @@ App
 								});
 							}
 							self.updateData = function(valid, object, entity) {// --remove
-																				// closeModalId-pranay
+								// closeModalId-pranay
 								if (valid == true) {
 									console.log("Common Controller updateData "
 											+ entity);
@@ -924,9 +924,9 @@ App
 								wait(1000);
 								self.fileLoader = url;
 								window.open(self.fileLoader, "_blank");
-						
+
 							}
-							
+
 							var wait = function(ms) {
 								var start = new Date().getTime();
 								var end = start;

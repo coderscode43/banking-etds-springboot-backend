@@ -65,112 +65,144 @@
 
 		<br>
 		<button class="btn btn-primary hidden visible-xs" type="button"
-		data-toggle="collapse" data-target="#collapseExample2"
-		aria-expanded="false" aria-controls="collapseExample">Search</button>
-	<div class="collapse dont-collapse-sm" id="collapseExample2">
-		<div class="row">
-			<div class="form-group">
+			data-toggle="collapse" data-target="#collapseExample2"
+			aria-expanded="false" aria-controls="collapseExample">Search</button>
+		<div class="collapse dont-collapse-sm" id="collapseExample2">
+			<div class="row">
+				<div class="form-group">
 
 
+					<div class="col-md-3">
+						<h6>
+							<b>Section Code</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.sectionCode"
+									class="form-control" placeholder="SectionCode"
+									style="width: 100%">
+					</div>
+					<div class="col-md-3">
+						<h6>
+							<b>Quarter</b>
+							<h6>
+								<select class="form-control" ng-model="cCctr.search.quarter"
+									style="width: 100%">
+									<option value="" ng-selected=true>Quarter</option>
+									<option value="Q1">Q1</option>
+									<option value="Q2">Q2</option>
+									<option value="Q3">Q3</option>
+									<option value="Q4">Q4</option>
+								</select>
+					</div>
+
+					<div class="col-md-3">
+						<h6>
+							<b>PAN</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.panofthedeductee"
+									class="form-control" placeholder="PAN" style="width: 100%">
+					</div>
+				</div>
 				<div class="col-md-3">
 				<h6>
 					<b>Section Code</b>
 					<h6>
-						<input type="text" ng-model="cCctr.search.sectionCode"
+						<input type="text" ng-model="cCctr.search.collectionCode"
 							class="form-control" placeholder="SectionCode" style="width: 100%">
 			</div>
-				<div class="col-md-3">
-					<h6>
-						<b>Quarter</b>
+
+			<div class=" collapse  panel-collapse" id="collapseExample4">
+
+				<div class="row">
+					<div class="col-md-3">
 						<h6>
-							<select class="form-control" ng-model="cCctr.search.quarter"
-								style="width: 100%">
-								<option value="" ng-selected=true>Quarter</option>
-								<option value="Q1">Q1</option>
-								<option value="Q2">Q2</option>
-								<option value="Q3">Q3</option>
-								<option value="Q4">Q4</option>
-							</select>
-				</div>
+							<b>Name</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.nameoftheDeductee"
+									class="form-control" placeholder="Name" style="width: 100%">
+					</div>
 
-				<div class="col-md-3">
-					<h6>
-						<b>PAN</b>
+					<div class="col-md-3">
 						<h6>
-							<input type="text" ng-model="cCctr.search.panofthedeductee"
-								class="form-control" placeholder="PAN" style="width: 100%">
-				</div>
-			</div>
-		</div>
+							<b>Account Number</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.accNo"
+									class="form-control" placeholder="Account Number"
+									style="width: 100%">
+					</div>
 
-		<div class=" collapse  panel-collapse" id="collapseExample4">
-			
-			<div class="row">
-			<div class="col-md-3">
-				<h6>
-					<b>Name</b>
-					<h6>
-						<input type="text" ng-model="cCctr.search.nameoftheDeductee"
-							class="form-control" placeholder="Name" style="width: 100%">
-			</div>
-
-			<div class="col-md-3">
-				<h6>
-					<b>Account Number</b>
-					<h6>
-						<input type="text" ng-model="cCctr.search.accNo"
-							class="form-control" placeholder="Account Number" style="width: 100%">
-			</div>
-
-			<div class="col-md-3">
-				<h6>
-					<b>Vendor/Customer ID</b>
-					<h6>
-						<input type="text" ng-model="cCctr.search.custVendId"
-							class="form-control" placeholder="Vendor/Customer ID" style="width: 100%">
-			</div>
-		</div>
-		
-		
-		
-		<div class="row">
-			
-
-			<div class="col-md-3">
-				<h6>
-					<b>Challan Heading</b>
-					<h6>
-						<input type="text" ng-model="cCctr.search.challanHeading"
-						
-							class="form-control" placeholder="Challan Heading" style="width: 100%">
-			</div>
-
-			<div class="col-md-3">
-				<h6>
-					<b> Error Description</b>
-					<h6>
-						<input type="text" ng-model="cCctr.search.errorDescription"
+					<div class="col-md-3">
+						<h6>
+							<b>Vendor/Customer ID</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.custVendId"
+									class="form-control" placeholder="Vendor/Customer ID"
+									style="width: 100%">
+					</div>
 							
-							class="form-control" placeholder=" Error Description" style="width: 100%">
-			</div>
-			<div class="col-md-3">
-				<h6>
-					<b>Warning Description</b>
-					<h6>
-						<input type="text" ng-model="cCctr.search.warningDescription"
-							class="form-control" placeholder="Warning Description" style="width: 100%">
-			</div>
+							<select class="form-control"
+													ng-model="cCctr.entity.quarter" required>
+													<option disabled value="">Select Quarter</option>
+													<#list Quarter as quarter>
+													<option value="${quarter}">${quarter}</option>
+													</#list>
+						</select>
+				</div>
 
-			
-			
-		</div>
-		
-		
-		
-		
-		
-		</div>
-		<!-- 	<div class="row" id="search">
+
+
+				<div class="row">
+
+
+					<div class="col-md-3">
+						<h6>
+							<b>Challan Heading</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.challanHeading"
+									class="form-control" placeholder="Challan Heading"
+									style="width: 100%">
+					</div>
+
+					<div class="col-md-3">
+						<h6>
+							<b> Error Description</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.errorDescription"
+									class="form-control" placeholder=" Error Description"
+									style="width: 100%">
+					</div>
+					<div class="col-md-3">
+						<h6>
+							<b>Warning Description</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.warningDescription"
+									class="form-control" placeholder="Warning Description"
+									style="width: 100%">
+					</div>
+
+
+
+				</div>
+
+
+
+
+
+			</div>
+			<div class="row text-right" id="hide">
+				<div class="col-md-3" style="margin-left: 75%; margin-top: -44px">
+					<button ng-click="cCctr.searchFYEntities(true,'form27EQDeductee')"
+					class="btn btn-success" onclick="scrollWin()"
+					style="margin-top: 0px;">Search</button>
+				<button class="btn btn-secondary" style="background-color: #FFA500"
+					data-toggle="collapse" data-target="#collapseExample4"
+					aria-expanded="false" aria-controls="collapseExample">
+					Advance Search</button>
+				<!-- <button type="button" class="btn btn-primary"
+						ng-click="cCctr.gotoListPage('addForm27EQDeductee','addForm27EQDeductee');">Add</button> -->
+				</div>
+
+			</div>
+			<!-- 	<div class="row" id="search">
 				<div class="col-md-2" id="search">
 					<button ng-click="cCctr.searchEntities(true,'form27EQDeductee','form27EQDeductee')"
 						class="btn btn-success" onclick="scrollWin()">Search</button>
@@ -178,12 +210,10 @@
 			</div> -->
 
 
-			<div class="row" id="hide">
-				
-			</div>
+			<div class="row" id="hide"></div>
 
 
-		<!-- 	<div class="row mobile ipad-landscape" id="search">
+			<!-- 	<div class="row mobile ipad-landscape" id="search">
 				<div class="col-md-3" id="search">
 					<button ng-click="cCctr.searchEntities(true,'form27QEDeductee')" style="margin-left: -350%;margin-top: 30;"
 						class="btn btn-success" onclick="scrollWin()" >Search</button>
@@ -193,83 +223,120 @@
 		</div>
 	</div>
 
-		<div style="float: right; margin-top: -13px"></div>
+	<div style="float: right; margin-top: -13px"></div>
 
-		<div class="row">
-			<div class="col-xs-12">
-			<div class="col-md-3" style="margin-top:5px">
-					<button
-					ng-click="cCctr.searchFYEntities(true,'form27EQDeductee')"
-					class="btn btn-success" onclick="scrollWin()" style="margin-top: -5px;">Search</button>
-				</div>
-				<div class="text-right">
-					<button class="btn btn-secondary" style="background-color: #FFA500"
-						data-toggle="collapse" data-target="#collapseExample4"
-						aria-expanded="false" aria-controls="collapseExample">
-						Advance Search</button>
-					<!-- <button type="button" class="btn btn-primary"
-						ng-click="cCctr.gotoListPage('addForm27EQDeductee','addForm27EQDeductee');">Add</button> -->
-				</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="col-md-3" style="margin-top: 5px">
+				
+			</div>
+			<div class="text-right">
+				
 			</div>
 		</div>
+	</div>
 
 
-		<div class="row">
+	<div class="row">
 
-			<div class="table-responsive" style="overflow-x:inherit">
+		<div class="table-responsive" style="overflow-x: inherit">
 
-				<table class=" table table-bordered table-hover table-striped"
-					role="table"
-					style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
-
-
-					<thead>
-					<colgroup>
-						<col span="14" style="background-color: #ffffff">
-					</colgroup>
-					<tr>
-					<thead role="rowgroup">
-						<tr style="background-color: #81b7db">
-							<th>Sr. No.</th>
-							<th>Quarter</th>
-							<th>Month</th>
-							<th>Branch Code</th>
-							<th>Vend/Cust Id</th>
-							<th>Unique Ref No</th>
-							<th>Account Number</th>
-							<th>Challan Heading</th>
-							<th>Party  Reference No.</th>
-							<th>Party  Code</th>
-							<th>PAN of the Party </th>
-							<th>Name of the Party</th>
-							<th>Amount Receipt/Debited</th>
-							<th>Date of Received/Debited</th>
-							<th>TCS</th>
-							<th>Surcharge</th>
-							<th>Education Cess</th>
-							<th>Total Tax Collected</th>
-							<th>Total Tax Deposited</th>
-							<th>Date of Collected</th>
-							<th>Total Value of Purchase</th>
-							<th>Rate at which Tax Collected</th>
-							<th>Reason for Non Collection</th>
-							<th>Section / Collection Code</th>
-							<th>Certificate Number</th>
-							<th>Deductee is Non-Resident</th>
-							<th>Permanent Establishment</th>
-							<th>Reason For NonCollection F or G</th>
-							<th>if Answer to 681A is Yes Then Challan Number</th>
-							<th>if Answer to 681A is Yes Then Date Of Payment Of TDS To Central Government</th>
-							<th >Error Description</th>
-							<th >Warning Description</th>
-							<th >Short Deduction</th>
-							<th >Interest on Short Deduction</th>
-							<th >Interest on Late Payment</th>
-							<th >Interest on Late Deduction</th>
-							<th >Action</th>
+			<table class=" table table-bordered table-hover table-striped"
+				role="table"
+				style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;margin-left:25px">
 
 
+				<thead>
+				<colgroup>
+					<col span="14" style="background-color: #ffffff">
+				</colgroup>
+				<tr>
+				<thead role="rowgroup">
+					<tr style="background-color: #81b7db">
+						<th>Sr. No.</th>
+						<th>Quarter</th>
+						<th>Month</th>
+						<th>Branch Code</th>
+						<th>Vend/Cust Id</th>
+						<th>Unique Ref No</th>
+						<th>Account Number</th>
+						<th>Challan Heading</th>
+						<th>Party Reference No.</th>
+						<th>Party Code</th>
+						<th>PAN of the Party</th>
+						<th>Name of the Party</th>
+						<th>Amount Receipt/Debited</th>
+						<th>Date of Received/Debited</th>
+						<th>TCS</th>
+						<th>Surcharge</th>
+						<th>Education Cess</th>
+						<th>Total Tax Collected</th>
+						<th>Total Tax Deposited</th>
+						<th>Date of Collected</th>
+						<th>Total Value of Purchase</th>
+						<th>Rate at which Tax Collected</th>
+						<th>Reason for Non Collection</th>
+						<th>Section / Collection Code</th>
+						<th>Certificate Number</th>
+						<th>Deductee is Non-Resident</th>
+						<th>Permanent Establishment</th>
+						<th>Reason For NonCollection F or G</th>
+						<th>if Answer to 681A is Yes Then Challan Number</th>
+						<th>if Answer to 681A is Yes Then Date Of Payment Of TDS To
+							Central Government</th>
+						<th>Error Description</th>
+						<th>Warning Description</th>
+						<th>Short Deduction</th>
+						<th>Interest on Short Deduction</th>
+						<th>Interest on Late Payment</th>
+						<th>Interest on Late Deduction</th>
+						<th>Action</th>
 
+
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr role="row"
+						ng-repeat="a in cCctr.getEntityListDataFY() track by a.id">
+						<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
+						<td>{{a.quarter}}</td>
+						<td>{{a.month}}</td>
+						<td>{{a.branchCode}}</td>
+						<td>{{a.custVendId}}</td>
+						<td>{{a.uniqueRefNo}}</td>
+						<td>{{a.accNo}}</td>
+						<td>{{a.challanHeading}}</td>
+						<td>{{a.deducteeReferenceNo}}</td>
+						<td>{{a.deducteeCode}}</td>
+						<td>{{a.panofthedeDeductee}}</td>
+						<td>{{a.nameoftheDeductee}}</td>
+						<td>{{a.amountReceiptDebited}}</td>
+						<td>{{a.dateofReceivedDebited}}</td>
+						<td>{{a.tcs}}</td>
+						<td>{{a.surcharge}}</td>
+
+						<td>{{a.educationCess}}</td>
+
+						<td>{{a.totalTaxCollected}}</td>
+						<td>{{a.totalTaxDeposited}}</td>
+						<td>{{a.dateofCollected| date:'dd-MM-yyyy'}}</td>
+						<td>{{a.totalValueofPurchase}}</td>
+						<td>{{a.rateatwhichTaxCollected}}</td>
+						<td>{{a.reasonforNonCollection}}</td>
+						<td>{{a.sectionCollectionCode}}</td>
+						<td>{{a.certificatenumber}}</td>
+						<td>{{a.deducteeisNonResident}}</td>
+						<td>{{a.permanentEstablishment}}</td>
+						<td>{{a.reasonforNonCollectionForG}}</td>
+						<td>{{a.ifAnswerto681AisYesThenChallanNumber}}</td>
+						<td>{{a.ifAnswerto681AisYesThenDateOfPaymentOfTDSToCentralGovernment}}</td>
+						<td>{{a.errorDescription}}</td>
+						<td>{{a.warningDescription}}</td>
+						<td>{{a.ShortDeduction}}</td>
+						<td>{{a.InterestOnShortDeduction}}</td>
+						<td>{{a.InterestOnLatePayment}}</td>
+						<td>{{a.InterestOnLateDeduction}}</td>
 						</tr>
 					</thead>
 					<tbody>
@@ -285,7 +352,7 @@
 							<td>{{a.challanHeading}}</td>
 							<td>{{a.deducteeReferenceNo}}</td>
 							<td>{{a.deducteeCode}}</td>
-							<td>{{a.panofthedeDeductee}}</td>
+							<td>{{a.panofthedeductee}}</td>
 							<td>{{a.nameoftheDeductee}}</td>
 							<td>{{a.amountReceiptDebited}}</td>
 							<td>{{a.dateofReceivedDebited}}</td>
@@ -300,13 +367,13 @@
 							<td>{{a.totalValueofPurchase}}</td>
 							<td>{{a.rateatwhichTaxCollected}}</td>
 							<td>{{a.reasonforNonCollection}}</td>
-							<td>{{a.sectionCollectionCode}}</td>
+							<td>{{a.collectionCode}}</td>
 							<td>{{a.certificatenumber}}</td>
 							<td>{{a.deducteeisNonResident}}</td>
 							<td>{{a.permanentEstablishment}}</td>
-							<td>{{a.reasonforNonCollectionForG}}</td>
-							<td>{{a.ifAnswerto681AisYesThenChallanNumber}}</td>
-							<td>{{a.ifAnswerto681AisYesThenDateOfPaymentOfTDSToCentralGovernment}}</td>
+							<td>{{a.reasonForNonCollectionForG}}</td>
+							<td>{{a.ifAnswerTo681AisyesthenChallanNumber}}</td>
+							<td>{{a.ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment| date:'dd-MM-yyyy'}}</td>
 							<td>{{a.errorDescription}}</td>
 							<td>{{a.warningDescription}}</td>
 							<td>{{a.ShortDeduction}}</td>
@@ -314,60 +381,60 @@
 							<td>{{a.InterestOnLatePayment}}</td>
 							<td>{{a.InterestOnLateDeduction}}</td>
 
-							<!-- <div>
+						<!-- <div>
 								<td ng-if="a.verify == 1"><i class="fa fa-check"
 									aria-hidden="true" style="color: #5cb85c"></i></td>
 								<td ng-if="a.verify == 0"><i class="fa fa-times"
 									aria-hidden="true" style="color: #ff0000"></i></td>
 							</div> -->
-							<td><a
-						ng-click="cCctr.gotoWFYDetailPage('form27EQDeductee',a.id,'detailForm27EQDeductee')"
-						style="color: blue" onclick="scrollWin()"><img
-							src="static\img\edit.png" width="22px" height="22px"
-							alt="Details" style="margin-top: 5px; margin-bottom: 5px;" /></a></td>
-							<!-- <td>{{a.total-a.amountPaid}}</td> -->
-						</tr>
-					</tbody>
-				</table>
+						<td><a
+							ng-click="cCctr.gotoWFYDetailPage('form27EQDeductee',a.id,'detailForm27EQDeductee')"
+							style="color: blue" onclick="scrollWin()"><img
+								src="static\img\edit.png" width="22px" height="22px"
+								alt="Details" style="margin-top: 5px; margin-bottom: 5px;" /></a></td>
+						<!-- <td>{{a.total-a.amountPaid}}</td> -->
+					</tr>
+				</tbody>
+			</table>
 
+		</div>
+
+		<div class="row" ng-show="cCctr.getNoPage() > 0">
+			<div class="row" align="center">
+				<span ng-show="cCctr.currentPage != 1"> <a
+					ng-click="cCctr.getPage(true,'form27EQDeductee',cCctr.currentPage-1)"><strong>Previous</strong></a>
+				</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.currentPage}}</strong>&nbsp;
+					of &nbsp;<strong>{{cCctr.getNoPage()}}</strong>
+					&nbsp;&nbsp;&nbsp;&nbsp; <span
+					ng-show="cCctr.currentPage != cCctr.getNoPage()"> <a
+						ng-click="cCctr.getPage(true,'form27EQDeductee',cCctr.currentPage+1)"><strong>Next</strong></a>
+				</span>
+				</span>
 			</div>
-
-			<div class="row" ng-show="cCctr.getNoPage() > 0">
+			<form role="form" name="gotoForm">
 				<div class="row" align="center">
-					<span ng-show="cCctr.currentPage != 1"> <a
-						ng-click="cCctr.getPage(true,'form27EQDeductee',cCctr.currentPage-1)"><strong>Previous</strong></a>
-					</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.currentPage}}</strong>&nbsp;
-						of &nbsp;<strong>{{cCctr.getNoPage()}}</strong>
-						&nbsp;&nbsp;&nbsp;&nbsp; <span
-						ng-show="cCctr.currentPage != cCctr.getNoPage()"> <a
-							ng-click="cCctr.getPage(true,'form27EQDeductee',cCctr.currentPage+1)"><strong>Next</strong></a>
-					</span>
+					<span>Go to</span> &nbsp;&nbsp;&nbsp; <input
+						style="width: 70px; text-align: center;" type="number"
+						name="pageNo" ng-model="cCctr.currentPage"
+						ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
+						ng-min="1" ng-max="cCctr.getNoPage()" ng-required="true">
+					&nbsp;&nbsp;&nbsp;
+					<button style="height: 25px;"
+						ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'form27EQDeductee',cCctr.currentPage)"
+						class="btn btn-primary">Go</button>
+				</div>
+				<div class="row" align="center">
+					<span style="color: red"
+						ng-show="gotoForm.submitted || gotoForm.pageNo.$dirty && gotoForm.pageNo.$invalid">
+						<span class="error" ng-show="gotoForm.pageNo.$error.min">Page
+							No. should not be less than 1.</span> <span class="error"
+						ng-show="gotoForm.pageNo.$error.max">Page No. should not be
+							greater than {{cCctr.getNoPage()}}.</span> <span class="error"
+						ng-show="gotoForm.pageNo.$error.required">Please enter page
+							number.</span>
 					</span>
 				</div>
-				<form role="form" name="gotoForm">
-					<div class="row" align="center">
-						<span>Go to</span> &nbsp;&nbsp;&nbsp; <input
-							style="width: 70px; text-align: center;" type="number"
-							name="pageNo" ng-model="cCctr.currentPage"
-							ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
-							ng-min="1" ng-max="cCctr.getNoPage()" ng-required="true">
-						&nbsp;&nbsp;&nbsp;
-						<button style="height: 25px;"
-							ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'form27EQDeductee',cCctr.currentPage)"
-							class="btn btn-primary">Go</button>
-					</div>
-					<div class="row" align="center">
-						<span style="color: red"
-							ng-show="gotoForm.submitted || gotoForm.pageNo.$dirty && gotoForm.pageNo.$invalid">
-							<span class="error" ng-show="gotoForm.pageNo.$error.min">Page
-								No. should not be less than 1.</span> <span class="error"
-							ng-show="gotoForm.pageNo.$error.max">Page No. should not
-								be greater than {{cCctr.getNoPage()}}.</span> <span class="error"
-							ng-show="gotoForm.pageNo.$error.required">Please enter
-								page number.</span>
-						</span>
-					</div>
-				</form>
-			</div>
+			</form>
 		</div>
 	</div>
+</div>

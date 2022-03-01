@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -83,11 +85,19 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 		// ermsg.setMessage(" Saved Successfully");
 		return new ResponseEntity<Object>(HttpStatus.CREATED);
 	}
+	
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity<?> createEntity(@RequestBody LinkedHashMap<String, Object> entity) {
+		// FieldErrorDTO ermsg=new FieldErrorDTO();
+		logger.info("Creating new Return instance");
+		Ticket ticket = new Ticket();		String userName = getPrincipal();
+		entity.put("userName", userName);
+		create(entity);
+		addLogs(entity);
+		// ermsg.setMessage(" Saved Successfully");
+		return new ResponseEntity<Object>(HttpStatus.CREATED);
 
-	public void create(LinkedHashMap<String, Object> entity) {
-		Gson gson = new Gson();
-		JsonElement jsonElement = gson.toJsonTree(entity);
-		getService().save(gson.fromJson(jsonElement, getEntity()));
 	}
 
 	public List<?> getList(String fy, String branchCode, int pageNo, int resultPerPage) {
@@ -149,5 +159,6 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 		map.put("remark",rService.findAll(constrains, 0, 100));
 		return map; 
 	}
-
+	
+	
 }

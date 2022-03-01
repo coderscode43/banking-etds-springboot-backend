@@ -35,6 +35,10 @@ public class MisReport extends CommonModelAbstract{/**
 	public String reportType;	
 	@Column(name = "fy")
 	public String fy;
+	@Column(name = "userName")
+	public String userName;
+	
+	
 	
 
 }

@@ -81,7 +81,7 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 			},
 			controller : "CommonController as cCctr",
 		})
-
+		
 		//Get Details detail
 		.state('home.detail', {
 			url: "/detail/:entity/:detailId/:page",
@@ -188,6 +188,17 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 
 
 		})
+		.state('homeWot.add',{
+			url: "/add/:page",
+				params:{
+					page:null,
+				},
+			templateUrl: function($stateParams){
+				return 'index/add/homeWot/' + $stateParams.page;
+			},
+			controller : "CommonController as cCctr",
+		})
+
 
 
 		//Get Details detail

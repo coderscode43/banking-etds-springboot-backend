@@ -28,6 +28,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
 import domain.in.rjsa.model.form.ListCount;
+import domain.in.rjsa.model.fy.Remark;
 import domain.in.rjsa.model.fy.Ticket;
 import domain.in.rjsa.service.RemarkService;
 import domain.in.rjsa.service.TicketService;
@@ -79,6 +80,22 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 			@RequestBody LinkedHashMap<String, Object> entity) {
 		// FieldErrorDTO ermsg=new FieldErrorDTO();
 		logger.info("Creating new Return instance");
+		String userName = getPrincipal();
+		entity.put("userName", userName);
+		entity.put("branchCode",branchCode);
+		create(entity);
+//		addLogs(entity);
+		// ermsg.setMessage(" Saved Successfully");
+		return new ResponseEntity<Object>(HttpStatus.CREATED);
+	}
+	@RequestMapping(value = "/add/{fy}/{branchCode}", method = RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity<?> createFYEntity(@PathVariable String branchCode,@PathVariable String fy,
+			@RequestBody LinkedHashMap<String, Object> entity) {
+		// FieldErrorDTO ermsg=new FieldErrorDTO();
+		logger.info("Creating new Return instance");
+		String userName = getPrincipal();
+		entity.put("userName", userName);
 		entity.put("branchCode",branchCode);
 		create(entity);
 //		addLogs(entity);
@@ -156,7 +173,8 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 		map.put("deductee",getService().uniqueSearch(constrains));
 		constrains.remove("id", id);
 		constrains.put("deducteeId",id);
-		map.put("remark",rService.findAll(constrains, 0, 100));
+		List<Remark> remark = rService.findForm(constrains, 0, 100,"ticket");
+		map.put("remark",remark);
 		return map; 
 	}
 	

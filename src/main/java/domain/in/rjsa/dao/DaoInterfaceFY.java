@@ -10,6 +10,7 @@ public interface DaoInterfaceFY<K, E> {
 
 	public E getByKey(K key);
 	public List<E> findall(HashMap<String,Object> constrains, int pageNo, int noOfResult);
+	public List<E> findForm(HashMap<String,Object> constrains, int pageNo, int noOfResult,String type);
 	public Long findallCount(HashMap<String,Object> constrains);
 	public void persist(E entity);
 	public void delete(E entity);

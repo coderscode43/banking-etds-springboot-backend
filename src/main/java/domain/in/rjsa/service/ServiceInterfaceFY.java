@@ -13,7 +13,6 @@ public interface ServiceInterfaceFY <K, E> {
 
 	public void deleteT(K key);
 
-	public List<E> findAll(HashMap<String, Object> constrains, int pageNo, int noOfResult);
 
 	public Long findallCount(HashMap<String, Object> constrains);
 
@@ -22,6 +21,10 @@ public interface ServiceInterfaceFY <K, E> {
 	public E uniqueSearch(HashMap map);
 
 	public List<String> ajax(String name, String term, HashMap<String, Object> constrains);
+
+	public List<E> findForm(HashMap<String, Object> constrains, int pageNo, int noOfResult, String type);
+
+	public List<E> findall(HashMap<String, Object> constrains, int pageNo, int noOfResult);
 
 	
 

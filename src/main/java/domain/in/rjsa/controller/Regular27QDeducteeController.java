@@ -23,6 +23,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import domain.in.rjsa.model.fy.Regular27QDeductee;
+import domain.in.rjsa.model.fy.Remark;
 import domain.in.rjsa.model.wrapper.SalaryDetailWrapper;
 import domain.in.rjsa.service.Regular27QDeducteeService;
 import domain.in.rjsa.service.RemarkService;
@@ -73,7 +74,8 @@ public class Regular27QDeducteeController
 		map.put("deductee",getService().uniqueSearch(constrains));
 		constrains.remove("id", id);
 		constrains.put("deducteeId",id);
-		map.put("remark",rService.findAll(constrains, 0, 100));
+		List<Remark> remark = rService.findForm(constrains, 0, 100,"27Qform");
+		map.put("remark",remark);
 		return map; 
 	}
 	

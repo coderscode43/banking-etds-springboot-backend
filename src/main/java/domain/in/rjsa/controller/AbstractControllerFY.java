@@ -56,7 +56,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 		HashMap<String, Object> constrains = new HashMap<>();
 		constrains.put("fy", fy);
 		constrains.put("branchCode", branchCode);
-		return getService().findAll(constrains, pageNo, resultPerPage);
+		return getService().findall(constrains, pageNo, resultPerPage);
 	}
 
 	// ------------------- Count Entity ---------------------------------
@@ -86,7 +86,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
 
-		return getService().findAll(constrains, pageNo, resultPerPage);
+		return getService().findall(constrains, pageNo, resultPerPage);
 	}
 
 	

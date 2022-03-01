@@ -1,12 +1,15 @@
 package domain.in.rjsa.controller;
 
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.hibernate.mapping.Array;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +26,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import domain.in.rjsa.model.fy.Regular26QDeductee;
+import domain.in.rjsa.model.fy.Remark;
 import domain.in.rjsa.service.Regular26QDeducteeService;
 import domain.in.rjsa.service.RemarkService;
 
@@ -62,6 +66,7 @@ public class Regular26QDeducteeController
 		}
 
 	}
+	@SuppressWarnings("unchecked")
 	public HashMap<String, Object> getDetail(Long id, String fy, String branchCode) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
@@ -69,10 +74,12 @@ public class Regular26QDeducteeController
 		constrains.put("fy", fy);
 		constrains.put("branchCode", branchCode);
 		HashMap<String, Object> map = new HashMap<>();
+		HashMap<String, Object> frm = new HashMap<String, Object>();
 		map.put("deductee",getService().uniqueSearch(constrains));
 		constrains.remove("id", id);
 		constrains.put("deducteeId",id);
-		map.put("remark",rService.findAll(constrains, 0, 100));
+		List<Remark> remark = rService.findForm(constrains, 0, 100,"26Qform");
+		map.put("remark",remark);
 		return map; 
 	}
 	

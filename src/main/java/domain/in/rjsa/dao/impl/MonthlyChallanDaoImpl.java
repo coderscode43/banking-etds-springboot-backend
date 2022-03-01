@@ -17,7 +17,8 @@ import domain.in.rjsa.model.fy.MonthlyChallan;
 @Repository("monthlyChallanDao")
 public class MonthlyChallanDaoImpl extends AbstractDaoFY<Long, MonthlyChallan> implements MonthlyChallanDao{
 	@SuppressWarnings("unchecked")
-	public List<MonthlyChallan> search(HashMap entity, Long clientId) {
+	
+	public List<MonthlyChallan> search(HashMap entity) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
@@ -32,13 +33,13 @@ public class MonthlyChallanDaoImpl extends AbstractDaoFY<Long, MonthlyChallan> i
           {
 		criteria.add(Restrictions.eqOrIsNull("monthFY", entity.get("monthFY")))	;
           }  
-          if(entity.get("amtAsPerFinacle")!=null)
-          {
-		criteria.add(Restrictions.eqOrIsNull("amtAsPerFinacle",  entity.get("amtAsPerFinacle")));
-          }  
+          if (entity.get("amtAsPerFinacle") != null) {
+        	  criteria.add(Restrictions.eqOrIsNull("amtAsPerFinacle",  Long.valueOf((String)entity.get("amtAsPerFinacle"))));
+  		  }
+           
           if (entity.get("amtAsPerTaxCalculation") != null) 
           {
-    			criteria.add(Restrictions.eqOrIsNull("amtAsPerTaxCalculation", entity.get("amtAsPerTaxCalculation")));
+    			criteria.add(Restrictions.eqOrIsNull("amtAsPerTaxCalculation", Long.valueOf((String) entity.get("amtAsPerTaxCalculation"))));
           }
           if(entity.get("challanHeading")!=null)
           {

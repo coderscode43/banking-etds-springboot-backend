@@ -150,10 +150,17 @@ public class IndexController {
 				 model.addAttribute("Quarter", stringArray);
 		    break;
 		    
-			case "certificateLocation":
+			case "path":
+//				 xString = list1.getValue();
+//				 stringArray = xString.split(",");
+//				 model.addAttribute("path", stringArray);
+				 xString = list1.getValue();
+				 model.addAttribute("path", xString);
+		    break;
+			case "Month":
 				 xString = list1.getValue();
 				 stringArray = xString.split(",");
-				 model.addAttribute("certificateLocation", stringArray);
+				 model.addAttribute("Month", stringArray);
 		    break;
 			
 			default:

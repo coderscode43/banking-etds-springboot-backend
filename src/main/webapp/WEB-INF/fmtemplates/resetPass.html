@@ -40,7 +40,7 @@
 								<label style="margin-top: 10px">New Password</label>
 							<div class="form-group ">
 								<div class="input-group">
-									<input  class="form-control" id="newPasword"  name="newPasword"
+									<input  class="form-control" id="newP"  name="newPasword"
 												pattern="^(?=.*[0-9])(?=.*[!@#$%^<>])[a-zA-Z0-9!@#$%^<>]{6,16}$" title="Password should contain atleast one special character and digit" type="password" 
 												ng-model="cCctr.entity.newPasword"  
 												 required >
@@ -170,14 +170,14 @@
 	});
 </script>
 <script>
-	function viewP() {
-		var x = document.getElementById("newPasword");
-		if (x.type === "password") {
-			x.type = "text";
-		} else {
-			x.type = "password";
-		}
+function myFunction() {
+	var x = document.getElementById("newP");
+	if (x.type === "password") {
+		x.type = "text";
+	} else {
+		x.type = "password";
 	}
+}
 
 	function viewConfirmP() {
 		var x = document.getElementById("conformPwd");

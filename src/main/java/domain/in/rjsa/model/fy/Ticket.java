@@ -76,5 +76,8 @@ public class Ticket extends CommonModelAbstract {
 	public String remarks;
 	@Column(name = "fileId")
 	public Long fileId;
+	
+	@Column(name = "userName")
+	public String userName;
 
 }

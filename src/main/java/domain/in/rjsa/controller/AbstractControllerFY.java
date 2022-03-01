@@ -137,11 +137,11 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
 			map = mapper.readValue(json, new TypeReference<Map<String, String>>() {
 			});
-			for (String key : map.keySet()) {
-				if (key.endsWith("Id")) {
-					map.put(key, Long.valueOf((String) map.get(key)));
-				}
-			}
+//			for (String key : map.keySet()) {
+//				if (key.endsWith("Id")) {
+//					map.put(key, Long.valueOf((String) map.get(key)));
+//				}
+//			}
 			map.put("fy", fy);
 			map.put("branchCode", branchCode);
 			return new ResponseEntity<>(getSearch(map), HttpStatus.OK);
@@ -178,17 +178,22 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 
 	// ------------------- Add Entity ---------------------------------
 
-	@RequestMapping(value = "/add/{fy}/{branchCode}", method = RequestMethod.POST)
-	@ResponseBody
-	public ResponseEntity<?> createEntity(@RequestBody LinkedHashMap<String, Object> entity) {
-		// FieldErrorDTO ermsg=new FieldErrorDTO();
-		logger.info("Creating new Return instance");
-		create(entity);
-//		addLogs(entity);
-		// ermsg.setMessage(" Saved Successfully");
-		return new ResponseEntity<Object>(HttpStatus.CREATED);
-
-	}
+	/*
+	 * @RequestMapping(value = "/add/{fy}/{branchCode}", method =
+	 * RequestMethod.POST)
+	 * 
+	 * @ResponseBody public ResponseEntity<?> createEntity(@RequestBody
+	 * LinkedHashMap<String, Object> entity,
+	 * 
+	 * @PathVariable String branchCode, @PathVariable String fy) { // FieldErrorDTO
+	 * ermsg=new FieldErrorDTO(); logger.info("Creating new Return instance");
+	 * entity.put("branchCode", branchCode); entity.put("fy", fy); String userName =
+	 * getPrincipal(); entity.put("userName", userName); create(entity); //
+	 * addLogs(entity); // ermsg.setMessage(" Saved Successfully"); return new
+	 * ResponseEntity<Object>(HttpStatus.CREATED);
+	 * 
+	 * }
+	 */
 
 	public void create(LinkedHashMap<String, Object> entity) {
 		Gson gson = new Gson();

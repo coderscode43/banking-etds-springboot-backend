@@ -117,43 +117,45 @@
 							</div>
 							<br><br>
 							<div class="row" style="font-size: 13px;">
-								<div class="col-md-6">
-									<label>RO Code &nbsp;:</label>
+								<div class="col-md-2">
+									<label>RO Code &nbsp;</label></div><div class="col-md-4">:
 									{{cCctr.entity.roCode}}
 								</div>
-								<div class="col-md-6">
-									<label>Branch Code. &nbsp;:</label>
+								<div class="col-md-2">
+									<label>Branch Code. &nbsp;</label></div><div class="col-md-4">:
 									{{cCctr.entity.branchCode}}
 								</div>
 							</div>
 
 							<div class="row" style="font-size: 13px;">
-								<div class="col-md-6">
-									<label>Branch Name &nbsp;:</label>
+								<div class="col-md-2">
+									<label>Branch Name &nbsp;</label></div><div class="col-md-4">:
 									{{cCctr.entity.branchName}}
 								</div>
 
-								<div class="col-md-6">
-									<label>Branch Email &nbsp;:</label> {{cCctr.entity.branchEmail}}
+								<div class="col-md-2">
+									<label>Branch Email &nbsp;</label></div><div class="col-md-4">:
+									 {{cCctr.entity.branchEmail}}
 								</div>
 							</div>
 
 							<div class="row" style="font-size: 13px;">
-								<div class="col-md-6">
-									<label>Branch Contact No &nbsp;:</label> {{cCctr.entity.branchContactNo}}
+								<div class="col-md-2">
+									<label>Branch Contact No &nbsp;</label></div><div class="col-md-4">:
+									 {{cCctr.entity.branchContactNo}}
 								</div>
-								<div class="col-md-6">
-									<label>Branch Address &nbsp;:</label>
+								<div class="col-md-2">
+									<label>Branch Address &nbsp;</label></div><div class="col-md-4">:
 									{{cCctr.entity.branchAddress }}
 								</div>
 							</div>
 							<div class ="row" style="font-size:13px;">
-								<div class ="col-md-6">
-									<label>Branch Pincode &nbsp;:</label>
+								<div class ="col-md-2">
+									<label>Branch Pincode &nbsp;</label></div><div class="col-md-4">:
 									{{cCctr.entity.branchPinCode}}
 								</div>
-								<div class ="col-md-6">
-									<label>Branch State &nbsp;:</label>
+								<div class ="col-md-2">
+									<label>Branch State &nbsp;</label></div><div class="col-md-4">:
 									{{cCctr.entity.branchState}}
 								</div>
 							</div>
@@ -176,7 +178,7 @@
 											
 											<div class="row">
 												<div class="col-md-6">
-													<label>ROCode*</label> <input class="form-control"
+													<label style="font-size:12px">ROCode*</label> <input class="form-control"
 														type="text" id="roCode" name="roCode" placeholder="RO Code"
 														ng-model="cCctr.entity.roCode"
 														autocomplete="off" 
@@ -199,7 +201,7 @@
 													</div>
 													<div class="col-md-6">
 													<!-- ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" -->
-													<label>Branch Code*</label> <input class="form-control"
+													<label style="font-size:12px">Branch Code*</label> <input class="form-control"
 														type="text" name="branchCode" placeholder="Branch Code"
 														ng-model="cCctr.entity.branchCode"
 														autocomplete="off" 
@@ -222,7 +224,7 @@
 												</div>
 												<div class ="row">
 													<div class ="col-md-6">
-														<label>Branch Name</label>
+														<label style="font-size:12px">Branch Name</label>
 														<input class="form-control" type="text"
 															name="branchName" placeholder ="Branch Name"
 															ng-model="cCctr.entity.branchName" autocomplete="off"
@@ -238,7 +240,7 @@
 														</div>
 														
 														<div class ="col-md-6">
-														<label>Branch Email</label>
+														<label style="font-size:12px">Branch Email</label>
 														<input class="form-control" type="text"
 															name="branchEmail" placeholder ="Branch Email"
 															ng-model="cCctr.entity.branchEmail" autocomplete="off"
@@ -256,7 +258,7 @@
 													
 													<div class ="row">
 														<div class ="col-md-6">
-															<label>Branch Contact No</label>
+															<label style="font-size:12px">Branch Contact No</label>
 															<input class="form-control" type="text"
 																name="branchContactNo" placeholder ="Branch Contact No"
 																ng-model="cCctr.entity.branchContactNo" autocomplete="off"
@@ -272,7 +274,7 @@
 																</div>
 																
 																<div class ="col-md-6">
-																	<label>Branch Address</label>
+																	<label style="font-size:12px">Branch Address</label>
 																	<input class="form-control" type="textarea"
 																		name="branchAddress" placeholder ="Branch Address"
 																		ng-model="cCctr.entity.branchAddress" autocomplete="off"
@@ -288,7 +290,7 @@
 																</div>
 																	<div class ="row">
 																		<div class ="col-md-6">
-																			<label>Branch Pincode</label>
+																			<label style="font-size:12px">Branch Pincode</label>
 																			<input class="form-control" type="text"
 																				name="branchPinCode" placeholder ="Branch Contact No"
 																				ng-model="cCctr.entity.branchPinCode" autocomplete="off"
@@ -302,8 +304,8 @@
 																				<span class ="error" id ="branchContactNo"></span>
 																				</div>
 																		<div class="col-md-6">
-																			<div class="form-group">
-																				<label>Branch State*</label> <select name="branchState"
+																			
+																				<label style="font-size:12px">Branch State*</label> <select name="branchState"
 																					id="branchState" class="form-control"
 																					ng-model="cCctr.entity.branchState" ng-required="true"
 																					ng-model-options="{updateOn: 'blur'}">
@@ -318,7 +320,7 @@
 																					ng-show="profileForm.branchState.$error.required">
 																						branchState is Required. </span>
 																				</span>
-																			</div>
+																			
 																		</div>
 																	</div>
 																	<br><br>

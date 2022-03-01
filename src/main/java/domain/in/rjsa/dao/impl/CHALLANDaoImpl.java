@@ -39,7 +39,7 @@ public class CHALLANDaoImpl extends AbstractDaoTaxo<String, CHALLAN> implements 
          }
 		 if(entity.get("CHALLAN_MISMATCH")!=null)
          {
-		criteria.add(Restrictions.eqOrIsNull("CHALLAN_MISMATCH", entity.get("AMOUNT_OF_CLALLAN")));
+		criteria.add(Restrictions.eqOrIsNull("CHALLAN_MISMATCH", entity.get("CHALLAN_MISMATCH")));
          }
 		
 		 criteria.addOrder(Order.desc("CIN"));
@@ -70,7 +70,7 @@ public class CHALLANDaoImpl extends AbstractDaoTaxo<String, CHALLAN> implements 
     }
 	 if(entity.get("CHALLAN_MISMATCH")!=null)
     {
-	criteria.add(Restrictions.eqOrIsNull("CHALLAN_MISMATCH", entity.get("AMOUNT_OF_CLALLAN")));
+	criteria.add(Restrictions.eqOrIsNull("CHALLAN_MISMATCH", entity.get("CHALLAN_MISMATCH")));
     }
 	
 		return (String) criteria.setProjection(Projections.rowCount()).uniqueResult();

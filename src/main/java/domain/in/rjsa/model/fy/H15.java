@@ -134,4 +134,12 @@ private static final long serialVersionUID = 1L;
 	@Column(name = "error")
 	private String error;
 
+	@Column(name = "custVendId")
+	private String custVendId;
+	
+	@Column(name = "accNo")
+	private String accNo;
+	
+	@Column(name = "uniqueRefNo")
+	private String uniqueRefNo;
 }

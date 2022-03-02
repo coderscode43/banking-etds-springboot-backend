@@ -110,7 +110,13 @@
 								<input type="text" ng-model="cCctr.search.panoftheAssessee"
 									class="form-control" placeholder="PAN" style="width: 100%">
 					</div>
-
+					<div class="col-md-3">
+						<h6>
+							<b>Account No</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.accNo"
+									class="form-control" placeholder="Account No" style="width: 100%">
+					</div>
 					
 				</div>
 			</div>
@@ -120,10 +126,10 @@
 				<div class="row">
 					<div class="col-md-3">
 						<h6>
-							<b>Aadhar No</b>
+							<b>Customer / Vendor No</b>
 							<h6>
-								<input type="text" ng-model="cCctr.search.aadhaarNumber"
-									class="form-control" placeholder="Aadhar No"
+								<input type="text" ng-model="cCctr.search.custVendId"
+									class="form-control" placeholder="Customer / Vendor No"
 									style="width: 100%">
 					</div>
 
@@ -183,6 +189,9 @@
 				<thead"rowgroup">
 					<tr role="row" style="height: 40px; background-color: #81b7db">
 						<th>Sr. No.</th>
+						<th>Customer /Vendor Id</th>
+						<th>Account No</th>
+						<th>Unique Reference No</th>
 						<th>Unique Identification No</th>
 						<th>Identification number of relevant investment/account, etc.</th>
 						<th>Nature of income</th>
@@ -227,6 +236,9 @@
 				<tbody>
 					<tr ng-repeat="a in cCctr.getEntityListDataFY() track by a.id">
 						<td>{{$index+1}}</td>
+						<td>{{a.custVendId}}</td>
+						<td>{{a.accNo}}</td>
+						<td>{{a.uniqueRefNo}}</td>
 						<td>{{a.uniqueIdentificationNo}}</td>
 						<td>{{a.identificationNumberofRelevantInvestmentAccount}}</td>
 						<td>{{a.natureofIncome}}</td>

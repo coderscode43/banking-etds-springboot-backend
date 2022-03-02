@@ -1,4 +1,5 @@
-	<style>
+
+<style>
 
 /*
 	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
@@ -187,31 +188,45 @@
 					<div class="col-md-3">
 						<h6>
 							<b>From Date Of Opening</b>
-							</h6>
-								<input type="date" ng-model="cCctr.search.fromDate"
-									ng-change="cCctr.search.fromDate=cCctr.date(cCctr.search.fromDate);"
-									class="form-control" placeholder="Date" style="width: 100%">
+						</h6>
+						<input type="date" ng-model="cCctr.search.fromDate"
+							ng-change="cCctr.search.fromDate=cCctr.date(cCctr.search.fromDate);"
+							class="form-control" placeholder="Date" style="width: 100%">
 					</div>
 
 					<div class="col-md-3">
 						<h6>
 							<b>To Date Of Opening</b>
-							</h6>
-								<input type="date" ng-model="cCctr.search.toDate"
-									ng-change="cCctr.search.toDate=cCctr.date(cCctr.search.toDate);"
-									class="form-control" placeholder="Date" style="width: 100%">
+						</h6>
+						<input type="date" ng-model="cCctr.search.toDate"
+							ng-change="cCctr.search.toDate=cCctr.date(cCctr.search.toDate);"
+							class="form-control" placeholder="Date" style="width: 100%">
 					</div>
 
 					<div class="col-md-3">
 						<h6>
 							<b>Remark</b>
-							</h6>
-								<input type="text" ng-model="cCctr.search.remarks"
-									class="form-control" placeholder="Remark" style="width: 100%">
+						</h6>
+						<input type="text" ng-model="cCctr.search.remarks"
+							class="form-control" placeholder="Remark" style="width: 100%">
 					</div>
 				</div>
 			</div>
+			<div class="row text-right" id="hide">
+				<div class="col-md-4" style="margin-left: 65%; margin-top: -45px">
+					<button ng-click="cCctr.searchEntities(true,'ticket')"
+						class="btn btn-success" onclick="scrollWin()">Search</button>
+					<button class="btn btn-secondary"
+						style="background-color: #FFA500;" data-toggle="collapse"
+						data-target="#collapseExample4" aria-expanded="false"
+						aria-controls="collapseExample">Advance Search</button>
 
+
+					<button class="btn btn-primary" data-toggle="modal"
+						ng-click="cCctr.gotoAddPage('addTicket')">Add Ticket</button>
+					<div class="text-right"></div>
+				</div>
+			</div>
 			<div class="row" id="hide"></div>
 
 			<div class="row" id="search">
@@ -225,20 +240,9 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="col-md-4" style="margin-top: 5px; margin-left: -15px;">
-					<button ng-click="cCctr.searchEntities(true,'ticket')"
-						class="btn btn-success" onclick="scrollWin()">Search</button>
-				</div>
-				<div class="text-right">
-					<button class="btn btn-secondary"
-						style="background-color: #FFA500;" data-toggle="collapse"
-						data-target="#collapseExample4" aria-expanded="false"
-						aria-controls="collapseExample">Advance Search</button>
-
-
-					<button class="btn btn-primary" data-toggle="modal"
-						ng-click="cCctr.gotoAddPage('addTicket')">Add Ticket</button>
 
 				</div>
+				<div class="text-right"></div>
 			</div>
 		</div>
 

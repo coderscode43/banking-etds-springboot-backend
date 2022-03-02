@@ -38,6 +38,12 @@ implements H15Dao{
 		if (entity.get("error") != null) {
 			criteria.add(Restrictions.eqOrIsNull("error", entity.get("error")));
 		}
+		if (entity.get("custVendId") != null) {
+			criteria.add(Restrictions.eqOrIsNull("custVendId", entity.get("custVendId")));
+		}
+		if (entity.get("accNo") != null) {
+			criteria.add(Restrictions.eqOrIsNull("accNo", entity.get("accNo")));
+		}
 		return (List<H15>) criteria.list();
 }
 }

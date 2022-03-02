@@ -20,6 +20,8 @@ public interface ServiceInterfaceForm<K, E> {
 
 	public List<String> ajax(String name, String term);
 
+	public E getByKey(K key);
+
 	
 
 //	List<E> search(HashMap map, Long clientId);

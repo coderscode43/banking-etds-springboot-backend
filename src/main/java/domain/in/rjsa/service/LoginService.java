@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import domain.in.rjsa.model.form.Login;
 
-public interface LoginService {
+public interface LoginService extends ServiceInterfaceForm<Long, Login>{
 
 
 	void updateLogin(Login login);
@@ -12,6 +12,7 @@ public interface LoginService {
 	void persist(Login login);
 	HashMap<String, Login> getUserNameLogin();
 	public void updatePassword(Login login, String password);
+	
 	
 	
 }

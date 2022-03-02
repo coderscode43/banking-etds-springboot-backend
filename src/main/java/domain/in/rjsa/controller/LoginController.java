@@ -18,25 +18,23 @@ import domain.in.rjsa.web.ApplicationCache;
 
 @Controller
 @RequestMapping("/apilogin")
-public class LoginController {
+public class LoginController extends AbstractControllerForm<Long, Login, LoginService>{
 	
 	@Autowired
-	LoginService loginService;
+	LoginService service;
 	@Autowired
 	ApplicationCache applicationCache;
 	
 	static final Logger logger = LoggerFactory
 			.getLogger(LoginController.class);
 	
-	// ------------------- Authentication User ---------------------------------
-	
-	
+	//vaibhav
 	@RequestMapping(value = "/changePassword", method = RequestMethod.POST)
 	public ResponseEntity<?> updatePassword(@RequestBody String password) {
 		try {
 			Login login = applicationCache.getLoginDetail(getPrincipal());
 			login.setPassword(password);
-			loginService.updatePassword(login, password);
+			service.updatePassword(login, password);
 			return new ResponseEntity<>(HttpStatus.OK);
 		} catch (Exception e) {
 //			logger.error("Error in listALL", e);
@@ -45,16 +43,31 @@ public class LoginController {
 		}
 	}
 	
-	private String getPrincipal() {
-		String userName = null;
-		Object principal = SecurityContextHolder.getContext()
-				.getAuthentication().getPrincipal();
-		if (principal instanceof UserDetails) {
-			userName = ((UserDetails) principal).getUsername();
-		} else {
-			userName = principal.toString();
+	@RequestMapping(value = "/detail", method = RequestMethod.GET)
+	public ResponseEntity<?> getDetailController() {
+		try {
+			return new ResponseEntity<>(getDetail(), HttpStatus.OK);
+		} catch (Exception e) {
+//			logger.error("Error in getting detail ", e);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
-		return userName;
+	}
+	
+	public Login getDetail() {
+		return service.getByKey(service.getLogin(getPrincipal()).getId());
+	}//
+	
+	
+	@Override
+	public LoginService getService() {
+		// TODO Auto-generated method stub
+		return service;
+	}
+
+	@Override
+	public Class<Login> getEntity() {
+		// TODO Auto-generated method stub
+		return Login.class;
 	}
 	
 }

@@ -9,6 +9,7 @@ App.factory('CommonService', [
 			var REST_SERVICE_URI = restUrl + 'api';
 			var entityList = [];
 			var entityData = {};
+			var loginData = {};//Vaibhav
 			var count = {};
 			var factory = {
 				fetch : fetch,//This will be for fetching the list
@@ -24,11 +25,26 @@ App.factory('CommonService', [
 				countFunction : countFunction,
 				getCount : getCount,
 				changePassword :changePassword,
-				deleteEntity : deleteEntity
+				deleteEntity : deleteEntity,
+				getUserData : getUserData
 	
 			};
 			return factory;
 
+			
+			function loginDetail() {
+				var deferred = $q.defer();
+				$http.get(REST_SERVICE_URI + 'Login/detail')
+					.success(function(data) {
+						loginData = data;
+						deferred.resolve(data);
+					}).error(function(status) {
+						deferred.reject(status);
+					});
+
+				return deferred.promise;
+
+			}
 			function fetch(entity, pageNo) {
 				entityList = [];
 				var deferred = $q.defer();
@@ -57,6 +73,10 @@ App.factory('CommonService', [
 				});
 
 				return deferred.promise;
+			}
+			
+			function getUserData() {
+				return loginData;
 			}
 			
 			function changePassword(password) {

@@ -84,6 +84,9 @@ public abstract class AbstractServiceForm<K extends Serializable, E, D extends D
 //		
 //	}
 	
-	
+	@Override
+	public E getByKey(K key) {
+		return getPrimaryDao().getByKey(key);
+	}
 
 }

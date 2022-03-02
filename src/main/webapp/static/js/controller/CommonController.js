@@ -78,6 +78,9 @@ App
 								self.entity = {};
 								$state.go("resetPass");
 							}
+							self.getUserData = function() {
+								return CommonService.getUserData();
+							}
 
 							self.changePassword = function(valid, password) {
 								if (valid == true) {

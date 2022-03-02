@@ -1,17 +1,18 @@
 package domain.in.rjsa.dao.impl;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 
 import org.springframework.stereotype.Repository;
 
-import domain.in.rjsa.dao.AbstractDao;
+import domain.in.rjsa.dao.AbstractDaoForm;
 import domain.in.rjsa.dao.LoginDao;
 import domain.in.rjsa.model.form.Login;
 @Repository("loginDao")
-public class LoginDaoImpl extends AbstractDao<Long, Login> implements LoginDao {
+public class LoginDaoImpl extends AbstractDaoForm<Long, Login> implements LoginDao {
 
 	@Override
 	public Login getByuserName(String userName) {
@@ -23,4 +24,11 @@ public class LoginDaoImpl extends AbstractDao<Long, Login> implements LoginDao {
 		return  (Login) query.getSingleResult();
 	}
 
+	@Override
+	public List<Login> findall() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 }

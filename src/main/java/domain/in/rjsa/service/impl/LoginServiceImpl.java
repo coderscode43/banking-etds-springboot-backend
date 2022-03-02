@@ -10,12 +10,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.LoginDao;
 import domain.in.rjsa.model.form.Login;
+import domain.in.rjsa.service.AbstractServiceForm;
 import domain.in.rjsa.service.LoginService;
 import domain.in.rjsa.web.ApplicationCache;
 
 @Transactional("transactionManager")
 @Service("loginService")
-public class LoginServiceImpl implements LoginService {
+public class LoginServiceImpl extends AbstractServiceForm<Long, Login, LoginDao> implements LoginService {
 
 	@Autowired
 	LoginDao dao;
@@ -66,6 +67,12 @@ public class LoginServiceImpl implements LoginService {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		return passwordEncoder.encode(password);
 
+	}
+
+	@Override
+	public LoginDao getPrimaryDao() {
+		// TODO Auto-generated method stub
+		return dao;
 	}
 
 }

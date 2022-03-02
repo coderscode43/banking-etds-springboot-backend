@@ -9,6 +9,10 @@ import java.util.List;
 import java.util.Map;
 
 import javax.persistence.Table;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -174,5 +178,18 @@ public abstract class AbstractDaoForm<K extends Serializable, E> implements DaoI
 		}
 		query.executeUpdate();
 	}
+	 protected CriteriaQuery<E> createEntityCriteria(HashMap<String,Object>property){
+	       // return getSession().createCriteria(persistentClass);
+	        CriteriaBuilder cb =  getSession().getCriteriaBuilder();
+	        CriteriaQuery<E> cr = cb.createQuery(persistentClass);
+	        Root<E> root = cr.from(persistentClass);
+	        List<Predicate> predicates = new ArrayList<Predicate>();
+	        
+	        for(String prop : property.keySet()) {
+	        	predicates.add(cb.equal(root.get(prop),property.get(prop)));
+	        }
+	        cr.select(root).where(predicates.toArray(new Predicate[]{}));
+	        return cr;
+	    }
 
 }

@@ -30,7 +30,7 @@ implements G15Dao{
 			criteria.add(Restrictions.eqOrIsNull("panoftheAssessee", entity.get("panoftheAssessee")));
 		}
 		if (entity.get("aadhaarNumber") != null) {
-			criteria.add(Restrictions.eqOrIsNull("aadhaarNumber",Long.valueOf((String) entity.get("aadhaarNumber"))));
+			criteria.add(Restrictions.eqOrIsNull("aadhaarNumber", entity.get("aadhaarNumber")));
 		}
 		if (entity.get("warning") != null) {
 			criteria.add(Restrictions.eqOrIsNull("warning", entity.get("warning")));
@@ -43,6 +43,15 @@ implements G15Dao{
 		}
 		if (entity.get("accNo") != null) {
 			criteria.add(Restrictions.eqOrIsNull("accNo", entity.get("accNo")));
+		}
+		if (entity.get("fy") != null) {
+			criteria.add(Restrictions.eqOrIsNull("fy", entity.get("fy")));
+		}
+		if (entity.get("quarter") != null) {
+			criteria.add(Restrictions.eqOrIsNull("quarter", entity.get("quarter")));
+		}
+		if (entity.get("month") != null) {
+			criteria.add(Restrictions.eqOrIsNull("month", entity.get("month")));
 		}
 		return (List<G15>) criteria.list();
 		

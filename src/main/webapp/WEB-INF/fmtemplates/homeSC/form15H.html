@@ -190,6 +190,8 @@
 				<thead"rowgroup">
 					<tr role="row" style="height: 40px; background-color: #81b7db">
 						<th>Sr. No.</th>
+						<th>Quarter</th>
+						<th>Month</th>
 						<th>Customer /Vendor Id</th>
 						<th>Account No</th>
 						<th>Unique Reference No</th>
@@ -224,6 +226,7 @@
 						<th>Date on which Declaration is received</th>
 						<th>Amount of income paid</th>
 						<th>Date on which the income has been paid/credited</th>
+						<th>FY</th>
 						<th>Warning</th>
 						<th>Error</th>
 						<!-- <th>Action</th> -->
@@ -234,6 +237,8 @@
 				<tbody>
 					<tr ng-repeat="a in cCctr.getEntityListData() track by a.id">
 						<td>{{$index+1}}</td>
+						<td>{{a.quarter}}</td>
+						<td>{{a.month}}</td>
 						<td>{{a.custVendId}}</td>
 						<td>{{a.accNo}}</td>
 						<td>{{a.uniqueRefNo}}</td>
@@ -268,6 +273,7 @@
 						<td>{{a.dateonwhichDeclarationisreceived | date:'dd-MM-yyyy'}}</td>
 						<td>{{a.amountofincomepaid}}</td>
 						<td>{{a.dateonwhichtheincomehasbeenpaidcredited | date:'dd-MM-yyyy'}}</td>
+						<td>{{a.fy}}</td>
 						<td>{{a.warning}}</td>
 						<td>{{a.error}}</td>
 						<!-- <td><a

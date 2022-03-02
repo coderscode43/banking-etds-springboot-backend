@@ -30,7 +30,7 @@ implements H15Dao{
 			criteria.add(Restrictions.eqOrIsNull("panoftheAssessee", entity.get("panoftheAssessee")));
 		}
 		if (entity.get("aadhaarNumberoftheAssessee") != null) {
-			criteria.add(Restrictions.eqOrIsNull("aadhaarNumberoftheAssessee",Long.valueOf((String) entity.get("aadhaarNumberoftheAssessee"))));
+			criteria.add(Restrictions.eqOrIsNull("aadhaarNumberoftheAssessee", entity.get("aadhaarNumberoftheAssessee")));
 		}
 		if (entity.get("warning") != null) {
 			criteria.add(Restrictions.eqOrIsNull("warning", entity.get("warning")));
@@ -43,6 +43,15 @@ implements H15Dao{
 		}
 		if (entity.get("accNo") != null) {
 			criteria.add(Restrictions.eqOrIsNull("accNo", entity.get("accNo")));
+		}
+		if (entity.get("fy") != null) {
+			criteria.add(Restrictions.eqOrIsNull("fy", entity.get("fy")));
+		}
+		if (entity.get("quarter") != null) {
+			criteria.add(Restrictions.eqOrIsNull("quarter", entity.get("quarter")));
+		}
+		if (entity.get("month") != null) {
+			criteria.add(Restrictions.eqOrIsNull("month", entity.get("month")));
 		}
 		return (List<H15>) criteria.list();
 }

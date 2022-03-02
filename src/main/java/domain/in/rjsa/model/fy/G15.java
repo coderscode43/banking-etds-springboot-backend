@@ -34,7 +34,7 @@ private static final long serialVersionUID = 1L;
 	public String uniqueIdentificationNo;
 	
 	@Column(name = "identificationNumberofRelevantInvestmentAccount")
-	private Long identificationNumberofRelevantInvestmentAccount;
+	private String identificationNumberofRelevantInvestmentAccount;
 	
 	@Column(name = "natureofIncome")
 	private String natureofIncome;
@@ -52,7 +52,7 @@ private static final long serialVersionUID = 1L;
 	private String panoftheAssessee;
 	
 	@Column(name = "aadhaarNumber")
-	private Long aadhaarNumber;
+	private String aadhaarNumber;
 	
 	@Column(name = "status")
 	private String status;
@@ -97,7 +97,7 @@ private static final long serialVersionUID = 1L;
 	private String telephoneNo;
 	
 	@Column(name = "mobileNo")
-	private Long mobileNo;
+	private String mobileNo;
 	
 	@Column(name = "whetherAssessedtotaxundertheIncometaxAct1961")
 	private String whetherAssessedtotaxundertheIncometaxAct1961;
@@ -143,7 +143,14 @@ private static final long serialVersionUID = 1L;
 	@Column(name = "uniqueRefNo")
 	private String uniqueRefNo;
 	
-
+	@Column(name = "fy")
+	private String fy;
+	
+	@Column(name = "quarter")
+	private String quarter;
+	
+	@Column(name = "month")
+	private String month;
 
 
 }

@@ -34,7 +34,7 @@ private static final long serialVersionUID = 1L;
 	public String uniqueIdentificationNo;
 	
 	@Column(name = "identificationNumberofRelevantInvestmentAccount")
-	private Long identificationNumberofRelevantInvestmentAccount;
+	private String identificationNumberofRelevantInvestmentAccount;
 	
 	@Column(name = "natureofIncome")
 	private String natureofIncome;
@@ -52,7 +52,7 @@ private static final long serialVersionUID = 1L;
 	private String panoftheAssessee;
 	
 	@Column(name = "aadhaarNumberoftheAssessee")
-	private Long aadhaarNumberoftheAssessee;
+	private String aadhaarNumberoftheAssessee;
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "dateofBirth")
@@ -95,7 +95,7 @@ private static final long serialVersionUID = 1L;
 	private String telephoneNo;
 	
 	@Column(name = "mobileNo")
-	private Long mobileNo;
+	private String mobileNo;
 	
 	@Column(name = "whetherAssessedtotax")
 	private String whetherAssessedtotax;
@@ -142,4 +142,13 @@ private static final long serialVersionUID = 1L;
 	
 	@Column(name = "uniqueRefNo")
 	private String uniqueRefNo;
+	
+	@Column(name = "fy")
+	private String fy;
+	
+	@Column(name = "quarter")
+	private String quarter;
+	
+	@Column(name = "month")
+	private String month;
 }

@@ -1,5 +1,8 @@
 package domain.in.rjsa.service.impl;
 
+import java.util.LinkedHashMap;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +26,12 @@ TicketDao dao;
 	public Ticket getByKey(Long id) {
 		// TODO Auto-generated method stub
 		return dao.getByKey(id);
+	}
+	
+	@Override
+	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+		// TODO Auto-generated method stub
+		return dao.search(map, pageNo, resultPerPage);
 	}
 
 }

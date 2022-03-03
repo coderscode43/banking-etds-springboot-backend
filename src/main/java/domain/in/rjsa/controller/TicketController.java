@@ -204,6 +204,10 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 			return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+	public List<?> getSearch(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+		// TODO Auto-generated method stub
+		return service.search(map, pageNo, resultPerPage);
+	}
 	
 	
 }

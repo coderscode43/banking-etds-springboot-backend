@@ -21,9 +21,13 @@ import com.google.gson.JsonElement;
 import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.fy.Regular24QDeductee;
 import domain.in.rjsa.model.fy.Regular26QDeductee;
+import domain.in.rjsa.model.fy.Regular27EQDeductee;
+import domain.in.rjsa.model.fy.Regular27QDeductee;
 import domain.in.rjsa.model.fy.Remark;
 import domain.in.rjsa.service.Regular24QDeducteeService;
 import domain.in.rjsa.service.Regular26QDeducteeService;
+import domain.in.rjsa.service.Regular27EQDeducteeService;
+import domain.in.rjsa.service.Regular27QDeducteeService;
 import domain.in.rjsa.service.RemarkService;
 
 @Controller
@@ -37,6 +41,11 @@ public class RemarkController extends AbstractControllerFY<Long, Remark, RemarkS
 	Regular24QDeducteeService r24qService;
 	@Autowired
 	Regular26QDeducteeService r26qService;
+	@Autowired
+	Regular27EQDeducteeService r27eqService;
+	@Autowired
+	Regular27QDeducteeService r27qService;
+	
 	@Override
 	public RemarkService getService() {
 		// TODO Auto-generated method stub
@@ -69,6 +78,17 @@ public class RemarkController extends AbstractControllerFY<Long, Remark, RemarkS
 		else if(form24Q.endsWith("26Qform")) {
 			Regular26QDeductee r26q = r26qService.getByKey(id);
 			r26q.setResolved(true);
+			r26qService.update(r26q);
+		}
+		else if(form24Q.endsWith("27EQform")) {
+			Regular27EQDeductee r27eq = r27eqService.getByKey(id);
+			r27eq.setResolved(true);
+			r27eqService.update(r27eq);
+		}
+		else if(form24Q.endsWith("27Qform")) {
+			Regular27QDeductee r27q = r27qService.getByKey(id);
+			r27q.setResolved(true);
+			r27qService.update(r27q);
 		}
 			
 			

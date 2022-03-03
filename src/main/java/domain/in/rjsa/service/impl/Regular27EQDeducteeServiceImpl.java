@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.Regular27EQDeducteeDao;
+import domain.in.rjsa.model.fy.Regular26QDeductee;
 import domain.in.rjsa.model.fy.Regular27EQDeductee;
 import domain.in.rjsa.service.AbstractServiceFY;
 import domain.in.rjsa.service.Regular27EQDeducteeService;
@@ -26,5 +27,6 @@ public class Regular27EQDeducteeServiceImpl extends AbstractServiceFY<Long, Regu
 		// TODO Auto-generated method stub
 		return dao;
 	}
+	
 
 }

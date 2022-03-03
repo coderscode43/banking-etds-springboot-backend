@@ -13,7 +13,6 @@ import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractDaoForm;
 import domain.in.rjsa.dao.TicketDao;
-import domain.in.rjsa.model.fy.Logs;
 import domain.in.rjsa.model.fy.Ticket;
 @Repository("ticketDao")
 public class TicketDaoImpl extends AbstractDaoForm<Long, Ticket> implements TicketDao{

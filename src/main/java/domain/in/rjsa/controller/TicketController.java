@@ -146,7 +146,7 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 			}
 			map.put("fy", fy);
 			map.put("branchCode", branchCode);
-			return new ResponseEntity<>(getSearch(map), HttpStatus.OK);
+			return new ResponseEntity<>(getSearch(map,0,100), HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("Error in listALL", e);
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);

@@ -321,6 +321,15 @@
 							<div class="col-md-3">:
 								{{cCctr.entity.deductee.InterestOnLateDeduction}}</div>
 						</div>
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-3">
+								<label>Status &nbsp;</label>
+							</div>
+							<div class="col-md-3" ng-if="cCctr.entity.deductee.resolved == 0">:
+								Resolved</div>
+							<div class="col-md-3" ng-if="cCctr.entity.deductee.resolved == 1">:
+								Not Resolved</div>
+						</div>
 
 
 
@@ -345,7 +354,7 @@
 
 								<button class="btn btn-danger"
 									ng-click="cCctr.gotoListPage('form26QDeductee','form26QDeductee')">Back</button>
-									
+
 								<div ng-if="cCctr.entity.deductee.resolved == 1"
 									style="margin: -2.9% 0 0% 64.2%;">
 									<button class="btn btn-primary"

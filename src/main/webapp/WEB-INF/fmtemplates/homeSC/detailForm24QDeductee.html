@@ -287,6 +287,12 @@ table {
 									<label>Quarter &nbsp;</label>
 								</div>
 								<div class="col-md-3">: {{cCctr.entity.deductee.quarter}}</div>
+								
+								<div class="col-md-3">
+									<label>Status &nbsp;</label>
+								</div>
+								<div class="col-md-3" ng-if ="cCctr.entity.deductee.resolved == 0">: Resolved</div>
+								<div class="col-md-3" ng-if ="cCctr.entity.deductee.resolved == 1">: Not Resolved</div>
 							</div>
 							<!-- <div class="row" style="font-size: 13px;">
 								<div class="col-md-6">

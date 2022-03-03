@@ -24,11 +24,13 @@ import domain.in.rjsa.model.fy.Regular26QDeductee;
 import domain.in.rjsa.model.fy.Regular27EQDeductee;
 import domain.in.rjsa.model.fy.Regular27QDeductee;
 import domain.in.rjsa.model.fy.Remark;
+import domain.in.rjsa.model.fy.Ticket;
 import domain.in.rjsa.service.Regular24QDeducteeService;
 import domain.in.rjsa.service.Regular26QDeducteeService;
 import domain.in.rjsa.service.Regular27EQDeducteeService;
 import domain.in.rjsa.service.Regular27QDeducteeService;
 import domain.in.rjsa.service.RemarkService;
+import domain.in.rjsa.service.TicketService;
 
 @Controller
 @RequestMapping("/apiremark")
@@ -45,6 +47,8 @@ public class RemarkController extends AbstractControllerFY<Long, Remark, RemarkS
 	Regular27EQDeducteeService r27eqService;
 	@Autowired
 	Regular27QDeducteeService r27qService;
+	@Autowired
+	TicketService tService;
 	
 	@Override
 	public RemarkService getService() {
@@ -89,6 +93,11 @@ public class RemarkController extends AbstractControllerFY<Long, Remark, RemarkS
 			Regular27QDeductee r27q = r27qService.getByKey(id);
 			r27q.setResolved(true);
 			r27qService.update(r27q);
+		}
+		else if(form24Q.endsWith("ticket")) {
+			Ticket ticket = tService.getByKey(id);
+			ticket.setResolved(true);
+			tService.update(ticket);
 		}
 			
 			

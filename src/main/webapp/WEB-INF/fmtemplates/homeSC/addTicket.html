@@ -16,9 +16,13 @@
 
 						<input type="hidden" ng-model="cCctr.entity.dateOfChange"
 							ng-init="cCctr.entity.dateOfChange=cCctr.presentDate()">
+							
+						<input type="hidden" ng-model="cCctr.entity.resolved"
+							ng-init="cCctr.entity.resolved= '0' ">
 
 						<input type="hidden" ng-model="cCctr.entity.status"
 							ng-init="cCctr.entity.status='Open'">
+							
 						<div class="row">
 							<div class="col-md-4">
 								<div>
@@ -73,7 +77,7 @@
 									<md-autocomplete md-input-name="branchCode"
 										md-input-minlength="3" md-no-cache="true"
 										md-input-maxlength="75" style="height:10%;"
-										md-selected-item="cCctr.search.branchCode" md-search-text="b"
+										md-selected-item="cCctr.entity.branchCode" md-search-text="b"
 										md-items="item in cCctr.ajax('branch','branchCode',b)"
 										md-delay="0" placeholder="Branch Code" required> <md-item-template>
 									<span>{{item}}</span> </md-item-template> <md-not-found> No Branch

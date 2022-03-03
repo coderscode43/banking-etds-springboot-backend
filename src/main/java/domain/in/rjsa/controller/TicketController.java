@@ -1,5 +1,7 @@
 package domain.in.rjsa.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -28,6 +30,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
 import domain.in.rjsa.model.form.ListCount;
+import domain.in.rjsa.model.fy.Regular24QDeductee;
 import domain.in.rjsa.model.fy.Remark;
 import domain.in.rjsa.model.fy.Ticket;
 import domain.in.rjsa.service.RemarkService;
@@ -176,6 +179,30 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 		List<Remark> remark = rService.findForm(constrains, 0, 100,"ticket");
 		map.put("remark",remark);
 		return map; 
+	}
+	
+	@RequestMapping(value = "/update/{page}", method = RequestMethod.PUT)
+	public ResponseEntity<?> updateTestimonial(@RequestBody LinkedHashMap<String, Object> entity) {
+		try {
+			Long id = Long.valueOf(entity.get("id").toString());
+			Ticket ticket = service.getByKey(id);
+			ticket.setResolved(false);
+			service.update(ticket);
+			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
+			map.put("fy", ticket.getFy());
+			map.put("deducteeId", ticket.getId());
+			map.put("deducteeForm", "ticket");
+			map.put("remark", "Resolved");
+			String timeStamp = new SimpleDateFormat("dd-MM-yyyy'T'HH:mm:ss").format(Calendar.getInstance().getTime());
+			map.put("dateTime", timeStamp);
+			map.put("userName", getPrincipal());
+			map.put("branchCode", ticket.getBranchCode());
+			rService.saveRemark(map);
+			return new ResponseEntity<String>(HttpStatus.ACCEPTED);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 	
 	

@@ -18,6 +18,7 @@ App.factory('CommonService', [
 				detail : detail,
 				detailForm:detailForm,
 				update : update,
+				updateTicket : updateTicket,
 				save : save,
 				ajax : ajax,
 				getEntityList : getEntityList,
@@ -196,6 +197,20 @@ App.factory('CommonService', [
 				var deferred = $q.defer();
 
 				$http.put(REST_SERVICE_URI + entity + '/update', 
+						entitySave).success(function(data) {
+
+					deferred.resolve(data);
+				}).error(function(status) {
+					deferred.reject(status);
+				});
+
+				return deferred.promise;
+			}
+			
+			function updateTicket(entitySave, entity) {
+				var deferred = $q.defer();
+
+				$http.put(REST_SERVICE_URI + entity + '/update/'+ entity, 
 						entitySave).success(function(data) {
 
 					deferred.resolve(data);

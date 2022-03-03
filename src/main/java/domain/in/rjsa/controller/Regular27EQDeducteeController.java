@@ -90,7 +90,7 @@ public class Regular27EQDeducteeController extends AbstractControllerFY<Long, Re
 			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
 			map.put("fy", form27EQ.getFy());
 			map.put("deducteeId", form27EQ.getId());
-			map.put("deducteeForm", "24Qform");
+			map.put("deducteeForm", "27EQform");
 			map.put("remark", "Resolved");
 			String timeStamp = new SimpleDateFormat("dd-MM-yyyy'T'HH:mm:ss").format(Calendar.getInstance().getTime());
 			map.put("dateTime", timeStamp);

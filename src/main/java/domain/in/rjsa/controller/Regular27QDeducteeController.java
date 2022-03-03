@@ -1,5 +1,7 @@
 package domain.in.rjsa.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -15,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.HandlerMapping;
@@ -22,6 +25,7 @@ import org.springframework.web.servlet.HandlerMapping;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import domain.in.rjsa.model.fy.Regular24QDeductee;
 import domain.in.rjsa.model.fy.Regular27QDeductee;
 import domain.in.rjsa.model.fy.Remark;
 import domain.in.rjsa.model.wrapper.SalaryDetailWrapper;
@@ -77,6 +81,30 @@ public class Regular27QDeducteeController
 		List<Remark> remark = rService.findForm(constrains, 0, 100,"27Qform");
 		map.put("remark",remark);
 		return map; 
+	}
+	
+	@RequestMapping(value = "/update", method = RequestMethod.PUT)
+	public ResponseEntity<?> updateTestimonial(@RequestBody LinkedHashMap<?, ?> entity) {
+		try {
+			Long id = Long.valueOf(entity.get("id").toString());
+			Regular27QDeductee form27Q = service.getByKey(id);
+			form27Q.setResolved(false);
+			service.update(form27Q);
+			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
+			map.put("fy", form27Q.getFy());
+			map.put("deducteeId", form27Q.getId());
+			map.put("deducteeForm", "27Qform");
+			map.put("remark", "Resolved");
+			String timeStamp = new SimpleDateFormat("dd-MM-yyyy'T'HH:mm:ss").format(Calendar.getInstance().getTime());
+			map.put("dateTime", timeStamp);
+			map.put("userName", getPrincipal());
+			map.put("branchCode", form27Q.getBranchCode());
+			rService.saveRemark(map);
+			return new ResponseEntity<String>(HttpStatus.ACCEPTED);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 	
 	// ------------------- Search Single Entity ---------------------------------

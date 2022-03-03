@@ -1,5 +1,7 @@
 package domain.in.rjsa.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -84,29 +86,27 @@ public class Regular24QDeducteeController<E>
 	@RequestMapping(value = "/update", method = RequestMethod.PUT)
 	public ResponseEntity<?> updateTestimonial(@RequestBody LinkedHashMap<?, ?> entity) {
 		try {
-			update(entity);
+			Long id = Long.valueOf(entity.get("id").toString());
+			Regular24QDeductee form24Q = service.getByKey(id);
+			form24Q.setResolved(false);
+			service.update(form24Q);
+			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
+			map.put("fy", form24Q.getFy());
+			map.put("deducteeId", form24Q.getId());
+			map.put("deducteeForm", "24Qform");
+			map.put("remark", "Resolved");
+			String timeStamp = new SimpleDateFormat("dd-MM-yyyy'T'HH:mm:ss").format(Calendar.getInstance().getTime());
+			map.put("dateTime", timeStamp);
+			map.put("userName", getPrincipal());
+			map.put("branchCode", form24Q.getBranchCode());
+			rService.saveRemark(map);
 			return new ResponseEntity<String>(HttpStatus.ACCEPTED);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-	private void update (LinkedHashMap<?, ?> entity) {
-		Gson gson = new Gson();
-		JsonElement jsonElement = gson.toJsonTree(entity);
-//		Testimonials testimonial = gson.fromJson(jsonElement, Testimonials.class);
-//		Testimonials oldTestimonial = service.getByKey(testimonial.getId());
-		Regular24QDeductee regular24qDeductee = gson.fromJson(jsonElement, Regular24QDeductee.class);
-		String bool = (String) entity.get("resolved");
-		
-		if(bool == "false") {
-			regular24qDeductee.setResolved(true);
-		}
-		else {
-			regular24qDeductee.setResolved(false);
-		}
-		service.update(regular24qDeductee);
-	}
+	
 
 	// ------------------- Search Single Entity ---------------------------------
 	@RequestMapping(value = "/search/get/{pageNo}/{resultPerPage}/{json}/**", method = RequestMethod.GET)

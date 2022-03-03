@@ -58,20 +58,21 @@ public class RemarkController extends AbstractControllerFY<Long, Remark, RemarkS
 		Login l = applicationCache.getLoginDetail(getPrincipal());
 		entity.put("userName", l.getUserName());
 		create(entity);
-//		int ID = (int) entity.get("deducteeId");
-//		Long id = new Long(ID); 
-//		if(entity.get("deducteeForm")=="24Q") {
-//			Regular24QDeductee r24q = r24qService.getByKey(id);
-//			r24q.setResolved(false);
-//		}
-//		else if(entity.get("deducteeForm")=="26Q") {
-//			Regular26QDeductee r26q = r26qService.getByKey(id);
-//			r26q.setResolved(false);
-//		}
+		int ID = (int) entity.get("deducteeId");
+		Long id = new Long(ID);
+		String form24Q = entity.get("deducteeForm").toString();
+		if(form24Q.endsWith("24Qform")) {
+			Regular24QDeductee r24q = r24qService.getByKey(id);
+			r24q.setResolved(true);
+			r24qService.update(r24q);
+		}
+		else if(form24Q.endsWith("26Qform")) {
+			Regular26QDeductee r26q = r26qService.getByKey(id);
+			r26q.setResolved(true);
+		}
 			
 			
 //		addLogs(entity);
-		// ermsg.setMessage(" Saved Successfully");
 		return new ResponseEntity<Object>(HttpStatus.CREATED);
 
 	}

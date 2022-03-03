@@ -21,6 +21,7 @@ App
 							self.branchId;
 							self.loader = '';
 							self.entity = {};
+							self.resolve = {};
 							self.search = {};// Pranay
 							self.entityList = [];
 							// self.ItemsPerPage=100;
@@ -800,8 +801,6 @@ App
 														console
 																.log(entity
 																		+ ' updated successfully');
-														self.gotoListPage(
-																entity, entity);
 														$('.modal').modal(
 																"hide");
 														$('#successMsg')

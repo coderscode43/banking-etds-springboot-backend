@@ -123,13 +123,16 @@
 
 									</tr>
 								</thead>
-								<tbody style="text-align: center"
+								<!-- <tbody style="text-align: center"
 									ng-show="cCctr.getEntityListData().length<=0">
 									<tr>
 
 									</tr>
-								</tbody>
-								<tbody style="text-align: center"
+								</tbody> -->
+								
+								<tbody><tr style="color: red" ng-show="cCctr.getEntityListData().length <= 0">
+					<td colspan="14" style="text-align: center;"><b><h3 style="text-align:center;">No data
+					found!!</h3></b></td><tr style="text-align: center"
 									ng-repeat="a in cCctr.getEntityListData() track by a.id">
 									<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
 									<td>{{a.branchCode}}</td>

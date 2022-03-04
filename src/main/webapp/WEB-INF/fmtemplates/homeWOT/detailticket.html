@@ -155,7 +155,7 @@
 					</div> -->
 
 					<br>
-
+               <div class="container">
 					<div class="row" style="font-size: 13px;">
 						<div class="col-md-3">
 							<label>Financial Year &nbsp;:</label> {{cCctr.entity.fy}}
@@ -231,13 +231,13 @@
 								ng-click="cCctr.gotoWFYListPage('ticket','ticket')">Back</button>
 
 							<div ng-if="cCctr.entity.resolved == 1"
-								style="margin: -3.4% 0 0% 66.3%;">
+								style="margin:-2.81% 0 0% 64.4%">
 								<button class="btn btn-primary"
 									ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.id"
 									ng-click="cCctr.updateTicket(true,cCctr.resolve,'ticket')">Resolved</button>
 							</div>
 							<div ng-if="cCctr.entity.resolved == 0"
-								style="margin: -3.4% 0 0% 66.3%">
+								style="margin:-2.81% 0 0% 64.4%">
 								<button class="btn btn-primary" disabled
 									ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.id"
 									ng-click="cCctr.updateTicket(true,cCctr.resolve,'ticket')">Resolved</button>
@@ -275,6 +275,7 @@
 								</div>
 							</div>
 						</form>
+					</div>
 					</div>
 					<br>
 					<div>

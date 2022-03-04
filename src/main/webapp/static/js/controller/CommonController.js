@@ -21,6 +21,7 @@ App
 							self.branchId;
 							self.loader = '';
 							self.entity = {};
+							self.resolve = {};
 							self.search = {};// Pranay
 							self.entityList = [];
 							// self.ItemsPerPage=100;
@@ -800,8 +801,71 @@ App
 														console
 																.log(entity
 																		+ ' updated successfully');
-														self.gotoListPage(
-																entity, entity);
+														$('.modal').modal(
+																"hide");
+														$('#successMsg')
+																.find(
+																		'.modal-header')
+																.find(
+																		'.headingMsg')
+																.append(
+																		"Successfull");
+														$('#successMsg')
+																.find(
+																		'.modal-body')
+																.find('.msg')
+																.append(
+																		" Updated Successfully");
+														$("#successMsg")
+																.modal();
+
+													},
+													function(error) {
+														console
+																.error('Error while updating Details, '
+																		+ status);
+
+														if (error.exceptionMsg != null
+																&& error.exceptionMsg != undefined) {
+															$('#errorMsg')
+																	.find(
+																			'.modal-body')
+																	.find(
+																			'.msg')
+																	.append(
+																			"Can not Update "
+																					+ error.entityName
+																					+ " : "
+																					+ error.exceptionMsg);
+															$("#errorMsg")
+																	.modal();
+														} else {
+															for (var i = 0; i < error.fieldErrors.length; i++) {
+																var obj = error.fieldErrors[i];
+																document
+																		.getElementById(obj.fieldName).innerHTML = obj.message;
+															}
+														}
+
+													});
+
+								}
+							}
+							
+							self.updateTicket = function(valid, object, entity) {// --remove
+								// closeModalId-pranay
+								if (valid == true) {
+									console.log("Common Controller updateData "
+											+ entity);
+									self.object = object;
+
+									CommonService
+											.updateTicket(object, entity)
+											.then(
+													function(data) {
+														console
+																.log(entity
+																		+ ' updated successfully');
 														$('.modal').modal(
 																"hide");
 														$('#successMsg')
@@ -957,6 +1021,19 @@ App
 									CommonService.fetch(entity, pageNo - 1);
 								}
 							}
+							
+							 self.date = function(date) {
+									date = new Date(
+											date.getTime()
+													+ Math
+															.abs(date
+																	.getTimezoneOffset() * 60000));
+									// var dateString =date.toUTCString();
+									// dateString = dateString.split(' ').slice(0,
+									// 4).join(' ');
+									return date;
+
+								}
 
 							self.getNoPage = function(valid, entity, pageNo) {
 

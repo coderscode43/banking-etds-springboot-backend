@@ -21,10 +21,16 @@ import com.google.gson.JsonElement;
 import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.fy.Regular24QDeductee;
 import domain.in.rjsa.model.fy.Regular26QDeductee;
+import domain.in.rjsa.model.fy.Regular27EQDeductee;
+import domain.in.rjsa.model.fy.Regular27QDeductee;
 import domain.in.rjsa.model.fy.Remark;
+import domain.in.rjsa.model.fy.Ticket;
 import domain.in.rjsa.service.Regular24QDeducteeService;
 import domain.in.rjsa.service.Regular26QDeducteeService;
+import domain.in.rjsa.service.Regular27EQDeducteeService;
+import domain.in.rjsa.service.Regular27QDeducteeService;
 import domain.in.rjsa.service.RemarkService;
+import domain.in.rjsa.service.TicketService;
 
 @Controller
 @RequestMapping("/apiremark")
@@ -37,6 +43,13 @@ public class RemarkController extends AbstractControllerFY<Long, Remark, RemarkS
 	Regular24QDeducteeService r24qService;
 	@Autowired
 	Regular26QDeducteeService r26qService;
+	@Autowired
+	Regular27EQDeducteeService r27eqService;
+	@Autowired
+	Regular27QDeducteeService r27qService;
+	@Autowired
+	TicketService tService;
+	
 	@Override
 	public RemarkService getService() {
 		// TODO Auto-generated method stub
@@ -58,20 +71,37 @@ public class RemarkController extends AbstractControllerFY<Long, Remark, RemarkS
 		Login l = applicationCache.getLoginDetail(getPrincipal());
 		entity.put("userName", l.getUserName());
 		create(entity);
-//		int ID = (int) entity.get("deducteeId");
-//		Long id = new Long(ID); 
-//		if(entity.get("deducteeForm")=="24Q") {
-//			Regular24QDeductee r24q = r24qService.getByKey(id);
-//			r24q.setResolved(false);
-//		}
-//		else if(entity.get("deducteeForm")=="26Q") {
-//			Regular26QDeductee r26q = r26qService.getByKey(id);
-//			r26q.setResolved(false);
-//		}
+		int ID = (int) entity.get("deducteeId");
+		Long id = new Long(ID);
+		String form24Q = entity.get("deducteeForm").toString();
+		if(form24Q.endsWith("24Qform")) {
+			Regular24QDeductee r24q = r24qService.getByKey(id);
+			r24q.setResolved(true);
+			r24qService.update(r24q);
+		}
+		else if(form24Q.endsWith("26Qform")) {
+			Regular26QDeductee r26q = r26qService.getByKey(id);
+			r26q.setResolved(true);
+			r26qService.update(r26q);
+		}
+		else if(form24Q.endsWith("27EQform")) {
+			Regular27EQDeductee r27eq = r27eqService.getByKey(id);
+			r27eq.setResolved(true);
+			r27eqService.update(r27eq);
+		}
+		else if(form24Q.endsWith("27Qform")) {
+			Regular27QDeductee r27q = r27qService.getByKey(id);
+			r27q.setResolved(true);
+			r27qService.update(r27q);
+		}
+		else if(form24Q.endsWith("ticket")) {
+			Ticket ticket = tService.getByKey(id);
+			ticket.setResolved(true);
+			tService.update(ticket);
+		}
 			
 			
 //		addLogs(entity);
-		// ermsg.setMessage(" Saved Successfully");
 		return new ResponseEntity<Object>(HttpStatus.CREATED);
 
 	}

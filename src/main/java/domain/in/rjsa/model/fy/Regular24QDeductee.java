@@ -39,8 +39,6 @@ public class Regular24QDeductee extends CommonModelAbstract {
 	@Column(name = "challanHeading")
 	public String challanHeading;
 	@Column(name = "employeeRefNo")
-	@NotNull(message = "Employee No. is a required field.")
-	@Size(min = 0, max = 45, message = "Employee No should not be greater than 45 characters.")
 	public Long employeeRefNo;
 	@Column(name = "panRefNo")
 	@NotNull(message = "Pan Reference No. is a required field.")
@@ -97,7 +95,6 @@ public class Regular24QDeductee extends CommonModelAbstract {
 	@Size(min = 0, max = 45, message = "Certificate Number should not be greater than 45 characters.")
 	public String certificateNumber;
 	@Column(name = "remarks")
-	@NotNull(message = "Remarks is a required field.")
 	@Size(min = 0, max = 45, message = "Remarks should not be greater than 45 characters.")
 	public String remarks;
 	@Column(name = "fy")
@@ -134,18 +131,10 @@ public class Regular24QDeductee extends CommonModelAbstract {
 	public Double InterestOnLatePayment;
 	@Column(name = "InterestOnLateDeduction")
 	public Double InterestOnLateDeduction;
-	
-	
-	
-	
-	
 	@Column(name = "verify")
 	public boolean verify = false;
-
-	
 	@Column(name = "resolved")
 	public boolean resolved;
-
 	@JsonSerialize(using = JsonDateSerializer.class)
 	public Date getDateOfPayment() {
 		return dateOfPayment;

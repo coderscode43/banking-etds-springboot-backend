@@ -230,7 +230,18 @@
 							<button class="btn btn-danger"
 								ng-click="cCctr.gotoWFYListPage('ticket','ticket')">Back</button>
 
-							<button class="btn btn-primary">Resolved</button>
+							<div ng-if="cCctr.entity.resolved == 1"
+								style="margin: -3.4% 0 0% 66.3%;">
+								<button class="btn btn-primary"
+									ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.id"
+									ng-click="cCctr.updateTicket(true,cCctr.resolve,'ticket')">Resolved</button>
+							</div>
+							<div ng-if="cCctr.entity.resolved == 0"
+								style="margin: -3.4% 0 0% 66.3%">
+								<button class="btn btn-primary" disabled
+									ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.id"
+									ng-click="cCctr.updateTicket(true,cCctr.resolve,'ticket')">Resolved</button>
+							</div>
 
 
 							<div class="modal fade" id="myModal" role="dialog">

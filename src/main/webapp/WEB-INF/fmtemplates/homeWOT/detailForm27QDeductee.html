@@ -385,6 +385,13 @@
 							</div>
 							<div class="col-md-3">:
 								{{cCctr.entity.rateAtWhichTaxDeducted}}</div>
+							<div class="col-md-3">
+								<label>Status &nbsp;</label>
+							</div>
+							<div class="col-md-3" ng-if="cCctr.entity.resolved == 0">:
+								Resolved</div>
+							<div class="col-md-3" ng-if="cCctr.entity.resolved == 1">:
+								Not Resolved</div>
 
 
 
@@ -414,7 +421,18 @@
 								<button class="btn btn-danger"
 									ng-click="cCctr.gotoWFYListPage('form27QDeductee','form27QDeductee')">Back</button>
 
-								<button class="btn btn-primary">Resolved</button>
+								<div ng-if="cCctr.entity.resolved == 1"
+										style="margin: -2.9% 0 0% 64.2%;">
+										<button class="btn btn-primary"
+											ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.id"
+											ng-click="cCctr.updateData(true,cCctr.resolve,'form27QDeductee')">Resolved</button>
+									</div>
+									<div ng-if="cCctr.entity.resolved == 0"
+										style="margin: -2.9% 0 0% 64.2%;">
+										<button class="btn btn-primary" disabled
+											ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.deductee.id"
+											ng-click="cCctr.updateData(true,cCctr.resolve,'form27QDeductee')">Resolved</button>
+									</div>
 
 
 								<div class="modal fade" id="myModal" role="dialog">

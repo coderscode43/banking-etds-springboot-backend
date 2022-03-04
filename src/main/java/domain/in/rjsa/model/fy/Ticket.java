@@ -79,5 +79,9 @@ public class Ticket extends CommonModelAbstract {
 	
 	@Column(name = "userName")
 	public String userName;
+	
+	@Column(name = "resolved")
+	public boolean resolved;
+
 
 }

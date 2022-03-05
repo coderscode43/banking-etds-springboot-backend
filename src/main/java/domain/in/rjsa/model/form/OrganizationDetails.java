@@ -27,8 +27,9 @@ public class OrganizationDetails extends CommonModelAbstract {
 	public String organizationName;
 	@Column(name = "organizationPan")
 	public String organizationPan;
-	@Column(name = "clientId")
-	public Long clientId;
+	/*
+	 * @Column(name = "clientId") public Long clientId;
+	 */
 	
 	
 }

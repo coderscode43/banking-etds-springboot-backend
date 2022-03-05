@@ -51,8 +51,7 @@ public class IndexController {
 	
 	@RequestMapping(value = "/home")
 	public String gethome(ModelMap model) {
-		model.addAttribute("organizationName", "R J SONI and Associates");
-		model.addAttribute("organizationPAN", "ABCDE1234A");
+		staticData(model);
 		return "homeSC";
 	}
 
@@ -163,6 +162,13 @@ public class IndexController {
 				 model.addAttribute("Month", stringArray);
 		    break;
 			
+			case "Client":
+				 xString = list1.getValue();
+				 stringArray = xString.split(",");
+				 model.addAttribute("clientName", stringArray[0].toString());
+				 model.addAttribute("clientPan", stringArray[1].toString());
+		    break;
+		    
 			default:
 				System.out.println("Not Match");
 				break;

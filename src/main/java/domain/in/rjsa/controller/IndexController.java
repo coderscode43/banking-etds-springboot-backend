@@ -169,6 +169,14 @@ public class IndexController {
 				 model.addAttribute("clientPan", stringArray[1].toString());
 		    break;
 		    
+			case "ChallanMismatch":
+				 xString = list1.getValue();
+				 stringArray = xString.split(",");
+				 model.addAttribute("True", stringArray[0].toString());
+				 model.addAttribute("False", stringArray[1].toString());
+				 //model.addAttribute("ChallanMismatch", stringArray);
+		    break;
+		    
 			default:
 				System.out.println("Not Match");
 				break;

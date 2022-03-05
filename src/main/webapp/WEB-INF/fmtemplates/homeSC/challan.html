@@ -145,8 +145,15 @@
 							<input type="text" ng-model="cCctr.search.TAN" class="form-control"placeholder="TAN" style="width: 100%">
 						</div>
 						<div class="col-md-3">
-							<h6><b>Challan Mismatch</b><h6>
-							<input type="text" ng-model="cCctr.search.CHALLAN_MISMATCH"class="form-control" placeholder="Challan Mismatch" style="width: 100%">
+							<h6><b>challan Mismatch </b></h6>
+							<select name="challanMismatch"
+									id="challanMismatch" class="form-control"
+									ng-model="cCctr.search.CHALLAN_MISMATCH" ng-required="true"
+									ng-model-options="{updateOn: 'blur'}">
+									<option disabled value="">Select</option>
+									<option value="1">${True}</option>
+									<option value="0">${False}</option>
+							</select> 
 						</div>
 					</div>
 				</div>
@@ -249,14 +256,10 @@
 						<td>{{a.AMOUNT_OF_CLALLAN}}</td>
 						<td>{{a.DATE_OF_DEPOSITION|date:'dd-MM-yyyy'}}</td>
 						<td>{{a.AS_ON_DATE|date:'dd-MM-yyyy'}}</td>
-						<td>{{a.CHALLAN_MISMATCH}}</td>
-						
-						<div>
-							<td ng-if="a.verify == 1"><i class="fa fa-check"
-								aria-hidden="true" style="color: #5cb85c"></i></td>
-							<td ng-if="a.verify == 0"><i class="fa fa-times"
-								aria-hidden="true" style="color: #ff0000"></i></td>
-						</div>
+						<td ng-if="a.CHALLAN_MISMATCH == 1">True</td>
+						<td ng-if="a.CHALLAN_MISMATCH == 0">False</td>
+						<td ng-if="a.CHALLAN_MISMATCH == null">-</td>
+					
 						<!-- <td><a
 							ng-click="cCctr.gotoDetailPage('challan',a.id,'detailchallan')"
 							style="color: blue" onclick="scrollWin()"><img

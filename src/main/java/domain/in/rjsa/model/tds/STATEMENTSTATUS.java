@@ -32,10 +32,12 @@ public class STATEMENTSTATUS extends CommonModelAbstract{
 	public String FORM;
 	@Column(name = "QUARTER")
 	public String QUARTER;
-	@Temporal(TemporalType.DATE)
+//	@Temporal(TemporalType.DATE)
+//	@Column(name = "AS_ON_DATE")
+//	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
+//	public Date AS_ON_DATE;
 	@Column(name = "AS_ON_DATE")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
-	public Date AS_ON_DATE;
+	public String AS_ON_DATE;
 	@Column(name = "FY")
 	public String FY;
 	@Column(name = "STATUS")

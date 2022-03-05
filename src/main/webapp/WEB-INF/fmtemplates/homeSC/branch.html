@@ -244,10 +244,10 @@
 		</tr>
 	</thead>
 	<tbody>
-				<tr style="color: red" ng-show="cCctr.getEntityListData().length <= 0">
+				<!-- <tr style="color: red" ng-show="cCctr.getEntityListData().length <= 0">
 					<td colspan="14" style="text-align: center;"><b><h3 style="text-align:center;">No data
-					found!!</h3></b></td><!-- track by a.id -->
-		<tr ng-repeat="a in cCctr.getEntityListData() ">
+					found!!</h3></b></td>track by a.id -->
+		<tr ng-repeat="a in cCctr.getEntityListData()">
 			<td>{{$index+1}}</td>
 			<td>{{a.branchCode}}</td>
 			<td>{{a.roCode}}</td>
@@ -276,5 +276,7 @@
 					on this</button></td>
 		</tr>
 	</tbody>
+	<span style="color: red" ng-show="cCctr.getEntityListData().length <= 0"><b><h3 style="text-align:center;">No data
+					found!!</h3></b></span>
 </table>
 </div>

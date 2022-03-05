@@ -131,20 +131,25 @@
 		<div class="collapse dont-collapse-sm" id="collapseExample2">
 			<div class="row">
 				<div class="form-group">
-
 					<div class="col-md-2">
 						<h6>
 							<b>Status</b>
 							<h6>
-								<input type="text" ng-model="cCctr.search.status"
+								<select type="text" ng-model="cCctr.search.status"
 									class="form-control" placeholder="Status" style="width: 100%">
+									<option disabled value="">Select Status</option>
+									<option value="open">open</option>
+									<option value="close">close</option>
+								</select>
 					</div>
+					
 					<div class="col-md-2">
 						<h6>
 							<b>Quarter</b>
 						</h6>
 						<select ng-model="cCctr.search.quarter" style="width: 100%"
 							class="form-control">
+							<option disabled value="">Select Quarter</option>
 							<#list Quarter as quarter>
 							<option value="${quarter}">${quarter}</option>
 							</#list>

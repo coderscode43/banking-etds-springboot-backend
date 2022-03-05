@@ -206,8 +206,11 @@
 							</tr>
 						</thead>
 						<tbody>
+							<tr style="color: red" ng-show="cCctr.getEntityListDataFY().length <= 0">
+							<td colspan="14" style="text-align: center;"><b><h3 style="text-align:center;">
+							No data found!!</h3></b></td></tr> <!-- track by a.id -->
 							<tr role="row"
-								ng-repeat="a in cCctr.getEntityListDataFY() track by a.id">
+								ng-repeat="a in cCctr.getEntityListDataFY() ">
 								<td>{{$index+1}}</td>
 								<td>{{a.branchCode}}</td>
 								<td>{{a.sectionCode}}</td>

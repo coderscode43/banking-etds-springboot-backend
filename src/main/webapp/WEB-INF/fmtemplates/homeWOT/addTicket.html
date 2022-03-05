@@ -16,16 +16,20 @@
 
 						<input type="hidden" ng-model="cCctr.entity.dateOfChange"
 							ng-init="cCctr.entity.dateOfChange=cCctr.presentDate()">
-						
+							
+						<input type="hidden" ng-model="cCctr.entity.resolved"
+							ng-init="cCctr.entity.resolved= '0' ">
+
 						<input type="hidden" ng-model="cCctr.entity.status"
 							ng-init="cCctr.entity.status='Open'">
-						
+							
 						<div class="row">
 							<div class="col-md-4">
 								<div>
 									<label>Form</label>
 									<div >
-										<select ng-model="cCctr.entity.form" class="form-control">
+										<select  name="form" id="form" ng-model="cCctr.entity.form" class="form-control"
+										required >
 											<option disabled value="">Select Form</option>
 											<option value="24Q">24Q</option>
 											<option value="26Q">26Q</option>
@@ -37,59 +41,93 @@
 									</div>
 								</div>
 								<span style="color: red"
-									ng-show="fileForm.submitted || fileForm.entity.$dirty && fileForm.entity.$invalid">
-									<span class="error" ng-show="fileForm.entity.$error.required">PAN
-										Number Required </span> <span class="error"
-									ng-show="fileForm.entity.$error.pattern">PAN number
-										should be capital and valid </span>
+									ng-show="fileForm.submitted || fileForm.form.$dirty && fileForm.form.$invalid">
+									<span class="error" ng-show="fileForm.form.$error.required">
+										Form is Required </span>
 								</span>
 							</div>
+							
+							
 							<div class="col-md-4">
 								<div>
-									<label>Finacial Year</label> <select class="form-control"
-										ng-model="cCctr.entity.fy" required>
+									<label>Finacial Year</label> <select class="form-control"id="fy" name="fy"
+										ng-model="cCctr.entity.fy" ng-required="true">
 										<option disabled value="">Select financial Year</option>
 										<#list financialYear as year>
 										<option value="${year}">${year}</option>
 										</#list>
 									</select>
+									
 								</div>
+								<span style="color: red"
+									ng-show="fileForm.submitted || fileForm.fy.$dirty && fileForm.fy.$invalid">
+									<span class="error" ng-show="fileForm.fy.$error.required">
+										Finacial Year is Required </span>
+								</span>
 							</div>
 							<div class="col-md-4">
 								<div>
-									<label>Quarter</label> <select class="form-control"
-										ng-model="cCctr.entity.quarter" required>
+									<label>Quarter</label> <select class="form-control"id="quarter" name="quarter"
+										ng-model="cCctr.entity.quarter" ng-required="true">
 										<option disabled value="">Select Quarter</option>
 										<#list Quarter as quarter>
 										<option value="${quarter}">${quarter}</option>
 										</#list>
 									</select>
 								</div>
+								<span style="color: red"
+									ng-show="fileForm.submitted || fileForm.quarter.$dirty && fileForm.quarter.$invalid">
+									<span class="error" ng-show="fileForm.quarter.$error.required">
+										Quarter is Required </span>
+								</span>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-12">
 								<div style="margin-left: 0%">
 								<label>Branch Code</label>
-									<md-autocomplete md-input-name="branchCode"
+									<md-autocomplete md-input-name="branchCode"id="branchCode"
 										md-input-minlength="3" md-no-cache="true"
 										md-input-maxlength="75" style="height:10%;"
 										md-selected-item="cCctr.entity.branchCode" md-search-text="b"
 										md-items="item in cCctr.ajax('branch','branchCode',b)"
-										md-delay="0" placeholder="Branch Code" required> <md-item-template>
+										md-delay="0" placeholder="Branch Code" ng-required="true"> <md-item-template>
+									<span>{{item}}</span> </md-item-template> <md-not-found> No Branch
+									Code with "{{b}}" were found. <a ng-click="">Add new</a> </md-not-found> </md-autocomplete>
+									
+								</div>
+								<span style="color: red"
+									ng-show="fileForm.submitted || fileForm.branchCode.$dirty && fileForm.branchCode.$invalid">
+									<span class="error" ng-show="fileForm.branchCode.$error.required">Branch Code is Required </span>
+								</span>
+							</div>
+						</div>
+						<!-- <div class="row">
+							<div class="col-md-12">
+								<div style="margin-left: 0%">
+									<md-autocomplete md-input-name="branchCode"
+										md-input-minlength="3" md-no-cache="true"
+										md-input-maxlength="75" style="height:10%"
+										md-selected-item="cCctr.search.branchCode" md-search-text="b"
+										md-items="item in cCctr.ajax('branch','branchCode',b)"
+										md-delay="0" placeholder="Branch Code"> <md-item-template>
 									<span>{{item}}</span> </md-item-template> <md-not-found> No Branch
 									Code with "{{b}}" were found. <a ng-click="">Add new</a> </md-not-found> </md-autocomplete>
 								</div>
 							</div>
-						</div>
+						</div> -->
 						<div class="row">
 							<div class="col-md-12">
 								<div class="">
 									<label>Description</label>
-									<textarea class="form-control"
+									<textarea class="form-control" name="description" id="description"
 										ng-model="cCctr.entity.description" style="width: 100%;"
 										required></textarea>
-
+									<span style="color: red"
+									ng-show="fileForm.submitted || fileForm.description.$dirty && fileForm.description.$invalid">
+									<span class="error" ng-show="fileForm.description.$error.required">Description
+										is Required </span>
+								</span>
 								</div>
 							</div>
 						</div>
@@ -99,7 +137,7 @@
 							<div class="controls">
 								<button id="add" name="add"
 									class="btn btn-success btn-block btn-primary"
-									ng-click="fileForm.submitted=true;cCctr.submitFY(true,cCctr.entity,'ticket','close')">Add</button>
+									ng-click="fileForm.submitted=true;cCctr.submitFY(fileForm.$valid,cCctr.entity,'ticket')">Add</button>
 							</div>
 						</div>
 

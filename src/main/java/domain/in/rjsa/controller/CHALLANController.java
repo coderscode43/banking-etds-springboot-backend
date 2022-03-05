@@ -51,6 +51,10 @@ public class CHALLANController extends AbstractControllerTaxo<String, CHALLAN, C
 		// TODO Auto-generated method stub
 		return CHALLAN.class;
 	}
+	public List<?> getSearch(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+		// TODO Auto-generated method stub
+		return getService().search(map,pageNo,resultPerPage);
+	}
 	
 }
 

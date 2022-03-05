@@ -1021,6 +1021,12 @@ App
 									CommonService.fetch(entity, pageNo - 1);
 								}
 							}
+							self.getPages = function(valid, entity, pageNo) {
+								if (valid = true) {
+									self.currentPage = pageNo;
+									CommonServiceFY.fetch(entity, pageNo - 1);
+								}
+							}
 							
 							 self.date = function(date) {
 									date = new Date(
@@ -1039,6 +1045,13 @@ App
 
 								return Math
 										.ceil(CommonService.getCount() / 100);
+
+							}
+							
+							self.getNoPages = function(valid, entity, pageNo) {
+
+								return Math
+										.ceil(CommonServiceFY.getCount() / 100);
 
 							}
 

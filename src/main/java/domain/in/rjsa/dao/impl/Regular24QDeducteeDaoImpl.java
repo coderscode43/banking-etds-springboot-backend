@@ -127,6 +127,9 @@ public class Regular24QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular24QDed
          if (entity.get("errorDescription") != null) {
     			criteria.add(Restrictions.eqOrIsNull("errorDescription",  entity.get("errorDescription")));
     		}
+         if (entity.get("resolved") != null) {
+			criteria.add(Restrictions.eqOrIsNull("resolved", Boolean.valueOf(entity.get("resolved").toString())));
+		}
 		criteria.addOrder(Order.desc("dateOfPayment"));
 		return (List<Regular24QDeductee>) criteria.list();
 	}

@@ -112,6 +112,9 @@ public class Regular27EQDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27EQD
     			criteria.add(Restrictions.eqOrIsNull("warningDescription",  entity.get("warningDescription")));
     		}
           
+          if (entity.get("resolved") != null) {
+  			criteria.add(Restrictions.eqOrIsNull("resolved", Boolean.valueOf(entity.get("resolved").toString())));
+  		}
           
           
           

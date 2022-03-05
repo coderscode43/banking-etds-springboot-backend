@@ -161,6 +161,10 @@ public class Regular26QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular26QDed
 		if (entity.get("branchState") != null) {
 			criteria.add(Restrictions.eqOrIsNull("branchState", entity.get("branchState").toString()));
 		}
+		if (entity.get("resolved") != null) {
+			criteria.add(Restrictions.eqOrIsNull("resolved", Boolean.valueOf(entity.get("resolved").toString())));
+		}
+		
 //		if (entity.get("active") != null) {
 //			criteria.add(Restrictions.eqOrIsNull("active", Boolean.valueOf(entity.get("active").toString())));
 //		}

@@ -140,6 +140,17 @@
 						<input type="text" ng-model="cCctr.search.custVendId"
 							class="form-control" placeholder="Vendor/Customer ID" style="width: 100%">
 			</div>
+			<div class="col-md-3">
+					<h6>
+						<b>Status</b>
+					</h6>
+					<select ng-model="cCctr.search.resolved" class="form-control">
+						<option value="">Status</option>
+						<option value="false">Resolved</option>
+						<option value="true">Not Resolved</option>
+						
+					</select>
+				</div>
 		</div>
 		
 		
@@ -286,6 +297,7 @@
 					<th >Interest on Short Deduction</th>
 					<th >Interest on Late Payment</th>
 					<th >Interest on Late Deduction</th>
+					<th>Status</th>
 					<th >Action</th>
 					
 				
@@ -334,6 +346,10 @@
 					<td>{{a.InterestOnShortDeduction}}</td>
 					<td>{{a.InterestOnLatePayment}}</td>
 					<td>{{a.InterestOnLateDeduction}}</td>
+					<div>
+						<td ng-if="a.resolved == 0">Resolved</td>
+						<td ng-if="a.resolved == 1">Not Resolved</td>
+                         </div>
 					
 					
 					

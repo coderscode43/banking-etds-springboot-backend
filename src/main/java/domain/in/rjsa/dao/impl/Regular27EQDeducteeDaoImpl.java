@@ -27,14 +27,7 @@ public class Regular27EQDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27EQD
 		if (entity.get("branchId") != null) {
 			criteria.add(Restrictions.eqOrIsNull("branchId", entity.get("branchId")));
 		}
-		if (entity.get("fromDate") != null) {
-			criteria.add(Restrictions.ge("date",
-					Date.from(ZonedDateTime.parse((String) entity.get("fromDate")).toInstant())));
-		}
-		if (entity.get("toDate") != null) {
-			criteria.add(
-					Restrictions.le("date", Date.from(ZonedDateTime.parse((String) entity.get("toDate")).toInstant())));
-		}
+		
           if(entity.get("panofthedeductee")!=null)
           {
 		criteria.add(Restrictions.eqOrIsNull("panofthedeductee", entity.get("panofthedeductee")));
@@ -43,10 +36,7 @@ public class Regular27EQDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27EQD
           {
 		criteria.add(Restrictions.eqOrIsNull("collectionCode", entity.get("collectionCode")));
           }
-          if(entity.get("fy")!=null)
-          {
-		criteria.add(Restrictions.eqOrIsNull("fy", Long.valueOf((String) entity.get("fy"))));
-          }
+         
           if(entity.get("nameoftheDeductee")!=null)
           {
 		criteria.add(Restrictions.eqOrIsNull("nameoftheDeductee", entity.get("nameoftheDeductee")));
@@ -71,67 +61,7 @@ public class Regular27EQDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27EQD
 		criteria.add(Restrictions.eqOrIsNull("nameoftheParty", entity.get("nameoftheParty")));
           }
           
-          
-          if(entity.get("natureOfRemittance")!=null)
-          {
-		criteria.add(Restrictions.eqOrIsNull("natureOfRemittance", entity.get("natureOfRemittance")));
-          }
-          
-          if(entity.get("contactNoOfDeductee")!=null)
-          {
-		criteria.add(Restrictions.eqOrIsNull("contactNoOfDeductee", entity.get("contactNoOfDeductee")));
-          }
-          
-          if(entity.get("emailId")!=null)
-          {
-		criteria.add(Restrictions.eqOrIsNull("emailId", entity.get("emailId")));
-          }
-          
-          if(entity.get("grossingUpIndicator")!=null)
-          {
-		criteria.add(Restrictions.eqOrIsNull("grossingUpIndicator", entity.get("grossingUpIndicator")));
-          }
-          
-          if(entity.get("countryOfResidence")!=null)
-          {
-		criteria.add(Restrictions.eqOrIsNull("countryOfResidence", entity.get("countryOfResidence")));
-          }
-          
-          if(entity.get("deducteeCode")!=null)
-          {
-		criteria.add(Restrictions.eqOrIsNull("deducteeCode", entity.get("deducteeCode")));
-          }
-          if(entity.get("tcs")!=null)
-          {
-		criteria.add(Restrictions.eqOrIsNull("tcs", entity.get("tcs")));
-          }
-          
-          if(entity.get("surcharge")!=null)
-          {
-		criteria.add(Restrictions.eqOrIsNull("surcharge", entity.get("surcharge")));
-          }
-          
-          if (entity.get("tdaRateAsPerItActs") != null) {
-  			criteria.add(Restrictions.eqOrIsNull("tdaRateAsPerItActs", Double.valueOf((String) entity.get("tdaRateAsPerItActs"))));
-  		}
-          
-          if (entity.get("amountReceiptDebited") != null) {
-    			criteria.add(Restrictions.eqOrIsNull("amountReceiptDebited", Long.valueOf((String) entity.get("amountReceiptDebited"))));
-    		}
-          
-          if (entity.get("deducteeSrNo") != null) {
-    			criteria.add(Restrictions.eqOrIsNull("deducteeSrNo", Long.valueOf((String) entity.get("deducteeSrNo"))));
-    		}
-          
-          if (entity.get("srNoInChallan") != null) {
-  			criteria.add(Restrictions.eqOrIsNull("srNoInChallan", Long.valueOf((String) entity.get("srNoInChallan"))));
-  		}
-          
-          if (entity.get("partyReferenceNo") != null) {
-    			criteria.add(Restrictions.eqOrIsNull("partyReferenceNo", Long.valueOf((String) entity.get("partyReferenceNo"))));
-    		}
-          
-          
+        
           
           if (entity.get("partyCode") != null) {
   			criteria.add(Restrictions.eqOrIsNull("partyCode", Long.valueOf((String) entity.get("partyCode"))));
@@ -145,43 +75,8 @@ public class Regular27EQDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27EQD
   			criteria.add(Restrictions.eqOrIsNull("taxIdentificationNo", Long.valueOf((String) entity.get("taxIdentificationNo"))));
   		}
          
-          
-          if (entity.get("educationCess") != null) {
-    			criteria.add(Restrictions.eqOrIsNull("educationCess", Double.valueOf((String) entity.get("educationCess"))));
-    		}
-           if (entity.get("totalTaxDeducted") != null) {
-  			criteria.add(Restrictions.eqOrIsNull("totalTaxDeducted", Double.valueOf((String) entity.get("totalTaxDeducted"))));
-  		}
-          
-          if (entity.get("totalTaxDeposited") != null) {
-    			criteria.add(Restrictions.eqOrIsNull("totalTaxDeposited", Double.valueOf((String) entity.get("totalTaxDeposited"))));
-    		}
-          
-          if (entity.get("rateAtWhichTaxDeducted") != null) {
-  			criteria.add(Restrictions.eqOrIsNull("rateAtWhichTaxDeducted", Double.valueOf((String) entity.get("rateAtWhichTaxDeducted"))));
-  		}
-          
-          if (entity.get("deducteeRefNo") != null) {
-    			criteria.add(Restrictions.eqOrIsNull("deducteeRefNo", Long.valueOf((String) entity.get("deducteeRefNo"))));
-    		}
-          
-          if (entity.get("deducteeRefNo") != null) {
-  			criteria.add(Restrictions.eqOrIsNull("deducteeRefNo", Long.valueOf((String) entity.get("deducteeRefNo"))));
-  		}
-          
-          if (entity.get("noOfCertificateUnderSection") != null) {
-    			criteria.add(Restrictions.eqOrIsNull("noOfCertificateUnderSection", Long.valueOf((String) entity.get("noOfCertificateUnderSection"))));
-    		}
-          
-          
-          if (entity.get("uniqueAcknowledgeNo") != null) {
-    			criteria.add(Restrictions.eqOrIsNull("uniqueAcknowledgeNo", Long.valueOf((String) entity.get("uniqueAcknowledgeNo"))));
-    		}
-          
-          if(entity.get("reasonForNonDeduction")!=null)
-          {
-		criteria.add(Restrictions.eqOrIsNull("reasonForNonDeduction", entity.get("reasonForNonDeduction")));
-          }
+      
+       
           if(entity.get("type")!=null)
           {
 		criteria.add(Restrictions.eqOrIsNull("type", entity.get("type")));

@@ -1,3 +1,4 @@
+
 package domain.in.rjsa.controller;
 
 import java.io.Serializable;
@@ -202,19 +203,41 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 
 	}
 
+	public void addRemarkLogs(HashMap<String, Object> entity) {
+
+		Login l = applicationCache.getLoginDetail(getPrincipal());
+		HashMap<String, Object> constrains = new HashMap<>();
+		constrains.put("id", entity.get("id"));
+ 		Logs log = lservice.uniqueSearch(constrains);
+		log = new Logs();
+
+		log.setAction("Added");
+		log.setIpaddrs(getIp());
+		String s = getEntity().getName();
+		String[] arrOfStr = s.split(".", 25);
+		for (String a : arrOfStr)
+			log.setEntity(a + " in " + entity.get("deducteeForm") );
+		Gson gason = new Gson();
+		String json = gason.toJson(entity);
+		log.setDate(new Date(System.currentTimeMillis()));
+		log.setUsername(l.getUserName());
+
+		lservice.save(log);
+
+	}
+	
 	public void addLogs(HashMap<String, Object> entity) {
 
 		Login l = applicationCache.getLoginDetail(getPrincipal());
 		HashMap<String, Object> constrains = new HashMap<>();
 		constrains.put("id", entity.get("id"));
-		constrains.put("clientId", l.getClientId());
 		Logs log = lservice.uniqueSearch(constrains);
 		log = new Logs();
 
 		log.setAction("Added");
 		log.setIpaddrs(getIp());
 		String s = getEntity().getName();
-		String[] arrOfStr = s.split(".", 27);
+		String[] arrOfStr = s.split(".", 25);
 		for (String a : arrOfStr)
 			log.setEntity(a);
 		Gson gason = new Gson();
@@ -249,10 +272,11 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 		Logs log = lservice.uniqueSearch(constrains);
 		log = new Logs();
 
-		log.setAction("Updated");
+		log.setAction("Update"
+				);
 		log.setIpaddrs(getIp());
 		String s = getEntity().getName();
-		String[] arrOfStr = s.split(".", 27);
+		String[] arrOfStr = s.split(".", 25);
 		for (String a : arrOfStr)
 			log.setEntity(a);
 		Gson gason = new Gson();

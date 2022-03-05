@@ -2,6 +2,7 @@ package domain.in.rjsa.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 import org.slf4j.Logger;
@@ -100,8 +101,7 @@ public class RemarkController extends AbstractControllerFY<Long, Remark, RemarkS
 			tService.update(ticket);
 		}
 			
-			
-//		addLogs(entity);
+		addRemarkLogs(entity);
 		return new ResponseEntity<Object>(HttpStatus.CREATED);
 
 	}

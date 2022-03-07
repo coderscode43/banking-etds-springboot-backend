@@ -26,6 +26,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import domain.in.rjsa.model.form.ListCount;
 import domain.in.rjsa.model.fy.G15;
 import domain.in.rjsa.model.fy.H15;
+import domain.in.rjsa.model.fy.Remark;
 import domain.in.rjsa.service.H15Service;
 import domain.in.rjsa.service.RemarkService;
 
@@ -50,34 +51,39 @@ public class H15Controller <E> extends AbstractControllerFY<Long, H15, H15Servic
 		// TODO Auto-generated method stub
 		return H15.class;
 	}
-	@RequestMapping(value = "/list/{fy}/{branchCode}/count/", method = RequestMethod.GET)
-	public ResponseEntity<?> count(@PathVariable String fy, @PathVariable String branchCode,
-			HttpServletRequest request) {
-		HashMap<String, Object> constrains = new HashMap<>();
-//		constrains.put("fy",fy);
-//		constrains.put("branchCode",branchCode);
+	
+	
+	@RequestMapping(value = "/detail/{fy}/{branchCode}/{id}", method = RequestMethod.GET)
+	public ResponseEntity<?> getDetailController(@PathVariable Long id, @PathVariable String fy,
+			@PathVariable String branchCode) {
+		// verify the clientId authorization
 		try {
-			Long count = getService().findallCount(constrains);
-			List<?> list = getList(fy, branchCode, 0, 100);
-			ListCount send = new ListCount();
-			send.setCount(count);
-			send.setEntities(list);
-			return new ResponseEntity<>(send, HttpStatus.OK);
+			return new ResponseEntity<>(getDetail(id, fy, branchCode), HttpStatus.OK);
 		} catch (Exception e) {
-			logger.error("Error in listALL", e);
-			e.printStackTrace();
-			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+			logger.error("Error in getting detail ", e);
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 
 	}
 
-	public List<?> getList(String fy, String branchCode, int pageNo, int resultPerPage) {
+	public HashMap<String, Object> getDetail(Long id, String fy, String branchCode) {
+		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
-//		constrains.put("fy", fy);
-//		constrains.put("branchCode", branchCode);
-		return getService().findall(constrains, pageNo, resultPerPage);
+		constrains.put("id", id);
+		constrains.put("fy", fy);
+		constrains.put("branchCode", branchCode);
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("deductee", getService().uniqueSearch(constrains));
+		constrains.remove("id", id);
+		constrains.put("deducteeId", id);
+		List<Remark> remark = rService.findForm(constrains, 0, 100,"H15form");
+		map.put("remark",remark);
+		return map;
 	}
 	
+	
+	
+	// serarch
 	@RequestMapping(value = "/search/get/{pageNo}/{resultPerPage}/{json}/**", method = RequestMethod.GET)
 	public ResponseEntity<?> search(@PathVariable String json, HttpServletRequest request,
 			@PathVariable int pageNo, @PathVariable int resultPerPage) {

@@ -150,6 +150,18 @@
 									class="form-control" placeholder="Staff ID"
 									style="width: 100%">
 					</div>
+					<div class="col-md-3">
+					<h6>
+						<b>Status</b>
+					</h6>
+					<select ng-model="cCctr.search.resolved" class="form-control">
+						<option value="">Status</option>
+						<option value="false">Resolved</option>
+						<option value="true">Not Resolved</option>
+						
+					</select>
+				</div>
+					
 				</div>
 				<div class="row">
 					<div class="col-md-3">
@@ -262,6 +274,7 @@
 						<th>Interest on Short Deduction</th>
 						<th>Interest on Late Payment</th>
 						<th>Interest on Late Deduction</th>
+						<th>Status</th>
 						<th>Action</th>
 
 
@@ -303,7 +316,10 @@
 						<td>{{a.InterestOnShortDeduction}}</td>
 						<td>{{a.InterestOnLatePayment}}</td>
 						<td>{{a.InterestOnLateDeduction}}</td>
-
+						<div>
+						<td ng-if="a.resolved == 0">Resolved</td>
+						<td ng-if="a.resolved == 1">Not Resolved</td>
+                         </div>
 						<!-- <div>
 							<td ng-if="a.verify == 1"><i class="fa fa-check"
 								aria-hidden="true" style="color: # 5cb85c"></i></td>
@@ -326,15 +342,15 @@
 
 		</div>
 
-		<div class="row" ng-show="cCctr.getNoPage() > 0">
+		<div class="row" ng-show="cCctr.getNoPages() > 0">
 			<div class="row" align="center">
 				<span ng-show="cCctr.currentPage != 1"> <a
-					ng-click="cCctr.getPage(true,'form24QDeductee',cCctr.currentPage-1)"><strong>Previous</strong></a>
+					ng-click="cCctr.getPages(true,'form24QDeductee',cCctr.currentPage-1)"><strong>Previous</strong></a>
 				</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.currentPage}}</strong>&nbsp;
-					of &nbsp;<strong>{{cCctr.getNoPage()}}</strong>
+					of &nbsp;<strong>{{cCctr.getNoPages()}}</strong>
 					&nbsp;&nbsp;&nbsp;&nbsp; <span
-					ng-show="cCctr.currentPage != cCctr.getNoPage()"> <a
-						ng-click="cCctr.getPage(true,'form24QDeductee',cCctr.currentPage+1)"><strong>Next</strong></a>
+					ng-show="cCctr.currentPage != cCctr.getNoPages()"> <a
+						ng-click="cCctr.getPages(true,'form24QDeductee',cCctr.currentPage+1)"><strong>Next</strong></a>
 				</span>
 				</span>
 			</div>
@@ -344,10 +360,10 @@
 						style="width: 70px; text-align: center;" type="number"
 						name="pageNo" ng-model="cCctr.currentPage"
 						ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
-						ng-min="1" ng-max="cCctr.getNoPage()" ng-required="true">
+						ng-min="1" ng-max="cCctr.getNoPages()" ng-required="true">
 					&nbsp;&nbsp;&nbsp;
 					<button style="height: 25px;"
-						ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'form24QDeductee',cCctr.currentPage)"
+						ng-click="gotoForm.submitted=true;cCctr.getPages(gotoForm.$valid,'form24QDeductee',cCctr.currentPage)"
 						class="btn btn-primary">Go</button>
 				</div>
 				<div class="row" align="center">
@@ -356,7 +372,7 @@
 						<span class="error" ng-show="gotoForm.pageNo.$error.min">Page
 							No. should not be less than 1.</span> <span class="error"
 						ng-show="gotoForm.pageNo.$error.max">Page No. should not be
-							greater than {{cCctr.getNoPage()}}.</span> <span class="error"
+							greater than {{cCctr.getNoPages()}}.</span> <span class="error"
 						ng-show="gotoForm.pageNo.$error.required">Please enter page
 							number.</span>
 					</span>

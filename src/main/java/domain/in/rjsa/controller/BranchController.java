@@ -3,6 +3,9 @@ package domain.in.rjsa.controller;
 
 
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -33,13 +36,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
-import domain.in.rjsa.dao.BranchDao;
 import domain.in.rjsa.exception.FieldErrorDTO;
 import domain.in.rjsa.model.form.Ajax;
 import domain.in.rjsa.model.form.Branch;
 import domain.in.rjsa.model.form.ListCount;
 import domain.in.rjsa.model.form.Login;
+import domain.in.rjsa.model.fy.Logs;
 import domain.in.rjsa.service.BranchService;
+import domain.in.rjsa.service.LogsService;
 import domain.in.rjsa.web.ApplicationCache;
 
 @Controller
@@ -52,6 +56,10 @@ public class BranchController {
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	@Autowired
 	ApplicationCache applicationCache;
+	
+	@Autowired
+	LogsService lservice;
+	
 	
 	/* pranay */
 	@RequestMapping(value = "/ajax", method = RequestMethod.POST)
@@ -119,6 +127,7 @@ public class BranchController {
 	public ResponseEntity<?> createEntity(@RequestBody LinkedHashMap<String, Object> entity) {
 		logger.info("Creating new Return instance");
 		create(entity);
+		addLogs(entity);
 		return new ResponseEntity<Object>(HttpStatus.CREATED);
 
 	}
@@ -212,5 +221,43 @@ public class BranchController {
 		HashMap<String, Object> constrains = new HashMap<>();
 		return service.findAll(constrains, pageNo, resultPerPage);
 	}
+	
+	public void addLogs(HashMap<String, Object> entity) {
 
+		Login l = applicationCache.getLoginDetail(getPrincipal());
+		HashMap<String, Object> constrains = new HashMap<>();
+		constrains.put("id", entity.get("id"));
+		Logs log = lservice.uniqueSearch(constrains);
+		log = new Logs();
+
+		log.setAction("Added");
+		log.setIpaddrs(getIp());
+		String s = getEntity().getName();
+		String[] arrOfStr = s.split(".", 27);
+		for (String a : arrOfStr)
+			log.setEntity( a );
+		Gson gason = new Gson();
+		String json = gason.toJson(entity);
+		log.setDate(new Date(System.currentTimeMillis()));
+		log.setUsername(l.getUserName());
+
+		lservice.save(log);
+
+	}
+	
+	public Class<Branch> getEntity() {
+		return Branch.class;
+	}
+	private String getIp() {
+		try {
+			InetAddress ipAddr = InetAddress.getLocalHost();
+			String str = ipAddr.getHostAddress();
+			return str;
+		} catch (UnknownHostException ex) {
+			ex.printStackTrace(); // print Exception StackTrace
+
+			return null;
+		}
+	}
+	
 }

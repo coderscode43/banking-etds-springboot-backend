@@ -21,8 +21,7 @@ public class UserDetails extends CommonModelAbstract{
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
 	Long id; 
-	@Column(name = "clientId")
-	Long clientId; 
+	
 	@Column(name = "name")
 	String name;
 	@Column(name = "pan")

@@ -74,7 +74,6 @@ public abstract class AbstractDaoTaxo<K extends Serializable, E> implements DaoI
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>(entity);
-		
 		criteria.add(Restrictions.allEq(propertyNameValues));
 		return (List<E>) criteria.list();
 	}

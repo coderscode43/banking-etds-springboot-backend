@@ -217,10 +217,10 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 		constrains.put("id", entity.get("id"));
 		Logs log = lservice.uniqueSearch(constrains);
 		log = new Logs();
-		log.setAction("Added");
+		log.setAction("Added ");
 		log.setIpaddrs(getIp());
 		String s = getEntity().getName();
-		String[] arrOfStr = s.split(".", 27);
+		String[] arrOfStr = s.split(".", 25);
 		for (String a : arrOfStr)
 			log.setEntity(a);
 		Gson gason = new Gson();
@@ -301,7 +301,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 		log.setAction("Updated");
 		log.setIpaddrs(getIp());
 		String s = getEntity().getName();
-		String[] arrOfStr = s.split(".", 27);
+		String[] arrOfStr = s.split(".", 25);
 		for (String a : arrOfStr)
 			log.setEntity(a);
 		Gson gason = new Gson();

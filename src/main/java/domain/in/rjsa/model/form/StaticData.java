@@ -26,6 +26,4 @@ public class StaticData extends CommonModelAbstract{
 	String	key; 
 	@Column(name = "value")
 	String value;
-	@Column(name = "clientId")
-	Long clientId;
 }

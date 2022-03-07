@@ -131,32 +131,37 @@
 		<div class="collapse dont-collapse-sm" id="collapseExample2">
 			<div class="row">
 				<div class="form-group">
-
 					<div class="col-md-2">
 						<h6>
 							<b>Status</b>
 							<h6>
-								<input type="text" ng-model="cCctr.search.status"
+								<select type="text" ng-model="cCctr.search.status"
 									class="form-control" placeholder="Status" style="width: 100%">
+									<option disabled value="">Select Status</option>
+									<option value="open">open</option>
+									<option value="close">close</option>
+								</select>
 					</div>
+					
 					<div class="col-md-2">
 						<h6>
 							<b>Quarter</b>
 						</h6>
 						<select ng-model="cCctr.search.quarter" style="width: 100%"
 							class="form-control">
+							<option disabled value="">Select Quarter</option>
 							<#list Quarter as quarter>
 							<option value="${quarter}">${quarter}</option>
 							</#list>
 						</select>
 					</div>
 				</div>
-				<div class="col-md-2">
+					<div class="col-md-2">
 					<h6>
-						<b>FY</b>
+						<b>Financial Year</b>
 					</h6>
-					<select class="form-control" ng-model="cCctr.entity.fy"
-						style="width: 100%">
+					<select ng-model="cCctr.search.fy" style="width: 100%"
+						class="form-control">
 						<option disabled value="">Select financial Year</option>
 						<#list financialYear as year>
 						<option value="${year}">${year}</option>
@@ -200,13 +205,7 @@
 							class="form-control" placeholder="Date" style="width: 100%">
 					</div>
 
-					<div class="col-md-2">
-						<h6>
-							<b>Remark</b>
-							<h6>
-								<input type="text" ng-model="cCctr.search.remarks"
-									class="form-control" placeholder="Remark" style="width: 100%">
-					</div>
+					
 				</div>
 			</div>
 			<div class="row text-right" id="hide">

@@ -204,7 +204,7 @@ public abstract class AbstractControllerTaxo<K extends Serializable, E extends M
 			    log.setAction("Updated");
 			    log.setIpaddrs(getIp());
 			    String s=getEntity().getName();
-			    String[] arrOfStr = s.split(".", 28); 
+			    String[] arrOfStr = s.split(".", 25); 
 			    for (String a : arrOfStr) 
 			    log.setEntity(a);
 			    Gson gason = new Gson(); 

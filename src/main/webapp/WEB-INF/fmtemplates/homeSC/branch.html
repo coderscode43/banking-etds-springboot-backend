@@ -129,7 +129,7 @@
 	text-align: center;
 }
 </style>
-
+<div id="page-wrapper">
 <div class="container-fluid">
 	<div class="col-md-12 "
 		style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
@@ -144,16 +144,17 @@
 		aria-expanded="false" aria-controls="collapseExample">Search</button>
 	<!-- Search-Pranay -->
 	<div class="collapse dont-collapse-sm" id="collapseExample2">
-		<div class="row">
-			<div class="form-group">
-				<div class="col-md-12">
+			<div class="row">
+				<div class="form-group">
+
+					<div class="col-md-12">
 					<form class="form-inline" name="BranchForm">
 						<div class="row">
 							<div class="col-md-8">
 								<div style="margin-left: 0%">
 									<md-autocomplete md-input-name="branchCode"
 										md-input-minlength="3" md-no-cache="true"
-										md-input-maxlength="75" style="height:20%"
+										md-input-maxlength="75" 
 										md-selected-item="cCctr.search.branchCode" md-search-text="b"
 										md-items="item in cCctr.ajax('branch','branchCode',b)"
 										md-delay="0" placeholder="Branch Code"> <md-item-template>
@@ -161,12 +162,63 @@
 									Code with "{{b}}" were found. <a ng-click="">Add new</a> </md-not-found> </md-autocomplete>
 								</div>
 							</div>
-
-							<div class="" style="margin-top: 0; margin-right: 12px">
-								<div class="text-right">
-									<button ng-click="cCctr.searchEntities(true,'branch','branch')"
+							<div class="col-md-4">
+                                <div style="margin-top:1%">
+						            <button ng-click="cCctr.searchEntities(true,'branch','branch')"
 										class="btn btn-success"
 										style="background: #5cb85c; border: 1px solid #5cb85c">Search</button>
+							</div>
+							</div>
+						</div>
+						
+					</form>
+				</div>
+				</div>
+			
+			</div>
+
+			<div class="collapse  panel-collapse" id="collapseExample4">
+
+				<div class="row">
+					<div class="col-md-3">
+						<h6>
+							<b>RO Code</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.roCode" name="roCode" 
+									class="form-control" placeholder="RO Code" style="width: 100%">
+					</div>
+
+
+
+					<div class="col-md-3">
+						<h6>
+							<b>Branch Name</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.branchName" name="branchName"
+									class="form-control" placeholder="Branch Name" style="width: 100%">
+					</div>
+					<div class="col-md-3">
+						<h6>
+							<b>Branch State</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.branchState" name="Branch State"
+									class="form-control" placeholder="Branch State" style="width: 100%">
+					</div>
+
+
+
+
+				</div>
+
+			</div>
+		
+
+		</div>
+
+</div>
+<div class="" style="margin-top: 0; margin-right: 12px">
+								<div class="text-right">
+									
 									<button class="btn btn-secondary"
 										style="background-color: #FFA500;" data-toggle="collapse"
 										data-target="#collapseExample4" aria-expanded="false"
@@ -176,48 +228,6 @@
 									</button>
 								</div>
 							</div>
-						</div>
-					</form>
-				</div>
-				<!-- class="col-md-6" -->
-
-
-				<!-- <div class="col-md-6" style="width: 50%"></div> -->
-			</div>
-			<!-- id=hide -->
-			<!-- id=hide -->
-
-			<div class="collapse panel-collapse" id="collapseExample4"
-				style="padding: 1%; margin-left: -1%; font-size: 12px">
-				<div class="col-md-3">
-					<label>ROCode:</label> <input type="text"
-						ng-model="cCctr.search.roCode" name="roCode" class="form-control"
-						placeholder="ROCode" style="size: 15px"><br>
-				</div>
-				<div class="col-md-3">
-					<label>Branch Name:</label> <input type="text"
-						ng-model="cCctr.search.branchName" name="branchName"
-						class="form-control" placeholder="Branch Name" style="size: 15px"><br>
-				</div>
-				<div class="col-md-3">
-					<label>Branch State:</label> <input type="text"
-						ng-model="cCctr.search.branchState" name="Branch State"
-						class="form-control" placeholder="Branch State" style="size: 15px"><br>
-				</div>
-
-			</div>
-			<!-- row collapse dont-collapse-sm panel-collapse collapse -->
-			</form>
-		</div>
-		<!-- class="col-md-12" -->
-	</div>
-</div>
-</div>
-<!-- Search-Pranay -->
-</div>
-
-
-
 <!-- 	<div class="table-responsive"> -->
 
 <table class=" tables table-bordered table-hover table-striped"
@@ -279,4 +289,5 @@
 	<span style="color: red" ng-show="cCctr.getEntityListData().length <= 0"><b><h3 style="text-align:center;">No data
 					found!!</h3></b></span>
 </table>
+</div>
 </div>

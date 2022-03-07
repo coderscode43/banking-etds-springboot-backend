@@ -189,8 +189,12 @@
 				<thead"rowgroup">
 					<tr role="row" style=" background-color: #81b7db">
 						<th>Sr. No.</th>
+						<th>Quarter</th>
+						<th>Month</th>
 						<th>Customer /Vendor Id</th>
 						<th>Account No</th>
+						<th>Branch Code</th>
+						<th>Tan No</th>
 						<th>Unique Reference No</th>
 						<th>Unique Identification No</th>
 						<th>Identification number of relevant investment/account, etc.</th>
@@ -224,6 +228,7 @@
 						<th>Date on which Declaration is received</th>
 						<th>Amount of income paid</th>
 						<th>Date on which the income has been paid/credited</th>
+						<th>Financial Year</th>
 						<th>Warning</th>
 						<th>Error</th>
 						<!-- <th>Action</th> -->
@@ -240,8 +245,12 @@
 			</tr>
 					<tr ng-repeat="a in cCctr.getEntityListDataFY()">
 						<td>{{$index+1}}</td>
+						<td>{{a.quarter}}</td>
+						<td>{{a.month}}</td>
 						<td>{{a.custVendId}}</td>
 						<td>{{a.accNo}}</td>
+						<td>{{a.branchCode}}</td>
+						<td>{{a.tan}}</td>
 						<td>{{a.uniqueRefNo}}</td>
 						<td>{{a.uniqueIdentificationNo}}</td>
 						<td>{{a.identificationNumberofRelevantInvestmentAccount}}</td>
@@ -275,6 +284,7 @@
 						<td>{{a.dateonwhichDeclarationisreceived | date:'dd-MM-yyyy'}}</td>
 						<td>{{a.amountofincomepaid}}</td>
 						<td>{{a.dateonwhichtheincomehasbeenpaidcredited | date:'dd-MM-yyyy'}}</td>
+						<td>{{a.fy}}</td>
 						<td>{{a.warning}}</td>
 						<td>{{a.error}}</td>
 						<!-- <td><a

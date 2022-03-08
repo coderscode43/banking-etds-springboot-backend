@@ -34,21 +34,7 @@ App.factory('CommonServiceFY', [
 		};
 		return factory;
 
-		function fetch(entity, fy, pageNo, branchCode) {
-			entityList = [];
-			var deferred = $q.defer();
-			$http.get(
-				REST_SERVICE_URI + entity + '/list/' + fy + '/' + branchCode
-				+ '/get/' + pageNo + '/100').success(
-					function(data) {
-						entityList = data;
-						deferred.resolve(data);
-					}).error(function(status) {
-						deferred.reject(status);
-					});
-
-			return deferred.promise;
-		}
+		
 
 		function save(entitySave, entity) {
 			var deferred = $q.defer();
@@ -60,6 +46,22 @@ App.factory('CommonServiceFY', [
 				}).error(function(status) {
 					deferred.reject(status);
 				});
+
+			return deferred.promise;
+		}
+		
+		function fetch(entity, fy, branchCode, pageNo) {
+			entityList = [];
+			var deferred = $q.defer();
+			$http.get(
+				REST_SERVICE_URI + entity + '/list/' + $stateParams.fy + '/' + $stateParams.branchCode
+				+ '/get/' + $stateParams.pageNo + '/100').success(
+					function(data) {
+						entityList = data;
+						deferred.resolve(data);
+					}).error(function(status) {
+						deferred.reject(status);
+					});
 
 			return deferred.promise;
 		}

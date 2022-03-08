@@ -50,12 +50,12 @@ App.factory('CommonServiceFY', [
 			return deferred.promise;
 		}
 		
-		function fetch(entity, fy, branchCode, pageNo) {
+		function fetch(entity, pageNo) {
 			entityList = [];
 			var deferred = $q.defer();
 			$http.get(
 				REST_SERVICE_URI + entity + '/list/' + $stateParams.fy + '/' + $stateParams.branchCode
-				+ '/get/' + $stateParams.pageNo + '/100').success(
+				+ '/get/' + pageNo + '/100').success(
 					function(data) {
 						entityList = data;
 						deferred.resolve(data);

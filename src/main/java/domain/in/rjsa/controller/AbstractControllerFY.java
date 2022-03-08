@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -89,6 +88,28 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 
 		return getService().findall(constrains, pageNo, resultPerPage);
 	}
+	
+	
+	// ------------------- List Entity ---------------------------------
+
+	@RequestMapping(value = "/list/get/{pageNo}/{resultPerPage}", method = RequestMethod.GET)
+	public ResponseEntity<?> listAll(HttpServletRequest request, @PathVariable int pageNo,
+			@PathVariable int resultPerPage) {
+		// verify the clientId authorization
+//		applicationCache.getUserAuthorised();
+		String mapping = request.getPathInfo();
+
+		try {
+			List<?> list = getList(pageNo, resultPerPage);
+
+			return new ResponseEntity<>(list, HttpStatus.OK);
+		} catch (Exception e) {
+			logger.error("Error in listALL", e);
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+	}
+
 
 	
 	
@@ -112,6 +133,8 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 		}
 
 	}
+	
+	
 
 	// ------------------- List Entity ---------------------------------
 

@@ -34,12 +34,12 @@ public class MonthlyChallanDaoImpl extends AbstractDaoFY<Long, MonthlyChallan> i
 		criteria.add(Restrictions.eqOrIsNull("monthFY", entity.get("monthFY")))	;
           }  
           if (entity.get("amtAsPerFinacle") != null) {
-        	  criteria.add(Restrictions.eqOrIsNull("amtAsPerFinacle",  Long.valueOf((String)entity.get("amtAsPerFinacle"))));
+        	  criteria.add(Restrictions.eqOrIsNull("amtAsPerFinacle",  Double.valueOf((String)entity.get("amtAsPerFinacle"))));
   		  }
            
           if (entity.get("amtAsPerTaxCalculation") != null) 
           {
-    			criteria.add(Restrictions.eqOrIsNull("amtAsPerTaxCalculation", Long.valueOf((String) entity.get("amtAsPerTaxCalculation"))));
+    			criteria.add(Restrictions.eqOrIsNull("amtAsPerTaxCalculation", Double.valueOf((String) entity.get("amtAsPerTaxCalculation"))));
           }
           if(entity.get("challanHeading")!=null)
           {

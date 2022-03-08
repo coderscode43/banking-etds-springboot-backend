@@ -154,7 +154,7 @@
 								<div style="margin-left: 0%">
 									<md-autocomplete md-input-name="branchCode"
 										md-input-minlength="3" md-no-cache="true"
-										md-input-maxlength="75" 
+										md-input-maxlength="75" style="height:10%"
 										md-selected-item="cCctr.search.branchCode" md-search-text="b"
 										md-items="item in cCctr.ajax('branch','branchCode',b)"
 										md-delay="0" placeholder="Branch Code"> <md-item-template>
@@ -167,6 +167,13 @@
 						            <button ng-click="cCctr.searchEntities(true,'branch','branch')"
 										class="btn btn-success"
 										style="background: #5cb85c; border: 1px solid #5cb85c">Search</button>
+										<button class="btn btn-secondary"
+                                        style="background-color: #FFA500;" data-toggle="collapse"
+                                        data-target="#collapseExample4" aria-expanded="false"
+                                        aria-controls="collapseExample">Advance Search</button>
+                                    <button class="btn btn-Primary" data-toggle="modal" style=""
+                                        ng-click="cCctr.gotoAddPage('addBranch')">Add Branch
+                                    </button>
 							</div>
 							</div>
 						</div>
@@ -219,13 +226,7 @@
 <div class="" style="margin-top: 0; margin-right: 12px">
 								<div class="text-right">
 									
-									<button class="btn btn-secondary"
-										style="background-color: #FFA500;" data-toggle="collapse"
-										data-target="#collapseExample4" aria-expanded="false"
-										aria-controls="collapseExample">Advance Search</button>
-									<button class="btn btn-Primary" data-toggle="modal" style=""
-										ng-click="cCctr.gotoAddPage('addBranch')">Add Branch
-									</button>
+									
 								</div>
 							</div>
 <!-- 	<div class="table-responsive"> -->
@@ -254,7 +255,9 @@
 		</tr>
 	</thead>
 	<tbody>
-				<!-- <tr style="color: red" ng-show="cCctr.getEntityListData().length <= 0">
+				<tr style="color: red" ng-show="cCctr.getEntityListData().length <= 0">
+                    <td colspan="20" style="text-align: center;"><b><h3 style="text-align:center;text-align-last: 5;">No data
+                    found!!</h3></b></td><!-- <tr style="color: red" ng-show="cCctr.getEntityListData().length <= 0">
 					<td colspan="14" style="text-align: center;"><b><h3 style="text-align:center;">No data
 					found!!</h3></b></td>track by a.id -->
 		<tr ng-repeat="a in cCctr.getEntityListData()">
@@ -286,8 +289,7 @@
 					on this</button></td>
 		</tr>
 	</tbody>
-	<span style="color: red" ng-show="cCctr.getEntityListData().length <= 0"><b><h3 style="text-align:center;">No data
-					found!!</h3></b></span>
+	
 </table>
 </div>
 </div>

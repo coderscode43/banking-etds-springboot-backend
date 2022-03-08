@@ -13,106 +13,63 @@
 }
 </style>
 
-</head>
-<body>
-	<div class="container-fluid">
-		
-		<h2 class="card-title" style="margin-left: 0%;">User Details</h2>
-		<div class="row">
-			<div class="col-md-8">
-				
-				<md-autocomplete md-input-name="name" md-input-minlength="1"
-					md-no-cache="true" md-input-maxlength="75" style="height:10%"
-					md-selected-item="cCctr.search.name" md-search-text="b"
-					md-items="item in cCctr.ajax('userDetails','name',b)" md-delay="0"
-					placeholder="Name"> <md-item-template>
-				<span>{{item}}</span> </md-item-template> <md-not-found> No Name with
-				"{{b}}" were found.<a ng-click="">Add new</a> </md-not-found> </md-autocomplete>
-			</div>
-
-			<div class="row" id="hide">
-				<div class="col-md-4" style="margin-top: 0%">
-					<button ng-click="cCctr.searchEntities(true,'userDetails')"
-						class="btn btn-success" onclick="scrollWin()">Search</button>
-					<button class="btn btn-secondary"
-						style="background-color: #FFA500;" data-toggle="collapse"
-						data-target="#collapseExample4" aria-expanded="false"
-						aria-controls="collapseExample">Advance Search</button>
-					<button class="btn btn-Primary" data-toggle="modal"
-						ng-click="cCctr.gotoListPage('addUserDetails','addUserDetails');">Add</button>
-				</div>
-				<div class="text-right">
-
-
-					<div class="table-responsive"></div>
-				</div>
-			</div>
-
-
-
-			<div class="row"></div>
-		</div>
-
-		<!-- <div class="col-md-3" style="margin-top: 1.6%">
-				<button ng-click="cCctr.searchEntities(true,'userDetails')"
-					class="btn btn-primary px-3">Search</button>
-			</div>
- -->
-
-		<div class="col-md-12 collapse  panel-collapse " id="collapseExample4"
-			style="margin-bottom: 12px;">
-			<div class="row">
-
-				<div class="col-md-3" >
-
-
-					<label style="font-size:12px">Branch Code.</label> <input type="text"
-						ng-model="cCctr.search.branchCode" class="form-control"
-						placeholder="Branch Code">
-				</div>
-
-				<div class="col-md-3">
-					<label style="font-size:12px">PAN</label> <input type="text" ng-model="cCctr.search.pan"
-						class="form-control" placeholder="PAN">
-				</div>
-
-				<div class="col-md-3">
-					<label style="font-size:12px">Zone</label> <input type="text" ng-model="cCctr.search.zone"
-						class="form-control" placeholder="Zone">
-				</div>
-				<br>
-
-
-
-
-			</div>
-		</div>
-
-		<!-- <div class="row">
-			<div class="col-xs-12">
-				<div class="text-right">
-					<button class="btn btn-secondary"
-						style="background-color: #FFA500;" data-toggle="collapse"
-						data-target="#collapseExample4" aria-expanded="false"
-						aria-controls="collapseExample">Advance Search</button>
-					<button class="btn btn-Primary" data-toggle="modal"
-						ng-click="cCctr.gotoListPage('addUserDetails','addUserDetails');">Add</button>
-
-					<div class="table-responsive"></div>
-				</div>
-			</div>
-			</div> -->
-		<div class="row"
-			ng-init="cCctr.entity=cCctr.getEntityListData('UserDetails')">
-			<div class="col-12" ng-show="cCctr.getEntityListData('UserDetails')">
-				<div class="">
-					<div class="">
-						<tr role="row">
-
-							<table class="table  table-bordered table-sm"
-								style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
-								<thead align="center">
-									<tr style="background-color: #81b7db;">
+		</head>
+		<body>	
+			<div class="container-fluid">
+				<h2 class="card-title" style="margin-left: 0%;">User Details</h2>
+				<div class="row">
+					<div class="col-md-8">
+						<md-autocomplete md-input-name="name" md-input-minlength="1"
+							md-no-cache="true" md-input-maxlength="75" style="height:10%"
+							md-selected-item="cCctr.search.name" md-search-text="b"
+							md-items="item in cCctr.ajax('userDetails','name',b)" md-delay="0"
+							placeholder="Name">
+					 	<md-item-template>
+						<span>{{item}}</span> </md-item-template> <md-not-found> No Name with
+							"{{b}}" were found.<a ng-click="">Add new</a> </md-not-found> </md-autocomplete>
+					</div>
+					<div class="row" id="hide">
+						<div class="col-md-4" style="margin-top: 0%">
+							<button ng-click="cCctr.searchEntities(true,'userDetails')"
+									class="btn btn-success" onclick="scrollWin()">Search</button>
+							<button class="btn btn-secondary"
+									style="background-color: #FFA500;" data-toggle="collapse"
+									data-target="#collapseExample4" aria-expanded="false"
+									aria-controls="collapseExample">Advance Search</button>
+							<button class="btn btn-Primary" data-toggle="modal"
+									ng-click="cCctr.gotoListPage('addUserDetails','addUserDetails');">Add</button>
+						</div>
+					</div>
+					<div class="col-md-12 collapse  panel-collapse " id="collapseExample4"
+						 style="margin-bottom: 12px;">
+						<div class="row">
+							<div class="col-md-3" >
+								<label style="font-size:12px">Branch Code.</label> 
+								<input type="text"
+										ng-model="cCctr.search.branchCode" class="form-control"
+										placeholder="Branch Code">
+							</div>
+							<div class="col-md-3">
+								<label style="font-size:12px">PAN</label> 
+								<input type="text" ng-model="cCctr.search.pan"
+										class="form-control" placeholder="PAN">
+							</div>
+							<div class="col-md-3">
+								<label style="font-size:12px">Zone</label> 
+								<input type="text" ng-model="cCctr.search.zone"
+									   class="form-control" placeholder="Zone">
+						    </div>
+							<br>
+						</div>
+					</div>
+					<div class="row" ng-init="cCctr.entity=cCctr.getEntityListData('UserDetails')">
+						<div class="col-12" ng-show="cCctr.getEntityListData('UserDetails')">
+							<div class="">
+								<table class="table  table-bordered table-sm"
+										style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+											<thead align="center">
+									<tr role="row">
+										<tr style="background-color: #81b7db;">
 										<th><b>Sr.no</b></th>
 										<th><b>Branch Code</b></th>
 										<th><b>Name</b></th>

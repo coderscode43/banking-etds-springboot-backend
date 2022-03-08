@@ -1,0 +1,15 @@
+package domain.in.rjsa.model.wrapper;
+
+import java.util.List;
+
+import domain.in.rjsa.model.form.Branch;
+import domain.in.rjsa.model.form.RODetails;
+import lombok.Data;
+
+@Data
+public class RoDetailsWrapper {
+	
+	public List<Branch> listBranch;
+	RODetails roDetail;
+
+}

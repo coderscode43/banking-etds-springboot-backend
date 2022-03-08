@@ -120,6 +120,7 @@
 
 										<th><b>Zone</b></th>
 										<th><b>Type</b></th>
+										<th><b>Action</b></th>
 
 									</tr>
 								</thead>
@@ -140,7 +141,11 @@
 									<td>{{a.pan}}</td>
 									<td>{{a.zone}}</td>
 									<td>{{a.type}}</td>
-
+                                  <td><a
+									ng-click="cCctr.gotoDetailPage('userDetails',a.id,'detailUserDetails')"
+									style="color: blue"><img src="static\img\edit.png"
+										width="22px" height="22px" alt="Details"
+										style="margin-top: 5px; margin-bottom: 5px;" /></a></td>
 									</tr>
 								</tbody>
 							</table>

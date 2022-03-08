@@ -21,7 +21,7 @@ public class Branch extends CommonModelAbstract {
 	@Column(name = "id")
 	private Long id;
 	@Column(name = "roCode")
-	private String roCode;
+	private Long roCode;
 	@Column(name = "branchCode")
 	public String branchCode;
 	@Column(name = "branchName")

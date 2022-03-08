@@ -1,5 +1,8 @@
+
 package domain.in.rjsa.dao.impl;
 
+import java.time.ZonedDateTime;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -41,6 +44,14 @@ public class CHALLANDaoImpl extends AbstractDaoTaxo<String, CHALLAN> implements 
          {
 		criteria.add(Restrictions.eqOrIsNull("CHALLAN_MISMATCH", entity.get("CHALLAN_MISMATCH")));
          }
+		 if (entity.get("dateOfDeposition") != null) {
+				criteria.add(
+						Restrictions.eqOrIsNull("DATE_OF_DEPOSITION", Date.from(ZonedDateTime.parse((String) entity.get("dateOfDeposition")).toInstant())));
+			}
+		 if (entity.get("asOnDate") != null) {
+				criteria.add(
+						Restrictions.eqOrIsNull("AS_ON_DATE", Date.from(ZonedDateTime.parse((String) entity.get("asOnDate")).toInstant())));
+			}
 		
 		 criteria.addOrder(Order.desc("CIN"));
 			criteria.setFirstResult(pageNo * noOfResult);

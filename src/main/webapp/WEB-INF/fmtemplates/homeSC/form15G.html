@@ -242,8 +242,10 @@
 				</thead>
 				<tbody>
 								<tr style="color: red" ng-show="cCctr.getEntityListData().length <= 0">
-					<td colspan="14" style="text-align: center;"><b><h3 style="text-align:center;text-align-last: 5;margin-right: -100%;">No data
+					<td colspan="20" style="text-align: center;"><b><h3 style="text-align:center;text-align-last: 5;margin-right: 10%;">No data
 					found!!</h3></b></td>
+					<td colspan="25" style="text-align: center;"><b><h3 style="text-align:center;text-align-last: 5;margin-right: 10%;">
+                    </h3></b></td>
 			</tr>
 					<tr ng-repeat="a in cCctr.getEntityListData() track by a.id">
 						<td>{{$index+1}}</td>
@@ -308,7 +310,7 @@
 		<div class="row" ng-show="cCctr.getNoPage() > 0">
 			<div class="row" align="center">
 				<span ng-show="cCctr.currentPage != 1"> <a
-					ng-click="cCctr.getPage(true,'form15g',cCctr.currentPage-1)"><strong>Previous</strong></a>
+					ng-click="cCctr.getPage(true,'form15G',cCctr.currentPage-1)"><strong>Previous</strong></a>
 				</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.currentPage}}</strong>&nbsp;
 					of &nbsp;<strong>{{cCctr.getNoPage()}}</strong>
 					&nbsp;&nbsp;&nbsp;&nbsp; <span

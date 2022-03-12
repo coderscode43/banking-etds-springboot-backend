@@ -1,5 +1,7 @@
 package domain.in.rjsa.dao.impl;
 
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractDaoForm;
@@ -10,8 +12,10 @@ public class UserDetailsDaoImpl extends AbstractDaoForm<Long, UserDetails> imple
 
 	@Override
 	public UserDetails getByuserName(String userName) {
-		// TODO Auto-generated method stub
-		return null;
+		Criteria criteria = createEntityCriteria();
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
+		criteria.add(Restrictions.eq("userName", userName));
+		return (UserDetails) criteria.uniqueResult();
 	}
 
 

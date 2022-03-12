@@ -27,9 +27,9 @@ text-align:center;
 			<div class="col-md-8">
 				<md-autocomplete md-input-name="name" md-input-minlength="1"
 					md-no-cache="true" md-input-maxlength="75" style="height:10%"
-					md-selected-item="cCctr.search.name" md-search-text="b"
-					md-items="item in cCctr.ajax('userDetails','name',b)" md-delay="0"
-					placeholder="Name"> <md-item-template>
+					md-selected-item="cCctr.search.userName" md-search-text="b"
+					md-items="item in cCctr.ajax('userDetails','userName',b)" md-delay="0"
+					placeholder="Username"> <md-item-template>
 				<span>{{item}}</span> </md-item-template> <md-not-found> No Name with
 				"{{b}}" were found.<a ng-click="">Add new</a> </md-not-found> </md-autocomplete>
 			</div>
@@ -77,7 +77,7 @@ text-align:center;
 								<tr style="background-color: #81b7db;height:40px">
 									<th><b>Sr.no</b></th>
 									<th><b>Branch Code</b></th>
-									<th><b>Name</b></th>
+									<th><b>Username</b></th>
 									<th><b>Pan</b></th>
 
 									<th><b>Zone</b></th>
@@ -102,7 +102,7 @@ text-align:center;
 									ng-repeat="a in cCctr.getEntityListData() track by a.id">
 									<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
 									<td>{{a.branchCode}}</td>
-									<td>{{a.name}}</td>
+									<td>{{a.userName}}</td>
 									<td>{{a.pan}}</td>
 									<td>{{a.zone}}</td>
 									<td>{{a.type}}</td>

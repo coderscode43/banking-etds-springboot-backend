@@ -71,6 +71,31 @@
 		display: none;
 	}
 }
+
+ 
+    th{
+    text-align:center;
+    
+    }
+    
+    .truncate {
+        display: block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width:5%;
+        height:60px;
+        
+    }
+    
+    .ellipsis{
+     max-width: 70px;
+    min-width: 200px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    
+    }
 </style>
 </head>
 <body>
@@ -175,9 +200,9 @@
 	<div class="row"></div>
 
 	<div class="row">
-		<div class="table-responsive" style="overflow-x: inherit">
+		<div class="table-responsive" style="overflow-x: inherit;width:610%">
 			<!-- 	<div class="col-md-12" style="margin-left:-30px"> -->
-			<table class=" table table-bordered table-hover  table-striped"
+			<table class=" tables table-bordered table-hover  table-striped"
 				role="table"
 				style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
 
@@ -198,17 +223,17 @@
 						<th>Unique Reference No</th>
 						<th>Unique Identification No</th>
 						<th>Identification number of relevant investment/account, etc.</th>
-						<th>Nature of income</th>
+						<th style="width:0.01%">Nature of income</th>
 						<th>Section under which tax is deductible</th>
-						<th>Amount of income</th>
+						<th style="width:0.01%">Amount of income</th>
 						<th>Name of Assessee (Declarant)</th>
 						<th>PAN of the Assessee</th>
-						<th>Aadhaar Number of the Assessee</th>
+						<th style="width:0.01%">Aadhaar Number of the Assessee</th>
 						<th>Date of Birth</th>
 						<th>Previous year (P.Y.) (for which declaration is being made)</th>
 						<th>Country</th>
-						<th>Flat / Door / Building</th>
-						<th>Road / Street / Block / Sector</th>
+						<th style="width:0.01%">Flat / Door / Building</th>
+						<th style="width:0.01%">Road / Street / Block / Sector</th>
 						<th>Pincode</th>
 						<th>Post Office</th>
 						<th>Area/ Locality</th>
@@ -219,7 +244,7 @@
 						<th>Telephone No.</th>
 						<th>Mobile No.</th>
 						<th>Whether assessed to tax</th>
-						<th>Latest assessment year for which assessed</th>
+						<th style="width:0.01%">Latest assessment year for which assessed</th>
 						<th>Estimated total income of the P.Y. (including income for which this declaration is made)</th>
 						<th>Estimated income for which this declaration is made</th>
 						<th>Total No. of Form No. 15G filed</th>
@@ -228,8 +253,8 @@
 						<th>Amount of income paid</th>
 						<th>Date on which the income has been paid/credited</th>
 						<th>Financial Year</th>
-						<th>Warning</th>
-						<th>Error</th>
+						<th style="width:0.01%">Warning</th>
+						<th style="width:0.01%">Error</th>
 						<!-- <th>Action</th> -->
 
 
@@ -243,48 +268,48 @@
                     </h3></b></td>
             </tr>
 					<tr ng-repeat="a in cCctr.getEntityListDataFY()">
-						<td>{{$index+1}}</td>
-						<td>{{a.quarter}}</td>
-						<td>{{a.month}}</td>
-						<td>{{a.custVendId}}</td>
-						<td>{{a.accNo}}</td>
-						<td>{{a.branchCode}}</td>
-						<td>{{a.tan}}</td>
-						<td>{{a.uniqueRefNo}}</td>
-						<td>{{a.uniqueIdentificationNo}}</td>
-						<td>{{a.identificationNumberofRelevantInvestmentAccount}}</td>
-						<td>{{a.natureofIncome}}</td>
-						<td>{{a.sectionUnderWhichTaxisDeductible}}</td>
-						<td>{{a.amountofIncome}}</td>
-						<td>{{a.nameofAssesseeDeclarant}}</td>
-						<td>{{a.panoftheAssessee}}</td>
-						<td>{{a.aadhaarNumberoftheAssessee}}</td>
-						<td>{{a.dateofBirth | date:'dd-MM-yyyy'}}</td>
-						<td>{{a.previousYearforwhichdeclarationisbeingmade}}</td>
-						<td>{{a.country}}</td>
-						<td>{{a.flatDoorBuilding}}</td>
-						<td>{{a.roadStreetBlockSector}}</td>
-						<td>{{a.pincode}}</td>
-						<td>{{a.postOffice}}</td>
-						<td>{{a.areaLocality}}</td>
-						<td>{{a.district}}</td>
-						<td>{{a.state}}</td>
-						<td>{{a.email}}</td>
-						<td>{{a.STDCode}}</td>
-						<td>{{a.telephoneNo}}</td>
-						<td>{{a.mobileNo}}</td>
-						<td>{{a.whetherAssessedtotax}}</td>
-						<td>{{a.latestassessmentyearforwhichassessed}}</td>
-						<td>{{a.estimatedtotalincomeofthePY}}</td>
-						<td>{{a.estimatedIncomeforwhichthisdeclarationismade}}</td>
-						<td>{{a.totalNoofFormNo15Hfiled}}</td>
-						<td>{{a.aggregateAmountofincomeforwhichFormNo15Hfiled}}</td>
-						<td>{{a.dateonwhichDeclarationisreceived | date:'dd-MM-yyyy'}}</td>
-						<td>{{a.amountofincomepaid}}</td>
-						<td>{{a.dateonwhichtheincomehasbeenpaidcredited | date:'dd-MM-yyyy'}}</td>
-						<td>{{a.fy}}</td>
-						<td>{{a.warning}}</td>
-						<td>{{a.error}}</td>
+						<td style="width:0.5%">{{$index+1}}</td>
+						<td style="width:0.5%">{{a.quarter}}</td>
+						<td style="width:1%">{{a.month}}</td>
+						<td style="width:1%">{{a.custVendId}}</td>
+						<td style="width:1%">{{a.accNo}}</td>
+						<td style="width:1%">{{a.branchCode}}</td>
+						<td style="width:1%">{{a.tan}}</td>
+						<td style="width:1%">{{a.uniqueRefNo}}</td>
+						<td style="width:1%">{{a.uniqueIdentificationNo}}</td>
+						<td style="width:2%">{{a.identificationNumberofRelevantInvestmentAccount}}</td>
+						<td class="ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.natureofIncome}}">{{a.natureofIncome}}</td>
+						<td style="width:1%">{{a.sectionUnderWhichTaxisDeductible}}</td>
+						<td style="width:1%">{{a.amountofIncome}}</td>
+						<td style="width:1%">{{a.nameofAssesseeDeclarant}}</td>
+						<td style="width:1%">{{a.panoftheAssessee}}</td>
+						<td class="ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.natureofIncome}}">{{a.aadhaarNumberoftheAssessee}}</td>
+						<td style="width:1%">{{a.dateofBirth | date:'dd-MM-yyyy'}}</td>
+						<td style="width:1%">{{a.previousYearforwhichdeclarationisbeingmade}}</td>
+						<td style="width:1%">{{a.country}}</td>
+						<td class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.flatDoorBuilding}}">{{a.flatDoorBuilding}}</td>
+						<td  class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.roadStreetBlockSector}}">{{a.roadStreetBlockSector}}</td>
+						<td style="width:1%">{{a.pincode}}</td>
+						<td style="width:2%">{{a.postOffice}}</td>
+						<td style="width:2%">{{a.areaLocality}}</td>
+						<td style="width:2%">{{a.district}}</td>
+						<td style="width:2%">{{a.state}}</td>
+						<td style="width:1%">{{a.email}}</td>
+						<td style="width:1%">{{a.STDCode}}</td>
+						<td style="width:1%">{{a.telephoneNo}}</td>
+						<td style="width:1%">{{a.mobileNo}}</td>
+						<td style="width:2%">{{a.whetherAssessedtotax}}</td>
+						<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.latestassessmentyearforwhichassessed}}">{{a.latestassessmentyearforwhichassessed}}</td>
+						<td style="width:2%">{{a.estimatedtotalincomeofthePY}}</td>
+						<td style="width:1%">{{a.estimatedIncomeforwhichthisdeclarationismade}}</td>
+						<td style="width:1%">{{a.totalNoofFormNo15Hfiled}}</td>
+						<td style="width:1%">{{a.aggregateAmountofincomeforwhichFormNo15Hfiled}}</td>
+						<td style="width:1%">{{a.dateonwhichDeclarationisreceived | date:'dd-MM-yyyy'}}</td>
+						<td style="width:1%">{{a.amountofincomepaid}}</td>
+						<td style="width:1%">{{a.dateonwhichtheincomehasbeenpaidcredited | date:'dd-MM-yyyy'}}</td>
+						<td style="width:1%">{{a.fy}}</td>
+						<td class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.warning}}">{{a.warning}}</td>
+						<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.error}}">{{a.error}}</td>
 						<!-- <td><a
 							ng-click="cCctr.gotoDetailFormPage('form15g',a.id,a.fy,a.branchCode,'detailform15G')"
 							style="color: blue" onclick="scrollWin()"><img src="static\img\edit.png"

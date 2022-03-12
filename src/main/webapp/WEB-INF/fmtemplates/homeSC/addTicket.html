@@ -1,11 +1,14 @@
 
 <div id="page-wrapper">
-	<div class="container-fluid">
-		<div class="row">
-			<h1>Add Ticket Details</h1>
+	<div class="container">
+		<div class="col-md-12 "
+			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
+			<div class="heading">
+				<strong>Add Ticket Details</strong>
+			</div>
 		</div>
-		<div class="row">
-			<div class="col-md-12">
+		
+			<div class="col-md-8">
 
 				<div class="tab-pane fade active in">
 					<form name="fileForm" class="form-horizontal" role="form"
@@ -26,7 +29,7 @@
 						<div class="row">
 							<div class="col-md-4">
 								<div>
-									<label>Form</label>
+									<label style="font-size:15px">Form</label>
 									<div >
 										<select  name="form" id="form" ng-model="cCctr.entity.form" class="form-control"
 										required >
@@ -50,7 +53,7 @@
 							
 							<div class="col-md-4">
 								<div>
-									<label>Finacial Year</label> <select class="form-control"id="fy" name="fy"
+									<label style="font-size:15px">Finacial Year</label> <select class="form-control"id="fy" name="fy"
 										ng-model="cCctr.entity.fy" ng-required="true">
 										<option disabled value="">Select financial Year</option>
 										<#list financialYear as year>
@@ -67,7 +70,7 @@
 							</div>
 							<div class="col-md-4">
 								<div>
-									<label>Quarter</label> <select class="form-control"id="quarter" name="quarter"
+									<label style="font-size:15px">Quarter</label> <select class="form-control"id="quarter" name="quarter"
 										ng-model="cCctr.entity.quarter" ng-required="true">
 										<option disabled value="">Select Quarter</option>
 										<#list Quarter as quarter>
@@ -85,7 +88,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div style="margin-left: 0%">
-								<label>Branch Code</label>
+								<label style="font-size:15px">Branch Code</label>
 									<md-autocomplete md-input-name="branchCode"id="branchCode"
 										md-input-minlength="3" md-no-cache="true"
 										md-input-maxlength="75" style="height:10%;"
@@ -119,7 +122,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div class="">
-									<label>Description</label>
+									<label style="font-size:15px">Description</label>
 									<textarea class="form-control" name="description" id="description"
 										ng-model="cCctr.entity.description" style="width: 100%;"
 										required></textarea>
@@ -132,13 +135,25 @@
 							</div>
 						</div>
 						<br>
-						<div class="control-group">
+						<!-- <div class="control-group">
 							<label class="control-label" for="save"></label>
 							<div class="controls">
 								<button id="add" name="add"
-									class="btn btn-success btn-block btn-primary"
+									class="btn btn-success btn-primary"
 									ng-click="fileForm.submitted=true;cCctr.submit(fileForm.$valid,cCctr.entity,'ticket')">Add</button>
+									<button id="add" name="add"
+									class="btn btn-danger btn-primary"
+									ng-click="fileForm.submitted=true;cCctr.submit(fileForm.$valid,cCctr.entity,'ticket')">Back</button>
+									
 							</div>
+						</div> -->
+
+
+						<div class="modal-footer" style="text-align:center">
+							<button
+								ng-click="fileForm.submitted=true;cCctr.submit(fileForm.$valid,cCctr.entity,'ticket')"
+								class="btn btn-success" data-dismiss="modal">Add</button>
+							<button class="btn btn-danger"  ng-click="cCctr.gotoListPage('ticket','ticket');">Back</button>
 						</div>
 
 

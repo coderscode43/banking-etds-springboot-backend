@@ -46,6 +46,25 @@
 		display: none;
 	}
 }
+
+.truncate {
+        display: block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 160px;
+        height:60px;
+        
+    }
+    
+    .ellipsis{
+     max-width: 70px;
+    min-width: 200px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    
+    }
 </style>
 
 
@@ -73,103 +92,107 @@
 
 
 					<div class="col-md-3">
-				<h6>
-					<b>Section Code</b>
-					<h6>
-						<input type="text" ng-model="cCctr.search.sectionCode"
-							class="form-control" placeholder="SectionCode" style="width: 100%">
-			</div>
-				<div class="col-md-3">
-					<h6>
-						<b>Quarter</b>
 						<h6>
-							<select class="form-control"
-													ng-model="cCctr.search.quarter" required>
-													<option disabled value="">Select Quarter</option>
-													<#list Quarter as quarter>
-													<option value="${quarter}">${quarter}</option>
-													</#list>
+							<b>Section Code</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.sectionCode"
+									class="form-control" placeholder="SectionCode"
+									style="width: 100%">
+					</div>
+					<div class="col-md-3">
+						<h6>
+							<b>Quarter</b>
+							<h6>
+								<select class="form-control" ng-model="cCctr.search.quarter"
+									required>
+									<option disabled value="">Select Quarter</option>
+									<#list Quarter as quarter>
+									<option value="${quarter}">${quarter}</option>
+									</#list>
+								</select>
+					</div>
+
+					<div class="col-md-3">
+						<h6>
+							<b>PAN</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.pan"
+									class="form-control" placeholder="PAN" style="width: 100%">
+					</div>
+				</div>
+			</div>
+
+			<div class=" collapse  panel-collapse" id="collapseExample4">
+
+				<div class="row">
+					<div class="col-md-3">
+						<h6>
+							<b>Name</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.name"
+									class="form-control" placeholder="Name" style="width: 100%">
+					</div>
+
+					<div class="col-md-3">
+						<h6>
+							<b>Account Number</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.accNo"
+									class="form-control" placeholder="Account Number"
+									style="width: 100%">
+					</div>
+
+					<div class="col-md-3">
+						<h6>
+							<b>Vendor/Customer ID</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.custVendId"
+									class="form-control" placeholder="Vendor/Customer ID"
+									style="width: 100%">
+					</div>
+					<div class="col-md-3">
+						<h6>
+							<b>Status</b>
+						</h6>
+						<select ng-model="cCctr.search.resolved" class="form-control">
+							<option value="">Status</option>
+							<option value="false">Resolved</option>
+							<option value="true">Not Resolved</option>
+
 						</select>
+					</div>
 				</div>
 
-				<div class="col-md-3">
-					<h6>
-						<b>PAN</b>
+
+
+				<div class="row">
+
+
+					<div class="col-md-3">
 						<h6>
-							<input type="text" ng-model="cCctr.search.pan"
-								class="form-control" placeholder="PAN" style="width: 100%">
-				</div>
-			</div>
-		</div>
+							<b>Challan Heading</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.challanHeading"
+									class="form-control" placeholder="Challan Heading"
+									style="width: 100%">
+					</div>
 
-		<div class=" collapse  panel-collapse" id="collapseExample4">
-			
-			<div class="row">
-			<div class="col-md-3">
-				<h6>
-					<b>Name</b>
-					<h6>
-						<input type="text" ng-model="cCctr.search.name"
-							class="form-control" placeholder="Name" style="width: 100%">
-			</div>
-
-			<div class="col-md-3">
-				<h6>
-					<b>Account Number</b>
-					<h6>
-						<input type="text" ng-model="cCctr.search.accNo"
-							class="form-control" placeholder="Account Number" style="width: 100%">
-			</div>
-
-			<div class="col-md-3">
-				<h6>
-					<b>Vendor/Customer ID</b>
-					<h6>
-						<input type="text" ng-model="cCctr.search.custVendId"
-							class="form-control" placeholder="Vendor/Customer ID" style="width: 100%">
-			</div>
-			<div class="col-md-3">
-					<h6>
-						<b>Status</b>
-					</h6>
-					<select ng-model="cCctr.search.resolved" class="form-control">
-						<option value="">Status</option>
-						<option value="false">Resolved</option>
-						<option value="true">Not Resolved</option>
-						
-					</select>
-				</div>
-		</div>
-		
-		
-		
-		<div class="row">
-			
-
-			<div class="col-md-3">
-				<h6>
-					<b>Challan Heading</b>
-					<h6>
-						<input type="text" ng-model="cCctr.search.challanHeading"
-						
-							class="form-control" placeholder="Challan Heading" style="width: 100%">
-			</div>
-
-			<div class="col-md-3">
-				<h6>
-					<b> Error Description</b>
-					<h6>
-						<input type="text" ng-model="cCctr.search.errorDescription"
-							
-							class="form-control" placeholder="Error Description" style="width: 100%">
-			</div>
-			<div class="col-md-3">
-				<h6>
-					<b>Warning Description</b>
-					<h6>
-						<input type="text" ng-model="cCctr.search.warningDescription"
-							class="form-control" placeholder="Warning Description" style="width: 100%">
-			</div>
+					<div class="col-md-3">
+						<h6>
+							<b> Error Description</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.errorDescription"
+									class="form-control" placeholder="Error Description"
+									style="width: 100%">
+					</div>
+					<div class="col-md-3">
+						<h6>
+							<b>Warning Description</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.warningDescription"
+									class="form-control" placeholder="Warning Description"
+									style="width: 100%">
+					</div>
 
 
 				</div>
@@ -181,21 +204,21 @@
 			</div>
 			<div class="row text-right" id="hide">
 				<div class="col-md-3" style="margin-left: 75%; margin-top: -44px">
-					<button ng-click="cCctr.searchEntities(true,'form27QDeductee','form27QDeductee')"
-					class="btn btn-success" onclick="scrollWin()">Search</button>
-			
-			
-				<button class="btn btn-secondary" style="background-color: #FFA500"
-					data-toggle="collapse" data-target="#collapseExample4"
-					aria-expanded="false" aria-controls="collapseExample">
-					Advance Search</button>
-				<!-- <button type="button" class="btn btn-primary"
+					<button
+						ng-click="cCctr.searchEntities(true,'form27QDeductee','form27QDeductee')"
+						class="btn btn-success" onclick="scrollWin()">Search</button>
+
+
+					<button class="btn btn-secondary" style="background-color: #FFA500"
+						data-toggle="collapse" data-target="#collapseExample4"
+						aria-expanded="false" aria-controls="collapseExample">
+						Advance Search</button>
+					<!-- <button type="button" class="btn btn-primary"
 					ng-click="cCctr.gotoListPage('addForm27QDeductee','addForm27QDeductee');">Add</button> -->
 
-			
-				
-					<div class="text-right">
-					</div>
+
+
+					<div class="text-right"></div>
 				</div>
 			</div>
 
@@ -225,17 +248,16 @@
 
 	<div class="row">
 		<div class="col-xs-12">
-			<div class="col-md-3" style="margin-top: 5px">
-							</div>
+			<div class="col-md-3" style="margin-top: 5px"></div>
 		</div>
 	</div>
 
 
 	<div class="row">
 
-		<div class="table-responsive" style="overflow-x: inherit">
+		<div style="overflow-x: inherit; width: 600%">
 
-			<table class=" table table-bordered table-hover table-striped"
+			<table class=" tables table-bordered table-hover table-striped"
 				role="table"
 				style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
 
@@ -246,7 +268,7 @@
 				</colgroup>
 				<tr>
 				<thead role="rowgroup">
-					<tr style="background-color: #81b7db">
+					<tr style="background-color: #81b7db; height: 40px;">
 						<th>Sr. No.</th>
 						<th>Quarter</th>
 						<th>Month</th>
@@ -284,7 +306,7 @@
 						<th>Cash Withdrawl 194N(20L to 1cr)</th>
 						<th>Cash Withdrawl 194N(>1cr</th>
 						<th>Error Description</th>
-						<th>Warning Description</th>
+						<th style="width:50px">Warning Description</th>
 						<th>Short Deduction</th>
 						<th>Interest on Short Deduction</th>
 						<th>Interest on Late Payment</th>
@@ -294,59 +316,63 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr style="color: red" ng-show="cCctr.getEntityListData().length <= 0">
-                    <td colspan="20" style="text-align: center;"><b><h3 style="text-align:center;text-align-last: 5;">No data
-                    found!!</h3></b></td>
-                    <td colspan="25" style="text-align: center;"><b><h3 style="text-align:center;text-align-last: 5;margin-right: -100%;"></h3></b></td>
-            </tr>
+					<tr style="color: red"
+						ng-show="cCctr.getEntityListData().length <= 0">
+						<td colspan="20" style="text-align: center;"><b><h3
+									style="text-align: center; text-align-last: 5;">No data
+									found!!</h3></b></td>
+						<td colspan="25" style="text-align: center;"><b><h3
+									style="text-align: center; text-align-last: 5; margin-right: -100%;"></h3></b></td>
+					</tr>
 					<tr role="row"
 						ng-repeat="a in cCctr.getEntityListData() track by a.id">
-						<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
-						<td>{{a.quarter}}</td>
-						<td>{{a.month}}</td>
-						<td>{{a.branchCode}}</td>
-						<td>{{a.custVendId}}</td>
-						<td>{{a.uniqueRefNo}}</td>
-						<td>{{a.accNo}}</td>
-						<td>{{a.challanHeading}}</td>
-						<td>{{a.deducteeRefNo}}</td>
-						<td>{{a.deducteeCode}}</td>
-						<td>{{a.pan}}</td>
-						<td>{{a.name}}</td>
-						<td>{{a.sectionCode}}</td>
-						<td>{{a.date | date:'dd-MM-yyyy'}}</td>
-						<td>{{a.amountPaid}}</td>
-						<td>{{a.tds}}</td>
-						<td>{{a.surcharge}}</td>
-						<td>{{a.educationCess}}</td>
-						<td>{{a.totalTaxDeducted}}</td>
-						<td>{{a.totalTaxDeposited}}</td>
-						<td>{{a.dateOfDeduction| date:'dd-MM-yyyy'}}</td>
-						<td>{{a.rateAtWhichTaxDeducted}}</td>
-						<td>{{a.reasonForNonDeduction}}</td>
-						<td>{{a.grossingUpIndicator}}</td>
-						<td>{{a.noOfCertificateUnderSection}}</td>
-						<td>{{a.tdsRateAsPerItActs}}</td>
-						<td>{{a.natureOfRemittance}}</td>
-						<td>{{a.uniqueAcknowledgeNo}}</td>
-						<td>{{a.countryOfResidence}}</td>
-						<td>{{a.emailId}}</td>
-						<td>{{a.contactNoOfDeductee}}</td>
-						<td>{{a.addressOfDeductee}}</td>
-						<td>{{a.taxIdentificationNo}}</td>
-						<td>{{a.cashWithdrawal194N}}</td>
-						<td>{{a.cashWithdrawal194N20Lto1Cr}}</td>
-						<td>{{a.cashWithdrawal194N1Cr}}</td>
-						<td>{{a.errorDescription}}</td>
-						<td>{{a.warningDescription}}</td>
-						<td>{{a.ShortDeduction}}</td>
-						<td>{{a.InterestOnShortDeduction}}</td>
-						<td>{{a.InterestOnLatePayment}}</td>
-						<td>{{a.InterestOnLateDeduction}}</td>
+						<td >{{$index+1}}</td>
+						<td >{{a.quarter}}</td>
+						<td >{{a.month}}</td>
+						<td >{{a.branchCode}}</td>
+						<td >{{a.custVendId}}</td>
+						<td >{{a.uniqueRefNo}}</td>
+						<td >{{a.accNo}}</td>
+						<td >{{a.challanHeading}}</td>
+						<td >{{a.deducteeRefNo}}</td>
+						<td >{{a.deducteeCode}}</td>
+						<td >{{a.pan}}</td>
+						<td style="width:3%">{{a.name}}</td>
+						<td >{{a.sectionCode}}</td>
+						<td >{{a.date | date:'dd-MM-yyyy'}}</td>
+						<td >{{a.amountPaid}}</td>
+						<td >{{a.tds}}</td>
+						<td >{{a.surcharge}}</td>
+						<td >{{a.educationCess}}</td>
+						<td >{{a.totalTaxDeducted}}</td>
+						<td >{{a.totalTaxDeposited}}</td>
+						<td >{{a.dateOfDeduction|
+							date:'dd-MM-yyyy'}}</td>
+						<td >{{a.rateAtWhichTaxDeducted}}</td>
+						<td >{{a.reasonForNonDeduction}}</td>
+						<td >{{a.grossingUpIndicator}}</td>
+						<td >{{a.noOfCertificateUnderSection}}</td>
+						<td >{{a.tdsRateAsPerItActs}}</td>
+						<td >{{a.natureOfRemittance}}</td>
+						<td >{{a.uniqueAcknowledgeNo}}</td>
+						<td >{{a.countryOfResidence}}</td>
+						<td >{{a.emailId}}</td>
+						<td >{{a.contactNoOfDeductee}}</td>
+						<td >{{a.addressOfDeductee}}</td>
+						<td >{{a.taxIdentificationNo}}</td>
+						<td >{{a.cashWithdrawal194N}}</td>
+						<td >{{a.cashWithdrawal194N20Lto1Cr}}</td>
+						<td >{{a.cashWithdrawal194N1Cr}}</td>
+						<td style="width:3%">{{a.errorDescription}}</td>
+						<td  class="truncate ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.warningDescription}}">{{a.warningDescription}}</td>
+						<td >{{a.ShortDeduction}}</td>
+						<td >{{a.InterestOnShortDeduction}}</td>
+						<td >{{a.InterestOnLatePayment}}</td>
+						<td >{{a.InterestOnLateDeduction}}</td>
 						<div>
-						<td ng-if="a.resolved == 0">Resolved</td>
-						<td ng-if="a.resolved == 1">Not Resolved</td>
-                         </div>
+							<td ng-if="a.resolved == 0" >Resolved</td>
+							<td ng-if="a.resolved == 1" >Not Resolved</td>
+						</div>
 
 						<!-- <div>
 						<td ng-if="a.verify == 1"><i class="fa fa-check"
@@ -354,7 +380,7 @@
 						<td ng-if="a.verify == 0"><i class="fa fa-times"
 							aria-hidden="true" style="color: #ff0000"></i></td>
 					</div> -->
-						<td><a
+						<td ><a
 							ng-click="cCctr.gotoDetailFormPage('form27QDeductee',a.id,a.fy,a.branchCode,'detailForm27QDeductee')"
 							style="color: blue" onclick="scrollWin()"><img
 								src="static\img\edit.png" width="22px" height="22px"

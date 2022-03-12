@@ -46,6 +46,30 @@
 		visibility: visible;
 	}
 }
+
+.truncate {
+        display: block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width:5%;
+        height:60px;
+        
+    }
+    
+    .ellipsis{
+     max-width: 70px;
+    min-width: 200px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    
+    }
+    
+    td{
+    width:5%;
+    
+    }
 </style>
 
 
@@ -218,11 +242,11 @@
 		<div class="panel-body" style="margin-left: 0%; width: 107%;">
 
 			<div class="row">
-				<div class="table-responsive" style="overflow-x: inherit">
+				<div class="table-responsive" style="overflow-x: inherit;width:250%">
 
-					<table class="table table-bordered table-hover table-striped"
+					<table class="tables table-bordered table-hover table-striped"
 						role="table"
-						style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+						style="font-size: 12px;padding: 5px; margin: 5px;">
 
 
 						<thead>
@@ -231,10 +255,10 @@
 						</colgroup>
 						<tr>
 						<thead role="rowgroup">
-							<tr role="row" style="background-color: #81b7db">
+							<tr role="row" style="background-color: #81b7db;height:40px">
 								<th>Sr. No.</th>
 								<th>LDC_NUMBER</th>
-								<th>NAME</th>
+								<th style="width:0.1%">NAME</th>
 								<th>TAN</th>
 								<th>PAN</th>
 								<th>Financial Year</th>
@@ -259,22 +283,22 @@
 					found!!</h3></b></td>
 							<tr role="row"
 								ng-repeat="a in cCctr.getEntityListData() track by a.id">
-								<td role="cell" class="one" style="height: 60px; padding: 10px">{{$index+1}}</td>
-								<td>{{a.LDC_NUMBER}}</td>
-								<td>{{a.NAME}}</td>
-								<td>{{a.TAN}}</td>
-								<td>{{a.PAN}}</td>
-								<td>{{a.FY}}</td>
-								<td>{{a.VALID_FROM | date:'dd-MM-yyyy'}}</td>
-								<td>{{a.VALID_TO | date:'dd-MM-yyyy'}}</td>
-								<td>{{a.SECTION_CODE}}</td>
-								<td>{{a.NATURE_OF_PAYMENT}}</td>
-								<td>{{a.LDC_RATE}}</td>
-								<td>{{a.CERTIFICATE_LIMIT}}</td>
-								<td>{{a.AMOUNT_CONSUMED}}</td>
-								<td>{{a.ISSUE_DATE | date:'dd-MM-yyyy'}}</td>
-								<td>{{a.CANCEL_DATE}}</td>
-								<td>{{a.AS_ON_DATE | date:'dd-MM-yyyy'}}</td>
+								<td >{{$index+1}}</td>
+								<td >{{a.LDC_NUMBER}}</td>
+								<td  class="truncate ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.NAME}}">{{a.NAME}}</td>
+								<td >{{a.TAN}}</td>
+								<td >{{a.PAN}}</td>
+								<td >{{a.FY}}</td>
+								<td >{{a.VALID_FROM | date:'dd-MM-yyyy'}}</td>
+								<td >{{a.VALID_TO | date:'dd-MM-yyyy'}}</td>
+								<td >{{a.SECTION_CODE}}</td>
+								<td >{{a.NATURE_OF_PAYMENT}}</td>
+								<td >{{a.LDC_RATE}}</td>
+								<td >{{a.CERTIFICATE_LIMIT}}</td>
+								<td >{{a.AMOUNT_CONSUMED}}</td>
+								<td >{{a.ISSUE_DATE | date:'dd-MM-yyyy'}}</td>
+								<td >{{a.CANCEL_DATE}}</td>
+								<td >{{a.AS_ON_DATE | date:'dd-MM-yyyy'}}</td>
 
 								<!-- <td>{{a.total-a.amountPaid}}</td> -->
 
@@ -329,4 +353,12 @@
 
 
 	</div>
+	
+	<script>
+			$(document).ready(function() {
+				$('td').tooltip({
+					selector : '[data-toggle="tooltip"]'
+				});
+			});
+		</script>
 </div>

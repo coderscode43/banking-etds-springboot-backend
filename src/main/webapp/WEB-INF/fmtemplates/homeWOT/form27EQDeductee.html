@@ -236,11 +236,11 @@
 
 		<div class="row">
 
-			<div class="table-responsive" style="overflow-x:inherit">
+			<div class="table-responsive" style="overflow-x:inherit;width:600%">
 
-				<table class=" table table-bordered table-hover table-striped"
+				<table class=" tables table-bordered table-hover table-striped"
 					role="table"
-					style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+					style="font-size: 12px; padding: 5px; margin: 5px;">
 
 
 					<thead>
@@ -249,7 +249,7 @@
 					</colgroup>
 					<tr>
 					<thead role="rowgroup">
-						<tr style="background-color: #81b7db">
+						<tr style="background-color: #81b7db;height:40px">
 							<th>Sr. No.</th>
 							<th>Quarter</th>
 							<th>Month</th>
@@ -302,47 +302,47 @@
             </tr>
 						<tr role="row"
 							ng-repeat="a in cCctr.getEntityListDataFY() track by a.id">
-							<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
-							<td>{{a.quarter}}</td>
-							<td>{{a.month}}</td>
-							<td>{{a.branchCode}}</td>
-							<td>{{a.custVendId}}</td>
-							<td>{{a.uniqueRefNo}}</td>
-							<td>{{a.accNo}}</td>
-							<td>{{a.challanHeading}}</td>
-							<td>{{a.deducteeReferenceNo}}</td>
-							<td>{{a.deducteeCode}}</td>
-							<td>{{a.panofthedeductee}}</td>
-							<td>{{a.nameoftheDeductee}}</td>
-							<td>{{a.amountReceiptDebited}}</td>
-							<td>{{a.dateofReceivedDebited}}</td>
-							<td>{{a.tcs}}</td>
-							<td>{{a.surcharge}}</td>
+							<td style="width:2%">{{$index+1}}</td>
+							<td style="width:2%">{{a.quarter}}</td>
+							<td style="width:2%">{{a.month}}</td>
+							<td style="width:2%">{{a.branchCode}}</td>
+							<td style="width:2%">{{a.custVendId}}</td>
+							<td style="width:2%">{{a.uniqueRefNo}}</td>
+							<td style="width:2%">{{a.accNo}}</td>
+							<td style="width:2%">{{a.challanHeading}}</td>
+							<td style="width:2%">{{a.deducteeReferenceNo}}</td>
+							<td style="width:2%">{{a.deducteeCode}}</td>
+							<td style="width:2%">{{a.panofthedeductee}}</td>
+							<td style="width:2%">{{a.nameoftheDeductee}}</td>
+							<td style="width:2%">{{a.amountReceiptDebited}}</td>
+							<td style="width:2%">{{a.dateofReceivedDebited}}</td>
+							<td style="width:2%">{{a.tcs}}</td>
+							<td style="width:2%">{{a.surcharge}}</td>
 							
-							<td>{{a.educationCess}}</td>
+							<td style="width:2%">{{a.educationCess}}</td>
 							
-							<td>{{a.totalTaxCollected}}</td>
-							<td>{{a.totalTaxDeposited}}</td>
-							<td>{{a.dateofCollected| date:'dd-MM-yyyy'}}</td>
-							<td>{{a.totalValueofPurchase}}</td>
-							<td>{{a.rateatwhichTaxCollected}}</td>
-							<td>{{a.reasonforNonCollection}}</td>
-							<td>{{a.collectionCode}}</td>
-							<td>{{a.certificatenumber}}</td>
-							<td>{{a.deducteeisNonResident}}</td>
-							<td>{{a.permanentEstablishment}}</td>
-							<td>{{a.reasonForNonCollectionForG}}</td>
-							<td>{{a.ifAnswerTo681AisyesthenChallanNumber}}</td>
-							<td>{{a.ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment| date:'dd-MM-yyyy'}}</td>
-							<td>{{a.errorDescription}}</td>
-							<td>{{a.warningDescription}}</td>
-							<td>{{a.ShortDeduction}}</td>
-							<td>{{a.InterestOnShortDeduction}}</td>
-							<td>{{a.InterestOnLatePayment}}</td>
-							<td>{{a.InterestOnLateDeduction}}</td>
+							<td style="width:2%">{{a.totalTaxCollected}}</td>
+							<td style="width:2%">{{a.totalTaxDeposited}}</td>
+							<td style="width:2%">{{a.dateofCollected| date:'dd-MM-yyyy'}}</td>
+							<td style="width:2%">{{a.totalValueofPurchase}}</td>
+							<td style="width:2%">{{a.rateatwhichTaxCollected}}</td>
+							<td style="width:2%">{{a.reasonforNonCollection}}</td>
+							<td style="width:2%">{{a.collectionCode}}</td>
+							<td style="width:2%">{{a.certificatenumber}}</td>
+							<td style="width:2%">{{a.deducteeisNonResident}}</td>
+							<td style="width:2%">{{a.permanentEstablishment}}</td>
+							<td style="width:2%">{{a.reasonForNonCollectionForG}}</td>
+							<td style="width:2%">{{a.ifAnswerTo681AisyesthenChallanNumber}}</td>
+							<td style="width:2%">{{a.ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment| date:'dd-MM-yyyy'}}</td>
+							<td style="width:2%">{{a.errorDescription}}</td>
+							<td style="width:2%">{{a.warningDescription}}</td>
+							<td style="width:2%">{{a.ShortDeduction}}</td>
+							<td style="width:2%">{{a.InterestOnShortDeduction}}</td>
+							<td style="width:2%">{{a.InterestOnLatePayment}}</td>
+							<td style="width:2%">{{a.InterestOnLateDeduction}}</td>
 							<div>
-						<td ng-if="a.resolved == 0">Resolved</td>
-						<td ng-if="a.resolved == 1">Not Resolved</td>
+						<td ng-if="a.resolved == 0" style="width:2%">Resolved</td>
+						<td ng-if="a.resolved == 1" style="width:2%">Not Resolved</td>
                          </div>
 
 							<!-- <div>
@@ -351,7 +351,7 @@
 								<td ng-if="a.verify == 0"><i class="fa fa-times"
 									aria-hidden="true" style="color: #ff0000"></i></td>
 							</div> -->
-							<td><a
+							<td style="width:2%"><a
 						ng-click="cCctr.gotoWFYDetailPage('form27EQDeductee',a.id,'detailForm27EQDeductee')"
 						style="color: blue" onclick="scrollWin()"><img
 							src="static\img\edit.png" width="22px" height="22px"

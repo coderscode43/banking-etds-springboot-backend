@@ -49,7 +49,6 @@
 	td:nth-of-type(3):before {
 		content: "ipaddrs";
 	}
-	
 }
 
 @media only screen and (max-width: 1000px) {
@@ -115,103 +114,97 @@
 
 		<br>
 		<button class="btn btn-primary hidden visible-xs" type="button"
-		data-toggle="collapse" data-target="#collapseExample2"
-		aria-expanded="false" aria-controls="collapseExample">Search</button>
-	<div class="collapse dont-collapse-sm" id="collapseExample2">
-		<div class="row">
-			<div class="form-group">
+			data-toggle="collapse" data-target="#collapseExample2"
+			aria-expanded="false" aria-controls="collapseExample">Search</button>
+		<div class="collapse dont-collapse-sm" id="collapseExample2">
+			<div class="row">
+				<div class="form-group">
 
 
-				<div class="col-md-3">
+					<div class="col-md-3">
 						<h6>
 							<b> User Name</b>
 							<h6>
 								<input type="text" ng-model="cCctr.search.username"
 									class="form-control" placeholder="Name" style="width: 100%">
-				
 					</div>
-				<div class="col-md-3">
-					<h6>
+					<div class="col-md-3">
+						<h6>
 							<b> Entity</b>
 							<h6>
 								<input type="text" ng-model="cCctr.search.entity"
 									class="form-control" placeholder="Entity" style="width: 100%">
+					</div>
+
+
 				</div>
-
-				
-			</div>
-		</div>
-
-		<div class=" collapse  panel-collapse" id="collapseExample4">
-			
-			<div class="row">
-			<div class="col-md-3">
-					<h6>
-					<b>From Date</b>
-					<h6>
-						<input type="date" ng-model="cCctr.search.fromDate"
-							ng-change="cWctr.search.fromDate=cWctr.date(cWctr.search.fromDate);"
-							class="form-control" placeholder="Date" style="width: 100%">
-				</div>
-			<div class="col-md-3">
-				<h6>
-					<b>To Date</b>
-					<h6>
-						<input type="date" ng-model="cCctr.search.toDate"
-							ng-change="cWctr.search.toDate=cWctr.date(cWctr.search.toDate);"
-							class="form-control" placeholder="Date" style="width: 100%">
 			</div>
 
-			
-			<div class="col-md-3">
-				<h6>
-					<b>IP-Address</b><h6>
-						<input type="text" ng-model="cCctr.search.ipaddrs"
-						class="form-control" placeholder="ipaddrs" style="width: 100%">	
-			</div>
-		</div>
-		</div>
-		<div class="row text-right" id="hide">
-				<div class="col-md-3" style="margin-left: 75%; margin-top: -44px">
-					<button
-					ng-click="cCctr.searchEntities(true,'logs','logs')"
-					class="btn btn-success" onclick="scrollWin()">Search</button>
-				<button class="btn btn-secondary"
-					style="background-color: #FFA500;"
-					data-toggle="collapse" data-target="#collapseExample4"
-					aria-expanded="false" aria-controls="collapseExample">
-					Advance Search</button>
-				<!-- <button type="button" class="btn btn-primary"
-					ng-click="cCctr.gotoListPage('form26QDeductee','addForm26QDeductee');">Add</button> -->
-					<div class="text-right">
+			<div class=" collapse  panel-collapse" id="collapseExample4">
+
+				<div class="row">
+					<div class="col-md-3">
+						<h6>
+							<b>From Date</b>
+							<h6>
+								<input type="date" ng-model="cCctr.search.fromDate"
+									ng-change="cWctr.search.fromDate=cWctr.date(cWctr.search.fromDate);"
+									class="form-control" placeholder="Date" style="width: 100%">
+					</div>
+					<div class="col-md-3">
+						<h6>
+							<b>To Date</b>
+							<h6>
+								<input type="date" ng-model="cCctr.search.toDate"
+									ng-change="cWctr.search.toDate=cWctr.date(cWctr.search.toDate);"
+									class="form-control" placeholder="Date" style="width: 100%">
+					</div>
+
+
+					<div class="col-md-3">
+						<h6>
+							<b>IP-Address</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.ipaddrs"
+									class="form-control" placeholder="ipaddrs" style="width: 100%">
 					</div>
 				</div>
 			</div>
-		
+			<div class="row text-right" id="hide">
+				<div class="col-md-3" style="margin-left: 75%; margin-top: -44px">
+					<button ng-click="cCctr.searchEntities(true,'logs','logs')"
+						class="btn btn-success" onclick="scrollWin()">Search</button>
+					<button class="btn btn-secondary"
+						style="background-color: #FFA500;" data-toggle="collapse"
+						data-target="#collapseExample4" aria-expanded="false"
+						aria-controls="collapseExample">Advance Search</button>
+					<!-- <button type="button" class="btn btn-primary"
+					ng-click="cCctr.gotoListPage('form26QDeductee','addForm26QDeductee');">Add</button> -->
+					<div class="text-right"></div>
+				</div>
+			</div>
 
 
 
-		<div class="row" id="hide">
-			<div class="col-md-3" style="margin-left: 80%; margin-top: -40px">
-				
+
+			<div class="row" id="hide">
+				<div class="col-md-3" style="margin-left: 80%; margin-top: -40px">
+
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<div style="float: right; margin-top: -13px"></div>
+		<div style="float: right; margin-top: -13px"></div>
 
-	<div class="row">
-		<div class="col-xs-12">
-			<div class="text-right">
-				
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="text-right"></div>
 			</div>
 		</div>
-	</div>
 
 
 
-		<div class="row"
-			ng-init="cCctr.entity=cCctr.getEntityListData()">
+		<div class="row" ng-init="cCctr.entity=cCctr.getEntityListData()">
 			<div class="col-12" ng-show="cCctr.getEntityListData()">
 				<div class="">
 					<div class="">
@@ -233,9 +226,11 @@
 									</tr>
 								</thead>
 								<tbody>
-								<tr style="color: red" ng-show="cCctr.getEntityListData().length <= 0">
-					<td colspan="14" style="text-align: center;"><b><h3 style="text-align:center;">No data
-					found!!</h3></b></td></tr>
+									<tr style="color: red"
+										ng-show="cCctr.getEntityListData().length <= 0">
+										<td colspan="14" style="text-align: center;"><b><h3
+													style="text-align: center;">No data found!!</h3></b></td>
+									</tr>
 									<tr ng-repeat="a in cCctr.getEntityListData()"
 										style="font-size: 13px">
 										<td>{{$index+1}}</td>
@@ -301,7 +296,7 @@
 		</div>
 
 	</div>
-
+</div>
 
 </body>
 </html>

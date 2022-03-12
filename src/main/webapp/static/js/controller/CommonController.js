@@ -727,8 +727,8 @@ App
 										.log("Common Controller get Entity data");
 								return CommonServiceFY.getEntity();
 							}
-							/* Pranay */
-							self.ajax = function(entity, name, term) {
+							
+					self.ajax = function(entity, name, term) {
 								var ajax = {};
 								ajax.name = name;
 								ajax.term = term;
@@ -738,7 +738,6 @@ App
 											console.log(name
 													+ ' dynamic drop down');
 											var items = data;
-											self.ajax = data;
 											return data;
 										});
 							}

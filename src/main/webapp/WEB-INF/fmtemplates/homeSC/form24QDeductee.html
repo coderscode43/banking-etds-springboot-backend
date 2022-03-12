@@ -70,6 +70,25 @@
 th{
 text-align:center;
 }
+
+.truncate {
+        display: block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width:5%;
+        height:60px;
+        
+    }
+    
+    .ellipsis{
+     max-width: 70px;
+    min-width: 200px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    
+    }
 </style>
 
 
@@ -273,7 +292,7 @@ text-align:center;
 						<th>Employee Ref. No.</th>
 						<th>Pan Ref. No.</th>
 						<th>PAN</th>
-						<th>Name</th>
+						<th style="width:0.01%">Name</th>
 						<th>Section Code</th>
 						<th>Date of Payment</th>
 						<th>Date of Deduction</th>
@@ -283,11 +302,11 @@ text-align:center;
 						<th>Education cess</th>
 						<th>Total TDS</th>
 						<th>Total Tax Deposited</th>
-						<th>Remarks</th>
-						<th>Certificate No.</th>
-						<th>Error Description</th>
-						<th>Warning Description</th>
-						<th>Short Deduction</th>
+						<th style="width:0.01%">Remarks</th>
+						<th style="width:0.01%">Certificate No.</th>
+						<th style="width:0.01%">Error Description</th>
+						<th style="width:0.01%">Warning Description</th>
+						<th style="width:0.01%">Short Deduction</th>
 						<th>Interest on Short Deduction</th>
 						<th>Interest on Late Payment</th>
 						<th>Interest on Late Deduction</th>
@@ -318,7 +337,7 @@ text-align:center;
 						<td style="width: 1%">{{a.employeeRefNo}}</td>
 						<td style="width: 1%">{{a.panRefNo}}</td>
 						<td style="width: 1%">{{a.pan}}</td>
-						<td style="width: 1%">{{a.name}}</td>
+						<td  class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.name}}">{{a.name}}</td>
 						<td style="width: 1%">{{a.sectionCode}}</td>
 						<td style="width: 1%">{{a.dateOfPayment | date:'dd-MM-yyyy'}}</td>
 						<td style="width: 1%">{{a.dateOfDeduction |
@@ -329,11 +348,11 @@ text-align:center;
 						<td style="width: 1%">{{a.educationCess}}</td>
 						<td style="width: 1%">{{a.totalTds}}</td>
 						<td style="width: 1%">{{a.totalTaxDeposited}}</td>
-						<td style="width: 1%">{{a.remarks}}</td>
-						<td style="width: 1%">{{a.certificateNumber}}</td>
-						<td style="width: 1%">{{a.errorDescription}}</td>
-						<td style="width: 1%">{{a.warningDescription}}</td>
-						<td style="width: 1%">{{a.ShortDeduction}}</td>
+						<td class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.remarks}}">{{a.remarks}}</td>
+						<td class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.certificateNumber}}">{{a.certificateNumber}}</td>
+						<td class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.errorDescription}}">{{a.errorDescription}}</td>
+						<td class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.warningDescription}}">{{a.warningDescription}}</td>
+						<td class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.ShortDeduction}}">{{a.ShortDeduction}}</td>
 						<td style="width: 1%">{{a.InterestOnShortDeduction}}</td>
 						<td style="width: 1%">{{a.InterestOnLatePayment}}</td>
 						<td style="width: 1%">{{a.InterestOnLateDeduction}}</td>

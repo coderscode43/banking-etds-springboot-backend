@@ -78,6 +78,25 @@
     width:1%;
     
     }
+    
+    .truncate {
+        display: block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width:5%;
+        height:60px;
+        
+    }
+    
+    .ellipsis{
+     max-width: 70px;
+    min-width: 200px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    
+    }
 </style>
 
 
@@ -267,7 +286,7 @@
 
 		<div class="row">
 
-			<div style="overflow-x: inherit; width: 400%">
+			<div style="overflow-x: inherit; width: 600%">
 
 				<table class=" tables table-bordered table-hover table-striped"
 					role="table"
@@ -289,12 +308,12 @@
 							<th>Unique Ref No</th>
 							<th>Account Number</th>
 							<th>Challan Heading</th>
-							<th>Party Reference No.</th>
+							<th >Party Reference No.</th>
 							<th>Party Code</th>
-							<th>PAN of the Party</th>
-							<th>Name of the Party</th>
+							<th style="width:0.01%">PAN of the Party</th>
+							<th style="width:0.01%">Name of the Party</th>
 							<th>Amount Receipt/Debited</th>
-							<th>Date of Received/Debited</th>
+							<th class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="Date of Received/Debited">Date of Received/Debited</th>
 							<th>TCS</th>
 							<th>Surcharge</th>
 							<th>Education Cess</th>
@@ -302,22 +321,23 @@
 							<th>Total Tax Deposited</th>
 							<th>Date of Collected</th>
 							<th>Total Value of Purchase</th>
-							<th>Rate at which Tax Collected</th>
+							<th class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="Rate at which Tax Collected">Rate at which Tax Collected</th>
 							<th>Reason for Non Collection</th>
-							<th>Section / Collection Code</th>
-							<th>Certificate Number</th>
-							<th>Deductee is Non-Resident</th>
-							<th>Permanent Establishment</th>
+							<th class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="Section / Collection Code">Section / Collection Code</th>
+							<th style="width:0.01%">Certificate Number</th>
+							<th style="width:0.01%">Deductee is Non-Resident</th>
+							<th style="width:0.01%">Permanent Establishment</th>
 							<th>Reason For NonCollection F or G</th>
-							<th>if Answer to 681A is Yes Then Challan Number</th>
-							<th>if Answer to 681A is Yes Then Date Of Payment Of TDS To
+							<th  class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="if Answer to 681A is Yes Then Challan Number">if Answer to 681A is Yes Then Challan Number</th>
+							<th  class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="if Answer to 681A is Yes Then Date Of Payment Of TDS To
+								Central Government">if Answer to 681A is Yes Then Date Of Payment Of TDS To
 								Central Government</th>
-							<th>Error Description</th>
-							<th>Warning Description</th>
-							<th>Short Deduction</th>
-							<th>Interest on Short Deduction</th>
-							<th>Interest on Late Payment</th>
-							<th>Interest on Late Deduction</th>
+							<th style="width:0.01%">Error Description</th>
+							<th style="width:0.01%">Warning Description</th>
+							<th style="width:0.01%">Short Deduction</th>
+							<th class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="Interest on Short Deduction">Interest on Short Deduction</th>
+							<th class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="Interest on Late Payment">Interest on Late Payment</th>
+							<th class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="Interest on Late Deduction">Interest on Late Deduction</th>
 							<th>Status</th>
 							<th>Action</th>
 
@@ -347,7 +367,7 @@
 							<td>{{a.deducteeReferenceNo}}</td>
 							<td>{{a.deducteeCode}}</td>
 							<td>{{a.panofthedeductee}}</td>
-							<td>{{a.nameoftheDeductee}}</td>
+							<td class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.nameoftheDeductee}}">{{a.nameoftheDeductee}}</td>
 							<td>{{a.amountReceiptDebited}}</td>
 							<td>{{a.dateofReceivedDebited}}</td>
 							<td>{{a.tcs}}</td>
@@ -358,18 +378,18 @@
 							<td>{{a.dateofCollected| date:'dd-MM-yyyy'}}</td>
 							<td>{{a.totalValueofPurchase}}</td>
 							<td >{{a.rateatwhichTaxCollected}}</td>
-							<td >{{a.reasonforNonCollection}}</td>
+							<td class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.reasonforNonCollection}}">{{a.reasonforNonCollection}}</td>
 							<td>{{a.collectionCode}}</td>
-							<td>{{a.certificatenumber}}</td>
-							<td>{{a.deducteeisNonResident}}</td>
-							<td >{{a.permanentEstablishment}}</td>
-							<td >{{a.reasonForNonCollectionForG}}</td>
+							<td class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.certificatenumber}}">{{a.certificatenumber}}</td>
+							<td class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.deducteeisNonResident}}">{{a.deducteeisNonResident}}</td>
+							<td class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.permanentEstablishment}}">{{a.permanentEstablishment}}</td>
+							<td class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.reasonForNonCollectionForG}}">{{a.reasonForNonCollectionForG}}</td>
 							<td >{{a.ifAnswerTo681AisyesthenChallanNumber}}</td>
 							<td >{{a.ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment|
 								date:'dd-MM-yyyy'}}</td>
-							<td >{{a.errorDescription}}</td>
-							<td >{{a.warningDescription}}</td>
-							<td>{{a.ShortDeduction}}</td>
+							<td class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.errorDescription}}">{{a.errorDescription}}</td>
+							<td class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.warningDescription}}">{{a.warningDescription}}</td>
+							<td class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.ShortDeduction}}">{{a.ShortDeduction}}</td>
 							<td >{{a.InterestOnShortDeduction}}</td>
 							<td >{{a.InterestOnLatePayment}}</td>
 							<td >{{a.InterestOnLateDeduction}}</td>

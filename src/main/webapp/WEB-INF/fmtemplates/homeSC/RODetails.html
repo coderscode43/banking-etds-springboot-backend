@@ -46,9 +46,25 @@
 	}
 }
 
-td{
-width:2%;
-}
+.truncate {
+        display: block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width:5%;
+        height:60px;
+        
+    }
+    
+    .ellipsis{
+     max-width: 70px;
+    min-width: 200px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    
+    }
+
 </style>
 
 <div id="page-wrapper">
@@ -179,9 +195,9 @@ width:2%;
 						<tr role="row" style="background-color: #81b7db; height: 40px;">
 							<th>Sr. No.</th>
 							<th>RO Code</th>
-							<th>RO NAME</th>
+							<th style="width:0.05%">RO NAME</th>
 							<th>RO Address</th>
-							<th>RO Email</th>
+							<th style="width:0.05%">RO Email</th>
 							<th>RO State</th>
 							<th>RO Pincode</th>
 							<th>Action</th>
@@ -196,9 +212,9 @@ width:2%;
 							ng-repeat="a in cCctr.getEntityListData() track by a.id">
 							<td>{{$index+1}}</td>
 							<td>{{a.roCode}}</td>
-							<td>{{a.roName}}</td>
-							<td>{{a.roAddress}}</td>
-							<td>{{a.roEmail}}</td>
+							<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.roName}}">{{a.roName}}</td>
+							<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.roAddress}}">{{a.roAddress}}</td>
+							<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.roEmail}}">{{a.roEmail}}</td>
 							<td>{{a.roState}}</td>
 							<td>{{a.roPincode}}</td>
 

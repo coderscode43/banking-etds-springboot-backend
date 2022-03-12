@@ -257,7 +257,7 @@
 						<thead role="rowgroup">
 							<tr role="row" style="background-color: #81b7db;height:40px">
 								<th>Sr. No.</th>
-								<th>LDC_NUMBER</th>
+								<th style="width:0.1%">LDC_NUMBER</th>
 								<th style="width:0.1%">NAME</th>
 								<th>TAN</th>
 								<th>PAN</th>
@@ -265,7 +265,7 @@
 								<th>Valid From</th>
 								<th>Valid To</th>
 								<th>Section Code</th>
-								<th>Nature of Payment</th>
+								<th style="width:0.1%">Nature of Payment</th>
 								<th>LDC Rate</th>
 								<th>Certificate Limit</th>
 								<th>Amount Consumed</th>
@@ -284,15 +284,15 @@
 							<tr role="row"
 								ng-repeat="a in cCctr.getEntityListData() track by a.id">
 								<td >{{$index+1}}</td>
-								<td >{{a.LDC_NUMBER}}</td>
-								<td  class="truncate ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.NAME}}">{{a.NAME}}</td>
+								<td class="ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.LDC_NUMBER}}">{{a.LDC_NUMBER}}</td>
+								<td  class="ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.NAME}}">{{a.NAME}}</td>
 								<td >{{a.TAN}}</td>
 								<td >{{a.PAN}}</td>
 								<td >{{a.FY}}</td>
 								<td >{{a.VALID_FROM | date:'dd-MM-yyyy'}}</td>
 								<td >{{a.VALID_TO | date:'dd-MM-yyyy'}}</td>
 								<td >{{a.SECTION_CODE}}</td>
-								<td >{{a.NATURE_OF_PAYMENT}}</td>
+								<td class="ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.NATURE_OF_PAYMENT}}">{{a.NATURE_OF_PAYMENT}}</td>
 								<td >{{a.LDC_RATE}}</td>
 								<td >{{a.CERTIFICATE_LIMIT}}</td>
 								<td >{{a.AMOUNT_CONSUMED}}</td>

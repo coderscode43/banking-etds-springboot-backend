@@ -46,6 +46,29 @@
 		display: none;
 	}
 }
+
+th{
+text-align:center;
+}
+
+.truncate {
+        display: block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width:5%;
+        height:60px;
+        
+    }
+    
+    .ellipsis{
+     max-width: 70px;
+    min-width: 200px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    
+    }
 </style>
 
 
@@ -257,11 +280,11 @@
 							<th>Vend/Cust Id</th>
 							<th>Unique Ref No</th>
 							<th>Account Number</th>
-							<th>Challan Heading</th>
+							<th style="width:0.01%">Challan Heading</th>
 							<th>Party  Reference No.</th>
 							<th>Party  Code</th>
 							<th>PAN of the Party </th>
-							<th>Name of the Party</th>
+							<th style="width:0.01%">Name of the Party</th>
 							<th>Amount Receipt/Debited</th>
 							<th>Date of Received/Debited</th>
 							<th>TCS</th>
@@ -272,17 +295,17 @@
 							<th>Date of Collected</th>
 							<th>Total Value of Purchase</th>
 							<th>Rate at which Tax Collected</th>
-							<th>Reason for Non Collection</th>
-							<th>Section / Collection Code</th>
+							<th style="width:0.01%">Reason for Non Collection</th>
+							<th >Section / Collection Code</th>
 							<th>Certificate Number</th>
-							<th>Deductee is Non-Resident</th>
-							<th>Permanent Establishment</th>
-							<th>Reason For NonCollection F or G</th>
-							<th>if Answer to 681A is Yes Then Challan Number</th>
-							<th>if Answer to 681A is Yes Then Date Of Payment Of TDS To Central Government</th>
-							<th >Error Description</th>
-							<th >Warning Description</th>
-							<th >Short Deduction</th>
+							<th style="width:0.01%">Deductee is Non-Resident</th>
+							<th style="width:0.01%">Permanent Establishment</th>
+							<th style="width:0.01%">Reason For NonCollection F or G</th>
+							<th style="width:0.01%" class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="if Answer to 681A is Yes Then Challan Number">if Answer to 681A is Yes Then Challan Number</th>
+							<th style="width:0.01%" class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="if Answer to 681A is Yes Then Date Of Payment Of TDS To Central Government"> if Answer to 681A is Yes Then Date Of Payment Of TDS To Central Government</th>
+							<th style="width:0.01%">Error Description</th>
+							<th style="width:0.01%">Warning Description</th>
+							<th style="width:0.01%">Short Deduction</th>
 							<th >Interest on Short Deduction</th>
 							<th >Interest on Late Payment</th>
 							<th >Interest on Late Deduction</th>
@@ -290,7 +313,7 @@
 							<th >Action</th>
 
 
-
+ 
 						</tr>
 					</thead>
 					<tbody>
@@ -309,11 +332,11 @@
 							<td style="width:2%">{{a.custVendId}}</td>
 							<td style="width:2%">{{a.uniqueRefNo}}</td>
 							<td style="width:2%">{{a.accNo}}</td>
-							<td style="width:2%">{{a.challanHeading}}</td>
+							<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.challanHeading}}">{{a.challanHeading}}</td>
 							<td style="width:2%">{{a.deducteeReferenceNo}}</td>
 							<td style="width:2%">{{a.deducteeCode}}</td>
 							<td style="width:2%">{{a.panofthedeductee}}</td>
-							<td style="width:2%">{{a.nameoftheDeductee}}</td>
+							<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.nameoftheDeductee}}">{{a.nameoftheDeductee}}</td>
 							<td style="width:2%">{{a.amountReceiptDebited}}</td>
 							<td style="width:2%">{{a.dateofReceivedDebited}}</td>
 							<td style="width:2%">{{a.tcs}}</td>
@@ -326,17 +349,17 @@
 							<td style="width:2%">{{a.dateofCollected| date:'dd-MM-yyyy'}}</td>
 							<td style="width:2%">{{a.totalValueofPurchase}}</td>
 							<td style="width:2%">{{a.rateatwhichTaxCollected}}</td>
-							<td style="width:2%">{{a.reasonforNonCollection}}</td>
+							<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.reasonforNonCollection}}">{{a.reasonforNonCollection}}</td>
 							<td style="width:2%">{{a.collectionCode}}</td>
 							<td style="width:2%">{{a.certificatenumber}}</td>
-							<td style="width:2%">{{a.deducteeisNonResident}}</td>
-							<td style="width:2%">{{a.permanentEstablishment}}</td>
-							<td style="width:2%">{{a.reasonForNonCollectionForG}}</td>
-							<td style="width:2%">{{a.ifAnswerTo681AisyesthenChallanNumber}}</td>
-							<td style="width:2%">{{a.ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment| date:'dd-MM-yyyy'}}</td>
-							<td style="width:2%">{{a.errorDescription}}</td>
-							<td style="width:2%">{{a.warningDescription}}</td>
-							<td style="width:2%">{{a.ShortDeduction}}</td>
+							<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.deducteeisNonResident}}">{{a.deducteeisNonResident}}</td>
+							<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.permanentEstablishment}}">{{a.permanentEstablishment}}</td>
+							<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.reasonForNonCollectionForG}}">{{a.reasonForNonCollectionForG}}</td>
+							<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.ifAnswerTo681AisyesthenChallanNumber}}">{{a.ifAnswerTo681AisyesthenChallanNumber}}</td>
+							<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment}}">{{a.ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment| date:'dd-MM-yyyy'}}</td>
+							<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.errorDescription}}">{{a.errorDescription}}</td>
+							<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.warningDescription}}">{{a.warningDescription}}</td>
+							<td  class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.ShortDeduction}}">{{a.ShortDeduction}}</td>
 							<td style="width:2%">{{a.InterestOnShortDeduction}}</td>
 							<td style="width:2%">{{a.InterestOnLatePayment}}</td>
 							<td style="width:2%">{{a.InterestOnLateDeduction}}</td>

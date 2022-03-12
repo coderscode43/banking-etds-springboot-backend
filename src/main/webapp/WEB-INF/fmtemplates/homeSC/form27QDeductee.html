@@ -52,7 +52,7 @@
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
-        width: 160px;
+        width:5%;
         height:60px;
         
     }
@@ -307,7 +307,7 @@
 						<th>Cash Withdrawl 194N(>1cr</th>
 						<th>Error Description</th>
 						<th style="width:50px">Warning Description</th>
-						<th>Short Deduction</th>
+						<th >Short Deduction</th>
 						<th>Interest on Short Deduction</th>
 						<th>Interest on Late Payment</th>
 						<th>Interest on Late Deduction</th>
@@ -333,11 +333,11 @@
 						<td >{{a.custVendId}}</td>
 						<td >{{a.uniqueRefNo}}</td>
 						<td >{{a.accNo}}</td>
-						<td >{{a.challanHeading}}</td>
+						<td class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.challanHeading}}">{{a.challanHeading}}</td>
 						<td >{{a.deducteeRefNo}}</td>
-						<td >{{a.deducteeCode}}</td>
+						<td class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.deducteeCode}}">{{a.deducteeCode}}</td>
 						<td >{{a.pan}}</td>
-						<td style="width:3%">{{a.name}}</td>
+						<td class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.name}}">{{a.name}}</td>
 						<td >{{a.sectionCode}}</td>
 						<td >{{a.date | date:'dd-MM-yyyy'}}</td>
 						<td >{{a.amountPaid}}</td>
@@ -349,23 +349,23 @@
 						<td >{{a.dateOfDeduction|
 							date:'dd-MM-yyyy'}}</td>
 						<td >{{a.rateAtWhichTaxDeducted}}</td>
-						<td >{{a.reasonForNonDeduction}}</td>
+						<td class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.reasonForNonDeduction}}">{{a.reasonForNonDeduction}}</td>
 						<td >{{a.grossingUpIndicator}}</td>
 						<td >{{a.noOfCertificateUnderSection}}</td>
 						<td >{{a.tdsRateAsPerItActs}}</td>
-						<td >{{a.natureOfRemittance}}</td>
+						<td class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.natureOfRemittance}}">{{a.natureOfRemittance}}</td>
 						<td >{{a.uniqueAcknowledgeNo}}</td>
 						<td >{{a.countryOfResidence}}</td>
 						<td >{{a.emailId}}</td>
 						<td >{{a.contactNoOfDeductee}}</td>
-						<td >{{a.addressOfDeductee}}</td>
+						<td class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.addressOfDeductee}}">{{a.addressOfDeductee}}</td>
 						<td >{{a.taxIdentificationNo}}</td>
 						<td >{{a.cashWithdrawal194N}}</td>
 						<td >{{a.cashWithdrawal194N20Lto1Cr}}</td>
 						<td >{{a.cashWithdrawal194N1Cr}}</td>
-						<td style="width:3%">{{a.errorDescription}}</td>
-						<td  class="truncate ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.warningDescription}}">{{a.warningDescription}}</td>
-						<td >{{a.ShortDeduction}}</td>
+						<td class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.errorDescription}}">{{a.errorDescription}}</td>
+						<td  class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.warningDescription}}">{{a.warningDescription}}</td>
+						<td class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.ShortDeduction}}">{{a.ShortDeduction}}</td>
 						<td >{{a.InterestOnShortDeduction}}</td>
 						<td >{{a.InterestOnLatePayment}}</td>
 						<td >{{a.InterestOnLateDeduction}}</td>

@@ -46,6 +46,29 @@
 		display: none;
 	}
 }
+
+th{
+text-align:center;
+}
+
+.truncate {
+        display: block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width:5%;
+        height:60px;
+        
+    }
+    
+    .ellipsis{
+     max-width: 70px;
+    min-width: 200px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    
+    }
 </style>
 
 
@@ -265,7 +288,7 @@
 						<th>Deductee Reference No</th>
 						<th>Deductee Code</th>
 						<th>PAN of the Deductee</th>
-						<th>Name of the Deductee</th>
+						<th style="width:0.01%">Name of the Deductee</th>
 						<th>Section Code</th>
 						<th>Date of payment / credit</th>
 						<th>Amount Paid/Credited</th>
@@ -276,23 +299,23 @@
 						<th>Total Tax Deposited</th>
 						<th>Date of Deduction</th>
 						<th>Rate at which tax Deducted</th>
-						<th>Reason for non Deduction</th>
+						<th style="width:0.01%">Reason for non Deduction</th>
 						<th>Grossing up Indicator</th>
 						<th>No of Certificate under Section</th>
 						<th>TDS Rate As Per IT Acts</th>
-						<th>Nature Of Remittance</th>
+						<th style="width:0.01%">Nature Of Remittance</th>
 						<th>Unique Knowledge No.</th>
 						<th>Country of residence of the Deductee</th>
 						<th>Email ID of Deductee</th>
 						<th>Contact Number of Deductee</th>
 						<th>Address of Deductee in Country of Residence</th>
 						<th>Tax Identification Number</th>
-						<th>Cash Withdrawl (194N)</th>
-						<th>Cash Withdrawl 194N(20L to 1cr)</th>
-						<th>Cash Withdrawl 194N(>1cr</th>
-						<th>Error Description</th>
-						<th>Warning Description</th>
-						<th>Short Deduction</th>
+						<th style="width:0.01%">Cash Withdrawl (194N)</th>
+						<th style="width:0.01%">Cash Withdrawl 194N(20L to 1cr)</th>
+						<th style="width:0.01%">Cash Withdrawl 194N(>1cr</th>
+						<th style="width:0.01%">Error Description</th>
+						<th style="width:0.01%">Warning Description</th>
+						<th style="width:0.01%">Short Deduction</th>
 						<th>Interest on Short Deduction</th>
 						<th>Interest on Late Payment</th>
 						<th>Interest on Late Deduction</th>
@@ -320,7 +343,7 @@
 						<td style="width:2%">{{a.deducteeRefNo}}</td>
 						<td style="width:2%">{{a.deducteeCode}}</td>
 						<td style="width:2%">{{a.pan}}</td>
-						<td style="width:2%">{{a.name}}</td>
+						<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.name}}">{{a.name}}</td>
 						<td style="width:2%">{{a.sectionCode}}</td>
 						<td style="width:2%">{{a.date | date:'dd-MM-yyyy'}}</td>
 						<td style="width:2%">{{a.amountPaid}}</td>
@@ -331,23 +354,23 @@
 						<td style="width:2%">{{a.totalTaxDeposited}}</td>
 						<td style="width:2%">{{a.dateOfDeduction| date:'dd-MM-yyyy'}}</td>
 						<td style="width:2%">{{a.rateAtWhichTaxDeducted}}</td>
-						<td style="width:2%">{{a.reasonForNonDeduction}}</td>
+						<td class="ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.reasonForNonDeduction}}">{{a.reasonForNonDeduction}}</td>
 						<td style="width:2%">{{a.grossingUpIndicator}}</td>
 						<td style="width:2%">{{a.noOfCertificateUnderSection}}</td>
 						<td style="width:2%">{{a.tdsRateAsPerItActs}}</td>
-						<td style="width:2%">{{a.natureOfRemittance}}</td>
+						<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.natureOfRemittance}}">{{a.natureOfRemittance}}</td>
 						<td style="width:2%">{{a.uniqueAcknowledgeNo}}</td>
 						<td style="width:2%">{{a.countryOfResidence}}</td>
 						<td style="width:2%">{{a.emailId}}</td>
 						<td style="width:2%">{{a.contactNoOfDeductee}}</td>
 						<td style="width:2%">{{a.addressOfDeductee}}</td>
 						<td style="width:2%">{{a.taxIdentificationNo}}</td>
-						<td style="width:2%">{{a.cashWithdrawal194N}}</td>
-						<td style="width:2%">{{a.cashWithdrawal194N20Lto1Cr}}</td>
-						<td style="width:2%">{{a.cashWithdrawal194N1Cr}}</td>
-					<td style="width:2%">{{a.errorDescription}}</td>
-						<td style="width:2%">{{a.warningDescription}}</td>
-						<td style="width:2%">{{a.ShortDeduction}}</td>
+						<td  class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.cashWithdrawal194N}}">{{a.cashWithdrawal194N}}</td>
+						<td  class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.cashWithdrawal194N20Lto1Cr}}">{{a.cashWithdrawal194N20Lto1Cr}}</td>
+						<td  class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.cashWithdrawal194N1Cr}}">{{a.cashWithdrawal194N1Cr}}</td>
+					<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.errorDescription}}">{{a.errorDescription}}</td>
+						<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.warningDescription}}">{{a.warningDescription}}</td>
+						<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.ShortDeduction}}">{{a.ShortDeduction}}</td>
 						<td style="width:2%">{{a.InterestOnShortDeduction}}</td>
 						<td style="width:2%">{{a.InterestOnLatePayment}}</td>
 						<td style="width:2%">{{a.InterestOnLateDeduction}}</td>

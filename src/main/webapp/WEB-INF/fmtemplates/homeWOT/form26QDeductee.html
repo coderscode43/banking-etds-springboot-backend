@@ -61,6 +61,24 @@
 		visibility: visible;
 	}
 }
+.truncate {
+        display: block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width:5%;
+        height:60px;
+        
+    }
+    
+    .ellipsis{
+     max-width: 70px;
+    min-width: 200px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    
+    }
 </style>
 
 
@@ -259,11 +277,11 @@
 					<th>Vend/Cust Id</th>
 					<th>Unique Ref No</th>
 					<th>Account Number</th>
-					<th>Challan Heading</th>
+					<th style="width:0.01%">Challan Heading</th>
 					<th>Deductee Reference No</th>
 					<th>Deductee Code</th>
 					<th>PAN of the Deductee</th>
-					<th>Name of the Deductee</th>
+					<th style="width:0.01%">Name of the Deductee</th>
 					<th>Section Code</th>
 					<th>Date of Payment</th>
 					<th> Amount Paid</th>
@@ -274,14 +292,14 @@
 					<th>Total Tax Deposited</th>
 					<th>Date of Deduction</th>
 					<th>Rate at which Tax Deducted</th>
-					<th>Remarks</th>
+					<th style="width:0.01%">Remarks</th>
 					<th>Certificate No.</th>
 					<th>Cash Withdrawl (194N)</th>
 					<th>Cash Withdrawl 194N(20L to 1cr) </th>
 					<th>Cash Withdrawl 194N(>1cr)</th>
-					<th >Error Description</th>
-					<th >Warning Description</th>
-					<th >Short Deduction</th>
+					<th style="width:0.01%">Error Description</th>
+					<th style="width:0.01%">Warning Description</th>
+					<th style="width:0.01%">Short Deduction</th>
 					<th >Interest on Short Deduction</th>
 					<th >Interest on Late Payment</th>
 					<th >Interest on Late Deduction</th>
@@ -310,11 +328,11 @@
 					<td>{{a.custVendId}}</td>
 					<td>{{a.uniqueRefNo}}</td>
 					<td>{{a.accNo}}</td>
-					<td>{{a.challanHeading}}</td>
+					<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.challanHeading}}">{{a.challanHeading}}</td>
 					<td>{{a.deducteeRefNo}}</td>
 					<td>{{a.deducteeCode}}</td>
 					<td>{{a.deducteePan}}</td>
-					<td>{{a.deducteeName}}</td>
+					<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.deducteeName}}">{{a.deducteeName}}</td>
 					<td>{{a.sectionCode}}</td>
 					<td>{{a.paymentDate | date:'dd-MM-yyyy'}}</td>
 					<td>{{a.paidAmt}}</td>
@@ -325,14 +343,14 @@
 					<td>{{a.totalTaxDeposit}}</td>
 					<td>{{a.deductDate| date:'dd-MM-yyyy'}}</td>
 					<td>{{a.rateTaxDeduct}}</td>
-					<td>{{a.remarks}}</td>
-					<td>{{a.certificateNo}}</td>
+					<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.remarks}}">{{a.remarks}}</td>
+					<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.certificateNo}}">{{a.certificateNo}}</td>
 					<td>{{a.cashWithdrawal194N}}</td>
 					<td>{{a.cashWithdrawal194N20Lto1Cr}}</td>
 					<td>{{a.cashWithdrawal194N1Cr}}</td>
-					<td>{{a.errorDescription}}</td>
-					<td>{{a.warningDescription}}</td>
-					<td>{{a.ShortDeduction}}</td>
+					<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.errorDescription}}">{{a.errorDescription}}</td>
+					<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.warningDescription}}">{{a.warningDescription}}</td>
+					<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.ShortDeduction}}">{{a.ShortDeduction}}</td>
 					<td>{{a.InterestOnShortDeduction}}</td>
 					<td>{{a.InterestOnLatePayment}}</td>
 					<td>{{a.InterestOnLateDeduction}}</td>

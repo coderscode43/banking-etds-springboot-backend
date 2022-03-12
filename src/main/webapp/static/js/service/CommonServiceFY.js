@@ -29,7 +29,8 @@ App.factory('CommonServiceFY', [
 			getFile: getFile,
 			approveUpdate: approveUpdate,
 			rejectUpdate: rejectUpdate,
-			add:add
+			add:add,
+			downloadCertificate : downloadCertificate
 
 		};
 		return factory;
@@ -50,12 +51,12 @@ App.factory('CommonServiceFY', [
 			return deferred.promise;
 		}
 		
-		function fetch(entity, pageNo) {
+		function fetch(entity, fy, branchCode, pageNo) {
 			entityList = [];
 			var deferred = $q.defer();
 			$http.get(
 				REST_SERVICE_URI + entity + '/list/' + $stateParams.fy + '/' + $stateParams.branchCode
-				+ '/get/' + pageNo + '/100').success(
+				+ '/get/' + $stateParams.pageNo + '/100').success(
 					function(data) {
 						entityList = data;
 						deferred.resolve(data);
@@ -281,6 +282,22 @@ App.factory('CommonServiceFY', [
 
 			return deferred.promise;
 
+		}
+		
+		function downloadCertificate(deductee,certificate,fy,q,pan){
+			
+			var deferred = $q.defer();
+			$http.get(
+				'apichallan/files/'+deductee+'/'+certificate+'/'+fy+'/'+q+'/'+pan).success(function(data) {
+					var file = new Blob([response], { type: 'application/pdf' });
+					var fileURL = URL.createObjectURL(file);
+					entityData = data;
+					deferred.resolve(data);
+				}).error(function(status) {
+					deferred.reject(status);
+				});
+
+			return deferred.promise;
 		}
 
 	}]);

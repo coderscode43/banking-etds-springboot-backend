@@ -71,220 +71,194 @@
 </style>
 </head>
 <body>
-<div class="row">
-	<div class="col-md-4"></div>
-	<div class="col-md-4 " id="download">
-		<div id="page-wrapper">
-			<div class="container-fluid ">
-				<div id="download-row"
-					class="row justify-content-center align-items-center" style="border:1px solid black; padding: 5%">
-					<div id="download-column"></div>
-					<div id="download-box">
-						<form id="download-form" name="downloadCertificateFrom" class="form">
-						
-							<div class="col-md-12 "
-								style="font-size: 12px; margin:2% 0 2% 0;text-align:center">
-								<div class="heading">
-									<strong>Download Certificate</strong>
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-4 " id="download">
+			<div id="page-wrapper">
+				<div class="container-fluid ">
+					<div id="download-row"
+						class="row justify-content-center align-items-center"
+						style="border: 1px solid black; padding: 5%">
+						<div id="download-column"></div>
+						<div id="download-box">
+							<form id="download-form" name="downloadCertificateFrom"
+								class="form">
+
+								<div class="col-md-12 "
+									style="font-size: 12px; margin: 2% 0 2% 0; text-align: center">
+									<div class="heading">
+										<strong>Download Certificate</strong>
+									</div>
+									<br>
 								</div>
-								<br>
-							</div>
-							<div class="row">
-								<div class="col-md-12">
-									<label style="font-size: 12px">Select Following: </label>
+								<div class="row">
+									<div class="col-md-12">
+										<label style="font-size: 12px">Select Following: </label>
+									</div>
 								</div>
-							</div>
-							<!-- <label for="chkPan"> 
+								<!-- <label for="chkPan"> 
 								<input type="radio" id="chkPan" name="chkPassPort" onclick="myFunction()"checked/> PAN
 							</label> 
 							<label for="chkId"> 
 								<input type="radio" id="chkId" name="chkPassPort" onclick="myFunction()"/> ID
 							</label> -->
-							<br>
-							<!-- pan -->
-							<div class="row" id="pan" >
-								<!-- PAN: <input type="text" id="pan" /> -->
-								
-								<div class="col-md-12">
-									<div class="form-group">
-									<label for="pan" class="col-form-label" style="font-size: 12px"> PAN:</label>
-										<input type="text"
-										class="form-control" id="pan" name="pan"
-										placeholder="PAN"
-										ng-model="cWctr.entity.DownloadCertificate.pan"
-										ng-required="true" 
-										ng-pattern="/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/"
-										required="required" 
-										style="font-size: 15px">
-										
-										<span
+								<br>
+								<!-- pan -->
+								<div class="row" id="pan">
+									<!-- PAN: <input type="text" id="pan" /> -->
+
+									<div class="col-md-12">
+										<div class="form-group">
+											<label for="pan" class="col-form-label"
+												style="font-size: 12px"> PAN:</label> <input type="text"
+												class="form-control" id="pan" name="pan" placeholder="PAN"
+												ng-model="cCctr.entity.pan" ng-required="true"
+												ng-pattern="/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/"
+												required="required" style="font-size: 15px"> <span
 												style="color: red"
 												ng-show="downloadCertificateFrom.submitted || downloadCertificateFrom.pan.$dirty && downloadCertificateFrom.pan.$invalid">
-											<span class="error"
-												ng-show="downloadCertificateFrom.pan.$error.required">PAN Number Required
-											</span> 
-											<span class="error"
-												ng-show="downloadCertificateFrom.pan.$error.pattern">PAN number should be capital and valid 
+												<span class="error"
+												ng-show="downloadCertificateFrom.pan.$error.required">PAN
+													Number Required </span> <span class="error"
+												ng-show="downloadCertificateFrom.pan.$error.pattern">PAN
+													number should be capital and valid </span>
 											</span>
-										</span>
+										</div>
 									</div>
-							</div> 
-							</div>
-							<!-- id -->
-							<div id="id" style="display: none">
-								<!-- ID: <input type="text" id="id" /> -->
-								<div class="col-md-12">
-								<div class="form-group">
-										<label for="id" class="col-form-label" style="font-weight: bold;font-size: 12px"> ID:</label>
-										<input type="text"
-										class="form-control" id="id" name="id"
-										placeholder="ID"
-										ng-model="cWctr.entity.DownloadCertificate.id"
-										ng-required="true"
-										ng-pattern="/^[0-9]/"
-										required="required" style="font-size: 15px"> 
-										
-										<span style="color: red"
-											ng-show="downloadCertificateFrom.submitted || downloadCertificateFrom.id.$dirty && downloadCertificateFrom.id.$invalid">
-												<span class="error"
-													ng-show="downloadCertificateFrom.id.$error.required">id Required
-												</span>
-												<span class="error"
-													ng-show="downloadCertificateFrom.id.$error.pattern">id should be only Number: 
-												</span> 
-										</span>
 								</div>
-							</div> 
-							</div>
-							<br>
-							<div class="row">
-								<div class="col-md-12">
-									<div class="form-group">
-										<label  style="font-size: 12px">Type of Deductee*</label> 
-												<select 
-													name="typeofDeductee"
-													id="typeofDeductee"
-													class="form-control" 
-													ng-model="cWctr.entity.DownloadCertificate.typeofDeductee"
-													ng-required="true" 
-													required="required" 
-													ng-model-options="{updateOn: 'blur'}"
-												><option disabled value="">Select Deductee</option>
+								<!-- id -->
+								<!-- 
+								<div id="id" style="display: none">
+									ID: <input type="text" id="id" />
+									<div class="col-md-12">
+										<div class="form-group">
+											<label for="id" class="col-form-label"
+												style="font-weight: bold; font-size: 12px"> ID:</label> <input
+												type="text" class="form-control" id="id" name="id"
+												placeholder="ID"
+												ng-model="cCctr.entity.id"
+												ng-required="true" ng-pattern="/^[0-9]/" required="required"
+												style="font-size: 15px"> <span style="color: red"
+												ng-show="downloadCertificateFrom.submitted || downloadCertificateFrom.id.$dirty && downloadCertificateFrom.id.$invalid">
+												<span class="error"
+												ng-show="downloadCertificateFrom.id.$error.required">id
+													Required </span> <span class="error"
+												ng-show="downloadCertificateFrom.id.$error.pattern">id
+													should be only Number: </span>
+											</span>
+										</div>
+									</div>
+								</div>
+								 -->
+								<br>
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group">
+											<label style="font-size: 12px">Type of Deductee*</label> <select
+												name="typeofDeductee" id="typeofDeductee"
+												class="form-control" ng-model="cCctr.entity.typeofDeductee"
+												ng-required="true" required="required"
+												ng-model-options="{updateOn: 'blur'}"><option
+													disabled value="">Select Deductee</option>
 												<#list typeOfDeductee as Deductee>
-												
-													<option value="${Deductee}">${Deductee}</option>
+
+												<option value="${Deductee}">${Deductee}</option>
 												</#list>
-												</select> 
-									<span style="color:red"
-										ng-show="downloadCertificateFrom.submitted ||downloadCertificateFrom.typeofDeductee.$dirty && downloadCertificateFrom.typeofDeductee.$invalid">
-										<span class="error"
-											ng-show="downloadCertificateFrom.typeofDeductee.$error.required">Type of Certificate is Required.
-										</span>
-									</span>
+											</select> <span style="color: red"
+												ng-show="downloadCertificateFrom.submitted ||downloadCertificateFrom.typeofDeductee.$dirty && downloadCertificateFrom.typeofDeductee.$invalid">
+												<span class="error"
+												ng-show="downloadCertificateFrom.typeofDeductee.$error.required">Type
+													of Certificate is Required. </span>
+											</span>
+										</div>
 									</div>
 								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-12">
-									<div class="form-group">
-										<label style="font-size: 12px">Type of Certificate*</label> 
-											<select name="typeofCertificate"
-											id="typeofCertificate"
-												class="form-control" 
-												ng-model="cWctr.entity.DownloadCertificate.typeofCertificate"
-												ng-required="true" 
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group">
+											<label style="font-size: 12px">Type of Certificate*</label> <select
+												name="typeofCertificate" id="typeofCertificate"
+												class="form-control"
+												ng-model="cCctr.entity.typeofCertificate" ng-required="true"
 												ng-model-options="{updateOn: 'blur'}">
 												<option disabled value="">Select Certificate</option>
-													<#list typeOfCertificate as Certificate>
-													
-													<option value="${Certificate}">${Certificate}</option>
+												<#list typeOfCertificate as Certificate>
+
+												<option value="${Certificate}">${Certificate}</option>
 												</#list>
-											</select> 
-								<span style="color: red"
-									ng-show="downloadCertificateFrom.submitted ||downloadCertificateFrom.typeofCertificate.$dirty && downloadCertificateFrom.typeofCertificate.$invalid">
-								<span class="error"
-									ng-show="downloadCertificateFrom.typeofCertificate.$error.required">type ofCertificate is Required.</span>
-								</span> 
+											</select> <span style="color: red"
+												ng-show="downloadCertificateFrom.submitted ||downloadCertificateFrom.typeofCertificate.$dirty && downloadCertificateFrom.typeofCertificate.$invalid">
+												<span class="error"
+												ng-show="downloadCertificateFrom.typeofCertificate.$error.required">type
+													ofCertificate is Required.</span>
+											</span>
+										</div>
 									</div>
 								</div>
-							</div>
-							<!-- financial year code -->
-							<div class="row">
-								<div class="col-md-12">
-									<div class="form-group">
-										<label style="font-size: 12px">Financial Year*</label> 
-											<select name="financialYear"
-												class="form-control" 
-												ng-model="cWctr.entity.DownloadCertificate.financialYear"
-												ng-required="true" 
+								<!-- financial year code -->
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group">
+											<label style="font-size: 12px">Financial Year*</label> <select
+												name="financialYear" class="form-control"
+												ng-model="cCctr.entity.financialYear" ng-required="true"
 												ng-model-options="{updateOn: 'blur'}">
 												<option disabled value="">Select financial Year</option>
 												<#list financialYear as year>
 												<option value="${year}">${year}</option>
 												</#list>
-											</select> 
-								<span style="color: red"
-									ng-show="downloadCertificateFrom.submitted ||downloadCertificateFrom.financialYear.$dirty && downloadCertificateFrom.financialYear.$invalid">
-								<span class="error"
-									ng-show="downloadCertificateFrom.financialYear.$error.required">Financial Year is Required.</span>
-								</span> 
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-12">
-									<div class="form-group">
-											<label style="font-size: 12px">Quarter*</label> 
-											<select name="quarter"
-											class="form-control" 
-											ng-model="cWctr.entity.DownloadCertificate.quarter"
-											ng-required="true" 
-											ng-model-options="{updateOn: 'blur'}">
-											<option disabled value="">Select Quarter</option>
-												<#list Quarter as quarter>
-													<option value="${quarter}">${quarter}</option>
-												</#list>
-											</select> 
-										<span style="color: red"
-											ng-show="downloadCertificateFrom.submitted ||downloadCertificateFrom.quarter.$dirty && downloadCertificateFrom.quarter.$invalid">
-											<span class="error"
-													ng-show="downloadCertificateFrom.quarter.$error.required">Quarter is Required.
+											</select> <span style="color: red"
+												ng-show="downloadCertificateFrom.submitted ||downloadCertificateFrom.financialYear.$dirty && downloadCertificateFrom.financialYear.$invalid">
+												<span class="error"
+												ng-show="downloadCertificateFrom.financialYear.$error.required">Financial
+													Year is Required.</span>
 											</span>
-										</span> 
+										</div>
 									</div>
 								</div>
-							</div>
-							<button   style="margin-left:40%"  class="btn btn-success"
-								ng-click="downloadCertificateFrom.submitted=true;
-								cWctr.getCertificate(
-													downloadCertificateFrom.$valid,
-													'downloadCertificate',
-													cWctr.entity.DownloadCertificate,
-													'apidownloadCertificate/getCertificate/'+cWctr.entity.DownloadCertificate.pan);">
-								Download
-							</button>
-						</form>
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group">
+											<label style="font-size: 12px">Quarter*</label> <select
+												name="quarter" class="form-control"
+												ng-model="cCctr.entity.quarter" ng-required="true"
+												ng-model-options="{updateOn: 'blur'}">
+												<option disabled value="">Select Quarter</option>
+												<#list Quarter as quarter>
+												<option value="${quarter}">${quarter}</option>
+												</#list>
+											</select> <span style="color: red"
+												ng-show="downloadCertificateFrom.submitted ||downloadCertificateFrom.quarter.$dirty && downloadCertificateFrom.quarter.$invalid">
+												<span class="error"
+												ng-show="downloadCertificateFrom.quarter.$error.required">Quarter
+													is Required. </span>
+											</span>
+										</div>
+									</div>
+								</div>
+								<button style="margin-left: 40%" class="btn btn-success"
+									ng-click="cCctr.downloadCertificate(true, cCctr.entity.typeofDeductee, cCctr.entity.typeofCertificate,cCctr.entity.financialYear,cCctr.entity.quarter,cCctr.entity.pan)">
+									Download</button>
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-							
 </body>
 </html>
 
-	
-			<script>
-							function myFunction() {
-								$("input[name='chkPassPort']").click(
-										function() {
-											if ($("#chkPan").is(":checked")) {
-													$("#pan").show();
-													$("#id").hide();
-											} else {
-													$("#id").show();
-													$("#pan").hide();
-											}
-										});
-							}
-						</script>		
+
+<script>
+	function myFunction() {
+		$("input[name='chkPassPort']").click(function() {
+			if ($("#chkPan").is(":checked")) {
+				$("#pan").show();
+				$("#id").hide();
+			} else {
+				$("#id").show();
+				$("#pan").hide();
+			}
+		});
+	}
+</script>

@@ -727,8 +727,8 @@ App
 										.log("Common Controller get Entity data");
 								return CommonServiceFY.getEntity();
 							}
-							
-					self.ajax = function(entity, name, term) {
+							/* Pranay */
+							self.ajax = function(entity, name, term) {
 								var ajax = {};
 								ajax.name = name;
 								ajax.term = term;
@@ -738,6 +738,7 @@ App
 											console.log(name
 													+ ' dynamic drop down');
 											var items = data;
+											self.ajax = data;
 											return data;
 										});
 							}
@@ -992,6 +993,70 @@ App
 								window.open(self.fileLoader, "_blank");
 
 							}
+							
+							self.downloadCertificate = function(valid,deductee,certificate,fy,q,pan){
+								if (valid == true) {
+									CommonServiceFY.downloadCertificate(deductee,certificate,fy,q,pan)
+											.then(
+													function(data) {
+														console
+																.log(entity
+																		+ ' Download successfully');
+														angular
+																.element(
+																		'#'
+																				+ closeModalId)
+																.trigger(
+																		'click');
+
+														$('#successMsg')
+																.find(
+																		'.modal-header')
+																.find(
+																		'.headingMsg')
+																.append(
+																		"Successful");
+														$('#successMsg')
+																.find(
+																		'.modal-body')
+																.find('.msg')
+																.append(
+																		" Downloaded Successfully");
+														$("#successMsg")
+																.modal();
+
+													},
+													function(error) {
+														console
+																.error('Error while updating Details, '
+																		+ status);
+
+														if (error.exceptionMsg != null
+																&& error.exceptionMsg != undefined) {
+															$('#errorMsg')
+																	.find(
+																			'.modal-body')
+																	.find(
+																			'.msg')
+																	.append(
+																			"Can not Update "
+																					+ error.entityName
+																					+ " : "
+																					+ error.exceptionMsg);
+															$("#errorMsg")
+																	.modal();
+														} else {
+															for (var i = 0; i < error.fieldErrors.length; i++) {
+																var obj = error.fieldErrors[i];
+																document
+																		.getElementById(obj.fieldName).innerHTML = obj.message;
+															}
+														}
+
+													});
+								}
+								
+							}
 
 							var wait = function(ms) {
 								var start = new Date().getTime();
@@ -1034,7 +1099,8 @@ App
 															.abs(date
 																	.getTimezoneOffset() * 60000));
 									// var dateString =date.toUTCString();
-									// dateString = dateString.split(' ').slice(0,
+									// dateString = dateString.split('
+									// ').slice(0,
 									// 4).join(' ');
 									return date;
 

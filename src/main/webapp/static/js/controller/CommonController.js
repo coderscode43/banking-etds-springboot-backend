@@ -787,12 +787,13 @@ App
 									"page" : page
 								});
 							}
-							self.updateData = function(valid, object, entity) {// --remove
+							self.updateData = function(valid, object, entity,remark) {// --remove
 								// closeModalId-pranay
 								if (valid == true) {
 									console.log("Common Controller updateData "
 											+ entity);
 									self.object = object;
+									self.object.remark = remark;
 
 									CommonService
 											.update(object, entity)
@@ -852,13 +853,13 @@ App
 								}
 							}
 							
-							self.updateTicket = function(valid, object, entity) {// --remove
+							self.updateTicket = function(valid, object, entity,remark) {// --remove
 								// closeModalId-pranay
 								if (valid == true) {
 									console.log("Common Controller updateData "
 											+ entity);
 									self.object = object;
-
+									self.object.remark = remark;
 									CommonService
 											.updateTicket(object, entity)
 											.then(

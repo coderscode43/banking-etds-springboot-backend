@@ -10,13 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import domain.in.rjsa.model.form.CommonModelAbstract;
@@ -45,7 +41,7 @@ public class Regular26QDeductee extends CommonModelAbstract{
 	@Column(name = "deducteeRefNo")
 	//@Size(min=0, max=45, message="Deductee RefNo should be 45 characters.")
 	//@NotNull(message = "Deductee Ref No is a required field")
-	public Long deducteeRefNo;
+	public String deducteeRefNo;
 	@Column(name = "deducteeCode")
 	//@Size(min=0, max=45, message="Deductee Code should be 45 characters.")
 	//@NotNull(message = "Deductee Code is a required field")

@@ -12,27 +12,26 @@
 
 				<div class="tab-pane fade active in">
 					<form name="fileForm" class="form-horizontal" role="form"
-						enctype="multipart/form-data" style="font-size:20px">
+						enctype="multipart/form-data" style="font-size: 20px">
 						<!-- Hidden Filed -->
 						<input type="hidden" ng-model="cCctr.entity.dateOfOpening"
 							ng-init="cCctr.entity.dateOfOpening=cCctr.presentDate()">
 
 						<input type="hidden" ng-model="cCctr.entity.dateOfChange"
 							ng-init="cCctr.entity.dateOfChange=cCctr.presentDate()">
-							
-						<input type="hidden" ng-model="cCctr.entity.resolved"
-							ng-init="cCctr.entity.resolved= '0' ">
 
-						<input type="hidden" ng-model="cCctr.entity.status"
+						<input type="hidden" ng-model="cCctr.entity.resolved"
+							ng-init="cCctr.entity.resolved= '0' "> <input
+							type="hidden" ng-model="cCctr.entity.status"
 							ng-init="cCctr.entity.status='Open'">
-							
+
 						<div class="row">
 							<div class="col-md-4">
 								<div>
-									<label style="font-size:15px">Form</label>
-									<div >
-										<select  name="form" id="form" ng-model="cCctr.entity.form" class="form-control"
-										required >
+									<label style="font-size: 15px">Form</label>
+									<div>
+										<select name="form" id="form" ng-model="cCctr.entity.form"
+											class="form-control" required>
 											<option disabled value="">Select Form</option>
 											<option value="24Q">24Q</option>
 											<option value="26Q">26Q</option>
@@ -49,28 +48,22 @@
 										Form is Required </span>
 								</span>
 							</div>
-							
-							
+
+
 							<div class="col-md-4">
 								<div>
-									<label style="font-size:15px">Finacial Year</label> <select class="form-control"id="fy" name="fy"
-										ng-model="cCctr.entity.fy" ng-required="true">
-										<option disabled value="">Select financial Year</option>
-										<#list financialYear as year>
-										<option value="${year}">${year}</option>
-										</#list>
-									</select>
-									
+									<label style="font-size: 15px">Financial Year</label>
+									 <input class="form-control" name="fy"
+										id="fy" ng-model="cCctr.entity.description" value="{{a.fy}}"
+										style="width: 100%;" required></input>
+
 								</div>
-								<span style="color: red"
-									ng-show="fileForm.submitted || fileForm.fy.$dirty && fileForm.fy.$invalid">
-									<span class="error" ng-show="fileForm.fy.$error.required">
-										Finacial Year is Required </span>
-								</span>
+								
 							</div>
 							<div class="col-md-4">
 								<div>
-									<label style="font-size:15px">Quarter</label> <select class="form-control"id="quarter" name="quarter"
+									<label style="font-size: 15px">Quarter</label> <select
+										class="form-control" id="quarter" name="quarter"
 										ng-model="cCctr.entity.quarter" ng-required="true">
 										<option disabled value="">Select Quarter</option>
 										<#list Quarter as quarter>
@@ -88,20 +81,23 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div style="margin-left: 0%">
-								<label style="font-size:15px">Branch Code</label>
-									<md-autocomplete md-input-name="branchCode"id="branchCode"
+									<label style="font-size: 15px">Branch Code</label>
+									<md-autocomplete md-input-name="branchCode" id="branchCode"
 										md-input-minlength="3" md-no-cache="true"
 										md-input-maxlength="75" style="height:10%;"
 										md-selected-item="cCctr.entity.branchCode" md-search-text="b"
 										md-items="item in cCctr.ajax('branch','branchCode',b)"
-										md-delay="0" placeholder="Branch Code" ng-required="true"> <md-item-template>
-									<span>{{item}}</span> </md-item-template> <md-not-found> No Branch
-									Code with "{{b}}" were found. <a ng-click="">Add new</a> </md-not-found> </md-autocomplete>
-									
+										md-delay="0" placeholder="Branch Code" ng-required="true">
+									<md-item-template> <span>{{item}}</span> </md-item-template> <md-not-found>
+									No Branch Code with "{{b}}" were found. <a ng-click="">Add
+										new</a> </md-not-found> </md-autocomplete>
+
 								</div>
 								<span style="color: red"
 									ng-show="fileForm.submitted || fileForm.branchCode.$dirty && fileForm.branchCode.$invalid">
-									<span class="error" ng-show="fileForm.branchCode.$error.required">Branch Code is Required </span>
+									<span class="error"
+									ng-show="fileForm.branchCode.$error.required">Branch
+										Code is Required </span>
 								</span>
 							</div>
 						</div>
@@ -122,28 +118,29 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div class="">
-									<label style="font-size:15px">Description</label>
-									<textarea class="form-control" name="description" id="description"
-										ng-model="cCctr.entity.description" style="width: 100%;"
-										required></textarea>
+									<label style="font-size: 15px">Description</label>
+									<textarea class="form-control" name="description"
+										id="description" ng-model="cCctr.entity.description"
+										style="width: 100%;" required></textarea>
 									<span style="color: red"
-									ng-show="fileForm.submitted || fileForm.description.$dirty && fileForm.description.$invalid">
-									<span class="error" ng-show="fileForm.description.$error.required">Description
-										is Required </span>
-								</span>
+										ng-show="fileForm.submitted || fileForm.description.$dirty && fileForm.description.$invalid">
+										<span class="error"
+										ng-show="fileForm.description.$error.required">Description
+											is Required </span>
+									</span>
 								</div>
 							</div>
 						</div>
 						<br>
-						
-						
-						<div class="modal-footer" style="text-align:center">
+
+
+						<div class="modal-footer" style="text-align: center">
 							<button
 								ng-click="fileForm.submitted=true;cCctr.submitFY(fileForm.$valid,cCctr.entity,'ticket')"
 								class="btn btn-success" data-dismiss="modal">Add</button>
-							<button class="btn btn-danger"  onclick="history.back()">Back</button>
+							<button class="btn btn-danger" onclick="history.back()">Back</button>
 						</div>
-						
+
 
 
 					</form>

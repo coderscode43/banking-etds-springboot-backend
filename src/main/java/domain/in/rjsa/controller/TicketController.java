@@ -14,9 +14,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.HttpMessageNotReadableException;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,11 +23,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 
 import domain.in.rjsa.model.form.ListCount;
-import domain.in.rjsa.model.fy.Regular24QDeductee;
 import domain.in.rjsa.model.fy.Remark;
 import domain.in.rjsa.model.fy.Ticket;
 import domain.in.rjsa.service.RemarkService;
@@ -192,7 +186,12 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 			map.put("fy", ticket.getFy());
 			map.put("deducteeId", ticket.getId());
 			map.put("deducteeForm", "ticket");
+			String remark=  entity.get("remark").toString();
+			if(remark.endsWith("resolved")) {
 			map.put("remark", "Resolved");
+			}else if(remark.endsWith("reject")) {
+				map.put("remark", "Reject");
+			}
 			String timeStamp = new SimpleDateFormat("dd-MM-yyyy'T'HH:mm:ss").format(Calendar.getInstance().getTime());
 			map.put("dateTime", timeStamp);
 			map.put("userName", getPrincipal());

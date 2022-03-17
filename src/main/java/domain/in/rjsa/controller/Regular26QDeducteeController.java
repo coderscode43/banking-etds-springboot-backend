@@ -36,7 +36,7 @@ import domain.in.rjsa.service.RemarkService;
 
 @Controller
 @RequestMapping("/apiform26QDeductee")
-public class Regular26QDeducteeController
+public class Regular26QDeducteeController<E>
 		extends AbstractControllerFY<Long, Regular26QDeductee, Regular26QDeducteeService> {
 	
 	@Autowired
@@ -98,7 +98,12 @@ public class Regular26QDeducteeController
 			map.put("fy", form26Q.getFy());
 			map.put("deducteeId", form26Q.getId());
 			map.put("deducteeForm", "26Qform");
+			String remark=  entity.get("remark").toString();
+			if(remark.endsWith("resolved")) {
 			map.put("remark", "Resolved");
+			}else if(remark.endsWith("reject")) {
+				map.put("remark", "Reject");
+			}
 			String timeStamp = new SimpleDateFormat("dd-MM-yyyy'T'HH:mm:ss").format(Calendar.getInstance().getTime());
 			map.put("dateTime", timeStamp);
 			map.put("userName", getPrincipal());

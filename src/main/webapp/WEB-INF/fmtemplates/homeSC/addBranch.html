@@ -44,7 +44,7 @@
 									style="color: red"
 									ng-show="formBranchDetails.submitted || formBranchDetails.branchCode.$dirty && formBranchDetails.branchCode.$invalid">
 									<span class="error"
-									ng-show="formRODetails.roCode.$error.pattern">Enter
+									ng-show="formBranchDetails.roCode.$error.pattern">Enter
 										valid Branch Code </span> <span class="error"
 									ng-show="formBranchDetails.branchCode.$error.maxlength">Branch
 										Code should not be greater than 45 characters.</span> <span
@@ -178,15 +178,108 @@
 										branchState is Required. </span>
 								</span>
 							</div>
-
-
 						</div>
+						<h1>Add Login Details</h1>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<h6>
+										<label>User Name*</label>
+									</h6>
+									<input class="form-control" type="text" id="userName" name="userName"
+										placeholder="User Name" ng-model="cCctr.entity.userName"
+										autocomplete="on " ng-required="true" ng-maxlength="100"
+										ng-pattern="/^[a-zA-Z0-9]*$/"
+										ng-model-options="{updateOn: 'blur'}" /> 
+										<span style="color: red"
+											ng-show="formBranchDetails.submitted || formBranchDetails.userName.$dirty && formBranchDetails.userName.$invalid">
+											<span class="error"
+												  ng-show="formBranchDetails.userName.$error.pattern">
+												  Enter valid Name </span>
+											<span class="error"
+												  ng-show="formBranchDetails.userName.$error.maxlength">
+												  Name should not be greater than 45 characters.</span>
+											<span class="error" ng-show="formBranchDetails.userName.$error.required">
+												  Name is Required.</span>
+									   </span> 
+									   <span class="error" id="userName"></span> 
+									</div>
+								</div>
+								<!-- <div class="col-md-6">
+								<div class="form-group">
+									<h6>
+										<label>User PAN*</label>
+									</h6>
+									<input class="form-control" type="text" name="pan" style="text-transform:uppercase"
+												placeholder="PAN" ng-model="cCctr.entity.pan" ng-pattern="/^([A-Za-z]{5}[0-9]{4}[A-Za-z]{1})*$/"
+												autocomplete="off" ng-required="true" ng-maxlength="10" ng-minlength="10"
+												ng-model-options="{updateOn: 'blur'}" />
+									<span style="color: red"
+											ng-show="formUserDetails.submitted || formUserDetails.pan.$dirty && formUserDetails.pan.$invalid">
+										<span class="error"
+												ng-show="formUserDetails.pan.$error.required">
+												User PAN is Required: </span> 
+										<span class="error" ng-show="formUserDetails.pan.$error.pattern">User PAN is invalid: </span>
+										<span class="error" ng-show="formUserDetails.pan.$error.maxlength">
+											PAN should not be greater than 10 characters. </span>
+										<span class="error" ng-show="formUserDetails.pan.$error.minlength">
+											PAN should not be less than 10 characters.</span>
+									</span>
+								</div>
+							</div> -->
+						</div>
+						<div class="row">
+						<div class="col-md-6">
+								<div class="form-group">
+									<h6>
+										<label>Enter Password*</label>
+									</h6>
+									<input type="password" class="form-control" name="passwordOfUser"
+										id="passwordOfUser"  placeholder="Enter New Password"
+										ng-model="cCctr.entity.password" ng-minlength="5"
+										ng-required="true" style="width: 95%;">
+									<span class="input"
+										style="float: right; margin: -5.5% -2% 0 0;"><i
+										class="fa fa-fw fa-eye field-icon" style="cursor: pointer"
+										onclick="viewP()"></i></span> 
+										<span
+											style="color: red"
+											ng-show="formBranchDetails.submitted || formBranchDetails.passwordOfUser.$dirty && formBranchDetails.passwordOfUser.$invalid">
+											<span class="error"
+													ng-show="formBranchDetails.passwordOfUser.$error.minlength">
+													password should not be less than 5 characters.</span>
+											<span class="error"
+													ng-show="formBranchDetails.passwordOfUser.$error.required">
+													Password is Required. </span>
+											<span class="error"
+													ng-show="formBranchDetails.passwordOfUser.$error.pattern">
+													Password should be at least 8 characters long and should contain one
+													number,one character and one special character.. </span>
+										</span>
+										<span class="error" id="passwordOfUser"></span>
+									</div>
+								</div>
+								<div class="col-md-6">
+								<div class="form-group">
+									<h6>
+										<label>Confirm Password*</label>
+									</h6>
+									<input type="password" class="form-control" name="password1"
+											id="password1" placeholder="Confirm New Password"
+											style="width: 95%;"> 
+											<span class="input"
+													style="float: right; margin: -5.5% -2% 0 0;">
+													<i class="fa fa-fw fa-eye field-icon" style="cursor: pointer; font-size:15px"
+														onclick="viewConfirmP()"></i></span> 
+											<span id="conErr" style="color: red;font-size: 15px;" ></span>
+								</div>	
+							</div>
+							</div>
 					</div>
-
 					<div class="row">
 						<div class="modal-footer">
 							<button
-								ng-click="formBranchDetails.submitted=true; cCctr.submit(formBranchDetails.$valid,cCctr.entity,'branch')"
+								ng-click="formBranchDetails.submitted=true;cCctr.submit(formBranchDetails.$valid,cCctr.entity,'branch')"
 								class="btn btn-success">Save</button>
 							<button ng-click="cCctr.gotoListPage('branch','branch')"
 								class="btn btn-danger" onclick="scrollWin(/'branch'/)">Back</button>
@@ -197,3 +290,48 @@
 		</div>
 	</div>
 </div>
+<script>
+	function viewP() {
+		var x = document.getElementById("passwordOfUser");
+		if (x.type === "password") {
+			x.type = "text";
+		} else {
+			x.type = "password";
+		}
+	}
+
+	function viewConfirmP() {
+		var x = document.getElementById("password1");
+		if (x.type === "password") {
+			x.type = "text";
+		} else {
+			x.type = "password";
+		}
+	}
+</script>
+<script>
+	$('#reload').click(function() {
+		location.reload();
+	});
+</script>
+
+<script>
+	$('#passwordOfUser, #password1')
+			.on(
+					'keyup',
+					function() {
+						if ($('#passwordOfUser').val() == $('#password1').val()) {
+							$('#changePassword').removeAttr('disabled');
+							console.log('Password correct');
+							$('#conErr').html('');
+
+						} else {
+							$('#conErr')
+									.html(
+											'Confirm Password should have the same value with new password')
+									.css('color', 'red');
+								
+							$('#changePassword').attr('disabled', true);
+						}
+					});
+</script>

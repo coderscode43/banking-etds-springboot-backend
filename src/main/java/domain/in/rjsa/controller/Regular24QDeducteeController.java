@@ -94,7 +94,12 @@ public class Regular24QDeducteeController<E>
 			map.put("fy", form24Q.getFy());
 			map.put("deducteeId", form24Q.getId());
 			map.put("deducteeForm", "24Qform");
+			String remark=  entity.get("remark").toString();
+			if(remark.endsWith("resolved")) {
 			map.put("remark", "Resolved");
+			}else if(remark.endsWith("reject")) {
+				map.put("remark", "Reject");
+			}
 			String timeStamp = new SimpleDateFormat("dd-MM-yyyy'T'HH:mm:ss").format(Calendar.getInstance().getTime());
 			map.put("dateTime", timeStamp);
 			map.put("userName", getPrincipal());

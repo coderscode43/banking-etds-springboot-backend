@@ -197,7 +197,7 @@ App.factory('CommonService', [
 
 				return deferred.promise;
 			}
-
+			
 			function updateTicket(entitySave, entity) {
 				var deferred = $q.defer();
 
@@ -211,7 +211,6 @@ App.factory('CommonService', [
 
 				return deferred.promise;
 			}
-
 			function countFunction(entity) {
 				entityList = [];
 				var deferred = $q.defer();

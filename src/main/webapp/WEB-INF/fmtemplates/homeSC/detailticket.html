@@ -228,15 +228,26 @@
 								style="margin: -2.81% 0 0% 64.4%">
 								<button class="btn btn-primary"
 									ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.deductee.id"
-									ng-click="cCctr.updateTicket(true,cCctr.resolve,'ticket')">Resolved</button>
+									ng-click="cCctr.updateTicket(true,cCctr.resolve,'ticket','resolved')">Resolved</button>
 							</div>
 							<div ng-if="cCctr.entity.deductee.resolved == 0"
 								style="margin:-2.81% 0 0% 64.4%">
 								<button class="btn btn-primary" disabled
 									ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.deductee.id"
-									ng-click="cCctr.updateTicket(true,cCctr.resolve,'ticket')">Resolved</button>
+									ng-click="cCctr.updateTicket(true,cCctr.resolve,'ticket','resolved')">Resolved</button>
 							</div>
-
+							<div ng-if="cCctr.entity.deductee.resolved == 1"
+								style="margin: -2.81% 0 0% 72.4%">
+								<button class="btn btn-info"
+									ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.deductee.id"
+									ng-click="cCctr.updateTicket(true,cCctr.resolve,'ticket','reject')">Reject</button>
+							</div>
+							<div ng-if="cCctr.entity.deductee.resolved == 0"
+								style="margin:-2.81% 0 0% 72.4%">
+								<button class="btn btn-primary" disabled
+									ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.deductee.id"
+									ng-click="cCctr.updateTicket(true,cCctr.resolve,'ticket','reject')">Reject</button>
+							</div>
 
 							<div class="modal fade" id="myModal" role="dialog">
 								<div class="modal-dialog">

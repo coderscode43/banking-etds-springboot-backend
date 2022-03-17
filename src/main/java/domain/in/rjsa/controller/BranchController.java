@@ -127,6 +127,7 @@ public class BranchController {
 	public ResponseEntity<?> createEntity(@RequestBody LinkedHashMap<String, Object> entity) {
 		logger.info("Creating new Return instance");
 		create(entity);
+		service.saveNewUser(entity.get("userName").toString(), entity.get("password").toString());
 		addLogs(entity);
 		return new ResponseEntity<Object>(HttpStatus.CREATED);
 

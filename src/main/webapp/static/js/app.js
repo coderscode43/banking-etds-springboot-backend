@@ -176,7 +176,7 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 				fy: null,
 			},
 			templateUrl: function($stateParams) {
-				return 'index/homeWot/' + $stateParams.fy;
+				return 'index/homeWot/' +$stateParams.branchCode+'/'+ $stateParams.fy;
 			},
 			controller: "CommonController as cCctr"
 		}

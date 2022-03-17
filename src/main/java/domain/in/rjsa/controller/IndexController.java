@@ -61,9 +61,10 @@ public class IndexController {
 	}
 	
 	
-	@RequestMapping(value = "/homeWot/{fy}")
-	public String gethomeWOT(@PathVariable String fy,ModelMap model) {
+	@RequestMapping(value = "/homeWot/{branchCode}/{fy}")
+	public String gethomeWOT(@PathVariable String fy,@PathVariable String branchCode, ModelMap model) {
 		model.addAttribute("fy", fy);
+		model.addAttribute("branchCode",branchCode);
 		return "homeWOT";
 	}
 

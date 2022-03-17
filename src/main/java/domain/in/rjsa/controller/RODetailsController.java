@@ -59,7 +59,8 @@ public class RODetailsController extends AbstractControllerForm<Long, RODetails,
 		constrains.put("id", id);
 		map.put("roDetails",getService().uniqueSearch(constrains));
 		constrains.remove("id");
-		constrains.put("roCode",id);
+		RODetails roDetail = service.getByKey(id);
+		constrains.put("roCode",roDetail.getRoCode());
 		map.put("branch", bService.findAll(constrains, 0, 100));
 		return map;
 	}

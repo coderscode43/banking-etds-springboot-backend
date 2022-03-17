@@ -42,7 +42,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 		
 		http.formLogin().loginPage("/login.jsp").loginProcessingUrl("/login").defaultSuccessUrl("/", true).permitAll().and().authorizeRequests()
-        .antMatchers( "/login","/","/static/css/fonts/untitled-font-2*","/static/img/tds.png").permitAll().anyRequest().authenticated()
+        .antMatchers( "/login","/","/static/css/fonts/untitled-font-2*","/static/img/favicon.ico","/static/img/tds.png").permitAll().anyRequest().authenticated()
         .and().rememberMe().rememberMeParameter("remember-me")
 				.tokenRepository(tokenRepository).tokenValiditySeconds(10000)
 				.and().exceptionHandling()

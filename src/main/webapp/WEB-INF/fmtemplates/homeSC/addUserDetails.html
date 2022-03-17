@@ -46,7 +46,7 @@
 										</h6>
 										<input class="form-control" type="text" id = "branchCode" name="branchCode"
 											placeholder=" Branch Code" ng-model="cCctr.entity.branchCode"
-											autocomplete="off" ng-required="true" ng-maxlength="10" ng-minlength="10"
+											autocomplete="off" ng-required="true" 
 											ng-pattern="/^[a-zA-Z0-9]*$/"
 											ng-model-options="{updateOn: 'blur'}" /> <span
 											style="color: red"
@@ -74,7 +74,7 @@
 									</h6>
 									<input type="password" class="form-control" name="passwordOfUser"
 										id="passwordOfUser"  placeholder="Enter New Password"
-										ng-model="cCctr.entity.password" ng-minlength="8"
+										ng-model="cCctr.entity.password" ng-minlength="6"
 										ng-required="true" style="width: 95%;">
 									<span class="input"
 										style="float: right; margin: -5.5% -2% 0 0;"><i
@@ -85,7 +85,7 @@
 											ng-show="formUserDetails.submitted || formUserDetails.passwordOfUser.$dirty && formUserDetails.passwordOfUser.$invalid">
 											<span class="error"
 													ng-show="formUserDetails.passwordOfUser.$error.minlength">
-													password should not be less than 8 characters.</span>
+													password should not be less than 6 characters.</span>
 											<span class="error"
 													ng-show="formUserDetails.passwordOfUser.$error.required">
 													Password is Required. </span>

@@ -83,7 +83,8 @@
 									placeholder="Branch Email" ng-model="cCctr.entity.branchEmail"
 									ng-required="true"
 									ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
-									ng-model-options="{updateOn: 'blur'}" /> <span
+									ng-model-options="{updateOn: 'blur'}" 
+									style="text-transform:lowercase"/> <span
 									style="color: red"
 									ng-show="formBranchDetails.submitted || formBranchDetails.branchEmail.$dirty && formBranchDetails.branchEmail.$invalid">
 									<span class="error"

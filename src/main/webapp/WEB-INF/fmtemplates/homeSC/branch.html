@@ -42,6 +42,25 @@
 		visibility: visible;
 	}
 }
+
+.truncate {
+        display: block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width:5%;
+        height:60px;
+        
+    }
+    
+    .ellipsis{
+     max-width: 70px;
+    min-width: 200px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    
+    }
 </style>
 <div id="page-wrapper">
 <div class="container-fluid">
@@ -138,7 +157,7 @@
 
 </div>
 
-<!-- 	<div class="table-responsive"> -->
+<div class="table-responsive" style="overflow-x: inherit; width: 100%">
 
 <table class=" tables table-bordered table-hover table-striped"
 	role="table"
@@ -173,10 +192,10 @@
 			<td>{{$index+1}}</td>
 			<td>{{a.branchCode}}</td>
 			<td>{{a.roCode}}</td>
-			<td>{{a.branchName}}</td>
-			<td>{{a.branchEmail}}</td>
+			<td class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.branchName}}">{{a.branchName}}</td>
+			<td class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.branchEmail}}">{{a.branchEmail}}</td>
 			<td>{{a.branchContactNo}}</td>
-			<td>{{a.branchAddress}}</td>
+			<td class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.branchAddress}}">{{a.branchAddress}}</td>
 			<td>{{a.branchPinCode}}</td>
 			<td>{{a.branchState}}</td>
 			<div>

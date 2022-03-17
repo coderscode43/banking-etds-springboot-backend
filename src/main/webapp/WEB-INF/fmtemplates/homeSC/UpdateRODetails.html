@@ -171,6 +171,7 @@
 			<th>Sr. No.</th>
 			<th>Branch Code</th>
 			<th>Branch Name</th>
+			<th>Action</th>
 			
 		</tr>
 	</thead>
@@ -179,6 +180,10 @@
 			<td>{{$index+1}}</td>
 			<td>{{a.branchCode}}</td>
 			<td>{{a.branchName}}</td>
+			<td><a ng-click="cCctr.gotoDetailPage('branch',a.id,'roBranchDetail')"
+								style="color: blue"><img src="static\img\edit.png"
+									width="22px" height="22px" alt="Details"
+									style="margin-top: 5px; margin-bottom: 5px;" /></a></td>
 			
 			
 		</tr>

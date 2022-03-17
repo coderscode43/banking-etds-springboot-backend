@@ -66,6 +66,29 @@
 		display: none;
 	}
 }
+
+.truncate {
+        display: block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width:5%;
+        height:60px;
+        
+    }
+    
+    .ellipsis{
+     max-width: 70px;
+    min-width: 200px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    
+    }
+    
+   th{
+  text-align:center;
+    }
 </style>
 
 
@@ -234,7 +257,7 @@
 	<div class="row">
 		<div class="table-responsive" style="overflow-x: inherit;width:300%">
 			<!-- 	<div class="col-md-12" style="margin-left:-30px"> -->
-			<table class=" table table-bordered table-hover  table-striped"
+			<table class=" tables table-bordered table-hover  table-striped"
 				role="table"
 				style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
 
@@ -266,11 +289,11 @@
 						<th>Education cess</th>
 						<th>Total TDS</th>
 						<th>Total Tax Deposited</th>
-						<th>Remarks</th>
-						<th>Certificate No.</th>
-						<th>Error Description</th>
-						<th>Warning Description</th>
-						<th>Short Deduction</th>
+						<th style="width:0.01%">Remarks</th>
+						<th style="width:0.01%">Certificate No.</th>
+						<th style="width:0.01%">Error Description</th>
+						<th style="width:0.01%">Warning Description</th>
+						<th style="width:0.01%">Short Deduction</th>
 						<th>Interest on Short Deduction</th>
 						<th>Interest on Late Payment</th>
 						<th>Interest on Late Deduction</th>
@@ -310,11 +333,11 @@
 						<td>{{a.educationCess}}</td>
 						<td>{{a.totalTds}}</td>
 						<td>{{a.totalTaxDeposited}}</td>
-						<td>{{a.remarks}}</td>
-						<td>{{a.certificateNumber}}</td>
-						<td>{{a.errorDescription}}</td>
-						<td>{{a.warningDescription}}</td>
-						<td>{{a.ShortDeduction}}</td>
+					<td class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.remarks}}">{{a.remarks}}</td>
+						<td class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.certificateNumber}}">{{a.certificateNumber}}</td>
+						<td class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.errorDescription}}">{{a.errorDescription}}</td>
+						<td class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.warningDescription}}">{{a.warningDescription}}</td>
+						<td class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.ShortDeduction}}">{{a.ShortDeduction}}</td>
 						<td>{{a.InterestOnShortDeduction}}</td>
 						<td>{{a.InterestOnLatePayment}}</td>
 						<td>{{a.InterestOnLateDeduction}}</td>

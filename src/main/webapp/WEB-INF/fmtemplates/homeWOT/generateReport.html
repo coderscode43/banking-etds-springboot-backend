@@ -20,6 +20,9 @@
 		visibility: visible;
 	}
 }
+th{
+text-align:center;
+}
 </style>
 
 
@@ -121,9 +124,9 @@
 
 	<div class="row " style="font-size: 12px">
 		<!-- <div class="table-responsive"> -->
-		<table class=" table table-bordered table-hover table-striped ">
+		<table class="tables table-bordered table-hover table-striped " style="width:100%">
 			<thead>
-				<tr style="background-color: #81b7db; font-size: 13px">
+				<tr style="background-color: #81b7db; font-size: 13px;height:40px">
 					<th>Sr No</th>
 					<th>Branch Code</th>
 					<th>Financial Year</th>
@@ -142,14 +145,14 @@
 					found!!</h3></b></td>
 				<tr ng-repeat="a in cCctr.getEntityListDataFY()"
 					style="font-size: 13px">
-					<td>{{$index+1}}</td>
+					<td >{{$index+1}}</td>
 					<td>{{a.branchCode}}</td>
 					<td>{{a.fy}}</td>
 					<td>{{a.fromDate | date:'dd-MM-yyyy'}}</td>
 					<td>{{a.toDate | date:'dd-MM-yyyy'}}</td>
 					<td>{{a.reportType}}</td>
 					<td>{{a.userName}}</td>
-					<td>
+					<td style="height:40px">
 						<button class="btn btn-outline-primary waves-effect waves-light"
 							ng-click="cCctr.download('static/file/generateReport/'+ a.reportType +'.pdf')"
 							style="cursor: pointer; display: block; margin: auto; justify-content: center; font-size: small;">Download

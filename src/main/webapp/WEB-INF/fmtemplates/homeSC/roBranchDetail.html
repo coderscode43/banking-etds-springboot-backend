@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<div id="page-wrapper"
+		ng-init="cCctr.entity=cCctr.getEntityData()">
+		<div class="container-fluid">
+
+			<div ng-show="cCctr.show != true">
+
+				<div class="row">
+					<h3 class="page-header" style="margin-top: 2%;">
+						<strong>Branch Detail</strong>
+					</h3>
+				</div>
+			</div>
+			
+			
+			<div class="panel panel-default"
+				style="margin-top: -2%; border: none !important;">
+				<div class="panel-body">
+
+				
+					<div class="container">
+
+						<div >
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-3">
+									<label>Branch Code. &nbsp;</label>
+								</div>
+								<div class="col-md-3">:
+									{{cCctr.entity.branchCode}}</div>
+								<div class="col-md-3">
+									<label>Branch Name. &nbsp;</label>
+								</div>
+								<div class="col-md-3">:
+									{{cCctr.entity.branchName}}</div>
+							</div>
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-3">
+									<label>Branch Email. &nbsp;</label>
+								</div>
+								<div class="col-md-3">:
+									{{cCctr.entity.branchEmail}}</div>
+								<div class="col-md-3">
+									<label>Branch Contact Number. &nbsp;</label>
+								</div>
+								<div class="col-md-3">:
+									{{cCctr.entity.branchContactNo}}</div>
+							</div>
+							
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-3">
+									<label>Branch State. &nbsp;</label>
+								</div>
+								<div class="col-md-3">:
+									{{cCctr.entity.branchState}}</div>
+								<div class="col-md-3">
+									<label>Branch PinCode. &nbsp;</label>
+								</div>
+								<div class="col-md-3">:
+									{{cCctr.entity.branchPinCode}}</div>
+							</div>
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-3">
+									<label>Branch Address. &nbsp;</label>
+								</div>
+								<div class="col-md-3">:
+									{{cCctr.entity.branchAddress}}</div>
+								
+							</div>
+							</div>
+							</div>
+							</div>
+							</div>
+							
+			
+		</div>
+	</div>
+
+
+</body>
+</html>

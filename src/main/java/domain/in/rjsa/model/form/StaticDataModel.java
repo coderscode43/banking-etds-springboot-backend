@@ -14,7 +14,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "form.StaticData")
-public class StaticData extends CommonModelAbstract{
+public class StaticDataModel extends CommonModelAbstract{
 	
 	private static final long serialVersionUID = 1L;
 	@Id

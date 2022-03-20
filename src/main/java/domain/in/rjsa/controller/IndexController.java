@@ -1,5 +1,6 @@
 package domain.in.rjsa.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,10 +18,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import domain.in.rjsa.model.form.Login;
-import domain.in.rjsa.model.form.Model;
-import domain.in.rjsa.model.form.OrganizationDetails;
-import domain.in.rjsa.model.form.StaticData;
+import domain.in.rjsa.dao.StaticDataDao;
+import domain.in.rjsa.model.form.StaticDataModel;
+import domain.in.rjsa.util.StaticData;
 import domain.in.rjsa.web.ApplicationCache;
 
 @Controller
@@ -31,6 +31,8 @@ public class IndexController {
 
 	@Autowired
 	ApplicationCache applicationCache;
+	@Autowired
+	private StaticDataDao dao;
 
 	@RequestMapping(value = "/logout")
 	public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
@@ -48,52 +50,66 @@ public class IndexController {
 		String pageName = "resetPass";
 		return pageName;
 	}
-	
+
 	@RequestMapping(value = "/home")
 	public String gethome(ModelMap model) {
-		staticData(model);
+		setStaticData();
+		model.addAttribute("financialYear", StaticData.financialYear);
+		model.addAttribute("Quarter", StaticData.Quarter);
+		model.addAttribute("ClientName", StaticData.ClientName);
+		model.addAttribute("ClientPAN", StaticData.ClientPAN);
 		return "homeSC";
 	}
 
 	@RequestMapping(value = "/homePage")
-	public String getHomePage( ModelMap model) {
-		return  "homeSC/homeSCHomepage";
+	public String getHomePage(ModelMap model) {
+		return "homeSC/homeSCHomepage";
 	}
-	
-	
+
 	@RequestMapping(value = "/homeWot/{branchCode}/{fy}")
-	public String gethomeWOT(@PathVariable String fy,@PathVariable String branchCode, ModelMap model) {
-		model.addAttribute("fy", fy);
-		model.addAttribute("branchCode",branchCode);
+	public String gethomeWOT(@PathVariable String fy, @PathVariable String branchCode, ModelMap model) {
+		setStaticData();
+		model.addAttribute("financialYear", StaticData.financialYear);
+		model.addAttribute("branchCode", branchCode);
 		return "homeWOT";
 	}
 
 	@RequestMapping(value = "/homePageWOT")
-	public String getHomePageWOT( ModelMap model) {
-		return  "homeWOT/homeWOTHomepage";
+	public String getHomePageWOT(ModelMap model) {
+		return "homeWOT/homeWOTHomepage";
 	}
-	
+
 	@RequestMapping(value = "/add/{action}/{page}")
-	public String getAddPage(ModelMap model, @PathVariable String page ,@PathVariable String action) {
+	public String getAddPage(ModelMap model, @PathVariable String page, @PathVariable String action) {
 		logger.info("Get add page for " + page);
-		//add Branch State-pranay
-		staticData(model);
+		// add Branch State-pranay
+		setStaticData();
+		model.addAttribute("financialYear", StaticData.financialYear);
+		model.addAttribute("Quarter", StaticData.Quarter);
+		model.addAttribute("State", StaticData.State);
 		return action + "/" + page;
 	}
+
 	@RequestMapping(value = "/detail/{action}/{page}")
-	public String getPage( @PathVariable String action, @PathVariable String page,
-			ModelMap model) {
-		//detail Branch State-pranay
-		staticData(model);
+	public String getPage(@PathVariable String action, @PathVariable String page, ModelMap model) {
+		setStaticData();
+		model.addAttribute("financialYear", StaticData.financialYear);
+		model.addAttribute("Quarter", StaticData.Quarter);
+		model.addAttribute("State", StaticData.State);
 		
+
 		return action + "/" + page;
 	}
 
 	@RequestMapping(value = "/list/{action}/{page}")
-	public String getListPage( @PathVariable String action, @PathVariable String page,
-			ModelMap model) {
-		//download certificate-Pranay
-		staticData(model);
+	public String getListPage(@PathVariable String action, @PathVariable String page, ModelMap model) {
+		// download certificate-Pranay
+		setStaticData();
+		model.addAttribute("financialYear", StaticData.financialYear);
+		model.addAttribute("Quarter", StaticData.Quarter);
+		model.addAttribute("typeOfDeductee", StaticData.typeOfDeductee);
+		model.addAttribute("typeOfCertificate", StaticData.typeOfCertificate);
+		
 		return action + "/" + page;
 	}
 
@@ -112,78 +128,74 @@ public class IndexController {
 		return userName;
 
 	}
-	
-	//Pranay
-	private void staticData(ModelMap model) {
-		
-		List<StaticData> list = applicationCache.getStaticList();
-		String[] stringArray;
-		String xString;
-		for (StaticData list1 : list) {
-		    String key = list1.getKey();
-		    switch (key) {
-		    case "State":
-				xString = list1.getValue();
-				stringArray = xString.split(",");
-				model.addAttribute("State", stringArray);
-			break;
-			case "financialYear":
+
+	private void setStaticData() {
+		if (StaticData.ClientName == null) {
+			HashMap<String, Object> sd = new HashMap<String, Object>();
+			List<StaticDataModel> list = dao.findall(sd, 0, 100);
+			String[] stringArray;
+			String xString;
+			for (StaticDataModel list1 : list) {
+				String key = list1.getKey();
+				switch (key) {
+				case "financialYear":
 					xString = list1.getValue();
-			        stringArray = xString.split(",");
-			        model.addAttribute("financialYear", stringArray);
-			break;
-			case "typeOfDeductee":
-				 xString = list1.getValue();
-				 stringArray = xString.split(",");
-				 model.addAttribute("typeOfDeductee", stringArray);
-		    break;
-		    
-			case "typeOfCertificate":
-				 xString = list1.getValue();
-				 stringArray = xString.split(",");
-				 model.addAttribute("typeOfCertificate", stringArray);
-		    break;
-		    
-			case "Quarter":
-				 xString = list1.getValue();
-				 stringArray = xString.split(",");
-				 model.addAttribute("Quarter", stringArray);
-		    break;
-		    
-			case "path":
+					stringArray = xString.split(",");
+					StaticData.financialYear = stringArray;
+					break;
+				case "typeOfDeductee":
+					xString = list1.getValue();
+					stringArray = xString.split(",");
+					StaticData.typeOfDeductee = stringArray;
+					break;
+				case "typeOfCertificate":
+					xString = list1.getValue();
+					stringArray = xString.split(",");
+					StaticData.typeOfCertificate = stringArray;
+					break;
+
+				case "Quarter":
+					xString = list1.getValue();
+					stringArray = xString.split(",");
+					StaticData.Quarter = stringArray;
+					break;
+
+				case "path":
 //				 xString = list1.getValue();
 //				 stringArray = xString.split(",");
 //				 model.addAttribute("path", stringArray);
-				 xString = list1.getValue();
-				 model.addAttribute("path", xString);
-		    break;
-			case "Month":
-				 xString = list1.getValue();
-				 stringArray = xString.split(",");
-				 model.addAttribute("Month", stringArray);
-		    break;
-			
-			case "Client":
-				 xString = list1.getValue();
-				 stringArray = xString.split(",");
-				 model.addAttribute("clientName", stringArray[0].toString());
-				 model.addAttribute("clientPan", stringArray[1].toString());
-		    break;
-		    
-			case "ChallanMismatch":
-				 xString = list1.getValue();
-				 stringArray = xString.split(",");
-				 model.addAttribute("True", stringArray[0].toString());
-				 model.addAttribute("False", stringArray[1].toString());
-				 //model.addAttribute("ChallanMismatch", stringArray);
-		    break;
-		    
-			default:
-				System.out.println("Not Match");
-				break;
+					xString = list1.getValue();
+					StaticData.path = xString;
+					break;
+				case "State":
+					xString = list1.getValue();
+					stringArray = xString.split(",");
+					StaticData.State = stringArray;
+					break;
+				case "Month":
+					xString = list1.getValue();
+					stringArray = xString.split(",");
+					StaticData.Month = stringArray;
+					break;
+
+				case "Client":
+					xString = list1.getValue();
+					stringArray = xString.split(",");
+					StaticData.ClientName = stringArray[0];
+					StaticData.ClientPAN = stringArray[1];
+					break;
+
+				case "ChallanMismatch":
+					xString = list1.getValue();
+					stringArray = xString.split(",");
+					// model.addAttribute("ChallanMismatch", stringArray);
+					break;
+
+				default:
+					System.out.println("Not Match");
+					break;
+				}
 			}
 		}
 	}
-	
-
 }

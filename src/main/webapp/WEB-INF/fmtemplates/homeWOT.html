@@ -332,15 +332,21 @@
 
 	<div class="top-item top1 col-lg-offset-5" style="border-radius: 5px;">
 		<p>
-			<b>Branch Code : ${branchCode}</b>
+			<b>Branch Code : ${branchCode}</b> 
 		</p>
 	</div>
 	<div class="top-item top2 col-lg-offset-5"
 		style="border-radius: 5px; background-color: #228B22">
 		<p>
-			<b>Financial Year : ${fy}</b>
+			<b>Financial Year :&nbsp;&nbsp;&nbsp;&nbsp;<select class="top2" style=" background-color:#228B22">
+						<#list financialYear as year>
+						<option value="${year}">${year}</option>
+						</#list>
+  </select></b>
 		</p>
 	</div>
+
+
 
 </div>
 	<!-- sidebar-wrapper  -->

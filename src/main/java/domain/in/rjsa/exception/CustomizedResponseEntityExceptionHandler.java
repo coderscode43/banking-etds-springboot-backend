@@ -18,7 +18,6 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
 
 import com.google.gson.JsonSyntaxException;
-import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 import domain.in.rjsa.web.StaticData;
 
@@ -125,19 +124,6 @@ public class CustomizedResponseEntityExceptionHandler{
 	    	return new ResponseEntity(dto, HttpStatus.BAD_REQUEST);
 	    }
 	    
-	    @ExceptionHandler(MySQLIntegrityConstraintViolationException.class)
-	    @ResponseStatus(HttpStatus.BAD_REQUEST)
-	    @ResponseBody
-	    public final ResponseEntity<Object> handleMySQLIntegrityConstraintViolationException(MySQLIntegrityConstraintViolationException ex, WebRequest request) {
-	    	FieldErrorDTO dto=new FieldErrorDTO();
-	    	String uri=request.getDescription(false);
-	    	String[] uriSplit=uri.split("=");
-	    	String[] uriParts=uriSplit[1].toString().split("/");
-	    	String entityName=uriParts[2].substring(3);
-	    	dto.setEntityName(StaticData.entityMap.get(entityName));
-	    	dto.setExceptionMsg("Duplicate Entry! Please re-verify.");
-	    	return new ResponseEntity(dto, HttpStatus.BAD_REQUEST);
-	    }
 	    
 	    
 	    @ExceptionHandler(PersistenceException.class)

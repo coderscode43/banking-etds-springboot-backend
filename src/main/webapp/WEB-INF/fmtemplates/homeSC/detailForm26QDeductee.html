@@ -370,9 +370,9 @@
 								
 								<div ng-if="cCctr.entity.deductee.resolved == 1"
 									style="margin: -2.9% 0 0% 72.2%;">
-									<button class="btn btn-info"
-										ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.deductee.id"
-										ng-click="cCctr.updateData(true,cCctr.resolve,'form26QDeductee','reject')">Reject</button>
+									<button data-toggle="modal" data-target="#rejectModal"
+									class="btn btn-info">
+									Reject</button>
 								</div>
 								<div ng-if="cCctr.entity.deductee.resolved == 0"
 									style="margin: -2.9% 0 0% 72.2%;">
@@ -408,9 +408,32 @@
 													data-dismiss="modal" style="margin: 2% 5% 0 0; width: 15%;">Add</button>
 											</div>
 										</div>
-
 									</div>
 								</div>
+							<!-- Reject Remark model -->			
+								<div class="modal fade" id="rejectModal" role="dialog">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+												<h4 class="modal-title">Remark</h4>
+											</div>
+											<div class="col-md-12">
+												<div class="col-md-12">
+													<label style="font-size: 13px; margin-top: 2%">Are you sure ?</label>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button class="btn btn-success"
+										ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.deductee.id"
+										ng-click="cCctr.updateData(true,cCctr.resolve,'form26QDeductee','reject')">Yes</button>
+												<button  class="btn btn-danger"
+													data-dismiss="modal" >No</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							<!-- Reject Remark model -->
 							</form>
 						</div>
 					</div>
@@ -454,4 +477,4 @@
 		</div>
 	</div>
 </div>
-
+							

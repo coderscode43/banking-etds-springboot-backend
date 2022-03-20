@@ -5,6 +5,7 @@
 			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
 			<div class="heading">
 				<strong>Add Ticket Details</strong>
+				
 			</div>
 		</div>
 		<div class="row">
@@ -53,10 +54,9 @@
 							<div class="col-md-4">
 								<div>
 									<label style="font-size: 15px">Financial Year</label>
-									 <input class="form-control" name="fy"
-										id="fy" ng-model="cCctr.entity.description" value="{{a.fy}}"
-										style="width: 100%;" required></input>
-
+									<input type="text" class="form-control" name="fy" ng-init="cCctr.entity.fy=cCctr.getStateParamValue('fy');"
+										id="fy" ng-model="cCctr.entity.fy" 
+										style="width: 100%;" readonly/>
 								</div>
 								
 							</div>
@@ -82,23 +82,10 @@
 							<div class="col-md-12">
 								<div style="margin-left: 0%">
 									<label style="font-size: 15px">Branch Code</label>
-									<md-autocomplete md-input-name="branchCode" id="branchCode"
-										md-input-minlength="3" md-no-cache="true"
-										md-input-maxlength="75" style="height:10%;"
-										md-selected-item="cCctr.entity.branchCode" md-search-text="b"
-										md-items="item in cCctr.ajax('branch','branchCode',b)"
-										md-delay="0" placeholder="Branch Code" ng-required="true">
-									<md-item-template> <span>{{item}}</span> </md-item-template> <md-not-found>
-									No Branch Code with "{{b}}" were found. <a ng-click="">Add
-										new</a> </md-not-found> </md-autocomplete>
-
+									<input type="text" class="form-control" name="branchCode"  ng-init="cCctr.entity.branchCode=cCctr.getStateParamValue('branchCode');"
+										id="branchCode" ng-model="cCctr.entity.branchCode"
+										style="width: 100%;" readonly/>
 								</div>
-								<span style="color: red"
-									ng-show="fileForm.submitted || fileForm.branchCode.$dirty && fileForm.branchCode.$invalid">
-									<span class="error"
-									ng-show="fileForm.branchCode.$error.required">Branch
-										Code is Required </span>
-								</span>
 							</div>
 						</div>
 						<!-- <div class="row">

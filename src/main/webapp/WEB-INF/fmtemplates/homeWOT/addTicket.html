@@ -53,12 +53,22 @@
 
 							<div class="col-md-4">
 								<div>
-									<label style="font-size: 15px">Financial Year</label>
-									<input type="text" class="form-control" name="fy" ng-init="cCctr.entity.fy=cCctr.getStateParamValue('fy');"
-										id="fy" ng-model="cCctr.entity.fy" 
-										style="width: 100%;" readonly/>
+									<label style="font-size: 15px">Financial Year</label> <select
+										name="fy" id="fy" ng-model="cCctr.entity.fy"
+										class="form-control" required>
+										<option disabled value="">Select Financial Year</option>
+										<#list financialYear as year>
+										<option value="${year}">${year}</option>
+										</#list>
+									</select>
+
 								</div>
-								
+								<span style="color: red"
+									ng-show="fileForm.submitted || fileForm.fy.$dirty && fileForm.fy.$invalid">
+									<span class="error" ng-show="fileForm.fy.$error.required">
+										Financial Year  is Required </span>
+								</span>
+
 							</div>
 							<div class="col-md-4">
 								<div>

@@ -54,6 +54,7 @@ public class IndexController {
 	@RequestMapping(value = "/home")
 	public String gethome(ModelMap model) {
 		setStaticData();
+		model.addAttribute("typeOfUser",applicationCache.getLoginDetail(getPrincipal()).getType());
 		model.addAttribute("financialYear", StaticData.financialYear);
 		model.addAttribute("Quarter", StaticData.Quarter);
 		model.addAttribute("ClientName", StaticData.ClientName);
@@ -63,12 +64,14 @@ public class IndexController {
 
 	@RequestMapping(value = "/homePage")
 	public String getHomePage(ModelMap model) {
+		model.addAttribute("typeOfUser",applicationCache.getLoginDetail(getPrincipal()).getType());
 		return "homeSC/homeSCHomepage";
 	}
 
 	@RequestMapping(value = "/homeWot/{branchCode}/{fy}")
 	public String gethomeWOT(@PathVariable String fy, @PathVariable String branchCode, ModelMap model) {
 		setStaticData();
+		model.addAttribute("typeOfUser",applicationCache.getLoginDetail(getPrincipal()).getType());
 		model.addAttribute("financialYear", StaticData.financialYear);
 		model.addAttribute("branchCode", branchCode);
 		return "homeWOT";
@@ -76,6 +79,7 @@ public class IndexController {
 
 	@RequestMapping(value = "/homePageWOT")
 	public String getHomePageWOT(ModelMap model) {
+		model.addAttribute("typeOfUser",applicationCache.getLoginDetail(getPrincipal()).getType());
 		return "homeWOT/homeWOTHomepage";
 	}
 
@@ -84,6 +88,7 @@ public class IndexController {
 		logger.info("Get add page for " + page);
 		// add Branch State-pranay
 		setStaticData();
+		model.addAttribute("typeOfUser",applicationCache.getLoginDetail(getPrincipal()).getType());
 		model.addAttribute("financialYear", StaticData.financialYear);
 		model.addAttribute("Quarter", StaticData.Quarter);
 		model.addAttribute("State", StaticData.State);
@@ -93,6 +98,7 @@ public class IndexController {
 	@RequestMapping(value = "/detail/{action}/{page}")
 	public String getPage(@PathVariable String action, @PathVariable String page, ModelMap model) {
 		setStaticData();
+		model.addAttribute("typeOfUser",applicationCache.getLoginDetail(getPrincipal()).getType());
 		model.addAttribute("financialYear", StaticData.financialYear);
 		model.addAttribute("Quarter", StaticData.Quarter);
 		model.addAttribute("State", StaticData.State);
@@ -105,6 +111,7 @@ public class IndexController {
 	public String getListPage(@PathVariable String action, @PathVariable String page, ModelMap model) {
 		// download certificate-Pranay
 		setStaticData();
+		model.addAttribute("typeOfUser",applicationCache.getLoginDetail(getPrincipal()).getType());
 		model.addAttribute("financialYear", StaticData.financialYear);
 		model.addAttribute("Quarter", StaticData.Quarter);
 		model.addAttribute("typeOfDeductee", StaticData.typeOfDeductee);

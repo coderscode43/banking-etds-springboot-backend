@@ -37,5 +37,7 @@ public class Login extends CommonModelAbstract{
 	private long clientId;
 	@Column(name = "passwordReset")
 	private Boolean passwordReset;
+	@Column(name = "branchCode")
+	private String branchCode;
 	
 }

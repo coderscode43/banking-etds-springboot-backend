@@ -123,15 +123,10 @@ text-align:center;
 					</div>
 					<div class="col-md-3">
 						<h6>
-							<b>Quarter</b>
+							<b>Branch Code</b>
 							<h6>
-								<select class="form-control" ng-model="cCctr.search.quarter"
-									required>
-									<option disabled value="">Select Quarter</option>
-									<#list Quarter as quarter>
-									<option value="${quarter}">${quarter}</option>
-									</#list>
-								</select>
+								<input type="text" ng-model="cCctr.search.branchCode"
+									class="form-control" placeholder="Branch Code" style="width: 100%">
 					</div>
 
 					<div class="col-md-3">
@@ -141,6 +136,7 @@ text-align:center;
 								<input type="text" ng-model="cCctr.search.pan"
 									class="form-control" placeholder="PAN" style="width: 100%">
 					</div>
+					
 				</div>
 			</div>
 
@@ -219,7 +215,22 @@ text-align:center;
 
 				</div>
 
-
+				<div class="row">
+				
+					<div class="col-md-3">
+					<h6>
+						<b>Quarter</b>
+						<h6>
+							<select class="form-control"
+													ng-model="cCctr.search.quarter" required>
+													<option disabled value="">Select Quarter</option>
+													<#list Quarter as quarter>
+													<option value="${quarter}">${quarter}</option>
+													</#list>
+						</select>
+				</div>
+		</div>
+		
 
 
 

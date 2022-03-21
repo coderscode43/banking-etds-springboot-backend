@@ -84,19 +84,14 @@
 					<form class="form-inline" name="BranchForm">
 						<div class="row">
 							<div class="col-md-8">
-								<div style="margin-left: 0%">
-									<md-autocomplete md-input-name="branchCode"
-										md-input-minlength="3" md-no-cache="true"
-										md-input-maxlength="75" style="height:10%"
-										md-selected-item="cCctr.search.branchCode" md-search-text="b"
-										md-items="item in cCctr.ajax('branch','branchCode',b)"
-										md-delay="0" placeholder="Branch Code"> <md-item-template>
-									<span>{{item}}</span> </md-item-template> <md-not-found> No Branch
-									Code with "{{b}}" were found. <a ng-click="">Add new</a> </md-not-found> </md-autocomplete>
-								</div>
-							</div>
+						<h6>
+							<b>Branch Code</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.branchCode" name="roCode" 
+									class="form-control" placeholder="Branch Code" style="width: 100%">
+				</div>
 							<div class="col-md-4">
-                                <div style="margin-top:1%">
+                                <div style="margin-top:8%">
 						            <button ng-click="cCctr.searchEntities(true,'branch','branch')"
 										class="btn btn-success"
 										style="background: #5cb85c; border: 1px solid #5cb85c">Search</button>

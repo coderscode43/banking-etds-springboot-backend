@@ -40,16 +40,7 @@ public class RemarkController extends AbstractControllerFY<Long, Remark, RemarkS
 
 	@Autowired
 	RemarkService service;
-	@Autowired
-	Regular24QDeducteeService r24qService;
-	@Autowired
-	Regular26QDeducteeService r26qService;
-	@Autowired
-	Regular27EQDeducteeService r27eqService;
-	@Autowired
-	Regular27QDeducteeService r27qService;
-	@Autowired
-	TicketService tService;
+	
 
 	@Override
 	public RemarkService getService() {
@@ -75,65 +66,9 @@ public class RemarkController extends AbstractControllerFY<Long, Remark, RemarkS
 		entity.put("userName", l.getUserName());
 		entity.put("status",type);
 		create(entity);
-		int ID = (int) entity.get("deducteeId");
-		Long id = new Long(ID);
-		String remark = entity.get("deducteeForm").toString();
-		if (type.endsWith("Remark")) {
-			if (remark.endsWith("24Qform")) {
-				Regular24QDeductee r24q = r24qService.getByKey(id);
-				r24q.setResolved(true);
-				r24qService.update(r24q);
-			} else if (remark.endsWith("26Qform")) {
-				Regular26QDeductee r26q = r26qService.getByKey(id);
-				r26q.setResolved(true);
-				r26qService.update(r26q);
-			} else if (remark.endsWith("27EQform")) {
-				Regular27EQDeductee r27eq = r27eqService.getByKey(id);
-				r27eq.setResolved(true);
-				r27eqService.update(r27eq);
-			} else if (remark.endsWith("27Qform")) {
-				Regular27QDeductee r27q = r27qService.getByKey(id);
-				r27q.setResolved(true);
-				r27qService.update(r27q);
-			} else if (remark.endsWith("ticket")) {
-				Ticket ticket = tService.getByKey(id);
-				ticket.setResolved(true);
-				tService.update(ticket);
-			}
-		}else if(type.endsWith("Resolve")||type.endsWith("Reject"))
-		{	
-			if (remark.endsWith("24Qform")) {
-				Regular24QDeductee r24q = r24qService.getByKey(id);
-				r24q.setResolved(false);
-				r24qService.update(r24q);
-			} else if (remark.endsWith("26Qform")) {
-				Regular26QDeductee r26q = r26qService.getByKey(id);
-				r26q.setResolved(false);
-				r26qService.update(r26q);
-			} else if (remark.endsWith("27EQform")) {
-				Regular27EQDeductee r27eq = r27eqService.getByKey(id);
-				r27eq.setResolved(false);
-				r27eqService.update(r27eq);
-			} else if (remark.endsWith("27Qform")) {
-				Regular27QDeductee r27q = r27qService.getByKey(id);
-				r27q.setResolved(false);
-				r27qService.update(r27q);
-			} else if (remark.endsWith("ticket")) {
-				Ticket ticket = tService.getByKey(id);
-				ticket.setResolved(false);
-				tService.update(ticket);
-			}
-		}
-
+		service.setResolve(entity,type);
 		addRemarkLogs(entity);
 		return new ResponseEntity<Object>(HttpStatus.CREATED);
-
-	}
-
-	public void create(LinkedHashMap<String, Object> entity) {
-		Gson gson = new Gson();
-		JsonElement jsonElement = gson.toJsonTree(entity);
-		getService().save(gson.fromJson(jsonElement, getEntity()));
 
 	}
 

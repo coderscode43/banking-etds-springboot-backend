@@ -9,5 +9,7 @@ public interface RemarkService extends ServiceInterfaceFY<Long, Remark>{
 	
 	public void saveRemark(LinkedHashMap<String, Object> entity);
 
+	public void setResolve(LinkedHashMap<String, Object> entity, String type);
+
 
 }

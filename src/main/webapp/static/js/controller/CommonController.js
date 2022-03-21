@@ -41,7 +41,7 @@ App
 								$state.reload();
 							}
 							self.getStateParamValue=function(a){
-								return $stateParams.[a];
+								return $stateParams[a];
 							}
 							self.setTemp1 = function(a) {
 								self.temp1 = a;

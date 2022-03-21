@@ -273,7 +273,7 @@ App
 								return CommonService.getEntityList();
 							}
 
-							self.addRemark = function(valid, entity, object,
+							self.addRemark = function(valid, entity, object, type,
 									closeModalId) {
 								if (valid == true) {
 									console.log("Common Controller submit "
@@ -281,7 +281,7 @@ App
 
 									progressBar();
 									CommonServiceFY
-											.add(object, entity,
+											.add(object, entity, type,
 													$stateParams.fy,
 													$stateParams.branchCode)
 											.then(

@@ -130,8 +130,7 @@
 
 
 
-<div id="page-wrapper"
-	ng-init="cCctr.entity=cCctr.getEntityData();">
+<div id="page-wrapper" ng-init="cCctr.entity=cCctr.getEntityData();">
 	<div class="container-fluid">
 
 		<div ng-show="cCctr.show != true">
@@ -155,132 +154,188 @@
 					</div> -->
 
 					<br>
-<div class="container">
-					<div class="row" style="font-size: 13px;">
-						<div class="col-md-3">
-							<label>Financial Year &nbsp;:</label> {{cCctr.entity.deductee.fy}}
-						</div>
-						<div class="col-md-3">
-							<label>Quarter &nbsp;:</label> {{cCctr.entity.deductee.quarter}}
-						</div>
-						<div class="col-md-3">
-							<label>Form &nbsp;:</label> {{cCctr.entity.deductee.form}}
-						</div>
+					<div class="container">
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-3">
+								<label>Financial Year &nbsp;:</label>
+								{{cCctr.entity.deductee.fy}}
+							</div>
+							<div class="col-md-3">
+								<label>Quarter &nbsp;:</label> {{cCctr.entity.deductee.quarter}}
+							</div>
+							<div class="col-md-3">
+								<label>Form &nbsp;:</label> {{cCctr.entity.deductee.form}}
+							</div>
 
-					</div>
-					<br>
-					<div class="row" style="font-size: 13px;">
-						<!-- <div class="col-md-3">
+						</div>
+						<br>
+						<div class="row" style="font-size: 13px;">
+							<!-- <div class="col-md-3">
 							<label>Type &nbsp;:</label> {{cCctr.entity.type}}
 						</div> -->
-						<div class="col-md-3">
-							<label>Status &nbsp;:</label> {{cCctr.entity.deductee.status}}
+							<div class="col-md-3">
+								<label>Status &nbsp;:</label> <span
+									ng-if="cCctr.entity.deductee.resolved == 0"> Resolved</span> <span
+									ng-if="cCctr.entity.deductee.resolved == 1"> Not Resolved</span>
+							</div>
+							<div class="col-md-3">
+								<label>Description &nbsp;:</label>
+								{{cCctr.entity.deductee.description}}
+							</div>
+							<!-- <div class="col-md-3">
+								<label>Remarks &nbsp;:</label> {{cCctr.entity.deductee.status}}
+							</div> -->
 						</div>
-						<div class="col-md-3">
-							<label>Description &nbsp;:</label> {{cCctr.entity.deductee.description}}
-						</div>
-						<div class="col-md-3">
-							<label>Remarks &nbsp;:</label> {{cCctr.entity.deductee.status}}
-						</div>
-					</div>
-					<br>
+						<br>
 
-					<div class="row" style="font-size: 13px;">
-						<!-- <div class="col-md-3">
+						<div class="row" style="font-size: 13px;">
+							<!-- <div class="col-md-3">
 							<label>Attachment &nbsp;:</label> {{cCctr.entity.attachment}}
 						</div> -->
-						<div class="col-md-3">
-							<label>Date Of Opening &nbsp;:</label>
-							{{cCctr.entity.deductee.dateOfOpening | date:'dd-MM-yyyy'}}
+							<div class="col-md-3">
+								<label>Date Of Opening &nbsp;:</label>
+								{{cCctr.entity.deductee.dateOfOpening | date:'dd-MM-yyyy'}}
+							</div>
+							<div class="col-md-3">
+								<label>Date of Change &nbsp;:</label>
+								{{cCctr.entity.deductee.dateOfChange | date:'dd-MM-yyyy'}}
+							</div>
+
 						</div>
-						<div class="col-md-3">
-							<label>Date of Change &nbsp;:</label> {{cCctr.entity.deductee.dateOfChange
-							| date:'dd-MM-yyyy'}}
-						</div>
-
-					</div>
-					<br>
-					<div class="row" style="font-size: 13px;"></div>
+						<br>
+						<div class="row" style="font-size: 13px;"></div>
 
 
-					<div class="row">
-						<form role="form" name="remark">
-							<input ng-model="cCctr.newEntity.deducteeId = cCctr.entity.deductee.id"
-								id="deducteeId" name="deducteeId" style="display: none">
+						<div class="row">
+							<form role="form" name="remark">
+								<input
+									ng-model="cCctr.newEntity.deducteeId = cCctr.entity.deductee.id"
+									id="deducteeId" name="deducteeId" style="display: none">
 
-							<input ng-model="cCctr.newEntity.fy = cCctr.entity.deductee.fy" id="fy"
-								name="fy" style="display: none"> <input
-								ng-model="cCctr.newEntity.deducteeForm ='ticket'"
-								id="deducteeForm" name="deducteeForm" style="display: none">
+								<input ng-model="cCctr.newEntity.fy = cCctr.entity.deductee.fy"
+									id="fy" name="fy" style="display: none"> <input
+									ng-model="cCctr.newEntity.deducteeForm ='ticket'"
+									id="deducteeForm" name="deducteeForm" style="display: none">
 
-							<input class="form-control"
-								ng-model="cCctr.newEntity.branchCode = cCctr.entity.deductee.branchCode"
-								id="branchCode" name="branchCode" style="display: none">
+								<input class="form-control"
+									ng-model="cCctr.newEntity.branchCode = cCctr.entity.deductee.branchCode"
+									id="branchCode" name="branchCode" style="display: none">
 
-							<button data-toggle="modal" data-target="#myModal"
-								class="btn btn-success" style="margin-left: 50%">Add
-								Remark</button>
+								<button data-toggle="modal" data-target="#myModal"
+									class="btn btn-success" style="margin-left: 50%">Add
+									Remark</button>
 
-							<button class="btn btn-danger"
-								ng-click="cCctr.gotoListPage('ticket','ticket')">Back</button>
+								<button class="btn btn-danger"
+									ng-click="cCctr.gotoListPage('ticket','ticket')">Back</button>
 
-							<div ng-if="cCctr.entity.deductee.resolved == 1"
-								style="margin: -2.81% 0 0% 64.4%">
-								<button class="btn btn-primary"
-									ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.deductee.id"
-									ng-click="cCctr.updateTicket(true,cCctr.resolve,'ticket','resolved')">Resolved</button>
-							</div>
-							<div ng-if="cCctr.entity.deductee.resolved == 0"
-								style="margin:-2.81% 0 0% 64.4%">
-								<button class="btn btn-primary" disabled
-									ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.deductee.id"
-									ng-click="cCctr.updateTicket(true,cCctr.resolve,'ticket','resolved')">Resolved</button>
-							</div>
-							<div ng-if="cCctr.entity.deductee.resolved == 1"
-								style="margin: -2.81% 0 0% 72.4%">
-								<button class="btn btn-info"
-									ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.deductee.id"
-									ng-click="cCctr.updateTicket(true,cCctr.resolve,'ticket','reject')">Reject</button>
-							</div>
-							<div ng-if="cCctr.entity.deductee.resolved == 0"
-								style="margin:-2.81% 0 0% 72.4%">
-								<button class="btn btn-primary" disabled
-									ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.deductee.id"
-									ng-click="cCctr.updateTicket(true,cCctr.resolve,'ticket','reject')">Reject</button>
-							</div>
+								<div ng-if="cCctr.entity.deductee.resolved == 1"
+									style="margin: -2.9% 0 0% 64.2%;">
+									<button data-toggle="modal" data-target="#resolveModal"
+										class="btn btn-primary">Resolved</button>
+								</div>
+								<div ng-if="cCctr.entity.deductee.resolved == 0"
+									style="margin: -2.9% 0 0% 64.2%;">
+									<button data-toggle="modal" data-target="#resolveModal"
+										class="btn btn-primary" disabled>Resolved</button>
+								</div>
 
-							<div class="modal fade" id="myModal" role="dialog">
-								<div class="modal-dialog">
+								<div ng-if="cCctr.entity.deductee.resolved == 1"
+									style="margin: -2.9% 0 0% 72.2%;">
+									<button data-toggle="modal" data-target="#rejectModal"
+										class="btn btn-info">Reject</button>
+								</div>
+								<div ng-if="cCctr.entity.deductee.resolved == 0"
+									style="margin: -2.9% 0 0% 72.2%;">
+									<button data-toggle="modal" data-target="#rejectModal"
+										class="btn btn-info" disabled>Reject</button>
+								</div>
 
-									<!-- Modal content-->
-									<div class="modal-content">
-										<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal">&times;</button>
-											<h4 class="modal-title">Add Remark</h4>
-										</div>
-										<div class="col-md-12">
-											<div class="col-md-12">
-												<label style="font-size: 13px; margin-top: 2%">Remarks&nbsp;:</label>
+								<div class="modal fade" id="myModal" role="dialog">
+									<div class="modal-dialog">
+
+										<!-- Modal content-->
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+												<h4 class="modal-title">Add Remark</h4>
 											</div>
-											<textarea ng-model="cCctr.newEntity.remark" id="remark"
-												name="remark"
-												style="width: 90%; height: 20%; font-size: 15px; margin-left: 5%;"
-												ng-required="true"></textarea>
-											<span style="color: red; margin-left: 5%;" class="error"
-												ng-show="remark.submitted || remark.remark.$dirty && remark.remark.$invalid">Please
-												enter valid Remark</span> <span class="error" id="remark"></span>
+											<div class="col-md-12">
+												<div class="col-md-12">
+													<label style="font-size: 13px; margin-top: 2%">Remarks&nbsp;:</label>
+												</div>
+												<textarea ng-model="cCctr.newEntity.remark" id="remark"
+													name="remark"
+													style="width: 90%; height: 20%; font-size: 15px; margin-left: 5%;"
+													ng-required="true"></textarea>
+												<span style="color: red; margin-left: 5%;" class="error"
+													ng-show="remark.submitted || remark.remark.$dirty && remark.remark.$invalid">Please
+													enter valid Remark</span> <span class="error" id="remark"></span>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-success "
+													ng-click="remark.submitted=true;cCctr.addRemark(remark.$valid,'remark',cCctr.newEntity,'Remark','close')"
+													data-dismiss="modal" style="margin: 2% 5% 0 0; width: 15%;">Add</button>
+											</div>
 										</div>
-										<div class="modal-footer">
-											<button type="button" class="btn btn-success "
-												ng-click="remark.submitted=true;cCctr.addRemark(remark.$valid,'remark',cCctr.newEntity,'close')"
-												data-dismiss="modal" style="margin: 2% 5% 0 0; width: 15%;">Add</button>
+
+									</div>
+								</div>
+								<!-- Reject Remark model -->
+								<div class="modal fade" id="rejectModal" role="dialog">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+												<h4 class="modal-title">Reject</h4>
+											</div>
+											<div class="col-md-12 ">
+												<label style="font-size: 13px; margin-top: 2%">Why
+													do you want to reject?</label><br>
+												<textarea ng-model="cCctr.newEntity.remark" id="remark"
+													name="remark"
+													style="width: 90%; height: 20%; font-size: 15px; margin-left: 5%;"
+													ng-required="true"></textarea>
+											</div>
+											<div class="modal-footer">
+												<button class="btn btn-success"
+													ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.deductee.id"
+													ng-click="cCctr.addRemark(true,'remark',cCctr.newEntity,'Reject','close')"
+													style="margin-top: 1%;">Yes</button>
+												<button class="btn btn-danger" data-dismiss="modal"
+													style="margin-top: 1%;">No</button>
+											</div>
 										</div>
 									</div>
-
 								</div>
-							</div>
-						</form>
-					</div>
+
+								<!-- Resolve Remark model -->
+								<div class="modal fade" id="resolveModal" role="dialog">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+												<h4 class="modal-title">Resolve</h4>
+											</div>
+											<div class="col-md-12 ">
+												<label style="font-size: 13px; margin-top: 2%">Resolve</label><br>
+												<textarea ng-model="cCctr.newEntity.remark" id="remark"
+													name="remark"
+													style="width: 90%; height: 20%; font-size: 15px; margin-left: 5%;"
+													ng-required="true"></textarea>
+											</div>
+											<div class="modal-footer">
+												<button class="btn btn-success"
+													ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.deductee.id"
+													ng-click="cCctr.addRemark(true,'remark',cCctr.newEntity,'Resolve','close')"
+													style="margin-top: 1%;">Yes</button>
+												<button class="btn btn-danger" data-dismiss="modal"
+													style="margin-top: 1%;">No</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
 					</div>
 					<br>
 					<div>
@@ -299,6 +354,7 @@
 									<tr role="row" style="height: 40px; background-color: #81b7db">
 										<th>Sr.No</th>
 										<th style="width: 50%">Remark</th>
+										<th>Status</th>
 										<th>Remark By</th>
 										<th>Date & Time</th>
 
@@ -309,6 +365,7 @@
 									<tr ng-repeat="a in cCctr.getEntityListData().remark">
 										<th>{{$index+1}}</th>
 										<th>{{a.remark}}</th>
+										<th>{{a.status}}</th>
 										<th>{{a.userName}}</th>
 										<th>{{a.dateTime | date:'dd-MM-yyyyTHH:mm:ss'}}</th>
 									</tr>
@@ -505,7 +562,7 @@
 
 
 		</div>
-</div>
+	</div>
 
 </div>
 

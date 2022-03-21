@@ -17,7 +17,7 @@
     <!-- FONT AWESOME ICONS  -->
 <!--  	<link href="static/css/font-awesome.css" rel="stylesheet" /> -->
 <link rel="shortcut icon" type="image/x-icon"
-	href="/static/img/favicon.ico" />
+	href="/bankingETDS/static/img/favicon.ico" />
 	  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 	  
 	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

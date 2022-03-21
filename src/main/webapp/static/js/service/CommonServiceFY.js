@@ -98,10 +98,10 @@ App.factory('CommonServiceFY', [
 			return deferred.promise;
 
 		}
-		function add(entitySave, entity, fy, branchCode) {
+		function add(entitySave, entity, type, fy, branchCode) {
 			var deferred = $q.defer();
 
-			$http.post(REST_SERVICE_URI + entity + '/add/' + $stateParams.fy + '/' + $stateParams.branchCode,
+			$http.post(REST_SERVICE_URI + entity + '/add/' + $stateParams.fy + '/' + $stateParams.branchCode +'/'+ type,
 				entitySave).success(function(data) {
 
 					deferred.resolve(data);

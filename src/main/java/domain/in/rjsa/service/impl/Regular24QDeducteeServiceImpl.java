@@ -36,15 +36,4 @@ public class Regular24QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 		return dao.getByKey(id);
 	}
 
-	
-	@Override
-	public void save(Regular24QDeductee entity) {
-		// TODO Auto-generated method stub
-		getPrimaryDao().persist(entity);
-		
-	}
-	
-	
-	
-
 }

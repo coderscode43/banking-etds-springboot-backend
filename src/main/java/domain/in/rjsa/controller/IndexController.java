@@ -116,6 +116,7 @@ public class IndexController {
 		model.addAttribute("Quarter", StaticData.Quarter);
 		model.addAttribute("typeOfDeductee", StaticData.typeOfDeductee);
 		model.addAttribute("typeOfCertificate", StaticData.typeOfCertificate);
+		model.addAttribute("Month", StaticData.Month);
 		
 		return action + "/" + page;
 	}

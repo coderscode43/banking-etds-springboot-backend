@@ -129,6 +129,7 @@
 							<input type="text" ng-model="cCctr.search.deducteePan"
 								class="form-control" placeholder="PAN" style="width: 100%">
 				</div>
+				
 			</div>
 		</div>
 
@@ -200,7 +201,24 @@
 						<input type="text" ng-model="cCctr.search.warningDescription"
 							class="form-control" placeholder="Warning Description" style="width: 100%">
 			</div>
+			<div class="col-md-3">
+						<h6>
+							<b>RO Code</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.roCode"
+									class="form-control" placeholder="RO Code" style="width: 100%">
+					</div>
 		</div>	
+		<div class="row">
+
+					<div class="col-md-3">
+						<h6>
+							<b>TAN</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.TAN"
+									class="form-control" placeholder="TAN" style="width: 100%">
+					</div>
+				</div>
 	</div>
 	<div class="row text-right" id="hide">
 					<div class="col-md-3" style="margin-left: 73%; margin-top: -45px">
@@ -273,6 +291,7 @@
 					<th>Sr. No.</th>
 					<th>Quarter</th>
 					<th>Month</th>
+					<th>RO Code</th>
 					<th>Branch Code</th>
 					<th>Vend/Cust Id</th>
 					<th>Unique Ref No</th>
@@ -303,6 +322,7 @@
 					<th >Interest on Short Deduction</th>
 					<th >Interest on Late Payment</th>
 					<th >Interest on Late Deduction</th>
+					<th>TAN</th>
 					<th>Status</th>
 					<th >Action</th>
 					
@@ -324,6 +344,7 @@
 					<td>{{$index+1}}</td>
 					<td>{{a.quarter}}</td>
 					<td>{{a.month}}</td>
+					<td>{{a.roCode}}</td>
 					<td>{{a.branchCode}}</td>
 					<td>{{a.custVendId}}</td>
 					<td>{{a.uniqueRefNo}}</td>
@@ -354,6 +375,7 @@
 					<td>{{a.InterestOnShortDeduction}}</td>
 					<td>{{a.InterestOnLatePayment}}</td>
 					<td>{{a.InterestOnLateDeduction}}</td>
+					<td>{{a.TAN}}</td>
 					<div>
 						<td ng-if="a.resolved == 0">Resolved</td>
 						<td ng-if="a.resolved == 1">Not Resolved</td>

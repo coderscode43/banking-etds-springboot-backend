@@ -73,6 +73,12 @@ public class Regular26QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular26QDed
           if (entity.get("warningDescription") != null) {
   			criteria.add(Restrictions.eqOrIsNull("warningDescription",  entity.get("warningDescription")));
   		}
+          if (entity.get("TAN") != null) {
+   			criteria.add(Restrictions.eqOrIsNull("TAN",  entity.get("TAN")));
+   		}
+           if (entity.get("roCode") != null) {
+   			criteria.add(Restrictions.eqOrIsNull("roCode",  entity.get("roCode")));
+   		}
 		return (List< Regular26QDeductee>) criteria.list();
 	}
 	@Override

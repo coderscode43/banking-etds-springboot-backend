@@ -131,6 +131,8 @@ public class Regular26QDeductee extends CommonModelAbstract{
 	public Double cashWithdrawal194N1Cr;
 	@Column(name = "TAN")
 	public String TAN ;
+	@Column(name = "roCode")
+	public String roCode ;
 	@Column(name = "errorDescription")
 	public String errorDescription ;
 	@Column(name = "warningDescription")

@@ -119,6 +119,8 @@ public class Regular24QDeductee extends CommonModelAbstract {
 	public String uniqueRefNo;
 	@Column(name = "TAN")
 	public String TAN ;
+	@Column(name = "roCode")
+	public String roCode ;
 	@Column(name = "errorDescription")
 	public String errorDescription ;
 	@Column(name = "warningDescription")

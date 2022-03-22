@@ -98,6 +98,8 @@ public class Regular27EQDeductee extends CommonModelAbstract {
 	public Date ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment;
 	@Column(name = "TAN")
 	public String TAN ;
+	@Column(name = "roCode")
+	public String roCode ;
 	@Column(name = "collectionCode")
 	public String collectionCode ;
 	@Column(name = "errorDescription")

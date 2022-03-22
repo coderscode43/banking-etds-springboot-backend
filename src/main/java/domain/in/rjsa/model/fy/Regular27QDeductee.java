@@ -153,6 +153,9 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	@Column(name = "TAN")
 	public String TAN ;
 	
+	@Column(name = "roCode")
+	public String roCode ;
+	
 	@Column(name = "errorDescription")
 	public String errorDescription ;
 	

@@ -47,36 +47,6 @@ public class CHALLANController extends AbstractControllerTaxo<String, CHALLAN, C
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
-//	@RequestMapping(value = "/files/{deductee}/{certificate}/{fy}/{q}/{pan}", method = RequestMethod.GET)
-
-//	public @ResponseBody void download(HttpServletRequest request, HttpServletResponse response,  @PathVariable String deductee,@PathVariable String certificate,@PathVariable String fy,@PathVariable String q,@PathVariable String pan ){
-//        String fileName="C:\\Users\\STAFF19112020-01\\Documents\\"+ deductee +"\\"+ certificate +"\\"+ fy +"\\"+ q +"\\"+ pan + ".pdf";
-//        PrintWriter out=null;
-//
-//        try{
-//            System.out.println(fileName.substring(fileName.lastIndexOf('/')+1)+"fileName");
-//            response.setContentType("application/pdf");
-//            response.setHeader("Cache-Control", "must-revalidate");
-//            response.setHeader( "Pragma", "public" );
-//            response.setHeader("Content-Disposition", "attachment; filename=" + fileName.substring(fileName.lastIndexOf('/')+1) );
-//            out = response.getWriter();
-//            int i;
-//            FileInputStream inputStream = new FileInputStream(fileName);
-//            while ((i = inputStream.read()) != -1) {
-//                out.write(i);
-////                System.out.println(out);
-//            }
-//            inputStream.close();
-//            out.close();
-//
-//        }
-//        catch(Exception e){
-//            System.out.println(e);
-//        }
-//
-//
-//    }
-
 	@RequestMapping(value = "/files/{deductee}/{certificate}/{fy}/{q}/{pan}", method = RequestMethod.GET)
 
 	public @ResponseBody void download(HttpServletRequest request, HttpServletResponse response,
@@ -85,9 +55,11 @@ public class CHALLANController extends AbstractControllerTaxo<String, CHALLAN, C
 		logger.info("Get Certificate for  " + pan);
 		response.setContentType("application/zip, application/octet-stream");
 
-		String pdfFileName = pan + ".pdf";
+		String pdfFileName = pan ;
+		
 		String zipPath = System.getProperty("user.home") + "/download/" + fy + "/" + q + "/" + deductee + "/"
-				+ pdfFileName;
+				+ pdfFileName + ".pdf";
+		System.out.println(zipPath);
 		response.setContentType("APPLICATION/PDF");
 		response.setHeader("Content-Disposition", "attachment; filename=\"" + pdfFileName + "\"");
 		File file = new File(zipPath);

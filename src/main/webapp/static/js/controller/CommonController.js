@@ -161,9 +161,10 @@ App
 								self.fileName = new FormData();
 								$state.go("homeWot.homepage", {
 									"branchCode" : branchCode,
-									"fy" : '2021-22'
+									"fy" : '2022-23'
 								});
 							}
+							
 
 							self.gotoDetailPage = function(entity, detailId,
 									page) {
@@ -259,6 +260,29 @@ App
 									"page" : page
 								});
 
+							}
+							self.changeState = function(year) {
+								self.show = false;
+								self.entity = {};
+								self.search = {};
+								self.entityList = [];
+								// self.ItemsPerPage=100;
+								self.dropdown = [];
+								self.ajax = [];
+								self.temp = {};
+								self.temp3 = {};
+								self.temp1 = [];
+								self.company = {};
+								self.currentPage = 1;
+								self.batchColor = {};
+								self.goodsColor = [];
+								self.b = [];
+								self.fileName = new FormData();
+								$state.go("homeWot.homepage", {
+									"fy" : year,
+									"branchCode":$stateParams.branchCode
+								});
+								
 							}
 
 							self.getEntityListDataFY = function() {

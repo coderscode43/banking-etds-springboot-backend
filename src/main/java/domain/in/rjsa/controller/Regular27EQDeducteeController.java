@@ -80,35 +80,6 @@ public class Regular27EQDeducteeController extends AbstractControllerFY<Long, Re
 	}
 	
 	
-	@RequestMapping(value = "/update", method = RequestMethod.PUT)
-	public ResponseEntity<?> updateTestimonial(@RequestBody LinkedHashMap<?, ?> entity) {
-		try {
-			Long id = Long.valueOf(entity.get("id").toString());
-			Regular27EQDeductee form27EQ = service.getByKey(id);
-			form27EQ.setResolved(false);
-			service.update(form27EQ);
-			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
-			map.put("fy", form27EQ.getFy());
-			map.put("deducteeId", form27EQ.getId());
-			map.put("deducteeForm", "27EQform");
-			String remark=  entity.get("remark").toString();
-			if(remark.endsWith("resolved")) {
-			map.put("remark", "Resolved");
-			}else if(remark.endsWith("reject")) {
-				map.put("remark", "Reject");
-			}
-			String timeStamp = new SimpleDateFormat("dd-MM-yyyy'T'HH:mm:ss").format(Calendar.getInstance().getTime());
-			map.put("dateTime", timeStamp);
-			map.put("userName", getPrincipal());
-			map.put("branchCode", form27EQ.getBranchCode());
-			rService.saveRemark(map);
-			return new ResponseEntity<String>(HttpStatus.ACCEPTED);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-	}
-	
 	// ------------------- Search Single Entity ---------------------------------
 		@RequestMapping(value = "/search/get/{pageNo}/{resultPerPage}/{json}/**", method = RequestMethod.GET)
 		public ResponseEntity<?> search(@PathVariable String json, HttpServletRequest request, @PathVariable int pageNo,

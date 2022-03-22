@@ -87,34 +87,6 @@ public class Regular26QDeducteeController<E>
 		return map; 
 	}
 	
-	@RequestMapping(value = "/update", method = RequestMethod.PUT)
-	public ResponseEntity<?> updateTestimonial(@RequestBody LinkedHashMap<?, ?> entity) {
-		try {
-			Long id = Long.valueOf(entity.get("id").toString());
-			Regular26QDeductee form26Q = service.getByKey(id);
-			form26Q.setResolved(false);
-			service.update(form26Q);
-			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
-			map.put("fy", form26Q.getFy());
-			map.put("deducteeId", form26Q.getId());
-			map.put("deducteeForm", "26Qform");
-			String remark=  entity.get("remark").toString();
-			if(remark.endsWith("resolved")) {
-			map.put("remark", "Resolved");
-			}else if(remark.endsWith("reject")) {
-				map.put("remark", "Reject");
-			}
-			String timeStamp = new SimpleDateFormat("dd-MM-yyyy'T'HH:mm:ss").format(Calendar.getInstance().getTime());
-			map.put("dateTime", timeStamp);
-			map.put("userName", getPrincipal());
-			map.put("branchCode", form26Q.getBranchCode());
-			rService.saveRemark(map);
-			return new ResponseEntity<String>(HttpStatus.ACCEPTED);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-	}
 	
 	// ------------------- Search Single Entity ---------------------------------
 		@RequestMapping(value = "/search/get/{pageNo}/{resultPerPage}/{json}/**", method = RequestMethod.GET)

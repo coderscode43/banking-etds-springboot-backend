@@ -338,9 +338,9 @@
 	<div class="top-item top2 col-lg-offset-5"
 		style="border-radius: 5px; background-color: #85939A">
 		<p>
-			<b>Financial Year :&nbsp;&nbsp;&nbsp;&nbsp;<select class="top2" style=" background-color: #85939A;Border: none;">
+			<b>Financial Year :&nbsp;&nbsp;&nbsp;&nbsp;<select class="top2" style=" background-color: #85939A;Border: none;" ng-model=" cCctr.getStateParamValue('fy');">
 						<#list financialYear as year>
-						<option value="${year}">${year}</option>
+						<option ng-value="${year}" ng-click="cCctr.changeState('${year}')" >${year}</option>
 						</#list>
   </select></b>
 		</p>

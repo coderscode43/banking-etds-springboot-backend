@@ -33,12 +33,6 @@
 	}
 }
 
-@media only screen and (max-width: 1000px) {
-	.hide {
-		display: none;
-	}
-}
-
 .table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
 	{
 	background-color: whitesmoke;
@@ -52,12 +46,29 @@
 	}
 }
 
-@media ( max-width : 1200px) {
-	.collapse.dont-collapse-sm {
-		display: block;
-		height: auto !important;
-		visibility: visible;
+@media ( min-width : 300px) and (max-width: 700px) {
+	.mobile {
+		display: none;
 	}
+}
+
+@media only screen and (min-width:700px) {
+	.hide-on-desktop, * [aria-labelledby='hide-on-desktop'] {
+		display: none;
+	}
+}
+
+/* iPad Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width:
+	1024px) {
+	/* CSS */
+	.mobile {
+		display: none;
+	}
+}
+
+th {
+	text-align: center;
 }
 
 .truncate {
@@ -82,72 +93,74 @@
 
 
 <div id="page-wrapper" ng-controller="CommonController as cCctr">
-	<div class="col-md-12 "
-		style="padding-left: 0px; font-size: 12px; margin-top: 2%">
-		<div class="heading">
-			<strong>Form 26Q Deductee Details</strong>
-		</div>
-
-	</div>
-
-	<br>
-	<button class="btn btn-primary hidden visible-xs" type="button"
-		data-toggle="collapse" data-target="#collapseExample2"
-		aria-expanded="false" aria-controls="collapseExample">Search</button>
-	<div class="collapse dont-collapse-sm" id="collapseExample2">
-		<div class="row">
-			<div class="form-group">
-
-
-				<div class="col-md-3">
-					<h6>
-						<b>Section Code</b>
-						<h6>
-							<input type="text" ng-model="cCctr.search.sectionCode"
-								class="form-control" placeholder="SectionCode"
-								style="width: 100%">
-				</div>
-				<div class="col-md-3">
-					<h6>
-						<b>Branch Code</b>
-						<h6>
-							<input type="text" ng-model="cCctr.search.branchCode"
-								class="form-control" placeholder="Branch Code"
-								style="width: 100%">
-				</div>
-
-				<div class="col-md-3">
-					<h6>
-						<b>PAN</b>
-						<h6>
-							<input type="text" ng-model="cCctr.search.deducteePan"
-								class="form-control" placeholder="PAN" style="width: 100%">
-				</div>
-
+	<div class="container-fluid">
+		<div class="col-md-12 "
+			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
+			<div class="heading">
+				<strong>Form 26Q Deductee Detail</strong>
 			</div>
 		</div>
 
-		<div class=" collapse  panel-collapse" id="collapseExample4">
 
+		<br>
+		<button class="btn btn-primary hidden visible-xs" type="button"
+			data-toggle="collapse" data-target="#collapseExample2"
+			aria-expanded="false" aria-controls="collapseExample">Search</button>
+		<div class="collapse dont-collapse-sm" id="collapseExample2">
 			<div class="row">
-				<div class="col-md-3">
-					<h6>
-						<b>Name</b>
-						<h6>
-							<input type="text" ng-model="cCctr.search.deducteeName"
-								class="form-control" placeholder="Name" style="width: 100%">
-				</div>
+				<div class="form-group">
 
-				<div class="col-md-3">
-					<h6>
-						<b>Account Number</b>
-						<h6>
-							<input type="text" ng-model="cCctr.search.accNo"
-								class="form-control" placeholder="Account Number"
-								style="width: 100%">
-				</div>
 
-				<div class="col-md-3">
+					<div class="col-md-3">
+						<h6>
+							<b>Section Code</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.sectionCode"
+									class="form-control" placeholder="SectionCode"
+									style="width: 100%">
+					</div>
+					<div class="col-md-3">
+						<h6>
+							<b>Branch Code</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.branchCode"
+									class="form-control" placeholder="Branch Code"
+									style="width: 100%">
+					</div>
+
+					<div class="col-md-3">
+						<h6>
+							<b>PAN</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.pan"
+									class="form-control" placeholder="PAN" style="width: 100%">
+					</div>
+
+
+				</div>
+			</div>
+
+			<div class=" collapse  panel-collapse" id="collapseExample4">
+
+				<div class="row">
+					<div class="col-md-3">
+						<h6>
+							<b>Name</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.name"
+									class="form-control" placeholder="Name" style="width: 100%">
+					</div>
+
+					<div class="col-md-3">
+						<h6>
+							<b>Account Number</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.accNo"
+									class="form-control" placeholder="Account Number"
+									style="width: 100%">
+					</div>
+
+					<div class="col-md-3">
 					<h6>
 						<b>Vendor/Customer ID</b>
 						<h6>
@@ -155,130 +168,125 @@
 								class="form-control" placeholder="Vendor/Customer ID"
 								style="width: 100%">
 				</div>
-				<div class="col-md-3">
-					<h6>
-						<b>Status</b>
-					</h6>
-					<select ng-model="cCctr.search.resolved" class="form-control">
-						<option value="">Status</option>
-						<option value="false">Resolved</option>
-						<option value="true">Not Resolved</option>
+					<div class="col-md-3">
+						<h6>
+							<b>Status</b>
+						</h6>
+						<select ng-model="cCctr.search.resolved" class="form-control">
+							<option value="">Status</option>
+							<option value="false">Resolved</option>
+							<option value="true">Not Resolved</option>
 
-					</select>
+						</select>
+					</div>
 				</div>
+
+
+
+				<div class="row">
+
+
+					<div class="col-md-3">
+						<h6>
+							<b>Challan Heading</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.challanHeading"
+									class="form-control" placeholder="Challan Heading"
+									style="width: 100%">
+					</div>
+
+					<div class="col-md-3">
+						<h6>
+							<b> Error Description</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.errorDescription"
+									class="form-control" placeholder="Error Description"
+									style="width: 100%">
+					</div>
+					<div class="col-md-3">
+						<h6>
+							<b>Warning Description</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.warningDescription"
+									class="form-control" placeholder="Warning Description"
+									style="width: 100%">
+					</div>
+					<div class="col-md-3">
+						<h6>
+							<b>RO Code</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.roCode"
+									class="form-control" placeholder="RO Code" style="width: 100%">
+					</div>
+
+
+
+				</div>
+
+				<div class="row">
+
+					<div class="col-md-3">
+						<h6>
+							<b>Quarter</b>
+							<h6>
+								<select class="form-control" ng-model="cCctr.search.quarter"
+									required>
+									<option disabled value="">Select Quarter</option>
+									<#list Quarter as quarter>
+									<option value="${quarter}">${quarter}</option>
+									</#list>
+								</select>
+					</div>
+					<div class="col-md-3">
+						<h6>
+							<b>TAN</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.TAN"
+									class="form-control" placeholder="TAN" style="width: 100%">
+					</div>
+				</div>
+
+
+
+
 			</div>
-
-
-
-			<div class="row">
-
-
-				<div class="col-md-3">
-					<h6>
-						<b>Challan Heading</b>
-						<h6>
-							<input type="text" ng-model="cCctr.search.challanHeading"
-								class="form-control" placeholder="Challan Heading"
-								style="width: 100%">
-				</div>
-
-				<div class="col-md-3">
-					<h6>
-						<b> Error Description</b>
-						<h6>
-							<input type="text" ng-model="cCctr.search.errorDescription"
-								class="form-control" placeholder=" Error Description"
-								style="width: 100%">
-				</div>
-				<div class="col-md-3">
-					<h6>
-						<b>Warning Description</b>
-						<h6>
-							<input type="text" ng-model="cCctr.search.warningDescription"
-								class="form-control" placeholder="Warning Description"
-								style="width: 100%">
-				</div>
-				<div class="col-md-3">
-					<h6>
-						<b>RO Code</b>
-						<h6>
-							<input type="text" ng-model="cCctr.search.roCode"
-								class="form-control" placeholder="RO Code" style="width: 100%">
-				</div>
-
-			</div>
-
-			<div class="row">
-
-				<div class="col-md-3">
-					<h6>
-						<b>Quarter</b>
-						<h6>
-							<select class="form-control" ng-model="cCctr.search.quarter"
-								required>
-								<option disabled value="">Select Quarter</option>
-								<#list Quarter as quarter>
-								<option value="${quarter}">${quarter}</option>
-								</#list>
-							</select>
-				</div>
-				<div class="col-md-3">
-					<h6>
-						<b>TAN</b>
-						<h6>
-							<input type="text" ng-model="cCctr.search.TAN"
-								class="form-control" placeholder="TAN" style="width: 100%">
-				</div>
-			</div>
-
-
-		</div>
-
-
-		<div class="row text-right" id="hide">
-			<div class="col-md-3" style="margin-left: 75%; margin-top: -44px">
-				<button
-					ng-click="cCctr.searchEntities(true,'form26QDeductee','form26QDeductee')"
-					class="btn btn-success" onclick="scrollWin()" style="">Search</button>
-
-
-				<button class="btn btn-secondary" style="background-color: #FFA500;"
-					data-toggle="collapse" data-target="#collapseExample4"
-					aria-expanded="false" aria-controls="collapseExample">
-					Advance Search</button>
-				<!-- <button type="button" class="btn btn-primary"
-					ng-click="cCctr.gotoListPage('form26QDeductee','addForm26QDeductee');">Add</button> -->
-
-
-				<div class="text-right">
-
-					<!-- <button type="button" class="btn btn-primary"
-					ng-click="cCctr.gotoListPage('addForm24QDeductee','addForm24QDeductee');">Add</button> -->
-				</div>
-			</div>
-		</div>
-
-		<div class="row" id="search">
-			<div class="col-md-2" id="search">
-				<button
-					ng-click="cCctr.searchEntities(true,'form26QDeductee','form26QDeductee')"
-					class="btn btn-success" onclick="scrollWin()">Search</button>
-			</div>
-		</div>
-
-
-
-		<div class="row" id="hide">
-
-
-
-			<div class="row">
-				<div class="col-md-3" id="search">
-					<button ng-click="cCctr.searchEntities(true,'form26QDeductee')"
+			<!-- <div class="row mobile" id="search">
+				<div class="col-md-2" id="search">
+					<button
+						ng-click="cCctr.searchEntities(true,'form26QDeductee')"
 						class="btn btn-success" onclick="scrollWin()">Search</button>
+				</div>
+			</div> -->
 
+
+			<div class="row text-right" id="hide">
+				<div class="col-md-3" style="margin-left: 75%; margin-top: -44px">
+					<button
+						ng-click="cCctr.searchEntities(true,'form26QDeductee','form26QDeductee')"
+						class="btn btn-success" onclick="scrollWin()">Search</button>
+					<button class="btn btn-secondary" style="background-color: #FFA500"
+						data-toggle="collapse" data-target="#collapseExample4"
+						aria-expanded="false" aria-controls="collapseExample">Advance
+						Search</button>
+				</div>
+				<div class="col-md-3">
+					<div class="text-right">
+
+						<!-- <button type="button" class="btn btn-primary"
+					ng-click="cCctr.gotoListPage('addForm26QDeductee','addForm26QDeductee');">Add</button> -->
+					</div>
 				</div>
 			</div>
+
+
+
+
+			<!-- 	<div class="row" id="search">
+				<div class="col-md-3" id="search">
+					<button ng-click="cCctr.searchFYEntities(true,'form26QDeductee','form26QDeductee')"
+						class="btn btn-success" onclick="scrollWin()">Search</button>
+				</div>
+			</div> -->
 		</div>
 	</div>
 
@@ -286,19 +294,18 @@
 
 	<div class="row"></div>
 
-
-
 	<div class="row">
-
-		<div class="table-responsive" style="overflow-x: inherit; width: 400%">
-			<table class=" tables table-bordered table-hover table-striped"
+		<div class="table-responsive" style="overflow-x: inherit; width: 300%">
+			<!-- 	<div class="col-md-12" style="margin-left:-30px"> -->
+			<table class=" tables table-bordered table-hover  table-striped"
 				role="table" style="font-size: 12px; padding: 5px; margin: 5px;">
+
 				<thead>
 				<colgroup>
 					<col span="14" style="background-color: #ffffff">
 				</colgroup>
 				<tr>
-				<thead role="rowgroup">
+				<thead"rowgroup">
 					<tr role="row" style="background-color: #81b7db; height: 40px">
 						<th>Sr. No.</th>
 						<th>Quarter</th>
@@ -347,11 +354,9 @@
 				<tbody>
 					<tr style="color: red"
 						ng-show="cCctr.getEntityListData().length <= 0">
-						<td colspan="20" style="text-align: center;"><b><h3
+						<td colspan="40" style="text-align: center;"><b><h3
 									style="text-align: center; text-align-last: 5;">No data
 									found!!</h3></b></td>
-						<td colspan="25" style="text-align: center;"><b><h3
-									style="text-align: center; text-align-last: 5; margin-right: -100%;"></h3></b></td>
 					</tr>
 					<tr role="row"
 						ng-repeat="a in cCctr.getEntityListData() track by a.id">
@@ -403,22 +408,18 @@
 							<td ng-if="a.resolved == 1" style="width: 1%">Not Resolved</td>
 						</div>
 
-
-
-
-
 						<!-- <div>
-						<td ng-if="a.verify == 1"><i class="fa fa-check"
-							aria-hidden="true" style="color: #5cb85c"></i></td>
-						<td ng-if="a.verify == 0"><i class="fa fa-times"
-							aria-hidden="true" style="color: #ff0000"></i></td>
-					</div> -->
+							<td ng-if="a.verify == 1"><i class="fa fa-check"
+								aria-hidden="true" style="color: # 5cb85c"></i></td>
+							<td ng-if="a.verify == 0"><i class="fa fa-times"
+								aria-hidden="true" style="color: #ff0000"></i></td>
+						</div> -->
 						<td style="width: 1%"><a
 							ng-click="cCctr.gotoDetailFormPage('form26QDeductee',a.id,a.fy,a.branchCode,'detailForm26QDeductee')"
-							"
-						style="color: blue" onclick="scrollWin()"><img
+							style="color: blue" onclick="scrollWin()"><img
 								src="static\img\edit.png" width="22px" height="22px"
 								alt="Details" style="margin-top: 5px; margin-bottom: 5px;" /></a></td>
+
 						<!-- <td>{{a.total-a.amountPaid}}</td> -->
 
 					</tr>
@@ -426,49 +427,45 @@
 				</tbody>
 			</table>
 
-			<div class="row" ng-show="cCctr.getNoPage() > 0">
+		</div>
+
+		<div class="row" ng-show="cCctr.getNoPage() > 0">
+			<div class="row" align="center">
+				<span ng-show="cCctr.currentPage != 1"> <a
+					ng-click="cCctr.getPage(true,'form26QDeductee',cCctr.currentPage-1)"><strong>Previous</strong></a>
+				</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.currentPage}}</strong>&nbsp;
+					of &nbsp;<strong>{{cCctr.getNoPage()}}</strong>
+					&nbsp;&nbsp;&nbsp;&nbsp; <span
+					ng-show="cCctr.currentPage != cCctr.getNoPage()"> <a
+						ng-click="cCctr.getPage(true,'form26QDeductee',cCctr.currentPage+1)"><strong>Next</strong></a>
+				</span>
+				</span>
+			</div>
+			<form role="form" name="gotoForm">
 				<div class="row" align="center">
-					<span ng-show="cCctr.currentPage != 1"> <a
-						ng-click="cCctr.getPage(true,'form26QDeductee',cCctr.currentPage-1)"><strong>Previous</strong></a>
-					</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.currentPage}}</strong>&nbsp;
-						of &nbsp;<strong>{{cCctr.getNoPage()}}</strong>
-						&nbsp;&nbsp;&nbsp;&nbsp; <span
-						ng-show="cCctr.currentPage != cCctr.getNoPage()"> <a
-							ng-click="cCctr.getPage(true,'form26QDeductee',cCctr.currentPage+1)"><strong>Next</strong></a>
-					</span>
+					<span>Go to</span> &nbsp;&nbsp;&nbsp; <input
+						style="width: 70px; text-align: center;" type="number"
+						name="pageNo" ng-model="cCctr.currentPage"
+						ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
+						ng-min="1" ng-max="cCctr.getNoPage()" ng-required="true">
+					&nbsp;&nbsp;&nbsp;
+					<button style="height: 25px;"
+						ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'form26QDeductee',cCctr.currentPage)"
+						class="btn btn-primary">Go</button>
+				</div>
+				<div class="row" align="center">
+					<span style="color: red"
+						ng-show="gotoForm.submitted || gotoForm.pageNo.$dirty && gotoForm.pageNo.$invalid">
+						<span class="error" ng-show="gotoForm.pageNo.$error.min">Page
+							No. should not be less than 1.</span> <span class="error"
+						ng-show="gotoForm.pageNo.$error.max">Page No. should not be
+							greater than {{cCctr.getNoPage()}}.</span> <span class="error"
+						ng-show="gotoForm.pageNo.$error.required">Please enter page
+							number.</span>
 					</span>
 				</div>
-				<form role="form" name="gotoForm">
-					<div class="row" align="center">
-						<span>Go to</span> &nbsp;&nbsp;&nbsp; <input
-							style="width: 70px; text-align: center;" type="number"
-							name="pageNo" ng-model="cCctr.currentPage"
-							ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
-							ng-min="1" ng-max="cCctr.getNoPage()" ng-required="true">
-						&nbsp;&nbsp;&nbsp;
-						<button style="height: 25px;"
-							ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'form26QDeductee',cCctr.currentPage)"
-							class="btn btn-primary">Go</button>
-					</div>
-					<div class="row" align="center">
-						<span style="color: red"
-							ng-show="gotoForm.submitted || gotoForm.pageNo.$dirty && gotoForm.pageNo.$invalid">
-							<span class="error" ng-show="gotoForm.pageNo.$error.min">Page
-								No. should not be less than 1.</span> <span class="error"
-							ng-show="gotoForm.pageNo.$error.max">Page No. should not
-								be greater than {{cCctr.getNoPage()}}.</span> <span class="error"
-							ng-show="gotoForm.pageNo.$error.required">Please enter
-								page number.</span>
-						</span>
-					</div>
-				</form>
-			</div>
-
-
+			</form>
 		</div>
 	</div>
 
 </div>
-<!--</div>-->
-
-<!--</div> -->

@@ -30,6 +30,7 @@ App.factory('CommonServiceFY', [
 			approveUpdate: approveUpdate,
 			rejectUpdate: rejectUpdate,
 			add:add,
+			check:check,
 			downloadCertificate : downloadCertificate
 
 		};
@@ -42,6 +43,19 @@ App.factory('CommonServiceFY', [
 
 			$http.post(REST_SERVICE_URI + entity + '/add/'+$stateParams.fy + '/' + $stateParams.branchCode,
 				entitySave).success(function(data) {
+
+					deferred.resolve(data);
+				}).error(function(status) {
+					deferred.reject(status);
+				});
+
+			return deferred.promise;
+		}
+		
+		function check(url) {
+			var deferred = $q.defer();
+
+			$http.get(url).success(function(data) {
 
 					deferred.resolve(data);
 				}).error(function(status) {
@@ -194,9 +208,6 @@ App.factory('CommonServiceFY', [
 			return deferred.promise;
 		}
 
-
-
-
 		function updateStatus(entitySave, entity, fy, branchCode) {
 			var deferred = $q.defer();
 
@@ -210,11 +221,6 @@ App.factory('CommonServiceFY', [
 
 			return deferred.promise;
 		}
-
-
-
-
-
 
 		function countFunction(entity, fy, branchCode) {
 			entityList = [];

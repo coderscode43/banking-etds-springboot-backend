@@ -1018,7 +1018,47 @@ App
 							self.download = function(url) {
 								wait(1000);
 								self.fileLoader = url;
-								window.open(self.fileLoader, "_blank");
+								CommonServiceFY.check(url)
+								.then(
+										function(data) {
+											window.open(self.fileLoader, "_blank")
+											console
+													.log(' Download successfully');
+
+											$('#successMsg')
+													.find(
+															'.modal-header')
+													.find(
+															'.headingMsg')
+													.append(
+															"Successful");
+											$('#successMsg')
+													.find(
+															'.modal-body')
+													.find('.msg')
+													.append(
+															" Certificate Open Successfully");
+											$("#successMsg")
+													.modal();
+											
+
+										},
+										function(error) {
+											console
+													.error('Error while Downloading Details, '
+															+ status);
+											
+												$('#errorMsg')
+														.find(
+																'.modal-body')
+														.find(
+																'.msg')
+														.append("Certificate can not Download");
+												$("#errorMsg")
+														.modal();
+											
+
+										});
 
 							}
 							

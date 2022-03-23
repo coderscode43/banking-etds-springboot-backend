@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,63 +51,44 @@ public class CHALLANController extends AbstractControllerTaxo<String, CHALLAN, C
 
 	@RequestMapping(value = "/files/{deductee}/{certificate}/{fy}/{q}/{pan}", method = RequestMethod.GET)
 
-	public @ResponseBody void download(HttpServletRequest request, HttpServletResponse response,
+	public @ResponseBody ResponseEntity<?> download(HttpServletRequest request, HttpServletResponse response,
 			@PathVariable String deductee, @PathVariable String certificate, @PathVariable String fy,
 			@PathVariable String q, @PathVariable String pan) {
-		logger.info("Get Certificate for  " + pan);
-		response.setContentType("application/zip, application/octet-stream");
+		try {
+			logger.info("Get Certificate for  " + pan);
+			response.setContentType("application/zip, application/octet-stream");
 
-		String pdfFileName = pan ;
-		
-		String zipPath = System.getProperty("user.home") + "/download/" + fy + "/" + q + "/" + deductee + "/"
-				+ pdfFileName + ".pdf";
-		System.out.println(zipPath);
-		response.setContentType("APPLICATION/PDF");
-		response.setHeader("Content-Disposition", "attachment; filename=\"" + pdfFileName + "\"");
-		File file = new File(zipPath);
-		if (file.exists()) {
-			FileInputStream fileInputStream;
+			String pdfFileName = pan;
+
+			String zipPath = System.getProperty("user.home") + "/download/" + fy + "/" + q + "/" + deductee + "/"
+					+ pdfFileName + ".pdf";
+			System.out.println(zipPath);
+			response.setContentType("application/pdf");
+			response.setHeader("Content-Disposition", "attachment; filename=\"" + pdfFileName + "\"");
+			File file = new File(zipPath);
 			try {
-				PrintWriter out = response.getWriter();
-				fileInputStream = new FileInputStream(zipPath);
-				int i;
-				while ((i = fileInputStream.read()) != -1) {
-					out.write(i);
-				}
-				fileInputStream.close();
-				out.close();
+				if (file.exists());
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
-
+				return new ResponseEntity<>("File Not Found", HttpStatus.BAD_REQUEST);
 			}
 
-		}
+			FileInputStream fileInputStream;
+			PrintWriter out = response.getWriter();
+			fileInputStream = new FileInputStream(zipPath);
+			int i;
+			while ((i = fileInputStream.read()) != -1) {
+				out.write(i);
+			}
+			fileInputStream.close();
+			out.close();
+			return new ResponseEntity<>(HttpStatus.OK);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			logger.error("Error in downloading ", e);
+			return new ResponseEntity<>("File Not Found", HttpStatus.BAD_REQUEST);
 
+		}
 	}
 
-//	public ResponseEntity<InputStreamResource>  getFile(HttpServletResponse response, @PathVariable String deductee,@PathVariable String certificate,@PathVariable String fy,@PathVariable String q,@PathVariable String pan ) { 
-//		try
-//        {
-//			System.out.println(response);
-//			String path = "C:\\Users\\STAFF19112020-01\\Documents\\"+ deductee +"\\"+ certificate +"\\"+ fy +"\\"+ q +"\\"+ pan + ".pdf";
-//            File file = new File(path) ;
-////            HttpHeaders respHeaders = new HttpHeaders();
-////            MediaType mediaType = MediaType.parseMediaType("application/pdf");
-////            respHeaders.setContentType(mediaType);
-////            respHeaders.setContentLength(file.length());
-////            respHeaders.setContentDispositionFormData("attachment", file.getName());
-//            InputStreamResource isr = new InputStreamResource(new FileInputStream(file));
-//            String mimeType = URLConnection.guessContentTypeFromName(path);
-//            response.setContentType(mimeType);
-//    		response.setHeader("Content-disposition", "attachment; filename=" + path);
-//    		response.getOutputStream().close();
-//            
-//            return new ResponseEntity<InputStreamResource>(isr, HttpStatus.OK);
-//        }
-//        catch (Exception e)
-//        {
-//            return new ResponseEntity<InputStreamResource>(HttpStatus.NOT_FOUND);
-//        }
-//	}
 }

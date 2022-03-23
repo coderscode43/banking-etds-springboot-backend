@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>TaxOsmart Billing and Accounting Software</title>
+    <title>TDS-O-SMART Billing and Accounting Software</title>
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="static/css/bootstrap.min.css" rel="stylesheet" />
      <!-- Custom CSS -->

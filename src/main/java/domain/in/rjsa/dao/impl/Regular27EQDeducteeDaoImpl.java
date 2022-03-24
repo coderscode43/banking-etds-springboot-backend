@@ -27,7 +27,7 @@ public class Regular27EQDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27EQD
 		
 		 if(entity.get("branchCode")!=null)
          {
-		criteria.add(Restrictions.eqOrIsNull("branchCode", Long.valueOf((String) entity.get("branchCode"))));
+		criteria.add(Restrictions.eqOrIsNull("branchCode", entity.get("branchCode")));
          } 
           
 		 if(entity.get("fy")!=null)
@@ -78,7 +78,7 @@ public class Regular27EQDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27EQD
    			criteria.add(Restrictions.eqOrIsNull("TAN",  entity.get("TAN")));
    		}
            if (entity.get("roCode") != null) {
-   			criteria.add(Restrictions.eqOrIsNull("roCode",Long.valueOf((String)  entity.get("roCode"))));
+   			criteria.add(Restrictions.eqOrIsNull("roCode", entity.get("roCode")));
    		}
           
           

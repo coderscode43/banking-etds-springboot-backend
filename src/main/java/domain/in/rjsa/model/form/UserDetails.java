@@ -27,7 +27,7 @@ public class UserDetails extends CommonModelAbstract{
 	@Column(name = "pan")
 	String pan;
 	@Column(name = "branchCode")
-	String branchCode;
+	Long branchCode;
 	@Column(name = "zone")
 	String zone;
 	@Column(name = "type")

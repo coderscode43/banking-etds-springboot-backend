@@ -133,8 +133,8 @@ App.factory('CommonServiceFY', [
 			$http.get(
 				REST_SERVICE_URI + entity + '/search/' + fy + '/' + branchCode + '/'
 				+ map).success(function(data) {
-					count = 0;
-					entityList = data;
+					count = data.count;
+					entityList = data.entities;
 					deferred.resolve(data);
 				}).error(function(status) {
 					deferred.reject(status);

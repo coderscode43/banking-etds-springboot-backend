@@ -83,9 +83,15 @@ public class LDCController extends AbstractControllerTaxo<String, LDC, LDCServic
 					map.put(key, Long.valueOf((String) map.get(key)));
 				}
 			}
-			//map.put("fy", fy);
-			//map.put("branchCode", branchCode);
-			return new ResponseEntity<>(getSearch(map), HttpStatus.OK);
+			map.put("fy", fy);
+			map.put("branchCode", branchCode);
+			Long count = getService().findallCount(map);
+			List<?> list = getSearch(map);
+			ListCount send = new ListCount();
+			send.setCount(count);
+			send.setEntities(list);
+			
+			return new ResponseEntity<>(send, HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("Error in listALL", e);
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);

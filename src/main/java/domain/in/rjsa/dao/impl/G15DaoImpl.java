@@ -53,6 +53,9 @@ implements G15Dao{
 		if (entity.get("month") != null) {
 			criteria.add(Restrictions.eqOrIsNull("month", entity.get("month")));
 		}
+		if (entity.get("branchCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("branchCode", entity.get("branchCode")));
+		}
 		return (List<G15>) criteria.list();
 		
 		

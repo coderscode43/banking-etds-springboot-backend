@@ -53,6 +53,9 @@ implements H15Dao{
 		if (entity.get("month") != null) {
 			criteria.add(Restrictions.eqOrIsNull("month", entity.get("month")));
 		}
+		if (entity.get("branchCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("branchCode", entity.get("branchCode")));
+		}
 		return (List<H15>) criteria.list();
 }
 }

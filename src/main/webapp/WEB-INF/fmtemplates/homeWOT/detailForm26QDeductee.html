@@ -248,23 +248,30 @@
 							<div class="col-md-3">
 								<label>Rate at which Tax Deducted. &nbsp;</label>
 							</div>
-							<div class="col-md-3">: {{cCctr.entity.rateTaxDeduct}}</div>
-							<div class="col-md-3">
+							<div class="col-md-3">:
+								{{cCctr.entity.deductee.rateTaxDeduct}}</div>
+							<!-- <div class="col-md-3">
 								<label>Remarks. &nbsp;</label>
 							</div>
-							<div class="col-md-3">: {{cCctr.entity.remarks}}</div>
+							<div class="col-md-3">: {{cCctr.entity.deductee.remarks}}</div> -->
+							<div class="col-md-3">
+								<label>Short Deduction. &nbsp;</label>
+							</div>
+							<div class="col-md-3">:
+								{{cCctr.entity.deductee.ShortDeduction}}</div>
 						</div>
 
 						<div class="row" style="font-size: 13px;">
 							<div class="col-md-3">
 								<label>Certificate No. &nbsp;</label>
 							</div>
-							<div class="col-md-3">: {{cCctr.entity.certificateNo}}</div>
+							<div class="col-md-3">:
+								{{cCctr.entity.deductee.certificateNo}}</div>
 							<div class="col-md-3">
 								<label>Cash Withdrawl (194N). &nbsp;</label>
 							</div>
-							<div class="col-md-3">: {{cCctr.entity.cashWithdrawal194N}}
-							</div>
+							<div class="col-md-3">:
+								{{cCctr.entity.deductee.cashWithdrawal194N}}</div>
 						</div>
 
 						<div class="row" style="font-size: 13px;">
@@ -272,61 +279,58 @@
 								<label>Cash Withdrawl 194N(20L to 1cr). &nbsp;</label>
 							</div>
 							<div class="col-md-3">:
-								{{cCctr.entity.cashWithdrawal194N20Lto1Cr}}</div>
+								{{cCctr.entity.deductee.cashWithdrawal194N20Lto1Cr}}</div>
 							<div class="col-md-3">
 								<label>Cash Withdrawl 194N(>1cr). &nbsp;</label>
 							</div>
 							<div class="col-md-3">:
-								{{cCctr.entity.cashWithdrawal194N1Cr}}</div>
+								{{cCctr.entity.deductee.cashWithdrawal194N1Cr}}</div>
 						</div>
 
 						<div class="row" style="font-size: 13px;">
 							<div class="col-md-3">
 								<label>Error Description. &nbsp;</label>
 							</div>
-							<div class="col-md-3">: {{cCctr.entity.errorDescription}}</div>
+							<div class="col-md-3">:
+								{{cCctr.entity.deductee.errorDescription}}</div>
 							<div class="col-md-3">
 								<label>Warning Description. &nbsp;</label>
 							</div>
-							<div class="col-md-3">: {{cCctr.entity.warningDescription}}
-							</div>
+							<div class="col-md-3">:
+								{{cCctr.entity.deductee.warningDescription}}</div>
 						</div>
 						<div class="row" style="font-size: 13px;">
-							<div class="col-md-3">
-								<label>Short Deduction. &nbsp;</label>
-							</div>
-							<div class="col-md-3">: {{cCctr.entity.ShortDeduction}}</div>
+							
 							<div class="col-md-3">
 								<label>Interest on Short Deduction. &nbsp;</label>
 							</div>
 							<div class="col-md-3">:
-								{{cCctr.entity.InterestOnShortDeduction}}</div>
-						</div>
-
-						<div class="row" style="font-size: 13px;">
-							<div class="col-md-3">
-								<label>Interest on Late Payment. &nbsp;</label>
-							</div>
-							<div class="col-md-3">:
-								{{cCctr.entity.InterestOnLatePayment}}</div>
-							<div class="col-md-3">
+								{{cCctr.entity.deductee.InterestOnShortDeduction}}</div>
+								<div class="col-md-3">
 								<label>Interest on Late Deduction. &nbsp;</label>
 							</div>
 							<div class="col-md-3">:
-								{{cCctr.entity.InterestOnLateDeduction}}</div>
+								{{cCctr.entity.deductee.InterestOnLateDeduction}}</div>
+						</div>
+
+						<div class="row" style="font-size: 13px;">
+							
+							
 						</div>
 						<div class="row" style="font-size: 13px;">
+						<div class="col-md-3">
+								<label>Interest on Late Payment. &nbsp;</label>
+							</div>
+							<div class="col-md-3">:
+								{{cCctr.entity.deductee.InterestOnLatePayment}}</div>
 							<div class="col-md-3">
 								<label>Status &nbsp;</label>
 							</div>
-							<div class="col-md-3" ng-if="cCctr.entity.resolved == 0">:
+							<div class="col-md-3" ng-if="cCctr.entity.deductee.resolved == 0">:
 								Resolved</div>
-							<div class="col-md-3" ng-if="cCctr.entity.resolved == 1">:
+							<div class="col-md-3" ng-if="cCctr.entity.deductee.resolved == 1">:
 								Not Resolved</div>
 						</div>
-
-
-
 						<div class="row">
 							<form role="form" name="remark">
 								<input ng-model="cCctr.newEntity.deducteeId = cCctr.entity.id"

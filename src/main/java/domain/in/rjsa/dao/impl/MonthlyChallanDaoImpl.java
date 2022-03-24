@@ -27,7 +27,7 @@ public class MonthlyChallanDaoImpl extends AbstractDaoFY<Long, MonthlyChallan> i
 		
           if(entity.get("branchCode")!=null)
           {
-		criteria.add(Restrictions.eqOrIsNull("branchCode",Long.valueOf((String) entity.get("branchCode"))));
+		criteria.add(Restrictions.eqOrIsNull("branchCode", entity.get("branchCode")));
           }
           if(entity.get("monthFY")!=null)
           {

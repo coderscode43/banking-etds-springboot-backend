@@ -52,7 +52,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
 	// ------------------- List Entity ---------------------------------
-	public List<?> getList(String fy, String branchCode, int pageNo, int resultPerPage) {
+	public List<?> getList(String fy, Long branchCode, int pageNo, int resultPerPage) {
 		HashMap<String, Object> constrains = new HashMap<>();
 		constrains.put("fy", fy);
 		constrains.put("branchCode", branchCode);
@@ -114,7 +114,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 	
 	
 	@RequestMapping(value = "/list/{fy}/{branchCode}/count/", method = RequestMethod.GET)
-	public ResponseEntity<?> count(@PathVariable String fy, @PathVariable String branchCode,
+	public ResponseEntity<?> count(@PathVariable String fy, @PathVariable Long branchCode,
 			HttpServletRequest request) {
 		HashMap<String, Object> constrains = new HashMap<>();
 		constrains.put("fy",fy);
@@ -139,7 +139,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 	// ------------------- List Entity ---------------------------------
 
 	@RequestMapping(value = "/list/{fy}/{branchCode}/get/{pageNo}/{resultPerPage}", method = RequestMethod.GET)
-	public ResponseEntity<?> listAll(@PathVariable String fy, @PathVariable String branchCode,
+	public ResponseEntity<?> listAll(@PathVariable String fy, @PathVariable Long branchCode,
 			HttpServletRequest request, @PathVariable int pageNo, @PathVariable int resultPerPage) {
 		try {
 			List<?> list = getList(fy, branchCode, pageNo, resultPerPage);
@@ -155,7 +155,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 	// ------------------- Search Entities ---------------------------------
 
 	@RequestMapping(value = "/search/{fy}/{branchCode}/{json}", method = RequestMethod.GET)
-	public ResponseEntity<?> search(@PathVariable String fy, @PathVariable String branchCode, @PathVariable String json) {
+	public ResponseEntity<?> search(@PathVariable String fy, @PathVariable Long branchCode, @PathVariable String json) {
 		try {
 			ObjectMapper mapper = new ObjectMapper();
 			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
@@ -184,7 +184,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 	// ------------------- Search Single Entity ---------------------------------
 	@RequestMapping(value = "/searchEntity/{fy}/{branchCode}", method = RequestMethod.POST)
 	public ResponseEntity<?> searchEntity(@RequestBody LinkedHashMap<String, Object> map, @PathVariable String fy,
-			@PathVariable String branchCode) {
+			@PathVariable Long branchCode) {
 		try {
 			map.put("fy", fy);
 			map.put("branchCode", branchCode);
@@ -209,7 +209,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 	 * @ResponseBody public ResponseEntity<?> createEntity(@RequestBody
 	 * LinkedHashMap<String, Object> entity,
 	 * 
-	 * @PathVariable String branchCode, @PathVariable String fy) { // FieldErrorDTO
+	 * @PathVariable Long branchCode, @PathVariable String fy) { // FieldErrorDTO
 	 * ermsg=new FieldErrorDTO(); logger.info("Creating new Return instance");
 	 * entity.put("branchCode", branchCode); entity.put("fy", fy); String userName =
 	 * getPrincipal(); entity.put("userName", userName); create(entity); //
@@ -275,7 +275,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 
 	@RequestMapping(value = "/detail/{fy}/{branchCode}/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> getDetailController(@PathVariable K id, @PathVariable String fy,
-			@PathVariable String branchCode) {
+			@PathVariable Long branchCode) {
 		// verify the clientId authorization
 		try {
 			return new ResponseEntity<>(getDetail(id, fy, branchCode), HttpStatus.OK);
@@ -314,7 +314,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 	// ------------------- Delete Entity ---------------------------------
 
 	@RequestMapping(value = "/delete/{fy}/{branchCode}/{id}", method = RequestMethod.POST)
-	public ResponseEntity<?> delete(@PathVariable K id, @PathVariable String fy, @PathVariable String branchCode) {
+	public ResponseEntity<?> delete(@PathVariable K id, @PathVariable String fy, @PathVariable Long branchCode) {
 		try {
 			getService().deleteT(id);
 			return new ResponseEntity<>(HttpStatus.OK);
@@ -328,7 +328,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 	// ------------------- ajax Entities ---------------------------------
 
 	@RequestMapping(value = "/ajax/{fy}/{branchCode}", method = RequestMethod.POST)
-	public ResponseEntity<?> ajax(@RequestBody Ajax ajax, @PathVariable String fy, String branchCode) {
+	public ResponseEntity<?> ajax(@RequestBody Ajax ajax, @PathVariable String fy, Long branchCode) {
 		// verify the clientId authorization
 		try {
 			List<?> list = getAjax(ajax.getName(), ajax.getTerm(), fy, branchCode);
@@ -340,7 +340,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 
 	}
 
-	public List<?> getAjax(String name, String term, String fy, String branch) {
+	public List<?> getAjax(String name, String term, String fy, Long branch) {
 		// TODO Auto-generated method stub
 		Login l = applicationCache.getLoginDetail(getPrincipal());
 		HashMap<String, Object> constrains = new HashMap<>();
@@ -379,7 +379,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 		}
 	}
 
-	public Object getDetail(K id, String fy, String branchCode) {
+	public Object getDetail(K id, String fy, Long branchCode) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
 		constrains.put("id", id);

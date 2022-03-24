@@ -69,7 +69,7 @@ public class IndexController {
 	}
 
 	@RequestMapping(value = "/homeWot/{branchCode}/{fy}")
-	public String gethomeWOT(@PathVariable String fy, @PathVariable String branchCode, ModelMap model) {
+	public String gethomeWOT(@PathVariable String fy, @PathVariable Long branchCode, ModelMap model) {
 		setStaticData();
 		model.addAttribute("typeOfUser",applicationCache.getLoginDetail(getPrincipal()).getType());
 		model.addAttribute("financialYear", StaticData.financialYear);

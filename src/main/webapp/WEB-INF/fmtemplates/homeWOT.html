@@ -431,7 +431,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal"
-					ng-click="cCctr.reload()">Ok</button>
+					ng-click="cCctr.reload()" id="reload">Ok</button>
 			</div>
 		</div>
 	</div>
@@ -454,7 +454,7 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cCctr.reload();">Ok</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cCctr.reload();" id="reload">Ok</button>
 			</div>
 		</div>
 	</div>
@@ -479,7 +479,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal"
-					ng-click="cCctr.reload();">Ok</button>
+					ng-click="cCctr.reload();" id="reload">Ok</button>
 			</div>
 		</div>
 	</div>
@@ -530,7 +530,11 @@
 
 <style>
 </style>
-
+<script>
+	$('#reload').click(function() {
+		location.reload();
+	});
+</script>
 
 <script>
 	/* SCRIPT FOR OPEN CLOSE SIDEBAR  */

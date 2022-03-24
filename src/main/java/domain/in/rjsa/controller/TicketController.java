@@ -51,7 +51,7 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 	}
 
 	@RequestMapping(value = "/list/{fy}/{branchCode}/count/", method = RequestMethod.GET)
-	public ResponseEntity<?> count(@PathVariable String fy, @PathVariable String branchCode,
+	public ResponseEntity<?> count(@PathVariable String fy, @PathVariable Long branchCode,
 			HttpServletRequest request) {
 		HashMap<String, Object> constrains = new HashMap<>();
 		constrains.put("fy", fy);
@@ -73,7 +73,7 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 
 	@RequestMapping(value = "/add/{branchCode}", method = RequestMethod.POST)
 	@ResponseBody
-	public ResponseEntity<?> createEntity(@PathVariable String branchCode,
+	public ResponseEntity<?> createEntity(@PathVariable Long branchCode,
 			@RequestBody LinkedHashMap<String, Object> entity) {
 		// FieldErrorDTO ermsg=new FieldErrorDTO();
 		logger.info("Creating new Return instance");
@@ -87,7 +87,7 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 	}
 	@RequestMapping(value = "/add/{fy}/{branchCode}", method = RequestMethod.POST)
 	@ResponseBody
-	public ResponseEntity<?> createFYEntity(@PathVariable String branchCode,@PathVariable String fy,
+	public ResponseEntity<?> createFYEntity(@PathVariable Long branchCode,@PathVariable String fy,
 			@RequestBody LinkedHashMap<String, Object> entity) {
 		// FieldErrorDTO ermsg=new FieldErrorDTO();
 		logger.info("Creating new Return instance");
@@ -114,7 +114,7 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 
 	}
 
-	public List<?> getList(String fy, String branchCode, int pageNo, int resultPerPage) {
+	public List<?> getList(String fy, Long branchCode, int pageNo, int resultPerPage) {
 		HashMap<String, Object> constrains = new HashMap<>();
 		constrains.put("fy", fy);
 		constrains.put("branchCode", branchCode);
@@ -126,7 +126,7 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 
 
 	@RequestMapping(value = "/search/{fy}/{branchCode}/{json}", method = RequestMethod.GET)
-	public ResponseEntity<?> search(@PathVariable String fy, @PathVariable String branchCode,
+	public ResponseEntity<?> search(@PathVariable String fy, @PathVariable Long branchCode,
 			@PathVariable String json) {
 		try {
 			ObjectMapper mapper = new ObjectMapper();
@@ -150,7 +150,7 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 	
 	@RequestMapping(value = "/detail/{fy}/{branchCode}/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> getDetailController(@PathVariable Long id, @PathVariable String fy,
-			@PathVariable String branchCode){
+			@PathVariable Long branchCode){
 		// verify the clientId authorization
 		try {
 			return new ResponseEntity<>(getDetail(id, fy, branchCode), HttpStatus.OK);
@@ -160,7 +160,7 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 		}
 
 	}
-	public HashMap<String, Object> getDetail(Long id, String fy, String branchCode) {
+	public HashMap<String, Object> getDetail(Long id, String fy, Long branchCode) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
 		constrains.put("id", id);

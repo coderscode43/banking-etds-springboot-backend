@@ -41,7 +41,7 @@ public class MisReportController extends AbstractControllerFY<Long, MisReport, M
 	
 	  @RequestMapping(value = "/add/{fy}/{branchCode}", method =RequestMethod.POST)
 	  @ResponseBody public ResponseEntity<?> createEntity(@RequestBody LinkedHashMap<String, Object> entity,
-	  @PathVariable String branchCode, @PathVariable String fy) 
+	  @PathVariable Long branchCode, @PathVariable String fy) 
 	  { 
 	  FieldErrorDTO ermsg = new FieldErrorDTO(); logger.info("Creating new Return instance");
 	  entity.put("branchCode", branchCode); entity.put("fy", fy); 

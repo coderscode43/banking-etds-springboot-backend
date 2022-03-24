@@ -55,7 +55,7 @@ public class G15Controller<E> extends AbstractControllerFY<Long, G15, G15Service
 
 	@RequestMapping(value = "/detail/{fy}/{branchCode}/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> getDetailController(@PathVariable Long id, @PathVariable String fy,
-			@PathVariable String branchCode) {
+			@PathVariable Long branchCode) {
 		// verify the clientId authorization
 		try {
 			return new ResponseEntity<>(getDetail(id, fy, branchCode), HttpStatus.OK);
@@ -66,7 +66,7 @@ public class G15Controller<E> extends AbstractControllerFY<Long, G15, G15Service
 
 	}
 
-	public HashMap<String, Object> getDetail(Long id, String fy, String branchCode) {
+	public HashMap<String, Object> getDetail(Long id, String fy, Long branchCode) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
 		constrains.put("id", id);

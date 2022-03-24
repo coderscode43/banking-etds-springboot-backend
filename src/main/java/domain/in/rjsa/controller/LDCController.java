@@ -45,7 +45,7 @@ public class LDCController extends AbstractControllerTaxo<String, LDC, LDCServic
 		return LDC.class;
 	}
 	@RequestMapping(value = "/list/{fy}/{branchCode}/count/", method = RequestMethod.GET)
-	public ResponseEntity<?> count(@PathVariable String fy, @PathVariable String branchCode,
+	public ResponseEntity<?> count(@PathVariable String fy, @PathVariable Long branchCode,
 			HttpServletRequest request) {
 		HashMap<String, Object> constrains = new HashMap<>();
 //		constrains.put("fy",fy);
@@ -65,14 +65,14 @@ public class LDCController extends AbstractControllerTaxo<String, LDC, LDCServic
 
 	}
 	
-	public List<?> getList(String fy, String branchCode, int pageNo, int resultPerPage) {
+	public List<?> getList(String fy, Long branchCode, int pageNo, int resultPerPage) {
 		HashMap<String, Object> constrains = new HashMap<>();
 //		constrains.put("fy", fy);
 //		constrains.put("branchCode", branchCode);
 		return getService().findAll(constrains, pageNo, resultPerPage);
 	}
 	@RequestMapping(value = "/search/{fy}/{branchCode}/{json}", method = RequestMethod.GET)
-	public ResponseEntity<?> search(@PathVariable String fy, @PathVariable String branchCode, @PathVariable String json) {
+	public ResponseEntity<?> search(@PathVariable String fy, @PathVariable Long branchCode, @PathVariable String json) {
 		try {
 			ObjectMapper mapper = new ObjectMapper();
 			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
@@ -99,7 +99,7 @@ public class LDCController extends AbstractControllerTaxo<String, LDC, LDCServic
 	}
 	@RequestMapping(value = "/searchEntity/{fy}/{branchCode}", method = RequestMethod.POST)
 	public ResponseEntity<?> searchEntity(@RequestBody LinkedHashMap<String, Object> map, @PathVariable String fy,
-			@PathVariable String branchCode) {
+			@PathVariable Long branchCode) {
 		try {
 			/*
 			 * map.put("fy", fy); map.put("branchCode", branchCode);

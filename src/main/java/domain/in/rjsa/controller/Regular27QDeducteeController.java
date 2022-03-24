@@ -108,6 +108,10 @@ public class Regular27QDeducteeController
 				// convert JSON string to Map
 				map = mapper.readValue(searchParam, new TypeReference<Map<String, String>>() {
 				});
+				if(map.containsKey("branchCode")) {
+					Long branchCode = Long.valueOf(map.get("branchCode").toString());
+					map.put("branchCode", branchCode);
+				}
 
 //				Long count = getService().findSearchCount(map);
 //				List<?> list = getSearch(map, pageNo, resultPerPage);

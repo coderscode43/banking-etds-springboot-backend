@@ -153,8 +153,13 @@ private static final long serialVersionUID = 1L;
 	private String month;
 	
 	@Column(name = "branchCode")
-	private String branchCode;
+	private Long branchCode;
 	
 	@Column(name = "tan")
 	private String tan;
+	
+	@Column(name = "roCode")
+	private Long roCode;
+	
+	
 }

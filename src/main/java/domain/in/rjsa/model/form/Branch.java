@@ -23,7 +23,7 @@ public class Branch extends CommonModelAbstract {
 	@Column(name = "roCode")
 	private Long roCode;
 	@Column(name = "branchCode")
-	public String branchCode;
+	public Long branchCode;
 	@Column(name = "branchName")
 	public String branchName;
 	@Column(name = "branchEmail")

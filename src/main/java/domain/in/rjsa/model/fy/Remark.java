@@ -39,7 +39,7 @@ public class Remark extends CommonModelAbstract{/**
 	@Column(name = "userName")
 	public String userName;
 	@Column(name = "branchCode")
-	public String branchCode;
+	public Long branchCode;
 	@Column(name = "status")
 	public String status;
 

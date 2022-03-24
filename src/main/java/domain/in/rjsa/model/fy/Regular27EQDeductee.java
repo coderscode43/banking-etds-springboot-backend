@@ -74,7 +74,7 @@ public class Regular27EQDeductee extends CommonModelAbstract {
     @Column(name = "permanentEstablishment")
     public String permanentEstablishment;
     @Column(name = "branchCode")
-	public String branchCode;
+	public Long branchCode;
 	@Column(name = "accNo")
 	public String accNo;
 	@Column(name = "idNo")
@@ -99,7 +99,7 @@ public class Regular27EQDeductee extends CommonModelAbstract {
 	@Column(name = "TAN")
 	public String TAN ;
 	@Column(name = "roCode")
-	public String roCode ;
+	public Long roCode ;
 	@Column(name = "collectionCode")
 	public String collectionCode ;
 	@Column(name = "errorDescription")

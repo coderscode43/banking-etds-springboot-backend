@@ -124,7 +124,7 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	public Long natureOfRemittance;
 	
 	@Column(name = "branchCode")
-	public String branchCode;
+	public Long branchCode;
 	
 	@Column(name = "accNo")
 	public String accNo;
@@ -154,7 +154,7 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	public String TAN ;
 	
 	@Column(name = "roCode")
-	public String roCode ;
+	public Long roCode ;
 	
 	@Column(name = "errorDescription")
 	public String errorDescription ;

@@ -28,7 +28,7 @@ public class Ticket extends CommonModelAbstract {
 	@Column(name = "id")
 	public Long id;
 	@Column(name = "branchCode")
-	public String branchCode;
+	public Long branchCode;
 	@Column(name = "fy")
 	public String fy;
 	@Column(name = "quarter")

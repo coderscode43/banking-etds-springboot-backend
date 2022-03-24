@@ -32,7 +32,7 @@ public class MisReport extends CommonModelAbstract{/**
 	@Column(name = "id")
 	public Long id;		
 	@Column(name = "branchCode")
-	public String branchCode;
+	public Long branchCode;
 	@Temporal(TemporalType.DATE)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	@Column(name = "fromDate")

@@ -20,6 +20,8 @@ public class Regular24QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular24QDed
 		implements Regular24QDeducteeDao {
 	@SuppressWarnings("unchecked")
 	public List<Regular24QDeductee> search(HashMap entity) {
+//		int pageNo = 0 ;
+//		int noOfResult = 100;
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
@@ -44,7 +46,7 @@ public class Regular24QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular24QDed
 		}
 
          if (entity.get("branchCode") != null) {
- 			criteria.add(Restrictions.eqOrIsNull("branchCode",  entity.get("branchCode")));
+ 			criteria.add(Restrictions.eqOrIsNull("branchCode", Long.valueOf((String) entity.get("branchCode"))));
  		}
          if (entity.get("accNo") != null) {
    			criteria.add(Restrictions.eqOrIsNull("accNo", entity.get("accNo")));
@@ -68,8 +70,10 @@ public class Regular24QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular24QDed
  			criteria.add(Restrictions.eqOrIsNull("TAN",  entity.get("TAN")));
  		}
          if (entity.get("roCode") != null) {
- 			criteria.add(Restrictions.eqOrIsNull("roCode",  entity.get("roCode")));
+ 			criteria.add(Restrictions.eqOrIsNull("roCode", Long.valueOf((String) entity.get("roCode"))));
  		}
+//         criteria.setFirstResult(pageNo * noOfResult);
+// 		criteria.setMaxResults(noOfResult);
 		return (List<Regular24QDeductee>) criteria.list();
 	}
 

@@ -32,7 +32,7 @@ public class BranchDaoImpl extends AbstractDaoForm<Long, Branch> implements Bran
 			criteria.add(Restrictions.eqOrIsNull("branchName", entity.get("branchName").toString()));
 		}
 		if (entity.get("branchCode") != null) {
-			criteria.add(Restrictions.eqOrIsNull("branchCode", entity.get("branchCode").toString()));
+			criteria.add(Restrictions.eqOrIsNull("branchCode",Long.valueOf((String) entity.get("branchCode").toString())));
 		}
 		if (entity.get("branchState") != null) {
 			criteria.add(Restrictions.eqOrIsNull("branchState", entity.get("branchState").toString()));
@@ -60,7 +60,7 @@ public class BranchDaoImpl extends AbstractDaoForm<Long, Branch> implements Bran
 			criteria.add(Restrictions.eqOrIsNull("branchName", entity.get("branchName").toString()));
 		}
 		if (entity.get("branchCode") != null) {
-			criteria.add(Restrictions.eqOrIsNull("branchCode", entity.get("branchCode").toString()));
+			criteria.add(Restrictions.eqOrIsNull("branchCode", Long.valueOf((String) entity.get("branchCode").toString())));
 		}
 		if (entity.get("branchState") != null) {
 			criteria.add(Restrictions.eqOrIsNull("branchState", entity.get("branchState").toString()));

@@ -21,6 +21,8 @@ import domain.in.rjsa.model.fy.Regular26QDeductee;
 public class Regular26QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular26QDeductee> implements Regular26QDeducteeDao {
 	@SuppressWarnings("unchecked")
 	public List< Regular26QDeductee> search(HashMap entity) {
+//			int pageNo = 0 ;
+//		int noOfResult = 100;
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
@@ -29,7 +31,7 @@ public class Regular26QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular26QDed
 		
 		 if(entity.get("branchCode")!=null)
          {
-		criteria.add(Restrictions.eqOrIsNull("branchCode", entity.get("branchCode")));
+		criteria.add(Restrictions.eqOrIsNull("branchCode",Long.valueOf((String) entity.get("branchCode"))));
          }
 		 if(entity.get("accNo")!=null)
          {
@@ -77,8 +79,11 @@ public class Regular26QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular26QDed
    			criteria.add(Restrictions.eqOrIsNull("TAN",  entity.get("TAN")));
    		}
            if (entity.get("roCode") != null) {
-   			criteria.add(Restrictions.eqOrIsNull("roCode",  entity.get("roCode")));
+   			criteria.add(Restrictions.eqOrIsNull("roCode", Long.valueOf((String) entity.get("roCode"))));
+   			
    		}
+//           criteria.setFirstResult(pageNo * noOfResult);
+//    		criteria.setMaxResults(noOfResult);
 		return (List< Regular26QDeductee>) criteria.list();
 	}
 	@Override

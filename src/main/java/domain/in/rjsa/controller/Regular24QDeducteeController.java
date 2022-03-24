@@ -27,6 +27,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
+import domain.in.rjsa.model.form.ListCount;
 import domain.in.rjsa.model.fy.Regular24QDeductee;
 import domain.in.rjsa.model.fy.Remark;
 import domain.in.rjsa.service.Regular24QDeducteeService;
@@ -113,13 +114,13 @@ public class Regular24QDeducteeController<E>
 				map.put("branchCode", branchCode);
 			}
 
-//			Long count = getService().findSearchCount(map);
-//			List<?> list = getSearch(map, pageNo, resultPerPage);
-//			ListCount send = new ListCount();
-//			send.setCount(count);
-//			send.setEntities(list);
+			Long count = getService().findallCount(map);
+			List<?> list = getSearch(map, pageNo, resultPerPage);
+			ListCount send = new ListCount();
+			send.setCount(count);
+			send.setEntities(list);
 
-			return new ResponseEntity<>(getSearch(map, pageNo, resultPerPage), HttpStatus.OK);
+			return new ResponseEntity<>(send, HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("Error in listALL", e);
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

@@ -1037,7 +1037,7 @@ App
 															'.modal-body')
 													.find('.msg')
 													.append(
-															" Certificate Open Successfully");
+															"File Open Successfully");
 											$("#successMsg")
 													.modal();
 											
@@ -1053,7 +1053,7 @@ App
 																'.modal-body')
 														.find(
 																'.msg')
-														.append("Certificate can not Download");
+														.append("File can not found.");
 												$("#errorMsg")
 														.modal();
 											

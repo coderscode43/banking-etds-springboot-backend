@@ -33,16 +33,15 @@ import domain.in.rjsa.web.ApplicationCache;
 
 @Controller
 @RequestMapping("/apilogs")
-public class LogsController extends AbstractControllerForm<Long, Logs, LogsService>{
+public class LogsController extends AbstractControllerForm<Long, Logs, LogsService> {
 
 	@Autowired
 	LogsService service;
-	
-	
+
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	@Autowired
 	ApplicationCache applicationCache;
-	
+
 	/* pranay */
 	@RequestMapping(value = "/ajax", method = RequestMethod.POST)
 	public ResponseEntity<?> ajax(@RequestBody Ajax ajax) {
@@ -56,14 +55,15 @@ public class LogsController extends AbstractControllerForm<Long, Logs, LogsServi
 		}
 
 	}
+
 	public List<String> getAjax(String name, String term) {
 		// TODO Auto-generated method stub
 		return service.ajax(name, term);
 	}
-	
+
 	@RequestMapping(value = "/search/get/{pageNo}/{resultPerPage}/{json}/**", method = RequestMethod.GET)
-	public ResponseEntity<?> search(@PathVariable String json, HttpServletRequest request,
-			@PathVariable int pageNo, @PathVariable int resultPerPage) {
+	public ResponseEntity<?> search(@PathVariable String json, HttpServletRequest request, @PathVariable int pageNo,
+			@PathVariable int resultPerPage) {
 		try {
 			final String path = request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE).toString();
 			final String bestMatchingPattern = request.getAttribute(HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE)
@@ -87,26 +87,25 @@ public class LogsController extends AbstractControllerForm<Long, Logs, LogsServi
 
 			Long count = service.findSearchCount(map);
 			List<?> list = getSearch(map, pageNo, resultPerPage);
-//		ListCount send = new ListCount();
-//			send.setCount(count);
-//			send.setEntities(list);
+			ListCount send = new ListCount();
+			send.setCount(count);
+			send.setEntities(list);
 
-			return new ResponseEntity<>(getSearch(map, pageNo, resultPerPage), HttpStatus.OK);
+			return new ResponseEntity<>(send, HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("Error in listALL", e);
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
 	}
+
 	public List<?> getSearch(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
 		return service.search(map, pageNo, resultPerPage);
 	}
-	
-	
 
 	/* END-pranay */
-	
+
 //	@RequestMapping(value = "/list/get/{pageNo}/{resultPerPage}", method = RequestMethod.GET)
 //	public ResponseEntity<?> listAll( HttpServletRequest request, @PathVariable int pageNo,
 //			@PathVariable int resultPerPage) {
@@ -120,7 +119,7 @@ public class LogsController extends AbstractControllerForm<Long, Logs, LogsServi
 //		}
 //
 //	}
-	
+
 	public String getPrincipal() {
 		String userName = null;
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -133,8 +132,9 @@ public class LogsController extends AbstractControllerForm<Long, Logs, LogsServi
 		return userName;
 
 	}
+
 	@RequestMapping(value = "/list/count/", method = RequestMethod.GET)
-	public ResponseEntity<?> count( HttpServletRequest request) {
+	public ResponseEntity<?> count(HttpServletRequest request) {
 		// verify the clientId authorization
 //			applicationCache.getUserAuthorised();
 		HashMap<String, Object> constrains = new HashMap<>();
@@ -143,7 +143,7 @@ public class LogsController extends AbstractControllerForm<Long, Logs, LogsServi
 
 		try {
 			Long count = service.findallCount(constrains);
-			List<?> list = getList( 0, 100);
+			List<?> list = getList(0, 100);
 			ListCount send = new ListCount();
 			send.setCount(count);
 			send.setEntities(list);
@@ -154,15 +154,18 @@ public class LogsController extends AbstractControllerForm<Long, Logs, LogsServi
 		}
 
 	}
-	public List<?> getList( int pageNo, int resultPerPage) {
+
+	public List<?> getList(int pageNo, int resultPerPage) {
 		HashMap<String, Object> constrains = new HashMap<>();
 		return service.findAll(constrains, pageNo, resultPerPage);
 	}
+
 	@Override
 	public LogsService getService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 	@Override
 	public Class<Logs> getEntity() {
 		// TODO Auto-generated method stub

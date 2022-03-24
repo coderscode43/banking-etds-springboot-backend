@@ -106,11 +106,11 @@ public class BranchController {
 			}
 			Long count = service.findSearchCount(map);
 			List<?> list = getSearch(map, pageNo, resultPerPage);
-//			ListCount send = new ListCount();
-//			send.setCount(count);
-//			send.setEntities(list);
+			ListCount send = new ListCount();
+			send.setCount(count);
+			send.setEntities(list);
 
-			return new ResponseEntity<>(getSearch(map, pageNo, resultPerPage), HttpStatus.OK);
+			return new ResponseEntity<>(send, HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("Error in listALL", e);
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -233,6 +233,30 @@ public class BranchController {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
+	}
+	
+	@RequestMapping(value = "/list/get/{pageNo}/{resultPerPage}", method = RequestMethod.GET)
+	public ResponseEntity<?> listAll(HttpServletRequest request, @PathVariable int pageNo,
+			@PathVariable int resultPerPage) {
+		// verify the clientId authorization
+//		applicationCache.getUserAuthorised();
+		String mapping = request.getPathInfo();
+
+		try {
+			List<?> list = getList(pageNo, resultPerPage);
+
+			return new ResponseEntity<>(list, HttpStatus.OK);
+		} catch (Exception e) {
+			logger.error("Error in listALL", e);
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+	}
+	public List<?> getList( int pageNo, int resultPerPage) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> constrains = new HashMap<>();
+
+		return service.findAll(constrains, pageNo, resultPerPage);
 	}
 
 	public List<?> getList(HashMap<String, Object> constrains,int pageNo, int resultPerPage) {

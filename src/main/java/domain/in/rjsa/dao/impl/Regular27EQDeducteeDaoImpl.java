@@ -22,6 +22,8 @@ public class Regular27EQDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27EQD
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
+		int pageNo = 0 ;
+		int noOfResult = 100;
 		//propertyNameValues.put("clientId", clientId);
 		criteria.add(Restrictions.allEq(propertyNameValues));
 		
@@ -80,7 +82,8 @@ public class Regular27EQDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27EQD
            if (entity.get("roCode") != null) {
    			criteria.add(Restrictions.eqOrIsNull("roCode", entity.get("roCode")));
    		}
-          
+           criteria.setFirstResult(pageNo * noOfResult);
+   		criteria.setMaxResults(noOfResult);
           
           
 		criteria.addOrder(Order.desc("dateofReceivedDebited"));

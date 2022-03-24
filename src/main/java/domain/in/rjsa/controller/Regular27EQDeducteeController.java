@@ -25,6 +25,7 @@ import org.springframework.web.servlet.HandlerMapping;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import domain.in.rjsa.model.form.ListCount;
 import domain.in.rjsa.model.fy.Regular24QDeductee;
 import domain.in.rjsa.model.fy.Regular27EQDeductee;
 import domain.in.rjsa.model.fy.Remark;
@@ -109,13 +110,13 @@ public class Regular27EQDeducteeController extends AbstractControllerFY<Long, Re
 					map.put("branchCode", branchCode);
 				}
 
-//				Long count = getService().findSearchCount(map);
-//				List<?> list = getSearch(map, pageNo, resultPerPage);
-//				ListCount send = new ListCount();
-//				send.setCount(count);
-//				send.setEntities(list);
+				Long count = getService().findallCount(map);
+				List<?> list = getSearch(map, pageNo, resultPerPage);
+				ListCount send = new ListCount();
+				send.setCount(count);
+				send.setEntities(list);
 
-				return new ResponseEntity<>(getSearch(map, pageNo, resultPerPage), HttpStatus.OK);
+				return new ResponseEntity<>(send, HttpStatus.OK);
 			} catch (Exception e) {
 				logger.error("Error in listALL", e);
 				return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

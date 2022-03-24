@@ -21,8 +21,8 @@ import domain.in.rjsa.model.fy.Regular26QDeductee;
 public class Regular26QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular26QDeductee> implements Regular26QDeducteeDao {
 	@SuppressWarnings("unchecked")
 	public List< Regular26QDeductee> search(HashMap entity) {
-//			int pageNo = 0 ;
-//		int noOfResult = 100;
+			int pageNo = 0 ;
+		int noOfResult = 100;
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
@@ -82,8 +82,8 @@ public class Regular26QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular26QDed
    			criteria.add(Restrictions.eqOrIsNull("roCode",  entity.get("roCode")));
    			
    		}
-//           criteria.setFirstResult(pageNo * noOfResult);
-//    		criteria.setMaxResults(noOfResult);
+           criteria.setFirstResult(pageNo * noOfResult);
+    		criteria.setMaxResults(noOfResult);
 		return (List< Regular26QDeductee>) criteria.list();
 	}
 	@Override

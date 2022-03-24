@@ -108,13 +108,13 @@ public class G15Controller<E> extends AbstractControllerFY<Long, G15, G15Service
 			map = mapper.readValue(searchParam, new TypeReference<Map<String, String>>() {
 			});
 
-//			Long count = getService().findallCount(map);
-//			List<?> list = getSearch(map, pageNo, resultPerPage);
-//			ListCount send = new ListCount();
-//			send.setCount(count);
-//			send.setEntities(list);
+			Long count = getService().findallCount(map);
+			List<?> list = getSearch(map, pageNo, resultPerPage);
+			ListCount send = new ListCount();
+			send.setCount(count);
+			send.setEntities(list);
 
-			return new ResponseEntity<>(getSearch(map, pageNo, resultPerPage), HttpStatus.OK);
+			return new ResponseEntity<>(send, HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("Error in listALL", e);
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

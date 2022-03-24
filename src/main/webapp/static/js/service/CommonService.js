@@ -151,10 +151,10 @@ App.factory('CommonService', [
 						REST_SERVICE_URI + entity + '/search/get/0/100/' + map)
 						.success(function(data) {
 							/* count = 0;-pranay */
-							count = 0;
+							count = data.count;
 							/* resultPerPage = 10; */
 							/* entityList = data;--Pranay */
-							entityList = data;
+							entityList = data.entities;
 							deferred.resolve(data);
 						}).error(function(status) {
 							deferred.reject(status);

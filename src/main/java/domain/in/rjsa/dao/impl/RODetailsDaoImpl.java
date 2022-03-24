@@ -21,10 +21,12 @@ public class RODetailsDaoImpl extends AbstractDaoForm<Long, RODetails> implement
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
+		int pageNo = 0 ;
+		int noOfResult = 100;
 		//propertyNameValues.put("clientId", clientId);
 		criteria.add(Restrictions.allEq(propertyNameValues));
 		if (entity.get("roCode") != null) {
-			criteria.add(Restrictions.eqOrIsNull("roCode",Long.valueOf((String) entity.get("roCode"))));
+			criteria.add(Restrictions.eqOrIsNull("roCode", entity.get("roCode")));
 		}
 		if (entity.get("roName") != null) {
 			criteria.add(Restrictions.eqOrIsNull("roName", entity.get("roName")));
@@ -41,6 +43,8 @@ public class RODetailsDaoImpl extends AbstractDaoForm<Long, RODetails> implement
 		if (entity.get("roPincode") != null) {
 			criteria.add(Restrictions.eqOrIsNull("roPincode", entity.get("roPincode")));
 		}
+		 criteria.setFirstResult(pageNo * noOfResult);
+ 		criteria.setMaxResults(noOfResult);
 		return (List<RODetails>) criteria.list();
 	}
 	@Override

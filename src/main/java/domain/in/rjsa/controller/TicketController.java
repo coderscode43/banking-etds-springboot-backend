@@ -134,7 +134,7 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 			map = mapper.readValue(json, new TypeReference<Map<String, String>>() {
 			});
 			for (String key : map.keySet()) {
-				if (key.endsWith("Id")) {
+				if (key.endsWith("Code")) {
 					map.put(key, Long.valueOf((String) map.get(key)));
 				}
 			}

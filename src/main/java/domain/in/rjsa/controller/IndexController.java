@@ -53,6 +53,7 @@ public class IndexController {
 
 	@RequestMapping(value = "/home")
 	public String gethome(ModelMap model) {
+		
 		setStaticData();
 		model.addAttribute("typeOfUser",applicationCache.getLoginDetail(getPrincipal()).getType());
 		model.addAttribute("financialYear", StaticData.financialYear);
@@ -68,7 +69,7 @@ public class IndexController {
 		return "homeSC/homeSCHomepage";
 	}
 
-	@RequestMapping(value = "/homeWot/{branchCode}/{fy}")
+	@RequestMapping(value = "/homeWOT/{branchCode}/{fy}")
 	public String gethomeWOT(@PathVariable String fy, @PathVariable Long branchCode, ModelMap model) {
 		setStaticData();
 		model.addAttribute("typeOfUser",applicationCache.getLoginDetail(getPrincipal()).getType());
@@ -92,7 +93,7 @@ public class IndexController {
 		model.addAttribute("financialYear", StaticData.financialYear);
 		model.addAttribute("Quarter", StaticData.Quarter);
 		model.addAttribute("State", StaticData.State);
-		return action + "/" + page;
+		return sendPage(action,page);
 	}
 
 	@RequestMapping(value = "/detail/{action}/{page}")
@@ -103,13 +104,11 @@ public class IndexController {
 		model.addAttribute("Quarter", StaticData.Quarter);
 		model.addAttribute("State", StaticData.State);
 		
-
-		return action + "/" + page;
+		return sendPage(action,page);
 	}
 
 	@RequestMapping(value = "/list/{action}/{page}")
 	public String getListPage(@PathVariable String action, @PathVariable String page, ModelMap model) {
-		// download certificate-Pranay
 		setStaticData();
 		model.addAttribute("typeOfUser",applicationCache.getLoginDetail(getPrincipal()).getType());
 		model.addAttribute("financialYear", StaticData.financialYear);
@@ -117,8 +116,20 @@ public class IndexController {
 		model.addAttribute("typeOfDeductee", StaticData.typeOfDeductee);
 		model.addAttribute("typeOfCertificate", StaticData.typeOfCertificate);
 		model.addAttribute("Month", StaticData.Month);
+		return sendPage(action,page);
+	}
+	
+	public String sendPage(String action,String page) {
+		if(getPrincipal().contains("admin")) {
+			return action + "/" + page;
+		}else {
+			if(page.contains("branch")||action.contains("homeWOT")) {
+				return action + "/" + page;
+			}
+		return "homeSC/homeSCHomepage";
+		}
 		
-		return action + "/" + page;
+		
 	}
 
 	/**

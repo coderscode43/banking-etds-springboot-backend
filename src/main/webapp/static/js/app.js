@@ -170,13 +170,13 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 		})
 		//homeWot-sideMenu for Branch
 		.state('homeWot', {
-			url: "/homeWot/:branchCode/:fy",
+			url: "/homeWOT/:branchCode/:fy",
 			params: {
 				branchCode: null,
 				fy: null,
 			},
 			templateUrl: function($stateParams) {
-				return 'index/homeWot/' +$stateParams.branchCode+'/'+ $stateParams.fy;
+				return 'index/homeWOT/' +$stateParams.branchCode+'/'+ $stateParams.fy;
 			},
 			controller: "CommonController as cCctr"
 		}
@@ -194,7 +194,7 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 					page:null,
 				},
 			templateUrl: function($stateParams){
-				return 'index/add/homeWot/' + $stateParams.page;
+				return 'index/add/homeWOT/' + $stateParams.page;
 			},
 			controller : "CommonController as cCctr",
 		})

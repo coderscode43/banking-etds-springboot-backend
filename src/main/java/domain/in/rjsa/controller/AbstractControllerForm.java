@@ -137,11 +137,11 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 			// convert JSON string to Map
 			map = mapper.readValue(searchParam, new TypeReference<Map<String, String>>() {
 			});
-			if(map.containsKey("roCode")) {
-				Long roCode = Long.valueOf(map.get("roCode").toString());
-				map.put("roCode", roCode);
+			for (String key : map.keySet()) {
+				if (key.endsWith("Code")) {
+					map.put(key, Long.valueOf((String) map.get(key)));
+				}
 			}
-
 			Long count = getService().findallCount(map);
 			List<?> list = getSearch(map, pageNo, resultPerPage);
 			ListCount send = new ListCount();

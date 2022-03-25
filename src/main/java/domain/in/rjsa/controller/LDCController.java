@@ -78,13 +78,13 @@ public class LDCController extends AbstractControllerTaxo<String, LDC, LDCServic
 			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
 			map = mapper.readValue(json, new TypeReference<Map<String, String>>() {
 			});
-			for (String key : map.keySet()) {
-				if (key.endsWith("Id")) {
-					map.put(key, Long.valueOf((String) map.get(key)));
-				}
-			}
-			map.put("fy", fy);
-			map.put("branchCode", branchCode);
+//			for (String key : map.keySet()) {
+//				if (key.endsWith("Code")) {
+//					map.put(key, Long.valueOf((String) map.get(key)));
+//				}
+//			}
+//			map.put("fy", fy);
+//			map.put("branchCode", branchCode);
 			Long count = getService().findallCount(map);
 			List<?> list = getSearch(map);
 			ListCount send = new ListCount();

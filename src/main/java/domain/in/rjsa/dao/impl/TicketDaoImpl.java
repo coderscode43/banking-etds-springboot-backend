@@ -8,15 +8,17 @@ import java.util.Map;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractDaoForm;
 import domain.in.rjsa.dao.TicketDao;
 import domain.in.rjsa.model.fy.Ticket;
+
 @Repository("ticketDao")
-public class TicketDaoImpl extends AbstractDaoForm<Long, Ticket> implements TicketDao{
-	
+public class TicketDaoImpl extends AbstractDaoForm<Long, Ticket> implements TicketDao {
+
 	@SuppressWarnings("unchecked")
 	public List<Ticket> search(HashMap entity, Long clientId) {
 		Criteria criteria = createEntityCriteria();
@@ -32,35 +34,29 @@ public class TicketDaoImpl extends AbstractDaoForm<Long, Ticket> implements Tick
 					Date.from(ZonedDateTime.parse((String) entity.get("fromDate")).toInstant())));
 		}
 		if (entity.get("toDate") != null) {
-			criteria.add(
-					Restrictions.le("dateOfChange", Date.from(ZonedDateTime.parse((String) entity.get("toDate")).toInstant())));
-		}  
-          if(entity.get("status")!=null)
-          {
-		criteria.add(Restrictions.eqOrIsNull("status", entity.get("status")));
-          }
-          if(entity.get("form")!=null)
-          {
-		criteria.add(Restrictions.eqOrIsNull("form", entity.get("form")));
-          }
-          if(entity.get("fy")!=null)
-          {
-		criteria.add(Restrictions.eqOrIsNull("fy", entity.get("fy")));
-          }
-          if(entity.get("remarks")!=null)
-          {
-		criteria.add(Restrictions.eqOrIsNull("remarks", entity.get("remarks")));
-          }
-          
-          if(entity.get("quarter")!=null)
-          {
-		criteria.add(Restrictions.eqOrIsNull("quarter", entity.get("quarter")));
-          }
-          if(entity.get("branchCode")!=null)
-          {
-        	  criteria.add(Restrictions.eqOrIsNull("branchCode", Long.valueOf((String) entity.get("branchCode"))));
-          }
-         criteria.addOrder(Order.desc("dateOfOpening"));
+			criteria.add(Restrictions.le("dateOfChange",
+					Date.from(ZonedDateTime.parse((String) entity.get("toDate")).toInstant())));
+		}
+		if (entity.get("status") != null) {
+			criteria.add(Restrictions.eqOrIsNull("status", entity.get("status")));
+		}
+		if (entity.get("form") != null) {
+			criteria.add(Restrictions.eqOrIsNull("form", entity.get("form")));
+		}
+		if (entity.get("fy") != null) {
+			criteria.add(Restrictions.eqOrIsNull("fy", entity.get("fy")));
+		}
+		if (entity.get("remarks") != null) {
+			criteria.add(Restrictions.eqOrIsNull("remarks", entity.get("remarks")));
+		}
+
+		if (entity.get("quarter") != null) {
+			criteria.add(Restrictions.eqOrIsNull("quarter", entity.get("quarter")));
+		}
+		if (entity.get("branchCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("branchCode", Long.valueOf((String) entity.get("branchCode"))));
+		}
+		criteria.addOrder(Order.desc("dateOfOpening"));
 		return (List<Ticket>) criteria.list();
 	}
 
@@ -77,36 +73,72 @@ public class TicketDaoImpl extends AbstractDaoForm<Long, Ticket> implements Tick
 					Date.from(ZonedDateTime.parse((String) entity.get("fromDate")).toInstant())));
 		}
 		if (entity.get("toDate") != null) {
-			criteria.add(
-					Restrictions.le("dateOfChange", Date.from(ZonedDateTime.parse((String) entity.get("toDate")).toInstant())));
-		}  
-          if(entity.get("status")!=null)
-          {
-		criteria.add(Restrictions.eqOrIsNull("status", entity.get("status")));
-          }
-          if(entity.get("form")!=null)
-          {
-		criteria.add(Restrictions.eqOrIsNull("form", entity.get("form")));
-          }
-          if(entity.get("fy")!=null)
-          {
-		criteria.add(Restrictions.eqOrIsNull("fy", entity.get("fy")));
-          }
-          if(entity.get("remarks")!=null)
-          {
-		criteria.add(Restrictions.eqOrIsNull("remarks", entity.get("remarks")));
-          }
-          
-          if(entity.get("quarter")!=null)
-          {
-		criteria.add(Restrictions.eqOrIsNull("quarter", entity.get("quarter")));
-          }
-          if(entity.get("branchCode")!=null)
-          {
-        	  criteria.add(Restrictions.eqOrIsNull("branchCode", entity.get("branchCode")));
-          }
-         criteria.addOrder(Order.desc("dateOfOpening"));
+			criteria.add(Restrictions.le("dateOfChange",
+					Date.from(ZonedDateTime.parse((String) entity.get("toDate")).toInstant())));
+		}
+		if (entity.get("status") != null) {
+			criteria.add(Restrictions.eqOrIsNull("status", entity.get("status")));
+		}
+		if (entity.get("form") != null) {
+			criteria.add(Restrictions.eqOrIsNull("form", entity.get("form")));
+		}
+		if (entity.get("fy") != null) {
+			criteria.add(Restrictions.eqOrIsNull("fy", entity.get("fy")));
+		}
+		if (entity.get("remarks") != null) {
+			criteria.add(Restrictions.eqOrIsNull("remarks", entity.get("remarks")));
+		}
+
+		if (entity.get("quarter") != null) {
+			criteria.add(Restrictions.eqOrIsNull("quarter", entity.get("quarter")));
+		}
+		if (entity.get("branchCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("branchCode", entity.get("branchCode")));
+		}
+		criteria.addOrder(Order.desc("dateOfOpening"));
 		return (List<Ticket>) criteria.list();
+	}
+
+	@SuppressWarnings("unchecked")
+	public Long findallCount(HashMap<String, Object> entity) {
+
+		Criteria criteria = createEntityCriteria();
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
+
+		if (entity.get("branchId") != null) {
+			criteria.add(Restrictions.eqOrIsNull("branchId", entity.get("branchId")));
+		}
+		if (entity.get("fromDate") != null) {
+			criteria.add(Restrictions.ge("dateOfOpening",
+					Date.from(ZonedDateTime.parse((String) entity.get("fromDate")).toInstant())));
+		}
+		if (entity.get("toDate") != null) {
+			criteria.add(Restrictions.le("dateOfChange",
+					Date.from(ZonedDateTime.parse((String) entity.get("toDate")).toInstant())));
+		}
+		if (entity.get("status") != null) {
+			criteria.add(Restrictions.eqOrIsNull("status", entity.get("status")));
+		}
+		if (entity.get("form") != null) {
+			criteria.add(Restrictions.eqOrIsNull("form", entity.get("form")));
+		}
+		if (entity.get("fy") != null) {
+			criteria.add(Restrictions.eqOrIsNull("fy", entity.get("fy")));
+		}
+		if (entity.get("remarks") != null) {
+			criteria.add(Restrictions.eqOrIsNull("remarks", entity.get("remarks")));
+		}
+
+		if (entity.get("quarter") != null) {
+			criteria.add(Restrictions.eqOrIsNull("quarter", entity.get("quarter")));
+		}
+		if (entity.get("branchCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("branchCode", Long.valueOf((String) entity.get("branchCode"))));
+		}
+		criteria.addOrder(Order.desc("dateOfOpening"));
+//           criteria.setFirstResult(pageNo * noOfResult);
+//    		criteria.setMaxResults(noOfResult);
+		return (Long) criteria.setProjection(Projections.rowCount()).uniqueResult();
 	}
 
 }

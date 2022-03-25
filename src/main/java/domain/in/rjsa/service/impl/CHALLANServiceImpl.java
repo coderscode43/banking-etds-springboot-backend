@@ -1,5 +1,6 @@
 package domain.in.rjsa.service.impl;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -24,11 +25,6 @@ public  class CHALLANServiceImpl extends AbstractServiceTaxo<String, CHALLAN, CH
 		}
 		
 		@Override
-		public String findSearchCount(LinkedHashMap<String, Object> map) {
-			// TODO Auto-generated method stub
-			return dao.findSearchCount(map);
-		}
-		@Override
 		public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
 			// TODO Auto-generated method stub
 			return dao.search(map, pageNo, resultPerPage);
@@ -38,6 +34,12 @@ public  class CHALLANServiceImpl extends AbstractServiceTaxo<String, CHALLAN, CH
 		public CHALLAN getByKey(String CIN) {
 			// TODO Auto-generated method stub
 			return dao.getByKey(CIN);
+		}
+
+		@Override
+		public Long findallCount(HashMap<String, Object> constrains) {
+			// TODO Auto-generated method stub
+			return getPrimaryDao().findallCount(constrains);
 		}
 		
 	}

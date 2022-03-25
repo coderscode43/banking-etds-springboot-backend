@@ -1,6 +1,8 @@
 package domain.in.rjsa.service.impl;
 
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,5 +33,9 @@ public class Regular26QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 		// TODO Auto-generated method stub
 		return dao.getByKey(id);
 	}
-	
+	@Override
+	public Long findallCount(HashMap<String, Object> constrains) {
+		// TODO Auto-generated method stub
+		return getPrimaryDao().findallCount(constrains);
+	}
 }

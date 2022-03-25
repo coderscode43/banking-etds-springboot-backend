@@ -133,7 +133,7 @@ public class TicketDaoImpl extends AbstractDaoForm<Long, Ticket> implements Tick
 			criteria.add(Restrictions.eqOrIsNull("quarter", entity.get("quarter")));
 		}
 		if (entity.get("branchCode") != null) {
-			criteria.add(Restrictions.eqOrIsNull("branchCode", Long.valueOf((String) entity.get("branchCode"))));
+			criteria.add(Restrictions.eqOrIsNull("branchCode", entity.get("branchCode")));
 		}
 		criteria.addOrder(Order.desc("dateOfOpening"));
 //           criteria.setFirstResult(pageNo * noOfResult);

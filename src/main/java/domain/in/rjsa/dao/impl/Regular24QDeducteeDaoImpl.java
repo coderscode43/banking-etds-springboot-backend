@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -20,20 +21,20 @@ public class Regular24QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular24QDed
 		implements Regular24QDeducteeDao {
 	@SuppressWarnings("unchecked")
 	public List<Regular24QDeductee> search(HashMap entity) {
-		int pageNo = 0 ;
+		int pageNo = 0;
 		int noOfResult = 100;
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
-		//propertyNameValues.put("clientId", clientId);
+		// propertyNameValues.put("clientId", clientId);
 		criteria.add(Restrictions.allEq(propertyNameValues));
-		
+
 		if (entity.get("name") != null) {
-				criteria.add(Restrictions.eqOrIsNull("name", entity.get("name")));
-			}
-		 if (entity.get("sectionCode") != null) {
-				criteria.add(Restrictions.eqOrIsNull("sectionCode",   entity.get("sectionCode")));
-			}
+			criteria.add(Restrictions.eqOrIsNull("name", entity.get("name")));
+		}
+		if (entity.get("sectionCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("sectionCode", entity.get("sectionCode")));
+		}
 
 		if (entity.get("pan") != null) {
 			criteria.add(Restrictions.eqOrIsNull("pan", entity.get("pan")));
@@ -45,36 +46,91 @@ public class Regular24QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular24QDed
 			criteria.add(Restrictions.eqOrIsNull("quarter", entity.get("quarter")));
 		}
 
-         if (entity.get("branchCode") != null) {
- 			criteria.add(Restrictions.eqOrIsNull("branchCode",  entity.get("branchCode")));
- 		}
-         if (entity.get("accNo") != null) {
-   			criteria.add(Restrictions.eqOrIsNull("accNo", entity.get("accNo")));
-   		}
-         if (entity.get("challanHeading") != null) {
- 			criteria.add(Restrictions.eqOrIsNull("challanHeading",  entity.get("challanHeading")));
- 		}
-         if (entity.get("staffId") != null) {
-  			criteria.add(Restrictions.eqOrIsNull("staffId", entity.get("staffId")));
-  		}
-         if (entity.get("warningDescription") != null) {
-   			criteria.add(Restrictions.eqOrIsNull("warningDescription",  entity.get("warningDescription")));
-   		}
-         if (entity.get("errorDescription") != null) {
-    			criteria.add(Restrictions.eqOrIsNull("errorDescription",  entity.get("errorDescription")));
-    		}
-         if (entity.get("resolved") != null) {
+		if (entity.get("branchCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("branchCode", entity.get("branchCode")));
+		}
+		if (entity.get("accNo") != null) {
+			criteria.add(Restrictions.eqOrIsNull("accNo", entity.get("accNo")));
+		}
+		if (entity.get("challanHeading") != null) {
+			criteria.add(Restrictions.eqOrIsNull("challanHeading", entity.get("challanHeading")));
+		}
+		if (entity.get("staffId") != null) {
+			criteria.add(Restrictions.eqOrIsNull("staffId", entity.get("staffId")));
+		}
+		if (entity.get("warningDescription") != null) {
+			criteria.add(Restrictions.eqOrIsNull("warningDescription", entity.get("warningDescription")));
+		}
+		if (entity.get("errorDescription") != null) {
+			criteria.add(Restrictions.eqOrIsNull("errorDescription", entity.get("errorDescription")));
+		}
+		if (entity.get("resolved") != null) {
 			criteria.add(Restrictions.eqOrIsNull("resolved", Boolean.valueOf(entity.get("resolved").toString())));
 		}
-         if (entity.get("TAN") != null) {
- 			criteria.add(Restrictions.eqOrIsNull("TAN",  entity.get("TAN")));
- 		}
-         if (entity.get("roCode") != null) {
- 			criteria.add(Restrictions.eqOrIsNull("roCode",  entity.get("roCode")));
- 		}
-         criteria.setFirstResult(pageNo * noOfResult);
- 		criteria.setMaxResults(noOfResult);
+		if (entity.get("TAN") != null) {
+			criteria.add(Restrictions.eqOrIsNull("TAN", entity.get("TAN")));
+		}
+		if (entity.get("roCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("roCode", entity.get("roCode")));
+		}
+		criteria.setFirstResult(pageNo * noOfResult);
+		criteria.setMaxResults(noOfResult);
 		return (List<Regular24QDeductee>) criteria.list();
+	}
+
+	@SuppressWarnings("unchecked")
+	public Long findallCount(HashMap<String, Object> entity) {
+
+		Criteria criteria = createEntityCriteria();
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
+
+		if (entity.get("name") != null) {
+			criteria.add(Restrictions.eqOrIsNull("name", entity.get("name")));
+		}
+		if (entity.get("sectionCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("sectionCode", entity.get("sectionCode")));
+		}
+
+		if (entity.get("pan") != null) {
+			criteria.add(Restrictions.eqOrIsNull("pan", entity.get("pan")));
+		}
+		if (entity.get("fy") != null) {
+			criteria.add(Restrictions.eqOrIsNull("fy", entity.get("fy")));
+		}
+		if (entity.get("quarter") != null) {
+			criteria.add(Restrictions.eqOrIsNull("quarter", entity.get("quarter")));
+		}
+
+		if (entity.get("branchCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("branchCode", entity.get("branchCode")));
+		}
+		if (entity.get("accNo") != null) {
+			criteria.add(Restrictions.eqOrIsNull("accNo", entity.get("accNo")));
+		}
+		if (entity.get("challanHeading") != null) {
+			criteria.add(Restrictions.eqOrIsNull("challanHeading", entity.get("challanHeading")));
+		}
+		if (entity.get("staffId") != null) {
+			criteria.add(Restrictions.eqOrIsNull("staffId", entity.get("staffId")));
+		}
+		if (entity.get("warningDescription") != null) {
+			criteria.add(Restrictions.eqOrIsNull("warningDescription", entity.get("warningDescription")));
+		}
+		if (entity.get("errorDescription") != null) {
+			criteria.add(Restrictions.eqOrIsNull("errorDescription", entity.get("errorDescription")));
+		}
+		if (entity.get("resolved") != null) {
+			criteria.add(Restrictions.eqOrIsNull("resolved", Boolean.valueOf(entity.get("resolved").toString())));
+		}
+		if (entity.get("TAN") != null) {
+			criteria.add(Restrictions.eqOrIsNull("TAN", entity.get("TAN")));
+		}
+		if (entity.get("roCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("roCode", entity.get("roCode")));
+		}
+//           criteria.setFirstResult(pageNo * noOfResult);
+//    		criteria.setMaxResults(noOfResult);
+		return (Long) criteria.setProjection(Projections.rowCount()).uniqueResult();
 	}
 
 }

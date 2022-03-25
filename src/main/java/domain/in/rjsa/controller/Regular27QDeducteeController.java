@@ -112,10 +112,7 @@ public class Regular27QDeducteeController
 					Long roCode = Long.valueOf(map.get("roCode").toString());
 					map.put("roCode", roCode);
 				}
-				if(map.containsKey("resolved")) {
-					Boolean resolved = Boolean.valueOf(map.get("resolved").toString());
-					map.put("resolved", resolved);
-				}
+				
 
 				Long count = getService().findallCount(map);
 				List<?> list = getSearch(map, pageNo, resultPerPage);

@@ -1,7 +1,5 @@
 package domain.in.rjsa.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -17,7 +15,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.HandlerMapping;
@@ -26,10 +23,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import domain.in.rjsa.model.form.ListCount;
-import domain.in.rjsa.model.fy.Regular24QDeductee;
 import domain.in.rjsa.model.fy.Regular27QDeductee;
 import domain.in.rjsa.model.fy.Remark;
-import domain.in.rjsa.model.wrapper.SalaryDetailWrapper;
 import domain.in.rjsa.service.Regular27QDeducteeService;
 import domain.in.rjsa.service.RemarkService;
 
@@ -112,6 +107,14 @@ public class Regular27QDeducteeController
 				if(map.containsKey("branchCode")) {
 					Long branchCode = Long.valueOf(map.get("branchCode").toString());
 					map.put("branchCode", branchCode);
+				}
+				if(map.containsKey("roCode")) {
+					Long roCode = Long.valueOf(map.get("roCode").toString());
+					map.put("roCode", roCode);
+				}
+				if(map.containsKey("resolved")) {
+					Boolean resolved = Boolean.valueOf(map.get("resolved").toString());
+					map.put("resolved", resolved);
 				}
 
 				Long count = getService().findallCount(map);

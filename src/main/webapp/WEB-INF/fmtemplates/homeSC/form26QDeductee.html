@@ -147,7 +147,7 @@ th {
 						<h6>
 							<b>Name</b>
 							<h6>
-								<input type="text" ng-model="cCctr.search.name"
+								<input type="text" ng-model="cCctr.search.deducteeName"
 									class="form-control" placeholder="Name" style="width: 100%">
 					</div>
 
@@ -295,7 +295,7 @@ th {
 	<div class="row"></div>
 
 	<div class="row">
-		<div class="table-responsive" style="overflow-x: inherit; width: 300%">
+		<div class="table-responsive" style="overflow-x: inherit; width: 400%">
 			<!-- 	<div class="col-md-12" style="margin-left:-30px"> -->
 			<table class=" tables table-bordered table-hover  table-striped"
 				role="table" style="font-size: 12px; padding: 5px; margin: 5px;">
@@ -310,8 +310,8 @@ th {
 						<th>Sr. No.</th>
 						<th>Quarter</th>
 						<th>Month</th>
-						<th>RO Code</th>
-						<th>Branch Code</th>
+						<th style="width: 0.01%">RO Code</th>
+						<th style="width: 0.01%">Branch Code</th>
 						<th>Vend/Cust Id</th>
 						<th style="width: 0.01%">Unique Ref No</th>
 						<th>Account Number</th>
@@ -366,7 +366,8 @@ th {
 						<td style="width: 1%">{{a.roCode}}</td>
 						<td style="width: 1%">{{a.branchCode}}</td>
 						<td style="width: 1%">{{a.custVendId}}</td>
-						<td style="width: 1%">{{a.uniqueRefNo}}</td>
+						<td class=" ellipsis" data-toggle="tooltip"
+							data-placement="bottom" title="{{a.uniqueRefNo}}">{{a.uniqueRefNo}}</td>
 						<td style="width: 1%">{{a.accNo}}</td>
 						<td class=" ellipsis" data-toggle="tooltip"
 							data-placement="bottom" title="{{a.challanHeading}}">{{a.challanHeading}}</td>

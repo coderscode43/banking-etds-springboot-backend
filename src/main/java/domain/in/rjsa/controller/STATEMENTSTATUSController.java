@@ -1,6 +1,7 @@
 package domain.in.rjsa.controller;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.HandlerMapping;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import domain.in.rjsa.model.form.ListCount;
 import domain.in.rjsa.model.tds.STATEMENTSTATUS;
 import domain.in.rjsa.service.STATEMENTSTATUSService;
 
@@ -74,14 +76,14 @@ public class STATEMENTSTATUSController extends AbstractControllerTaxo<Long, STAT
 	        	  String fy = parts[0]+parts[1];
 	        	  map.put("FY",fy);
 			}
+			
+			Long count = getService().findallCount(map);
+			List<?> list = getSearch(map, pageNo, resultPerPage);
+			ListCount send = new ListCount();
+			send.setCount(count);
+			send.setEntities(list);
 
-//			Long count = getService().findallCount(map);
-//			List<?> list = getSearch(map, pageNo, resultPerPage);
-//			ListCount send = new ListCount();
-//			send.setCount(count);
-//			send.setEntities(list);
-
-			return new ResponseEntity<>(getSearch(map, pageNo, resultPerPage), HttpStatus.OK);
+			return new ResponseEntity<>(send, HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("Error in listALL", e);
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

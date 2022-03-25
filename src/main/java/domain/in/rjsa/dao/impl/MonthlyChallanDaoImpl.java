@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -46,5 +47,35 @@ public class MonthlyChallanDaoImpl extends AbstractDaoFY<Long, MonthlyChallan> i
 		criteria.add(Restrictions.eqOrIsNull("challanHeading", entity.get("challanHeading")));
           }  
 		return (List<MonthlyChallan>) criteria.list();
+	}
+	
+	
+	@SuppressWarnings("unchecked")
+	public Long findallCount(HashMap<String,Object> entity) {
+		
+		Criteria criteria = createEntityCriteria();
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
+		
+          if(entity.get("branchCode")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("branchCode", entity.get("branchCode")));
+          }
+          if(entity.get("monthFY")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("monthFY", entity.get("monthFY")))	;
+          }  
+          if (entity.get("amtAsPerFinacle") != null) {
+        	  criteria.add(Restrictions.eqOrIsNull("amtAsPerFinacle",  Double.valueOf((String)entity.get("amtAsPerFinacle"))));
+  		  }
+           
+          if (entity.get("amtAsPerTaxCalculation") != null) 
+          {
+    			criteria.add(Restrictions.eqOrIsNull("amtAsPerTaxCalculation", Double.valueOf((String) entity.get("amtAsPerTaxCalculation"))));
+          }
+          if(entity.get("challanHeading")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("challanHeading", entity.get("challanHeading")));
+          }  
+          return (Long) criteria.setProjection(Projections.rowCount()).uniqueResult();
 	}
 }

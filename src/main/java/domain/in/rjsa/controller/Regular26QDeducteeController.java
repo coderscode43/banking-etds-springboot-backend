@@ -116,6 +116,9 @@ public class Regular26QDeducteeController<E>
 				if(map.containsKey("branchCode")) {
 					Long branchCode = Long.valueOf(map.get("branchCode").toString());
 					map.put("branchCode", branchCode);
+				}else if(map.containsKey("roCode")) {
+					Long branchCode = Long.valueOf(map.get("roCode").toString());
+					map.put("roCode", branchCode);
 				}
 
 				Long count = getService().findallCount(map);

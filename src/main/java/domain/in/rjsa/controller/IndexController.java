@@ -123,7 +123,7 @@ public class IndexController {
 		if (getPrincipal().contains("admin")) {
 			return action + "/" + page;
 		} else {
-			if (page.contains("branch") || action.contains("homeWOT")) {
+			if (page.contains("branch")||page.contains("DetailsBranch") || action.contains("homeWOT")) {
 				return action + "/" + page;
 			}
 			return "homeSC/homeSCHomepage";

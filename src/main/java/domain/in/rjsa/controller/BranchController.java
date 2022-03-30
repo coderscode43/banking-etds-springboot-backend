@@ -130,7 +130,7 @@ public class BranchController {
 		logger.info("Creating new Return instance");
 
 		if ("admin".equals(applicationCache.getLoginDetail(getPrincipal()).getType())) {
-			service.saveNewUser(entity.get("userName").toString(), entity.get("password").toString());
+			service.saveNewUser(entity.get("userName").toString(), entity.get("password").toString(), Long.valueOf(entity.get("branchCode").toString()));
 			entity.remove("userName");
 			entity.remove("password");
 			create(entity);

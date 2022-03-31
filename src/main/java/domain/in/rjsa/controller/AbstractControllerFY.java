@@ -39,7 +39,7 @@ import domain.in.rjsa.service.LogsService;
 import domain.in.rjsa.service.ServiceInterfaceFY;
 import domain.in.rjsa.web.ApplicationCache;
 
-public abstract class AbstractControllerFY<K extends Serializable, E extends Model, S extends ServiceInterfaceFY<K, E>> {
+public abstract class AbstractControllerFY<K extends Serializable, E extends Model, S extends ServiceInterfaceFY<K, E>> extends AbstractController {
 	@Autowired
 	ApplicationCache applicationCache;
 
@@ -186,7 +186,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 	}
 
 	public List<?> getSearch(LinkedHashMap<String, Object> map) {
-		Login l = applicationCache.getLoginDetail(getPrincipal());
+//		Login l = applicationCache.getLoginDetail(getPrincipal());
 		return getService().search(map);
 	}
 
@@ -237,7 +237,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 
 	public void addRemarkLogs(HashMap<String, Object> entity) {
 
-		Login l = applicationCache.getLoginDetail(getPrincipal());
+//		Login l = applicationCache.getLoginDetail(getPrincipal());
 		HashMap<String, Object> constrains = new HashMap<>();
 		constrains.put("id", entity.get("id"));
  		Logs log = lservice.uniqueSearch(constrains);
@@ -252,7 +252,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 		Gson gason = new Gson();
 		String json = gason.toJson(entity);
 		log.setDate(new Date(System.currentTimeMillis()));
-		log.setUsername(l.getUserName());
+		log.setUsername(getPrincipal());
 
 		lservice.save(log);
 
@@ -260,7 +260,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 	
 	public void addLogs(HashMap<String, Object> entity) {
 
-		Login l = applicationCache.getLoginDetail(getPrincipal());
+//		Login l = applicationCache.getLoginDetail(getPrincipal());
 		HashMap<String, Object> constrains = new HashMap<>();
 		constrains.put("id", entity.get("id"));
 		Logs log = lservice.uniqueSearch(constrains);
@@ -275,7 +275,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 		Gson gason = new Gson();
 		String json = gason.toJson(entity);
 		log.setDate(new Date(System.currentTimeMillis()));
-		log.setUsername(l.getUserName());
+		log.setUsername(getPrincipal());
 
 		lservice.save(log);
 
@@ -297,10 +297,10 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 	
 	public void addLogsU(HashMap<String, Object> entity) {
 
-		Login l = applicationCache.getLoginDetail(getPrincipal());
+//		Login l = applicationCache.getLoginDetail(getPrincipal());
 		HashMap<String, Object> constrains = new HashMap<>();
 		constrains.put("id", Long.valueOf(entity.get("id").toString()));
-		constrains.put("clientId", l.getClientId());
+		constrains.put("clientId", 1);
 		Logs log = lservice.uniqueSearch(constrains);
 		log = new Logs();
 
@@ -314,7 +314,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 		Gson gason = new Gson();
 		String json = gason.toJson(entity);
 		log.setDate(new Date(System.currentTimeMillis()));
-		log.setUsername(l.getUserName());
+		log.setUsername(getPrincipal());
 
 		lservice.save(log);
 
@@ -351,9 +351,9 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 
 	public List<?> getAjax(String name, String term, String fy, Long branch) {
 		// TODO Auto-generated method stub
-		Login l = applicationCache.getLoginDetail(getPrincipal());
+	//	Login l = applicationCache.getLoginDetail(getPrincipal());
 		HashMap<String, Object> constrains = new HashMap<>();
-		constrains.put("clientId", l.getClientId());
+		constrains.put("clientId", 1);
 		return getService().ajax(name, term, constrains);
 	}
 

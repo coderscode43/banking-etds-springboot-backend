@@ -38,7 +38,7 @@ import domain.in.rjsa.service.LogsService;
 import domain.in.rjsa.service.ServiceInterfaceTaxo;
 import domain.in.rjsa.web.ApplicationCache;
 
-public abstract class AbstractControllerTaxo<K extends Serializable, E extends Model, S extends ServiceInterfaceTaxo<K, E>>
+public abstract class AbstractControllerTaxo<K extends Serializable, E extends Model, S extends ServiceInterfaceTaxo<K, E>>extends AbstractController
 		{
 
 	public abstract S getService();
@@ -194,7 +194,7 @@ public abstract class AbstractControllerTaxo<K extends Serializable, E extends M
 		
 		 public void addLogsU(HashMap<String, Object> entity) {
 			
-		    	Login l = applicationCache.getLoginDetail(getPrincipal());
+//		    	Login l = applicationCache.getLoginDetail(getPrincipal());
 //				HashMap<String, Object>constrains= new HashMap<>();
 //				constrains.put("id", Long.valueOf(entity.get("id").toString()));
 //				constrains.put("clientId",l.getClientId());
@@ -210,7 +210,7 @@ public abstract class AbstractControllerTaxo<K extends Serializable, E extends M
 			    Gson gason = new Gson(); 
 			    String json = gason.toJson(entity); 
 			    log.setDate(new Date(System.currentTimeMillis()));
-				log.setUsername(l.getUserName());
+				log.setUsername(getPrincipal());
 				
 				lservice.save(log);
 				

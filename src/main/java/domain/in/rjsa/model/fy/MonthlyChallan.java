@@ -33,5 +33,8 @@ public class MonthlyChallan extends CommonModelAbstract{
 	public String challanHeading;
 	@Column(name = "fy")
 	public String fy;
+	@Column(name = "amountDiff")
+	public Double amountDiff;
+	
 
 }

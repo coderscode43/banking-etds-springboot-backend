@@ -41,7 +41,7 @@ public class BranchServiceImpl extends AbstractServiceForm<Long, Branch, BranchD
 	}
 	
 	@Override
-	public void saveNewUser(String userName, String password) {
+	public void saveNewUser(String userName, String password,Long branchCode) {
 		Login newUser = new Login();
 		newUser.setUserName(userName);
 		String hash = generateHash(password);
@@ -52,7 +52,7 @@ public class BranchServiceImpl extends AbstractServiceForm<Long, Branch, BranchD
 		newUser.setType("NA");
 		newUser.setRefId(1);
 		newUser.setClientId(1);
-		
+		newUser.setBranchCode(branchCode);
 		lDao.persist(newUser);;
 	}
 	public String generateHash(String password) {

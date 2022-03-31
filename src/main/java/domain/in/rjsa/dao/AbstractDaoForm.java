@@ -133,7 +133,14 @@ public abstract class AbstractDaoForm<K extends Serializable, E> implements DaoI
 	public List<String> ajax(String name, String term) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setProjection(Projections.property(name));
-		criteria.add(Restrictions.ilike(name, term.toUpperCase(), MatchMode.START));
+		if(name.contains("branchCode")) {
+			Long code = Long.valueOf(term);
+			criteria.add(Restrictions.ilike(name, code));
+		}
+		else {
+			String code = term;
+			criteria.add(Restrictions.ilike(name, code.toUpperCase(), MatchMode.START));
+		}
 		return criteria.list();
 	}
 

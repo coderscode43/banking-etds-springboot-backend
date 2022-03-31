@@ -62,8 +62,8 @@ public class RemarkController extends AbstractControllerFY<Long, Remark, RemarkS
 		logger.info("Creating new Return instance");
 		String timeStamp = new SimpleDateFormat("dd-MM-yyyy'T'HH:mm:ss").format(Calendar.getInstance().getTime());
 		entity.put("dateTime", timeStamp);
-		Login l = applicationCache.getLoginDetail(getPrincipal());
-		entity.put("userName", l.getUserName());
+		//Login l = applicationCache.getLoginDetail(getPrincipal());
+		entity.put("userName", getPrincipal());
 		entity.put("status",type);
 		create(entity);
 		service.setResolve(entity,type);

@@ -22,17 +22,7 @@ public class ApplicationCache {
 	
 	
 
-	@Cacheable(value = "login")
-	public Login getLoginDetail(String userName) {
-		// TODO Auto-generated method stub
-		return loginService.getLogin(userName);
-	}
-
-
-	@CacheEvict(value = "login", key = "#userName")
-	public void refreshLogin(String userName) {
-		// TODO Auto-generated method stub
-	}
+	
 
 
 	@Cacheable(value = "organizationDetails")

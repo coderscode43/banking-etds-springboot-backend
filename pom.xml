@@ -1,6 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>in.rjsa</groupId>
 	<artifactId>bankingETDS</artifactId>
@@ -9,8 +7,8 @@
 	<name>DocumentVerification Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<properties>
-		<springframework.version>5.1.1.RELEASE</springframework.version>
-		<springsecurity.version>5.1.1.RELEASE</springsecurity.version>
+		<springframework.version>5.3.17</springframework.version>
+		<springsecurity.version>5.6.2</springsecurity.version>
 		<mysql.connector.version>8.0.28</mysql.connector.version>
 		<jackson.version>2.9.6</jackson.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -40,8 +38,7 @@
 			<artifactId>jaxb-runtime</artifactId>
 			<version>2.3.2</version>
 		</dependency>
-		
-			
+
 
 		<!-- Spring -->
 		<dependency>
@@ -95,6 +92,13 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>${springsecurity.version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-ldap -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-ldap</artifactId>
+			<version>5.6.2</version>
 		</dependency>
 
 
@@ -224,7 +228,6 @@
 		<finalName>bankingETDS</finalName>
 
 
-
 		<plugins>
 			<plugin>
 				<groupId>net.alchim31.maven</groupId>
@@ -255,9 +258,6 @@
 				<version>3.3.1</version>
 			</plugin>
 		</plugins>
-
-
-
 
 
 	</build>

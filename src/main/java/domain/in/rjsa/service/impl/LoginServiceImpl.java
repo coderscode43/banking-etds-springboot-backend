@@ -60,7 +60,6 @@ public class LoginServiceImpl extends AbstractServiceForm<Long, Login, LoginDao>
 		login.setPassword(hash);
 		login.setPasswordReset(false);
 		updateLogin(login);
-		applicationCache.refreshLogin(login.getUserName());
 	}
 
 	public String generateHash(String password) {

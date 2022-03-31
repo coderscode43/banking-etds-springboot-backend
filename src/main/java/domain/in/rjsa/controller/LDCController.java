@@ -100,7 +100,7 @@ public class LDCController extends AbstractControllerTaxo<String, LDC, LDCServic
 	}
 
 	public List<?> getSearch(LinkedHashMap<String, Object> map) {
-		Login l = applicationCache.getLoginDetail(getPrincipal());
+		//Login l = applicationCache.getLoginDetail(getPrincipal());
 		return getService().search(map);
 	}
 	@RequestMapping(value = "/searchEntity/{fy}/{branchCode}", method = RequestMethod.POST)

@@ -29,19 +29,19 @@ public class LoginController extends AbstractControllerForm<Long, Login, LoginSe
 			.getLogger(LoginController.class);
 	
 	//vaibhav
-	@RequestMapping(value = "/changePassword", method = RequestMethod.POST)
-	public ResponseEntity<?> updatePassword(@RequestBody String password) {
-		try {
-			Login login = applicationCache.getLoginDetail(getPrincipal());
-			login.setPassword(password);
-			service.updatePassword(login, password);
-			return new ResponseEntity<>(HttpStatus.OK);
-		} catch (Exception e) {
-//			logger.error("Error in listALL", e);
-			e.printStackTrace();
-			return new ResponseEntity<Object>(HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-	}
+//	@RequestMapping(value = "/changePassword", method = RequestMethod.POST)
+//	public ResponseEntity<?> updatePassword(@RequestBody String password) {
+////		try {
+////		//	Login login = applicationCache.getLoginDetail(getPrincipal());
+////			login.setPassword(password);
+////			service.updatePassword(login, password);
+////			return new ResponseEntity<>(HttpStatus.OK);
+////		} catch (Exception e) {
+//////			logger.error("Error in listALL", e);
+////			e.printStackTrace();
+////			return new ResponseEntity<Object>(HttpStatus.INTERNAL_SERVER_ERROR);
+////		}
+//	}
 	
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public ResponseEntity<?> getDetailController() {

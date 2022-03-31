@@ -36,7 +36,6 @@ import com.google.gson.JsonElement;
 import domain.in.rjsa.exception.FieldErrorDTO;
 import domain.in.rjsa.model.form.Ajax;
 import domain.in.rjsa.model.form.ListCount;
-import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.form.Model;
 import domain.in.rjsa.model.fy.Logs;
 import domain.in.rjsa.model.fy.Ticket;
@@ -45,7 +44,7 @@ import domain.in.rjsa.service.ServiceInterfaceForm;
 import domain.in.rjsa.service.UserDetailsService;
 import domain.in.rjsa.web.ApplicationCache;
 
-public abstract class AbstractControllerForm<K extends Serializable, E extends Model, S extends ServiceInterfaceForm<K, E>> {
+public abstract class AbstractControllerForm<K extends Serializable, E extends Model, S extends ServiceInterfaceForm<K, E>> extends AbstractController{
 
 	public abstract S getService();
 
@@ -163,7 +162,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	public List<?> getSearch(LinkedHashMap<String, Object> map) {
 		// TODO Auto-generated method stub
-		Login l = applicationCache.getLoginDetail(getPrincipal());
+	//	Login l = applicationCache.getLoginDetail(getPrincipal());
 //		map.put("employeeId", l.getEmployeeId());
 		return getService().search(map);
 	}
@@ -184,7 +183,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	public E getSearchEntity(LinkedHashMap<String, Object> map) {
 		// TODO Auto-generated method stub
-		Login l = applicationCache.getLoginDetail(getPrincipal());
+	//	Login l = applicationCache.getLoginDetail(getPrincipal());
 //		map.put("employeeId", l.getEmployeeId());
 		return getService().uniqueSearch(map);
 	}
@@ -206,7 +205,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	public void create(LinkedHashMap<String, Object> entity) {
 		Gson gson = new Gson();
-		Login l = applicationCache.getLoginDetail(getPrincipal());
+	//	Login l = applicationCache.getLoginDetail(getPrincipal());
 
 		JsonElement jsonElement = gson.toJsonTree(entity);
 
@@ -216,7 +215,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	public void addLogs(HashMap<String, Object> entity) {
 
-		Login l = applicationCache.getLoginDetail(getPrincipal());
+	//	Login l = applicationCache.getLoginDetail(getPrincipal());
 		HashMap<String, Object> constrains = new HashMap<>();
 		constrains.put("id", entity.get("id"));
 		Logs log = lservice.uniqueSearch(constrains);
@@ -230,7 +229,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 		Gson gason = new Gson();
 		String json = gason.toJson(entity);
 		log.setDate(new Date(System.currentTimeMillis()));
-		log.setUsername(l.getUserName());
+		log.setUsername(getPrincipal());
 		lservice.save(log);
 
 	}
@@ -262,7 +261,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 	public ResponseEntity<?> update(@RequestBody LinkedHashMap<String, Object> entity, HttpServletResponse response,
 			UriComponentsBuilder ucBuilder) {
 		FieldErrorDTO ermsg = new FieldErrorDTO();
-		Login l = applicationCache.getLoginDetail(getPrincipal());
+//		Login l = applicationCache.getLoginDetail(getPrincipal());
 		Object o = getDetail((K) Long.valueOf(entity.get("id").toString()));
 		ObjectMapper oMapper = new ObjectMapper();
 		HashMap<String, Object> map = oMapper.convertValue(o, HashMap.class);
@@ -275,7 +274,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 	public void update(LinkedHashMap<String, Object> entity) {
 
 		Gson gson = new Gson();
-		Login l = applicationCache.getLoginDetail(getPrincipal());
+	//	Login l = applicationCache.getLoginDetail(getPrincipal());
 		JsonElement jsonElement = gson.toJsonTree(entity);
 		getService().update(gson.fromJson(jsonElement, getEntity()));
 
@@ -297,7 +296,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	public void addLogsU(HashMap<String, Object> entity) {
 
-		Login l = applicationCache.getLoginDetail(getPrincipal());
+//		Login l = applicationCache.getLoginDetail(getPrincipal());
 		HashMap<String, Object> constrains = new HashMap<>();
 		constrains.put("id", Long.valueOf(entity.get("id").toString()));
 		Logs log = lservice.uniqueSearch(constrains);
@@ -311,7 +310,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 		Gson gason = new Gson();
 		String json = gason.toJson(entity);
 		log.setDate(new Date(System.currentTimeMillis()));
-		log.setUsername(l.getUserName());
+		log.setUsername(getPrincipal());
 		lservice.save(log);
 	}
 

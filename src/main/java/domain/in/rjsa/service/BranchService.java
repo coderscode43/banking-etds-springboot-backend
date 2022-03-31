@@ -13,7 +13,7 @@ public interface BranchService extends ServiceInterfaceForm<Long, Branch> {
 
 	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage);
 	
-	public void saveNewUser(String userName, String Password);
+	public void saveNewUser(String userName, String Password,Long branchCode);
 	
 
 }

@@ -66,7 +66,7 @@ public class UserDetailsController extends AbstractControllerForm<Long, UserDeta
 
 	public void create(LinkedHashMap<String, Object> entity) {
 		Gson gson = new Gson();
-		Login l = applicationCache.getLoginDetail(getPrincipal());
+	//	Login l = applicationCache.getLoginDetail(getPrincipal());
 
 		JsonElement jsonElement = gson.toJsonTree(entity);
 

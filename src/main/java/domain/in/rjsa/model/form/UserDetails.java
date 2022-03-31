@@ -19,20 +19,9 @@ public class UserDetails extends CommonModelAbstract{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
 	@GenericGenerator(name = "native", strategy = "native")
-	@Column(name = "id")
-	Long id; 
-	
-	@Column(name = "userName")
-	String userName;
-	@Column(name = "pan")
-	String pan;
-	@Column(name = "branchCode")
-	Long branchCode;
-	@Column(name = "zone")
-	String zone;
-	@Column(name = "type")
-	String type;
-	@Column(name = "entityDetail")
-	String entityDetail;
+	@Column(name = "employeeId")
+	String employeeId;
+	@Column(name = "typeOfUser")
+	String typeOfUser;
 }
 

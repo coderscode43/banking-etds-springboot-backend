@@ -21,6 +21,7 @@ App.factory('CommonService', [
 				updateTicket : updateTicket,
 				save : save,
 				ajax : ajax,
+				deleteById:deleteById,
 				getEntityList : getEntityList,
 				getEntity : getEntity,
 				countFunction : countFunction,
@@ -57,6 +58,18 @@ App.factory('CommonService', [
 					deferred.reject(status);
 				});
 
+				return deferred.promise;
+			}
+			function deleteById(entity, id) {
+				var deferred = $q.defer();
+				$http.delete(REST_SERVICE_URI + entity + '/delete/'+id)
+				.success(function(data) {
+					deferred.resolve(data);
+				})
+					.error(function(status) {
+						deferred.reject(status);
+					});
+		
 				return deferred.promise;
 			}
 

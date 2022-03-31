@@ -2,7 +2,8 @@ package domain.in.rjsa.dao;
 
 import domain.in.rjsa.model.form.UserDetails;
 
-public interface UserDetailsDao  extends DaoInterfaceForm<Long, UserDetails>{
+public interface UserDetailsDao  extends DaoInterfaceForm<String, UserDetails>{
 
-	UserDetails getByuserName(String userName);
+	public UserDetails getByKey(String key);
+	void delete(String key);
 }

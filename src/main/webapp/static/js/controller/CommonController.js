@@ -32,6 +32,7 @@ App
 							self.temp1 = [];
 							self.temp2 = {};
 							self.company = {};
+							self.delete = {};
 							self.currentPage = 1;
 							self.batchColor = {};
 							self.goodsColor = [];
@@ -1186,6 +1187,37 @@ App
 								return Math
 										.ceil(CommonServiceFY.getCount() / 100);
 
+							}
+							self.deleteById = function(entity, id) {
+								CommonService.deleteById(entity, id)
+									.then(function(data) {
+										$('#successMsg')
+											.find('.modal-header')
+											.find('.headingMsg')
+											.text("Successfull!");
+										$('#successMsg')
+											.find('.modal-body')
+											.find('.msg')
+											.text(" Deleted Successfully!");
+										$("#successMsg").modal();
+									},
+										function(error) {
+											console.error('Error while creating saving Details, ' + status);
+											if (error.exceptionMsg != null
+												&& error.exceptionMsg != undefined) {
+												$('#errorMsg')
+													.find('.modal-body')
+													.find('.msg')
+													.text("Can not Save " + entity + " : "
+														+ error.exceptionMsg);
+												$("#errorMsg").modal();
+											} else {
+												for (var i = 0; i < error.fieldErrors.length; i++) {
+													var obj = error.fieldErrors[i];
+													document.getElementById(obj.fieldName).innerHTML = obj.message;
+												}
+											}
+										});
 							}
 
 						} ]);

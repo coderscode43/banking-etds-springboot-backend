@@ -29,7 +29,7 @@ public abstract class AbstractServiceForm<K extends Serializable, E, D extends D
 	@Override
 	public void deleteT(K key) {
 		// TODO Auto-generated method stub
-		getPrimaryDao().deleteByKey(key);
+		getPrimaryDao().delete(key);
 	}
 
 	@Override

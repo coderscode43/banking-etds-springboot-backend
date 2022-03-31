@@ -18,168 +18,38 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<h6>
-										<label>User Name*</label>
+										<label>Employee Id*</label>
 									</h6>
-									<input class="form-control" type="text" id="userName" name="userName"
-										placeholder="User Name" ng-model="cCctr.entity.userName"
-										autocomplete="on " ng-required="true" ng-maxlength="100"
-										ng-pattern="/^[a-zA-Z0-9]*$/"
-										ng-model-options="{updateOn: 'blur'}" /> 
-										<span style="color: red"
-											ng-show="formUserDetails.submitted || formUserDetails.userName.$dirty && formUserDetails.userName.$invalid">
-											<span class="error"
-												  ng-show="formUserDetails.userName.$error.pattern">
-												  Enter valid Name </span>
-											<span class="error"
-												  ng-show="formUserDetails.userName.$error.maxlength">
-												  Name should not be greater than 45 characters.</span>
-											<span class="error" ng-show="formUserDetails.userName.$error.required">
-												  Name is Required.</span>
-									   </span> 
-									   <span class="error" id="userName"></span> 
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<h6>
-											<label>Branch Code*</label>
-										</h6>
-										<input class="form-control" type="text" id = "branchCode" name="branchCode"
-											placeholder=" Branch Code" ng-model="cCctr.entity.branchCode"
-											autocomplete="off" ng-required="true" 
-											ng-pattern="/^[a-zA-Z0-9]*$/"
-											ng-model-options="{updateOn: 'blur'}" /> <span
-											style="color: red"
-											ng-show="formUserDetails.submitted || formUserDetails.branchCode.$dirty && formUserDetails.branchCode.$invalid">
+									<input class="form-control" type="text" id="employeeId"
+										name="employeeId" placeholder="Employee Id"
+										ng-model="cCctr.entity.employeeId" autocomplete="on "
+										ng-required="true" ng-model-options="{updateOn: 'blur'}" /> <span
+										style="color: red"
+										ng-show="formUserDetails.submitted || formUserDetails.employeeId.$dirty && formUserDetails.employeeId.$invalid">
 										<span class="error"
-												ng-show="formUserDetails.roCode.$error.pattern"> 
-												Enter valid Branch Code </span>
-										<span class="error" ng-show="formUserDetails.branchCode.$error.maxlength">
-												Branch Code should not be greater than 10 characters.</span>
-										<span class="error" ng-show="formUserDetails.branchCode.$error.minlength">
-												Branch Code should not be less than 10 characters.</span>
-										<span class="error"
-												ng-show="formUserDetails.branchCode.$error.required">
-												Branch Code is Required.</span>
-									</span> 
-									<span class="error" id="branchCode"></span>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<h6>
-										<label>Enter Password*</label>
-									</h6>
-									<input type="password" class="form-control" name="passwordOfUser"
-										id="passwordOfUser"  placeholder="Enter New Password"
-										ng-model="cCctr.entity.password" ng-minlength="6"
-										ng-required="true" style="width: 95%;">
-									<span class="input"
-										style="float: right; margin: -5.5% -2% 0 0;"><i
-										class="fa fa-fw fa-eye field-icon" style="cursor: pointer"
-										onclick="viewP()"></i></span> 
-										<span
-											style="color: red"
-											ng-show="formUserDetails.submitted || formUserDetails.passwordOfUser.$dirty && formUserDetails.passwordOfUser.$invalid">
-											<span class="error"
-													ng-show="formUserDetails.passwordOfUser.$error.minlength">
-													password should not be less than 6 characters.</span>
-											<span class="error"
-													ng-show="formUserDetails.passwordOfUser.$error.required">
-													Password is Required. </span>
-											<span class="error"
-													ng-show="formUserDetails.passwordOfUser.$error.pattern">
-													Password should be at least 8 characters long and should contain one
-													number,one character and one special character.. </span>
-										</span>
-										<span class="error" id="passwordOfUser"></span>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<h6>
-											<label>Zone*</label>
-										</h6>
-										<input class="form-control" type="text" name="zone"
-												placeholder="Zone" ng-model="cCctr.entity.zone"
-												autocomplete="off" ng-required="true" ng-maxlength="45"
-												ng-pattern="/^[a-zA-Z0-9]*$/"
-												ng-model-options="{updateOn: 'blur'}" /> 
-									<span
-												style="color: red"
-												ng-show="formUserDetails.submitted ||formUserDetails.zone.$dirty && formUserDetails.zone.$invalid">
-										<span class="error"
-										ng-show="formUserDetails.zone.$error.required"> zone is Required. </span>
-								  </span>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<h6>
-										<label>Confirm Password*</label>
-									</h6>
-									<input type="password" class="form-control" name="password1"
-											id="password1" placeholder="Confirm New Password"
-											style="width: 95%;"> 
-											<span class="input"
-													style="float: right; margin: -5.5% -2% 0 0;">
-													<i class="fa fa-fw fa-eye field-icon" style="cursor: pointer; font-size:15px"
-														onclick="viewConfirmP()"></i></span> 
-											<span id="conErr" style="color: red;font-size: 15px;" ></span>
-								</div>	
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<h6>
-										<label>User PAN*</label>
-									</h6>
-									<input class="form-control" type="text" name="pan" style="text-transform:uppercase"
-												placeholder="PAN" ng-model="cCctr.entity.pan" ng-pattern="/^([A-Za-z]{5}[0-9]{4}[A-Za-z]{1})*$/"
-												autocomplete="off" ng-required="true" ng-maxlength="10" ng-minlength="10"
-												ng-model-options="{updateOn: 'blur'}" />
-									<span style="color: red"
-											ng-show="formUserDetails.submitted || formUserDetails.pan.$dirty && formUserDetails.pan.$invalid">
-										<span class="error"
-												ng-show="formUserDetails.pan.$error.required">
-												User PAN is Required: </span> 
-										<span class="error" ng-show="formUserDetails.pan.$error.pattern">User PAN is invalid: </span>
-										<span class="error" ng-show="formUserDetails.pan.$error.maxlength">
-											PAN should not be greater than 10 characters. </span>
-										<span class="error" ng-show="formUserDetails.pan.$error.minlength">
-											PAN should not be less than 10 characters.</span>
+										ng-show="formUserDetails.employeeId.$error.required">
+											Employee Id is Required.</span>
 									</span>
 								</div>
 							</div>
-						</div>
-						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<h6>
-										<label>User Type*</label>
+										<label>Type Of User*</label>
 									</h6>
-									<input class="form-control" type="text" name="type"
-											placeholder="type" ng-model="cCctr.entity.type"
-											autocomplete="off" ng-required="true" ng-maxlength="45"
-											ng-pattern="/^[a-zA-Z0-9]*$/"
-											ng-model-options="{updateOn: 'blur'}" />
-											<span style="color: red"
-												ng-show="formUserDetails.submitted || formUserDetails.type.$dirty && formUserDetails.type.$invalid">
-												<span class="error"
-														ng-show="formUserDetails.type.$error.pattern">
-														Enter Valid User Type</span> 
-												<span class="error"
-														ng-show="formUserDetails.type.$error.required"> 
-														Type is Required.</span>
-											</span> 
-											<span class="error" id="Type"></span>
-										</div>
-									</div>
+									<select class="form-control" type="text" id="typeOfUser"
+										name="typeOfUser" placeholder=" Type Of User"
+										ng-model="cCctr.entity.typeOfUser" ng-required="true">
+										<option value="admin">Admin</option>
+										<option value="Super Admin">Super Admin</option>
+									</select><span style="color: red"
+										ng-show="formUserDetails.submitted || formUserDetails.typeOfUser.$dirty && formUserDetails.typeOfUser.$invalid">
+										<span class="error"
+										ng-show="formUserDetails.branchCode.$error.required">
+											Type Of User is Required.</span>
+									</span>
 								</div>
-							</form>
+							</div>
 						</div>
 						<div class="row">
 							<div class="modal-footer">
@@ -189,13 +59,13 @@
 								<button
 									ng-click="cCctr.gotoListPage('userDetails','userDetails');"
 									class="btn btn-danger" onclick="scrollWin()">Back</button>
-						 </div>
-					</div>
-				</form>
+							</div>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
 </body>
 </html>
 <script>
@@ -238,7 +108,7 @@
 									.html(
 											'Confirm Password should have the same value with new password')
 									.css('color', 'red');
-								
+
 							$('#changePassword').attr('disabled', true);
 						}
 					});

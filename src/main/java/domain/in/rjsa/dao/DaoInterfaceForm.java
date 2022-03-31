@@ -12,7 +12,7 @@ public interface DaoInterfaceForm<K, E> {
 	public List<E> findall(HashMap<String,Object> constrains, int pageNo, int noOfResult);
 	public Long findallCount(HashMap<String,Object> constrains);
 	public void persist(E entity);
-	public void delete(E entity);
+	public void delete(K key);
 	public void deleteByKey(K key);
 	public void update(E entity);
 	public List<E> search(HashMap map);

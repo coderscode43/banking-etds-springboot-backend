@@ -69,4 +69,5 @@ public class CustomUserDetails implements LdapUserDetails {
 		// TODO Auto-generated method stub
 		return details.getDn();
 	}
+	
 }

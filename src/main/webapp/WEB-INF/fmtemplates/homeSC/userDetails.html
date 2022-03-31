@@ -11,8 +11,9 @@
 		visibility: visible;
 	}
 }
-th{
-text-align:center;
+
+th {
+	text-align: center;
 }
 </style>
 
@@ -21,17 +22,13 @@ text-align:center;
 	<div class="container-fluid">
 		<div class="col-md-12 "
 			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
-			<div class="heading">User Details</div>
+			<div class="heading">Employee Id</div>
 		</div>
 		<div class="row">
 			<div class="col-md-8">
-				<md-autocomplete md-input-name="name" md-input-minlength="1"
-					md-no-cache="true" md-input-maxlength="75" style="height:10%"
-					md-selected-item="cCctr.search.userName" md-search-text="b"
-					md-items="item in cCctr.ajax('userDetails','userName',b)" md-delay="0"
-					placeholder="Username"> <md-item-template>
-				<span>{{item}}</span> </md-item-template> <md-not-found> No Name with
-				"{{b}}" were found.<a ng-click="">Add new</a> </md-not-found> </md-autocomplete>
+				<input type="text" name="employeeId" class="form-control"
+					ng-model="cCctr.search.employeeId" placeholder="Employee Id">
+
 			</div>
 			<div class="row" id="hide">
 				<div class="col-md-4" style="margin-top: 0%">
@@ -49,79 +46,62 @@ text-align:center;
 				id="collapseExample4" style="margin-bottom: 12px;">
 				<div class="row">
 					<div class="col-md-3">
-						<label style="font-size: 12px">Branch Code.</label> <input
-							type="text" ng-model="cCctr.search.branchCode"
-							class="form-control" placeholder="Branch Code">
+						<label style="font-size: 12px">Type Of User</label> <select
+							type="text" ng-model="cCctr.search.typeOfUser"
+							class="form-control" placeholder="Type Of User">
+							<option value="admin">Admin</option>
+							<option vlaue="Super Admin">Super Admin</option>
+						</select>
 					</div>
-					<div class="col-md-3">
-						<label style="font-size: 12px">PAN</label> <input type="text"
-							ng-model="cCctr.search.pan" class="form-control"
-							placeholder="PAN">
-					</div>
-					<div class="col-md-3">
-						<label style="font-size: 12px">Zone</label> <input type="text"
-							ng-model="cCctr.search.zone" class="form-control"
-							placeholder="Zone">
-					</div>
-					<br>
 				</div>
 			</div>
-			<div class="row"
-				ng-init="cCctr.entity=cCctr.getEntityListData('userDetails')">
-				<div class="col-12" ng-show="cCctr.getEntityListData('userDetails')">
-					<div class="">
-						<table class="tables  table-bordered table-sm"
-							style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
-							<thead align="center">
-								<tr role="row">
-								<tr style="background-color: #81b7db;height:40px">
-									<th><b>Sr.no</b></th>
-									<th><b>Branch Code</b></th>
-									<th><b>Username</b></th>
-									<th><b>Pan</b></th>
-
-									<th><b>Zone</b></th>
-									<th><b>Type</b></th>
-									<th><b>Action</b></th>
-
-								</tr>
-							</thead>
-							<!-- <tbody style="text-align: center"
-									ng-show="cCctr.getEntityListData().length<=0">
-									<tr>
-
-									</tr>
-								</tbody> -->
-
-							<tbody>
-								<tr style="color: red"
-									ng-show="cCctr.getEntityListData().length <= 0">
-									<td colspan="14" style="text-align: center;"><h3 style="text-align: center;"><b>
-									No data found!!</b></h3></td>
-								<tr style="text-align: center"
-									ng-repeat="a in cCctr.getEntityListData() track by a.id">
-									<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
-									<td>{{a.branchCode}}</td>
-									<td>{{a.userName}}</td>
-									<td>{{a.pan}}</td>
-									<td>{{a.zone}}</td>
-									<td>{{a.type}}</td>
-									<td><a
-										ng-click="cCctr.gotoDetailPage('userDetails',a.id,'DetailsUserDetails')"
-										style="color: blue"><img src="static\img\edit.png"
-											width="22px" height="22px" alt="Details"
-											style="margin-top: 5px; margin-bottom: 5px;" /></a></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					<!--end table-->
-				</div>
-				<!--end card-body-->
-			</div>
-			<!--end card-->
 		</div>
-		<!-- end col -->
+	</div>
+	<div class="row"
+		ng-init="cCctr.entity=cCctr.getEntityListData('userDetails')">
+		<div class="col-12" ng-show="cCctr.getEntityListData('userDetails')">
+			<div class="">
+				<table class="tables  table-bordered table-sm"
+					style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+					<thead align="center">
+						<tr role="row">
+						<tr style="background-color: #81b7db; height: 40px">
+							<th><b>Sr.no</b></th>
+							<th><b>Employee id</b></th>
+							<th><b>Type Of Admin</b></th>
+							<th><b>Action</b></th>
+
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr style="color: red"
+							ng-show="cCctr.getEntityListData().length <= 0">
+							<td colspan="14" style="text-align: center;"><h3
+									style="text-align: center;">
+									<b> No data found!!</b>
+								</h3></td>
+						<tr style="text-align: center"
+							ng-repeat="a in cCctr.getEntityListData() track by a.employeeId">
+							<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
+							<td>{{a.employeeId}}</td>
+							<td>{{a.typeOfUser}}</td>
+							<td><button type="button" class="btn btn-md btn-primary"
+									href="#myModal" data-toggle="modal"
+									ng-click="cCctr.delete=a.employeeId">
+									<i class="fa fa-trash" aria-hidden="true"></i>
+								</button></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!--end table-->
+		</div>
+		<!--end card-body-->
+	</div>
+	<!--end card-->
+	</div>
+	<!-- end col -->
 	</div>
 	<!-- end row -->
 	<div ng-show="cCctr.getNoPage() > 0 ">
@@ -170,3 +150,4 @@ text-align:center;
 
 </body>
 </html>
+

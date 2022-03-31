@@ -1,8 +1,5 @@
 package domain.in.rjsa.service.impl;
 
-import java.util.Date;
-import java.util.LinkedHashMap;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -17,7 +14,7 @@ import domain.in.rjsa.service.UserDetailsService;
 
 @Transactional
 @Service("UserDetailsService")
-public class UserDetailsServiceImpl extends AbstractServiceForm<Long, UserDetails, UserDetailsDao> implements UserDetailsService {
+public class UserDetailsServiceImpl extends AbstractServiceForm<String, UserDetails, UserDetailsDao> implements UserDetailsService {
 
 	
 	@Autowired
@@ -33,15 +30,10 @@ public class UserDetailsServiceImpl extends AbstractServiceForm<Long, UserDetail
 
 	@Override
 	public UserDetails getUserByUserName(String userName) {
-		return dao.getByuserName(userName);
+		return dao.getByKey(userName);
 	}
 	
 
-	@Override
-	public UserDetails getByKey(Long id) {
-		// TODO Auto-generated method stub
-		return dao.getByKey(id);
-	}
 
 	@Override
 	public void saveNewUser(String userName, String password) {
@@ -62,4 +54,11 @@ public class UserDetailsServiceImpl extends AbstractServiceForm<Long, UserDetail
 		return passwordEncoder.encode(password);
 
 	}
+	
+	@Override
+	public void deleteT(String key) {
+		// TODO Auto-generated method stub
+		dao.delete(key);
+	}
+
 }

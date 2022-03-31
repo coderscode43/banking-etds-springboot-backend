@@ -82,7 +82,7 @@ public abstract class AbstractDaoForm<K extends Serializable, E> implements DaoI
 		getSession().persist(entity);
 	}
 
-	public void delete(E entity) {
+	public void delete(K entity) {
 		getSession().delete(entity);
 	}
 

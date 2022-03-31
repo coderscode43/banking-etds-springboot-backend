@@ -120,7 +120,7 @@ public class IndexController extends AbstractController {
 	}
 
 	public String sendPage(String action, String page) {
-		if (getPrincipal().contains("admin")) {
+		if (getBranchCode().contains("admin")) {
 			return action + "/" + page;
 		} else {
 			if (page.contains("branch")||page.contains("DetailsBranch") || action.contains("homeWOT")) {

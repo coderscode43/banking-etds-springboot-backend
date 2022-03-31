@@ -9,7 +9,6 @@ public interface UserDetailsService extends ServiceInterfaceForm<String, UserDet
 
 	public void saveNewUser(String userName, String Password);
 
-	void deleteT(String key);
 
 
 

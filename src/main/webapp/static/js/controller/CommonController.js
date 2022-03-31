@@ -1189,8 +1189,9 @@ App
 
 							}
 							self.deleteById = function(entity, id) {
-								CommonService.deleteById(entity, id)
+								CommonService.deleteEntity(entity, id)
 									.then(function(data) {
+										
 										$('#successMsg')
 											.find('.modal-header')
 											.find('.headingMsg')
@@ -1200,6 +1201,7 @@ App
 											.find('.msg')
 											.text(" Deleted Successfully!");
 										$("#successMsg").modal();
+										
 									},
 										function(error) {
 											console.error('Error while creating saving Details, ' + status);

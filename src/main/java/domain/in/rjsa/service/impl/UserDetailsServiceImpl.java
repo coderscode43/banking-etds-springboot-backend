@@ -55,10 +55,5 @@ public class UserDetailsServiceImpl extends AbstractServiceForm<String, UserDeta
 
 	}
 	
-	@Override
-	public void deleteT(String key) {
-		// TODO Auto-generated method stub
-		dao.delete(key);
-	}
-
+	
 }

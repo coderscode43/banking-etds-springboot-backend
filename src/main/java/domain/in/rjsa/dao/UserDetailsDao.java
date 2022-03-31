@@ -5,5 +5,4 @@ import domain.in.rjsa.model.form.UserDetails;
 public interface UserDetailsDao  extends DaoInterfaceForm<String, UserDetails>{
 
 	public UserDetails getByKey(String key);
-	void delete(String key);
 }

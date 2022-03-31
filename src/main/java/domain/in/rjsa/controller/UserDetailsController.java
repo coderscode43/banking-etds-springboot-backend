@@ -33,17 +33,6 @@ public class UserDetailsController extends AbstractControllerForm<String, UserDe
 		// TODO Auto-generated method stub
 		return UserDetails.class;
 	}
-	@RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
-	public ResponseEntity<?> delete(@PathVariable String id) {
-		// verify the clientId authorization
-		try {
-			service.deleteT(id);;
-			return new ResponseEntity<>(HttpStatus.OK);
-		} catch (Exception e) {
-			logger.error("Error in getting detail ", e);
-			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-		}
-
-	}
+	
 
 }

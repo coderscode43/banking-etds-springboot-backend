@@ -13,10 +13,6 @@ import domain.in.rjsa.model.form.UserDetails;
 @Repository("UserDetailsDao")
 public class UserDetailsDaoImpl extends AbstractDaoForm<String, UserDetails> implements UserDetailsDao{
 
-
-	public void delete(String entity) {
-		getSession().delete(entity);
-	}
 	
 	public UserDetails getByKey(String key) {
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();

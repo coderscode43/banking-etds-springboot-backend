@@ -46,10 +46,9 @@ public abstract class AbstractDaoForm<K extends Serializable, E> implements DaoI
 
 	public E getByKey(K key) {
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
-		propertyNameValues.put("id", key);
+		propertyNameValues.put("employeeId", key);
 		Criteria crit = createEntityCriteria();
 		crit.add(Restrictions.allEq(propertyNameValues));
-
 		return (E) crit.uniqueResult();
 	}
 

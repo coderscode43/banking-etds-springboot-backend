@@ -19,11 +19,9 @@ public class UserDetails extends CommonModelAbstract<UserDetails>{
 	private static final long serialVersionUID = 7399688719231441247L;
 	@Id
 	@Column(name = "employeeId")
-	@NotNull
-	private String employeeId;
+	String employeeId;
 	
 	@Column(name = "typeOfUser")
-	@NotNull
-	private String typeOfUser;
+	String typeOfUser;
 }
 

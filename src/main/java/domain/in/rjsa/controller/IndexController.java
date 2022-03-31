@@ -25,7 +25,7 @@ import domain.in.rjsa.web.ApplicationCache;
 
 @Controller
 @RequestMapping("/index")
-public class IndexController {
+public class IndexController extends AbstractController {
 
 	static final Logger logger = LoggerFactory.getLogger(IndexController.class);
 
@@ -55,7 +55,7 @@ public class IndexController {
 	public String gethome(ModelMap model) {
 
 		setStaticData();
-		model.addAttribute("typeOfUser", applicationCache.getLoginDetail(getPrincipal()).getType());
+		model.addAttribute("typeOfUser",getBranchCode());
 		model.addAttribute("financialYear", StaticData.financialYear);
 		model.addAttribute("Quarter", StaticData.Quarter);
 		model.addAttribute("ClientName", StaticData.ClientName);
@@ -65,14 +65,14 @@ public class IndexController {
 
 	@RequestMapping(value = "/homePage")
 	public String getHomePage(ModelMap model) {
-		model.addAttribute("typeOfUser", applicationCache.getLoginDetail(getPrincipal()).getType());
+		model.addAttribute("typeOfUser", getBranchCode());
 		return "homeSC/homeSCHomepage";
 	}
 
 	@RequestMapping(value = "/homeWOT/{branchCode}/{fy}")
 	public String gethomeWOT(@PathVariable String fy, @PathVariable Long branchCode, ModelMap model) {
 		setStaticData();
-		model.addAttribute("typeOfUser", applicationCache.getLoginDetail(getPrincipal()).getType());
+		model.addAttribute("typeOfUser", getBranchCode());
 		model.addAttribute("financialYear", StaticData.financialYear);
 		model.addAttribute("branchCode", branchCode);
 		return "homeWOT";
@@ -80,7 +80,7 @@ public class IndexController {
 
 	@RequestMapping(value = "/homePageWOT")
 	public String getHomePageWOT(ModelMap model) {
-		model.addAttribute("typeOfUser", applicationCache.getLoginDetail(getPrincipal()).getType());
+		model.addAttribute("typeOfUser", getBranchCode());
 		return "homeWOT/homeWOTHomepage";
 	}
 
@@ -89,7 +89,7 @@ public class IndexController {
 		logger.info("Get add page for " + page);
 		// add Branch State-pranay
 		setStaticData();
-		model.addAttribute("typeOfUser", applicationCache.getLoginDetail(getPrincipal()).getType());
+		model.addAttribute("typeOfUser",getBranchCode());
 		model.addAttribute("financialYear", StaticData.financialYear);
 		model.addAttribute("Quarter", StaticData.Quarter);
 		model.addAttribute("State", StaticData.State);
@@ -99,7 +99,7 @@ public class IndexController {
 	@RequestMapping(value = "/detail/{action}/{page}")
 	public String getPage(@PathVariable String action, @PathVariable String page, ModelMap model) {
 		setStaticData();
-		model.addAttribute("typeOfUser", applicationCache.getLoginDetail(getPrincipal()).getType());
+		model.addAttribute("typeOfUser",getBranchCode());
 		model.addAttribute("financialYear", StaticData.financialYear);
 		model.addAttribute("Quarter", StaticData.Quarter);
 		model.addAttribute("State", StaticData.State);
@@ -110,7 +110,7 @@ public class IndexController {
 	@RequestMapping(value = "/list/{action}/{page}")
 	public String getListPage(@PathVariable String action, @PathVariable String page, ModelMap model) {
 		setStaticData();
-		model.addAttribute("typeOfUser", applicationCache.getLoginDetail(getPrincipal()).getType());
+		model.addAttribute("typeOfUser", getBranchCode());
 		model.addAttribute("financialYear", StaticData.financialYear);
 		model.addAttribute("Quarter", StaticData.Quarter);
 		model.addAttribute("typeOfDeductee", StaticData.typeOfDeductee);
@@ -123,7 +123,7 @@ public class IndexController {
 		if (getPrincipal().contains("admin")) {
 			return action + "/" + page;
 		} else {
-			if (page.contains("branch") || action.contains("homeWOT")) {
+			if (page.contains("branch")||page.contains("DetailsBranch") || action.contains("homeWOT")) {
 				return action + "/" + page;
 			}
 			return "homeSC/homeSCHomepage";
@@ -131,21 +131,6 @@ public class IndexController {
 
 	}
 
-	/**
-	 * This method returns the principal[user-name] of logged-in user.
-	 */
-	private String getPrincipal() {
-		String userName = null;
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-		if (principal instanceof UserDetails) {
-			userName = ((UserDetails) principal).getUsername();
-		} else {
-			userName = principal.toString();
-		}
-		return userName;
-
-	}
 
 	private void setStaticData() {
 		if (StaticData.ClientName == null) {

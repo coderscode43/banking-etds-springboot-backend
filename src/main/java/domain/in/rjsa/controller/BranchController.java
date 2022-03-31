@@ -46,7 +46,7 @@ import domain.in.rjsa.web.ApplicationCache;
 
 @Controller
 @RequestMapping("/apibranch")
-public class BranchController {
+public class BranchController extends AbstractController{
 
 	@Autowired
 	BranchService service;
@@ -100,9 +100,12 @@ public class BranchController {
 			// convert JSON string to Map
 			map = mapper.readValue(searchParam, new TypeReference<Map<String, String>>() {
 			});
+			
+			
+			
 
-			if (!"admin".equals(applicationCache.getLoginDetail(getPrincipal()).getType())) {
-				map.put("branchCode", applicationCache.getLoginDetail(getPrincipal()).getBranchCode());
+			if (!"admin".equals(getBranchCode())) {
+				map.put("branchCode", getBranchCode());
 			}
 			Long count = service.findSearchCount(map);
 			List<?> list = getSearch(map, pageNo, resultPerPage);
@@ -129,8 +132,8 @@ public class BranchController {
 	public ResponseEntity<?> createEntity(@RequestBody LinkedHashMap<String, Object> entity) {
 		logger.info("Creating new Return instance");
 
-		if ("admin".equals(applicationCache.getLoginDetail(getPrincipal()).getType())) {
-			service.saveNewUser(entity.get("userName").toString(), entity.get("password").toString());
+		if ("admin".equals(getBranchCode())) {
+			//service.saveNewUser(entity.get("userName").toString(), entity.get("password").toString(), Long.valueOf(entity.get("branchCode").toString()));
 			entity.remove("userName");
 			entity.remove("password");
 			create(entity);
@@ -179,7 +182,7 @@ public class BranchController {
 	@RequestMapping(value = "/update", method = RequestMethod.PUT)
 	public ResponseEntity<?> update(@RequestBody LinkedHashMap<?, ?> entity, HttpServletResponse response,
 			UriComponentsBuilder ucBuilder) {
-		if ("admin".equals(applicationCache.getLoginDetail(getPrincipal()).getType())) {
+		if ("admin".equals(getBranchCode())) {
 			FieldErrorDTO ermsg = new FieldErrorDTO();
 			Long id = Long.valueOf(entity.get("id").toString());
 			update(entity, id);
@@ -215,8 +218,8 @@ public class BranchController {
 		// verify the clientId authorization
 //			applicationCache.getUserAuthorised();
 		HashMap<String, Object> constrains = new HashMap<>();
-		if (!"admin".equals(applicationCache.getLoginDetail(getPrincipal()).getType())) {
-			constrains.put("branchCode", applicationCache.getLoginDetail(getPrincipal()).getBranchCode());
+		if (!"admin".equals(getBranchCode())) {
+			constrains.put("branchCode", getBranchCode());
 		}
 
 		String mapping = request.getPathInfo();
@@ -265,7 +268,7 @@ public class BranchController {
 
 	public void addLogs(HashMap<String, Object> entity) {
 
-		Login l = applicationCache.getLoginDetail(getPrincipal());
+		//Login l = applicationCache.getLoginDetail(getPrincipal());
 		HashMap<String, Object> constrains = new HashMap<>();
 		constrains.put("id", entity.get("id"));
 		Logs log = lservice.uniqueSearch(constrains);
@@ -280,7 +283,7 @@ public class BranchController {
 		Gson gason = new Gson();
 		String json = gason.toJson(entity);
 		log.setDate(new Date(System.currentTimeMillis()));
-		log.setUsername(l.getUserName());
+		log.setUsername(getPrincipal());
 
 		lservice.save(log);
 
@@ -301,5 +304,8 @@ public class BranchController {
 			return null;
 		}
 	}
+	
+	
+	
 
 }

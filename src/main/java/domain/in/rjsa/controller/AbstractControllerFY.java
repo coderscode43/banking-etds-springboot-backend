@@ -31,7 +31,6 @@ import com.google.gson.JsonElement;
 
 import domain.in.rjsa.model.form.Ajax;
 import domain.in.rjsa.model.form.ListCount;
-import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.form.Model;
 import domain.in.rjsa.model.fy.Logs;
 import domain.in.rjsa.service.BranchService;
@@ -55,19 +54,42 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 	public List<?> getList(String fy, Long branchCode, int pageNo, int resultPerPage) {
 		HashMap<String, Object> constrains = new HashMap<>();
 		constrains.put("fy", fy);
-		constrains.put("branchCode", branchCode);
+		
+		if (!"admin".equals(getBranchCode())) {
+			Long b=1L;
+			try {
+				b =Long.valueOf(getBranchCode());
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+			constrains.put("branchCode", b);
+		}else {
+			constrains.put("branchCode", branchCode);
+		}
+		
+		
+		
+		
 		return getService().findall(constrains, pageNo, resultPerPage);
 	}
 
 	// ------------------- Count Entity ---------------------------------
 	@RequestMapping(value = "/list/count/", method = RequestMethod.GET)
 	public ResponseEntity<?> count( HttpServletRequest request) {
-		// verify the clientId authorization
-//			applicationCache.getUserAuthorised();
 		HashMap<String, Object> constrains = new HashMap<>();
-//		constrains.put("employeeId", applicationCache.getLoginDetail(getPrincipal()).getEmployeeId());
 
-		String mapping = request.getPathInfo();
+
+		if (!"admin".equals(getBranchCode())) {
+			Long b=1L;
+			try {
+				b =Long.valueOf(getBranchCode());
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+			constrains.put("branchCode", b);
+		}else {
+		}
+		
 
 		try {
 			Long count = getService().findallCount(constrains);
@@ -86,6 +108,21 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
 
+
+		if (!"admin".equals(getBranchCode())) {
+			Long b=1L;
+			try {
+				b =Long.valueOf(getBranchCode());
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+			constrains.put("branchCode", b);
+		}else {
+		}
+		
+		
+		
+		
 		return getService().findall(constrains, pageNo, resultPerPage);
 	}
 	
@@ -97,7 +134,6 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 			@PathVariable int resultPerPage) {
 		// verify the clientId authorization
 //		applicationCache.getUserAuthorised();
-		String mapping = request.getPathInfo();
 
 		try {
 			List<?> list = getList(pageNo, resultPerPage);
@@ -118,7 +154,22 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 			HttpServletRequest request) {
 		HashMap<String, Object> constrains = new HashMap<>();
 		constrains.put("fy",fy);
-		constrains.put("branchCode",branchCode);
+		
+
+		if (!"admin".equals(getBranchCode())) {
+			Long b=1L;
+			try {
+				b =Long.valueOf(getBranchCode());
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+			constrains.put("branchCode", b);
+		}else {
+			constrains.put("branchCode", branchCode);
+		}
+		
+		
+		
 		try {
 			Long count = getService().findallCount(constrains);
 			List<?> list = getList(fy, branchCode, 0, 100);
@@ -142,6 +193,19 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 	public ResponseEntity<?> listAll(@PathVariable String fy, @PathVariable Long branchCode,
 			HttpServletRequest request, @PathVariable int pageNo, @PathVariable int resultPerPage) {
 		try {
+			
+
+			if (!"admin".equals(getBranchCode())) {
+				Long b=1L;
+				try {
+					b =Long.valueOf(getBranchCode());
+				}catch (Exception e) {
+					// TODO: handle exception
+				}
+				branchCode=b;
+			}else {
+			}
+			
 			List<?> list = getList(fy, branchCode, pageNo, resultPerPage);
 
 			return new ResponseEntity<>(list, HttpStatus.OK);
@@ -170,7 +234,18 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 				map.put("roCode", roCode);
 			}
 			map.put("fy", fy);
-			map.put("branchCode", branchCode);
+			
+			if (!"admin".equals(getBranchCode())) {
+				Long b=1L;
+				try {
+					b =Long.valueOf(getBranchCode());
+				}catch (Exception e) {
+					// TODO: handle exception
+				}
+				map.put("branchCode", b);
+			}else {
+				map.put("branchCode", branchCode);
+			}
 			Long count = getService().findallCount(map);
 			List<?> list = getSearch(map);
 			ListCount send = new ListCount();
@@ -196,7 +271,17 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 			@PathVariable Long branchCode) {
 		try {
 			map.put("fy", fy);
-			map.put("branchCode", branchCode);
+			if (!"admin".equals(getBranchCode())) {
+				Long b=1L;
+				try {
+					b =Long.valueOf(getBranchCode());
+				}catch (Exception e) {
+					// TODO: handle exception
+				}
+				map.put("branchCode", b);
+			}else {
+				map.put("branchCode", branchCode);
+			}
 			return new ResponseEntity<>(getSearchEntity(map), HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("Error in listALL", e);
@@ -286,6 +371,17 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 	public ResponseEntity<?> getDetailController(@PathVariable K id, @PathVariable String fy,
 			@PathVariable Long branchCode) {
 		// verify the clientId authorization
+		if (!"admin".equals(getBranchCode())) {
+			Long b=1L;
+			try {
+				b =Long.valueOf(getBranchCode());
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+			branchCode=b;
+		}else {
+		}
+		
 		try {
 			return new ResponseEntity<>(getDetail(id, fy, branchCode), HttpStatus.OK);
 		} catch (Exception e) {
@@ -320,58 +416,6 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 
 	}
 
-	// ------------------- Delete Entity ---------------------------------
-
-	@RequestMapping(value = "/delete/{fy}/{branchCode}/{id}", method = RequestMethod.POST)
-	public ResponseEntity<?> delete(@PathVariable K id, @PathVariable String fy, @PathVariable Long branchCode) {
-		try {
-			getService().deleteT(id);
-			return new ResponseEntity<>(HttpStatus.OK);
-		} catch (Exception e) {
-			logger.error("Error in getting detail ", e);
-			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-		}
-
-	}
-
-	// ------------------- ajax Entities ---------------------------------
-
-	@RequestMapping(value = "/ajax/{fy}/{branchCode}", method = RequestMethod.POST)
-	public ResponseEntity<?> ajax(@RequestBody Ajax ajax, @PathVariable String fy, Long branchCode) {
-		// verify the clientId authorization
-		try {
-			List<?> list = getAjax(ajax.getName(), ajax.getTerm(), fy, branchCode);
-			return new ResponseEntity<>(list, HttpStatus.OK);
-		} catch (Exception e) {
-			logger.error("Error in listALL", e);
-			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-
-	}
-
-	public List<?> getAjax(String name, String term, String fy, Long branch) {
-		// TODO Auto-generated method stub
-	//	Login l = applicationCache.getLoginDetail(getPrincipal());
-		HashMap<String, Object> constrains = new HashMap<>();
-		constrains.put("clientId", 1);
-		return getService().ajax(name, term, constrains);
-	}
-
-	// ------------------- Other Methods ---------------------------------
-
-	public String getPrincipal() {
-		String userName = null;
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-		if (principal instanceof UserDetails) {
-			userName = ((UserDetails) principal).getUsername();
-		} else {
-			userName = principal.toString();
-		}
-		return userName;
-
-	}
-
 	public abstract Class<E> getEntity();
 
 	public abstract S getService();
@@ -393,7 +437,19 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 		HashMap<String, Object> constrains = new HashMap<>();
 		constrains.put("id", id);
 		constrains.put("fy", fy);
-		constrains.put("branchCode", branchCode);
+		if (!"admin".equals(getBranchCode())) {
+			Long b=1L;
+			try {
+				b =Long.valueOf(getBranchCode());
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+			constrains.put("branchCode", b);
+		}else {
+			constrains.put("branchCode", branchCode);
+		}
+		
+		
 		return getService().uniqueSearch(constrains);
 	}
 

@@ -11,25 +11,30 @@ import domain.in.rjsa.web.ApplicationCache;
 
 public class AbstractController {
 
-
 	@Autowired
 	ApplicationCache applicationCache;
-	
-	
-	
+
 	public String getBranchCode() {
 		LdapContext ctxGC = null;
-		CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		String branch = userDetails.getPhysicalDeliveryOfficeName();
-		try {
-			int b = Integer.valueOf(branch);
-			return String.valueOf(b);
-		} catch (Exception e) {
-			// TODO: handle exception
-			return branch;
+		CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication()
+				.getPrincipal();
+		;
+		if (applicationCache.getAdminUser(getPrincipal()) != null) {
+			return "admin";
+
+		} else {
+			String branch = userDetails.getPhysicalDeliveryOfficeName();
+			try {
+				int b = Integer.valueOf(branch);
+				return String.valueOf(b);
+			} catch (Exception e) {
+				// TODO: handle exception
+				return branch;
+			}
 		}
+
 	}
-	
+
 	public String getPrincipal() {
 		String userName = null;
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();

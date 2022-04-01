@@ -38,31 +38,28 @@ import domain.in.rjsa.service.LogsService;
 import domain.in.rjsa.service.ServiceInterfaceTaxo;
 import domain.in.rjsa.web.ApplicationCache;
 
-public abstract class AbstractControllerTaxo<K extends Serializable, E extends Model, S extends ServiceInterfaceTaxo<K, E>>extends AbstractController
-		{
+public abstract class AbstractControllerTaxo<K extends Serializable, E extends Model, S extends ServiceInterfaceTaxo<K, E>>
+		extends AbstractController {
 
 	public abstract S getService();
 
 	@Autowired
 	ApplicationCache applicationCache;
-	
+
 	@Autowired
 	LogsService lservice;
-	
-
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
-	
-	
+
 	// ------------------- List Entity ---------------------------------
 
 	@RequestMapping(value = "/list/get/{pageNo}/{resultPerPage}", method = RequestMethod.GET)
-	public ResponseEntity<?> listAll( HttpServletRequest request, @PathVariable int pageNo,
+	public ResponseEntity<?> listAll(HttpServletRequest request, @PathVariable int pageNo,
 			@PathVariable int resultPerPage) {
 		String mapping = request.getPathInfo();
 
 		try {
-			List<?> list = getList( pageNo, resultPerPage);
+			List<?> list = getList(pageNo, resultPerPage);
 
 			return new ResponseEntity<>(list, HttpStatus.OK);
 		} catch (Exception e) {
@@ -72,7 +69,7 @@ public abstract class AbstractControllerTaxo<K extends Serializable, E extends M
 
 	}
 
-	public List<?> getList( int pageNo, int resultPerPage) {
+	public List<?> getList(int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
 
@@ -82,14 +79,14 @@ public abstract class AbstractControllerTaxo<K extends Serializable, E extends M
 	// ------------------- Count Entity ---------------------------------
 
 	@RequestMapping(value = "/list/count/", method = RequestMethod.GET)
-	public ResponseEntity<?> count( HttpServletRequest request) {
+	public ResponseEntity<?> count(HttpServletRequest request) {
 		HashMap<String, Object> constrains = new HashMap<>();
 
 		String mapping = request.getPathInfo();
 
 		try {
 			Long count = getService().findallCount(constrains);
-			List<?> list = getList( 0, 100);
+			List<?> list = getList(0, 100);
 			ListCount send = new ListCount();
 			send.setCount(count);
 			send.setEntities(list);
@@ -104,8 +101,8 @@ public abstract class AbstractControllerTaxo<K extends Serializable, E extends M
 	// ------------------- Search Entities ---------------------------------
 
 	@RequestMapping(value = "/search/get/{pageNo}/{resultPerPage}/{json}/**", method = RequestMethod.GET)
-	public ResponseEntity<?> search(@PathVariable String json, HttpServletRequest request,
-			@PathVariable int pageNo, @PathVariable int resultPerPage) {
+	public ResponseEntity<?> search(@PathVariable String json, HttpServletRequest request, @PathVariable int pageNo,
+			@PathVariable int resultPerPage) {
 		try {
 			final String path = request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE).toString();
 			final String bestMatchingPattern = request.getAttribute(HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE)
@@ -140,15 +137,12 @@ public abstract class AbstractControllerTaxo<K extends Serializable, E extends M
 		}
 
 	}
+
 	public List<?> getSearch(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
 		return getService().search(map);
 	}
-	
-	
-	
-	
-	
+
 	// ------------------- Search Single Entity ---------------------------------
 
 	@RequestMapping(value = "/searchEntity", method = RequestMethod.POST)
@@ -189,83 +183,40 @@ public abstract class AbstractControllerTaxo<K extends Serializable, E extends M
 		return getService().uniqueSearch(constrains);
 	}
 
-	
-	
-		
-		 public void addLogsU(HashMap<String, Object> entity) {
-			
+	public void addLogsU(HashMap<String, Object> entity) {
+
 //		    	Login l = applicationCache.getLoginDetail(getPrincipal());
 //				HashMap<String, Object>constrains= new HashMap<>();
 //				constrains.put("id", Long.valueOf(entity.get("id").toString()));
 //				constrains.put("clientId",l.getClientId());
 //				Logs log = lservice.uniqueSearch(constrains);			
-		    	Logs log = new Logs();
-			  
-			    log.setAction("Updated");
-			    log.setIpaddrs(getIp());
-			    String s=getEntity().getName();
-			    String[] arrOfStr = s.split(".", 25); 
-			    for (String a : arrOfStr) 
-			    log.setEntity(a);
-			    Gson gason = new Gson(); 
-			    String json = gason.toJson(entity); 
-			    log.setDate(new Date(System.currentTimeMillis()));
-				log.setUsername(getPrincipal());
-				
-				lservice.save(log);
-				
-			}
-		
-		
+		Logs log = new Logs();
 
-		
-		
-	
-	
-	// ------------------- ajax Entities ---------------------------------
+		log.setAction("Updated");
+		log.setIpaddrs(getIp());
+		String s = getEntity().getName();
+		String[] arrOfStr = s.split(".", 25);
+		for (String a : arrOfStr)
+			log.setEntity(a);
+		Gson gason = new Gson();
+		String json = gason.toJson(entity);
+		log.setDate(new Date(System.currentTimeMillis()));
+		log.setUsername(getPrincipal());
 
-		 @RequestMapping(value = "/ajax", method = RequestMethod.POST)
-			public ResponseEntity<?> ajax(@RequestBody Ajax ajax) {
-				// verify the clientId authorization
-				try {
-					List<String> list = getAjax(ajax.getName(), ajax.getTerm());
-					return new ResponseEntity<>(list, HttpStatus.OK);
-				} catch (Exception e) {
-//					logger.error("Error in listALL", e);
-					return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-				}
-
-			}
-			public List<String> getAjax(String name, String term) {
-				// TODO Auto-generated method stub
-				return getService().ajax(name, term);
-			}
-
-	// ------------------- Other Methods ---------------------------------
-
-	public String getPrincipal() {
-		String userName = null;
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-		if (principal instanceof UserDetails) {
-			userName = ((UserDetails) principal).getUsername();
-		} else {
-			userName = principal.toString();
-		}
-		return userName;
+		lservice.save(log);
 
 	}
 
 	public abstract Class<E> getEntity();
-	
+
 	private String getIp() {
 		try {
-			  InetAddress ipAddr = InetAddress.getLocalHost();
-			  String str=ipAddr.getHostAddress();
-			  return str;
+			InetAddress ipAddr = InetAddress.getLocalHost();
+			String str = ipAddr.getHostAddress();
+			return str;
 		} catch (UnknownHostException ex) {
-			 ex.printStackTrace(); // print Exception StackTrace
-	
+			ex.printStackTrace(); // print Exception StackTrace
+
 			return null;
 		}
 	}

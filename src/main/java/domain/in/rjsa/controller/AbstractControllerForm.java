@@ -62,10 +62,6 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 	@RequestMapping(value = "/list/get/{pageNo}/{resultPerPage}", method = RequestMethod.GET)
 	public ResponseEntity<?> listAll(HttpServletRequest request, @PathVariable int pageNo,
 			@PathVariable int resultPerPage) {
-		// verify the clientId authorization
-//		applicationCache.getUserAuthorised();
-		String mapping = request.getPathInfo();
-
 		try {
 			List<?> list = getList(pageNo, resultPerPage);
 

@@ -10,14 +10,14 @@
     <link href="static/css/bootstrap.min.css" rel="stylesheet" />
      <!-- Custom CSS -->
      <link href="static/css/sb-admin.css" rel="stylesheet" />
+      <link href = "static/css/angular-material.min.css" rel="stylesheet" />
      <!-- Morris Charts CSS -->
       <link href="static/css/plugins/morris.css" rel="stylesheet" />
     <!-- Custom Fonts -->
     <link href="static/fonts/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- FONT AWESOME ICONS  -->
 <!--  	<link href="static/css/font-awesome.css" rel="stylesheet" /> -->
-<link rel="shortcut icon" type="image/x-icon"
-	href="/bankingETDS/static/img/favicon.ico" />
+<link rel="shortcut icon" type="image/x-icon" href="/bankingETDS/static/img/favicon.ico" />
 	  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 	  
 	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -68,12 +68,11 @@
 		src="static/js/lib/angular-http-loader.js"></script>
 	
 	 
-      <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
-      <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
-      <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
-      <script src = "https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
-    <link rel = "stylesheet"
-         href = "https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+      <script src = "static/js/lib/angular-animate.min.js"></script>
+      <script src = "static/js/lib/angular-aria.min.js"></script>
+      <script src = "static/js/lib/angular-messages.min.js"></script>
+      <script src = "static/js/lib/angular-material.min.js"></script>
+   
     
     
     <!-- CORE JQUERY SCRIPTS -->

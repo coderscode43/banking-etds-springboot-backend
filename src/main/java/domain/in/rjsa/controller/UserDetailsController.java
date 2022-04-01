@@ -34,5 +34,18 @@ public class UserDetailsController extends AbstractControllerForm<String, UserDe
 		return UserDetails.class;
 	}
 	
+	// ------------------- Delete Entity ---------------------------------
 
+		@RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
+		public ResponseEntity<?> delete(@PathVariable String id) {
+			// verify the clientId authorization
+			try {
+				getService().deleteT(id);
+				return new ResponseEntity<>(HttpStatus.OK);
+			} catch (Exception e) {
+				logger.error("Error in getting detail ", e);
+				return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+			}
+
+		}
 }

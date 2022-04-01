@@ -44,10 +44,10 @@ import domain.in.rjsa.service.ServiceInterfaceForm;
 import domain.in.rjsa.service.UserDetailsService;
 import domain.in.rjsa.web.ApplicationCache;
 
-public abstract class AbstractControllerForm<K extends Serializable, E extends Model, S extends ServiceInterfaceForm<K, E>> extends AbstractController{
+public abstract class AbstractControllerForm<K extends Serializable, E extends Model, S extends ServiceInterfaceForm<K, E>>
+		extends AbstractController {
 
 	public abstract S getService();
-
 
 	@Autowired
 	UserDetailsService userDetailsService;
@@ -156,7 +156,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	public List<?> getSearch(LinkedHashMap<String, Object> map) {
 		// TODO Auto-generated method stub
-	//	Login l = applicationCache.getLoginDetail(getPrincipal());
+		// Login l = applicationCache.getLoginDetail(getPrincipal());
 //		map.put("employeeId", l.getEmployeeId());
 		return getService().search(map);
 	}
@@ -177,7 +177,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	public E getSearchEntity(LinkedHashMap<String, Object> map) {
 		// TODO Auto-generated method stub
-	//	Login l = applicationCache.getLoginDetail(getPrincipal());
+		// Login l = applicationCache.getLoginDetail(getPrincipal());
 //		map.put("employeeId", l.getEmployeeId());
 		return getService().uniqueSearch(map);
 	}
@@ -199,7 +199,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	public void create(LinkedHashMap<String, Object> entity) {
 		Gson gson = new Gson();
-	//	Login l = applicationCache.getLoginDetail(getPrincipal());
+		// Login l = applicationCache.getLoginDetail(getPrincipal());
 
 		JsonElement jsonElement = gson.toJsonTree(entity);
 
@@ -209,7 +209,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	public void addLogs(HashMap<String, Object> entity) {
 
-	//	Login l = applicationCache.getLoginDetail(getPrincipal());
+		// Login l = applicationCache.getLoginDetail(getPrincipal());
 		HashMap<String, Object> constrains = new HashMap<>();
 		constrains.put("id", entity.get("id"));
 		Logs log = lservice.uniqueSearch(constrains);
@@ -248,8 +248,8 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 		constrains.put("id", id);
 		return getService().uniqueSearch(constrains);
 	}
-	
-	 // ------------------- Update Entity ---------------------------------
+
+	// ------------------- Update Entity ---------------------------------
 
 	@RequestMapping(value = "/update", method = RequestMethod.PUT)
 	public ResponseEntity<?> update(@RequestBody LinkedHashMap<String, Object> entity, HttpServletResponse response,
@@ -268,7 +268,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 	public void update(LinkedHashMap<String, Object> entity) {
 
 		Gson gson = new Gson();
-	//	Login l = applicationCache.getLoginDetail(getPrincipal());
+		// Login l = applicationCache.getLoginDetail(getPrincipal());
 		JsonElement jsonElement = gson.toJsonTree(entity);
 		getService().update(gson.fromJson(jsonElement, getEntity()));
 
@@ -308,7 +308,6 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 		lservice.save(log);
 	}
 
-
 	// ------------------- ajax Entities ---------------------------------
 
 	@RequestMapping(value = "/ajax", method = RequestMethod.POST)
@@ -345,17 +344,5 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 	}
 
 	public abstract Class<E> getEntity();
-
-	private String getIp() {
-		try {
-			InetAddress ipAddr = InetAddress.getLocalHost();
-			String str = ipAddr.getHostAddress();
-			return str;
-		} catch (UnknownHostException ex) {
-			ex.printStackTrace(); // print Exception StackTrace
-
-			return null;
-		}
-	}
 
 }

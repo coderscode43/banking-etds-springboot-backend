@@ -420,17 +420,6 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 
 	public abstract S getService();
 
-	private String getIp() {
-		try {
-			InetAddress ipAddr = InetAddress.getLocalHost();
-			String str = ipAddr.getHostAddress();
-			return str;
-		} catch (UnknownHostException ex) {
-			ex.printStackTrace(); // print Exception StackTrace
-
-			return null;
-		}
-	}
 
 	public Object getDetail(K id, String fy, Long branchCode) {
 		// TODO Auto-generated method stub

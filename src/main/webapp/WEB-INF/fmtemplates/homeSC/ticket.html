@@ -137,8 +137,9 @@
 								<select type="text" ng-model="cCctr.search.status"
 									class="form-control" placeholder="Status" style="width: 100%">
 									<option disabled value="">Select Status</option>
-									<option value="open">open</option>
-									<option value="close">close</option>
+									<option value="Open">Open</option>
+									<option value="Reject">Reject</option>
+									<option value="Resolved">Resolved</option>
 								</select>
 					</div>
 					<div class="col-md-2">
@@ -263,15 +264,16 @@
 					<tr>
 				<thead role="rowgroup">
 					<tr role="row" style="height: 40px; background-color: #81b7db">
-						<th width="10%">Sr. No.</th>
-						<th width="10%">Financial Year</th>
-						<th width="10%">Quarter</th>
-						<th width="10%">Branch Code</th>
-						<th width="10%">Form</th>
-						<th width="10%">Date Of Opening</th>
-						<th width="10%">Status</th>
+						<th width="2%">Sr. No.</th>
+						<th width="6%">Financial Year</th>
+						<th width="6%">Quarter</th>
+						<th width="6%">Branch Code</th>
+						<th width="6%">Form</th>
+						<th width="6%">Date Of Opening</th>
+						<th width="6%">Status</th>
+						<th width="40%">Description</th>
 						<th width="10%">User</th>
-						<th width="10%">Action</th>
+						<th width="7%">Action</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -290,6 +292,7 @@
 						<td>{{a.form}}</td>
 						<td>{{a.dateOfOpening | date:'dd-MM-yyyy'}}</td>
 						<td>{{a.status}}</td>
+						<td>{{a.description}}</td>
 						<td>{{a.userName}}</td>
 						<!-- ng-click="cCctr.gotoDetailPage('ticket',a.id,a.fy,a.branchCode,'detailticket')" -->
 						<td><a

@@ -1,5 +1,8 @@
 package domain.in.rjsa.controller;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 import javax.naming.ldap.LdapContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,4 +51,15 @@ public class AbstractController {
 
 	}
 
+	protected String getIp() {
+		try {
+			InetAddress ipAddr = InetAddress.getLocalHost();
+			String str = ipAddr.getHostAddress();
+			return str;
+		} catch (UnknownHostException ex) {
+			ex.printStackTrace(); // print Exception StackTrace
+
+			return null;
+		}
+	}
 }

@@ -2,7 +2,6 @@ package domain.in.rjsa.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 import org.slf4j.Logger;
@@ -20,19 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
-import domain.in.rjsa.model.form.Login;
-import domain.in.rjsa.model.fy.Regular24QDeductee;
-import domain.in.rjsa.model.fy.Regular26QDeductee;
-import domain.in.rjsa.model.fy.Regular27EQDeductee;
-import domain.in.rjsa.model.fy.Regular27QDeductee;
 import domain.in.rjsa.model.fy.Remark;
-import domain.in.rjsa.model.fy.Ticket;
-import domain.in.rjsa.service.Regular24QDeducteeService;
-import domain.in.rjsa.service.Regular26QDeducteeService;
-import domain.in.rjsa.service.Regular27EQDeducteeService;
-import domain.in.rjsa.service.Regular27QDeducteeService;
 import domain.in.rjsa.service.RemarkService;
-import domain.in.rjsa.service.TicketService;
 
 @Controller
 @RequestMapping("/apiremark")
@@ -65,8 +53,13 @@ public class RemarkController extends AbstractControllerFY<Long, Remark, RemarkS
 		//Login l = applicationCache.getLoginDetail(getPrincipal());
 		entity.put("userName", getPrincipal());
 		entity.put("status",type);
-		create(entity);
-		service.setResolve(entity,type);
+		
+		
+		
+		Gson gson = new Gson();
+		JsonElement jsonElement = gson.toJsonTree(entity);
+		
+		service.setResolve(gson.fromJson(jsonElement, getEntity()),type);
 		addRemarkLogs(entity);
 		return new ResponseEntity<Object>(HttpStatus.CREATED);
 

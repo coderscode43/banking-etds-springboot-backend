@@ -209,16 +209,5 @@ public abstract class AbstractControllerTaxo<K extends Serializable, E extends M
 
 	public abstract Class<E> getEntity();
 
-	private String getIp() {
-		try {
-			InetAddress ipAddr = InetAddress.getLocalHost();
-			String str = ipAddr.getHostAddress();
-			return str;
-		} catch (UnknownHostException ex) {
-			ex.printStackTrace(); // print Exception StackTrace
-
-			return null;
-		}
-	}
 
 }

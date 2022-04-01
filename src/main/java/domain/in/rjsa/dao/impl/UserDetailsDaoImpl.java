@@ -10,10 +10,11 @@ import org.springframework.stereotype.Repository;
 import domain.in.rjsa.dao.AbstractDaoForm;
 import domain.in.rjsa.dao.UserDetailsDao;
 import domain.in.rjsa.model.form.UserDetails;
-@Repository("UserDetailsDao")
-public class UserDetailsDaoImpl extends AbstractDaoForm<String, UserDetails> implements UserDetailsDao{
 
-	
+@Repository("UserDetailsDao")
+public class UserDetailsDaoImpl extends AbstractDaoForm<String, UserDetails> implements UserDetailsDao {
+
+	@Override
 	public UserDetails getByKey(String key) {
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
 		propertyNameValues.put("employeeId", key);
@@ -23,8 +24,4 @@ public class UserDetailsDaoImpl extends AbstractDaoForm<String, UserDetails> imp
 		return (UserDetails) crit.uniqueResult();
 	}
 
-	
-	
-	
 }
-

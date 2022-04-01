@@ -280,9 +280,7 @@
 													ng-required="true"></textarea>
 												<span style="color: red; margin-left: 5%;" class="error"
 													ng-show="remark.submitted || remark.remark.$dirty && remark.remark.$invalid">Please
-													enter valid Remark</span><span class="error"
-													ng-show="form24qchallan.tds.$error.required">Please
-													enter valid Remark.</span> <span class="error" id="remark"></span>
+													enter valid Remark</span>
 											</div>
 											<div class="modal-footer">
 												<button type="button" class="btn btn-success "
@@ -307,12 +305,14 @@
 												<textarea ng-model="cCctr.newEntity.remark" id="remark"
 													name="remark"
 													style="width: 90%; height: 20%; font-size: 15px; margin-left: 5%;"
-													ng-required="true"></textarea>
+													ng-required="true"></textarea><span style="color: red; margin-left: 5%;" class="error"
+													ng-show="remark.submitted || remark.remark.$dirty && remark.remark.$invalid">Please
+													enter valid Remark</span> 
 											</div>
 											<div class="modal-footer">
 												<button class="btn btn-success"
 													ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.deductee.id"
-													ng-click="cCctr.addRemark(true,'remark',cCctr.newEntity,'Reject','close')"
+													ng-click="remark.submitted=true; cCctr.addRemark(remark.$valid,'remark',cCctr.newEntity,'Reject','close')"
 													style="margin-top: 1%;">Yes</button>
 												<button class="btn btn-danger" data-dismiss="modal"
 													style="margin-top: 1%;">No</button>
@@ -334,12 +334,14 @@
 												<textarea ng-model="cCctr.newEntity.remark" id="remark"
 													name="remark"
 													style="width: 90%; height: 20%; font-size: 15px; margin-left: 5%;"
-													ng-required="true"></textarea>
+													ng-required="true"></textarea><span style="color: red; margin-left: 5%;" class="error"
+													ng-show="remark.submitted || remark.remark.$dirty && remark.remark.$invalid">Please
+													enter valid Remark</span> 
 											</div>
 											<div class="modal-footer">
 												<button class="btn btn-success"
 													ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.deductee.id"
-													ng-click="cCctr.addRemark(true,'remark',cCctr.newEntity,'Resolve','close')"
+													ng-click="remark.submitted=true;cCctr.addRemark(remark.$valid,'remark',cCctr.newEntity,'Resolve','close')"
 													style="margin-top: 1%;">Yes</button>
 												<button class="btn btn-danger" data-dismiss="modal"
 													style="margin-top: 1%;">No</button>

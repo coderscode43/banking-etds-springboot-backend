@@ -182,8 +182,7 @@
 								<label>Description &nbsp;:</label> {{cCctr.entity.description}}
 							</div>
 							<div class="col-md-3">
-								<label>Branch Code. &nbsp;:</label>
-								{{cCctr.entity.branchCode}}
+								<label>Branch Code. &nbsp;:</label> {{cCctr.entity.branchCode}}
 							</div>
 							<!-- <div class="col-md-3">
 								<label>Remarks &nbsp;:</label> {{cCctr.entity.status}}
@@ -232,23 +231,31 @@
 								<button class="btn btn-danger"
 									ng-click="cCctr.gotoWFYListPage('ticket','ticket')">Back</button>
 
-								<div ng-if="cCctr.entity.resolved == 1" ng-hide=("admin"!="${typeOfUser}");
+								<div ng-if="cCctr.entity.resolved == 1" ng-hide=(
+									"admin"!="${typeOfUser}"
+									);
 									style="margin: -2.9% 0 0% 64.2%;">
 									<button data-toggle="modal" data-target="#resolveModal"
 										class="btn btn-primary">Resolved</button>
 								</div>
-								<div ng-if="cCctr.entity.resolved == 0" ng-hide=("admin"!="${typeOfUser}");
+								<div ng-if="cCctr.entity.resolved == 0" ng-hide=(
+									"admin"!="${typeOfUser}"
+									);
 									style="margin: -2.9% 0 0% 64.2%;">
 									<button data-toggle="modal" data-target="#resolveModal"
 										class="btn btn-primary" disabled>Resolved</button>
 								</div>
 
-								<div ng-if="cCctr.entity.resolved == 1" ng-hide=("admin"!="${typeOfUser}");
+								<div ng-if="cCctr.entity.resolved == 1" ng-hide=(
+									"admin"!="${typeOfUser}"
+									);
 									style="margin: -2.9% 0 0% 72.2%;">
 									<button data-toggle="modal" data-target="#rejectModal"
 										class="btn btn-info">Reject</button>
 								</div>
-								<div ng-if="cCctr.entity.resolved == 0" ng-hide=("admin"!="${typeOfUser}");
+								<div ng-if="cCctr.entity.resolved == 0" ng-hide=(
+									"admin"!="${typeOfUser}"
+									);
 									style="margin: -2.9% 0 0% 72.2%;">
 									<button data-toggle="modal" data-target="#rejectModal"
 										class="btn btn-info" disabled>Reject</button>
@@ -273,7 +280,9 @@
 													ng-required="true"></textarea>
 												<span style="color: red; margin-left: 5%;" class="error"
 													ng-show="remark.submitted || remark.remark.$dirty && remark.remark.$invalid">Please
-													enter valid Remark</span> <span class="error" id="remark"></span>
+													enter valid Remark</span><span class="error"
+													ng-show="form24qchallan.tds.$error.required">Please
+													enter valid Remark.</span> <span class="error" id="remark"></span>
 											</div>
 											<div class="modal-footer">
 												<button type="button" class="btn btn-success "

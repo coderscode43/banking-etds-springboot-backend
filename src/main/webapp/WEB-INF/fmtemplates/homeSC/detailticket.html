@@ -270,10 +270,14 @@
 												<textarea ng-model="cCctr.newEntity.remark" id="remark"
 													name="remark"
 													style="width: 90%; height: 20%; font-size: 15px; margin-left: 5%;"
-													ng-required="true"></textarea>
+													ng-required="true" required></textarea>
 												<span style="color: red; margin-left: 5%;" class="error"
 													ng-show="remark.submitted || remark.remark.$dirty && remark.remark.$invalid">Please
-													enter valid Remark</span> <span class="error" id="remark"></span>
+													enter valid Remark</span> <span class="error" id="remark">
+													<span class="error"
+													ng-show="form24qchallan.tds.$error.required">Please
+													enter valid Remark.</span>
+												</span>
 											</div>
 											<div class="modal-footer">
 												<button type="button" class="btn btn-success "

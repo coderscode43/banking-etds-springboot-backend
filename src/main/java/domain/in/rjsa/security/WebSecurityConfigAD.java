@@ -32,7 +32,7 @@ public class WebSecurityConfigAD extends WebSecurityConfigurerAdapter {
 
 		http.formLogin().loginPage("/login.jsp").loginProcessingUrl("/login").defaultSuccessUrl("/", true).permitAll()
 				.and().authorizeRequests()
-				.antMatchers("/login", "/", "/static/css/fonts/untitled-font-2*", "/static/img/favicon.ico",
+				.antMatchers("/login", "/", "/static/**", "/static/img/favicon.ico",
 						"/static/img/tds.png")
 				.permitAll().anyRequest().authenticated().and().exceptionHandling().accessDeniedPage("/Access_Denied")
 				.and().csrf().disable().headers().frameOptions().sameOrigin();

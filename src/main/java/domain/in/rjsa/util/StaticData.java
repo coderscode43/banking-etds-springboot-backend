@@ -23,7 +23,10 @@ public class StaticData {
 	public static String ClientPAN =null;
 	/* public static String[] ChallanMismatch =null; */
 	//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXSAYALI
-	
+	public static List<String> typeOfAdmin= new ArrayList<String>() {{
+		add("admin");
+		add("SuperAdmin");
+	}};
 	
 
 }

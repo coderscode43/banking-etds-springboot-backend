@@ -105,7 +105,13 @@ public class BranchController extends AbstractController{
 			
 
 			if (!"admin".equals(getBranchCode())) {
-				map.put("branchCode", getBranchCode());
+				int b=1;
+				try {
+					b =Integer.valueOf(getBranchCode());
+				}catch (Exception e) {
+					// TODO: handle exception
+				}
+				map.put("branchCode",b );
 			}
 			Long count = service.findSearchCount(map);
 			List<?> list = getSearch(map, pageNo, resultPerPage);

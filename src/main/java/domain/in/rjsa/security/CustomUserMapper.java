@@ -15,6 +15,7 @@ public class CustomUserMapper extends LdapUserDetailsMapper{
     	
         CustomUserDetails customUserDetails = new CustomUserDetails(details);
         
+ //      customUserDetails.setPhysicalDeliveryOfficeName(ctx.getStringAttribute("physicalDeliveryOfficeName"));
         customUserDetails.setPhysicalDeliveryOfficeName(ctx.getStringAttribute("cn"));
         return customUserDetails;
     }

@@ -105,9 +105,9 @@ public class BranchController extends AbstractController{
 			
 
 			if (!"admin".equals(getBranchCode())) {
-				int b=1;
+				Long b=1L;
 				try {
-					b =Integer.valueOf(getBranchCode());
+					b =Long.valueOf(getBranchCode());
 				}catch (Exception e) {
 					// TODO: handle exception
 				}
@@ -225,10 +225,18 @@ public class BranchController extends AbstractController{
 //			applicationCache.getUserAuthorised();
 		HashMap<String, Object> constrains = new HashMap<>();
 		if (!"admin".equals(getBranchCode())) {
-			constrains.put("branchCode", getBranchCode());
+
+			if (!"admin".equals(getBranchCode())) {
+				Long b=1L;
+				try {
+					b =Long.valueOf(getBranchCode());
+				}catch (Exception e) {
+					// TODO: handle exception
+				}
+				constrains.put("branchCode",b );
+			}
 		}
 
-		String mapping = request.getPathInfo();
 
 		try {
 			Long count = service.findallCount(constrains);
@@ -264,11 +272,30 @@ public class BranchController extends AbstractController{
 	public List<?> getList( int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
+		if (!"admin".equals(getBranchCode())) {
+			Long b=1L;
+			try {
+				b =Long.valueOf(getBranchCode());
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+			constrains.put("branchCode",b );
+		}
+		
 
 		return service.findAll(constrains, pageNo, resultPerPage);
 	}
 
 	public List<?> getList(HashMap<String, Object> constrains,int pageNo, int resultPerPage) {
+		if (!"admin".equals(getBranchCode())) {
+			Long b=1L;
+			try {
+				b =Long.valueOf(getBranchCode());
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+			constrains.put("branchCode",b );
+		}
 		return service.findAll(constrains, pageNo, resultPerPage);
 	}
 

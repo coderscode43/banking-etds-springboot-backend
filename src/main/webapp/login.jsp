@@ -7,28 +7,25 @@
 	content="width=device-width, initial-scale=1  maximum-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
+ <base href="/bankingETDS/" />
 <title>Please sign in</title>
 <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	href="static/css/font-awesome.min.css">
 <link
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
-	crossorigin="anonymous">
+	href="static/css/bootstrap.min.css"
+	rel="stylesheet">
 <link
-	href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css"
+	href="static/css/signin.css"
 	rel="stylesheet" crossorigin="anonymous" />
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <!-- jQuery library -->
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	src="static/js/jquery.min.js"></script>
 <!-- Latest compiled JavaScript -->
 <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	src="static/js/bootstrap.min.js"></script>
 <link rel="shortcut icon" type="image/x-icon"
-	href="/bankingETDS/static/img/favicon.ico" />
+	href="static/img/favicon.ico" />
 <script src="static/js/lib/bootstrap.js"></script>
 
 </head>
@@ -36,7 +33,7 @@
 	<div class="row">
 		<div class="container-fluid">
 			<div class="col-md-4" style="margin-top: 2%">
-				<img src="/bankingETDS/static/img/tds.png" alt="tdsosmart"
+				<img src="static/img/tds.png" alt="tdsosmart"
 					height="400px" width="100%">
 
 			</div>
@@ -76,7 +73,7 @@
 
 			<div class="col-md-4">
 				<form class="form-signin mui-card xl-shadow" method="post"
-					action="/bankingETDS/login" style="height: 50%; margin-left: 5%">
+					action="login" style="height: 50%; margin-left: 5%">
 					<h2 class="form-signin-heading">
 						<center>
 							<b style="color: #79BD3C">LOGIN</b>

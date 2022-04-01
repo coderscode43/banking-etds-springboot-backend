@@ -1,6 +1,7 @@
 package domain.in.rjsa.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -20,10 +21,15 @@ public class ApplicationCache {
 	
 
 	
-	@Cacheable(value = "allAdminUsers")
+	@Cacheable(value = "allAdminUsers", key = "#username")
 	public domain.in.rjsa.model.form.UserDetails getAdminUser(String username) {
 		// TODO Auto-generated method stub
 		return userDetailsService.getByKey(username);
+	}
+	
+	
+	@CacheEvict(value = "allAdminUsers", key = "#username")
+	public void adminRefresh(String username) {
 	}
 
 	@Cacheable(value = "organizationDetails")

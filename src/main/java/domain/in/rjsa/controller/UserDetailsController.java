@@ -186,8 +186,8 @@ public class UserDetailsController extends AbstractController {
 		if ("admin".equals(getBranchCode())) {
 			// FieldErrorDTO ermsg=new FieldErrorDTO();
 			logger.info("Creating new Return instance");
-			Ticket ticket = new Ticket();
 			create(entity);
+			
 			addLogs(entity);
 			// ermsg.setMessage(" Saved Successfully");
 			return new ResponseEntity<Object>(HttpStatus.CREATED);
@@ -198,11 +198,10 @@ public class UserDetailsController extends AbstractController {
 
 	public void create(LinkedHashMap<String, Object> entity) {
 		Gson gson = new Gson();
-		// Login l = applicationCache.getLoginDetail(getPrincipal());
-
 		JsonElement jsonElement = gson.toJsonTree(entity);
-
-		getService().save(gson.fromJson(jsonElement, UserDetails.class));
+		UserDetails u =gson.fromJson(jsonElement, UserDetails.class);
+		getService().save(u);
+		applicationCache.adminRefresh(u.getEmployeeId());
 
 	}
 

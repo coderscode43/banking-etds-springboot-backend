@@ -74,6 +74,7 @@
 			<div class="col-md-4">
 				<form class="form-signin mui-card xl-shadow" method="post"
 					action="login" style="height: 50%; margin-left: 5%">
+					<img src = "static/img/KBlogo.png" alt="Karnataka Bank" style="width: 100%;"></img>
 					<h2 class="form-signin-heading">
 						<center>
 							<b style="color: #79BD3C">LOGIN</b>

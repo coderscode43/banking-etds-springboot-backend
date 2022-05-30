@@ -1,6 +1,4 @@
 <style>
-
-
 @media only screen and (min-width:600px) {
 	#three {
 		display: none;
@@ -63,9 +61,10 @@
 }
 
 /* iPad Landscape */
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-/* CSS */
-.mobile {
+@media only screen and (min-device-width: 768px) and (max-device-width:
+	1024px) {
+	/* CSS */
+	.mobile {
 		display: none;
 	}
 }
@@ -80,6 +79,7 @@
 		<div class="heading">
 			<strong>Deductor Details</strong>
 		</div>
+
 
 	</div>
 
@@ -104,8 +104,8 @@
 					<h6>
 						<b>State</b>
 					</h6>
-					<input type="text" ng-model="cCctr.search.STATE" class="form-control"
-						placeholder="STATE" style="width: 100%">
+					<input type="text" ng-model="cCctr.search.STATE"
+						class="form-control" placeholder="STATE" style="width: 100%">
 				</div>
 
 				<div class="col-md-3">
@@ -113,18 +113,21 @@
 						<b>City</b>
 
 					</h6>
-					<input type="text" ng-model="cCctr.search.CITY" class="form-control"
-						placeholder="CITY" style="width: 100%">
+					<input type="text" ng-model="cCctr.search.CITY"
+						class="form-control" placeholder="CITY" style="width: 100%">
 				</div>
 
 			</div>
 		</div>
 
-		
+
 		<div class="row" id="hide">
 			<div class="col-md-3" style="margin-left: 75%; margin-top: -35px">
 				<button ng-click="cCctr.searchEntities(true,'deductorDetails')"
 					class="btn btn-success" onclick="scrollWin()">Search</button>
+				<button class="btn btn-primary " type="button" 
+					ng-click="cCctr.generateExcel('apideductorDetails/generateExcel/','DEDUCTORDETAILS')">Export
+					to Excel</button>
 			</div>
 		</div>
 	</div>
@@ -155,14 +158,15 @@
 				</tr>
 			</thead>
 			<tbody>
-			<tr style="color: red" ng-show="cCctr.getEntityListData().length <= 0">
-					<td colspan="14" style="text-align: center;"><b><h3 style="text-align:center;">No data
-					found!!</h3></b></td>
+				<tr style="color: red"
+					ng-show="cCctr.getEntityListData().length <= 0">
+					<td colspan="14" style="text-align: center;"><b><h3
+								style="text-align: center;">No data found!!</h3></b></td>
 				<tr role="row" ng-repeat="a in cCctr.getEntityListData()">
-					<td style="width:1%">{{$index+1}}</td>
-					<td style="width:1%">{{a.TAN}}</td>
-					<td style="width:1%">{{a.STATE}}</td>
-					<td style="width:1%">{{a.CITY}}</td>
+					<td style="width: 1%">{{$index+1}}</td>
+					<td style="width: 1%">{{a.TAN}}</td>
+					<td style="width: 1%">{{a.STATE}}</td>
+					<td style="width: 1%">{{a.CITY}}</td>
 					<!--  <td><a
 						ng-click="cCctr.gotoDetailPage('deductorDetails',a.TAN,'detailDeductorDetails')"
 						style="color: blue" onclick="scrollWin()"><img

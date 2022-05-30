@@ -213,6 +213,12 @@ text-align:center;
 								<input type="text" ng-model="cCctr.search.TAN"
 									class="form-control" placeholder="TAN" style="width: 100%">
 					</div>
+					<div class="col-md-3">
+						<button class="btn btn-primary " type="button"
+							style="margin-top:14%"
+							ng-click="cCctr.generateProcessExcel('apiform27EQDeductee/generateExcel/','regular27EQDeductee')">Export
+							to Excel</button>
+					</div>
 				</div>
 		
 		
@@ -327,6 +333,7 @@ text-align:center;
 							<th >Interest on Late Payment</th>
 							<th >Interest on Late Deduction</th>
 							<th>TAN</th>
+							<th>Comments</th>
 							<th>Status</th>
 							<th >Action</th>
 
@@ -383,6 +390,7 @@ text-align:center;
 							<td style="width:2%">{{a.InterestOnLatePayment}}</td>
 							<td style="width:2%">{{a.InterestOnLateDeduction}}</td>
 							<td style="width:2%">{{a.TAN}}</td>
+							<td style="width: 1%">{{a.comments}}</td>
 							
 							<div>
 						<td ng-if="a.resolved == 0" style="width:2%">Resolved</td>

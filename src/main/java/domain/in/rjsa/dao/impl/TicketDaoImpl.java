@@ -141,4 +141,42 @@ public class TicketDaoImpl extends AbstractDaoForm<Long, Ticket> implements Tick
 		return (Long) criteria.setProjection(Projections.rowCount()).uniqueResult();
 	}
 
+	@Override
+	public List<Ticket> searchExcel(HashMap entity) {
+		Criteria criteria = createEntityCriteria();
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
+		if (entity.get("branchId") != null) {
+			criteria.add(Restrictions.eqOrIsNull("branchId", entity.get("branchId")));
+		}
+		if (entity.get("fromDate") != null) {
+			criteria.add(Restrictions.ge("dateOfOpening",
+					Date.from(ZonedDateTime.parse((String) entity.get("fromDate")).toInstant())));
+		}
+		if (entity.get("toDate") != null) {
+			criteria.add(Restrictions.le("dateOfChange",
+					Date.from(ZonedDateTime.parse((String) entity.get("toDate")).toInstant())));
+		}
+		if (entity.get("status") != null) {
+			criteria.add(Restrictions.eqOrIsNull("status", entity.get("status")));
+		}
+		if (entity.get("form") != null) {
+			criteria.add(Restrictions.eqOrIsNull("form", entity.get("form")));
+		}
+		if (entity.get("fy") != null) {
+			criteria.add(Restrictions.eqOrIsNull("fy", entity.get("fy")));
+		}
+		if (entity.get("remarks") != null) {
+			criteria.add(Restrictions.eqOrIsNull("remarks", entity.get("remarks")));
+		}
+
+		if (entity.get("quarter") != null) {
+			criteria.add(Restrictions.eqOrIsNull("quarter", entity.get("quarter")));
+		}
+		if (entity.get("branchCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("branchCode", entity.get("branchCode")));
+		}
+		criteria.addOrder(Order.desc("dateOfOpening"));
+		return (List<Ticket>) criteria.list();
+	}
+
 }

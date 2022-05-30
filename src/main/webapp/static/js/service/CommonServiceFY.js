@@ -12,6 +12,7 @@ App.factory('CommonServiceFY', [
 		var count = {};
 		var factory = {
 			fetch: fetch,//This will be for fetching the list
+			fetchSearch:fetchSearch,
 			search: search,
 			searchEntities: searchEntities,
 			detail: detail,
@@ -80,6 +81,20 @@ App.factory('CommonServiceFY', [
 
 			return deferred.promise;
 		}
+		
+		function fetchSearch(entity, map, pageNo) {
+				entityList = [];
+				var deferred = $q.defer();
+				$http.get(REST_SERVICE_URI + entity + '/search/get/' + pageNo + '/100/'+map).success(function(data) {
+				entityList = data.entities;
+					deferred.resolve(data);
+				})
+					.error(function(status) {
+						deferred.reject(status);
+					});
+		
+				return deferred.promise;
+			}	
 
 		function detail(entity, detailId, branchCode, fy) {
 			var deferred = $q.defer();

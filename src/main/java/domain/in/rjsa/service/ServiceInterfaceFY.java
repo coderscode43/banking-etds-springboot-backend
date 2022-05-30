@@ -26,6 +26,8 @@ public interface ServiceInterfaceFY <K, E> {
 
 	public List<E> findall(HashMap<String, Object> constrains, int pageNo, int noOfResult);
 
+	public String createUserExcel(LinkedHashMap<String, Object> map);
+
 	
 
 //	List<E> search(HashMap map, Long clientId);

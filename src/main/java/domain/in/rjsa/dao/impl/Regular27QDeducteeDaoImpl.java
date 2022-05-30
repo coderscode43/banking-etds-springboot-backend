@@ -136,5 +136,67 @@ public class Regular27QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27QDed
 //    		criteria.setMaxResults(noOfResult);
 		return (Long) criteria.setProjection(Projections.rowCount()).uniqueResult();
 	}
+	
+	
+	@SuppressWarnings("unchecked")
+	public List<Regular27QDeductee> searchExcel(HashMap entity) {
+		Criteria criteria = createEntityCriteria();
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
+		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
+		// propertyNameValues.put("clientId", clientId);
+//		int pageNo = 0;
+//		int noOfResult = 100;
+		criteria.add(Restrictions.allEq(propertyNameValues));
+
+		if (entity.get("pan") != null) {
+			criteria.add(Restrictions.eqOrIsNull("pan", entity.get("pan")));
+		}
+		if (entity.get("sectionCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("sectionCode", entity.get("sectionCode")));
+		}
+		if (entity.get("fy") != null) {
+			criteria.add(Restrictions.eqOrIsNull("fy", entity.get("fy")));
+		}
+		if (entity.get("name") != null) {
+			criteria.add(Restrictions.eqOrIsNull("name", entity.get("name")));
+		}
+
+		if (entity.get("quarter") != null) {
+			criteria.add(Restrictions.eqOrIsNull("quarter", entity.get("quarter")));
+		}
+		if (entity.get("accNo") != null) {
+			criteria.add(Restrictions.eqOrIsNull("accNo", entity.get("accNo")));
+		}
+		if (entity.get("branchCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("branchCode", entity.get("branchCode")));
+		}
+		if (entity.get("challanHeading") != null) {
+			criteria.add(Restrictions.eqOrIsNull("challanHeading", entity.get("challanHeading")));
+		}
+		if (entity.get("custVendId") != null) {
+			criteria.add(Restrictions.eqOrIsNull("custVendId", entity.get("custVendId")));
+		}
+		if (entity.get("errorDescription") != null) {
+			criteria.add(Restrictions.eqOrIsNull("errorDescription", entity.get("errorDescription")));
+		}
+		if (entity.get("warningDescription") != null) {
+			criteria.add(Restrictions.eqOrIsNull("warningDescription", entity.get("warningDescription")));
+		}
+		if (entity.get("resolved") != null) {
+			criteria.add(Restrictions.eqOrIsNull("resolved", Boolean.valueOf(entity.get("resolved").toString())));
+		}
+		if (entity.get("TAN") != null) {
+			criteria.add(Restrictions.eqOrIsNull("TAN", entity.get("TAN")));
+		}
+		if (entity.get("roCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("roCode", entity.get("roCode")));
+		}
+
+//		criteria.setFirstResult(pageNo * noOfResult);
+//		criteria.setMaxResults(noOfResult);
+
+		criteria.addOrder(Order.desc("date"));
+		return (List<Regular27QDeductee>) criteria.list();
+	}
 
 }

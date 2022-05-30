@@ -30,6 +30,12 @@ public class StaticDataDaoImpl extends AbstractDaoForm<Long, StaticDataModel> im
 		criteria.setMaxResults(resultPerPage);
 		return (List<StaticDataModel>) criteria.list();
 	}
+
+	@Override
+	public List<StaticDataModel> searchExcel(HashMap map) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 }

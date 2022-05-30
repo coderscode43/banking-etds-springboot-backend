@@ -67,5 +67,34 @@ public class DEDUCTORDETAILSDaoImpl extends AbstractDaoTaxo<Long, DEDUCTORDETAIL
 		return (Long) criteria.setProjection(Projections.rowCount()).uniqueResult();
 	}
 
+
+
+
+	@Override
+	public List<DEDUCTORDETAILS> searchExcel(HashMap entity) {
+		Criteria criteria = createEntityCriteria();
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
+		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
+		criteria.add(Restrictions.allEq(propertyNameValues));
+			
+          if(entity.get("TAN")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("TAN" ,String.valueOf((String) entity.get("TAN"))));
+          }
+          if(entity.get("STATE")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("STATE",String.valueOf((String) entity.get("STATE"))));
+          }
+          if(entity.get("CITY")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("CITY",String.valueOf((String) entity.get("CITY"))));
+          }
+          
+          criteria.addOrder(Order.desc("id"));
+//  		criteria.setFirstResult(pageNo * noOfResult);
+//  		criteria.setMaxResults(noOfResult);
+		return (List<DEDUCTORDETAILS>) criteria.list();
+	}
+
 }
 

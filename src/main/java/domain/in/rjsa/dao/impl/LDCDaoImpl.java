@@ -41,6 +41,24 @@ public LDC getByKey(String tan) {
 
 	return (LDC) crit.uniqueResult();
 }
+
+
+@Override
+public List<LDC> searchExcel(HashMap entity) {
+	Criteria criteria = createEntityCriteria();
+	criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
+	Map<String, Object> propertyNameValues = new HashMap<String, Object>();
+//	propertyNameValues.put("TAN", TAN);
+//	criteria.add(Restrictions.allEq(propertyNameValues));
+	
+	 if(entity.get("PAN")!=null)
+     {
+	criteria.add(Restrictions.eqOrIsNull("PAN", entity.get("PAN")));
+     }
+	
+	
+	return (List<LDC>) criteria.list();
+}
 	
 
 }

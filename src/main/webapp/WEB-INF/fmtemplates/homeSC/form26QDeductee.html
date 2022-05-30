@@ -99,6 +99,7 @@ th {
 			<div class="heading">
 				<strong>Form 26Q Deductee Detail</strong>
 			</div>
+
 		</div>
 
 
@@ -161,13 +162,13 @@ th {
 					</div>
 
 					<div class="col-md-3">
-					<h6>
-						<b>Vendor/Customer ID</b>
 						<h6>
-							<input type="text" ng-model="cCctr.search.custVendId"
-								class="form-control" placeholder="Vendor/Customer ID"
-								style="width: 100%">
-				</div>
+							<b>Vendor/Customer ID</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.custVendId"
+									class="form-control" placeholder="Vendor/Customer ID"
+									style="width: 100%">
+					</div>
 					<div class="col-md-3">
 						<h6>
 							<b>Status</b>
@@ -243,6 +244,12 @@ th {
 							<h6>
 								<input type="text" ng-model="cCctr.search.TAN"
 									class="form-control" placeholder="TAN" style="width: 100%">
+					</div>
+					<div class="col-md-3">
+						<button class="btn btn-primary " type="button"
+							style="margin-top:14%"
+							ng-click="cCctr.generateExcel('apiform26QDeductee/generateExcel/','regular26QDeductee')">Export
+							to Excel</button>
 					</div>
 				</div>
 
@@ -342,6 +349,7 @@ th {
 						<th>Interest on Late Payment</th>
 						<th>Interest on Late Deduction</th>
 						<th>TAN</th>
+						<th>Comments</th>
 						<th>Status</th>
 						<th>Action</th>
 
@@ -403,7 +411,8 @@ th {
 						<td style="width: 1%">{{a.InterestOnLatePayment}}</td>
 						<td style="width: 1%">{{a.InterestOnLateDeduction}}</td>
 						<td style="width: 1%">{{a.TAN}}</td>
-						
+						<td style="width: 1%">{{a.comments}}</td>
+
 						<div>
 							<td ng-if="a.resolved == 0" style="width: 1%">Resolved</td>
 							<td ng-if="a.resolved == 1" style="width: 1%">Not Resolved</td>

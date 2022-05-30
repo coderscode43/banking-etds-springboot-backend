@@ -175,11 +175,14 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	public Double InterestOnLateDeduction;
 	
 	
-	@Column(name = "verify")
-	public boolean verify = false;
+//	@Column(name = "verify")
+//	public boolean verify = false;
 	
 	@Column(name = "resolved")
 	public boolean resolved;
+	
+	@Column(name = "comments")
+	public String comments;
 	
 	@Column(name = "remarks")
 	public String remarks;

@@ -1,6 +1,7 @@
 package domain.in.rjsa.service;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public interface ServiceInterfaceForm<K, E> {
@@ -21,6 +22,8 @@ public interface ServiceInterfaceForm<K, E> {
 	public List<String> ajax(String name, String term);
 
 	public E getByKey(K key);
+
+	public String createUserExcel(LinkedHashMap<String, Object> map);
 
 	
 

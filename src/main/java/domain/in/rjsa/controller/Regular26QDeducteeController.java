@@ -1,17 +1,12 @@
 package domain.in.rjsa.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.hibernate.mapping.Array;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +15,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.HandlerMapping;
@@ -29,7 +23,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import domain.in.rjsa.model.form.ListCount;
-import domain.in.rjsa.model.fy.Regular24QDeductee;
 import domain.in.rjsa.model.fy.Regular26QDeductee;
 import domain.in.rjsa.model.fy.Remark;
 import domain.in.rjsa.service.Regular26QDeducteeService;
@@ -37,26 +30,26 @@ import domain.in.rjsa.service.RemarkService;
 
 @Controller
 @RequestMapping("/apiform26QDeductee")
-public class Regular26QDeducteeController<E>
+public class Regular26QDeducteeController
 		extends AbstractControllerFY<Long, Regular26QDeductee, Regular26QDeducteeService> {
-	
+
 	@Autowired
 	Regular26QDeducteeService service;
 	@Autowired
 	RemarkService rService;
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
-	@Autowired
-	@Override
-	public Class<Regular26QDeductee> getEntity() {
-		// TODO Auto-generated method stub
-		return Regular26QDeductee.class;
-	}
 
 	@Override
 	public Regular26QDeducteeService getService() {
 		// TODO Auto-generated method stub
 		return service;
+	}
+
+	@Override
+	public Class<Regular26QDeductee> getEntity() {
+		// TODO Auto-generated method stub
+		return Regular26QDeductee.class;
 	}
 
 	@RequestMapping(value = "/detail/{fy}/{branchCode}/{id}", method = RequestMethod.GET)
@@ -71,7 +64,6 @@ public class Regular26QDeducteeController<E>
 		}
 
 	}
-	@SuppressWarnings("unchecked")
 	public HashMap<String, Object> getDetail(Long id, String fy, Long branchCode) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
@@ -79,7 +71,6 @@ public class Regular26QDeducteeController<E>
 		constrains.put("fy", fy);
 		constrains.put("branchCode", branchCode);
 		HashMap<String, Object> map = new HashMap<>();
-		HashMap<String, Object> frm = new HashMap<String, Object>();
 		map.put("deductee",getService().uniqueSearch(constrains));
 		constrains.remove("id", id);
 		constrains.put("deducteeId",id);
@@ -113,13 +104,30 @@ public class Regular26QDeducteeController<E>
 				// convert JSON string to Map
 				map = mapper.readValue(searchParam, new TypeReference<Map<String, String>>() {
 				});
-				if(map.containsKey("branchCode")) {
-					Long branchCode = Long.valueOf(map.get("branchCode").toString());
-					map.put("branchCode", branchCode);
-				}else if(map.containsKey("roCode")) {
-					Long branchCode = Long.valueOf(map.get("roCode").toString());
-					map.put("roCode", branchCode);
+				if (!"admin".equals(getBranchCode())) {
+					Long b=1L;
+					try {
+						b =Long.valueOf(getBranchCode());
+					}catch (Exception e) {
+						// TODO: handle exception
+					}
+					map.put("branchCode", b);
+				}else{
+					if(map.containsKey("branchCode")) {
+						Long b=1L;
+						try {
+							b =Long.valueOf(map.get("branchCode").toString());
+						}catch (Exception e) {
+							// TODO: handle exception
+						}
+						map.put("branchCode", b);
+					}
 				}
+				if(map.containsKey("roCode")) {
+					Long roCode = Long.valueOf(map.get("roCode").toString());
+					map.put("roCode", roCode);
+				}
+				
 
 				Long count = getService().findallCount(map);
 				List<?> list = getSearch(map, pageNo, resultPerPage);
@@ -139,7 +147,6 @@ public class Regular26QDeducteeController<E>
 			// TODO Auto-generated method stub
 			return getService().search(map);
 		}
-
 	
-
+	
 }

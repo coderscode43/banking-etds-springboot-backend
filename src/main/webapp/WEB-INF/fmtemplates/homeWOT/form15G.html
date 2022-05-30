@@ -72,300 +72,351 @@
 	}
 }
 
-th{
-text-align:center;
+th {
+	text-align: center;
 }
 
 .truncate {
-        display: block;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        width:5%;
-        height:60px;
-        
-    }
-    
-    .ellipsis{
-     max-width: 70px;
-    min-width: 200px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    
-    }
+	display: block;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	width: 5%;
+	height: 60px;
+}
+
+.ellipsis {
+	max-width: 70px;
+	min-width: 200px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
 </style>
 </head>
 <body>
-<div id="page-wrapper" ng-controller="CommonController as cCctr">
-	<div class="container-fluid">
-		<div class="col-md-12 "
-			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
-			<div class="heading">
-				<strong>Form 15G</strong>
-			</div>
-
-
-
-		</div>
-
-
-		<br>
-		<button class="btn btn-primary hidden visible-xs" type="button"
-			data-toggle="collapse" data-target="#collapseExample2"
-			aria-expanded="false" aria-controls="collapseExample">Search</button>
-		<div class="collapse dont-collapse-sm" id="collapseExample2">
-			<div class="row">
-				<div class="form-group">
-
-
-					<div class="col-md-3">
-						<h6>
-							<b>Name</b>
-							<h6>
-								<input type="text" ng-model="cCctr.search.nameofAssesseeDeclarant"
-									class="form-control" placeholder="Name" style="width: 100%">
-					</div>
-					<div class="col-md-3">
-						<h6>
-							<b>PAN</b>
-							<h6>
-								<input type="text" ng-model="cCctr.search.panoftheAssessee"
-									class="form-control" placeholder="PAN" style="width: 100%">
-					</div>
-					<div class="col-md-3">
-						<h6>
-							<b>Account No</b>
-							<h6>
-								<input type="text" ng-model="cCctr.search.accNo"
-									class="form-control" placeholder="Account No" style="width: 100%">
-					</div>
-					
+	<div id="page-wrapper" ng-controller="CommonController as cCctr">
+		<div class="container-fluid">
+			<div class="col-md-12 "
+				style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
+				<div class="heading">
+					<strong>Form 15G</strong>
 				</div>
+
+
+
 			</div>
 
-			<div class=" collapse  panel-collapse" id="collapseExample4">
 
+			<br>
+			<button class="btn btn-primary hidden visible-xs" type="button"
+				data-toggle="collapse" data-target="#collapseExample2"
+				aria-expanded="false" aria-controls="collapseExample">Search</button>
+			<div class="collapse dont-collapse-sm" id="collapseExample2">
 				<div class="row">
-					<div class="col-md-3">
-						<h6>
-							<b>Customer / Vendor No</b>
-							<h6>
-								<input type="text" ng-model="cCctr.search.custVendId"
-									class="form-control" placeholder="Customer / Vendor No"
-									style="width: 100%">
-					</div>
+					<div class="form-group">
 
-					<div class="col-md-3">
-						<h6>
-							<b> Error</b>
+
+						<div class="col-md-3">
 							<h6>
-								<input type="text" ng-model="cCctr.search.error"
-									class="form-control" placeholder="Error"
-									style="width: 100%">
-					</div>
-					<div class="col-md-3">
-						<h6>
-							<b>Warning</b>
+								<b>Name</b>
+								<h6>
+									<input type="text"
+										ng-model="cCctr.search.nameofAssesseeDeclarant"
+										class="form-control" placeholder="Name" style="width: 100%">
+						</div>
+						<div class="col-md-3">
 							<h6>
-								<input type="text" ng-model="cCctr.search.warning"
-									class="form-control" placeholder="Warning"
-									style="width: 100%">
+								<b>PAN</b>
+								<h6>
+									<input type="text" ng-model="cCctr.search.panoftheAssessee"
+										class="form-control" placeholder="PAN" style="width: 100%">
+						</div>
+						<div class="col-md-3">
+							<h6>
+								<b>Account No</b>
+								<h6>
+									<input type="text" ng-model="cCctr.search.accNo"
+										class="form-control" placeholder="Account No"
+										style="width: 100%">
+						</div>
+
 					</div>
 				</div>
-			</div>
-			<div class="row text-right" id="hide">
-				<div class="col-md-3" style="margin-left: 75%; margin-top: -44px">
-					<button
-						ng-click="cCctr.searchFYEntities(true,'form15G','form15G')"
-						class="btn btn-success" onclick="scrollWin()">Search</button>
+
+				<div class=" collapse  panel-collapse" id="collapseExample4">
+
+					<div class="row">
+						<div class="col-md-3">
+							<h6>
+								<b>Customer / Vendor No</b>
+								<h6>
+									<input type="text" ng-model="cCctr.search.custVendId"
+										class="form-control" placeholder="Customer / Vendor No"
+										style="width: 100%">
+						</div>
+
+						<div class="col-md-3">
+							<h6>
+								<b> Error</b>
+								<h6>
+									<input type="text" ng-model="cCctr.search.error"
+										class="form-control" placeholder="Error" style="width: 100%">
+						</div>
+						<div class="col-md-3">
+							<h6>
+								<b>Warning</b>
+								<h6>
+									<input type="text" ng-model="cCctr.search.warning"
+										class="form-control" placeholder="Warning" style="width: 100%">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3">
+							<div class="col-md-3">
+								<button class="btn btn-primary " type="button"
+									style="margin-top: 11%"
+									ng-click="cCctr.generateExcel('apiform15G/generateExcel/','G15')">Export
+									to Excel</button>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<div class="row text-right" id="hide">
+					<div class="col-md-3" style="margin-left: 75%; margin-top: -44px">
+						<button
+							ng-click="cCctr.searchFYEntities(true,'form15G','form15G')"
+							class="btn btn-success" onclick="scrollWin()">Search</button>
 						<button class="btn btn-secondary"
 							style="background-color: #FFA500" data-toggle="collapse"
 							data-target="#collapseExample4" aria-expanded="false"
 							aria-controls="collapseExample">Advance Search</button>
-				</div>
-				<div class="col-md-3">
-					<div class="text-right">
-						
+					</div>
+					<div class="col-md-3">
+						<div class="text-right"></div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<div style="float: right; margin-top: -13px"></div>
+		<div style="float: right; margin-top: -13px"></div>
 
-	<div class="row"></div>
+		<div class="row"></div>
 
-	<div class="row">
-		<div class="table-responsive" style="overflow-x: inherit;width:600%">
-			<!-- 	<div class="col-md-12" style="margin-left:-30px"> -->
-			<table class=" tables table-bordered table-hover  table-striped"
-				role="table"
-				style="font-size: 12px; padding: 5px; margin: 5px;">
+		<div class="row">
+			<div class="table-responsive"
+				style="overflow-x: inherit; width: 600%">
+				<!-- 	<div class="col-md-12" style="margin-left:-30px"> -->
+				<table class=" tables table-bordered table-hover  table-striped"
+					role="table" style="font-size: 12px; padding: 5px; margin: 5px;">
 
-				<thead>
-				<colgroup>
-					<col span="14" style="background-color: #ffffff">
-				</colgroup>
-				<tr>
-				<thead"rowgroup">
-					<tr role="row" style=" background-color: #81b7db;height:40px">
-						<th>Sr. No.</th>
-						<th>Quarter</th>
-						<th>Month</th>
-						<th>Customer /Vendor Id</th>
-						<th>Account No</th>
-						<th>Branch Code</th>
-						<th>Tan No</th>
-						<th>Unique Reference No</th>
-						<th class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="Unique Identification No">Unique Identification No</th>
-						<th class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="Identification number of relevant investment/account, etc.">Identification number of relevant investment/account, etc.</th>
-						<th style="width:1%">Nature of income</th>
-						<th class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="Section under which tax is deductible">Section under which tax is deductible</th>
-						<th>Amount of income</th>
-						<th class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="Name of Assessee (Declarant)">Name of Assessee (Declarant)</th>
-						<th>PAN of the Assessee</th>
-						<th>Aadhaar Number</th>
-						<th>Status</th>
-						<th>Sub-Status</th>
-						<th class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="Previous year (P.Y.) (for which declaration is being made)">Previous year (P.Y.) (for which declaration is being made)</th>
-						<th>Residential Status</th>
-						<th>Country</th>
-						<th style="width:1%">Flat / Door / Building</th>
-						<th  style="width:0.01%" class="ellipsis" data-toggle="tooltip" data-placement="bottom" title="Road / Street / Block / Sector">Road / Street / Block / Sector</th>
-						<th>Pincode</th>
-						<th>Post Office</th>
-						<th>Area/ Locality</th>
-						<th>District</th>
-						<th>State</th>
-						<th>Email</th>
-						<th>Telephone No.</th>
-						<th>Mobile No.</th>
-						<th  class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="Whether assessed to tax under the Income-tax Act, 1961">Whether assessed to tax under the Income-tax Act, 1961</th>
-						<th class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="If yes, latest assessment year for which assessed">If yes, latest assessment year for which assessed</th>
-						<th class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="Estimated income for which this declaration is made">Estimated income for which this declaration is made</th>
-						<th class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="Estimated total income of the P.Y. (including income for which this declaration is made)">Estimated total income of the P.Y. (including income for which this declaration is made)</th>
-						<th>Total No. of Form No. 15G filed</th>
-						<th class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="Aggregate amount of income for which Form No.15G filed">Aggregate amount of income for which Form No.15G filed</th>
-						<th>Date on which Declaration is received</th>
-						<th>Amount of income paid</th>
-						<th class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="Date on which the income has been paid/credited">Date on which the income has been paid/credited</th>
-						<th>Financial Year</th>
-						<th style="width:0.01%">Warning</th>
-						<th style="width:0.01%">Error</th>
-						<!-- <th>Action</th> -->
+					<thead>
+					<colgroup>
+						<col span="14" style="background-color: #ffffff">
+					</colgroup>
+					<tr>
+					<thead"rowgroup">
+						<tr role="row" style="background-color: #81b7db; height: 40px">
+							<th>Sr. No.</th>
+							<th>Quarter</th>
+							<th>Month</th>
+							<th>Customer /Vendor Id</th>
+							<th>Account No</th>
+							<th>Branch Code</th>
+							<th>Tan No</th>
+							<th>Unique Reference No</th>
+							<th class=" ellipsis" data-toggle="tooltip"
+								data-placement="bottom" title="Unique Identification No">Unique
+								Identification No</th>
+							<th class=" ellipsis" data-toggle="tooltip"
+								data-placement="bottom"
+								title="Identification number of relevant investment/account, etc.">Identification
+								number of relevant investment/account, etc.</th>
+							<th style="width: 1%">Nature of income</th>
+							<th class=" ellipsis" data-toggle="tooltip"
+								data-placement="bottom"
+								title="Section under which tax is deductible">Section under
+								which tax is deductible</th>
+							<th>Amount of income</th>
+							<th class=" ellipsis" data-toggle="tooltip"
+								data-placement="bottom" title="Name of Assessee (Declarant)">Name
+								of Assessee (Declarant)</th>
+							<th>PAN of the Assessee</th>
+							<th>Aadhaar Number</th>
+							<th>Status</th>
+							<th>Sub-Status</th>
+							<th class=" ellipsis" data-toggle="tooltip"
+								data-placement="bottom"
+								title="Previous year (P.Y.) (for which declaration is being made)">Previous
+								year (P.Y.) (for which declaration is being made)</th>
+							<th>Residential Status</th>
+							<th>Country</th>
+							<th style="width: 1%">Flat / Door / Building</th>
+							<th style="width: 0.01%" class="ellipsis" data-toggle="tooltip"
+								data-placement="bottom" title="Road / Street / Block / Sector">Road
+								/ Street / Block / Sector</th>
+							<th>Pincode</th>
+							<th>Post Office</th>
+							<th>Area/ Locality</th>
+							<th>District</th>
+							<th>State</th>
+							<th>Email</th>
+							<th>Telephone No.</th>
+							<th>Mobile No.</th>
+							<th class=" ellipsis" data-toggle="tooltip"
+								data-placement="bottom"
+								title="Whether assessed to tax under the Income-tax Act, 1961">Whether
+								assessed to tax under the Income-tax Act, 1961</th>
+							<th class=" ellipsis" data-toggle="tooltip"
+								data-placement="bottom"
+								title="If yes, latest assessment year for which assessed">If
+								yes, latest assessment year for which assessed</th>
+							<th class=" ellipsis" data-toggle="tooltip"
+								data-placement="bottom"
+								title="Estimated income for which this declaration is made">Estimated
+								income for which this declaration is made</th>
+							<th class=" ellipsis" data-toggle="tooltip"
+								data-placement="bottom"
+								title="Estimated total income of the P.Y. (including income for which this declaration is made)">Estimated
+								total income of the P.Y. (including income for which this
+								declaration is made)</th>
+							<th>Total No. of Form No. 15G filed</th>
+							<th class=" ellipsis" data-toggle="tooltip"
+								data-placement="bottom"
+								title="Aggregate amount of income for which Form No.15G filed">Aggregate
+								amount of income for which Form No.15G filed</th>
+							<th>Date on which Declaration is received</th>
+							<th>Amount of income paid</th>
+							<th class=" ellipsis" data-toggle="tooltip"
+								data-placement="bottom"
+								title="Date on which the income has been paid/credited">Date
+								on which the income has been paid/credited</th>
+							<th>Financial Year</th>
+							<th style="width: 0.01%">Warning</th>
+							<th style="width: 0.01%">Error</th>
+							<!-- <th>Action</th> -->
 
 
 
 
-					</tr>
-				</thead>
-				<tbody>
-							<tr style="color: red" ng-show="cCctr.getEntityListDataFY().length <= 0">
-                    <td colspan="20" style="text-align: center;"><b><h3 style="text-align:center;text-align-last: 5;">No data
-                    found!!</h3></b></td>
-                    <td colspan="25" style="text-align: center;"><b><h3 style="text-align:center;text-align-last: 5;margin-right: -100%;">
-                    </h3></b></td>
-            </tr>
-					<tr ng-repeat="a in cCctr.getEntityListDataFY()">
-						<td style="width:1%">{{$index+1}}</td>
-						<td style="width:1%">{{a.quarter}}</td>
-						<td style="width:1%">{{a.month}}</td>
-						<td style="width:1%"> {{a.custVendId}}</td>
-						<td style="width:1%">{{a.accNo}}</td>
-						<td style="width:1%">{{a.branchCode}}</td>
-						<td style="width:1%">{{a.tan}}</td>
-						<td style="width:1%">{{a.uniqueRefNo}}</td>
-						<td style="width:1%">{{a.uniqueIdentificationNo}}</td>
-						<td style="width:1%">{{a.identificationNumberofRelevantInvestmentAccount}}</td>
-						<td  class=" ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.natureofIncome}}">{{a.natureofIncome}}</td>
-						<td style="width:1%">{{a.sectionUnderWhichTaxisDeductible}}</td>
-						<td style="width:1%">{{a.amountofIncome}}</td>
-						<td style="width:1%">{{a.nameofAssesseeDeclarant}}</td>
-						<td style="width:1%"> {{a.panoftheAssessee}}</td>
-						<td style="width:1%">{{a.aadhaarNumber}}</td>
-						<td style="width:1%">{{a.status}}</td>
-						<td style="width:1%">{{a.subStatus}}</td>
-						<td style="width:1%">{{a.previousYearforwhichdeclarationisbeingmade}}</td>
-						<td style="width:1%">{{a.residentialStatus}}</td>
-						<td style="width:1%">{{a.country}}</td>
-						<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.flatDoorBuilding}}">{{a.flatDoorBuilding}}</td>
-						<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.roadStreetBlockSector}}">{{a.roadStreetBlockSector}}</td>
-						<td style="width:1%">{{a.pincode}}</td>
-						<td style="width:1%">{{a.postOffice}}</td>
-						<td style="width:1%">{{a.areaLocality}}</td>
-						<td style="width:1%">{{a.district}}</td>
-						<td style="width:1%">{{a.state}}</td>
-						<td style="width:1%">{{a.email}}</td>
-						<td style="width:1%">{{a.telephoneNo}}</td>
-						<td style="width:1%">{{a.mobileNo}}</td>
-						<td style="width:1%">{{a.whetherAssessedtotaxundertheIncometaxAct1961}}</td>
-						<td style="width:1%">{{a.ifyeslatestassessmentyearforwhichassessed}}</td>
-						<td style="width:1%">{{a.estimatedIncomeforwhichthisdeclarationismade}}</td>
-						<td style="width:1%">{{a.estimatedtotalincomeofthePY}}</td>
-						<td style="width:1%">{{a.totalNoofFormNo15Gfiled}}</td>
-						<td style="width:1%">{{a.aggregateAmountofincomeforwhichFormNo15Gfiled}}</td>
-						<td style="width:1%">{{a.dateonwhichDeclarationisreceived | date:'dd-MM-yyyy'}}</td>
-						<td style="width:1%">{{a.amountofincomepaid}}</td>
-						<td style="width:1%">{{a.dateonwhichtheincomehasbeenpaidcredited | date:'dd-MM-yyyy'}}</td>
-						<td style="width:1%">{{a.fy}}</td>
-						<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.warning}}">{{a.warning}}</td>
-						<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="{{a.error}}">{{a.error}}</td> 
-						<!-- <td><a
+						</tr>
+					</thead>
+					<tbody>
+						<tr style="color: red"
+							ng-show="cCctr.getEntityListDataFY().length <= 0">
+							<td colspan="20" style="text-align: center;"><b><h3
+										style="text-align: center; text-align-last: 5;">No data
+										found!!</h3></b></td>
+							<td colspan="25" style="text-align: center;"><b><h3
+										style="text-align: center; text-align-last: 5; margin-right: -100%;">
+									</h3></b></td>
+						</tr>
+						<tr ng-repeat="a in cCctr.getEntityListDataFY()">
+							<td style="width: 1%">{{$index+1}}</td>
+							<td style="width: 1%">{{a.quarter}}</td>
+							<td style="width: 1%">{{a.month}}</td>
+							<td style="width: 1%">{{a.custVendId}}</td>
+							<td style="width: 1%">{{a.accNo}}</td>
+							<td style="width: 1%">{{a.branchCode}}</td>
+							<td style="width: 1%">{{a.tan}}</td>
+							<td style="width: 1%">{{a.uniqueRefNo}}</td>
+							<td style="width: 1%">{{a.uniqueIdentificationNo}}</td>
+							<td style="width: 1%">{{a.identificationNumberofRelevantInvestmentAccount}}</td>
+							<td class=" ellipsis" data-toggle="tooltip"
+								data-placement="bottom" title="{{a.natureofIncome}}">{{a.natureofIncome}}</td>
+							<td style="width: 1%">{{a.sectionUnderWhichTaxisDeductible}}</td>
+							<td style="width: 1%">{{a.amountofIncome}}</td>
+							<td style="width: 1%">{{a.nameofAssesseeDeclarant}}</td>
+							<td style="width: 1%">{{a.panoftheAssessee}}</td>
+							<td style="width: 1%">{{a.aadhaarNumber}}</td>
+							<td style="width: 1%">{{a.status}}</td>
+							<td style="width: 1%">{{a.subStatus}}</td>
+							<td style="width: 1%">{{a.previousYearforwhichdeclarationisbeingmade}}</td>
+							<td style="width: 1%">{{a.residentialStatus}}</td>
+							<td style="width: 1%">{{a.country}}</td>
+							<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip"
+								data-placement="bottom" title="{{a.flatDoorBuilding}}">{{a.flatDoorBuilding}}</td>
+							<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip"
+								data-placement="bottom" title="{{a.roadStreetBlockSector}}">{{a.roadStreetBlockSector}}</td>
+							<td style="width: 1%">{{a.pincode}}</td>
+							<td style="width: 1%">{{a.postOffice}}</td>
+							<td style="width: 1%">{{a.areaLocality}}</td>
+							<td style="width: 1%">{{a.district}}</td>
+							<td style="width: 1%">{{a.state}}</td>
+							<td style="width: 1%">{{a.email}}</td>
+							<td style="width: 1%">{{a.telephoneNo}}</td>
+							<td style="width: 1%">{{a.mobileNo}}</td>
+							<td style="width: 1%">{{a.whetherAssessedtotaxundertheIncometaxAct1961}}</td>
+							<td style="width: 1%">{{a.ifyeslatestassessmentyearforwhichassessed}}</td>
+							<td style="width: 1%">{{a.estimatedIncomeforwhichthisdeclarationismade}}</td>
+							<td style="width: 1%">{{a.estimatedtotalincomeofthePY}}</td>
+							<td style="width: 1%">{{a.totalNoofFormNo15Gfiled}}</td>
+							<td style="width: 1%">{{a.aggregateAmountofincomeforwhichFormNo15Gfiled}}</td>
+							<td style="width: 1%">{{a.dateonwhichDeclarationisreceived |
+								date:'dd-MM-yyyy'}}</td>
+							<td style="width: 1%">{{a.amountofincomepaid}}</td>
+							<td style="width: 1%">{{a.dateonwhichtheincomehasbeenpaidcredited
+								| date:'dd-MM-yyyy'}}</td>
+							<td style="width: 1%">{{a.fy}}</td>
+							<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip"
+								data-placement="bottom" title="{{a.warning}}">{{a.warning}}</td>
+							<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip"
+								data-placement="bottom" title="{{a.error}}">{{a.error}}</td>
+							<!-- <td><a
 							ng-click="cCctr.gotoDetailFormPage('form15g',a.id,a.fy,a.branchCode,'detailform15G')"
 							style="color: blue" onclick="scrollWin()"><img src="static\img\edit.png"
 								width="22px" height="22px" alt="Details"
 								style="margin-top: 5px; margin-bottom: 5px;" /></a></td> -->
 
-						<!-- <td>{{a.total-a.amountPaid}}</td> -->
+							<!-- <td>{{a.total-a.amountPaid}}</td> -->
 
-					</tr>
+						</tr>
 
-				</tbody>
-			</table>
+					</tbody>
+				</table>
 
-		</div>
-
-		<div class="row" ng-show="cCctr.getNoPages() > 0">
-			<div class="row" align="center">
-				<span ng-show="cCctr.currentPage != 1"> <a
-					ng-click="cCctr.getPages(true,'form15G',cCctr.currentPage-1)"><strong>Previous</strong></a>
-				</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.currentPage}}</strong>&nbsp;
-					of &nbsp;<strong>{{cCctr.getNoPages()}}</strong>
-					&nbsp;&nbsp;&nbsp;&nbsp; <span
-					ng-show="cCctr.currentPage != cCctr.getNoPages()"> <a
-						ng-click="cCctr.getPages(true,'form15G',cCctr.currentPage+1)"><strong>Next</strong></a>
-				</span>
-				</span>
 			</div>
-			<form role="form" name="gotoForm">
+
+			<div class="row" ng-show="cCctr.getNoPages() > 0">
 				<div class="row" align="center">
-					<span>Go to</span> &nbsp;&nbsp;&nbsp; <input
-						style="width: 70px; text-align: center;" type="number"
-						name="pageNo" ng-model="cCctr.currentPage"
-						ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
-						ng-min="1" ng-max="cCctr.getNoPages()" ng-required="true">
-					&nbsp;&nbsp;&nbsp;
-					<button style="height: 25px;"
-						ng-click="gotoForm.submitted=true;cCctr.getPages(gotoForm.$valid,'form15G',cCctr.currentPage)"
-						class="btn btn-primary">Go</button>
-				</div>
-				<div class="row" align="center">
-					<span style="color: red"
-						ng-show="gotoForm.submitted || gotoForm.pageNo.$dirty && gotoForm.pageNo.$invalid">
-						<span class="error" ng-show="gotoForm.pageNo.$error.min">Page
-							No. should not be less than 1.</span> <span class="error"
-						ng-show="gotoForm.pageNo.$error.max">Page No. should not be
-							greater than {{cCctr.getNoPages()}}.</span> <span class="error"
-						ng-show="gotoForm.pageNo.$error.required">Please enter page
-							number.</span>
+					<span ng-show="cCctr.currentPage != 1"> <a
+						ng-click="cCctr.getPages(true,'form15G',cCctr.currentPage-1)"><strong>Previous</strong></a>
+					</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.currentPage}}</strong>&nbsp;
+						of &nbsp;<strong>{{cCctr.getNoPages()}}</strong>
+						&nbsp;&nbsp;&nbsp;&nbsp; <span
+						ng-show="cCctr.currentPage != cCctr.getNoPages()"> <a
+							ng-click="cCctr.getPages(true,'form15G',cCctr.currentPage+1)"><strong>Next</strong></a>
+					</span>
 					</span>
 				</div>
-			</form>
+				<form role="form" name="gotoForm">
+					<div class="row" align="center">
+						<span>Go to</span> &nbsp;&nbsp;&nbsp; <input
+							style="width: 70px; text-align: center;" type="number"
+							name="pageNo" ng-model="cCctr.currentPage"
+							ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
+							ng-min="1" ng-max="cCctr.getNoPages()" ng-required="true">
+						&nbsp;&nbsp;&nbsp;
+						<button style="height: 25px;"
+							ng-click="gotoForm.submitted=true;cCctr.getPages(gotoForm.$valid,'form15G',cCctr.currentPage)"
+							class="btn btn-primary">Go</button>
+					</div>
+					<div class="row" align="center">
+						<span style="color: red"
+							ng-show="gotoForm.submitted || gotoForm.pageNo.$dirty && gotoForm.pageNo.$invalid">
+							<span class="error" ng-show="gotoForm.pageNo.$error.min">Page
+								No. should not be less than 1.</span> <span class="error"
+							ng-show="gotoForm.pageNo.$error.max">Page No. should not
+								be greater than {{cCctr.getNoPages()}}.</span> <span class="error"
+							ng-show="gotoForm.pageNo.$error.required">Please enter
+								page number.</span>
+						</span>
+					</div>
+				</form>
+			</div>
+
+
 		</div>
-
-
-	</div>
 </body>
 </html>

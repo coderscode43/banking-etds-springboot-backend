@@ -18,7 +18,6 @@ import domain.in.rjsa.model.fy.MonthlyChallan;
 @Repository("monthlyChallanDao")
 public class MonthlyChallanDaoImpl extends AbstractDaoFY<Long, MonthlyChallan> implements MonthlyChallanDao{
 	@SuppressWarnings("unchecked")
-	
 	public List<MonthlyChallan> search(HashMap entity) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
@@ -77,5 +76,42 @@ public class MonthlyChallanDaoImpl extends AbstractDaoFY<Long, MonthlyChallan> i
 		criteria.add(Restrictions.eqOrIsNull("challanHeading", entity.get("challanHeading")));
           }  
           return (Long) criteria.setProjection(Projections.rowCount()).uniqueResult();
+	}
+	
+	
+	
+	@SuppressWarnings("unchecked")
+	public List<MonthlyChallan> searchExcel(HashMap entity) {
+		Criteria criteria = createEntityCriteria();
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
+		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
+		//propertyNameValues.put("clientId", clientId);
+		criteria.add(Restrictions.allEq(propertyNameValues));
+		
+          if(entity.get("branchCode")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("branchCode", entity.get("branchCode")));
+          }
+          if(entity.get("monthFY")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("monthFY", entity.get("monthFY")))	;
+          }  
+          if (entity.get("amtAsPerFinacle") != null) {
+        	  criteria.add(Restrictions.eqOrIsNull("amtAsPerFinacle",  Double.valueOf((String)entity.get("amtAsPerFinacle"))));
+  		  }
+           
+          if (entity.get("amtAsPerTaxCalculation") != null) 
+          {
+    			criteria.add(Restrictions.eqOrIsNull("amtAsPerTaxCalculation", Double.valueOf((String) entity.get("amtAsPerTaxCalculation"))));
+          }
+          if(entity.get("challanHeading")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("challanHeading", entity.get("challanHeading")));
+          }  
+          if(entity.get("fy")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("fy", entity.get("fy")));
+          }  
+		return (List<MonthlyChallan>) criteria.list();
 	}
 }

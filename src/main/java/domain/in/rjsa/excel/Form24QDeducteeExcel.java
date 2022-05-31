@@ -396,7 +396,7 @@ public class Form24QDeducteeExcel {
 			sheet.setColumnWidth(31, 4000);
 			row0.getCell(31).setCellValue("Comments");
 			sheet.setColumnWidth(32, 4000);
-			row0.getCell(33).setCellValue("Status");
+			row0.getCell(32).setCellValue("Status");
 			
 
 			

@@ -227,7 +227,7 @@ public class Regular24QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 			if (form24Q.isResolved()) {
 				details.createCell(32).setCellValue("Not Resolved");
 			} else {
-				details.createCell(312).setCellValue("Resolved");
+				details.createCell(32).setCellValue("Resolved");
 			}
 
 			row++;

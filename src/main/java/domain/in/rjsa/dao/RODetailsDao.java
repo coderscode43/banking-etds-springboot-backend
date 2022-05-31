@@ -4,5 +4,7 @@ import domain.in.rjsa.model.form.RODetails;
 
 public interface RODetailsDao extends DaoInterfaceForm<Long, RODetails>{
 
+	public RODetails getByKey(String key);
+
 
 }

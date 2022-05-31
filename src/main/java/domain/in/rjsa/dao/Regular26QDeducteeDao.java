@@ -13,5 +13,8 @@ public interface Regular26QDeducteeDao extends DaoInterfaceFY<Long,Regular26QDed
 	List<Regular26QDeductee> search(HashMap entity, int pageNo, int noOfResult);
 	
 	public Long findallCount(HashMap<String,Object> constrains);
+	
+	public List<Regular26QDeductee> searchExcel(HashMap map);
+
 
 }

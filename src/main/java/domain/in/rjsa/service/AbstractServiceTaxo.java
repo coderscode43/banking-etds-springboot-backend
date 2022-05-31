@@ -20,7 +20,7 @@ public abstract class AbstractServiceTaxo<K extends Serializable, E, D extends D
 		// TODO Auto-generated method stub
 		return getPrimaryDao().findallCount(constrains);
 	}
-	@Override
+	
 	public List<E> search(HashMap map) {
 		// TODO Auto-generated method stub
 		return getPrimaryDao().search(map);

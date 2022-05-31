@@ -15,11 +15,11 @@ import domain.in.rjsa.model.tds.GH15RETURNSTATUS;
 @Repository("GH15RETURNSTATUSDao")
 public class GH15RETURNSTATUSDaoImpl extends AbstractDaoTaxo<Long, GH15RETURNSTATUS> implements GH15RETURNSTATUSDao {
 	@SuppressWarnings("unchecked")
-	public List<GH15RETURNSTATUS> search(HashMap entity, Long clientId) {
+	public List<GH15RETURNSTATUS> search(HashMap entity,int pageNo, int noOfResult) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
-		propertyNameValues.put("clientId", clientId);
+		//propertyNameValues.put("clientId", clientId);
 		criteria.add(Restrictions.allEq(propertyNameValues));
 		
           if(entity.get("TAN")!=null)
@@ -38,7 +38,8 @@ public class GH15RETURNSTATUSDaoImpl extends AbstractDaoTaxo<Long, GH15RETURNSTA
           {
 		criteria.add(Restrictions.eqOrIsNull("QUARTER", entity.get("QUARTER")));
           }
-          
+          criteria.setFirstResult(pageNo * noOfResult);
+  		criteria.setMaxResults(noOfResult);
 	
 		return (List<GH15RETURNSTATUS>) criteria.list();
 	}

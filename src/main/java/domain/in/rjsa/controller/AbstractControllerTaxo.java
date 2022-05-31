@@ -139,7 +139,7 @@ public abstract class AbstractControllerTaxo<K extends Serializable, E extends M
 
 	public List<?> getSearch(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
-		return getService().search(map);
+		return getService().search(map, pageNo, resultPerPage);
 	}
 
 	// ------------------- Search Single Entity ---------------------------------

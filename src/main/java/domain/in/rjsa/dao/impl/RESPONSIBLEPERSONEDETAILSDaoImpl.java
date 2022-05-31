@@ -30,4 +30,10 @@ public class RESPONSIBLEPERSONEDETAILSDaoImpl extends AbstractDaoTaxo<String, RE
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public List<RESPONSIBLEPERSONEDETAILS> search(HashMap entity, int pageNo, int noOfResult) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

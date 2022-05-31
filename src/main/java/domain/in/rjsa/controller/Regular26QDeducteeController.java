@@ -81,7 +81,7 @@ public class Regular26QDeducteeController
 	
 	
 	// ------------------- Search Single Entity ---------------------------------
-		@RequestMapping(value = "/search/{fy}/{branchCode}/{pageNo}/{resultPerPage}/{json}/**", method = RequestMethod.GET)
+		@RequestMapping(value = "/search/get/{pageNo}/{resultPerPage}/{json}/**", method = RequestMethod.GET)
 		public ResponseEntity<?> search(@PathVariable String json, HttpServletRequest request, @PathVariable int pageNo,
 				@PathVariable int resultPerPage) {
 			try {
@@ -104,30 +104,18 @@ public class Regular26QDeducteeController
 				// convert JSON string to Map
 				map = mapper.readValue(searchParam, new TypeReference<Map<String, String>>() {
 				});
-				if (!"admin".equals(getBranchCode())) {
-					Long b=1L;
-					try {
-						b =Long.valueOf(getBranchCode());
-					}catch (Exception e) {
-						// TODO: handle exception
-					}
-					map.put("branchCode", b);
-				}else{
-					if(map.containsKey("branchCode")) {
-						Long b=1L;
-						try {
-							b =Long.valueOf(map.get("branchCode").toString());
-						}catch (Exception e) {
-							// TODO: handle exception
-						}
-						map.put("branchCode", b);
-					}
+				if(map.containsKey("branchCode")) {
+					Long branchCode = Long.valueOf(map.get("branchCode").toString());
+					map.put("branchCode", branchCode);
 				}
 				if(map.containsKey("roCode")) {
 					Long roCode = Long.valueOf(map.get("roCode").toString());
 					map.put("roCode", roCode);
 				}
-				
+				if(map.containsKey("resolved")) {
+					Boolean resolved = Boolean.valueOf(map.get("resolved").toString());
+					map.put("resolved", resolved);
+				}
 
 				Long count = getService().findallCount(map);
 				List<?> list = getSearch(map, pageNo, resultPerPage);
@@ -147,6 +135,6 @@ public class Regular26QDeducteeController
 			// TODO Auto-generated method stub
 			return getService().search(map,pageNo,resultPerPage);
 		}
-	
+
 	
 }

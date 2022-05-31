@@ -17,6 +17,12 @@ public class DEFAULTSUMMARYDaoImpl extends AbstractDaoTaxo<Long, DEFAULTSUMMARY>
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public List<DEFAULTSUMMARY> search(HashMap entity, int pageNo, int noOfResult) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 

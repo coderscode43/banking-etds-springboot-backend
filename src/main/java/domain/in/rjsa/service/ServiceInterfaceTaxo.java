@@ -10,7 +10,7 @@ public interface ServiceInterfaceTaxo<K, E> {
 
 	public Long findallCount(HashMap<String, Object> constrains);
 
-	public List<E> search(HashMap map);
+	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage);
 
 	public E uniqueSearch(HashMap map);
 

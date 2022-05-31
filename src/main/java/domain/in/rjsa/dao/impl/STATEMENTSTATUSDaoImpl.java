@@ -18,7 +18,7 @@ import domain.in.rjsa.dao.STATEMENTSTATUSDao;
 import domain.in.rjsa.model.tds.STATEMENTSTATUS;
 
 @Repository("STATEMENTSTATUSDao")
-public class STATEMENTSTATUSDaoImpl extends AbstractDaoTaxo<Long, STATEMENTSTATUS> implements STATEMENTSTATUSDao{
+public class STATEMENTSTATUSDaoImpl extends AbstractDaoTaxo<Long, STATEMENTSTATUS> implements STATEMENTSTATUSDao {
 	@SuppressWarnings("unchecked")
 	public List<STATEMENTSTATUS> search(HashMap entity, int pageNo, int noOfResult) {
 		Criteria criteria = createEntityCriteria();
@@ -30,40 +30,32 @@ public class STATEMENTSTATUSDaoImpl extends AbstractDaoTaxo<Long, STATEMENTSTATU
 					Date.from(ZonedDateTime.parse((String) entity.get("fromDate")).toInstant())));
 		}
 		if (entity.get("toDate") != null) {
-			criteria.add(
-					Restrictions.le("AS_ON_DATE", Date.from(ZonedDateTime.parse((String) entity.get("toDate")).toInstant())));
+			criteria.add(Restrictions.le("AS_ON_DATE",
+					Date.from(ZonedDateTime.parse((String) entity.get("toDate")).toInstant())));
 		}
-          if(entity.get("TAN")!=null)
-          {
-		criteria.add(Restrictions.eqOrIsNull("TAN" ,entity.get("TAN")));
-          }
-          if(entity.get("FORM")!=null)
-          {
-		criteria.add(Restrictions.eqOrIsNull("FORM",String.valueOf((String) entity.get("FORM"))));
-          }
-          
-          if(entity.get("STATUS")!=null)
-          {
-		criteria.add(Restrictions.eqOrIsNull("STATUS",String.valueOf((String) entity.get("STATUS"))));
-          }
-          if(entity.get("FY")!=null)
-          {
-		criteria.add(Restrictions.eqOrIsNull("FY",String.valueOf((String) entity.get("FY"))));
-          }
-          if(entity.get("QUARTER")!=null)
-          {
-		criteria.add(Restrictions.eqOrIsNull("QUARTER", String.valueOf((String) entity.get("QUARTER"))));
-          }
-          
-          criteria.addOrder(Order.desc("id"));
-  		criteria.setFirstResult(pageNo * noOfResult);
-  		criteria.setMaxResults(noOfResult);
+		if (entity.get("TAN") != null) {
+			criteria.add(Restrictions.eqOrIsNull("TAN", entity.get("TAN")));
+		}
+		if (entity.get("FORM") != null) {
+			criteria.add(Restrictions.eqOrIsNull("FORM", String.valueOf((String) entity.get("FORM"))));
+		}
+
+		if (entity.get("STATUS") != null) {
+			criteria.add(Restrictions.eqOrIsNull("STATUS", String.valueOf((String) entity.get("STATUS"))));
+		}
+		if (entity.get("FY") != null) {
+			criteria.add(Restrictions.eqOrIsNull("FY", String.valueOf((String) entity.get("FY"))));
+		}
+		if (entity.get("QUARTER") != null) {
+			criteria.add(Restrictions.eqOrIsNull("QUARTER", String.valueOf((String) entity.get("QUARTER"))));
+		}
+
+		criteria.addOrder(Order.desc("id"));
+		criteria.setFirstResult(pageNo * noOfResult);
+		criteria.setMaxResults(noOfResult);
 		return (List<STATEMENTSTATUS>) criteria.list();
 	}
-	
-	
-	
-	
+
 	@Override
 	public Long findSearchCount(LinkedHashMap<String, Object> entity) {
 		Criteria criteria = createEntityCriteria();
@@ -71,7 +63,7 @@ public class STATEMENTSTATUSDaoImpl extends AbstractDaoTaxo<Long, STATEMENTSTATU
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
 		criteria.add(Restrictions.allEq(propertyNameValues));
 		if (entity.get("roCode") != null) {
-			criteria.add(Restrictions.eqOrIsNull("roCode",  entity.get("roCode").toString()));
+			criteria.add(Restrictions.eqOrIsNull("roCode", entity.get("roCode").toString()));
 		}
 		if (entity.get("branchName") != null) {
 			criteria.add(Restrictions.eqOrIsNull("branchName", entity.get("branchName").toString()));
@@ -82,12 +74,9 @@ public class STATEMENTSTATUSDaoImpl extends AbstractDaoTaxo<Long, STATEMENTSTATU
 		if (entity.get("branchState") != null) {
 			criteria.add(Restrictions.eqOrIsNull("branchState", entity.get("branchState").toString()));
 		}
-	
+
 		return (Long) criteria.setProjection(Projections.rowCount()).uniqueResult();
 	}
-
-
-
 
 	@Override
 	public List<STATEMENTSTATUS> searchExcel(HashMap entity) {
@@ -95,32 +84,36 @@ public class STATEMENTSTATUSDaoImpl extends AbstractDaoTaxo<Long, STATEMENTSTATU
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
 		criteria.add(Restrictions.allEq(propertyNameValues));
+
 		if (entity.get("fromDate") != null) {
 			criteria.add(Restrictions.ge("AS_ON_DATE",
 					Date.from(ZonedDateTime.parse((String) entity.get("fromDate")).toInstant())));
 		}
 		if (entity.get("toDate") != null) {
-			criteria.add(
-					Restrictions.le("AS_ON_DATE", Date.from(ZonedDateTime.parse((String) entity.get("toDate")).toInstant())));
+			criteria.add(Restrictions.le("AS_ON_DATE",
+					Date.from(ZonedDateTime.parse((String) entity.get("toDate")).toInstant())));
 		}
-          if(entity.get("TAN")!=null)
-          {
-		criteria.add(Restrictions.eqOrIsNull("TAN" ,entity.get("TAN")));
-          }
-          if(entity.get("FORM")!=null)
-          {
-		criteria.add(Restrictions.eqOrIsNull("FORM",String.valueOf((String) entity.get("FORM"))));
-          }
-          if(entity.get("FY")!=null)
-          {
-		criteria.add(Restrictions.eqOrIsNull("FY",String.valueOf((String) entity.get("FY"))));
-          }
-          if(entity.get("QUARTER")!=null)
-          {
-		criteria.add(Restrictions.eqOrIsNull("QUARTER", String.valueOf((String) entity.get("QUARTER"))));
-          }
-          
-          criteria.addOrder(Order.desc("id"));
+		if (entity.get("TAN") != null) {
+			criteria.add(Restrictions.eqOrIsNull("TAN", entity.get("TAN")));
+		}
+		if (entity.get("FORM") != null) {
+			criteria.add(Restrictions.eqOrIsNull("FORM", String.valueOf((String) entity.get("FORM"))));
+		}
+
+		if (entity.get("FY") != null) {
+			if (entity.containsKey("FY")) {
+				String Date = entity.get("FY").toString();
+				String[] parts = Date.split("-");
+				String part1 = parts[0];
+				String part2 = parts[1];
+				criteria.add(Restrictions.eqOrIsNull("FY", part1 + part2));
+			}
+		}
+		if (entity.get("QUARTER") != null) {
+			criteria.add(Restrictions.eqOrIsNull("QUARTER", String.valueOf((String) entity.get("QUARTER"))));
+		}
+
+		criteria.addOrder(Order.desc("id"));
 //  		criteria.setFirstResult(pageNo * noOfResult);
 //  		criteria.setMaxResults(noOfResult);
 		return (List<STATEMENTSTATUS>) criteria.list();

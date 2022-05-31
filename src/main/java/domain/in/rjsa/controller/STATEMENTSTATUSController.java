@@ -1,5 +1,6 @@
 package domain.in.rjsa.controller;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -14,10 +15,11 @@ import domain.in.rjsa.service.STATEMENTSTATUSService;
 
 @Controller
 @RequestMapping("/apistatementStatus")
-public class STATEMENTSTATUSController extends AbstractControllerTaxo<Long, STATEMENTSTATUS, STATEMENTSTATUSService>{
+public class STATEMENTSTATUSController extends AbstractControllerTaxo<Long, STATEMENTSTATUS, STATEMENTSTATUSService> {
 
 	@Autowired
 	STATEMENTSTATUSService service;
+
 	@Override
 	public STATEMENTSTATUSService getService() {
 		// TODO Auto-generated method stub
@@ -29,15 +31,23 @@ public class STATEMENTSTATUSController extends AbstractControllerTaxo<Long, STAT
 		// TODO Auto-generated method stub
 		return STATEMENTSTATUS.class;
 	}
-	
+
 	private final Logger logger = LoggerFactory.getLogger(getClass());
-	
-	
-	
+
 	public List<?> getSearch(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
-		return getService().search(map, pageNo, resultPerPage);
-	}
+		if (map.containsKey("FY")) {
+			String Date = map.get("FY").toString();
+			String[] parts = Date.split("-");
+			String part1 = parts[0];
+			String part2 = parts[1];
 
+			LinkedHashMap<String, Object> d = new LinkedHashMap<String, Object>();
+			d.put("FY", part1 + part2);
+			return getService().search(d, pageNo, resultPerPage);
+		} else {
+			return getService().search(map, pageNo, resultPerPage);
+		}
+	}
 
 }

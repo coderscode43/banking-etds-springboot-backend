@@ -1,4 +1,3 @@
-
 'use strict';
 
 App
@@ -789,21 +788,22 @@ App
 											return data;
 										});
 							}
-							self.searchEntities = function(valid, entity) {
-		if (valid = true) {
-			$.each(self.search, function(key, value) {
-				if (value === "" || value === null) {
-					delete self.search[key];
-				}
-			});
-			if ((self.search['aliasName'] === "" || self.search['aliasName'] === undefined) && !(self.ajaxSearchText === "") && !(self.ajaxSearchText === undefined)) {
-				self.search['aliasName'] = self.ajaxSearchText;
-				self.ajaxSearchText = "";
-			}
-			self.lastSearch = self.search;
-			$state.go("home.search", { "entity": entity, "searchParams": JSON.stringify(self.search) });
-		}
-	}
+							self.searchEntities = function(valid, entity, page) {
+								if (valid = true) {
+									$.each(self.search, function(key, value) {
+										if (value === "" || value === null) {
+											delete self.search[key];
+										}
+									});
+									self.lastSearch = self.search;
+									var param = JSON.stringify(self.search);
+									$state.go("home.search", {
+										"entity": entity,
+										"page": page,
+										"searchParams": param
+									});
+								}
+							}			
 							self.searchFYEntities = function(valid, entity,page
 									) {
 								if (valid = true) {

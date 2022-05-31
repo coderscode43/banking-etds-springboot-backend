@@ -1259,7 +1259,7 @@ App
 					}
 
 					/*self.search = $stateParams.searchParams;*/
-					url = url.concat(self.search);
+					/*url = url.concat(JSON.stringify(self.search));*/
 
 					wait(1000);
 					self.loader = url;

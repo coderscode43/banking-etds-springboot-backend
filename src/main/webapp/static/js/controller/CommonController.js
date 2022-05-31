@@ -1256,11 +1256,11 @@ App
 							self.search = $stateParams.searchParams;
 							url = url.concat(self.search);
 						}
+					}else{
+
+					self.search = $stateParams.searchParams;
+					url = url.concat(JSON.stringify(self.search));
 					}
-
-					/*self.search = $stateParams.searchParams;*/
-					/*url = url.concat(JSON.stringify(self.search));*/
-
 					wait(1000);
 					self.loader = url;
 					window.open(self.loader, "_blank");

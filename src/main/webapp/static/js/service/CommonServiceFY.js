@@ -8,10 +8,12 @@ App.factory('CommonServiceFY', [
 	function($http, $q, restUrl, $stateParams) {
 		var REST_SERVICE_URI = restUrl + 'api';
 		var entityList = [];
+		var resultPerPage = {};
 		var entityData = {};
 		var count = {};
 		var factory = {
 			fetch: fetch,//This will be for fetching the list
+			fetchSearch:fetchSearch,
 			search: search,
 			searchEntities: searchEntities,
 			detail: detail,
@@ -80,6 +82,20 @@ App.factory('CommonServiceFY', [
 
 			return deferred.promise;
 		}
+		
+		function fetchSearch(entity, map, pageNo) {
+				entityList = [];
+				var deferred = $q.defer();
+				$http.get(REST_SERVICE_URI + entity + '/search/get/' + pageNo + '/100/'+map).success(function(data) {
+				entityList = data.entities;
+					deferred.resolve(data);
+				})
+					.error(function(status) {
+						deferred.reject(status);
+					});
+		
+				return deferred.promise;
+			}	
 
 		function detail(entity, detailId, branchCode, fy) {
 			var deferred = $q.defer();
@@ -131,7 +147,7 @@ App.factory('CommonServiceFY', [
 			entityList = [];
 			var deferred = $q.defer();
 			$http.get(
-				REST_SERVICE_URI + entity + '/search/' + fy + '/' + branchCode + '/'
+				REST_SERVICE_URI + entity + '/search/' + $stateParams.fy + '/' + $stateParams.branchCode + '/0/100/'
 				+ map).success(function(data) {
 					count = data.count;
 					entityList = data.entities;
@@ -163,6 +179,22 @@ App.factory('CommonServiceFY', [
 		function getEntity() {
 			return entityData;
 		}
+
+
+   function fetchSearch(entity, map, pageNo,fy,branchCode) {
+				entityList = [];
+				var deferred = $q.defer();
+				$http.get(REST_SERVICE_URI + entity + '/search/' + $stateParams.fy + '/' + $stateParams.branchCode +'/0/100/' + map).success(function(data) {
+				entityList = data.entities;
+					deferred.resolve(data);
+				})
+					.error(function(status) {
+						deferred.reject(status);
+					});
+		
+				return deferred.promise;
+			}
+
 
 		function update(entitySave, entity, fy, branchCode) {
 			var deferred = $q.defer();

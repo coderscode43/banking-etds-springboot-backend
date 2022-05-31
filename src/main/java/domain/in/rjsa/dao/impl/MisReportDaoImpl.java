@@ -33,6 +33,39 @@ public class MisReportDaoImpl extends AbstractDaoFY<Long, MisReport> implements 
 		if (entity.get("reportType") != null) {
 			criteria.add(Restrictions.eqOrIsNull("reportType", entity.get("reportType")));
 		}
+		if (entity.get("branchCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("branchCode", entity.get("branchCode")));
+		}
+		if (entity.get("fy") != null) {
+			criteria.add(Restrictions.eqOrIsNull("fy", entity.get("fy")));
+		}
+		criteria.addOrder(Order.desc("fromDate"));
+		return (List<MisReport>) criteria.list();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<MisReport> searchExcel(HashMap entity) {
+		Criteria criteria = createEntityCriteria();
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
+		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
+		//propertyNameValues.put("clientId", clientId);
+		criteria.add(Restrictions.allEq(propertyNameValues));
+		if (entity.get("fromDate") != null) {
+			criteria.add(Restrictions.eqOrIsNull("fromDate", entity.get("fromDate")));
+		}
+		if (entity.get("toDate") != null) {
+			criteria.add(Restrictions.eqOrIsNull("toDate", entity.get("toDate")));
+		}
+
+		if (entity.get("reportType") != null) {
+			criteria.add(Restrictions.eqOrIsNull("reportType", entity.get("reportType")));
+		}
+		if (entity.get("branchCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("branchCode", entity.get("branchCode")));
+		}
+		if (entity.get("fy") != null) {
+			criteria.add(Restrictions.eqOrIsNull("fy", entity.get("fy")));
+		}
 		criteria.addOrder(Order.desc("fromDate"));
 		return (List<MisReport>) criteria.list();
 	}

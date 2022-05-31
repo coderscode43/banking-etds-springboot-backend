@@ -12,6 +12,12 @@ import domain.in.rjsa.model.form.OrganizationDetails;
 @Repository("OrganizationDetailsDao")
 public class OrganizationDetailsDaoImpl extends AbstractDaoForm<Long, OrganizationDetails> implements OrganizationDetailsDao {
 
+	@Override
+	public List<OrganizationDetails> searchExcel(HashMap map) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 	
 	

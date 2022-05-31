@@ -20,8 +20,9 @@
 		visibility: visible;
 	}
 }
-th{
-text-align:center;
+
+th {
+	text-align: center;
 }
 </style>
 
@@ -69,20 +70,21 @@ text-align:center;
 								</select>
 					</div>
 				</div>
-				<div class="col-md-3" style=" margin-left: -15px;margin-top: 17px;">
-						<button
-							ng-click="cCctr.searchFYEntities(true,'generateReport','generateReport')"
-							class="btn btn-success" onclick="scrollWin()"
-							style="margin-left: 30px;">Search</button>
-							<button type="button" class="btn btn-primary"
-							style="margin-right: 45;" data-toggle="modal" data-target="#add">Add</button>
+				<div class="col-md-6" style="margin-left: -15px; margin-top: 17px;">
+					<button
+						ng-click="cCctr.searchFYEntities(true,'generateReport','generateReport')"
+						class="btn btn-success" onclick="scrollWin()"
+						style="margin-left: 30px;">Search</button>
+					<button type="button" class="btn btn-primary"
+						style="margin-right: 1px;" data-toggle="modal" data-target="#add">Add</button>
+					<button type="button" class="btn btn-primary"
+						ng-click="cCctr.generateProcessExcel('apigenerateReport/generateExcel/','MisReport')">Export
+						to Excel</button>
 
-					</div>
 
-					<div class="text-right">
+				</div>
 
-						
-					</div>
+				<div class="text-right"></div>
 			</div>
 
 			<div class="row" id="search">
@@ -114,9 +116,7 @@ text-align:center;
 				</div>
 				<div style="float: right; margin-top: -13px"></div>
 
-				<div class="row">
-					
-				</div>
+				<div class="row"></div>
 			</div>
 		</div>
 	</div>
@@ -124,9 +124,10 @@ text-align:center;
 
 	<div class="row " style="font-size: 12px">
 		<!-- <div class="table-responsive"> -->
-		<table class="tables table-bordered table-hover table-striped " style="width:100%">
+		<table class="tables table-bordered table-hover table-striped "
+			style="width: 100%">
 			<thead>
-				<tr style="background-color: #81b7db; font-size: 13px;height:40px">
+				<tr style="background-color: #81b7db; font-size: 13px; height: 40px">
 					<th>Sr No</th>
 					<th>Branch Code</th>
 					<th>Financial Year</th>
@@ -140,19 +141,20 @@ text-align:center;
 				</tr>
 			</thead>
 			<tbody>
-			<tr style="color: red" ng-show="cCctr.getEntityListDataFY().length <= 0">
-					<td colspan="14" style="text-align: center;"><b><h3 style="text-align:center;">No data
-					found!!</h3></b></td>
+				<tr style="color: red"
+					ng-show="cCctr.getEntityListDataFY().length <= 0">
+					<td colspan="14" style="text-align: center;"><b><h3
+								style="text-align: center;">No data found!!</h3></b></td>
 				<tr ng-repeat="a in cCctr.getEntityListDataFY()"
 					style="font-size: 13px">
-					<td >{{$index+1}}</td>
+					<td>{{$index+1}}</td>
 					<td>{{a.branchCode}}</td>
 					<td>{{a.fy}}</td>
 					<td>{{a.fromDate | date:'dd-MM-yyyy'}}</td>
 					<td>{{a.toDate | date:'dd-MM-yyyy'}}</td>
 					<td>{{a.reportType}}</td>
 					<td>{{a.userName}}</td>
-					<td style="height:40px">
+					<td style="height: 40px">
 						<button class="btn btn-outline-primary waves-effect waves-light"
 							ng-click="cCctr.download('static/file/generateReport/'+ a.reportType +'.pdf')"
 							style="cursor: pointer; display: block; margin: auto; justify-content: center; font-size: small;">Download
@@ -163,45 +165,45 @@ text-align:center;
 		</table>
 	</div>
 	<div class="row" ng-show="cCctr.getNoPages() > 0">
+		<div class="row" align="center">
+			<span ng-show="cCctr.currentPage != 1"> <a
+				ng-click="cCctr.getPages(true,'generateReport',cCctr.currentPage-1)"><strong>Previous</strong></a>
+			</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.currentPage}}</strong>&nbsp;
+				of &nbsp;<strong>{{cCctr.getNoPages()}}</strong>
+				&nbsp;&nbsp;&nbsp;&nbsp; <span
+				ng-show="cCctr.currentPage != cCctr.getNoPages()"> <a
+					ng-click="cCctr.getPages(true,'generateReport',cCctr.currentPage+1)"><strong>Next</strong></a>
+			</span>
+			</span>
+		</div>
+		<form role="form" name="gotoForm">
 			<div class="row" align="center">
-				<span ng-show="cCctr.currentPage != 1"> <a
-					ng-click="cCctr.getPages(true,'generateReport',cCctr.currentPage-1)"><strong>Previous</strong></a>
-				</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.currentPage}}</strong>&nbsp;
-					of &nbsp;<strong>{{cCctr.getNoPages()}}</strong>
-					&nbsp;&nbsp;&nbsp;&nbsp; <span
-					ng-show="cCctr.currentPage != cCctr.getNoPages()"> <a
-						ng-click="cCctr.getPages(true,'generateReport',cCctr.currentPage+1)"><strong>Next</strong></a>
-				</span>
+				<span>Go to</span> &nbsp;&nbsp;&nbsp; <input
+					style="width: 70px; text-align: center;" type="number"
+					name="pageNo" ng-model="cCctr.currentPage"
+					ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
+					ng-min="1" ng-max="cCctr.getNoPages()" ng-required="true">
+				&nbsp;&nbsp;&nbsp;
+				<button style="height: 25px;"
+					ng-click="gotoForm.submitted=true;cCctr.getPages(gotoForm.$valid,'generateReport',cCctr.currentPage)"
+					class="btn btn-primary">Go</button>
+			</div>
+			<div class="row" align="center">
+				<span style="color: red"
+					ng-show="gotoForm.submitted || gotoForm.pageNo.$dirty && gotoForm.pageNo.$invalid">
+					<span class="error" ng-show="gotoForm.pageNo.$error.min">Page
+						No. should not be less than 1.</span> <span class="error"
+					ng-show="gotoForm.pageNo.$error.max">Page No. should not be
+						greater than {{cCctr.getNoPages()}}.</span> <span class="error"
+					ng-show="gotoForm.pageNo.$error.required">Please enter page
+						number.</span>
 				</span>
 			</div>
-			<form role="form" name="gotoForm">
-				<div class="row" align="center">
-					<span>Go to</span> &nbsp;&nbsp;&nbsp; <input
-						style="width: 70px; text-align: center;" type="number"
-						name="pageNo" ng-model="cCctr.currentPage"
-						ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
-						ng-min="1" ng-max="cCctr.getNoPages()" ng-required="true">
-					&nbsp;&nbsp;&nbsp;
-					<button style="height: 25px;"
-						ng-click="gotoForm.submitted=true;cCctr.getPages(gotoForm.$valid,'generateReport',cCctr.currentPage)"
-						class="btn btn-primary">Go</button>
-				</div>
-				<div class="row" align="center">
-					<span style="color: red"
-						ng-show="gotoForm.submitted || gotoForm.pageNo.$dirty && gotoForm.pageNo.$invalid">
-						<span class="error" ng-show="gotoForm.pageNo.$error.min">Page
-							No. should not be less than 1.</span> <span class="error"
-						ng-show="gotoForm.pageNo.$error.max">Page No. should not be
-							greater than {{cCctr.getNoPages()}}.</span> <span class="error"
-						ng-show="gotoForm.pageNo.$error.required">Please enter page
-							number.</span>
-					</span>
-				</div>
-			</form>
-		</div>
+		</form>
+	</div>
 </div>
 
- 	
+
 <!-- Modal -->
 <div class="modal fade bs-modal-sm" id="add" tabindex="-1"
 	style="background-color: rgba(0, 0, 0, .7);" role="dialog"
@@ -231,8 +233,7 @@ text-align:center;
 								<div class="row">
 									<div class="col-md-4">
 										<div>
-											<label>Section</label>
-											 <select
+											<label>Section</label> <select
 												ng-model="cCctr.entity.reportType" class="form-control"
 												required>
 												<option value=" " ng-selected="true">Select Report
@@ -246,7 +247,7 @@ text-align:center;
 										</div>
 									</div>
 
-								
+
 
 
 

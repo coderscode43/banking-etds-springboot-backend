@@ -1,5 +1,7 @@
 package domain.in.rjsa.service.impl;
 
+import java.util.LinkedHashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +22,12 @@ public class ZonalBranchesServiceImpl extends AbstractServiceForm<Long, ZonalBra
 	public ZonalBranchesDao getPrimaryDao() {
 		// TODO Auto-generated method stub
 		return dao;
+	}
+
+	@Override
+	public String createUserExcel(LinkedHashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

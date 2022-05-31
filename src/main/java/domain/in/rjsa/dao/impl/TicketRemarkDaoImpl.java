@@ -50,4 +50,37 @@ public class TicketRemarkDaoImpl extends AbstractDaoForm<Long, TicketRemark> imp
 		return (List<TicketRemark>) criteria.list();
 	}
 
+	@Override
+	public List<TicketRemark> searchExcel(HashMap entity) {
+		Criteria criteria = createEntityCriteria();
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
+//		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
+//		propertyNameValues.put("clientId", clientId);
+//		criteria.add(Restrictions.allEq(propertyNameValues));
+		
+		
+		if (entity.get("ticketId") != null) {
+			criteria.add(Restrictions.eqOrIsNull("ticketId", entity.get("ticketId")));
+		}
+		if (entity.get("date") != null) {
+			criteria.add(Restrictions.ge("date",
+					Date.from(ZonedDateTime.parse((String) entity.get("date")).toInstant())));
+		}
+		if (entity.get("date") != null) {
+			criteria.add(
+					Restrictions.le("date", Date.from(ZonedDateTime.parse((String) entity.get("date")).toInstant())));
+		}
+          if(entity.get("description")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("description", entity.get("description")));
+          }
+          if(entity.get("userName")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("userName", entity.get("userName")));
+          }
+         
+         criteria.addOrder(Order.desc("date"));
+		return (List<TicketRemark>) criteria.list();
+	}
+
 }

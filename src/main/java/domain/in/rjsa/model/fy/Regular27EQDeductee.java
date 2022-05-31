@@ -34,7 +34,7 @@ public class Regular27EQDeductee extends CommonModelAbstract {
     @Column(name = "deducteeReferenceNo")
 	public Long deducteeReferenceNo;
     @Column(name = "deducteeCode")
-  	public Long deducteeCode;
+  	public String deducteeCode;
     @Column(name = "panofthedeductee")
 	public String panofthedeductee;
     @Column(name = "nameoftheDeductee")
@@ -117,6 +117,9 @@ public class Regular27EQDeductee extends CommonModelAbstract {
 	
 	@Column(name = "resolved")
 	public boolean resolved;
+	
+	@Column(name = "comments")
+	public String comments;
 	
 	
 	/*

@@ -70,6 +70,33 @@ public class BranchDaoImpl extends AbstractDaoForm<Long, Branch> implements Bran
 //		}
 		return (Long) criteria.setProjection(Projections.rowCount()).uniqueResult();
 	}
+
+	@Override
+	public List<Branch> searchExcel(HashMap entity) {
+		Criteria criteria = createEntityCriteria();
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
+		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
+		criteria.add(Restrictions.allEq(propertyNameValues));
+		if (entity.get("roCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("roCode",Long.valueOf((String) entity.get("roCode").toString())));
+		}
+		if (entity.get("branchName") != null) {
+			criteria.add(Restrictions.eqOrIsNull("branchName", entity.get("branchName").toString()));
+		}
+		if (entity.get("branchCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("branchCode",Long.valueOf((String) entity.get("branchCode").toString())));
+		}
+		if (entity.get("branchState") != null) {
+			criteria.add(Restrictions.eqOrIsNull("branchState", entity.get("branchState").toString()));
+		}
+//		if (entity.get("active") != null) {
+//			criteria.add(Restrictions.eqOrIsNull("active", Boolean.valueOf(entity.get("active").toString())));
+//		}
+		criteria.addOrder(Order.desc("id"));
+//		criteria.setFirstResult(pageNo * noOfResult);
+//		criteria.setMaxResults(noOfResult);
+		return (List<Branch>) criteria.list();
+	}
 }
 
 	

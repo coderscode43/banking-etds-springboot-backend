@@ -1,6 +1,7 @@
 package domain.in.rjsa.service.impl;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,6 +73,12 @@ public class LoginServiceImpl extends AbstractServiceForm<Long, Login, LoginDao>
 	public LoginDao getPrimaryDao() {
 		// TODO Auto-generated method stub
 		return dao;
+	}
+
+	@Override
+	public String createUserExcel(LinkedHashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

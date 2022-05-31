@@ -1,6 +1,7 @@
 package domain.in.rjsa.dao.impl;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.hibernate.Criteria;
@@ -22,5 +23,11 @@ public class RESPONSIBLEPERSONEDETAILSDaoImpl extends AbstractDaoTaxo<String, RE
 		crit.add(Restrictions.allEq(propertyNameValues));
 
 		return (RESPONSIBLEPERSONEDETAILS) crit.uniqueResult();
+	}
+
+	@Override
+	public List<RESPONSIBLEPERSONEDETAILS> searchExcel(HashMap map) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

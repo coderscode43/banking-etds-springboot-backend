@@ -1,8 +1,10 @@
 package domain.in.rjsa.controller;
 
+import java.io.File;
 import java.io.IOException;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.sql.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -38,7 +40,6 @@ import domain.in.rjsa.exception.FieldErrorDTO;
 import domain.in.rjsa.model.form.Ajax;
 import domain.in.rjsa.model.form.Branch;
 import domain.in.rjsa.model.form.ListCount;
-import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.fy.Logs;
 import domain.in.rjsa.service.BranchService;
 import domain.in.rjsa.service.LogsService;
@@ -46,7 +47,7 @@ import domain.in.rjsa.web.ApplicationCache;
 
 @Controller
 @RequestMapping("/apibranch")
-public class BranchController extends AbstractController{
+public class BranchController extends AbstractController {
 
 	@Autowired
 	BranchService service;
@@ -100,18 +101,15 @@ public class BranchController extends AbstractController{
 			// convert JSON string to Map
 			map = mapper.readValue(searchParam, new TypeReference<Map<String, String>>() {
 			});
-			
-			
-			
 
 			if (!"admin".equals(getBranchCode())) {
-				Long b=1L;
+				Long b = 1L;
 				try {
-					b =Long.valueOf(getBranchCode());
-				}catch (Exception e) {
+					b = Long.valueOf(getBranchCode());
+				} catch (Exception e) {
 					// TODO: handle exception
 				}
-				map.put("branchCode",b );
+				map.put("branchCode", b);
 			}
 			Long count = service.findSearchCount(map);
 			List<?> list = getSearch(map, pageNo, resultPerPage);
@@ -139,7 +137,9 @@ public class BranchController extends AbstractController{
 		logger.info("Creating new Return instance");
 
 		if ("admin".equals(getBranchCode())) {
-			//service.saveNewUser(entity.get("userName").toString(), entity.get("password").toString(), Long.valueOf(entity.get("branchCode").toString()));
+			// service.saveNewUser(entity.get("userName").toString(),
+			// entity.get("password").toString(),
+			// Long.valueOf(entity.get("branchCode").toString()));
 			entity.remove("userName");
 			entity.remove("password");
 			create(entity);
@@ -227,20 +227,19 @@ public class BranchController extends AbstractController{
 		if (!"admin".equals(getBranchCode())) {
 
 			if (!"admin".equals(getBranchCode())) {
-				Long b=1L;
+				Long b = 1L;
 				try {
-					b =Long.valueOf(getBranchCode());
-				}catch (Exception e) {
+					b = Long.valueOf(getBranchCode());
+				} catch (Exception e) {
 					// TODO: handle exception
 				}
-				constrains.put("branchCode",b );
+				constrains.put("branchCode", b);
 			}
 		}
 
-
 		try {
 			Long count = service.findallCount(constrains);
-			List<?> list = getList(constrains,0, 100);
+			List<?> list = getList(constrains, 0, 100);
 			ListCount send = new ListCount();
 			send.setCount(count);
 			send.setEntities(list);
@@ -251,7 +250,7 @@ public class BranchController extends AbstractController{
 		}
 
 	}
-	
+
 	@RequestMapping(value = "/list/get/{pageNo}/{resultPerPage}", method = RequestMethod.GET)
 	public ResponseEntity<?> listAll(HttpServletRequest request, @PathVariable int pageNo,
 			@PathVariable int resultPerPage) {
@@ -269,39 +268,39 @@ public class BranchController extends AbstractController{
 		}
 
 	}
-	public List<?> getList( int pageNo, int resultPerPage) {
+
+	public List<?> getList(int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
 		if (!"admin".equals(getBranchCode())) {
-			Long b=1L;
+			Long b = 1L;
 			try {
-				b =Long.valueOf(getBranchCode());
-			}catch (Exception e) {
+				b = Long.valueOf(getBranchCode());
+			} catch (Exception e) {
 				// TODO: handle exception
 			}
-			constrains.put("branchCode",b );
+			constrains.put("branchCode", b);
 		}
-		
 
 		return service.findAll(constrains, pageNo, resultPerPage);
 	}
 
-	public List<?> getList(HashMap<String, Object> constrains,int pageNo, int resultPerPage) {
+	public List<?> getList(HashMap<String, Object> constrains, int pageNo, int resultPerPage) {
 		if (!"admin".equals(getBranchCode())) {
-			Long b=1L;
+			Long b = 1L;
 			try {
-				b =Long.valueOf(getBranchCode());
-			}catch (Exception e) {
+				b = Long.valueOf(getBranchCode());
+			} catch (Exception e) {
 				// TODO: handle exception
 			}
-			constrains.put("branchCode",b );
+			constrains.put("branchCode", b);
 		}
 		return service.findAll(constrains, pageNo, resultPerPage);
 	}
 
 	public void addLogs(HashMap<String, Object> entity) {
 
-		//Login l = applicationCache.getLoginDetail(getPrincipal());
+		// Login l = applicationCache.getLoginDetail(getPrincipal());
 		HashMap<String, Object> constrains = new HashMap<>();
 		constrains.put("id", entity.get("id"));
 		Logs log = lservice.uniqueSearch(constrains);
@@ -325,9 +324,96 @@ public class BranchController extends AbstractController{
 	public Class<Branch> getEntity() {
 		return Branch.class;
 	}
+	// ------------------- Generate Excel ---------------------------------
 
-	
-	
-	
+	@RequestMapping(value = "/generateExcel/{json}/**", method = RequestMethod.GET)
+	public void generateExcel(@PathVariable String json, HttpServletRequest request, HttpServletResponse response) {
+		try {
+			final String path = request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE).toString();
+			final String bestMatchingPattern = request.getAttribute(HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE)
+					.toString();
+
+			String arguments = new AntPathMatcher().extractPathWithinPattern(bestMatchingPattern, path);
+
+			String searchParam;
+			if (null != arguments && !arguments.isEmpty()) {
+				searchParam = json + '/' + arguments;
+			} else {
+				searchParam = json;
+			}
+			ObjectMapper mapper = new ObjectMapper();
+
+			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
+
+			// convert JSON string to Map
+			map = mapper.readValue(searchParam, new TypeReference<Map<String, String>>() {
+			});
+			if (!"admin".equals(getBranchCode())) {
+				Long b = 1L;
+				try {
+					b = Long.valueOf(getBranchCode());
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+				map.put("branchCode", b);
+			}else{
+				if(map.containsKey("branchCode")) {
+					Long b=1L;
+					try {
+						b =Long.valueOf(map.get("branchCode").toString());
+					}catch (Exception e) {
+						// TODO: handle exception
+					}
+					map.put("branchCode", b);
+				}
+			}
+
+			String address = service.createUserExcel(map);
+
+			File file = new File(address);
+			response.setContentType("application/vnd.ms-excel");
+			response.setHeader("Content-disposition", "attachment; filename=" + file.getName());
+			Path p = file.toPath();
+			OutputStream out;
+			try {
+
+				out = response.getOutputStream();
+				out.flush();
+				Files.copy(p, out);
+
+				out.close();
+				file.delete();
+			} catch (Exception e) {
+				e.printStackTrace();
+//					logger.error("Error in downloading the " + entity.get("type") + ".xlsx file", e);
+			}
+
+//				try {
+//					StringBuilder fw = new StringBuilder();
+//					for (User user : users) {
+//						fw.append(user.getId() + ";" + user.getName() + ";" + user.getUserName() + ";"
+//								+ user.getDateOfSignup() + "\n");
+//					}
+//					 File file = File.createTempFile("temp", null);
+//					 FileInputStream is =new FileInputStream(file);
+//					 FileWriter fw1 = new FileWriter(file);
+//					 fw1.append(fw.toString());
+//					 fw1.flush();
+//					 fw1.close();
+//					
+//					String mimeType= URLConnection.guessContentTypeFromName("myFile.txt");
+//					response.setContentType(mimeType);
+//					response.addHeader("Content-Disposition","attachment; filename=\"" + "myFile.csv" + "\"");
+//					FileCopyUtils.copy(is, response.getOutputStream());
+//	                response.getOutputStream().flush();
+			//
+//				} catch (IOException e) {
+//					e.printStackTrace();
+//				}
+
+		} catch (Exception e) {
+//				logger.error("Error in listALL", e);
+		}
+	}
 
 }

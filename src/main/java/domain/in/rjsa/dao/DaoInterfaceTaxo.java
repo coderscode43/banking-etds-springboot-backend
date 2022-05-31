@@ -18,5 +18,6 @@ public interface DaoInterfaceTaxo<K, E> {
 	public Long getMaxValue(String name,Map<String, Object> propertyNameValues);
 	public void changeValue(Map<String, Object> propertyNameValuesToUpdate,String operator, Map<String, Object> propertyNameValues);
 	public List<E> searchIn(HashSet set,String property);
+	public List<E> searchExcel(HashMap map);
 
 }

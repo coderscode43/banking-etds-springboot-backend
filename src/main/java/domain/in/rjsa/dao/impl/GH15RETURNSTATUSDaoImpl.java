@@ -42,4 +42,33 @@ public class GH15RETURNSTATUSDaoImpl extends AbstractDaoTaxo<Long, GH15RETURNSTA
 	
 		return (List<GH15RETURNSTATUS>) criteria.list();
 	}
+
+	@Override
+	public List<GH15RETURNSTATUS> searchExcel(HashMap entity) {
+		Criteria criteria = createEntityCriteria();
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
+		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
+//		propertyNameValues.put("clientId", clientId);
+//		criteria.add(Restrictions.allEq(propertyNameValues));
+		
+          if(entity.get("TAN")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("TAN", entity.get("TAN")));
+          }
+          if(entity.get("FORM")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("FORM", entity.get("FORM")));
+          }
+          if(entity.get("RT")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("RT", entity.get("RT")));
+          }
+          if(entity.get("QUARTER")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("QUARTER", entity.get("QUARTER")));
+          }
+          
+	
+		return (List<GH15RETURNSTATUS>) criteria.list();
+	}
 }

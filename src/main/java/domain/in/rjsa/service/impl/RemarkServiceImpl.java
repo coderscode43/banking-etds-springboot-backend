@@ -117,5 +117,11 @@ public class RemarkServiceImpl extends AbstractServiceFY<Long, Remark,RemarkDao>
 		}
 		
 	}
+
+	@Override
+	public String createUserExcel(LinkedHashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

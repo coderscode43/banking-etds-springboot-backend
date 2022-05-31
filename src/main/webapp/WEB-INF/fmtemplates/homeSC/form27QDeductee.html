@@ -68,15 +68,13 @@
 
 
 
-<div id="page-wrapper" ng-controller="CommonWOTController as cWctr">
+<div id="page-wrapper" ng-controller="CommonController as cCctr">
 	<div class="container-fluid">
 		<div class="col-md-12 "
 			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
 			<div class="heading">
 				<strong>Form 27Q Deductee Details</strong>
 			</div>
-
-
 
 		</div>
 
@@ -220,6 +218,11 @@
 								<input type="text" ng-model="cCctr.search.TAN"
 									class="form-control" placeholder="TAN" style="width: 100%">
 					</div>
+					<div class="col-md-3">
+						<button class="btn btn-primary " type="button" style="margin-top: 11%;"
+							ng-click="cCctr.generateExcel('apiform27QDeductee/generateExcel/','regular27QDeductee')">Export
+							to Excel</button>
+					</div>
 				</div>
 			</div>
 
@@ -326,7 +329,8 @@
 						<th>Interest on Short Deduction</th>
 						<th>Interest on Late Payment</th>
 						<th>Interest on Late Deduction</th>
-						<th>TAN </th>
+						<th>TAN</th>
+						<th>Comments</th>
 						<th>Status</th>
 						<th>Action</th>
 					</tr>
@@ -366,7 +370,8 @@
 						<td style="width: 1%">{{a.educationCess}}</td>
 						<td style="width: 1%">{{a.totalTaxDeducted}}</td>
 						<td style="width: 1%">{{a.totalTaxDeposited}}</td>
-						<td style="width: 1%">{{a.dateOfDeduction| date:'dd-MM-yyyy'}}</td>
+						<td style="width: 1%">{{a.dateOfDeduction|
+							date:'dd-MM-yyyy'}}</td>
 						<td style="width: 2%">{{a.rateAtWhichTaxDeducted}}</td>
 						<td class=" ellipsis" data-toggle="tooltip"
 							data-placement="bottom" title="{{a.reasonForNonDeduction}}">{{a.reasonForNonDeduction}}</td>
@@ -395,6 +400,7 @@
 						<td style="width: 2%">{{a.InterestOnLatePayment}}</td>
 						<td style="width: 2%">{{a.InterestOnLateDeduction}}</td>
 						<td style="width: 1%">{{a.TAN}}</td>
+						<td style="width: 1%">{{a.comments}}</td>
 						<div>
 							<td ng-if="a.resolved == 0">Resolved</td>
 							<td ng-if="a.resolved == 1">Not Resolved</td>

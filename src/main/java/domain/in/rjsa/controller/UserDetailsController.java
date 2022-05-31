@@ -1,5 +1,9 @@
 package domain.in.rjsa.controller;
 
+import java.io.File;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.sql.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -7,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -224,6 +229,101 @@ public class UserDetailsController extends AbstractController {
 		log.setUsername(getPrincipal());
 		lservice.save(log);
 
+	}
+	
+	
+	// ------------------- Generate Excel ---------------------------------
+	
+	
+	@RequestMapping(value = "/generateExcel/{json}/**", method = RequestMethod.GET)
+	public void generateExcel(@PathVariable String json, HttpServletRequest request, HttpServletResponse response) {
+		try {
+			final String path = request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE).toString();
+			final String bestMatchingPattern = request.getAttribute(HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE)
+					.toString();
+
+			String arguments = new AntPathMatcher().extractPathWithinPattern(bestMatchingPattern, path);
+
+			String searchParam;
+			if (null != arguments && !arguments.isEmpty()) {
+				searchParam = json + '/' + arguments;
+			} else {
+				searchParam = json;
+			}
+			ObjectMapper mapper = new ObjectMapper();
+
+			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
+			
+
+			// convert JSON string to Map
+			map = mapper.readValue(searchParam, new TypeReference<Map<String, String>>() {
+			});
+			if (!"admin".equals(getBranchCode())) {
+				Long b=1L;
+				try {
+					b =Long.valueOf(getBranchCode());
+				}catch (Exception e) {
+					// TODO: handle exception
+				}
+				map.put("branchCode", b);
+			}else{
+				if(map.containsKey("branchCode")) {
+					Long b=1L;
+					try {
+						b =Long.valueOf(map.get("branchCode").toString());
+					}catch (Exception e) {
+						// TODO: handle exception
+					}
+					map.put("branchCode", b);
+				}
+			}
+
+			String address = getService().createUserExcel(map);
+
+			File file = new File(address);
+			response.setContentType("application/vnd.ms-excel");
+			response.setHeader("Content-disposition", "attachment; filename=" + file.getName());
+			Path p = file.toPath();
+			OutputStream out;
+			try {
+
+				out = response.getOutputStream();
+				out.flush();
+				Files.copy(p, out);
+
+				out.close();
+				file.delete();
+			} catch (Exception e) {
+				e.printStackTrace();
+//				logger.error("Error in downloading the " + entity.get("type") + ".xlsx file", e);
+			}
+
+//			try {
+//				StringBuilder fw = new StringBuilder();
+//				for (User user : users) {
+//					fw.append(user.getId() + ";" + user.getName() + ";" + user.getUserName() + ";"
+//							+ user.getDateOfSignup() + "\n");
+//				}
+//				 File file = File.createTempFile("temp", null);
+//				 FileInputStream is =new FileInputStream(file);
+//				 FileWriter fw1 = new FileWriter(file);
+//				 fw1.append(fw.toString());
+//				 fw1.flush();
+//				 fw1.close();
+//				
+//				String mimeType= URLConnection.guessContentTypeFromName("myFile.txt");
+//				response.setContentType(mimeType);
+//				response.addHeader("Content-Disposition","attachment; filename=\"" + "myFile.csv" + "\"");
+//				FileCopyUtils.copy(is, response.getOutputStream());
+//                response.getOutputStream().flush();
+//
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+
+		} catch (Exception e) {
+//			logger.error("Error in listALL", e);
+		}
 	}
 
 }

@@ -30,5 +30,11 @@ public class LoginDaoImpl extends AbstractDaoForm<Long, Login> implements LoginD
 		return null;
 	}
 
+	@Override
+	public List<Login> searchExcel(HashMap map) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }

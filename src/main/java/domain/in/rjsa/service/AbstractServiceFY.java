@@ -49,11 +49,16 @@ public abstract class AbstractServiceFY<K extends Serializable, E, D extends Dao
 		return getPrimaryDao().findallCount(constrains);
 	}
 
-	@Override
 	public List<E> search(HashMap map) {
 		// TODO Auto-generated method stub
 		return getPrimaryDao().search(map);
 	}
+	
+	public List<E> searchExcel(HashMap map) {
+		// TODO Auto-generated method stub
+		return getPrimaryDao().searchExcel(map);
+	}
+
 
 	@Override
 	public E uniqueSearch(HashMap map) {

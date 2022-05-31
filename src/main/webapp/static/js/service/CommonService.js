@@ -8,11 +8,13 @@ App.factory('CommonService', [
 		function($http, $q, restUrl, $stateParams) {
 			var REST_SERVICE_URI = restUrl + 'api';
 			var entityList = [];
+			var resultPerPage = {};
 			var entityData = {};
 			var loginData = {};// Vaibhav
 			var count = {};
 			var factory = {
 				fetch : fetch,// This will be for fetching the list
+				fetchSearch:fetchSearch,
 				search : search,
 				searchEntities : searchEntities,
 				detail : detail,
@@ -60,6 +62,19 @@ App.factory('CommonService', [
 
 				return deferred.promise;
 			}
+			function fetchSearch(entity, map, pageNo) {
+				entityList = [];
+				var deferred = $q.defer();
+				$http.get(REST_SERVICE_URI + entity + '/search/get/' + pageNo + '/100/'+map).success(function(data) {
+				entityList = data.entities;
+					deferred.resolve(data);
+				})
+					.error(function(status) {
+						deferred.reject(status);
+					});
+		
+				return deferred.promise;
+			}	
 			function deleteById(entity, id) {
 				var deferred = $q.defer();
 				$http.delete(REST_SERVICE_URI + entity + '/delete/'+id)
@@ -160,14 +175,9 @@ App.factory('CommonService', [
 			function searchEntities(entity, map) {
 				entityList = [];
 				var deferred = $q.defer();
-				$http.get(
-						REST_SERVICE_URI + entity + '/search/get/0/100/' + map)
-						.success(function(data) {
-							/* count = 0;-pranay */
+				$http.get(REST_SERVICE_URI + entity + '/search' +'/get/0/100/' + map).success(function(data) {
 							count = data.count;
-							/* resultPerPage = 10; */
-							/* entityList = data;--Pranay */
-							entityList = data.entities;
+						entityList = data.entities;
 							deferred.resolve(data);
 						}).error(function(status) {
 							deferred.reject(status);

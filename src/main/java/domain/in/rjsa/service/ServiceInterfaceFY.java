@@ -16,7 +16,7 @@ public interface ServiceInterfaceFY <K, E> {
 
 	public Long findallCount(HashMap<String, Object> constrains);
 
-	public List<E> search(HashMap map);
+	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage);
 
 	public E uniqueSearch(HashMap map);
 
@@ -25,6 +25,8 @@ public interface ServiceInterfaceFY <K, E> {
 	public List<E> findForm(HashMap<String, Object> constrains, int pageNo, int noOfResult, String type);
 
 	public List<E> findall(HashMap<String, Object> constrains, int pageNo, int noOfResult);
+
+	public String createUserExcel(LinkedHashMap<String, Object> map);
 
 	
 

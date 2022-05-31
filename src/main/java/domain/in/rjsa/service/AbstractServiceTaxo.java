@@ -25,6 +25,11 @@ public abstract class AbstractServiceTaxo<K extends Serializable, E, D extends D
 		// TODO Auto-generated method stub
 		return getPrimaryDao().search(map);
 	}
+	
+	public List<E> searchExcel(HashMap map) {
+		// TODO Auto-generated method stub
+		return getPrimaryDao().searchExcel(map);
+	}
 
 	@Override
 	public E uniqueSearch(HashMap map) {

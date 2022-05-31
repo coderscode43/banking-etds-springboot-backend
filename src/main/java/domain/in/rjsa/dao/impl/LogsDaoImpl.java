@@ -82,4 +82,36 @@ public class LogsDaoImpl extends AbstractDaoForm<Long, Logs> implements LogsDao{
 //		}
 		return (Long) criteria.setProjection(Projections.rowCount()).uniqueResult();
 	}
+
+	@Override
+	public List<Logs> searchExcel(HashMap entity) {
+		Criteria criteria = createEntityCriteria();
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
+		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
+		criteria.add(Restrictions.allEq(propertyNameValues));
+          if(entity.get("username")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("username", entity.get("username")));
+          }
+          if(entity.get("entity")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("entity", entity.get("entity")));
+          }
+          if(entity.get("ipaddrs")!=null)
+          {
+		criteria.add(Restrictions.eqOrIsNull("ipaddrs", entity.get("ipaddrs")));
+          }      
+      	if (entity.get("fromDate") != null) {
+			criteria.add(Restrictions.ge("date",
+					Date.from(ZonedDateTime.parse((String) entity.get("fromDate")).toInstant())));
+		}
+		if (entity.get("toDate") != null) {
+			criteria.add(
+					Restrictions.le("date", Date.from(ZonedDateTime.parse((String) entity.get("toDate")).toInstant())));
+		}  
+		criteria.addOrder(Order.desc("id"));
+//		criteria.setFirstResult(pageNo * noOfResult);
+//		criteria.setMaxResults(noOfResult);
+		return (List<Logs>) criteria.list();
+	}
 }

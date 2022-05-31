@@ -3,6 +3,7 @@ package domain.in.rjsa.dao.impl;
 import java.sql.Date;
 import java.time.ZonedDateTime;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractDaoFY;
 import domain.in.rjsa.dao.Regular24QDeducteeDao;
+import domain.in.rjsa.model.fy.Logs;
 import domain.in.rjsa.model.fy.Regular24QDeductee;
 
 @Repository("regular24QDeducteeDao")
@@ -71,7 +73,7 @@ public class Regular24QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular24QDed
 			criteria.add(Restrictions.eqOrIsNull("TAN", entity.get("TAN")));
 		}
 		if (entity.get("roCode") != null) {
-			criteria.add(Restrictions.eqOrIsNull("roCode", entity.get("roCode")));
+			criteria.add(Restrictions.eqOrIsNull("roCode", Long.parseLong(entity.get("roCode").toString())));
 		}
 		criteria.setFirstResult(pageNo * noOfResult);
 		criteria.setMaxResults(noOfResult);
@@ -126,11 +128,72 @@ public class Regular24QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular24QDed
 			criteria.add(Restrictions.eqOrIsNull("TAN", entity.get("TAN")));
 		}
 		if (entity.get("roCode") != null) {
-			criteria.add(Restrictions.eqOrIsNull("roCode", entity.get("roCode")));
+			criteria.add(Restrictions.eqOrIsNull("roCode", Long.parseLong(entity.get("roCode").toString())));
 		}
 //           criteria.setFirstResult(pageNo * noOfResult);
 //    		criteria.setMaxResults(noOfResult);
 		return (Long) criteria.setProjection(Projections.rowCount()).uniqueResult();
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Regular24QDeductee> searchExcel(HashMap entity) {
+//		int pageNo = 0;
+//		int noOfResult = 100;
+		Criteria criteria = createEntityCriteria();
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
+		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
+		// propertyNameValues.put("clientId", clientId);
+		criteria.add(Restrictions.allEq(propertyNameValues));
+
+		if (entity.get("name") != null) {
+			criteria.add(Restrictions.eqOrIsNull("name", entity.get("name")));
+		}
+		if (entity.get("sectionCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("sectionCode", entity.get("sectionCode")));
+		}
+
+		if (entity.get("pan") != null) {
+			criteria.add(Restrictions.eqOrIsNull("pan", entity.get("pan")));
+		}
+		if (entity.get("fy") != null) {
+			criteria.add(Restrictions.eqOrIsNull("fy", entity.get("fy")));
+		}
+		if (entity.get("quarter") != null) {
+			criteria.add(Restrictions.eqOrIsNull("quarter", entity.get("quarter")));
+		}
+
+		if (entity.get("branchCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("branchCode", entity.get("branchCode")));
+		}
+		if (entity.get("accNo") != null) {
+			criteria.add(Restrictions.eqOrIsNull("accNo", entity.get("accNo")));
+		}
+		if (entity.get("challanHeading") != null) {
+			criteria.add(Restrictions.eqOrIsNull("challanHeading", entity.get("challanHeading")));
+		}
+		if (entity.get("staffId") != null) {
+			criteria.add(Restrictions.eqOrIsNull("staffId", entity.get("staffId")));
+		}
+		if (entity.get("warningDescription") != null) {
+			criteria.add(Restrictions.eqOrIsNull("warningDescription", entity.get("warningDescription")));
+		}
+		if (entity.get("errorDescription") != null) {
+			criteria.add(Restrictions.eqOrIsNull("errorDescription", entity.get("errorDescription")));
+		}
+		if (entity.get("resolved") != null) {
+			criteria.add(Restrictions.eqOrIsNull("resolved", Boolean.valueOf(entity.get("resolved").toString())));
+		}
+		if (entity.get("TAN") != null) {
+			criteria.add(Restrictions.eqOrIsNull("TAN", entity.get("TAN")));
+		}
+		if (entity.get("roCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("roCode",Long.parseLong(entity.get("roCode").toString())));
+		}
+//		criteria.setFirstResult(pageNo * noOfResult);
+//		criteria.setMaxResults(noOfResult);
+		return (List<Regular24QDeductee>) criteria.list();
+	}
+
+	
 
 }

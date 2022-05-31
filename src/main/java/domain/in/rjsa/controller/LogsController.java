@@ -163,13 +163,12 @@ public class LogsController extends AbstractControllerForm<Long, Logs, LogsServi
 	@Override
 	public LogsService getService() {
 		// TODO Auto-generated method stub
-		return null;
+		return service;
 	}
 
 	@Override
 	public Class<Logs> getEntity() {
 		// TODO Auto-generated method stub
-		return null;
+		return Logs.class;
 	}
-
 }

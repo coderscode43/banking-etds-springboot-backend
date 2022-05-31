@@ -1258,7 +1258,7 @@ App
 						}
 					}else{
 
-					self.search = $stateParams.searchParams;
+					/*self.search = $stateParams.searchParams;*/
 					url = url.concat(JSON.stringify(self.search));
 					}
 					wait(1000);

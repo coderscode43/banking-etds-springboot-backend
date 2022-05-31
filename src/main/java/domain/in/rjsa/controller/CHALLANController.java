@@ -12,7 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -49,8 +52,8 @@ public class CHALLANController extends AbstractControllerTaxo<String, CHALLAN, C
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
+	// get file from system folder
 	@RequestMapping(value = "/files/{deductee}/{certificate}/{fy}/{q}/{pan}", method = RequestMethod.GET)
-
 	public @ResponseBody ResponseEntity<?> download(HttpServletRequest request, HttpServletResponse response,
 			@PathVariable String deductee, @PathVariable String certificate, @PathVariable String fy,
 			@PathVariable String q, @PathVariable String pan) {
@@ -58,8 +61,8 @@ public class CHALLANController extends AbstractControllerTaxo<String, CHALLAN, C
 			logger.info("Get Certificate for  " + pan);
 			response.setContentType("application/zip, application/octet-stream");
 
-			String pdfFileName = pan;
-
+			String pdfFileName = pan+"_"+q+"_"+fy;
+			System.out.println(pdfFileName);
 			String zipPath = System.getProperty("user.home") + "/download/" + fy + "/" + q + "/" + deductee + "/"
 					+ pdfFileName + ".pdf";
 			System.out.println(zipPath);
@@ -67,7 +70,8 @@ public class CHALLANController extends AbstractControllerTaxo<String, CHALLAN, C
 			response.setHeader("Content-Disposition", "attachment; filename=\"" + pdfFileName + "\"");
 			File file = new File(zipPath);
 			try {
-				if (file.exists());
+				if (file.exists())
+					;
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				return new ResponseEntity<>("File Not Found", HttpStatus.BAD_REQUEST);
@@ -90,5 +94,26 @@ public class CHALLANController extends AbstractControllerTaxo<String, CHALLAN, C
 
 		}
 	}
+
+	// get file from project folder
+//	@RequestMapping(value = "/files/{deductee}/{certificate}/{fy}/{q}/{pan}", method = RequestMethod.GET)
+//	public ResponseEntity<InputStreamResource> getFile(HttpServletRequest request, HttpServletResponse response,
+//			@PathVariable String deductee, @PathVariable String certificate, @PathVariable String fy,
+//			@PathVariable String q, @PathVariable String pan) {
+//		try {
+//			String pdfFileName = pan;
+//			File file = new File(getClass().getClassLoader()
+//					.getResource("file/" + fy + "/" + q + "/" + deductee + "/" + pdfFileName + ".pdf").getPath());
+//			HttpHeaders respHeaders = new HttpHeaders();
+//			MediaType mediaType = MediaType.parseMediaType("application/pdf");
+//			respHeaders.setContentType(mediaType);
+//			respHeaders.setContentLength(file.length());
+//			respHeaders.setContentDispositionFormData("attachment", file.getName());
+//			InputStreamResource isr = new InputStreamResource(new FileInputStream(file));
+//			return new ResponseEntity<InputStreamResource>(isr, respHeaders, HttpStatus.OK);
+//		} catch (Exception e) {
+//			return new ResponseEntity<InputStreamResource>(HttpStatus.NOT_FOUND);
+//		}
+//	}
 
 }

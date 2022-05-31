@@ -1,9 +1,5 @@
-
 package domain.in.rjsa.dao.impl;
 
-import java.sql.Date;
-import java.time.ZonedDateTime;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,13 +19,12 @@ public class Regular27QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27QDed
 		implements Regular27QDeducteeDao {
 
 	@SuppressWarnings("unchecked")
-	public List<Regular27QDeductee> search(HashMap entity) {
+	public List<Regular27QDeductee> search(HashMap entity, int pageNo, int noOfResult) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
 		// propertyNameValues.put("clientId", clientId);
-		int pageNo = 0;
-		int noOfResult = 100;
+		
 		criteria.add(Restrictions.allEq(propertyNameValues));
 
 		if (entity.get("pan") != null) {
@@ -73,7 +68,7 @@ public class Regular27QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27QDed
 			criteria.add(Restrictions.eqOrIsNull("TAN", entity.get("TAN")));
 		}
 		if (entity.get("roCode") != null) {
-			criteria.add(Restrictions.eqOrIsNull("roCode", Long.parseLong(entity.get("roCode").toString())));
+			criteria.add(Restrictions.eqOrIsNull("roCode", entity.get("roCode")));
 		}
 
 		criteria.setFirstResult(pageNo * noOfResult);
@@ -130,7 +125,7 @@ public class Regular27QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27QDed
 			criteria.add(Restrictions.eqOrIsNull("TAN", entity.get("TAN")));
 		}
 		if (entity.get("roCode") != null) {
-			criteria.add(Restrictions.eqOrIsNull("roCode", Long.parseLong(entity.get("roCode").toString())));
+			criteria.add(Restrictions.eqOrIsNull("roCode", entity.get("roCode")));
 		}
 //           criteria.setFirstResult(pageNo * noOfResult);
 //    		criteria.setMaxResults(noOfResult);
@@ -189,7 +184,7 @@ public class Regular27QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27QDed
 			criteria.add(Restrictions.eqOrIsNull("TAN", entity.get("TAN")));
 		}
 		if (entity.get("roCode") != null) {
-			criteria.add(Restrictions.eqOrIsNull("roCode", Long.parseLong(entity.get("roCode").toString())));
+			criteria.add(Restrictions.eqOrIsNull("roCode", entity.get("roCode")));
 		}
 
 //		criteria.setFirstResult(pageNo * noOfResult);

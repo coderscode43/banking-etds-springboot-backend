@@ -19,6 +19,12 @@ public class RemarkDaoImpl extends AbstractDaoFY<Long, Remark> implements Remark
 		return null;
 	}
 
+	@Override
+	public List<Remark> search(HashMap entity, int pageNo, int noOfResult) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 
 }

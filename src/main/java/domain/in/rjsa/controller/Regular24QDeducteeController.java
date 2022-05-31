@@ -30,7 +30,7 @@ import domain.in.rjsa.service.RemarkService;
 
 @Controller
 @RequestMapping("/apiform24QDeductee")
-public class Regular24QDeducteeController
+public class Regular24QDeducteeController<E>
 		extends AbstractControllerFY<Long, Regular24QDeductee, Regular24QDeducteeService> {
 
 	@Autowired
@@ -38,7 +38,6 @@ public class Regular24QDeducteeController
 	@Autowired
 	RemarkService rService;
 	private final Logger logger = LoggerFactory.getLogger(getClass());
-	
 
 	@Override
 	public Regular24QDeducteeService getService() {
@@ -64,6 +63,7 @@ public class Regular24QDeducteeController
 		}
 
 	}
+
 	public HashMap<String, Object> getDetail(Long id, String fy, Long branchCode) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
@@ -71,84 +71,69 @@ public class Regular24QDeducteeController
 		constrains.put("fy", fy);
 		constrains.put("branchCode", branchCode);
 		HashMap<String, Object> map = new HashMap<>();
-		map.put("deductee",getService().uniqueSearch(constrains));
+		map.put("deductee", getService().uniqueSearch(constrains));
 		constrains.remove("id", id);
-		constrains.put("deducteeId",id);
+		constrains.put("deducteeId", id);
 		List<Remark> remark = rService.findForm(constrains, 0, 100,"24Qform");
 		map.put("remark",remark);
-		return map; 
+		return map;
 	}
 	
-	
+
 	// ------------------- Search Single Entity ---------------------------------
-		@RequestMapping(value = "/search/get/{pageNo}/{resultPerPage}/{json}/**", method = RequestMethod.GET)
-		public ResponseEntity<?> search(@PathVariable String json, HttpServletRequest request, @PathVariable int pageNo,
-				@PathVariable int resultPerPage) {
-			try {
-				final String path = request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE).toString();
-				final String bestMatchingPattern = request.getAttribute(HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE)
-						.toString();
+	@RequestMapping(value = "/search/get/{pageNo}/{resultPerPage}/{json}/**", method = RequestMethod.GET)
+	public ResponseEntity<?> search(@PathVariable String json, HttpServletRequest request, @PathVariable int pageNo,
+			@PathVariable int resultPerPage) {
+		try {
+			final String path = request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE).toString();
+			final String bestMatchingPattern = request.getAttribute(HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE)
+					.toString();
 
-				String arguments = new AntPathMatcher().extractPathWithinPattern(bestMatchingPattern, path);
+			String arguments = new AntPathMatcher().extractPathWithinPattern(bestMatchingPattern, path);
 
-				String searchParam;
-				if (null != arguments && !arguments.isEmpty()) {
-					searchParam = json + '/' + arguments;
-				} else {
-					searchParam = json;
-				}
-				ObjectMapper mapper = new ObjectMapper();
+			String searchParam;
+			if (null != arguments && !arguments.isEmpty()) {
+				searchParam = json + '/' + arguments;
+			} else {
+				searchParam = json;
+			}
+			ObjectMapper mapper = new ObjectMapper();
 
-				LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
+			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
 
-				// convert JSON string to Map
-				map = mapper.readValue(searchParam, new TypeReference<Map<String, String>>() {
-				});
-				if (!"admin".equals(getBranchCode())) {
-					Long b=1L;
-					try {
-						b =Long.valueOf(getBranchCode());
-					}catch (Exception e) {
-						// TODO: handle exception
-					}
-					map.put("branchCode", b);
-				}else{
-					if(map.containsKey("branchCode")) {
-						Long b=1L;
-						try {
-							b =Long.valueOf(map.get("branchCode").toString());
-						}catch (Exception e) {
-							// TODO: handle exception
-						}
-						map.put("branchCode", b);
-					}
-				}
-				
-				
-				if(map.containsKey("roCode")) {
-					Long roCode = Long.valueOf(map.get("roCode").toString());
-					map.put("roCode", roCode);
-				}
-				
-
-				Long count = getService().findallCount(map);
-				List<?> list = getSearch(map, pageNo, resultPerPage);
-				ListCount send = new ListCount();
-				send.setCount(count);
-				send.setEntities(list);
-
-				return new ResponseEntity<>(send, HttpStatus.OK);
-			} catch (Exception e) {
-				logger.error("Error in listALL", e);
-				return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+			// convert JSON string to Map
+			map = mapper.readValue(searchParam, new TypeReference<Map<String, String>>() {
+			});
+			if(map.containsKey("branchCode")) {
+				Long branchCode = Long.valueOf(map.get("branchCode").toString());
+				map.put("branchCode", branchCode);
+			}
+			if(map.containsKey("roCode")) {
+				Long roCode = Long.valueOf(map.get("roCode").toString());
+				map.put("roCode", roCode);
+			}
+			if(map.containsKey("resolved")) {
+				Boolean resolved = Boolean.valueOf(map.get("resolved").toString());
+				map.put("resolved", resolved);
 			}
 
+			Long count = getService().findallCount(map);
+			List<?> list = getSearch(map, pageNo, resultPerPage);
+			ListCount send = new ListCount();
+			send.setCount(count);
+			send.setEntities(list);
+
+			return new ResponseEntity<>(send, HttpStatus.OK);
+		} catch (Exception e) {
+			logger.error("Error in listALL", e);
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
-		public List<?> getSearch(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
-			// TODO Auto-generated method stub
-			return getService().search(map);
-		}
-	
-	
+	}
+
+	public List<?> getSearch(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+		// TODO Auto-generated method stub
+		return getService().search(map,pageNo,resultPerPage);
+	}
+
 }

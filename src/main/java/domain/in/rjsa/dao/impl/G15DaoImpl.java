@@ -16,7 +16,7 @@ import domain.in.rjsa.model.fy.G15;
 public class G15DaoImpl extends AbstractDaoFY<Long, G15>
 implements G15Dao{
 
-	public List<G15> search(HashMap entity) {
+	public List<G15> search(HashMap entity,int pageNo,int resultPerPage) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();

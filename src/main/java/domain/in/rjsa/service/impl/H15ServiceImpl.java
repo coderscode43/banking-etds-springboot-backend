@@ -296,4 +296,10 @@ implements H15Service {
 	
 
 }
+
+	@Override
+	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+		// TODO Auto-generated method stub
+		return dao.search(map, pageNo, resultPerPage);
+	}
 }

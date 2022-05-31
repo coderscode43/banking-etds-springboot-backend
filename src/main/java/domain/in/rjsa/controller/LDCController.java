@@ -22,7 +22,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import domain.in.rjsa.model.form.ListCount;
-import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.tds.LDC;
 import domain.in.rjsa.service.LDCService;
 
@@ -71,8 +70,9 @@ public class LDCController extends AbstractControllerTaxo<String, LDC, LDCServic
 //		constrains.put("branchCode", branchCode);
 		return getService().findAll(constrains, pageNo, resultPerPage);
 	}
-	@RequestMapping(value = "/search/{fy}/{branchCode}/{json}", method = RequestMethod.GET)
-	public ResponseEntity<?> search(@PathVariable String fy, @PathVariable Long branchCode, @PathVariable String json) {
+	@RequestMapping(value = "/search/{fy}/{branchCode}/{pageNo}/{resultPerPage}/{json}", method = RequestMethod.GET)
+	public ResponseEntity<?> search(@PathVariable String fy, @PathVariable Long branchCode, @PathVariable String json, HttpServletRequest request, @PathVariable int pageNo,
+			@PathVariable int resultPerPage) {
 		try {
 			ObjectMapper mapper = new ObjectMapper();
 			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
@@ -86,7 +86,7 @@ public class LDCController extends AbstractControllerTaxo<String, LDC, LDCServic
 //			map.put("fy", fy);
 //			map.put("branchCode", branchCode);
 			Long count = getService().findallCount(map);
-			List<?> list = getSearch(map);
+			List<?> list = getSearch(map, 0, 100);
 			ListCount send = new ListCount();
 			send.setCount(count);
 			send.setEntities(list);
@@ -99,10 +99,14 @@ public class LDCController extends AbstractControllerTaxo<String, LDC, LDCServic
 
 	}
 
-	public List<?> getSearch(LinkedHashMap<String, Object> map) {
-		//Login l = applicationCache.getLoginDetail(getPrincipal());
-		return getService().search(map);
+	
+
+	public List<?> getSearch(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+		// TODO Auto-generated method stub
+		return getService().search(map, pageNo, resultPerPage);
 	}
+	
+	
 	@RequestMapping(value = "/searchEntity/{fy}/{branchCode}", method = RequestMethod.POST)
 	public ResponseEntity<?> searchEntity(@RequestBody LinkedHashMap<String, Object> map, @PathVariable String fy,
 			@PathVariable Long branchCode) {

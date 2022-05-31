@@ -130,7 +130,7 @@ public class Regular27QDeducteeController
 
 		public List<?> getSearch(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
 			// TODO Auto-generated method stub
-			return getService().search(map);
+			return getService().search(map,pageNo,resultPerPage);
 		}
 	
 	

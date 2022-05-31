@@ -285,6 +285,12 @@ public class Regular27EQDeducteeServiceImpl extends AbstractServiceFY<Long, Regu
 		}
 
 	}
+
+	@Override
+	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+		// TODO Auto-generated method stub
+		return dao.search(map, pageNo, resultPerPage);
+	}
 	
 
 }

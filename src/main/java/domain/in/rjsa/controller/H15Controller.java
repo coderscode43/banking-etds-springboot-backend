@@ -123,7 +123,7 @@ public class H15Controller <E> extends AbstractControllerFY<Long, H15, H15Servic
 	}
 	public List<?> getSearch(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
-		return getService().search(map);
+		return getService().search(map,pageNo,resultPerPage);
 	}
 	
 	

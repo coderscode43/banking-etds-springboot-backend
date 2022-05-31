@@ -125,8 +125,8 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 
 
 
-	@RequestMapping(value = "/search/{fy}/{branchCode}/{json}", method = RequestMethod.GET)
-	public ResponseEntity<?> search(@PathVariable String fy, @PathVariable Long branchCode,
+	@RequestMapping(value = "/search/{fy}/{branchCode}/{pageNo}/{resultPerPage}/{json}", method = RequestMethod.GET)
+	public ResponseEntity<?> search(@PathVariable String fy, @PathVariable Long branchCode, @PathVariable int pageNo,@PathVariable int resultPerPage,
 			@PathVariable String json) {
 		try {
 			ObjectMapper mapper = new ObjectMapper();

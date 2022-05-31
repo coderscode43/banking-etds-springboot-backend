@@ -20,7 +20,7 @@ import domain.in.rjsa.model.tds.LDC;
 import domain.in.rjsa.service.AbstractServiceTaxo;
 import domain.in.rjsa.service.LDCService;
 
-@Transactional()
+@Transactional("transactionManager")
 @Service("LDCService")
 public class LDCServiceImpl extends AbstractServiceTaxo<String, LDC, LDCDao> implements LDCService{
 	@Autowired
@@ -39,6 +39,13 @@ public class LDCServiceImpl extends AbstractServiceTaxo<String, LDC, LDCDao> imp
 			// TODO Auto-generated method stub
 			return dao.getByKey(tan);
 		}
+		
+		@Override
+		public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+			// TODO Auto-generated method stub
+			return dao.search(map, pageNo, resultPerPage);
+		}
+		
 		public String createUserExcel(LinkedHashMap<String, Object> map) {
 			List<LDC> listUsers = searchExcel(map);
 
@@ -159,6 +166,9 @@ public class LDCServiceImpl extends AbstractServiceTaxo<String, LDC, LDCDao> imp
 			}
 
 		}
+		
+
+		
 
 
 	}

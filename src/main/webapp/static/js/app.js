@@ -148,11 +148,11 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 			url : "/listSearch/:entity/:page/:searchParams",
 			params: {
 				entity: null,
-				page:null,
+				page : null,
 				searchParams:null
 			   },
 			   templateUrl : function($stateParams) {
-					return 'index/list/homeSC/'+$stateParams.page;
+					return 'index/list/homeSC/'+$stateParams.entity +'/'+$stateParams.page;
 					/*return 'index/list/homeSC/'+$stateParams.entity +'/'+$stateParams.page;*/
 				},
 				resolve : {
@@ -256,7 +256,7 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 				searchParams:null
 			   },
 			   templateUrl : function($stateParams) {
-					return 'index/list/homeWOT/'+$stateParams.page;
+					return 'index/list/homeWOT/'+$stateParams.entity +'/'+$stateParams.page;
 				},
 				resolve : {
 					list : function($q, $state,CommonServiceFY,$stateParams) {

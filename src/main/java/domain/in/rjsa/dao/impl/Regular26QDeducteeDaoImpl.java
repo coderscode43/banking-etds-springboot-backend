@@ -1,14 +1,11 @@
 package domain.in.rjsa.dao.impl;
 
-import java.sql.Date;
-import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.hibernate.Criteria;
-import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
@@ -20,9 +17,8 @@ import domain.in.rjsa.model.fy.Regular26QDeductee;
 @Repository("regular26QDeducteeDao")
 public class Regular26QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular26QDeductee> implements Regular26QDeducteeDao {
 	@SuppressWarnings("unchecked")
-	public List< Regular26QDeductee> search(HashMap entity) {
-			int pageNo = 0 ;
-		int noOfResult = 100;
+	public List< Regular26QDeductee> search(HashMap entity, int pageNo, int noOfResult) {
+			
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
@@ -152,23 +148,7 @@ public class Regular26QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular26QDed
 		return (Long) criteria.setProjection(Projections.rowCount()).uniqueResult();
 	}
 	
-	@Override
-	public List<Regular26QDeductee> search(HashMap entity, int pageNo, int noOfResult) {
-		Criteria criteria = createEntityCriteria();
-		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
-		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
-		criteria.add(Restrictions.allEq(propertyNameValues));
-		
-		
-		
-//		if (entity.get("active") != null) {
-//			criteria.add(Restrictions.eqOrIsNull("active", Boolean.valueOf(entity.get("active").toString())));
-//		}
-		criteria.addOrder(Order.desc("id"));
-		criteria.setFirstResult(pageNo * noOfResult);
-		criteria.setMaxResults(noOfResult);
-		return (List<Regular26QDeductee>) criteria.list();
-	}
+	
 	
 	@Override
 	public Long findSearchCount(LinkedHashMap<String, Object> entity) {
@@ -241,7 +221,7 @@ public class Regular26QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular26QDed
    			criteria.add(Restrictions.eqOrIsNull("TAN",  entity.get("TAN")));
    		}
            if (entity.get("roCode") != null) {
-   			criteria.add(Restrictions.eqOrIsNull("roCode",  Long.parseLong(entity.get("roCode").toString())));
+   			criteria.add(Restrictions.eqOrIsNull("roCode",  entity.get("roCode")));
    			
    		}
 //           criteria.setFirstResult(pageNo * noOfResult);

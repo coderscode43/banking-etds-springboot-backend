@@ -16,7 +16,7 @@ import domain.in.rjsa.model.fy.H15;
 public class H15DaoImpl extends AbstractDaoFY<Long, H15>
 implements H15Dao{
 
-	public List<H15> search(HashMap entity) {
+	public List<H15> search(HashMap entity, int pageNo, int noOfResult) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
@@ -56,6 +56,8 @@ implements H15Dao{
 		if (entity.get("branchCode") != null) {
 			criteria.add(Restrictions.eqOrIsNull("branchCode", entity.get("branchCode")));
 		}
+		criteria.setFirstResult(pageNo * noOfResult);
+		criteria.setMaxResults(noOfResult);
 		return (List<H15>) criteria.list();
 }
 	

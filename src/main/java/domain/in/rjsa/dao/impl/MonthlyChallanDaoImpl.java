@@ -18,7 +18,7 @@ import domain.in.rjsa.model.fy.MonthlyChallan;
 @Repository("monthlyChallanDao")
 public class MonthlyChallanDaoImpl extends AbstractDaoFY<Long, MonthlyChallan> implements MonthlyChallanDao{
 	@SuppressWarnings("unchecked")
-	public List<MonthlyChallan> search(HashMap entity) {
+	public List<MonthlyChallan> search(HashMap entity, int pageNo, int noOfResult) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
@@ -45,6 +45,10 @@ public class MonthlyChallanDaoImpl extends AbstractDaoFY<Long, MonthlyChallan> i
           {
 		criteria.add(Restrictions.eqOrIsNull("challanHeading", entity.get("challanHeading")));
           }  
+          
+          criteria.addOrder(Order.desc("branchCode"));
+			criteria.setFirstResult(pageNo * noOfResult);
+			criteria.setMaxResults(noOfResult);
 		return (List<MonthlyChallan>) criteria.list();
 	}
 	

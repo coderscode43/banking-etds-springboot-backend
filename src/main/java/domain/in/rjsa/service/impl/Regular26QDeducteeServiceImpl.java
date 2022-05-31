@@ -1,9 +1,9 @@
 package domain.in.rjsa.service.impl;
 
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -18,29 +18,44 @@ import com.ibm.icu.text.SimpleDateFormat;
 
 import domain.in.rjsa.dao.Regular26QDeducteeDao;
 import domain.in.rjsa.excel.Form26QDeducteeExcel;
+import domain.in.rjsa.model.fy.Regular24QDeductee;
 import domain.in.rjsa.model.fy.Regular26QDeductee;
 import domain.in.rjsa.service.AbstractServiceFY;
 import domain.in.rjsa.service.Regular26QDeducteeService;
+
 @Transactional("transactionManager")
 @Service("regular26QDeducteeService")
-public class Regular26QDeducteeServiceImpl extends AbstractServiceFY<Long, Regular26QDeductee, Regular26QDeducteeDao> implements Regular26QDeducteeService{
+public class Regular26QDeducteeServiceImpl extends AbstractServiceFY<Long, Regular26QDeductee, Regular26QDeducteeDao>
+		implements Regular26QDeducteeService {
 
-	@Autowired 
+	@Autowired
 	Regular26QDeducteeDao dao;
-	
+
 	Form26QDeducteeExcel form26QDeduceteeExcel;
 	public static String path;
 	public String ExcelFile;
-	
+
 	@Override
 	public Regular26QDeducteeDao getPrimaryDao() {
 		// TODO Auto-generated method stub
 		return dao;
 	}
 
+//	@Override
+	// public Regular26QDeductee getByKey(Long branchCode) {
+	// TODO Auto-generated method stub
+	// return dao.getByKey(branchCode);
+	// }
 	@Override
 	public Regular26QDeductee getByKey(Long id) {
+		// TODO Auto-generated method stub
 		return dao.getByKey(id);
+	}
+
+	@Override
+	public Long findallCount(HashMap<String, Object> constrains) {
+		// TODO Auto-generated method stub
+		return getPrimaryDao().findallCount(constrains);
 	}
 
 	public String createUserExcel(LinkedHashMap<String, Object> map) {
@@ -250,6 +265,7 @@ public class Regular26QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 			} else {
 				details.createCell(36).setCellValue("Resolved");
 			}
+			
 
 			row++;
 
@@ -270,4 +286,9 @@ public class Regular26QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 
 	}
 
+	@Override
+	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+		// TODO Auto-generated method stub
+		return dao.search(map, pageNo, resultPerPage);
+	}
 }

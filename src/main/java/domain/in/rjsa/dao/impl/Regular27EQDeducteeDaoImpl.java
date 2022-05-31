@@ -1,7 +1,5 @@
 package domain.in.rjsa.dao.impl;
 
-import java.sql.Date;
-import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,12 +19,11 @@ public class Regular27EQDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27EQD
 		implements Regular27EQDeducteeDao {
 
 	@SuppressWarnings("unchecked")
-	public List<Regular27EQDeductee> search(HashMap entity) {
+	public List<Regular27EQDeductee> search(HashMap entity, int pageNo, int noOfResult) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
-		int pageNo = 0;
-		int noOfResult = 100;
+		
 		// propertyNameValues.put("clientId", clientId);
 		criteria.add(Restrictions.allEq(propertyNameValues));
 
@@ -76,12 +73,13 @@ public class Regular27EQDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27EQD
 			criteria.add(Restrictions.eqOrIsNull("TAN", entity.get("TAN")));
 		}
 		if (entity.get("roCode") != null) {
-			criteria.add(Restrictions.eqOrIsNull("roCode", Long.parseLong(entity.get("roCode").toString())));
+			criteria.add(Restrictions.eqOrIsNull("roCode", entity.get("roCode")));
 		}
-		criteria.setFirstResult(pageNo * noOfResult);
-		criteria.setMaxResults(noOfResult);
+		
 
 		criteria.addOrder(Order.desc("dateofReceivedDebited"));
+		criteria.setFirstResult(pageNo * noOfResult);
+		criteria.setMaxResults(noOfResult);
 		return (List<Regular27EQDeductee>) criteria.list();
 
 	}
@@ -138,7 +136,7 @@ public class Regular27EQDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27EQD
 			criteria.add(Restrictions.eqOrIsNull("TAN", entity.get("TAN")));
 		}
 		if (entity.get("roCode") != null) {
-			criteria.add(Restrictions.eqOrIsNull("roCode", Long.parseLong(entity.get("roCode").toString())));
+			criteria.add(Restrictions.eqOrIsNull("roCode", entity.get("roCode")));
 		}
 //           criteria.setFirstResult(pageNo * noOfResult);
 //    		criteria.setMaxResults(noOfResult);
@@ -202,8 +200,7 @@ public class Regular27EQDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27EQD
 			criteria.add(Restrictions.eqOrIsNull("TAN", entity.get("TAN")));
 		}
 		if (entity.get("roCode") != null) {
-			/* criteria.add(Restrictions.eqOrIsNull("roCode", entity.get("roCode"))); */
-			criteria.add( Restrictions.eqOrIsNull( "roCode", Long.valueOf(entity.get("roCode").toString()))); 
+			criteria.add(Restrictions.eqOrIsNull("roCode", entity.get("roCode")));
 		}
 //		criteria.setFirstResult(pageNo * noOfResult);
 //		criteria.setMaxResults(noOfResult);

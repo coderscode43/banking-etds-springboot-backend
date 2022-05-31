@@ -1,6 +1,5 @@
 package domain.in.rjsa.service.impl;
 
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
@@ -17,21 +16,26 @@ import org.springframework.transaction.annotation.Transactional;
 import com.ibm.icu.text.SimpleDateFormat;
 
 import domain.in.rjsa.dao.Regular24QDeducteeDao;
+import domain.in.rjsa.dao.RemarkDao;
 import domain.in.rjsa.excel.Form24QDeducteeExcel;
 import domain.in.rjsa.model.fy.Regular24QDeductee;
 import domain.in.rjsa.service.AbstractServiceFY;
 import domain.in.rjsa.service.Regular24QDeducteeService;
+
 @Transactional("transactionManager")
 @Service("regular24QDeducteeService")
-public class Regular24QDeducteeServiceImpl extends AbstractServiceFY<Long, Regular24QDeductee, Regular24QDeducteeDao> implements Regular24QDeducteeService{
+public class Regular24QDeducteeServiceImpl extends AbstractServiceFY<Long, Regular24QDeductee, Regular24QDeducteeDao>
+		implements Regular24QDeducteeService {
 
-	@Autowired 
+	@Autowired
 	Regular24QDeducteeDao dao;
-	
+	@Autowired
+	RemarkDao rDao;
+
 	Form24QDeducteeExcel form24QDeduceteeExcel;
 	public static String path;
 	public String ExcelFile;
-	
+
 	@Override
 	public Regular24QDeducteeDao getPrimaryDao() {
 		// TODO Auto-generated method stub
@@ -40,6 +44,7 @@ public class Regular24QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 
 	@Override
 	public Regular24QDeductee getByKey(Long id) {
+		// TODO Auto-generated method stub
 		return dao.getByKey(id);
 	}
 
@@ -227,9 +232,14 @@ public class Regular24QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 			if (form24Q.isResolved()) {
 				details.createCell(32).setCellValue("Not Resolved");
 			} else {
-				details.createCell(32).setCellValue("Resolved");
+				details.createCell(312).setCellValue("Resolved");
 			}
+			
 
+
+
+
+			
 			row++;
 
 		}
@@ -247,6 +257,12 @@ public class Regular24QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 			e1.printStackTrace();
 		}
 
+	}
+
+	@Override
+	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+		// TODO Auto-generated method stub
+		return dao.search(map, pageNo, resultPerPage);
 	}
 
 }

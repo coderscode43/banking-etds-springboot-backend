@@ -1,7 +1,5 @@
 package domain.in.rjsa.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -17,7 +15,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.HandlerMapping;
@@ -26,7 +23,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import domain.in.rjsa.model.form.ListCount;
-import domain.in.rjsa.model.fy.Regular24QDeductee;
 import domain.in.rjsa.model.fy.Regular27EQDeductee;
 import domain.in.rjsa.model.fy.Remark;
 import domain.in.rjsa.service.Regular27EQDeducteeService;
@@ -130,7 +126,7 @@ public class Regular27EQDeducteeController extends AbstractControllerFY<Long, Re
 
 		public List<?> getSearch(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
 			// TODO Auto-generated method stub
-			return getService().search(map);
+			return getService().search(map,pageNo,resultPerPage);
 		}
 	
 	

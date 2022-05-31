@@ -10,14 +10,14 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractDaoFY;
-import domain.in.rjsa.dao.AbstractDaoForm;
 import domain.in.rjsa.dao.MisReportDao;
 import domain.in.rjsa.model.fy.MisReport;
 
 @Repository("misReportDao")
 public class MisReportDaoImpl extends AbstractDaoFY<Long, MisReport> implements MisReportDao {
 	@SuppressWarnings("unchecked")
-	public List<MisReport> search(HashMap entity, Long clientId) {
+	
+	public List<MisReport> search(HashMap entity, int pageNo, int noOfResult) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
@@ -40,6 +40,8 @@ public class MisReportDaoImpl extends AbstractDaoFY<Long, MisReport> implements 
 			criteria.add(Restrictions.eqOrIsNull("fy", entity.get("fy")));
 		}
 		criteria.addOrder(Order.desc("fromDate"));
+		criteria.setFirstResult(pageNo * noOfResult);
+		criteria.setMaxResults(noOfResult);
 		return (List<MisReport>) criteria.list();
 	}
 	
@@ -69,4 +71,6 @@ public class MisReportDaoImpl extends AbstractDaoFY<Long, MisReport> implements 
 		criteria.addOrder(Order.desc("fromDate"));
 		return (List<MisReport>) criteria.list();
 	}
+
+	
 }

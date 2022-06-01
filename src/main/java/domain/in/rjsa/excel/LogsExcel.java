@@ -324,6 +324,24 @@ public class LogsExcel {
 
 	private void studentDetailExcel(SXSSFWorkbook wbs2) {
 		try {
+			int part = 1;
+			initializeSheet("Logs-1");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public Sheet initializeSheet(String name) {
+//		createStylematch1();
+//		createStylematch2();
+//		createStylematch3();
+//		createStylematch4();
+//		createStylematch5();
+//		createstylematch6();
+//		stylematchblank();
+		try {
 			Sheet sheet = wbs.createSheet("logs");
 			Row row0 = sheet.createRow(0);
 
@@ -331,6 +349,7 @@ public class LogsExcel {
 				row0.createCell(i);
 				row0.getCell(i).setCellStyle(styleMatch1);
 			}
+			
 			sheet.setColumnWidth(0, 2000);
 			row0.getCell(0).setCellValue("Sr no.");
 			sheet.setColumnWidth(1, 4000);
@@ -347,10 +366,13 @@ public class LogsExcel {
 			row0.getCell(6).setCellValue("Action");
 			
 
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+
+			return sheet;
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+		
+		return null;
 	}
 
 	public static void main(String[] args) {

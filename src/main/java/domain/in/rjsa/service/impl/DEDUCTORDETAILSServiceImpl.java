@@ -73,10 +73,12 @@ public String ExcelFile;
 		this.ExcelFile = file.getPath() + "/TDS-" + timestamp + "-DeductorDetailsExcel.xlsx";
 
 		int row = 1;
+		int part=1;
 
+		Workbook wb = deductorDetailsExcel.getWorkbook();
+		Sheet DeductorDetails = wb.getSheet("DeductorDetails-"+ part);
 		for (DEDUCTORDETAILS deductorDet : listUsers) {
-			Workbook wb = deductorDetailsExcel.getWorkbook();
-			Sheet DeductorDetails = wb.getSheet("DeductorDetails");
+			
 			Row details = DeductorDetails.createRow(row);
 			details.createCell(0).setCellValue(row);
 
@@ -96,8 +98,13 @@ public String ExcelFile;
 				details.createCell(3).setCellValue(deductorDet.getCITY());
 			}
 			
+			if (row > 1000000) {
+				part++;
+				wb = deductorDetailsExcel.getWorkbook();
+				DeductorDetails = deductorDetailsExcel.initializeSheet("DeductorDetails-" + part);
+				row =0;
+			}
 			row++;
-
 		}
 		deductorDetailsExcel.close();
 		return ExcelFile;

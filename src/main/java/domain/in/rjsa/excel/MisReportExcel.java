@@ -322,12 +322,19 @@ public class MisReportExcel {
 		return wbs;
 	}
 
-	private void studentDetailExcel(SXSSFWorkbook wbs2) {
+	public Sheet initializeSheet(String name) {
+//		createStylematch1();
+//		createStylematch2();
+//		createStylematch3();
+//		createStylematch4();
+//		createStylematch5();
+//		createstylematch6();
+//		stylematchblank();
 		try {
-			Sheet sheet = wbs.createSheet("misReport");
+			Sheet sheet = wbs.createSheet("misReport-1");
 			Row row0 = sheet.createRow(0);
 
-			for (int i = 0; i < 31; i++) {
+			for (int i = 0; i < 7; i++) {
 				row0.createCell(i);
 				row0.getCell(i).setCellStyle(styleMatch1);
 			}
@@ -345,6 +352,18 @@ public class MisReportExcel {
 			row0.getCell(5).setCellValue("Report Type");
 			sheet.setColumnWidth(6, 4000);
 			row0.getCell(6).setCellValue("User Name");
+
+			return sheet;
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+		
+		return null;
+	}
+	private void studentDetailExcel(SXSSFWorkbook wbs2) {
+		try {
+			int part = 1;
+			initializeSheet("misReport-1");
 			
 		} catch (Exception e) {
 			e.printStackTrace();

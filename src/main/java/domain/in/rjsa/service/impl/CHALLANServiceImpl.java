@@ -74,10 +74,13 @@ public class CHALLANServiceImpl extends AbstractServiceTaxo<String, CHALLAN, CHA
 		this.ExcelFile = file.getPath() + "/TDS-" + timestamp + "-Challan.xlsx";
 
 		int row = 1;
-
+		int part = 1;
+		
+		Workbook wb = challanExcel.getWorkbook();
+		Sheet chln = wb.getSheet("challan-" +part);
+		
 		for (CHALLAN challan : listUsers) {
-			Workbook wb = challanExcel.getWorkbook();
-			Sheet chln = wb.getSheet("challan");
+			
 			Row details = chln.createRow(row);
 			details.createCell(0).setCellValue(row);
 
@@ -113,6 +116,12 @@ public class CHALLANServiceImpl extends AbstractServiceTaxo<String, CHALLAN, CHA
 				details.createCell(6).setCellValue(challan.getCHALLAN_MISMATCH());
 			}
 
+			if (row > 1000000) {
+				part++;
+				wb = challanExcel.getWorkbook();
+				chln = challanExcel.initializeSheet("challan-" + part);
+				row =0;
+			}
 			row++;
 
 		}

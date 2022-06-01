@@ -20,17 +20,19 @@ import domain.in.rjsa.excel.Form27EQDeducteeExcel;
 import domain.in.rjsa.model.fy.Regular27EQDeductee;
 import domain.in.rjsa.service.AbstractServiceFY;
 import domain.in.rjsa.service.Regular27EQDeducteeService;
+
 @Transactional("transactionManager")
 @Service("regular27EQDeducteeService")
-public class Regular27EQDeducteeServiceImpl extends AbstractServiceFY<Long, Regular27EQDeductee, Regular27EQDeducteeDao> implements Regular27EQDeducteeService{
+public class Regular27EQDeducteeServiceImpl extends AbstractServiceFY<Long, Regular27EQDeductee, Regular27EQDeducteeDao>
+		implements Regular27EQDeducteeService {
 
-	@Autowired 
+	@Autowired
 	Regular27EQDeducteeDao dao;
-	
+
 	Form27EQDeducteeExcel form27EQDeduceteeExcel;
 	public static String path;
 	public String ExcelFile;
-	
+
 	@Override
 	public Regular27EQDeductee getByKey(Long id) {
 		// TODO Auto-generated method stub
@@ -62,11 +64,13 @@ public class Regular27EQDeducteeServiceImpl extends AbstractServiceFY<Long, Regu
 		this.ExcelFile = file.getPath() + "/TDS-" + timestamp + "-27EQDeductee.xlsx";
 
 		int row = 1;
+		int part = 1;
 
+		Workbook wb = form27EQDeduceteeExcel.getWorkbook();
+		Sheet form27EQDeductee = wb.getSheet("form27EQDeductee-" + part);
 		for (Regular27EQDeductee form27EQ : listUsers) {
-			Workbook wb = form27EQDeduceteeExcel.getWorkbook();
-			Sheet form27EQDeductee = wb.getSheet("form27EQDeductee");
 			Row details = form27EQDeductee.createRow(row);
+
 			details.createCell(0).setCellValue(row);
 
 			if (form27EQ.getQuarter() == null) {
@@ -168,7 +172,8 @@ public class Regular27EQDeducteeServiceImpl extends AbstractServiceFY<Long, Regu
 			if (form27EQ.getdateofCollected() == null) {
 				details.createCell(20).setCellValue(" ");
 			} else {
-				details.createCell(20).setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(form27EQ.getdateofCollected()));
+				details.createCell(20)
+						.setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(form27EQ.getdateofCollected()));
 			}
 			if (form27EQ.getTotalValueofPurchase() == null) {
 				details.createCell(21).setCellValue(" ");
@@ -218,7 +223,8 @@ public class Regular27EQDeducteeServiceImpl extends AbstractServiceFY<Long, Regu
 			if (form27EQ.getIfAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment() == null) {
 				details.createCell(30).setCellValue(" ");
 			} else {
-				details.createCell(30).setCellValue(form27EQ.getIfAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment());
+				details.createCell(30)
+						.setCellValue(form27EQ.getIfAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment());
 			}
 			if (form27EQ.getErrorDescription() == null) {
 				details.createCell(31).setCellValue(" ");
@@ -265,8 +271,12 @@ public class Regular27EQDeducteeServiceImpl extends AbstractServiceFY<Long, Regu
 			} else {
 				details.createCell(39).setCellValue("Resolved");
 			}
-			
-
+			if (row > 1000000) {
+				part++;
+				wb = form27EQDeduceteeExcel.getWorkbook();
+				form27EQDeductee = form27EQDeduceteeExcel.initializeSheet("form27EQDeductee-" + part);
+				row =0;
+			}
 			row++;
 
 		}
@@ -291,6 +301,5 @@ public class Regular27EQDeducteeServiceImpl extends AbstractServiceFY<Long, Regu
 		// TODO Auto-generated method stub
 		return dao.search(map, pageNo, resultPerPage);
 	}
-	
 
 }

@@ -89,7 +89,7 @@ public class UserDetailsServiceImpl extends AbstractServiceForm<String, UserDeta
 		this.ExcelFile = file.getPath() + "/TDS-" + timestamp + "-UserDetails.xlsx";
 
 		int row = 1;
-
+		int part = 1;
 		for (UserDetails user : listUsers) {
 			Workbook wb = userDetailsExcel.getWorkbook();
 			Sheet userDetails = wb.getSheet("userDetails");
@@ -107,8 +107,13 @@ public class UserDetailsServiceImpl extends AbstractServiceForm<String, UserDeta
 				details.createCell(2).setCellValue(user.getTypeOfUser());
 			}
 			
+			if (row > 1000000) {
+				part++;
+				wb = userDetailsExcel.getWorkbook();
+				userDetails = userDetailsExcel.initializeSheet("userDetails-" + part);
+				row =0;
+			}
 			row++;
-
 		}
 		userDetailsExcel.close();
 		return ExcelFile;

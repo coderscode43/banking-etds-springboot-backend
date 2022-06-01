@@ -77,10 +77,11 @@ public class Regular26QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 		this.ExcelFile = file.getPath() + "/TDS-" + timestamp + "-26QDeductee.xlsx";
 
 		int row = 1;
+		int part =1;
 
+		Workbook wb = form26QDeduceteeExcel.getWorkbook();
+		Sheet form26QDeductee = wb.getSheet("form26QDeductee-" + part);
 		for (Regular26QDeductee form26Q : listUsers) {
-			Workbook wb = form26QDeduceteeExcel.getWorkbook();
-			Sheet form26QDeductee = wb.getSheet("form26QDeductee");
 			Row details = form26QDeductee.createRow(row);
 			details.createCell(0).setCellValue(row);
 
@@ -266,6 +267,12 @@ public class Regular26QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 				details.createCell(36).setCellValue("Resolved");
 			}
 			
+			if (row > 1000000) {
+				part++;
+				wb = form26QDeduceteeExcel.getWorkbook();
+				form26QDeductee = form26QDeduceteeExcel.initializeSheet("form26QDeductee-" + part);
+				row =0;
+			}
 
 			row++;
 

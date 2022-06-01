@@ -62,11 +62,12 @@ implements RODetailsService{
 		this.ExcelFile = file.getPath() + "/TDS-" + timestamp + "-RODetails.xlsx";
 
 		int row = 1;
-
+		int part = 1;
+		Workbook wb = roDetailsExcel.getWorkbook();
+		Sheet roDetailsExcelSheet = wb.getSheet("RODetails-"+part);
+		
 		for (RODetails roDetails : listUsers) {
-			Workbook wb = roDetailsExcel.getWorkbook();
-			Sheet roDetailsExcel = wb.getSheet("RODetails");
-			Row details = roDetailsExcel.createRow(row);
+			Row details = roDetailsExcelSheet.createRow(row);
 			details.createCell(0).setCellValue(row);
 
 			if (roDetails.getRoCode() == null) {
@@ -98,6 +99,14 @@ implements RODetailsService{
 				details.createCell(6).setCellValue(" ");
 			} else {
 				details.createCell(6).setCellValue(roDetails.getRoPincode());
+			}
+			
+			
+			if (row > 1000000) {
+				part++;
+				wb = roDetailsExcel.getWorkbook();
+				roDetailsExcelSheet = roDetailsExcel.initializeSheet("RODetails-" + part);
+				row =0;
 			}
 			
 			row++;

@@ -63,10 +63,12 @@ implements G15Service {
 		this.ExcelFile = file.getPath() + "/TDS-" + timestamp + "-g15.xlsx";
 
 		int row = 1;
-
+		int part=1;
+		
+		Workbook wb = g15Excel.getWorkbook();
+		Sheet G15 = wb.getSheet("G15-"+part);
 		for (G15 g15 : listUsers) {
-			Workbook wb = g15Excel.getWorkbook();
-			Sheet G15 = wb.getSheet("G15");
+		
 			Row details = G15.createRow(row);
 			details.createCell(0).setCellValue(row);
 
@@ -281,6 +283,12 @@ implements G15Service {
 				details.createCell(42).setCellValue(g15.getError());
 			}
 			
+			if (row > 1000000) {
+				part++;
+				wb = g15Excel.getWorkbook();
+				G15 = g15Excel.initializeSheet("G15-" + part);
+				row =0;
+			}
 			row++;
 
 		}

@@ -322,10 +322,17 @@ public class Form26QDeducteeExcel {
 		return wbs;
 
 	}
-
-	private void studentDetailExcel(SXSSFWorkbook wbs2) {
+	
+	public Sheet initializeSheet(String name) {
+//		createStylematch1();
+//		createStylematch2();
+//		createStylematch3();
+//		createStylematch4();
+//		createStylematch5();
+//		createstylematch6();
+//		stylematchblank();
 		try {
-			Sheet sheet = wbs.createSheet("form26QDeductee");
+			Sheet sheet = wbs.createSheet(name);
 			Row row0 = sheet.createRow(0);
 
 			for (int i = 0; i < 37; i++) {
@@ -406,6 +413,19 @@ public class Form26QDeducteeExcel {
 			row0.getCell(35).setCellValue("Comments");
 			sheet.setColumnWidth(36, 4000);
 			row0.getCell(36).setCellValue("Status");
+
+			return sheet;
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+		
+		return null;
+	}
+
+	private void studentDetailExcel(SXSSFWorkbook wbs2) {
+		try {
+			int part = 1;
+			initializeSheet("form26QDeductee-1");
 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -3,6 +3,7 @@ package domain.in.rjsa.excel;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
+import java.util.regex.Pattern;
 
 import javax.imageio.ImageIO;
 
@@ -22,7 +23,6 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFFont;
-
 
 
 public class LDCExcel {
@@ -286,7 +286,7 @@ public class LDCExcel {
 //			Row row3 = sheet.createRow(5);
 //			Row row4 = sheet.createRow(6);
 //			Row row5 = sheet.createRow(7);
-			for (int i = 1; i < 6; i++) {
+			for (int i = 1; i < 2; i++) {
 				row1.createCell(i);
 				row1.getCell(i).setCellStyle(style);
 //				row2.createCell(i);
@@ -295,14 +295,14 @@ public class LDCExcel {
 //				row3.getCell(i).setCellStyle(style2);
 
 			}
-			row1.getCell(1).setCellValue("FORM 24Q DEDUCTEE");
+			row1.getCell(1).setCellValue("LDC");
 //			row2.setHeight((short) 120);
 //			row3.getCell(1).setCellValue("");
 //			row4.createCell(1).setCellStyle(style3);
 //			row4.getCell(1).setCellValue("Financial Year");
 //			row4.createCell(2).setCellStyle(style1);
 //			row4.getCell(2).setCellValue("");
-////			row4.createCell(3).setCellStyle(style1);
+////		row4.createCell(3).setCellStyle(style1);
 //			row4.createCell(4).setCellStyle(style3);
 //			row4.getCell(4).setCellValue("Assessment Year");
 //			row4.createCell(5).setCellStyle(style1);
@@ -320,11 +320,19 @@ public class LDCExcel {
 
 		}
 		return wbs;
-	}
 
-	private void studentDetailExcel(SXSSFWorkbook wbs2) {
+	}
+	
+	public Sheet initializeSheet(String name) {
+//		createStylematch1();
+//		createStylematch2();
+//		createStylematch3();
+//		createStylematch4();
+//		createStylematch5();
+//		createstylematch6();
+//		stylematchblank();
 		try {
-			Sheet sheet = wbs.createSheet("Ldc");
+			Sheet sheet = wbs.createSheet(name);
 			Row row0 = sheet.createRow(0);
 
 			for (int i = 0; i < 16; i++) {
@@ -363,9 +371,19 @@ public class LDCExcel {
 			row0.getCell(14).setCellValue("Cancel Date");
 			sheet.setColumnWidth(15, 4000);
 			row0.getCell(15).setCellValue("As On Date");
-			
+			return sheet;
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+		
+		return null;
+	}
 
-			
+	private void studentDetailExcel(SXSSFWorkbook wbs2) {
+		try {
+			int part = 1;
+			initializeSheet("Ldc-1");
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -373,7 +391,7 @@ public class LDCExcel {
 
 	public static void main(String[] args) {
 		LDCExcel cde = new LDCExcel();
-		cde.initialise("C:\\Users\\RJSA-15022021-03\\Desktop\\LDC.xlsx");
+		cde.initialise("C:\\Users\\RJSA-15022021-03\\Desktop\\Ldc.xlsx");
 		cde.close();
 	}
 
@@ -396,4 +414,3 @@ public class LDCExcel {
 	}
 
 }
-

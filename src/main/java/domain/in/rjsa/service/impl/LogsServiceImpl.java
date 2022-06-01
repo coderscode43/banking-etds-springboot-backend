@@ -73,6 +73,7 @@ public String ExcelFile;
 		this.ExcelFile = file.getPath() + "/TDS-" + timestamp + "-Logs.xlsx";
 
 		int row = 1;
+		int part =1;
 
 		for (Logs log : listUsers) {
 			Workbook wb = logsExcel.getWorkbook();
@@ -111,6 +112,12 @@ public String ExcelFile;
 				details.createCell(6).setCellValue(log.getAction());
 			}
 			
+			if (row > 1000000) {
+				part++;
+				wb = logsExcel.getWorkbook();
+				logs = logsExcel.initializeSheet("Logs-" + part);
+				row =0;
+			}
 			row++;
 
 		}

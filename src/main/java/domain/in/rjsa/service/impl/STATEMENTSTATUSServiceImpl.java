@@ -76,10 +76,12 @@ public class STATEMENTSTATUSServiceImpl extends AbstractServiceTaxo<Long, STATEM
 		this.ExcelFile = file.getPath() + "/TDS-" + timestamp + "-StatementStatusExcel.xlsx";
 
 		int row = 1;
-
+		int part =1;
+		
+		Workbook wb = statementStatusExcel.getWorkbook();
+		Sheet statementStatus = wb.getSheet("statementStatus-"+ part);
 		for (STATEMENTSTATUS stmtStatus : listUsers) {
-			Workbook wb = statementStatusExcel.getWorkbook();
-			Sheet statementStatus = wb.getSheet("statementStatus");
+			
 			Row details = statementStatus.createRow(row);
 			details.createCell(0).setCellValue(row);
 
@@ -119,6 +121,12 @@ public class STATEMENTSTATUSServiceImpl extends AbstractServiceTaxo<Long, STATEM
 				details.createCell(7).setCellValue(stmtStatus.getRT());
 			}
 			
+			if (row > 1000000) {
+				part++;
+				wb = statementStatusExcel.getWorkbook();
+				statementStatus = statementStatusExcel.initializeSheet("statementStatus-" + part);
+				row =0;
+			}
 			row++;
 
 		}

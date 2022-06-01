@@ -65,10 +65,12 @@ public String ExcelFile;
 		this.ExcelFile = file.getPath() + "/TDS-" + timestamp + "-Ticket.xlsx";
 
 		int row = 1;
-
+		int part = 1;
+		
+		Workbook wb = ticketExcel.getWorkbook();
+		Sheet ticket = wb.getSheet("ticket-" + part);
 		for (Ticket tiket: listUsers) {
-			Workbook wb = ticketExcel.getWorkbook();
-			Sheet ticket = wb.getSheet("ticket");
+			
 			Row details = ticket.createRow(row);
 			details.createCell(0).setCellValue(row);
 
@@ -113,6 +115,12 @@ public String ExcelFile;
 				details.createCell(8).setCellValue(tiket.getUserName());
 			}
 			
+			if (row > 1000000) {
+				part++;
+				wb = ticketExcel.getWorkbook();
+				ticket = ticketExcel.initializeSheet("ticket-" + part);
+				row =0;
+			}
 			row++;
 
 		}

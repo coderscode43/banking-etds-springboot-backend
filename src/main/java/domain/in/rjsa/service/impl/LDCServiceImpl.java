@@ -65,10 +65,12 @@ public class LDCServiceImpl extends AbstractServiceTaxo<String, LDC, LDCDao> imp
 			this.ExcelFile = file.getPath() + "/TDS-" + timestamp + "-ldc.xlsx";
 
 			int row = 1;
+			int part = 1;
 
+			Workbook wb = LDCExcel.getWorkbook();
+			Sheet Ldc = wb.getSheet("Ldc-" +part);
 			for (LDC ldc : listUsers) {
-				Workbook wb = LDCExcel.getWorkbook();
-				Sheet Ldc = wb.getSheet("Ldc");
+				
 				Row details = Ldc.createRow(row);
 				details.createCell(0).setCellValue(row);
 				/*(new SimpleDateFormat("dd-MM-yyyy").format(ldc.getRoCode()))*/
@@ -148,6 +150,12 @@ public class LDCServiceImpl extends AbstractServiceTaxo<String, LDC, LDCDao> imp
 					details.createCell(15).setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(ldc.getAS_ON_DATE()));
 				}
 				
+				if (row > 1000000) {
+					part++;
+					wb = LDCExcel.getWorkbook();
+					Ldc = LDCExcel.initializeSheet("Ldc-" + part);
+					row =0;
+				}
 				row++;
 
 			}

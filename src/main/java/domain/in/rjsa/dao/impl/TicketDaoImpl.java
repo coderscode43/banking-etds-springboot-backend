@@ -141,6 +141,7 @@ public class TicketDaoImpl extends AbstractDaoForm<Long, Ticket> implements Tick
 		return (Long) criteria.setProjection(Projections.rowCount()).uniqueResult();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Ticket> searchExcel(HashMap entity) {
 		Criteria criteria = createEntityCriteria();

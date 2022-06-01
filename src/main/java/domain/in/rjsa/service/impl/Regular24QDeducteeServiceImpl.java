@@ -16,7 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.ibm.icu.text.SimpleDateFormat;
 
 import domain.in.rjsa.dao.Regular24QDeducteeDao;
-import domain.in.rjsa.dao.RemarkDao;
 import domain.in.rjsa.excel.Form24QDeducteeExcel;
 import domain.in.rjsa.model.fy.Regular24QDeductee;
 import domain.in.rjsa.service.AbstractServiceFY;
@@ -29,23 +28,21 @@ public class Regular24QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 
 	@Autowired
 	Regular24QDeducteeDao dao;
-	@Autowired
-	RemarkDao rDao;
 
 	Form24QDeducteeExcel form24QDeduceteeExcel;
 	public static String path;
 	public String ExcelFile;
 
 	@Override
-	public Regular24QDeducteeDao getPrimaryDao() {
-		// TODO Auto-generated method stub
-		return dao;
-	}
-
-	@Override
 	public Regular24QDeductee getByKey(Long id) {
 		// TODO Auto-generated method stub
 		return dao.getByKey(id);
+	}
+
+	@Override
+	public Regular24QDeducteeDao getPrimaryDao() {
+		// TODO Auto-generated method stub
+		return dao;
 	}
 
 	public String createUserExcel(LinkedHashMap<String, Object> map) {
@@ -67,10 +64,12 @@ public class Regular24QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 		this.ExcelFile = file.getPath() + "/TDS-" + timestamp + "-24QDeductee.xlsx";
 
 		int row = 1;
+		int part = 1;
 
+		Workbook wb = form24QDeduceteeExcel.getWorkbook();
+		Sheet form24QDeductee = wb.getSheet("form24QDeductee-" + part);
 		for (Regular24QDeductee form24Q : listUsers) {
-			Workbook wb = form24QDeduceteeExcel.getWorkbook();
-			Sheet form24QDeductee = wb.getSheet("form24QDeductee");
+			
 			Row details = form24QDeductee.createRow(row);
 			details.createCell(0).setCellValue(row);
 
@@ -235,11 +234,12 @@ public class Regular24QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 				details.createCell(312).setCellValue("Resolved");
 			}
 			
-
-
-
-
-			
+			if (row > 1000000) {
+				part++;
+				wb = form24QDeduceteeExcel.getWorkbook();
+				form24QDeductee = form24QDeduceteeExcel.initializeSheet("form24QDeductee-" + part);
+				row =0;
+			}
 			row++;
 
 		}

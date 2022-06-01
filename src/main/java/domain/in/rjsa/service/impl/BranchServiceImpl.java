@@ -103,10 +103,12 @@ public class BranchServiceImpl extends AbstractServiceForm<Long, Branch, BranchD
 		this.ExcelFile = file.getPath() + "/TDS-" + timestamp + "-Branch.xlsx";
 
 		int row = 1;
-
+		int part = 1;
+		
+		Workbook wb = branchExcel.getWorkbook();
+		Sheet branch = wb.getSheet("branch-"+part);
 		for (Branch brnch : listUsers) {
-			Workbook wb = branchExcel.getWorkbook();
-			Sheet branch = wb.getSheet("branch");
+			
 			Row details = branch.createRow(row);
 			details.createCell(0).setCellValue(row);
 
@@ -149,6 +151,13 @@ public class BranchServiceImpl extends AbstractServiceForm<Long, Branch, BranchD
 				details.createCell(8).setCellValue(" ");
 			} else {
 				details.createCell(8).setCellValue(brnch.getBranchState());
+			}
+			
+			if (row > 1000000) {
+				part++;
+				wb = branchExcel.getWorkbook();
+				branch = branchExcel.initializeSheet("branch-" + part);
+				row =0;
 			}
 			row++;
 

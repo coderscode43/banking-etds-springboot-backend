@@ -321,10 +321,16 @@ public class MonthlyChallanExcel {
 		}
 		return wbs;
 	}
-
-	private void studentDetailExcel(SXSSFWorkbook wbs2) {
+	public Sheet initializeSheet(String name) {
+//		createStylematch1();
+//		createStylematch2();
+//		createStylematch3();
+//		createStylematch4();
+//		createStylematch5();
+//		createstylematch6();
+//		stylematchblank();
 		try {
-			Sheet sheet = wbs.createSheet("MonthlyChallan");
+			Sheet sheet = wbs.createSheet("MonthlyChallan-1");
 			Row row0 = sheet.createRow(0);
 
 			for (int i = 0; i <6 ; i++) {
@@ -343,6 +349,18 @@ public class MonthlyChallanExcel {
 			row0.getCell(4).setCellValue("Amount As Per Finacle");
 			sheet.setColumnWidth(5, 4000);
 			row0.getCell(5).setCellValue("Amount As Per Tax Calculation");
+
+			return sheet;
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+		
+		return null;
+	}
+	private void studentDetailExcel(SXSSFWorkbook wbs2) {
+		try {
+			int part = 1;
+			initializeSheet("MonthlyChallan-1");
 			
 		} catch (Exception e) {
 			e.printStackTrace();

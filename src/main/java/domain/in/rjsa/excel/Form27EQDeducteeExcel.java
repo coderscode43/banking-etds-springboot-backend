@@ -322,10 +322,17 @@ public class Form27EQDeducteeExcel {
 		return wbs;
 
 	}
-
-	private void studentDetailExcel(SXSSFWorkbook wbs2) {
+	
+	public Sheet initializeSheet(String name) {
+//		createStylematch1();
+//		createStylematch2();
+//		createStylematch3();
+//		createStylematch4();
+//		createStylematch5();
+//		createstylematch6();
+//		stylematchblank();
 		try {
-			Sheet sheet = wbs.createSheet("form27EQDeductee");
+			Sheet sheet = wbs.createSheet(name);
 			Row row0 = sheet.createRow(0);
 
 			for (int i = 0; i < 40	; i++) {
@@ -413,6 +420,18 @@ public class Form27EQDeducteeExcel {
 			sheet.setColumnWidth(39, 4000);
 			row0.getCell(39).setCellValue("Status");
 
+			return sheet;
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+		
+		return null;
+	}
+
+	private void studentDetailExcel(SXSSFWorkbook wbs2) {
+		try {
+			int part = 1;
+			initializeSheet("form27EQDeductee-1");
 
 		} catch (Exception e) {
 			e.printStackTrace();

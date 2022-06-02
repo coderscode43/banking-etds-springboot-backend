@@ -56,7 +56,6 @@ public abstract class AbstractControllerTaxo<K extends Serializable, E extends M
 	public ResponseEntity<?> listAll(HttpServletRequest request, @PathVariable int pageNo,
 			@PathVariable int resultPerPage) {
 		String mapping = request.getPathInfo();
-
 		try {
 			List<?> list = getList(pageNo, resultPerPage);
 
@@ -71,6 +70,16 @@ public abstract class AbstractControllerTaxo<K extends Serializable, E extends M
 	public List<?> getList(int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
+		if (!"admin".equals(getBranchCode())) {
+			Long b=1L;
+			try {
+				b =Long.valueOf(getBranchCode());
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+			constrains.put("branchCode", b);
+		}else {
+		}
 
 		return getService().findAll(constrains, pageNo, resultPerPage);
 	}
@@ -82,6 +91,16 @@ public abstract class AbstractControllerTaxo<K extends Serializable, E extends M
 		HashMap<String, Object> constrains = new HashMap<>();
 
 		String mapping = request.getPathInfo();
+		if (!"admin".equals(getBranchCode())) {
+			Long b=1L;
+			try {
+				b =Long.valueOf(getBranchCode());
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+			constrains.put("branchCode", b);
+		}else {
+		}
 
 		try {
 			Long count = getService().findallCount(constrains);
@@ -122,7 +141,7 @@ public abstract class AbstractControllerTaxo<K extends Serializable, E extends M
 			// convert JSON string to Map
 			map = mapper.readValue(searchParam, new TypeReference<Map<String, String>>() {
 			});
-
+			adminValidation(map);
 			Long count = getService().findallCount(map);
 			List<?> list = getSearch(map, pageNo, resultPerPage);
 			ListCount send = new ListCount();
@@ -148,6 +167,8 @@ public abstract class AbstractControllerTaxo<K extends Serializable, E extends M
 	public ResponseEntity<?> searchEntity(@RequestBody LinkedHashMap<String, Object> map) {
 		// verify the clientId authorization
 		try {
+			
+			adminValidation(map);
 			return new ResponseEntity<>(getSearchEntity(map), HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("Error in listALL", e);
@@ -178,6 +199,16 @@ public abstract class AbstractControllerTaxo<K extends Serializable, E extends M
 	public Object getDetail(K tan) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
+		if (!"admin".equals(getBranchCode())) {
+			Long b=1L;
+			try {
+				b =Long.valueOf(getBranchCode());
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+			constrains.put("branchCode", b);
+		}else {
+		}
 		constrains.put("TAN", tan);
 		return getService().uniqueSearch(constrains);
 	}
@@ -233,25 +264,7 @@ public abstract class AbstractControllerTaxo<K extends Serializable, E extends M
 				// convert JSON string to Map
 				map = mapper.readValue(searchParam, new TypeReference<Map<String, String>>() {
 				});
-				if (!"admin".equals(getBranchCode())) {
-					Long b=1L;
-					try {
-						b =Long.valueOf(getBranchCode());
-					}catch (Exception e) {
-						// TODO: handle exception
-					}
-					map.put("branchCode", b);
-				}else{
-					if(map.containsKey("branchCode")) {
-						Long b=1L;
-						try {
-							b =Long.valueOf(map.get("branchCode").toString());
-						}catch (Exception e) {
-							// TODO: handle exception
-						}
-						map.put("branchCode", b);
-					}
-				}
+				adminValidation(map);
 				String address = getService().createUserExcel(map);
 
 				File file = new File(address);

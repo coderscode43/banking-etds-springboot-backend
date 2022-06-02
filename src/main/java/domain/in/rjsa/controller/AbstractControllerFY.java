@@ -136,6 +136,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 			@PathVariable int resultPerPage) {
 		// verify the clientId authorization
 //		applicationCache.getUserAuthorised();
+		
 
 		try {
 			List<?> list = getList(pageNo, resultPerPage);
@@ -248,6 +249,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 			}else {
 				map.put("branchCode", branchCode);
 			}
+			adminValidation(map);
 			Long count = getService().findallCount(map);
 			List<?> list = getSearch(map, 0, 100);
 			ListCount send = new ListCount();
@@ -470,25 +472,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 			// convert JSON string to Map
 			map = mapper.readValue(searchParam, new TypeReference<Map<String, String>>() {
 			});
-			if (!"admin".equals(getBranchCode())) {
-				Long b=1L;
-				try {
-					b =Long.valueOf(getBranchCode());
-				}catch (Exception e) {
-					// TODO: handle exception
-				}
-				map.put("branchCode", b);
-			}else{
-				if(map.containsKey("branchCode")) {
-					Long b=1L;
-					try {
-						b =Long.valueOf(map.get("branchCode").toString());
-					}catch (Exception e) {
-						// TODO: handle exception
-					}
-					map.put("branchCode", b);
-				}
-			}
+			adminValidation(map);
 			String address = getService().createUserExcel(map);
 
 			File file = new File(address);

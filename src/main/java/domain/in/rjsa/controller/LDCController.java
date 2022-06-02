@@ -49,6 +49,16 @@ public class LDCController extends AbstractControllerTaxo<String, LDC, LDCServic
 		HashMap<String, Object> constrains = new HashMap<>();
 //		constrains.put("fy",fy);
 //		constrains.put("branchCode",branchCode);
+		if (!"admin".equals(getBranchCode())) {
+			Long b=1L;
+			try {
+				b =Long.valueOf(getBranchCode());
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+			constrains.put("branchCode", b);
+		}else {
+		}
 		try {
 			Long count = getService().findallCount(constrains);
 			List<?> list = getList(fy, branchCode, 0, 100);
@@ -66,6 +76,16 @@ public class LDCController extends AbstractControllerTaxo<String, LDC, LDCServic
 	
 	public List<?> getList(String fy, Long branchCode, int pageNo, int resultPerPage) {
 		HashMap<String, Object> constrains = new HashMap<>();
+		if (!"admin".equals(getBranchCode())) {
+			Long b=1L;
+			try {
+				b =Long.valueOf(getBranchCode());
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+			constrains.put("branchCode", b);
+		}else {
+		}
 //		constrains.put("fy", fy);
 //		constrains.put("branchCode", branchCode);
 		return getService().findAll(constrains, pageNo, resultPerPage);
@@ -85,6 +105,7 @@ public class LDCController extends AbstractControllerTaxo<String, LDC, LDCServic
 //			}
 //			map.put("fy", fy);
 //			map.put("branchCode", branchCode);
+			adminValidation(map);
 			Long count = getService().findallCount(map);
 			List<?> list = getSearch(map, 0, 100);
 			ListCount send = new ListCount();
@@ -114,6 +135,7 @@ public class LDCController extends AbstractControllerTaxo<String, LDC, LDCServic
 			/*
 			 * map.put("fy", fy); map.put("branchCode", branchCode);
 			 */
+			adminValidation(map);
 			return new ResponseEntity<>(getSearchEntity(map), HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("Error in listALL", e);

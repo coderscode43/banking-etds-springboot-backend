@@ -61,7 +61,10 @@ public class LDCDaoImpl extends AbstractDaoTaxo<String, LDC> implements LDCDao{
          {
 		criteria.add(Restrictions.eqOrIsNull("NATURE_OF_PAYMENT", entity.get("NATURE_OF_PAYMENT")));
          }
-		 
+		 if(entity.get("NAME")!=null)
+         {
+		criteria.add(Restrictions.eqOrIsNull("NAME", entity.get("NAME")));
+         }
 		
 		 criteria.addOrder(Order.desc("PAN"));
 			criteria.setFirstResult(pageNo * noOfResult);
@@ -126,7 +129,10 @@ public List<LDC> searchExcel(HashMap entity) {
      {
 	criteria.add(Restrictions.eqOrIsNull("NATURE_OF_PAYMENT", entity.get("NATURE_OF_PAYMENT")));
      }
-	
+	 if(entity.get("NAME")!=null)
+     {
+	criteria.add(Restrictions.eqOrIsNull("NAME", entity.get("NAME")));
+     }
 	
 	return (List<LDC>) criteria.list();
 }

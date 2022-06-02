@@ -67,6 +67,16 @@ public class Regular26QDeducteeController
 	public HashMap<String, Object> getDetail(Long id, String fy, Long branchCode) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
+		if (!"admin".equals(getBranchCode())) {
+			Long b=1L;
+			try {
+				b =Long.valueOf(getBranchCode());
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+			constrains.put("branchCode", b);
+		}else {
+		}
 		constrains.put("id", id);
 		constrains.put("fy", fy);
 		constrains.put("branchCode", branchCode);
@@ -116,7 +126,7 @@ public class Regular26QDeducteeController
 					Boolean resolved = Boolean.valueOf(map.get("resolved").toString());
 					map.put("resolved", resolved);
 				}
-
+				adminValidation(map);
 				Long count = getService().findallCount(map);
 				List<?> list = getSearch(map, pageNo, resultPerPage);
 				ListCount send = new ListCount();

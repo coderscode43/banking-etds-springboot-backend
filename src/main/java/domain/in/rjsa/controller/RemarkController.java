@@ -53,9 +53,7 @@ public class RemarkController extends AbstractControllerFY<Long, Remark, RemarkS
 		//Login l = applicationCache.getLoginDetail(getPrincipal());
 		entity.put("userName", getPrincipal());
 		entity.put("status",type);
-		
-		
-		
+		adminValidation(entity);
 		Gson gson = new Gson();
 		JsonElement jsonElement = gson.toJsonTree(entity);
 		

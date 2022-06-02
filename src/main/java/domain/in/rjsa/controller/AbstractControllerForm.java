@@ -63,9 +63,10 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 	@RequestMapping(value = "/list/get/{pageNo}/{resultPerPage}", method = RequestMethod.GET)
 	public ResponseEntity<?> listAll(HttpServletRequest request, @PathVariable int pageNo,
 			@PathVariable int resultPerPage) {
+		
+		
 		try {
 			List<?> list = getList(pageNo, resultPerPage);
-
 			return new ResponseEntity<>(list, HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("Error in listALL", e);
@@ -77,6 +78,16 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 	public List<?> getList(int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
+		if (!"admin".equals(getBranchCode())) {
+			Long b=1L;
+			try {
+				b =Long.valueOf(getBranchCode());
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+			constrains.put("branchCode", b);
+		}else {
+		}
 
 		return getService().findAll(constrains, pageNo, resultPerPage);
 	}
@@ -91,6 +102,16 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 //		constrains.put("employeeId", applicationCache.getLoginDetail(getPrincipal()).getEmployeeId());
 
 		String mapping = request.getPathInfo();
+		if (!"admin".equals(getBranchCode())) {
+			Long b=1L;
+			try {
+				b =Long.valueOf(getBranchCode());
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+			constrains.put("branchCode", b);
+		}else {
+		}
 
 		try {
 			Long count = getService().findallCount(constrains);
@@ -136,6 +157,8 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 					map.put(key, Long.valueOf((String) map.get(key)));
 				}
 			}
+			
+			adminValidation(map);
 			Long count = getService().findallCount(map);
 			List<?> list = getSearch(map, pageNo, resultPerPage);
 			ListCount send = new ListCount();
@@ -168,6 +191,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 	public ResponseEntity<?> searchEntity(@RequestBody LinkedHashMap<String, Object> map) {
 		// verify the clientId authorization
 		try {
+			adminValidation(map);
 			return new ResponseEntity<>(getSearchEntity(map), HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("Error in listALL", e);
@@ -190,7 +214,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 	public ResponseEntity<?> createEntity(@RequestBody LinkedHashMap<String, Object> entity) {
 		// FieldErrorDTO ermsg=new FieldErrorDTO();
 		logger.info("Creating new Return instance");
-		Ticket ticket = new Ticket();
+		adminValidation(entity);
 		create(entity);
 		addLogs(entity);
 		// ermsg.setMessage(" Saved Successfully");
@@ -209,7 +233,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 	}
 
 	public void addLogs(HashMap<String, Object> entity) {
-
+		
 		// Login l = applicationCache.getLoginDetail(getPrincipal());
 		HashMap<String, Object> constrains = new HashMap<>();
 		constrains.put("id", entity.get("id"));
@@ -246,6 +270,16 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 	public Object getDetail(K id) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
+		if (!"admin".equals(getBranchCode())) {
+			Long b=1L;
+			try {
+				b =Long.valueOf(getBranchCode());
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+			constrains.put("branchCode", b);
+		}else {
+		}
 		constrains.put("id", id);
 		return getService().uniqueSearch(constrains);
 	}
@@ -260,6 +294,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 		Object o = getDetail((K) Long.valueOf(entity.get("id").toString()));
 		ObjectMapper oMapper = new ObjectMapper();
 		HashMap<String, Object> map = oMapper.convertValue(o, HashMap.class);
+		adminValidation(entity);
 		update(entity);
 		addLogsU(entity);
 		ermsg.setMessage(" Updated Successfully");
@@ -315,6 +350,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 	public ResponseEntity<?> ajax(@RequestBody Ajax ajax) {
 		// verify the clientId authorization
 		try {
+			
 			List<?> list = getAjax(ajax.getName(), ajax.getTerm());
 			return new ResponseEntity<>(list, HttpStatus.OK);
 		} catch (Exception e) {
@@ -356,25 +392,27 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 				// convert JSON string to Map
 				map = mapper.readValue(searchParam, new TypeReference<Map<String, String>>() {
 				});
-				if (!"admin".equals(getBranchCode())) {
-					Long b=1L;
-					try {
-						b =Long.valueOf(getBranchCode());
-					}catch (Exception e) {
-						// TODO: handle exception
-					}
-					map.put("branchCode", b);
-				}else{
-					if(map.containsKey("branchCode")) {
-						Long b=1L;
-						try {
-							b =Long.valueOf(map.get("branchCode").toString());
-						}catch (Exception e) {
-							// TODO: handle exception
-						}
-						map.put("branchCode", b);
-					}
-				}
+				
+				adminValidation(map);
+//				if (!"admin".equals(getBranchCode())) {
+//					Long b=1L;
+//					try {
+//						b =Long.valueOf(getBranchCode());
+//					}catch (Exception e) {
+//						// TODO: handle exception
+//					}
+//					map.put("branchCode", b);
+//				}else{
+//					if(map.containsKey("branchCode")) {
+//						Long b=1L;
+//						try {
+//							b =Long.valueOf(map.get("branchCode").toString());
+//						}catch (Exception e) {
+//							// TODO: handle exception
+//						}
+//						map.put("branchCode", b);
+//					}
+//				}
 				
 
 				String address = getService().createUserExcel(map);

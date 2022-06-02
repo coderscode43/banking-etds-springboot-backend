@@ -2,6 +2,7 @@ package domain.in.rjsa.controller;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.LinkedHashMap;
 
 import javax.naming.ldap.LdapContext;
 
@@ -36,6 +37,30 @@ public class AbstractController {
 			}
 		}
 
+	}
+	
+	public void adminValidation(LinkedHashMap<String, Object> map) {
+		
+		if (!"admin".equals(getBranchCode())) {
+			Long b=1L;
+			try {
+				b =Long.valueOf(getBranchCode());
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+			map.put("branchCode", b);
+		}else{
+			if(map.containsKey("branchCode")) {
+				Long b=1L;
+				try {
+					b =Long.valueOf(map.get("branchCode").toString());
+				}catch (Exception e) {
+					// TODO: handle exception
+				}
+				map.put("branchCode", b);
+			}
+		}
+		
 	}
 
 	public String getPrincipal() {

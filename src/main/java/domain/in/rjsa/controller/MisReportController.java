@@ -44,6 +44,7 @@ public class MisReportController extends AbstractControllerFY<Long, MisReport, M
 	  @PathVariable Long branchCode, @PathVariable String fy) 
 	  { 
 	  FieldErrorDTO ermsg = new FieldErrorDTO(); logger.info("Creating new Return instance");
+	  adminValidation(entity);
 	  entity.put("branchCode", branchCode); entity.put("fy", fy); 
 	  String userName = getPrincipal(); 
 	  entity.put("userName", userName); 

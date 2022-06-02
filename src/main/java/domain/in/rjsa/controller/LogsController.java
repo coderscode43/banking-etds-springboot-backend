@@ -84,7 +84,7 @@ public class LogsController extends AbstractControllerForm<Long, Logs, LogsServi
 			// convert JSON string to Map
 			map = mapper.readValue(searchParam, new TypeReference<Map<String, String>>() {
 			});
-
+			adminValidation(map);
 			Long count = service.findSearchCount(map);
 			List<?> list = getSearch(map, pageNo, resultPerPage);
 			ListCount send = new ListCount();
@@ -157,6 +157,16 @@ public class LogsController extends AbstractControllerForm<Long, Logs, LogsServi
 
 	public List<?> getList(int pageNo, int resultPerPage) {
 		HashMap<String, Object> constrains = new HashMap<>();
+		if (!"admin".equals(getBranchCode())) {
+			Long b=1L;
+			try {
+				b =Long.valueOf(getBranchCode());
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+			constrains.put("branchCode", b);
+		}else {
+		}
 		return service.findAll(constrains, pageNo, resultPerPage);
 	}
 

@@ -1181,7 +1181,7 @@ App
 									self.currentPage = pageNo;
 									
 									if (self.isNotEmpty(self.lastSearch)) {
-										CommonServiceFY.fetchSearch(entity, JSON.stringify(self.lastSearch), pageNo - 1);
+										CommonServiceFY.fetchSearch(entity, JSON.stringify(self.lastSearch), pageNo - 1,$stateParams.fy,$stateParams.branchCode);
 									} else {
 										CommonServiceFY.fetch(entity, pageNo - 1);
 									}

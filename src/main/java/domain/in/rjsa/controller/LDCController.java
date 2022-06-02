@@ -107,7 +107,7 @@ public class LDCController extends AbstractControllerTaxo<String, LDC, LDCServic
 //			map.put("branchCode", branchCode);
 			adminValidation(map);
 			Long count = getService().findallCount(map);
-			List<?> list = getSearch(map, 0, 100);
+			List<?> list = getSearch(map, pageNo, resultPerPage);
 			ListCount send = new ListCount();
 			send.setCount(count);
 			send.setEntities(list);
@@ -124,7 +124,7 @@ public class LDCController extends AbstractControllerTaxo<String, LDC, LDCServic
 
 	public List<?> getSearch(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
-		return getService().search(map, pageNo, resultPerPage);
+		return service.search(map, pageNo, resultPerPage);
 	}
 	
 	

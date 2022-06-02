@@ -251,7 +251,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 			}
 			adminValidation(map);
 			Long count = getService().findallCount(map);
-			List<?> list = getSearch(map, 0, 100);
+			List<?> list = getSearch(map, pageNo, resultPerPage);
 			ListCount send = new ListCount();
 			send.setCount(count);
 			send.setEntities(list);

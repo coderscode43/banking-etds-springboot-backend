@@ -115,6 +115,58 @@ public abstract class AbstractControllerTaxo<K extends Serializable, E extends M
 		}
 
 	}
+	
+	// ------------------- List Entity ---------------------------------
+
+		@RequestMapping(value = "/list/{fy}/{branchCode}/get/{pageNo}/{resultPerPage}", method = RequestMethod.GET)
+		public ResponseEntity<?> listAll(@PathVariable String fy, @PathVariable Long branchCode,
+				HttpServletRequest request, @PathVariable int pageNo, @PathVariable int resultPerPage) {
+			try {
+				
+
+				if (!"admin".equals(getBranchCode())) {
+					Long b=1L;
+					try {
+						b =Long.valueOf(getBranchCode());
+					}catch (Exception e) {
+						// TODO: handle exception
+					}
+					branchCode=b;
+				}else {
+				}
+				
+				List<?> list = getList(fy, branchCode, pageNo, resultPerPage);
+
+				return new ResponseEntity<>(list, HttpStatus.OK);
+			} catch (Exception e) {
+				logger.error("Error in listALL", e);
+				return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+
+		}
+		
+		// ------------------- List Entity ---------------------------------
+		public List<?> getList(String fy, Long branchCode, int pageNo, int resultPerPage) {
+			HashMap<String, Object> constrains = new HashMap<>();
+			constrains.put("fy", fy);
+			
+			if (!"admin".equals(getBranchCode())) {
+				Long b=1L;
+				try {
+					b =Long.valueOf(getBranchCode());
+				}catch (Exception e) {
+					// TODO: handle exception
+				}
+				constrains.put("branchCode", b);
+			}else {
+				constrains.put("branchCode", branchCode);
+			}
+			
+			
+			
+			
+			return getService().findAll(constrains, pageNo, resultPerPage);
+		}
 
 	// ------------------- Search Entities ---------------------------------
 
@@ -160,6 +212,8 @@ public abstract class AbstractControllerTaxo<K extends Serializable, E extends M
 		// TODO Auto-generated method stub
 		return getService().search(map, pageNo, resultPerPage);
 	}
+	
+	
 
 	// ------------------- Search Single Entity ---------------------------------
 

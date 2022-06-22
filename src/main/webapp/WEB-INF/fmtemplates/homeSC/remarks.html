@@ -1,0 +1,411 @@
+<style>
+/*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+@media only screen and (max-width: 760px) , ( min-device-width : 768px)
+	and (max-device-width: 1024px) {
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr {
+		display: block;
+	}
+
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	tr {
+		margin: 0 0 1rem 0;
+	}
+	tr:nth-child(odd) {
+		background: #ccc;
+	}
+	td {
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee;
+		position: relative;
+		padding-left: 50%;
+	}
+	td:before {
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 0;
+		left: 6px;
+		width: 45%;
+		padding-right: 10px;
+		white-space: nowrap;
+	}
+
+	/*
+		Label the data
+    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+		*/
+}
+
+@media only screen and (max-width: 1000px) {
+	.one {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.two {
+		padding: 8px;
+	}
+}
+
+@media only screen and (min-width:600px) {
+	#three {
+		display: none;
+		max-height: 0;
+		overflow: hidden;
+	}
+}
+
+@media only screen and (min-width:1000px) {
+	#search {
+		margin-left: 45%;
+		margin-top: 2px;
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	#hide {
+		display: none;
+	}
+}
+
+.table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
+	{
+	background-color: whitesmoke;
+}
+
+@media ( min-width : 768px) {
+	.collapse.dont-collapse-sm {
+		display: block;
+		height: auto !important;
+		visibility: visible;
+	}
+}
+
+table, th, tr, td {
+	Border: 1px Solid Black;
+	text-align: center;
+	padding: 5px
+}
+
+table {
+	width: 100%;
+}
+</style>
+
+
+
+
+<div id="page-wrapper"
+	ng-init="cCctr.entity.deductee=cCctr.getEntityData().deductee">
+	<div class="container-fluid">
+
+		<div ng-show="cCctr.show != true">
+
+			<div class="row">
+				<h3 class="page-header" style="margin-top: 2%;">
+					<strong>Notice details:</strong>
+				</h3>
+			</div>
+
+
+
+
+			<div class="panel panel-default"
+				style="margin-top: -2%; border: none !important;">
+				<div class="panel-body">
+
+
+					<div class="container">
+
+						<div class="collapse dont-collapse-sm" id="collapseExample2">
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-3">
+									<label>PAN: &nbsp;</label>
+								</div>
+								<div class="col-md-3">:
+									{{cCctr.getEntityData().Notice.pan}}</div>
+								<div class="col-md-3">
+									<label>status: &nbsp;</label>
+								</div>
+								<div class="col-md-3">:
+									{{cCctr.getEntityData().Notice.status}}</div>
+							</div>
+
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-3">
+									<label>response_DUE_DATE:&nbsp;</label>
+								</div>
+								<div class="col-md-3">{{cCctr.getEntityData().Notice.response_DUE_DATE}}</div>
+
+								<div class="col-md-3">
+									<label>document_ID_NO: &nbsp;</label>
+								</div>
+								<div class="col-md-3">{{cCctr.getEntityData().Notice.document_ID_NO}}</div>
+							</div>
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-3">
+									<label>proceeding_NAME: &nbsp;</label>
+								</div>
+								<div class="col-md-3">{{cCctr.getEntityData().Notice.proceeding_NAME}}</div>
+								<div class="col-md-3">
+									<label>source: &nbsp;</label>
+								</div>
+								<div class="col-md-3">:
+									{{cCctr.getEntityData().Notice.source}}</div>
+							</div>
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-3">
+									<label>noticesection: &nbsp;</label>
+								</div>
+								<div class="col-md-3">:{{cCctr.getEntityData().Notice.noticesection}}</div>
+								<div class="col-md-3">
+									<label>issued on: &nbsp;</label>
+								</div>
+								<div class="col-md-3">:
+									{{cCctr.getEntityData().Notice.issuedon}}</div>
+							</div>
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-3">
+									<label>email: &nbsp;</label>
+								</div>
+								<div class="col-md-3">{{cCctr.getEntityData().Notice.email}}</div>
+								<div class="col-md-3">
+									<label>ref_NUMBER: &nbsp;</label>
+								</div>
+								<div class="col-md-3">:
+									{{cCctr.getEntityData().Notice.ref_NUMBER}}</div>
+							</div>
+
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-3">
+									<label>status: &nbsp;</label>
+								</div>
+								<div ng-switch={{cCctr.getEntityData().Notice.status}}>
+									<div ng-switch-when=true>
+										<b style="font-size: 15px; color: #ae1212;">Open</b>
+									</div>
+									<div ng-switch-when=false>
+										<b style="font-size: 15px; color: #ae1212;">Close</b>
+									</div>
+									<div ng-switch-default>...</div>
+								</div>
+								<div class="row">
+									<form role="form" name="remark">
+										<input
+											ng-model="cCctr.newEntity.deducteeId = cCctr.entity.deductee.id"
+											id="deducteeId" name="deducteeId" style="display: none">
+
+										<input
+											ng-model="cCctr.newEntity.fy = cCctr.entity.deductee.fy"
+											id="fy" name="fy" style="display: none"> <input
+											ng-model="cCctr.newEntity.deducteeForm ='24Qform'"
+											id="deducteeForm" name="deducteeForm" style="display: none">
+
+										<input class="form-control"
+											ng-model="cCctr.newEntity.branchCode = cCctr.entity.deductee.branchCode"
+											id="branchCode" name="branchCode" style="display: none">
+
+										<button data-toggle="modal" data-target="#myModal"
+											class="btn btn-success" style="margin-left: 45%">Add
+											Remark</button>
+
+										<button class="btn btn-danger"
+											ng-click="cCctr.gotoListPage('form24QDeductee','form24QDeductee')">Back</button>
+
+										<button class="btn btn-warning"
+											ng-click="cCctr.gotoListPage('form24QDeductee','form24QDeductee')">Download
+											All Attachment</button>
+
+										<div ng-if="cCctr.entity.deductee.resolved == 1"
+											style="margin: -2.9% 0 0% 64.2%;">
+											<button data-toggle="modal" data-target="#resolveModal"
+												class="btn btn-primary">Resolved</button>
+										</div>
+										<div ng-if="cCctr.entity.deductee.resolved == 0"
+											style="margin: -2.9% 0 0% 64.2%;">
+											<button data-toggle="modal" data-target="#resolveModal"
+												class="btn btn-primary" disabled>Resolved</button>
+										</div>
+
+										<div ng-if="cCctr.entity.deductee.resolved == 1"
+											style="margin: -2.9% 0 0% 72.2%;">
+											<button data-toggle="modal" data-target="#rejectModal"
+												class="btn btn-info">Reject</button>
+										</div>
+										<div ng-if="cCctr.entity.deductee.resolved == 0"
+											style="margin: -2.9% 0 0% 72.2%;">
+											<button data-toggle="modal" data-target="#rejectModal"
+												class="btn btn-info" disabled>Reject</button>
+										</div>
+
+										<div class="modal fade" id="myModal" role="dialog">
+											<div class="modal-dialog">
+
+												<!-- Modal content-->
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal">&times;</button>
+														<h4 class="modal-title">Add Remark</h4>
+													</div>
+													<div class="col-md-12">
+														<div class="col-md-12">
+															<label style="font-size: 13px; margin-top: 2%">Remarks&nbsp;:</label>
+														</div>
+														<textarea ng-model="cCctr.newEntity.remark" id="remark"
+															name="remark"
+															style="width: 90%; height: 20%; font-size: 15px; margin-left: 5%;"
+															ng-required="true"></textarea>
+														<span style="color: red; margin-left: 5%;" class="error"
+															ng-show="remark.submitted || remark.remark.$dirty && remark.remark.$invalid">Please
+															enter valid Remark</span> <span class="error" id="remark"></span>
+															<div class="form-group">
+														<label for="blob" for="message-text"
+															class="required col-form-label">File:</label> <input
+															multiple id="file-upload" type="file"
+															class="form-control" name="blob"
+															fileread="cCctr.entity.blob"
+															accept=".pdf,.png,.jpeg,.jpg">
+														<h3 style="font-size: 12px; color: black;">Select
+															file to send(Max 5MB.)Allowed file
+															types(.pdf,.png,.jpeg,.jpg,.doc)</h3>
+														<span id="size" style="color: red"> </span>
+													</div>
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-success "
+															ng-click="remark.submitted=true;cCctr.addRemark(true,'remark',cCctr.newEntity,'Remark','close')"
+															data-dismiss="modal"
+															style="margin: 2% 5% 0 0; width: 15%;">Add</button>
+													</div>
+												</div>
+
+											</div>
+										</div>
+										<!-- Reject Remark model -->
+										<div class="modal fade" id="rejectModal" role="dialog">
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal">&times;</button>
+														<h4 class="modal-title">Reject</h4>
+													</div>
+													<div class="col-md-12 ">
+														<label style="font-size: 13px; margin-top: 2%">Why
+															do you want to reject?</label><br>
+														<textarea ng-model="cCctr.newEntity.remark" id="remark"
+															name="remark"
+															style="width: 90%; height: 20%; font-size: 15px; margin-left: 5%;"
+															ng-required="true"></textarea>
+													</div>
+													<div class="modal-footer">
+														<button class="btn btn-success"
+															ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.deductee.id"
+															ng-click="cCctr.addRemark(true,'remark',cCctr.newEntity,'Reject','close')"
+															style="margin-top: 1%;">Yes</button>
+														<button class="btn btn-danger" data-dismiss="modal"
+															style="margin-top: 1%;">No</button>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!-- Resolve Remark model -->
+										<div class="modal fade" id="resolveModal" role="dialog">
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal">&times;</button>
+														<h4 class="modal-title">Resolve</h4>
+													</div>
+													<div class="col-md-12 ">
+														<label style="font-size: 13px; margin-top: 2%">Resolve</label><br>
+														<textarea ng-model="cCctr.newEntity.remark" id="remark"
+															name="remark"
+															style="width: 90%; height: 20%; font-size: 15px; margin-left: 5%;"
+															ng-required="true"></textarea>
+													</div>
+													<div class="modal-footer">
+														<button class="btn btn-success"
+															ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.deductee.id"
+															ng-click="cCctr.addRemark(true,'remark',cCctr.newEntity,'Resolve','close')"
+															style="margin-top: 1%;">Yes</button>
+														<button class="btn btn-danger" data-dismiss="modal"
+															style="margin-top: 1%;">No</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<br>
+					<div>
+						<div class="table-responsive" style="overflow-x: inherit">
+							<!-- 	<div class="col-md-12" style="margin-left:-30px"> -->
+							<table class=" table table-bordered table-hover  table-striped"
+								role="table"
+								style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+
+								<thead>
+								<colgroup>
+									<col span="14" style="background-color: #ffffff">
+								</colgroup>
+								<tr>
+								<thead>
+									<tr role="row" style="height: 40px; background-color: #81b7db">
+										<th>Sr.No</th>
+										<th>User Name</th>
+										<th style="width: 50%">Remark</th>
+										<th>File</th>
+										<!-- <th>Remark By</th>
+									<th>Date & Time</th> -->
+
+									</tr>
+
+								</thead>
+								<tbody ng-show="cCctr.getEntityListData().remarkList.length>0">
+									<tr ng-repeat="a in cCctr.getEntityListData().remarkList">
+										<th>{{$index+1}}</th>
+										<th>{{a.username}}</th>
+										<th>{{a.remark}}</th>
+
+										<th>
+											<div>
+												<div ng-hide="a.fileStatus == false">
+													<button type="button" class="fa fa-download"
+														style="width: 80px; height: 28px; background-color: #337ab7; color: white; padding: 0rem 0rem; margin-top: 5px;"
+														ng-click="cCctr.download('apiRemarkAdmin/getDownloadFile/' +a.id)"></button>
+
+												</div>
+											</div>
+										</th>
+									</tr>
+								</tbody>
+							</table>
+
+						</div>
+					</div>
+
+
+
+
+
+				</div>
+
+			</div>
+
+		</div>
+	</div>

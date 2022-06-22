@@ -176,6 +176,71 @@ App
 									"page" : page
 								});
 							}
+							//pranay-detail state for Notice
+							self.gotoDetailPage1 = function(entity, id, din, page) {
+								$state.go("home.detail1", {
+									"entity": entity,
+									"din": din,
+									"id": id,
+									"page": page,
+
+								});
+							}
+							
+							self.submitData = function(valid, entity) {
+								if (valid == true) {
+									var downloadFile = self.entity.blob;
+									
+									if (downloadFile != null && downloadFile != undefined) {
+										console.log('remark with file submitData:CC');
+										delete self.entity.blob;
+										CommonService.saveRemarkWithFile(downloadFile, self.entity, entity).then(function(data) {
+											console.log(entity + ' added successfully');
+											$('#successMsg').find('.modal-header').find('.headingMsg').text("Successful.");
+											$('#successMsg').find('.modal-body').find('.msg').text("Replied Successfully.");
+											$("#successMsg").modal();
+											// window.alert(entity+data.msg);
+										}, function(error) {
+											console.error('Error while Adding Remark, ' + status);
+											if (error.exceptionMsg != null || error.exceptionMsg != undefined) {
+												if (error.exceptionMsg == 'Please add reason for updation.') {
+													$('#updateMsg').find('.modal-header').find('.headingMsg').text("Information.");
+													$('#updateMsg').find('.modal-body').find('.msg').text("Can not Update " + error.entityName + " : " + error.exceptionMsg);
+													$("#updateMsg").modal({
+														keyboard: false,
+														backdrop: 'static'
+													});
+												}
+											}
+										});
+									}
+									else {
+										console.log('remark without file submitData:CC');
+										CommonService.saveRemark(self.entity, entity).then(function(data) {
+											console.log(entity + ' added successfully');
+											$('#successMsg').find('.modal-header').find('.headingMsg').text("Successful.");
+											$('#successMsg').find('.modal-body').find('.msg').text("Replied Successfully.");
+											$("#successMsg").modal();
+										}, function(error) {
+											console.error('Error while updating Details, ' + status);
+											if (error.exceptionMsg != null || error.exceptionMsg != undefined) {
+												if (error.exceptionMsg == 'Please add reason for updation.') {
+													$('#updateMsg').find('.modal-header').find('.headingMsg').text("Information.");
+													$('#updateMsg').find('.modal-body').find('.msg').text("Can not Update " + error.entityName + " : " + error.exceptionMsg);
+													$("#updateMsg").modal({
+														keyboard: false,
+														backdrop: 'static'
+													});
+												}
+											}
+										});
+									}
+									//file check
+								}//main if
+							}//submitData
+							
+							//Pranay
+							
 							self.gotoDetailFormPage = function(entity,
 									detailId, fy, branchCode, page) {
 								$state.go("home.detailForm", {

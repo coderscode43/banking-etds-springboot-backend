@@ -30,7 +30,8 @@ App.factory('CommonService', [
 				getCount : getCount,
 				changePassword : changePassword,
 				deleteEntity : deleteEntity,
-				getUserData : getUserData
+				getUserData : getUserData,
+				detail1:detail1
 	
 			};
 			return factory;
@@ -141,6 +142,54 @@ App.factory('CommonService', [
 				return deferred.promise;
 
 			}
+			//pranay-Notice
+			function detail1(entity, id, din) {
+				var deferred = $q.defer();
+				$http.get(REST_SERVICE_URI + entity + '/detail/' + id + '/' + din)
+					.success(function(data) {
+						console.log("success inDetail of CommonService");
+						if (data.count != null) {
+							count = data.count;
+						}
+						entityData = data;
+						entityList = data;
+						deferred.resolve(data);
+					}).error(function(status) {
+						console.log("error inDetail of CommonService");
+						deferred.reject(status);
+					});
+
+				return deferred.promise;
+			}
+			function saveRemarkWithFile(downloadFile, entitySave, entity) {
+				var dat = new FormData();
+				dat.append('downloadFile', downloadFile)
+				dat.append('dec', JSON.stringify(entitySave));
+				var deferred = $q.defer();
+				$http.post(REST_SERVICE_URI + entity + '/addRemarkAndDocument',
+					dat, {
+					transformRequest: angular.identity,
+					headers: { 'Content-Type': undefined }
+				}).success(function(data) {
+					deferred.resolve(data);
+				}).error(function(status) {
+					console.log("Error in Save CommonService");
+					deferred.reject(status);
+				});
+				return deferred.promise;
+			}
+			function saveRemark(entitySave, entity) {
+				var deferred = $q.defer();
+				$http.post(REST_SERVICE_URI + entity + '/addRemarkAdmin', entitySave)
+					.success(function(data) {
+						deferred.resolve(data);
+					}).error(function(status) {
+						console.log("Error in Save CommonService");
+						deferred.reject(status);
+					});
+				return deferred.promise;
+			}
+			//pranay-Notice
 			function detailForm(entity, fy, branchCode, detailId) {
 				var deferred = $q.defer();
 				$http.get(

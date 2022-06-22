@@ -55,7 +55,17 @@ public class RODetailsController extends AbstractControllerForm<Long, RODetails,
 	public HashMap<String, Object> getDetail(Long id) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> map = new HashMap<>();
-		HashMap<String, Object> constrains = new HashMap<>();	
+		HashMap<String, Object> constrains = new HashMap<>();
+		if (!"admin".equals(getBranchCode())) {
+			Long b=1L;
+			try {
+				b =Long.valueOf(getBranchCode());
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+			constrains.put("branchCode", b);
+		}else {
+		}
 		constrains.put("id", id);
 		map.put("roDetails",getService().uniqueSearch(constrains));
 		constrains.remove("id");

@@ -69,6 +69,16 @@ public class G15Controller<E> extends AbstractControllerFY<Long, G15, G15Service
 	public HashMap<String, Object> getDetail(Long id, String fy, Long branchCode) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
+		if (!"admin".equals(getBranchCode())) {
+			Long b=1L;
+			try {
+				b =Long.valueOf(getBranchCode());
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+			constrains.put("branchCode", b);
+		}else {
+		}
 		constrains.put("id", id);
 		constrains.put("fy", fy);
 		constrains.put("branchCode", branchCode);
@@ -107,7 +117,7 @@ public class G15Controller<E> extends AbstractControllerFY<Long, G15, G15Service
 			// convert JSON string to Map
 			map = mapper.readValue(searchParam, new TypeReference<Map<String, String>>() {
 			});
-
+			adminValidation(map);
 			Long count = getService().findallCount(map);
 			List<?> list = getSearch(map, pageNo, resultPerPage);
 			ListCount send = new ListCount();
@@ -135,6 +145,7 @@ public class G15Controller<E> extends AbstractControllerFY<Long, G15, G15Service
 	public ResponseEntity<?> searchEntity(@RequestBody LinkedHashMap<String, Object> map) {
 		// verify the clientId authorization
 		try {
+			adminValidation(map);
 			return new ResponseEntity<>(getSearchEntity(map), HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("Error in listALL", e);

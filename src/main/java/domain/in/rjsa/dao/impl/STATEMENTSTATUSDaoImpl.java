@@ -49,6 +49,9 @@ public class STATEMENTSTATUSDaoImpl extends AbstractDaoTaxo<Long, STATEMENTSTATU
 		if (entity.get("QUARTER") != null) {
 			criteria.add(Restrictions.eqOrIsNull("QUARTER", String.valueOf((String) entity.get("QUARTER"))));
 		}
+		if (entity.get("RT") != null) {
+			criteria.add(Restrictions.eqOrIsNull("RT", entity.get("RT")));
+		}
 
 		criteria.addOrder(Order.desc("id"));
 		criteria.setFirstResult(pageNo * noOfResult);
@@ -73,6 +76,9 @@ public class STATEMENTSTATUSDaoImpl extends AbstractDaoTaxo<Long, STATEMENTSTATU
 		}
 		if (entity.get("branchState") != null) {
 			criteria.add(Restrictions.eqOrIsNull("branchState", entity.get("branchState").toString()));
+		}
+		if (entity.get("RT") != null) {
+			criteria.add(Restrictions.eqOrIsNull("RT", entity.get("RT")));
 		}
 
 		return (Long) criteria.setProjection(Projections.rowCount()).uniqueResult();
@@ -111,6 +117,9 @@ public class STATEMENTSTATUSDaoImpl extends AbstractDaoTaxo<Long, STATEMENTSTATU
 		}
 		if (entity.get("QUARTER") != null) {
 			criteria.add(Restrictions.eqOrIsNull("QUARTER", String.valueOf((String) entity.get("QUARTER"))));
+		}
+		if (entity.get("RT") != null) {
+			criteria.add(Restrictions.eqOrIsNull("RT", entity.get("RT")));
 		}
 
 		criteria.addOrder(Order.desc("id"));

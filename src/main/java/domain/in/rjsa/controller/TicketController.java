@@ -54,6 +54,16 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 	public ResponseEntity<?> count(@PathVariable String fy, @PathVariable Long branchCode,
 			HttpServletRequest request) {
 		HashMap<String, Object> constrains = new HashMap<>();
+		if (!"admin".equals(getBranchCode())) {
+			Long b=1L;
+			try {
+				b =Long.valueOf(getBranchCode());
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+			constrains.put("branchCode", b);
+		}else {
+		}
 		constrains.put("fy", fy);
 		constrains.put("branchCode", branchCode);
 		try {
@@ -77,6 +87,7 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 			@RequestBody LinkedHashMap<String, Object> entity) {
 		// FieldErrorDTO ermsg=new FieldErrorDTO();
 		logger.info("Creating new Return instance");
+		adminValidation(entity);
 		String userName = getPrincipal();
 		entity.put("userName", userName);
 		entity.put("branchCode",branchCode);
@@ -91,6 +102,7 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 			@RequestBody LinkedHashMap<String, Object> entity) {
 		// FieldErrorDTO ermsg=new FieldErrorDTO();
 		logger.info("Creating new Return instance");
+		adminValidation(entity);
 		String userName = getPrincipal();
 		entity.put("userName", userName);
 		entity.put("branchCode",branchCode);
@@ -105,7 +117,8 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 	public ResponseEntity<?> createEntity(@RequestBody LinkedHashMap<String, Object> entity) {
 		// FieldErrorDTO ermsg=new FieldErrorDTO();
 		logger.info("Creating new Return instance");
-		Ticket ticket = new Ticket();		String userName = getPrincipal();
+		Ticket ticket = new Ticket();
+		adminValidation(entity);		String userName = getPrincipal();
 		entity.put("userName", userName);
 		create(entity);
 		addLogs(entity);
@@ -116,6 +129,16 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 
 	public List<?> getList(String fy, Long branchCode, int pageNo, int resultPerPage) {
 		HashMap<String, Object> constrains = new HashMap<>();
+		if (!"admin".equals(getBranchCode())) {
+			Long b=1L;
+			try {
+				b =Long.valueOf(getBranchCode());
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+			constrains.put("branchCode", b);
+		}else {
+		}
 		constrains.put("fy", fy);
 		constrains.put("branchCode", branchCode);
 		return getService().findAll(constrains, pageNo, resultPerPage);
@@ -138,6 +161,7 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 					map.put(key, Long.valueOf((String) map.get(key)));
 				}
 			}
+			adminValidation(map);
 			map.put("fy", fy);
 			map.put("branchCode", branchCode);
 			Long count = getService().findallCount(map);
@@ -168,6 +192,16 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 	public HashMap<String, Object> getDetail(Long id, String fy, Long branchCode) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
+		if (!"admin".equals(getBranchCode())) {
+			Long b=1L;
+			try {
+				b =Long.valueOf(getBranchCode());
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+			constrains.put("branchCode", b);
+		}else {
+		}
 		constrains.put("id", id);
 		constrains.put("fy", fy);
 		constrains.put("branchCode", branchCode);
@@ -182,6 +216,7 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 	
 	@RequestMapping(value = "/update/{page}", method = RequestMethod.PUT)
 	public ResponseEntity<?> updateTestimonial(@RequestBody LinkedHashMap<String, Object> entity) {
+		adminValidation(entity);
 		try {
 			Long id = Long.valueOf(entity.get("id").toString());
 			Ticket ticket = service.getByKey(id);

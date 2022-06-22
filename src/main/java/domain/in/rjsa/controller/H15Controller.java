@@ -136,6 +136,7 @@ public class H15Controller <E> extends AbstractControllerFY<Long, H15, H15Servic
 	public ResponseEntity<?> searchEntity(@RequestBody LinkedHashMap<String, Object> map) {
 		// verify the clientId authorization
 		try {
+			adminValidation(map);
 			return new ResponseEntity<>(getSearchEntity(map), HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("Error in listALL", e);

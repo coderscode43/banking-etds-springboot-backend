@@ -180,6 +180,16 @@ public class BranchController extends AbstractController {
 	public Object getDetail(Long id) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
+		if (!"admin".equals(getBranchCode())) {
+			Long b=1L;
+			try {
+				b =Long.valueOf(getBranchCode());
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+			constrains.put("branchCode", b);
+		}else {
+		}
 		constrains.put("id", id);
 		return service.uniqueSearch(constrains);
 	}
@@ -348,25 +358,7 @@ public class BranchController extends AbstractController {
 			// convert JSON string to Map
 			map = mapper.readValue(searchParam, new TypeReference<Map<String, String>>() {
 			});
-			if (!"admin".equals(getBranchCode())) {
-				Long b = 1L;
-				try {
-					b = Long.valueOf(getBranchCode());
-				} catch (Exception e) {
-					// TODO: handle exception
-				}
-				map.put("branchCode", b);
-			}else{
-				if(map.containsKey("branchCode")) {
-					Long b=1L;
-					try {
-						b =Long.valueOf(map.get("branchCode").toString());
-					}catch (Exception e) {
-						// TODO: handle exception
-					}
-					map.put("branchCode", b);
-				}
-			}
+			adminValidation(map);
 
 			String address = service.createUserExcel(map);
 

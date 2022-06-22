@@ -184,7 +184,7 @@ App.factory('CommonServiceFY', [
    function fetchSearch(entity, map, pageNo,fy,branchCode) {
 				entityList = [];
 				var deferred = $q.defer();
-				$http.get(REST_SERVICE_URI + entity + '/search/' + $stateParams.fy + '/' + $stateParams.branchCode +'/0/100/' + map).success(function(data) {
+				$http.get(REST_SERVICE_URI + entity + '/search/' + $stateParams.fy + '/' + $stateParams.branchCode +'/' + pageNo + '/100/' + map).success(function(data) {
 				entityList = data.entities;
 					deferred.resolve(data);
 				})

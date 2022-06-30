@@ -13,7 +13,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "form.StaticData")
+@Table(name = "AABCT5589K_form.StaticData")
 public class StaticDataModel extends CommonModelAbstract{
 	
 	private static final long serialVersionUID = 1L;

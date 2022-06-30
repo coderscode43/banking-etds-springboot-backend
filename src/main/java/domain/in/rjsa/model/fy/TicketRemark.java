@@ -19,7 +19,7 @@ import domain.in.rjsa.model.form.CommonModelAbstract;
 import lombok.Data;
 @Data
 @Entity
-@Table(name = "FYDetails.ticketRemark")
+@Table(name = "AABCT5589K_2223.ticketRemark")
 public class TicketRemark extends CommonModelAbstract{
 	private static final long serialVersionUID = 1L;
 	@Id

@@ -18,7 +18,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "FYDetails.G15")
+@Table(name = "AABCT5589K_2223.G15")
 public class G15 extends CommonModelAbstract{
 	
 	

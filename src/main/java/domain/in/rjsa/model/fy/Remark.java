@@ -15,7 +15,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "FYDetails.deducteeRemark")
+@Table(name = "AABCT5589K_2223.deducteeRemark")
 public class Remark extends CommonModelAbstract{/**
 	 * 
 	 */

@@ -21,7 +21,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "FYDetails.regular26QDeductee")
+@Table(name = "AABCT5589K_2223.regular26QDeductee")
 public class Regular26QDeductee extends CommonModelAbstract{
 	/**
 	 * 

@@ -20,7 +20,7 @@ import domain.in.rjsa.util.JsonDateSerializer;
 import lombok.Data;
 @Data
 @Entity
-@Table(name = "FYDetails.regular27EQDeductee")
+@Table(name = "AABCT5589K_2223.regular27EQDeductee")
 public class Regular27EQDeductee extends CommonModelAbstract {
 	/**
 	 * 

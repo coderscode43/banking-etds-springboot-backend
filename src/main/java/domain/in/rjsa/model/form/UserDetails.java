@@ -10,7 +10,7 @@ import com.sun.istack.NotNull;
 import lombok.Data;
 @Data
 @Entity
-@Table(name = "form.userDetails")
+@Table(name = "AABCT5589K_form.userDetails")
 public class UserDetails extends CommonModelAbstract<UserDetails>{
 	
 	/**

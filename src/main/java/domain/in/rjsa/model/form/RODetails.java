@@ -14,7 +14,7 @@ import org.hibernate.annotations.GenericGenerator;
 import lombok.Data;
 @Data
 @Entity
-@Table(name = "form.RODetails")
+@Table(name = "AABCT5589K_form.RODetails")
 public class RODetails extends CommonModelAbstract {
 	
 

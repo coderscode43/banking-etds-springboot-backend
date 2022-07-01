@@ -344,6 +344,10 @@
 								<button data-toggle="modal" data-target="#myModal"
 									class="btn btn-success" style="margin-left: 50%">Add
 									Remark</button>
+									
+										<button data-toggle="modal" data-target="#edit"
+									class="btn btn-success" >Edit
+									</button>
 
 								<button class="btn btn-danger"
 									ng-click="cCctr.gotoWFYListPage('form27EQDeductee','form27EQDeductee')">Back</button>
@@ -494,3 +498,363 @@
 		</div>
 	</div>
 </div>
+
+
+<div id="edit" class="modal fade" role="dialog">
+					<div class="modal-dialog modal-lg">
+						<!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" id="closeU"
+									data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">Edit Details of Form 27EQ Deductee</h4>
+							</div>
+							<div class="modal-body">
+
+								<div id="myTabContent" class="tab-content">
+									<div class="tab-pane fade active in" id="signin">
+										<form name="profileForm" class="form-horizontal"
+											enctype="multipart/form-data">
+											<div class="row">
+												<div class="col-md-6">
+													<label style="font-size:12px;">Quarter*</label> <input class="form-control"
+														type="text" name="roCode" placeholder="RO Code"
+														ng-model="cCctr.entity.deductee.quarter" ng-required="true"
+														/> 
+												</div>
+
+												<div class="col-md-6">
+
+													<label style="font-size:12px;">Month*</label> <input class="form-control"
+														type="text" name="roName" placeholder="RO Name"
+														ng-required="true" ng-model="cCctr.entity.deductee.month"
+														ng-model-options="{updateOn: 'blur'}"
+														
+														 /> 
+												</div>
+											</div>
+
+											<div class="row">
+												<div class="col-md-6">
+
+													<label style="font-size:12px;">RO Code *</label> <input class="form-control"
+														type="text" name="roName" placeholder="RO Name"
+														ng-required="true" ng-model="cCctr.entity.deductee.roCode"
+														ng-model-options="{updateOn: 'blur'}"
+														
+														 /> 
+												</div>
+
+												<div class="col-md-6">
+
+													<label style="font-size:12px;">Branch Code   *</label> <input class="form-control"
+														type="text" name="roName" placeholder="RO Name"
+														ng-required="true" ng-model="cCctr.entity.deductee.branchCode"
+														ng-model-options="{updateOn: 'blur'}"
+														
+														 /> 
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-6">
+
+													<label style="font-size:12px;">Vend/Cust/Id*</label> <input class="form-control"
+														type="text" name="roName" placeholder="RO Name"
+														ng-required="true" ng-model="cCctr.entity.deductee.custVendId"
+														ng-model-options="{updateOn: 'blur'}"
+														
+														 /> 
+												</div>
+
+												<div class="col-md-6">
+
+													<label style="font-size:12px;">Unique Ref No.*</label> <input class="form-control"
+														type="text" name="roName" placeholder="RO Name"
+														ng-required="true" ng-model="cCctr.entity.deductee.uniqueRefNo"
+														ng-model-options="{updateOn: 'blur'}"
+														
+														 /> 
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-6">
+
+													<label style="font-size:12px;">Account No.*</label> <input class="form-control"
+														type="text" name="roName" placeholder="RO Name"
+														ng-required="true" ng-model="cCctr.entity.deductee.accNo"
+														ng-model-options="{updateOn: 'blur'}"
+														
+														 /> 
+												</div>
+
+												<div class="col-md-6">
+
+													<label style="font-size:12px;">Challan Heading*</label> <input class="form-control"
+														type="text" name="roName" placeholder="RO Name"
+														ng-required="true" ng-model="cCctr.entity.deductee.challanHeading"
+														ng-model-options="{updateOn: 'blur'}"
+														
+														 /> 
+												</div>
+											</div>
+											<div class="row">
+												
+
+												<div class="col-md-6">
+
+													<label style="font-size:12px;">Party Code*</label> <input class="form-control"
+														type="text" name="roName" placeholder="RO Name"
+														ng-required="true" ng-model="cCctr.entity.deductee.deducteeCode"
+														ng-model-options="{updateOn: 'blur'}"
+														
+														 /> 
+												</div>
+												
+												<div class="col-md-6">
+
+													<label style="font-size:12px;">Party Reference No*</label> <input class="form-control"
+														type="text" name="roName" placeholder="RO Name"
+														ng-required="true" ng-model="cCctr.entity.deductee.deducteeReferenceNo"
+														ng-model-options="{updateOn: 'blur'}"
+														
+														 /> 
+												</div>
+											</div>
+											
+											
+											
+											
+											<div class="row">
+												<div class="col-md-6">
+
+													<label style="font-size:12px;">Surcharge *</label> <input class="form-control"
+														type="text" name="roName" placeholder="RO Name"
+														ng-required="true" ng-model="cCctr.entity.deductee.surcharge"
+														ng-model-options="{updateOn: 'blur'}"
+														
+														 /> 
+												</div>
+
+												<div class="col-md-6">
+
+													<label style="font-size:12px;">Education Cess *</label> <input class="form-control"
+														type="text" name="roName" placeholder="RO Name"
+														ng-required="true" ng-model="cCctr.entity.deductee.educationCess"
+														ng-model-options="{updateOn: 'blur'}"
+														
+														 /> 
+												</div>
+											</div>
+											
+											<div class="row">
+												<div class="col-md-6">
+
+													<label style="font-size:12px;">Total Tax Deducted*</label> <input class="form-control"
+														type="text" name="roName" placeholder="RO Name"
+														ng-required="true" ng-model="cCctr.entity.deductee.totalTaxdeducted"
+														ng-model-options="{updateOn: 'blur'}"
+														
+														 /> 
+												</div>
+
+												<div class="col-md-6">
+
+													<label style="font-size:12px;">Total Tax Deposited *</label> <input class="form-control"
+														type="text" name="roName" placeholder="RO Name"
+														ng-required="true" ng-model="cCctr.entity.deductee.totalTaxDeposited"
+														ng-model-options="{updateOn: 'blur'}"
+														
+														 /> 
+												</div>
+											</div>
+											
+											<div class="row">
+												<div class="col-md-6">
+
+													<label style="font-size:12px;">TAN*</label> <input class="form-control"
+														type="text" name="roName" placeholder="RO Name"
+														ng-required="true" ng-model="cCctr.entity.deductee.TAN"
+														ng-model-options="{updateOn: 'blur'}"
+														
+														 /> 
+												</div>
+
+												<div class="col-md-6">
+
+													<label style="font-size:12px;">Certificate Number *</label> <input class="form-control"
+														type="text" name="roName" placeholder="RO Name"
+														ng-required="true" ng-model="cCctr.entity.deductee.certificateNumber"
+														ng-model-options="{updateOn: 'blur'}"
+														
+														 /> 
+												</div>
+											</div>
+											
+											<div class="row">
+												<div class="col-md-6">
+
+													<label style="font-size:12px;">Error Description *</label> <input class="form-control"
+														type="text" name="roName" placeholder="RO Name"
+														ng-required="true" ng-model="cCctr.entity.deductee.errorDescription"
+														ng-model-options="{updateOn: 'blur'}"
+														
+														 /> 
+												</div>
+
+												<div class="col-md-6">
+
+													<label style="font-size:12px;">Warning Description*</label> <input class="form-control"
+														type="text" name="roName" placeholder="RO Name"
+														ng-required="true" ng-model="cCctr.entity.deductee.warningDescription"
+														ng-model-options="{updateOn: 'blur'}"
+														
+														 /> 
+												</div>
+											</div>
+											
+											<div class="row">
+												<div class="col-md-6">
+
+													<label style="font-size:12px;">Short Deduction *</label> <input class="form-control"
+														type="text" name="roName" placeholder="RO Name"
+														ng-required="true" ng-model="cCctr.entity.deductee.ShortDeduction"
+														ng-model-options="{updateOn: 'blur'}"
+														
+														 /> 
+												</div>
+
+												<div class="col-md-6">
+
+													<label style="font-size:12px;">Interest On Short Deduction *</label> <input class="form-control"
+														type="text" name="roName" placeholder="RO Name"
+														ng-required="true" ng-model="cCctr.entity.deductee.InterestOnShortDeduction"
+														ng-model-options="{updateOn: 'blur'}"
+														
+														 /> 
+												</div>
+											</div>
+											
+											<div class="row">
+												<div class="col-md-6">
+
+													<label style="font-size:12px;">Interest On Late Payment*</label> <input class="form-control"
+														type="text" name="roName" placeholder="RO Name"
+														ng-required="true" ng-model="cCctr.entity.deductee.InterestOnLatePayment"
+														ng-model-options="{updateOn: 'blur'}"
+														
+														 /> 
+												</div>
+
+												<div class="col-md-6">
+
+													<label style="font-size:12px;">Interest On Late Deduction*</label> <input class="form-control"
+														type="text" name="roName" placeholder="RO Name"
+														ng-required="true" ng-model="cCctr.entity.deductee.InterestOnLateDeduction"
+														ng-model-options="{updateOn: 'blur'}"
+														
+														 /> 
+												</div>
+											</div>
+											
+											
+											<div class="row">
+												<div class="col-md-6">
+
+													<label style="font-size:12px;">PAN of the Party*</label> <input class="form-control"
+														type="text" name="roName" placeholder="RO Name"
+														ng-required="true" ng-model="cCctr.entity.deductee.panofthedeductee"
+														ng-model-options="{updateOn: 'blur'}"
+														
+														 /> 
+												</div>
+
+												<div class="col-md-6">
+
+													<label style="font-size:12px;">Name of the Party*</label> <input class="form-control"
+														type="text" name="roName" placeholder="RO Name"
+														ng-required="true" ng-model="cCctr.entity.deductee.nameoftheDeductee"
+														ng-model-options="{updateOn: 'blur'}"
+														
+														 /> 
+												</div>
+											</div>
+											
+											
+											<div class="row">
+												<div class="col-md-6">
+
+													<label style="font-size:12px;">Amount Receipt/Debited*</label> <input class="form-control"
+														type="text" name="roName" placeholder="RO Name"
+														ng-required="true" ng-model="cCctr.entity.deductee.amountReceiptDebited"
+														ng-model-options="{updateOn: 'blur'}"
+														
+														 /> 
+												</div>
+
+												<div class="col-md-6">
+
+													<label style="font-size:12px;">Date of Received/Debited*</label> <input class="form-control"
+														type="text" name="roName" placeholder="RO Name"
+														ng-required="true" ng-model="cCctr.entity.deductee.dateofReceivedDebited"
+														ng-model-options="{updateOn: 'blur'}"
+														
+														 /> 
+												</div>
+											</div>
+											
+											
+											<div class="row">
+												<div class="col-md-6">
+
+													<label style="font-size:12px;">TCS*</label> <input class="form-control"
+														type="text" name="roName" placeholder="RO Name"
+														ng-required="true" ng-model="cCctr.entity.deductee.tcs"
+														ng-model-options="{updateOn: 'blur'}"
+														
+														 /> 
+												</div>
+
+												
+											</div>
+											
+											
+											
+											
+											<div class="row">
+												
+												
+												<div class="col-md-6">
+
+													<label style="font-size:12px;">Status*</label> <input class="form-control"
+														type="text" name="roName" placeholder="RO Name"
+														ng-required="true" ng-model="cCctr.entity.deductee.resolved"
+														ng-model-options="{updateOn: 'blur'}"
+														
+														 /> 
+												</div>
+												
+												
+												
+
+											
+											</div>
+											
+											
+											<br> <br>
+											<div class="row">
+												<div class="col-md-12" style="text-align:right">
+													<button type="submit" class="btn btn-primary"
+														ng-click="profileForm.submitted=true;cCctr.updateData(profileForm.$valid,cCctr.entity.deductee,'form26QDeductee')">Update
+													</button>
+													<button type="button" class="btn btn-secondary"
+														data-dismiss="modal">Close</button>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>

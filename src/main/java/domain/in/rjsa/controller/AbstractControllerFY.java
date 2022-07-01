@@ -26,12 +26,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.HandlerMapping;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
+import domain.in.rjsa.exception.FieldErrorDTO;
 import domain.in.rjsa.model.form.ListCount;
 import domain.in.rjsa.model.form.Model;
 import domain.in.rjsa.model.fy.Logs;
@@ -521,6 +523,46 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 			throw new Exception("Excel Can Not Export.");
 //			logger.error("Error in listALL", e);
 		}
+	}
+	
+	@RequestMapping(value = "/update", method = RequestMethod.PUT)
+	public ResponseEntity<?> update(@RequestBody LinkedHashMap<String, Object> entity, HttpServletResponse response,
+			UriComponentsBuilder ucBuilder, String fy, Long branchCode) {
+		FieldErrorDTO ermsg = new FieldErrorDTO();
+//		Login l = applicationCache.getLoginDetail(getPrincipal());
+		Object o = getDetail((K) Long.valueOf(entity.get("id").toString()), fy, branchCode);
+		ObjectMapper oMapper = new ObjectMapper();
+		HashMap<String, Object> map = oMapper.convertValue(o, HashMap.class);
+		adminValidation(entity);
+		update(entity);
+		addLogsU(entity);
+		ermsg.setMessage(" Updated Successfully");
+		return new ResponseEntity<String>(HttpStatus.ACCEPTED);
+	}
+
+	
+
+	public void update(LinkedHashMap<String, Object> entity) {
+
+		Gson gson = new Gson();
+		// Login l = applicationCache.getLoginDetail(getPrincipal());
+		JsonElement jsonElement = gson.toJsonTree(entity);
+		getService().update(gson.fromJson(jsonElement, getEntity()));
+
+//		Gson gson = new Gson();
+//		Login l = applicationCache.getLoginDetail(getPrincipal());
+//		if (entity.containsKey("clientId")) {
+//			entity.put("clientId", l.getClientId());
+//		}
+		// if (entity.containsKey("employeeId")) {
+//		entity.put("employeeId",  l.getEmployeeId());
+		// }
+		// JsonElement jsonElement = gson.toJsonTree(entity);
+
+		// getEntity from controller and validate that with validate method in
+		// contorller and message from Service
+		// getService().update(gson.fromJson(jsonElement, getEntity()));
+
 	}
 
 

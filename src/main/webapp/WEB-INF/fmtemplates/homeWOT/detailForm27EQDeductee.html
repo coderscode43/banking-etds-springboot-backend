@@ -353,23 +353,23 @@
 									ng-click="cCctr.gotoWFYListPage('form27EQDeductee','form27EQDeductee')">Back</button>
 
 								<div ng-if="cCctr.entity.resolved == 1" ng-hide=("admin"!="${typeOfUser}");
-									style="margin: -2.9% 0 0% 64.2%;">
+									style="margin: -2.9% 0 0% 69.2%;">
 									<button data-toggle="modal" data-target="#resolveModal"
 										class="btn btn-primary">Resolved</button>
 								</div>
 								<div ng-if="cCctr.entity.resolved == 0" ng-hide=("admin"!="${typeOfUser}");
-									style="margin: -2.9% 0 0% 64.2%;">
+									style="margin: -2.9% 0 0% 69.2%;">
 									<button data-toggle="modal" data-target="#resolveModal"
 										class="btn btn-primary" disabled>Resolved</button>
 								</div>
 
 								<div ng-if="cCctr.entity.resolved == 1" ng-hide=("admin"!="${typeOfUser}");
-									style="margin: -2.9% 0 0% 72.2%;">
+									style="margin: -2.9% 0 0% 77.2%;">
 									<button data-toggle="modal" data-target="#rejectModal"
 										class="btn btn-info">Reject</button>
 								</div>
 								<div ng-if="cCctr.entity.resolved == 0" ng-hide=("admin"!="${typeOfUser}");
-									style="margin: -2.9% 0 0% 72.2%;">
+									style="margin: -2.9% 0 0% 77.2%;">
 									<button data-toggle="modal" data-target="#rejectModal"
 										class="btn btn-info" disabled>Reject</button>
 								</div>
@@ -518,7 +518,7 @@
 											<div class="row">
 												<div class="col-md-6">
 													<label style="font-size:12px;">Quarter*</label> <input class="form-control"
-														type="text" name="roCode" placeholder="RO Code"
+														type="text" name="quarter" placeholder="Quarter"
 														ng-model="cCctr.entity.deductee.quarter" ng-required="true"
 														/> 
 												</div>
@@ -526,7 +526,7 @@
 												<div class="col-md-6">
 
 													<label style="font-size:12px;">Month*</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
+														type="text" name="month" placeholder="Month"
 														ng-required="true" ng-model="cCctr.entity.deductee.month"
 														ng-model-options="{updateOn: 'blur'}"
 														
@@ -537,8 +537,8 @@
 											<div class="row">
 												<div class="col-md-6">
 
-													<label style="font-size:12px;">RO Code *</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
+													<label style="font-size:12px;">RO Code*</label> <input class="form-control"
+														type="text" name="roCode" placeholder="RO Code"
 														ng-required="true" ng-model="cCctr.entity.deductee.roCode"
 														ng-model-options="{updateOn: 'blur'}"
 														
@@ -547,8 +547,8 @@
 
 												<div class="col-md-6">
 
-													<label style="font-size:12px;">Branch Code   *</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
+													<label style="font-size:12px;">Branch Code*</label> <input class="form-control"
+														type="text" name="branchCode" placeholder="Branch Code"
 														ng-required="true" ng-model="cCctr.entity.deductee.branchCode"
 														ng-model-options="{updateOn: 'blur'}"
 														
@@ -559,7 +559,7 @@
 												<div class="col-md-6">
 
 													<label style="font-size:12px;">Vend/Cust/Id*</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
+														type="text" name="custVendId" placeholder="Vend/Cust/Id"
 														ng-required="true" ng-model="cCctr.entity.deductee.custVendId"
 														ng-model-options="{updateOn: 'blur'}"
 														
@@ -569,7 +569,7 @@
 												<div class="col-md-6">
 
 													<label style="font-size:12px;">Unique Ref No.*</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
+														type="text" name="uniqueRefNo" placeholder="Unique Ref No"
 														ng-required="true" ng-model="cCctr.entity.deductee.uniqueRefNo"
 														ng-model-options="{updateOn: 'blur'}"
 														
@@ -580,7 +580,7 @@
 												<div class="col-md-6">
 
 													<label style="font-size:12px;">Account No.*</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
+														type="text" name="accNo" placeholder="Account No"
 														ng-required="true" ng-model="cCctr.entity.deductee.accNo"
 														ng-model-options="{updateOn: 'blur'}"
 														
@@ -590,7 +590,7 @@
 												<div class="col-md-6">
 
 													<label style="font-size:12px;">Challan Heading*</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
+														type="text" name="challanHeading" placeholder="Challan Heading"
 														ng-required="true" ng-model="cCctr.entity.deductee.challanHeading"
 														ng-model-options="{updateOn: 'blur'}"
 														
@@ -603,7 +603,7 @@
 												<div class="col-md-6">
 
 													<label style="font-size:12px;">Party Code*</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
+														type="text" name="deducteeCode" placeholder="Party Code"
 														ng-required="true" ng-model="cCctr.entity.deductee.deducteeCode"
 														ng-model-options="{updateOn: 'blur'}"
 														
@@ -613,7 +613,7 @@
 												<div class="col-md-6">
 
 													<label style="font-size:12px;">Party Reference No*</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
+														type="text" name="deducteeReferenceNo" placeholder="Party Reference No"
 														ng-required="true" ng-model="cCctr.entity.deductee.deducteeReferenceNo"
 														ng-model-options="{updateOn: 'blur'}"
 														
@@ -628,7 +628,7 @@
 												<div class="col-md-6">
 
 													<label style="font-size:12px;">Surcharge *</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
+														type="text" name="surcharge" placeholder="Surcharge"
 														ng-required="true" ng-model="cCctr.entity.deductee.surcharge"
 														ng-model-options="{updateOn: 'blur'}"
 														
@@ -638,7 +638,7 @@
 												<div class="col-md-6">
 
 													<label style="font-size:12px;">Education Cess *</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
+														type="text" name="educationCess" placeholder="Education Cess"
 														ng-required="true" ng-model="cCctr.entity.deductee.educationCess"
 														ng-model-options="{updateOn: 'blur'}"
 														
@@ -650,7 +650,7 @@
 												<div class="col-md-6">
 
 													<label style="font-size:12px;">Total Tax Collected*</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
+														type="text" name="totalTaxCollected" placeholder="Total Tax Collected"
 														ng-required="true" ng-model="cCctr.entity.deductee.totalTaxCollected"
 														ng-model-options="{updateOn: 'blur'}"
 														
@@ -660,7 +660,7 @@
 												<div class="col-md-6">
 
 													<label style="font-size:12px;">Total Tax Deposited *</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
+														type="text" name="totalTaxDeposited" placeholder="Total Tax Deposited"
 														ng-required="true" ng-model="cCctr.entity.deductee.totalTaxDeposited"
 														ng-model-options="{updateOn: 'blur'}"
 														
@@ -672,7 +672,7 @@
 												<div class="col-md-6">
 
 													<label style="font-size:12px;">TAN*</label> <input class="form-control"
-														type="text" name="roName" placeholder="TAN"
+														type="text" name="TAN" placeholder="TAN"
 														ng-required="true" ng-model="cCctr.entity.deductee.TAN"
 														ng-model-options="{updateOn: 'blur'}"
 														
@@ -682,7 +682,7 @@
 												<div class="col-md-6">
 
 													<label style="font-size:12px;">Certificate Number *</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
+														type="text" name="certificateNumber" placeholder="Certificate Number"
 														ng-required="true" ng-model="cCctr.entity.deductee.certificateNumber"
 														ng-model-options="{updateOn: 'blur'}"
 														
@@ -693,8 +693,8 @@
 											<div class="row">
 												<div class="col-md-6">
 
-													<label style="font-size:12px;">Error Description *</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
+													<label style="font-size:12px;">Error Description*</label> <input class="form-control"
+														type="text" name="errorDescription" placeholder="Error Description"
 														ng-required="true" ng-model="cCctr.entity.deductee.errorDescription"
 														ng-model-options="{updateOn: 'blur'}"
 														
@@ -704,7 +704,7 @@
 												<div class="col-md-6">
 
 													<label style="font-size:12px;">Warning Description*</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
+														type="text" name="warningDescription" placeholder="Warning Description"
 														ng-required="true" ng-model="cCctr.entity.deductee.warningDescription"
 														ng-model-options="{updateOn: 'blur'}"
 														
@@ -716,7 +716,7 @@
 												<div class="col-md-6">
 
 													<label style="font-size:12px;">Short Deduction *</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
+														type="text" name="ShortDeduction" placeholder="Short Deduction"
 														ng-required="true" ng-model="cCctr.entity.deductee.ShortDeduction"
 														ng-model-options="{updateOn: 'blur'}"
 														
@@ -726,7 +726,7 @@
 												<div class="col-md-6">
 
 													<label style="font-size:12px;">Interest On Short Deduction *</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
+														type="text" name="InterestOnShortDeduction" placeholder="Interest On Short Deduction"
 														ng-required="true" ng-model="cCctr.entity.deductee.InterestOnShortDeduction"
 														ng-model-options="{updateOn: 'blur'}"
 														
@@ -738,7 +738,7 @@
 												<div class="col-md-6">
 
 													<label style="font-size:12px;">Interest On Late Payment*</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
+														type="text" name="roName" placeholder="Interest On Late Payment"
 														ng-required="true" ng-model="cCctr.entity.deductee.InterestOnLatePayment"
 														ng-model-options="{updateOn: 'blur'}"
 														
@@ -748,7 +748,7 @@
 												<div class="col-md-6">
 
 													<label style="font-size:12px;">Interest On Late Deduction*</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
+														type="text" name="InterestOnLateDeduction" placeholder="Interest On Late Deduction"
 														ng-required="true" ng-model="cCctr.entity.deductee.InterestOnLateDeduction"
 														ng-model-options="{updateOn: 'blur'}"
 														
@@ -761,7 +761,7 @@
 												<div class="col-md-6">
 
 													<label style="font-size:12px;">PAN of the Party*</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
+														type="text" name="panofthedeductee" placeholder="PAN of the Party"
 														ng-required="true" ng-model="cCctr.entity.deductee.panofthedeductee"
 														ng-model-options="{updateOn: 'blur'}"
 														
@@ -771,7 +771,7 @@
 												<div class="col-md-6">
 
 													<label style="font-size:12px;">Name of the Party*</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
+														type="text" name="nameoftheDeductee" placeholder="Name of the Party"
 														ng-required="true" ng-model="cCctr.entity.deductee.nameoftheDeductee"
 														ng-model-options="{updateOn: 'blur'}"
 														
@@ -784,7 +784,7 @@
 												<div class="col-md-6">
 
 													<label style="font-size:12px;">Amount Receipt/Debited*</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
+														type="text" name="amountReceiptDebited" placeholder="Amount Receipt/Debited"
 														ng-required="true" ng-model="cCctr.entity.deductee.amountReceiptDebited"
 														ng-model-options="{updateOn: 'blur'}"
 														
@@ -794,7 +794,7 @@
 												<div class="col-md-6">
 
 													<label style="font-size:12px;">Date of Received/Debited*</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
+														type="text" name="dateofReceivedDebited" placeholder="Date of Received/Debited"
 														ng-required="true" ng-model="cCctr.entity.deductee.dateofReceivedDebited"
 														ng-model-options="{updateOn: 'blur'}"
 														
@@ -807,7 +807,7 @@
 												<div class="col-md-6">
 
 													<label style="font-size:12px;">TCS*</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
+														type="text" name="tcs" placeholder="TCS"
 														ng-required="true" ng-model="cCctr.entity.deductee.tcs"
 														ng-model-options="{updateOn: 'blur'}"
 														
@@ -817,7 +817,7 @@
 												<div class="col-md-6">
 
 													<label style="font-size:12px;">Total Value of Purchase*</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
+														type="text" name="totalValueofPurchase" placeholder="Total Value of Purchase"
 														ng-required="true" ng-model="cCctr.entity.deductee.totalValueofPurchase"
 														ng-model-options="{updateOn: 'blur'}"
 														
@@ -834,7 +834,7 @@
 												<div class="col-md-6">
 
 													<label style="font-size:12px;">Rate at which Tax Collected*</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
+														type="text" name="rateatwhichTaxCollected" placeholder="Rate at which Tax Collected"
 														ng-required="true" ng-model="cCctr.entity.deductee.rateatwhichTaxCollected"
 														ng-model-options="{updateOn: 'blur'}"
 														
@@ -844,7 +844,7 @@
 												<div class="col-md-6">
 
 													<label style="font-size:12px;">Reason for Non Collection*</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
+														type="text" name="reasonforNonCollection" placeholder="Reason for Non Collection"
 														ng-required="true" ng-model="cCctr.entity.deductee.reasonforNonCollection"
 														ng-model-options="{updateOn: 'blur'}"
 														
@@ -860,23 +860,14 @@
 												<div class="col-md-6">
 
 													<label style="font-size:12px;">Section / Collection Code*</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
+														type="text" name="roName" placeholder="Section / Collection Code"
 														ng-required="true" ng-model="cCctr.entity.deductee.collectionCode}"
 														ng-model-options="{updateOn: 'blur'}"
 														
 														 /> 
 												</div>
 												
-												<div class="col-md-6">
-
-													<label style="font-size:12px;">*</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
-														ng-required="true" ng-model="cCctr.entity.deductee.reasonforNonCollection"
-														ng-model-options="{updateOn: 'blur'}"
-														
-														 /> 
-												</div>
-												
+											
 
 												
 											</div>
@@ -885,8 +876,8 @@
 												<div class="col-md-6">
 
 													<label style="font-size:12px;">Deductee is Non-Resident.*</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
-														ng-required="true" ng-model="cCctr.entity.deductee.collectionCode}"
+														type="text" name="deducteeisNonResident" placeholder="Deductee is Non-Resident"
+														ng-required="true" ng-model="cCctr.entity.deductee.deducteeisNonResident}"
 														ng-model-options="{updateOn: 'blur'}"
 														
 														 /> 
@@ -895,8 +886,8 @@
 												<div class="col-md-6">
 
 													<label style="font-size:12px;">Permanent Establishment*</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
-														ng-required="true" ng-model="cCctr.entity.deductee.reasonforNonCollection"
+														type="text" name="permanentEstablishment" placeholder="Permanent Establishment"
+														ng-required="true" ng-model="cCctr.entity.deductee.permanentEstablishment"
 														ng-model-options="{updateOn: 'blur'}"
 														
 														 /> 
@@ -909,8 +900,8 @@
 												<div class="col-md-6">
 
 													<label style="font-size:12px;">Reason For NonCollection F or G*</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
-														ng-required="true" ng-model="cCctr.entity.deductee.collectionCode}"
+														type="text" name="reasonForNonCollectionForG" placeholder="Reason For NonCollection F or G"
+														ng-required="true" ng-model="cCctr.entity.deductee.reasonForNonCollectionForG}"
 														ng-model-options="{updateOn: 'blur'}"
 														
 														 /> 
@@ -919,8 +910,8 @@
 												<div class="col-md-6">
 
 													<label style="font-size:12px;">if Answer to 681A is Yes Then Challan Number*</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
-														ng-required="true" ng-model="cCctr.entity.deductee.reasonforNonCollection"
+														type="text" name="ifAnswerTo681AisyesthenChallanNumber" placeholder="if Answer to 681A is Yes Then Challan Number"
+														ng-required="true" ng-model="cCctr.entity.deductee.ifAnswerTo681AisyesthenChallanNumber"
 														ng-model-options="{updateOn: 'blur'}"
 														
 														 /> 
@@ -933,26 +924,14 @@
 												<div class="col-md-6">
 
 													<label style="font-size:12px;">if Answer to 681A is Yes Then Date Of Payment Of TDS To Central Government*</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
-														ng-required="true" ng-model="cCctr.entity.deductee.collectionCode}"
+														type="text" name="ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment" placeholder="if Answer to 681A is Yes Then Date Of Payment Of TDS To Central Government"
+														ng-required="true" ng-model="cCctr.entity.deductee.ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment}"
 														ng-model-options="{updateOn: 'blur'}"
 														
 														 /> 
 												</div>
 												
-												<div class="col-md-6">
-
-													<label style="font-size:12px;">*</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
-														ng-required="true" ng-model="cCctr.entity.deductee.reasonforNonCollection"
-														ng-model-options="{updateOn: 'blur'}"
-														
-														 /> 
-												</div>
-												
-
-												
-											</div>
+                                                </div>
 											
 											
 											
@@ -963,7 +942,7 @@
 											<div class="col-md-6">
 
 													<label style="font-size:12px;">Date of Collected*</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
+														type="date" name="roName" placeholder="Date of Collected"
 														ng-required="true" ng-model="cCctr.entity.deductee.dateofCollected"
 														ng-model-options="{updateOn: 'blur'}"
 														
@@ -972,7 +951,7 @@
 												<div class="col-md-6">
 
 													<label style="font-size:12px;">Status*</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
+														type="text" name="Status" placeholder="Status"
 														ng-required="true" ng-model="cCctr.entity.deductee.resolved"
 														ng-model-options="{updateOn: 'blur'}"
 														
@@ -985,7 +964,7 @@
 											<div class="row">
 												<div class="col-md-12" style="text-align:right">
 													<button type="submit" class="btn btn-primary"
-														ng-click="profileForm.submitted=true;cCctr.updateData(profileForm.$valid,cCctr.entity.deductee,'form27EQQDeductee')">Update
+														ng-click="profileForm.submitted=true;cCctr.updateData(profileForm.$valid,cCctr.entity.deductee,'form27EQDeductee')">Update
 													</button>
 													<button type="button" class="btn btn-secondary"
 														data-dismiss="modal">Close</button>

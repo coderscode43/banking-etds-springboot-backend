@@ -1,5 +1,8 @@
 package domain.in.rjsa.web;
 
+import java.util.HashMap;
+
+import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -9,12 +12,14 @@ import domain.in.rjsa.model.form.Branch;
 import domain.in.rjsa.model.form.OrganizationDetails;
 import domain.in.rjsa.service.BranchService;
 import domain.in.rjsa.service.OrganizationDetailsService;
+import domain.in.rjsa.service.STATEMENTSTATUSService;
 import domain.in.rjsa.service.UserDetailsService;
 
 @Service("ApplicationCache")
 public class ApplicationCache {
 
-	
+	@Autowired
+	STATEMENTSTATUSService sService;
 	private OrganizationDetailsService organizationDetailsService;
 	private BranchService branchService;
 	private UserDetailsService userDetailsService;
@@ -61,6 +66,13 @@ public class ApplicationCache {
 	@Autowired
 	public void setUserDetailsService(UserDetailsService userDetailsService) {
 		this.userDetailsService = userDetailsService;
+	}
+
+
+	public Object getStatementStatus() {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> constrains = new HashMap<String, Object>();
+		return sService.findAll(constrains, 0, 10);
 	}
 
 

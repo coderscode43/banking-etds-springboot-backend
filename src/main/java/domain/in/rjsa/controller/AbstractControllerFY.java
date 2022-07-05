@@ -400,17 +400,16 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 	public void addLogsU(HashMap<String, Object> entity) {
 
 //		Login l = applicationCache.getLoginDetail(getPrincipal());
-		HashMap<String, Object> constrains = new HashMap<>();
-		constrains.put("id", Long.valueOf(entity.get("id").toString()));
-		constrains.put("clientId", 1);
-		Logs log = lservice.uniqueSearch(constrains);
-		log = new Logs();
+//		HashMap<String, Object> constrains = new HashMap<>();
+//		constrains.put("id", Long.valueOf(entity.get("id").toString()));
+//		constrains.put("clientId", 1);
+//		Logs log = lservice.uniqueSearch(constrains);
+		Logs log = new Logs();
 
-		log.setAction("Update"
-				);
+		log.setAction("Update");
 		log.setIpaddrs(getIp());
 		String s = getEntity().getName();
-		String[] arrOfStr = s.split(".", 25);
+ 		String[] arrOfStr = s.split(".", 25);
 		for (String a : arrOfStr)
 			log.setEntity(a);
 		Gson gason = new Gson();

@@ -13,6 +13,7 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import domain.in.rjsa.model.form.CommonModelAbstract;
@@ -41,9 +42,12 @@ public class Regular27EQDeductee extends CommonModelAbstract {
 	public String nameoftheDeductee;
     @Column(name = "amountReceiptDebited")
    	public Double amountReceiptDebited;
+    
     @Temporal(TemporalType.DATE)
     @Column(name = "dateofReceivedDebited")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	public Date dateofReceivedDebited;
+    
     @Column(name = "tcs")
    	public Double tcs;
     @Column(name = "surcharge")
@@ -58,9 +62,12 @@ public class Regular27EQDeductee extends CommonModelAbstract {
    	public Double totalTaxCollected;
     @Column(name = "totalTaxDeposited")
    	public Double totalTaxDeposited;
+    
     @Temporal(TemporalType.DATE)
     @Column(name = "dateofCollected")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
    	public Date dateofCollected;
+    
     @Column(name = "totalValueofPurchase")
    	public Double totalValueofPurchase;
     @Column(name = "rateatwhichTaxCollected")
@@ -95,6 +102,7 @@ public class Regular27EQDeductee extends CommonModelAbstract {
 	public Long ifAnswerTo681AisyesthenChallanNumber;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	public Date ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment;
 	@Column(name = "TAN")
 	public String TAN ;

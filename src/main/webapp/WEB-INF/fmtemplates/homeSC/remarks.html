@@ -189,16 +189,16 @@ table {
 
 							<div class="row" style="font-size: 13px;">
 								<div class="col-md-3">
-									<label>status: &nbsp;</label>
+									<label>status: {{cCctr.getEntityData().Notice.status}}&nbsp;</label>
 								</div>
 								<div ng-switch={{cCctr.getEntityData().Notice.status}}>
-									<div ng-switch-when=true>
-										<b style="font-size: 15px; color: #ae1212;">Open</b>
+									<div ng-switch-when= true>
+										<b style="font-size: 15px;color:#ae1212;">Completed</b>
 									</div>
-									<div ng-switch-when=false>
-										<b style="font-size: 15px; color: #ae1212;">Close</b>
+									<div ng-switch-when= false>
+										<b style="font-size: 15px;color:#ae1212;">Under Process</b>
 									</div>
-									<div ng-switch-default>...</div>
+									<!-- <div ng-switch-default>...</div> -->
 								</div>
 								<div class="row">
 									<form role="form" name="remark">

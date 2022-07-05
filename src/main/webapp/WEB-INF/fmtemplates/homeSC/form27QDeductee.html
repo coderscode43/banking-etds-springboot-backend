@@ -346,64 +346,164 @@
 					</tr>
 					<tr role="row"
 						ng-repeat="a in cCctr.getEntityListData() track by a.id">
-						<td style="width: 1%">{{$index+1}}</td>
-						<td style="width: 1%">{{a.quarter}}</td>
-						<td style="width: 1%">{{a.month}}</td>
-						<td style="width: 1%">{{a.roCode}}</td>
-						<td style="width: 1%">{{a.branchCode}}</td>
-						<td style="width: 1%">{{a.custVendId}}</td>
-						<td style="width: 1%">{{a.uniqueRefNo}}</td>
-						<td style="width: 1%">{{a.accNo}}</td>
-						<td class=" ellipsis" data-toggle="tooltip"
+						<td style="width: 1%" ng-if="a.resolved == 0">{{$index+1}}</td>
+						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1" >{{$index+1}}</td>
+						
+						<td style="width: 1%" ng-if="a.resolved == 0">{{a.quarter}}</td>
+						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.quarter}}</td>
+						
+						<td style="width: 1%" ng-if="a.resolved == 0">{{a.month}}</td>
+						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.month}}</td>
+						
+						<td style="width: 1%" ng-if="a.resolved == 0">{{a.roCode}}</td>
+						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.roCode}}</td>
+						
+						<td style="width: 1%" ng-if="a.resolved == 0">{{a.branchCode}}</td>
+						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.branchCode}}</td>
+						
+						<td style="width: 1%" ng-if="a.resolved == 0">{{a.custVendId}}</td>
+						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.custVendId}}</td>
+						
+						<td style="width: 1%" ng-if="a.resolved == 0">{{a.uniqueRefNo}}</td>
+						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.uniqueRefNo}}</td>
+						
+						<td style="width: 1%" ng-if="a.resolved == 0">{{a.accNo}}</td>
+						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.accNo}}</td>
+						
+						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 0"
 							data-placement="bottom" title="{{a.challanHeading}}">{{a.challanHeading}}</td>
-						<td style="width: 2%">{{a.deducteeRefNo}}</td>
-						<td class=" ellipsis" data-toggle="tooltip"
+						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 1" style="background-color:#ff3232"
+							data-placement="bottom" title="{{a.challanHeading}}">{{a.challanHeading}}</td>
+								
+						<td style="width: 2%" ng-if="a.resolved == 0">{{a.deducteeRefNo}}</td>
+						<td style="width: 2%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.deducteeRefNo}}</td>
+						
+						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 0"
 							data-placement="bottom" title="{{a.deducteeCode}}">{{a.deducteeCode}}</td>
-						<td style="width: 1%">{{a.pan}}</td>
-						<td class=" ellipsis" data-toggle="tooltip"
+						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 1" style="background-color:#ff3232"
+							data-placement="bottom" title="{{a.deducteeCode}}">{{a.deducteeCode}}</td>
+								
+						<td style="width: 1%" ng-if="a.resolved == 0">{{a.pan}}</td>
+						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.pan}}</td>
+						
+						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 0"
 							data-placement="bottom" title="{{a.name}}">{{a.name}}</td>
-						<td style="width: 1%">{{a.sectionCode}}</td>
-						<td style="width: 2%">{{a.date | date:'dd-MM-yyyy'}}</td>
-						<td style="width: 1%">{{a.amountPaid}}</td>
-						<td style="width: 1%">{{a.tds}}</td>
-						<td style="width: 1%">{{a.surcharge}}</td>
-						<td style="width: 1%">{{a.educationCess}}</td>
-						<td style="width: 1%">{{a.totalTaxDeducted}}</td>
-						<td style="width: 1%">{{a.totalTaxDeposited}}</td>
-						<td style="width: 1%">{{a.dateOfDeduction|
+						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 1" style="background-color:#ff3232"
+							data-placement="bottom" title="{{a.name}}">{{a.name}}</td>
+								
+						<td style="width: 1%" ng-if="a.resolved == 0">{{a.sectionCode}}</td>
+						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.sectionCode}}</td>
+						
+						<td style="width: 2%" ng-if="a.resolved == 0">{{a.date | date:'dd-MM-yyyy'}}</td>
+						<td style="width: 2%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.date | date:'dd-MM-yyyy'}}</td>
+						
+						<td style="width: 1%" ng-if="a.resolved == 0">{{a.amountPaid}}</td>
+						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.amountPaid}}</td>
+						
+						<td style="width: 1%" ng-if="a.resolved == 0">{{a.tds}}</td>
+						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.tds}}</td>
+						
+						<td style="width: 1%" ng-if="a.resolved == 0">{{a.surcharge}}</td>
+						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.surcharge}}</td>
+						
+						<td style="width: 1%" ng-if="a.resolved == 0">{{a.educationCess}}</td>
+						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.educationCess}}</td>
+						
+						<td style="width: 1%" ng-if="a.resolved == 0">{{a.totalTaxDeducted}}</td>
+						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.totalTaxDeducted}}</td>
+						
+						<td style="width: 1%" ng-if="a.resolved == 0">{{a.totalTaxDeposited}}</td>
+						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.totalTaxDeposited}}</td>
+						
+						<td style="width: 1%" ng-if="a.resolved == 0">{{a.dateOfDeduction|
 							date:'dd-MM-yyyy'}}</td>
-						<td style="width: 2%">{{a.rateAtWhichTaxDeducted}}</td>
-						<td class=" ellipsis" data-toggle="tooltip"
+						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.dateOfDeduction| 
+							date:'dd-MM-yyyy'}}</td>
+								
+						<td style="width: 2%" ng-if="a.resolved == 0">{{a.rateAtWhichTaxDeducted}}</td>
+						<td style="width: 2%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.rateAtWhichTaxDeducted}}</td>
+						
+						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 0"
 							data-placement="bottom" title="{{a.reasonForNonDeduction}}">{{a.reasonForNonDeduction}}</td>
-						<td style="width: 2%">{{a.grossingUpIndicator}}</td>
-						<td style="width: 2%">{{a.noOfCertificateUnderSection}}</td>
-						<td style="width: 2%">{{a.tdsRateAsPerItActs}}</td>
-						<td class=" ellipsis" data-toggle="tooltip"
+						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 1" style="background-color:#ff3232"
+							data-placement="bottom" title="{{a.reasonForNonDeduction}}">{{a.reasonForNonDeduction}}</td>
+								
+						<td style="width: 2%" ng-if="a.resolved == 0">{{a.grossingUpIndicator}}</td>
+						<td style="width: 2%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.grossingUpIndicator}}</td>
+						
+						<td style="width: 2%" ng-if="a.resolved == 0">{{a.noOfCertificateUnderSection}}</td>
+						<td style="width: 2%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.noOfCertificateUnderSection}}</td>
+						
+						<td style="width: 2%" ng-if="a.resolved == 0">{{a.tdsRateAsPerItActs}}</td>
+						<td style="width: 2%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.tdsRateAsPerItActs}}</td>
+						
+						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 0"
 							data-placement="bottom" title="{{a.natureOfRemittance}}">{{a.natureOfRemittance}}</td>
-						<td style="width: 2%">{{a.uniqueAcknowledgeNo}}</td>
-						<td style="width: 2%">{{a.countryOfResidence}}</td>
-						<td style="width: 1%">{{a.emailId}}</td>
-						<td style="width: 2%">{{a.contactNoOfDeductee}}</td>
-						<td class=" ellipsis" data-toggle="tooltip"
+						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 1" style="background-color:#ff3232"
+							data-placement="bottom" title="{{a.natureOfRemittance}}">{{a.natureOfRemittance}}</td>
+								
+						<td style="width: 2%" ng-if="a.resolved == 0">{{a.uniqueAcknowledgeNo}}</td>
+						<td style="width: 2%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.uniqueAcknowledgeNo}}</td>
+						
+						<td style="width: 2%" ng-if="a.resolved == 0">{{a.countryOfResidence}}</td>
+						<td style="width: 2%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.countryOfResidence}}</td>
+						
+						<td style="width: 1%" ng-if="a.resolved == 0">{{a.emailId}}</td>
+						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.emailId}}</td>
+						
+						<td style="width: 2%" ng-if="a.resolved == 0">{{a.contactNoOfDeductee}}</td>
+						<td style="width: 2%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.contactNoOfDeductee}}</td>
+						
+						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 0"
 							data-placement="bottom" title="{{a.addressOfDeductee}}">{{a.addressOfDeductee}}</td>
-						<td style="width: 2%">{{a.taxIdentificationNo}}</td>
-						<td style="width: 2%">{{a.cashWithdrawal194N}}</td>
-						<td style="width: 2%">{{a.cashWithdrawal194N20Lto1Cr}}</td>
-						<td style="width: 2%">{{a.cashWithdrawal194N1Cr}}</td>
-						<td class=" ellipsis" data-toggle="tooltip"
+						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 1" style="background-color:#ff3232"
+							data-placement="bottom" title="{{a.addressOfDeductee}}">{{a.addressOfDeductee}}</td>
+								
+						<td style="width: 2%" ng-if="a.resolved == 0">{{a.taxIdentificationNo}}</td>
+						<td style="width: 2%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.taxIdentificationNo}}</td>
+						
+						<td style="width: 2%" ng-if="a.resolved == 0">{{a.cashWithdrawal194N}}</td>
+						<td style="width: 2%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.cashWithdrawal194N}}</td>
+						
+						<td style="width: 2%" ng-if="a.resolved == 0">{{a.cashWithdrawal194N20Lto1Cr}}</td>
+						<td style="width: 2%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.cashWithdrawal194N20Lto1Cr}}</td>
+						
+						<td style="width: 2%" ng-if="a.resolved == 0">{{a.cashWithdrawal194N1Cr}}</td>
+						<td style="width: 2%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.cashWithdrawal194N1Cr}}</td>
+						
+						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 0"
 							data-placement="bottom" title="{{a.errorDescription}}">{{a.errorDescription}}</td>
-						<td class=" ellipsis" data-toggle="tooltip"
+						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 1" style="background-color:#ff3232"
+							data-placement="bottom" title="{{a.errorDescription}}">{{a.errorDescription}}</td>
+								
+						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 0"
 							data-placement="bottom" title="{{a.warningDescription}}">{{a.warningDescription}}</td>
-						<td class=" ellipsis" data-toggle="tooltip"
+						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 1" style="background-color:#ff3232"
+							data-placement="bottom" title="{{a.warningDescription}}">{{a.warningDescription}}</td>
+								
+						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 0"
 							data-placement="bottom" title="{{a.ShortDeduction}}">{{a.ShortDeduction}}</td>
-						<td style="width: 2%">{{a.InterestOnShortDeduction}}</td>
-						<td style="width: 2%">{{a.InterestOnLatePayment}}</td>
-						<td style="width: 2%">{{a.InterestOnLateDeduction}}</td>
-						<td style="width: 1%">{{a.TAN}}</td>
-						<td style="width: 1%">{{a.comments}}</td>
+						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 1" style="background-color:#ff3232"
+							data-placement="bottom" title="{{a.ShortDeduction}}">{{a.ShortDeduction}}</td>
+								
+						<td style="width: 2%" ng-if="a.resolved == 0">{{a.InterestOnShortDeduction}}</td>
+						<td style="width: 2%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.InterestOnShortDeduction}}</td>
+						
+						<td style="width: 2%" ng-if="a.resolved == 0">{{a.InterestOnLatePayment}}</td>
+						<td style="width: 2%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.InterestOnLatePayment}}</td>
+						
+						<td style="width: 2%" ng-if="a.resolved == 0">{{a.InterestOnLateDeduction}}</td>
+						<td style="width: 2%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.InterestOnLateDeduction}}</td>
+						
+						<td style="width: 1%" ng-if="a.resolved == 0">{{a.TAN}}</td>
+						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.TAN}}</td>
+						
+						<td style="width: 1%" ng-if="a.resolved == 0">{{a.comments}}</td>
+						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.comments}}</td>
+						
 						<div>
 							<td ng-if="a.resolved == 0">Resolved</td>
-							<td ng-if="a.resolved == 1">Not Resolved</td>
+							<td ng-if="a.resolved == 1" style="background-color:#ff3232">Not Resolved</td>
 						</div>
 
 						<!-- <div>

@@ -60,12 +60,16 @@ public class IndexController extends AbstractController {
 		model.addAttribute("Quarter", StaticData.Quarter);
 		model.addAttribute("ClientName", StaticData.ClientName);
 		model.addAttribute("ClientPAN", StaticData.ClientPAN);
+		//for Dashboard
+		model.addAttribute("statementStatus",applicationCache.getStatementStatus());
 		return "homeSC";
 	}
 
 	@RequestMapping(value = "/homePage")
 	public String getHomePage(ModelMap model) {
 		model.addAttribute("typeOfUser", getBranchCode());
+		//for Dashboard
+		model.addAttribute("statementStatus",applicationCache.getStatementStatus());
 		return "homeSC/homeSCHomepage";
 	}
 
@@ -75,12 +79,16 @@ public class IndexController extends AbstractController {
 		model.addAttribute("typeOfUser", getBranchCode());
 		model.addAttribute("financialYear", StaticData.financialYear);
 		model.addAttribute("branchCode", branchCode);
+		//for Dashboard
+		model.addAttribute("statementStatus",applicationCache.getStatementStatus());
 		return "homeWOT";
 	}
 
 	@RequestMapping(value = "/homePageWOT")
 	public String getHomePageWOT(ModelMap model) {
 		model.addAttribute("typeOfUser", getBranchCode());
+		//for Dashboard
+		model.addAttribute("statementStatus",applicationCache.getStatementStatus());
 		return "homeWOT/homeWOTHomepage";
 	}
 
@@ -93,6 +101,8 @@ public class IndexController extends AbstractController {
 		model.addAttribute("financialYear", StaticData.financialYear);
 		model.addAttribute("Quarter", StaticData.Quarter);
 		model.addAttribute("State", StaticData.State);
+		//for Dashboard
+		model.addAttribute("statementStatus",applicationCache.getStatementStatus());
 		return sendPage(action, page);
 	}
 
@@ -103,7 +113,8 @@ public class IndexController extends AbstractController {
 		model.addAttribute("financialYear", StaticData.financialYear);
 		model.addAttribute("Quarter", StaticData.Quarter);
 		model.addAttribute("State", StaticData.State);
-
+		//for Dashboard
+		model.addAttribute("statementStatus",applicationCache.getStatementStatus());
 		return sendPage(action, page);
 	}
 
@@ -116,6 +127,8 @@ public class IndexController extends AbstractController {
 		model.addAttribute("typeOfDeductee", StaticData.typeOfDeductee);
 		model.addAttribute("typeOfCertificate", StaticData.typeOfCertificate);
 		model.addAttribute("Month", StaticData.Month);
+		//for Dashboard
+		model.addAttribute("statementStatus",applicationCache.getStatementStatus());
 		return sendPage(action, page);
 	}
 
@@ -126,6 +139,7 @@ public class IndexController extends AbstractController {
 			if (page.contains("branch")||page.contains("DetailsBranch") || action.contains("homeWOT")) {
 				return action + "/" + page;
 			}
+			
 			return "homeSC/homeSCHomepage";
 		}
 
@@ -156,17 +170,15 @@ public class IndexController extends AbstractController {
 					stringArray = xString.split(",");
 					StaticData.typeOfCertificate = stringArray;
 					break;
-
 				case "Quarter":
 					xString = list1.getValue();
 					stringArray = xString.split(",");
 					StaticData.Quarter = stringArray;
 					break;
-
 				case "path":
-//				 xString = list1.getValue();
-//				 stringArray = xString.split(",");
-//				 model.addAttribute("path", stringArray);
+//					xString = list1.getValue();
+//					stringArray = xString.split(",");
+//					model.addAttribute("path", stringArray);
 					xString = list1.getValue();
 					StaticData.path = xString;
 					break;
@@ -180,14 +192,12 @@ public class IndexController extends AbstractController {
 					stringArray = xString.split(",");
 					StaticData.Month = stringArray;
 					break;
-
 				case "Client":
 					xString = list1.getValue();
 					stringArray = xString.split(",");
 					StaticData.ClientName = stringArray[0];
 					StaticData.ClientPAN = stringArray[1];
 					break;
-
 				case "ChallanMismatch":
 					xString = list1.getValue();
 					stringArray = xString.split(",");

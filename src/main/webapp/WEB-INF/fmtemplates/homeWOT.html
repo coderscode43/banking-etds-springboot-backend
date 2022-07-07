@@ -72,7 +72,7 @@
 					</a></li>
 
 					<li data-toggle="collapse" data-target="#form24Q" class="collapsed"><a
-						href="#"><i class="fa fa-group"></i><b>Form 24Q </b><i
+						><i class="fa fa-group"></i><b>Form 24Q </b><i
 							class="fa fa-chevron-down" aria-hidden="true"
 							style="float: right"></i></a></li>
 
@@ -96,7 +96,7 @@
 					</ul>
 
 					<li data-toggle="collapse" data-target="#newsss" class="collapsed">
-						<a href="#"><i class="fa fa-credit-card"></i><b>Form 26Q </b><i
+						<a><i class="fa fa-credit-card"></i><b>Form 26Q </b><i
 							class="fa fa-chevron-down" aria-hidden="true"
 							style="float: right"></i></a>
 					</li>
@@ -119,7 +119,7 @@
 					</ul>
 
 					<li data-toggle="collapse" data-target="#form27eq"
-						class="collapsed"><a href="#"><i
+						class="collapsed"><a><i
 							class="fa fa-credit-card"></i><b>Form 27EQ </b><i
 							class="fa fa-chevron-down" aria-hidden="true"
 							style="float: right"></i></a></li>
@@ -143,7 +143,7 @@
 					</ul>
 
 					<li data-toggle="collapse" data-target="#newssss" class="collapsed">
-						<a href="#"><i class="fa fa-credit-card"></i><b>Form 27Q </b><i
+						<a><i class="fa fa-credit-card"></i><b>Form 27Q </b><i
 							class="fa fa-chevron-down" aria-hidden="true"
 							style="float: right"></i></a>
 					</li>
@@ -269,7 +269,7 @@
 
 
 					<li data-toggle="collapse" data-target="#ldcDetails"
-						class="collapsed"><a href="#"><i class="fa fa-file-text"></i><b>LDC
+						class="collapsed"><a><i class="fa fa-file-text"></i><b>LDC
 								Details </b> <i class="fa fa-chevron-down" aria-hidden="true"
 							style="float: right"></i></a></li>
 
@@ -335,8 +335,9 @@
 		</div>
 		<div class="top-item top2 col-lg-offset-5"
 			style="border-radius: 5px; background-color: #85939A">
-			<p data-toggle="modal" data-target="#changefy" style="cursor:pointer">
-				<b >Financial Year :&nbsp;&nbsp;&nbsp;&nbsp;${fy}<!-- <select class="top2" style=" background-color: #85939A;Border: none;" ng-model=" cCctr.getStateParamValue('fy');">
+			<p data-toggle="modal" data-target="#changefy"
+				style="cursor: pointer">
+				<b>Financial Year :&nbsp;&nbsp;&nbsp;&nbsp;${fy}<!-- <select class="top2" style=" background-color: #85939A;Border: none;" ng-model=" cCctr.getStateParamValue('fy');">
 						<#list financialYear as year>
 						<option ng-value="${year}" ng-click="cCctr.changeState('${year}')" >${year}</option>
 						</#list>
@@ -358,13 +359,12 @@
 								year&nbsp;:</label>
 						</div>
 
-						<select ng-model="cCctr.entity.fy" id="changefy"
-							name="changefy" 
+						<select ng-model="cCctr.entity.fy" id="changefy" name="changefy"
 							style="width: 90%; height: 5%; font-size: 15px; margin-left: 5%;"
 							ng-required="true" required>
 							<option ng-model=" cCctr.getStateParamValue('fy');" selected>{{cCctr.getStateParamValue('fy')}}</option>
 							<#list financialYear as year>
-							
+
 							<option value="${year}">${year}</option>
 							</#list>
 						</select> <span style="color: red; margin-left: 5%;" class="error"
@@ -375,8 +375,8 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-success "
-							ng-click="cCctr.changeState(cCctr.entity.fy)" data-dismiss="modal"
-							style="margin: 2% 5% 0 0; width: 15%;">Change</button>
+							ng-click="cCctr.changeState(cCctr.entity.fy)"
+							data-dismiss="modal" style="margin: 2% 5% 0 0; width: 15%;">Change</button>
 					</div>
 				</div>
 

@@ -326,4 +326,14 @@ public class Regular27QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 		return dao.search(map, pageNo, resultPerPage);
 	}
 
+	public void updateAllowed(Regular27QDeductee entity) {
+		LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
+		Object id = entity.getId();
+//		Regular27QDeductee regular27QWeb = new Regular27QDeductee();//from Gson //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+		map.put("id",id);
+		Regular27QDeductee regular27Q =  (Regular27QDeductee) dao.uniqueSearch(map);
+		regular27Q.updateAllowedFields(entity);
+		getPrimaryDao().update(regular27Q);
+	}
+
 }

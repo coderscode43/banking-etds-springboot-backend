@@ -21,7 +21,7 @@ import domain.in.rjsa.util.JsonDateSerializer;
 import lombok.Data;
 @Data
 @Entity
-@Table(name = "AABCT5589K_2223.regular27EQDeductee")
+@Table(name = "FYDetails.regular27EQDeductee")
 public class Regular27EQDeductee extends CommonModelAbstract {
 	/**
 	 * 
@@ -149,6 +149,50 @@ public class Regular27EQDeductee extends CommonModelAbstract {
 
 	public void setdateofCollected(Date dateofCollected) {
 		this.dateofCollected = dateofCollected;
+	}
+
+	public void updateAllowedFields(Regular27EQDeductee regular27eqWeb) {
+		// TODO Auto-generated method stub
+//		this.accNo=regular27eqWeb.getAccNo();
+//		this.amountReceiptDebited=regular27eqWeb.getAmountReceiptDebited();
+		this.branchCode=regular27eqWeb.getBranchCode();
+//		this.certificatenumber=regular27eqWeb.getCertificatenumber();
+//		this.challanHeading=regular27eqWeb.getChallanHeading();
+//		this.collectionCode=regular27eqWeb.getCollectionCode();
+//		this.comments=regular27eqWeb.getComments();
+//		this.dateofCollected=regular27eqWeb.getdateofCollected();
+//		this.dateofReceivedDebited=regular27eqWeb.getdateofReceivedDebited();
+//		this.deducteeCode=regular27eqWeb.getDeducteeCode();
+//		this.deducteeId=regular27eqWeb.getDeducteeId();
+//		this.deducteeisNonResident=regular27eqWeb.getDeducteeisNonResident();
+//		this.deducteeReferenceNo=regular27eqWeb.getDeducteeReferenceNo();
+//		this.educationCess=regular27eqWeb.getEducationCess();
+//		this.errorDescription=regular27eqWeb.getErrorDescription();
+//		this.fy=regular27eqWeb.getFy();
+//		this.idNo=regular27eqWeb.getIdNo();
+//		this.ifAnswerTo681AisyesthenChallanNumber=regular27eqWeb.getIfAnswerTo681AisyesthenChallanNumber();
+//		this.ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment=regular27eqWeb.getIfAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment();
+//		this.InterestOnLateDeduction=regular27eqWeb.getInterestOnLateDeduction();
+//		this.InterestOnLatePayment=regular27eqWeb.getInterestOnLatePayment();
+//		this.InterestOnShortDeduction=regular27eqWeb.getInterestOnShortDeduction();
+//		this.month=regular27eqWeb.getMonth();
+//		this.nameoftheDeductee=regular27eqWeb.getNameoftheDeductee();
+//		this.panofthedeductee=regular27eqWeb.getPanofthedeductee();
+//		this.permanentEstablishment=regular27eqWeb.getPermanentEstablishment();
+//		this.quarter=regular27eqWeb.getQuarter();
+//		this.rateatwhichTaxCollected=regular27eqWeb.getRateatwhichTaxCollected();
+//		this.reasonForNonCollectionForG=regular27eqWeb.getReasonForNonCollectionForG();
+		this.roCode=regular27eqWeb.getRoCode();
+//		this.ShortDeduction=regular27eqWeb.getShortDeduction();
+//		this.surcharge=regular27eqWeb.getSurcharge();
+//		this.TAN=regular27eqWeb.getTAN();
+//		this.tcs=regular27eqWeb.getTcs();
+//		this.totalTaxCollected=regular27eqWeb.getTotalTaxCollected();
+//		this.totalTaxDeposited=regular27eqWeb.getTotalTaxDeposited();
+//		this.totalValueofPurchase=regular27eqWeb.getTotalValueofPurchase();
+//		this.uniqueRefNo=regular27eqWeb.getUniqueRefNo();
+//		this.warningDescription=regular27eqWeb.getWarningDescription();	
+		
 	}
 	
 	

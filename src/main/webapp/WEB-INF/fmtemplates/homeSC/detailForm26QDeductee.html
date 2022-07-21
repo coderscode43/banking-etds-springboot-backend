@@ -539,7 +539,7 @@
 
 									<label style="font-size: 12px;">Quarter</label> <select name="quarter"
 										class="form-control" ng-model="cCctr.entity.deductee.quarter"
-										ng-model-options="{updateOn: 'blur'}">
+										ng-model-options="{updateOn: 'blur'}" disabled>
 										<option value="Q1">Q1</option>
 										<option value="Q2">Q2</option>
 										<option value="Q3">Q3</option>
@@ -553,7 +553,7 @@
 
 									<label style="font-size: 12px;">Month</label> <select name="quarter"
 										class="form-control" ng-model="cCctr.entity.deductee.month"
-										ng-model-options="{updateOn: 'blur'}">
+										ng-model-options="{updateOn: 'blur'}" disabled>
 										<option selected value='Janaury'>Janaury</option>
 										<option value='February'>February</option>
 										<option value='March'>March</option>
@@ -616,7 +616,7 @@
 										class="form-control" type="text" name="uniqueRefNo"
 										placeholder="Unique Ref No"
 										ng-model="cCctr.entity.deductee.uniqueRefNo"
-										ng-model-options="{updateOn: 'blur'}" /> <span
+										ng-model-options="{updateOn: 'blur'}" disabled/> <span
 										style="color: red"
 										ng-show="form26qdeductee.submitted ||form26qdeductee.uniqueRefNo.$dirty && form26qdeductee.uniqueRefNo.$invalid">
 									</span> <span class="error" id="staffId"></span>
@@ -629,7 +629,7 @@
 										class="form-control" type="text" name="accNo"
 										placeholder="Account No"
 										ng-model="cCctr.entity.deductee.accNo" ng-pattern="/^[0-9]*$/"
-										ng-model-options="{updateOn: 'blur'}" /> <span
+										ng-model-options="{updateOn: 'blur'}" disabled/> <span
 										style="color: red"
 										ng-show="form26qdeductee.submitted ||form26qdeductee.accNo.$dirty && form26qdeductee.accNo.$invalid">
 										<span class="error"
@@ -645,7 +645,7 @@
 										placeholder="Challan Heading"
 										ng-model="cCctr.entity.deductee.challanHeading"
 										ng-maxlength="12"
-										ng-model-options="{updateOn: 'blur'}" /> <span
+										ng-model-options="{updateOn: 'blur'}" disabled/> <span
 										style="color: red"
 										ng-show="form26qdeductee.submitted ||form26qdeductee.challanHeading.$dirty && form26qdeductee.challanHeading.$invalid">
 										<span class="error"
@@ -662,7 +662,7 @@
 										placeholder="Deductee Reference No"
 										ng-model="cCctr.entity.deductee.deducteeRefNo"
 										ng-model-options="{updateOn: 'blur'}" ng-maxlength="12"
-										autocomplete="off" />
+										autocomplete="off" disabled/>
 									<span style="color: red"
 										ng-show="form26qdeductee.submitted || form26qdeductee.deducteeRefNo.$dirty && form26qdeductee.deducteeRefNo.$invalid">
 										<span class="error"
@@ -677,7 +677,7 @@
 										class="form-control" type="text" name="deducteeCode"
 										placeholder="Deductee Code"
 										ng-model="cCctr.entity.deductee.deducteeCode"
-										ng-model-options="{updateOn: 'blur'}" /> <span
+										ng-model-options="{updateOn: 'blur'}" disabled/> <span
 										style="color: red"
 										ng-show="form26qdeductee.submitted ||form26qdeductee.deducteeCode.$dirty && form26qdeductee.deducteeCode.$invalid">
 									</span> <span class="error" id="deducteeCode"></span>
@@ -702,7 +702,7 @@
 										class="form-control" type="text" name="sectionCode"
 										placeholder="Section Code" ng-maxlenght="45"
 										ng-model="cCctr.entity.deductee.sectionCode"
-										ng-model-options="{updateOn: 'blur'}" /> <span
+										ng-model-options="{updateOn: 'blur'}" disabled/> <span
 										style="color: red"
 										ng-show="form26qdeductee.submitted || form26qdeductee.sectionCode.$dirty && form26qdeductee.sectionCode.$invalid">
 										<span class="error"
@@ -721,7 +721,7 @@
 										class="form-control" type="text" name="deducteeName" ng-maxlenght="45"
 										placeholder="Name of the Deductee"
 										ng-model="cCctr.entity.deductee.deducteeName"
-										ng-model-options="{updateOn: 'blur'}" />
+										ng-model-options="{updateOn: 'blur'}" disabled/>
 										<span
 										style="color: red"
 										ng-show="form26qdeductee.submitted || form26qdeductee.deducteeName.$dirty && form26qdeductee.deducteeName.$invalid">
@@ -750,7 +750,7 @@
 										class="form-control" type="text" name="surcharge"
 										placeholder="Surcharge"
 										ng-model="cCctr.entity.deductee.surcharge"
-										ng-model-options="{updateOn: 'blur'}" /> <span
+										ng-model-options="{updateOn: 'blur'}" disabled/> <span
 										style="color: red"
 										ng-show="form26qdeductee.submitted || form26qdeductee.surcharge.$dirty && form26qdeductee.surcharge.$invalid">
 										<span class="error"
@@ -766,7 +766,7 @@
 									<label style="font-size: 12px;">TDS</label> <input
 										class="form-control" type="text" name="tds" placeholder="TDS"
 										ng-model="cCctr.entity.deductee.tds"
-										ng-model-options="{updateOn: 'blur'}" /> <span
+										ng-model-options="{updateOn: 'blur'}" disabled/> <span
 										style="color: red"
 										ng-show="form26qdeductee.submitted || form26qdeductee.tds.$dirty && form26qdeductee.tds.$invalid">
 									</span> <span class="error" id="tds"></span>
@@ -782,7 +782,7 @@
 										class="form-control" type="text" name="Education Cess"
 										placeholder="Education Cess"
 										ng-model="cCctr.entity.deductee.eduCess"
-										ng-model-options="{updateOn: 'blur'}" /> <span
+										ng-model-options="{updateOn: 'blur'}" disabled/> <span
 										style="color: red"
 										ng-show="form26qdeductee.submitted || form26qdeductee.educationCess.$dirty && form26qdeductee.educationCess.$invalid">
 									</span> <span class="error" id="educationCess"></span>
@@ -792,7 +792,7 @@
 									<label style="font-size: 12px;">TAN</label> <input
 										class="form-control" type="text" name="TAN" placeholder="TAN"
 										ng-model="cCctr.entity.deductee.TAN" ng-pattern="[A-Za-z]{4}[0-9]{5}[A-Za-z]{1}" ng-maxlenght="10"
-										ng-model-options="{updateOn: 'blur'}" />
+										ng-model-options="{updateOn: 'blur'}" disabled/>
 										<span
 										style="color: red"
 										ng-show="form26qdeductee.submitted || form26qdeductee.TAN.$dirty && form26qdeductee.TAN.$invalid">
@@ -814,7 +814,7 @@
 										class="form-control" type="text" name="totalTaxDeduct"
 										placeholder="Total Tax Deducted"
 										ng-model="cCctr.entity.deductee.totalTaxDeduct"
-										ng-model-options="{updateOn: 'blur'}" />
+										ng-model-options="{updateOn: 'blur'}" disabled/>
 									</span> <span class="error" id="totalTaxDeduct"></span>
 								</div>
 								
@@ -825,7 +825,7 @@
 										class="form-control" type="text" name="totalTaxDeposited"
 										placeholder="Total Tax Deposited"
 										ng-model="cCctr.entity.deductee.totalTaxDeposit"
-										ng-model-options="{updateOn: 'blur'}" /> <span
+										ng-model-options="{updateOn: 'blur'}" disabled/> <span
 										style="color: red"
 										ng-show="form26qdeductee.submitted || form26qdeductee.totalTaxDeposited.$dirty && form26qdeductee.totalTaxDeposited.$invalid">
 									</span> <span class="error" id="totalTaxDeposited"></span>
@@ -839,7 +839,7 @@
 										class="form-control" type="text" name="errorDescription" ng-maxlenght="45"
 										placeholder="Error Description" ng-pattern="^[A-Za-z][A-Za-z0-9_]{7,29}$" 
 										ng-model="cCctr.entity.deductee.errorDescription"
-										ng-model-options="{updateOn: 'blur'}" /> <span
+										ng-model-options="{updateOn: 'blur'}" disabled/> <span
 										style="color: red"
 										ng-show="form26qdeductee.submitted || form26qdeductee.errorDescription.$dirty && form26qdeductee.errorDescription.$invalid">
 										<span class="error"
@@ -859,7 +859,7 @@
 										class="form-control" type="text" name="warningDescription" ng-maxlenght="45"
 										placeholder="Warning Description" ng-pattern="^[A-Za-z][A-Za-z0-9_]{7,29}$" 
 										ng-model="cCctr.entity.deductee.warningDescription"
-										ng-model-options="{updateOn: 'blur'}" /> <span
+										ng-model-options="{updateOn: 'blur'}" disabled/> <span
 										style="color: red"
 										ng-show="form26qdeductee.submitted || form26qdeductee.warningDescription.$dirty && form26qdeductee.errorDescription.$invalid">
 										<span class="error"
@@ -881,7 +881,7 @@
 										class="form-control" type="text" name="ShortDeduction"
 										placeholder="Short Deduction" ng-pattern="^[A-Za-z][A-Za-z0-9_]{7,29}$" 
 										ng-model="cCctr.entity.deductee.ShortDeduction"
-										ng-model-options="{updateOn: 'blur'}" /> <span
+										ng-model-options="{updateOn: 'blur'}" disabled/> <span
 										style="color: red"
 										ng-show="form26qdeductee.submitted || form26qdeductee.ShortDeduction.$dirty && form26qdeductee.ShortDeduction.$invalid">
 										<span class="error"
@@ -903,7 +903,7 @@
 										placeholder="Interest On Short Deduction" ng-maxlenght="45"
 										ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 										ng-model="cCctr.entity.deductee.InterestOnShortDeduction"
-										ng-model-options="{updateOn: 'blur'}" /> <span
+										ng-model-options="{updateOn: 'blur'}" disabled/> <span
 										style="color: red"
 										ng-show="form26qdeductee.submitted || form26qdeductee.InterestOnShortDeduction.$dirty && form26qdeductee.InterestOnShortDeduction.$invalid">
 										<span class="error"
@@ -927,7 +927,7 @@
 										placeholder="Interest On Late Payment" ng-maxlenght="45"
 										ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 										ng-model="cCctr.entity.deductee.InterestOnLatePayment"
-										ng-model-options="{updateOn: 'blur'}" /> <span
+										ng-model-options="{updateOn: 'blur'}" disabled/> <span
 										style="color: red"
 										ng-show="form26qdeductee.submitted || form26qdeductee.InterestOnLatePayment.$dirty && form26qdeductee.InterestOnLatePayment.$invalid">
 										<span class="error"
@@ -949,7 +949,7 @@
 										placeholder="Interest On Late Deduction*" ng-maxlenght="45"
 										ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 										ng-model="cCctr.entity.deductee.InterestOnLateDeduction"
-										ng-model-options="{updateOn: 'blur'}" /> <span
+										ng-model-options="{updateOn: 'blur'}" disabled/> <span
 										style="color: red"
 										ng-show="form26qdeductee.submitted || form26qdeductee.InterestOnLateDeduction.$dirty && form26qdeductee.InterestOnLateDeduction.$invalid">
 										<span class="error"
@@ -976,7 +976,7 @@
 										ng-maxlenght="45"
 										ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 										ng-model="cCctr.entity.deductee.cashWithdrawal194N20Lto1Cr"
-										ng-model-options="{updateOn: 'blur'}" />
+										ng-model-options="{updateOn: 'blur'}" disabled/>
 										
 										<span
 										style="color: red"
@@ -999,7 +999,7 @@
 										placeholder="Date of Deduction" 
 										ng-value='"{{cCctr.entity.deductee.deductDate}}"'
 										ng-model="cCctr.temp.deductDate"
-										ng-blur="cCctr.entity.deductee.deductDate = cCctr.temp.deductDate"/> <span
+										ng-blur="cCctr.entity.deductee.deductDate = cCctr.temp.deductDate" disabled/> <span
 										style="color: red"
 										ng-show="form26qdeductee.submitted || form26qdeductee.dateOfDeduction.$dirty && form26qdeductee.dateOfDeduction.$invalid">
 										<span class="error"
@@ -1022,7 +1022,7 @@
 										ng-maxlenght="45"
 										ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 										ng-model="cCctr.entity.deductee.cashWithdrawal194N"
-										ng-model-options="{updateOn: 'blur'}" />
+										ng-model-options="{updateOn: 'blur'}" disabled/>
 										<span
 										style="color: red"
 										ng-show="form26qdeductee.submitted || form26qdeductee.cashWithdrawal194N.$dirty && form26qdeductee.cashWithdrawal194N.$invalid">
@@ -1040,7 +1040,7 @@
 										placeholder="Date of Payment"
 										ng-value='"{{cCctr.entity.deductee.paymentDate}}"'
 										ng-model="cCctr.temp.paymentDate"
-										ng-blur="cCctr.entity.deductee.paymentDate = cCctr.temp.paymentDate" />
+										ng-blur="cCctr.entity.deductee.paymentDate = cCctr.temp.paymentDate" disabled/>
 										<span
 										style="color: red"
 										ng-show="form26qdeductee.submitted || form26qdeductee.paymentDate.$dirty && form26qdeductee.paymentDate.$invalid">
@@ -1057,7 +1057,7 @@
 										placeholder="Rate at which Tax
 										Deducted"
 										ng-model="cCctr.entity.deductee.rateTaxDeduct"
-										ng-model-options="{updateOn: 'blur'}" />
+										ng-model-options="{updateOn: 'blur'}" disabled/>
 										<span
 										style="color: red"
 										ng-show="form26qdeductee.submitted || form26qdeductee.rateTaxDeduct.$dirty && form26qdeductee.rateTaxDeduct.$invalid">
@@ -1080,7 +1080,7 @@
 										placeholder="Cash Withdrawl
 										194N(>1cr)"
 										ng-model="cCctr.entity.deductee.cashWithdrawal194N1Cr"
-										ng-model-options="{updateOn: 'blur'}" />
+										ng-model-options="{updateOn: 'blur'}" disabled/>
 										<span
 										style="color: red"
 										ng-show="form26qdeductee.submitted || form26qdeductee.cashWithdrawal194N1Cr.$dirty && form26qdeductee.cashWithdrawal194N1Cr.$invalid">
@@ -1105,7 +1105,7 @@
 										class="form-control" type="text" name="certificateNumber"
 										placeholder="Certificate Number"
 										ng-model="cCctr.entity.deductee.certificateNo"
-										ng-model-options="{updateOn: 'blur'}" /> <span
+										ng-model-options="{updateOn: 'blur'}" disabled/> <span
 										style="color: red"
 										ng-show="form26qdeductee.submitted || form26qdeductee.certificateNumber.$dirty && form26qdeductee.certificateNumber.$invalid">
 										<span class="error"

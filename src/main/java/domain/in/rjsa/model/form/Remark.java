@@ -12,7 +12,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "AATFR3536K_NOTICE.Remarks")
+@Table(name = "form.Remarks")
 public class Remark extends CommonModelAbstract<Remark>{
 	 
 	private static final long serialVersionUID = 1L;

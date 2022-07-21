@@ -15,6 +15,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.poi.ss.formula.functions.T;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -529,6 +530,11 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 			UriComponentsBuilder ucBuilder, String fy, Long branchCode) {
 		FieldErrorDTO ermsg = new FieldErrorDTO();
 //		Login l = applicationCache.getLoginDetail(getPrincipal());
+		HashMap<String, Object> constrains = new HashMap<>();
+		if (!"admin".equals(getBranchCode())) {
+		
+			return new ResponseEntity<T>(HttpStatus.BAD_REQUEST);
+		}
 		Object o = getDetail((K) Long.valueOf(entity.get("id").toString()), fy, branchCode);
 		ObjectMapper oMapper = new ObjectMapper();
 		HashMap<String, Object> map = oMapper.convertValue(o, HashMap.class);
@@ -543,11 +549,10 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 
 	public void update(LinkedHashMap<String, Object> entity) {
 
-		Gson gson = new Gson();
-		// Login l = applicationCache.getLoginDetail(getPrincipal());
-		JsonElement jsonElement = gson.toJsonTree(entity);
-		getService().update(gson.fromJson(jsonElement, getEntity()));
-
+//		Gson gson = new Gson();
+//		// Login l = applicationCache.getLoginDetail(getPrincipal());
+//		JsonElement jsonElement = gson.toJsonTree(entity);
+//		getService().update(gson.fromJson(jsonElement, getEntity()));
 //		Gson gson = new Gson();
 //		Login l = applicationCache.getLoginDetail(getPrincipal());
 //		if (entity.containsKey("clientId")) {
@@ -561,7 +566,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 		// getEntity from controller and validate that with validate method in
 		// contorller and message from Service
 		// getService().update(gson.fromJson(jsonElement, getEntity()));
-
+		return;
 	}
 
 

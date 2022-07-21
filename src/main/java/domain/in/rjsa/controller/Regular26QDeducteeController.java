@@ -21,7 +21,10 @@ import org.springframework.web.servlet.HandlerMapping;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 
+import domain.in.rjsa.exception.CustomException;
 import domain.in.rjsa.model.form.ListCount;
 import domain.in.rjsa.model.fy.Regular26QDeductee;
 import domain.in.rjsa.model.fy.Remark;
@@ -144,6 +147,21 @@ public class Regular26QDeducteeController
 		public List<?> getSearch(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
 			// TODO Auto-generated method stub
 			return getService().search(map,pageNo,resultPerPage);
+		}
+		
+		public void update(LinkedHashMap<String, Object> entity) {
+			try {
+			Gson gson = new Gson();
+			//object of the 
+			//regular24DDFromUI
+			//below all code in service
+			JsonElement jsonElement = gson.toJsonTree(entity);
+			getService().update(gson.fromJson(jsonElement, getEntity()));
+
+					
+			}catch(Exception e){
+					throw new CustomException(e.getMessage());
+			}
 		}
 
 	

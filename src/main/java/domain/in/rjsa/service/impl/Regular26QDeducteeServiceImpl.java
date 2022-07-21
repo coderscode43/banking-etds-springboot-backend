@@ -298,4 +298,16 @@ public class Regular26QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 		// TODO Auto-generated method stub
 		return dao.search(map, pageNo, resultPerPage);
 	}
+
+	public void updateAllowed(Regular26QDeductee entity) {
+		LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
+		Object id = entity.getId();
+//		Regular26QDeductee regular26QWeb = new Regular26QDeductee();//from Gson //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+		map.put("id",id);
+		Regular26QDeductee regular26Q =  (Regular26QDeductee) dao.uniqueSearch(map);
+		regular26Q.updateAllowedFields(entity);
+		getPrimaryDao().update(regular26Q);
+	}
+
+	
 }

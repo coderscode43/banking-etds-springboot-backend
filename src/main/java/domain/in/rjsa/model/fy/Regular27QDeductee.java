@@ -8,17 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.validator.constraints.NotBlank;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import domain.in.rjsa.model.form.CommonModelAbstract;
@@ -27,7 +19,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "AABCT5589K_2223.regular27QDeductee")
+@Table(name = "FYDetails.regular27QDeductee")
 public class Regular27QDeductee extends CommonModelAbstract {
 	/**
 	 * 
@@ -205,6 +197,54 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	}
 	public void setDateOfDeduction(Date dateOfDeduction) {
 		this.dateOfDeduction = dateOfDeduction;
+	}
+
+	public void updateAllowedFields(Regular27QDeductee regular27qWeb) {
+		// TODO Auto-generated method stub.
+//		this.accNo=regular27qWeb.getAccNo();
+//		this.addressOfDeductee=regular27qWeb.getAddressOfDeductee();
+		this.branchCode=regular27qWeb.getBranchCode();
+//		this.cashWithdrawal194N=regular27qWeb.getCashWithdrawal194N();
+//		this.cashWithdrawal194N1Cr=regular27qWeb.getCashWithdrawal194N1Cr();
+//		this.cashWithdrawal194N20Lto1Cr=regular27qWeb.getCashWithdrawal194N20Lto1Cr();
+//		this.challanHeading=regular27qWeb.getChallanHeading();
+//		this.comments=regular27qWeb.getComments();
+//		this.contactNoOfDeductee=regular27qWeb.getContactNoOfDeductee();
+//		this.countryOfResidence=regular27qWeb.getCountryOfResidence();
+//		this.date=regular27qWeb.getDate();
+//		this.dateOfDeduction=regular27qWeb.getDateOfDeduction();
+//		this.deducteeCode=regular27qWeb.getDeducteeCode();
+//		this.deducteeRefNo=regular27qWeb.getDeducteeRefNo();
+//		this.educationCess=regular27qWeb.getEducationCess();
+//		this.emailId=regular27qWeb.getEmailId();
+//		this.errorDescription=regular27qWeb.getErrorDescription();
+//		this.fy=regular27qWeb.getFy();
+//		this.grossingUpIndicator=regular27qWeb.getGrossingUpIndicator();
+//		this.idNo=regular27qWeb.getIdNo();
+//		this.InterestOnLateDeduction=regular27qWeb.getInterestOnLateDeduction();
+//		this.InterestOnLatePayment=regular27qWeb.getInterestOnLatePayment();
+//		this.InterestOnShortDeduction=regular27qWeb.getInterestOnShortDeduction();
+//		this.month=regular27qWeb.getMonth();
+//		this.name=regular27qWeb.getName();
+//		this.natureOfRemittance=regular27qWeb.getNatureOfRemittance();
+//		this.noOfCertificateUnderSection=regular27qWeb.getNoOfCertificateUnderSection();
+//		this.quarter=regular27qWeb.getQuarter();
+//		this.rateAtWhichTaxDeducted=regular27qWeb.getRateAtWhichTaxDeducted();
+//		this.reasonForNonDeduction=regular27qWeb.getReasonForNonDeduction();
+//		this.remarks=regular27qWeb.getRemarks();
+		this.roCode=regular27qWeb.getRoCode();
+//		this.sectionCode=regular27qWeb.getSectionCode();
+//		this.ShortDeduction=regular27qWeb.getShortDeduction();
+//		this.surcharge=regular27qWeb.getSurcharge();
+//		this.TAN=regular27qWeb.getTAN();
+//		this.taxIdentificationNo=regular27qWeb.getTaxIdentificationNo();
+//		this.tds=regular27qWeb.getTds();
+//		this.tdsRateAsPerItActs=regular27qWeb.getTdsRateAsPerItActs();
+//		this.totalTaxDeducted=regular27qWeb.getTotalTaxDeducted();
+//		this.totalTaxDeposited=regular27qWeb.getTotalTaxDeposited();
+//		this.uniqueAcknowledgeNo=regular27qWeb.getUniqueAcknowledgeNo();
+//		this.uniqueRefNo=regular27qWeb.getUniqueRefNo();
+//		this.warningDescription=regular27qWeb.getWarningDescription();
 	}
 }
 

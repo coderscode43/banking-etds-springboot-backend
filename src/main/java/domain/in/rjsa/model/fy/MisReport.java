@@ -20,7 +20,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "AABCT5589K_2223.misReport")
+@Table(name = "FYDetails.misReport")
 public class MisReport extends CommonModelAbstract{/**
 	 * 
 	 */

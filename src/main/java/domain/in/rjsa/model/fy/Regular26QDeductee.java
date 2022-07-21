@@ -21,7 +21,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "AABCT5589K_2223.regular26QDeductee")
+@Table(name = "FYDetails.regular26QDeductee")
 public class Regular26QDeductee extends CommonModelAbstract{
 	/**
 	 * 
@@ -159,5 +159,43 @@ public class Regular26QDeductee extends CommonModelAbstract{
 	}
 	public void setDeductDate(Date deductDate) {
 		this.deductDate = deductDate;
+	}
+	public void updateAllowedFields(Regular26QDeductee entity) {
+		// TODO Auto-generated method stub
+//		this.accNo=regular26qWeb.getAccNo();
+		this.branchCode=entity.getBranchCode();
+//		this.cashWithdrawal194N=regular26qWeb.getCashWithdrawal194N();
+//		this.cashWithdrawal194N1Cr=regular26qWeb.getCashWithdrawal194N1Cr();
+//		this.cashWithdrawal194N20Lto1Cr=regular26qWeb.getCashWithdrawal194N20Lto1Cr();
+//		this.certificateNo=regular26qWeb.getCertificateNo();
+//		this.challanHeading=regular26qWeb.getChallanHeading();
+//		this.comments=regular26qWeb.getComments();
+//		this.deductDate=regular26qWeb.getDeductDate();
+//		this.deducteeCode=regular26qWeb.getDeducteeCode();
+//		this.deducteeName=regular26qWeb.getDeducteeName();
+//		this.deducteePan=regular26qWeb.getDeducteePan();
+//		this.deducteeRefNo=regular26qWeb.getDeducteeRefNo();
+//		this.eduCess=regular26qWeb.getEduCess();
+//		this.errorDescription=regular26qWeb.getErrorDescription();
+//		this.fy=regular26qWeb.getFy();
+//		this.idNo=regular26qWeb.getIdNo();
+//		this.InterestOnLateDeduction=regular26qWeb.getInterestOnLateDeduction();
+//		this.InterestOnLatePayment=regular26qWeb.getInterestOnLatePayment();
+//		this.InterestOnShortDeduction=regular26qWeb.getInterestOnShortDeduction();
+//		this.month=regular26qWeb.getMonth();
+//		this.paymentDate=regular26qWeb.getPaymentDate();
+//		this.quarter=regular26qWeb.getQuarter();
+//		this.rateTaxDeduct=regular26qWeb.getRateTaxDeduct();
+//		this.remarks=regular26qWeb.getRemarks();
+		this.roCode=entity.getRoCode();
+//		this.sectionCode=regular26qWeb.getSectionCode();
+//		this.ShortDeduction=regular26qWeb.getShortDeduction();
+//		this.surcharge=regular26qWeb.getSurcharge();
+//		this.TAN=regular26qWeb.getTAN();
+//		this.tds=regular26qWeb.getTds();
+//		this.totalTaxDeduct=regular26qWeb.getTotalTaxDeduct();
+//		this.totalTaxDeposit=regular26qWeb.getTotalTaxDeposit();
+//		this.uniqueRefNo=regular26qWeb.getUniqueRefNo();
+//		this.warningDescription=regular26qWeb.getWarningDescription();
 	}
 }

@@ -12,7 +12,7 @@ import org.hibernate.annotations.GenericGenerator;
 import lombok.Data;
 @Data
 @Entity
-@Table(name = "AABCT5589K_form.login")
+@Table(name = "form.login")
 public class Login extends CommonModelAbstract{
 
 	private static final long serialVersionUID = 8520939778549419922L;

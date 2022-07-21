@@ -12,7 +12,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "AABCT5589K_form.organizationDetails")
+@Table(name = "form.organizationDetails")
 public class OrganizationDetails extends CommonModelAbstract {
 	/**
 	 * 

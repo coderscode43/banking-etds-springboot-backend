@@ -11,7 +11,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -25,7 +24,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "AABCT5589K_2223.regular24QDeductee")
+@Table(name = "FYDetails.regular24QDeductee")
 public class Regular24QDeductee extends CommonModelAbstract {
 	/**
 	 * 
@@ -41,68 +40,68 @@ public class Regular24QDeductee extends CommonModelAbstract {
 	@Column(name = "employeeRefNo")
 	public Long employeeRefNo;
 	@Column(name = "panRefNo")
-	@NotNull(message = "Pan Reference No. is a required field.")
+//	@NotNull(message = "Pan Reference No. is a required field.")
 	@Size(min = 0, max = 45, message = "Pan Reference No. should not be greater than 45 characters.")
 	public String panRefNo;
 	@Column(name = "pan")
-	@NotNull(message = "Pan is a required field.")
+//	@NotNull(message = "Pan is a required field.")
 	@Size(min = 0, max = 45, message = "Pan should not be greater than 10 characters.")
 	public String pan;
 	@Column(name = "name")
-	@NotNull(message = "Name is a required field.")
+//	@NotNull(message = "Name is a required field.")
 	@Size(min = 0, max = 45, message = "Name should not be greater than 45 characters.")
 	public String name;
 	@Column(name = "sectionCode")
-	@NotNull(message = "Section Code is a required field.")
+//	@NotNull(message = "Section Code is a required field.")
 	@Size(min = 0, max = 45, message = "Section Code should not be greater than 45 characters.")
 	public String sectionCode;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "dateOfPayment")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
-	@NotNull(message = "Date is a required field.")
+//	@NotNull(message = "Date is a required field.")
 	public Date dateOfPayment;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "dateOfDeduction")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
-	@NotNull(message = "Date is a required field.")
+//	@NotNull(message = "Date is a required field.")
 	public Date dateOfDeduction;
 	@Column(name = "amountPaid")
-	@NotNull(message = "Amount Paid is a required field.")
+//	@NotNull(message = "Amount Paid is a required field.")
 	@Digits(integer = 12, fraction = 2, message = "Amount Paid is not proper.Maximum 2 fractions allowed.")
 	public Double amountPaid;
 	@Column(name = "tds")
-	@NotNull(message = "Tds is a required field.")
+//	@NotNull(message = "Tds is a required field.")
 	@Digits(integer = 12, fraction = 2, message = "Tds is not proper.Maximum 2 fractions allowed.Maximum 2 fractions allowed.")
 	public Double tds;
 	@Column(name = "surcharge")
-	@NotNull(message = "Surcharge is a required field.")
+//	@NotNull(message = "Surcharge is a required field.")
 	@Digits(integer = 12, fraction = 2, message = "Surcharge is not proper.Maximum 2 fractions allowed.")
 	public Double surcharge;
 	@Column(name = "educationCess")
-	@NotNull(message = "Education Cess is a required field.")
+//	@NotNull(message = "Education Cess is a required field.")
 	@Digits(integer = 12, fraction = 2, message = "Education Cess is not proper.Maximum 2 fractions allowed.")
 	public Double educationCess;
 	@Column(name = "totalTds")
-	@NotNull(message = "Total Tds is a required field.")
+//	@NotNull(message = "Total Tds is a required field.")
 	@Digits(integer = 12, fraction = 2, message = "Education Cess is not proper.Maximum 2 fractions allowed.")
 	public Double totalTds;
 	@Column(name = "totalTaxDeposited")
-	@NotNull(message = "Total Tax Deposited is a required field.")
+//	@NotNull(message = "Total Tax Deposited is a required field.")
 	@Digits(integer = 12, fraction = 2, message = "Total Tax Deposited value is not proper.Maximum 2 fractions allowed.")
 	public Double totalTaxDeposited;
 	@Column(name = "certificateNumber")
-	@NotNull(message = "Certificate Number is a required field.")
+//	@NotNull(message = "Certificate Number is a required field.")
 	@Size(min = 0, max = 45, message = "Certificate Number should not be greater than 45 characters.")
 	public String certificateNumber;
 	@Column(name = "remarks")
 	@Size(min = 0, max = 45, message = "Remarks should not be greater than 45 characters.")
 	public String remarks;
 	@Column(name = "fy")
-	@NotNull(message = "FY is a required field.")
+//	@NotNull(message = "FY is a required field.")
 	@Size(min = 0, max = 45, message = "FY should not be greater than 45 characters.")
 	public String fy;
 	@Column(name = "quarter")
-	@NotNull(message = "Quarter is a required field.")
+//	@NotNull(message = "Quarter is a required field.")
 	@Size(min = 0, max = 45, message = "Quarter should not be greater than 45 characters.")
 	public String quarter;
 	@Column(name = "branchCode")
@@ -157,5 +156,41 @@ public class Regular24QDeductee extends CommonModelAbstract {
 
 	public void setDateOfDeduction(Date dateOfDeduction) {
 		this.dateOfDeduction = dateOfDeduction;
+	}
+
+	public void updateAllowedFields(Regular24QDeductee entuty) {
+		// TODO Auto-generated method stub
+		this.branchCode= entuty.getBranchCode();
+//		this.accNo=entuty.getAccNo();
+//		this.certificateNumber=entuty.getCertificateNumber();
+//		this.challanHeading=entuty.getChallanHeading();
+//		this.comments=entuty.getComments();
+//		this.dateOfDeduction=entuty.getDateOfDeduction();
+//		this.dateOfPayment=entuty.getDateOfPayment();
+//		this.educationCess=entuty.getEducationCess();
+//		this.employeeRefNo=entuty.getEmployeeRefNo();
+//		this.errorDescription=entuty.getErrorDescription();
+//		this.fy=entuty.getFy();
+//		this.InterestOnLateDeduction=entuty.getInterestOnLateDeduction();
+//		this.InterestOnLatePayment=entuty.getInterestOnLateDeduction();
+//		this.InterestOnShortDeduction=entuty.getInterestOnShortDeduction();
+//		this.month=entuty.getMonth();
+//		this.name=entuty.getName();
+//		this.panRefNo=entuty.getPanRefNo();
+//		this.quarter=entuty.getQuarter();
+//		this.remarks=entuty.getRemarks();
+		this.roCode=entuty.getRoCode();
+//		this.sectionCode=entuty.getSectionCode();
+//		this.ShortDeduction=entuty.getShortDeduction();
+//		this.surcharge=entuty.getSurcharge();
+//		this.TAN=entuty.getTAN();
+//		this.tds=entuty.getTds();
+//		this.totalTaxDeposited=entuty.getTotalTaxDeposited();
+//		this.totalTds=entuty.getTotalTds();
+//		this.uniqueRefNo=entuty.getUniqueRefNo();
+//		this.warningDescription=entuty.getWarningDescription();
+		//Same way add all the fields that are allowed to update
+		
+		
 	}
 }

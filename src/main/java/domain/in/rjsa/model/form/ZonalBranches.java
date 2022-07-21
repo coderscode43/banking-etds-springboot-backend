@@ -13,7 +13,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "AABCT5589K_form.zonalBranches")
+@Table(name = "form.zonalBranches")
 public class ZonalBranches extends CommonModelAbstract{
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO, generator="native")

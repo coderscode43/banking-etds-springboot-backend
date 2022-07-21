@@ -44,6 +44,19 @@ public class Regular24QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 		// TODO Auto-generated method stub
 		return dao;
 	}
+		
+	
+	public void update(Regular24QDeductee entity) {
+		// TODO Auto-generated method stub
+		
+		LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
+		Object id = entity.getId();
+//		Regular24QDeductee regular24QWeb = new Regular24QDeductee();//from Gson //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+		map.put("id",id);
+		Regular24QDeductee regular24Q =  (Regular24QDeductee) dao.uniqueSearch(map);
+		regular24Q.updateAllowedFields(entity);
+		getPrimaryDao().update(regular24Q);
+	}
 
 	public String createUserExcel(LinkedHashMap<String, Object> map) {
 		List<Regular24QDeductee> listUsers = searchExcel(map);

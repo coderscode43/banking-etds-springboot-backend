@@ -1121,7 +1121,7 @@ App
 															'.modal-body')
 													.find('.msg')
 													.append(
-															"File Open Successfully");
+															"File downloaded successfully");
 											$("#successMsg")
 													.modal();
 											

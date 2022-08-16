@@ -80,6 +80,10 @@
 							<b style="color: #79BD3C">LOGIN</b>
 						</center>
 					</h2>
+					
+					<p style="color: red;">
+								<b><span>${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</span></b>
+							</p>
 					<p>
 						<label for="username" class="sr-only">Username</label> <input
 							type="text" id="username" name="username" class="form-control"
@@ -134,6 +138,11 @@
 			</span>
 		</div>
 	</div>
+	<footer>
+	<div>
+	<p style="Float: right;margin-right: 2%;">Version 1.0</p>
+	</div>
+	</footer>
 
 
 

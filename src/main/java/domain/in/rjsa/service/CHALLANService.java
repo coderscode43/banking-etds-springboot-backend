@@ -14,5 +14,7 @@ public interface CHALLANService extends ServiceInterfaceTaxo<String, CHALLAN>{
 	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage);
 
 	public	List<String> ajax(String name, String term);
+
+	public void setStaticData();
 	 
 }

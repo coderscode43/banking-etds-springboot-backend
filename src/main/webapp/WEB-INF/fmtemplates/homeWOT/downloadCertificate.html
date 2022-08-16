@@ -110,7 +110,7 @@
 									<div class="col-md-12">
 										<div class="form-group">
 											<label for="pan" class="col-form-label"
-												style="font-size: 12px"> PAN:</label> <input type="text"
+												style="font-size: 12px"> PAN Number:</label> <input type="text"
 												class="form-control" id="pan" name="pan" placeholder="PAN"
 												ng-model="cCctr.entity.pan" ng-required="true"
 												ng-pattern="/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/"
@@ -151,7 +151,7 @@
 								</div>
 								 -->
 								<br>
-								<div class="row">
+								<!-- <div class="row">
 									<div class="col-md-12">
 										<div class="form-group">
 											<label style="font-size: 12px">Type of Deductee*</label> <select
@@ -169,6 +169,33 @@
 												<span class="error"
 												ng-show="downloadCertificateFrom.typeofDeductee.$error.required">Type
 													of Certificate is Required. </span>
+											</span>
+										</div>
+									</div>
+								</div> -->
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group">
+											<label style="font-size: 12px">TAN Number*</label> <!-- <input type="text"
+												class="form-control" id="tan" name="tan" placeholder="TAN"
+												ng-model="cCctr.entity.tan" ng-required="true"
+												ng-pattern="/^[A-Z]{4}[0-9]{5}[A-Z]{1}$/"
+												required="required" style="font-size: 15px"> -->
+												<select
+												name="tan" id="tan"
+												class="form-control"
+												ng-model="cCctr.entity.tan" ng-required="true"
+												ng-model-options="{updateOn: 'blur'}">
+												<option disabled value="">Select Tan</option>
+												<#list Tan as T>
+
+												<option value="${T}">${T}</option>
+												</#list>
+											</select>
+												 <span style="color: red"
+												ng-show="downloadCertificateFrom.submitted ||downloadCertificateFrom.tan.$dirty && downloadCertificateFrom.tan.$invalid">
+												<span class="error"
+												ng-show="downloadCertificateFrom.tan.$error.required">TAN is Required. </span>
 											</span>
 										</div>
 									</div>
@@ -237,7 +264,7 @@
 									</div>
 								</div>
 								<button style="margin-left: 40%" class="btn btn-success"
-									ng-click="cCctr.download('apichallan/files/'+cCctr.entity.typeofDeductee+'/'+cCctr.entity.typeofCertificate+'/'+cCctr.entity.financialYear+'/'+cCctr.entity.quarter+'/'+cCctr.entity.pan)">
+									ng-click="cCctr.download('apichallan/files/'+cCctr.entity.tan+'/'+cCctr.entity.typeofCertificate+'/'+cCctr.entity.financialYear+'/'+cCctr.entity.quarter+'/'+cCctr.entity.pan)">
 									Download</button>
 							</form>
 						</div>

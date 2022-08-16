@@ -60,6 +60,7 @@ public class IndexController extends AbstractController {
 		model.addAttribute("Quarter", StaticData.Quarter);
 		model.addAttribute("ClientName", StaticData.ClientName);
 		model.addAttribute("ClientPAN", StaticData.ClientPAN);
+		model.addAttribute("Tan", StaticData.Tan);
 		//for Dashboard
 		model.addAttribute("statementStatus",applicationCache.getStatementStatus());
 		return "homeSC";
@@ -113,6 +114,7 @@ public class IndexController extends AbstractController {
 		model.addAttribute("financialYear", StaticData.financialYear);
 		model.addAttribute("Quarter", StaticData.Quarter);
 		model.addAttribute("State", StaticData.State);
+		model.addAttribute("Tan", StaticData.Tan);
 		//for Dashboard
 		model.addAttribute("statementStatus",applicationCache.getStatementStatus());
 		return sendPage(action, page);
@@ -127,6 +129,9 @@ public class IndexController extends AbstractController {
 		model.addAttribute("typeOfDeductee", StaticData.typeOfDeductee);
 		model.addAttribute("typeOfCertificate", StaticData.typeOfCertificate);
 		model.addAttribute("Month", StaticData.Month);
+		model.addAttribute("Tan", StaticData.Tan);
+//		model.addAttribute("TanDB", applicationCache.getTanDB());
+		
 		//for Dashboard
 		model.addAttribute("statementStatus",applicationCache.getStatementStatus());
 		return sendPage(action, page);
@@ -201,6 +206,17 @@ public class IndexController extends AbstractController {
 				case "ChallanMismatch":
 					xString = list1.getValue();
 					stringArray = xString.split(",");
+					// model.addAttribute("ChallanMismatch", stringArray);
+					break;
+				case "Tan":
+					xString = list1.getValue();
+					stringArray = xString.split(",");
+					StaticData.Tan = stringArray;
+					// model.addAttribute("ChallanMismatch", stringArray);
+					break;
+				case "CertificatePath":
+					xString = list1.getValue();
+					StaticData.CertificatePath = xString;
 					// model.addAttribute("ChallanMismatch", stringArray);
 					break;
 

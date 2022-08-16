@@ -21,6 +21,8 @@ public class StaticData {
 	public static String[] Month =null;
 	public static String ClientName =null;
 	public static String ClientPAN =null;
+	public static String[] Tan =null;
+	public static String CertificatePath =null;
 	/* public static String[] ChallanMismatch =null; */
 	//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXSAYALI
 	public static List<String> typeOfAdmin= new ArrayList<String>() {{

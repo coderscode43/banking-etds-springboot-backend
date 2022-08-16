@@ -16,16 +16,22 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.CHALLANDao;
+import domain.in.rjsa.dao.StaticDataDao;
 import domain.in.rjsa.excel.CHALLANExcel;
+import domain.in.rjsa.model.form.StaticDataModel;
 import domain.in.rjsa.model.tds.CHALLAN;
 import domain.in.rjsa.service.AbstractServiceTaxo;
 import domain.in.rjsa.service.CHALLANService;
+import domain.in.rjsa.util.StaticData;
 
 @Transactional("transactionManager")
 @Service("CHALLANService")
 public class CHALLANServiceImpl extends AbstractServiceTaxo<String, CHALLAN, CHALLANDao> implements CHALLANService {
 	@Autowired
 	CHALLANDao dao;
+	
+	@Autowired
+	private StaticDataDao sDao;
 
 	CHALLANExcel challanExcel;
 	public static String path;
@@ -139,6 +145,83 @@ public class CHALLANServiceImpl extends AbstractServiceTaxo<String, CHALLAN, CHA
 			e1.printStackTrace();
 		}
 
+	}
+	
+	public void setStaticData() {
+		if (StaticData.ClientName == null) {
+			HashMap<String, Object> sd = new HashMap<String, Object>();
+			List<StaticDataModel> list = sDao.findall(sd, 0, 100);
+			String[] stringArray;
+			String xString;
+			for (StaticDataModel list1 : list) {
+				String key = list1.getKey();
+				switch (key) {
+				case "financialYear":
+					xString = list1.getValue();
+					stringArray = xString.split(",");
+					StaticData.financialYear = stringArray;
+					break;
+				case "typeOfDeductee":
+					xString = list1.getValue();
+					stringArray = xString.split(",");
+					StaticData.typeOfDeductee = stringArray;
+					break;
+				case "typeOfCertificate":
+					xString = list1.getValue();
+					stringArray = xString.split(",");
+					StaticData.typeOfCertificate = stringArray;
+					break;
+				case "Quarter":
+					xString = list1.getValue();
+					stringArray = xString.split(",");
+					StaticData.Quarter = stringArray;
+					break;
+				case "path":
+//					xString = list1.getValue();
+//					stringArray = xString.split(",");
+//					model.addAttribute("path", stringArray);
+					xString = list1.getValue();
+					StaticData.path = xString;
+					break;
+				case "State":
+					xString = list1.getValue();
+					stringArray = xString.split(",");
+					StaticData.State = stringArray;
+					break;
+				case "Month":
+					xString = list1.getValue();
+					stringArray = xString.split(",");
+					StaticData.Month = stringArray;
+					break;
+				case "Client":
+					xString = list1.getValue();
+					stringArray = xString.split(",");
+					StaticData.ClientName = stringArray[0];
+					StaticData.ClientPAN = stringArray[1];
+					break;
+				case "ChallanMismatch":
+					xString = list1.getValue();
+					stringArray = xString.split(",");
+					// model.addAttribute("ChallanMismatch", stringArray);
+					break;
+				case "Tan":
+					xString = list1.getValue();
+					stringArray = xString.split(",");
+					StaticData.Tan = stringArray;
+					// model.addAttribute("ChallanMismatch", stringArray);
+					break;
+				case "CertificatePath":
+					xString = list1.getValue();
+					StaticData.CertificatePath = xString;
+					// model.addAttribute("ChallanMismatch", stringArray);
+					break;
+
+				default:
+					System.out.println("Not Match");
+					break;
+				}
+			}
+		}
 	}
 
 }

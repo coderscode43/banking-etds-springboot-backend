@@ -19,8 +19,6 @@ import org.springframework.web.multipart.MaxUploadSizeExceededException;
 
 import com.google.gson.JsonSyntaxException;
 
-import domain.in.rjsa.web.StaticData;
-
 @ControllerAdvice
 @RestController
 public class CustomizedResponseEntityExceptionHandler{
@@ -62,7 +60,7 @@ public class CustomizedResponseEntityExceptionHandler{
 	    	String[] uriSplit=uri.split("=");
 	    	String[] uriParts=uriSplit[1].toString().split("/");
 	    	String entityName=uriParts[2].substring(3);
-	    	dto.setEntityName(StaticData.entityMap.get(entityName));
+	    	dto.setEntityName((entityName));
 	    	dto.setExceptionMsg("Some of value provided is null.Please re-verify.");
 	    	return new ResponseEntity(dto, HttpStatus.BAD_REQUEST);
 	    }
@@ -76,7 +74,7 @@ public class CustomizedResponseEntityExceptionHandler{
 	    	String[] uriSplit=uri.split("=");
 	    	String[] uriParts=uriSplit[1].toString().split("/");
 	    	String entityName=uriParts[2].substring(3);
-	    	dto.setEntityName(StaticData.entityMap.get(entityName));
+	    	dto.setEntityName((entityName));
 	    	
 	    	dto.setExceptionMsg("Invalid value entered for number type.Please re-verify.");
 	    	return new ResponseEntity(dto, HttpStatus.BAD_REQUEST);
@@ -91,7 +89,7 @@ public class CustomizedResponseEntityExceptionHandler{
 	    	String[] uriSplit=uri.split("=");
 	    	String[] uriParts=uriSplit[1].toString().split("/");
 	    	String entityName=uriParts[2].substring(3);
-	    	dto.setEntityName(StaticData.entityMap.get(entityName));
+	    	dto.setEntityName((entityName));
 	    	dto.setExceptionMsg("Something is going wrong.Please try again later.");
 	    	return new ResponseEntity(dto, HttpStatus.INTERNAL_SERVER_ERROR);
 	    }
@@ -105,7 +103,7 @@ public class CustomizedResponseEntityExceptionHandler{
 	    	String[] uriSplit=uri.split("=");
 	    	String[] uriParts=uriSplit[1].toString().split("/");
 	    	String entityName=uriParts[2].substring(3);
-	    	dto.setEntityName(StaticData.entityMap.get(entityName));
+	    	dto.setEntityName((entityName));
 	    	dto.setExceptionMsg("Ongoing operation is interupted.Please try again.");
 	    	return new ResponseEntity(dto, HttpStatus.INTERNAL_SERVER_ERROR);
 	    }
@@ -119,7 +117,7 @@ public class CustomizedResponseEntityExceptionHandler{
 	    	String[] uriSplit=uri.split("=");
 	    	String[] uriParts=uriSplit[1].toString().split("/");
 	    	String entityName=uriParts[2].substring(3);
-	    	dto.setEntityName(StaticData.entityMap.get(entityName));
+	    	dto.setEntityName((entityName));
 	    	dto.setExceptionMsg("Something going wrong when doing Arithmetic operations.Please re-verify.");
 	    	return new ResponseEntity(dto, HttpStatus.BAD_REQUEST);
 	    }
@@ -135,7 +133,7 @@ public class CustomizedResponseEntityExceptionHandler{
 	    	String[] uriSplit=uri.split("=");
 	    	String[] uriParts=uriSplit[1].toString().split("/");
 	    	String entityName=uriParts[2].substring(3);
-	    	dto.setEntityName(StaticData.entityMap.get(entityName));
+	    	dto.setEntityName((entityName));
 	    	dto.setExceptionMsg("Duplicate Entry! Please re-verify.");
 	    	return new ResponseEntity(dto, HttpStatus.BAD_REQUEST);
 	    }
@@ -150,7 +148,7 @@ public class CustomizedResponseEntityExceptionHandler{
 	    	String[] uriSplit=uri.split("=");
 	    	String[] uriParts=uriSplit[1].toString().split("/");
 	    	String entityName=uriParts[2].substring(3);
-	    	dto.setEntityName(StaticData.entityMap.get(entityName));
+	    	dto.setEntityName((entityName));
 	    	
 	    	
 	    	String Str=ex.getLocalizedMessage().toString();
@@ -168,7 +166,7 @@ public class CustomizedResponseEntityExceptionHandler{
 	    	String[] uriSplit=uri.split("=");
 	    	String[] uriParts=uriSplit[1].toString().split("/");
 	    	String entityName=uriParts[2].substring(3);
-	    	dto.setEntityName(StaticData.entityMap.get(entityName));
+	    	dto.setEntityName((entityName));
 	    	String Str=ex.getLocalizedMessage().toString();
 	    	dto.setExceptionMsg(Str);
 	    	return new ResponseEntity(dto, HttpStatus.BAD_REQUEST);
@@ -195,7 +193,7 @@ public class CustomizedResponseEntityExceptionHandler{
 	    	String[] uriSplit=uri.split("=");
 	    	String[] uriParts=uriSplit[1].toString().split("/");
 	    	String entityName=uriParts[2].substring(3);
-	    	dto.setEntityName(StaticData.entityMap.get(entityName));
+	    	dto.setEntityName((entityName));
 	    	String Str="File size Exceeeds the allowed limit of 130Kb";
 	    	dto.setExceptionMsg(Str);
 	    	return new ResponseEntity(dto, HttpStatus.BAD_REQUEST);

@@ -34,6 +34,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
+import domain.in.rjsa.exception.CustomException;
 import domain.in.rjsa.exception.FieldErrorDTO;
 import domain.in.rjsa.model.form.ListCount;
 import domain.in.rjsa.model.form.Model;
@@ -43,7 +44,8 @@ import domain.in.rjsa.service.LogsService;
 import domain.in.rjsa.service.ServiceInterfaceFY;
 import domain.in.rjsa.web.ApplicationCache;
 
-public abstract class AbstractControllerFY<K extends Serializable, E extends Model, S extends ServiceInterfaceFY<K, E>> extends AbstractController {
+public abstract class AbstractControllerFY<K extends Serializable, E extends Model, S extends ServiceInterfaceFY<K, E>>
+		extends AbstractController {
 	@Autowired
 	ApplicationCache applicationCache;
 
@@ -59,46 +61,41 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 	public List<?> getList(String fy, Long branchCode, int pageNo, int resultPerPage) {
 		HashMap<String, Object> constrains = new HashMap<>();
 		constrains.put("fy", fy);
-		
+
 		if (!"admin".equals(getBranchCode())) {
-			Long b=1L;
+			Long b = 1L;
 			try {
-				b =Long.valueOf(getBranchCode());
-			}catch (Exception e) {
+				b = Long.valueOf(getBranchCode());
+			} catch (Exception e) {
 				// TODO: handle exception
 			}
 			constrains.put("branchCode", b);
-		}else {
+		} else {
 			constrains.put("branchCode", branchCode);
 		}
-		
-		
-		
-		
+
 		return getService().findall(constrains, pageNo, resultPerPage);
 	}
 
 	// ------------------- Count Entity ---------------------------------
 	@RequestMapping(value = "/list/count/", method = RequestMethod.GET)
-	public ResponseEntity<?> count( HttpServletRequest request) {
+	public ResponseEntity<?> count(HttpServletRequest request) {
 		HashMap<String, Object> constrains = new HashMap<>();
 
-
 		if (!"admin".equals(getBranchCode())) {
-			Long b=1L;
+			Long b = 1L;
 			try {
-				b =Long.valueOf(getBranchCode());
-			}catch (Exception e) {
+				b = Long.valueOf(getBranchCode());
+			} catch (Exception e) {
 				// TODO: handle exception
 			}
 			constrains.put("branchCode", b);
-		}else {
+		} else {
 		}
-		
 
 		try {
 			Long count = getService().findallCount(constrains);
-			List<?> list = getList( 0, 100);
+			List<?> list = getList(0, 100);
 			ListCount send = new ListCount();
 			send.setCount(count);
 			send.setEntities(list);
@@ -109,29 +106,25 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 		}
 
 	}
-	public List<?> getList( int pageNo, int resultPerPage) {
+
+	public List<?> getList(int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
 
-
 		if (!"admin".equals(getBranchCode())) {
-			Long b=1L;
+			Long b = 1L;
 			try {
-				b =Long.valueOf(getBranchCode());
-			}catch (Exception e) {
+				b = Long.valueOf(getBranchCode());
+			} catch (Exception e) {
 				// TODO: handle exception
 			}
 			constrains.put("branchCode", b);
-		}else {
+		} else {
 		}
-		
-		
-		
-		
+
 		return getService().findall(constrains, pageNo, resultPerPage);
 	}
-	
-	
+
 	// ------------------- List Entity ---------------------------------
 
 	@RequestMapping(value = "/list/get/{pageNo}/{resultPerPage}", method = RequestMethod.GET)
@@ -139,7 +132,6 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 			@PathVariable int resultPerPage) {
 		// verify the clientId authorization
 //		applicationCache.getUserAuthorised();
-		
 
 		try {
 			List<?> list = getList(pageNo, resultPerPage);
@@ -152,30 +144,23 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 
 	}
 
-
-	
-	
 	@RequestMapping(value = "/list/{fy}/{branchCode}/count/", method = RequestMethod.GET)
-	public ResponseEntity<?> count(@PathVariable String fy, @PathVariable Long branchCode,
-			HttpServletRequest request) {
+	public ResponseEntity<?> count(@PathVariable String fy, @PathVariable Long branchCode, HttpServletRequest request) {
 		HashMap<String, Object> constrains = new HashMap<>();
-		constrains.put("fy",fy);
-		
+		constrains.put("fy", fy);
 
 		if (!"admin".equals(getBranchCode())) {
-			Long b=1L;
+			Long b = 1L;
 			try {
-				b =Long.valueOf(getBranchCode());
-			}catch (Exception e) {
+				b = Long.valueOf(getBranchCode());
+			} catch (Exception e) {
 				// TODO: handle exception
 			}
 			constrains.put("branchCode", b);
-		}else {
+		} else {
 			constrains.put("branchCode", branchCode);
 		}
-		
-		
-		
+
 		try {
 			Long count = getService().findallCount(constrains);
 			List<?> list = getList(fy, branchCode, 0, 100);
@@ -190,28 +175,25 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 		}
 
 	}
-	
-	
 
 	// ------------------- List Entity ---------------------------------
 
 	@RequestMapping(value = "/list/{fy}/{branchCode}/get/{pageNo}/{resultPerPage}", method = RequestMethod.GET)
-	public ResponseEntity<?> listAll(@PathVariable String fy, @PathVariable Long branchCode,
-			HttpServletRequest request, @PathVariable int pageNo, @PathVariable int resultPerPage) {
+	public ResponseEntity<?> listAll(@PathVariable String fy, @PathVariable Long branchCode, HttpServletRequest request,
+			@PathVariable int pageNo, @PathVariable int resultPerPage) {
 		try {
-			
 
 			if (!"admin".equals(getBranchCode())) {
-				Long b=1L;
+				Long b = 1L;
 				try {
-					b =Long.valueOf(getBranchCode());
-				}catch (Exception e) {
+					b = Long.valueOf(getBranchCode());
+				} catch (Exception e) {
 					// TODO: handle exception
 				}
-				branchCode=b;
-			}else {
+				branchCode = b;
+			} else {
 			}
-			
+
 			List<?> list = getList(fy, branchCode, pageNo, resultPerPage);
 
 			return new ResponseEntity<>(list, HttpStatus.OK);
@@ -225,31 +207,32 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 	// ------------------- Search Entities ---------------------------------
 
 	@RequestMapping(value = "/search/{fy}/{branchCode}/{pageNo}/{resultPerPage}/{json}", method = RequestMethod.GET)
-	public ResponseEntity<?> search(@PathVariable String fy, @PathVariable Long branchCode, @PathVariable String json, @PathVariable int pageNo, @PathVariable int resultPerPage) {
+	public ResponseEntity<?> search(@PathVariable String fy, @PathVariable Long branchCode, @PathVariable String json,
+			@PathVariable int pageNo, @PathVariable int resultPerPage) {
 		try {
 			ObjectMapper mapper = new ObjectMapper();
 			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
 			map = mapper.readValue(json, new TypeReference<Map<String, String>>() {
 			});
-			if(map.containsKey("branchCode")) {
+			if (map.containsKey("branchCode")) {
 				branchCode = Long.valueOf(map.get("branchCode").toString());
 				map.put("branchCode", branchCode);
 			}
-			if(map.containsKey("roCode")) {
+			if (map.containsKey("roCode")) {
 				Long roCode = Long.valueOf(map.get("roCode").toString());
 				map.put("roCode", roCode);
 			}
 			map.put("fy", fy);
-			
+
 			if (!"admin".equals(getBranchCode())) {
-				Long b=1L;
+				Long b = 1L;
 				try {
-					b =Long.valueOf(getBranchCode());
-				}catch (Exception e) {
+					b = Long.valueOf(getBranchCode());
+				} catch (Exception e) {
 					// TODO: handle exception
 				}
 				map.put("branchCode", b);
-			}else {
+			} else {
 				map.put("branchCode", branchCode);
 			}
 			adminValidation(map);
@@ -258,7 +241,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 			ListCount send = new ListCount();
 			send.setCount(count);
 			send.setEntities(list);
-			
+
 			return new ResponseEntity<>(send, HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("Error in listALL", e);
@@ -279,14 +262,14 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 		try {
 			map.put("fy", fy);
 			if (!"admin".equals(getBranchCode())) {
-				Long b=1L;
+				Long b = 1L;
 				try {
-					b =Long.valueOf(getBranchCode());
-				}catch (Exception e) {
+					b = Long.valueOf(getBranchCode());
+				} catch (Exception e) {
 					// TODO: handle exception
 				}
 				map.put("branchCode", b);
-			}else {
+			} else {
 				map.put("branchCode", branchCode);
 			}
 			return new ResponseEntity<>(getSearchEntity(map), HttpStatus.OK);
@@ -332,7 +315,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 //		Login l = applicationCache.getLoginDetail(getPrincipal());
 		HashMap<String, Object> constrains = new HashMap<>();
 		constrains.put("id", entity.get("id"));
- 		Logs log = lservice.uniqueSearch(constrains);
+		Logs log = lservice.uniqueSearch(constrains);
 		log = new Logs();
 
 		log.setAction("Added");
@@ -340,7 +323,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 		String s = getEntity().getName();
 		String[] arrOfStr = s.split(".", 25);
 		for (String a : arrOfStr)
-			log.setEntity(a + " in " + entity.get("deducteeForm") );
+			log.setEntity(a + " in " + entity.get("deducteeForm"));
 		Gson gason = new Gson();
 		String json = gason.toJson(entity);
 		log.setDate(new Date(System.currentTimeMillis()));
@@ -349,7 +332,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 		lservice.save(log);
 
 	}
-	
+
 	public void addLogs(HashMap<String, Object> entity) {
 
 //		Login l = applicationCache.getLoginDetail(getPrincipal());
@@ -379,16 +362,16 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 			@PathVariable Long branchCode) {
 		// verify the clientId authorization
 		if (!"admin".equals(getBranchCode())) {
-			Long b=1L;
+			Long b = 1L;
 			try {
-				b =Long.valueOf(getBranchCode());
-			}catch (Exception e) {
+				b = Long.valueOf(getBranchCode());
+			} catch (Exception e) {
 				// TODO: handle exception
 			}
-			branchCode=b;
-		}else {
+			branchCode = b;
+		} else {
 		}
-		
+
 		try {
 			return new ResponseEntity<>(getDetail(id, fy, branchCode), HttpStatus.OK);
 		} catch (Exception e) {
@@ -397,7 +380,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 		}
 
 	}
-	
+
 	public void addLogsU(HashMap<String, Object> entity) {
 
 //		Login l = applicationCache.getLoginDetail(getPrincipal());
@@ -410,7 +393,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 		log.setAction("Update");
 		log.setIpaddrs(getIp());
 		String s = getEntity().getName();
- 		String[] arrOfStr = s.split(".", 25);
+		String[] arrOfStr = s.split(".", 25);
 		for (String a : arrOfStr)
 			log.setEntity(a);
 		Gson gason = new Gson();
@@ -426,33 +409,31 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 
 	public abstract S getService();
 
-
 	public Object getDetail(K id, String fy, Long branchCode) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
 		constrains.put("id", id);
 		constrains.put("fy", fy);
 		if (!"admin".equals(getBranchCode())) {
-			Long b=1L;
+			Long b = 1L;
 			try {
-				b =Long.valueOf(getBranchCode());
-			}catch (Exception e) {
+				b = Long.valueOf(getBranchCode());
+			} catch (Exception e) {
 				// TODO: handle exception
 			}
 			constrains.put("branchCode", b);
-		}else {
+		} else {
 			constrains.put("branchCode", branchCode);
 		}
-		
-		
+
 		return getService().uniqueSearch(constrains);
 	}
-	
+
 	// ------------------- Generate Excel ---------------------------------
-	
-	
+
 	@RequestMapping(value = "/generateExcel/{json}/**", method = RequestMethod.GET)
-	public void generateExcel(@PathVariable String json, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ResponseEntity<?> generateExcel(@PathVariable String json, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
 		try {
 			final String path = request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE).toString();
 			final String bestMatchingPattern = request.getAttribute(HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE)
@@ -469,62 +450,52 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 			ObjectMapper mapper = new ObjectMapper();
 
 			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
-			
 
 			// convert JSON string to Map
 			map = mapper.readValue(searchParam, new TypeReference<Map<String, String>>() {
 			});
 			adminValidation(map);
-			String address = getService().createUserExcel(map);
-
-			File file = new File(address);
-			response.setContentType("application/vnd.ms-excel");
-			response.setHeader("Content-disposition", "attachment; filename=" + file.getName());
-			Path p = file.toPath();
-			OutputStream out;
+			Long count = getService().findallCount(map);
 			try {
+				if (count >= 1000000
+						) {
+					throw new CustomException("The number of Transaction is Greater Than 10 Lakhs");
+				} else {
+					String address = getService().createUserExcel(map);
 
-				out = response.getOutputStream();
-				out.flush();
-				Files.copy(p, out);
+					File file = new File(address);
+					response.setContentType("application/vnd.ms-excel");
+					response.setHeader("Content-disposition", "attachment; filename=" + file.getName());
+					Path p = file.toPath();
+					OutputStream out;
+					try {
 
-				out.close();
-				file.delete();
-			} catch (Exception e) {
-				e.printStackTrace();
+						out = response.getOutputStream();
+						out.flush();
+						Files.copy(p, out);
+
+						out.close();
+						file.delete();
+					} catch (Exception e) {
+						e.printStackTrace();
 //				logger.error("Error in downloading the " + entity.get("type") + ".xlsx file", e);
+					}
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+				return new ResponseEntity<>("The number of Transaction is Greater Than 10 Lakhs.",
+						HttpStatus.BAD_REQUEST);
 			}
-
-//			try {
-//				StringBuilder fw = new StringBuilder();
-//				for (User user : users) {
-//					fw.append(user.getId() + ";" + user.getName() + ";" + user.getUserName() + ";"
-//							+ user.getDateOfSignup() + "\n");
-//				}
-//				 File file = File.createTempFile("temp", null);
-//				 FileInputStream is =new FileInputStream(file);
-//				 FileWriter fw1 = new FileWriter(file);
-//				 fw1.append(fw.toString());
-//				 fw1.flush();
-//				 fw1.close();
-//				
-//				String mimeType= URLConnection.guessContentTypeFromName("myFile.txt");
-//				response.setContentType(mimeType);
-//				response.addHeader("Content-Disposition","attachment; filename=\"" + "myFile.csv" + "\"");
-//				FileCopyUtils.copy(is, response.getOutputStream());
-//                response.getOutputStream().flush();
-//
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
-
+			return new ResponseEntity<>(HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new Exception("Excel Can Not Export.");
+			return new ResponseEntity<>("Excel Can Not Export.", HttpStatus.BAD_REQUEST);
 //			logger.error("Error in listALL", e);
 		}
+
 	}
-	
+
 	@RequestMapping(value = "/update", method = RequestMethod.PUT)
 	public ResponseEntity<?> update(@RequestBody LinkedHashMap<String, Object> entity, HttpServletResponse response,
 			UriComponentsBuilder ucBuilder, String fy, Long branchCode) {
@@ -532,7 +503,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 //		Login l = applicationCache.getLoginDetail(getPrincipal());
 		HashMap<String, Object> constrains = new HashMap<>();
 		if (!"admin".equals(getBranchCode())) {
-		
+
 			return new ResponseEntity<T>(HttpStatus.BAD_REQUEST);
 		}
 		Object o = getDetail((K) Long.valueOf(entity.get("id").toString()), fy, branchCode);
@@ -544,8 +515,6 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 		ermsg.setMessage(" Updated Successfully");
 		return new ResponseEntity<String>(HttpStatus.ACCEPTED);
 	}
-
-	
 
 	public void update(LinkedHashMap<String, Object> entity) {
 
@@ -568,6 +537,5 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 		// getService().update(gson.fromJson(jsonElement, getEntity()));
 		return;
 	}
-
 
 }

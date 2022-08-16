@@ -12,10 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.InputStreamResource;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import domain.in.rjsa.model.tds.CHALLAN;
 import domain.in.rjsa.service.CHALLANService;
+import domain.in.rjsa.util.StaticData;
 
 @Controller
 @RequestMapping("/apichallan")
@@ -53,28 +51,27 @@ public class CHALLANController extends AbstractControllerTaxo<String, CHALLAN, C
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
 	// get file from system folder
-	@RequestMapping(value = "/files/{deductee}/{certificate}/{fy}/{q}/{pan}", method = RequestMethod.GET)
+	@RequestMapping(value = "/files/{tan}/{certificate}/{fy}/{q}/{pan}", method = RequestMethod.GET)
 	public @ResponseBody ResponseEntity<?> download(HttpServletRequest request, HttpServletResponse response,
-			@PathVariable String deductee, @PathVariable String certificate, @PathVariable String fy,
-			@PathVariable String q, @PathVariable String pan) {
+			@PathVariable String tan, @PathVariable String certificate, @PathVariable String fy, @PathVariable String q,
+			@PathVariable String pan) {
 		try {
 			logger.info("Get Certificate for  " + pan);
-			response.setContentType("application/zip, application/octet-stream");
-
-			String pdfFileName = pan+"_"+q+"_"+fy;
+			response.setContentType("application/zip, application/octet-stream");			
+			String Ay = fyToAy(fy);
+ 			String pdfFileName = pan + "_" + q + "_" + Ay + ".pdf";
 			System.out.println(pdfFileName);
-			String zipPath = System.getProperty("user.home") + "/download/" + fy + "/" + q + "/" + deductee + "/"
-					+ pdfFileName + ".pdf";
+			service.setStaticData();
+			String path = StaticData.CertificatePath;
+			String zipPath = path + "download/" + fy + "/" + q + "/" + certificate + "/"
+					+ tan + "/" + pdfFileName ;
 			System.out.println(zipPath);
+			logger.info(zipPath);
 			response.setContentType("application/pdf");
 			response.setHeader("Content-Disposition", "attachment; filename=\"" + pdfFileName + "\"");
 			File file = new File(zipPath);
-			try {
-				if (file.exists())
-					;
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				return new ResponseEntity<>("File Not Found", HttpStatus.BAD_REQUEST);
+			if (!file.exists()) {
+				return new ResponseEntity<>("File Not Found" + zipPath, HttpStatus.BAD_REQUEST);
 			}
 
 			FileInputStream fileInputStream;
@@ -90,9 +87,22 @@ public class CHALLANController extends AbstractControllerTaxo<String, CHALLAN, C
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			logger.error("Error in downloading ", e);
-			return new ResponseEntity<>("File Not Found", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>("File Not Found" + System.getProperty("user.home") + "/download/" + fy + "/" + q
+					+ "/" + certificate + "/" + tan + "/" + pan + "_" + q + "_" + fy + ".pdf", HttpStatus.BAD_REQUEST);
 
 		}
+	}
+	
+	public String fyToAy(String fy) {
+		String Ay= null;
+		String[] yr = fy.split("-");
+		int y1 = Integer.parseInt(yr[0]);
+		int y2 = Integer.parseInt(yr[1]);
+		
+		int Ay1 = y1+1;
+		int Ay2 = y2+1;
+		return Ay1+"-"+Ay2;
+		
 	}
 
 	// get file from project folder

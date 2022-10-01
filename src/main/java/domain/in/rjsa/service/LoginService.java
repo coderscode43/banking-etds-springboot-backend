@@ -12,6 +12,7 @@ public interface LoginService extends ServiceInterfaceForm<Long, Login>{
 	void persist(Login login);
 	HashMap<String, Login> getUserNameLogin();
 	public void updatePassword(Login login, String password);
+	Login getUserByName(String userName);
 	
 	
 	

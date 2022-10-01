@@ -183,13 +183,13 @@
 							<div class="col-md-3">
 								<label>PAN of the Deductee. &nbsp;</label>
 							</div>
-							<div class="col-md-3">: {{cCctr.entity.deducteePan}}</div>
+							<div class="col-md-3">: {{cCctr.entity.pan}}</div>
 						</div>
 						<div class="row" style="font-size: 13px;">
 							<div class="col-md-3">
 								<label>Name of the Deductee. &nbsp;</label>
 							</div>
-							<div class="col-md-3">: {{cCctr.entity.deducteeName}}</div>
+							<div class="col-md-3">: {{cCctr.entity.name}}</div>
 
 							<div class="col-md-3">
 								<label>Section Code. &nbsp;</label>
@@ -201,12 +201,12 @@
 							<div class="col-md-3">
 								<label>Date of Payment. &nbsp;</label>
 							</div>
-							<div class="col-md-3">: {{cCctr.entity.paymentDate}}</div>
+							<div class="col-md-3">: {{cCctr.entity.dateOfPayment}}</div>
 
 							<div class="col-md-3">
 								<label> Amount Paid. &nbsp;</label>
 							</div>
-							<div class="col-md-3">: {{cCctr.entity.paidAmt}}</div>
+							<div class="col-md-3">: {{cCctr.entity.amountPaid}}</div>
 						</div>
 
 						<div class="row" style="font-size: 13px;">
@@ -229,19 +229,19 @@
 							<div class="col-md-3">
 								<label>Total Tax Deducted. &nbsp;</label>
 							</div>
-							<div class="col-md-3">: {{cCctr.entity.totalTaxDeduct}}</div>
+							<div class="col-md-3">: {{cCctr.entity.totalTaxDeducteded}}</div>
 						</div>
 
 						<div class="row" style="font-size: 13px;">
 							<div class="col-md-3">
 								<label>Total Tax Deposited. &nbsp;</label>
 							</div>
-							<div class="col-md-3">: {{cCctr.entity.totalTaxDeposit}}</div>
+							<div class="col-md-3">: {{cCctr.entity.totalTaxDepositeded}}</div>
 
 							<div class="col-md-3">
 								<label>Date of Deduction. &nbsp;</label>
 							</div>
-							<div class="col-md-3">: {{cCctr.entity.deductDate}}</div>
+							<div class="col-md-3">: {{cCctr.entity.dateOfDeduction}}</div>
 						</div>
 
 						<div class="row" style="font-size: 13px;">
@@ -249,7 +249,7 @@
 								<label>Rate at which Tax Deducted. &nbsp;</label>
 							</div>
 							<div class="col-md-3">:
-								{{cCctr.entity.rateTaxDeduct}}</div>
+								{{cCctr.entity.rateAtWhichTaxCollected}}</div>
 							<!-- <div class="col-md-3">
 								<label>Remarks. &nbsp;</label>
 							</div>
@@ -266,7 +266,7 @@
 								<label>Certificate No. &nbsp;</label>
 							</div>
 							<div class="col-md-3">:
-								{{cCctr.entity.certificateNo}}</div>
+								{{cCctr.entity.certificateNumber}}</div>
 							<div class="col-md-3">
 								<label>Cash Withdrawl (194N). &nbsp;</label>
 							</div>
@@ -653,9 +653,9 @@
 										ng-model-options="{updateOn: 'blur'}" ng-maxlength="12"
 										autocomplete="off" />
 									<span style="color: red"
-										ng-show="form26qdeductee.submitted || form26qdeducteeRefNo.$dirty && form26qdeducteeRefNo.$invalid">
+										ng-show="form26qdeductee.submitted || form26qdeductee.deducteeRefNo.$dirty && form26qdeductee.deducteeRefNo.$invalid">
 										<span class="error"
-										ng-show="form26qdeducteeRefNo.$error.maxlength">Deductee
+										ng-show="form26qdeductee.deducteeRefNo.$error.maxlength">Deductee
 											Reference No should not be greater than 12 characters.</span>
 									</span> <span class="error" id="deducteeRefNo"></span>
 								</div>
@@ -668,7 +668,7 @@
 										ng-model="cCctr.entity.deducteeCode"
 										ng-model-options="{updateOn: 'blur'}" /> <span
 										style="color: red"
-										ng-show="form26qdeductee.submitted ||form26qdeducteeCode.$dirty && form26qdeducteeCode.$invalid">
+										ng-show="form26qdeductee.submitted ||form26qdeductee.deducteeCode.$dirty && form26qdeductee.deducteeCode.$invalid">
 									</span> <span class="error" id="deducteeCode"></span>
 								</div>
 							</div>
@@ -676,13 +676,13 @@
 								<div class="col-md-6">
 
 									<label style="font-size: 12px;">PAN of the Deductee</label> <input
-										class="form-control" type="text" name="deducteePan"
+										class="form-control" type="text" name="pan"
 										placeholder="PAN of the Deductee"
-										ng-model="cCctr.entity.deducteePan"
+										ng-model="cCctr.entity.pan"
 										ng-model-options="{updateOn: 'blur'}" disabled/> <span
 										style="color: red"
-										ng-show="form26qdeductee.submitted || form26qdeducteePan.$dirty && form26qdeducteePan.$invalid">
-									</span><span class="error" id="deducteePan"></span>
+										ng-show="form26qdeductee.submitted || form26qdeductee.pan.$dirty && form26qdeductee.pan.$invalid">
+									</span><span class="error" id="pan"></span>
 								</div>
 
 								<div class="col-md-6">
@@ -707,25 +707,25 @@
 								<div class="col-md-6">
 
 									<label style="font-size: 12px;">Name of the Deductee</label> <input
-										class="form-control" type="text" name="deducteeName" ng-maxlenght="45"
+										class="form-control" type="text" name="name" ng-maxlenght="45"
 										placeholder="Name of the Deductee"
-										ng-model="cCctr.entity.deducteeName"
+										ng-model="cCctr.entity.name"
 										ng-model-options="{updateOn: 'blur'}" />
 										<span
 										style="color: red"
-										ng-show="form26qdeductee.submitted || form26qdeducteeName.$dirty && form26qdeducteeName.$invalid">
+										ng-show="form26qdeductee.submitted || form26qdeductee.name.$dirty && form26qdeductee.name.$invalid">
 										<span class="error"
-										ng-show="form26qdeducteeName.$error.maxlength">Name of the Deductee should not be greater than 45 characters.</span> <span
+										ng-show="form26qdeductee.name.$error.maxlength">Name of the Deductee should not be greater than 45 characters.</span> <span
 										class="error"
-										ng-show="form26qdeducteeName.$error.required">Name of the Deductee is Required.</span>
-									</span> <span class="error" id="deducteeName"></span>
+										ng-show="form26qdeductee.name.$error.required">Name of the Deductee is Required.</span>
+									</span> <span class="error" id="name"></span>
 								</div>
 								<div class="col-md-6">
 
 									<label style="font-size: 12px;">Amount Paid</label> <input
 										class="form-control" type="text" name="amountPaid"
 										placeholder="Amount Paid"
-										ng-model="cCctr.entity.paidAmt"
+										ng-model="cCctr.entity.amounPaid"
 										ng-model-options="{updateOn: 'blur'}" disabled/> <span
 										style="color: red"
 										ng-show="form26qdeductee.submitted || form26qdeductee.amountPaid.$dirty && form26qdeductee.amountPaid.$invalid">
@@ -800,11 +800,11 @@
 								<div class="col-md-6">
 
 									<label style="font-size: 12px;">Total Tax Deducted</label> <input
-										class="form-control" type="text" name="totalTaxDeduct"
+										class="form-control" type="text" name="totalTaxDeducted"
 										placeholder="Total Tax Deducted"
-										ng-model="cCctr.entity.totalTaxDeduct"
+										ng-model="cCctr.entity.totalTaxDeducted"
 										ng-model-options="{updateOn: 'blur'}" />
-									</span> <span class="error" id="totalTaxDeduct"></span>
+									</span> <span class="error" id="totalTaxDeducted"></span>
 								</div>
 								
 
@@ -813,7 +813,7 @@
 									<label style="font-size: 12px;">Total Tax Deposited</label> <input
 										class="form-control" type="text" name="totalTaxDeposited"
 										placeholder="Total Tax Deposited"
-										ng-model="cCctr.entity.totalTaxDeposit"
+										ng-model="cCctr.entity.totalTaxDeposited"
 										ng-model-options="{updateOn: 'blur'}" /> <span
 										style="color: red"
 										ng-show="form26qdeductee.submitted || form26qdeductee.totalTaxDeposited.$dirty && form26qdeductee.totalTaxDeposited.$invalid">
@@ -986,9 +986,9 @@
 									<label style="font-size: 12px;">Date of Deduction</label> <input
 										class="form-control" type="Date" name="dateOfDeduction"
 										placeholder="Date of Deduction" 
-										ng-value='"{{cCctr.entity.deductDate}}"'
-										ng-model="cCctr.temp.deductDate"
-										ng-blur="cCctr.entity.deductDate = cCctr.temp.deductDate"/> <span
+										ng-value='"{{cCctr.entity.dateOfDeduction}}"'
+										ng-model="cCctr.temp.dateOfDeduction"
+										ng-blur="cCctr.entity.dateOfDeduction = cCctr.temp.dateOfDeduction"/> <span
 										style="color: red"
 										ng-show="form26qdeductee.submitted || form26qdeductee.dateOfDeduction.$dirty && form26qdeductee.dateOfDeduction.$invalid">
 										<span class="error"
@@ -1025,14 +1025,14 @@
 								<div class="col-md-6">
 
 									<label style="font-size: 12px;">Date of Payment.</label> <input
-										class="form-control" type="Date" name="paymentDate"
+										class="form-control" type="Date" name="dateOfPayment"
 										placeholder="Date of Payment"
-										ng-value='"{{cCctr.entity.paymentDate}}"'
-										ng-model="cCctr.temp.paymentDate"
-										ng-blur="cCctr.entity.paymentDate = cCctr.temp.paymentDate" />
+										ng-value='"{{cCctr.entity.dateOfPayment}}"'
+										ng-model="cCctr.temp.dateOfPayment"
+										ng-blur="cCctr.entity.dateOfPayment = cCctr.temp.dateOfPayment" />
 										<span
 										style="color: red"
-										ng-show="form26qdeductee.submitted || form26qdeductee.paymentDate.$dirty && form26qdeductee.paymentDate.$invalid">
+										ng-show="form26qdeductee.submitted || form26qdeductee.dateOfPayment.$dirty && form26qdeductee.dateOfPayment.$invalid">
 										</span>
 								</div>
 							</div>
@@ -1042,24 +1042,24 @@
 								<div class="col-md-6">
 									<label style="font-size: 12px;">Rate at which Tax
 										Deducted</label> <input class="form-control" type="text"
-										name="rateTaxDeduct"
+										name="rateAtWhichTaxCollected"
 										placeholder="Rate at which Tax
 										Deducted"
-										ng-model="cCctr.entity.rateTaxDeduct"
+										ng-model="cCctr.entity.rateAtWhichTaxCollected"
 										ng-model-options="{updateOn: 'blur'}" />
 										<span
 										style="color: red"
-										ng-show="form26qdeductee.submitted || form26qdeductee.rateTaxDeduct.$dirty && form26qdeductee.rateTaxDeduct.$invalid">
+										ng-show="form26qdeductee.submitted || form26qdeductee.rateAtWhichTaxCollected.$dirty && form26qdeductee.rateAtWhichTaxCollected.$invalid">
 										<span class="error"
-										ng-show="form26qdeductee.rateTaxDeduct.$error.pattern">Please
+										ng-show="form26qdeductee.rateAtWhichTaxCollected.$error.pattern">Please
 											enter valid Rate at which Tax
 										Deducted </span> <span class="error"
-										ng-show="form26qdeductee.rateTaxDeduct.$error.maxlength">Rate at which Tax
+										ng-show="form26qdeductee.rateAtWhichTaxCollected.$error.maxlength">Rate at which Tax
 										Deducted should not be greater than 45 characters.</span> <span
 										class="error"
-										ng-show="form26qdeductee.rateTaxDeduct.$error.required">Rate at which Tax
+										ng-show="form26qdeductee.rateAtWhichTaxCollected.$error.required">Rate at which Tax
 										Deducted is Required.</span>
-									</span> <span class="error" id="rateTaxDeduct"></span>
+									</span> <span class="error" id="rateAtWhichTaxCollected"></span>
 								</div>
 								<div class="col-md-6">
 
@@ -1093,7 +1093,7 @@
 									<label style="font-size: 12px;">Certificate Number</label> <input
 										class="form-control" type="text" name="certificateNumber"
 										placeholder="Certificate Number"
-										ng-model="cCctr.entity.certificateNo"
+										ng-model="cCctr.entity.certificateNumber"
 										ng-model-options="{updateOn: 'blur'}" /> <span
 										style="color: red"
 										ng-show="form26qdeductee.submitted || form26qdeductee.certificateNumber.$dirty && form26qdeductee.certificateNumber.$invalid">

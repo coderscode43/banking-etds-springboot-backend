@@ -113,67 +113,67 @@ public class Regular27EQDeducteeServiceImpl extends AbstractServiceFY<Long, Regu
 			} else {
 				details.createCell(8).setCellValue(form27EQ.getChallanHeading());
 			}
-			if (form27EQ.getDeducteeReferenceNo() == null) {
+			if (form27EQ.getDeducteeRefNo() == null) {
 				details.createCell(9).setCellValue(" ");
 			} else {
-				details.createCell(9).setCellValue(form27EQ.getDeducteeReferenceNo());
+				details.createCell(9).setCellValue(form27EQ.getDeducteeRefNo());
 			}
 			if (form27EQ.getDeducteeCode() == null) {
 				details.createCell(10).setCellValue(" ");
 			} else {
 				details.createCell(10).setCellValue(form27EQ.getDeducteeCode());
 			}
-			if (form27EQ.getPanofthedeductee() == null) {
+			if (form27EQ.getPan() == null) {
 				details.createCell(11).setCellValue(" ");
 			} else {
-				details.createCell(11).setCellValue(form27EQ.getPanofthedeductee());
+				details.createCell(11).setCellValue(form27EQ.getPan());
 			}
-			if (form27EQ.getNameoftheDeductee() == null) {
+			if (form27EQ.getName() == null) {
 				details.createCell(12).setCellValue(" ");
 			} else {
-				details.createCell(12).setCellValue(form27EQ.getNameoftheDeductee());
+				details.createCell(12).setCellValue(form27EQ.getName());
 			}
-			if (form27EQ.getAmountReceiptDebited() == null) {
+			if (form27EQ.getAmountPaid() == null) {
 				details.createCell(13).setCellValue(" ");
 			} else {
-				details.createCell(13).setCellValue(form27EQ.getAmountReceiptDebited());
+				details.createCell(13).setCellValue(form27EQ.getAmountPaid());
 			}
-			if (form27EQ.getdateofReceivedDebited() == null) {
+			if (form27EQ.getDateOfPayment() == null) {
 				details.createCell(14).setCellValue(" ");
 			} else {
 				details.createCell(14)
-						.setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(form27EQ.getdateofReceivedDebited()));
+						.setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(form27EQ.getDateOfPayment()));
 			}
-			if (form27EQ.getTcs() == null) {
+			if (form27EQ.getTds() == null) {
 				details.createCell(15).setCellValue(" ");
 			} else {
-				details.createCell(15).setCellValue(form27EQ.getTcs());
+				details.createCell(15).setCellValue(form27EQ.getTds());
 			}
 			if (form27EQ.getSurcharge() == null) {
 				details.createCell(16).setCellValue(" ");
 			} else {
 				details.createCell(16).setCellValue(form27EQ.getSurcharge());
 			}
-			if (form27EQ.getEducationCess() == null) {
+			if (form27EQ.getEduCess() == null) {
 				details.createCell(17).setCellValue(" ");
 			} else {
-				details.createCell(17).setCellValue(form27EQ.getEducationCess());
+				details.createCell(17).setCellValue(form27EQ.getEduCess());
 			}
-			if (form27EQ.getTotalTaxCollected() == null) {
+			if (form27EQ.getTotalTaxDeducted() == null) {
 				details.createCell(18).setCellValue(" ");
 			} else {
-				details.createCell(18).setCellValue(form27EQ.getTotalTaxCollected());
+				details.createCell(18).setCellValue(form27EQ.getTotalTaxDeducted());
 			}
 			if (form27EQ.getTotalTaxDeposited() == null) {
 				details.createCell(19).setCellValue(" ");
 			} else {
 				details.createCell(19).setCellValue(form27EQ.getTotalTaxDeposited());
 			}
-			if (form27EQ.getdateofCollected() == null) {
+			if (form27EQ.getDateOfDeduction() == null) {
 				details.createCell(20).setCellValue(" ");
 			} else {
 				details.createCell(20)
-						.setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(form27EQ.getdateofCollected()));
+						.setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(form27EQ.getDateOfDeduction()));
 			}
 			if (form27EQ.getTotalValueofPurchase() == null) {
 				details.createCell(21).setCellValue(" ");
@@ -185,20 +185,20 @@ public class Regular27EQDeducteeServiceImpl extends AbstractServiceFY<Long, Regu
 			} else {
 				details.createCell(22).setCellValue(form27EQ.getRateatwhichTaxCollected());
 			}
-			if (form27EQ.getReasonforNonCollection() == null) {
+			if (form27EQ.getRemarksReason() == null) {
 				details.createCell(23).setCellValue(" ");
 			} else {
-				details.createCell(23).setCellValue(form27EQ.getReasonforNonCollection());
+				details.createCell(23).setCellValue(form27EQ.getRemarksReason());
 			}
-			if (form27EQ.getCollectionCode() == null) {
+			if (form27EQ.getSectionCode() == null) {
 				details.createCell(24).setCellValue(" ");
 			} else {
-				details.createCell(24).setCellValue(form27EQ.getCollectionCode());
+				details.createCell(24).setCellValue(form27EQ.getSectionCode());
 			}
-			if (form27EQ.getCertificatenumber() == null) {
+			if (form27EQ.getCertificateNumber() == null) {
 				details.createCell(25).setCellValue(" ");
 			} else {
-				details.createCell(25).setCellValue(form27EQ.getCertificatenumber());
+				details.createCell(25).setCellValue(form27EQ.getCertificateNumber());
 			}
 			if (form27EQ.getDeducteeisNonResident() == null) {
 				details.createCell(26).setCellValue(" ");

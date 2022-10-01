@@ -81,4 +81,9 @@ public class LoginServiceImpl extends AbstractServiceForm<Long, Login, LoginDao>
 		return null;
 	}
 
+	@Override
+	public Login getUserByName(String userName) {
+		// TODO Auto-generated method stub
+		return dao.getByuserName(userName);
+	}
 }

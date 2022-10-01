@@ -99,7 +99,7 @@ text-align:center;
 				<h6>
 					<b>Collection Code</b>
 					<h6>
-						<input type="text" ng-model="cCctr.search.collectionCode"
+						<input type="text" ng-model="cCctr.search.sectionCode"
 							class="form-control" placeholder="Collection Code" style="width: 100%">
 			</div>
 				<div class="col-md-3">
@@ -119,7 +119,7 @@ text-align:center;
 					<h6>
 						<b>PAN</b>
 						<h6>
-							<input type="text" ng-model="cCctr.search.panofthedeductee"
+							<input type="text" ng-model="cCctr.search.pan"
 								class="form-control" placeholder="PAN" style="width: 100%">
 				</div>
 			</div>
@@ -132,7 +132,7 @@ text-align:center;
 				<h6>
 					<b>Name</b>
 					<h6>
-						<input type="text" ng-model="cCctr.search.nameoftheDeductee"
+						<input type="text" ng-model="cCctr.search.name"
 							class="form-control" placeholder="Name" style="width: 100%">
 			</div>
 
@@ -310,7 +310,7 @@ text-align:center;
 							<th style="width:0.01%">Name of the Party</th>
 							<th>Amount Receipt/Debited</th>
 							<th>Date of Received/Debited</th>
-							<th>TCS</th>
+							<th>TDS</th>
 							<th>Surcharge</th>
 							<th>Education Cess</th>
 							<th>Total Tax Collected</th>
@@ -377,43 +377,43 @@ text-align:center;
 						<td ng-if="a.resolved == 0">{{a.challanHeading}}</td>
 						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.challanHeading}}</td>
 						
-						<td ng-if="a.resolved == 0">{{a.deducteeReferenceNo}}</td>
-						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.deducteeReferenceNo}}</td>
+						<td ng-if="a.resolved == 0">{{a.deducteeRefNo}}</td>
+						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.deducteeRefNo}}</td>
 						
 						<td ng-if="a.resolved == 0">{{a.deducteeCode}}</td>
 						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.deducteeCode}}</td>
 						
-						<td ng-if="a.resolved == 0">{{a.panofthedeductee}}</td>
-						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.panofthedeductee}}</td>
+						<td ng-if="a.resolved == 0">{{a.pan}}</td>
+						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.pan}}</td>
 						
 						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 0"
-							data-placement="bottom" title="{{a.nameoftheDeductee}}">{{a.nameoftheDeductee}}</td>
+							data-placement="bottom" title="{{a.name}}">{{a.name}}</td>
 						<td class=" ellipsis" data-toggle="tooltip" style="background-color:#ff3232" ng-if="a.resolved == 1"
-							data-placement="bottom" title="{{a.nameoftheDeductee}}">{{a.nameoftheDeductee}}</td>
+							data-placement="bottom" title="{{a.name}}">{{a.name}}</td>
 								
-						<td ng-if="a.resolved == 0">{{a.amountReceiptDebited}}</td>
-						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.amountReceiptDebited}}</td>
+						<td ng-if="a.resolved == 0">{{a.amountPaid}}</td>
+						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.amountPaid}}</td>
 						
-						<td ng-if="a.resolved == 0">{{a.dateofReceivedDebited}}</td>
-						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.dateofReceivedDebited}}</td>
+						<td ng-if="a.resolved == 0">{{a.dateOfPayment}}</td>
+						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.dateOfPayment}}</td>
 						
-						<td ng-if="a.resolved == 0">{{a.tcs}}</td>
-						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.tcs}}</td>
+						<td ng-if="a.resolved == 0">{{a.tds}}</td>
+						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.tds}}</td>
 						
 						<td ng-if="a.resolved == 0">{{a.surcharge}}</td>
 						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.surcharge}}</td>
 						
-						<td ng-if="a.resolved == 0">{{a.educationCess}}</td>
-						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.educationCess}}</td>
+						<td ng-if="a.resolved == 0">{{a.eduCess}}</td>
+						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.eduCess}}</td>
 						
-						<td ng-if="a.resolved == 0">{{a.totalTaxCollected}}</td>
-						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.totalTaxCollected}}</td>
+						<td ng-if="a.resolved == 0">{{a.totalTaxDeducted}}</td>
+						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.totalTaxDeducted}}</td>
 						
 						<td ng-if="a.resolved == 0">{{a.totalTaxDeposited}}</td>
 						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.totalTaxDeposited}}</td>
 						
-						<td ng-if="a.resolved == 0">{{a.dateofCollected| date:'dd-MM-yyyy'}}</td>
-						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.dateofCollected| date:'dd-MM-yyyy'}}</td>
+						<td ng-if="a.resolved == 0">{{a.dateOfDeduction| date:'dd-MM-yyyy'}}</td>
+						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.dateOfDeduction| date:'dd-MM-yyyy'}}</td>
 						
 						<td ng-if="a.resolved == 0">{{a.totalValueofPurchase}}</td>
 						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.totalValueofPurchase}}</td>
@@ -422,17 +422,17 @@ text-align:center;
 						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.rateatwhichTaxCollected}}</td>
 						
 						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 0"
-							data-placement="bottom" title="{{a.reasonforNonCollection}}">{{a.reasonforNonCollection}}</td>
+							data-placement="bottom" title="{{a.remarksReason}}">{{a.remarksReason}}</td>
 						<td class=" ellipsis" data-toggle="tooltip" style="background-color:#ff3232" ng-if="a.resolved == 1"
-							data-placement="bottom" title="{{a.reasonforNonCollection}}">{{a.reasonforNonCollection}}</td>
+							data-placement="bottom" title="{{a.remarksReason}}">{{a.remarksReason}}</td>
 							
-						<td ng-if="a.resolved == 0">{{a.collectionCode}}</td>
-						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.collectionCode}}</td>
+						<td ng-if="a.resolved == 0">{{a.sectionCode}}</td>
+						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.sectionCode}}</td>
 						
 						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 0"
-							data-placement="bottom" title="{{a.certificatenumber}}">{{a.certificatenumber}}</td>
+							data-placement="bottom" title="{{a.certificateNumber}}">{{a.certificateNumber}}</td>
 						<td class=" ellipsis" data-toggle="tooltip" style="background-color:#ff3232" ng-if="a.resolved == 1"
-							data-placement="bottom" title="{{a.certificatenumber}}">{{a.certificatenumber}}</td>
+							data-placement="bottom" title="{{a.certificateNumber}}">{{a.certificateNumber}}</td>
 							
 						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 0"
 							data-placement="bottom" title="{{a.deducteeisNonResident}}">{{a.deducteeisNonResident}}</td>

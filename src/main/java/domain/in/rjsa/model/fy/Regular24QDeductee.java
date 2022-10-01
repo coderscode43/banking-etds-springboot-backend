@@ -37,8 +37,8 @@ public class Regular24QDeductee extends CommonModelAbstract {
 	public Long id;
 	@Column(name = "challanHeading")
 	public String challanHeading;
-	@Column(name = "employeeRefNo")
-	public Long employeeRefNo;
+	@Column(name = "deducteeRefNo")
+	public Long deducteeRefNo;
 	@Column(name = "panRefNo")
 //	@NotNull(message = "Pan Reference No. is a required field.")
 	@Size(min = 0, max = 45, message = "Pan Reference No. should not be greater than 45 characters.")
@@ -77,14 +77,14 @@ public class Regular24QDeductee extends CommonModelAbstract {
 //	@NotNull(message = "Surcharge is a required field.")
 	@Digits(integer = 12, fraction = 2, message = "Surcharge is not proper.Maximum 2 fractions allowed.")
 	public Double surcharge;
-	@Column(name = "educationCess")
+	@Column(name = "eduCess")
 //	@NotNull(message = "Education Cess is a required field.")
 	@Digits(integer = 12, fraction = 2, message = "Education Cess is not proper.Maximum 2 fractions allowed.")
-	public Double educationCess;
-	@Column(name = "totalTds")
+	public Double eduCess;
+	@Column(name = "totalTaxDeducted")
 //	@NotNull(message = "Total Tds is a required field.")
 	@Digits(integer = 12, fraction = 2, message = "Education Cess is not proper.Maximum 2 fractions allowed.")
-	public Double totalTds;
+	public Double totalTaxDeducted;
 	@Column(name = "totalTaxDeposited")
 //	@NotNull(message = "Total Tax Deposited is a required field.")
 	@Digits(integer = 12, fraction = 2, message = "Total Tax Deposited value is not proper.Maximum 2 fractions allowed.")
@@ -93,9 +93,9 @@ public class Regular24QDeductee extends CommonModelAbstract {
 //	@NotNull(message = "Certificate Number is a required field.")
 	@Size(min = 0, max = 45, message = "Certificate Number should not be greater than 45 characters.")
 	public String certificateNumber;
-	@Column(name = "remarks")
+	@Column(name = "remarksReason")
 	@Size(min = 0, max = 45, message = "Remarks should not be greater than 45 characters.")
-	public String remarks;
+	public String remarksReason;
 	@Column(name = "fy")
 //	@NotNull(message = "FY is a required field.")
 	@Size(min = 0, max = 45, message = "FY should not be greater than 45 characters.")
@@ -108,12 +108,12 @@ public class Regular24QDeductee extends CommonModelAbstract {
 	public Long branchCode;
 	@Column(name = "accNo")
 	public String accNo;
-	@Column(name = "idNo")
-	public Long idNo;
+	@Column(name = "challanSrNo")
+	public Long challanSrNo;
 	@Column(name = "month")
 	public String month;  
-	@Column(name = "staffId")
-	public String staffId;
+	@Column(name = "custVendId")
+	public String custVendId;
 	@Column(name = "uniqueRefNo")
 	public String uniqueRefNo;
 	@Column(name = "TAN")
@@ -139,6 +139,9 @@ public class Regular24QDeductee extends CommonModelAbstract {
 	
 	@Column(name = "comments")
 	public String comments;
+	
+	@Column(name = "deducteeSrNo")
+	public Long deducteeSrNo;
 	
 	@JsonSerialize(using = JsonDateSerializer.class)
 	public Date getDateOfPayment() {

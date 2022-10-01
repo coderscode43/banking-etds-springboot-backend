@@ -97,10 +97,10 @@ implements PanUpdateListService{
 			} else {
 				details.createCell(3).setCellValue(panUpdateList.getChallanHeading());
 			}
-			if (panUpdateList.getCustomerVendorID() == null) {
+			if (panUpdateList.getCustVendId() == null) {
 				details.createCell(4).setCellValue(" ");
 			} else {
-				details.createCell(4).setCellValue(panUpdateList.getCustomerVendorID());
+				details.createCell(4).setCellValue(panUpdateList.getCustVendId());
 			}
 			if (panUpdateList.getPreviousPAN() == null) {
 				details.createCell(5).setCellValue(" ");

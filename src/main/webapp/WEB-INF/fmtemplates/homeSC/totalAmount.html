@@ -138,7 +138,7 @@
 						<h6>
 							<b>Customer ID</b>
 						</h6>
-						<input type="text" ng-model="cCctr.search.customerID"
+						<input type="text" ng-model="cCctr.search.custVendId"
 							class="form-control" placeholder="Customer ID"
 							style="width: 100%">
 					</div>
@@ -181,7 +181,7 @@
 						<h6>
 							<b>Section </b>
 						</h6>
-						<input type="text" ng-model="cCctr.search.section"
+						<input type="text" ng-model="cCctr.search.sectionCode"
 							class="form-control" placeholder="Section" style="width: 100%">
 					</div>
 					<!-- <div class="col-md-3">
@@ -320,9 +320,9 @@
 				<tr role="row"
 					ng-repeat="a in cCctr.getEntityListData() track by a.id">
 					<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
-					<td>{{a.customerID}}</td>
+					<td>{{a.custVendId}}</td>
 					<td>{{a.pan}}</td>
-					<td>{{a.section}}</td>
+					<td>{{a.sectionCode}}</td>
 					<td>{{a.challanHeading}}</td>
 					<td>{{a.month}}</td>
 					<td>{{a.fy}}</td>

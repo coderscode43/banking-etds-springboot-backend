@@ -35,66 +35,71 @@ public class Regular26QDeductee extends CommonModelAbstract{
 	
 	@Column(name = "challanHeading")
 	public String challanHeading;
+	
 	@Column(name = "deducteeRefNo")
-	
 	public String deducteeRefNo;
+	
 	@Column(name = "deducteeCode")
-	
 	public String deducteeCode;
-	@Column(name = "deducteePan")
 	
-	public String deducteePan;
-	@Column(name = "deducteeName")
+	@Column(name = "pan")
+	public String pan;
 	
-	public String deducteeName;
+	@Column(name = "name")
+	public String name;
+	
 	@Column(name = "sectionCode")
-	
 	public String sectionCode;
+	
+	@Column(name = "dateOfPayment")
 	@Temporal(TemporalType.DATE)
+	public Date dateOfPayment;
 	
-	public Date paymentDate;
-	@Column(name = "paidAmt")
+	@Column(name = "amountPaid")
+	public Double amountPaid;
 	
-	public Double paidAmt;
 	@Column(name = "tds")
-	
 	public Double tds;
+	
 	@Column(name = "surcharge")
-	
 	public Double surcharge;
+	
 	@Column(name = "eduCess")
-	
 	public Double eduCess;
-	@Column(name = "totalTaxDeduct")
 	
-	public Double totalTaxDeduct;
-	@Column(name = "totalTaxDeposit")
+	@Column(name = "totalTaxDeducted")
+	public Double totalTaxDeducted;
 	
-	public Double totalTaxDeposit;
+	@Column(name = "totalTaxDeposited")
+	public Double totalTaxDeposited;
+	
+	@Column(name = "dateOfDeduction")
 	@Temporal(TemporalType.DATE)
+	public Date dateOfDeduction;
 	
-	public Date deductDate;
-	@Column(name = "rateTaxDeduct")
+	@Column(name = "rateAtWhichTaxCollected")
+	public Double rateAtWhichTaxCollected;
 	
-	public Double rateTaxDeduct;
-	@Column(name = "remarks")
+	@Column(name = "remarksReason")
+	public String remarksReason;
 	
-	public String remarks;
-	@Column(name = "certificateNo")
+	@Column(name = "certificateNumber")
+	public String certificateNumber;
 	
-	public String certificateNo;
 	@Column(name = "fy")
-	
 	public String fy;
-	@Column(name = "quarter")
 	
+	@Column(name = "quarter")
 	public String quarter;
+	
 	@Column(name = "branchCode")
 	public Long branchCode;
+	
 	@Column(name = "accNo")
 	public String accNo;
-	@Column(name = "idNo")
-	public Long idNo;
+	
+	@Column(name = "challanSrNo")
+	public Long challanSrNo;
 
 	@Column(name = "month")
 	public String month;
@@ -145,20 +150,23 @@ public class Regular26QDeductee extends CommonModelAbstract{
 	@Column(name = "comments")
 	public String comments;
 	
+	@Column(name = "deducteeSrNo")
+	public Long deducteeSrNo;
+	
 	@JsonSerialize(using=JsonDateSerializer.class)
-	public Date getPaymentDate() {
-		return paymentDate;
+	public Date getDateOfPayment() {
+		return dateOfPayment;
 	}
-	public void setPaymentDate(Date paymentDate) {
-		this.paymentDate = paymentDate;
+	public void setDateOfPayment(Date dateOfPayment) {
+		this.dateOfPayment = dateOfPayment;
 	}
 	
 	@JsonSerialize(using=JsonDateSerializer.class)
-	public Date getDeductDate() {
-		return deductDate;
+	public Date getDateOfDeduction() {
+		return dateOfDeduction;
 	}
-	public void setDeductDate(Date deductDate) {
-		this.deductDate = deductDate;
+	public void setDateOfDeduction(Date dateOfDeduction) {
+		this.dateOfDeduction = dateOfDeduction;
 	}
 	public void updateAllowedFields(Regular26QDeductee entity) {
 		// TODO Auto-generated method stub

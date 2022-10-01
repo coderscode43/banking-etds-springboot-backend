@@ -106,10 +106,10 @@ public class Regular24QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 			} else {
 				details.createCell(4).setCellValue(form24Q.getBranchCode());
 			}
-			if (form24Q.getStaffId() == null) {
+			if (form24Q.getCustVendId() == null) {
 				details.createCell(5).setCellValue(" ");
 			} else {
-				details.createCell(5).setCellValue(form24Q.getStaffId());
+				details.createCell(5).setCellValue(form24Q.getCustVendId());
 			}
 			if (form24Q.getUniqueRefNo() == null) {
 				details.createCell(6).setCellValue(" ");
@@ -126,10 +126,10 @@ public class Regular24QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 			} else {
 				details.createCell(8).setCellValue(form24Q.getChallanHeading());
 			}
-			if (form24Q.getEmployeeRefNo() == null) {
+			if (form24Q.getDeducteeRefNo() == null) {
 				details.createCell(9).setCellValue(" ");
 			} else {
-				details.createCell(9).setCellValue(form24Q.getEmployeeRefNo());
+				details.createCell(9).setCellValue(form24Q.getDeducteeRefNo());
 			}
 			if (form24Q.getPanRefNo() == null) {
 				details.createCell(10).setCellValue(" ");
@@ -176,25 +176,25 @@ public class Regular24QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 			} else {
 				details.createCell(18).setCellValue(form24Q.getSurcharge());
 			}
-			if (form24Q.getEducationCess() == null) {
+			if (form24Q.getEduCess() == null) {
 				details.createCell(19).setCellValue(" ");
 			} else {
-				details.createCell(19).setCellValue(form24Q.getEducationCess());
+				details.createCell(19).setCellValue(form24Q.getEduCess());
 			}
-			if (form24Q.getTotalTds() == null) {
+			if (form24Q.getTotalTaxDeducted() == null) {
 				details.createCell(20).setCellValue(" ");
 			} else {
-				details.createCell(20).setCellValue(form24Q.getTotalTds());
+				details.createCell(20).setCellValue(form24Q.getTotalTaxDeducted());
 			}
 			if (form24Q.getTotalTaxDeposited() == null) {
 				details.createCell(21).setCellValue(" ");
 			} else {
 				details.createCell(21).setCellValue(form24Q.getTotalTaxDeposited());
 			}
-			if (form24Q.getRemarks() == null) {
+			if (form24Q.getRemarksReason() == null) {
 				details.createCell(22).setCellValue(" ");
 			} else {
-				details.createCell(22).setCellValue(form24Q.getRemarks());
+				details.createCell(22).setCellValue(form24Q.getRemarksReason());
 			}
 			if (form24Q.getCertificateNumber() == null) {
 				details.createCell(23).setCellValue(" ");

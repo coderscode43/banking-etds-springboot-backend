@@ -17,6 +17,8 @@ public class AbstractController {
 
 	@Autowired
 	ApplicationCache applicationCache;
+	
+/////////////////////////////////KARNATAKA BANK////////////////////////////////////////	
 
 	public String getBranchCode() {
 		LdapContext ctxGC = null;
@@ -38,6 +40,28 @@ public class AbstractController {
 		}
 
 	}
+	
+	
+/////////////////////////////////UCO BANK////////////////////////////////////////
+	
+//	public String getBranchCode() {
+////		LdapContext ctxGC = null;
+//		Object userDetails =  SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//		if (applicationCache.getAdminUser(getPrincipal()) != null) {
+//			return "admin";
+//
+//		} else {
+//			String branch = ((UserDetails) userDetails).getUsername();
+//			try {
+//				int b = Integer.valueOf(branch);
+//				return String.valueOf(b);
+//			} catch (Exception e) {
+//				// TODO: handle exception
+//				return branch;
+//			}
+//		}
+//
+//	}
 	
 	public void adminValidation(LinkedHashMap<String, Object> map) {
 		

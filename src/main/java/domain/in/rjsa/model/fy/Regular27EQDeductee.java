@@ -32,50 +32,50 @@ public class Regular27EQDeductee extends CommonModelAbstract {
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
 	public Long id;
-    @Column(name = "deducteeReferenceNo")
-	public Long deducteeReferenceNo;
+    @Column(name = "deducteeRefNo")
+	public Long deducteeRefNo;
     @Column(name = "deducteeCode")
   	public String deducteeCode;
-    @Column(name = "panofthedeductee")
-	public String panofthedeductee;
-    @Column(name = "nameoftheDeductee")
-	public String nameoftheDeductee;
-    @Column(name = "amountReceiptDebited")
-   	public Double amountReceiptDebited;
+    @Column(name = "pan")
+	public String pan;
+    @Column(name = "name")
+	public String name;
+    @Column(name = "amountPaid")
+   	public Double amountPaid;
     
     @Temporal(TemporalType.DATE)
-    @Column(name = "dateofReceivedDebited")
+    @Column(name = "dateOfPayment")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
-	public Date dateofReceivedDebited;
+	public Date dateOfPayment;
     
-    @Column(name = "tcs")
-   	public Double tcs;
+    @Column(name = "tds")
+   	public Double tds;
     @Column(name = "surcharge")
    	public Double surcharge;
     @Column(name = "quarter")
    	public String quarter;
     @Column(name = "fy")
    	public String fy;
-    @Column(name = "educationCess")
-   	public Double educationCess;
-    @Column(name = "totalTaxCollected")
-   	public Double totalTaxCollected;
+    @Column(name = "eduCess")
+   	public Double eduCess;
+    @Column(name = "totalTaxDeducted")
+   	public Double totalTaxDeducted;
     @Column(name = "totalTaxDeposited")
    	public Double totalTaxDeposited;
     
     @Temporal(TemporalType.DATE)
-    @Column(name = "dateofCollected")
+    @Column(name = "dateOfDeduction")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
-   	public Date dateofCollected;
+   	public Date dateOfDeduction;
     
     @Column(name = "totalValueofPurchase")
    	public Double totalValueofPurchase;
     @Column(name = "rateatwhichTaxCollected")
    	public Double rateatwhichTaxCollected;
-    @Column(name = "reasonforNonCollection")
-   	public String reasonforNonCollection;
-    @Column(name = "certificatenumber")
-   	public String certificatenumber;
+    @Column(name = "remarksReason")
+   	public String remarksReason;
+    @Column(name = "certificateNumber")
+   	public String certificateNumber;
     @Column(name = "deducteeisNonResident")
    	public String deducteeisNonResident;
     @Column(name = "permanentEstablishment")
@@ -84,8 +84,8 @@ public class Regular27EQDeductee extends CommonModelAbstract {
 	public Long branchCode;
 	@Column(name = "accNo")
 	public String accNo;
-	@Column(name = "idNo")
-	public Long idNo;
+	@Column(name = "challanSrNo")
+	public Long challanSrNo;
 	@Column(name = "month")
 	public String month;
 	@Column(name = "deducteeId")
@@ -108,8 +108,8 @@ public class Regular27EQDeductee extends CommonModelAbstract {
 	public String TAN ;
 	@Column(name = "roCode")
 	public Long roCode ;
-	@Column(name = "collectionCode")
-	public String collectionCode ;
+	@Column(name = "sectionCode")
+	public String sectionCode ;
 	@Column(name = "errorDescription")
 	public String errorDescription ;
 	@Column(name = "warningDescription")
@@ -129,26 +129,29 @@ public class Regular27EQDeductee extends CommonModelAbstract {
 	@Column(name = "comments")
 	public String comments;
 	
+	@Column(name = "deducteeSrNo")
+	public Long deducteeSrNo;
+	
 	
 	/*
 	 * @Column(name = "verify") public boolean verify = false;
 	 */
 	@JsonSerialize(using = JsonDateSerializer.class)
-	public Date getdateofReceivedDebited() {
-		return dateofReceivedDebited;
+	public Date getDateOfPayment() {
+		return dateOfPayment;
 	}
 
-	public void setdateofReceivedDebited(Date dateofReceivedDebited) {
-		this.dateofReceivedDebited = dateofReceivedDebited;
+	public void setDateOfPayment(Date dateOfPayment) {
+		this.dateOfPayment = dateOfPayment;
 	}
 
 	@JsonSerialize(using = JsonDateSerializer.class)
-	public Date getdateofCollected() {
-		return dateofCollected;
+	public Date getDateofCollected() {
+		return dateOfDeduction;
 	}
 
-	public void setdateofCollected(Date dateofCollected) {
-		this.dateofCollected = dateofCollected;
+	public void setDateOfDeduction(Date dateOfDeduction) {
+		this.dateOfDeduction = dateOfDeduction;
 	}
 
 	public void updateAllowedFields(Regular27EQDeductee regular27eqWeb) {

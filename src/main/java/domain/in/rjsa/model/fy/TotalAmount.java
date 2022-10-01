@@ -26,12 +26,12 @@ public class TotalAmount extends CommonModelAbstract<TotalAmount>{
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
 	public Long id;
-	@Column(name = "customerID")
-	public String customerID;
+	@Column(name = "custVendId")
+	public String custVendId;
 	@Column(name = "pan")
 	public String pan;
-	@Column(name = "section")
-	public String section;
+	@Column(name = "sectionCode")
+	public String sectionCode;
 	@Column(name = "challanHeading")
 	public String challanHeading;
 	@Column(name = "month")

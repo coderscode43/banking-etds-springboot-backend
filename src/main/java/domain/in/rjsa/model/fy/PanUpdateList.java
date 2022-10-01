@@ -31,8 +31,8 @@ public class PanUpdateList extends CommonModelAbstract<PanUpdateList> {/**
 	public String month;
 	@Column(name = "challanHeading")
 	public String challanHeading;
-	@Column(name = "customerVendorID")
-	public String customerVendorID;
+	@Column(name = "custVendId")
+	public String custVendId;
 	@Column(name = "previousPAN")
 	public String previousPAN;
 	@Column(name = "newPAN")

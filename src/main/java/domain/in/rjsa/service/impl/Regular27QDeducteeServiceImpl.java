@@ -137,11 +137,11 @@ public class Regular27QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 			} else {
 				details.createCell(13).setCellValue(form27Q.getSectionCode());
 			}
-			if (form27Q.getDate() == null) {
+			if (form27Q.getDateOfPayment() == null) {
 				details.createCell(14).setCellValue(" ");
 			} else {
 				details.createCell(14)
-						.setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(form27Q.getDate()));
+						.setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(form27Q.getDateOfPayment()));
 			}
 			if (form27Q.getAmountPaid() == null) {
 				details.createCell(15).setCellValue(" ");
@@ -158,10 +158,10 @@ public class Regular27QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 			} else {
 				details.createCell(17).setCellValue(form27Q.getSurcharge());
 			}
-			if (form27Q.getEducationCess() == null) {
+			if (form27Q.getEduCess() == null) {
 				details.createCell(18).setCellValue(" ");
 			} else {
-				details.createCell(18).setCellValue(form27Q.getEducationCess());
+				details.createCell(18).setCellValue(form27Q.getEduCess());
 			}
 			if (form27Q.getTotalTaxDeducted() == null) {
 				details.createCell(19).setCellValue(" ");
@@ -178,25 +178,25 @@ public class Regular27QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 			} else {
 				details.createCell(21).setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(form27Q.getDateOfDeduction()));
 			}
-			if (form27Q.getRateAtWhichTaxDeducted() == null) {
+			if (form27Q.getRateAtWhichTaxCollected() == null) {
 				details.createCell(22).setCellValue(" ");
 			} else {
-				details.createCell(22).setCellValue(form27Q.getRateAtWhichTaxDeducted());
+				details.createCell(22).setCellValue(form27Q.getRateAtWhichTaxCollected());
 			}
-			if (form27Q.getReasonForNonDeduction() == null) {
+			if (form27Q.getRemarksReason() == null) {
 				details.createCell(23).setCellValue(" ");
 			} else {
-				details.createCell(23).setCellValue(form27Q.getReasonForNonDeduction());
+				details.createCell(23).setCellValue(form27Q.getRemarksReason());
 			}
 			if (form27Q.getGrossingUpIndicator() == null) {
 				details.createCell(24).setCellValue(" ");
 			} else {
 				details.createCell(24).setCellValue(form27Q.getGrossingUpIndicator());
 			}
-			if (form27Q.getNoOfCertificateUnderSection() == null) {
+			if (form27Q.getCertificateNumber() == null) {
 				details.createCell(25).setCellValue(" ");
 			} else {
-				details.createCell(25).setCellValue(form27Q.getNoOfCertificateUnderSection());
+				details.createCell(25).setCellValue(form27Q.getCertificateNumber());
 			}
 			if (form27Q.getTdsRateAsPerItActs() == null) {
 				details.createCell(26).setCellValue(" ");

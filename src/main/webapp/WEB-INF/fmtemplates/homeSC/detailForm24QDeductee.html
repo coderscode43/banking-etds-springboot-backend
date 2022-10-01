@@ -156,7 +156,7 @@ table {
 								<div class="col-md-3">
 									<label>Staff Id &nbsp;</label>
 								</div>
-								<div class="col-md-3">: {{cCctr.entity.deductee.staffId}}</div>
+								<div class="col-md-3">: {{cCctr.entity.deductee.CustVendId}}</div>
 								<div class="col-md-3">
 									<label>Unique Ref No. &nbsp;</label>
 								</div>
@@ -179,7 +179,7 @@ table {
 									<label>Employee Ref No &nbsp;</label>
 								</div>
 								<div class="col-md-3">:
-									{{cCctr.entity.deductee.employeeRefNo}}</div>
+									{{cCctr.entity.deductee.deducteeRefNo}}</div>
 								<div class="col-md-3">
 									<label>PAN Ref No. &nbsp;</label>
 								</div>
@@ -232,14 +232,14 @@ table {
 									<label>Education Cess &nbsp;</label>
 								</div>
 								<div class="col-md-3">:
-									{{cCctr.entity.deductee.educationCess}}</div>
+									{{cCctr.entity.deductee.eduCess}}</div>
 							</div>
 
 							<div class="row" style="font-size: 13px;">
 								<div class="col-md-3">
 									<label>Total TDS&nbsp;</label>
 								</div>
-								<div class="col-md-3">: {{cCctr.entity.deductee.totalTds}}</div>
+								<div class="col-md-3">: {{cCctr.entity.deductee.totalTaxDeducted}}</div>
 								<div class="col-md-3">
 									<label>Total Tax Deposited&nbsp;</label>
 								</div>
@@ -618,13 +618,13 @@ table {
 								<div class="col-md-6">
 
 									<label style="font-size: 12px;">Staff Id</label> <input
-										class="form-control" type="text" name="staffId"
+										class="form-control" type="text" name="CustVendId"
 										placeholder="Staff Id" 
-										ng-model="cCctr.entity.deductee.staffId"
+										ng-model="cCctr.entity.deductee.CustVendId"
 										ng-model-options="{updateOn: 'blur'}" disabled/> <span
 										style="color: red"
-										ng-show="form24qdeductee.submitted ||form24qdeductee.staffId.$dirty && form24qdeductee.staffId.$invalid">
-									</span> <span class="error" id="staffId"></span>
+										ng-show="form24qdeductee.submitted ||form24qdeductee.CustVendId.$dirty && form24qdeductee.CustVendId.$invalid">
+									</span> <span class="error" id="CustVendId"></span>
 								</div>
 
 								<div class="col-md-6">
@@ -644,7 +644,7 @@ table {
 										class="error"
 										ng-show="form24qdeductee.uniqueRefNo.$error.required">Unique
 											Ref No is Required.</span>
-									</span> <span class="error" id="staffId"></span>
+									</span> <span class="error" id="uniqueRefNo"></span>
 								</div>
 							</div>
 							<div class="row">
@@ -681,14 +681,14 @@ table {
 								<div class="col-md-6">
 
 									<label style="font-size: 12px;">Employee Ref No.</label> <input
-										class="form-control" type="text" name="employeeRefNo"
+										class="form-control" type="text" name="deducteeRefNo"
 										placeholder="Employee Ref No" 
-										ng-model="cCctr.entity.deductee.employeeRefNo"
+										ng-model="cCctr.entity.deductee.deducteeRefNo"
 										ng-model-options="{updateOn: 'blur'}"
 										autocomplete="off" disabled/>
 									<span style="color: red"
-										ng-show="form24qdeductee.submitted || form24qdeductee.employeeRefNo.$dirty && form24qdeductee.employeeRefNo.$invalid">
-									</span> <span class="error" id="employeeRefNo"></span>
+										ng-show="form24qdeductee.submitted || form24qdeductee.deducteeRefNo.$dirty && form24qdeductee.deducteeRefNo.$invalid">
+									</span> <span class="error" id="deducteeRefNo"></span>
 								</div>
 
 								<div class="col-md-6">
@@ -799,11 +799,11 @@ table {
 									<label style="font-size: 12px;">Education Cess</label> <input
 										class="form-control" type="text" name="Education Cess"
 										placeholder="Education Cess" 
-										ng-model="cCctr.entity.deductee.educationCess"
+										ng-model="cCctr.entity.deductee.eduCess"
 										ng-model-options="{updateOn: 'blur'}" disabled/> <span
 										style="color: red"
-										ng-show="form24qdeductee.submitted || form24qdeductee.educationCess.$dirty && form24qdeductee.educationCess.$invalid">
-									</span> <span class="error" id="educationCess"></span>
+										ng-show="form24qdeductee.submitted || form24qdeductee.eduCess.$dirty && form24qdeductee.eduCess.$invalid">
+									</span> <span class="error" id="eduCess"></span>
 								</div>
 							</div>
 
@@ -811,13 +811,13 @@ table {
 								<div class="col-md-6">
 
 									<label style="font-size: 12px;">Total TDS</label> <input
-										class="form-control" type="text" name="totalTds"
+										class="form-control" type="text" name="totalTaxDeducted"
 										placeholder="Total TDS"
-										ng-model="cCctr.entity.deductee.totalTds"
+										ng-model="cCctr.entity.deductee.totalTaxDeducted"
 										ng-model-options="{updateOn: 'blur'}" disabled/> <span
 										style="color: red"
-										ng-show="form24qdeductee.submitted || form24qdeductee.totalTds.$dirty && form24qdeductee.totalTds.$invalid">
-									</span> <span class="error" id="totalTds"></span>
+										ng-show="form24qdeductee.submitted || form24qdeductee.totalTaxDeducted.$dirty && form24qdeductee.totalTaxDeducted.$invalid">
+									</span> <span class="error" id="totalTaxDeducted"></span>
 								</div>
 
 								<div class="col-md-6">

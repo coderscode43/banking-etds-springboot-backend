@@ -135,31 +135,31 @@ public class Regular26QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 			} else {
 				details.createCell(10).setCellValue(form26Q.getDeducteeCode());
 			}
-			if (form26Q.getDeducteePan() == null) {
+			if (form26Q.getPan() == null) {
 				details.createCell(11).setCellValue(" ");
 			} else {
-				details.createCell(11).setCellValue(form26Q.getDeducteePan());
+				details.createCell(11).setCellValue(form26Q.getPan());
 			}
-			if (form26Q.getDeducteeName() == null) {
+			if (form26Q.getName() == null) {
 				details.createCell(12).setCellValue(" ");
 			} else {
-				details.createCell(12).setCellValue(form26Q.getDeducteeName());
+				details.createCell(12).setCellValue(form26Q.getName());
 			}
 			if (form26Q.getSectionCode() == null) {
 				details.createCell(13).setCellValue(" ");
 			} else {
 				details.createCell(13).setCellValue(form26Q.getSectionCode());
 			}
-			if (form26Q.getPaymentDate() == null) {
+			if (form26Q.getDateOfPayment() == null) {
 				details.createCell(14).setCellValue(" ");
 			} else {
 				details.createCell(14)
-						.setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(form26Q.getPaymentDate()));
+						.setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(form26Q.getDateOfPayment()));
 			}
-			if (form26Q.getPaidAmt() == null) {
+			if (form26Q.getAmountPaid() == null) {
 				details.createCell(15).setCellValue(" ");
 			} else {
-				details.createCell(15).setCellValue(form26Q.getPaidAmt());
+				details.createCell(15).setCellValue(form26Q.getAmountPaid());
 			}
 			if (form26Q.getTds() == null) {
 				details.createCell(16).setCellValue(" ");
@@ -176,35 +176,35 @@ public class Regular26QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 			} else {
 				details.createCell(18).setCellValue(form26Q.getEduCess());
 			}
-			if (form26Q.getTotalTaxDeduct() == null) {
+			if (form26Q.getTotalTaxDeducted() == null) {
 				details.createCell(19).setCellValue(" ");
 			} else {
-				details.createCell(19).setCellValue(form26Q.getTotalTaxDeduct());
+				details.createCell(19).setCellValue(form26Q.getTotalTaxDeducted());
 			}
-			if (form26Q.getTotalTaxDeposit() == null) {
+			if (form26Q.getTotalTaxDeposited() == null) {
 				details.createCell(20).setCellValue(" ");
 			} else {
-				details.createCell(20).setCellValue(form26Q.getTotalTaxDeposit());
+				details.createCell(20).setCellValue(form26Q.getTotalTaxDeposited());
 			}
-			if (form26Q.getDeductDate() == null) {
+			if (form26Q.getDateOfDeduction() == null) {
 				details.createCell(21).setCellValue(" ");
 			} else {
-				details.createCell(21).setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(form26Q.getDeductDate()));
+				details.createCell(21).setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(form26Q.getDateOfDeduction()));
 			}
-			if (form26Q.getRateTaxDeduct() == null) {
+			if (form26Q.getRateAtWhichTaxCollected() == null) {
 				details.createCell(22).setCellValue(" ");
 			} else {
-				details.createCell(22).setCellValue(form26Q.getRateTaxDeduct());
+				details.createCell(22).setCellValue(form26Q.getRateAtWhichTaxCollected());
 			}
-			if (form26Q.getRemarks() == null) {
+			if (form26Q.getRemarksReason() == null) {
 				details.createCell(23).setCellValue(" ");
 			} else {
-				details.createCell(23).setCellValue(form26Q.getRemarks());
+				details.createCell(23).setCellValue(form26Q.getRemarksReason());
 			}
-			if (form26Q.getCertificateNo() == null) {
+			if (form26Q.getCertificateNumber() == null) {
 				details.createCell(24).setCellValue(" ");
 			} else {
-				details.createCell(24).setCellValue(form26Q.getCertificateNo());
+				details.createCell(24).setCellValue(form26Q.getCertificateNumber());
 			}
 			if (form26Q.getCashWithdrawal194N() == null) {
 				details.createCell(25).setCellValue(" ");

@@ -63,8 +63,10 @@ public class CHALLANController extends AbstractControllerTaxo<String, CHALLAN, C
 			System.out.println(pdfFileName);
 			service.setStaticData();
 			String path = StaticData.CertificatePath;
-			String zipPath = path + "download/" + fy + "/" + q + "/" + certificate + "/"
-					+ tan + "/" + pdfFileName ;
+			String[] c = certificate.split("-");
+			String[] t = tan.split("-");
+			String zipPath = path + "download/" + fy + "/" + q + "/" + c[0] + "/"
+					+ t[0] + "/" + pdfFileName ;
 			System.out.println(zipPath);
 			logger.info(zipPath);
 			response.setContentType("application/pdf");

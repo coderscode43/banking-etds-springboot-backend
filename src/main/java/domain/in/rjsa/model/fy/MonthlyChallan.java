@@ -23,8 +23,8 @@ public class MonthlyChallan extends CommonModelAbstract{
 	public Long id;		
 	@Column(name = "branchCode")
 	public Long	 branchCode;
-	@Column(name = "monthFY")
-	public String monthFY;
+	@Column(name = "month")
+	public String month;
 	@Column(name = "amtAsPerFinacle")
 	public Double amtAsPerFinacle;
 	@Column(name = "amtAsPerTaxCalculation")

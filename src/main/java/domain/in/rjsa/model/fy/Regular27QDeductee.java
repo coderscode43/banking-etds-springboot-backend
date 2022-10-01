@@ -49,8 +49,8 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	@Column(name = "sectionCode")
 	public String sectionCode;
 	
-	@Column(name = "date")
-	public Date date;
+	@Column(name = "dateOfPayment")
+	public Date dateOfPayment;
 	
 	@Column(name = "amountPaid")
 	public Double amountPaid;
@@ -61,8 +61,8 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	@Column(name = "surcharge")
 	public Double surcharge;
 	
-	@Column(name = "educationCess")
-	public Double educationCess;
+	@Column(name = "eduCess")
+	public Double eduCess;
 	
 	@Column(name = "totalTaxDeducted")
 	public Double totalTaxDeducted;
@@ -73,23 +73,23 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	@Column(name = "dateOfDeduction")
 	public Date dateOfDeduction;
 	
-	@Column(name = "rateAtWhichTaxDeducted")
-	public Double rateAtWhichTaxDeducted;
+	@Column(name = "rateAtWhichTaxCollected")
+	public Double rateAtWhichTaxCollected;
 	
-	@Column(name = "reasonForNonDeduction")
-	public String reasonForNonDeduction;
+	@Column(name = "remarksReason")
+	public String remarksReason;
 	
 	@Column(name = " grossingUpIndicator")
 	public String grossingUpIndicator;
 	
-	@Column(name = "noOfCertificateUnderSection")
-	public String noOfCertificateUnderSection;
+	@Column(name = "certificateNumber")
+	public String certificateNumber;
 	
 	@Column(name = "uniqueAcknowledgeNo")
 	public Long uniqueAcknowledgeNo;
 	
 	@Column(name = "countryOfResidence")
-	public Long countryOfResidence;
+	public String countryOfResidence;
 	
 	@Column(name = "emailId")
 	public String emailId;
@@ -113,7 +113,7 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	public String tdsRateAsPerItActs;
 	
 	@Column(name = "natureOfRemittance")
-	public Long natureOfRemittance;
+	public String natureOfRemittance;
 	
 	@Column(name = "branchCode")
 	public Long branchCode;
@@ -121,8 +121,8 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	@Column(name = "accNo")
 	public String accNo;
 	
-	@Column(name = "idNo")
-	public Long idNo;
+	@Column(name = "challanSrNo")
+	public Long challanSrNo;
 	
 	@Column(name = "month")
 	public String month;
@@ -179,16 +179,19 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	@Column(name = "remarks")
 	public String remarks;
 	
+	@Column(name = "deducteeSrNo")
+	public Long deducteeSrNo;
+	
 	public void setEntity(Regular27QDeductee form27Q){
-		this.date=form27Q.getDate();		
+		this.dateOfPayment=form27Q.getDateOfPayment();		
 	}
 	
 	@JsonSerialize(using=JsonDateSerializer.class)
-	public Date getDate() {
-		return date;
+	public Date getDateOfPayment() {
+		return dateOfPayment;
 	}
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDateOfPayment(Date dateOfPayment) {
+		this.dateOfPayment = dateOfPayment;
 	}
 	
 	@JsonSerialize(using=JsonDateSerializer.class)

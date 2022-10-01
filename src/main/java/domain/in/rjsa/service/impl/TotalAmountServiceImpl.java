@@ -63,20 +63,20 @@ public class TotalAmountServiceImpl extends AbstractServiceFY<Long, TotalAmount,
 			Row details = TotalAmount.createRow(row);
 			details.createCell(0).setCellValue(row);
 
-			if (totalAmount.getCustomerID() == null) {
+			if (totalAmount.getCustVendId() == null) {
 				details.createCell(1).setCellValue(" ");
 			} else {
-				details.createCell(1).setCellValue(totalAmount.getCustomerID());
+				details.createCell(1).setCellValue(totalAmount.getCustVendId());
 			}
 			if (totalAmount.getPan() == null) {
 				details.createCell(2).setCellValue(" ");
 			} else {
 				details.createCell(2).setCellValue(totalAmount.getPan());
 			}
-			if (totalAmount.getSection() == null) {
+			if (totalAmount.getSectionCode() == null) {
 				details.createCell(3).setCellValue(" ");
 			} else {
-				details.createCell(3).setCellValue(totalAmount.getSection());
+				details.createCell(3).setCellValue(totalAmount.getSectionCode());
 			}
 			if (totalAmount.getChallanHeading() == null) {
 				details.createCell(4).setCellValue(" ");

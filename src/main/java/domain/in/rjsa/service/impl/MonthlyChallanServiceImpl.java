@@ -73,10 +73,10 @@ public class MonthlyChallanServiceImpl extends AbstractServiceFY<Long, MonthlyCh
 				} else {
 					details.createCell(1).setCellValue(monthChallan.getBranchCode());
 				}
-				if (monthChallan.getMonthFY() == null) {
+				if (monthChallan.getMonth() == null) {
 					details.createCell(2).setCellValue(" ");
 				} else {
-					details.createCell(2).setCellValue(monthChallan.getMonthFY());
+					details.createCell(2).setCellValue(monthChallan.getMonth());
 				}
 				if (monthChallan.getChallanHeading() == null) {
 					details.createCell(3).setCellValue(" ");

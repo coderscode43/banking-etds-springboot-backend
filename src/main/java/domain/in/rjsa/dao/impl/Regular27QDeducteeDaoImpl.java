@@ -74,7 +74,7 @@ public class Regular27QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27QDed
 		criteria.setFirstResult(pageNo * noOfResult);
 		criteria.setMaxResults(noOfResult);
 
-		criteria.addOrder(Order.desc("date"));
+	//	criteria.addOrder(Order.desc("date"));
 		return (List<Regular27QDeductee>) criteria.list();
 	}
 
@@ -190,7 +190,7 @@ public class Regular27QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27QDed
 //		criteria.setFirstResult(pageNo * noOfResult);
 //		criteria.setMaxResults(noOfResult);
 
-		criteria.addOrder(Order.desc("date"));
+	//	criteria.addOrder(Order.desc("date"));
 		return (List<Regular27QDeductee>) criteria.list();
 	}
 

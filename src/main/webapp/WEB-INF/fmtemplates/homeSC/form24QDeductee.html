@@ -163,10 +163,10 @@ th {
 
 					<div class="col-md-3">
 						<h6>
-							<b>Staff ID</b>
+							<b>Vendor/Customer ID</b>
 							<h6>
 								<input type="text" ng-model="cCctr.search.CustVendId"
-									class="form-control" placeholder="Staff ID" style="width: 100%">
+									class="form-control" placeholder="Vendor/Customer ID" style="width: 100%">
 					</div>
 					<div class="col-md-3">
 						<h6>
@@ -310,12 +310,11 @@ th {
 						<th>Month</th>
 						<th>RO Code</th>
 						<th>Branch Code</th>
-						<th>Staff Id</th>
+						<th>Cust/Vend Id</th>
 						<th>Unique Ref No</th>
 						<th>Account Number</th>
 						<th>Challan Heading</th>
-						<th>Employee Ref. No.</th>
-						<th>Pan Ref. No.</th>
+						<th>Deductee Reference No</th>
 						<th>PAN</th>
 						<th style="width: 0.01%">Name</th>
 						<th>Section Code</th>
@@ -325,10 +324,11 @@ th {
 						<th>TDS</th>
 						<th>Surcharge</th>
 						<th>Education cess</th>
-						<th>Total TDS</th>
+						<th>Total Tax Deducted</th>
 						<th>Total Tax Deposited</th>
-						<th style="width: 0.01%">remarks</th>
 						<th style="width: 0.01%">Certificate No.</th>
+						<th style="width: 0.01%">remarksReason</th>
+						<th style="width: 0.01%">Pan Ref. No.</th>
 						<th style="width: 0.01%">Error Description</th>
 						<th style="width: 0.01%">Warning Description</th>
 						<th style="width: 0.01%">Short Deduction</th>
@@ -339,9 +339,6 @@ th {
 						<th>Comments</th>
 						<th>Status</th>
 						<th>Action</th>
-
-
-
 					</tr>
 				</thead>
 				<tbody>
@@ -352,7 +349,7 @@ th {
 									found!!</h3></b></td>
 					</tr>
 					<tr role="row"
-						ng-repeat="a in cCctr.getEntityListData() track by a.id">
+						ng-repeat="a in ( filteredList =( cCctr.getEntityListData()  ) )">
 						<td style="width: 1%" ng-if="a.resolved == 0">{{$index+1}}</td>
 						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{$index+1}}</td>
 						
@@ -382,9 +379,6 @@ th {
 						
 						<td style="width: 1%" ng-if="a.resolved == 0">{{a.deducteeRefNo}}</td>
 						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.deducteeRefNo}}</td>
-						
-						<td style="width: 1%" ng-if="a.resolved == 0">{{a.panRefNo}}</td>
-						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.panRefNo}}</td>
 						
 						<td style="width: 1%" ng-if="a.resolved == 0">{{a.pan}}</td>
 						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.pan}}</td>
@@ -424,14 +418,19 @@ th {
 						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.totalTaxDeposited}}</td>
 						
 						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 0"
+							data-placement="bottom" title="{{a.certificateNumber}}">{{a.certificateNumber}}</td>
+						<td class=" ellipsis" data-toggle="tooltip" style="background-color:#ff3232" ng-if="a.resolved == 1"
+							data-placement="bottom" title="{{a.certificateNumber}}">{{a.certificateNumber}}</td>
+						
+						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 0"
 							data-placement="bottom" title="{{a.remarksReason}}">{{a.remarksReason}}</td>
 						<td class=" ellipsis" data-toggle="tooltip" style="background-color:#ff3232" ng-if="a.resolved == 1"
 							data-placement="bottom" title="{{a.remarksReason}}">{{a.remarksReason}}</td>	
 						
-						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 0"
-							data-placement="bottom" title="{{a.certificateNumber}}">{{a.certificateNumber}}</td>
+							<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 0"
+							data-placement="bottom" title="{{a.panRefNo}}">{{a.panRefNo}}</td>
 						<td class=" ellipsis" data-toggle="tooltip" style="background-color:#ff3232" ng-if="a.resolved == 1"
-							data-placement="bottom" title="{{a.certificateNumber}}">{{a.certificateNumber}}</td>	
+							data-placement="bottom" title="{{a.panRefNo}}">{{a.panRefNo}}</td>
 						
 						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 0"
 							data-placement="bottom" title="{{a.errorDescription}}">{{a.errorDescription}}</td>
@@ -482,7 +481,24 @@ th {
 						<!-- <td>{{a.total-a.amountPaid}}</td> -->
 
 					</tr>
-
+					<tr>
+							<th class="one" colspan="15" style="text-align: center; height: 40px" ng-init="ttl=0"><b>TOTAL</b></th>
+							<td class="one"><b>{{filteredList | sumByKey:'amountPaid'  	| number : fractionSize}}</b></td>
+							<td class="one"><b>{{filteredList | sumByKey:'tds' 	| number : fractionSize}}</b></td>
+							<td class="one"><b>{{filteredList | sumByKey:'surcharge' 	| number : fractionSize}}</b></td>
+							<td class="one"><b>{{filteredList | sumByKey:'eduCess' 	| number : fractionSize}}</b></td>
+							<td class="one" ><b>{{filteredList 	| sumByKey:'totalTaxDeducted' | number : fractionSize}}</b></td>
+							<td class="one"><b>{{ttl=(filteredList | sumByKey:'totalTaxDeposited'	| number : fractionSize)}}</b></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td class="one"><b>{{filteredList | sumByKey:'ShortDeduction'  | number : fractionSize}}</b></td>
+							<td class="one"><b>{{filteredList | sumByKey:'InterestOnShortDeduction' 	| number : fractionSize}}</b></td>
+							<td class="one"><b>{{filteredList | sumByKey:'InterestOnLatePayment' 	| number : fractionSize}}</b></td>
+							<td class="one" ><b>{{filteredList 	| sumByKey:'InterestOnLateDeduction' | number : fractionSize}}</b></td>
+						</tr>
 				</tbody>
 			</table>
 
@@ -513,7 +529,7 @@ th {
 						class="btn btn-primary">Go</button>
 				</div>
 				<div class="row" align="center">
-					<span style="color: #red"
+					<span style="color: red"
 						ng-show="gotoForm.submitted || gotoForm.pageNo.$dirty && gotoForm.pageNo.$invalid">
 						<span class="error" ng-show="gotoForm.pageNo.$error.min">Page
 							No. should not be less than 1.</span> <span class="error"

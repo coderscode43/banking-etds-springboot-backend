@@ -51,9 +51,10 @@ public class Regular24QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular24QDed
 		if (entity.get("challanHeading") != null) {
 			criteria.add(Restrictions.eqOrIsNull("challanHeading", entity.get("challanHeading")));
 		}
-		if (entity.get("staffId") != null) {
-			criteria.add(Restrictions.eqOrIsNull("staffId", entity.get("staffId")));
-		}
+		
+		  if (entity.get("custVendId") != null) {
+		  criteria.add(Restrictions.eqOrIsNull("custVendId", entity.get("custVendId"))); }
+		 
 		if (entity.get("warningDescription") != null) {
 			criteria.add(Restrictions.eqOrIsNull("warningDescription", entity.get("warningDescription")));
 		}
@@ -106,9 +107,10 @@ public class Regular24QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular24QDed
 		if (entity.get("challanHeading") != null) {
 			criteria.add(Restrictions.eqOrIsNull("challanHeading", entity.get("challanHeading")));
 		}
-		if (entity.get("staffId") != null) {
-			criteria.add(Restrictions.eqOrIsNull("staffId", entity.get("staffId")));
-		}
+		
+		  if (entity.get("custVendId") != null) {
+		  criteria.add(Restrictions.eqOrIsNull("custVendId", entity.get("custVendId"))); }
+		 
 		if (entity.get("warningDescription") != null) {
 			criteria.add(Restrictions.eqOrIsNull("warningDescription", entity.get("warningDescription")));
 		}
@@ -165,9 +167,10 @@ public class Regular24QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular24QDed
 		if (entity.get("challanHeading") != null) {
 			criteria.add(Restrictions.eqOrIsNull("challanHeading", entity.get("challanHeading")));
 		}
-		if (entity.get("staffId") != null) {
-			criteria.add(Restrictions.eqOrIsNull("staffId", entity.get("staffId")));
-		}
+		
+		  if (entity.get("custVendId") != null) {
+		  criteria.add(Restrictions.eqOrIsNull("custVendId", entity.get("custVendId"))); }
+		 
 		if (entity.get("warningDescription") != null) {
 			criteria.add(Restrictions.eqOrIsNull("warningDescription", entity.get("warningDescription")));
 		}

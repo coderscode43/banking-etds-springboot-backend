@@ -1,6 +1,7 @@
 package domain.in.rjsa.dao.impl;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -34,8 +35,8 @@ public class Regular27EQDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27EQD
 		if (entity.get("fy") != null) {
 			criteria.add(Restrictions.eqOrIsNull("fy", entity.get("fy")));
 		}
-		if (entity.get("collectionCode") != null) {
-			criteria.add(Restrictions.eqOrIsNull("collectionCode", entity.get("collectionCode")));
+		if (entity.get("sectionCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("sectionCode", entity.get("sectionCode")));
 		}
 		if (entity.get("quarter") != null) {
 			criteria.add(Restrictions.eqOrIsNull("quarter", entity.get("quarter")));
@@ -44,12 +45,12 @@ public class Regular27EQDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27EQD
 			criteria.add(Restrictions.eqOrIsNull("custVendId", entity.get("custVendId")));
 		}
 
-		if (entity.get("panofthedeductee") != null) {
-			criteria.add(Restrictions.eqOrIsNull("panofthedeductee", entity.get("panofthedeductee")));
+		if (entity.get("pan") != null) {
+			criteria.add(Restrictions.eqOrIsNull("pan", entity.get("pan")));
 		}
 
-		if (entity.get("nameoftheDeductee") != null) {
-			criteria.add(Restrictions.eqOrIsNull("nameoftheDeductee", entity.get("nameoftheDeductee")));
+		if (entity.get("name") != null) {
+			criteria.add(Restrictions.eqOrIsNull("name", entity.get("name")));
 		}
 		if (entity.get("accNo") != null) {
 			criteria.add(Restrictions.eqOrIsNull("accNo", entity.get("accNo")));
@@ -77,7 +78,7 @@ public class Regular27EQDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27EQD
 		}
 		
 
-		criteria.addOrder(Order.desc("dateofReceivedDebited"));
+		//criteria.addOrder(Order.desc("dateofReceivedDebited"));
 		criteria.setFirstResult(pageNo * noOfResult);
 		criteria.setMaxResults(noOfResult);
 		return (List<Regular27EQDeductee>) criteria.list();
@@ -97,8 +98,8 @@ public class Regular27EQDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27EQD
 		if (entity.get("fy") != null) {
 			criteria.add(Restrictions.eqOrIsNull("fy", entity.get("fy")));
 		}
-		if (entity.get("collectionCode") != null) {
-			criteria.add(Restrictions.eqOrIsNull("collectionCode", entity.get("collectionCode")));
+		if (entity.get("sectionCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("sectionCode", entity.get("sectionCode")));
 		}
 		if (entity.get("quarter") != null) {
 			criteria.add(Restrictions.eqOrIsNull("quarter", entity.get("quarter")));
@@ -107,12 +108,12 @@ public class Regular27EQDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27EQD
 			criteria.add(Restrictions.eqOrIsNull("custVendId", entity.get("custVendId")));
 		}
 
-		if (entity.get("panofthedeductee") != null) {
-			criteria.add(Restrictions.eqOrIsNull("panofthedeductee", entity.get("panofthedeductee")));
+		if (entity.get("pan") != null) {
+			criteria.add(Restrictions.eqOrIsNull("pan", entity.get("pan")));
 		}
 
-		if (entity.get("nameoftheDeductee") != null) {
-			criteria.add(Restrictions.eqOrIsNull("nameoftheDeductee", entity.get("nameoftheDeductee")));
+		if (entity.get("name") != null) {
+			criteria.add(Restrictions.eqOrIsNull("name", entity.get("name")));
 		}
 		if (entity.get("accNo") != null) {
 			criteria.add(Restrictions.eqOrIsNull("accNo", entity.get("accNo")));
@@ -161,8 +162,8 @@ public class Regular27EQDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27EQD
 		if (entity.get("fy") != null) {
 			criteria.add(Restrictions.eqOrIsNull("fy", entity.get("fy")));
 		}
-		if (entity.get("collectionCode") != null) {
-			criteria.add(Restrictions.eqOrIsNull("collectionCode", entity.get("collectionCode")));
+		if (entity.get("sectionCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("sectionCode", entity.get("sectionCode")));
 		}
 		if (entity.get("quarter") != null) {
 			criteria.add(Restrictions.eqOrIsNull("quarter", entity.get("quarter")));
@@ -171,12 +172,12 @@ public class Regular27EQDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27EQD
 			criteria.add(Restrictions.eqOrIsNull("custVendId", entity.get("custVendId")));
 		}
 
-		if (entity.get("panofthedeductee") != null) {
-			criteria.add(Restrictions.eqOrIsNull("panofthedeductee", entity.get("panofthedeductee")));
+		if (entity.get("pan") != null) {
+			criteria.add(Restrictions.eqOrIsNull("pan", entity.get("pan")));
 		}
 
-		if (entity.get("nameoftheDeductee") != null) {
-			criteria.add(Restrictions.eqOrIsNull("nameoftheDeductee", entity.get("nameoftheDeductee")));
+		if (entity.get("name") != null) {
+			criteria.add(Restrictions.eqOrIsNull("name", entity.get("name")));
 		}
 		if (entity.get("accNo") != null) {
 			criteria.add(Restrictions.eqOrIsNull("accNo", entity.get("accNo")));
@@ -205,9 +206,20 @@ public class Regular27EQDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27EQD
 //		criteria.setFirstResult(pageNo * noOfResult);
 //		criteria.setMaxResults(noOfResult);
 
-		criteria.addOrder(Order.desc("dateofReceivedDebited"));
+	//	criteria.addOrder(Order.desc("dateofReceivedDebited"));
 		return (List<Regular27EQDeductee>) criteria.list();
 
+	}
+
+	@Override
+	public Long findSearchCount(LinkedHashMap<String, Object> entity) {
+		Criteria criteria = createEntityCriteria();
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
+		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
+		criteria.add(Restrictions.allEq(propertyNameValues));
+		
+		return (Long) criteria.setProjection(Projections.rowCount()).uniqueResult();
+	
 	}
 
 }

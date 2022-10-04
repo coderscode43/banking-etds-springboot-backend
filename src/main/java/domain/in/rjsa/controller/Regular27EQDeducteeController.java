@@ -122,6 +122,10 @@ public class Regular27EQDeducteeController extends AbstractControllerFY<Long, Re
 					Long roCode = Long.valueOf(map.get("roCode").toString());
 					map.put("roCode", roCode);
 				}
+				if(map.containsKey("resolved")) {
+					Boolean resolved = Boolean.valueOf(map.get("resolved").toString());
+					map.put("resolved", resolved);
+				}
 				adminValidation(map);
 				Long count = getService().findallCount(map);
 				List<?> list = getSearch(map, pageNo, resultPerPage);

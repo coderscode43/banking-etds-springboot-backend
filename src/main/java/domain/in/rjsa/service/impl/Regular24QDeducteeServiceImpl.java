@@ -131,75 +131,75 @@ public class Regular24QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 			} else {
 				details.createCell(9).setCellValue(form24Q.getDeducteeRefNo());
 			}
-			if (form24Q.getPanRefNo() == null) {
+			if (form24Q.getPan() == null) {
 				details.createCell(10).setCellValue(" ");
 			} else {
-				details.createCell(10).setCellValue(form24Q.getPanRefNo());
-			}
-			if (form24Q.getPan() == null) {
-				details.createCell(11).setCellValue(" ");
-			} else {
-				details.createCell(11).setCellValue(form24Q.getPan());
+				details.createCell(10).setCellValue(form24Q.getPan());
 			}
 			if (form24Q.getName() == null) {
-				details.createCell(12).setCellValue(" ");
+				details.createCell(11).setCellValue(" ");
 			} else {
-				details.createCell(12).setCellValue(form24Q.getName());
+				details.createCell(11).setCellValue(form24Q.getName());
 			}
 			if (form24Q.getSectionCode() == null) {
-				details.createCell(13).setCellValue(" ");
+				details.createCell(12).setCellValue(" ");
 			} else {
-				details.createCell(13).setCellValue(form24Q.getSectionCode());
+				details.createCell(12).setCellValue(form24Q.getSectionCode());
 			}
 			if (form24Q.getDateOfPayment() == null) {
-				details.createCell(14).setCellValue(" ");
+				details.createCell(13).setCellValue(" ");
 			} else {
-				details.createCell(14).setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(form24Q.getDateOfPayment()));
+				details.createCell(13).setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(form24Q.getDateOfPayment()));
 			}
 			if (form24Q.getDateOfDeduction() == null) {
-				details.createCell(15).setCellValue(" ");
+				details.createCell(14).setCellValue(" ");
 			} else {
-				details.createCell(15).setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(form24Q.getDateOfDeduction()));
+				details.createCell(14).setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(form24Q.getDateOfDeduction()));
 			}
 			if (form24Q.getAmountPaid() == null) {
-				details.createCell(16).setCellValue(" ");
+				details.createCell(15).setCellValue(" ");
 			} else {
-				details.createCell(16).setCellValue(form24Q.getAmountPaid());
+				details.createCell(15).setCellValue(form24Q.getAmountPaid());
 			}
 			if (form24Q.getTds() == null) {
-				details.createCell(17).setCellValue(" ");
+				details.createCell(16).setCellValue(" ");
 			} else {
-				details.createCell(17).setCellValue(form24Q.getTds());
+				details.createCell(16).setCellValue(form24Q.getTds());
 			}
 			if (form24Q.getSurcharge() == null) {
-				details.createCell(18).setCellValue(" ");
+				details.createCell(17).setCellValue(" ");
 			} else {
-				details.createCell(18).setCellValue(form24Q.getSurcharge());
+				details.createCell(17).setCellValue(form24Q.getSurcharge());
 			}
 			if (form24Q.getEduCess() == null) {
-				details.createCell(19).setCellValue(" ");
+				details.createCell(18).setCellValue(" ");
 			} else {
-				details.createCell(19).setCellValue(form24Q.getEduCess());
+				details.createCell(18).setCellValue(form24Q.getEduCess());
 			}
 			if (form24Q.getTotalTaxDeducted() == null) {
-				details.createCell(20).setCellValue(" ");
+				details.createCell(19).setCellValue(" ");
 			} else {
-				details.createCell(20).setCellValue(form24Q.getTotalTaxDeducted());
+				details.createCell(19).setCellValue(form24Q.getTotalTaxDeducted());
 			}
 			if (form24Q.getTotalTaxDeposited() == null) {
+				details.createCell(20).setCellValue(" ");
+			} else {
+				details.createCell(20).setCellValue(form24Q.getTotalTaxDeposited());
+			}
+			if (form24Q.getCertificateNumber() == null) {
 				details.createCell(21).setCellValue(" ");
 			} else {
-				details.createCell(21).setCellValue(form24Q.getTotalTaxDeposited());
+				details.createCell(21).setCellValue(form24Q.getCertificateNumber());
 			}
 			if (form24Q.getRemarksReason() == null) {
 				details.createCell(22).setCellValue(" ");
 			} else {
 				details.createCell(22).setCellValue(form24Q.getRemarksReason());
 			}
-			if (form24Q.getCertificateNumber() == null) {
+			if (form24Q.getPanRefNo() == null) {
 				details.createCell(23).setCellValue(" ");
 			} else {
-				details.createCell(23).setCellValue(form24Q.getCertificateNumber());
+				details.createCell(23).setCellValue(form24Q.getPanRefNo());
 			}
 			if (form24Q.getErrorDescription() == null) {
 				details.createCell(24).setCellValue(" ");

@@ -97,7 +97,7 @@ text-align:center;
 
 				<div class="col-md-3">
 				<h6>
-					<b>Collection Code</b>
+					<b>Section Code</b>
 					<h6>
 						<input type="text" ng-model="cCctr.search.sectionCode"
 							class="form-control" placeholder="Collection Code" style="width: 100%">
@@ -296,61 +296,72 @@ text-align:center;
 					<thead role="rowgroup">
 						<tr style="background-color: #81b7db;height:40px">
 							<th>Sr. No.</th>
-							<th>Quarter</th>
-							<th>Month</th>
-							<th>RO Code</th>
-							<th>Branch Code</th>
-							<th>Vend/Cust Id</th>
-							<th>Unique Ref No</th>
-							<th>Account Number</th>
-							<th style="width:0.01%">Challan Heading</th>
-							<th>Party  Reference No.</th>
-							<th>Party  Code</th>
-							<th>PAN of the Party </th>
-							<th style="width:0.01%">Name of the Party</th>
-							<th>Amount Receipt/Debited</th>
-							<th>Date of Received/Debited</th>
-							<th>TDS</th>
-							<th>Surcharge</th>
-							<th>Education Cess</th>
-							<th>Total Tax Collected</th>
-							<th>Total Tax Deposited</th>
-							<th>Date of Collected</th>
-							<th>Total Value of Purchase</th>
-							<th>Rate at which Tax Collected</th>
-							<th style="width:0.01%">Reason for Non Collection</th>
-							<th >Section / Collection Code</th>
-							<th>Certificate Number</th>
-							<th style="width:0.01%">Deductee is Non-Resident</th>
-							<th style="width:0.01%">Permanent Establishment</th>
-							<th style="width:0.01%">Reason For NonCollection F or G</th>
-							<th style="width:0.01%" class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="if Answer to 681A is Yes Then Challan Number">if Answer to 681A is Yes Then Challan Number</th>
-							<th style="width:0.01%" class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip" data-placement="bottom" title="if Answer to 681A is Yes Then Date Of Payment Of TDS To Central Government"> if Answer to 681A is Yes Then Date Of Payment Of TDS To Central Government</th>
-							<th style="width:0.01%">Error Description</th>
-							<th style="width:0.01%">Warning Description</th>
-							<th style="width:0.01%">Short Deduction</th>
-							<th >Interest on Short Deduction</th>
-							<th >Interest on Late Payment</th>
-							<th >Interest on Late Deduction</th>
-							<th>TAN</th>
-							<th>Comments</th>
-							<th>Status</th>
-							<th >Action</th>
-
-
- 
-						</tr>
-					</thead>
-					<tbody>
-						<tr style="color: red" ng-show="cCctr.getEntityListDataFY().length <= 0">
-                    <td colspan="20" style="text-align: center;"><b><h3 style="text-align:center;text-align-last: 5;">No data
+						<th>Quarter</th>
+						<th>Month</th>
+						<th>RO Code</th>
+						<th>Branch Code</th>
+						<th>Cust/Vend Id</th>
+						<th>Unique Ref No</th>
+						<th>Account Number</th>
+						<th>Challan Heading</th>
+						<th>Deductee Reference No</th>
+						<th style="width: 0.01%">PAN</th>
+						<th style="width: 0.01%">Name</th>
+						<th>Section Code</th>
+						<th>Date of Payment</th>
+						<th>Date of Deduction</th>
+						<th>Amount Paid</th>
+						<th>TDS</th>
+						<th>Surcharge</th>
+						<th>Education Cess</th>
+						<th>Total Tax Deducted</th>
+						<th>Total Tax Deposited</th>
+						<th style="width: 0.01%">Certificate Number</th>
+						<th>Remarks Reason</th>
+						<th>Deductee Code</th>
+						<th>Rate at which Tax Deducted</th>
+						<th>Total Value of Purchase</th>
+						<th style="width: 0.01%">Deductee is Non-Resident</th>
+						<th style="width: 0.01%">Permanent Establishment</th>
+						<th>Reason For NonCollection F or G</th>
+						<th class=" ellipsis" data-toggle="tooltip"
+							data-placement="bottom"
+							title="if Answer to 681A is Yes Then Challan Number">if
+							Answer to 681A is Yes Then Challan Number</th>
+						<th class=" ellipsis" data-toggle="tooltip"
+							data-placement="bottom"
+							title="if Answer to 681A is Yes Then Date Of Payment Of TDS To
+								Central Government">if
+							Answer to 681A is Yes Then Date Of Payment Of TDS To Central
+							Government</th>
+						<th style="width: 0.01%">Error Description</th>
+						<th style="width: 0.01%">Warning Description</th>
+						<th style="width: 0.01%">Short Deduction</th>
+						<th class=" ellipsis" data-toggle="tooltip"
+							data-placement="bottom" title="Interest on Short Deduction">Interest
+							on Short Deduction</th>
+						<th class=" ellipsis" data-toggle="tooltip"
+							data-placement="bottom" title="Interest on Late Payment">Interest
+							on Late Payment</th>
+						<th class=" ellipsis" data-toggle="tooltip"
+							data-placement="bottom" title="Interest on Late Deduction">Interest
+							on Late Deduction</th>
+						<th>TAN</th>
+						<th>Comments</th>
+						<th>Status</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+			<tbody>
+					<tr style="color: red" ng-show="cCctr.getEntityListDataFY().length <= 0">
+                    	<td colspan="20" style="text-align: center;"><b><h3 style="text-align:center;text-align-last: 5;">No data
                     found!!</h3></b></td>
                     <td colspan="20" style="text-align: center;"><b><h3 style="text-align:center;text-align-last: 5;margin-right: -100%;">
                     </h3></b></td>
             </tr>
 						<tr role="row"
-							ng-repeat="a in cCctr.getEntityListDataFY() track by a.id">
-							<td ng-if="a.resolved == 0">{{$index+1}}</td>
+							ng-repeat="a in ( filteredList =( cCctr.getEntityListData()  ) )">
+						<td ng-if="a.resolved == 0">{{$index+1}}</td>
 						<td style="background-color:#ff3232" ng-if="a.resolved == 	1">{{$index+1}}</td>
 						
 						<td ng-if="a.resolved == 0">{{a.quarter}}</td>
@@ -380,9 +391,6 @@ text-align:center;
 						<td ng-if="a.resolved == 0">{{a.deducteeRefNo}}</td>
 						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.deducteeRefNo}}</td>
 						
-						<td ng-if="a.resolved == 0">{{a.deducteeCode}}</td>
-						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.deducteeCode}}</td>
-						
 						<td ng-if="a.resolved == 0">{{a.pan}}</td>
 						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.pan}}</td>
 						
@@ -390,12 +398,18 @@ text-align:center;
 							data-placement="bottom" title="{{a.name}}">{{a.name}}</td>
 						<td class=" ellipsis" data-toggle="tooltip" style="background-color:#ff3232" ng-if="a.resolved == 1"
 							data-placement="bottom" title="{{a.name}}">{{a.name}}</td>
-								
-						<td ng-if="a.resolved == 0">{{a.amountPaid}}</td>
-						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.amountPaid}}</td>
+							
+						<td ng-if="a.resolved == 0">{{a.sectionCode}}</td>
+						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.sectionCode}}</td>	
 						
 						<td ng-if="a.resolved == 0">{{a.dateOfPayment}}</td>
 						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.dateOfPayment}}</td>
+						
+						<td ng-if="a.resolved == 0">{{a.dateOfDeduction| date:'dd-MM-yyyy'}}</td>
+						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.dateOfDeduction| date:'dd-MM-yyyy'}}</td>
+						
+						<td ng-if="a.resolved == 0">{{a.amountPaid}}</td>
+						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.amountPaid}}</td>
 						
 						<td ng-if="a.resolved == 0">{{a.tds}}</td>
 						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.tds}}</td>
@@ -412,29 +426,26 @@ text-align:center;
 						<td ng-if="a.resolved == 0">{{a.totalTaxDeposited}}</td>
 						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.totalTaxDeposited}}</td>
 						
-						<td ng-if="a.resolved == 0">{{a.dateOfDeduction| date:'dd-MM-yyyy'}}</td>
-						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.dateOfDeduction| date:'dd-MM-yyyy'}}</td>
+						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 0"
+							data-placement="bottom" title="{{a.certificateNumber}}">{{a.certificateNumber}}</td>
+						<td class=" ellipsis" data-toggle="tooltip" style="background-color:#ff3232" ng-if="a.resolved == 1"
+							data-placement="bottom" title="{{a.certificateNumber}}">{{a.certificateNumber}}</td>
+							
+						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 0"
+							data-placement="bottom" title="{{a.remarksReason}}">{{a.remarksReason}}</td>
+						<td class=" ellipsis" data-toggle="tooltip" style="background-color:#ff3232" ng-if="a.resolved == 1"
+							data-placement="bottom" title="{{a.remarksReason}}">{{a.remarksReason}}</td>
 						
-						<td ng-if="a.resolved == 0">{{a.totalValueofPurchase}}</td>
-						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.totalValueofPurchase}}</td>
+						<td ng-if="a.resolved == 0">{{a.deducteeCode}}</td>
+						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.deducteeCode}}</td>
 						
 						<td ng-if="a.resolved == 0">{{a.rateatwhichTaxCollected}}</td>
 						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.rateatwhichTaxCollected}}</td>
 						
-						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 0"
-							data-placement="bottom" title="{{a.remarksReason}}">{{a.remarksReason}}</td>
-						<td class=" ellipsis" data-toggle="tooltip" style="background-color:#ff3232" ng-if="a.resolved == 1"
-							data-placement="bottom" title="{{a.remarksReason}}">{{a.remarksReason}}</td>
-							
-						<td ng-if="a.resolved == 0">{{a.sectionCode}}</td>
-						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.sectionCode}}</td>
+						<td ng-if="a.resolved == 0">{{a.totalValueofPurchase}}</td>
+						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.totalValueofPurchase}}</td>
 						
 						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 0"
-							data-placement="bottom" title="{{a.certificateNumber}}">{{a.certificateNumber}}</td>
-						<td class=" ellipsis" data-toggle="tooltip" style="background-color:#ff3232" ng-if="a.resolved == 1"
-							data-placement="bottom" title="{{a.certificateNumber}}">{{a.certificateNumber}}</td>
-							
-						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 0"
 							data-placement="bottom" title="{{a.deducteeisNonResident}}">{{a.deducteeisNonResident}}</td>
 						<td class=" ellipsis" data-toggle="tooltip" style="background-color:#ff3232" ng-if="a.resolved == 1"
 							data-placement="bottom" title="{{a.deducteeisNonResident}}">{{a.deducteeisNonResident}}</td>
@@ -443,7 +454,7 @@ text-align:center;
 							data-placement="bottom" title="{{a.permanentEstablishment}}">{{a.permanentEstablishment}}</td>
 						<td class=" ellipsis" data-toggle="tooltip" style="background-color:#ff3232" ng-if="a.resolved == 1"
 							data-placement="bottom" title="{{a.permanentEstablishment}}">{{a.permanentEstablishment}}</td>
-								
+						
 						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 0"
 							data-placement="bottom" title="{{a.reasonForNonCollectionForG}}">{{a.reasonForNonCollectionForG}}</td>
 						<td class=" ellipsis" data-toggle="tooltip" style="background-color:#ff3232" ng-if="a.resolved == 1"
@@ -455,7 +466,7 @@ text-align:center;
 						<td ng-if="a.resolved == 0">{{a.ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment|
 							date:'dd-MM-yyyy'}}</td>
 						<td style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment|
-							date:'dd-MM-yyyy'}}</td>
+							date:'dd-MM-yyyy'}}</td>			
 						
 						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 0"
 							data-placement="bottom" title="{{a.errorDescription}}">{{a.errorDescription}}</td>
@@ -504,6 +515,31 @@ text-align:center;
 							src="static\img\edit.png" width="22px" height="22px"
 							alt="Details" style="margin-top: 5px; margin-bottom: 5px;" /></a></td>
 							<!-- <td>{{a.total-a.amountPaid}}</td> -->
+						</tr>
+						<tr>
+							<th class="one" colspan="15" style="text-align: center; height: 40px" ng-init="ttl=0"><b>TOTAL</b></th>
+							<td class="one"><b>{{filteredList | sumByKey:'amountPaid'  	| number : fractionSize}}</b></td>
+							<td class="one"><b>{{filteredList | sumByKey:'tds' 	| number : fractionSize}}</b></td>
+							<td class="one"><b>{{filteredList | sumByKey:'surcharge' 	| number : fractionSize}}</b></td>
+							<td class="one"><b>{{filteredList | sumByKey:'eduCess' 	| number : fractionSize}}</b></td>
+							<td class="one" ><b>{{filteredList 	| sumByKey:'totalTaxDeducted' | number : fractionSize}}</b></td>
+							<td class="one"><b>{{ttl=(filteredList | sumByKey:'totalTaxDeposited'	| number : fractionSize)}}</b></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td class="one"><b>{{filteredList | sumByKey:'totalValueofPurchase'  | number : fractionSize}}</b></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td class="one"><b>{{filteredList | sumByKey:'ShortDeduction' 	| number : fractionSize}}</b></td>
+							<td class="one"><b>{{filteredList | sumByKey:'InterestOnShortDeduction' 	| number : fractionSize}}</b></td>
+							<td class="one"><b>{{filteredList | sumByKey:'InterestOnLatePayment' 	| number : fractionSize}}</b></td>
+							<td class="one" ><b>{{filteredList 	| sumByKey:'InterestOnLateDeduction' | number : fractionSize}}</b></td>
 						</tr>
 					</tbody>
 				</table>

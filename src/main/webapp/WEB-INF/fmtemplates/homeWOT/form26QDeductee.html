@@ -295,43 +295,43 @@
 			<thead role="rowgroup">
 				<tr role="row" style="background-color: #81b7db;height:40px">
 					<th>Sr. No.</th>
-					<th>Quarter</th>
-					<th>Month</th>
-					<th>RO Code</th>
-					<th>Branch Code</th>
-					<th>Vend/Cust Id</th>
-					<th>Unique Ref No</th>
-					<th>Account Number</th>
-					<th style="width:0.01%">Challan Heading</th>
-					<th>Deductee Reference No</th>
-					<th>Deductee Code</th>
-					<th>PAN of the Deductee</th>
-					<th style="width:1%">Name of the Deductee</th>
-					<th>Section Code</th>
-					<th>Date of Payment</th>
-					<th> Amount Paid</th>
-					<th>TDS</th>
-					<th>Surcharge</th>
-					<th>Education cess</th>
-					<th>Total Tax Deducted</th>
-					<th>Total Tax Deposited</th>
-					<th>Date of Deduction</th>
-					<th>Rate at which Tax Deducted</th>
-					<th style="width:0.01%">remarks</th>
-					<th>Certificate No.</th>
-					<th>Cash Withdrawl (194N)</th>
-					<th>Cash Withdrawl 194N(20L to 1cr) </th>
-					<th>Cash Withdrawl 194N(>1cr)</th>
-					<th style="width:0.01%">Error Description</th>
-					<th style="width:0.01%">Warning Description</th>
-					<th style="width:0.01%">Short Deduction</th>
-					<th >Interest on Short Deduction</th>
-					<th >Interest on Late Payment</th>
-					<th >Interest on Late Deduction</th>
-					<th>TAN</th>
-					<th>Comments</th>
-					<th>Status</th>
-					<th style="width:0.01%">Action</th>
+						<th>Quarter</th>
+						<th>Month</th>
+						<th style="width: 0.01%">RO Code</th>
+						<th style="width: 0.01%">Branch Code</th>
+						<th>Cust/Vend Id</th>
+						<th style="width: 0.01%">Unique Ref No</th>
+						<th>Account Number</th>
+						<th style="width: 0.01%">Challan Heading</th>
+						<th>Deductee Reference No</th>
+						<th style="width: 0.01%">PAN</th>
+						<th style="width: 0.01%">Name</th>
+						<th style="width: 0.01%">Section Code</th>
+						<th>Date of Payment</th>
+						<th>Date of Deduction</th>
+						<th>Amount Paid</th>
+						<th>TDS</th>
+						<th>Surcharge</th>
+						<th>Education cess</th>
+						<th>Total Tax Deducted</th>
+						<th>Total Tax Deposited</th>
+						<th>Certificate No.</th>
+						<th style="width: 0.01%">Remarks Reason</th>
+						<th style="width: 0.01%">Deductee Code</th>
+						<th>Rate at which Tax Deducted</th>
+						<th style="width: 0.01%">Cash Withdrawl (194N)</th>
+						<th style="width: 0.01%">Cash Withdrawl 194N(20L to 1cr)</th>
+						<th style="width: 0.01%">Cash Withdrawl 194N(>1cr)</th>
+						<th style="width: 0.01%">Error Description</th>
+						<th style="width: 0.01%">Warning Description</th>
+						<th style="width: 0.01%">Short Deduction</th>
+						<th style="width: 0.01%">Interest on Short Deduction</th>
+						<th>Interest on Late Payment</th>
+						<th>Interest on Late Deduction</th>
+						<th>TAN</th>
+						<th>Comments</th>
+						<th>Status</th>
+						<th style="width: 0.01%">Action</th>
 					
 				
 					
@@ -347,7 +347,7 @@
                     </h3></b></td>
             </tr>
 				<tr role="row"
-					ng-repeat="a in cCctr.getEntityListDataFY() track by a.id">
+					ng-repeat="a in ( filteredList =( cCctr.getEntityListData()  ) )">
 					<td style="width: 1%" ng-if="a.resolved == 0">{{$index+1}}</td>
 						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{$index+1}}</td>
 						
@@ -366,9 +366,9 @@
 						<td style="width: 1%" ng-if="a.resolved == 0">{{a.custVendId}}</td>
 						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.custVendId}}</td>
 						
-						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 0" style="width: 1%"
+						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 0"
 							data-placement="bottom" title="{{a.uniqueRefNo}}">{{a.uniqueRefNo}}</td>
-						<td class=" ellipsis" data-toggle="tooltip" style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1"
+						<td class=" ellipsis" data-toggle="tooltip" style="background-color:#ff3232" ng-if="a.resolved == 1"
 							data-placement="bottom" title="{{a.uniqueRefNo}}">{{a.uniqueRefNo}}</td>
 								
 						<td style="width: 1%" ng-if="a.resolved == 0">{{a.accNo}}</td>
@@ -382,12 +382,9 @@
 						<td style="width: 1%" ng-if="a.resolved == 0">{{a.deducteeRefNo}}</td>
 						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.deducteeRefNo}}</td>
 						
-						<td style="width: 1%" ng-if="a.resolved == 0">{{a.deducteeCode}}</td>
-						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.deducteeCode}}</td>
-						
-						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 0" style="width: 1%"
+						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 0"
 							data-placement="bottom" title="{{a.pan}}">{{a.pan}}</td>
-						<td class=" ellipsis" data-toggle="tooltip" style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1"
+						<td class=" ellipsis" data-toggle="tooltip" style="background-color:#ff3232" ng-if="a.resolved == 1"
 							data-placement="bottom" title="{{a.pan}}">{{a.pan}}</td>
 								
 						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 0"
@@ -400,6 +397,9 @@
 						
 						<td style="width: 1%" ng-if="a.resolved == 0">{{a.dateOfPayment | date:'dd-MM-yyyy'}}</td>
 						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.dateOfPayment | date:'dd-MM-yyyy'}}</td>
+						
+						<td style="width: 1%" ng-if="a.resolved == 0">{{a.dateOfDeduction| date:'dd-MM-yyyy'}}</td>
+						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.dateOfDeduction| date:'dd-MM-yyyy'}}</td>
 						
 						<td style="width: 1%" ng-if="a.resolved == 0">{{a.amountPaid}}</td>
 						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.amountPaid}}</td>
@@ -418,21 +418,23 @@
 						
 						<td style="width: 1%" ng-if="a.resolved == 0">{{a.totalTaxDeposited}}</td>
 						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.totalTaxDeposited}}</td>
-						
-						<td style="width: 1%" ng-if="a.resolved == 0">{{a.dateOfDeduction| date:'dd-MM-yyyy'}}</td>
-						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.dateOfDeduction| date:'dd-MM-yyyy'}}</td>
-						
-						<td style="width: 1%" ng-if="a.resolved == 0">{{a.rateAtWhichTaxCollected}}</td>
-						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.rateAtWhichTaxCollected}}</td>
-						
+							
+						<td style="width: 1%" ng-if="a.resolved == 0">{{a.certificateNumber}}</td>
+						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.certificateNumber}}</td>
+	
 						<td class=" ellipsis" data-toggle="tooltip" ng-if="a.resolved == 0"
 							data-placement="bottom" title="{{a.remarksReason}}">{{a.remarksReason}}</td>
 						<td class=" ellipsis" data-toggle="tooltip" style="background-color:#ff3232" ng-if="a.resolved == 1"
 							data-placement="bottom" title="{{a.remarksReason}}">{{a.remarksReason}}</td>
-								
-						<td style="width: 1%" ng-if="a.resolved == 0">{{a.certificateNumber}}</td>
-						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.certificateNumber}}</td>
+							
+						<td style="width: 1%" ng-if="a.resolved == 0">{{a.deducteeCode}}</td>
+						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.deducteeCode}}</td>
+	
+						<td style="width: 1%" ng-if="a.resolved == 0">{{a.rateAtWhichTaxCollected}}</td>
+						<td style="width: 1%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.rateAtWhichTaxCollected}}</td>
 						
+							
+											
 						<td style="width: 2%" ng-if="a.resolved == 0">{{a.cashWithdrawal194N}}</td>
 						<td style="width: 2%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.cashWithdrawal194N}}</td>
 						
@@ -494,7 +496,28 @@
 					<!-- <td>{{a.total-a.amountPaid}}</td> -->
 
 				</tr>
-
+				<tr>
+							<th class="one" colspan="15" style="text-align: center; height: 40px" ng-init="ttl=0"><b>TOTAL</b></th>
+							<td class="one"><b>{{ filteredList | sumByKey : 'amountPaid' | number : fractionSize}}</b></td>
+							<td class="one"><b>{{ filteredList | sumByKey : 'tds' | number : fractionSize}}</b></td>
+							<td class="one"><b>{{ filteredList | sumByKey : 'surcharge' | number : fractionSize}}</b></td>
+							<td class="one"><b>{{ filteredList | sumByKey : 'eduCess' | number : fractionSize}}</b></td>
+							<td class="one"><b>{{ filteredList | sumByKey : 'totalTaxDeducted' | number : fractionSize}}</b></td>
+							<td class="one"><b>{{ filteredList | sumByKey : 'totalTaxDeposited' | number : fractionSize}}</b></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td class="one"><b>{{ filteredList | sumByKey : 'cashWithdrawal194N' | number : fractionSize}}</b></td>
+							<td class="one"><b>{{ filteredList | sumByKey : 'cashWithdrawal194N20Lto1Cr' | number : fractionSize}}</b></td>
+							<td class="one"><b>{{ filteredList | sumByKey : 'cashWithdrawal194N1Cr' | number : fractionSize}}</b></td>
+							<td></td>
+							<td></td>
+							<td class="one"><b>{{ filteredList | sumByKey : 'ShortDeduction' | number : fractionSize}}</b></td>
+							<td class="one"><b>{{ filteredList | sumByKey : 'InterestOnShortDeduction' | number : fractionSize}}</b></td>
+							<td class="one"><b>{{ filteredList | sumByKey : 'InterestOnLatePayment' | number : fractionSize}}</b></td>
+							<td class="one"><b>{{ filteredList | sumByKey : 'InterestOnLateDeduction' | number : fractionSize}}</b></td>
+						</tr>
 			</tbody>
 		</table>
 </div>

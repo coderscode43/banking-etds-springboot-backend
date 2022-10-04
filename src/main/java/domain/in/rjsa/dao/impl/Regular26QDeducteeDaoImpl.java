@@ -33,18 +33,18 @@ public class Regular26QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular26QDed
          {
 		criteria.add(Restrictions.eqOrIsNull("accNo", entity.get("accNo")));
          }
-          if(entity.get("deducteePan")!=null)
+          if(entity.get("pan")!=null)
           {
-		criteria.add(Restrictions.eqOrIsNull("deducteePan", entity.get("deducteePan")));
+		criteria.add(Restrictions.eqOrIsNull("pan", entity.get("pan")));
           }
           if(entity.get("sectionCode")!=null)
           {
 		criteria.add(Restrictions.eqOrIsNull("sectionCode", entity.get("sectionCode")));
           }
           
-          if(entity.get("deducteeName")!=null)
+          if(entity.get("name")!=null)
           {
-		criteria.add(Restrictions.eqOrIsNull("deducteeName", entity.get("deducteeName")));
+		criteria.add(Restrictions.eqOrIsNull("name", entity.get("name")));
           }
           if(entity.get("fy")!=null)
           {
@@ -98,18 +98,18 @@ public class Regular26QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular26QDed
          {
 		criteria.add(Restrictions.eqOrIsNull("accNo", entity.get("accNo")));
          }
-          if(entity.get("deducteePan")!=null)
+          if(entity.get("pan")!=null)
           {
-		criteria.add(Restrictions.eqOrIsNull("deducteePan", entity.get("deducteePan")));
+		criteria.add(Restrictions.eqOrIsNull("pan", entity.get("pan")));
           }
           if(entity.get("sectionCode")!=null)
           {
 		criteria.add(Restrictions.eqOrIsNull("sectionCode", entity.get("sectionCode")));
           }
           
-          if(entity.get("deducteeName")!=null)
+          if(entity.get("name")!=null)
           {
-		criteria.add(Restrictions.eqOrIsNull("deducteeName", entity.get("deducteeName")));
+		criteria.add(Restrictions.eqOrIsNull("name", entity.get("name")));
           }
           if(entity.get("fy")!=null)
           {
@@ -179,18 +179,18 @@ public class Regular26QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular26QDed
          {
 		criteria.add(Restrictions.eqOrIsNull("accNo", entity.get("accNo")));
          }
-          if(entity.get("deducteePan")!=null)
+          if(entity.get("pan")!=null)
           {
-		criteria.add(Restrictions.eqOrIsNull("deducteePan", entity.get("deducteePan")));
+		criteria.add(Restrictions.eqOrIsNull("pan", entity.get("pan")));
           }
           if(entity.get("sectionCode")!=null)
           {
 		criteria.add(Restrictions.eqOrIsNull("sectionCode", entity.get("sectionCode")));
           }
           
-          if(entity.get("deducteeName")!=null)
+          if(entity.get("name")!=null)
           {
-		criteria.add(Restrictions.eqOrIsNull("deducteeName", entity.get("deducteeName")));
+		criteria.add(Restrictions.eqOrIsNull("name", entity.get("name")));
           }
           if(entity.get("fy")!=null)
           {

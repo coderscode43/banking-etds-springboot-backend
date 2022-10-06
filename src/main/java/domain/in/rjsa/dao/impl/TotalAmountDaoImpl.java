@@ -26,8 +26,8 @@ public class TotalAmountDaoImpl extends AbstractDaoFY<Long, TotalAmount> impleme
 		// propertyNameValues.put("clientId", clientId);
 		criteria.add(Restrictions.allEq(propertyNameValues));
 
-		if (entity.get("customerID") != null) {
-			criteria.add(Restrictions.eqOrIsNull("customerID", entity.get("customerID")));
+		if (entity.get("custVendId") != null) {
+			criteria.add(Restrictions.eqOrIsNull("custVendId", entity.get("custVendId")));
 		}
 		if (entity.get("challanHeading") != null) {
 			criteria.add(Restrictions.eqOrIsNull("challanHeading", entity.get("challanHeading")));
@@ -72,8 +72,8 @@ public class TotalAmountDaoImpl extends AbstractDaoFY<Long, TotalAmount> impleme
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		
-		if (entity.get("customerID") != null) {
-			criteria.add(Restrictions.eqOrIsNull("customerID", entity.get("customerID")));
+		if (entity.get("custVendId") != null) {
+			criteria.add(Restrictions.eqOrIsNull("custVendId", entity.get("custVendId")));
 		}
 		if (entity.get("challanHeading") != null) {
 			criteria.add(Restrictions.eqOrIsNull("challanHeading", entity.get("challanHeading")));
@@ -123,8 +123,8 @@ public class TotalAmountDaoImpl extends AbstractDaoFY<Long, TotalAmount> impleme
 		// propertyNameValues.put("clientId", clientId);
 		criteria.add(Restrictions.allEq(propertyNameValues));
 		
-		if (entity.get("customerID") != null) {
-			criteria.add(Restrictions.eqOrIsNull("customerID", entity.get("customerID")));
+		if (entity.get("custVendId") != null) {
+			criteria.add(Restrictions.eqOrIsNull("custVendId", entity.get("custVendId")));
 		}
 		if (entity.get("challanHeading") != null) {
 			criteria.add(Restrictions.eqOrIsNull("challanHeading", entity.get("challanHeading")));

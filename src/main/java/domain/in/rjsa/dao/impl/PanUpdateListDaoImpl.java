@@ -27,8 +27,8 @@ implements PanUpdateListDao{
 		// propertyNameValues.put("clientId", clientId);
 		criteria.add(Restrictions.allEq(propertyNameValues));
 
-		if (entity.get("customerVendorID") != null) {
-			criteria.add(Restrictions.eqOrIsNull("customerVendorID", entity.get("customerVendorID")));
+		if (entity.get("custVendId") != null) {
+			criteria.add(Restrictions.eqOrIsNull("custVendId", entity.get("custVendId")));
 		}
 		if (entity.get("challanHeading") != null) {
 			criteria.add(Restrictions.eqOrIsNull("challanHeading", entity.get("challanHeading")));
@@ -54,8 +54,8 @@ implements PanUpdateListDao{
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		
-		if (entity.get("customerVendorID") != null) {
-			criteria.add(Restrictions.eqOrIsNull("customerVendorID", entity.get("customerVendorID")));
+		if (entity.get("custVendId") != null) {
+			criteria.add(Restrictions.eqOrIsNull("custVendId", entity.get("custVendId")));
 		}
 		if (entity.get("challanHeading") != null) {
 			criteria.add(Restrictions.eqOrIsNull("challanHeading", entity.get("challanHeading")));
@@ -86,8 +86,8 @@ implements PanUpdateListDao{
 		// propertyNameValues.put("clientId", clientId);
 		criteria.add(Restrictions.allEq(propertyNameValues));
 		
-		if (entity.get("customerVendorID") != null) {
-			criteria.add(Restrictions.eqOrIsNull("customerVendorID", entity.get("customerVendorID")));
+		if (entity.get("custVendId") != null) {
+			criteria.add(Restrictions.eqOrIsNull("custVendId", entity.get("custVendId")));
 		}
 		if (entity.get("challanHeading") != null) {
 			criteria.add(Restrictions.eqOrIsNull("challanHeading", entity.get("challanHeading")));

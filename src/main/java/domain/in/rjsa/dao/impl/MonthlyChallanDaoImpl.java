@@ -29,9 +29,9 @@ public class MonthlyChallanDaoImpl extends AbstractDaoFY<Long, MonthlyChallan> i
           {
 		criteria.add(Restrictions.eqOrIsNull("branchCode", entity.get("branchCode")));
           }
-          if(entity.get("monthFY")!=null)
+          if(entity.get("month")!=null)
           {
-		criteria.add(Restrictions.eqOrIsNull("monthFY", entity.get("monthFY")))	;
+		criteria.add(Restrictions.eqOrIsNull("month", entity.get("month")))	;
           }  
           if (entity.get("amtAsPerFinacle") != null) {
         	  criteria.add(Restrictions.eqOrIsNull("amtAsPerFinacle",  Double.valueOf((String)entity.get("amtAsPerFinacle"))));
@@ -67,9 +67,9 @@ public class MonthlyChallanDaoImpl extends AbstractDaoFY<Long, MonthlyChallan> i
           {
 		criteria.add(Restrictions.eqOrIsNull("branchCode", entity.get("branchCode")));
           }
-          if(entity.get("monthFY")!=null)
+          if(entity.get("month")!=null)
           {
-		criteria.add(Restrictions.eqOrIsNull("monthFY", entity.get("monthFY")))	;
+		criteria.add(Restrictions.eqOrIsNull("month", entity.get("month")))	;
           }  
           if (entity.get("amtAsPerFinacle") != null) {
         	  criteria.add(Restrictions.eqOrIsNull("amtAsPerFinacle",  Double.valueOf((String)entity.get("amtAsPerFinacle"))));
@@ -100,9 +100,9 @@ public class MonthlyChallanDaoImpl extends AbstractDaoFY<Long, MonthlyChallan> i
           {
 		criteria.add(Restrictions.eqOrIsNull("branchCode", entity.get("branchCode")));
           }
-          if(entity.get("monthFY")!=null)
+          if(entity.get("month")!=null)
           {
-		criteria.add(Restrictions.eqOrIsNull("monthFY", entity.get("monthFY")))	;
+		criteria.add(Restrictions.eqOrIsNull("month", entity.get("month")))	;
           }  
           if (entity.get("amtAsPerFinacle") != null) {
         	  criteria.add(Restrictions.eqOrIsNull("amtAsPerFinacle",  Double.valueOf((String)entity.get("amtAsPerFinacle"))));

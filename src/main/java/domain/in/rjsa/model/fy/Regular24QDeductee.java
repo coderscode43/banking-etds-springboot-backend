@@ -45,7 +45,7 @@ public class Regular24QDeductee extends CommonModelAbstract {
 	public String panRefNo;
 	@Column(name = "pan")
 //	@NotNull(message = "Pan is a required field.")
-	@Size(min = 0, max = 45, message = "Pan should not be greater than 10 characters.")
+//	@Size(min = 0, max = 45, message = "Pan should not be greater than 10 characters.")
 	public String pan;
 	@Column(name = "name")
 //	@NotNull(message = "Name is a required field.")

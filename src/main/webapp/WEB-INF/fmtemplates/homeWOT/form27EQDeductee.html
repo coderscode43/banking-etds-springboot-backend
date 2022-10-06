@@ -102,18 +102,7 @@ text-align:center;
 						<input type="text" ng-model="cCctr.search.sectionCode"
 							class="form-control" placeholder="Collection Code" style="width: 100%">
 			</div>
-				<div class="col-md-3">
-					<h6>
-						<b>Quarter</b>
-						<h6>
-							<select class="form-control"
-													ng-model="cCctr.search.quarter" required>
-													<option disabled value="">Select Quarter</option>
-													<#list Quarter as quarter>
-													<option value="${quarter}">${quarter}</option>
-													</#list>
-						</select>
-				</div>
+				
 
 				<div class="col-md-3">
 					<h6>
@@ -205,7 +194,18 @@ text-align:center;
 			
 		</div>
 		<div class="row">
-
+					<div class="col-md-3">
+					<h6>
+						<b>Quarter</b>
+						<h6>
+							<select class="form-control"
+								ng-model="cCctr.search.quarter" required>
+								<option disabled value="">Select Quarter</option>
+								<#list Quarter as quarter>
+									<option value="${quarter}">${quarter}</option>
+								</#list>
+						</select>
+				</div>
 					<div class="col-md-3">
 						<h6>
 							<b>TAN</b>
@@ -360,7 +360,7 @@ text-align:center;
                     </h3></b></td>
             </tr>
 						<tr role="row"
-							ng-repeat="a in ( filteredList =( cCctr.getEntityListData()  ) )">
+							ng-repeat="a in ( filteredList =( cCctr.getEntityListDataFY()  ) )">
 						<td ng-if="a.resolved == 0">{{$index+1}}</td>
 						<td style="background-color:#ff3232" ng-if="a.resolved == 	1">{{$index+1}}</td>
 						

@@ -226,22 +226,20 @@ th {
 							<th>Branch Code</th>
 							<th>Tan No</th>
 							<th>Unique Reference No</th>
-							<th class=" ellipsis" data-toggle="tooltip"
+							<th style="width: 0.01%" class=" ellipsis" data-toggle="tooltip"
 								data-placement="bottom" title="Unique Identification No">Unique
 								Identification No</th>
 							<th class=" ellipsis" data-toggle="tooltip"
 								data-placement="bottom"
 								title="Identification number of relevant investment/account, etc.">Identification
 								number of relevant investment/account, etc.</th>
-							<th style="width: 1%">Nature of income</th>
+							<th style="width: 0.01%">Nature of income</th>
 							<th class=" ellipsis" data-toggle="tooltip"
 								data-placement="bottom"
 								title="Section under which tax is deductible">Section under
 								which tax is deductible</th>
 							<th>Amount of income</th>
-							<th class=" ellipsis" data-toggle="tooltip"
-								data-placement="bottom" title="Name of Assessee (Declarant)">Name
-								of Assessee (Declarant)</th>
+							<th style="width: 0.01%">Name of Assessee (Declarant)</th>
 							<th>PAN of the Assessee</th>
 							<th>Aadhaar Number</th>
 							<th>Status</th>
@@ -252,10 +250,8 @@ th {
 								year (P.Y.) (for which declaration is being made)</th>
 							<th>Residential Status</th>
 							<th>Country</th>
-							<th style="width: 1%">Flat / Door / Building</th>
-							<th style="width: 0.01%" class="ellipsis" data-toggle="tooltip"
-								data-placement="bottom" title="Road / Street / Block / Sector">Road
-								/ Street / Block / Sector</th>
+							<th style="width: 0.01%">Flat / Door / Building</th>
+							<th style="width: 0.01%">Road / Street / Block / Sector</th>
 							<th>Pincode</th>
 							<th>Post Office</th>
 							<th>Area/ Locality</th>
@@ -281,8 +277,10 @@ th {
 								title="Estimated total income of the P.Y. (including income for which this declaration is made)">Estimated
 								total income of the P.Y. (including income for which this
 								declaration is made)</th>
-							<th>Total No. of Form No. 15G filed</th>
 							<th class=" ellipsis" data-toggle="tooltip"
+								data-placement="bottom" title="Total No. of Form No. 15G filed">Total
+								No. of Form No. 15G filed</th>
+							<th style="width: 0.01%" class=" ellipsis" data-toggle="tooltip"
 								data-placement="bottom"
 								title="Aggregate amount of income for which Form No.15G filed">Aggregate
 								amount of income for which Form No.15G filed</th>
@@ -306,28 +304,30 @@ th {
 						<tr style="color: red"
 							ng-show="cCctr.getEntityListDataFY().length <= 0">
 							<td colspan="20" style="text-align: center;"><b><h3
-										style="text-align: center; text-align-last: 5;">No data
-										found!!</h3></b></td>
+										style="text-align: center; text-align-last: 5; margin-right: 10%;">No
+										data found!!</h3></b></td>
 							<td colspan="25" style="text-align: center;"><b><h3
-										style="text-align: center; text-align-last: 5; margin-right: -100%;">
+										style="text-align: center; text-align-last: 5; margin-right: 10%;">
 									</h3></b></td>
 						</tr>
-						<tr ng-repeat="a in cCctr.getEntityListDataFY()">
-							<td style="width: 1%">{{$index+1}}</td>
-							<td style="width: 1%">{{a.quarter}}</td>
-							<td style="width: 1%">{{a.month}}</td>
+						<tr ng-repeat="a in ( filteredList =( cCctr.getEntityListDataFY() ) )">
+							<td style="width: 0.5%">{{$index+1}}</td>
+							<td style="width: 0.5%">{{a.quarter}}</td>
+							<td style="width: 0.5%">{{a.month}}</td>
 							<td style="width: 1%">{{a.custVendId}}</td>
 							<td style="width: 1%">{{a.accNo}}</td>
 							<td style="width: 1%">{{a.branchCode}}</td>
 							<td style="width: 1%">{{a.tan}}</td>
 							<td style="width: 1%">{{a.uniqueRefNo}}</td>
-							<td style="width: 1%">{{a.uniqueIdentificationNo}}</td>
+							<td class=" ellipsis" data-toggle="tooltip"
+								data-placement="bottom" title="{{a.uniqueIdentificationNo}}">{{a.uniqueIdentificationNo}}</td>
 							<td style="width: 1%">{{a.identificationNumberofRelevantInvestmentAccount}}</td>
 							<td class=" ellipsis" data-toggle="tooltip"
 								data-placement="bottom" title="{{a.natureofIncome}}">{{a.natureofIncome}}</td>
 							<td style="width: 1%">{{a.sectionUnderWhichTaxisDeductible}}</td>
 							<td style="width: 1%">{{a.amountofIncome}}</td>
-							<td style="width: 1%">{{a.nameofAssesseeDeclarant}}</td>
+							<td class=" ellipsis" data-toggle="tooltip"
+								data-placement="bottom" title="{{a.nameofAssesseeDeclarant}}">{{a.nameofAssesseeDeclarant}}</td>
 							<td style="width: 1%">{{a.panoftheAssessee}}</td>
 							<td style="width: 1%">{{a.aadhaarNumber}}</td>
 							<td style="width: 1%">{{a.status}}</td>
@@ -335,15 +335,15 @@ th {
 							<td style="width: 1%">{{a.previousYearforwhichdeclarationisbeingmade}}</td>
 							<td style="width: 1%">{{a.residentialStatus}}</td>
 							<td style="width: 1%">{{a.country}}</td>
-							<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip"
+							<td class=" ellipsis" data-toggle="tooltip"
 								data-placement="bottom" title="{{a.flatDoorBuilding}}">{{a.flatDoorBuilding}}</td>
-							<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip"
+							<td class=" ellipsis" data-toggle="tooltip"
 								data-placement="bottom" title="{{a.roadStreetBlockSector}}">{{a.roadStreetBlockSector}}</td>
 							<td style="width: 1%">{{a.pincode}}</td>
 							<td style="width: 1%">{{a.postOffice}}</td>
 							<td style="width: 1%">{{a.areaLocality}}</td>
 							<td style="width: 1%">{{a.district}}</td>
-							<td style="width: 1%">{{a.state}}</td>
+							<td style="width: 2%">{{a.state}}</td>
 							<td style="width: 1%">{{a.email}}</td>
 							<td style="width: 1%">{{a.telephoneNo}}</td>
 							<td style="width: 1%">{{a.mobileNo}}</td>
@@ -359,10 +359,11 @@ th {
 							<td style="width: 1%">{{a.dateonwhichtheincomehasbeenpaidcredited
 								| date:'dd-MM-yyyy'}}</td>
 							<td style="width: 1%">{{a.fy}}</td>
-							<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip"
+							<td class=" ellipsis" data-toggle="tooltip"
 								data-placement="bottom" title="{{a.warning}}">{{a.warning}}</td>
-							<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip"
+							<td class=" ellipsis" data-toggle="tooltip"
 								data-placement="bottom" title="{{a.error}}">{{a.error}}</td>
+
 							<!-- <td><a
 							ng-click="cCctr.gotoDetailFormPage('form15g',a.id,a.fy,a.branchCode,'detailform15G')"
 							style="color: blue" onclick="scrollWin()"><img src="static\img\edit.png"
@@ -372,6 +373,17 @@ th {
 							<!-- <td>{{a.total-a.amountPaid}}</td> -->
 
 						</tr>
+						<tr>
+							<th class="one" colspan="12" style="text-align: center; height: 40px" ng-init="ttl=0"><b>TOTAL</b></th>
+							<td class="one"><b>{{ filteredList | sumByKey : 'amountofIncome' | number : fractionSize}}</b></td>
+							<th class="one" colspan="20" style="text-align: center; height: 40px" ng-init="ttl=0"><b></b></th>
+							<td class="one"><b></b>{{ filteredList | sumByKey : 'estimatedIncomeforwhichthisdeclarationismade' | number : fractionSize}}</td>
+							<td class="one"><b></b>{{ filteredList | sumByKey : 'estimatedtotalincomeofthePY' | number : fractionSize}}</td>
+							<td></td>
+							<td class="one"><b>{{ filteredList | sumByKey : 'aggregateAmountofincomeforwhichFormNo15Gfiled' | number : fractionSize}}</b></td>
+							<td></td>
+							<td class="one"><b>{{ filteredList | sumByKey : 'amountofincomepaid' | number : fractionSize}}</b></td>
+							</tr>
 
 					</tbody>
 				</table>

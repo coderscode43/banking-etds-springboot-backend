@@ -305,7 +305,7 @@ th {
 										style="text-align: center; text-align-last: 5; margin-right: 10%;">
 									</h3></b></td>
 						</tr>
-						<tr ng-repeat="a in cCctr.getEntityListData() track by a.id">
+						<tr ng-repeat="a in ( filteredList =( cCctr.getEntityListData() ) )">
 							<td style="width: 0.5%">{{$index+1}}</td>
 							<td style="width: 0.5%">{{a.quarter}}</td>
 							<td style="width: 1%">{{a.month}}</td>
@@ -366,7 +366,20 @@ th {
 								style="margin-top: 5px; margin-bottom: 5px;" /></a></td> -->
 
 							<!-- <td>{{a.total-a.amountPaid}}</td> -->
-
+						</tr>
+						<tr>
+							<th class="one" colspan="12" style="text-align: center; height: 40px" ng-init="ttl=0"><b>TOTAL</b></th>
+							<td class="one"><b>{{ filteredList | sumByKey : 'amountofIncome' | number : fractionSize}}</b></td>
+							<td class="one"><b>{{ filteredList | sumByKey : 'aggregateAmountofincomeforwhichFormNo15Hfiled' | number : fractionSize}}</b></td>
+							<td class="one"><b>{{ filteredList | sumByKey : 'amountofincomepaid' | number : fractionSize}}</b></td>
+							<th class="one" colspan="17" style="text-align: center; height: 40px" ng-init="ttl=0"><b></b></th>
+							<td class="one"><b>{{ filteredList | sumByKey : 'estimatedtotalincomeofthePY' | number : fractionSize}}</b></td>
+							<td class="one"><b>{{ filteredList | sumByKey : 'estimatedIncomeforwhichthisdeclarationismade' | number : fractionSize}}</b></td>
+							<td></td>
+							<td class="one"><b>{{ filteredList | sumByKey : 'aggregateAmountofincomeforwhichFormNo15Hfiled' | number : fractionSize}}</b></td>
+							<td></td>
+							<td class="one"><b>{{ filteredList | sumByKey : 'amountofincomepaid' | number : fractionSize}}</b></td>
+							
 						</tr>
 
 					</tbody>
@@ -411,8 +424,6 @@ th {
 					</div>
 				</form>
 			</div>
-
-
 		</div>
 </body>
 </html>

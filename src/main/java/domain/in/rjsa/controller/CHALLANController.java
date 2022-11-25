@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.PrintWriter;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import domain.in.rjsa.model.fy.PanUpdateList;
 import domain.in.rjsa.model.tds.CHALLAN;
 import domain.in.rjsa.service.CHALLANService;
 import domain.in.rjsa.util.StaticData;
@@ -56,6 +58,12 @@ public class CHALLANController extends AbstractControllerTaxo<String, CHALLAN, C
 			@PathVariable String tan, @PathVariable String certificate, @PathVariable String fy, @PathVariable String q,
 			@PathVariable String pan) {
 		try {
+			
+			if(Pattern.matches("^[A-Z]{5}[0-9]{4}[A-Z]{1}$", pan)) {
+				pan = pan;
+			}else {
+				pan = getPan(pan);
+			}
 			logger.info("Get Certificate for  " + pan);
 			response.setContentType("application/zip, application/octet-stream");			
 			String Ay = fyToAy(fy);
@@ -95,6 +103,12 @@ public class CHALLANController extends AbstractControllerTaxo<String, CHALLAN, C
 		}
 	}
 	
+	private String getPan(String pan) {
+		// TODO Auto-generated method stub
+		PanUpdateList pul = service.getPan(pan);
+		return pul.getNewPAN();
+	}
+
 	public String fyToAy(String fy) {
 		String Ay= null;
 		String[] yr = fy.split("-");

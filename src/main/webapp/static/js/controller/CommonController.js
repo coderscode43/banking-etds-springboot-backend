@@ -330,6 +330,33 @@ App
 								});
 
 							}
+							
+							self.gotoWFYTicketListPage = function(entity, page, branchCode, fy) {
+								self.show = false;
+								self.entity = {};
+								self.search = {};
+								self.entityList = [];
+								// self.ItemsPerPage=100;
+								self.dropdown = [];
+								self.ajax = [];
+								self.temp = {};
+								self.temp3 = {};
+								self.temp1 = [];
+								self.company = {};
+								self.currentPage = 1;
+								self.batchColor = {};
+								self.goodsColor = [];
+								self.b = [];
+								self.fileName = new FormData();
+
+								$state.go("homeWot.ticketlist", {
+									"entity" : entity,
+									"page" : page,
+									"branchCode": branchCode,
+									"fy" : fy
+								});
+
+							}
 							self.changeState = function(year) {
 								self.show = false;
 								self.entity = {};

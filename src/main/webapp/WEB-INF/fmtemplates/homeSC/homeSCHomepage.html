@@ -1,426 +1,679 @@
+<style>
+#popup {
+	width: 38%;
+	position: absolute;
+	top: 30%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	box-shadow: 2px 2px 5px 3px white;
+}
+
+.opacity-animate4 {
+	animation: opt-animation4 1s;
+	animation-fill-mode: forwards
+}
+
+@
+keyframes opt-animation4 { 0% {
+	transform: scale(0) rotate(360deg);
+}
+
+60%{
+transform
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:scale
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(0
+.8
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+)
+rotate
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(-10
+deg
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+);
+}
+100%{
+transform
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:scale(1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+rotate
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(0
+deg
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+);
+}
+}
+.fade {
+	transition: opacity 0.3s;
+	-webkit-transition: opacity 0.3s;
+	opacity: 1;
+}
+
+h4 {
+	border: 1px solid #ccc;
+	padding: 0.01em 16px;
+	border-radius: 16px;
+}
+
+.red {
+	box-sizing: border-box;
+	background-color: rgba(128, 0, 0, 0.9);
+	border: 1px solid rgba(128, 0, 0, 0.9);
+	box-shadow: 0 3px 5px 3px rgba(0, 0, 0, 0.5);
+	color: white;
+}
+
+.green {
+	box-sizing: border-box;
+	background-color: rgba(0, 128, 0, 0.9);
+	border: 1px solid rgba(0, 128, 0, 0.9);
+	box-shadow: 0 3px 5px 3px rgba(0, 0, 0, 0.5);
+	color: white;
+}
+
+.blue {
+	box-sizing: border-box;
+	background-color: rgba(0, 0, 128, 0.9);
+	border: 1px solid rgba(0, 0, 128, 0.9);
+	box-shadow: 0 3px 5px 3px rgba(0, 0, 0, 0.5);
+	color: white;
+}
+</style>
 <br>
 <br>
 
-<!-- <div class="container">
+<script>
+	// When document is ready
+	$(document).ready(function() {
+		// SetTimeout function
+		// Will execute the function
+		// after 2 sec
+		setTimeout(function() {
+			$(".POPmain").css("display", "block");
+			$('.myModal').modal({
+				backdrop : 'static',
+				keyboard : false
+			})
+		}, 2000);
+	});
+	$(".submitId").click(function() {
+		$(".POPmain").css("display", "none");
+		$('.myModal').modal({
+			backdrop : 'static',
+			keyboard : false
+		})
 
-	<div class="table-responsive" style="overflow-x: inherit; width: 100%">
-		<div class="col-md-6">
-			<div class="panel-heading">
-				<h3 class="panel-title">
-					<i class="fa fa-certificate fa-fw"></i> Statement Status
-				</h3>
-			</div>
-			<table class=" tables table-bordered table-hover table-striped"
-				role="table"
-				style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
-				<thead>
-				<colgroup>
-					<col span="14" style="background-color: #ffffff">
-				</colgroup>
-				<tr>
-				<thead role="rowgroup">
-					<tr style="height: 40px; background-color: #81b7db">
-						<th width="10%">TAN</th>
-						<th width="10%">FORM</th>
-						<th width="10%">QUARTER</th>
-						<th width="10%">AS_ON_DATE</th>
-						<th width="10%">FINANCIAL YEAR</th>
-						<th width="10%">STATUS</th>
-						<th width="10%">RT</th>
-					</tr>
-				</thead>
-				<tbody>
+	});
+</script>
 
-					<#list statementStatus as ss>
-					<tr>
-						<td>${ss.getTAN()}</td>
-						<td>${ss.getFORM()}</td>
-						<td>${ss.getQUARTER()}</td>
-						<td>${ss.getAS_ON_DATE()}</td>
-						<td>${ss.getFY()}</td>
-						<td>${ss.getRT()}</td>
-					</tr>
-					</#list>
-				</tbody>
 
-			</table>
-			<div class="text-right">
-				<a
-					ng-click="cCctr.gotoListPage('statementStatus','statementStatus')"
-					style="font-size: small;">View All Recent Statement Status <i
-					class="fa fa-arrow-circle-right"></i>
-				</a>
+
+<script>
+	jQuery(document).ready(function() {
+		jQuery("#popup").css("display", "block");
+		jQuery(".close_popup").click(function() {
+			$('#popup').modal('hide');
+
+		});
+	});
+</script>
+<script>
+	function closeDialog() {
+		let d = document.getElementById('popup')
+		d.style.display = "none"
+		d.close()
+	}
+</script>
+
+
+<div class="container">
+
+	<div class="POPmain myModal mobile " style="z-index: 99999">
+		<div class="modal-dialog modal-lg opacity-animate4 fade" id="popup">
+
+			<div class="modal-content">
+				<button type="button" class="close" onclick="closeDialog()"
+					style="color: #000000; margin: 10px 15px 0px 0px">&times;</button>
+				<div class="modal-header" style="padding-left: 35%; color: #337ab7">
+					<h3>
+						<b>Ticket Details</b>
+					</h3>
+				</div>
+				<div class="modal-body"
+					style="text-align: center; margin-bottom: 20%;">
+					<div class="col-md-12">
+						<div class="col-md-4">
+							<h4 class="red">
+								<a style="color: white">Open Ticket:</a>
+								<p style="font-size: 20px">
+									<b>${openTicket}</b>
+								</p>
+							</h4>
+
+						</div>
+						<div class="col-md-4">
+							<h4 class="green">
+								<a style="color: white">Resolve Ticket:</a>
+								<p style="font-size: 20px">
+									<b>${resolveTicket}</b>
+								</p>
+							</h4>
+
+						</div>
+						<div class="col-md-4">
+							<h4 class="blue">
+								<a style="color: white">Reject Ticket:</a>
+								<p style="font-size: 20px">
+									<b>${rejectTicket}</b>
+								</p>
+							</h4>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default"
+						ng-click="cCctr.gotoListPage('ticket','ticket')"
+						ng-show="'admin'=='${typeOfUser}'">Detail</button>
+					<button type="button" class="btn btn-default"
+						ng-click="cCctr.gotoWFYTicketListPage('ticket','ticket','${typeOfUser}','2022-23')"
+						ng-hide="'admin'=='${typeOfUser}'">Detail</button>
+					<button type="button" class="btn btn-danger "
+						onclick="closeDialog()" aria-label="Close">Close</button>
+				</div>
 			</div>
 		</div>
-		<div class="col-md-6">
-			<div class="panel-heading">
-				<h3 class="panel-title">
-					<i class="fa fa-certificate fa-fw"></i> Statement Status
-				</h3>
-			</div>
-			<table class=" tables table-bordered table-hover table-striped"
-				role="table"
-				style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
-				<thead>
-				<colgroup>
-					<col span="14" style="background-color: #ffffff">
-				</colgroup>
+
+
+		<center>
+			<h2>TDS/TCS QUARTER</h2>
+		</center>
+
+		<table class="table">
+			<thead>
 				<tr>
-				<thead role="rowgroup">
-					<tr style="height: 40px; background-color: #81b7db">
-						<th width="10%">TAN</th>
-						<th width="10%">FORM</th>
-						<th width="10%">QUARTER</th>
-						<th width="10%">AS_ON_DATE</th>
-						<th width="10%">FINANCIAL YEAR</th>
-						<th width="10%">STATUS</th>
-						<th width="10%">RT</th>
-					</tr>
-				</thead>
-				<tbody>
+					<th style="background-color: #fff">Quarter</th>
+					<th style="background-color: #fff">Period</th>
+					<th style="background-color: #fff">Last Date Of Return Filling</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr
+					ng-if="(cCctr.presentMonth() == 03) ||(cCctr.presentMonth() == 04) ||(cCctr.presentMonth() == 05)"
+					style="background-color: #F9FDBF">
+					<td>Q1</td>
+					<td>1 April-30 June</td>
+					<td>31 July</td>
+				</tr>
+				<tr
+					ng-if="!(cCctr.presentMonth() == 03 || cCctr.presentMonth() == 04 || cCctr.presentMonth() == 05)"
+					style="background-color: #fff">
+					<td>Q1</td>
+					<td>1 April-30 June</td>
+					<td>31 July</td>
+				</tr>
 
-					<#list statementStatus as ss>
-					<tr>
-						<td>${ss.getTAN()}</td>
-						<td>${ss.getFORM()}</td>
-						<td>${ss.getQUARTER()}</td>
-						<td>${ss.getAS_ON_DATE()}</td>
-						<td>${ss.getFY()}</td>
-						<td>${ss.getRT()}</td>
-					</tr>
-					</#list>
-				</tbody>
+				<tr
+					ng-if="(cCctr.presentMonth() == 06) ||(cCctr.presentMonth() == 07) ||(cCctr.presentMonth() == 08)"
+					style="background-color: #F9FDBF">
+					<td>Q2</td>
+					<td>1 July-30 September</td>
+					<td>31 October</td>
+				</tr>
+				<tr
+					ng-if=" !(cCctr.presentMonth() == 06 || cCctr.presentMonth() == 07 || cCctr.presentMonth() == 08)"
+					style="background-color: #fff">
+					<td>Q2</td>
+					<td>1 July-30 September</td>
+					<td>31 October</td>
+				</tr>
 
-			</table>
-			<div class="text-right">
-				<a
-					ng-click="cCctr.gotoListPage('statementStatus','statementStatus')"
-					style="font-size: small;">View All Recent Statement Status <i
-					class="fa fa-arrow-circle-right"></i>
-				</a>
-			</div>
-		</div>
+
+				<tr
+					ng-if="(cCctr.presentMonth() == 09) ||(cCctr.presentMonth() == 10) ||(cCctr.presentMonth() == 11)"
+					style="background-color: #F9FDBF">
+					<td>Q3</td>
+					<td>1 October-31 December</td>
+					<td>31 January</td>
+				</tr>
+				<tr
+					ng-if="!(cCctr.presentMonth() == 09 ||cCctr.presentMonth() == 10 ||cCctr.presentMonth() == 11)"
+					style="background-color: #fff">
+					<td>Q3</td>
+					<td>1 October-31 December</td>
+					<td>31 January</td>
+				</tr>
+
+				<tr
+					ng-if="((cCctr.presentMonth() == 00) ||(cCctr.presentMonth() == 01) ||(cCctr.presentMonth() == 02))"
+					style="background-color: #F9FDBF">
+					<td>Q4</td>
+					<td>1 January-31 March</td>
+					<td>31 May</td>
+				</tr>
+				<tr
+					ng-if="!(cCctr.presentMonth() == 00 ||cCctr.presentMonth() == 01 ||cCctr.presentMonth() == 02)"
+					style="background-color: #fff">
+					<td>Q4</td>
+					<td>1 January-31 March</td>
+					<td>31 May</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
-</div> -->
+
+	<br>
+	<div class="container">
+		<center>
+			<h2>15G/15H</h2>
+		</center>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th style="background-color: #fff">Quarter</th>
+					<th style="background-color: #fff">Period</th>
+					<th style="background-color: #fff">Last Date Of Filling
+						Returns</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr
+					ng-if="(cCctr.presentMonth() == 03) ||(cCctr.presentMonth() == 04) ||(cCctr.presentMonth() == 05)"
+					style="background-color: #F9FDBF">
+					<td>Q1</td>
+					<td>1 April-30 June</td>
+					<td>15 July</td>
+
+				</tr>
+				<tr
+					ng-if="!(cCctr.presentMonth() == 03 || cCctr.presentMonth() == 04 || cCctr.presentMonth() == 05)"
+					style="background-color: #fff">
+					<td>Q1</td>
+					<td>1 April-30 June</td>
+					<td>15 July</td>
+
+				</tr>
+				<tr
+					ng-if="(cCctr.presentMonth() == 06) ||(cCctr.presentMonth() == 07) ||(cCctr.presentMonth() == 08)"
+					style="background-color: #F9FDBF">
+					<td>Q2</td>
+					<td>1 July-30 September</td>
+					<td>15 October</td>
+
+				</tr>
+				<tr
+					ng-if="!(cCctr.presentMonth() == 06 || cCctr.presentMonth() == 07 || cCctr.presentMonth() == 08)"
+					style="background-color: #fff">
+					<td>Q2</td>
+					<td>1 July-30 September</td>
+					<td>15 October</td>
+
+				</tr>
+				<tr
+					ng-if="(cCctr.presentMonth() == 09) ||(cCctr.presentMonth() == 10) ||(cCctr.presentMonth() == 11)"
+					style="background-color: #F9FDBF">
+					<td>Q3</td>
+					<td>1 October-31 December</td>
+					<td>15 January</td>
+
+				</tr>
+				<tr
+					ng-if="!(cCctr.presentMonth() == 09 || cCctr.presentMonth() == 10 || cCctr.presentMonth() == 11)"
+					style="background-color: #fff">
+					<td>Q3</td>
+					<td>1 October-31 December</td>
+					<td>15 January</td>
+
+				</tr>
+				<tr
+					ng-if="(cCctr.presentMonth() == 00) ||(cCctr.presentMonth() == 01) ||(cCctr.presentMonth() == 02)"
+					style="background-color: #F9FDBF">
+					<td>Q4</td>
+					<td>1 January-31 March</td>
+					<td>30 April</td>
+
+				</tr>
+				<tr
+					ng-if="!(cCctr.presentMonth() == 00 || cCctr.presentMonth() == 01 || cCctr.presentMonth() == 02)"
+					style="background-color: #fff">
+					<td>Q4</td>
+					<td>1 January-31 March</td>
+					<td>30 April</td>
+
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<br>
+	<div class="container">
+		<center>
+			<h2>TDS/TCS Monthly Last Date Of Challan Payment</h2>
+		</center>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th style="background-color: #fff">Month</th>
+					<th style="background-color: #fff">Last Date Of Challan
+						Payment</th>
+					<th style="background-color: #fff">Last Date Of Return Filling</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-if="cCctr.presentMonth() == 03"
+					style="background-color: #BECFFD">
+					<td>April</td>
+					<td>7 May</td>
+					<td>31 July</td>
+				</tr>
+				<tr ng-if="cCctr.presentMonth() != 03"
+					style="background-color: #fff">
+					<td>April</td>
+					<td>7 May</td>
+					<td>31 July</td>
+				</tr>
+				<tr ng-if="cCctr.presentMonth() == 04"
+					style="background-color: #BECFFD">
+					<td>May</td>
+					<td>7 June</td>
+					<td>31 July</td>
+				</tr>
+				<tr ng-if="cCctr.presentMonth() != 04"
+					style="background-color: #fff">
+					<td>May</td>
+					<td>7 June</td>
+					<td>31 July</td>
+				</tr>
+				<tr ng-if="cCctr.presentMonth() == 05"
+					style="background-color: #BECFFD">
+					<td>June</td>
+					<td>7 July</td>
+					<td>31 July</td>
+				</tr>
+				<tr ng-if="cCctr.presentMonth() != 05"
+					style="background-color: #fff">
+					<td>June</td>
+					<td>7 July</td>
+					<td>31 July</td>
+				</tr>
+				<tr ng-if="cCctr.presentMonth() == 06"
+					style="background-color: #BECFFD">
+					<td>July</td>
+					<td>7 August</td>
+					<td>31 October</td>
+				</tr>
+				<tr ng-if="cCctr.presentMonth() != 06"
+					style="background-color: #fff">
+					<td>July</td>
+					<td>7 August</td>
+					<td>31 October</td>
+				</tr>
+				<tr ng-if="cCctr.presentMonth() == 07"
+					style="background-color: #BECFFD">
+					<td>August</td>
+					<td>7 September</td>
+					<td>31 October</td>
+				</tr>
+				<tr ng-if="cCctr.presentMonth() != 07"
+					style="background-color: #fff">
+					<td>August</td>
+					<td>7 September</td>
+					<td>31 October</td>
+				</tr>
+
+				<tr ng-if="cCctr.presentMonth() == 08"
+					style="background-color: #BECFFD">
+					<td>September</td>
+					<td>7 October</td>
+					<td>31 October</td>
+				</tr>
+				<tr ng-if="cCctr.presentMonth() != 08"
+					style="background-color: #fff">
+					<td>September</td>
+					<td>7 October</td>
+					<td>31 October</td>
+				</tr>
 
 
-<div class="container">
-
-
-
-
-
-	<center>
-		<h2>TDS/TCS QUARTER</h2>
-	</center>
-
-	<table class="table">
-		<thead>
-			<tr>
-				<th style="background-color: #fff">Quarter</th>
-				<th style="background-color: #fff">Period</th>
-				<th style="background-color: #fff">Last Date Of Return Filling</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr
-				ng-if="(cCctr.presentMonth() == 03) ||(cCctr.presentMonth() == 04) ||(cCctr.presentMonth() == 05)"
-				style="background-color: #F9FDBF">
-				<td>Q1</td>
-				<td>1 April-30 June</td>
-				<td>31 July</td>
-			</tr>
-			<tr
-				ng-if="!(cCctr.presentMonth() == 03 || cCctr.presentMonth() == 04 || cCctr.presentMonth() == 05)"
-				style="background-color: #fff">
-				<td>Q1</td>
-				<td>1 April-30 June</td>
-				<td>31 July</td>
-			</tr>
-
-			<tr
-				ng-if="(cCctr.presentMonth() == 06) ||(cCctr.presentMonth() == 07) ||(cCctr.presentMonth() == 08)"
-				style="background-color: #F9FDBF">
-				<td>Q2</td>
-				<td>1 July-30 September</td>
-				<td>31 October</td>
-			</tr>
-			<tr
-				ng-if=" !(cCctr.presentMonth() == 06 || cCctr.presentMonth() == 07 || cCctr.presentMonth() == 08)"
-				style="background-color: #fff">
-				<td>Q2</td>
-				<td>1 July-30 September</td>
-				<td>31 October</td>
-			</tr>
-
-
-			<tr
-				ng-if="(cCctr.presentMonth() == 09) ||(cCctr.presentMonth() == 10) ||(cCctr.presentMonth() == 11)"
-				style="background-color: #F9FDBF">
-				<td>Q3</td>
-				<td>1 October-31 December</td>
-				<td>31 January</td>
-			</tr>
-			<tr
-				ng-if="!(cCctr.presentMonth() == 09 ||cCctr.presentMonth() == 10 ||cCctr.presentMonth() == 11)"
-				style="background-color: #fff">
-				<td>Q3</td>
-				<td>1 October-31 December</td>
-				<td>31 January</td>
-			</tr>
-
-			<tr
-				ng-if="((cCctr.presentMonth() == 00) ||(cCctr.presentMonth() == 01) ||(cCctr.presentMonth() == 02))"
-				style="background-color: #F9FDBF">
-				<td>Q4</td>
-				<td>1 January-31 March</td>
-				<td>31 May</td>
-			</tr>
-			<tr
-				ng-if="!(cCctr.presentMonth() == 00 ||cCctr.presentMonth() == 01 ||cCctr.presentMonth() == 02)"
-				style="background-color: #fff">
-				<td>Q4</td>
-				<td>1 January-31 March</td>
-				<td>31 May</td>
-			</tr>
-		</tbody>
-	</table>
-</div>
-
-<br>
-<div class="container">
-	<center>
-		<h2>15G/15H</h2>
-	</center>
-
-	<table class="table">
-		<thead>
-			<tr>
-				<th style="background-color: #fff">Quarter</th>
-				<th style="background-color: #fff">Period</th>
-				<th style="background-color: #fff">Last Date Of Filling Returns</th>
-
-			</tr>
-		</thead>
-		<tbody>
-			<tr
-				ng-if="(cCctr.presentMonth() == 03) ||(cCctr.presentMonth() == 04) ||(cCctr.presentMonth() == 05)"
-				style="background-color: #F9FDBF">
-				<td>Q1</td>
-				<td>1 April-30 June</td>
-				<td>15 July</td>
-
-			</tr>
-			<tr
-				ng-if="!(cCctr.presentMonth() == 03 || cCctr.presentMonth() == 04 || cCctr.presentMonth() == 05)"
-				style="background-color: #fff">
-				<td>Q1</td>
-				<td>1 April-30 June</td>
-				<td>15 July</td>
-
-			</tr>
-			<tr
-				ng-if="(cCctr.presentMonth() == 06) ||(cCctr.presentMonth() == 07) ||(cCctr.presentMonth() == 08)"
-				style="background-color: #F9FDBF">
-				<td>Q2</td>
-				<td>1 July-30 September</td>
-				<td>15 October</td>
-
-			</tr>
-			<tr
-				ng-if="!(cCctr.presentMonth() == 06 || cCctr.presentMonth() == 07 || cCctr.presentMonth() == 08)"
-				style="background-color: #fff">
-				<td>Q2</td>
-				<td>1 July-30 September</td>
-				<td>15 October</td>
-
-			</tr>
-			<tr
-				ng-if="(cCctr.presentMonth() == 09) ||(cCctr.presentMonth() == 10) ||(cCctr.presentMonth() == 11)"
-				style="background-color: #F9FDBF">
-				<td>Q3</td>
-				<td>1 October-31 December</td>
-				<td>15 January</td>
-
-			</tr>
-			<tr
-				ng-if="!(cCctr.presentMonth() == 09 || cCctr.presentMonth() == 10 || cCctr.presentMonth() == 11)"
-				style="background-color: #fff">
-				<td>Q3</td>
-				<td>1 October-31 December</td>
-				<td>15 January</td>
-
-			</tr>
-			<tr
-				ng-if="(cCctr.presentMonth() == 00) ||(cCctr.presentMonth() == 01) ||(cCctr.presentMonth() == 02)"
-				style="background-color: #F9FDBF">
-				<td>Q4</td>
-				<td>1 January-31 March</td>
-				<td>30 April</td>
-
-			</tr>
-			<tr
-				ng-if="!(cCctr.presentMonth() == 00 || cCctr.presentMonth() == 01 || cCctr.presentMonth() == 02)"
-				style="background-color: #fff">
-				<td>Q4</td>
-				<td>1 January-31 March</td>
-				<td>30 April</td>
-
-			</tr>
-		</tbody>
-	</table>
-</div>
-
-<br>
-<div class="container">
-	<center>
-		<h2>TDS/TCS Monthly Last Date Of Challan Payment</h2>
-	</center>
-
-	<table class="table">
-		<thead>
-			<tr>
-				<th style="background-color: #fff">Month</th>
-				<th style="background-color: #fff">Last Date Of Challan Payment</th>
-				<th style="background-color: #fff">Last Date Of Return Filling</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-if="cCctr.presentMonth() == 03"
-				style="background-color: #BECFFD">
-				<td>April</td>
-				<td>7 May</td>
-				<td>31 July</td>
-			</tr>
-			<tr ng-if="cCctr.presentMonth() != 03" style="background-color: #fff">
-				<td>April</td>
-				<td>7 May</td>
-				<td>31 July</td>
-			</tr>
-			<tr ng-if="cCctr.presentMonth() == 04"
-				style="background-color: #BECFFD">
-				<td>May</td>
-				<td>7 June</td>
-				<td>31 July</td>
-			</tr>
-			<tr ng-if="cCctr.presentMonth() != 04" style="background-color: #fff">
-				<td>May</td>
-				<td>7 June</td>
-				<td>31 July</td>
-			</tr>
-			<tr ng-if="cCctr.presentMonth() == 05"
-				style="background-color: #BECFFD">
-				<td>June</td>
-				<td>7 July</td>
-				<td>31 July</td>
-			</tr>
-			<tr ng-if="cCctr.presentMonth() != 05" style="background-color: #fff">
-				<td>June</td>
-				<td>7 July</td>
-				<td>31 July</td>
-			</tr>
-			<tr ng-if="cCctr.presentMonth() == 06"
-				style="background-color: #BECFFD">
-				<td>July</td>
-				<td>7 August</td>
-				<td>31 October</td>
-			</tr>
-			<tr ng-if="cCctr.presentMonth() != 06" style="background-color: #fff">
-				<td>July</td>
-				<td>7 August</td>
-				<td>31 October</td>
-			</tr>
-			<tr ng-if="cCctr.presentMonth() == 07"
-				style="background-color: #BECFFD">
-				<td>August</td>
-				<td>7 September</td>
-				<td>31 October</td>
-			</tr>
-			<tr ng-if="cCctr.presentMonth() != 07" style="background-color: #fff">
-				<td>August</td>
-				<td>7 September</td>
-				<td>31 October</td>
-			</tr>
-
-			<tr ng-if="cCctr.presentMonth() == 08"
-				style="background-color: #BECFFD">
-				<td>September</td>
-				<td>7 October</td>
-				<td>31 October</td>
-			</tr>
-			<tr ng-if="cCctr.presentMonth() != 08" style="background-color: #fff">
-				<td>September</td>
-				<td>7 October</td>
-				<td>31 October</td>
-			</tr>
-
-
-			<tr ng-if="cCctr.presentMonth() == 09"
-				style="background-color: #BECFFD">
-				<td>October</td>
-				<td>7 November</td>
-				<td>31 January</td>
-			</tr>
-			<tr ng-if="cCctr.presentMonth() != 09" style="background-color: #fff">
-				<td>October</td>
-				<td>7 November</td>
-				<td>31 January</td>
-			</tr>
-			<tr ng-if="cCctr.presentMonth() == 10"
-				style="background-color: #BECFFD">
-				<td>November</td>
-				<td>7 December</td>
-				<td>31 January</td>
-			</tr>
-			<tr ng-if="cCctr.presentMonth() != 10" style="background-color: #fff">
-				<td>November</td>
-				<td>7 December</td>
-				<td>31 January</td>
-			</tr>
-			<tr ng-if="cCctr.presentMonth() == 11"
-				style="background-color: #BECFFD">
-				<td>December</td>
-				<td>7 January</td>
-				<td>31 January</td>
-			</tr>
-			<tr ng-if="cCctr.presentMonth() != 11" style="background-color: #fff">
-				<td>December</td>
-				<td>7 January</td>
-				<td>31 January</td>
-			</tr>
-			<tr ng-if="cCctr.presentMonth() == 00"
-				style="background-color: #BECFFD">
-				<td>January</td>
-				<td>7 February</td>
-				<td>31 May</td>
-			</tr>
-			<tr ng-if="cCctr.presentMonth() != 00" style="background-color: #fff">
-				<td>January</td>
-				<td>7 February</td>
-				<td>31 May</td>
-			</tr>
-			<tr ng-if="cCctr.presentMonth() == 01"
-				style="background-color: #BECFFD">
-				<td>February</td>
-				<td>7 March</td>
-				<td>31 May</td>
-			</tr>
-			<tr ng-if="cCctr.presentMonth() != 01" style="background-color: #fff">
-				<td>February</td>
-				<td>7 March</td>
-				<td>31 May</td>
-			</tr>
-			<tr ng-if="cCctr.presentMonth() == 02"
-				style="background-color: #BECFFD">
-				<td>March</td>
-				<td>30 April</td>
-				<td>31 May</td>
-			</tr>
-			<tr ng-if="cCctr.presentMonth() != 02" style="background-color: #fff">
-				<td>March</td>
-				<td>30 April</td>
-				<td>31 May</td>
-			</tr>
-		</tbody>
-	</table>
-</div>
+				<tr ng-if="cCctr.presentMonth() == 09"
+					style="background-color: #BECFFD">
+					<td>October</td>
+					<td>7 November</td>
+					<td>31 January</td>
+				</tr>
+				<tr ng-if="cCctr.presentMonth() != 09"
+					style="background-color: #fff">
+					<td>October</td>
+					<td>7 November</td>
+					<td>31 January</td>
+				</tr>
+				<tr ng-if="cCctr.presentMonth() == 10"
+					style="background-color: #BECFFD">
+					<td>November</td>
+					<td>7 December</td>
+					<td>31 January</td>
+				</tr>
+				<tr ng-if="cCctr.presentMonth() != 10"
+					style="background-color: #fff">
+					<td>November</td>
+					<td>7 December</td>
+					<td>31 January</td>
+				</tr>
+				<tr ng-if="cCctr.presentMonth() == 11"
+					style="background-color: #BECFFD">
+					<td>December</td>
+					<td>7 January</td>
+					<td>31 January</td>
+				</tr>
+				<tr ng-if="cCctr.presentMonth() != 11"
+					style="background-color: #fff">
+					<td>December</td>
+					<td>7 January</td>
+					<td>31 January</td>
+				</tr>
+				<tr ng-if="cCctr.presentMonth() == 00"
+					style="background-color: #BECFFD">
+					<td>January</td>
+					<td>7 February</td>
+					<td>31 May</td>
+				</tr>
+				<tr ng-if="cCctr.presentMonth() != 00"
+					style="background-color: #fff">
+					<td>January</td>
+					<td>7 February</td>
+					<td>31 May</td>
+				</tr>
+				<tr ng-if="cCctr.presentMonth() == 01"
+					style="background-color: #BECFFD">
+					<td>February</td>
+					<td>7 March</td>
+					<td>31 May</td>
+				</tr>
+				<tr ng-if="cCctr.presentMonth() != 01"
+					style="background-color: #fff">
+					<td>February</td>
+					<td>7 March</td>
+					<td>31 May</td>
+				</tr>
+				<tr ng-if="cCctr.presentMonth() == 02"
+					style="background-color: #BECFFD">
+					<td>March</td>
+					<td>30 April</td>
+					<td>31 May</td>
+				</tr>
+				<tr ng-if="cCctr.presentMonth() != 02"
+					style="background-color: #fff">
+					<td>March</td>
+					<td>30 April</td>
+					<td>31 May</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>

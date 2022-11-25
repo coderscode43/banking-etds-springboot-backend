@@ -267,6 +267,27 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 			}
 
 		})
+		.state('homeWot.ticketlist', {
+			url: "/homeWOT/:branchCode/:fy/list/:entity/:page",
+			params: {
+				entity: null,
+				page: null,
+				branchCode: null,
+				fy: null
+			},
+			templateUrl: function($stateParams) {
+				return 'index/list/homeWOT/' + $stateParams.page;
+			},
+			resolve: {
+				list: function($q, $state, CommonServiceFY, $stateParams) {
+					console.log('Get List of ' + $stateParams.entity);
+					var deferred = $q.defer();
+					CommonServiceFY.countFunction($stateParams.entity, $stateParams.fy, $stateParams.branchCode).then(deferred.resolve, deferred.resolve);
+					return deferred.promise;
+				}
+			}
+
+		})
 		
 		
 		.state('homeWot.search',{

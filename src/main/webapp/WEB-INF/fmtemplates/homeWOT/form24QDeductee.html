@@ -89,6 +89,23 @@
    th{
   text-align:center;
     }
+    
+    .btn-grad {
+	background-image: linear-gradient(to right, #FF8008 0%, #FFC837 51%, #FF8008 100%);
+	transition: 0.5s;
+	background-size: 200% auto;
+	color: white;
+	box-shadow: 0 0 20px #eee;
+	border-radius: 10px;
+	padding: 8px;
+}
+
+.btn-grad:hover {
+	background-position: right center;
+	/* change the direction of the change here */
+	color: #fff;
+	text-decoration: none;
+}
 </style>
 
 
@@ -224,12 +241,17 @@
 						<h6>
 							<b>TAN</b>
 							<h6>
-								<input type="text" ng-model="cCctr.search.TAN"
-									class="form-control" placeholder="TAN" style="width: 100%">
+								<select name="tan" id="tan" class="form-control"
+									ng-model="cCctr.search.TAN">
+									<option disabled value="">Select Tan</option>
+									<#list Tan as T>
+									<option value="${T}">${T}</option>
+									</#list>
+								</select>
 					</div>
 					<div class="col-md-3">
-						<button class="btn btn-primary " type="button"
-							style="margin-top:14%"
+						<button class="btn btn-grad astro-MG2CNCJP " type="button"
+							style="margin-top:14%;background-image: linear-gradient(to right, #517fa4 0%, #243949  51%, #517fa4  100%);"
 							ng-click="cCctr.generateProcessExcel('apiform24QDeductee/generateExcel/','regular24QDeductee')">Export
 							to Excel</button>
 					</div>
@@ -239,11 +261,13 @@
 					<div class="col-md-3" style="margin-left: 75%; margin-top: -45px">
 						<button
 					ng-click="cCctr.searchFYEntities(true,'form24QDeductee','form24QDeductee')"
-					class="btn btn-success" onclick="scrollWin()"style="margin-top: 0px;">Search</button>
-							<button class="btn btn-secondary" style="background-color: #FFA500"
+					class="btn btn-grad astro-MG2CNCJP" onclick="scrollWin()"style="margin-top: 0px;background-image: linear-gradient(to right, #093028 0%, #237A57  51%, #093028  100%)">Search</button>
+					
+							<button class="btn btn-grad astro-MG2CNCJP" style="background-image: linear-gradient(to right, #F09819 0%, #EDDE5D 51%, #F09819 100%)"
 					data-toggle="collapse" data-target="#collapseExample4"
 					aria-expanded="false" aria-controls="collapseExample">
-					Advance Search</button>
+					<i
+											class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;Advance Search</button>
 
 						<!--  <button class="btn btn-Primary" data-toggle="modal"
 					ng-click="cCctr.gotoList2Page('addMonthlyChallan','addMonthlyChallan');">Add</button>-->

@@ -112,6 +112,26 @@
 		visibility: visible;
 	}
 }
+.btn-grad {
+	background-image: linear-gradient(to right, #FF8008 0%, #FFC837 51%, #FF8008 100%);
+	transition: 0.5s;
+	background-size: 200% auto;
+	color: white;
+	box-shadow: 0 0 20px #eee;
+	border-radius: 10px;
+	padding: 8px;
+}
+
+.btn-grad:hover {
+	background-position: right center;
+	/* change the direction of the change here */
+	color: #fff;
+	text-decoration: none;
+}
+
+th{
+text-align:center;
+}
 </style>
 
 
@@ -141,8 +161,13 @@
 						<h6>
 							<b>TAN</b>
 							<h6>
-								<input type="text" ng-model="cCctr.search.TAN"
-									class="form-control" placeholder="TAN" style="width: 100%">
+								<select name="tan" id="tan" class="form-control"
+									ng-model="cCctr.search.TAN">
+									<option disabled value="">Select Tan</option>
+									<#list Tan as T>
+									<option value="${T}">${T}</option>
+									</#list>
+								</select>
 					</div>
 					<div class="col-md-3">
 						<h6>
@@ -236,8 +261,8 @@
 				</div>
 				<div class="row">
 					<div class="col-md-3">
-						<button class="btn btn-primary " type="button"
-							style="margin-top:8%"
+						<button class="btn btn-grad astro-MG2CNCJP " type="button"
+							style="margin-top:8%;background-image: linear-gradient(to right, #517fa4 0%, #243949  51%, #517fa4  100%);"
 							ng-click="cCctr.generateExcel('apistatementStatus/generateExcel/','STATEMENTSTATUS')">Export
 							to Excel</button>
 					</div>
@@ -249,11 +274,12 @@
 				<div class="col-md-3" style="margin-left: 75%; margin-top: -44px">
 					<button
 						ng-click="cCctr.searchEntities(true,'statementStatus','statementStatus')"
-						class="btn btn-success" onclick="scrollWin()">Search</button>
-					<button class="btn btn-secondary"
-						style="background-color: #FFA500;" data-toggle="collapse"
+						class="btn btn-grad astro-MG2CNCJP" onclick="scrollWin()" style="background-image: linear-gradient(to right, #093028 0%, #237A57  51%, #093028  100%)">Search</button>
+					<button class="btn btn-grad astro-MG2CNCJP"
+						style="background-image: linear-gradient(to right, #F09819 0%, #EDDE5D 51%, #F09819 100%)" data-toggle="collapse"
 						data-target="#collapseExample4" aria-expanded="false"
-						aria-controls="collapseExample">Advance Search</button>
+						aria-controls="collapseExample"><i
+											class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;Advance Search</button>
 
 
 
@@ -266,7 +292,7 @@
 	<div class="row">
 		<!-- 	<div class="table-responsive">  -->
 
-		<table class=" tables table-bordered table-hover table-striped"
+		<table class=" table table-bordered table-hover table-striped"
 			role="table"
 			style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
 
@@ -277,18 +303,18 @@
 			<tr>
 			<thead role="rowgroup">
 				<tr role="row" style="height: 40px; background-color: #81b7db">
-					<th width="10%">Sr. No.</th>
-					<th width="10%">TAN</th>
-					<th width="10%">FORM</th>
-					<th width="10%">QUARTER</th>
-					<th width="10%">AS_ON_DATE</th>
-					<th width="10%">Financial Year</th>
-					<th width="10%">STATUS</th>
-					<th width="10%">RT</th>
+					<th>Sr. No.</th>
+					<th>TAN</th>
+					<th>FORM</th>
+					<th>QUARTER</th>
+					<th>AS_ON_DATE</th>
+					<th>Financial Year</th>
+					<th>STATUS</th>
+					<th>RT</th>
 
 				</tr>
 			</thead>
-			<tbody>
+			<tbody style="text-align:center;">
 				<tr style="color: red"
 					ng-show="cCctr.getEntityListData().length <= 0">
 					<td colspan="14" style="text-align: center;"><b><h3>No
@@ -296,7 +322,7 @@
 				</tr>
 				<tr role="row"
 					ng-repeat="a in cCctr.getEntityListData()">
-					<td style="padding: 10px">{{$index+1}}</td>
+					<td>{{$index+1}}</td>
 					<td>{{a.TAN}}</td>
 					<td>{{a.FORM}}</td>
 					<td>{{a.QUARTER}}</td>

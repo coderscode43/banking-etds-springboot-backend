@@ -8,4 +8,6 @@ import domain.in.rjsa.model.fy.PanUpdateList;
 public interface PanUpdateListDao extends DaoInterfaceFY<Long,   PanUpdateList>{
 	List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage);
 
+	PanUpdateList getByPan(String pan);
+
 }

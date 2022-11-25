@@ -53,7 +53,7 @@ public class AbstractController {
 //		} else {
 //			String branch = ((UserDetails) userDetails).getUsername();
 //			try {
-//				int b = Integer.valueOf(branch);
+//				int b = Integer.parseInt(branch);
 //				return String.valueOf(b);
 //			} catch (Exception e) {
 //				// TODO: handle exception

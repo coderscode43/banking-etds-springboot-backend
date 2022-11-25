@@ -96,8 +96,13 @@
 					<h6>
 						<b>TAN</b>
 					</h6>
-					<input type="text" ng-model="cCctr.search.TAN" class="form-control"
-						placeholder="TAN" style="width: 100%">
+					<select name="tan" id="tan" class="form-control"
+						ng-model="cCctr.search.TAN">
+						<option disabled value="">Select Tan</option>
+						<#list Tan as T>
+						<option value="${T}">${T}</option>
+						</#list>
+					</select>
 				</div>
 
 				<div class="col-md-3">
@@ -125,7 +130,7 @@
 			<div class="col-md-3" style="margin-left: 75%; margin-top: -35px">
 				<button ng-click="cCctr.searchEntities(true,'deductorDetails')"
 					class="btn btn-success" onclick="scrollWin()">Search</button>
-				<button class="btn btn-primary " type="button" 
+				<button class="btn btn-primary " type="button"
 					ng-click="cCctr.generateExcel('apideductorDetails/generateExcel/','DEDUCTORDETAILS')">Export
 					to Excel</button>
 			</div>

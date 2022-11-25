@@ -183,9 +183,10 @@
 }
 
 /* iPad Landscape */
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-/* CSS */
-.mobile {
+@media only screen and (min-device-width: 768px) and (max-device-width:
+	1024px) {
+	/* CSS */
+	.mobile {
 		display: none;
 	}
 }
@@ -216,16 +217,21 @@
 					<h6>
 						<b>TAN</b>
 					</h6>
-					<input type="text" ng-model="cCctr.search.TAN" class="form-control"
-						placeholder="TAN" style="width: 100%">
+					<select name="tan" id="tan" class="form-control"
+						ng-model="cCctr.search.TAN">
+						<option disabled value="">Select Tan</option>
+						<#list Tan as T>
+						<option value="${T}">${T}</option>
+						</#list>
+					</select>
 				</div>
 
 				<div class="col-md-3">
 					<h6>
 						<b>State</b>
 					</h6>
-					<input type="text" ng-model="cCctr.search.STATE" class="form-control"
-						placeholder="STATE" style="width: 100%">
+					<input type="text" ng-model="cCctr.search.STATE"
+						class="form-control" placeholder="STATE" style="width: 100%">
 				</div>
 
 				<div class="col-md-3">
@@ -233,8 +239,8 @@
 						<b>City</b>
 
 					</h6>
-					<input type="text" ng-model="cCctr.search.CITY" class="form-control"
-						placeholder="CITY" style="width: 100%">
+					<input type="text" ng-model="cCctr.search.CITY"
+						class="form-control" placeholder="CITY" style="width: 100%">
 				</div>
 
 			</div>

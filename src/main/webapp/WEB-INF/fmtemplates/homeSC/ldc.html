@@ -48,28 +48,25 @@
 }
 
 .truncate {
-        display: block;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        width:5%;
-        height:60px;
-        
-    }
-    
-    .ellipsis{
-     max-width: 70px;
-    min-width: 200px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    
-    }
-    
-    td{
-    width:5%;
-    
-    }
+	display: block;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	width: 5%;
+	height: 60px;
+}
+
+.ellipsis {
+	max-width: 70px;
+	min-width: 200px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+td {
+	width: 5%;
+}
 </style>
 
 
@@ -84,285 +81,299 @@
 
 
 		</div>
-		
-			<br>
-			<button class="btn btn-primary hidden visible-xs" type="button"
-				data-toggle="collapse" data-target="#collapseExample2"
-				aria-expanded="false" aria-controls="collapseExample">
-				Search</button>
-			<div class="collapse dont-collapse-sm" id="collapseExample2">
-				<div class="row">
-					<div class="form-group">
-						<div class="col-md-3">
 
-							<h6>
-								<b>Financial Year</b>
-							</h6>
-							<select class="form-control"
-						ng-model="cCctr.search.FY"  style="width: 100%">
-						<option disabled value="">Select financial Year</option>
-						<#list financialYear as year>
-						<option value="${year}">${year}</option>
-						</#list>
-					</select>
+		<br>
+		<button class="btn btn-primary hidden visible-xs" type="button"
+			data-toggle="collapse" data-target="#collapseExample2"
+			aria-expanded="false" aria-controls="collapseExample">
+			Search</button>
+		<div class="collapse dont-collapse-sm" id="collapseExample2">
+			<div class="row">
+				<div class="form-group">
+					<div class="col-md-3">
 
-						</div>
-
-						<div class="col-md-3">
-							<h6>
-								<b>PAN</b>
-							</h6>
-							<input type="text" ng-model="cCctr.search.PAN"
-								class="form-control" placeholder="PAN" style="width: 100%">
-						</div>
-
-						<div class="col-md-3">
-							<h6>
-								<b>LDC Number</b>
-							</h6>
-							<input type="text" ng-model="cCctr.search.LDC_NUMBER"
-								class="form-control" placeholder="LDC Number"
-								style="width: 100%">
-						</div>
-
-
+						<h6>
+							<b>Financial Year</b>
+						</h6>
+						<select class="form-control" ng-model="cCctr.search.FY"
+							style="width: 100%">
+							<option disabled value="">Select financial Year</option>
+							<#list financialYear as year>
+							<option value="${year}">${year}</option>
+							</#list>
+						</select>
 
 					</div>
+
+					<div class="col-md-3">
+						<h6>
+							<b>PAN</b>
+						</h6>
+						<input type="text" ng-model="cCctr.search.PAN"
+							class="form-control" placeholder="PAN" style="width: 100%">
+					</div>
+
+					<div class="col-md-3">
+						<h6>
+							<b>LDC Number</b>
+						</h6>
+						<input type="text" ng-model="cCctr.search.LDC_NUMBER"
+							class="form-control" placeholder="LDC Number" style="width: 100%">
+					</div>
+
 
 
 				</div>
 
-				<div class="collapse  panel-collapse" id="collapseExample4">
 
-					<div class="row">
-						<div class="col-md-3">
+			</div>
+
+			<div class="collapse  panel-collapse" id="collapseExample4">
+
+				<div class="row">
+					<div class="col-md-3">
+						<h6>
+							<b>NAME</b>
 							<h6>
-								<b>NAME</b>
-								<h6>
-									<input type="text" ng-model="cCctr.search.NAME"
-										class="form-control" placeholder="Name" style="width: 100%">
-						</div>
-
-						<div class="col-md-3">
-							<h6>
-								<b>TAN</b>
-								<h6>
-									<input type="text" ng-model="cCctr.search.TAN"
-										class="form-control" placeholder="TAN" style="width: 100%">
-						</div>
-
-						<div class="col-md-3">
-							<h6>
-								<b>Section Code</b>
-								<h6>
-									<input type="text" ng-model="cCctr.search.SECTION_CODE"
-										class="form-control" placeholder="Section Code"
-										style="width: 100%">
-						</div>
-
-
+								<input type="text" ng-model="cCctr.search.NAME"
+									class="form-control" placeholder="Name" style="width: 100%">
 					</div>
-					<div class="row">
-						<div class="col-md-3">
-							<h6>
-								<b>LDC Rate</b>
-								<h6>
-									<input type="text" ng-model="cCctr.search.LDC_RATE"
-										class="form-control" placeholder="LDC Rate"
-										style="width: 100%">
-						</div>
 
-						<div class="col-md-3">
+					<div class="col-md-3">
+						<h6>
+							<b>TAN</b>
 							<h6>
-								<b>Certificate Limit</b>
-								<h6>
-									<input type="text" ng-model="cCctr.search.CERTIFICATE_LIMIT"
-										class="form-control" placeholder="Certificate Limit"
-										style="width: 100%">
-						</div>
-
-						<div class="col-md-3">
-							<h6>
-								<b>Amount Consumed</b>
-								<h6>
-									<input type="text" ng-model="cCctr.search.AMOUNT_CONSUMED"
-										class="form-control" placeholder="Amount Consumed"
-										style="width: 100%">
-						</div>
-
+								<select name="tan" id="tan" class="form-control"
+									ng-model="cCctr.search.TAN">
+									<option disabled value="">Select Tan</option>
+									<#list Tan as T>
+									<option value="${T}">${T}</option>
+									</#list>
+								</select>
 					</div>
-					<div class="row">
-						<div class="col-md-3">
+
+					<div class="col-md-3">
+						<h6>
+							<b>Section Code</b>
 							<h6>
-								<b>Nature of Payment</b>
-								<h6>
-									<input type="text" ng-model="cCctr.search.NATURE_OF_PAYMENT"
-										class="form-control" placeholder="Nature of Payment"
-										style="width: 100%">
-						</div>
-						<div class="col-md-3">
+								<select name="tan" id="tan" class="form-control"
+									ng-model="cCctr.search.SECTION_CODE">
+									<option disabled value="">Select Sectionn Code</option>
+									<#list Section as S>
+									<option value="${S}">${S}</option>
+									</#list>
+								</select>
+					</div>
+
+
+				</div>
+				<div class="row">
+					<div class="col-md-3">
+						<h6>
+							<b>LDC Rate</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.LDC_RATE"
+									class="form-control" placeholder="LDC Rate" style="width: 100%">
+					</div>
+
+					<div class="col-md-3">
+						<h6>
+							<b>Certificate Limit</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.CERTIFICATE_LIMIT"
+									class="form-control" placeholder="Certificate Limit"
+									style="width: 100%">
+					</div>
+
+					<div class="col-md-3">
+						<h6>
+							<b>Amount Consumed</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.AMOUNT_CONSUMED"
+									class="form-control" placeholder="Amount Consumed"
+									style="width: 100%">
+					</div>
+
+				</div>
+				<div class="row">
+					<div class="col-md-3">
+						<h6>
+							<b>Nature of Payment</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.NATURE_OF_PAYMENT"
+									class="form-control" placeholder="Nature of Payment"
+									style="width: 100%">
+					</div>
+					<div class="col-md-3">
 						<button class="btn btn-primary " type="button"
-							style="margin-top:11%"
+							style="margin-top: 11%"
 							ng-click="cCctr.generateExcel('apildc/generateExcel/','LDC')">Export
 							to Excel</button>
 					</div>
-					</div>
 				</div>
-				<div class="row text-right" id="hide">
-					<div class="col-md-3" style="margin-left: 75%; margin-top: -35px">
-						<button ng-click="cCctr.searchEntities(true,'ldc','ldc')"
-							class="btn btn-success">Search</button>
-						<button class="btn btn-secondary"
-							style="background-color: #FFA500;" data-toggle="collapse"
-							data-target="#collapseExample4" aria-expanded="false"
-							aria-controls="collapseExample">Advance Search</button>
+			</div>
+			<div class="row text-right" id="hide">
+				<div class="col-md-3" style="margin-left: 75%; margin-top: -35px">
+					<button ng-click="cCctr.searchEntities(true,'ldc','ldc')"
+						class="btn btn-success">Search</button>
+					<button class="btn btn-secondary"
+						style="background-color: #FFA500;" data-toggle="collapse"
+						data-target="#collapseExample4" aria-expanded="false"
+						aria-controls="collapseExample">Advance Search</button>
 
-						<!-- <button class="btn btn-Primary" data-toggle="modal"
+					<!-- <button class="btn btn-Primary" data-toggle="modal"
 					ng-click="cCctr.gotoListPage('addLDC','addLDC');">Add</button> -->
-						<div class="text-right"></div>
-					</div>
+					<div class="text-right"></div>
 				</div>
+			</div>
 
 
-				<div class="row" id="hide">
-					<div class="col-md-3" style="margin-left: 85%; margin-top: -70px">
+			<div class="row" id="hide">
+				<div class="col-md-3" style="margin-left: 85%; margin-top: -70px">
 
-					</div>
 				</div>
+			</div>
 
-				<div class="row" id="search">
-					<div class="col-md-3" id="search">
-						<button ng-click="cCctr.searchEntities(true,'ldc','ldc')"
-							class="btn btn-success">Search</button>
-					</div>
+			<div class="row" id="search">
+				<div class="col-md-3" id="search">
+					<button ng-click="cCctr.searchEntities(true,'ldc','ldc')"
+						class="btn btn-success">Search</button>
 				</div>
 			</div>
 		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="text-right"></div>
+		</div>
+	</div>
+
+	<div class="panel-body" style="margin-left: 0%; width: 107%;">
 
 		<div class="row">
-			<div class="col-xs-12">
-				<div class="text-right"></div>
-			</div>
-		</div>
+			<div class="table-responsive"
+				style="overflow-x: inherit; width: 250%">
+				<table class="tables table-bordered table-hover table-striped"
+					role="table" style="font-size: 12px; padding: 5px; margin: 5px;">
+					<thead>
+					<colgroup>
+						<col span="14" style="background-color: #ffffff">
+					</colgroup>
+					<tr>
+					<thead role="rowgroup">
+						<tr role="row" style="background-color: #81b7db; height: 40px">
+							<th>Sr. No.</th>
+							<th style="width: 0.1%">LDC_NUMBER</th>
+							<th style="width: 0.1%">NAME</th>
+							<th>TAN</th>
+							<th>PAN</th>
+							<th>Financial Year</th>
+							<th>Valid From</th>
+							<th>Valid To</th>
+							<th>Section Code</th>
+							<th style="width: 0.1%">Nature of Payment</th>
+							<th>LDC Rate</th>
+							<th>Certificate Limit</th>
+							<th>Amount Consumed</th>
+							<th>Issue Date</th>
+							<th>Cancel Date</th>
+							<th>As On Date</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr style="color: red"
+							ng-show="cCctr.getEntityListData().length <= 0">
+							<td colspan="20" style="text-align: center;"><b><h3
+										style="text-align: center; text-align-last: 5;">No data
+										found!!</h3></b></td>
+						<tr role="row"
+							ng-repeat="a in ( filteredList =( cCctr.getEntityListData() ) )">
+							<td>{{$index+1}}</td>
+							<td class="ellipsis" data-toggle="tooltip"
+								data-placement="bottom" title="{{a.LDC_NUMBER}}">{{a.LDC_NUMBER}}</td>
+							<td class="ellipsis" data-toggle="tooltip"
+								data-placement="bottom" title="{{a.NAME}}">{{a.NAME}}</td>
+							<td>{{a.TAN}}</td>
+							<td>{{a.PAN}}</td>
+							<td>{{a.FY}}</td>
+							<td>{{a.VALID_FROM | date:'dd-MM-yyyy'}}</td>
+							<td>{{a.VALID_TO | date:'dd-MM-yyyy'}}</td>
+							<td>{{a.SECTION_CODE}}</td>
+							<td class="ellipsis" data-toggle="tooltip"
+								data-placement="bottom" title="{{a.NATURE_OF_PAYMENT}}">{{a.NATURE_OF_PAYMENT}}</td>
+							<td>{{a.LDC_RATE}}</td>
+							<td>{{a.CERTIFICATE_LIMIT}}</td>
+							<td>{{a.AMOUNT_CONSUMED | number : fractionSize}}</td>
+							<td>{{a.ISSUE_DATE | date:'dd-MM-yyyy'}}</td>
+							<td>{{a.CANCEL_DATE}}</td>
+							<td>{{a.AS_ON_DATE | date:'dd-MM-yyyy'}}</td>
 
-		<div class="panel-body" style="margin-left: 0%; width: 107%;">
+							<!-- <td>{{a.total-a.amountPaid}}</td> -->
 
-			<div class="row">
-				<div class="table-responsive" style="overflow-x: inherit;width:250%">
-					<table class="tables table-bordered table-hover table-striped"
-						role="table"
-						style="font-size: 12px;padding: 5px; margin: 5px;">
-						<thead>
-						<colgroup>
-							<col span="14" style="background-color: #ffffff">
-						</colgroup>
+						</tr>
 						<tr>
-						<thead role="rowgroup">
-							<tr role="row" style="background-color: #81b7db;height:40px">
-								<th>Sr. No.</th>
-								<th style="width:0.1%">LDC_NUMBER</th>
-								<th style="width:0.1%">NAME</th>
-								<th>TAN</th>
-								<th>PAN</th>
-								<th>Financial Year</th>
-								<th>Valid From</th>
-								<th>Valid To</th>
-								<th>Section Code</th>
-								<th style="width:0.1%">Nature of Payment</th>
-								<th>LDC Rate</th>
-								<th>Certificate Limit</th>
-								<th>Amount Consumed</th>
-								<th>Issue Date</th>
-								<th>Cancel Date</th>
-								<th>As On Date</th>
-							</tr>
-						</thead>
-						<tbody>
-						<tr style="color: red" ng-show="cCctr.getEntityListData().length <= 0">
-					<td colspan="20" style="text-align: center;"><b><h3 style="text-align:center;text-align-last: 5;">No data
-					found!!</h3></b></td>
-							<tr role="row"
-								ng-repeat="a in ( filteredList =( cCctr.getEntityListData() ) )">
-								<td >{{$index+1}}</td>
-								<td class="ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.LDC_NUMBER}}">{{a.LDC_NUMBER}}</td>
-								<td  class="ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.NAME}}">{{a.NAME}}</td>
-								<td >{{a.TAN}}</td>
-								<td >{{a.PAN}}</td>
-								<td >{{a.FY}}</td>
-								<td >{{a.VALID_FROM | date:'dd-MM-yyyy'}}</td>
-								<td >{{a.VALID_TO | date:'dd-MM-yyyy'}}</td>
-								<td >{{a.SECTION_CODE}}</td>
-								<td class="ellipsis" data-toggle="tooltip" data-placement="bottom" title="{{a.NATURE_OF_PAYMENT}}">{{a.NATURE_OF_PAYMENT}}</td>
-								<td >{{a.LDC_RATE}}</td>
-								<td >{{a.CERTIFICATE_LIMIT}}</td>
-								<td >{{a.AMOUNT_CONSUMED | number : fractionSize}}</td>
-								<td >{{a.ISSUE_DATE | date:'dd-MM-yyyy'}}</td>
-								<td >{{a.CANCEL_DATE}}</td>
-								<td >{{a.AS_ON_DATE | date:'dd-MM-yyyy'}}</td>
+							<th class="one" colspan="12"
+								style="text-align: center; height: 40px" ng-init="ttl=0"><b>TOTAL</b></th>
+							<td class="one"><b>{{ filteredList | sumByKey :
+									'AMOUNT_CONSUMED' | number : fractionSize}}</b></td>
+						</tr>
 
-								<!-- <td>{{a.total-a.amountPaid}}</td> -->
-
-							</tr>
-							<tr>
-							<th class="one" colspan="12" style="text-align: center; height: 40px" ng-init="ttl=0"><b>TOTAL</b></th>
-							<td class="one"><b>{{ filteredList | sumByKey : 'AMOUNT_CONSUMED' | number : fractionSize}}</b></td>
-							</tr>
-
-						</tbody>
-					</table>
-				</div>
+					</tbody>
+				</table>
 			</div>
 		</div>
-
-
-
-
-		<div class="row" ng-show="cCctr.getNoPage() > 0">
-			<div class="row" align="center">
-				<span ng-show="cCctr.currentPage != 1"> <a
-					ng-click="cCctr.getPage(true,'ldc',cCctr.currentPage-1)"><strong>Previous</strong></a>
-				</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.currentPage}}</strong>&nbsp;
-					of &nbsp;<strong>{{cCctr.getNoPage()}}</strong>
-					&nbsp;&nbsp;&nbsp;&nbsp; <span
-					ng-show="cCctr.currentPage != cCctr.getNoPage()"> <a
-						ng-click="cCctr.getPage(true,'ldc',cCctr.currentPage+1)"><strong>Next</strong></a>
-				</span>
-				</span>
-			</div>
-			<form role="form" name="gotoForm">
-				<div class="row" align="center">
-					<span>Go to</span> &nbsp;&nbsp;&nbsp; <input
-						style="width: 70px; text-align: center;" type="number"
-						name="pageNo" ng-model="cCctr.currentPage"
-						ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
-						ng-min="1" ng-max="cCctr.getNoPage()" ng-required="true">
-					&nbsp;&nbsp;&nbsp;
-					<button style="height: 25px;"
-						ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'ldc',cCctr.currentPage)"
-						class="btn btn-primary">Go</button>
-				</div>
-				<div class="row" align="center">
-					<span style="color: red"
-						ng-show="gotoForm.submitted || gotoForm.pageNo.$dirty && gotoForm.pageNo.$invalid">
-						<span class="error" ng-show="gotoForm.pageNo.$error.min">Page
-							No. should not be less than 1.</span> <span class="error"
-						ng-show="gotoForm.pageNo.$error.max">Page No. should not be
-							greater than {{cCctr.getNoPage()}}.</span> <span class="error"
-						ng-show="gotoForm.pageNo.$error.required">Please enter page
-							number.</span>
-					</span>
-				</div>
-			</form>
-		</div>
-
-
 	</div>
-	
-	<script>
-			$(document).ready(function() {
-				$('td').tooltip({
-					selector : '[data-toggle="tooltip"]'
-				});
-			});
-		</script>
+
+
+
+
+	<div class="row" ng-show="cCctr.getNoPage() > 0">
+		<div class="row" align="center">
+			<span ng-show="cCctr.currentPage != 1"> <a
+				ng-click="cCctr.getPage(true,'ldc',cCctr.currentPage-1)"><strong>Previous</strong></a>
+			</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.currentPage}}</strong>&nbsp;
+				of &nbsp;<strong>{{cCctr.getNoPage()}}</strong>
+				&nbsp;&nbsp;&nbsp;&nbsp; <span
+				ng-show="cCctr.currentPage != cCctr.getNoPage()"> <a
+					ng-click="cCctr.getPage(true,'ldc',cCctr.currentPage+1)"><strong>Next</strong></a>
+			</span>
+			</span>
+		</div>
+		<form role="form" name="gotoForm">
+			<div class="row" align="center">
+				<span>Go to</span> &nbsp;&nbsp;&nbsp; <input
+					style="width: 70px; text-align: center;" type="number"
+					name="pageNo" ng-model="cCctr.currentPage"
+					ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
+					ng-min="1" ng-max="cCctr.getNoPage()" ng-required="true">
+				&nbsp;&nbsp;&nbsp;
+				<button style="height: 25px;"
+					ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'ldc',cCctr.currentPage)"
+					class="btn btn-primary">Go</button>
+			</div>
+			<div class="row" align="center">
+				<span style="color: red"
+					ng-show="gotoForm.submitted || gotoForm.pageNo.$dirty && gotoForm.pageNo.$invalid">
+					<span class="error" ng-show="gotoForm.pageNo.$error.min">Page
+						No. should not be less than 1.</span> <span class="error"
+					ng-show="gotoForm.pageNo.$error.max">Page No. should not be
+						greater than {{cCctr.getNoPage()}}.</span> <span class="error"
+					ng-show="gotoForm.pageNo.$error.required">Please enter page
+						number.</span>
+				</span>
+			</div>
+		</form>
+	</div>
+
+
+</div>
+
+<script>
+	$(document).ready(function() {
+		$('td').tooltip({
+			selector : '[data-toggle="tooltip"]'
+		});
+	});
+</script>
 </div>

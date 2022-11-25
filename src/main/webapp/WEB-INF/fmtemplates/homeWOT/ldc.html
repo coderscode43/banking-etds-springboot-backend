@@ -144,17 +144,26 @@ td {
 						<h6>
 							<b>TAN</b>
 							<h6>
-								<input type="text" ng-model="cCctr.search.TAN"
-									class="form-control" placeholder="TAN" style="width: 100%">
+								<select name="tan" id="tan" class="form-control"
+									ng-model="cCctr.search.TAN">
+									<option disabled value="">Select Tan</option>
+									<#list Tan as T>
+									<option value="${T}">${T}</option>
+									</#list>
+								</select>
 					</div>
 
 					<div class="col-md-3">
 						<h6>
 							<b>Section Code</b>
 							<h6>
-								<input type="text" ng-model="cCctr.search.SECTION_CODE"
-									class="form-control" placeholder="Section Code"
-									style="width: 100%">
+								<select name="tan" id="tan" class="form-control"
+									ng-model="cCctr.search.SECTION_CODE">
+									<option disabled value="">Select Sectionn Code</option>
+									<#list Section as S>
+									<option value="${S}">${S}</option>
+									</#list>
+								</select>
 					</div>
 					<div class="col-md-3">
 						<h6>

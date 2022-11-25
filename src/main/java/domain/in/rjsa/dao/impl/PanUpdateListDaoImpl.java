@@ -106,6 +106,16 @@ implements PanUpdateListDao{
 		}
 		return (List<PanUpdateList>) criteria.list();
 	}
+	
+	@Override
+	public PanUpdateList getByPan(String custVendId) {
+		 Map<String, Object> propertyNameValues = new HashMap<String, Object>();
+		propertyNameValues.put("custVendId", custVendId);
+		Criteria crit = createEntityCriteria();
+		crit.add(Restrictions.allEq(propertyNameValues));
+
+		return (PanUpdateList) crit.uniqueResult();
+	}
 
 
 }

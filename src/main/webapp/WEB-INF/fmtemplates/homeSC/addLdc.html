@@ -10,19 +10,22 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>LDC Number*</label> <input class="form-control"
+								<label>LDC Number*</label> <select name="SectionCode"
+									id="SectionCode" class="form-control"
+									ng-model="cCctr.search.SECTION_CODE" class="form-control"
 									type="text" name="LDC_NUMBER" placeholder="LDC Number"
 									ng-model="cCctr.entity.LDC_NUMBER" autocomplete="off"
 									ng-maxlength="100" ng-required="true"
-									ng-model-options="{updateOn: 'blur'}" /> <span
-									style="color: red"
-									ng-show="ldcDetailForm.submitted || ldcDetailForm.LDC_NUMBER.$dirty && ldcDetailForm.LDC_NUMBER.$invalid">
-									<span class="error"
+									ng-model-options="{updateOn: 'blur'}">
+									<option disabled value="">Select Sectionn Code</option>
+									<#list Section as S>
+									<option value="${S}">${S}</option>
+									</#list>
+								</select> <span class="error"
 									ng-show="ldcDetailForm.LDC_NUMBER.$error.maxlength">lowerDeduction
-										should not be greater than 25 digit.</span> <span class="error"
+									should not be greater than 25 digit.</span> <span class="error"
 									ng-show="ldcDetailForm.LDC_NUMBER.$error.required">lowerDeduction
-										is Required.</span>
-								</span>
+									is Required.</span> </span>
 
 							</div>
 						</div>
@@ -97,8 +100,7 @@
 									<option value="200708">200708</option>
 								</select> <span style="color: red"
 									ng-show="ldcDetailForm.submitted ||ldcDetailForm.FY.$dirty && ldcDetailForm.FY.$invalid">
-									<span class="error"
-									ng-show="ldcDetailForm.FY.$error.required">Financial
+									<span class="error" ng-show="ldcDetailForm.FY.$error.required">Financial
 										Year is Required.</span>
 								</span> <span class="error" id="FY"></span> </span>
 
@@ -136,8 +138,8 @@
 									<span class="error"
 									ng-show="ldcDetailForm.VALID_TO.$error.pattern">Please
 										enter valid Date Of Birth. </span> <span class="error"
-									ng-show="ldcDetailForm.VALID_TO.$error.maxlength">Date Of
-										Birth should not be greater than 10 digits.</span>
+									ng-show="ldcDetailForm.VALID_TO.$error.maxlength">Date
+										Of Birth should not be greater than 10 digits.</span>
 
 								</span> <span class="error" id="VALID_TO"></span>
 							</div>
@@ -204,7 +206,8 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Certificate Limit</label> <input class="form-control"
-									type="text" name="CERTIFICATE_LIMIT" placeholder="Certificate limit"
+									type="text" name="CERTIFICATE_LIMIT"
+									placeholder="Certificate limit"
 									ng-model="cCctr.entity.CERTIFICATE_LIMIT" autocomplete="off"
 									ng-maxlength="100" ng-pattern=""
 									ng-model-options="{updateOn: 'blur'}" />

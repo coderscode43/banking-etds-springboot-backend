@@ -224,8 +224,13 @@
 						<h6>
 							<b>TAN</b>
 							<h6>
-								<input type="text" ng-model="cCctr.search.TAN"
-									class="form-control" placeholder="TAN" style="width: 100%">
+								<select name="tan" id="tan" class="form-control"
+									ng-model="cCctr.search.TAN">
+									<option disabled value="">Select Tan</option>
+									<#list Tan as T>
+									<option value="${T}">${T}</option>
+									</#list>
+								</select>
 					</div>
 					<div class="col-md-3">
 						<button class="btn btn-primary " type="button"

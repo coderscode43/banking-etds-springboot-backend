@@ -210,8 +210,13 @@ text-align:center;
 						<h6>
 							<b>TAN</b>
 							<h6>
-								<input type="text" ng-model="cCctr.search.TAN"
-									class="form-control" placeholder="TAN" style="width: 100%">
+								<select name="tan" id="tan" class="form-control"
+									ng-model="cCctr.search.TAN">
+									<option disabled value="">Select Tan</option>
+									<#list Tan as T>
+									<option value="${T}">${T}</option>
+									</#list>
+								</select>
 					</div>
 					<div class="col-md-3">
 						<button class="btn btn-primary " type="button"
@@ -354,7 +359,7 @@ text-align:center;
 				</thead>
 			<tbody>
 					<tr style="color: red" ng-show="cCctr.getEntityListDataFY().length <= 0">
-                    	<td colspan="20" style="text-align: center;"><b><h3 style="text-align:center;text-align-last: 5;">No data
+                    	<td colspan="21" style="text-align: center;"><b><h3 style="text-align:center;text-align-last: 5;">No data
                     found!!</h3></b></td>
                     <td colspan="20" style="text-align: center;"><b><h3 style="text-align:center;text-align-last: 5;margin-right: -100%;">
                     </h3></b></td>

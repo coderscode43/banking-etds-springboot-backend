@@ -22,6 +22,7 @@ public class StaticData {
 	public static String ClientName =null;
 	public static String ClientPAN =null;
 	public static String[] Tan =null;
+	public static String[] Section =null;
 	public static String CertificatePath =null;
 	/* public static String[] ChallanMismatch =null; */
 	//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXSAYALI

@@ -8,9 +8,12 @@ import java.util.Map;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.ProjectionList;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
+
+import com.ibm.icu.util.BytesTrie.Iterator;
 
 import domain.in.rjsa.dao.AbstractDaoForm;
 import domain.in.rjsa.dao.TicketDao;
@@ -178,6 +181,31 @@ public class TicketDaoImpl extends AbstractDaoForm<Long, Ticket> implements Tick
 		}
 		criteria.addOrder(Order.desc("dateOfOpening"));
 		return (List<Ticket>) criteria.list();
+	}
+	
+	
+	public Map<String,Long> getStatusCounts(Long branchCode, boolean isAdmin) {
+		
+		
+		Criteria criteria = createEntityCriteria();
+	    ProjectionList projectionList = Projections.projectionList();
+	    projectionList.add(Projections.groupProperty("status"));
+	    projectionList.add(Projections.rowCount());
+	    criteria.setProjection(projectionList);
+	    if(!isAdmin) {
+	    	criteria.add(Restrictions.eqOrIsNull("branchCode", branchCode));;
+	    }
+	    List results = criteria.list();
+	    Map<String,Long> hashMap = new HashMap();
+	    java.util.Iterator it =  results.iterator();
+	    while(it.hasNext()) {
+	    	Object[] obj = (Object[]) it.next();
+	    	String status = obj[0].toString();
+	    	Long count = Long.valueOf(obj[1].toString());
+	    	hashMap.put(status,count);
+	    }
+	    
+	    return hashMap;
 	}
 
 }

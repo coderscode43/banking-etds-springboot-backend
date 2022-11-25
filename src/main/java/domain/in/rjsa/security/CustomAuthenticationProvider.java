@@ -24,7 +24,7 @@ public class CustomAuthenticationProvider extends AbstractUserDetailsAuthenticat
 	@Autowired
 	@Qualifier("customUserDetailsService")
 	UserDetailsService userDetailsService;
-	private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+	//private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 	private volatile String userNotFoundEncodedPassword;
 
 	@Override
@@ -47,7 +47,7 @@ public class CustomAuthenticationProvider extends AbstractUserDetailsAuthenticat
 
 		String presentedPassword = authentication.getCredentials().toString();
 
-		if (!passwordEncoder.matches(presentedPassword, userDetails.getPassword())) {
+		if (!presentedPassword.equals(userDetails.getPassword())) {
 			logger.debug("Authentication failed: password does not match stored value");
 
 			throw new BadCredentialsException(
@@ -80,15 +80,15 @@ public class CustomAuthenticationProvider extends AbstractUserDetailsAuthenticat
 
 	private void prepareTimingAttackProtection() {
 		if (this.userNotFoundEncodedPassword == null) {
-			this.userNotFoundEncodedPassword = this.passwordEncoder.encode(USER_NOT_FOUND_PASSWORD);
+			this.userNotFoundEncodedPassword = USER_NOT_FOUND_PASSWORD;
 		}
 	}
 
-	private void mitigateAgainstTimingAttack(UsernamePasswordAuthenticationToken authentication) {
-		if (authentication.getCredentials() != null) {
-			String presentedPassword = authentication.getCredentials().toString();
-			this.passwordEncoder.matches(presentedPassword, this.userNotFoundEncodedPassword);
-		}
-	}
+//	private void mitigateAgainstTimingAttack(UsernamePasswordAuthenticationToken authentication) {
+//		if (authentication.getCredentials() != null) {
+//			String presentedPassword = authentication.getCredentials().toString();
+//			this.passwordEncoder.matches(presentedPassword, this.userNotFoundEncodedPassword);
+//		}
+//	}
 
 }

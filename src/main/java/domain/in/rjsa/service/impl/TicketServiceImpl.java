@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -138,5 +139,10 @@ public String ExcelFile;
 			e1.printStackTrace();
 		}
 
+	}
+	@Override
+	public Map<String, Long> getStatusDetails(Long branchCode, boolean isAdmin) {
+		// TODO Auto-generated method stub
+		return dao.getStatusCounts(branchCode, isAdmin);
 	}
 }

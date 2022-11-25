@@ -1,3 +1,32 @@
+<style>
+	.pushable {
+	background: hsl(205.3, 80.4%, 56.1%, 0.84);
+	border-radius: 12px;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	outline-offset: 4px;
+}
+
+.front {
+	display: block;
+	padding: 7px 14px;
+	border-radius: 12px;
+	font-size: 1.45rem;
+	background: hsl(205.3, 80.4%, 56.1%);
+	color: white;
+	transform: translateY(-6px);
+}
+
+.pushable:active .front {
+	transform: translateY(-2px);
+}
+
+.front:hover {
+	background: hsl(205.2, 80.7%, 42.7%);
+}
+</style>
+
 <br>
 <div id="page-wrapper">
 	<div class="container-fluid">
@@ -279,11 +308,18 @@
 					</div>
 					<div class="row">
 						<div class="modal-footer">
-							<button
-								ng-click="formBranchDetails.submitted=true;cCctr.submit(formBranchDetails.$valid,cCctr.entity,'branch')"
-								class="btn btn-success">Save</button>
-							<button ng-click="cCctr.gotoListPage('branch','branch')"
-								class="btn btn-danger" onclick="scrollWin(/'branch'/)">Back</button>
+							
+								<button class="pushable"
+										style="background: hsl(224.9, 87.1%, 39.4%, 0.59); margin-top: 2%;"
+										ng-click="formBranchDetails.submitted=true;cCctr.submit(formBranchDetails.$valid,cCctr.entity,'branch')">
+										<span class="front"
+											style="background: hsl(224.9, 87.1%, 39.4%);"> Save</span>
+									</button>
+									<button class="pushable"
+										style="background: hsl(0, 0.7%, 71.2%, 0.53); margin-top: 2%;"
+										ng-click="cCctr.gotoListPage('branch','branch')"onclick="scrollWin(/'branch'/)">
+										<span class="front" style="background: hsl(240, 0.4%, 48.8%);">Back</span>
+									</button>
 						</div>
 					</div>
 				</form>

@@ -1,4 +1,31 @@
+<style>
+.pushable {
+	background: hsl(205.3, 80.4%, 56.1%, 0.84);
+	border-radius: 12px;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	outline-offset: 4px;
+}
 
+.front {
+	display: block;
+	padding: 7px 14px;
+	border-radius: 12px;
+	font-size: 1.45rem;
+	background: hsl(205.3, 80.4%, 56.1%);
+	color: white;
+	transform: translateY(-6px);
+}
+
+.pushable:active .front {
+	transform: translateY(-2px);
+}
+
+.front:hover {
+	background: hsl(205.2, 80.7%, 42.7%);
+}
+</style>
 <div id="page-wrapper">
 	<div class="container">
 		<div class="col-md-12 "
@@ -27,7 +54,7 @@
 					<div class="row">
 						<div class="col-md-4">
 							<div>
-								<label style="font-size: 15px">Form</label>
+								<label style="font-size: 15px">Form*</label>
 								<div>
 									<select name="form" id="form" ng-model="cCctr.entity.form"
 										class="form-control" required>
@@ -51,7 +78,7 @@
 
 						<div class="col-md-4">
 							<div>
-								<label style="font-size: 15px">Financial Year</label> <select
+								<label style="font-size: 15px">Financial Year*</label> <select
 									class="form-control" id="fy" name="fy"
 									ng-model="cCctr.entity.fy" ng-required="true">
 									<option disabled value="">Select financial Year</option>
@@ -69,7 +96,7 @@
 						</div>
 						<div class="col-md-4">
 							<div>
-								<label style="font-size: 15px">Quarter</label> <select
+								<label style="font-size: 15px">Quarter*</label> <select
 									class="form-control" id="quarter" name="quarter"
 									ng-model="cCctr.entity.quarter" ng-required="true">
 									<option disabled value="">Select Quarter</option>
@@ -88,7 +115,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div style="margin-left: 0%">
-								<label style="font-size: 15px">Branch Code</label> <input
+								<label style="font-size: 15px">Branch Code*</label> <input
 									class="form-control" name="branchCode" id="branchCode"
 									ng-model="cCctr.entity.branchCode" placeholder="Branch Code"
 									ng-required="true">
@@ -118,7 +145,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="">
-								<label style="font-size: 15px">Description</label>
+								<label style="font-size: 15px">Description*</label>
 								<textarea class="form-control" name="description"
 									id="description" ng-model="cCctr.entity.description"
 									style="width: 100%;" required></textarea>
@@ -147,11 +174,21 @@
 
 
 					<div class="modal-footer" style="text-align: center">
-						<button
-							ng-click="fileForm.submitted=true;cCctr.submit(fileForm.$valid,cCctr.entity,'ticket')"
-							class="btn btn-success" data-dismiss="modal">Add</button>
-						<button class="btn btn-danger"
-							ng-click="cCctr.gotoListPage('ticket','ticket');">Back</button>
+
+						<button class="pushable"
+							style="background: hsl(115.5, 77.1%, 30.8%, 0.54); margin-top: 2%;" data-dismiss="modal"
+							ng-click="fileForm.submitted=true;cCctr.submit(fileForm.$valid,cCctr.entity,'ticket')">
+							<span class="front" style="background: hsl(115.5, 77.1%, 30.8%);">
+								Add</span>
+						</button>
+						<button class="pushable"
+							style="background: hsl(11.2, 81.2%, 37.5%, 0.53); margin-top: 2%;"
+							ng-click="cCctr.gotoListPage('ticket','ticket');">
+							<span class="front" style="background: hsl(11.2, 81.2%, 37.5%);">
+								Back</span>
+						</button>
+
+
 					</div>
 
 

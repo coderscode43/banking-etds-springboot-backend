@@ -91,9 +91,37 @@
 		visibility: visible;
 	}
 }
+
+.pushable {
+	background: hsl(205.3, 80.4%, 56.1%, 0.84);
+	border-radius: 12px;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	outline-offset: 4px;
+}
+
+.front {
+	display: block;
+	padding: 7px 14px;
+	border-radius: 12px;
+	font-size: 1.45rem;
+	background: hsl(205.3, 80.4%, 56.1%);
+	color: white;
+	transform: translateY(-6px);
+}
+
+.pushable:active .front {
+	transform: translateY(-2px);
+}
+
+.front:hover {
+	background: hsl(205.2, 80.7%, 42.7%);
+}
 </style>
 
-<div id="page-wrapper" ng-init="cCctr.entity.roDetails=cCctr.getEntityData().roDetails">
+<div id="page-wrapper"
+	ng-init="cCctr.entity.roDetails=cCctr.getEntityData().roDetails">
 	<div class="container-fluid">
 
 		<div ng-show="cCctr.show != true">
@@ -109,10 +137,20 @@
 
 					<div class="row">
 						<div class="col-md-6">
-							<button class="btn btn-primary" data-toggle="modal"
-								onclick="test('#profile')">Edit</button>
-							<button class="btn btn-primary" data-toggle="modal"
-								ng-click="cCctr.gotoListPage('RODetails','RODetails')">Back</button>
+							<button class="pushable"
+								style="background: hsl(205.3, 80.4%, 56.1%, 0.61);"
+								data-toggle="modal" onclick="test('#profile')">
+								<span class="front"
+									style="background: hsl(205.3, 80.4%, 56.1%);"><i
+									class="fa fa-edit" aria-hidden="true"></i>&nbsp;&nbsp;Edit</span>
+							</button>
+
+							<button class="pushable"
+								style="background: hsl(0, 0%, 4.7%, 0.45);"
+								ng-click="cCctr.gotoListPage('RODetails','RODetails')">
+								<span class="front" style="background: hsl(0, 0%, 4.7%);"><i
+									class="fa fa-arrow-left" aria-hidden="true"></i> Back</span>
+							</button>
 						</div>
 					</div>
 					<br> <br>
@@ -121,232 +159,257 @@
 						<div class="collapse dont-collapse-sm" id="collapseExample2">
 							<div class="row" style="font-size: 13px;">
 								<div class="col-md-2">
-									<label>RO Code &nbsp;</label></div><div class="col-md-4">:
-									{{cCctr.entity.roDetails.roCode}}
+									<label>RO Code &nbsp;</label>
+								</div>
+								<div class="col-md-4">: {{cCctr.entity.roDetails.roCode}}
 								</div>
 								<div class="col-md-2">
-									<label>RO Name. &nbsp;</label></div><div class="col-md-4">:
-									 {{cCctr.entity.roDetails.roName}}
+									<label>RO Name. &nbsp;</label>
+								</div>
+								<div class="col-md-4">: {{cCctr.entity.roDetails.roName}}
 								</div>
 							</div>
 
 							<div class="row" style="font-size: 13px;">
 								<div class="col-md-2">
-									<label>RO Address &nbsp;</label></div><div class="col-md-4">:
-									{{cCctr.entity.roDetails.roAddress}}
+									<label>RO Address &nbsp;</label>
 								</div>
+								<div class="col-md-4">:
+									{{cCctr.entity.roDetails.roAddress}}</div>
 
 								<div class="col-md-2">
-									<label>RO Email &nbsp;</label></div><div class="col-md-4">:
-									 {{cCctr.entity.roDetails.roEmail}}
+									<label>RO Email &nbsp;</label>
+								</div>
+								<div class="col-md-4">: {{cCctr.entity.roDetails.roEmail}}
 								</div>
 							</div>
 
 							<div class="row" style="font-size: 13px;">
 								<div class="col-md-2">
-									<label>RO State &nbsp;</label></div><div class="col-md-4">:
-									{{cCctr.entity.roDetails.roState}}
+									<label>RO State &nbsp;</label>
+								</div>
+								<div class="col-md-4">: {{cCctr.entity.roDetails.roState}}
 								</div>
 								<div class="col-md-2">
-									<label>RO Pincode &nbsp;</label></div><div class="col-md-4">:
-									 {{cCctr.entity.roDetails.roPincode }}
+									<label>RO Pincode &nbsp;</label>
 								</div>
+								<div class="col-md-4">: {{cCctr.entity.roDetails.roPincode
+									}}</div>
 							</div>
 
 						</div>
 					</div>
-				
-				<div>
-						<div class="table-responsive" style="overflow-x: inherit">	
-			<table class=" table table-bordered table-hover table-striped"
-	role="table"
-	style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
-	<thead>
-	<colgroup>
-		<col span="14" style="background-color: #ffffff">
-	</colgroup>
-	<tr>
-	<thead role="rowgroup">
-		<tr style="height: 40px; background-color: #81b7db">
-			<th>Sr. No.</th>
-			<th>Branch Code</th>
-			<th>Branch Name</th>
-			<th>Action</th>
-			
-		</tr>
-	</thead>
-	
-		<tr ng-repeat="a in cCctr.getEntityData().branch">
-			<td>{{$index+1}}</td>
-			<td>{{a.branchCode}}</td>
-			<td>{{a.branchName}}</td>
-			<td><a ng-click="cCctr.gotoDetailPage('branch',a.id,'roBranchDetail')"
-								style="color: blue"><img src="static\img\edit.png"
-									width="22px" height="22px" alt="Details"
-									style="margin-top: 5px; margin-bottom: 5px;" /></a></td>
-			
-			
-		</tr>
-	</tbody>
 
-</table>
-</div>
-	
-			</div>
-			
-				<div id="profile" class="modal fade" role="dialog">
-					<div class="modal-dialog modal-lg">
-						<!-- Modal content-->
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" id="closeU"
-									data-dismiss="modal">&times;</button>
-								<h4 class="modal-title">Edit RO Details</h4>
-							</div>
-							<div class="modal-body">
+					<div>
+						<div class="table-responsive" style="overflow-x: inherit">
+							<table class=" table table-bordered table-hover table-striped"
+								role="table"
+								style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+								<thead>
+								<colgroup>
+									<col span="14" style="background-color: #ffffff">
+								</colgroup>
+								<tr>
+								<thead role="rowgroup">
+									<tr style="height: 40px; background-color: #81b7db">
+										<th>Sr. No.</th>
+										<th>Branch Code</th>
+										<th>Branch Name</th>
+										<th>Action</th>
 
-								<div id="myTabContent" class="tab-content">
-									<div class="tab-pane fade active in" id="signin">
-										<form name="profileForm" class="form-horizontal"
-											enctype="multipart/form-data">
-											<div class="row">
-												<div class="col-md-6">
-													<label style="font-size:12px;">ROCode*</label> <input class="form-control"
-														type="text" name="roCode" placeholder="RO Code"
-														ng-model="cCctr.entity.roDetails.roCode" ng-required="true"
-														ng-maxlength="10" ng-pattern="/^[a-zA-Z0-9]*$/"
-														ng-model-options="{updateOn: 'blur'}" /> <span
-														style="color: red"
-														ng-show="profileForm.submitted || profileForm.roCode.$dirty && profileForm.roCode.$invalid">
-														<span class="error"
-														ng-show="profileForm.roCode.$error.pattern">Enter
-															valid Ro Code </span> <span class="error"
-														ng-show="profileForm.roCode.$error.maxlength">RO
-															Code should not be greater than 10 characters. </span> <span
-														class="error" ng-show="profileForm.roCode.$error.required">RO
-															Code is Required. </span>
-													</span>
+									</tr>
+								</thead>
+
+								<tr ng-repeat="a in cCctr.getEntityData().branch">
+									<td>{{$index+1}}</td>
+									<td>{{a.branchCode}}</td>
+									<td>{{a.branchName}}</td>
+									<td><a
+										ng-click="cCctr.gotoDetailPage('branch',a.id,'roBranchDetail')"
+										style="color: blue"><img src="static\img\edit.png"
+											width="22px" height="22px" alt="Details"
+											style="margin-top: 5px; margin-bottom: 5px;" /></a></td>
+
+
+								</tr>
+								</tbody>
+
+							</table>
+						</div>
+
+					</div>
+
+					<div id="profile" class="modal fade" role="dialog">
+						<div class="modal-dialog modal-lg">
+							<!-- Modal content-->
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" id="closeU"
+										data-dismiss="modal">&times;</button>
+									<h4 class="modal-title">Edit RO Details</h4>
+								</div>
+								<div class="modal-body">
+
+									<div id="myTabContent" class="tab-content">
+										<div class="tab-pane fade active in" id="signin">
+											<form name="profileForm" class="form-horizontal"
+												enctype="multipart/form-data">
+												<div class="row">
+													<div class="col-md-6">
+														<label style="font-size: 12px;">ROCode*</label> <input
+															class="form-control" type="text" name="roCode"
+															placeholder="RO Code"
+															ng-model="cCctr.entity.roDetails.roCode"
+															ng-required="true" ng-maxlength="10"
+															ng-pattern="/^[a-zA-Z0-9]*$/"
+															ng-model-options="{updateOn: 'blur'}" /> <span
+															style="color: red"
+															ng-show="profileForm.submitted || profileForm.roCode.$dirty && profileForm.roCode.$invalid">
+															<span class="error"
+															ng-show="profileForm.roCode.$error.pattern">Enter
+																valid Ro Code </span> <span class="error"
+															ng-show="profileForm.roCode.$error.maxlength">RO
+																Code should not be greater than 10 characters. </span> <span
+															class="error"
+															ng-show="profileForm.roCode.$error.required">RO
+																Code is Required. </span>
+														</span>
+													</div>
+
+													<div class="col-md-6">
+
+														<label style="font-size: 12px;">ROName*</label> <input
+															class="form-control" type="text" name="roName"
+															placeholder="RO Name" ng-required="true"
+															ng-model="cCctr.entity.roDetails.roName"
+															ng-model-options="{updateOn: 'blur'}"
+															ng-pattern="/^[a-zA-Z0-9]*$/" ng-maxlength="20" />
+														<span style="color: red"
+															ng-show="profileForm.submitted || profileForm.roName.$dirty && profileForm.roName.$invalid">
+															<span class="error"
+															ng-show="profileForm.roName.$error.pattern">Please
+																enter valid Ro Name. </span> <span class="error"
+															ng-show="profileForm.roName.$error.maxlength"> Ro
+																Name. should not be greater than 20 characters.</span> <span
+															class="error"
+															ng-show="profileForm.roName.$error.required"> RO
+																Name. is Required.</span>
+														</span>
+													</div>
 												</div>
 
-												<div class="col-md-6">
+												<div class="row">
+													<div class="col-md-6">
 
-													<label style="font-size:12px;">ROName*</label> <input class="form-control"
-														type="text" name="roName" placeholder="RO Name"
-														ng-required="true" ng-model="cCctr.entity.roDetails.roName"
-														ng-model-options="{updateOn: 'blur'}"
-														ng-pattern="/^[a-zA-Z0-9]*$/" ng-maxlength="20"
-														 /> <span style="color: red"
-														ng-show="profileForm.submitted || profileForm.roName.$dirty && profileForm.roName.$invalid">
-														<span class="error"
-														ng-show="profileForm.roName.$error.pattern">Please
-															enter valid Ro Name. </span> <span class="error"
-														ng-show="profileForm.roName.$error.maxlength"> Ro
-															Name. should not be greater than 20 characters.</span> <span
-														class="error" ng-show="profileForm.roName.$error.required">
-															RO Name. is Required.</span>
-													</span>
+														<label style="font-size: 12px;">RO Address*</label>
+														<textarea class="form-control" type="text"
+															name="roAddress" placeholder="Pan Reference No."
+															ng-required="true"
+															ng-model="cCctr.entity.roDetails.roAddress"
+															ng-model-options="{updateOn: 'blur'}" /></textarea>
+														<span style="color: red"
+															ng-show="profileForm.submitted || profileForm.roAddress.$dirty && profileForm.roAddress.$invalid">
+															<span class="error"
+															ng-show="profileForm.roAddress.$error.required">RO
+																Address is Required.</span>
+														</span>
+													</div>
+
+													<div class="col-md-6">
+
+														<label style="font-size: 12px;">ROEmail*</label> <input
+															class="form-control" type="text" name="roEmail"
+															placeholder="RO Email" ng-required="true"
+															ng-model="cCctr.entity.roDetails.roEmail"
+															ng-required="true" style="text-transform: lowercase"
+															ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
+															ng-model-options="{updateOn: 'blur'}" /> <span
+															style="color: red"
+															ng-show="profileForm.submitted || profileForm.roEmail.$dirty && profileForm.roEmail.$invalid">
+															<span class="error"
+															ng-show="profileForm.roEmail.$error.pattern">Please
+																enter valid Email Id. </span> <span class="error"
+															ng-show="profileForm.roEmail.$error.required">Email
+																Id is Required.</span>
+														</span>
+													</div>
 												</div>
-											</div>
+												<div class="row">
+													<div class="col-md-6">
+														<label style="font-size: 12px;">ROState*</label> <select
+															class="form-control" type="text" name="roState"
+															placeholder="RO State" ng-required="true"
+															ng-model="cCctr.entity.roDetails.roState"
+															ng-model-options="{updateOn: 'blur'}">
+															<option disabled value="">Select State</option>
+															<#list State as state>
+															<option value="${state}">${state}</option>
+															</#list>
+														</select> <span style="color: red"
+															ng-show="profileForm.submitted || profileForm.roState.$dirty && profileForm.roState.$invalid">
+															<span class="error"
+															ng-show="profileForm.roState.$error.pattern">Please
+																enter valid State. </span> <span class="error"
+															ng-show="profileForm.roState.$error.maxlength">State
+																should not be greater than 45 characters.</span> <span
+															class="error"
+															ng-show="profileForm.roState.$error.required">State
+																is Required.</span>
+														</span> <span class="error" id="roState"></span>
 
-											<div class="row">
-												<div class="col-md-6">
+													</div>
 
-													<label style="font-size:12px;">RO Address*</label>
-													<textarea class="form-control" type="text" name="roAddress"
-														placeholder="Pan Reference No." ng-required="true"
-														ng-model="cCctr.entity.roDetails.roAddress"
-														ng-model-options="{updateOn: 'blur'}" /></textarea>
-													<span style="color: red"
-														ng-show="profileForm.submitted || profileForm.roAddress.$dirty && profileForm.roAddress.$invalid">
-														<span class="error"
-														ng-show="profileForm.roAddress.$error.required">RO
-															Address is Required.</span>
-													</span>
+													<div class="col-md-6">
+
+														<label style="font-size: 12px;">ROPincode*</label> <input
+															class="form-control" type="text" name="roPincode"
+															ng-required="true" placeholder="ROPincode"
+															ng-model="cCctr.entity.roDetails.roPincode" ng-pattern=""
+															ng-model-options="{updateOn: 'blur'}" /> <span
+															style="color: red" ng-required="true"
+															ng-pattern="/^[0-9]{6}$/"
+															ng-show="profileForm.submitted || profileForm.roPincode.$dirty && profileForm.roPincode.$invalid">
+															<span class="error"
+															ng-show="profileForm.roPincode.$error.pattern">Please
+																enter valid RO Pincode </span> <span class="error"
+															ng-show="profileForm.roPincode.$error.required">RO
+																Pincode is Required.</span>
+														</span>
+
+													</div>
 												</div>
+												<br> <br>
+												<div class="row">
+													<div class="col-md-12" style="text-align: right">
 
-												<div class="col-md-6">
+														<button class="pushable"
+															style="background: hsl(224.9, 87.1%, 39.4%, 0.59); margin-top: 2%;"
+															data-dismiss="modal"
+															ng-click="profileForm.submitted=true;cCctr.updateData(profileForm.$valid,cCctr.entity.roDetails,'RODetails')">
+															<span class="front"
+																style="background: hsl(224.9, 87.1%, 39.4%);">
+																Update</span>
+														</button>
+														<button class="pushable"
+															style="background: hsl(0, 0.7%, 71.2%, 0.53); margin-top: 2%;"
+															data-dismiss="modal">
+															<span class="front"
+																style="background: hsl(240, 0.4%, 48.8%);">Close</span>
+														</button>
 
-													<label style="font-size:12px;">ROEmail*</label> <input class="form-control"
-														type="text" name="roEmail" placeholder="RO Email"
-														ng-required="true" ng-model="cCctr.entity.roDetails.roEmail"
-														ng-required="true"style="text-transform:lowercase"
-														ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
-														ng-model-options="{updateOn: 'blur'}" /> <span
-														style="color: red"
-														ng-show="profileForm.submitted || profileForm.roEmail.$dirty && profileForm.roEmail.$invalid">
-														<span class="error"
-														ng-show="profileForm.roEmail.$error.pattern">Please
-															enter valid Email Id. </span> <span class="error"
-														ng-show="profileForm.roEmail.$error.required">Email
-															Id is Required.</span>
-													</span>
+													</div>
 												</div>
-											</div>
-											<div class="row">
-												<div class="col-md-6">
-													<label style="font-size:12px;">ROState*</label> <select class="form-control"
-														type="text" name="roState" placeholder="RO State"
-														ng-required="true" ng-model="cCctr.entity.roDetails.roState"
-														ng-model-options="{updateOn: 'blur'}">
-														<option disabled value="">Select State</option>
-														<#list State as state>
-														<option value="${state}">${state}</option>
-														</#list>
-													</select> <span style="color: red"
-														ng-show="profileForm.submitted || profileForm.roState.$dirty && profileForm.roState.$invalid">
-														<span class="error"
-														ng-show="profileForm.roState.$error.pattern">Please
-															enter valid State. </span> <span class="error"
-														ng-show="profileForm.roState.$error.maxlength">State
-															should not be greater than 45 characters.</span> <span
-														class="error"
-														ng-show="profileForm.roState.$error.required">State
-															is Required.</span>
-													</span> <span class="error" id="roState"></span>
-
-												</div>
-
-												<div class="col-md-6">
-
-													<label style="font-size:12px;">ROPincode*</label> <input class="form-control"
-														type="text" name="roPincode" ng-required="true"
-														placeholder="ROPincode" ng-model="cCctr.entity.roDetails.roPincode"
-														ng-pattern="" ng-model-options="{updateOn: 'blur'}" /> <span
-														style="color: red" ng-required="true"
-														ng-pattern="/^[0-9]{6}$/"
-														ng-show="profileForm.submitted || profileForm.roPincode.$dirty && profileForm.roPincode.$invalid">
-														<span class="error"
-														ng-show="profileForm.roPincode.$error.pattern">Please
-															enter valid RO Pincode </span>
-														<span
-														class="error"
-														ng-show="profileForm.roPincode.$error.required">RO
-															Pincode is Required.</span>
-													</span> 
-
-												</div>
-											</div>
-											<br> <br>
-											<div class="row">
-												<div class="col-md-12" style="text-align:right">
-													<button type="submit" class="btn btn-primary"
-														ng-click="profileForm.submitted=true;cCctr.updateData(profileForm.$valid,cCctr.entity.roDetails,'RODetails')">Update
-													</button>
-													<button type="button" class="btn btn-secondary"
-														data-dismiss="modal">Close</button>
-												</div>
-											</div>
-										</form>
+											</form>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+
 					</div>
 
 				</div>
 
 			</div>
-
 		</div>
 	</div>
-</div>

@@ -1,11 +1,14 @@
 <style>
+
+
 #popup {
-	width: 38%;
-	position: absolute;
-	top: 30%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	box-shadow: 2px 2px 5px 3px white;
+width: 60%;
+position: fixed;
+top: 10%;
+left: 22%;
+transform: translate(-50%, -50%);
+box-shadow: 2px 2px 5px 3px white;
+
 }
 
 .opacity-animate4 {
@@ -13,198 +16,22 @@
 	animation-fill-mode: forwards
 }
 
-@
-keyframes opt-animation4 { 0% {
+@keyframes opt-animation4 {
+ 0% {
 	transform: scale(0) rotate(360deg);
-}
+	}
 
 60%{
-transform
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:scale
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(0
-.8
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-)
-rotate
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(-10
-deg
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-);
+transform:scale(1) rotate(-10deg);
 }
 100%{
-transform
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:scale(1)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-rotate
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(0
-deg
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-);
+transform: scale(1) rotate(0deg);
 }
+}
+#forpo{
+position: relative;
+right:230px;
+
 }
 .fade {
 	transition: opacity 0.3s;
@@ -212,7 +39,7 @@ deg
 	opacity: 1;
 }
 
-h4 {
+h5 {
 	border: 1px solid #ccc;
 	padding: 0.01em 16px;
 	border-radius: 16px;
@@ -220,9 +47,19 @@ h4 {
 
 .red {
 	box-sizing: border-box;
-	background-color: rgba(128, 0, 0, 0.9);
-	border: 1px solid rgba(128, 0, 0, 0.9);
+	background-color: rgba(128, 0, 0, 1);
+	border: 1px solid rgba(128, 0, 0, 1);
 	box-shadow: 0 3px 5px 3px rgba(0, 0, 0, 0.5);
+	color: white;
+}
+
+.red1:hover {
+	box-sizing: border-box;
+	background-color: rgba(200, 0, 0, 1);
+	border: 1px solid rgba(200, 0, 0, 1);
+	box-shadow: 0 3px 5px 3px rgba(0, 0, 0, 0.5);
+	font-size:20px;
+	font-weight:bold;
 	color: white;
 }
 
@@ -231,6 +68,15 @@ h4 {
 	background-color: rgba(0, 128, 0, 0.9);
 	border: 1px solid rgba(0, 128, 0, 0.9);
 	box-shadow: 0 3px 5px 3px rgba(0, 0, 0, 0.5);
+    color: white;
+}
+.green1:hover {
+	box-sizing: border-box;
+	background-color: rgba(0, 180, 0, 0.9);
+	border: 1px solid rgba(0, 180, 0, 0.9);
+	box-shadow: 0 3px 5px 3px rgba(0, 0, 0, 0.5);
+	font-size:20px;
+	font-weight:bold;
 	color: white;
 }
 
@@ -239,6 +85,15 @@ h4 {
 	background-color: rgba(0, 0, 128, 0.9);
 	border: 1px solid rgba(0, 0, 128, 0.9);
 	box-shadow: 0 3px 5px 3px rgba(0, 0, 0, 0.5);
+	color: white;
+}
+.blue1:hover {
+	box-sizing: border-box;
+	background-color: rgba(0, 0, 180, 0.9);
+	border: 1px solid rgba(0, 0, 180, 0.9);
+	box-shadow: 0 3px 5px 3px rgba(0, 0, 0, 0.5);
+	font-size:20px;
+	font-weight:bold;
 	color: white;
 }
 </style>
@@ -257,7 +112,7 @@ h4 {
 				backdrop : 'static',
 				keyboard : false
 			})
-		}, 2000);
+		}, 10000);
 	});
 	$(".submitId").click(function() {
 		$(".POPmain").css("display", "none");
@@ -289,47 +144,59 @@ h4 {
 </script>
 
 
+
 <div class="container">
 
-	<div class="POPmain myModal mobile " style="z-index: 99999">
-		<div class="modal-dialog modal-lg opacity-animate4 fade" id="popup">
+	<div class="POPmain myModal mobile fade" >
+		<div class="modal-dialog modal-lg opacity-animate4  fade" id="popup">
 
 			<div class="modal-content">
 				<button type="button" class="close" onclick="closeDialog()"
-					style="color: #000000; margin: 10px 15px 0px 0px">&times;</button>
-				<div class="modal-header" style="padding-left: 35%; color: #337ab7">
-					<h3>
-						<b>Ticket Details</b>
+					style="color: black; margin: 10px 15px 0px 0px">&times;</button>
+				<div class="modal-header" style="color: #fff;background-color:#337ab7;padding:6px">
+					<div class="col-md-4">
+					
+					
+
+                  </div>
+					
+					<div class="col-md-8">
+					<h3 style="margin-top:0%">
+						<b><i class="fa fa-file-text" aria-hidden="true" style="font-size:52px;margin-left:5%"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ticket Details</b>
 					</h3>
+					</div>
 				</div>
 				<div class="modal-body"
 					style="text-align: center; margin-bottom: 20%;">
-					<div class="col-md-12">
+					<div class="col-md-12" style="margin-top:2%">
 						<div class="col-md-4">
-							<h4 class="red">
-								<a style="color: white">Open Ticket:</a>
-								<p style="font-size: 20px">
+							<h5 class="red" style="padding-top: 15%;
+padding-bottom: 8%;"  ng-click="cCctr.gotoListPage('ticket','ticket')">
+								<a style="color: white">Number Of Open Ticket:</a>
+								<p style="font-size: 16px">
 									<b>${openTicket}</b>
 								</p>
-							</h4>
+							</h5>
 
 						</div>
 						<div class="col-md-4">
-							<h4 class="green">
-								<a style="color: white">Resolve Ticket:</a>
-								<p style="font-size: 20px">
+							<h5 class="green" style="padding-top: 15%;
+padding-bottom: 8%;" ng-click="cCctr.gotoListPage('ticket','ticket')">
+								<a style="color: white">Number Of Resolve Ticket:</a>
+								<p style="font-size: 16px">
 									<b>${resolveTicket}</b>
 								</p>
-							</h4>
+							</h5>
 
 						</div>
 						<div class="col-md-4">
-							<h4 class="blue">
-								<a style="color: white">Reject Ticket:</a>
-								<p style="font-size: 20px">
+							<h5 class="blue" style="padding-top: 15%;
+padding-bottom: 8%;" ng-click="cCctr.gotoListPage('ticket','ticket')">
+								<a style="color: white">Number Of Reject Ticket:</a>
+								<p style="font-size: 16px">
 									<b>${rejectTicket}</b>
 								</p>
-							</h4>
+							</h5>
 
 						</div>
 					</div>
@@ -677,3 +544,7 @@ h4 {
 			</tbody>
 		</table>
 	</div>
+	
+	
+	
+	

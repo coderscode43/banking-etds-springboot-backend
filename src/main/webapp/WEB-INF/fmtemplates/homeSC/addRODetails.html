@@ -1,7 +1,36 @@
+<style>
+	.pushable {
+	background: hsl(205.3, 80.4%, 56.1%, 0.84);
+	border-radius: 12px;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	outline-offset: 4px;
+}
+
+.front {
+	display: block;
+	padding: 7px 14px;
+	border-radius: 12px;
+	font-size: 1.45rem;
+	background: hsl(205.3, 80.4%, 56.1%);
+	color: white;
+	transform: translateY(-6px);
+}
+
+.pushable:active .front {
+	transform: translateY(-2px);
+}
+
+.front:hover {
+	background: hsl(205.2, 80.7%, 42.7%);
+}
+</style>
+
 <br>
 <div id="page-wrapper">
 	<div class="container-fluid">
-		
+
 		<div class="col-md-12 "
 			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
 			<div class="heading">
@@ -88,10 +117,11 @@
 								</h6>
 								<input class="form-control" type="text" name="roEmail"
 									id="roEmail" placeholder="RO Email"
-									ng-model="cCctr.entity.roEmail" ng-required="true" style="text-transform:lowercase"
+									ng-model="cCctr.entity.roEmail" ng-required="true"
+									style="text-transform: lowercase"
 									ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
-									style="color: red ;"
+									style="color: red;"
 									ng-show="formRODetails.submitted || formRODetails.roEmail.$dirty && formRODetails.roEmail.$invalid">
 									<span class="error"
 									ng-show="formRODetails.roEmail.$error.required">Email ID
@@ -103,7 +133,7 @@
 						</div>
 					</div>
 					<div class="row">
-						
+
 
 
 						<div class="col-md-6">
@@ -148,15 +178,22 @@
 							</div>
 						</div>
 					</div>
-					
+
 
 					<div class="row">
 						<div class="modal-footer">
-							<button
-								ng-click="formRODetails.submitted=true; cCctr.submit(formRODetails.$valid,cCctr.entity,'RODetails')"
-								class="btn btn-success">Save</button>
-							<button ng-click="cCctr.gotoListPage('RODetails','RODetails');"
-								class="btn btn-danger" onclick="scrollWin()">Back</button>
+							<button class="pushable"
+								style="background: hsl(115.5, 77.1%, 30.8%, 0.54); margin-top: 2%;"
+								ng-click="formRODetails.submitted=true; cCctr.submit(formRODetails.$valid,cCctr.entity,'RODetails')">
+								<span class="front"
+									style="background: hsl(115.5, 77.1%, 30.8%);"> Save</span>
+							</button>
+							<button class="pushable" ng-click="cCctr.gotoListPage('RODetails','RODetails');"
+								style="background: hsl(11.2, 81.2%, 37.5%, 0.53); margin-top: 2%;"
+								onclick="scrollWin()">
+								<span class="front" style="background: hsl(11.2, 81.2%, 37.5%);">
+									Back</span>
+							</button>
 						</div>
 					</div>
 				</form>

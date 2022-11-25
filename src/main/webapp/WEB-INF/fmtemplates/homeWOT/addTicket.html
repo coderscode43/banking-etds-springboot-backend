@@ -1,4 +1,31 @@
+<style>
+.pushable {
+	background: hsl(205.3, 80.4%, 56.1%, 0.84);
+	border-radius: 12px;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	outline-offset: 4px;
+}
 
+.front {
+	display: block;
+	padding: 7px 14px;
+	border-radius: 12px;
+	font-size: 1.45rem;
+	background: hsl(205.3, 80.4%, 56.1%);
+	color: white;
+	transform: translateY(-6px);
+}
+
+.pushable:active .front {
+	transform: translateY(-2px);
+}
+
+.front:hover {
+	background: hsl(205.2, 80.7%, 42.7%);
+}
+</style>
 <div id="page-wrapper">
 	<div class="container">
 		<div class="col-md-12 "
@@ -132,10 +159,19 @@
 
 
 						<div class="modal-footer" style="text-align: center">
-							<button
-								ng-click="fileForm.submitted=true;cCctr.submitFY(fileForm.$valid,cCctr.entity,'ticket')"
-								class="btn btn-success" data-dismiss="modal">Add</button>
-							<button class="btn btn-danger" onclick="history.back()">Back</button>
+							
+							<button class="pushable"
+							style="background: hsl(115.5, 77.1%, 30.8%, 0.54); margin-top: 2%;" data-dismiss="modal"
+						ng-click="fileForm.submitted=true;cCctr.submitFY(fileForm.$valid,cCctr.entity,'ticket')">
+							<span class="front" style="background: hsl(115.5, 77.1%, 30.8%);">
+								Add</span>
+						</button>
+						<button class="pushable"
+							style="background: hsl(11.2, 81.2%, 37.5%, 0.53); margin-top: 2%;"
+							nclick="history.back()">
+							<span class="front" style="background: hsl(11.2, 81.2%, 37.5%);">
+								Back</span>
+						</button>
 						</div>
 
 

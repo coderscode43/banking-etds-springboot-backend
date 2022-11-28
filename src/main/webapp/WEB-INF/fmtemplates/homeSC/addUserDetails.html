@@ -3,34 +3,6 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<style>
-	.pushable {
-	background: hsl(205.3, 80.4%, 56.1%, 0.84);
-	border-radius: 12px;
-	border: none;
-	padding: 0;
-	cursor: pointer;
-	outline-offset: 4px;
-}
-
-.front {
-	display: block;
-	padding: 7px 14px;
-	border-radius: 12px;
-	font-size: 1.45rem;
-	background: hsl(205.3, 80.4%, 56.1%);
-	color: white;
-	transform: translateY(-6px);
-}
-
-.pushable:active .front {
-	transform: translateY(-2px);
-}
-
-.front:hover {
-	background: hsl(205.2, 80.7%, 42.7%);
-}
-</style>
 </head>
 <body>
 	<br>
@@ -82,17 +54,17 @@
 						<div class="row">
 							<div class="modal-footer">
 								
-								<button class="pushable"
-														style="background: hsl(115.5, 77.1%, 30.8%, 0.54); margin-top: 2%;"
+								<button class="pushable darkgreen"
+														style="margin-top: 2%;"
 														ng-click=" formUserDetails.submitted=true;cCctr.submit(formUserDetails.$valid,cCctr.entity,'userDetails');">
-														<span class="front"
-															style="background: hsl(115.5, 77.1%, 30.8%);"> Yes</span>
+														<span class="front darkgreenspan"
+															> Yes</span>
 													</button>
-													<button class="pushable"
-														style="background: hsl(11.2, 81.2%, 37.5%, 0.53); margin-top: 2%;"
+													<button class="pushable darkred"
+														style="margin-top: 2%;"
 														ng-click="cCctr.gotoListPage('userDetails','userDetails');"onclick="scrollWin()">
-														<span class="front"
-															style="background: hsl(11.2, 81.2%, 37.5%);"> No</span>
+														<span class="front darkredspan"
+															> No</span>
 													</button>	
 							</div>
 						</div>

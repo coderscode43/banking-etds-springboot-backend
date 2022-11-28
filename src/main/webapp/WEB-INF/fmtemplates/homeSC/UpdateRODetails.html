@@ -91,33 +91,6 @@
 		visibility: visible;
 	}
 }
-
-.pushable {
-	background: hsl(205.3, 80.4%, 56.1%, 0.84);
-	border-radius: 12px;
-	border: none;
-	padding: 0;
-	cursor: pointer;
-	outline-offset: 4px;
-}
-
-.front {
-	display: block;
-	padding: 7px 14px;
-	border-radius: 12px;
-	font-size: 1.45rem;
-	background: hsl(205.3, 80.4%, 56.1%);
-	color: white;
-	transform: translateY(-6px);
-}
-
-.pushable:active .front {
-	transform: translateY(-2px);
-}
-
-.front:hover {
-	background: hsl(205.2, 80.7%, 42.7%);
-}
 </style>
 
 <div id="page-wrapper"
@@ -137,18 +110,17 @@
 
 					<div class="row">
 						<div class="col-md-6">
-							<button class="pushable"
-								style="background: hsl(205.3, 80.4%, 56.1%, 0.61);"
+							<button class="pushable lightblue"
+								
 								data-toggle="modal" onclick="test('#profile')">
-								<span class="front"
-									style="background: hsl(205.3, 80.4%, 56.1%);"><i
+								<span class="front lightbluespan"
+									><i
 									class="fa fa-edit" aria-hidden="true"></i>&nbsp;&nbsp;Edit</span>
 							</button>
 
-							<button class="pushable"
-								style="background: hsl(0, 0%, 4.7%, 0.45);"
+							<button class="pushable black"
 								ng-click="cCctr.gotoListPage('RODetails','RODetails')">
-								<span class="front" style="background: hsl(0, 0%, 4.7%);"><i
+								<span class="front blackspan"><i
 									class="fa fa-arrow-left" aria-hidden="true"></i> Back</span>
 							</button>
 						</div>
@@ -382,19 +354,19 @@
 												<div class="row">
 													<div class="col-md-12" style="text-align: right">
 
-														<button class="pushable"
-															style="background: hsl(224.9, 87.1%, 39.4%, 0.59); margin-top: 2%;"
+														<button class="pushable darkblue"
+															style="margin-top: 2%;"
 															data-dismiss="modal"
 															ng-click="profileForm.submitted=true;cCctr.updateData(profileForm.$valid,cCctr.entity.roDetails,'RODetails')">
-															<span class="front"
-																style="background: hsl(224.9, 87.1%, 39.4%);">
+															<span class="front darkbluespan"
+																>
 																Update</span>
 														</button>
-														<button class="pushable"
-															style="background: hsl(0, 0.7%, 71.2%, 0.53); margin-top: 2%;"
+														<button class="pushable lightblack"
+															style="margin-top: 2%;"
 															data-dismiss="modal">
-															<span class="front"
-																style="background: hsl(240, 0.4%, 48.8%);">Close</span>
+															<span class="front lightblackspan"
+																>Close</span>
 														</button>
 
 													</div>

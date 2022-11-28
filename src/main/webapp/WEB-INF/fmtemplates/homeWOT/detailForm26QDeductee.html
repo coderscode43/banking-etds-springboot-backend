@@ -90,8 +90,9 @@
 		height: auto !important;
 		visibility: visible;
 	}
-}.pushable {
-	background: hsl(205.3, 80.4%, 56.1%, 0.84);
+}
+.pushable {
+
 	border-radius: 12px;
 	border: none;
 	padding: 0;
@@ -100,23 +101,7 @@
 	margin-top: 2%;
 }
 
-.front {
-	display: block;
-	padding: 7px 14px;
-	border-radius: 12px;
-	font-size: 1.45rem;
-	background: hsl(205.3, 80.4%, 56.1%);
-	color: white;
-	transform: translateY(-6px);
-}
 
-.pushable:active .front {
-	transform: translateY(-2px);
-}
-
-.front:hover {
-	background: hsl(205.2, 80.7%, 42.7%);
-}
 </style>
 
 <div id="page-wrapper"
@@ -371,19 +356,18 @@
 									ng-model="cCctr.newEntity.branchCode = cCctr.entity.branchCode"
 									id="branchCode" name="branchCode" style="display: none">
 
-								<button class="pushable AddRemarkButton"
+								<button class="pushable AddRemarkButton darkblue"
 										
 										data-target="#myModal" data-toggle="modal">
-										<span class="front darkblue"
-											style="background: hsl(224.9, 87.1%, 39.4%);"><i
+										<span class="front darkbluespan"
+										><i
 											class="fa fa-plus" aria-hidden="true"></i> Add Remark</span>
 									</button>
 
-									<button class="pushable"
-										style="background: hsl(205.3, 80.4%, 56.1%, 0.61);"
+									<button class="pushable lightblue"
 										data-toggle="modal" data-target="#edit">
-										<span class="front"
-											style="background: hsl(205.3, 80.4%, 56.1%);"><i
+										<span class="front lightbluespan"
+											><i
 											class="fa fa-edit" aria-hidden="true"></i>&nbsp;&nbsp;Edit</span>
 									</button>
 
@@ -391,51 +375,46 @@
 
 								<div ng-if="cCctr.entity.resolved == 1" ng-hide=("admin"!="${typeOfUser}");
 									style="margin: -3.6% 0 0% 61.67%">
-									<button class="pushable"
-											style="background: hsl(115.5, 77.1%, 30.8%, 0.54);"
+									<button class="pushable darkgreen"
 											data-toggle="modal" data-target="#resolveModal">
-											<span class="front"
-												style="background: hsl(115.5, 77.1%, 30.8%);"><i
+											<span class="front darkgreenspan"
+												><i
 												class="fa fa-thumbs-up" aria-hidden="true"></i> Resolved</span>
 										</button>
 								</div>
 								<div ng-if="cCctr.entity.resolved == 0" ng-hide=("admin"!="${typeOfUser}");
-									style="margin: -3.6% 0 0% 61.67%">
-									<button class="pushable"
-											style="background: hsl(115.5, 77.1%, 30.8%, 0.54);"
+									style="margin: -3.8% 0 0% 61.67%">
+									<button class="pushable lightgreen"
 											data-toggle="modal" data-target="#resolveModal" disabled>
-											<span class="front"
-												style="background: hsl(116.1, 44.3%, 72.5%);"><i
+											<span class="front lightgreenspan"
+												><i
 												class="fa fa-thumbs-up" aria-hidden="true"></i> Resolved</span>
 										</button>
 								</div>
 
 								<div ng-if="cCctr.entity.resolved == 1" ng-hide=("admin"!="${typeOfUser}");
-									style="margin: -3.6% 0 0% 71.0%">
-									<button class="pushable"
-											style="background: hsl(11.2, 81.2%, 37.5%, 0.53);"
+									style="margin: -3.8% 0 0% 71.0%">
+									<button class="pushable darkred"
 											data-toggle="modal" data-target="#rejectModal">
-											<span class="front"
-												style="background: hsl(11.2, 81.2%, 37.5%);"><i
+											<span class="front darkredspan"
+												><i
 												class="fa fa-thumbs-down" aria-hidden="true"></i> Reject</span>
 										</button>
 								</div>
 								<div ng-if="cCctr.entity.resolved == 0" ng-hide=("admin"!="${typeOfUser}");
 									style="margin: -3.6% 0 0% 71.0%">
-									<button class="pushable"
-											style="background: hsl(11.2, 81.2%, 37.5%, 0.53);"
+									<button class="pushable lightred"
 											data-toggle="modal" data-target="#rejectModal" disabled>
-											<span class="front"
-												style="background: hsl(11.6, 47.5%, 72.4%);"><i
+											<span class="front lightredspan"
+												><i
 												class="fa fa-thumbs-down" aria-hidden="true"></i> Reject</span>
 										</button>
 								</div>
 								
-								<div style="margin: -3.1% 0 0% 78.9%">
-										<button class="pushable"
-											style="background: hsl(0, 0%, 4.7%, 0.45);"
+								<div style="margin: -3.4% 0 0% 78.9%">
+										<button class="pushable black"
 											onclick="history.back()">
-											<span class="front" style="background: hsl(0, 0%, 4.7%);"><i
+											<span class="front blackspan"><i
 												class="fa fa-arrow-left" aria-hidden="true"></i> Back</span>
 										</button>
 									</div>
@@ -461,14 +440,14 @@
 													enter valid Remark</span> <span class="error" id="remark"></span>
 											</div>
 											<div class="modal-footer">
-													<button class="pushable"
-														style="background: hsl(115.5, 77.1%, 30.8%, 0.54); margin-top: 2%;"
+													<button class="pushable darkgreen"
+														style="margin-top: 2%;"
 														data-dismiss="modal"
 														style="margin: 2% 5% 0 0; width: 15%;"
 														ng-click="remark.submitted=true;cCctr.addRemark(remark.$valid,'remark',cCctr.newEntity,'Remark','close')"
 													data-dismiss="modal">
-														<span class="front"
-															style="background: hsl(115.5, 77.1%, 30.8%);"> Add</span>
+														<span class="front darkgreenspan"
+															> Add</span>
 													</button>
 											</div>
 										</div>
@@ -492,18 +471,18 @@
 													ng-required="true"></textarea>
 											</div>
 											<div class="modal-footer">
-												<button class="pushable"
-														style="background: hsl(115.5, 77.1%, 30.8%, 0.54); margin-top: 2%;"
+												<button class="pushable darkgreen"
+														style="margin-top: 2%;"
 														ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.id"
 													ng-click="cCctr.addRemark(true,'remark',cCctr.newEntity,'Reject','close')">
-														<span class="front"
-															style="background: hsl(115.5, 77.1%, 30.8%);"> Yes</span>
+														<span class="front darkgreenspan"
+															> Yes</span>
 													</button>
-													<button class="pushable"
-														style="background: hsl(11.2, 81.2%, 37.5%, 0.53); margin-top: 2%;"
+													<button class="pushable darkred"
+														style="margin-top: 2%;"
 														data-dismiss="modal">
-														<span class="front"
-															style="background: hsl(11.2, 81.2%, 37.5%);"> No</span>
+														<span class="front darkredspan"
+															> No</span>
 													</button>	
 											</div>
 										</div>
@@ -526,18 +505,18 @@
 													ng-required="true"></textarea>
 											</div>
 											<div class="modal-footer">
-													<button class="pushable"
-														style="background: hsl(115.5, 77.1%, 30.8%, 0.54); margin-top: 2%;"
+													<button class="pushable darkgreen"
+														style="margin-top: 2%;"
 														ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.id"
 													ng-click="cCctr.addRemark(true,'remark',cCctr.newEntity,'Resolve','close')">
-														<span class="front"
-															style="background: hsl(115.5, 77.1%, 30.8%);"> Yes</span>
+														<span class="front darkgreenspan"
+															> Yes</span>
 													</button>
-													<button class="pushable"
-														style="background: hsl(11.2, 81.2%, 37.5%, 0.53); margin-top: 2%;"
+													<button class="pushable darkred"
+														style="margin-top: 2%;"
 														data-dismiss="modal">
-														<span class="front"
-															style="background: hsl(11.2, 81.2%, 37.5%);"> No</span>
+														<span class="front darkredspan"
+															> No</span>
 													</button>
 											</div>
 										</div>
@@ -1202,17 +1181,17 @@
 							<br> <br>
 							<div class="row">
 								<div class="col-md-12" style="text-align: right">
-								<button class="pushable"
-										style="background: hsl(224.9, 87.1%, 39.4%, 0.59); margin-top: 2%;"
+								<button class="pushable darkblue"
+										style="margin-top: 2%;"
 										data-dismiss="modal"
 										ng-click="form26qdeductee.submitted=true;cCctr.updateData(form26qdeductee.$valid,cCctr.entity,'form26QDeductee')">
-										<span class="front"
-											style="background: hsl(224.9, 87.1%, 39.4%);"> Update</span>
+										<span class="front darkbluespan"
+											> Update</span>
 									</button>
-									<button class="pushable"
-										style="background: hsl(0, 0.7%, 71.2%, 0.53); margin-top: 2%;"
+									<button class="pushable lightblack"
+										style="margin-top: 2%;"
 										data-dismiss="modal">
-										<span class="front" style="background: hsl(240, 0.4%, 48.8%);">Close</span>
+										<span class="front lightblackspan">Close</span>
 									</button>		
 								</div>
 							</div>

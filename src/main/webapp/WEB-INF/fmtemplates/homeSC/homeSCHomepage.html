@@ -2,10 +2,10 @@
 
 
 #popup {
-width: 60%;
+width: 50%;
 position: fixed;
 top: 10%;
-left: 22%;
+left: 25%;
 transform: translate(-50%, -50%);
 box-shadow: 2px 2px 5px 3px white;
 
@@ -47,54 +47,57 @@ h5 {
 
 .red {
 	box-sizing: border-box;
-	background-color: rgba(128, 0, 0, 1);
-	border: 1px solid rgba(128, 0, 0, 1);
+	background-color: rgba(170, 52, 52);
+	border: 1px solid rgba(170, 52, 52);
 	box-shadow: 0 3px 5px 3px rgba(0, 0, 0, 0.5);
 	color: white;
 }
 
-.red1:hover {
+.red:hover {
 	box-sizing: border-box;
-	background-color: rgba(200, 0, 0, 1);
-	border: 1px solid rgba(200, 0, 0, 1);
+	background-color: rgba(170, 52, 52);
+	border: 1px solid rgba(170, 52, 52);
 	box-shadow: 0 3px 5px 3px rgba(0, 0, 0, 0.5);
 	font-size:20px;
 	font-weight:bold;
 	color: white;
+	text-decoration: none;
 }
 
 .green {
 	box-sizing: border-box;
-	background-color: rgba(0, 128, 0, 0.9);
-	border: 1px solid rgba(0, 128, 0, 0.9);
+	background-color: rgba(21, 165, 21, 0.9);
+	border: 1px solid rgba(21, 165, 21, 0.9);
 	box-shadow: 0 3px 5px 3px rgba(0, 0, 0, 0.5);
     color: white;
 }
-.green1:hover {
+.green:hover {
 	box-sizing: border-box;
-	background-color: rgba(0, 180, 0, 0.9);
-	border: 1px solid rgba(0, 180, 0, 0.9);
+	background-color: rgba(21, 165, 21, 0.9);
+	border: 1px solid rgba(21, 165, 21, 0.9);
 	box-shadow: 0 3px 5px 3px rgba(0, 0, 0, 0.5);
 	font-size:20px;
 	font-weight:bold;
 	color: white;
+	text-decoration: none;
 }
 
 .blue {
 	box-sizing: border-box;
-	background-color: rgba(0, 0, 128, 0.9);
-	border: 1px solid rgba(0, 0, 128, 0.9);
+	background-color: rgba(182, 213, 30, 0.9);
+	border: 1px solid rgba(182, 213, 30, 0.9);
 	box-shadow: 0 3px 5px 3px rgba(0, 0, 0, 0.5);
 	color: white;
 }
-.blue1:hover {
+.blue:hover {
 	box-sizing: border-box;
-	background-color: rgba(0, 0, 180, 0.9);
-	border: 1px solid rgba(0, 0, 180, 0.9);
+	background-color: rgba(182, 213, 30, 0.9);
+	border: 1px solid rgba(182, 213, 30, 0.9);
 	box-shadow: 0 3px 5px 3px rgba(0, 0, 0, 0.5);
 	font-size:20px;
 	font-weight:bold;
 	color: white;
+	text-decoration: none;
 }
 </style>
 <br>
@@ -150,10 +153,10 @@ h5 {
 	<div class="POPmain myModal mobile fade" >
 		<div class="modal-dialog modal-lg opacity-animate4  fade" id="popup">
 
-			<div class="modal-content">
+			<div class="modal-content" style="border-radius: 5px;">
 				<button type="button" class="close" onclick="closeDialog()"
-					style="color: black; margin: 10px 15px 0px 0px">&times;</button>
-				<div class="modal-header" style="color: #fff;background-color:#337ab7;padding:6px">
+					style="color: white; margin: 10px 15px 0px 0px">&times;</button>
+				<div class="modal-header" style="color: #fff;background-color:#0F316D;padding:6px;border-radius: 6px 6px 0 0;">
 					<div class="col-md-4">
 					
 					
@@ -171,8 +174,8 @@ h5 {
 					<div class="col-md-12" style="margin-top:2%">
 						<div class="col-md-4">
 							<h5 class="red" style="padding-top: 15%;
-padding-bottom: 8%;"  ng-click="cCctr.gotoListPage('ticket','ticket')">
-								<a style="color: white">Number Of Open Ticket:</a>
+								padding-bottom: 8%;"  ng-click="cCctr.gotoListPage('ticket','ticket')">
+								<a style="color: white">Number of Open Ticket:</a>
 								<p style="font-size: 16px">
 									<b>${openTicket}</b>
 								</p>
@@ -181,8 +184,8 @@ padding-bottom: 8%;"  ng-click="cCctr.gotoListPage('ticket','ticket')">
 						</div>
 						<div class="col-md-4">
 							<h5 class="green" style="padding-top: 15%;
-padding-bottom: 8%;" ng-click="cCctr.gotoListPage('ticket','ticket')">
-								<a style="color: white">Number Of Resolve Ticket:</a>
+								padding-bottom: 8%;" ng-click="cCctr.gotoListPage('ticket','ticket')">
+								<a style="color: white">Number of Resolve Ticket:</a>
 								<p style="font-size: 16px">
 									<b>${resolveTicket}</b>
 								</p>
@@ -191,8 +194,8 @@ padding-bottom: 8%;" ng-click="cCctr.gotoListPage('ticket','ticket')">
 						</div>
 						<div class="col-md-4">
 							<h5 class="blue" style="padding-top: 15%;
-padding-bottom: 8%;" ng-click="cCctr.gotoListPage('ticket','ticket')">
-								<a style="color: white">Number Of Reject Ticket:</a>
+								padding-bottom: 8%;" ng-click="cCctr.gotoListPage('ticket','ticket')">
+								<a style="color: white">Number of Reject Ticket:</a>
 								<p style="font-size: 16px">
 									<b>${rejectTicket}</b>
 								</p>
@@ -203,14 +206,15 @@ padding-bottom: 8%;" ng-click="cCctr.gotoListPage('ticket','ticket')">
 				</div>
 
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default"
+					<button type="button" class="pushable darkblue"
 						ng-click="cCctr.gotoListPage('ticket','ticket')"
-						ng-show="'admin'=='${typeOfUser}'">Detail</button>
-					<button type="button" class="btn btn-default"
+						ng-show="'admin'=='${typeOfUser}'"><span class="front darkbluespan"
+											> Detail</span></button>
+					<button type="button" class="pushable darkblue"
 						ng-click="cCctr.gotoWFYTicketListPage('ticket','ticket','${typeOfUser}','2022-23')"
-						ng-hide="'admin'=='${typeOfUser}'">Detail</button>
-					<button type="button" class="btn btn-danger "
-						onclick="closeDialog()" aria-label="Close">Close</button>
+						ng-hide="'admin'=='${typeOfUser}'"><span class="front darkbluespan">Detail</span></button>
+					<button type="button" class="pushable lightblack"
+						onclick="closeDialog()" aria-label="Close"><span class="front lightblackspan">Close</span></button>
 				</div>
 			</div>
 		</div>

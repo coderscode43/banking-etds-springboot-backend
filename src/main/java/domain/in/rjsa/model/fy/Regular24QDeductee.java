@@ -38,7 +38,7 @@ public class Regular24QDeductee extends CommonModelAbstract {
 	@Column(name = "challanHeading")
 	public String challanHeading;
 	@Column(name = "deducteeRefNo")
-	public Long deducteeRefNo;
+	public String deducteeRefNo;
 	@Column(name = "panRefNo")
 //	@NotNull(message = "Pan Reference No. is a required field.")
 	@Size(min = 0, max = 45, message = "Pan Reference No. should not be greater than 45 characters.")

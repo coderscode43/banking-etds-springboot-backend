@@ -33,7 +33,7 @@ public class Regular27EQDeductee extends CommonModelAbstract {
 	@Column(name = "id")
 	public Long id;
     @Column(name = "deducteeRefNo")
-	public Long deducteeRefNo;
+	public String deducteeRefNo;
     @Column(name = "deducteeCode")
   	public String deducteeCode;
     @Column(name = "pan")

@@ -186,8 +186,8 @@
 												ng-model="cCctr.entity.tan" ng-required="true"
 												ng-model-options="{updateOn: 'blur'}">
 												<option disabled value="">Select Tan</option>
+												<option value="ALL TAN">ALL TAN</option>
 												<#list Tan as T>
-
 												<option value="${T}">${T}</option>
 												</#list>
 											</select>
@@ -266,7 +266,7 @@
 									
 								<button class="pushable darkgreen"
 										style="margin-top: 2%;margin-left: 40%"
-										data-dismiss="modal"ng-click="cCctr.download('apichallan/files/'+cCctr.entity.tan+'/'+cCctr.entity.typeofCertificate+'/'+cCctr.entity.financialYear+'/'+cCctr.entity.quarter+'/'+cCctr.entity.pan)">
+										data-dismiss="modal"ng-click="cCctr.download('apidownloadCertificate/files/'+cCctr.entity.tan+'/'+cCctr.entity.typeofCertificate+'/'+cCctr.entity.financialYear+'/'+cCctr.entity.quarter+'/'+cCctr.entity.pan)">
 										<span class="front darkgreenspan" style="">Download</span>
 									</button>	
 							</form>

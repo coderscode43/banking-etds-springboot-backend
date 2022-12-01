@@ -1164,7 +1164,7 @@ App
 																'.modal-body')
 														.find(
 																'.msg')
-														.append("File can not found.");
+														.append("File not found.");
 												$("#errorMsg")
 														.modal();
 											

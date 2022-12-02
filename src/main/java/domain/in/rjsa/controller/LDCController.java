@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -105,6 +106,10 @@ public class LDCController extends AbstractControllerTaxo<String, LDC, LDCServic
 //			}
 //			map.put("fy", fy);
 //			map.put("branchCode", branchCode);
+			if(map.containsKey("TAN")) {
+				String TAN = (map.get("TAN").toString().split(Pattern.quote("-"),-1))[0];
+				map.put("TAN", TAN);
+			}
 			adminValidation(map);
 			Long count = getService().findallCount(map);
 			List<?> list = getSearch(map, pageNo, resultPerPage);

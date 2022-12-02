@@ -102,8 +102,7 @@ public class LogsDaoImpl extends AbstractDaoForm<Long, Logs> implements LogsDao{
 		criteria.add(Restrictions.eqOrIsNull("ipaddrs", entity.get("ipaddrs")));
           }      
       	if (entity.get("fromDate") != null) {
-			criteria.add(Restrictions.ge("date",
-					Date.from(ZonedDateTime.parse((String) entity.get("fromDate")).toInstant())));
+			criteria.add(Restrictions.ge("date",Date.from(ZonedDateTime.parse((String) entity.get("fromDate")).toInstant())));
 		}
 		if (entity.get("toDate") != null) {
 			criteria.add(

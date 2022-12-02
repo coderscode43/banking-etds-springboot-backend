@@ -107,9 +107,13 @@
 						<h6>
 							<b>Section Code</b>
 							<h6>
-								<input type="text" ng-model="cCctr.search.sectionCode"
-									class="form-control" placeholder="SectionCode"
-									style="width: 100%">
+								<select class="form-control" ng-model="cCctr.search.sectionCode"
+									required>
+									<option disabled value="">Select Section</option>
+									<#list Section as section>
+									<option value="${section}">${section}</option>
+									</#list>
+								</select>
 					</div>
 					<div class="col-md-3">
 						<h6>

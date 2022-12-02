@@ -397,7 +397,10 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 				// convert JSON string to Map
 				map = mapper.readValue(searchParam, new TypeReference<Map<String, String>>() {
 				});
-				
+				if(map.containsKey("TAN")) {
+					String TAN = (map.get("TAN").toString().split(Pattern.quote("-"),-1))[0];
+					map.put("TAN", TAN);
+				}
 				adminValidation(map);
 //				if (!"admin".equals(getBranchCode())) {
 //					Long b=1L;

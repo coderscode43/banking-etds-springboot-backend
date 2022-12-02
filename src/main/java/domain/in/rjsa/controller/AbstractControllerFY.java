@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -454,6 +455,11 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 			// convert JSON string to Map
 			map = mapper.readValue(searchParam, new TypeReference<Map<String, String>>() {
 			});
+			if(map.containsKey("TAN")) {
+				String TAN = (map.get("TAN").toString().split(Pattern.quote("-"),-1))[0];
+				map.put("TAN", TAN);
+			}
+			
 			adminValidation(map);
 			Long count = getService().findallCount(map);
 			try {

@@ -20,40 +20,18 @@ public class AbstractController {
 	
 /////////////////////////////////KARNATAKA BANK////////////////////////////////////////	
 
-	public String getBranchCode() {
-		LdapContext ctxGC = null;
-		CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication()
-				.getPrincipal();
-		;
-		if (applicationCache.getAdminUser(getPrincipal()) != null) {
-			return "admin";
-
-		} else {
-			String branch = userDetails.getPhysicalDeliveryOfficeName();
-			try {
-				int b = Integer.valueOf(branch);
-				return String.valueOf(b);
-			} catch (Exception e) {
-				// TODO: handle exception
-				return branch;
-			}
-		}
-
-	}
-	
-	
-/////////////////////////////////UCO BANK////////////////////////////////////////
-	
 //	public String getBranchCode() {
-////		LdapContext ctxGC = null;
-//		Object userDetails =  SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//		LdapContext ctxGC = null;
+//		CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication()
+//				.getPrincipal();
+//		;
 //		if (applicationCache.getAdminUser(getPrincipal()) != null) {
 //			return "admin";
 //
 //		} else {
-//			String branch = ((UserDetails) userDetails).getUsername();
+//			String branch = userDetails.getPhysicalDeliveryOfficeName();
 //			try {
-//				int b = Integer.parseInt(branch);
+//				int b = Integer.valueOf(branch);
 //				return String.valueOf(b);
 //			} catch (Exception e) {
 //				// TODO: handle exception
@@ -62,6 +40,28 @@ public class AbstractController {
 //		}
 //
 //	}
+	
+	
+/////////////////////////////////UCO BANK////////////////////////////////////////
+	
+	public String getBranchCode() {
+//		LdapContext ctxGC = null;
+		Object userDetails =  SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if (applicationCache.getAdminUser(getPrincipal()) != null) {
+			return "admin";
+
+		} else {
+			String branch = ((UserDetails) userDetails).getUsername();
+			try {
+				int b = Integer.parseInt(branch);
+				return String.valueOf(b);
+			} catch (Exception e) {
+				// TODO: handle exception
+				return branch;
+			}
+		}
+
+	}
 	
 	public void adminValidation(LinkedHashMap<String, Object> map) {
 		

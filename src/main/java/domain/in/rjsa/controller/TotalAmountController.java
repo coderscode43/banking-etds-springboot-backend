@@ -3,6 +3,7 @@ package domain.in.rjsa.controller;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -83,6 +84,10 @@ public class TotalAmountController extends AbstractControllerFY<Long, TotalAmoun
 				if(map.containsKey("resolved")) {
 					Boolean resolved = Boolean.valueOf(map.get("resolved").toString());
 					map.put("resolved", resolved);
+				}
+				if(map.containsKey("TAN")) {
+					String TAN = (map.get("TAN").toString().split(Pattern.quote("-"),-1))[0];
+					map.put("TAN", TAN);
 				}
 				adminValidation(map);
 				Long count = getService().findallCount(map);

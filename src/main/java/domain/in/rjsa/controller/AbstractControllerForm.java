@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -156,6 +157,10 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 				if (key.endsWith("Code")) {
 					map.put(key, Long.valueOf((String) map.get(key)));
 				}
+			}
+			if(map.containsKey("TAN")) {
+				String TAN = (map.get("TAN").toString().split(Pattern.quote("-"),-1))[0];
+				map.put("TAN", TAN);
 			}
 			
 			adminValidation(map);

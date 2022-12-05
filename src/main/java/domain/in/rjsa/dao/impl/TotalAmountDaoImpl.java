@@ -36,8 +36,8 @@ public class TotalAmountDaoImpl extends AbstractDaoFY<Long, TotalAmount> impleme
 			criteria.add(Restrictions.eqOrIsNull("pan", entity.get("pan")));
 		}
 
-		if (entity.get("section") != null) {
-			criteria.add(Restrictions.eqOrIsNull("section", entity.get("section")));
+		if (entity.get("sectionCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("sectionCode", entity.get("sectionCode")));
 		}
 		if (entity.get("month") != null) {
 			criteria.add(Restrictions.eqOrIsNull("month", entity.get("month")));
@@ -51,8 +51,8 @@ public class TotalAmountDaoImpl extends AbstractDaoFY<Long, TotalAmount> impleme
 		if (entity.get("totalAmountPaidUpload") != null) {
 			criteria.add(Restrictions.eqOrIsNull("totalAmountPaidUpload", Double.parseDouble(entity.get("totalAmountPaidUpload").toString())));
 		}
-		if (entity.get("totalTaxRaw") != null) {
-			criteria.add(Restrictions.eqOrIsNull("totalTaxRaw", Double.parseDouble(entity.get("totalTaxRaw").toString())));
+		if (entity.get("totaltaxRaw") != null) {
+			criteria.add(Restrictions.eqOrIsNull("totaltaxRaw", Double.parseDouble(entity.get("totaltaxRaw").toString())));
 		}
 		if (entity.get("totalTaxUploaded") != null) {
 			criteria.add(Restrictions.eqOrIsNull("totalTaxUploaded", Double.parseDouble(entity.get("totalTaxUploaded").toString())));
@@ -82,8 +82,8 @@ public class TotalAmountDaoImpl extends AbstractDaoFY<Long, TotalAmount> impleme
 			criteria.add(Restrictions.eqOrIsNull("pan", entity.get("pan")));
 		}
 
-		if (entity.get("section") != null) {
-			criteria.add(Restrictions.eqOrIsNull("section", entity.get("section")));
+		if (entity.get("sectionCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("sectionCode", entity.get("sectionCode")));
 		}
 		if (entity.get("month") != null) {
 			criteria.add(Restrictions.eqOrIsNull("month", entity.get("month")));
@@ -97,8 +97,8 @@ public class TotalAmountDaoImpl extends AbstractDaoFY<Long, TotalAmount> impleme
 		if (entity.get("totalAmountPaidUpload") != null) {
 			criteria.add(Restrictions.eqOrIsNull("totalAmountPaidUpload", Double.parseDouble(entity.get("totalAmountPaidUpload").toString())));
 		}
-		if (entity.get("totalTaxRaw") != null) {
-			criteria.add(Restrictions.eqOrIsNull("totalTaxRaw", Double.parseDouble(entity.get("totalTaxRaw").toString())));
+		if (entity.get("totaltaxRaw") != null) {
+			criteria.add(Restrictions.eqOrIsNull("totaltaxRaw", Double.parseDouble(entity.get("totaltaxRaw").toString())));
 		}
 		if (entity.get("totalTaxUploaded") != null) {
 			criteria.add(Restrictions.eqOrIsNull("totalTaxUploaded", Double.parseDouble(entity.get("totalTaxUploaded").toString())));
@@ -133,8 +133,8 @@ public class TotalAmountDaoImpl extends AbstractDaoFY<Long, TotalAmount> impleme
 			criteria.add(Restrictions.eqOrIsNull("pan", entity.get("pan")));
 		}
 
-		if (entity.get("section") != null) {
-			criteria.add(Restrictions.eqOrIsNull("section", entity.get("section")));
+		if (entity.get("sectionCode") != null) {
+			criteria.add(Restrictions.eqOrIsNull("sectionCode", entity.get("sectionCode")));
 		}
 		if (entity.get("month") != null) {
 			criteria.add(Restrictions.eqOrIsNull("month", entity.get("month")));

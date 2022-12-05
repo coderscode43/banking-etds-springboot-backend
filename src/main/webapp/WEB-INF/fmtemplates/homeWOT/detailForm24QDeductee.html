@@ -363,36 +363,61 @@ table {
 										ng-model="cCctr.newEntity.branchCode = cCctr.entity.branchCode"
 										id="branchCode" name="branchCode" style="display: none">
 
-									<button data-toggle="modal" data-target="#myModal"
-										class="btn btn-success" style="margin-left: 43%">Add
-										Remark</button>
-										<!-- <button data-toggle="modal" data-target="#edit"
-										class="btn btn-success">Edit
-										</button> -->
-
-									<button class="btn btn-danger"
-										ng-click="cCctr.gotoWFYListPage('form24QDeductee','form24QDeductee')">Back</button>
-
-									<div ng-if="cCctr.entity.resolved == 1"ng-hide=("admin"!="${typeOfUser}");
-										style="margin: -2.9% 0 0% 61.2%;">
-										<button data-toggle="modal" data-target="#resolveModal"
-											class="btn btn-primary">Resolved</button>
-									</div>
-									<div ng-if="cCctr.entity.resolved == 0"ng-hide=("admin"!="${typeOfUser}");
-										style="margin: -2.9% 0 0% 61.2%;">
-										<button data-toggle="modal" data-target="#resolveModal"
-											class="btn btn-primary" disabled>Resolved</button>
-									</div>
-
+									<button class="pushable AddRemarkButton darkblue"
+										
+										data-target="#myModal" data-toggle="modal">
+										<span class="front darkbluespan"
+										><i
+											class="fa fa-plus" aria-hidden="true"></i> Add Remark</span>
+									</button>
+									<button class="pushable lightblue"
+										data-toggle="modal" data-target="#edit">
+										<span class="front lightbluespan"
+											><i
+											class="fa fa-edit" aria-hidden="true"></i>&nbsp;&nbsp;Edit</span>
+									</button>
 									<div ng-if="cCctr.entity.resolved == 1" ng-hide=("admin"!="${typeOfUser}");
-										style="margin: -2.9% 0 0% 71.2%;">
-										<button data-toggle="modal" data-target="#rejectModal"
-											class="btn btn-info">Reject</button>
-									</div>
-									<div ng-if="cCctr.entity.resolved == 0" ng-hide=("admin"!="${typeOfUser}");
-										style="margin: -2.9% 0 0% 71.2%;">
-										<button data-toggle="modal" data-target="#rejectModal"
-											class="btn btn-info" disabled>Reject</button>
+									style="margin: -3.0% 0 0% 61.67%">
+									<button class="pushable darkgreen"
+											data-toggle="modal" data-target="#resolveModal">
+											<span class="front darkgreenspan"
+												><i
+												class="fa fa-thumbs-up" aria-hidden="true"></i> Resolved</span>
+										</button>
+								</div>
+								<div ng-if="cCctr.entity.resolved == 0" ng-hide=("admin"!="${typeOfUser}");
+									style="margin: -3.0% 0 0% 61.67%">
+									<button class="pushable lightgreen"
+											data-toggle="modal" data-target="#resolveModal" disabled>
+											<span class="front lightgreenspan"
+												><i
+												class="fa fa-thumbs-up" aria-hidden="true"></i> Resolved</span>
+										</button>
+								</div>
+								<div ng-if="cCctr.entity.resolved == 1" ng-hide=("admin"!="${typeOfUser}");
+									style="margin: -3.0% 0 0% 71.0%">
+									<button class="pushable darkred"
+											data-toggle="modal" data-target="#rejectModal">
+											<span class="front darkredspan"
+												><i
+												class="fa fa-thumbs-down" aria-hidden="true"></i> Reject</span>
+										</button>
+								</div>
+								<div ng-if="cCctr.entity.resolved == 0" ng-hide=("admin"!="${typeOfUser}");
+									style="margin: -3.0% 0 0% 71.0%">
+									<button class="pushable lightred"
+											data-toggle="modal" data-target="#rejectModal" disabled>
+											<span class="front lightredspan"
+												><i
+												class="fa fa-thumbs-down" aria-hidden="true"></i> Reject</span>
+										</button>
+								</div>
+								<div style="margin: -2.9% 0 0% 78.9%">
+										<button class="pushable black"
+											ng-click="cCctr.gotoWFYListPage('form24QDeductee','form24QDeductee')">
+											<span class="front blackspan"><i
+												class="fa fa-arrow-left" aria-hidden="true"></i> Back</span>
+										</button>
 									</div>
 
 									<div class="modal fade" id="myModal" role="dialog">
@@ -417,10 +442,15 @@ table {
 														enter valid Remark</span> <span class="error" id="remark"></span>
 												</div>
 												<div class="modal-footer">
-													<button type="button" class="btn btn-success "
-														ng-click="remark.submitted=true;cCctr.addRemark(remark.$valid,'remark',cCctr.newEntity,'Remark','close')"
+													<button class="pushable darkgreen"
+														style="margin-top: 2%;"
 														data-dismiss="modal"
-														style="margin: 2% 5% 0 0; width: 15%;">Add</button>
+														style="margin: 2% 5% 0 0; width: 15%;"
+														ng-click="remark.submitted=true;cCctr.addRemark(remark.$valid,'remark',cCctr.newEntity,'Remark','close')"
+													data-dismiss="modal">
+														<span class="front darkgreenspan"
+															> Add</span>
+													</button>
 												</div>
 											</div>
 
@@ -443,11 +473,20 @@ table {
 													ng-required="true"></textarea>
 												</div>
 													<div class="modal-footer">
-													<button class="btn btn-success"
+												<button class="pushable darkgreen"
+														style="margin-top: 2%;"
 														ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.id"
-														ng-click="cCctr.addRemark(true,'remark',cCctr.newEntity,'Reject','close')" style="margin-top: 1%;">Yes</button>
-													<button class="btn btn-danger" data-dismiss="modal" style="margin-top: 1%;">No</button>
-												</div>
+													ng-click="cCctr.addRemark(true,'remark',cCctr.newEntity,'Reject','close')">
+														<span class="front darkgreenspan"
+															> Yes</span>
+													</button>
+													<button class="pushable darkred"
+														style="margin-top: 2%;"
+														data-dismiss="modal">
+														<span class="front darkredspan"
+															> No</span>
+													</button>	
+											</div>
 											</div>
 										</div>
 									</div>
@@ -468,11 +507,20 @@ table {
 													ng-required="true"></textarea>
 												</div>
 													<div class="modal-footer">
-													<button class="btn btn-success"
+													<button class="pushable darkgreen"
+														style="margin-top: 2%;"
 														ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.id"
-														ng-click="cCctr.addRemark(true,'remark',cCctr.newEntity,'Resolve','close')" style="margin-top: 1%;">Yes</button>
-													<button class="btn btn-danger" data-dismiss="modal" style="margin-top: 1%;">No</button>
-												</div>
+													ng-click="cCctr.addRemark(true,'remark',cCctr.newEntity,'Resolve','close')">
+														<span class="front darkgreenspan"
+															> Yes</span>
+													</button>
+													<button class="pushable darkred"
+														style="margin-top: 2%;"
+														data-dismiss="modal">
+														<span class="front darkredspan"
+															> No</span>
+													</button>
+											</div>
 											</div>
 										</div>
 									</div>
@@ -970,11 +1018,18 @@ table {
 							<br> <br>
 							<div class="row">
 								<div class="col-md-12" style="text-align: right">
-									<button type="submit" class="btn btn-primary" data-dismiss="modal"
-										ng-click="form24qdeductee.submitted=true;cCctr.updateData(form24qdeductee.$valid,cCctr.entity,'form24QDeductee')">Update
+								<button class="pushable darkblue"
+										style="margin-top: 2%;"
+										data-dismiss="modal"
+										ng-click="form24qdeductee.submitted=true;cCctr.updateData(form24qdeductee.$valid,cCctr.entity,'form24QDeductee')">
+										<span class="front darkbluespan"
+											> Update</span>
 									</button>
-									<button type="button" class="btn btn-secondary"
-										data-dismiss="modal">Close</button>
+									<button class="pushable lightblack"
+										style="margin-top: 2%;"
+										data-dismiss="modal">
+										<span class="front lightblackspan">Close</span>
+									</button>
 								</div>
 							</div>
 						</form>

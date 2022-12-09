@@ -110,6 +110,7 @@
 		visibility: visible;
 	}
 }
+
 .btn-grad {
 	background-image: linear-gradient(to right, #FF8008 0%, #FFC837 51%, #FF8008 100%);
 	transition: 0.5s;
@@ -126,11 +127,17 @@
 	color: #fff;
 	text-decoration: none;
 }
+.col-md-4 {
+  width: 34.333%;
+}
 </style>
 
 <div id="page-wrapper" ng-controller="CommonController as cCctr">
 	<div class="container-fluid">
-
+<button class="btn btn-grad astro-MG2CNCJP" data-toggle="modal"
+					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #C31FFF 100%);float: right;"
+						ng-click="cCctr.gotoAddWFYPage('addTicket')" onClick="refreshPage()"><i
+											class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh</button>
 		<div class="col-md-12 "
 			style="padding-left: 0px; font-size: 12pxp; margin-top: 3%">
 			<div class="heading">
@@ -189,7 +196,14 @@
 					<h6>
 						<b>Form</b>
 					</h6>
-					<select ng-model="cCctr.search.form" class="form-control">
+					<select name="fy" id="fy" ng-model="cCctr.search.form"
+						class="form-control" required>
+						<option disabled value="">Select Form</option>
+						<#list Form as f>
+						<option value="${f}">${f}</option>
+						</#list>
+					</select>
+					<!-- <select ng-model="cCctr.search.form" class="form-control">
 						<option value="">Form</option>
 						<option value="24Q">24Q</option>
 						<option value="26Q">26Q</option>
@@ -197,7 +211,7 @@
 						<option value="27EQ">27EQ</option>
 						<option value="15G">15G</option>
 						<option value="15H">15H</option>
-					</select>
+					</select> -->
 				</div>
 			</div>
 
@@ -241,7 +255,7 @@
 				<div class="row">
 					<div class="col-md-3">
 						<button class="btn btn-grad astro-MG2CNCJP " type="button"
-							style="margin-top: 11%;background-image: linear-gradient(to right, #517fa4 0%, #243949  51%, #517fa4  100%);"
+							style="margin-top: 11%; background-image: linear-gradient(to right, #517fa4 0%, #243949 51%, #517fa4 100%);"
 							ng-click="cCctr.generateExcel('apiticket/generateExcel/','Ticket')">Export
 							to Excel</button>
 					</div>
@@ -250,25 +264,29 @@
 			</div>
 			<div class="row text-right" id="hide">
 				<div class="col-md-4" style="margin-left: 65%; margin-top: -45px">
-					<button ng-click="cCctr.searchEntities(true,'ticket','ticket')"class="btn btn-grad astro-MG2CNCJP"
-						style="padding: 6px 9px;
-						background-image: linear-gradient(to right, #093028 0%, #237A57  51%, #093028  100%)"
-						onclick="scrollWin()"><i class="fa fa-search" aria-hidden="true"></i>
-						Search</button>
-						
-						
+					<button ng-click="cCctr.searchEntities(true,'ticket','ticket')"
+						class="btn btn-grad astro-MG2CNCJP"
+						style="padding: 6px 9px; background-image: linear-gradient(to right, #093028 0%, #237A57 51%, #093028 100%)"
+						onclick="scrollWin()">
+						<i class="fa fa-search" aria-hidden="true"></i> Search
+					</button>
+
+
 					<button class="btn btn-grad astro-MG2CNCJP"
-						style="background-image: linear-gradient(to right, #F09819 0%, #EDDE5D 51%, #F09819 100%);" data-toggle="collapse"
-						style="padding: 6px 9px;" data-target="#collapseExample4"
-						aria-expanded="false" aria-controls="collapseExample"><i
-											class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;Advance
-						Search</button>
+						style="background-image: linear-gradient(to right, #F09819 0%, #EDDE5D 51%, #F09819 100%);"
+						data-toggle="collapse" style="padding: 6px 9px;"
+						data-target="#collapseExample4" aria-expanded="false"
+						aria-controls="collapseExample">
+						<i class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;Advance
+						Search
+					</button>
 
 
 					<button class="btn btn-grad astro-MG2CNCJP" data-toggle="modal"
-						style="padding: 6px 9px;background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA  51%, #1FA2FF  100%)"
-						ng-click="cCctr.gotoAddPage('addTicket')"><i
-											class="fa fa-plus" aria-hidden="true"></i>&nbsp;Add Ticket</button>
+						style="padding: 6px 9px; background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA 51%, #1FA2FF 100%)"
+						ng-click="cCctr.gotoAddPage('addTicket')">
+						<i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Add Ticket
+					</button>
 					<div class="text-right"></div>
 				</div>
 			</div>
@@ -307,6 +325,8 @@
 						<th width="6%">Quarter</th>
 						<th width="6%">Branch Code</th>
 						<th width="6%">Form</th>
+						<th width="6%">Cust/Vend Id</th>
+						<th width="6%">PAN</th>
 						<th width="6%">Date Of Opening</th>
 						<th width="6%">Status</th>
 						<th width="40%">Description</th>
@@ -328,6 +348,8 @@
 						<td>{{a.quarter}}</td>
 						<td>{{a.branchCode}}</td>
 						<td>{{a.form}}</td>
+						<td>{{a.custVendId}}</td>
+						<td>{{a.pan}}</td>
 						<td>{{a.dateOfOpening | date:'dd-MM-yyyy'}}</td>
 						<td>{{a.status}}</td>
 						<td>{{a.description}}</td>
@@ -389,3 +411,8 @@
 		</div>
 	</div>
 </div>
+<script>
+function refreshPage(){
+    window.location.reload();
+} 
+</script>

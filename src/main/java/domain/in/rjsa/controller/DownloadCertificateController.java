@@ -46,7 +46,7 @@ public class DownloadCertificateController {
 		FieldErrorDTO ermsg = new FieldErrorDTO();
 		try {
 			pan = pan.toUpperCase().trim();
-			tan = tan.toUpperCase().trim();
+			tan = tan.trim();
 			// verify regx pan
 			if (Pattern.matches("^[A-Z]{5}[0-9]{4}[A-Z]{1}$", pan) || pan.equalsIgnoreCase("ALL TAN")) {
 				pan = pan;
@@ -69,7 +69,7 @@ public class DownloadCertificateController {
 			}
 			// vwerify q
 			List<String> qList = Arrays.asList(StaticData.Quarter);
-			if (qList.contains(q)) {
+			if (qList.contains(q) || q.equalsIgnoreCase("ALL QUARTER")) {
 				q = q;
 			} else {
 				throw new Exception("Invalid Quarter.");
@@ -138,16 +138,31 @@ public class DownloadCertificateController {
 		String[] c = certificate.split("-");
 		String[] t = tan.split("-");
 
-		if (tan.equals("ALL TAN")) {
+		if (tan.equals("ALL TAN") && q.equals("ALL QUARTER")) {
+			for (String q1 : StaticData.Quarter) {
+				for (String t1 : StaticData.Tan) {
+					t = t1.split("-");
+					String pdfFileName = pan + "_" + q1 + "_" + ay + ".pdf";
+					String filePath = path + "download/" + fy + "/" + q1 + "/" + c[0] + "/" + t[0] + "/" + pdfFileName;
+					addFileIfExist(filePath, filePaths);
+				}
+			}
+		} else if (tan.equals("ALL TAN")) {
 			for (String t1 : StaticData.Tan) {
 				t = t1.split("-");
 				String pdfFileName = pan + "_" + q + "_" + ay + ".pdf";
 				String filePath = path + "download/" + fy + "/" + q + "/" + c[0] + "/" + t[0] + "/" + pdfFileName;
 				addFileIfExist(filePath, filePaths);
-
 			}
 
-		} else {
+		}else if(q.equals("ALL QUARTER")){
+			for (String q1 : StaticData.Quarter) {
+				String pdfFileName = pan + "_" + q1 + "_" + ay + ".pdf";
+				String filePath = path + "download/" + fy + "/" + q1 + "/" + c[0] + "/" + t[0] + "/" + pdfFileName;
+				addFileIfExist(filePath, filePaths);
+			}
+		} 
+		else {
 			String pdfFileName = pan + "_" + q + "_" + ay + ".pdf";
 			String filePath = path + "download/" + fy + "/" + q + "/" + c[0] + "/" + t[0] + "/" + pdfFileName;
 			addFileIfExist(filePath, filePaths);

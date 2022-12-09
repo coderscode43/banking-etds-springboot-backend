@@ -189,7 +189,14 @@
 					<h6>
 						<b>Form</b>
 					</h6>
-					<select ng-model="cCctr.search.form" class="form-control">
+					<select name="fy" id="fy" ng-model="cCctr.search.form"
+										class="form-control" required>
+										<option disabled value="">Select Form</option>
+										<#list Form as f>
+										<option value="${f}">${f}</option>
+										</#list>
+									</select>
+					<!-- <select ng-model="cCctr.search.form" class="form-control">
 						<option value="">Form</option>
 						<option value="24Q">24Q</option>
 						<option value="26Q">26Q</option>
@@ -197,7 +204,7 @@
 						<option value="27EQ">27EQ</option>
 						<option value="15G">15G</option>
 						<option value="15H">15H</option>
-					</select>
+					</select> -->
 				</div>
 			</div>
 
@@ -268,6 +275,8 @@
 						<th width="10%">Financial Year</th>
 						<th width="10%">Quarter</th>
 						<th width="10%">Form</th>
+						<th width="6%">Cust/Vend Id</th>
+						<th width="6%">PAN</th>
 						<th width="10%">Date Of Opening</th>
 						<th width="10%">Status</th>
 						<th width="10%">Added By</th>
@@ -283,6 +292,8 @@
 						<td>{{a.fy}}</td>
 						<td>{{a.quarter}}</td>
 						<td>{{a.form}}</td>
+						<td>{{a.custVendId}}</td>
+						<td>{{a.pan}}</td>
 						<td>{{a.dateOfOpening | date:'dd-MM-yyyy'}}</td>
 						<td>{{a.status}}</td>
 						<td>{{a.userName}}</td>

@@ -40,7 +40,6 @@ public class IndexController extends AbstractController {
 
 	@RequestMapping(value = "/logout")
 	public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
-
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		if (auth != null) {
 			new SecurityContextLogoutHandler().logout(request, response, auth);
@@ -57,7 +56,6 @@ public class IndexController extends AbstractController {
 
 	@RequestMapping(value = "/home")
 	public String gethome(ModelMap model) {
-
 		setStaticData();
 		model.addAttribute("typeOfUser", getBranchCode());
 		model.addAttribute("financialYear", StaticData.financialYear);
@@ -66,6 +64,7 @@ public class IndexController extends AbstractController {
 		model.addAttribute("ClientPAN", StaticData.ClientPAN);
 		model.addAttribute("Tan", StaticData.Tan);
 		model.addAttribute("Section", StaticData.Section);
+		model.addAttribute("Form", StaticData.Form);
 		// for Dashboard
 		model.addAttribute("statementStatus", applicationCache.getStatementStatus());
 		return "homeSC";
@@ -76,16 +75,17 @@ public class IndexController extends AbstractController {
 		String branchCodeS = getBranchCode();
 //		String branchCodeS = "101";
 		model.addAttribute("typeOfUser", branchCodeS);
-		// for Dashboard
+// 		for Dashboard
 		model.addAttribute("statementStatus", applicationCache.getStatementStatus());
 		boolean isAdmin = false;
 		Long branchCode = 0L;
 		if ("admin".equals(branchCodeS)) {
+			logger.info(branchCodeS);
 			isAdmin = true;
 		} else {
 			branchCode = Long.valueOf(branchCodeS);
+			logger.info(branchCode.toString());
 		}
-		
 		Map<String, Long> ticketDetails = tcService.getStatusDetails(branchCode, isAdmin);
 		if (ticketDetails.get("Open") != null) {
 			model.addAttribute("openTicket", ticketDetails.get("Open"));
@@ -113,6 +113,7 @@ public class IndexController extends AbstractController {
 		model.addAttribute("branchCode", branchCode);
 		model.addAttribute("Tan", StaticData.Tan);
 		model.addAttribute("Section", StaticData.Section);
+		model.addAttribute("Form", StaticData.Form);
 		// for Dashboard
 		model.addAttribute("statementStatus", applicationCache.getStatementStatus());
 		return "homeWOT";
@@ -135,6 +136,7 @@ public class IndexController extends AbstractController {
 		model.addAttribute("financialYear", StaticData.financialYear);
 		model.addAttribute("Quarter", StaticData.Quarter);
 		model.addAttribute("State", StaticData.State);
+		model.addAttribute("Form", StaticData.Form);
 		// for Dashboard
 		model.addAttribute("statementStatus", applicationCache.getStatementStatus());
 		return sendPage(action, page);
@@ -148,6 +150,7 @@ public class IndexController extends AbstractController {
 		model.addAttribute("Quarter", StaticData.Quarter);
 		model.addAttribute("State", StaticData.State);
 		model.addAttribute("Tan", StaticData.Tan);
+		model.addAttribute("Form", StaticData.Form);
 		// for Dashboard
 		model.addAttribute("statementStatus", applicationCache.getStatementStatus());
 		return sendPage(action, page);
@@ -164,8 +167,8 @@ public class IndexController extends AbstractController {
 		model.addAttribute("Month", StaticData.Month);
 		model.addAttribute("Tan", StaticData.Tan);
 		model.addAttribute("Section", StaticData.Section);
+		model.addAttribute("Form", StaticData.Form);
 //		model.addAttribute("TanDB", applicationCache.getTanDB());
-
 		// for Dashboard
 		model.addAttribute("statementStatus", applicationCache.getStatementStatus());
 		return sendPage(action, page);
@@ -178,10 +181,8 @@ public class IndexController extends AbstractController {
 			if (page.contains("branch") || page.contains("DetailsBranch") || action.contains("homeWOT")) {
 				return action + "/" + page;
 			}
-
 			return "homeSC/homeSCHomepage";
 		}
-
 	}
 
 	private void setStaticData() {
@@ -256,6 +257,12 @@ public class IndexController extends AbstractController {
 				case "CertificatePath":
 					xString = list1.getValue();
 					StaticData.CertificatePath = xString;
+					// model.addAttribute("ChallanMismatch", stringArray);
+					break;
+				case "Form":
+					xString = list1.getValue();
+					stringArray = xString.split(",");
+					StaticData.Form = stringArray;
 					// model.addAttribute("ChallanMismatch", stringArray);
 					break;
 

@@ -32,7 +32,7 @@
 			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
 			<div class="heading">
 				<strong>Add Ticket Details</strong>
-				
+
 			</div>
 		</div>
 		<div class="row">
@@ -58,7 +58,14 @@
 								<div>
 									<label style="font-size: 15px">Form</label>
 									<div>
-										<select name="form" id="form" ng-model="cCctr.entity.form"
+									<select name="fy" id="fy" ng-model="cCctr.entity.form"
+										class="form-control" required>
+										<option disabled value="">Select Form</option>
+										<#list Form as f>
+										<option value="${f}">${f}</option>
+										</#list>
+									</select>
+										<!-- <select name="form" id="form" ng-model="cCctr.entity.form"
 											class="form-control" required>
 											<option disabled value="">Select Form</option>
 											<option value="24Q">24Q</option>
@@ -67,7 +74,7 @@
 											<option value="27EQ">27EQ</option>
 											<option value="15G">15G</option>
 											<option value="15H">15H</option>
-										</select>
+										</select> -->
 									</div>
 								</div>
 								<span style="color: red"
@@ -93,7 +100,7 @@
 								<span style="color: red"
 									ng-show="fileForm.submitted || fileForm.fy.$dirty && fileForm.fy.$invalid">
 									<span class="error" ng-show="fileForm.fy.$error.required">
-										Financial Year  is Required </span>
+										Financial Year is Required </span>
 								</span>
 
 							</div>
@@ -116,12 +123,41 @@
 							</div>
 						</div>
 						<div class="row">
+							<div class="col-md-6">
+								<div>
+									<label style="font-size: 15px">Cust/Vend Id</label> <input
+										name="custVendId" id="custVendId" ng-model="cCctr.entity.custVendId" placeholder = "Cust/Vend Id"
+										class="form-control" >
+								</div>
+								<span style="color: red"
+									ng-show="fileForm.submitted || fileForm.custVendId.$dirty && fileForm.custVendId.$invalid">
+									<span class="error" ng-show="fileForm.custVendId.$error.required">
+										Cust/Vend Id is Required </span>
+								</span>
+
+							</div>
+							<div class="col-md-6">
+								<div>
+									<label style="font-size: 15px">PAN</label> <input
+										name="pan" id="pan" ng-model="cCctr.entity.pan" placeholder = "PAN"
+										class="form-control" >
+								</div>
+								<span style="color: red"
+									ng-show="fileForm.submitted || fileForm.pan.$dirty && fileForm.pan.$invalid">
+									<span class="error" ng-show="fileForm.pan.$error.required">
+										PAN is Required </span>
+								</span>
+
+							</div>
+						</div>
+						<div class="row">
 							<div class="col-md-12">
 								<div style="margin-left: 0%">
-									<label style="font-size: 15px">Branch Code</label>
-									<input type="text" class="form-control" name="branchCode"  ng-init="cCctr.entity.branchCode=cCctr.getStateParamValue('branchCode');"
+									<label style="font-size: 15px">Branch Code</label> <input
+										type="text" class="form-control" name="branchCode"
+										ng-init="cCctr.entity.branchCode=cCctr.getStateParamValue('branchCode');"
 										id="branchCode" ng-model="cCctr.entity.branchCode"
-										style="width: 100%;" readonly/>
+										style="width: 100%;" readonly />
 								</div>
 							</div>
 						</div>
@@ -159,19 +195,20 @@
 
 
 						<div class="modal-footer" style="text-align: center">
-							
+
 							<button class="pushable"
-							style="background: hsl(115.5, 77.1%, 30.8%, 0.54); margin-top: 2%;" data-dismiss="modal"
-						ng-click="fileForm.submitted=true;cCctr.submitFY(fileForm.$valid,cCctr.entity,'ticket')">
-							<span class="front" style="background: hsl(115.5, 77.1%, 30.8%);">
-								Add</span>
-						</button>
-						<button class="pushable"
-							style="background: hsl(11.2, 81.2%, 37.5%, 0.53); margin-top: 2%;"
-							ng-click="cCctr.gotoWFYListPage('ticket','ticket')">
-							<span class="front" style="background: hsl(11.2, 81.2%, 37.5%);">
-								Back</span>
-						</button>
+								style="background: hsl(115.5, 77.1%, 30.8%, 0.54); margin-top: 2%;"
+								data-dismiss="modal"
+								ng-click="fileForm.submitted=true;cCctr.submitFY(fileForm.$valid,cCctr.entity,'ticket')">
+								<span class="front"
+									style="background: hsl(115.5, 77.1%, 30.8%);"> Add</span>
+							</button>
+							<button class="pushable"
+								style="background: hsl(11.2, 81.2%, 37.5%, 0.53); margin-top: 2%;"
+								ng-click="cCctr.gotoWFYListPage('ticket','ticket')">
+								<span class="front" style="background: hsl(11.2, 81.2%, 37.5%);">
+									Back</span>
+							</button>
 						</div>
 
 

@@ -82,6 +82,12 @@ public class Ticket extends CommonModelAbstract {
 	
 	@Column(name = "resolved")
 	public boolean resolved;
+	
+	@Column(name = "custVendId")
+	public Long custVendId;
+	
+	@Column(name = "pan")
+	public String pan;
 
 
 }

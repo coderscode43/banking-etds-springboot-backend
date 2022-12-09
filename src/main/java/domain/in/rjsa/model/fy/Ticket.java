@@ -87,7 +87,7 @@ public class Ticket extends CommonModelAbstract {
 	
 	@Column(name = "custVendId")
 	@Size(min = 0, max = 15, message = "Customer/Vendor Id should not be greater than 15 characters.")
-	public Long custVendId;
+	public String custVendId;
 	
 	@Column(name = "pan")
 	@Size(min = 0, max = 10, message = "PAN Number should not be greater than 10 characters.")

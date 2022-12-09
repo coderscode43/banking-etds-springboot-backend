@@ -110,7 +110,7 @@ public class IndexController extends AbstractController {
 		setStaticData();
 		model.addAttribute("typeOfUser", getBranchCode());
 		model.addAttribute("financialYear", StaticData.financialYear);
-		model.addAttribute("branchCode", branchCode);
+		model.addAttribute("branchCode", branchCode.toString());
 		model.addAttribute("Tan", StaticData.Tan);
 		model.addAttribute("Section", StaticData.Section);
 		model.addAttribute("Form", StaticData.Form);

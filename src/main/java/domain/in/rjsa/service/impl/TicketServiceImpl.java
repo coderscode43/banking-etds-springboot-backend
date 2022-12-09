@@ -95,25 +95,35 @@ public String ExcelFile;
 			} else {
 				details.createCell(4).setCellValue(tiket.getForm());
 			}
-			if (tiket.getDateOfOpening() == null) {
+			if (tiket.getCustVendId() == null) {
 				details.createCell(5).setCellValue(" ");
 			} else {
-				details.createCell(5).setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(tiket.getDateOfOpening()));
+				details.createCell(5).setCellValue(tiket.getCustVendId());
 			}
-			if (tiket.getStatus() == null) {
+			if (tiket.getPan() == null) {
 				details.createCell(6).setCellValue(" ");
 			} else {
-				details.createCell(6).setCellValue(tiket.getStatus());
+				details.createCell(6).setCellValue(tiket.getPan());
 			}
-			if (tiket.getDescription() == null) {
+			if (tiket.getDateOfOpening() == null) {
 				details.createCell(7).setCellValue(" ");
 			} else {
-				details.createCell(7).setCellValue(tiket.getDescription());
+				details.createCell(7).setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(tiket.getDateOfOpening()));
 			}
-			if (tiket.getUserName() == null) {
+			if (tiket.getStatus() == null) {
 				details.createCell(8).setCellValue(" ");
 			} else {
-				details.createCell(8).setCellValue(tiket.getUserName());
+				details.createCell(8).setCellValue(tiket.getStatus());
+			}
+			if (tiket.getDescription() == null) {
+				details.createCell(9).setCellValue(" ");
+			} else {
+				details.createCell(9).setCellValue(tiket.getDescription());
+			}
+			if (tiket.getUserName() == null) {
+				details.createCell(10).setCellValue(" ");
+			} else {
+				details.createCell(10).setCellValue(tiket.getUserName());
 			}
 			
 			if (row > 1000000) {

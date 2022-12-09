@@ -335,7 +335,7 @@ public class TicketExcel {
 			Sheet sheet = wbs.createSheet(name);
 			Row row0 = sheet.createRow(0);
 
-			for (int i = 0; i < 9; i++) {
+			for (int i = 0; i < 11; i++) {
 				row0.createCell(i);
 				row0.getCell(i).setCellStyle(styleMatch1);
 			}
@@ -350,13 +350,17 @@ public class TicketExcel {
 			sheet.setColumnWidth(4, 4000);
 			row0.getCell(4).setCellValue("Form");
 			sheet.setColumnWidth(5, 4000);
-			row0.getCell(5).setCellValue("Date of Opening");
+			row0.getCell(5).setCellValue("Cust/Vend Id");
 			sheet.setColumnWidth(6, 4000);
-			row0.getCell(6).setCellValue("Status");
+			row0.getCell(6).setCellValue("pan");
 			sheet.setColumnWidth(7, 4000);
-			row0.getCell(7).setCellValue("Description");
+			row0.getCell(7).setCellValue("Date of Opening");
 			sheet.setColumnWidth(8, 4000);
-			row0.getCell(8).setCellValue("User");
+			row0.getCell(8).setCellValue("Status");
+			sheet.setColumnWidth(9, 4000);
+			row0.getCell(9).setCellValue("Description");
+			sheet.setColumnWidth(10, 4000);
+			row0.getCell(10).setCellValue("User");
 
 			return sheet;
 	} catch (Exception e) {

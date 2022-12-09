@@ -64,7 +64,7 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 			constrains.put("branchCode", b);
 		}else {
 		}
-		constrains.put("fy", fy);
+		//constrains.put("fy", fy);
 		constrains.put("branchCode", branchCode);
 		try {
 			Long count = getService().findallCount(constrains);
@@ -139,7 +139,7 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 			constrains.put("branchCode", b);
 		}else {
 		}
-		constrains.put("fy", fy);
+		//constrains.put("fy", fy);
 		constrains.put("branchCode", branchCode);
 		return getService().findAll(constrains, pageNo, resultPerPage);
 	}
@@ -162,7 +162,7 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 				}
 			}
 			adminValidation(map);
-			map.put("fy", fy);
+			//map.put("fy", fy);
 			map.put("branchCode", branchCode);
 			Long count = getService().findallCount(map);
 			List<?> list = getSearch(map, 0, 100);
@@ -203,7 +203,7 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 		}else {
 		}
 		constrains.put("id", id);
-		constrains.put("fy", fy);
+	//	constrains.put("fy", fy);
 		constrains.put("branchCode", branchCode);
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("deductee",getService().uniqueSearch(constrains));

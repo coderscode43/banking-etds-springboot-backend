@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -84,9 +86,12 @@ public class Ticket extends CommonModelAbstract {
 	public boolean resolved;
 	
 	@Column(name = "custVendId")
+	@Size(min = 0, max = 15, message = "Customer/Vendor Id should not be greater than 15 characters.")
 	public Long custVendId;
 	
 	@Column(name = "pan")
+	@Size(min = 0, max = 10, message = "PAN Number should not be greater than 10 characters.")
+	@Pattern(regexp = "/^([A-Za-z]{5}[0-9]{4}[A-Za-z]{1})*$/", message = "PAN Number is not valid.")
 	public String pan;
 
 

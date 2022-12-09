@@ -58,13 +58,13 @@
 								<div>
 									<label style="font-size: 15px">Form</label>
 									<div>
-									<select name="fy" id="fy" ng-model="cCctr.entity.form"
-										class="form-control" required>
-										<option disabled value="">Select Form</option>
-										<#list Form as f>
-										<option value="${f}">${f}</option>
-										</#list>
-									</select>
+										<select name="fy" id="fy" ng-model="cCctr.entity.form"
+											class="form-control" required>
+											<option disabled value="">Select Form</option>
+											<#list Form as f>
+											<option value="${f}">${f}</option>
+											</#list>
+										</select>
 										<!-- <select name="form" id="form" ng-model="cCctr.entity.form"
 											class="form-control" required>
 											<option disabled value="">Select Form</option>
@@ -125,27 +125,35 @@
 						<div class="row">
 							<div class="col-md-6">
 								<div>
-									<label style="font-size: 15px">Cust/Vend Id</label> <input
-										name="custVendId" id="custVendId" ng-model="cCctr.entity.custVendId" placeholder = "Cust/Vend Id"
-										class="form-control" >
+									<label style="font-size: 15px">Customer/Vendor Id</label> <input
+										name="custVendId" id="custVendId" ng-maxlength = "15"
+										ng-model="cCctr.entity.custVendId" placeholder="Customer/Vendor Id"
+										class="form-control">
 								</div>
 								<span style="color: red"
 									ng-show="fileForm.submitted || fileForm.custVendId.$dirty && fileForm.custVendId.$invalid">
-									<span class="error" ng-show="fileForm.custVendId.$error.required">
-										Cust/Vend Id is Required </span>
+									<span class="error"
+									ng-show="fileForm.custVendId.$error.required"> Customer/Vendor
+										Id is Required </span>
+										<span class="error"
+									ng-show="fileForm.custVendId.$error.maxlength"> Customer/Vendor
+										Id is less than 15 Characters. </span>
 								</span>
 
 							</div>
 							<div class="col-md-6">
 								<div>
-									<label style="font-size: 15px">PAN</label> <input
-										name="pan" id="pan" ng-model="cCctr.entity.pan" placeholder = "PAN"
-										class="form-control" >
+									<label style="font-size: 15px">PAN</label> <input name="pan"
+										id="pan" ng-model="cCctr.entity.pan" placeholder="PAN"
+										ng-pattern="/^([A-Za-z]{5}[0-9]{4}[A-Za-z]{1})*$/"
+										class="form-control">
 								</div>
 								<span style="color: red"
 									ng-show="fileForm.submitted || fileForm.pan.$dirty && fileForm.pan.$invalid">
 									<span class="error" ng-show="fileForm.pan.$error.required">
-										PAN is Required </span>
+										PAN is Required </span> <span class="error" id="pan"></span> <span
+									class="error" ng-show="fileForm.pan.$error.pattern">Please
+										enter valid Pan</span>
 								</span>
 
 							</div>

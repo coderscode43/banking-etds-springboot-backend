@@ -119,13 +119,16 @@ public class CHALLANServiceImpl extends AbstractServiceTaxo<String, CHALLAN, CHA
 			if (challan.getAS_ON_DATE() == null) {
 				details.createCell(5).setCellValue(" ");
 			} else {
-				details.createCell(5).setCellValue(challan.getAS_ON_DATE());
+				details.createCell(5).setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(challan.getAS_ON_DATE()));
 			}
 			if (challan.getCHALLAN_MISMATCH() == null) {
-				details.createCell(6).setCellValue(" ");
-			} else {
-				details.createCell(6).setCellValue(challan.getCHALLAN_MISMATCH());
-			}
+				details.createCell(6).setCellValue("-");
+			}else if(challan.getCHALLAN_MISMATCH().toString().equalsIgnoreCase("0")) {
+				details.createCell(6).setCellValue("False");
+				}
+			else {
+				details.createCell(6).setCellValue("True");
+				}
 
 			if (row > 1000000) {
 				part++;

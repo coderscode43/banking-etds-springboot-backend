@@ -30,6 +30,7 @@ public class TicketDaoImpl extends AbstractDaoForm<Long, Ticket> implements Tick
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
 		propertyNameValues.put("clientId", clientId);
 		criteria.add(Restrictions.allEq(propertyNameValues));
+		entity.remove("fy");
 		if (entity.get("branchId") != null) {
 			criteria.add(Restrictions.eqOrIsNull("branchId", entity.get("branchId")));
 		}
@@ -41,8 +42,8 @@ public class TicketDaoImpl extends AbstractDaoForm<Long, Ticket> implements Tick
 			criteria.add(Restrictions.le("dateOfChange",
 					Date.from(ZonedDateTime.parse((String) entity.get("toDate")).toInstant())));
 		}
-		if (entity.get("resolved") != null) {
-			criteria.add(Restrictions.eqOrIsNull("resolved", Boolean.valueOf(entity.get("resolved").toString())));
+		if (entity.get("status") != null) {
+			criteria.add(Restrictions.eqOrIsNull("status", entity.get("status")));
 		}
 		if (entity.get("form") != null) {
 			String form = entity.get("form").toString();
@@ -77,6 +78,7 @@ public class TicketDaoImpl extends AbstractDaoForm<Long, Ticket> implements Tick
 		// TODO Auto-generated method stub
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
+		entity.remove("fy");
 		if (entity.get("branchId") != null) {
 			criteria.add(Restrictions.eqOrIsNull("branchId", entity.get("branchId")));
 		}
@@ -88,8 +90,8 @@ public class TicketDaoImpl extends AbstractDaoForm<Long, Ticket> implements Tick
 			criteria.add(Restrictions.le("dateOfChange",
 					Date.from(ZonedDateTime.parse((String) entity.get("toDate")).toInstant())));
 		}
-		if (entity.get("resolved") != null) {
-			criteria.add(Restrictions.eqOrIsNull("resolved", Boolean.valueOf(entity.get("resolved").toString())));
+		if (entity.get("status") != null) {
+			criteria.add(Restrictions.eqOrIsNull("status", entity.get("status")));
 		}
 		if (entity.get("form") != null) {
 			String form = entity.get("form").toString();
@@ -124,7 +126,7 @@ public class TicketDaoImpl extends AbstractDaoForm<Long, Ticket> implements Tick
 
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
-
+		entity.remove("fy");
 		if (entity.get("branchId") != null) {
 			criteria.add(Restrictions.eqOrIsNull("branchId", entity.get("branchId")));
 		}
@@ -136,8 +138,8 @@ public class TicketDaoImpl extends AbstractDaoForm<Long, Ticket> implements Tick
 			criteria.add(Restrictions.le("dateOfChange",
 					Date.from(ZonedDateTime.parse((String) entity.get("toDate")).toInstant())));
 		}
-		if (entity.get("resolved") != null) {
-			criteria.add(Restrictions.eqOrIsNull("resolved", Boolean.valueOf(entity.get("resolved").toString())));
+		if (entity.get("status") != null) {
+			criteria.add(Restrictions.eqOrIsNull("status", entity.get("status")));
 		}
 		if (entity.get("form") != null) {
 			String form = entity.get("form").toString();
@@ -174,6 +176,7 @@ public class TicketDaoImpl extends AbstractDaoForm<Long, Ticket> implements Tick
 	public List<Ticket> searchExcel(HashMap entity) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
+		entity.remove("fy");
 		if (entity.get("branchId") != null) {
 			criteria.add(Restrictions.eqOrIsNull("branchId", entity.get("branchId")));
 		}
@@ -185,8 +188,8 @@ public class TicketDaoImpl extends AbstractDaoForm<Long, Ticket> implements Tick
 			criteria.add(Restrictions.le("dateOfChange",
 					Date.from(ZonedDateTime.parse((String) entity.get("toDate")).toInstant())));
 		}
-		if (entity.get("resolved") != null) {
-			criteria.add(Restrictions.eqOrIsNull("resolved", Boolean.valueOf(entity.get("resolved").toString())));
+		if (entity.get("status") != null) {
+			criteria.add(Restrictions.eqOrIsNull("status", entity.get("status")));
 		}
 		if (entity.get("form") != null) {
 			String form = entity.get("form").toString();
@@ -204,7 +207,7 @@ public class TicketDaoImpl extends AbstractDaoForm<Long, Ticket> implements Tick
 			criteria.add(Restrictions.eqOrIsNull("quarter", entity.get("quarter")));
 		}
 		if (entity.get("branchCode") != null) {
-			criteria.add(Restrictions.eqOrIsNull("branchCode", Long.valueOf((String)entity.get("branchCode"))));
+			criteria.add(Restrictions.eqOrIsNull("branchCode", Long.valueOf(entity.get("branchCode").toString())));
 		}
 		if (entity.get("pan") != null) {
 			criteria.add(Restrictions.eqOrIsNull("pan", entity.get("pan")));

@@ -110,10 +110,10 @@ public String ExcelFile;
 			} else {
 				details.createCell(7).setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(tiket.getDateOfOpening()));
 			}
-			if (tiket.getStatus() == null) {
-				details.createCell(8).setCellValue(" ");
+			if (tiket.isResolved()) {
+				details.createCell(8).setCellValue("Not Resolved");
 			} else {
-				details.createCell(8).setCellValue(tiket.getStatus());
+				details.createCell(8).setCellValue("Resolved");
 			}
 			if (tiket.getDescription() == null) {
 				details.createCell(9).setCellValue(" ");

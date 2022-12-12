@@ -91,7 +91,7 @@ public class Ticket extends CommonModelAbstract {
 	
 	@Column(name = "pan")
 	@Size(min = 0, max = 10, message = "PAN Number should not be greater than 10 characters.")
-	@Pattern(regexp = "/^([A-Za-z]{5}[0-9]{4}[A-Za-z]{1})*$/", message = "PAN Number is not valid.")
+//	@Pattern(regexp = "/^([A-Z a-z]{5}[0-9]{4}[A-Z a-z]{1})*$/", message = "PAN Number is not valid.")
 	public String pan;
 
 

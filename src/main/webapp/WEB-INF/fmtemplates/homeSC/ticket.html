@@ -159,13 +159,12 @@
 						<h6>
 							<b>Status</b>
 							<h6>
-								<select type="text" ng-model="cCctr.search.status"
-									class="form-control" placeholder="Status" style="width: 100%">
-									<option disabled value="">Select Status</option>
-									<option value="Open">Open</option>
-									<option value="Reject">Reject</option>
-									<option value="Resolve">Resolved</option>
-								</select>
+								<select ng-model="cCctr.search.resolved" class="form-control">
+									<option value="">Status</option>
+									<option value="false">Resolved</option>
+									<option value="true">Not Resolved</option>
+
+						</select>
 					</div>
 					<div class="col-md-2">
 						<h6>
@@ -357,7 +356,7 @@
 						<th width="6%">Date Of Opening</th>
 						<th width="6%">Status</th>
 						<th width="40%">Description</th>
-						<th width="10%">User</th>
+						<th width="20%">User</th>
 						<th width="7%">Action</th>
 					</tr>
 				</thead>
@@ -370,17 +369,46 @@
 					</tr>
 					<tr role="row"
 						ng-repeat="a in cCctr.getEntityListData() track by a.id">
-						<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
-						<td>{{a.fy}}</td>
-						<td>{{a.quarter}}</td>
-						<td>{{a.branchCode}}</td>
-						<td>{{a.form}}</td>
-						<td>{{a.custVendId}}</td>
-						<td>{{a.pan}}</td>
-						<td>{{a.dateOfOpening | date:'dd-MM-yyyy'}}</td>
-						<td>{{a.status}}</td>
-						<td>{{a.description}}</td>
-						<td>{{a.userName}}</td>
+						<td role="cell" class="one" style="padding: 5px" ng-if="a.resolved == 0">{{$index+1}}</td>
+						<td role="cell" class="one" style="padding: 5px;background-color: #ff3232"ng-if="a.resolved == 1">{{$index+1}}</td>
+						
+						<td style="width: 1%" ng-if="a.resolved == 0">{{a.fy}}</td>
+						<td ng-if="a.resolved == 1"
+								style="width: 1%; background-color: #ff3232">{{a.fy}}</td>
+						
+						<td style="width: 1%" ng-if="a.resolved == 0">{{a.quarter}}</td>
+						<td ng-if="a.resolved == 1"
+								style="width: 1%; background-color: #ff3232">{{a.quarter}}</td>
+						
+						<td style="width: 1%" ng-if="a.resolved == 0">{{a.branchCode}}</td>
+						<td ng-if="a.resolved == 1"
+								style="width: 1%; background-color: #ff3232">{{a.branchCode}}</td>
+						
+						<td style="width: 1%" ng-if="a.resolved == 0">{{a.form}}</td>
+						<td ng-if="a.resolved == 1"
+								style="width: 1%; background-color: #ff3232">{{a.form}}</td>
+						
+						<td style="width: 1%" ng-if="a.resolved == 0">{{a.custVendId}}</td>
+						<td ng-if="a.resolved == 1"
+								style="width: 1%; background-color: #ff3232">{{a.custVendId}}</td>
+						
+						<td style="width: 1%" ng-if="a.resolved == 0">{{a.pan}}</td>
+						<td ng-if="a.resolved == 1"
+								style="width: 1%; background-color: #ff3232">{{a.pan}}</td>
+						
+						<td style="width: 1%" ng-if="a.resolved == 0">{{a.dateOfOpening | date:'dd-MM-yyyy'}}</td>
+						<td ng-if="a.resolved == 1"
+								style="width: 1%; background-color: #ff3232">{{a.dateOfOpening | date:'dd-MM-yyyy'}}</td>
+							
+						<td ng-if="a.resolved == 0" style="width: 1%">Resolved</td>
+						<td ng-if="a.resolved == 1"
+								style="width: 1%; background-color: #ff3232">Not Resolved</td>
+						<td style="width: 1%" ng-if="a.resolved == 0">{{a.description}}</td>
+						<td ng-if="a.resolved == 1"
+								style="width: 1%; background-color: #ff3232">{{a.description}}</td>
+						<td style="width: 1%" ng-if="a.resolved == 0">{{a.userName}}</td>
+						<td ng-if="a.resolved == 1"
+								style="width: 1%; background-color: #ff3232">{{a.userName}}</td>
 						<!-- ng-click="cCctr.gotoDetailPage('ticket',a.id,a.fy,a.branchCode,'detailticket')" -->
 						<td><a
 							ng-click="cCctr.gotoDetailFormPage('ticket',a.id,a.fy,a.branchCode,'detailTicket')"

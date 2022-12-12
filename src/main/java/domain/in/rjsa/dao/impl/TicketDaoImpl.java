@@ -40,8 +40,8 @@ public class TicketDaoImpl extends AbstractDaoForm<Long, Ticket> implements Tick
 			criteria.add(Restrictions.le("dateOfChange",
 					Date.from(ZonedDateTime.parse((String) entity.get("toDate")).toInstant())));
 		}
-		if (entity.get("status") != null) {
-			criteria.add(Restrictions.eqOrIsNull("status", entity.get("status")));
+		if (entity.get("resolved") != null) {
+			criteria.add(Restrictions.eqOrIsNull("resolved", Boolean.valueOf(entity.get("resolved").toString())));
 		}
 		if (entity.get("form") != null) {
 			criteria.add(Restrictions.eqOrIsNull("form", entity.get("form")));
@@ -85,8 +85,8 @@ public class TicketDaoImpl extends AbstractDaoForm<Long, Ticket> implements Tick
 			criteria.add(Restrictions.le("dateOfChange",
 					Date.from(ZonedDateTime.parse((String) entity.get("toDate")).toInstant())));
 		}
-		if (entity.get("status") != null) {
-			criteria.add(Restrictions.eqOrIsNull("status", entity.get("status")));
+		if (entity.get("resolved") != null) {
+			criteria.add(Restrictions.eqOrIsNull("resolved", Boolean.valueOf(entity.get("resolved").toString())));
 		}
 		if (entity.get("form") != null) {
 			criteria.add(Restrictions.eqOrIsNull("form", entity.get("form")));
@@ -131,8 +131,8 @@ public class TicketDaoImpl extends AbstractDaoForm<Long, Ticket> implements Tick
 			criteria.add(Restrictions.le("dateOfChange",
 					Date.from(ZonedDateTime.parse((String) entity.get("toDate")).toInstant())));
 		}
-		if (entity.get("status") != null) {
-			criteria.add(Restrictions.eqOrIsNull("status", entity.get("status")));
+		if (entity.get("resolved") != null) {
+			criteria.add(Restrictions.eqOrIsNull("resolved", Boolean.valueOf(entity.get("resolved").toString())));
 		}
 		if (entity.get("form") != null) {
 			criteria.add(Restrictions.eqOrIsNull("form", entity.get("form")));
@@ -178,8 +178,8 @@ public class TicketDaoImpl extends AbstractDaoForm<Long, Ticket> implements Tick
 			criteria.add(Restrictions.le("dateOfChange",
 					Date.from(ZonedDateTime.parse((String) entity.get("toDate")).toInstant())));
 		}
-		if (entity.get("status") != null) {
-			criteria.add(Restrictions.eqOrIsNull("status", entity.get("status")));
+		if (entity.get("resolved") != null) {
+			criteria.add(Restrictions.eqOrIsNull("resolved", Boolean.valueOf(entity.get("resolved").toString())));
 		}
 		if (entity.get("form") != null) {
 			criteria.add(Restrictions.eqOrIsNull("form", entity.get("form")));

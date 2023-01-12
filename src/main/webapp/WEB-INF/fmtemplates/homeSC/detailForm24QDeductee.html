@@ -349,7 +349,6 @@ table {
 
 
 							<div class="row">
-								<form role="form" name="remark">
 									<input
 										ng-model="cCctr.newEntity.deducteeId = cCctr.entity.deductee.id"
 										id="deducteeId" name="deducteeId" style="display: none">
@@ -362,11 +361,7 @@ table {
 									<input class="form-control"
 										ng-model="cCctr.newEntity.branchCode = cCctr.entity.deductee.branchCode"
 										id="branchCode" name="branchCode" style="display: none">
-
-
-
 									<button class="pushable AddRemarkButton darkblue"
-									
 										data-target="#myModal" data-toggle="modal">
 										<span class="front darkbluespan"
 											style=""><i
@@ -431,40 +426,48 @@ table {
 									<div class="modal fade" id="myModal" role="dialog">
 										<div class="modal-dialog">
 
-											<!-- Modal content-->
+											<!-- Add Remark Modal content-->
+											<form name="addRemark" >
 											<div class="modal-content">
 												<div class="modal-header">
 													<button type="button" class="close btn btn-three"
 														data-dismiss="modal">&times;</button>
 													<h4 class="modal-title">Add Remark</h4>
 												</div>
+												
 												<div class="col-md-12">
 													<div class="col-md-12">
-														<label style="font-size: 13px; margin-top: 2%">Remarks&nbsp;:</label>
+														<label style="font-size: 13px; margin-top: 2%">Remark&nbsp;:</label>
 													</div>
 													<textarea ng-model="cCctr.newEntity.remark" id="remark"
 														name="remark"
 														style="width: 90%; height: 20%; font-size: 15px; margin-left: 5%;"
 														ng-required="true"></textarea>
 													<span style="color: red; margin-left: 5%;" class="error"
-														ng-show="remark.submitted || remark.remark.$dirty && remark.remark.$invalid">Please
+														ng-show="addRemark.submitted || addRemark.remark.$dirty && addRemark.remark.$required">Please
 														enter valid Remark</span> <span class="error" id="remark"></span>
 												</div>
 												<div class="modal-footer">
 													<button class="pushable darkgreen"
 														style="margin-top: 2%;"
-														data-dismiss="modal"
 														
-														ng-click="remark.submitted=true;cCctr.addRemark(true,'remark',cCctr.newEntity,'Remark','close')">
+														
+														ng-click="addRemark.submitted=true;cCctr.addRemark(addRemark.$valid,'remark',cCctr.newEntity,'Remark','close')">
 														<span class="front darkgreenspan"> Add</span>
+													</button>
+													<button class="pushable darkred"
+														style="margin-top: 2%;"
+														data-dismiss="modal">
+														<span class="front darkredspan"> No</span>
 													</button>
 												</div>
 											</div>
-
+											</form>
 										</div>
 									</div>
 									<!-- Reject Remark model -->
 									<div class="modal fade" id="rejectModal" role="dialog">
+									<form name="rejectRemark" >
 										<div class="modal-dialog">
 											<div class="modal-content">
 												<div class="modal-header">
@@ -478,12 +481,15 @@ table {
 														name="remark"
 														style="width: 90%; height: 20%; font-size: 15px; margin-left: 5%;"
 														ng-required="true"></textarea>
+													<span style="color: red; margin-left: 5%;" class="error"
+														ng-show="rejectRemark.submitted || rejectRemark.remark.$dirty && rejectRemark.remark.$required">Please
+														enter valid Remark</span> <span class="error" id="remark"></span>
 												</div>
 												<div class="modal-footer">
 													<button class="pushable darkgreen"
 														style="margin-top: 2%;"
 														ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.deductee.id"
-														ng-click="cCctr.addRemark(true,'remark',cCctr.newEntity,'Reject','close')">
+														ng-click="rejectRemark.submitted=true;cCctr.addRemark(rejectRemark.$valid,'remark',cCctr.newEntity,'Reject','close')">
 														<span class="front darkgreenspan"> Yes</span>
 													</button>
 													<button class="pushable darkred"
@@ -494,10 +500,12 @@ table {
 												</div>
 											</div>
 										</div>
+										</form>
 									</div>
 
 									<!-- Resolve Remark model -->
 									<div class="modal fade" id="resolveModal" role="dialog">
+									<form name="resolvedRemark" >
 										<div class="modal-dialog">
 											<div class="modal-content">
 												<div class="modal-header">
@@ -510,12 +518,15 @@ table {
 														name="remark"
 														style="width: 90%; height: 20%; font-size: 15px; margin-left: 5%;"
 														ng-required="true"></textarea>
+													<span style="color: red; margin-left: 5%;" class="error"
+														ng-show="resolvedRemark.submitted || resolvedRemark.remark.$dirty && resolvedRemark.remark.$invalid">Please
+														enter valid Remark</span> <span class="error" id="remark"></span>
 												</div>
 												<div class="modal-footer">
 													<button class="pushable darkgreen"
 														style="margin-top: 2%;"
 														ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.deductee.id"
-														ng-click="cCctr.addRemark(true,'remark',cCctr.newEntity,'Resolve','close')">
+														ng-click="resolvedRemark.submitted=true;cCctr.addRemark(resolvedRemark.$valid,'remark',cCctr.newEntity,'Resolve','close')">
 														<span class="front darkgreenspan"
 															> Yes</span>
 													</button>
@@ -529,8 +540,8 @@ table {
 												</div>
 											</div>
 										</div>
+										</form>
 									</div>
-								</form>
 							</div>
 						</div>
 					</div>
@@ -1040,7 +1051,7 @@ table {
 									<button class="pushable darkblue"
 										style="margin-top: 2%;"
 										data-dismiss="modal"
-										ng-click="form24qdeductee.submitted=true;cCctr.updateData(form24qdeductee.$valid,cCctr.entity.deductee,'form24QDeductee')">
+										ng-click="cCctr.updateData(true,cCctr.entity.deductee,'form24QDeductee')">
 										<span class="front darkbluespan"
 											> Update</span>
 									</button>

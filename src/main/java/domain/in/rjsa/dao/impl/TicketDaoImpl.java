@@ -14,8 +14,6 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import com.ibm.icu.util.BytesTrie.Iterator;
-
 import domain.in.rjsa.dao.AbstractDaoForm;
 import domain.in.rjsa.dao.TicketDao;
 import domain.in.rjsa.model.fy.Ticket;
@@ -30,7 +28,7 @@ public class TicketDaoImpl extends AbstractDaoForm<Long, Ticket> implements Tick
 		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
 		propertyNameValues.put("clientId", clientId);
 		criteria.add(Restrictions.allEq(propertyNameValues));
-		entity.remove("fy");
+	//	entity.remove("fy");
 		if (entity.get("branchId") != null) {
 			criteria.add(Restrictions.eqOrIsNull("branchId", entity.get("branchId")));
 		}
@@ -67,7 +65,7 @@ public class TicketDaoImpl extends AbstractDaoForm<Long, Ticket> implements Tick
 			criteria.add(Restrictions.eqOrIsNull("pan", entity.get("pan")));
 		}
 		if (entity.get("custVendId") != null) {
-			criteria.add(Restrictions.eqOrIsNull("custVendId", Long.valueOf((String)entity.get("custVendId"))));
+			criteria.add(Restrictions.eqOrIsNull("custVendId", entity.get("custVendId")));
 		}
 		criteria.addOrder(Order.desc("dateOfOpening"));
 		return (List<Ticket>) criteria.list();
@@ -78,7 +76,7 @@ public class TicketDaoImpl extends AbstractDaoForm<Long, Ticket> implements Tick
 		// TODO Auto-generated method stub
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
-		entity.remove("fy");
+//		entity.remove("fy");
 		if (entity.get("branchId") != null) {
 			criteria.add(Restrictions.eqOrIsNull("branchId", entity.get("branchId")));
 		}
@@ -115,7 +113,7 @@ public class TicketDaoImpl extends AbstractDaoForm<Long, Ticket> implements Tick
 			criteria.add(Restrictions.eqOrIsNull("pan", entity.get("pan")));
 		}
 		if (entity.get("custVendId") != null) {
-			criteria.add(Restrictions.eqOrIsNull("custVendId",Long.valueOf((String) entity.get("custVendId"))));
+			criteria.add(Restrictions.eqOrIsNull("custVendId",entity.get("custVendId")));
 		}
 		criteria.addOrder(Order.desc("dateOfOpening"));
 		return (List<Ticket>) criteria.list();
@@ -126,7 +124,7 @@ public class TicketDaoImpl extends AbstractDaoForm<Long, Ticket> implements Tick
 
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
-		entity.remove("fy");
+	//	entity.remove("fy");
 		if (entity.get("branchId") != null) {
 			criteria.add(Restrictions.eqOrIsNull("branchId", entity.get("branchId")));
 		}
@@ -163,7 +161,7 @@ public class TicketDaoImpl extends AbstractDaoForm<Long, Ticket> implements Tick
 			criteria.add(Restrictions.eqOrIsNull("pan", entity.get("pan")));
 		}
 		if (entity.get("custVendId") != null) {
-			criteria.add(Restrictions.eqOrIsNull("custVendId", Long.valueOf((String)entity.get("custVendId"))));
+			criteria.add(Restrictions.eqOrIsNull("custVendId",entity.get("custVendId")));
 		}
 		criteria.addOrder(Order.desc("dateOfOpening"));
 //           criteria.setFirstResult(pageNo * noOfResult);
@@ -176,7 +174,7 @@ public class TicketDaoImpl extends AbstractDaoForm<Long, Ticket> implements Tick
 	public List<Ticket> searchExcel(HashMap entity) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
-		entity.remove("fy");
+	//	entity.remove("fy");
 		if (entity.get("branchId") != null) {
 			criteria.add(Restrictions.eqOrIsNull("branchId", entity.get("branchId")));
 		}
@@ -213,7 +211,7 @@ public class TicketDaoImpl extends AbstractDaoForm<Long, Ticket> implements Tick
 			criteria.add(Restrictions.eqOrIsNull("pan", entity.get("pan")));
 		}
 		if (entity.get("custVendId") != null) {
-			criteria.add(Restrictions.eqOrIsNull("custVendId", Long.valueOf((String)entity.get("custVendId"))));
+			criteria.add(Restrictions.eqOrIsNull("custVendId", entity.get("custVendId")));
 		}
 		criteria.addOrder(Order.desc("dateOfOpening"));
 		return (List<Ticket>) criteria.list();

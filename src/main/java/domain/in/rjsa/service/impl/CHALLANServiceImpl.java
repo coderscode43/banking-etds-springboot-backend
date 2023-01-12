@@ -19,12 +19,9 @@ import domain.in.rjsa.dao.CHALLANDao;
 import domain.in.rjsa.dao.PanUpdateListDao;
 import domain.in.rjsa.dao.StaticDataDao;
 import domain.in.rjsa.excel.CHALLANExcel;
-import domain.in.rjsa.model.form.StaticDataModel;
-import domain.in.rjsa.model.fy.PanUpdateList;
 import domain.in.rjsa.model.tds.CHALLAN;
 import domain.in.rjsa.service.AbstractServiceTaxo;
 import domain.in.rjsa.service.CHALLANService;
-import domain.in.rjsa.util.StaticData;
 
 @Transactional("transactionManager")
 @Service("CHALLANService")

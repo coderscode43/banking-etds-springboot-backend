@@ -150,7 +150,7 @@
 		<div class="collapse dont-collapse-sm" id="collapseExample2">
 			<div class="row">
 				<div class="form-group">
-					<div class="col-md-2">
+					<div class="col-md-3">
 						<h6>
 							<b>Status</b>
 							<h6>
@@ -230,8 +230,6 @@
 									class="form-control" placeholder="PAN"
 									style="width: 100%">
 					</div>
-				</div>
-				<div class="row">
 					<div class="col-md-2">
 						<h6>
 							<b>From Date Of Opening</b>
@@ -249,7 +247,10 @@
 							ng-change="cCctr.search.toDate=cCctr.date(cCctr.search.toDate);"
 							class="form-control" placeholder="Date" style="width: 100%">
 					</div>
-					<div class="col-md-2">
+					
+				</div>
+				<div class="row">
+										<div class="col-md-2">
 						<button class="btn btn-grad astro-MG2CNCJP " type="button"
 						style="margin-top:14%;background-image: linear-gradient(to right, #517fa4 0%, #243949  51%, #517fa4  100%);"
 							ng-click="cCctr.generateProcessExcel('apiticket/generateExcel/','Ticket')">Export
@@ -284,7 +285,7 @@
 
 		<div class="row">
 			<!-- <div class="table-responsive">  -->
-			<table class=" tables table-bordered table-hover table-striped"
+			<table class=" table table-bordered table-hover table-striped"
 				role="table"
 				style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
 				<thead>
@@ -292,17 +293,17 @@
 					<tr>
 				<thead role="rowgroup">
 					<tr role="row" style="height: 40px; background-color: #81b7db">
-						<th width="2%">Sr. No.</th>
-						<th width="6%">Financial Year</th>
-						<th width="6%">Quarter</th>
-						<th width="6%">Form</th>
-						<th width="6%">Customer/Vendor ID</th>
-						<th width="6%">PAN</th>
-						<th width="6%">Date Of Opening</th>
-						<th width="6%">Status</th>
-						<th width="40%">Description</th>
-						<th width="20%">User</th>
-						<th width="7%">Action</th>
+						<th >Sr. No.</th>
+						<th><div class="autoResizeQuarter">Financial Year</div></th>
+						<th><div class="autoResizeQuarter">Quarter</div></th>
+						<th><div class="autoResizeQuarter">Form</div></th>
+						<th><div class="autoResizeQuarter">Customer/Vendor ID</div></th>
+						<th><div class="autoResizeQuarter">PAN</div></th>
+						<th ><div class="autoResizeQuarter">Date Of Opening</div></th>
+						<th><div class="autoResizeQuarter">Status</div></th>
+						<th><div class="autoResizeQuarter">Description</div></th>
+						<th ><div class="autoResizeQuarter">User</div></th>
+						<th>Action</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -310,72 +311,72 @@
 					<td colspan="14" style="text-align: center;"><b><h3 style="text-align:center;">No data
 					found!!</h3></b></td>
 					<tr role="row" ng-repeat="a in cCctr.getEntityListDataFY()">
-						<td style="width: 1%" ng-if="a.status == 'Reject'"">{{$index+1}}</td>
+						<td  ng-if="a.status == 'Reject'"">{{$index+1}}</td>
 						<td ng-if="a.status == 'Resolve'"
-								style="width: 1%; background-color: Green;color:#fff;">{{$index+1}}</td>
+								style=" background-color: Green;color:#fff;">{{$index+1}}</td>
 						<td ng-if="a.status == 'Open'""
-								style="width: 1%; background-color: #ff3232;color:#fff;">{{$index+1}}</td>
+								style=" background-color: #ff3232;color:#fff;">{{$index+1}}</td>
 						
-						<td style="width: 1%" ng-if="a.status == 'Reject'"">{{a.fy}}</td>
+						<td  ng-if="a.status == 'Reject'"">{{a.fy}}</td>
 						<td ng-if="a.status == 'Resolve'"
-								style="width: 1%; background-color: Green;color:#fff;">{{a.fy}}</td>
+								style=" background-color: Green;color:#fff;">{{a.fy}}</td>
 						<td ng-if="a.status == 'Open'""
-								style="width: 1%; background-color: #ff3232;color:#fff;">{{a.fy}}</td>
+								style=" background-color: #ff3232;color:#fff;">{{a.fy}}</td>
 								
 						
-						<td style="width: 1%" ng-if="a.status == 'Reject'"">{{a.quarter}}</td>
+						<td  ng-if="a.status == 'Reject'"">{{a.quarter}}</td>
 						<td ng-if="a.status == 'Resolve'"
-								style="width: 1%; background-color: Green;color:#fff;">{{a.quarter}}</td>
+								style=" background-color: Green;color:#fff;">{{a.quarter}}</td>
 						<td ng-if="a.status == 'Open'""
-								style="width: 1%; background-color: #ff3232;color:#fff;">{{a.quarter}}</td>
+								style=" background-color: #ff3232;color:#fff;">{{a.quarter}}</td>
 						
 
 						
-						<td style="width: 1%" ng-if="a.status == 'Reject'"">{{a.form}}</td>
+						<td  ng-if="a.status == 'Reject'"">{{a.form}}</td>
 						<td ng-if="a.status == 'Resolve'"
-								style="width: 1%; background-color: Green;color:#fff;">{{a.form}}</td>
+								style=" background-color: Green;color:#fff;">{{a.form}}</td>
 						<td ng-if="a.status == 'Open'""
-								style="width: 1%; background-color: #ff3232;color:#fff;">{{a.form}}</td>
+								style=" background-color: #ff3232;color:#fff;">{{a.form}}</td>
 								
 						
-						<td style="width: 1%" ng-if="a.status == 'Reject'"">{{a.custVendId}}</td>
+						<td  ng-if="a.status == 'Reject'"">{{a.custVendId}}</td>
 						<td ng-if="a.status == 'Resolve'"
-								style="width: 1%; background-color: Green;color:#fff;">{{a.custVendId}}</td>
+								style=" background-color: Green;color:#fff;">{{a.custVendId}}</td>
 						<td ng-if="a.status == 'Open'""
-								style="width: 1%; background-color: #ff3232;color:#fff;">{{a.custVendId}}</td>
+								style=" background-color: #ff3232;color:#fff;">{{a.custVendId}}</td>
 								
 						
-						<td style="width: 1%" ng-if="a.status == 'Reject'"">{{a.pan}}</td>
+						<td  ng-if="a.status == 'Reject'"">{{a.pan}}</td>
 						<td ng-if="a.status == 'Resolve'"
-								style="width: 1%; background-color: Green;color:#fff;">{{a.pan}}</td>
+								style=" background-color: Green;color:#fff;">{{a.pan}}</td>
 						<td ng-if="a.status == 'Open'""
-								style="width: 1%; background-color: #ff3232;color:#fff;">{{a.pan}}</td>
+								style=" background-color: #ff3232;color:#fff;">{{a.pan}}</td>
 						
-						<td style="width: 1%" ng-if="a.status == 'Reject'"">{{a.dateOfOpening | date:'dd-MM-yyyy'}}</td>
+						<td  ng-if="a.status == 'Reject'"">{{a.dateOfOpening | date:'dd-MM-yyyy'}}</td>
 						<td ng-if="a.status == 'Resolve'"
-								style="width: 1%; background-color: Green;color:#fff;">{{a.dateOfOpening | date:'dd-MM-yyyy'}}</td>
+								style=" background-color: Green;color:#fff;">{{a.dateOfOpening | date:'dd-MM-yyyy'}}</td>
 						<td ng-if="a.status == 'Open'""
-								style="width: 1%; background-color: #ff3232;color:#fff;">{{a.dateOfOpening | date:'dd-MM-yyyy'}}</td>
+								style=" background-color: #ff3232;color:#fff;">{{a.dateOfOpening | date:'dd-MM-yyyy'}}</td>
 								
 							
-						<td ng-if="a.status == 'Reject'"" style="width: 1%">{{a.status}}</td>
+						<td ng-if="a.status == 'Reject'"" >{{a.status}}</td>
 						<td ng-if="a.status == 'Resolve'"
-								style="width: 1%; background-color: Green;color:#fff;">{{a.status}}</td>
+								style=" background-color: Green;color:#fff;">{{a.status}}</td>
 						<td ng-if="a.status == 'Open'""
-								style="width: 1%; background-color: #ff3232;color:#fff;">{{a.status}}</td>
+								style=" background-color: #ff3232;color:#fff;">{{a.status}}</td>
 								
-						<td style="width: 1%" ng-if="a.status == 'Reject'"">{{a.description}}</td>
+						<td  ng-if="a.status == 'Reject'"">{{a.description}}</td>
 						<td ng-if="a.status == 'Resolve'"
-								style="width: 1%; background-color: Green;color:#fff;">{{a.description}}</td>
+								style=" background-color: Green;color:#fff;">{{a.description}}</td>
 						<td ng-if="a.status == 'Open'""
-								style="width: 1%; background-color: #ff3232;color:#fff;">{{a.description}}</td>		
+								style=" background-color: #ff3232;color:#fff;">{{a.description}}</td>		
 								
 								
-						<td ng-if="a.status == 'Reject'"" style="width: 1%">{{a.userName}}</td>
+						<td ng-if="a.status == 'Reject'"" >{{a.userName}}</td>
 						<td ng-if="a.status == 'Resolve'"
-								style="width: 1%; background-color: Green;color:#fff;">{{a.userName}}</td>
+								style=" background-color: Green;color:#fff;">{{a.userName}}</td>
 						<td ng-if="a.status == 'Open'""
-								style="width: 1%; background-color: #ff3232;color:#fff;">{{a.userName}}</td>
+								style=" background-color: #ff3232;color:#fff;">{{a.userName}}</td>
 						<td><a
 							ng-click="cCctr.gotoWFYDetailPage('ticket',a.id,'detailticket')"
 							style="color: blue"><img src="static\img\edit.png"

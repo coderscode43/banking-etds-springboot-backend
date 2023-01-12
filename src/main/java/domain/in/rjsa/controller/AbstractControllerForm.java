@@ -41,7 +41,6 @@ import domain.in.rjsa.model.form.Ajax;
 import domain.in.rjsa.model.form.ListCount;
 import domain.in.rjsa.model.form.Model;
 import domain.in.rjsa.model.fy.Logs;
-import domain.in.rjsa.model.fy.Ticket;
 import domain.in.rjsa.service.LogsService;
 import domain.in.rjsa.service.ServiceInterfaceForm;
 import domain.in.rjsa.service.UserDetailsService;

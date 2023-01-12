@@ -350,13 +350,13 @@ table {
 
 
 							<div class="row">
-								<form role="form" name="remark">
-									<input ng-model="cCctr.newEntityId = cCctr.entity.id"
+									<input
+										ng-model="cCctr.newEntity.deducteeId = cCctr.entity.id"
 										id="deducteeId" name="deducteeId" style="display: none">
 
-									<input ng-model="cCctr.newEntity.fy = cCctr.entity.fy" id="fy"
-										name="fy" style="display: none"> <input
-										ng-model="cCctr.newEntityForm ='24Qform'"
+									<input ng-model="cCctr.newEntity.fy = cCctr.entity.fy"
+										id="fy" name="fy" style="display: none"> <input
+										ng-model="cCctr.newEntity.deducteeForm ='24Qform'"
 										id="deducteeForm" name="deducteeForm" style="display: none">
 
 									<input class="form-control"
@@ -425,6 +425,7 @@ table {
 
 											<!-- Modal content-->
 											<div class="modal-content">
+											<form name="addRemark" >
 												<div class="modal-header">
 													<button type="button" class="close" data-dismiss="modal">&times;</button>
 													<h4 class="modal-title">Add Remark</h4>
@@ -438,26 +439,32 @@ table {
 														style="width: 90%; height: 20%; font-size: 15px; margin-left: 5%;"
 														ng-required="true"></textarea>
 													<span style="color: red; margin-left: 5%;" class="error"
-														ng-show="remark.submitted || remark.remark.$dirty && remark.remark.$invalid">Please
+														ng-show="addRemark.submitted || addRemark.remark.$dirty && addRemark.remark.$required">Please
 														enter valid Remark</span> <span class="error" id="remark"></span>
 												</div>
 												<div class="modal-footer">
 													<button class="pushable darkgreen"
 														style="margin-top: 2%;"
-														data-dismiss="modal"
-														style="margin: 2% 5% 0 0; width: 15%;"
-														ng-click="remark.submitted=true;cCctr.addRemark(remark.$valid,'remark',cCctr.newEntity,'Remark','close')"
-													data-dismiss="modal">
+														ng-click="addRemark.submitted=true;cCctr.addRemark(addRemark.$valid,'remark',cCctr.newEntity,'Remark','close')"
+															>
 														<span class="front darkgreenspan"
 															> Add</span>
 													</button>
+													<button class="pushable darkred"
+														style="margin-top: 2%;"
+														data-dismiss="modal">
+														<span class="front darkredspan"> No</span>
+													</button>
 												</div>
+												
+												</form>
 											</div>
 
 										</div>
 									</div>
 									<!-- Reject Remark model -->
 									<div class="modal fade" id="rejectModal" role="dialog">
+									<form name="rejectRemark" >
 										<div class="modal-dialog">
 											<div class="modal-content">
 												<div class="modal-header">
@@ -471,12 +478,15 @@ table {
 													name="remark"
 													style="width: 90%; height: 20%; font-size: 15px; margin-left: 5%;"
 													ng-required="true"></textarea>
+													<span style="color: red; margin-left: 5%;" class="error"
+														ng-show="rejectRemark.submitted || rejectRemark.remark.$dirty && rejectRemark.remark.$required">Please
+														enter valid Remark</span> <span class="error" id="remark"></span>
 												</div>
 													<div class="modal-footer">
 												<button class="pushable darkgreen"
 														style="margin-top: 2%;"
 														ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.id"
-													ng-click="cCctr.addRemark(true,'remark',cCctr.newEntity,'Reject','close')">
+													ng-click="rejectRemark.submitted=true;cCctr.addRemark(rejectRemark.$valid,'remark',cCctr.newEntity,'Reject','close')">
 														<span class="front darkgreenspan"
 															> Yes</span>
 													</button>
@@ -489,10 +499,12 @@ table {
 											</div>
 											</div>
 										</div>
+										</form>
 									</div>
 									
 									<!-- Resolve Remark model -->
 									<div class="modal fade" id="resolveModal" role="dialog">
+									<form name="resolvedRemark">
 										<div class="modal-dialog">
 											<div class="modal-content">
 												<div class="modal-header">
@@ -505,12 +517,15 @@ table {
 													name="remark"
 													style="width: 90%; height: 20%; font-size: 15px; margin-left: 5%;"
 													ng-required="true"></textarea>
+													<span style="color: red; margin-left: 5%;" class="error"
+														ng-show="resolvedRemark.submitted || resolvedRemark.remark.$dirty && resolvedRemark.remark.$requied">Please
+														enter valid Remark</span> <span class="error" id="remark"></span>
 												</div>
 													<div class="modal-footer">
 													<button class="pushable darkgreen"
 														style="margin-top: 2%;"
 														ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.id"
-													ng-click="cCctr.addRemark(true,'remark',cCctr.newEntity,'Resolve','close')">
+													ng-click="resolvedRemark.submitted=true;cCctr.addRemark(resolvedRemark.$valid,'remark',cCctr.newEntity,'Resolve','close')">
 														<span class="front darkgreenspan"
 															> Yes</span>
 													</button>
@@ -523,8 +538,8 @@ table {
 											</div>
 											</div>
 										</div>
+										</form>
 									</div>
-								</form>
 							</div>
 						</div>
 					</div>
@@ -589,7 +604,7 @@ table {
 								<div class="col-md-6">
 										<label style="font-size: 12px;">Quarter</label> <select name="quarter"
 											class="form-control" ng-model="cCctr.entity.quarter"
-											ng-model-options="{updateOn: 'blur'}">
+											ng-model-options="{updateOn: 'blur'}" disabled>
 											<option value="Q1">Q1</option>
 											<option value="Q2">Q2</option>
 											<option value="Q3">Q3</option>
@@ -606,7 +621,7 @@ table {
 
 									<label style="font-size: 12px;">Month</label> <select name="quarter"
 										class="form-control" ng-model="cCctr.entity.month"
-										ng-model-options="{updateOn: 'blur'}">
+										ng-model-options="{updateOn: 'blur'}" disabled>
 										<option selected value='Janaury'>Janaury</option>
 										<option value='February'>February</option>
 										<option value='March'>March</option>
@@ -630,7 +645,7 @@ table {
 
 									<label style="font-size: 12px;">RO Code</label> <input
 										class="form-control" type="text" name="roCode"
-										placeholder="RO Code"
+										placeholder="RO Code" 
 										ng-model="cCctr.entity.roCode"
 										ng-model-options="{updateOn: 'blur'}"
 										/> <span style="color: red"
@@ -655,7 +670,7 @@ table {
 
 									<label style="font-size: 12px;">Vendor/Customer ID  </label> <input
 										class="form-control" type="text" name="custVendId"
-										placeholder="Staff Id" 
+										placeholder="Staff Id" disabled
 										ng-model="cCctr.entity.custVendId"
 										ng-model-options="{updateOn: 'blur'}" disabled/> <span
 										style="color: red"
@@ -668,7 +683,7 @@ table {
 									<label style="font-size: 12px;">Unique Ref No.</label> <input
 										class="form-control" type="text" name="uniqueRefNo"
 										placeholder="Unique Ref No" ng-required="true"
-										ng-model="cCctr.entity.uniqueRefNo"
+										ng-model="cCctr.entity.uniqueRefNo" disabled
 										ng-model-options="{updateOn: 'blur'}" /> <span
 										style="color: red"
 										ng-show="form24qdeductee.submitted ||form24qdeductee.uniqueRefNo.$dirty && form24qdeductee.uniqueRefNo.$invalid">
@@ -688,7 +703,7 @@ table {
 
 									<label style="font-size: 12px;">Account No.</label> <input
 										class="form-control" type="text" name="accNo"
-										placeholder="Account No" 
+										placeholder="Account No" disabled
 										ng-model="cCctr.entity.accNo"
 										ng-model-options="{updateOn: 'blur'}" ng-pattern="/^[0-9]*$/"
 										/> <span style="color: red"
@@ -703,7 +718,7 @@ table {
 
 									<label style="font-size: 12px;">Challan Heading</label> <input
 										class="form-control" type="text" name="challanHeading"
-										placeholder="Challan Heading" 
+										placeholder="Challan Heading" disabled
 										ng-model="cCctr.entity.challanHeading"
 										ng-model-options="{updateOn: 'blur'}" /> <span
 										style="color: red"
@@ -718,7 +733,7 @@ table {
 
 									<label style="font-size: 12px;">Employee Ref No.</label> <input
 										class="form-control" type="text" name="deducteeRefNo"
-										placeholder="Employee Ref No" 
+										placeholder="Employee Ref No" disabled
 										ng-model="cCctr.entity.deducteeRefNo"
 										ng-model-options="{updateOn: 'blur'}"
 										autocomplete="off" />
@@ -731,7 +746,7 @@ table {
 
 									<label style="font-size: 12px;">PAN Ref No.</label> <input
 										class="form-control" type="text" name="panRefNo"
-										placeholder="PAN Ref No" 
+										placeholder="PAN Ref No" disabled
 										ng-model="cCctr.entity.panRefNo"
 										ng-model-options="{updateOn: 'blur'}"
 										autocomplete="off" />
@@ -745,7 +760,7 @@ table {
 
 									<label style="font-size: 12px;">PAN</label> <input
 										class="form-control" type="text" name="pan" placeholder="PAN"
-										ng-required="true" ng-model="cCctr.entity.pan"
+										ng-required="true" ng-model="cCctr.entity.pan" disabled
 										ng-model-options="{updateOn: 'blur'}" disabled/> <span
 										style="color: red"
 										ng-show="form24qdeductee.submitted || form24qdeductee.pan.$dirty && form24qdeductee.pan.$invalid">
@@ -756,7 +771,7 @@ table {
 
 									<label style="font-size: 12px;">Section Code</label> <input
 										class="form-control" type="text" name="sectionCode"
-										placeholder="Section Code"
+										placeholder="Section Code" disabled
 										ng-required="true"
 										ng-model="cCctr.entity.sectionCode"
 										ng-model-options="{updateOn: 'blur'}" /> <span
@@ -770,7 +785,7 @@ table {
 
 									<label style="font-size: 12px;">Date Of Payment</label> <input
 										class="form-control" type="Date" name="dateOfPayment"
-										placeholder="Date Of Payment"
+										placeholder="Date Of Payment" disabled
 										ng-value='"{{cCctr.entity.dateOfPayment}}"'
 										ng-model="cCctr.temp.dateOfPayment"
 										ng-blur="cCctr.entity.dateOfPayment = cCctr.temp.dateOfPayment"/> <span
@@ -783,7 +798,7 @@ table {
 
 									<label style="font-size: 12px;">Date of Deduction</label> <input
 										class="form-control" type="Date" name="dateOfDeduction"
-										placeholder="Date of Deduction"
+										placeholder="Date of Deduction" disabled
 										ng-value = '"{{cCctr.entity.dateOfDeduction}}"'
 										ng-model="cCctr.temp.dateOfDeduction"
 										ng-blur="cCctr.entity.dateOfDeduction = cCctr.temp.dateOfDeduction"/> <span
@@ -797,7 +812,7 @@ table {
 
 									<label style="font-size: 12px;">Amount Paid</label> <input
 										class="form-control" type="text" name="amountPaid"
-										placeholder="Amount Paid"
+										placeholder="Amount Paid" disabled
 										ng-model="cCctr.entity.amountPaid"
 										ng-model-options="{updateOn: 'blur'}" disabled/> <span
 										style="color: red"
@@ -809,7 +824,7 @@ table {
 
 									<label style="font-size: 12px;">TDS </label> <input
 										class="form-control" type="text" name="tds" placeholder="TDS"
-										ng-model="cCctr.entity.tds"
+										ng-model="cCctr.entity.tds" disabled
 										ng-model-options="{updateOn: 'blur'}" /> <span
 										style="color: red"
 										ng-show="form24qdeductee.submitted || form24qdeductee.tds.$dirty && form24qdeductee.tds.$invalid">
@@ -822,7 +837,7 @@ table {
 
 									<label style="font-size: 12px;">Surcharge </label> <input
 										class="form-control" type="text" name="surcharge"
-										placeholder="Surcharge" 
+										placeholder="Surcharge" disabled
 										ng-model="cCctr.entity.surcharge"
 										ng-model-options="{updateOn: 'blur'}" /> <span
 										style="color: red"
@@ -834,7 +849,7 @@ table {
 
 									<label style="font-size: 12px;">Education Cess</label> <input
 										class="form-control" type="text" name="Education Cess"
-										placeholder="Education Cess" 
+										placeholder="Education Cess" disabled
 										ng-model="cCctr.entity.eduCess"
 										ng-model-options="{updateOn: 'blur'}" /> <span
 										style="color: red"
@@ -848,7 +863,7 @@ table {
 
 									<label style="font-size: 12px;">Total TDS</label> <input
 										class="form-control" type="text" name="totalTaxDeducted"
-										placeholder="Total TDS"
+										placeholder="Total TDS" disabled
 										ng-model="cCctr.entity.totalTaxDeducted"
 										ng-model-options="{updateOn: 'blur'}" /> <span
 										style="color: red"
@@ -860,7 +875,7 @@ table {
 
 									<label style="font-size: 12px;">Total Tax Deposited </label> <input
 										class="form-control" type="text" name="totalTaxDeposited"
-										placeholder="Total Tax Deposited"
+										placeholder="Total Tax Deposited" disabled
 										ng-model="cCctr.entity.totalTaxDeposited"
 										ng-model-options="{updateOn: 'blur'}" /> <span
 										style="color: red"
@@ -875,7 +890,7 @@ table {
 									<label style="font-size: 12px;">TAN</label> <input
 										class="form-control" type="text" name="TAN" placeholder="TAN"
 										ng-model="cCctr.entity.TAN" ng-pattern="[A-Za-z]{4}[0-9]{5}[A-Za-z]{1}" ng-maxlenght="10"
-										ng-model-options="{updateOn: 'blur'}" />
+										ng-model-options="{updateOn: 'blur'}" disabled/>
 										<span
 										style="color: red"
 										ng-show="form24qdeductee.submitted || form24qdeductee.TAN.$dirty && form24qdeductee.TAN.$invalid">
@@ -893,7 +908,7 @@ table {
 
 									<label style="font-size: 12px;">Certificate Number</label> <input
 										class="form-control" type="text" name="certificateNumber"
-										placeholder="Certificate Number"
+										placeholder="Certificate Number" disabled
 										ng-model="cCctr.entity.certificateNumber"
 										ng-model-options="{updateOn: 'blur'}" /> <span
 										style="color: red"
@@ -909,7 +924,7 @@ table {
 
 									<label style="font-size: 12px;">Error Description</label> <input
 										class="form-control" type="text" name="errorDescription"
-										placeholder="Error Description"
+										placeholder="Error Description" disabled
 										ng-model="cCctr.entity.errorDescription"
 										ng-model-options="{updateOn: 'blur'}" /> <span
 										style="color: red"
@@ -923,7 +938,7 @@ table {
 
 									<label style="font-size: 12px;">Warning Description</label> <input
 										class="form-control" type="text" name="warningDescription"
-										placeholder="Warning Description"
+										placeholder="Warning Description" disabled
 										ng-model="cCctr.entity.warningDescription"
 										ng-model-options="{updateOn: 'blur'}" /> <span
 										style="color: red"
@@ -939,7 +954,7 @@ table {
 
 									<label style="font-size: 12px;">Short Deduction</label> <input
 										class="form-control" type="text" name="ShortDeduction"
-										placeholder="Short Deduction"
+										placeholder="Short Deduction" disabled
 										ng-model="cCctr.entity.ShortDeduction"
 										ng-model-options="{updateOn: 'blur'}" /> <span
 										style="color: red"
@@ -953,7 +968,7 @@ table {
 
 									<label style="font-size: 12px;">Interest On Short
 										Deduction </label> <input class="form-control" type="text"
-										name="InterestOnShortDeduction"
+										name="InterestOnShortDeduction" disabled
 										placeholder="Interest On Short Deduction"
 										ng-model="cCctr.entity.InterestOnShortDeduction"
 										ng-model-options="{updateOn: 'blur'}" /> <span
@@ -970,7 +985,7 @@ table {
 
 									<label style="font-size: 12px;">Interest On Late
 										Payment</label> <input class="form-control" type="text"
-										name="InterestOnLatePayment"
+										name="InterestOnLatePayment" disabled
 										placeholder="Interest On Late Payment"
 										ng-model="cCctr.entity.InterestOnLatePayment"
 										ng-model-options="{updateOn: 'blur'}" /> <span
@@ -985,7 +1000,7 @@ table {
 
 									<label style="font-size: 12px;">Interest On Late
 										Deduction</label> <input class="form-control" type="text"
-										name="InterestOnLateDeduction"
+										name="InterestOnLateDeduction" disabled
 										placeholder="Interest On Late Deduction*"
 										ng-model="cCctr.entity.InterestOnLateDeduction"
 										ng-model-options="{updateOn: 'blur'}" /> <span
@@ -1021,7 +1036,7 @@ table {
 								<button class="pushable darkblue"
 										style="margin-top: 2%;"
 										data-dismiss="modal"
-										ng-click="form24qdeductee.submitted=true;cCctr.updateData(form24qdeductee.$valid,cCctr.entity,'form24QDeductee')">
+										ng-click="cCctr.updateData(true,cCctr.entity,'form24QDeductee')">
 										<span class="front darkbluespan"
 											> Update</span>
 									</button>

@@ -40,15 +40,25 @@ th {
 	color: #fff;
 	text-decoration: none;
 }
+.heading {
+  font-size: 12px;
+}
 </style>
 
 
 
 
-<div id="page-wrapper">
-	<div class="heading">MIS Report Generate</div>
+<div id="page-wrapper" ng-controller="CommonController as cCctr">
+		<div class="container-fluid">
+		<button class="btn btn-grad astro-MG2CNCJP" data-toggle="modal"
+					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
+					 onClick="refreshPageButton()"><i
+					class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh</button>
+			<div class="col-md-12 "
+				style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
+				<div class="heading">
+	<strong style="font-size: 20px;">MIS Report Generate</strong>
 	<div class="container-fluid">
-
 		<div class="collapse dont-collapse-sm" id="collapseExample2">
 			<div class="row">
 				<div class="form-group">
@@ -71,7 +81,7 @@ th {
 
 
 
-					<div class="col-md-3">
+					<div class="col-md-6">
 						<h6>
 							<b>Report Type</b>
 							<h6>
@@ -149,13 +159,13 @@ th {
 			<thead>
 				<tr style="background-color: #81b7db; font-size: 13px; height: 40px">
 					<th>Sr No</th>
-					<th>Branch Code</th>
-					<th>Financial Year</th>
-					<th>From Date</th>
-					<th>To Date</th>
-					<th>Report Type</th>
-					<th>User Name</th>
-					<th>Action</th>
+					<th><div class="autoResizeQuarter">Branch Code</div></th>
+					<th><div class="autoResizeQuarter">Financial Year</div></th>
+					<th><div class="autoResizeQuarter">From Date</div></th>
+					<th><div class="autoResizeQuarter">To Date</div></th>
+					<th><div class="autoResizeQuarter">Report Type</div></th>
+					<th><div class="autoResizeQuarter">User Name</div></th>
+					<th><div class="autoResizeQuarter">Action</div></th>
 
 
 				</tr>

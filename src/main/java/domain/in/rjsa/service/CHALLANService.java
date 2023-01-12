@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import domain.in.rjsa.model.fy.PanUpdateList;
 import domain.in.rjsa.model.tds.CHALLAN;
 
 public interface CHALLANService extends ServiceInterfaceTaxo<String, CHALLAN>{

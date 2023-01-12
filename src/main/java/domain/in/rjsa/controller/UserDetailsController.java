@@ -36,7 +36,6 @@ import com.google.gson.JsonElement;
 import domain.in.rjsa.model.form.ListCount;
 import domain.in.rjsa.model.form.UserDetails;
 import domain.in.rjsa.model.fy.Logs;
-import domain.in.rjsa.model.fy.Ticket;
 import domain.in.rjsa.service.LogsService;
 import domain.in.rjsa.service.UserDetailsService;
 

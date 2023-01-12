@@ -31,6 +31,12 @@
 		margin-left: 23%;
 	}
 }
+.sidebar-content {
+  max-height: calc(100% - 30px);
+  height: calc(100% - 30px);
+  overflow-y: initial;
+  position: relative;
+}
 </style>
 
 
@@ -65,7 +71,10 @@
 			<!-- sidebar-search  -->
 			<div class="sidebar-menu">
 				<ul id="menu-content" class="menu-list">
-
+					<li
+						ng-click="cCctr.gotoWFYListPage('downloadCertificate','downloadCertificate')"
+						onclick="scrollWin()"><a><i class="fa fa-cloud-download"
+							aria-hidden="true"></i><b>Download 16A/16/27D</b> </a></li>
 					<li
 						ng-click="cCctr.gotoWFYListPage('monthlyChallan','monthlyChallan')"><a>
 							<i class="fa fa-file-text-o"></i><b>Monthly Challan</b>
@@ -228,10 +237,7 @@
 					</a></li> -->
 
 
-					<li
-						ng-click="cCctr.gotoWFYListPage('downloadCertificate','downloadCertificate')"
-						onclick="scrollWin()"><a><i class="fa fa-cloud-download"
-							aria-hidden="true"></i><b>Download Certificate</b> </a></li>
+					
 
 
 					<!-- 	
@@ -437,13 +443,6 @@
 
 
 
-
-
-
-
-
-<div ng-http-loader methods="['GET']" ttl="0" id="example/loader"
-	template=""></div>
 
 
 

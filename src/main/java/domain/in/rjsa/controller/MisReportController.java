@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import domain.in.rjsa.exception.FieldErrorDTO;
 import domain.in.rjsa.model.fy.MisReport;
-import domain.in.rjsa.model.fy.Ticket;
 import domain.in.rjsa.service.MisReportService;
 @Controller
 @RequestMapping("/apigenerateReport")

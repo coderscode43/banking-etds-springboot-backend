@@ -18,7 +18,6 @@ import com.ibm.icu.text.SimpleDateFormat;
 
 import domain.in.rjsa.dao.Regular26QDeducteeDao;
 import domain.in.rjsa.excel.Form26QDeducteeExcel;
-import domain.in.rjsa.model.fy.Regular24QDeductee;
 import domain.in.rjsa.model.fy.Regular26QDeductee;
 import domain.in.rjsa.service.AbstractServiceFY;
 import domain.in.rjsa.service.Regular26QDeducteeService;

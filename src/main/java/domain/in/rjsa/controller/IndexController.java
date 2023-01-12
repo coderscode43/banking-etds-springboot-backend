@@ -12,7 +12,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -20,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import domain.in.rjsa.dao.StaticDataDao;
+import domain.in.rjsa.model.form.Branch;
 import domain.in.rjsa.model.form.StaticDataModel;
 import domain.in.rjsa.service.TicketService;
 import domain.in.rjsa.util.StaticData;
@@ -53,9 +53,25 @@ public class IndexController extends AbstractController {
 		String pageName = "resetPass";
 		return pageName;
 	}
+	
+	@RequestMapping(value = "/example-loader.tpl")
+	public String getLoader(ModelMap model) {
+		return "example-loader.tpl";
+	}
 
 	@RequestMapping(value = "/home")
 	public String gethome(ModelMap model) {
+		
+		String branchCodeS = getBranchCode();
+		boolean isAdmin = false;
+		Long branchCode = 0L;
+		if ("admin".equals(branchCodeS)) {
+			logger.info(branchCodeS);
+			isAdmin = true;
+		} else {
+			branchCode = Long.valueOf(branchCodeS);
+			logger.info(branchCode.toString());
+		}
 		setStaticData();
 		model.addAttribute("typeOfUser", getBranchCode());
 		model.addAttribute("financialYear", StaticData.financialYear);
@@ -67,7 +83,11 @@ public class IndexController extends AbstractController {
 		model.addAttribute("Form", StaticData.Form);
 		// for Dashboard
 		model.addAttribute("statementStatus", applicationCache.getStatementStatus());
-		return "homeSC";
+		if(isAdmin) {
+			return "homeSC";
+		}else {
+			return "homeSCBranch";
+		}
 	}
 
 	@RequestMapping(value = "/homePage")
@@ -102,7 +122,16 @@ public class IndexController extends AbstractController {
 		}else {
 			model.addAttribute("rejectTicket", "0");
 		}
-		return "homeSC/homeSCHomepage";
+		
+		if(isAdmin) {
+			return "homeSC/homeSCHomepage";
+		}else {
+			//get branch Details based on branchCode.
+			Branch branch = applicationCache.getBranch(branchCode);
+			model.addAttribute("branchName", branch.getBranchName());
+			model.addAttribute("branchCode", branchCode);
+			return "homeSC/homeSCBranchHomepage";
+		}
 	}
 
 	@RequestMapping(value = "/homeWOT/{branchCode}/{fy}")

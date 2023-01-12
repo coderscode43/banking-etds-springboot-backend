@@ -1,0 +1,442 @@
+
+<style>
+@media ( min-width :1456px) { /* hi-res laptops and desktops */
+	.nav-side-menu {
+		width: 100%;
+	}
+}
+
+@media ( max-width :1456px) { /* hi-res laptops and desktops */
+	.nav-side-menus {
+		width: 20%;
+	}
+}
+
+/*----------------sidebar-wrapper----------------*/
+.sidebar-wrapper {
+	width: 270px;
+	height: 100%;
+	max-height: 100%;
+	position: fixed;
+	top: 0;
+	left: -300px;
+	z-index: 999;
+}
+
+.center_topButton {
+	margin-left: 2%;
+}
+
+@media ( min-width : 300px) and (max-width: 700px) {
+	.center_topButton {
+		margin-left: 23%;
+	}
+}
+
+@media only screen and (min-width:700px) {
+	.hide-on-desktop, * [aria-labelledby='hide-on-desktop'] {
+		display: none;
+	}
+}
+
+@media ( min-width : 300px) and (max-width: 700px) {
+	.mobile {
+		display: none;
+	}
+}
+
+@media only screen and (min-width:700px) {
+	.hide-on-desktop, * [aria-labelledby='hide-on-desktop'] {
+		display: none;
+	}
+}
+
+/* iPad Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width:
+	1024px) {
+	/* CSS */
+	.center_topButton {
+		margin-left: 34%;
+	}
+}
+
+.input {
+	padding: 6px 12px;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1;
+	text-align: center;
+}
+</style>
+
+
+<div class=" page-wrapper chiller-theme ng-scope "
+	ng-Controller="CommonWOTController as cWctr">
+	
+					<img src="static/img/tdsosmart1.png" ng-click="cCctr.gotoHomePage()"
+						style="height: 165px;margin-left:2%;"
+						>
+				
+	
+	<a id="show-sidebar " class="btn btn-primary hide-on-desktop" style="z-index: 1000">
+		<i class="fa fa-bars"></i>
+	</a>
+	<nav id="sidebar" class="sidebar-wrapper nav-side-menu nav-side-menus hide-on-desktop "
+		style="margin-top: -3px; background-color: #0F316D">
+		
+		
+		<div class="sidebar-content">
+			<div class="sidebar-brand" style="box-shadow: 0px 5px;">
+			<!-- ng-click="cCctr.gotoListPage('homeSCHomepage','homeSCHomepage')" -->
+				<div
+					ng-click="cCctr.gotoHomePage()"
+					style="color: white">
+					<img src="static/img/tdsosmart1.png"
+						style="height: 165px; width: 140%; margin-left: 14%;"
+						>
+				</div>
+				<div onclick="slideIn()" style="margin-left: 40%; margin-top: -35%">
+					<i class="fa fa-times"></i>
+				</div>
+			</div>
+
+			<!-- sidebar-header  -->
+
+			<!-- sidebar-search  -->
+			<div class="sidebar-menu">
+				<ul id="menu-content" class="menu-list">
+
+				<li ui-sref="logout" onclick="scrollWin()"><a><i
+							class="fa fa-power-off" aria-hidden="true"></i><b>logout</b> </a></li>
+
+					<!-- sidebar-menu  -->
+			</div>
+	</nav>
+	<!-- sidebar-wrapper  -->
+	<main class="page-content" style="margin-top: -3.5%">
+		<div class="container-fluid">
+			<!-- <div ng-http-loader methods="['GET']" ttl="0" id="example/loader"
+				template=""></div> -->
+
+
+			<div style="padding-top: 1%" ui-view></div>
+
+		</div>
+	</main>
+	<!-- page-content" -->
+</div>
+
+<div class="top row col-lg-8 center_topButton">
+
+
+	<div class="top-item top1 col-lg-offset-5" style="border-radius: 5px;">
+		<p>
+			<b>${ClientName}</b>
+		</p>
+	</div>
+	<div class="top-item top2 col-lg-offset-5"
+		style="border-radius: 5px; background-color: #7AAE60">
+		<p>
+			<b>${ClientPAN}</b>
+		</p>
+	</div>
+
+</div>
+
+<div class="modal fade" id="exampleModalLogin" tabindex="-1"
+	role="dialog" aria-labelledby="exampleModalDefaultLogin"
+	aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+
+				<button type="button" class="close " data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true"><i class="fa fa-times"></i></span>
+				</button>
+			</div>
+			<!--end modal-header-->
+			<div class="modal-body">
+				<div class="card-body p-0 auth-header-box">
+					<div class="text-center p-1">
+						<a href="index.html" class="logo logo-admin"> <img
+							src="static/img/tdsosmart.png" height="50" alt="logo"
+							class="auth-logo">
+						</a>
+						<!-- <h4 class="mt-3 mb-1 font-weight-semibold font-18">TDS-O-Smart</h4> -->
+					</div>
+				</div>
+				<div class="card-body">
+					<ul class="nav-border nav nav-pills" role="tablist"
+						style="margin: 0% 0% 0 30%; font-size: x-large;">
+						<li class="nav-item"><a
+							class="nav-link active font-weight-semibold" data-toggle="tab"
+							href="#LogIn_Tab" role="tab">Change Password</a></li>
+					</ul>
+					<!-- Tab panes -->
+					<div class="tab-content"
+						ng-init="cCctr.entity=cCctr.getEntityData('login')">
+						<div class="tab-pane active p-1 pt-1" id="LogIn_Tab"
+							role="tabpanel">
+							<form class=" auth-form my-4" name="changePassword"
+								action="index.html">
+
+								<div class="">
+									<label for="password" style="font-size: large;">New
+										Password</label>
+									<div class=" mb-2">
+										<input type="password" class="form-control" name="pass"
+											id="pass" type="password" placeholder="Enter New Password"
+											ng-model="cCctr.getUserData().user.pass" ng-minlength="8"
+											ng-pattern="/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/"
+											ng-required="true" required="required" style="width: 95%;">
+										<span class="input"
+											style="float: right; margin: -5.5% -2% 0 0;"><i
+											class="fa fa-fw fa-eye field-icon" style="cursor: pointer"
+											onclick="viewP()"></i></span> <span style="color: red"
+											ng-show="changePassword.submitted || changePassword.pass.$dirty && changePasswords.pass.$invalid">
+											<span id="error"
+											ng-show="changePassword.pass.$error.minlength">8
+												character Password is Required. </span> <span id="error"
+											ng-show="changePassword.pass.$error.required">Password
+												is Required. </span> <span class="error"
+											ng-show="changePassword.pass.$error.pattern">Password
+												should be at least 8 characters long and should contain one
+												number,one character and one special character.. </span>
+										</span>
+									</div>
+								</div>
+								<!--end form-group-->
+
+								<div class="">
+									<label for="userpassword"
+										style="font-size: large; margin-top: 3%;">Confirm New
+										Password</label>
+									<div class=" mb-2">
+										<input type="password" class="form-control" name="password1"
+											id="password1" placeholder="Confirm New Password"
+											style="width: 95%;"> <span class="input"
+											style="float: right; margin: -5.5% -2% 0 0;"><i
+											class="fa fa-fw fa-eye field-icon" style="cursor: pointer"
+											onclick="viewConfirmP()"></i></span> <span id="conErr"></span>
+									</div>
+								</div>
+								<!--end form-group-->
+								<div class="form-group mt-2 row">
+									<div class="col-12 mt-1">
+										<button
+											class="btn btn-primary btn-block waves-effect waves-light"
+											type="button" id="changePassword"
+											ng-click="addRemitteeForm.submitted=true;cCctr.changePassword(changePassword.$valid,cCctr.getUserData().user.pass);cCctr.updateData(ProfileForm.$valid,'login',cCctr.entity.user)"
+											disabled="disabled" style="margin: 4% 0 0 25%; width: 50%;">
+											Change Password
+											<!-- <i class="fas fa-sign-in-alt ml-1"></i> -->
+										</button>
+									</div>
+									<!--end col-->
+								</div>
+								<!--end form-group-->
+							</form>
+							<!--end form-->
+						</div>
+					</div>
+				</div>
+				<!--end card-body-->
+				<!-- <div class="card-body bg-light-alt text-center">
+					<span class="text-muted d-none d-sm-inline-block">Tax-O-Smart
+						� 2020</span>
+				</div> -->
+			</div>
+			<!--end modal-body-->
+
+		</div>
+		<!--end modal-content-->
+	</div>
+	<!--end modal-dialog-->
+</div>
+
+
+<!-- Error Modal -->
+<div id="errorMsg" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-sm">
+		Modal content
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 style="color: red;">
+					<picture>
+					<source type="image/webp" srcset="static/img/errorNew.webp">
+					<img src="./././static/img/errorNew.png" height="30" width="30">Error!
+					</picture>
+				</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="msg" style="font-size: 18px;"></div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Success Modal -->
+
+
+<div id="successMsg" class="modal" role="dialog">
+	<div class="modal-dialog modal-sm">
+		Modal content
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 style="color: green;">
+					<picture>
+					<source type="image/webp" srcset="static/img/success.webp">
+					<img src="./././static/img/success.webp" height="30" width="30">
+					</picture>
+					<span class="headingMsg"></span>
+				</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="msg" style="font-size: 18px;"></div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal"
+					ng-click="cCctr.reload();" id="reload">Ok</button>
+				<!-- id="reload" -->
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Delete Modal -->
+<!-- Success Modal -->
+
+
+<div id="myModal" class="modal" role="dialog">
+	<div class="modal-dialog modal-sm">
+		
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 style="color: red;">
+					<picture>
+					<source type="image/webp" srcset="static/img/errorNew.webp">
+					<img src="./././static/img/errorNew.png" height="30" width="30">
+					</picture>
+					<span class="headingMsg">Are you sure?</span>
+				</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="msg" style="font-size: 18px;">
+						<p>Do you really want to delete these User?</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-success" data-dismiss="modal"
+					ng-click="cCctr.deleteById('userDetails',cCctr.delete)">Yes</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal"
+					ng-click="cCctr.reload();">No</button>
+				<!-- id="reload" -->
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<script>
+	function viewP() {
+		var x = document.getElementById("pass");
+		if (x.type === "password") {
+			x.type = "text";
+		} else {
+			x.type = "password";
+		}
+	}
+
+	function viewConfirmP() {
+		var x = document.getElementById("password1");
+		if (x.type === "password") {
+			x.type = "text";
+		} else {
+			x.type = "password";
+		}
+	}
+</script>
+<script>
+	$('#reload').click(function() {
+		location.reload();
+	});
+</script>
+
+<script>
+	$('#pass, #password1')
+			.on(
+					'keyup',
+					function() {
+						if ($('#pass').val() == $('#password1').val()) {
+							$('#changePassword').removeAttr('disabled');
+							console.log('Password correct');
+							$('#conErr').html('');
+
+						} else {
+							$('#conErr')
+									.html(
+											'Confirm Password should have the same value with new password')
+									.css('color', 'red');
+							$('#changePassword').attr('disabled', true);
+						}
+					});
+</script>
+
+<script>
+	/* SCRIPT FOR OPEN CLOSE SIDEBAR  */
+
+	$(".sidebar-dropdown > a").click(function() {
+		$(".sidebar-submenu").slideUp(200);
+		if ($(this).parent().hasClass("active")) {
+			$(".sidebar-dropdown").removeClass("active");
+			$(this).parent().removeClass("active");
+		} else {
+			$(".sidebar-dropdown").removeClass("active");
+			$(this).next(".sidebar-submenu").slideDown(200);
+			$(this).parent().addClass("active");
+		}
+	});
+
+	$("#close-sidebar").click(function() {
+		$(".page-wrapper").removeClass("toggled");
+	});
+	$("#show-sidebar").click(function() {
+		$(".page-wrapper").addClass("toggled");
+		slideOut();
+	});
+
+	$(".menu-list a").on("click", function() {
+		$(".menu-list").find(".active").removeClass("active");
+		$(this).parent().addClass("active");
+
+	});
+
+	var selector = '.menu-list li ';
+
+	$(selector).on('click', function() {
+		$(selector).removeClass('active');
+		$(this).addClass('active');
+	});
+</script>
+<script>
+
+function refreshPageButton(){
+    window.location.reload();
+} 
+</script>

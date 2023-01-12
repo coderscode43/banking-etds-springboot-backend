@@ -16,15 +16,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.ibm.icu.text.SimpleDateFormat;
 
 import domain.in.rjsa.dao.PanUpdateListDao;
-import domain.in.rjsa.dao.Regular24QDeducteeDao;
 import domain.in.rjsa.excel.PanUpdateListExcel;
-import domain.in.rjsa.excel.TotalAmountExcel;
-import domain.in.rjsa.model.fy.PanUpdateList;
-import domain.in.rjsa.model.fy.Regular24QDeductee;
 import domain.in.rjsa.model.fy.PanUpdateList;
 import domain.in.rjsa.service.AbstractServiceFY;
 import domain.in.rjsa.service.PanUpdateListService;
-import domain.in.rjsa.service.Regular24QDeducteeService;
 
 
 @Transactional("transactionManager")

@@ -1,97 +1,59 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
 <style>
 
-
-@media only screen and (min-width:1000px) {
-	#search {
-		margin-left: 45%;
-		margin-top: 2px;
-		display: none;
-	}
+.mui-card {
+    background: #fff;
+  border-radius: 2px;
+  display: inline-block;
+  height: auto;
+  position: relative;
+  width: 60%;
+  margin-left: 18%;
+  margin-top: 5%;
+  border-radius: 5px;
+}
+#tan {
+  color: #000;
+}
+#typeofCertificate {
+  color: #000;
+}
+#financialYear{
+	 color: #000;
+}
+#quarter{
+	 color: #000;
+}
+.form-control.ng-dirty.ng-valid-parse.ng-valid.ng-valid-required.ng-touched {
+  color: #000;
+}
+.xl-shadow {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
-@media only screen and (max-width: 1000px) {
-	#hide {
-		display: none;
-	}
+.xl-shadow:hover {
+      box-shadow: 0 14px 28px
+  rgba(0,0,0,0.25), 0 10px 10px
+  rgba(0,0,0,0.22);
 }
 
-@media ( min-width : 768px) {
-	.collapse.dont-collapse-sm {
-		display: block;
-		height: auto !important;
-		visibility: visible;
-	}
-}
-
-@media ( min-width : 300px) and (max-width: 700px) {
-	.mobile {
-		display: none;
-	}
-}
-
-@media only screen and (min-width:700px) {
-	.hide-on-desktop, * [aria-labelledby='hide-on-desktop'] {
-		display: none;
-	}
-}
-
-/* iPad Landscape */
-@media only screen and (min-device-width: 768px) and (max-device-width:
-	1024px) {
-	/* CSS */
-	.mobile {
-		display: none;
-	}
-}
-
-#download .container-fluid #download-row #download-column #download-box
-	{
-	margin-top: -550px;
-	width: 400px;
-	height: 350px;
-	/* Fallback color */
-	background-color: rgba(0, 0, 0, 0.2);
-	color: #ffffff;
-}
-
-#download .container-fluid #download-row #download-column #download-box #download-form
-	{
-	padding: 20px;
-}
-
-#download .container-fluid #download-row #download-column #download-box #download-form
-	{
-	margin-top: -85px;
-}
 </style>
-</head>
-<body>
-	<div class="row">
-		<div class="col-md-4"></div>
-		<div class="col-md-4 " id="download">
-			<div id="page-wrapper"style="margin-top: 30px;">
-				<div class="container-fluid ">
-					<div id="download-row"
-						class="row justify-content-center align-items-center"
-						style="border: 1px solid black; padding: 5%">
-						<div id="download-column"></div>
-						<div id="download-box">
+
+
+
+<div class="mui-card xl-shadow">
+
+<div id="download-box">
 							<form id="download-form" name="downloadCertificateFrom"
 								class="form">
 
 								<div class="col-md-12 "
 									style="font-size: 12px; margin: 2% 0 2% 0; text-align: center">
 									<div class="heading">
-										<strong>Download Certificate</strong>
+										<strong>Download Certificate(Form 16A/16/27D)</strong>
 									</div>
 									<br>
 								</div>
-								<div class="row">
+								<div>
 									<div class="col-md-12">
 										<label style="font-size: 12px">Select Following: </label>
 									</div>
@@ -104,14 +66,14 @@
 							</label> -->
 								<br>
 								<!-- pan -->
-								<div class="row" id="pan">
+								<div class="" id="pan">
 									<!-- PAN: <input type="text" id="pan" /> -->
 
 									<div class="col-md-12">
 										<div class="form-group">
 											<label for="pan" class="col-form-label"
 												style="font-size: 12px"> PAN Number / Customer Id:</label> <input type="text"
-												class="form-control" id="pan" name="pan" placeholder="PAN / Customer Id"
+												class="form-control" id="pan" name="pan" placeholder="Enter PAN / Customer Id"
 												ng-model="cCctr.entity.pan" ng-required="true"
 												required="required" style="font-size: 15px"> <span
 												style="color: red"
@@ -126,53 +88,8 @@
 									</div>
 								</div>
 								<!-- id -->
-								<!-- 
-								<div id="id" style="display: none">
-									ID: <input type="text" id="id" />
-									<div class="col-md-12">
-										<div class="form-group">
-											<label for="id" class="col-form-label"
-												style="font-weight: bold; font-size: 12px"> ID:</label> <input
-												type="text" class="form-control" id="id" name="id"
-												placeholder="ID"
-												ng-model="cCctr.entity.id"
-												ng-required="true" ng-pattern="/^[0-9]/" required="required"
-												style="font-size: 15px"> <span style="color: red"
-												ng-show="downloadCertificateFrom.submitted || downloadCertificateFrom.id.$dirty && downloadCertificateFrom.id.$invalid">
-												<span class="error"
-												ng-show="downloadCertificateFrom.id.$error.required">id
-													Required </span> <span class="error"
-												ng-show="downloadCertificateFrom.id.$error.pattern">id
-													should be only Number: </span>
-											</span>
-										</div>
-									</div>
-								</div>
-								 -->
-								<br>
-								<!-- <div class="row">
-									<div class="col-md-12">
-										<div class="form-group">
-											<label style="font-size: 12px">Type of Deductee*</label> <select
-												name="typeofDeductee" id="typeofDeductee"
-												class="form-control" ng-model="cCctr.entity.typeofDeductee"
-												ng-required="true" required="required"
-												ng-model-options="{updateOn: 'blur'}"><option
-													disabled value="">Select Deductee</option>
-												<#list typeOfDeductee as Deductee>
 
-												<option value="${Deductee}">${Deductee}</option>
-												</#list>
-											</select> <span style="color: red"
-												ng-show="downloadCertificateFrom.submitted ||downloadCertificateFrom.typeofDeductee.$dirty && downloadCertificateFrom.typeofDeductee.$invalid">
-												<span class="error"
-												ng-show="downloadCertificateFrom.typeofDeductee.$error.required">Type
-													of Certificate is Required. </span>
-											</span>
-										</div>
-									</div>
-								</div> -->
-								<div class="row">
+								<div>
 									<div class="col-md-12">
 										<div class="form-group">
 											<label style="font-size: 12px">TAN Number*</label> <!-- <input type="text"
@@ -183,7 +100,7 @@
 												<select
 												name="tan" id="tan"
 												class="form-control"
-												ng-model="cCctr.entity.tan"ng-required="true"
+												ng-model="cCctr.entity.tan" ng-required="true"
 												ng-model-options="{updateOn: 'blur'}">
 												<option disabled value="">Select Tan</option>
 												<option value="ALL TAN" selected>ALL TAN</option>
@@ -199,7 +116,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="row">
+								<div>
 									<div class="col-md-12">
 										<div class="form-group">
 											<label style="font-size: 12px">Type of Certificate*</label> <select
@@ -222,11 +139,11 @@
 									</div>
 								</div>
 								<!-- financial year code -->
-								<div class="row">
+								<div>
 									<div class="col-md-12">
 										<div class="form-group">
 											<label style="font-size: 12px">Financial Year*</label> <select
-												name="financialYear" class="form-control"
+												name="financialYear" class="form-control" id="financialYear"
 												ng-model="cCctr.entity.financialYear" ng-required="true"
 												ng-model-options="{updateOn: 'blur'}">
 												<option disabled value="">Select financial Year</option>
@@ -242,11 +159,11 @@
 										</div>
 									</div>
 								</div>
-								<div class="row">
+								<div>
 									<div class="col-md-12">
 										<div class="form-group">
 											<label style="font-size: 12px">Quarter*</label> <select
-												name="quarter" class="form-control"
+												name="quarter" class="form-control" id="quarter"
 												ng-model="cCctr.entity.quarter" ng-required="true"
 												ng-model-options="{updateOn: 'blur'}">
 												<option disabled value="">Select Quarter</option>
@@ -266,30 +183,12 @@
 								
 									
 								<button class="pushable darkgreen"
-										style="margin-top: 2%;margin-left: 40%"
-										data-dismiss="modal"ng-click="cCctr.download('apidownloadCertificate/files/'+cCctr.entity.tan+'/'+cCctr.entity.typeofCertificate+'/'+cCctr.entity.financialYear+'/'+cCctr.entity.quarter+'/'+cCctr.entity.pan)">
+										style="margin-top: 2%;margin-left: 43%"
+										data-dismiss="modal"ng-click="downloadCertificateFrom.submitted=true;cCctr.download(fileForm.$valid,'apidownloadCertificate/files/'+cCctr.entity.tan+'/'+cCctr.entity.typeofCertificate+'/'+cCctr.entity.financialYear+'/'+cCctr.entity.quarter+'/'+cCctr.entity.pan)">
 										<span class="front darkgreenspan" style="">Download</span>
 									</button>	
 							</form>
 						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-</body>
-</html>
 
 
-<script>
-	function myFunction() {
-		$("input[name='chkPassPort']").click(function() {
-			if ($("#chkPan").is(":checked")) {
-				$("#pan").show();
-				$("#id").hide();
-			} else {
-				$("#id").show();
-				$("#pan").hide();
-			}
-		});
-	}
-</script>
+</div>

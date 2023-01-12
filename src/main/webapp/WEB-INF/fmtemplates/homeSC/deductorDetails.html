@@ -84,13 +84,32 @@
 	color: #fff;
 	text-decoration: none;
 }
+
+
+td .autoResize {
+	min-width:100px;
+	width: auto;
+}
+.autoResize {
+	min-width:70px;
+	resize: horizontal;
+	overflow: auto;
+	display: block 
+}
+
+.autoResizeQuarter {
+	min-width:70px;
+	resize: horizontal;
+	overflow: auto;
+	display: block 
+}
 </style>
 
 
 
 
 <div id="page-wrapper" ng-controller="CommonController as cCctr">
-<button class="btn btn-grad astro-MG2CNCJP" data-toggle="modal"
+					<button class="btn btn-grad astro-MG2CNCJP" data-toggle="modal"
 					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
 						 onClick="refreshPageButton()"><i
 						class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh</button>
@@ -147,13 +166,17 @@
 
 
 		<div class="row" id="hide">
-			<div class="col-md-3" style="margin-left: 75%; margin-top: -35px">
-				<button ng-click="cCctr.searchEntities(true,'deductorDetails')"
-					class="btn btn-success" onclick="scrollWin()"><i class="fa fa-search" aria-hidden="true"></i>
-					Search</button>
-				<button class="btn btn-primary " type="button"
-					ng-click="cCctr.generateExcel('apideductorDetails/generateExcel/','DEDUCTORDETAILS')">Export
-					to Excel</button>
+			<div class="col-md-4" style="margin-left: 73%; margin-top: -35px">
+					<button ng-click="cCctr.searchEntities(true,'deductorDetails')"
+						class="btn btn-grad astro-MG2CNCJP"
+						style="padding: 6px 9px; background-image: linear-gradient(to right, #093028 0%, #237A57 51%, #093028 100%)"
+						onclick="scrollWin()">
+						<i class="fa fa-search" aria-hidden="true"></i> Search
+					</button>
+					<button class="btn btn-grad astro-MG2CNCJP " type="button"
+							style=" background-image: linear-gradient(to right, #517fa4 0%, #243949 51%, #517fa4 100%);"
+							ng-click="cCctr.generateExcel('apideductorDetails/generateExcel/','DEDUCTORDETAILS')">Export
+							to Excel</button>
 			</div>
 		</div>
 	</div>
@@ -163,18 +186,18 @@
 
 
 	<div class="row">
-		<!-- <div class="table-responsive">  -->
+	<div class="table-responsive"> 
 
-		<table class=" tables table-bordered table-hover table-striped"
+		<table class="table table-bordered table-hover table-striped"
 			role="table"
-			style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+			style="font-size: 12px">
 			<thead>
 			<colgroup>
 				<col span="14" style="background-color: #ffffff">
 			</colgroup>
 			<tr>
 			<thead role="rowgroup">
-				<tr role="row" style="height: 40px; background-color: #81b7db">
+				<tr style="height: 40px; background-color: #81b7db">
 					<th>Sr. No.</th>
 					<th>TAN</th>
 					<th>State</th>
@@ -188,11 +211,11 @@
 					ng-show="cCctr.getEntityListData().length <= 0">
 					<td colspan="14" style="text-align: center;"><b><h3
 								style="text-align: center;">No data found!!</h3></b></td>
-				<tr role="row" ng-repeat="a in cCctr.getEntityListData()">
-					<td style="width: 1%">{{$index+1}}</td>
-					<td style="width: 1%">{{a.TAN}}</td>
-					<td style="width: 1%">{{a.STATE}}</td>
-					<td style="width: 1%">{{a.CITY}}</td>
+				<tr ng-repeat="a in cCctr.getEntityListData()">
+					<td>{{$index+1}}</td>
+					<td>{{a.TAN}}</td>
+					<td>{{a.STATE}}</td>
+					<td>{{a.CITY}}</td>
 					<!--  <td><a
 						ng-click="cCctr.gotoDetailPage('deductorDetails',a.TAN,'detailDeductorDetails')"
 						style="color: blue" onclick="scrollWin()"><img
@@ -202,6 +225,7 @@
 
 			</tbody>
 		</table>
+		</div>
 
 		<div class="row" ng-show="cCctr.getNoPage() > 0">
 			<div class="row" align="center">

@@ -9,8 +9,10 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import domain.in.rjsa.model.form.Branch;
+import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.form.OrganizationDetails;
 import domain.in.rjsa.service.BranchService;
+import domain.in.rjsa.service.LoginService;
 import domain.in.rjsa.service.OrganizationDetailsService;
 import domain.in.rjsa.service.STATEMENTSTATUSService;
 import domain.in.rjsa.service.UserDetailsService;
@@ -23,7 +25,7 @@ public class ApplicationCache {
 	private OrganizationDetailsService organizationDetailsService;
 	private BranchService branchService;
 	private UserDetailsService userDetailsService;
-	
+	private LoginService loginService;
 
 	
 	@Cacheable(value = "allAdminUsers", key = "#username")
@@ -73,6 +75,13 @@ public class ApplicationCache {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<String, Object>();
 		return sService.findAll(constrains, 0, 10);
+	}
+
+
+	@Cacheable(value = "login")
+	public Login getLoginDetail(String userName) {
+		// TODO Auto-generated method stub
+		return loginService.getLogin(userName);
 	}
 
 

@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -121,9 +120,9 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 		Ticket ticket = new Ticket();
 		adminValidation(entity);		String userName = getPrincipal();
 		entity.put("userName", userName);
-		String form = entity.get("form").toString();
-		String[] f = form.split(Pattern.quote("-"),-1);
-		entity.put("form", f[0]);
+//		String form = entity.get("form").toString();
+//		String[] f = form.split(Pattern.quote("-"),-1);
+//		entity.put("form", f[0]);
 		create(entity);
 		addLogs(entity);
 		// ermsg.setMessage(" Saved Successfully");

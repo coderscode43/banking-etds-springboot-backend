@@ -135,6 +135,25 @@
 th{
 text-align: center;
 }
+
+
+td .autoResize {
+	min-width:100px;
+	width: auto;
+}
+.autoResize {
+	min-width:115px;
+	resize: horizontal;
+	overflow: auto;
+	display: block 
+}
+
+.autoResizeQuarter {
+	min-width:70px;
+	resize: horizontal;
+	overflow: auto;
+	display: block 
+}
 </style>
 
 <div id="page-wrapper" ng-controller="CommonController as cCctr">
@@ -231,7 +250,7 @@ text-align: center;
 
 			</div>
 			<div class="row text-right" id="hide">
-				<div class="col-md-3" style="margin-left: 75%; margin-top: -35px">
+				<div class="col-md-4" style="margin-left: 70%; margin-top: -35px">
 					<button ng-click="cCctr.searchEntities(true,'challan')" style="background-image: linear-gradient(to right, #093028 0%, #237A57  51%, #093028  100%)"
 						class="btn btn-grad astro-MG2CNCJP" onclick="scrollWin()"><i class="fa fa-search" aria-hidden="true"></i>
 						Search</button>
@@ -278,12 +297,12 @@ text-align: center;
 			<thead role="rowgroup" >
 				<tr role="row" style="height: 40px; background-color: #81b7db;">
 					<th >Sr. No.</th>
-					<th>CIN</th>
-					<th>TAN</th>
-					<th>Amount of challan</th>
-					<th>Date of Deposition</th>
-					<th>As on Date</th>
-					<th>Challan Mismatch</th>
+					<th><div class="autoResize">CIN</div></th>
+					<th><div class="autoResize">TAN</div></th>
+					<th><div class="autoResize">Amount of challan</div></th>
+					<th><div class="autoResize">Date of Deposition</div></th>
+					<th><div class="autoResize">As on Date</div></th>
+					<th><div class="autoResize">Challan Mismatch</div></th>
 
 					<!-- 	<th>Action</th> -->
 				</tr>

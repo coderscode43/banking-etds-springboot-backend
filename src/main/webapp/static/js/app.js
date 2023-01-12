@@ -1,9 +1,6 @@
 'use strict';
 var App = angular.module('myApp', ['ui.router', 'angularUtils.directives.dirPagination', 'ngMaterial', 'ngMessages', 'ng.httpLoader']);
 App.value('restUrl', this.window.location.protocol + '//' + this.window.location.hostname + ':' + this.window.location.port + '/bankingETDS/');
-//https://www.taxosmart.com/dv/
-//https://localhost:8443/DocumentVerification/
-//http://159.65.157.15:8080/DocumentVerification/
 App.filter('sumByKey', function() {
 	return function(data, key) {
 		if (typeof (data) === 'undefined' || typeof (key) === 'undefined') {

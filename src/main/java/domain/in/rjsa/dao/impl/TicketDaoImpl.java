@@ -43,10 +43,14 @@ public class TicketDaoImpl extends AbstractDaoForm<Long, Ticket> implements Tick
 		if (entity.get("status") != null) {
 			criteria.add(Restrictions.eqOrIsNull("status", entity.get("status")));
 		}
+//		if (entity.get("form") != null) {
+//			String form = entity.get("form").toString();
+//			String[] f = form.split(Pattern.quote("-"),-1);
+//			criteria.add(Restrictions.eqOrIsNull("form", f[0]));
+//		}
+		
 		if (entity.get("form") != null) {
-			String form = entity.get("form").toString();
-			String[] f = form.split(Pattern.quote("-"),-1);
-			criteria.add(Restrictions.eqOrIsNull("form", f[0]));
+			criteria.add(Restrictions.eqOrIsNull("form", entity.get("form")));
 		}
 		if (entity.get("fy") != null) {
 			criteria.add(Restrictions.eqOrIsNull("fy", entity.get("fy")));
@@ -91,11 +95,15 @@ public class TicketDaoImpl extends AbstractDaoForm<Long, Ticket> implements Tick
 		if (entity.get("status") != null) {
 			criteria.add(Restrictions.eqOrIsNull("status", entity.get("status")));
 		}
-		if (entity.get("form") != null) {
-			String form = entity.get("form").toString();
-			String[] f = form.split(Pattern.quote("-"),-1);
-			criteria.add(Restrictions.eqOrIsNull("form", f[0]));
-		}
+//		if (entity.get("form") != null) {
+//		String form = entity.get("form").toString();
+//		String[] f = form.split(Pattern.quote("-"),-1);
+//		criteria.add(Restrictions.eqOrIsNull("form", f[0]));
+//	}
+	
+	if (entity.get("form") != null) {
+		criteria.add(Restrictions.eqOrIsNull("form", entity.get("form")));
+	}
 		if (entity.get("fy") != null) {
 			criteria.add(Restrictions.eqOrIsNull("fy", entity.get("fy")));
 		}
@@ -139,11 +147,15 @@ public class TicketDaoImpl extends AbstractDaoForm<Long, Ticket> implements Tick
 		if (entity.get("status") != null) {
 			criteria.add(Restrictions.eqOrIsNull("status", entity.get("status")));
 		}
-		if (entity.get("form") != null) {
-			String form = entity.get("form").toString();
-			String[] f = form.split(Pattern.quote("-"),-1);
-			criteria.add(Restrictions.eqOrIsNull("form", f[0]));
-		}
+//		if (entity.get("form") != null) {
+//		String form = entity.get("form").toString();
+//		String[] f = form.split(Pattern.quote("-"),-1);
+//		criteria.add(Restrictions.eqOrIsNull("form", f[0]));
+//	}
+	
+	if (entity.get("form") != null) {
+		criteria.add(Restrictions.eqOrIsNull("form", entity.get("form")));
+	}
 		if (entity.get("fy") != null) {
 			criteria.add(Restrictions.eqOrIsNull("fy", entity.get("fy")));
 		}
@@ -189,11 +201,15 @@ public class TicketDaoImpl extends AbstractDaoForm<Long, Ticket> implements Tick
 		if (entity.get("status") != null) {
 			criteria.add(Restrictions.eqOrIsNull("status", entity.get("status")));
 		}
-		if (entity.get("form") != null) {
-			String form = entity.get("form").toString();
-			String[] f = form.split(Pattern.quote("-"),-1);
-			criteria.add(Restrictions.eqOrIsNull("form", f[0]));
-		}
+//		if (entity.get("form") != null) {
+//		String form = entity.get("form").toString();
+//		String[] f = form.split(Pattern.quote("-"),-1);
+//		criteria.add(Restrictions.eqOrIsNull("form", f[0]));
+//	}
+	
+	if (entity.get("form") != null) {
+		criteria.add(Restrictions.eqOrIsNull("form", entity.get("form")));
+	}
 		if (entity.get("fy") != null) {
 			criteria.add(Restrictions.eqOrIsNull("fy", entity.get("fy")));
 		}

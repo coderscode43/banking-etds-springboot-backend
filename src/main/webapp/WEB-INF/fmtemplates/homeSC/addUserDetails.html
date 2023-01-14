@@ -38,14 +38,16 @@
 										<label>Type Of User*</label>
 									</h6>
 									<select class="form-control" type="text" id="typeOfUser"
-										name="typeOfUser" placeholder=" Type Of User"
-										ng-model="cCctr.entity.typeOfUser" ng-required="true">
+										name="typeOfUser" placeholder="Type Of User"
+										ng-model="cCctr.entity.typeOfUser" autocomplete="on" ng-required="true">
+										<option disabled value="">Select Type of User</option>
 										<option value="admin">Admin</option>
 										<option value="Super Admin">Super Admin</option>
-									</select><span style="color: red"
+										</select>
+									<span style="color: red"
 										ng-show="formUserDetails.submitted || formUserDetails.typeOfUser.$dirty && formUserDetails.typeOfUser.$invalid">
 										<span class="error"
-										ng-show="formUserDetails.branchCode.$error.required">
+										ng-show="formUserDetails.typeOfUser.$error.required">
 											Type Of User is Required.</span>
 									</span>
 								</div>

@@ -263,6 +263,12 @@ td .autoResize {
 									<option value="${TAN}">${TAN}</option>
 									</#list>
 								</select> 
+								 <span style="color: red"
+												ng-show="certificateDetails.submitted ||certificateDetails.TAN.$dirty && certificateDetails.TAN.$invalid">
+												<span class="error"
+												ng-show="certificateDetails.TAN.$error.required">TAN
+													is Required. </span>
+											</span>
 							</div>
 						</div>
 						<!-- <div class="col-md-12">
@@ -287,7 +293,12 @@ td .autoResize {
 									<option value="${year}">${year}</option>
 									</#list>
 								</select>
-
+								 <span style="color: red"
+												ng-show="certificateDetails.submitted ||certificateDetails.fy.$dirty && certificateDetails.fy.$invalid">
+												<span class="error"
+												ng-show="certificateDetails.fy.$error.required">Financial Year
+													is Required. </span>
+											</span>
 							</div>
 						</div>
 						
@@ -301,6 +312,12 @@ td .autoResize {
 									<option value="${quarter}">${quarter}</option>
 									</#list>
 								</select>
+								 <span style="color: red"
+												ng-show="certificateDetails.submitted ||certificateDetails.quarter.$dirty && certificateDetails.quarter.$invalid">
+												<span class="error"
+												ng-show="certificateDetails.quarter.$error.required">Quarter
+													is Required. </span>
+											</span>
 							</div>
 						
 						</div>
@@ -309,14 +326,19 @@ td .autoResize {
 							<div>
 								<label style="font-size: 15px">Form*</label>
 								<div>
-									<select name="fy" id="fy" ng-model="cCctr.entity.form"
+									<select name="form" id="form" ng-model="cCctr.entity.form"
 										class="form-control" required>
 										<option disabled value="">Select Form</option>
 										<#list Form as f>
 										<option value="${f}">${f}</option>
 										</#list>
 									</select>
-									
+									 <span style="color: red"
+												ng-show="certificateDetails.submitted ||certificateDetails.form.$dirty && certificateDetails.form.$invalid">
+												<span class="error"
+												ng-show="certificateDetails.form.$error.required">Form
+													is Required. </span>
+											</span>
 								</div>
 							</div>
 							
@@ -332,9 +354,15 @@ td .autoResize {
 							</div> -->
 							<div class="col-md-12">
 							<div class="form-group">
-								<label for="name" style="font-size: 15px"> File</label> 
+								<label for="name" style="font-size: 15px"> File*</label> 
 									<input multiple id="file-upload" type="file" name="zipFile" class="form-control"
 										ng-required="true" file-model="cCctr.entity.zipFile" accept=".zip"/>	
+										 <span style="color: red"
+												ng-show="certificateDetails.submitted ||certificateDetails.zipFile.$dirty && certificateDetails.zipFile.$invalid">
+												<span class="error"
+												ng-show="certificateDetails.zipFile.$error.required">File
+													is Required. </span>
+											</span>
 									<!-- <span style="color: red"
 										ng-show="documentForm.submitted || documentForm.blob.$dirty && documentForm.blob.$invalid">
 										
@@ -351,10 +379,8 @@ td .autoResize {
 				</div>
 
 			<div class="modal-footer">
-			<button class="pushable darkgreen" 
-							data-dismiss="modal"
+			<button class="pushable darkgreen"
 							ng-click="certificateDetails.submitted=true;cCctr.saveDocument(certificateDetails.$valid,cCctr.entity,'uploadCertificate')">
-							
 							<span class="front darkgreenspan"> Add</span>
 						</button>
 						<button class="pushable darkred" 

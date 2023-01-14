@@ -271,7 +271,8 @@
 					style="width: 70px; text-align: center;" type="number"
 					name="pageNo" ng-model="cCctr.currentPage"
 					ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
-					ng-min="1" ng-max="cCctr.getNoPage()" ng-required="true">
+					ng-min="1" min="1" max="{{cCctr.getNoPage()}}"
+					ng-max="cCctr.getNoPage()" ng-required="true">
 				&nbsp;&nbsp;&nbsp;
 				<button style="height: 25px;"
 					ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'branch',cCctr.currentPage)"

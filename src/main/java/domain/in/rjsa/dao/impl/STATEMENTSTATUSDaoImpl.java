@@ -121,6 +121,9 @@ public class STATEMENTSTATUSDaoImpl extends AbstractDaoTaxo<Long, STATEMENTSTATU
 		if (entity.get("RT") != null) {
 			criteria.add(Restrictions.eqOrIsNull("RT", entity.get("RT")));
 		}
+		if (entity.get("STATUS") != null) {
+			criteria.add(Restrictions.eqOrIsNull("STATUS", entity.get("STATUS")));
+		}
 
 		criteria.addOrder(Order.desc("id"));
 //  		criteria.setFirstResult(pageNo * noOfResult);

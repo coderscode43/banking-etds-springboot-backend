@@ -44,18 +44,18 @@ public class UploadCertificateController extends AbstractControllerForm<Long, Up
 	
 	
 
-	public void save(LinkedHashMap<String, Object> map, MultipartFile file) {
-		UploadCertificate doc = new UploadCertificate();
-		Login l = applicationCache.getLoginDetail(getPrincipal());
-		doc.setTAN(file.getOriginalFilename());
-		try {
-			doc.setZipFile(file.getBytes());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		getService().save(doc);
-	}
+//	public void save(LinkedHashMap<String, Object> map, MultipartFile file) {
+//		UploadCertificate doc = new UploadCertificate();
+//		Login l = applicationCache.getLoginDetail(getPrincipal());
+//		doc.setTAN(file.getOriginalFilename());
+//		try {
+//			doc.setZipFile(file.getBytes());
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		getService().save(doc);
+//	}
 
 	@RequestMapping(value = "/addFile", method = RequestMethod.POST)
 	public ResponseEntity<?> addDocument(

@@ -1,17 +1,26 @@
 package domain.in.rjsa.service.impl;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -44,12 +53,13 @@ public class UploadCertificateServiceImpl extends AbstractServiceForm<Long, Uplo
 		// TODO Auto-generated method stub
 		return dao.getByKey(id);
 	}
+	
 	@Override
 	public void saveDocument(MultipartFile downloadFile, HashMap<String, String> lessonMap) {
 		try {
 			UploadCertificate uploadCertificate = new UploadCertificate();
 
-			uploadCertificate.setZipFile(downloadFile.getBytes());
+//			uploadCertificate.setZipFile(downloadFile.getBytes());
 			uploadCertificate.setFileName(downloadFile.getOriginalFilename());
 			uploadCertificate.setTAN(lessonMap.get("TAN"));
 			uploadCertificate.setFy(lessonMap.get("fy"));
@@ -58,8 +68,24 @@ public class UploadCertificateServiceImpl extends AbstractServiceForm<Long, Uplo
 			
 			Date date= new Date();
 			uploadCertificate.setUploadedTime(date);
-			
+			uploadCertificate.setUserName(getPrincipal());
+			uploadCertificate.setStatus("pending");
 			dao.persist(uploadCertificate);
+			
+			CompletableFuture<Void> completableFuture = CompletableFuture.runAsync(() -> {
+				try {
+					System.out.println("completable thread : " + Thread.currentThread().getName());
+					unzip(downloadFile);
+					uploadCertificate.setStatus("success");
+					dao.update(uploadCertificate);
+				} catch (Exception e) {
+					System.out.println("completable future error :");
+					uploadCertificate.setStatus("failed");
+					dao.update(uploadCertificate);
+					e.printStackTrace();
+				}
+			});
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -152,5 +178,57 @@ public class UploadCertificateServiceImpl extends AbstractServiceForm<Long, Uplo
 
 	}
 	
+	public void unzip(MultipartFile zip) throws IllegalStateException, IOException {
+//		final Path destDir = Paths.get(StaticData.CertificatePath);
+		final Path destDir = Paths.get("C:\\Users\\RJSA-22-12-2022-01\\Desktop\\uploads");
+		final Path newPath = destDir.resolve(zip.getOriginalFilename());
+		zip.transferTo(newPath);
+	    final File dest = new File(destDir.toString());
+	    final byte[] buffer = new byte[1024];
+	    try {
+		    final ZipInputStream zis = new ZipInputStream(new FileInputStream(newPath.toString()));
+		    ZipEntry zipEntry = zis.getNextEntry();
+		    while (zipEntry != null) {
+		        final File newFile = new File(dest, zipEntry.getName());
+		        if (zipEntry.isDirectory()) {
+		            if (!newFile.isDirectory() && !newFile.mkdirs()) {
+		                throw new IOException("Failed to create directory " + newFile);
+		            }
+		        } else {
+		        	if(!newFile.getParentFile().exists()) {
+		        		newFile.getParentFile().mkdirs();
+		        	}
+		            final FileOutputStream fos = new FileOutputStream(newFile);
+		            int len;
+		            while ((len = zis.read(buffer)) > 0) {
+		                fos.write(buffer, 0, len);
+		            }
+		            fos.close();
+		        }
+		        zipEntry = zis.getNextEntry();
+		    }
+		    zis.closeEntry();
+		    zis.close();
+	    }
+	    catch(Exception e) {
+	    	throw e;
+	    }
+	    finally {
+	    	newPath.toFile().delete();
+	    }
+	}
+	
+	public String getPrincipal() {
+		String userName = null;
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+		if (principal instanceof UserDetails) {
+			userName = ((UserDetails) principal).getUsername();
+		} else {
+			userName = principal.toString();
+		}
+		return userName;
+
+	}
 	
 }

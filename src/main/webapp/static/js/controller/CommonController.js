@@ -770,6 +770,76 @@ App
 													});
 								}
 							}
+							
+							
+							
+							self.saveDocument = function(valid, object, entity,closeModalId) {// remove
+								if (valid == true) {
+									console.log("Common Controller submit " + entity);
+									//self.object = object;
+									CommonService
+											.documentSave(object, entity)
+											.then(
+													function(data) {
+														console
+																.log(entity
+																		+ ' Add successfully');
+														self.gotoListPage(
+																entity, entity);
+														$('.modal').modal(
+																"hide");
+														angular
+																.element(
+																		'#'
+																				+ closeModalId)
+																.trigger(
+																		'click');
+														$('#successMsg')
+																.find(
+																		'.modal-header')
+																.find(
+																		'.headingMsg')
+																.append(
+																		"Successfull!");
+														$('#successMsg')
+																.find(
+																		'.modal-body')
+																.find('.msg')
+																.append(
+																		" Saved Successfully!");
+														$("#successMsg")
+																.modal();
+
+													},
+													function(error) {
+														console
+																.error('Error while creating saving Details, '
+																		+ status);
+														if (error.exceptionMsg != null
+																&& error.exceptionMsg != undefined) {
+															$('#errorMsg')
+																	.find(
+																			'.modal-body')
+																	.find(
+																			'.msg')
+																	.append(
+																			"Can not Save "
+																					+ error.entity
+																					+ " : "
+																					+ error.exceptionMsg);
+															$("#errorMsg")
+																	.modal();
+														} else {
+															for (var i = 0; i < error.fieldErrors.length; i++) {
+																var obj = error.fieldErrors[i];
+																document
+																		.getElementById(obj.fieldName).innerHTML = obj.message;
+															}
+														}
+
+													});
+								}
+							}// close saveDocument
 							self.submitFY = function(valid, object, entity,
 									closeModalId) {
 								if (valid == true) {

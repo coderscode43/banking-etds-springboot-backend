@@ -17,6 +17,9 @@
     <!-- Custom Fonts -->
     <link href="static/fonts/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- FONT AWESOME ICONS  -->
+   <!--  <link rel='stylesheet' href='static/js/lib/angular-loading-bar-master/build/loading-bar.min.css'
+	type='text/css' media='all' /> -->
+    <!-- FONT AWESOME ICONS  -->
 <!--  	<link href="static/css/font-awesome.css" rel="stylesheet" /> -->
 <link rel="shortcut icon" type="image/x-icon"
 	href="static/img/favicon.ico" />
@@ -38,7 +41,10 @@
 <body style="width:100%">
 
     
-
+   <div ng-http-loader methods="['GET']" ttl="1" id="example/loader" style="position: fixed;
+  left: 50%;
+  top: 40%;z-index:9999"
+		template="index/example-loader.tpl"></div>
   
 
 
@@ -68,12 +74,16 @@
 	<script src="static/js/lib/dirPagination.js"></script>
 	<script
 		src="static/js/lib/angular-http-loader.js"></script>
-	
-	 
-      <script src = "static/js/lib/angular-animate.min.js"></script>
+	 <script src = "static/js/lib/angular-animate.min.js"></script>
       <script src = "static/js/lib/angular-aria.min.js"></script>
       <script src = "static/js/lib/angular-messages.min.js"></script>
       <script src = "static/js/lib/angular-material.min.js"></script>
+      <link rel = "stylesheet"
+         href = "https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+    
+      
+	<!-- <script type='text/javascript'
+		src="static/js/lib/angular-loading-bar-master/build/loading-bar.min.js"></script> -->
    
     
     

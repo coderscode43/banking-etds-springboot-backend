@@ -132,6 +132,24 @@
 th{
 text-align:center;
 }
+
+td .autoResize {
+	min-width:100px;
+	width: auto;
+}
+.autoResize {
+	min-width:115px;
+	resize: horizontal;
+	overflow: auto;
+	display: block 
+}
+
+.autoResizeQuarter {
+	min-width:70px;
+	resize: horizontal;
+	overflow: auto;
+	display: block 
+}
 </style>
 
 
@@ -250,7 +268,7 @@ text-align:center;
 							<b>Form</b>
 						</h6>
 						<select ng-model="cCctr.search.FORM" class="form-control">
-							<option value="">Form</option>
+							<option disabled value="">Form</option>
 							<option value="24Q">24Q</option>
 							<option value="26Q">26Q</option>
 							<option value="27Q">27Q</option>
@@ -274,7 +292,7 @@ text-align:center;
 
 			</div>
 			<div class="row text-right" id="hide">
-				<div class="col-md-3" style="margin-left: 75%; margin-top: -44px">
+				<div class="col-md-4" style="margin-left: 70%; margin-top: -44px">
 					<button
 						ng-click="cCctr.searchEntities(true,'statementStatus','statementStatus')"
 						class="btn btn-grad astro-MG2CNCJP" onclick="scrollWin()" style="background-image: linear-gradient(to right, #093028 0%, #237A57  51%, #093028  100%)"><i class="fa fa-search" aria-hidden="true"></i>
@@ -359,7 +377,8 @@ text-align:center;
 					style="width: 70px; text-align: center;" type="number"
 					name="pageNo" ng-model="cCctr.currentPage"
 					ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
-					ng-min="1" ng-max="cCctr.getNoPage()" ng-required="true">
+					ng-min="1" min="1" max="{{cCctr.getNoPage()}}" 
+					ng-max="cCctr.getNoPage()" ng-required="true">
 				&nbsp;&nbsp;&nbsp;
 				<button style="height: 25px;"
 					ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'statementStatus',cCctr.currentPage)"

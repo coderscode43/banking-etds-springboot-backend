@@ -1,10 +1,11 @@
 package domain.in.rjsa.service;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
+
 import javax.validation.Valid;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import domain.in.rjsa.model.form.Remark;

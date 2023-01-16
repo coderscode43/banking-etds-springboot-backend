@@ -131,6 +131,25 @@
 	color: #fff;
 	text-decoration: none;
 }
+
+
+td .autoResize {
+	min-width:100px;
+	width: auto;
+}
+.autoResize {
+	min-width:115px;
+	resize: horizontal;
+	overflow: auto;
+	display: block 
+}
+
+.autoResizeQuarter {
+	min-width:70px;
+	resize: horizontal;
+	overflow: auto;
+	display: block 
+}
 </style>
 
 <div id="page-wrapper" ng-controller="CommonController as cCctr">
@@ -214,7 +233,7 @@
 
 			</div>
 			<div class="row text-right" id="hide">
-				<div class="col-md-3" style="margin-left: 75%; margin-top: -35px">
+				<div class="col-md-4" style="margin-left: 70%; margin-top: -35px">
 					<button ng-click="cCctr.searchEntities(true,'panUpdateList')"
 						class="btn btn-grad astro-MG2CNCJP" onclick="scrollWin()" style="background-image: linear-gradient(to right, #093028 0%, #237A57  51%, #093028  100%)"><i class="fa fa-search" aria-hidden="true"></i>
 						Search</button>
@@ -227,19 +246,6 @@
 			</div>
 		</div>
 
-		<div class="row" id="search">
-			<div class="col-md-2" id="search">
-				<button ng-click="cCctr.searchEntities(true,'panUpdateList','panUpdateList')"
-					class="btn btn-success" onclick="scrollWin()">Search</button>
-			</div>
-		</div>
-
-		<div class="row" id="search">
-			<div class="col-md-3" id="search">
-				<button ng-click="cCctr.searchEntities(true,'panUpdateList','panUpdateList')"
-					class="btn btn-success" onclick="scrollWin()">Search</button>
-			</div>
-		</div>
 
 	</div>
 	<div class="row">
@@ -264,11 +270,11 @@
 					<th>Sr. No.</th>
 					<th>FY</th>
 					<th>Month</th>
-					<th>Challan Heading</th>
-					<th>Customer/Vendor ID</th>
+					<th><div class="autoResize">Challan Heading</div></th>
+					<th><div class="autoResize">Customer/Vendor ID</div></th>
 					<th>Previous Pan</th>
 					<th>New Pan</th>
-					<th>Remark</th>
+					<th><div class="autoResize">Remark</div></th>
 
 					<!-- 	<th>Action</th> -->
 				</tr>
@@ -317,7 +323,8 @@
 					style="width: 70px; text-align: center;" type="number"
 					name="pageNo" ng-model="cCctr.currentPage"
 					ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
-					ng-min="1" ng-max="cCctr.getNoPage()" ng-required="true">
+					ng-min="1" min="1" max="{{cCctr.getNoPage()}}" 
+					ng-max="cCctr.getNoPage()" ng-required="true">
 				&nbsp;&nbsp;&nbsp;
 				<button style="height: 25px;"
 					ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'panUpdateList',cCctr.currentPage)"

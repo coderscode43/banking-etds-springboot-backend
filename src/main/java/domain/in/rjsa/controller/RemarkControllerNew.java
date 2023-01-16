@@ -1,8 +1,6 @@
 package domain.in.rjsa.controller;
 
-import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.form.Remark;
-import domain.in.rjsa.service.LoginService;
 import domain.in.rjsa.service.RemarkServiceNew;
 
 public class RemarkControllerNew extends AbstractControllerForm<Long, Remark, RemarkServiceNew>{

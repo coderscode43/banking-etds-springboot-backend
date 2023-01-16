@@ -16,9 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.ibm.icu.text.SimpleDateFormat;
 
 import domain.in.rjsa.dao.TotalAmountDao;
-import domain.in.rjsa.excel.Form24QDeducteeExcel;
 import domain.in.rjsa.excel.TotalAmountExcel;
-import domain.in.rjsa.model.fy.Regular24QDeductee;
 import domain.in.rjsa.model.fy.TotalAmount;
 import domain.in.rjsa.service.AbstractServiceFY;
 import domain.in.rjsa.service.TotalAmountSerivce;

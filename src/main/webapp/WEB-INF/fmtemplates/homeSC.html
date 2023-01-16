@@ -67,6 +67,12 @@
 	line-height: 1;
 	text-align: center;
 }
+.sidebar-content {
+  max-height: calc(100% - 30px);
+  height: calc(100% - 30px);
+  overflow-y: initial;
+  position: relative;
+}
 </style>
 <div class=" page-wrapper chiller-theme ng-scope toggled"
 	ng-Controller="CommonWOTController as cWctr">
@@ -242,6 +248,11 @@
 						onclick="scrollWin()" ng-show="'admin'=='${typeOfUser}'"><a><i
 							class="fa fa-desktop" aria-hidden="true"></i><b>Generate
 								Ticket</b> </a></li>
+								
+					<li ng-click="cCctr.gotoListPage('uploadCertificate','uploadCertificate')"
+						onclick="scrollWin()" ng-show="'admin'=='${typeOfUser}'"><a><i
+							class="fa fa-desktop" aria-hidden="true"></i><b>Upload Certificate
+								</b> </a></li>
 
 					<li data-toggle="collapse" data-target="#ldcDetails"
 						class="collapsed" ng-show="'admin'=='${typeOfUser}'"><a
@@ -281,13 +292,16 @@
 
 
 					<!-- sidebar-menu  -->
+					</ul>
+			</div>
 			</div>
 	</nav>
 	<!-- sidebar-wrapper  -->
 	<main class="page-content" style="margin-top: -3.5%">
 		<div class="container-fluid">
-			<div ng-http-loader methods="['GET']" ttl="0" id="example/loader"
-				template=""></div>
+		
+			<!-- <div ng-http-loader methods="['GET']" ttl="1" id="example/loader" 
+		template="index/example-loader.tpl"></div> -->
 
 
 			<div style="padding-top: 1%" ui-view></div>

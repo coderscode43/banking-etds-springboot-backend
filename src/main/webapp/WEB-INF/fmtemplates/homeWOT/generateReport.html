@@ -40,15 +40,25 @@ th {
 	color: #fff;
 	text-decoration: none;
 }
+.heading {
+  font-size: 12px;
+}
 </style>
 
 
 
 
-<div id="page-wrapper">
-	<div class="heading">MIS Report Generate</div>
+<div id="page-wrapper" ng-controller="CommonController as cCctr">
+		<div class="container-fluid">
+		<button class="btn btn-grad astro-MG2CNCJP" data-toggle="modal"
+					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
+					 onClick="refreshPageButton()"><i
+					class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh</button>
+			<div class="col-md-12 "
+				style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
+				<div class="heading">
+	<strong style="font-size: 20px;">MIS Report Generate</strong>
 	<div class="container-fluid">
-
 		<div class="collapse dont-collapse-sm" id="collapseExample2">
 			<div class="row">
 				<div class="form-group">
@@ -71,12 +81,12 @@ th {
 
 
 
-					<div class="col-md-3">
+					<div class="col-md-6">
 						<h6>
 							<b>Report Type</b>
 							<h6>
 								<select class="form-control" ng-model="cCctr.search.reportType">
-									<option value=" " ng-selected="true">Select Report
+									<option disabled value=" " ng-selected="true">Select Report
 										Type</option>
 									<option value="section">Section</option>
 									<option value="Month Wise">Month Wise</option>
@@ -149,13 +159,13 @@ th {
 			<thead>
 				<tr style="background-color: #81b7db; font-size: 13px; height: 40px">
 					<th>Sr No</th>
-					<th>Branch Code</th>
-					<th>Financial Year</th>
-					<th>From Date</th>
-					<th>To Date</th>
-					<th>Report Type</th>
-					<th>User Name</th>
-					<th>Action</th>
+					<th><div class="autoResizeQuarter">Branch Code</div></th>
+					<th><div class="autoResizeQuarter">Financial Year</div></th>
+					<th><div class="autoResizeQuarter">From Date</div></th>
+					<th><div class="autoResizeQuarter">To Date</div></th>
+					<th><div class="autoResizeQuarter">Report Type</div></th>
+					<th><div class="autoResizeQuarter">User Name</div></th>
+					<th><div class="autoResizeQuarter">Action</div></th>
 
 
 				</tr>
@@ -202,7 +212,8 @@ th {
 					style="width: 70px; text-align: center;" type="number"
 					name="pageNo" ng-model="cCctr.currentPage"
 					ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
-					ng-min="1" ng-max="cCctr.getNoPages()" ng-required="true">
+					ng-min="1" min="1" max="{{cCctr.getNoPages()}}"
+					ng-max="cCctr.getNoPages()" ng-required="true">
 				&nbsp;&nbsp;&nbsp;
 				<button style="height: 25px;"
 					ng-click="gotoForm.submitted=true;cCctr.getPages(gotoForm.$valid,'generateReport',cCctr.currentPage)"
@@ -253,17 +264,22 @@ th {
 								<div class="row">
 									<div class="col-md-4">
 										<div>
-											<label>Section</label> <select
+											<label>Section*</label> <select name="section"
 												ng-model="cCctr.entity.reportType" class="form-control"
 												required>
-												<option value=" " ng-selected="true">Select Report
+												<option value=" " ng-selected="true" disabled>Select Report
 													Type</option>
 												<option value="section">Section</option>
 												<option value="Month Wise">Month Wise</option>
 												<option value="Tax Audit Report">Tax Audit Report</option>
 												<option value="Default Tax Audit Report">Default
 													Tax Audit Report</option>
-											</select>
+											</select> <span style="color: red"
+									ng-show="fileForm.submitted ||fileForm.section.$dirty && fileForm.section.$invalid">
+									<span class="error"
+									ng-show="fileForm.section.$error.required">
+										Report type is Required. </span>
+								</span>
 										</div>
 									</div>
 
@@ -273,16 +289,26 @@ th {
 
 									<div class="col-md-4">
 										<div>
-											<label>From Date</label> <input class="form-control"
+											<label>From Date*</label> <input class="form-control" name="fromDate"
 												type="date" ng-model="cCctr.entity.fromDate" required>
-
+												<span style="color: red"
+									ng-show="fileForm.submitted ||fileForm.fromDate.$dirty && fileForm.fromDate.$invalid">
+									<span class="error"
+									ng-show="fileForm.fromDate.$error.required">
+										From Date is Required. </span>
+								</span>
 										</div>
 									</div>
 									<div class="col-md-4">
 										<div>
-											<label>To Date</label> <input class="form-control"
+											<label>To Date*</label> <input class="form-control" name="toDate"
 												type="date" ng-model="cCctr.entity.toDate" required>
-
+                                                <span style="color: red"
+									ng-show="fileForm.submitted ||fileForm.toDate.$dirty && fileForm.toDate.$invalid">
+									<span class="error"
+									ng-show="fileForm.toDate.$error.required">
+										To Date is Required. </span>
+								</span>
 										</div>
 									</div>
 								</div>

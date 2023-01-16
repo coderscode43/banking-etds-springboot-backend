@@ -1,0 +1,241 @@
+<style>
+
+
+#popup {
+width: 50%;
+position: fixed;
+top: 10%;
+left: 25%;
+transform: translate(-50%, -50%);
+box-shadow: 2px 2px 5px 3px white;
+
+}
+
+.opacity-animate4 {
+	animation: opt-animation4 1s;
+	animation-fill-mode: forwards
+}
+
+@keyframes opt-animation4 {
+ 0% {
+	transform: scale(0) rotate(360deg);
+	}
+
+60%{
+transform:scale(1) rotate(-10deg);
+}
+100%{
+transform: scale(1) rotate(0deg);
+}
+}
+#forpo{
+position: relative;
+right:230px;
+
+}
+.fade {
+	transition: opacity 0.3s;
+	-webkit-transition: opacity 0.3s;
+	opacity: 1;
+}
+
+h5 {
+	border: 1px solid #ccc;
+	padding: 0.01em 16px;
+	border-radius: 16px;
+}
+h5:hover {
+	text-decoration: none;
+}
+
+.red {
+	box-sizing: border-box;
+	background-color: rgba(170, 52, 52);
+	border: 1px solid rgba(170, 52, 52);
+	box-shadow: 0 3px 5px 3px rgba(0, 0, 0, 0.5);
+	color: white;
+}
+
+ .red:hover {
+	box-sizing: border-box;
+	background-color: rgba(170, 52, 52);
+	border: 1px solid rgba(170, 52, 52);
+	box-shadow: 0 10px 5px 3px rgba(0, 0, 0, 0.5);
+	font-size:20px;
+	font-weight:bold;
+	color: white;
+	text-decoration: none;
+} 
+
+.green {
+	box-sizing: border-box;
+	background-color: rgba(21, 165, 21, 0.9);
+	border: 1px solid rgba(21, 165, 21, 0.9);
+	box-shadow: 0 3px 5px 3px rgba(0, 0, 0, 0.5);
+    color: white;
+}
+ .green:hover {
+	box-sizing: border-box;
+	background-color: rgba(21, 165, 21, 0.9);
+	border: 1px solid rgba(21, 165, 21, 0.9);
+	box-shadow: 0 10px 5px 3px rgba(0, 0, 0, 0.5);
+	font-size:20px;
+	font-weight:bold;
+	color: white;
+	text-decoration: none;
+} 
+
+.blue {
+	box-sizing: border-box;
+	background-color: rgba(182, 213, 30, 0.9);
+	border: 1px solid rgba(182, 213, 30, 0.9);
+	box-shadow: 0 3px 5px 3px rgba(0, 0, 0, 0.5);
+	color: white;
+}
+  @media (min-width: 1200px){
+.container {
+  width: 1000px;
+}
+.col-md-8 {
+  width: 35.667%;
+}
+}
+ .blue:hover {
+	box-sizing: border-box;
+	background-color: rgba(182, 213, 30, 0.9);
+	border: 1px solid rgba(182, 213, 30, 0.9);
+	box-shadow: 0 10px 5px 3px rgba(0, 0, 0, 0.5);
+	font-size:20px;
+	font-weight:bold;
+	color: white;
+	text-decoration: none;
+} 
+</style>
+<br>
+<br>
+
+<!-- <script>
+	// When document is ready
+	$(document).ready(function() {
+		// SetTimeout function
+		// Will execute the function
+		// after 2 sec
+		setTimeout(function() {
+			$(".POPmain").css("display", "block");
+			$('.myModal').modal({
+				backdrop : 'static',
+				keyboard : false
+			})
+		}, 10000);
+	});
+	$(".submitId").click(function() {
+		$(".POPmain").css("display", "none");
+		$('.myModal').modal({
+			backdrop : 'static',
+			keyboard : false
+		})
+
+	});
+</script> -->
+
+
+
+<!-- <script>
+	jQuery(document).ready(function() {
+		jQuery("#popup").css("display", "block");
+		jQuery(".close_popup").click(function() {
+			$('#popup').modal('hide');
+
+		});
+	});
+</script> -->
+<!-- <script>
+	function closeDialog() {
+		let d = document.getElementById('popup')
+		d.style.display = "none"
+		d.close()
+	}
+</script> -->
+
+
+
+<div class="container" style="margin-top:-138px">
+	<div >
+	<div class="sidebar-menu" style="float:right;margin-top:-8%">
+				
+
+				<button class="btn btn-primary" ui-sref="logout" onclick="scrollWin()">logout</button>
+
+					<!-- sidebar-menu  -->
+			</div>
+	
+		
+	<h3 style="margin-left: 35;">Branch Details</h3>
+		 <div class="row" style="margin-left: 35;">
+		    <label style="font-size:19px">branch Name :- &nbsp; </label> <a style="font-size:16px;text-decoration:none;color:black"> ${branchName}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			 <label style="font-size:19px">branch Code :- &nbsp; </label><a style="font-size:16px;text-decoration:none;color:black">${branchCode}</a>
+		</div>	
+		<div class="modal-dialog modal-lg opacity-animate fade">
+			<div class="modal-content" style="border-radius: 5px;padding-bottom: 44px;">
+				<div class="modal-header" style="color: #fff;background-color:#0F316D;padding:6px;border-radius: 6px 6px 0 0;">
+					<div class="col-md-4">
+                  </div>
+					<div class="col-md-8">
+					<h3 style="margin-top:0%">
+						<b><i class="fa fa-file-text" aria-hidden="true" style="font-size:25px;margin-left:5%"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ticket Details</b>
+					</h3>
+					</div>
+				</div>
+				<div class="modal-body"
+					style="text-align: center; margin-bottom: 20%;">
+					<div class="col-md-12" style="margin-top:2%">
+						<div class="col-md-4">
+							<h5 class="red" style="padding-top: 15%;font-size: 20px;
+                                             font-weight: bold;
+                                             color: white;
+                                             text-decoration: none;
+								padding-bottom: 8%;"  ng-click="cCctr.gotoWFYTicketListPage('ticket','ticket','${branchCode}','2022-23')">
+								<a style="color: white">Number of Open Ticket:</a>
+								<p style="font-size: 25px">
+									<b>${openTicket}</b>
+								</p>
+							</h5>
+
+						</div>
+						<div class="col-md-4">
+							<h5 class="green" style="padding-top: 15%;font-size: 20px;
+                                             font-weight: bold;
+                                             color: white;
+                                             text-decoration: none;
+								padding-bottom: 8%;" ng-click="cCctr.gotoWFYTicketListPage('ticket','ticket','${branchCode}','2022-23')">
+								<a style="color: white">Number of Resolve Ticket:</a>
+								<p style="font-size: 25px">
+									<b>${resolveTicket}</b>
+								</p>
+							</h5>
+
+						</div>
+						<div class="col-md-4">
+							<h5 class="blue" style="padding-top: 15%;font-size: 20px;
+                                             font-weight: bold;
+                                             color: white;
+                                             text-decoration: none;
+								padding-bottom: 8%;" ng-click="cCctr.gotoWFYTicketListPage('ticket','ticket','${branchCode}','2022-23')">
+								<a style="color: white">Number of Reject Ticket:</a>
+								<p style="font-size: 25px">
+									<b>${rejectTicket}</b>
+								</p>
+							</h5>
+
+						</div>
+						
+						<button type="button" class="pushable darkblue" style="float:right;margin-top:2%"
+						ng-click="cCctr.gotoHomePageWOTOFPresentFY(${branchCode})"
+						><span class="front darkbluespan">Continue</span></button>
+					
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

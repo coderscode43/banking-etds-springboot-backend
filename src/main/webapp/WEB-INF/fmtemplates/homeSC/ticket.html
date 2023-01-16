@@ -160,7 +160,7 @@
 							<b>Status</b>
 							<h6>
 								<select ng-model="cCctr.search.status" class="form-control">
-									<option value="">Status</option>
+									<option disabled value="">Status</option>
 									<option value="Open">Open</option>
 									<option value="Reject">Reject</option>
 									<option value="Resolve">Resolved</option>
@@ -243,18 +243,7 @@
 									class="form-control" placeholder="Branch Code"
 									style="width: 100%">
 					</div>
-
-					<!-- 	<div class="col-md-2">
-						<h6>
-							<b>Remark</b>
-						</h6>
-						<input type="text" ng-model="cCctr.search.remarks"
-							class="form-control" placeholder="Remark" style="width: 100%">
-					</div> -->
-				</div>
-
-				<div class="row">
-					<div class="col-md-2">
+										<div class="col-md-2">
 						<h6>
 							<b>From Date Of Opening</b>
 						</h6>
@@ -271,6 +260,18 @@
 							ng-change="cCctr.search.toDate=cCctr.date(cCctr.search.toDate);"
 							class="form-control" placeholder="Date" style="width: 100%">
 					</div>
+
+					<!-- 	<div class="col-md-2">
+						<h6>
+							<b>Remark</b>
+						</h6>
+						<input type="text" ng-model="cCctr.search.remarks"
+							class="form-control" placeholder="Remark" style="width: 100%">
+					</div> -->
+				</div>
+
+				<div class="row">
+
 					<!-- 	<div class="col-md-2">
 						<h6>
 							<b>Remark</b>
@@ -290,7 +291,7 @@
 				</div>
 			</div>
 			<div class="row text-right" id="hide">
-				<div class="col-md-4" style="margin-left: 65%; margin-top: -45px">
+				<div class="col-md-4" style="margin-left: 65%; margin-top: -45px;display:ruby">
 					<button ng-click="cCctr.searchEntities(true,'ticket','ticket')"
 						class="btn btn-grad astro-MG2CNCJP"
 						style="padding: 6px 9px; background-image: linear-gradient(to right, #093028 0%, #237A57 51%, #093028 100%)"
@@ -339,7 +340,7 @@
 
 		<div class="row">
 			<!-- <div class="table-responsive">  -->
-			<table class=" tables table-bordered table-hover table-striped"
+			<table class=" table table-bordered table-hover table-striped"
 				role="table"
 				style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
 				<thead>
@@ -347,18 +348,18 @@
 					<tr>
 				<thead role="rowgroup">
 					<tr role="row" style="height: 40px; background-color: #81b7db">
-						<th width="2%">Sr. No.</th>
-						<th width="6%">Financial Year</th>
-						<th width="6%">Quarter</th>
-						<th width="6%">Branch Code</th>
-						<th width="6%">Form</th>
-						<th width="6%">Customer/Vendor ID</th>
-						<th width="6%">PAN</th>
-						<th width="6%">Date Of Opening</th>
-						<th width="6%">Status</th>
-						<th width="40%">Description</th>
-						<th width="20%">User</th>
-						<th width="7%">Action</th>
+						<th >Sr. No.</th>
+						<th>Financial Year</th>
+						<th>Quarter</th>
+						<th><div class="autoResizeQuarter">Branch Code</div></th>
+						<th><div class="autoResizeQuarter">Form</div></th>
+						<th><div class="autoResize">Customer/Vendor ID</div></th>
+						<th><div class="autoResize">PAN</div></th>
+						<th><div class="autoResize">Date Of Opening</div></th>
+						<th><div class="autoResizeQuarter">Status</div></th>
+						<th><div class="autoResize">Description</div></th>
+						<th><div class="autoResize">User</div></th>
+						<th><div class="autoResize">Action</div></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -370,76 +371,76 @@
 					</tr>
 					<tr role="row"
 						ng-repeat="a in cCctr.getEntityListData() track by a.id">
-						<td style="width: 1%" ng-if="a.status == 'Reject'"">{{$index+1}}</td>
+						<td  ng-if="a.status == 'Reject'"">{{$index+1}}</td>
 						<td ng-if="a.status == 'Resolve'"
-								style="width: 1%; background-color: Green;color:#fff;">{{$index+1}}</td>
+								style=" background-color: Green;color:#fff;">{{$index+1}}</td>
 						<td ng-if="a.status == 'Open'""
-								style="width: 1%; background-color: #ff3232;color:#fff;">{{$index+1}}</td>
+								style=" background-color: #ff3232;color:#fff;">{{$index+1}}</td>
 						
-						<td style="width: 1%" ng-if="a.status == 'Reject'"">{{a.fy}}</td>
+						<td  ng-if="a.status == 'Reject'"">{{a.fy}}</td>
 						<td ng-if="a.status == 'Resolve'"
-								style="width: 1%; background-color: Green;color:#fff;">{{a.fy}}</td>
+								style=" background-color: Green;color:#fff;">{{a.fy}}</td>
 						<td ng-if="a.status == 'Open'""
-								style="width: 1%; background-color: #ff3232;color:#fff;">{{a.fy}}</td>
+								style=" background-color: #ff3232;color:#fff;">{{a.fy}}</td>
 								
 						
-						<td style="width: 1%" ng-if="a.status == 'Reject'"">{{a.quarter}}</td>
+						<td  ng-if="a.status == 'Reject'"">{{a.quarter}}</td>
 						<td ng-if="a.status == 'Resolve'"
-								style="width: 1%; background-color: Green;color:#fff;">{{a.quarter}}</td>
+								style=" background-color: Green;color:#fff;">{{a.quarter}}</td>
 						<td ng-if="a.status == 'Open'""
-								style="width: 1%; background-color: #ff3232;color:#fff;">{{a.quarter}}</td>
+								style=" background-color: #ff3232;color:#fff;">{{a.quarter}}</td>
 						
-						<td style="width: 1%" ng-if="a.status == 'Reject'"">{{a.branchCode}}</td>
+						<td  ng-if="a.status == 'Reject'"">{{a.branchCode}}</td>
 						<td ng-if="a.status == 'Resolve'"
-								style="width: 1%; background-color: Green;color:#fff;">{{a.branchCode}}</td>
+								style=" background-color: Green;color:#fff;">{{a.branchCode}}</td>
 						<td ng-if="a.status == 'Open'""
-								style="width: 1%; background-color: #ff3232;color:#fff;">{{a.branchCode}}</td>
+								style=" background-color: #ff3232;color:#fff;">{{a.branchCode}}</td>
 						
-						<td style="width: 1%" ng-if="a.status == 'Reject'"">{{a.form}}</td>
+						<td  ng-if="a.status == 'Reject'"">{{a.form}}</td>
 						<td ng-if="a.status == 'Resolve'"
-								style="width: 1%; background-color: Green;color:#fff;">{{a.form}}</td>
+								style=" background-color: Green;color:#fff;">{{a.form}}</td>
 						<td ng-if="a.status == 'Open'""
-								style="width: 1%; background-color: #ff3232;color:#fff;">{{a.form}}</td>
+								style=" background-color: #ff3232;color:#fff;">{{a.form}}</td>
 								
 						
-						<td style="width: 1%" ng-if="a.status == 'Reject'"">{{a.custVendId}}</td>
+						<td  ng-if="a.status == 'Reject'"">{{a.custVendId}}</td>
 						<td ng-if="a.status == 'Resolve'"
-								style="width: 1%; background-color: Green;color:#fff;">{{a.custVendId}}</td>
+								style=" background-color: Green;color:#fff;">{{a.custVendId}}</td>
 						<td ng-if="a.status == 'Open'""
-								style="width: 1%; background-color: #ff3232;color:#fff;">{{a.custVendId}}</td>
+								style=" background-color: #ff3232;color:#fff;">{{a.custVendId}}</td>
 								
 						
-						<td style="width: 1%" ng-if="a.status == 'Reject'"">{{a.pan}}</td>
+						<td  ng-if="a.status == 'Reject'"">{{a.pan}}</td>
 						<td ng-if="a.status == 'Resolve'"
-								style="width: 1%; background-color: Green;color:#fff;">{{a.pan}}</td>
+								style=" background-color: Green;color:#fff;">{{a.pan}}</td>
 						<td ng-if="a.status == 'Open'""
-								style="width: 1%; background-color: #ff3232;color:#fff;">{{a.pan}}</td>
+								style=" background-color: #ff3232;color:#fff;">{{a.pan}}</td>
 						
-						<td style="width: 1%" ng-if="a.status == 'Reject'"">{{a.dateOfOpening | date:'dd-MM-yyyy'}}</td>
+						<td  ng-if="a.status == 'Reject'"">{{a.dateOfOpening | date:'dd-MM-yyyy'}}</td>
 						<td ng-if="a.status == 'Resolve'"
-								style="width: 1%; background-color: Green;color:#fff;">{{a.dateOfOpening | date:'dd-MM-yyyy'}}</td>
+								style=" background-color: Green;color:#fff;">{{a.dateOfOpening | date:'dd-MM-yyyy'}}</td>
 						<td ng-if="a.status == 'Open'""
-								style="width: 1%; background-color: #ff3232;color:#fff;">{{a.dateOfOpening | date:'dd-MM-yyyy'}}</td>
+								style=" background-color: #ff3232;color:#fff;">{{a.dateOfOpening | date:'dd-MM-yyyy'}}</td>
 								
 							
-						<td ng-if="a.status == 'Reject'"" style="width: 1%">{{a.status}}</td>
+						<td ng-if="a.status == 'Reject'"" >{{a.status}}</td>
 						<td ng-if="a.status == 'Resolve'"
-								style="width: 1%; background-color: Green;color:#fff;">{{a.status}}</td>
+								style=" background-color: Green;color:#fff;">{{a.status}}</td>
 						<td ng-if="a.status == 'Open'""
-								style="width: 1%; background-color: #ff3232;color:#fff;">{{a.status}}</td>
+								style=" background-color: #ff3232;color:#fff;">{{a.status}}</td>
 								
-						<td style="width: 1%" ng-if="a.status == 'Reject'"">{{a.description}}</td>
+						<td  ng-if="a.status == 'Reject'"">{{a.description}}</td>
 						<td ng-if="a.status == 'Resolve'"
-								style="width: 1%; background-color: Green;color:#fff;">{{a.description}}</td>
+								style=" background-color: Green;color:#fff;">{{a.description}}</td>
 						<td ng-if="a.status == 'Open'""
-								style="width: 1%; background-color: #ff3232;color:#fff;">{{a.description}}</td>		
+								style=" background-color: #ff3232;color:#fff;">{{a.description}}</td>		
 								
 								
-						<td ng-if="a.status == 'Reject'"" style="width: 1%">{{a.userName}}</td>
+						<td ng-if="a.status == 'Reject'"" >{{a.userName}}</td>
 						<td ng-if="a.status == 'Resolve'"
-								style="width: 1%; background-color: Green;color:#fff;">{{a.userName}}</td>
+								style=" background-color: Green;color:#fff;">{{a.userName}}</td>
 						<td ng-if="a.status == 'Open'""
-								style="width: 1%; background-color: #ff3232;color:#fff;">{{a.userName}}</td>
+								style=" background-color: #ff3232;color:#fff;">{{a.userName}}</td>
 						<!-- ng-click="cCctr.gotoDetailPage('ticket',a.id,a.fy,a.branchCode,'detailticket')" -->
 						<td><a
 							ng-click="cCctr.gotoDetailFormPage('ticket',a.id,a.fy,a.branchCode,'detailTicket')"
@@ -476,7 +477,8 @@
 						style="width: 70px; text-align: center;" type="number"
 						name="pageNo" ng-model="cCctr.currentPage"
 						ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
-						ng-min="1" ng-max="cCctr.getNoPage()" ng-required="true">
+						ng-min="1" min="1" max="{{cCctr.getNoPage()}}" 
+						ng-max="cCctr.getNoPage()" ng-required="true">
 					&nbsp;&nbsp;&nbsp;
 					<button style="height: 25px;"
 						ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'ticket',cCctr.currentPage)"

@@ -22,6 +22,7 @@ App.factory('CommonService', [
 				update : update,
 				updateTicket : updateTicket,
 				save : save,
+				documentSave: documentSave,
 				ajax : ajax,
 				deleteById:deleteById,
 				getEntityList : getEntityList,
@@ -102,6 +103,57 @@ App.factory('CommonService', [
 
 				return deferred.promise;
 			}
+			function documentSaveNew(entitySave, entity) {
+				var deferred = $q.defer();
+				$http.post(REST_SERVICE_URI + entity + '/addWithZip', entitySave)
+						.success(function(data) {
+
+							deferred.resolve(data);
+						}).error(function(status) {
+							deferred.reject(status);
+						});
+
+				return deferred.promise;
+			}
+			
+			
+			function documentSave(object,entity) {
+				var dat = new FormData();
+				if (object.zipFile != null) {
+					dat.append('zipFile', object.zipFile);
+				}
+				if (object.TAN != null) {
+					dat.append('TAN', object.TAN);
+				}
+				if (object.fy != null) {
+					dat.append('fy', object.fy);
+				}
+				if (object.quarter != null) {
+					dat.append('quarter', object.quarter);
+				}
+				if (object.form != null) {
+					dat.append('form', object.form);
+				}
+				if (object.uploadedTime != null) {
+					dat.append('uploadedTime', object.uploadedTime);
+				}
+				var deferred = $q.defer();
+				$http.post(
+						REST_SERVICE_URI + entity + '/addFile',
+						dat, {
+							transformRequest: angular.identity,
+							headers: {'Content-Type': undefined}
+						}).success(function(data) {
+
+					deferred.resolve(data);
+				}).error(function(status) {
+					deferred.reject(status);
+				});
+
+				return deferred.promise;
+				}
+			
+			// close documentSave
 
 			function getUserData() {
 				return loginData;

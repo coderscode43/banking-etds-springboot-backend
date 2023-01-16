@@ -1,15 +1,12 @@
 package domain.in.rjsa.dao.impl;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractDaoForm;
 import domain.in.rjsa.dao.RemarkDaoNew;
-import domain.in.rjsa.model.form.Branch;
 import domain.in.rjsa.model.form.Remark;
 
 @Repository("RemarkDaoNew")

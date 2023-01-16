@@ -97,6 +97,16 @@ public class BranchDaoImpl extends AbstractDaoForm<Long, Branch> implements Bran
 //		criteria.setMaxResults(noOfResult);
 		return (List<Branch>) criteria.list();
 	}
+	
+	 public Branch getByKey(Long key) {
+		 Map<String, Object> propertyNameValues = new HashMap<String, Object>();
+			propertyNameValues.put("branchCode", key);
+			Criteria crit = createEntityCriteria();
+			crit.add(Restrictions.allEq(propertyNameValues));
+			return (Branch) crit.uniqueResult();
+	 }
+	
+	
 }
 
 	

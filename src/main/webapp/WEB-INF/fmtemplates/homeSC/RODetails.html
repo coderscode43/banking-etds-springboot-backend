@@ -9,7 +9,7 @@
 	.two {
 		padding: 8px;
 	}
-}
+}		
 
 @media only screen and (min-width:600px) {
 	#three {
@@ -77,6 +77,28 @@
 	/* change the direction of the change here */
 	color: #fff;
 	text-decoration: none;
+}
+
+td{
+	overflow-y: auto;
+}
+
+td .autoResize {
+	min-width:100px;
+	width: auto;
+}
+.autoResize {
+	min-width:115px;
+	resize: horizontal;
+	overflow: auto;
+	display: block 
+}
+
+.autoResizeQuarter {
+	min-width:70px;
+	resize: horizontal;
+	overflow: auto;
+	display: block 
 }
 </style>
 
@@ -210,7 +232,7 @@
 		<div class="row">
 			<div class="table-responsive">
 
-				<table class="tables table-bordered table-hover table-striped"
+				<table class="table table-bordered table-hover table-striped"
 					role="table"
 					style="font-size: 12px; width: 99%; padding: 5px; margin: 5px; margin-left: 10px; overflow-x: inherit;">
 
@@ -224,9 +246,9 @@
 						<tr role="row" style="background-color: #81b7db; height: 40px;">
 							<th>Sr. No.</th>
 							<th>RO Code</th>
-							<th style="width: 0.05%">RO NAME</th>
-							<th style="width: 0.05%">RO Address</th>
-							<th style="width: 0.05%">RO Email</th>
+							<th><div class="autoResizeQuarter">RO NAME</div></th>
+							<th><div class="autoResize">RO Address</div></th>
+							<th><div class="autoResizeQuarter">RO Email</div></th>
 							<th>RO State</th>
 							<th>RO Pincode</th>
 							<th>Action</th>
@@ -241,12 +263,9 @@
 							ng-repeat="a in cCctr.getEntityListData() track by a.id">
 							<td>{{$index+1}}</td>
 							<td>{{a.roCode}}</td>
-							<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip"
-								data-placement="bottom" title="{{a.roName}}">{{a.roName}}</td>
-							<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip"
-								data-placement="bottom" title="{{a.roAddress}}">{{a.roAddress}}</td>
-							<td class=" ellipsis" data-toggle="tooltip" data-toggle="tooltip"
-								data-placement="bottom" title="{{a.roEmail}}">{{a.roEmail}}</td>
+							<td >{{a.roName}}</td>
+							<td >{{a.roAddress}}</td>
+							<td >{{a.roEmail}}</td>
 							<td>{{a.roState}}</td>
 							<td>{{a.roPincode}}</td>
 
@@ -293,7 +312,8 @@
 					style="width: 70px; text-align: center;" type="number"
 					name="pageNo" ng-model="cCctr.currentPage"
 					ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
-					ng-min="1" ng-max="cCctr.getNoPage()" ng-required="true">
+					ng-min="1" min="1" max="{{cCctr.getNoPage()}}"
+					ng-max="cCctr.getNoPage()" ng-required="true">
 				&nbsp;&nbsp;&nbsp;
 				<button style="height: 25px;"
 					ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'RODetails',cCctr.currentPage)"

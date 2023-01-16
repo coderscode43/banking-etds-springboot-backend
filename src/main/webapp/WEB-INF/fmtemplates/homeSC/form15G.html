@@ -79,18 +79,48 @@ th {
 .truncate {
 	display: block;
 	white-space: nowrap;
-	text-overflow: ellipsis;
+	text-overflow:;
 	overflow: hidden;
 	width: 5%;
 	height: 60px;
 }
 
-.ellipsis {
-	max-width: 70px;
-	min-width: 200px;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
+.
+{
+max-width
+:
+ 
+70
+px
+;
+
+	
+min-width
+:
+ 
+200
+px
+;
+
+	
+text-overflow
+:
+ 
+;
+overflow
+:
+ 
+hidden
+;
+
+	
+white-space
+:
+ 
+nowrap
+;
+
+
 }
 .btn-grad {
 	background-image: linear-gradient(to right, #FF8008 0%, #FFC837 51%, #FF8008 100%);
@@ -113,10 +143,11 @@ th {
 <body>
 	<div id="page-wrapper" ng-controller="CommonController as cCctr">
 		<div class="container-fluid">
-		<button class="btn btn-grad astro-MG2CNCJP" data-toggle="modal"
-					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
-						 onClick="refreshPageButton()"><i
-						class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh</button>
+			<button class="btn btn-grad astro-MG2CNCJP" data-toggle="modal"
+				style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%); float: right;"
+				onClick="refreshPageButton()">
+				<i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh
+			</button>
 			<div class="col-md-12 "
 				style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
 				<div class="heading">
@@ -137,7 +168,7 @@ th {
 					<div class="form-group">
 
 
-						<div class="col-md-3">
+						<div class="col-md-4">
 							<h6>
 								<b>Name</b>
 								<h6>
@@ -152,14 +183,7 @@ th {
 									<input type="text" ng-model="cCctr.search.panoftheAssessee"
 										class="form-control" placeholder="PAN" style="width: 100%">
 						</div>
-						<div class="col-md-3">
-							<h6>
-								<b>Account No</b>
-								<h6>
-									<input type="text" ng-model="cCctr.search.accNo"
-										class="form-control" placeholder="Account No"
-										style="width: 100%">
-						</div>
+
 
 
 					</div>
@@ -177,12 +201,20 @@ th {
 										style="width: 100%">
 						</div>
 
-						<div class="col-md-3">
+						<!-- <div class="col-md-3">
 							<h6>
 								<b> Error</b>
 								<h6>
 									<input type="text" ng-model="cCctr.search.error"
 										class="form-control" placeholder="Error" style="width: 100%">
+						</div> -->
+						<div class="col-md-3">
+							<h6>
+								<b>Account No</b>
+								<h6>
+									<input type="text" ng-model="cCctr.search.accNo"
+										class="form-control" placeholder="Account No"
+										style="width: 100%">
 						</div>
 						<div class="col-md-3">
 							<h6>
@@ -196,7 +228,7 @@ th {
 						<div class="col-md-3">
 							<div class="col-md-3">
 								<button class="btn btn-grad astro-MG2CNCJP " type="button"
-									style="margin-top: 11%;background-image: linear-gradient(to right, #517fa4 0%, #243949 51%, #517fa4 100%);"
+									style="margin-top: 11%; background-image: linear-gradient(to right, #517fa4 0%, #243949 51%, #517fa4 100%);"
 									ng-click="cCctr.generateExcel('apiform15G/generateExcel/','G15')">Export
 									to Excel</button>
 							</div>
@@ -205,17 +237,27 @@ th {
 					</div>
 				</div>
 				<div class="row text-right" id="hide">
-					<div class="col-md-3" style="margin-left: 75%; margin-top: -44px">
+					<div class="col-md-3"
+						style="margin-left: 64%; margin-top: -44px; display: ruby;">
 						<button ng-click="cCctr.searchEntities(true,'form15G','form15G')"
-						style="background-image: linear-gradient(to right, #093028 0%, #237A57  51%, #093028  100%)"
-							class="btn btn-grad astro-MG2CNCJP" onclick="scrollWin()"><i class="fa fa-search" aria-hidden="true"></i>
-							Search</button>
-							
+							style="background-image: linear-gradient(to right, #093028 0%, #237A57 51%, #093028 100%)"
+							class="btn btn-grad astro-MG2CNCJP" onclick="scrollWin()">
+							<i class="fa fa-search" aria-hidden="true"></i> Search
+						</button>
+
 						<button class="btn btn-grad astro-MG2CNCJP"
-							style="background-image: linear-gradient(to right, #F09819 0%, #EDDE5D 51%, #F09819 100%)" data-toggle="collapse"
-							data-target="#collapseExample4" aria-expanded="false"
-							aria-controls="collapseExample"><i
-											class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;Advance Search</button>
+							style="background-image: linear-gradient(to right, #F09819 0%, #EDDE5D 51%, #F09819 100%)"
+							data-toggle="collapse" data-target="#collapseExample4"
+							aria-expanded="false" aria-controls="collapseExample">
+							<i class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;Advance
+							Search
+						</button>
+
+						<button class="btn btn-grad astro-MG2CNCJP advsearchbtn"style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);color:#fff;"
+						data-color1="#F09819" data-color2="#EDDE5D;"
+						data-toggle="collapse" data-target="#checkList"
+						aria-expanded="false" aria-controls="collapseExample">
+						</i>&nbsp;Table Column <i class="fa fa-angle-down" aria-hidden="true"></i></button>	
 					</div>
 					<div class="col-md-3">
 						<div class="text-right"></div>
@@ -228,8 +270,38 @@ th {
 
 		<div class="row"></div>
 
+		<table style="font-size: 12px; padding: 5px; margin: 5px;"
+			class="collapse panel-collapse table table-bordered table-hover  table-striped"
+			id="checkList">
+			<tr>
+
+				<td><button class="showAll"  for='selectAll'>Show All</button></td>
+ 				<td><button class="removeAll"  for='selectAll'>Remove All</button></td> 
+				<td><input type="checkbox" name="amountIncome">Amount of income</td>
+				<td><input type="checkbox" name="aadharNo">Aadhaar Number</td>
+				<td><input type="checkbox" name="branchCode">Branch Code</td>
+				<td><input type="checkbox" name="tanNo">Tan No</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="uniqueRefNo">Unique Reference No</td>
+				<td><input type="checkbox" name="uniqueIdeNo">Unique Identification No</td>
+				<td><input type="checkbox" name="ideNumber">Identification number of relevant investment/account, etc.</td>
+				<td><input type="checkbox" name="naturOfIncome">Nature of income</td>
+				<td><input type="checkbox" name="sectionUnder">Section under which tax is deductible</td>
+
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="incomeDeclarationMade">Estimated income for which this declaration is made</td>
+				<td><input type="checkbox" name="totalIncomeOfPY">Estimated total income of the P.Y.</td>
+				<td><input type="checkbox" name="amtIncomeForForm15GFilled">Aggregate amount of income for which Form No.15G filed</td>
+				<td><input type="checkbox" name="amountOfIncomePaid">Amount of income paid</td>
+				<td><input type="checkbox" name="dateDeclarationReceived">Date on which Declaration is received</td>
+			</tr>
+
+		</table>
+
 		<div class="row">
-			<div style="overflow-x: inherit; width: 600%">
+			<div style="overflow-x: inherit;">
 
 				<table class=" tables table-bordered table-hover  table-striped"
 					role="table" style="font-size: 12px">
@@ -242,80 +314,91 @@ th {
 					<thead"rowgroup">
 						<tr role="row" style="height: 40px; background-color: #81b7db">
 							<th>Sr. No.</th>
-							<th>Quarter</th>
-							<th>Month</th>
-							<th>Customer /Vendor Id</th>
-							<th>Account No</th>
-							<th>Branch Code</th>
-							<th>Tan No</th>
-							<th>Unique Reference No</th>
-							<th style="width: 0.01%" class=" ellipsis" data-toggle="tooltip"
-								data-placement="bottom" title="Unique Identification No">Unique
-								Identification No</th>
-							<th class=" ellipsis" data-toggle="tooltip"
+							<th><div class="autoResizeQuarter">Quarter</div></th>
+							<th><div class="autoResizeQuarter">Month</div></th>
+							<th class="custNo"><div class="autoResizeQuarter">Customer/Vendor Id</div></th>
+							<th class="accNo"><div class="autoResizeQuarter">Account No</div></th>
+							<th class="hideClass branchCode"><div class="autoResizeQuarter">Branch Code</div></th>
+							<th class="hideClass tanNo"><div class="autoResizeQuarter">Tan No</div></th>
+							<th class="hideClass uniqueRefNo"><div class="autoResizeQuarter">Unique Reference No</div></th>
+							
+							<th class="hideClass uniqueIdeNo " data-toggle="tooltip"
+								data-placement="bottom" title="Unique Identification No"><div
+									class="autoResizeQuarter">Unique Identification No</div></th>
+							<th class="hideClass ideNumber " data-toggle="tooltip"
 								data-placement="bottom"
-								title="Identification number of relevant investment/account, etc.">Identification
-								number of relevant investment/account, etc.</th>
-							<th style="width: 0.01%">Nature of income</th>
-							<th class=" ellipsis" data-toggle="tooltip"
+								title="Identification number of relevant investment/account, etc."><div
+									class="autoResizeQuarter">Identification number of
+									relevant investment/account, etc.</div></th>
+							<th class="hideClass naturOfIncome"><div class="autoResizeQuarter">Nature
+									of income</div></th>
+							<th class="hideClass sectionUnder  " data-toggle="tooltip"
 								data-placement="bottom"
-								title="Section under which tax is deductible">Section under
-								which tax is deductible</th>
-							<th>Amount of income</th>
-							<th style="width: 0.01%">Name of Assessee (Declarant)</th>
-							<th>PAN of the Assessee</th>
-							<th>Aadhaar Number</th>
-							<th>Status</th>
-							<th>Sub-Status</th>
-							<th class=" ellipsis" data-toggle="tooltip"
-								data-placement="bottom"
-								title="Previous year (P.Y.) (for which declaration is being made)">Previous
-								year (P.Y.) (for which declaration is being made)</th>
-							<th>Residential Status</th>
-							<th>Country</th>
-							<th style="width: 0.01%">Flat / Door / Building</th>
-							<th style="width: 0.01%">Road / Street / Block / Sector</th>
-							<th>Pincode</th>
-							<th>Post Office</th>
-							<th>Area/ Locality</th>
-							<th>District</th>
-							<th>State</th>
-							<th>Email</th>
-							<th>Telephone No.</th>
-							<th>Mobile No.</th>
-							<th class=" ellipsis" data-toggle="tooltip"
-								data-placement="bottom"
-								title="Whether assessed to tax under the Income-tax Act, 1961">Whether
-								assessed to tax under the Income-tax Act, 1961</th>
-							<th class=" ellipsis" data-toggle="tooltip"
-								data-placement="bottom"
-								title="If yes, latest assessment year for which assessed">If
-								yes, latest assessment year for which assessed</th>
-							<th class=" ellipsis" data-toggle="tooltip"
-								data-placement="bottom"
-								title="Estimated income for which this declaration is made">Estimated
-								income for which this declaration is made</th>
-							<th class=" ellipsis" data-toggle="tooltip"
-								data-placement="bottom"
-								title="Estimated total income of the P.Y. (including income for which this declaration is made)">Estimated
-								total income of the P.Y. (including income for which this
-								declaration is made)</th>
-							<th class=" ellipsis" data-toggle="tooltip"
-								data-placement="bottom" title="Total No. of Form No. 15G filed">Total
-								No. of Form No. 15G filed</th>
-							<th style="width: 0.01%" class=" ellipsis" data-toggle="tooltip"
-								data-placement="bottom"
-								title="Aggregate amount of income for which Form No.15G filed">Aggregate
-								amount of income for which Form No.15G filed</th>
-							<th>Date on which Declaration is received</th>
-							<th>Amount of income paid</th>
-							<th class=" ellipsis" data-toggle="tooltip"
-								data-placement="bottom"
-								title="Date on which the income has been paid/credited">Date
-								on which the income has been paid/credited</th>
-							<th>Financial Year</th>
-							<th style="width: 0.01%">Warning</th>
-							<th style="width: 0.01%">Error</th>
+								title="Section under which tax is deductible"><div
+									class="autoResizeQuarter">Section under which tax is
+									deductible</div></th>
+							<th class="hideClass amountIncome"><div class="autoResizeQuarter">Amount
+									of income</div></th>
+							<th class="nameOfAssessee"><div class="autoResizeQuarter">Name
+									of Assessee (Declarant)</div></th>
+							<th class="panOfAssessee"><div class="autoResizeQuarter">PAN
+									of the Assessee</div></th>
+							<th class="hideClass aadharNo"><div class="autoResizeQuarter">Aadhaar
+									Number</div></th>
+							<th class="status"><div class="autoResizeQuarter">Status</div></th>
+							<th><div class="autoResizeQuarter">Sub-Status</div></th>
+							<th class="" data-toggle="tooltip" data-placement="bottom"
+								title="Previous year (P.Y.) (for which declaration is being made)"><div
+									class="autoResizeQuarter">Previous year (P.Y.) (for which
+									declaration is being made)</div></th>
+							<th><div class="autoResizeQuarter">Residential Status</div></th>
+							<th class="country"><div class="autoResizeQuarter">Country</div></th>
+							<th><div class="autoResizeQuarter">Flat / Door /
+									Building</div></th>
+							<th><div class="autoResizeQuarter">Road / Street /
+									Block / Sector</div></th>
+							<th><div class="autoResizeQuarter">Pincode</div></th>
+							<th><div class="autoResizeQuarter">Post Office</div></th>
+							<th><div class="autoResizeQuarter">Area/ Locality</div></th>
+							<th><div class="autoResizeQuarter">District</div></th>
+							<th><div class="autoResizeQuarter">State</div></th>
+							<th><div class="autoResizeQuarter">Email</div></th>
+							<th><div class="autoResizeQuarter">Telephone No.</div></th>
+							<th><div class="autoResizeQuarter">Mobile No.</div></th>
+							<th class=" " data-toggle="tooltip" data-placement="bottom"
+								title="Whether assessed to tax under the Income-tax Act, 1961"><div
+									class="autoResize">Whether assessed to tax under the
+									Income-tax Act, 1961</div></th>
+							<th class=" " data-toggle="tooltip" data-placement="bottom"
+								title="If yes, latest assessment year for which assessed"><div
+									class="autoResize">If yes, latest assessment year for
+									which assessed</div></th>
+							<th class="hideClass  incomeDeclarationMade" data-toggle="tooltip" data-placement="bottom"
+								title="Estimated income for which this declaration is made"><div
+									class="autoResizeQuarter">Estimated income for which this
+									declaration is made</div></th>
+							<th class="hideClass totalIncomeOfPY" data-toggle="tooltip" data-placement="bottom"
+								title="Estimated total income of the P.Y. (including income for which this declaration is made)"><div
+									class="autoResizeQuarter">Estimated total income of the
+									P.Y. (including income for which this declaration is made)</div></th>
+							<th class="total15G" data-toggle="tooltip" data-placement="bottom"
+								title="Total No. of Form No. 15G filed"><div
+									class="autoResizeQuarter">Total No. of Form No. 15G filed</div></th>
+							<th class="hideClass amtIncomeForForm15GFilled" data-toggle="tooltip" data-placement="bottom"
+								title="Aggregate amount of income for which Form No.15G filed"><div
+									class="autoResizeQuarter">Aggregate amount of income for
+									which Form No.15G filed</div></th>
+							<th class="hideClass dateDeclarationReceived"><div class="autoResizeQuarter">Date on which
+									Declaration is received</div></th>
+							<th class="hideClass amountOfIncomePaid"><div class="autoResizeQuarter">Amount of income
+									paid</div></th>
+							<th class="datePaidCredited" data-toggle="tooltip" data-placement="bottom"
+								title="Date on which the income has been paid/credited"><div
+									class="autoResizeQuarter">Date on which the income has
+									been paid/credited</div></th>
+							<th><div class="autoResizeQuarter">Financial Year</div></th>
+							<th><div class="autoResizeQuarter">Warning</div></th>
+							<th><div class="autoResizeQuarter">Error</div></th>
 
 							<!-- <th>Action</th>
  -->
@@ -334,59 +417,59 @@ th {
 										style="text-align: center; text-align-last: 5; margin-right: 10%;">
 									</h3></b></td>
 						</tr>
-						<tr ng-repeat="a in ( filteredList =( cCctr.getEntityListData() ) )">
-							<td style="width: 0.5%">{{$index+1}}</td>
-							<td style="width: 0.5%">{{a.quarter}}</td>
-							<td style="width: 0.5%">{{a.month}}</td>
-							<td style="width: 1%">{{a.custVendId}}</td>
-							<td style="width: 1%">{{a.accNo}}</td>
-							<td style="width: 1%">{{a.branchCode}}</td>
-							<td style="width: 1%">{{a.tan}}</td>
-							<td style="width: 1%">{{a.uniqueRefNo}}</td>
-							<td class=" ellipsis" data-toggle="tooltip"
+						<tr
+							ng-repeat="a in ( filteredList =( cCctr.getEntityListData() ) )">
+							<td>{{$index+1}}</td>
+							<td>{{a.quarter}}</td>
+							<td>{{a.month}}</td>
+							<td class="custNo">{{a.custVendId}}</td>
+							<td class="accNo">{{a.accNo}}</td>
+							<td class="hideClass branchCode">{{a.branchCode}}</td>
+							<td class="hideClass tanNo">{{a.tan}}</td>
+							<td class="hideClass uniqueRefNo">{{a.uniqueRefNo}}</td>
+							<td class="hideClass uniqueIdeNo " data-toggle="tooltip"
 								data-placement="bottom" title="{{a.uniqueIdentificationNo}}">{{a.uniqueIdentificationNo}}</td>
-							<td style="width: 1%">{{a.identificationNumberofRelevantInvestmentAccount}}</td>
-							<td class=" ellipsis" data-toggle="tooltip"
+							<td class="hideClass ideNumber">{{a.identificationNumberofRelevantInvestmentAccount}}</td>
+							<td class="hideClass naturOfIncome " data-toggle="tooltip"
 								data-placement="bottom" title="{{a.natureofIncome}}">{{a.natureofIncome}}</td>
-							<td style="width: 1%">{{a.sectionUnderWhichTaxisDeductible}}</td>
-							<td style="width: 1%">{{a.amountofIncome}}</td>
-							<td class=" ellipsis" data-toggle="tooltip"
+							<td class="hideClass sectionUnder">{{a.sectionUnderWhichTaxisDeductible}}</td>
+							<td class="hideClass amountIncome">{{a.amountofIncome}}</td>
+							<td class="nameOfAssessee " data-toggle="tooltip"
 								data-placement="bottom" title="{{a.nameofAssesseeDeclarant}}">{{a.nameofAssesseeDeclarant}}</td>
-							<td style="width: 1%">{{a.panoftheAssessee}}</td>
-							<td style="width: 1%">{{a.aadhaarNumber}}</td>
-							<td style="width: 1%">{{a.status}}</td>
-							<td style="width: 1%">{{a.subStatus}}</td>
-							<td style="width: 1%">{{a.previousYearforwhichdeclarationisbeingmade}}</td>
-							<td style="width: 1%">{{a.residentialStatus}}</td>
-							<td style="width: 1%">{{a.country}}</td>
-							<td class=" ellipsis" data-toggle="tooltip"
-								data-placement="bottom" title="{{a.flatDoorBuilding}}">{{a.flatDoorBuilding}}</td>
-							<td class=" ellipsis" data-toggle="tooltip"
-								data-placement="bottom" title="{{a.roadStreetBlockSector}}">{{a.roadStreetBlockSector}}</td>
-							<td style="width: 1%">{{a.pincode}}</td>
-							<td style="width: 1%">{{a.postOffice}}</td>
-							<td style="width: 1%">{{a.areaLocality}}</td>
-							<td style="width: 1%">{{a.district}}</td>
-							<td style="width: 2%">{{a.state}}</td>
-							<td style="width: 1%">{{a.email}}</td>
-							<td style="width: 1%">{{a.telephoneNo}}</td>
-							<td style="width: 1%">{{a.mobileNo}}</td>
-							<td style="width: 1%">{{a.whetherAssessedtotaxundertheIncometaxAct1961}}</td>
-							<td style="width: 1%">{{a.ifyeslatestassessmentyearforwhichassessed}}</td>
-							<td style="width: 1%">{{a.estimatedIncomeforwhichthisdeclarationismade}}</td>
-							<td style="width: 1%">{{a.estimatedtotalincomeofthePY}}</td>
-							<td style="width: 1%">{{a.totalNoofFormNo15Gfiled}}</td>
-							<td style="width: 1%">{{a.aggregateAmountofincomeforwhichFormNo15Gfiled}}</td>
-							<td style="width: 1%">{{a.dateonwhichDeclarationisreceived |
+							<td class="panOfAssessee">{{a.panoftheAssessee}}</td>
+							<td class="hideClass aadharNo">{{a.aadhaarNumber}}</td>
+							<td class="status">{{a.status}}</td>
+							<td class="subStatus">{{a.subStatus}}</td>
+							<td class="previousYearforwhichdeclarationisbeingmade">{{a.previousYearforwhichdeclarationisbeingmade}}</td>
+							<td class="residentialStatus">{{a.residentialStatus}}</td>
+							<td class="country">{{a.country}}</td>
+							<td class="flatDoorBuilding" data-toggle="tooltip" data-placement="bottom"
+								title="{{a.flatDoorBuilding}}">{{a.flatDoorBuilding}}</td>
+							<td class="roadStreetBlockSector" data-toggle="tooltip" data-placement="bottom"
+								title="{{a.roadStreetBlockSector}}">{{a.roadStreetBlockSector}}</td>
+							<td class=" pincode">{{a.pincode}}</td>
+							<td class=" postOffice">{{a.postOffice}}</td>
+							<td class=" areaLocality">{{a.areaLocality}}</td>
+							<td class="district">{{a.district}}</td>
+							<td class=" state">{{a.state}}</td>
+							<td class=" email">{{a.email}}</td>
+							<td class=" telephoneNo">{{a.telephoneNo}}</td>
+							<td class="mobileNo">{{a.mobileNo}}</td>
+							<td class=" whetherAssessedtotaxundertheIncometaxAct1961">{{a.whetherAssessedtotaxundertheIncometaxAct1961}}</td>
+							<td class=" ifyeslatestassessmentyearforwhichassessed">{{a.ifyeslatestassessmentyearforwhichassessed}}</td>
+							<td class="hideClass incomeDeclarationMade">{{a.estimatedIncomeforwhichthisdeclarationismade}}</td>
+							<td class="hideClass totalIncomeOfPY">{{a.estimatedtotalincomeofthePY}}</td>
+							<td class=" total15G">{{a.totalNoofFormNo15Gfiled}}</td>
+							<td class="hideClass amtIncomeForForm15GFilled">{{a.aggregateAmountofincomeforwhichFormNo15Gfiled}}</td>
+							<td class="hideClass dateDeclarationReceived">{{a.dateonwhichDeclarationisreceived |date:'dd-MM-yyyy'}}</td>
+							<td class="hideClass amountOfIncomePaid">{{a.amountofincomepaid}}</td>
+							<td class="datePaidCredited">{{a.dateonwhichtheincomehasbeenpaidcredited |
 								date:'dd-MM-yyyy'}}</td>
-							<td style="width: 1%">{{a.amountofincomepaid}}</td>
-							<td style="width: 1%">{{a.dateonwhichtheincomehasbeenpaidcredited
-								| date:'dd-MM-yyyy'}}</td>
-							<td style="width: 1%">{{a.fy}}</td>
-							<td class=" ellipsis" data-toggle="tooltip"
-								data-placement="bottom" title="{{a.warning}}">{{a.warning}}</td>
-							<td class=" ellipsis" data-toggle="tooltip"
-								data-placement="bottom" title="{{a.error}}">{{a.error}}</td>
+							<td>{{a.fy}}</td>
+							<td class=" " data-toggle="tooltip" data-placement="bottom"
+								title="{{a.warning}}">{{a.warning}}</td>
+							<td class=" " data-toggle="tooltip" data-placement="bottom"
+								title="{{a.error}}">{{a.error}}</td>
 
 							<!-- <td><a
 							ng-click="cCctr.gotoDetailFormPage('form15g',a.id,a.fy,a.branchCode,'detailform15G')"
@@ -398,16 +481,44 @@ th {
 
 						</tr>
 						<tr>
-							<th class="one" colspan="12" style="text-align: center; height: 40px" ng-init="ttl=0"><b>TOTAL</b></th>
-							<td class="one"><b>{{ filteredList | sumByKey : 'amountofIncome' | number : fractionSize}}</b></td>
-							<th class="one" colspan="20" style="text-align: center; height: 40px" ng-init="ttl=0"><b></b></th>
-							<td class="one"><b></b>{{ filteredList | sumByKey : 'estimatedIncomeforwhichthisdeclarationismade' | number : fractionSize}}</td>
-							<td class="one"><b></b>{{ filteredList | sumByKey : 'estimatedtotalincomeofthePY' | number : fractionSize}}</td>
-							<td></td>
-							<td class="one"><b>{{ filteredList | sumByKey : 'aggregateAmountofincomeforwhichFormNo15Gfiled' | number : fractionSize}}</b></td>
-							<td></td>
-							<td class="one"><b>{{ filteredList | sumByKey : 'amountofincomepaid' | number : fractionSize}}</b></td>
-							</tr>
+							<th class="one" colspan="12"
+								style="text-align: center; height: 40px" ng-init="ttl=0"><b>TOTAL</b></th>
+							<td class="hideClass amountIncome"><b>{{ filteredList | sumByKey :
+									'amountofIncome' | number : fractionSize}}</b></td>
+							<td class=" nameOfAssessee"></td>
+							<td class=" panOfAssessee"></td>
+							<td class="hideClass aadharNo"></td>
+							<td class="hideClass status"></td>
+							<td class="hideClass subStatus"></td>
+							<td class="hideClass previousYearforwhichdeclarationisbeingmade"></td>
+							<td class="hideClass residentialStatus"></td>
+							<td class="hideClass country"></td>
+							<td class="hideClass flatDoorBuilding"></td>
+							<td class="hideClass roadStreetBlockSector"></td>
+							<td class="hideClass pincode"></td>
+							<td class="hideClass postOffice"></td>
+							<td class="hideClass areaLocality"></td>
+							<td class="hideClass district"></td>
+							<td class="hideClass state"></td>
+							<td class="hideClass email"></td>
+							<td class="hideClass telephoneNo"></td>
+							<td class="hideClass mobileNo"></td>
+							<td class="hideClass whetherAssessedtotaxundertheIncometaxAct1961"></td>
+							<td class="hideClass ifyeslatestassessmentyearforwhichassessed"></td>
+							
+							<td class="hideClass incomeDeclarationMade"><b></b>{{ filteredList | sumByKey :
+								'estimatedIncomeforwhichthisdeclarationismade' | number :
+								fractionSize}}</td>
+							<td class="hideClass totalIncomeOfPY"><b></b>{{ filteredList | sumByKey :
+								'estimatedtotalincomeofthePY' | number : fractionSize}}</td>
+								<td class="hideClass total15G"></td>
+							<td class="hideClass amtIncomeForForm15GFilled"><b>{{ filteredList | sumByKey :
+									'aggregateAmountofincomeforwhichFormNo15Gfiled' | number :
+									fractionSize}}</b></td>
+							<td class="hideClass dateDeclarationReceived"></td>
+							<td class="hideClass amountOfIncomePaid"><b>{{ filteredList | sumByKey :
+									'amountofincomepaid' | number : fractionSize}}</b></td>
+						</tr>
 
 					</tbody>
 				</table>
@@ -432,7 +543,8 @@ th {
 							style="width: 70px; text-align: center;" type="number"
 							name="pageNo" ng-model="cCctr.currentPage"
 							ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
-							ng-min="1" ng-max="cCctr.getNoPage()" ng-required="true">
+							ng-min="1" min="1" max="{{cCctr.getNoPage()}}" 
+							ng-max="cCctr.getNoPage()" ng-required="true">
 						&nbsp;&nbsp;&nbsp;
 						<button style="height: 25px;"
 							ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'form15G',cCctr.currentPage)"
@@ -455,4 +567,58 @@ th {
 
 		</div>
 </body>
+
+<script>
+	$(document).ready(function() {
+		$('th').tooltip({
+			selector : '[data-toggle="tooltip"]'
+		});
+	});
+</script>
+
+
+<script>
+$("input:checkbox:not(:checked)").each(function() {
+	    var column = "table ." + $(this).attr("name");
+   
+  $(column).hide();
+});
+
+$("input:checkbox").click(function(){
+    var column = "table ." + $(this).attr("name");
+    $(column).toggle();
+});
+
+</script>
+<script>
+$(".selectAll").click(function() {
+	$("input[type=checkbox]").prop("checked", $(this).prop("checked"));
+});
+
+$("input[type=checkbox]").click(function() {
+	if (!$(this).prop("checked")) {
+		$(".selectAll").prop("checked", false);
+	}
+});
+</script>
+
+<script>
+$(".removeAll").click(function() {
+	 $(".hideClass").hide();
+});
+</script>
+<script>
+$(".showAll").click(function() {
+	 $(".hideClass").show();
+});
+</script>
+
+<script>
+$(function() {
+	  $("table th").resizable({
+	      handles: "e",
+	      minWidth: 40,
+	  });
+	});
+</script>
 </html>

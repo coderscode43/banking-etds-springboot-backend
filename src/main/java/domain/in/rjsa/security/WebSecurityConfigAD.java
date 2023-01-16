@@ -36,7 +36,7 @@ public class WebSecurityConfigAD extends WebSecurityConfigurerAdapter {
 		http.formLogin().loginPage("/login.jsp").loginProcessingUrl("/login").defaultSuccessUrl("/", true).permitAll()
 				.and().authorizeRequests()
 				.antMatchers("/login", "/", "/static/**", "/static/img/favicon.ico",
-						"/static/img/tds.png")
+						"/static/img/tds.png","/apidownloadCertificate/**")
 				.permitAll().anyRequest().authenticated().and().exceptionHandling().accessDeniedPage("/Access_Denied")
 				.and().csrf().disable().headers().frameOptions().sameOrigin();
 

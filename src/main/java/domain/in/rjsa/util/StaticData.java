@@ -25,11 +25,22 @@ public class StaticData {
 	public static String[] Section =null;
 	public static String[] Form =null;
 	public static String CertificatePath =null;
+	public static String directDownloadAuth = "";
+	
+	
 	/* public static String[] ChallanMismatch =null; */
 	//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXSAYALI
 	public static List<String> typeOfAdmin= new ArrayList<String>() {{
 		add("admin");
 		add("SuperAdmin");
+	}};
+	
+	
+	public static List<String> certificateType= new ArrayList<String>() {{
+		add("Form16A");
+		add("Form16");
+		add("Form27D");
+		
 	}};
 	
 

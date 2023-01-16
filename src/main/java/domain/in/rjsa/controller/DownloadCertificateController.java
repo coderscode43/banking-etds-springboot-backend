@@ -34,23 +34,47 @@ public class DownloadCertificateController {
 	private static final String EXTENSION = "zip";
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
-	// get file from system folder
-	@RequestMapping(value = "/files/{tan}/{certificate}/{fy}/{q}/{pan}", method = RequestMethod.GET)
-	public void download(HttpServletRequest request, HttpServletResponse response, @PathVariable String tan,
-			@PathVariable String certificate, @PathVariable String fy, @PathVariable String q,
+	// get file from system folderz
+	@RequestMapping(
+			value = "/files/{tan}/{certificate}/{fy}/{q}/{pan}", 
+			method = RequestMethod.GET ,produces="application/octet-stream" )
+	public void download(
+			HttpServletRequest request, 
+			HttpServletResponse response, 
+			@PathVariable String tan,
+			@PathVariable String certificate, 
+			@PathVariable String fy,
+			@PathVariable String q,
 			@PathVariable String pan) {
+		
+		
 		FieldErrorDTO ermsg = new FieldErrorDTO();
 		try {
+			String userName = getPrincipal();
+			if(userName==null||"anonymousUser".equals(userName)) {
+				String auth = request.getHeader("directDownloadAuth");
+				if(auth!=null) { 
+					if(auth.equals(StaticData.directDownloadAuth)) {
+						logger.info("Direct download certificate through auth");
+					}else {
+						throw new Exception("Invalid AUTH");
+					}
+				}else {
+					throw new Exception("Invalid AUTH");
+				}
+			}
 			pan = pan.toUpperCase().trim();
 			tan = tan.trim();
 			// verify regx pan
-			if (Pattern.matches("^[A-Z]{5}[0-9]{4}[A-Z]{1}$", pan) || pan.equalsIgnoreCase("ALL TAN")) {
+			if (Pattern.matches("^[A-Z]{5}[0-9]{4}[A-Z]{1}$", pan) || pan.equalsIgnoreCase("ALL PAN")) {
 				pan = pan;
 			} else {
 				throw new Exception("Invalid PAN.");
 			}
 			// verify regx tan or if All TAN
+			
 			List<String> tanList = Arrays.asList(StaticData.Tan);
+			
 			if (tanList.contains(tan) || tan.equalsIgnoreCase("ALL TAN")) {
 				tan = tan;
 			} else {
@@ -74,40 +98,37 @@ public class DownloadCertificateController {
 			List<String> cList = Arrays.asList(StaticData.typeOfCertificate);
 			if (cList.contains(certificate)) {
 				certificate = certificate;
-			} else {
+			} else if(StaticData.certificateType.contains(certificate)){
+				
+			}else {
 				throw new Exception("Invalid Certificate.");
 			}
 			String ay = fyToAy(fy);
 
 			List<String> filesToSend = getAllFiles(fy, ay, q, certificate, tan, pan);
+			
 			if (filesToSend.isEmpty()) {
 				// return no certificate found
 				throw new Exception("No certificate found.");
 			} else {
-
 				// create zip and send the file also delete the file after sending
 				response.setStatus(HttpServletResponse.SC_OK);
-				response.addHeader("Content-Disposition",
-						"attachment; filename=\"certificate_" + getPrincipal() + ".zip\"");
-
+				response.addHeader("Content-Disposition", " attachment; filename="+pan+"_"+fy+"_"+q+ ".zip");
+				response.setHeader("Content-Type", "application/zip");
+				
 				ZipOutputStream zipOutputStream = new ZipOutputStream(response.getOutputStream());
 				int i = filesToSend.size();
 				for (String filePath : filesToSend) {
 					File file = new File(filePath);
-					// new zip entry and copying inputstream with file to zipOutputStream, after all
-					// closing streams
-
-					zipOutputStream.putNextEntry(
-							new ZipEntry(file.getName().split(Pattern.quote("."), -1)[0] + "_" + i + ".pdf"));
+					// new zip entry and copying inputstream with file to zipOutputStream, after all closing streams
+					zipOutputStream.putNextEntry( new ZipEntry( file.getName().split( Pattern.quote("."), -1)[0] + "_" + i + ".pdf" ) );
 					FileInputStream fileInputStream = new FileInputStream(file);
 					IOUtils.copy(fileInputStream, zipOutputStream);
 					fileInputStream.close();
 					zipOutputStream.closeEntry();
-					i--;
+					i--;														
 				}
-
 				zipOutputStream.close();
-
 			}
 		} catch (Exception e) {
 			// send dto object with error
@@ -130,9 +151,11 @@ public class DownloadCertificateController {
 
 		List<String> filePaths = new ArrayList<String>();
 
-		String path = StaticData.CertificatePath;
+		String path = StaticData.CertificatePath; //?????
 		String[] c = certificate.split("-");
 		String[] t = tan.split("-");
+		
+	
 
 		if (tan.equals("ALL TAN") && q.equals("ALL QUARTER")) {
 			for (String q1 : StaticData.Quarter) {
@@ -161,9 +184,12 @@ public class DownloadCertificateController {
 		else {
 			String pdfFileName = pan + "_" + q + "_" + ay + ".pdf";
 			String filePath = path + "download/" + fy + "/" + q + "/" + c[0] + "/" + t[0] + "/" + pdfFileName;
+			
 			addFileIfExist(filePath, filePaths);
 		}
-
+	
+	
+		
 		return filePaths;
 	}
 

@@ -27,8 +27,8 @@ public class UploadCertificate extends CommonModelAbstract{
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id")
 	public Long id;
-	@Column(name = "zipFile")
-	private byte[] zipFile;
+//	@Column(name = "zipFile")
+//	private byte[] zipFile;
 	@Column(name = "TAN")
 	public String TAN;
 	@Column(name = "fy")
@@ -39,9 +39,13 @@ public class UploadCertificate extends CommonModelAbstract{
 	public String form;
 	@Column(name = "fileName")
 	public String fileName;
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "uploadedTime")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	public Date uploadedTime;
+	@Column(name = "userName")
+	public String userName;
+	@Column(name = "status")
+	public String status;
 
 }

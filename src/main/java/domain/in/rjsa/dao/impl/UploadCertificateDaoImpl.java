@@ -21,7 +21,7 @@ public class UploadCertificateDaoImpl extends AbstractDaoForm<Long, UploadCertif
 	@Override
 	public List<UploadCertificate> searchExcel(HashMap entity) {
 		Criteria criteria = createEntityCriteria();
-		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
+		criteria.addOrder(Order.desc("id")).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		if (entity.get("fileName") != null) {
 			criteria.add(Restrictions.eqOrIsNull("fileName", entity.get("fileName")));
 		}

@@ -1,37 +1,6 @@
+
+
 <style>
-@media only screen and (max-width: 1000px) {
-	.one {
-		display: none;
-	}
-}
-
-@media only screen and (max-width: 1000px) {
-	.two {
-		padding: 8px;
-	}
-}
-
-@media only screen and (min-width:600px) {
-	#three {
-		display: none;
-		max-height: 0;
-		overflow: hidden;
-	}
-}
-
-@media only screen and (min-width:1000px) {
-	#search {
-		margin-left: 45%;
-		margin-top: 2px;
-		display: none;
-	}
-}
-
-@media only screen and (max-width: 1000px) {
-	#hide {
-		display: none;
-	}
-}
 
 .table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
 	{
@@ -81,14 +50,48 @@ th {
 }
 
 .ellipsis {
-	max-width: 70px;
-	min-width: 200px;
+	max-width: 46px;
+    min-width: 122px;
 	text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
 }
-</style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  }
+  input[type="checkbox"], input[type="radio"] {
+  margin: 4px 5px 0;
+  line-height: normal;
+}
 
+
+td{
+	overflow-y: auto;
+}
+
+td .autoResize {
+	min-width:100px;
+	width: auto;
+}
+.autoResize {
+	min-width:115px;
+	resize: horizontal;
+	overflow: auto;
+	display: block 
+}
+
+.autoResizeQuarter {
+	min-width:70px;
+	resize: horizontal;
+	overflow: auto;
+	display: block 
+}
+
+. {
+  display: none;
+}
+</style>
 
 
 
@@ -116,7 +119,7 @@ th {
 				<div class="form-group">
 
 
-					<div class="col-md-3">
+					<div class="col-md-4">
 						<h6>
 							<b>Section Code</b>
 							<h6>
@@ -137,18 +140,18 @@ th {
 									style="width: 100%">
 					</div>
 
-					<div class="col-md-3">
+					<!-- <div class="col-md-3">
 						<h6>
 							<b>PAN</b>
 							<h6>
 								<input type="text" ng-model="cCctr.search.pan"
 									class="form-control" placeholder="PAN" style="width: 100%">
-					</div>
+					</div> -->
 
 
 				</div>
 			</div>
-
+			
 			<div class=" collapse  panel-collapse" id="collapseExample4">
 
 				<div class="row">
@@ -200,13 +203,20 @@ th {
 									style="width: 100%">
 					</div>
 
-					<div class="col-md-3">
+					<!-- <div class="col-md-3">
 						<h6>
 							<b> Error Description</b>
 							<h6>
 								<input type="text" ng-model="cCctr.search.errorDescription"
 									class="form-control" placeholder="Error Description"
 									style="width: 100%">
+					</div> -->
+					<div class="col-md-3">
+						<h6>
+							<b>PAN</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.pan"
+									class="form-control" placeholder="PAN" style="width: 100%">
 					</div>
 					<div class="col-md-3">
 						<h6>
@@ -272,18 +282,24 @@ th {
 
 
 			<div class="row text-right" id="hide">
-				<div class="col-md-3" style="margin-left: 75%; margin-top: -44px">
+				<div class="col-md-3" style="margin-left: 63%; margin-top: -44px;display: ruby;">
 					<button
 						ng-click="cCctr.searchEntities(true,'form24QDeductee','form24QDeductee')"
 						class="btn btn-grad astro-MG2CNCJP searchbtn" onclick="scrollWin()"
 						data-color1="#67B26F" data-color2="#4ca2cd"><i class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;Search</button>
+					
 					<button class="btn btn-grad astro-MG2CNCJP advsearchbtn"
 						data-color1="#F09819" data-color2="#EDDE5D;"
 						data-toggle="collapse" data-target="#collapseExample4"
 						aria-expanded="false" aria-controls="collapseExample">
-						<i class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;Advance
+						<i class="fa fa-search" aria-hidden="true"></i>&nbsp;Advance
 						Search
 					</button>
+					<button class="btn btn-grad astro-MG2CNCJP advsearchbtn"style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);color:#fff;"
+						data-color1="#F09819" data-color2="#EDDE5D;"
+						data-toggle="collapse" data-target="#checkList"
+						aria-expanded="false" aria-controls="collapseExample">
+						</i>&nbsp;Table Column <i class="fa fa-angle-down" aria-hidden="true"></i></button>	
 				</div>
 				<div class="col-md-3">
 					<div class="text-right">
@@ -309,52 +325,93 @@ th {
 	<div style="float: right; margin-top: -13px"></div>
 
 	<div class="row"></div>
+	<table style="font-size: 12px; padding: 5px; margin: 5px;"class="collapse panel-collapse table table-bordered table-hover  table-striped" id="checkList">
+ 
+
+  <tr> 
+   <td><button class="showAll"  for='selectAll'>Show All</button></td>
+   <!-- <td><input class="selectAll" type="checkbox" for='selectAll'>Select All</td> -->
+     <td><button class="removeAll"  for='selectAll'>Remove All</button></td>
+   <!--  <td><input type="checkbox" name="sectionCode">Section Code</td> -->
+    <td> <input type="checkbox" name="dateOfPayment">Date of Payment</td>
+    <td><input type="checkbox" name="dateOfDeduction">Date of Deduction</td>
+    <td><input type="checkbox" name="amountPaid">Amount paid</td>
+    <td><input type="checkbox" name="tds">TDS</td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" name="surcharge">Surcharge </td>
+    <td><input type="checkbox" name="educationCess">Education cess</td>
+    <td><input type="checkbox" name="totalTaxDed">Total Tax Deducted</td>
+    <td><input type="checkbox" name="totalTaxDep">Total Tax Deposited</td>
+     <td><input type="checkbox" name="certificateNo">CertificateNo </td>
+    <td><input type="checkbox" name="remarksReason"> Remarks Reason</td>
+  </tr>
+  
+   <tr>
+   
+    <td><input type="checkbox" name="panRefNo">Pan Ref No</td>
+    <td><input type="checkbox" name="errorDesc">Error Desc</td>
+    <td><input type="checkbox" name="warningDesc">warningDesc</td>
+    <td><input type="checkbox" name="ShortDeduction">ShortDeduction</td>
+    <td><input type="checkbox" name="interestOnShortDeduction">InterestOnShortDeduction</td>
+    <td><input type="checkbox" name="interestOnLatePayment">InterestOnLatePayment</td>
+  </tr>
+   <tr>
+   <td><input type="checkbox" name="interestOnLateDeduction">InterestOnLateDeduction</td>
+  </tr>
+</table>
 
 	<div class="row">
-		<div class="table-responsive" style="overflow-x: inherit; width: 400%">
+				<div class="form-group">
+				
+				</div>
+				</div>
+   
+	<div class="row">
+		<div class="table-responsive" style="overflow-x: inherit; width:100%">
 			<!-- 	<div class="col-md-12" style="margin-left:-30px"> -->
-			<table class=" tables table-bordered table-hover  table-striped"
-				role="table" style="font-size: 12px; padding: 5px; margin: 5px;">
+			<table class="table table-bordered table-hover  table-striped  bordered cP cS" id="jimi"
+				role="table" style="font-size: 12px">
 
 				<thead>
 				<colgroup>
 					<col span="14" style="background-color: #ffffff">
 				</colgroup>
 				<tr>
-				<thead"rowgroup">
-					<tr style="height: 40px; background-color: #81b7db">
+				<thead>
+					<tr style=" background-color: #81b7db">
 						<th>Sr. No.</th>
-						<th>Quarter</th>
-						<th>Month</th>
-						<th>RO Code</th>
-						<th>Branch Code</th>
-						<th>Cust/Vend Id</th>
-						<th>Unique Ref No</th>
-						<th>Account Number</th>
-						<th>Challan Heading</th>
-						<th>Deductee Reference No</th>
-						<th>PAN</th>
-						<th style="width: 0.01%">Name</th>
-						<th>Section Code</th>
-						<th>Date of Payment</th>
-						<th>Date of Deduction</th>
-						<th>Amount paid</th>
-						<th>TDS</th>
-						<th>Surcharge</th>
-						<th>Education cess</th>
-						<th>Total Tax Deducted</th>
-						<th>Total Tax Deposited</th>
-						<th style="width: 0.01%">Certificate No.</th>
-						<th style="width: 0.01%">remarksReason</th>
-						<th style="width: 0.01%">Pan Ref. No.</th>
-						<th style="width: 0.01%">Error Description</th>
-						<th style="width: 0.01%">Warning Description</th>
-						<th style="width: 0.01%">Short Deduction</th>
-						<th>Interest on Short Deduction</th>
-						<th>Interest on Late Payment</th>
-						<th>Interest on Late Deduction</th>
+						<th class=" ">Quarter</th>
+						<th class=" ">Month</th>
+						<th class=" ">RO Code</th>
+						<th class=" "><div class="autoResizeQuarter">Branch Code</div></th>
+						<th class=""><div class="autoResizeQuarter">Cust/Vend Id</div></th>
+						<th class=""><div class="autoResize">Unique Ref No</div></th>
+						<th><div class="autoResize">Account Number</div></th>
+						<th><div class="autoResize">Challan Heading</div></th>
+						<th><div class="autoResize">Deductee Reference No</div></th>
+						<th><div class="autoResize">PAN</div></th>
+						<th><div class="autoResize">Name</div></th>
+						<th><div class="autoResize">Section Code</div></th>
+						<th class=" hideClass dateOfPayment "><div class="autoResize">Date of Payment</div></th>
+						<th class="hideClass dateOfDeduction "><div class="autoResize">Date of Deduction</div></th>
+						<th  class="hideClass amountPaid "><div class="autoResize">Amount paid</div></th>
+						<th class="hideClass tds "><div class="autoResize">TDS</div></th>
+						<th class="hideClass surcharge "><div class="autoResize">Surcharge</div></th>
+						<th class="hideClass educationCess"><div class="autoResize">Education cess</div></th>
+						<th class="hideClass totalTaxDed"><div class="autoResize">Total Tax Deducted</div></th>
+						<th class="hideClass totalTaxDep"><div class="autoResize">Total Tax Deposited</div></th>
+						<th class="hideClass certificateNo"><div class="autoResize">Certificate No.</div></th>
+						<th class="hideClass remarksReason"><div class="autoResize">Remarks Reason</div></th>
+						<th class="hideClass panRefNo"><div class="autoResize">Pan Ref. No.</div></th>
+						<th class="hideClass errorDesc"><div class="autoResize">Error Description</div></th>
+						<th class="hideClass warningDesc"><div class="autoResize">Warning Description</div></th>
+						<th class="hideClass ShortDeduction"><div class="autoResize">Short Deduction</div></th>
+						<th class="hideClass interestOnShortDeduction"><div class="autoResize">Interest on Short Deduction</div></th>
+						<th class="hideClass interestOnLatePayment"><div class="autoResize">Interest on Late Payment</div></th>
+						<th class="hideClass interestOnLateDeduction"><div class="autoResize">Interest on Late Deduction</div></th>
 						<th>TAN</th>
-						<th>Comments</th>
+						<th><div class="autoResize">Comments</div></th>
 						<th>Status</th>
 						<th>Action</th>
 					</tr>
@@ -368,162 +425,162 @@ th {
 					</tr>
 					<tr role="row"
 						ng-repeat="a in ( filteredList =( cCctr.getEntityListData()  ) )">
-						<td style="width: 1%" ng-if="a.resolved == 0">{{$index+1}}</td>
-						<td style="width: 1%; background-color: #ff3232"
+						<td  ng-if="a.resolved == 0">{{$index+1}}</td>
+						<td style=" background-color: #ff3232"
 							ng-if="a.resolved == 1">{{$index+1}}</td>
 
-						<td style="width: 1%" ng-if="a.resolved == 0">{{a.quarter}}</td>
-						<td style="width: 1%; background-color: #ff3232"
-							ng-if="a.resolved == 1">{{a.quarter}}</td>
+						<td   ng-if="a.resolved == 0" class=" ">{{a.quarter}}</td>
+						<td style=" background-color: #ff3232"
+							ng-if="a.resolved == 1" class=" ">{{a.quarter}}</td>
 
-						<td style="width: 1%" ng-if="a.resolved == 0">{{a.month}}</td>
-						<td style="width: 1%; background-color: #ff3232"
-							ng-if="a.resolved == 1">{{a.month}}</td>
+						<td  ng-if="a.resolved == 0" class=" ">{{a.month}}</td>
+						<td style=" background-color: #ff3232"
+							ng-if="a.resolved == 1" class=" ">{{a.month}}</td>
 
-						<td style="width: 1%" ng-if="a.resolved == 0">{{a.roCode}}</td>
-						<td style="width: 1%; background-color: #ff3232"
+						<td  ng-if="a.resolved == 0" class=" ">{{a.roCode}}</td>
+						<td style=" background-color: #ff3232" class=" "
 							ng-if="a.resolved == 1">{{a.roCode}}</td>
 
-						<td style="width: 1%" ng-if="a.resolved == 0">{{a.branchCode}}</td>
-						<td style="width: 1%; background-color: #ff3232"
+						<td  ng-if="a.resolved == 0" class=" ">{{a.branchCode}}</td>
+						<td style=" background-color: #ff3232" class=" "
 							ng-if="a.resolved == 1">{{a.branchCode}}</td>
 
-						<td style="width: 1%" ng-if="a.resolved == 0">{{a.custVendId}}</td>
-						<td style="width: 1%; background-color: #ff3232"
+						<td  ng-if="a.resolved == 0" class="">{{a.custVendId}}</td>
+						<td style=" background-color: #ff3232" class=""
 							ng-if="a.resolved == 1">{{a.custVendId}}</td>
 
-						<td style="width: 1%" ng-if="a.resolved == 0">{{a.uniqueRefNo}}</td>
-						<td style="width: 1%; background-color: #ff3232"
+						<td  ng-if="a.resolved == 0" class="">{{a.uniqueRefNo}}</td>
+						<td style=" background-color: #ff3232" class=""
 							ng-if="a.resolved == 1">{{a.uniqueRefNo}}</td>
 
-						<td style="width: 1%" ng-if="a.resolved == 0">{{a.accNo}}</td>
-						<td style="width: 1%; background-color: #ff3232"
+						<td  ng-if="a.resolved == 0" class="">{{a.accNo}}</td>
+						<td style=" background-color: #ff3232" class=""
 							ng-if="a.resolved == 1">{{a.accNo}}</td>
 
-						<td style="width: 1%" ng-if="a.resolved == 0">{{a.challanHeading}}</td>
-						<td style="width: 1%; background-color: #ff3232"
+						<td  ng-if="a.resolved == 0" >{{a.challanHeading}}</td>
+						<td style=" background-color: #ff3232"
 							ng-if="a.resolved == 1">{{a.challanHeading}}</td>
 
-						<td style="width: 1%" ng-if="a.resolved == 0">{{a.deducteeRefNo}}</td>
-						<td style="width: 1%; background-color: #ff3232"
+						<td class=" ellipsis"  ng-if="a.resolved == 0" >{{a.deducteeRefNo}}</td>
+						<td  class=" ellipsis" style=" background-color: #ff3232" 
 							ng-if="a.resolved == 1">{{a.deducteeRefNo}}</td>
 
-						<td style="width: 1%" ng-if="a.resolved == 0">{{a.pan}}</td>
-						<td style="width: 1%; background-color: #ff3232"
+						<td  ng-if="a.resolved == 0" >{{a.pan}}</td>
+						<td style=" background-color: #ff3232" 
 							ng-if="a.resolved == 1">{{a.pan}}</td>
 
-						<td class=" ellipsis" data-toggle="tooltip"
+						<td class=" ellipsis" data-toggle="tooltip" 
 							ng-if="a.resolved == 0" data-placement="bottom"
 							title="{{a.name}}">{{a.name}}</td>
-						<td class=" ellipsis" data-toggle="tooltip"
+						<td class=" ellipsis" data-toggle="tooltip" 
 							style="background-color: #ff3232" ng-if="a.resolved == 1"
 							data-placement="bottom" title="{{a.name}}">{{a.name}}</td>
 
-						<td style="width: 1%" ng-if="a.resolved == 0">{{a.sectionCode}}</td>
-						<td style="width: 1%; background-color: #ff3232"
+						<td  ng-if="a.resolved == 0" >{{a.sectionCode}}</td>
+						<td style=" background-color: #ff3232" 
 							" ng-if="a.resolved == 1">{{a.sectionCode}}</td>
 
-						<td style="width: 1%" ng-if="a.resolved == 0">{{a.dateOfPayment
+						<td  ng-if="a.resolved == 0" class="hideClass dateOfPayment">{{a.dateOfPayment
 							| date:'dd-MM-yyyy'}}</td>
-						<td style="width: 1%; background-color: #ff3232"
+						<td style=" background-color: #ff3232" class="hideClass dateOfPayment"
 							ng-if="a.resolved == 1">{{a.dateOfPayment |
 							date:'dd-MM-yyyy'}}</td>
 
-						<td style="width: 1%" ng-if="a.resolved == 0">{{a.dateOfDeduction
+						<td  ng-if="a.resolved == 0" class="hideClass dateOfDeduction">{{a.dateOfDeduction
 							| date:'dd-MM-yyyy'}}</td>
-						<td style="width: 1%; background-color: #ff3232"
+						<td style=" background-color: #ff3232" class="hideClass dateOfDeduction"
 							ng-if="a.resolved == 1">{{a.dateOfDeduction |
 							date:'dd-MM-yyyy'}}</td>
 
-						<td style="width: 1%" ng-if="a.resolved == 0">{{a.amountPaid}}</td>
-						<td style="width: 1%; background-color: #ff3232"
+						<td  ng-if="a.resolved == 0" class="hideClass amountPaid">{{a.amountPaid}}</td>
+						<td style=" background-color: #ff3232" class="hideClass amountPaid"
 							ng-if="a.resolved == 1">{{a.amountPaid}}</td>
 
-						<td style="width: 1%" ng-if="a.resolved == 0">{{a.tds}}</td>
-						<td style="width: 1%; background-color: #ff3232"
+						<td  ng-if="a.resolved == 0" class="hideClass tds">{{a.tds}}</td>
+						<td style=" background-color: #ff3232" class="hideClass tds"
 							ng-if="a.resolved == 1">{{a.tds}}</td>
 
-						<td style="width: 1%" ng-if="a.resolved == 0">{{a.surcharge}}</td>
-						<td style="width: 1%; background-color: #ff3232"
+						<td  ng-if="a.resolved == 0" class="hideClass surcharge">{{a.surcharge}}</td>
+						<td style=" background-color: #ff3232" class="hideClass surcharge"
 							ng-if="a.resolved == 1">{{a.surcharge}}</td>
 
-						<td style="width: 1%" ng-if="a.resolved == 0">{{a.eduCess}}</td>
-						<td style="width: 1%; background-color: #ff3232"
+						<td  ng-if="a.resolved == 0" class="hideClass educationCess">{{a.eduCess}}</td>
+						<td style=" background-color: #ff3232" class="hideClass educationCess"
 							ng-if="a.resolved == 1">{{a.eduCess}}</td>
 
-						<td style="width: 1%" ng-if="a.resolved == 0">{{a.totalTaxDeducted}}</td>
-						<td style="width: 1%; background-color: #ff3232"
+						<td  ng-if="a.resolved == 0" class="hideClass totalTaxDed">{{a.totalTaxDeducted}}</td>
+						<td style=" background-color: #ff3232" class="hideClass totalTaxDed"
 							ng-if="a.resolved == 1">{{a.totalTaxDeducted}}</td>
 
-						<td style="width: 1%" ng-if="a.resolved == 0">{{a.totalTaxDeposited}}</td>
-						<td style="width: 1%; background-color: #ff3232"
+						<td  ng-if="a.resolved == 0" class="hideClass totaltaxDep">{{a.totalTaxDeposited}}</td>
+						<td style=" background-color: #ff3232" class="hideClass totaltaxDep"
 							ng-if="a.resolved == 1">{{a.totalTaxDeposited}}</td>
 
-						<td class=" ellipsis" data-toggle="tooltip"
+						<td class="hideClass certificateNo" data-toggle="tooltip"
 							ng-if="a.resolved == 0" data-placement="bottom"
 							title="{{a.certificateNumber}}">{{a.certificateNumber}}</td>
-						<td class=" ellipsis" data-toggle="tooltip"
+						<td  class="hideClass certificateNo"
 							style="background-color: #ff3232" ng-if="a.resolved == 1"
 							data-placement="bottom" title="{{a.certificateNumber}}">{{a.certificateNumber}}</td>
 
-						<td class=" ellipsis" data-toggle="tooltip"
+						<td class="hideClass remarksReason" data-toggle="tooltip"
 							ng-if="a.resolved == 0" data-placement="bottom"
 							title="{{a.remarksReason}}">{{a.remarksReason}}</td>
-						<td class=" ellipsis" data-toggle="tooltip"
+						<td class="hideClass remarksReason" data-toggle="tooltip"
 							style="background-color: #ff3232" ng-if="a.resolved == 1"
 							data-placement="bottom" title="{{a.remarksReason}}">{{a.remarksReason}}</td>
 
-						<td class=" ellipsis" data-toggle="tooltip"
+						<td class="hideClass panRefNo" data-toggle="tooltip"
 							ng-if="a.resolved == 0" data-placement="bottom"
 							title="{{a.panRefNo}}">{{a.panRefNo}}</td>
-						<td class=" ellipsis" data-toggle="tooltip"
+						<td class="hideClass panRefNo" data-toggle="tooltip"
 							style="background-color: #ff3232" ng-if="a.resolved == 1"
 							data-placement="bottom" title="{{a.panRefNo}}">{{a.panRefNo}}</td>
 
-						<td class=" ellipsis" data-toggle="tooltip"
+						<td class="ellipsis hideClass errorDesc" data-toggle="tooltip"
 							ng-if="a.resolved == 0" data-placement="bottom"
 							title="{{a.errorDescription}}">{{a.errorDescription}}</td>
-						<td class=" ellipsis" data-toggle="tooltip"
+						<td class="ellipsis hideClass errorDesc" data-toggle="tooltip"
 							style="background-color: #ff3232" ng-if="a.resolved == 1"
 							data-placement="bottom" title="{{a.errorDescription}}">{{a.errorDescription}}</td>
 
-						<td class=" ellipsis" data-toggle="tooltip"
+						<td class="ellipsis hideClass warningDesc" data-toggle="tooltip"
 							ng-if="a.resolved == 0" data-placement="bottom"
 							title="{{a.warningDescription}}">{{a.warningDescription}}</td>
-						<td class=" ellipsis" data-toggle="tooltip"
+						<td class="ellipsis hideClass warningDesc" data-toggle="tooltip"
 							style="background-color: #ff3232" ng-if="a.resolved == 1"
 							data-placement="bottom" title="{{a.warningDescription}}">{{a.warningDescription}}</td>
 
-						<td class=" ellipsis" data-toggle="tooltip"
+						<td class="hideClass ShortDeduction" data-toggle="tooltip"
 							ng-if="a.resolved == 0" data-placement="bottom"
 							title="{{a.ShortDeduction}}">{{a.ShortDeduction}}</td>
-						<td class=" ellipsis" data-toggle="tooltip"
+						<td class="hideClass ShortDeduction" data-toggle="tooltip"
 							style="background-color: #ff3232" ng-if="a.resolved == 1"
 							data-placement="bottom" title="{{a.ShortDeduction}}">{{a.ShortDeduction}}</td>
 
-						<td style="width: 1%" ng-if="a.resolved == 0">{{a.InterestOnShortDeduction}}</td>
-						<td style="width: 1%; background-color: #ff3232"
+						<td class="hideClass interestOnShortDeduction" ng-if="a.resolved == 0">{{a.InterestOnShortDeduction}}</td>
+						<td class="hideClass interestOnShortDeduction" style=" background-color: #ff3232"
 							ng-if="a.resolved == 1">{{a.InterestOnShortDeduction}}</td>
 
-						<td style="width: 1%" ng-if="a.resolved == 0">{{a.InterestOnLatePayment}}</td>
-						<td style="width: 1%; background-color: #ff3232"
+						<td  class="hideClass interestOnLatePayment"  ng-if="a.resolved == 0">{{a.InterestOnLatePayment}}</td>
+						<td class="hideClass interestOnLatePayment" style=" background-color: #ff3232"
 							ng-if="a.resolved == 1">{{a.InterestOnLatePayment}}</td>
 
-						<td style="width: 1%" ng-if="a.resolved == 0">{{a.InterestOnLateDeduction}}</td>
-						<td style="width: 1%; background-color: #ff3232"
+						<td class="hideClass interestOnLateDeduction" ng-if="a.resolved == 0">{{a.InterestOnLateDeduction}}</td>
+						<td  class="hideClass interestOnLateDeduction" style=" background-color: #ff3232"
 							ng-if="a.resolved == 1">{{a.InterestOnLateDeduction}}</td>
 
-						<td style="width: 1%" ng-if="a.resolved == 0">{{a.TAN}}</td>
-						<td style="width: 1%; background-color: #ff3232"
+						<td class=" ellipsis"  ng-if="a.resolved == 0">{{a.TAN}}</td>
+						<td class=" ellipsis"  style=" background-color: #ff3232"
 							ng-if="a.resolved == 1">{{a.TAN}}</td>
 
-						<td style="width: 1%" ng-if="a.resolved == 0">{{a.comments}}</td>
-						<td style="width: 1%; background-color: #ff3232"
+						<td class=" "  ng-if="a.resolved == 0">{{a.comments}}</td>
+						<td  class=" " style=" background-color: #ff3232"
 							ng-if="a.resolved == 1">{{a.comments}}</td>
 						<div>
-							<td ng-if="a.resolved == 0" style="width: 1%">Resolved</td>
-							<td ng-if="a.resolved == 1"
-								style="width: 1%; background-color: #ff3232">Not Resolved</td>
+							<td ng-if="a.resolved == 0" >Resolved</td>
+							<td  ng-if="a.resolved == 1"
+								style=" background-color: #ff3232">Not Resolved</td>
 						</div>
 
 						<!-- <div>
@@ -532,7 +589,7 @@ th {
 							<td ng-if="a.verify == 0"><i class="fa fa-times"
 								aria-hidden="true" style="color: #ff0000"></i></td>
 						</div> -->
-						<td style="width: 1%"><a
+						<td ><a
 							ng-click="cCctr.gotoDetailFormPage('form24QDeductee',a.id,a.fy,a.branchCode,'detailForm24QDeductee')"
 							style="color: blue" onclick="scrollWin()"><img
 								src="static\img\edit.png" width="22px" height="22px"
@@ -544,30 +601,30 @@ th {
 					<tr>
 						<th class="one" colspan="15"
 							style="text-align: center; height: 40px" ng-init="ttl=0"><b>TOTAL</b></th>
-						<td class="one"><b>{{filteredList | sumByKey:'amountPaid'
+						<td class=" hideClass amountPaid "><b>{{filteredList | sumByKey:'amountPaid'
 								| number : fractionSize}}</b></td>
-						<td class="one"><b>{{filteredList | sumByKey:'tds' |
+						<td class="hideClass tds"><b>{{filteredList | sumByKey:'tds' |
 								number : fractionSize}}</b></td>
-						<td class="one"><b>{{filteredList | sumByKey:'surcharge'
+						<td class="hideClass surcharge"><b>{{filteredList | sumByKey:'surcharge'
 								| number : fractionSize}}</b></td>
-						<td class="one"><b>{{filteredList | sumByKey:'eduCess' |
+						<td class="hideClass educationCess"><b>{{filteredList | sumByKey:'eduCess' |
 								number : fractionSize}}</b></td>
-						<td class="one"><b>{{filteredList |
+						<td class="hideClass totalTaxDed"><b>{{filteredList |
 								sumByKey:'totalTaxDeducted' | number : fractionSize}}</b></td>
-						<td class="one"><b>{{ttl=(filteredList |
+						<td class="hideClass totaltaxDep"><b>{{ttl=(filteredList |
 								sumByKey:'totalTaxDeposited' | number : fractionSize)}}</b></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td class="one"><b>{{filteredList |
+						<td class="hideClass certificateNo"></td>
+						<td class="hideClass remarksReason"></td>
+						<td class="hideClass panRefNo"></td>
+						<td class="hideClass errorDesc"></td>
+						<td class="hideClass warningDesc"></td>
+						<td class="hideClass ShortDeduction"><b>{{filteredList |
 								sumByKey:'ShortDeduction' | number : fractionSize}}</b></td>
-						<td class="one"><b>{{filteredList |
+						<td class="hideClass interestOnShortDeduction"><b >{{filteredList |
 								sumByKey:'InterestOnShortDeduction' | number : fractionSize}}</b></td>
-						<td class="one"><b>{{filteredList |
+						<td class="hideClass interestOnLatePayment"><b>{{filteredList |
 								sumByKey:'InterestOnLatePayment' | number : fractionSize}}</b></td>
-						<td class="one"><b>{{filteredList |
+						<td class="hideClass interestOnLateDeduction"><b>{{filteredList |
 								sumByKey:'InterestOnLateDeduction' | number : fractionSize}}</b></td>
 					</tr>
 				</tbody>
@@ -593,7 +650,8 @@ th {
 						style="width: 70px; text-align: center;" type="number"
 						name="pageNo" ng-model="cCctr.currentPage"
 						ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
-						ng-min="1" ng-max="cCctr.getNoPage()" ng-required="true">
+						ng-min="1" min="1" max="{{cCctr.getNoPage()}}"
+						ng-max="cCctr.getNoPage()" ng-required="true">
 					&nbsp;&nbsp;&nbsp;
 					<button style="height: 25px;"
 						ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'form24QDeductee',cCctr.currentPage)"
@@ -615,3 +673,64 @@ th {
 	</div>
 
 </div>
+
+
+
+
+
+
+<script>
+	$(document).ready(function() {
+		$('th').tooltip({
+			selector : '[data-toggle="tooltip"]'
+		});
+	});
+</script>
+
+
+<script>
+$("input:checkbox:not(:checked)").each(function() {
+	    var column = "table ." + $(this).attr("name");
+   
+  $(column).hide();
+});
+
+$("input:checkbox").click(function(){
+    var column = "table ." + $(this).attr("name");
+    $(column).toggle();
+});
+
+</script>
+<script>
+$(".selectAll").click(function() {
+	$("input[type=checkbox]").prop("checked", $(this).prop("checked"));
+});
+
+$("input[type=checkbox]").click(function() {
+	if (!$(this).prop("checked")) {
+		$(".selectAll").prop("checked", false);
+	}
+});
+</script>
+
+<script>
+$(".removeAll").click(function() {
+	 $(".hideClass").hide();
+});
+</script>
+<script>
+$(".showAll").click(function() {
+	 $(".hideClass").show();
+});
+</script>
+
+<script>
+$(function() {
+	  $("table th").resizable({
+	      handles: "e",
+	      minWidth: 40,
+	  });
+	});
+</script>
+
+

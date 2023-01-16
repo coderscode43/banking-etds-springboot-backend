@@ -6,6 +6,8 @@ import java.util.LinkedHashMap;
 
 import javax.naming.ldap.LdapContext;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,50 +20,52 @@ public class AbstractController {
 	@Autowired
 	ApplicationCache applicationCache;
 	
+	static final Logger logger = LoggerFactory.getLogger(IndexController.class);
 /////////////////////////////////KARNATAKA BANK////////////////////////////////////////	
 
-//	public String getBranchCode() {
-//		LdapContext ctxGC = null;
-//		CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication()
-//				.getPrincipal();
-//		;
-//		if (applicationCache.getAdminUser(getPrincipal()) != null) {
-//			return "admin";
-//
-//		} else {
-//			String branch = userDetails.getPhysicalDeliveryOfficeName();
-//			try {
-//				int b = Integer.valueOf(branch);
-//				return String.valueOf(b);
-//			} catch (Exception e) {
-//				// TODO: handle exception
-//				return branch;
-//			}
-//		}
-//
-//	}
-	
-	
-/////////////////////////////////UCO BANK////////////////////////////////////////
-	
 	public String getBranchCode() {
-//		LdapContext ctxGC = null;
-		Object userDetails =  SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		LdapContext ctxGC = null;
+		CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication()
+				.getPrincipal();
+		;
 		if (applicationCache.getAdminUser(getPrincipal()) != null) {
 			return "admin";
 
 		} else {
-			String branch = ((UserDetails) userDetails).getUsername();
+			String branch = userDetails.getPhysicalDeliveryOfficeName();
 			try {
-				int b = Integer.parseInt(branch);
+				int b = Integer.valueOf(branch);
 				return String.valueOf(b);
 			} catch (Exception e) {
 				// TODO: handle exception
+				logger.info("Login as:",branch);
 				return branch;
 			}
 		}
 
 	}
+	
+	
+/////////////////////////////////UCO BANK////////////////////////////////////////
+	
+//	public String getBranchCode() {
+////		LdapContext ctxGC = null;
+//		Object userDetails =  SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//		if (applicationCache.getAdminUser(getPrincipal()) != null) {
+//			return "admin";
+//
+//		} else {
+//			String branch = ((UserDetails) userDetails).getUsername();
+//			try {
+//				int b = Integer.parseInt(branch);
+//				return String.valueOf(b);
+//			} catch (Exception e) {
+//				// TODO: handle exception
+//				return branch;//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx // if check for branch change to "1"
+//			}
+//		}
+//
+//	}
 	
 	public void adminValidation(LinkedHashMap<String, Object> map) {
 		

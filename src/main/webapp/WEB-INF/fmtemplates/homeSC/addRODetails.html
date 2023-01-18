@@ -3,6 +3,11 @@
 <div id="page-wrapper">
 	<div class="container-fluid">
 
+	<button class="btn btn-grad astro-MG2CNCJP" data-toggle="modal"
+					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
+					 onClick="refreshPageButton()"><i
+					class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh</button>
+						
 		<div class="col-md-12 "
 			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
 			<div class="heading">
@@ -97,7 +102,7 @@
 									ng-show="formRODetails.submitted || formRODetails.roEmail.$dirty && formRODetails.roEmail.$invalid">
 									<span class="error"
 									ng-show="formRODetails.roEmail.$error.required">Email ID
-										is Required: </span> <span class="error"
+										is Required. </span> <span class="error"
 									ng-show="formRODetails.roEmail.$error.pattern">Email ID
 										is invalid: </span>
 								</span>
@@ -145,7 +150,7 @@
 									ng-show="formRODetails.roAddress.$error.maxlength">RO
 										Address should not be greater than 50</span> <span class="error"
 									ng-show="formRODetails.roAddress.$error.required">RO
-										Address is Required</span>
+										Address is Required.</span>
 								</span> <span class="error" id="roAddress"></span>
 							</div>
 						</div>

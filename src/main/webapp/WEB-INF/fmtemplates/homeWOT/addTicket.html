@@ -26,11 +26,19 @@
 	background: hsl(205.2, 80.7%, 42.7%);
 }
 </style>
+
+
 <div id="page-wrapper">
-	<div class="container">
+	<div class="container-fluid">
+	
+	<button class="btn btn-grad astro-MG2CNCJP" data-toggle="modal"
+					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
+					 onClick="refreshPageButton()"><i
+					class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh</button>
+					
 		<div class="col-md-12 "
-			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
-			<div class="heading">
+			style="margin: 2% 0 2% 0; font-size: 12pxp">
+			<div class="heading" style="margin-left: 13%;"> 
 				<strong>Add Ticket Details</strong>
 
 			</div>
@@ -40,7 +48,7 @@
 
 				<div class="tab-pane fade active in">
 					<form name="fileForm" class="form-horizontal" role="form"
-						enctype="multipart/form-data" style="font-size: 20px">
+						enctype="multipart/form-data" style="font-size: 20px; margin-left: 134px; margin-right: -134px;">
 						<!-- Hidden Filed -->
 						<input type="hidden" ng-model="cCctr.entity.dateOfOpening"
 							ng-init="cCctr.entity.dateOfOpening=cCctr.presentDate()">

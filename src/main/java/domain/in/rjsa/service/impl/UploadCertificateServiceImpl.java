@@ -31,6 +31,7 @@ import domain.in.rjsa.exception.CustomException;
 import domain.in.rjsa.model.fy.UploadCertificate;
 import domain.in.rjsa.service.AbstractServiceForm;
 import domain.in.rjsa.service.UploadCertificateService;
+import domain.in.rjsa.util.StaticData;
 @Transactional("transactionManager")
 @Service("uploadCertificateService")
 public class UploadCertificateServiceImpl extends AbstractServiceForm<Long, UploadCertificate, UploadCertificateDao> implements UploadCertificateService{
@@ -75,7 +76,10 @@ public class UploadCertificateServiceImpl extends AbstractServiceForm<Long, Uplo
 			CompletableFuture<Void> completableFuture = CompletableFuture.runAsync(() -> {
 				try {
 					System.out.println("completable thread : " + Thread.currentThread().getName());
-					unzip(downloadFile);
+					String[] t = lessonMap.get("TAN").split("-");
+					String[] f = lessonMap.get("form").split("-");
+					String path = "download\\"+lessonMap.get("fy")+"\\"+lessonMap.get("quarter")+"\\"+f[0]+"\\"+t[0];
+					unzip(downloadFile,path);
 					uploadCertificate.setStatus("success");
 					dao.update(uploadCertificate);
 				} catch (Exception e) {
@@ -178,9 +182,12 @@ public class UploadCertificateServiceImpl extends AbstractServiceForm<Long, Uplo
 
 	}
 	
-	public void unzip(MultipartFile zip) throws IllegalStateException, IOException {
-//		final Path destDir = Paths.get(StaticData.CertificatePath);
-		final Path destDir = Paths.get("C:\\Users\\RJSA-22-12-2022-01\\Desktop\\uploads");
+	public void unzip(MultipartFile zip, String path) throws IllegalStateException, IOException {
+		final Path destDir = Paths.get(StaticData.CertificatePath + path);
+//		final Path destDir = Paths.get("C:\\Users\\TAXO-TD-1248\\Desktop\\UploadCertificate");
+//		final Path destDir = Paths.get("C:\\Users\\TAXO-TD-1248\\download\\2020-21\\Q1\\Form16\\ABCD12345F");
+		//		C:\\Users\\RJSA-22-12-2022-01\\Desktop\\uploads
+		
 		final Path newPath = destDir.resolve(zip.getOriginalFilename());
 		zip.transferTo(newPath);
 	    final File dest = new File(destDir.toString());

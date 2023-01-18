@@ -39,7 +39,12 @@
 </style>
 
 
-
+<div id="page-wrapper">
+	<div class="container-fluid">
+	<button class="btn btn-grad astro-MG2CNCJP" data-toggle="modal"
+					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
+					 onClick="refreshPageButton()"><i
+					class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh</button>
 <div class="mui-card xl-shadow">
 
 <div id="download-box">
@@ -72,7 +77,7 @@
 									<div class="col-md-12">
 										<div class="form-group">
 											<label for="pan" class="col-form-label"
-												style="font-size: 12px"> PAN Number / Customer Id:</label> <input type="text"
+												style="font-size: 12px"> PAN Number / Customer Id*:</label> <input type="text"
 												class="form-control" id="pan" name="pan" placeholder="Enter PAN / Customer Id"
 												ng-model="cCctr.entity.pan" ng-required="true"
 												required="required" style="font-size: 15px"> <span
@@ -80,7 +85,7 @@
 												ng-show="downloadCertificateFrom.submitted || downloadCertificateFrom.pan.$dirty && downloadCertificateFrom.pan.$invalid">
 												<span class="error"
 												ng-show="downloadCertificateFrom.pan.$error.required">PAN
-													Number Required </span> <span class="error"
+													Number Required. </span> <span class="error"
 												ng-show="downloadCertificateFrom.pan.$error.pattern">PAN
 													number should be capital and valid </span>
 											</span>
@@ -132,8 +137,8 @@
 											</select> <span style="color: red"
 												ng-show="downloadCertificateFrom.submitted ||downloadCertificateFrom.typeofCertificate.$dirty && downloadCertificateFrom.typeofCertificate.$invalid">
 												<span class="error"
-												ng-show="downloadCertificateFrom.typeofCertificate.$error.required">type
-													ofCertificate is Required.</span>
+												ng-show="downloadCertificateFrom.typeofCertificate.$error.required">Type
+													of Certificate is Required.</span>
 											</span>
 										</div>
 									</div>
@@ -184,7 +189,7 @@
 									
 								<button class="pushable darkgreen"
 										style="margin-top: 2%;margin-left: 43%"
-										ng-click="downloadCertificateFrom.submitted=true;cCctr.download(fileForm.$valid,'apidownloadCertificate/files/'+cCctr.entity.tan+'/'+cCctr.entity.typeofCertificate+'/'+cCctr.entity.financialYear+'/'+cCctr.entity.quarter+'/'+cCctr.entity.pan)">
+										ng-click="downloadCertificateFrom.submitted=true;cCctr.download(downloadCertificateFrom.$valid,'apidownloadCertificate/files/'+cCctr.entity.tan+'/'+cCctr.entity.typeofCertificate+'/'+cCctr.entity.financialYear+'/'+cCctr.entity.quarter+'/'+cCctr.entity.pan)">
 										<span class="front darkgreenspan" style="">Download</span>
 									</button>	
 							</form>

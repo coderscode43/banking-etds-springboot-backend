@@ -93,7 +93,7 @@ td .autoResize {
 						<b>Financial Year</b>
 					</h6>
 					<select ng-model="cCctr.search.fy" style="width: 100%"
-						class="form-control">
+						class="form-control" >
 						<option disabled value="">Select financial Year</option>
 						<#list financialYear as year>
 						<option value="${year}">${year}</option>
@@ -104,7 +104,7 @@ td .autoResize {
 					<h6>
 						<b>Form</b>
 					</h6>
-					<select name="fy" id="fy" ng-model="cCctr.search.form"
+					<select ng-model="cCctr.search.form"
 						class="form-control" required>
 						<option disabled value="">Select Form</option>
 						<#list Form as f>
@@ -213,7 +213,8 @@ td .autoResize {
 						style="width: 70px; text-align: center;" type="number"
 						name="pageNo" ng-model="cCctr.currentPage"
 						ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
-						ng-min="1" ng-max="cCctr.getNoPage()" ng-required="true">
+						ng-min="1" min="1" max="{{cCctr.getNoPage()}}
+						"ng-max="cCctr.getNoPage()" ng-required="true">
 					&nbsp;&nbsp;&nbsp;
 					<button style="height: 25px;"
 						ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'uploadCertificate',cCctr.currentPage)"
@@ -253,7 +254,7 @@ td .autoResize {
 						<div class="col-md-12">
 							<div class="form-group">
 								<h6>
-									<label>TAN*</label>
+									<label style="font-size: 15px">TAN*</label>
 								</h6>
 								<select
 									class="form-control" id="TAN" name="TAN"
@@ -271,6 +272,30 @@ td .autoResize {
 											</span>
 							</div>
 						</div>
+						
+						<div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<label style="font-size: 15px">Type of Certificate*</label> <select
+												name="form" id="form"
+												class="form-control"
+												ng-model="cCctr.entity.form" ng-required="true"
+												ng-model-options="{updateOn: 'blur'}">
+												<option disabled value="">Select Certificate</option>
+												<#list typeOfCertificate as Certificate>
+
+												<option value="${Certificate}">${Certificate}</option>
+												</#list>
+											</select> <span style="color: red"
+												ng-show="downloadCertificateFrom.submitted ||downloadCertificateFrom.typeofCertificate.$dirty && downloadCertificateFrom.typeofCertificate.$invalid">
+												<span class="error"
+												ng-show="downloadCertificateFrom.typeofCertificate.$error.required">Type
+													of Certificate is Required.</span>
+											</span>
+										</div>
+									</div>
+								</div>
+								
 						<!-- <div class="col-md-12">
 							<div class="form-group">
 								<h6>
@@ -322,6 +347,7 @@ td .autoResize {
 						
 						</div>
 						
+						<!--
 						<div class="col-md-12">
 							<div>
 								<label style="font-size: 15px">Form*</label>
@@ -343,7 +369,7 @@ td .autoResize {
 							</div>
 							
 						</div>
-						
+						  -->
 						<!-- <div class="col-md-12">
 								<div class="form-group">
 									<h6>

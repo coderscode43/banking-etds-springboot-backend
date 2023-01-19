@@ -1196,7 +1196,8 @@ App
 
 								}
 							}
-							self.download = function(url) {
+							self.download = function(valid,url) {
+								if (valid == true) {
 								wait(1000);
 								self.fileLoader = url;
 								CommonServiceFY.check(url)
@@ -1240,6 +1241,7 @@ App
 											
 
 										});
+								}
 
 							}
 							

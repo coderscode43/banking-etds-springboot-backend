@@ -336,8 +336,9 @@
 													style="width: 90%; height: 20%; font-size: 15px; margin-left: 5%;"
 													ng-required="true"></textarea>
 												<span style="color: red; margin-left: 5%;" class="error"
-													ng-show="remark.submitted || remark.remark.$dirty && remark.remark.$invalid">Please
-													enter valid Remark</span>
+													ng-show="remark.submitted || remark.remark.$dirty && remark.remark.$invalid"><span
+													class="error" ng-show="remark.remark.$error.required">Please
+													enter valid Remark</span></span>
 											</div>
 											<div class="modal-footer">
 											<button class="pushable"
@@ -372,8 +373,9 @@
 													name="remark"
 													style="width: 90%; height: 20%; font-size: 15px; margin-left: 5%;"
 													ng-required="true"></textarea><span style="color: red; margin-left: 5%;" class="error"
-													ng-show="remark.submitted || remark.remark.$dirty && remark.remark.$invalid">Please
-													enter valid Remark</span> 
+													ng-show="remark.submitted || remark.remark.$dirty && remark.remark.$invalid"><span
+													class="error" ng-show="remark.remark.$error.required">Please
+													enter valid Remark</span> </span>
 											</div>
 											<div class="modal-footer">
 												<button class="pushable"
@@ -408,8 +410,9 @@
 													name="remark"
 													style="width: 90%; height: 20%; font-size: 15px; margin-left: 5%;"
 													ng-required="true"></textarea><span style="color: red; margin-left: 5%;" class="error"
-													ng-show="remark.submitted || remark.remark.$dirty && remark.remark.$invalid">Please
-													enter valid Remark</span> 
+													ng-show="remark.submitted || remark.remark.$dirty && remark.remark.$invalid"><span
+													class="error" ng-show="remark.remark.$error.required">Please
+													enter valid Remark</span> </span>
 											</div>
 											<div class="modal-footer">
 											<button class="pushable"
@@ -497,11 +500,8 @@
 								<div class="tab-pane fade active in" id="signin">
 									<form name="profileForm" class="form-horizontal"
 										enctype="multipart/form-data">
-
-
 										<div class="row">
 											<div class="col-md-6">
-
 												<label>Financial Year*</label> <select name="fy"
 													class="form-control" ng-model="cCctr.entity.fy"
 													ng-required="true" ng-model-options="{updateOn: 'blur'}">
@@ -519,13 +519,8 @@
 													<option value="200809">200809</option>
 													<option value="200708">200708</option>
 												</select>
-
-
-
 											</div>
-
 											<div class="col-md-6">
-
 												<label>Quarter*</label> <select name="quarter"
 													class="form-control" ng-model="cCctr.entity.quarter"
 													ng-required="true" ng-model-options="{updateOn: 'blur'}">
@@ -534,13 +529,10 @@
 													<option value="Q3">Q3</option>
 													<option value="Q4">Q4</option>
 												</select>
-
 											</div>
 										</div>
-
 										<div class="row">
 											<div class="col-md-6">
-
 												<label>Form*</label> <select name="quarter"
 													class="form-control" ng-model="cCctr.entity.form"
 													ng-required="true" ng-model-options="{updateOn: 'blur'}">
@@ -551,22 +543,14 @@
 												</select>
 											</div>
 											<div class="col-md-6">
-
 												<label>Type*</label> <input class="form-control" type="text"
 													name="type" placeholder="type" ng-maxlenght="45"
 													ng-required="true" ng-model="cCctr.entity.type"
 													autocomplete="off" ng-model-options="{updateOn: 'blur'}" />
-
-
 											</div>
-
-
 										</div>
-
-
 										<div class="row">
 											<div class="col-md-6">
-
 												<label>Attachment*</label> <input class="form-control"
 													type="text" name="attachment" placeholder="Attachment"
 													ng-maxlenght="45" ng-required="true"
@@ -584,60 +568,40 @@
 													ng-model-options="{updateOn: 'blur'}" />
 
 											</div>
-
-
-
 										</div>
-
-
 										<div class="row">
 											<div class="col-md-6">
-
 												<label>Description*</label> <input class="form-control"
 													type="text" name="Description" placeholder="Description"
 													ng-maxlenght="45" ng-required="true"
 													ng-model="cCctr.entity.description" autocomplete="off"
 													ng-model-options="{updateOn: 'blur'}" />
-
 											</div>
-
 											<div class="col-md-6">
-
 												<label>Remark*</label> <input class="form-control"
 													type="text" name="remark" placeholder="Remark"
 													ng-maxlenght="45" ng-required="true"
 													ng-model="cCctr.entity.remarks" autocomplete="off"
 													ng-model-options="{updateOn: 'blur'}" />
-
 											</div>
 										</div>
-
 										<div class="row">
 											<div class="col-md-6">
-
 												<label>Date Of Opening*</label> <input type="date"
 													class="form-control" style="padding-top: 0px;"
 													name="dateOfOpening" value={{cCctr.entity.dateOfOpening}}
 													ng-model="cCctr.entity.dateOfOpening" autocomplete="off"
 													ng-model-options="{updateOn: 'blur'}" />
-
-
 											</div>
-
 											<div class="col-md-6">
-
 												<label>Date Of Change*</label> <input type="date"
 													class="form-control" style="padding-top: 0px;"
 													name="dateOfChange" value={{cCctr.entity.dateOfChange}}
 													ng-model="cCctr.entity.dateOfChange" autocomplete="off"
 													ng-model-options="{updateOn: 'blur'}" />
-
 											</div>
-
-
 										</div>
 									</form>
-
 									<div class="modal-footer">
 										<!-- <button
 									ng-click="profileForm.submitted=true;cCctr.updateData(profileForm.$valid,'form24QDeductee',cCctr.entity.deductee,'closeU')"
@@ -652,19 +616,8 @@
 					</div>
 				</div>
 			</div>
-
-
-
-
 		</div>
-
-
-
-
-
-
 	</div>
-
 </div>
 
 

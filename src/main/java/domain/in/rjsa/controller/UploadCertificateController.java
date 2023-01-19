@@ -68,15 +68,21 @@ public class UploadCertificateController extends AbstractControllerForm<Long, Up
 		//	@RequestParam("uploadedTime") String uploadedTime
 			) {
 		try {
-			HashMap<String, String> lessonMap = new HashMap<String, String>();
-			lessonMap.put("TAN", TAN);
-			lessonMap.put("fy", fy);
-			lessonMap.put("quarter", quarter);
-			lessonMap.put("form", form);
-		//	lessonMap.put("uploadedTime", uploadedTime);
-			service.saveDocument(downloadFile, lessonMap);
-			return new ResponseEntity<>(HttpStatus.OK);
-		} catch (Exception e) {	
+			if (downloadFile.getOriginalFilename().endsWith(".zip")) {
+				HashMap<String, String> lessonMap = new HashMap<String, String>();
+				lessonMap.put("TAN", TAN);
+				lessonMap.put("fy", fy);
+				lessonMap.put("quarter", quarter);
+				lessonMap.put("form", form);
+				// lessonMap.put("uploadedTime", uploadedTime);
+				service.saveDocument(downloadFile, lessonMap);
+				return new ResponseEntity<>(HttpStatus.OK);
+
+			} else {
+				return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			}
+
+		} catch (Exception e) {
 			e.printStackTrace();
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}

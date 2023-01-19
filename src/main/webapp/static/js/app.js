@@ -23,17 +23,17 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 
 
 
-//	$urlRouterProvider.otherwise("/home/homepage")
+	$urlRouterProvider.otherwise("/home/homepage")
 		
-	 $urlRouterProvider.otherwise(function ($injector, $location) {
-				    var $state = $location.get('$state');
-				    if ($state == '/home') {
-				    	$urlRouterProvider.otherwise("/home/homepage");
-				    }
-				    else {
-				        return '/homeWOT/2/2022-23/homepage';
-				    }
-				});
+//	 $urlRouterProvider.otherwise(function ($injector, $location) {
+//				    var $state = $location.get('$state');
+//				    if ($state == '/home') {
+//				    	$urlRouterProvider.otherwise("/home/homepage");
+//				    }
+//				    else {
+//				        return '/homeWOT/2/2022-23/homepage';
+//				    }
+//				});
 
 	$stateProvider
 		.state('logout', {

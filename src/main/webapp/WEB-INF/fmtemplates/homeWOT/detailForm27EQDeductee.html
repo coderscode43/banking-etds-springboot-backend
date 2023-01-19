@@ -90,7 +90,9 @@
 		height: auto !important;
 		visibility: visible;
 	}
-}.pushable {
+}
+
+.pushable {
 	border-radius: 12px;
 	border: none;
 	padding: 0;
@@ -163,8 +165,7 @@
 							<div class="col-md-3">
 								<label>Party Reference No. &nbsp;</label>
 							</div>
-							<div class="col-md-3">:
-								{{cCctr.entity.deducteeRefNo}}</div>
+							<div class="col-md-3">: {{cCctr.entity.deducteeRefNo}}</div>
 						</div>
 						<div class="row" style="font-size: 13px;">
 							<div class="col-md-3">
@@ -174,27 +175,23 @@
 							<div class="col-md-3">
 								<label>PAN of the Party. &nbsp;</label>
 							</div>
-							<div class="col-md-3">: {{cCctr.entity.pan}}
-							</div>
+							<div class="col-md-3">: {{cCctr.entity.pan}}</div>
 						</div>
 						<div class="row" style="font-size: 13px;">
 							<div class="col-md-3">
 								<label>Name of the Party. &nbsp;</label>
 							</div>
-							<div class="col-md-3">: {{cCctr.entity.name}}
-							</div>
+							<div class="col-md-3">: {{cCctr.entity.name}}</div>
 							<div class="col-md-3">
 								<label>Amount Receipt/Debited. &nbsp;</label>
 							</div>
-							<div class="col-md-3">:
-								{{cCctr.entity.amountPaid}}</div>
+							<div class="col-md-3">: {{cCctr.entity.amountPaid}}</div>
 						</div>
 						<div class="row" style="font-size: 13px;">
 							<div class="col-md-3">
 								<label>Date of Received/Debited. &nbsp;</label>
 							</div>
-							<div class="col-md-3">:
-								{{cCctr.entity.dateOfPayment}}</div>
+							<div class="col-md-3">: {{cCctr.entity.dateOfPayment}}</div>
 
 							<div class="col-md-3">
 								<label>TDS. &nbsp;</label>
@@ -242,15 +239,13 @@
 							<div class="col-md-3">
 								<label>Reason for Non Collection. &nbsp;</label>
 							</div>
-							<div class="col-md-3">:
-								{{cCctr.entity.remarksReason}}</div>
+							<div class="col-md-3">: {{cCctr.entity.remarksReason}}</div>
 						</div>
 						<div class="row" style="font-size: 13px;">
 							<div class="col-md-3">
 								<label>Section / Collection Code. &nbsp;</label>
 							</div>
-							<div class="col-md-3">:
-								{{cCctr.entity.sectionCode}}</div>
+							<div class="col-md-3">: {{cCctr.entity.sectionCode}}</div>
 							<div class="col-md-3">
 								<label>Certificate Number. &nbsp;</label>
 							</div>
@@ -329,102 +324,102 @@
 							</div>
 							<div class="col-md-3" ng-if="cCctr.entity.resolved == 0">:
 								Resolved</div>
-							<div class="col-md-3" ng-if="cCctr.entity.resolved == 1" style="color:red">:
-								Not Resolved</div>
+							<div class="col-md-3" ng-if="cCctr.entity.resolved == 1"
+								style="color: red">: Not Resolved</div>
 						</div>
 
 
 						<div class="row">
-<!-- 								<input ng-model="cCctr.newEntityId = cCctr.entity.id"
+							<!-- 								<input ng-model="cCctr.newEntityId = cCctr.entity.id"
 									id="deducteeId" name="deducteeId" style="display: none">
 
 								<input ng-model="cCctr.newEntity.fy = cCctr.entity.fy" id="fy"
 									name="fy" style="display: none"> <input
 									ng-model="cCctr.newEntityForm ='27EQform'"
 									id="deducteeForm" name="deducteeForm" style="display: none"> -->
-									
-																	<input
-									ng-model="cCctr.newEntity.deducteeId = cCctr.entity.id"
-									id="deducteeId" name="deducteeId" style="display: none">
 
-								<input ng-model="cCctr.newEntity.fy = cCctr.entity.fy"
-									id="fy" name="fy" style="display: none"> <input
-									ng-model="cCctr.newEntity.deducteeForm ='27EQform'"
-									id="deducteeForm" name="deducteeForm" style="display: none">
+							<input ng-model="cCctr.newEntity.deducteeId = cCctr.entity.id"
+								id="deducteeId" name="deducteeId" style="display: none">
 
-								<input class="form-control"
-									ng-model="cCctr.newEntity.branchCode = cCctr.entity.branchCode"
-									id="branchCode" name="branchCode" style="display: none">
+							<input ng-model="cCctr.newEntity.fy = cCctr.entity.fy" id="fy"
+								name="fy" style="display: none"> <input
+								ng-model="cCctr.newEntity.deducteeForm ='27EQform'"
+								id="deducteeForm" name="deducteeForm" style="display: none">
 
-								<button class="pushable darkblue"
-										style="margin-left:43%;"
-										data-target="#myModal" data-toggle="modal">
-										<span class="front darkbluespan"
-											><i
-											class="fa fa-plus" aria-hidden="true"></i> Add Remark</span>
-									</button>
+							<input class="form-control"
+								ng-model="cCctr.newEntity.branchCode = cCctr.entity.branchCode"
+								id="branchCode" name="branchCode" style="display: none">
 
-									<button class="pushable lightblue" 
-										data-toggle="modal" data-target="#edit">
-										<span class="front lightbluespan"
-											><i
-											class="fa fa-edit" aria-hidden="true"></i>&nbsp;&nbsp;Edit</span>
-									</button>
+							<button class="pushable darkblue" style="margin-left: 43%;"
+								data-target="#myModal" data-toggle="modal">
+								<span class="front darkbluespan"><i class="fa fa-plus"
+									aria-hidden="true"></i> Add Remark</span>
+							</button>
 
-								
+							<button class="pushable lightblue" data-toggle="modal"
+								data-target="#edit">
+								<span class="front lightbluespan"><i class="fa fa-edit"
+									aria-hidden="true"></i>&nbsp;&nbsp;Edit</span>
+							</button>
 
-								<div ng-if="cCctr.entity.resolved == 1" ng-hide=("admin"!="${typeOfUser}");
+
+
+							<div ng-if="cCctr.entity.resolved == 1" ng-hide=(
+								"admin"!="${typeOfUser}"
+								);
 									style="margin: -3.8% 0 0% 60.6%">
-									<button class="pushable darkgreen"
-											data-toggle="modal" data-target="#resolveModal">
-											<span class="front darkgreenspan"
-												><i
-												class="fa fa-thumbs-up" aria-hidden="true"></i> Resolved</span>
-										</button>
-								</div>
-								<div ng-if="cCctr.entity.resolved == 0" ng-hide=("admin"!="${typeOfUser}");
+								<button class="pushable darkgreen" data-toggle="modal"
+									data-target="#resolveModal">
+									<span class="front darkgreenspan"><i
+										class="fa fa-thumbs-up" aria-hidden="true"></i> Resolved</span>
+								</button>
+							</div>
+							<div ng-if="cCctr.entity.resolved == 0" ng-hide=(
+								"admin"!="${typeOfUser}"
+								);
 									style="margin: -3.8% 0 0% 60.6%">
-									<button class="pushable lightgreen"
-											data-toggle="modal" data-target="#resolveModal" disabled>
-											<span class="front lightgreenspan"
-												><i
-												class="fa fa-thumbs-up" aria-hidden="true"></i> Resolved</span>
-										</button>
-								</div>
+								<button class="pushable lightgreen" data-toggle="modal"
+									data-target="#resolveModal" disabled>
+									<span class="front lightgreenspan"><i
+										class="fa fa-thumbs-up" aria-hidden="true"></i> Resolved</span>
+								</button>
+							</div>
 
-								<div ng-if="cCctr.entity.resolved == 1" ng-hide=("admin"!="${typeOfUser}");
+							<div ng-if="cCctr.entity.resolved == 1" ng-hide=(
+								"admin"!="${typeOfUser}"
+								);
 									style="margin: -3.6% 0 0% 69.8%">
-									<button class="pushable darkred"
-											data-toggle="modal" data-target="#rejectModal">
-											<span class="front darkredspan"
-												><i
-												class="fa fa-thumbs-down" aria-hidden="true"></i> Reject</span>
-										</button>
-								</div>
-								<div ng-if="cCctr.entity.resolved == 0" ng-hide=("admin"!="${typeOfUser}");
+								<button class="pushable darkred" data-toggle="modal"
+									data-target="#rejectModal">
+									<span class="front darkredspan"><i
+										class="fa fa-thumbs-down" aria-hidden="true"></i> Reject</span>
+								</button>
+							</div>
+							<div ng-if="cCctr.entity.resolved == 0" ng-hide=(
+								"admin"!="${typeOfUser}"
+								);
 									style="margin: -3.6% 0 0% 69.8%">
-									<button class="pushable lightred"
-											data-toggle="modal" data-target="#rejectModal" disabled>
-											<span class="front lightredspan"
-												><i
-												class="fa fa-thumbs-down" aria-hidden="true"></i> Reject</span>
-										</button>
-								</div>
-								
-								<div style="margin: -3.4% 0 0% 77.6%">
-										<button class="pushable black"
-											ng-click="cCctr.gotoWFYListPage('form27EQDeductee','form27EQDeductee')">
-											<span class="front blackspan"><i
-												class="fa fa-arrow-left" aria-hidden="true"></i> Back</span>
-										</button>
-									</div>	
-									
-								<div class="modal fade" id="myModal" role="dialog">
-									<div class="modal-dialog">
+								<button class="pushable lightred" data-toggle="modal"
+									data-target="#rejectModal" disabled>
+									<span class="front lightredspan"><i
+										class="fa fa-thumbs-down" aria-hidden="true"></i> Reject</span>
+								</button>
+							</div>
 
-										<!--Add Modal content-->
-										<div class="modal-content">
-										<form name="addRemark" >
+							<div style="margin: -3.4% 0 0% 77.6%">
+								<button class="pushable black"
+									ng-click="cCctr.gotoWFYListPage('form27EQDeductee','form27EQDeductee')">
+									<span class="front blackspan"><i
+										class="fa fa-arrow-left" aria-hidden="true"></i> Back</span>
+								</button>
+							</div>
+
+							<div class="modal fade" id="myModal" role="dialog">
+								<div class="modal-dialog">
+
+									<!--Add Modal content-->
+									<div class="modal-content">
+										<form name="addRemark">
 											<div class="modal-header">
 												<button type="button" class="close" data-dismiss="modal">&times;</button>
 												<h4 class="modal-title">Add Remark</h4>
@@ -438,105 +433,102 @@
 													style="width: 90%; height: 20%; font-size: 15px; margin-left: 5%;"
 													ng-required="true"></textarea>
 												<span style="color: red; margin-left: 5%;" class="error"
-														ng-show="addRemark.submitted || addRemark.remark.$dirty && addRemark.remark.$invalid">Please
-														enter valid Remark</span> <span class="error" id="remark"></span>
+													ng-show="addRemark.submitted || addRemark.remark.$dirty && addRemark.remark.$invalid">
+													<span class="error"
+													ng-show="addRemark.remark.$error.required"> Please
+														enter valid Remark</span>
+												</span> <span class="error" id="remark"></span>
 											</div>
 											<div class="modal-footer">
-											<button class="pushable darkgreen"
-														style="margin-top: 2%;"
-														ng-click="addRemark.submitted=true;cCctr.addRemark(addRemark.$valid,'remark',cCctr.newEntity,'Remark','close')"
-													><span class="front darkgreenspan"
-															> Add</span>
-													</button>
-													<button class="pushable darkred"
-														style="margin-top: 2%;"
-														data-dismiss="modal">
-														<span class="front darkredspan"> No</span>
-													</button>		
+												<button class="pushable darkgreen" style="margin-top: 2%;"
+													ng-click="addRemark.submitted=true;cCctr.addRemark(addRemark.$valid,'remark',cCctr.newEntity,'Remark','close')">
+													<span class="front darkgreenspan"> Add</span>
+												</button>
+												<button class="pushable darkred" style="margin-top: 2%;"
+													data-dismiss="modal">
+													<span class="front darkredspan"> No</span>
+												</button>
 											</div>
-											</form>
-										</div>
+										</form>
+									</div>
 
-									</div>
 								</div>
-								<!-- Reject Remark model -->
-									<div class="modal fade" id="rejectModal" role="dialog">
-									<form name="rejectRemark" >
-										<div class="modal-dialog">
-											<div class="modal-content">
-												<div class="modal-header">
-													<button type="button" class="close" data-dismiss="modal">&times;</button>
-													<h4 class="modal-title">Reject</h4>
-												</div>
-												<div class="col-md-12 ">
-													<label style="font-size: 13px; margin-top: 2%">Why
-														do you want to reject?</label><br>
-													<textarea ng-model="cCctr.newEntity.remark" id="remark"
+							</div>
+							<!-- Reject Remark model -->
+							<div class="modal fade" id="rejectModal" role="dialog">
+								<form name="rejectRemark">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+												<h4 class="modal-title">Reject</h4>
+											</div>
+											<div class="col-md-12 ">
+												<label style="font-size: 13px; margin-top: 2%">Why
+													do you want to reject?</label><br>
+												<textarea ng-model="cCctr.newEntity.remark" id="remark"
 													name="remark"
 													style="width: 90%; height: 20%; font-size: 15px; margin-left: 5%;"
 													ng-required="true"></textarea>
-													<span style="color: red; margin-left: 5%;" class="error"
-														ng-show="rejectRemark.submitted || rejectRemark.remark.$dirty && rejectRemark.remark.$invalid">Please
-														enter valid Remark</span> <span class="error" id="remark"></span>
-												</div>
-													<div class="modal-footer">
-													<button class="pushable darkgreen"
-														style="margin-top: 2%;"
-														ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.id"
-														ng-click="rejectRemark.submitted=true;cCctr.addRemark(rejectRemark.$valid,'remark',cCctr.newEntity,'Reject','close')">
-														<span class="front darkgreenspan"
-															> Yes</span>
-													</button>
-													<button class="pushable darkred"
-														style="margin-top: 2%;"
-														data-dismiss="modal">
-														<span class="front darkredspan"
-															style="background: hsl(11.2, 81.2%, 37.5%);"> No</span>
-													</button>
-												</div>
+												<span style="color: red; margin-left: 5%;" class="error"
+													ng-show="rejectRemark.submitted || rejectRemark.remark.$dirty && rejectRemark.remark.$invalid"><span
+													class="error" ng-show="rejectRemark.remark.$error.required">Please
+														enter valid Remark</span></span> <span class="error" id="remark"></span>
+											</div>
+											<div class="modal-footer">
+												<button class="pushable darkgreen" style="margin-top: 2%;"
+													ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.id"
+													ng-click="rejectRemark.submitted=true;cCctr.addRemark(rejectRemark.$valid,'remark',cCctr.newEntity,'Reject','close')">
+													<span class="front darkgreenspan"> Yes</span>
+												</button>
+												<button class="pushable darkred" style="margin-top: 2%;"
+													data-dismiss="modal">
+													<span class="front darkredspan"
+														style="background: hsl(11.2, 81.2%, 37.5%);"> No</span>
+												</button>
 											</div>
 										</div>
-										</form>
 									</div>
-									
-									<!-- Resolve Remark model -->
-									<div class="modal fade" id="resolveModal" role="dialog">
-									<form name="resolvedRemark" >
-										<div class="modal-dialog">
-											<div class="modal-content">
-												<div class="modal-header">
-													<button type="button" class="close" data-dismiss="modal">&times;</button>
-													<h4 class="modal-title">Resolve</h4>
-												</div>
-												<div class="col-md-12 ">
-													<label style="font-size: 13px; margin-top: 2%">Resolve</label><br>
-													<textarea ng-model="cCctr.newEntity.remark" id="remark"
+								</form>
+							</div>
+
+							<!-- Resolve Remark model -->
+							<div class="modal fade" id="resolveModal" role="dialog">
+								<form name="resolvedRemark">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+												<h4 class="modal-title">Resolve</h4>
+											</div>
+											<div class="col-md-12 ">
+												<label style="font-size: 13px; margin-top: 2%">Resolve</label><br>
+												<textarea ng-model="cCctr.newEntity.remark" id="remark"
 													name="remark"
 													style="width: 90%; height: 20%; font-size: 15px; margin-left: 5%;"
 													ng-required="true"></textarea>
-													<span style="color: red; margin-left: 5%;" class="error"
-														ng-show="resolvedRemark.submitted || resolvedRemark.remark.$dirty && resolvedRemark.remark.$invalid">Please
-														enter valid Remark</span> <span class="error" id="remark"></span>
-												</div>
-													<div class="modal-footer">
-													<button class="pushable darkgreen"
-														style="margin-top: 2%;"
-														ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.id"
-														ng-click="resolvedRemark.submitted=true;cCctr.addRemark(resolvedRemark.$valid,'remark',cCctr.newEntity,'Resolve','close')">
-														<span class="front darkgreenspan"
-															> Yes</span>
-													</button>
-													<button class="pushable darkred"
-														style="margin-top: 2%;"
-														data-dismiss="modal">
-														<span class="front darkredspan"
-															> No</span>
-													</button>
-												</div>
+												<span style="color: red; margin-left: 5%;" class="error"
+													ng-show="resolvedRemark.submitted || resolvedRemark.remark.$dirty && resolvedRemark.remark.$invalid">
+													<span class="error"
+													ng-show="resolvedRemark.remark.$error.required">
+														Please enter valid Remark</span>
+												</span> <span class="error" id="remark"></span>
+											</div>
+											<div class="modal-footer">
+												<button class="pushable darkgreen" style="margin-top: 2%;"
+													ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.id"
+													ng-click="resolvedRemark.submitted=true;cCctr.addRemark(resolvedRemark.$valid,'remark',cCctr.newEntity,'Resolve','close')">
+													<span class="front darkgreenspan"> Yes</span>
+												</button>
+												<button class="pushable darkred" style="margin-top: 2%;"
+													data-dismiss="modal">
+													<span class="front darkredspan"> No</span>
+												</button>
 											</div>
 										</div>
-										</form>
 									</div>
+								</form>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -642,7 +634,7 @@
 									<label style="font-size: 12px;">RO Code</label> <input
 										class="form-control" type="text" name="roCode"
 										placeholder="RO Code" ng-model="cCctr.entity.roCode"
-										ng-model-options="{updateOn: 'blur'}"/> <span
+										ng-model-options="{updateOn: 'blur'}" /> <span
 										style="color: red"
 										ng-show="form27eqDeductee.submitted || form27eqDeductee.roCode.$dirty && form27eqDeductee.roCode.$invalid">
 								</div>
@@ -651,8 +643,7 @@
 
 									<label style="font-size: 12px;">Branch Code</label> <input
 										class="form-control" type="text" name="branchCode"
-										placeholder="Branch Code"
-										ng-model="cCctr.entity.branchCode"
+										placeholder="Branch Code" ng-model="cCctr.entity.branchCode"
 										ng-model-options="{updateOn: 'blur'}" /> <span
 										style="color: red"
 										ng-show="form27eqDeductee.submitted ||form27eqDeductee.challanSrNo.$dirty && form27eqDeductee.challanSrNo.$invalid">
@@ -664,8 +655,7 @@
 
 									<label style="font-size: 12px;">Vend/Cust/Id</label> <input
 										class="form-control" type="text" name="custVendId"
-										placeholder="Vend/Cust/Id"
-										ng-model="cCctr.entity.custVendId"
+										placeholder="Vend/Cust/Id" ng-model="cCctr.entity.custVendId"
 										ng-model-options="{updateOn: 'blur'}" disabled /> <span
 										style="color: red"
 										ng-show="form26qdeductee.submitted ||form26qdeductee.custVendId.$dirty && form26qdeductee.custVendId.$invalid">
@@ -697,9 +687,9 @@
 
 									<label style="font-size: 12px;">Account No.</label> <input
 										class="form-control" type="text" name="accNo"
-										placeholder="Account No"
-										ng-model="cCctr.entity.accNo" ng-pattern="/^[0-9]*$/"
-										ng-maxlength="12" ng-model-options="{updateOn: 'blur'}" disabled /> <span
+										placeholder="Account No" ng-model="cCctr.entity.accNo"
+										ng-pattern="/^[0-9]*$/" ng-maxlength="12"
+										ng-model-options="{updateOn: 'blur'}" disabled /> <span
 										style="color: red"
 										ng-show="form27eqDeductee.submitted ||form27eqDeductee.accNo.$dirty && form27eqDeductee.accNo.$invalid">
 										<span class="error"
@@ -731,8 +721,7 @@
 
 									<label style="font-size: 12px;">Party Code</label> <input
 										class="form-control" type="text" name="deducteeCode"
-										placeholder="Party Code"
-										ng-model="cCctr.entity.deducteeCode"
+										placeholder="Party Code" ng-model="cCctr.entity.deducteeCode"
 										ng-model-options="{updateOn: 'blur'}" disabled /> <span
 										style="color: red"
 										ng-show="form27eqDeductee.submitted ||form27eqDeducteeCode.$dirty && form27eqDeducteeCode.$invalid">
@@ -760,8 +749,7 @@
 
 									<label style="font-size: 12px;">Surcharge</label> <input
 										class="form-control" type="text" name="surcharge"
-										placeholder="Surcharge"
-										ng-model="cCctr.entity.surcharge"
+										placeholder="Surcharge" ng-model="cCctr.entity.surcharge"
 										ng-model-options="{updateOn: 'blur'}" disabled /> <span
 										style="color: red"
 										ng-show="form27eqDeductee.submitted || form27eqDeductee.surcharge.$dirty && form27eqDeductee.surcharge.$invalid">
@@ -799,7 +787,7 @@
 										class="form-control" type="text" name="totalTaxDeposited"
 										placeholder="Total Tax Deposited"
 										ng-model="cCctr.entity.totalTaxDeposited"
-										ng-model-options="{updateOn: 'blur'}" disabled/> <span
+										ng-model-options="{updateOn: 'blur'}" disabled /> <span
 										style="color: red"
 										ng-show="form27eqDeductee.submitted || form27eqDeductee.totalTaxDeposited.$dirty && form27eqDeductee.totalTaxDeposited.$invalid">
 									</span> <span class="error" id="totalTaxDeposited"></span>
@@ -921,8 +909,7 @@
 								<div class="col-md-6">
 									<label style="font-size: 12px;">PAN of the Deductee</label> <input
 										class="form-control" type="text" name="deducteePan"
-										placeholder="PAN of the Deductee"
-										ng-model="cCctr.entity.pan"
+										placeholder="PAN of the Deductee" ng-model="cCctr.entity.pan"
 										ng-model-options="{updateOn: 'blur'}" disabled /> <span
 										style="color: red"
 										ng-show="form27eqDeductee.submitted || form27eqDeducteePan.$dirty && form27eqDeducteePan.$invalid">
@@ -932,8 +919,7 @@
 								<div class="col-md-6">
 									<label style="font-size: 12px;">Name of the Party</label> <input
 										class="form-control" type="text" name="name"
-										placeholder="Name of the Party"
-										ng-model="cCctr.entity.name"
+										placeholder="Name of the Party" ng-model="cCctr.entity.name"
 										ng-model-options="{updateOn: 'blur'}" disabled /> <span
 										style="color: red"
 										ng-show="form27eqDeductee.submitted || form27eqDeductee.name.$dirty && form27eqDeductee.name.$invalid">
@@ -945,11 +931,10 @@
 							<div class="row">
 								<div class="col-md-6">
 									<label style="font-size: 12px;">Amount Receipt/Debited</label>
-									<input class="form-control" type="text"
-										name="amountPaid"
+									<input class="form-control" type="text" name="amountPaid"
 										placeholder="Amount Receipt/Debited"
 										ng-model="cCctr.entity.amountPaid"
-										ng-model-options="{updateOn: 'blur'}" disabled/> <span
+										ng-model-options="{updateOn: 'blur'}" disabled /> <span
 										style="color: red"
 										ng-show="form27eqDeductee.submitted || form27eqDeductee.amountPaid.$dirty && form27eqDeductee.amountPaid.$invalid">
 									</span> <span class="error" id="amountPaid"></span>
@@ -958,11 +943,11 @@
 								<div class="col-md-6">
 									<label style="font-size: 12px;">Date of
 										Received/Debited</label> <input class="form-control" type="Date"
-										name="dateOfPayment"
-										placeholder="Date of Received/Debited"
+										name="dateOfPayment" placeholder="Date of Received/Debited"
 										ng-value='"{{cCctr.entity.dateOfPayment}}"'
 										ng-model="cCctr.temp.dateOfPayment"
-										ng-blur="cCctr.entity.dateOfPayment = cCctr.temp.dateOfPayment" disabled />
+										ng-blur="cCctr.entity.dateOfPayment = cCctr.temp.dateOfPayment"
+										disabled />
 								</div>
 							</div>
 
@@ -998,7 +983,7 @@
 										name="rateatwhichTaxCollected"
 										placeholder="Rate at which Tax Collected"
 										ng-model="cCctr.entity.rateatwhichTaxCollected"
-										ng-model-options="{updateOn: 'blur'}"  disabled /> <span
+										ng-model-options="{updateOn: 'blur'}" disabled /> <span
 										style="color: red"
 										ng-show="form27eqDeductee.submitted || form27eqDeductee.rateatwhichTaxCollected.$dirty && form27eqDeductee.rateatwhichTaxCollected.$invalid">
 									</span> <span class="error" id="rateatwhichTaxCollected"></span>
@@ -1007,8 +992,7 @@
 								<div class="col-md-6">
 									<label style="font-size: 12px;">Reason for Non
 										Collection</label> <input class="form-control" type="text"
-										name="remarksReason"
-										placeholder="Reason for Non Collection"
+										name="remarksReason" placeholder="Reason for Non Collection"
 										ng-model="cCctr.entity.remarksReason"
 										ng-model-options="{updateOn: 'blur'}" disabled /> <span
 										style="color: red"
@@ -1101,8 +1085,8 @@
 										placeholder="if Answer to 681A is Yes Then Date Of Payment Of TDS To Central Government"
 										ng-value='"{{cCctr.entity.ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment}}"'
 										ng-model="cCctr.temp.ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment"
-										ng-blur="cCctr.entity.ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment = cCctr.temp.ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment" disabled /> <span
-										style="color: red"
+										ng-blur="cCctr.entity.ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment = cCctr.temp.ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment"
+										disabled /> <span style="color: red"
 										ng-show="form27eqDeductee.submitted || form27eqDeductee.ifAnswerTo681AisyesthenChallanNumber.$dirty && form27eqDeductee.ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment.$invalid">
 									</span> <span class="error"
 										id="ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment"></span>
@@ -1118,7 +1102,8 @@
 										placeholder="Date of Collected"
 										ng-value='"{{cCctr.entity.dateOfDeduction}}"'
 										ng-model="cCctr.temp.dateOfDeduction"
-										ng-blur="cCctr.entity.dateOfDeduction=cCctr.temp.dateOfDeduction" disabled />
+										ng-blur="cCctr.entity.dateOfDeduction=cCctr.temp.dateOfDeduction"
+										disabled />
 								</div>
 								<div class="col-md-6">
 
@@ -1133,7 +1118,7 @@
 							<br> <br>
 							<div class="row">
 								<div class="col-md-12" style="text-align: right">
-								<button class="pushable darkblue"
+									<button class="pushable darkblue"
 										style="background: hsl(224.9, 87.1%, 39.4%, 0.59); margin-top: 2%;"
 										data-dismiss="modal"
 										ng-click="cCctr.updateData(true,cCctr.entity,'form27EQDeductee')">
@@ -1143,8 +1128,9 @@
 									<button class="pushable lightblack"
 										style="background: hsl(0, 0.7%, 71.2%, 0.53); margin-top: 2%;"
 										data-dismiss="modal">
-										<span class="front lightblackspan" style="background: hsl(240, 0.4%, 48.8%);">Close</span>
-									</button>		
+										<span class="front lightblackspan"
+											style="background: hsl(240, 0.4%, 48.8%);">Close</span>
+									</button>
 								</div>
 							</div>
 						</form>

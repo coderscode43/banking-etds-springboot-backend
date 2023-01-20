@@ -91,6 +91,15 @@
 		visibility: visible;
 	}
 }
+
+.tooltip-top {
+  bottom: 125%;
+ margin-left: -83%;
+}
+.tooltip-top1 {
+  bottom: 125%;
+  margin-left:-91%;
+}
 </style>
 <div id="page-wrapper" ng-init="cCctr.entity=cCctr.getEntityData();">
 	<div class="container-fluid">
@@ -115,18 +124,18 @@
 								
 									
 									
-									<button class="pushable lightblue" ng-hide=(
+									<button class="pushable lightblue tool" ng-hide=(
 										"admin"!="${typeOfUser}"
 										); onclick="test('#profile')"
 										data-toggle="modal" data-target="#edit">
 										<span class="front lightbluespan"
 										><i
-											class="fa fa-edit" aria-hidden="true"></i>&nbsp;&nbsp;Edit</span>
+											class="fa fa-edit" aria-hidden="true"></i>&nbsp;&nbsp;Edit<span class="tooltiptext tooltip-top">Edit Button</span></span>
 									</button>
-									<button class="pushable black"
+									<button class="pushable black tool"
 											ng-click="cCctr.gotoListPage('branch','branch')">
 											<span class="front blackspan"><i
-												class="fa fa-arrow-left" aria-hidden="true"></i> Back</span>
+												class="fa fa-arrow-left" aria-hidden="true"></i> Back<span class="tooltiptext tooltip-top1">Back Button</span></span>
 										</button>	
 										
 										

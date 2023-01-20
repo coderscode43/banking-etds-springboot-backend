@@ -105,6 +105,16 @@
   bottom: 85%;
   margin-left:-6%;
 }
+.tooltip-top4 {
+  bottom: 70%;
+  margin-left:-41%;
+}
+.tooltip-top5 {
+  margin-left: -14%;
+}
+.tooltip-top6 {
+  margin-left: -5%;
+}
 </style>
 <div id="page-wrapper">
 	<div class="container-fluid">
@@ -197,14 +207,11 @@
 									placeholder="Branch State" style="width: 100%">
 					</div>
 					<div class="col-md-3">
-						<button class="btn btn-grad astro-MG2CNCJP " type="button"
+						<button class="btn btn-grad astro-MG2CNCJP tool" type="button"
 							style="margin-top:11%;background-image: linear-gradient(to right, #517fa4 0%, #243949  51%, #517fa4  100%);"
 							ng-click="cCctr.generateExcel('apibranch/generateExcel/','Branch')">Export
-							to Excel</button>
+							to Excel<span class="tooltiptext tooltip-top4">Export Excel Button</span></button>
 					</div>
-
-
-
 
 				</div>
 
@@ -268,17 +275,17 @@
 						<td ng-if="a.verify == 0"><i class="fa fa-times"
 							aria-hidden="true" style="color: #ff0000"></i></td>
 					</div>
-					<td><a
+					<td><a class="tool"
 						ng-click="cCctr.gotoDetailPage('branch',a.id,'DetailsBranch')"
 						style="color: blue"><img src="static\img\edit.png"
 							width="22px" height="22px" alt="Details"
-							style="margin-top: 5px; margin-bottom: 5px;" /></a></td>
+							style="margin-top: 5px; margin-bottom: 5px;" /><span class="tooltiptext tooltip-top6">Edit</span></a></td>
 
 					<td><button
 							ng-click="cCctr.gotoHomePageWOTOFPresentFY(a.branchCode)"
-							class="btn btn-success" onclick="scrollWin()"
+							class="btn btn-success tool" onclick="scrollWin()"
 							style="height: 30px; margin-top: 10px; margin-bottom: 10px; background-color: #0f316d">Work
-							on this</button></td>
+							on this<span class="tooltiptext tooltip-top5">Detail Button</span></button></td>
 				</tr>
 			</tbody>
 

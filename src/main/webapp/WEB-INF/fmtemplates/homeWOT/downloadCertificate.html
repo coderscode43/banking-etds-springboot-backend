@@ -35,16 +35,25 @@
   rgba(0,0,0,0.25), 0 10px 10px
   rgba(0,0,0,0.22);
 }
-
+/*Download button  */
+.tooltip-top {
+ bottom: 125%;
+margin-left: -102%;
+}
+/*Refresh Button  */
+.tooltip-top1 {
+bottom: 84%;
+margin-left: -7%;
+}
 </style>
 
 
 <div id="page-wrapper">
 	<div class="container-fluid">
-	<button class="btn btn-grad astro-MG2CNCJP" data-toggle="modal"
+	<button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
 					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
 					 onClick="refreshPageButton()"><i
-					class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh</button>
+					class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh<span class="tooltiptext tooltip-top1">Refresh Button</span></button>
 <div class="mui-card xl-shadow">
 
 <div id="download-box">
@@ -187,10 +196,10 @@
 								</div>
 								
 									
-								<button class="pushable darkgreen"
+								<button class="pushable darkgreen tool"
 										style="margin-top: 2%;margin-left: 43%"
 										ng-click="downloadCertificateFrom.submitted=true;cCctr.download(downloadCertificateFrom.$valid,'apidownloadCertificate/files/'+cCctr.entity.tan+'/'+cCctr.entity.typeofCertificate+'/'+cCctr.entity.financialYear+'/'+cCctr.entity.quarter+'/'+cCctr.entity.pan)">
-										<span class="front darkgreenspan" style="">Download</span>
+										<span class="front darkgreenspan" style="">Download<span class="tooltiptext tooltip-top">Download Button</span></span>
 									</button>	
 							</form>
 						</div>

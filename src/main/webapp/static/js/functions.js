@@ -9,7 +9,10 @@
 function test(modalID) {
     $(modalID).modal("toggle");
 }
-
+function showProgress(){
+    $('#progressBar').modal("show");
+    $('.modal-header h3').html('Processing...')
+};
 //this fn will close sidebar model on escape
 $(document).keydown(function(event){
 	 if (event.keyCode == 27) { 

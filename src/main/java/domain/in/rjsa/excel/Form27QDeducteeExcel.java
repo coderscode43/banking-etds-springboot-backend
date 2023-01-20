@@ -334,7 +334,7 @@ public class Form27QDeducteeExcel {
 			Sheet sheet = wbs.createSheet(name);
 			Row row0 = sheet.createRow(0);
 
-			for (int i = 0; i < 47	; i++) {
+			for (int i = 0; i < 46	; i++) {
 				row0.createCell(i);
 				row0.getCell(i).setCellStyle(styleMatch1);
 			}

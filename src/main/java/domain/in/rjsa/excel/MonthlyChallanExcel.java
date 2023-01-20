@@ -333,7 +333,7 @@ public class MonthlyChallanExcel {
 			Sheet sheet = wbs.createSheet("MonthlyChallan-1");
 			Row row0 = sheet.createRow(0);
 
-			for (int i = 0; i <6 ; i++) {
+			for (int i = 0; i <8 ; i++) {
 				row0.createCell(i);
 				row0.getCell(i).setCellStyle(styleMatch1);
 			}
@@ -349,6 +349,10 @@ public class MonthlyChallanExcel {
 			row0.getCell(4).setCellValue("Amount As Per Finacle");
 			sheet.setColumnWidth(5, 4000);
 			row0.getCell(5).setCellValue("Amount As Per Tax Calculation");
+			sheet.setColumnWidth(6, 4000);
+			row0.getCell(6).setCellValue("FY");
+			sheet.setColumnWidth(7, 4000);
+			row0.getCell(7).setCellValue("Remarks");
 
 			return sheet;
 	} catch (Exception e) {

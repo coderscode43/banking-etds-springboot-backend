@@ -72,7 +72,8 @@ public class Regular26QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular26QDed
   			criteria.add(Restrictions.eqOrIsNull("warningDescription",  entity.get("warningDescription")));
   		}
           if (entity.get("TAN") != null) {
-   			criteria.add(Restrictions.eqOrIsNull("TAN",  entity.get("TAN")));
+        	  String[] Tan = (entity.get("TAN").toString()).split("-"); 
+   			criteria.add(Restrictions.eqOrIsNull("TAN",  Tan[0]));
    		}
            if (entity.get("roCode") != null) {
    			criteria.add(Restrictions.eqOrIsNull("roCode",  Long.parseLong(entity.get("roCode").toString())));
@@ -137,6 +138,7 @@ public class Regular26QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular26QDed
   			criteria.add(Restrictions.eqOrIsNull("warningDescription",  entity.get("warningDescription")));
   		}
           if (entity.get("TAN") != null) {
+        	  String[] Tan = (entity.get("TAN").toString()).split("-"); 
    			criteria.add(Restrictions.eqOrIsNull("TAN",  entity.get("TAN")));
    		}
            if (entity.get("roCode") != null) {
@@ -218,6 +220,7 @@ public class Regular26QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular26QDed
   			criteria.add(Restrictions.eqOrIsNull("warningDescription",  entity.get("warningDescription")));
   		}
           if (entity.get("TAN") != null) {
+        	  String[] Tan = (entity.get("TAN").toString()).split("-"); 
    			criteria.add(Restrictions.eqOrIsNull("TAN",  entity.get("TAN")));
    		}
            if (entity.get("roCode") != null) {

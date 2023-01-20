@@ -70,6 +70,7 @@ public class Regular27EQDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27EQD
 		}
 
 		if (entity.get("TAN") != null) {
+			 String[] Tan = (entity.get("TAN").toString()).split("-"); 
 			criteria.add(Restrictions.eqOrIsNull("TAN", entity.get("TAN")));
 		}
 		if (entity.get("roCode") != null) {
@@ -133,6 +134,7 @@ public class Regular27EQDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27EQD
 		}
 
 		if (entity.get("TAN") != null) {
+			 String[] Tan = (entity.get("TAN").toString()).split("-"); 
 			criteria.add(Restrictions.eqOrIsNull("TAN", entity.get("TAN")));
 		}
 		if (entity.get("roCode") != null) {
@@ -197,6 +199,7 @@ public class Regular27EQDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27EQD
 		}
 
 		if (entity.get("TAN") != null) {
+			 String[] Tan = (entity.get("TAN").toString()).split("-"); 
 			criteria.add(Restrictions.eqOrIsNull("TAN", entity.get("TAN")));
 		}
 		if (entity.get("roCode") != null) {

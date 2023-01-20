@@ -65,6 +65,7 @@ public class Regular24QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular24QDed
 			criteria.add(Restrictions.eqOrIsNull("resolved", Boolean.valueOf(entity.get("resolved").toString())));
 		}
 		if (entity.get("TAN") != null) {
+			 String[] Tan = (entity.get("TAN").toString()).split("-"); 
 			criteria.add(Restrictions.eqOrIsNull("TAN", entity.get("TAN")));
 		}
 		if (entity.get("roCode") != null) {
@@ -121,6 +122,7 @@ public class Regular24QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular24QDed
 			criteria.add(Restrictions.eqOrIsNull("resolved", Boolean.valueOf(entity.get("resolved").toString())));
 		}
 		if (entity.get("TAN") != null) {
+			 String[] Tan = (entity.get("TAN").toString()).split("-"); 
 			criteria.add(Restrictions.eqOrIsNull("TAN", entity.get("TAN")));
 		}
 		if (entity.get("roCode") != null) {
@@ -181,6 +183,7 @@ public class Regular24QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular24QDed
 			criteria.add(Restrictions.eqOrIsNull("resolved", Boolean.valueOf(entity.get("resolved").toString())));
 		}
 		if (entity.get("TAN") != null) {
+			 String[] Tan = (entity.get("TAN").toString()).split("-"); 
 			criteria.add(Restrictions.eqOrIsNull("TAN", entity.get("TAN")));
 		}
 		if (entity.get("roCode") != null) {

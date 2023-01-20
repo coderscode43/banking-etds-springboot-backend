@@ -93,6 +93,16 @@ public class MonthlyChallanServiceImpl extends AbstractServiceFY<Long, MonthlyCh
 				} else {
 					details.createCell(5).setCellValue(monthChallan.getAmtAsPerTaxCalculation());
 				}
+				if (monthChallan.getFy() == null) {
+					details.createCell(6).setCellValue(" ");
+				} else {
+					details.createCell(6).setCellValue(monthChallan.getFy());
+				}
+				if (monthChallan.getRemarks() == null) {
+					details.createCell(7).setCellValue(" ");
+				} else {
+					details.createCell(7).setCellValue(monthChallan.getRemarks());
+				}
 				if (row > 1000000) {
 					part++;
 					wb = monthlyChallanExcel.getWorkbook();

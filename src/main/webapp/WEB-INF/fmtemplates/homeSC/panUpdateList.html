@@ -150,14 +150,36 @@ td .autoResize {
 	overflow: auto;
 	display: block 
 }
+
+/*Refresh Button*/
+.tooltip-top {
+  bottom: 85%;
+  margin-left:-6%;
+}
+/*Search Button*/
+.tooltip-top1 {
+  bottom: 125%;
+  margin-left:-22%;
+}
+/*Advanced Search Button*/
+.tooltip-top2 {
+  bottom: 125%;
+  margin-left:-41%;
+}
+/*Export to Excel*/
+.tooltip-top3 {
+  bottom: 95%;
+  margin-left:-40%;
+}
+
 </style>
 
 <div id="page-wrapper" ng-controller="CommonController as cCctr">
 	<div class="container-fluid">
-	<button class="btn btn-grad astro-MG2CNCJP" data-toggle="modal"
+	<button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
 					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
 						 onClick="refreshPageButton()"><i
-						class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh</button>
+						class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh<span class="tooltiptext tooltip-top">Refresh Button</span></button>
 		<div class="col-md-12 "
 			style="padding-left: 0px; font-size: 12px; margin-top: 2%">
 			<div class="heading">
@@ -208,40 +230,51 @@ td .autoResize {
 					</div>
 					<div class="col-md-3">
 						<h6>
-							<b>FY</b>
-							<h6>
-								<input type="text" ng-model="cCctr.search.fy"
-									class="form-control" placeholder="FY"
-									style="width: 100%">
+						<b>Financial Year</b>
+					</h6>
+					<select ng-model="cCctr.search.fy" style="width: 100%"
+						class="form-control">
+						<option disabled value="">Select financial Year</option>
+						<#list financialYear as year>
+						<option value="${year}">${year}</option>
+						</#list>
+					</select>
 					</div>
 					<div class="col-md-3">
 						<h6>
-							<b>Month</b>
-							<h6>
-								<input type="text" ng-model="cCctr.search.month"
-									class="form-control" placeholder="Month"
-									style="width: 100%">
+						<b>Month</b>
+					</h6>
+					<select ng-model="cCctr.search.month" style="width: 100%"
+						class="form-control">
+						<option disabled value="">Select Month</option>
+						<#list Month as month>
+						<option value="${month}">${month}</option>
+						</#list>
+					</select>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-3">
-						<button class="btn btn-grad astro-MG2CNCJP " type="button" style="margin-top:6%;background-image: linear-gradient(to right, #517fa4 0%, #243949  51%, #517fa4  100%);"
-							ng-click="cCctr.generateExcel('apipanUpdateList/generateExcel/','panUpdateList')">Export to Excel</button>
+						<button class="btn btn-grad astro-MG2CNCJP tool" type="button" style="margin-top:6%;background-image: linear-gradient(to right, #517fa4 0%, #243949  51%, #517fa4  100%);"
+							ng-click="cCctr.generateExcel('apipanUpdateList/generateExcel/','panUpdateList')">Export to Excel
+							<span class="tooltiptext tooltip-top3">Export to Excel</span></button>
 					</div>
 
 				</div>
 
 			</div>
 			<div class="row text-right" id="hide">
-				<div class="col-md-4" style="margin-left: 70%; margin-top: -35px">
+				<div class="col-md-4" style="margin-left: 67%; margin-top: -35px">
 					<button ng-click="cCctr.searchEntities(true,'panUpdateList')"
-						class="btn btn-grad astro-MG2CNCJP" onclick="scrollWin()" style="background-image: linear-gradient(to right, #093028 0%, #237A57  51%, #093028  100%)"><i class="fa fa-search" aria-hidden="true"></i>
-						Search</button>
-					<button class="btn btn-grad astro-MG2CNCJP"
+						class="btn btn-grad astro-MG2CNCJP tool" onclick="scrollWin()" style="background-image: linear-gradient(to right, #093028 0%, #237A57  51%, #093028  100%)"><i class="fa fa-search" aria-hidden="true"></i>
+						Search<span class="tooltiptext tooltip-top1">Search Button</span></button>
+						
+					<button class="btn btn-grad astro-MG2CNCJP tool"
 						style="background-image: linear-gradient(to right, #F09819 0%, #EDDE5D 51%, #F09819 100%)" data-toggle="collapse"
 						data-target="#collapseExample4" aria-expanded="false"
 						aria-controls="collapseExample"><i
-											class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;Advance Search</button>
+											class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;Advance Search
+											<span class="tooltiptext tooltip-top2">Advanced Search Button</span></button>
 				</div>
 			</div>
 		</div>

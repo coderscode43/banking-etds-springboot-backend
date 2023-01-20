@@ -31,15 +31,44 @@ th {
 	color: #fff;
 	text-decoration: none;
 }
+/*Refresh Button*/
+.tooltip-top {
+  bottom: 84%;
+  margin-left:-6%;
+}
+/*Search Button*/
+.tooltip-top1 {
+  bottom: 125%;
+  margin-left:-22%;
+}
+/*Advanced Search Button*/
+.tooltip-top2 {
+  bottom: 125%;
+  margin-left:-42%;
+}
+/*Add Button*/
+.tooltip-top3 {
+  bottom: 125%;
+  margin-left:-15%;
+}
+/*Export to Excel Button*/
+.tooltip-top4 {
+bottom: 85%;
+margin-left: -43%;
+}
+/*Delete*/
+.tooltip-top5 {
+ margin-left:-6%;
+}
 </style>
 
 </head>
 <body>
 	<div class="container-fluid">
-	<button class="btn btn-grad astro-MG2CNCJP" data-toggle="modal"
+	<button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
 					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
 						 onClick="refreshPageButton()"><i
-						class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh</button>
+						class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh<span class="tooltiptext tooltip-top">Refresh Button</span></button>
 
 		<div class="col-md-12 "
 			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
@@ -59,17 +88,17 @@ th {
 				<div class="col-md-4" style="margin-top: 0%">
 					<button ng-click="cCctr.searchEntities(true,'userDetails')"
 					style="background-image: linear-gradient(to right, #093028 0%, #237A57  51%, #093028  100%)"
-						class="btn btn-grad astro-MG2CNCJP" onclick="scrollWin()"><i class="fa fa-search" aria-hidden="true"></i>
-						Search</button>
+						class="btn btn-grad astro-MG2CNCJP tool" onclick="scrollWin()"><i class="fa fa-search" aria-hidden="true"></i>
+						Search<span class="tooltiptext tooltip-top1">Search Button</span></button>
 						
-					<button class="btn btn-grad astro-MG2CNCJP"
+					<button class="btn btn-grad astro-MG2CNCJP tool"
 						style="background-image: linear-gradient(to right, #F09819 0%, #EDDE5D 51%, #F09819 100%);" data-toggle="collapse"
 						data-target="#collapseExample4" aria-expanded="false"
 						aria-controls="collapseExample"><i
-											class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;Advance Search</button>
-					<button class="btn btn-grad astro-MG2CNCJP" data-toggle="modal" style="background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA  51%, #1FA2FF  100%)"
+											class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;Advance Search<span class="tooltiptext tooltip-top2">Advanced Search Button</span></button>
+					<button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal" style="background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA  51%, #1FA2FF  100%)"
 						ng-click="cCctr.gotoListPage('addUserDetails','addUserDetails');"><i
-											class="fa fa-plus" aria-hidden="true"></i>&nbsp;Add</button>
+											class="fa fa-plus" aria-hidden="true"></i>&nbsp;Add<span class="tooltiptext tooltip-top3">Add Button</span></button>
 				</div>
 			</div>
 			<div class="col-md-12 collapse  panel-collapse "
@@ -85,10 +114,10 @@ th {
 						</select>
 					</div>
 					<div class="col-md-3">
-						<button class="btn btn-grad astro-MG2CNCJP " type="button"
+						<button class="btn btn-grad astro-MG2CNCJP tool" type="button"
 							style="margin-top:7%;background-image: linear-gradient(to right, #517fa4 0%, #243949  51%, #517fa4  100%);"
 							ng-click="cCctr.generateExcel('apiuserDetails/generateExcel/','UserDetails')">Export
-							to Excel</button>
+							to Excel<span class="tooltiptext tooltip-top4">Export to Excel</span></button>
 					</div>
 				</div>
 			</div>
@@ -123,10 +152,11 @@ th {
 							<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
 							<td>{{a.employeeId}}</td>
 							<td>{{a.typeOfUser}}</td>
-							<td><button type="button" class="btn btn-md btn-primary"
+							<td><button type="button" class="btn btn-md btn-primary tool"
 									href="#myModal" data-toggle="modal"
 									ng-click="cCctr.delete=a.employeeId">
-									<i class="fa fa-trash" aria-hidden="true"></i>
+									<i class="fa fa-trash" aria-hidden="true">
+									<span class="tooltiptext tooltip-top5">Delete</span></i>
 								</button></td>
 						</tr>
 					</tbody>

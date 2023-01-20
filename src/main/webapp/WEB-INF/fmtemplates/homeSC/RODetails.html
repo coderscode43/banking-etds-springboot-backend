@@ -100,14 +100,45 @@ td .autoResize {
 	overflow: auto;
 	display: block 
 }
+
+/*Refresh Button*/
+.tooltip-top {
+  bottom: 85%;
+  margin-left:-6%;
+}
+/*Search Button*/
+.tooltip-top1 {
+  bottom: 77%;
+  margin-left:-6%;
+}
+/*Advanced Search Button*/
+.tooltip-top2 {
+  bottom: 77%;
+  margin-left:-11%;
+}
+/*Add RO Button*/
+.tooltip-top3 {
+  bottom: 77%;
+  margin-left:-6%;
+}
+/*Export to Excel Button*/
+.tooltip-top4 {
+ bottom: 85%;
+  margin-left:-41%;
+}
+/*Detail*/
+.tooltip-top5 {
+ margin-left:-6%;
+}
+
 </style>
 
 <div id="page-wrapper">
 	<div class="container-fluid">
-	<button class="btn btn-grad astro-MG2CNCJP" data-toggle="modal"
+	<button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
 					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
 						 onClick="refreshPageButton()"><i
-						class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh</button>
+						class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh<span class="tooltiptext tooltip-top">Refresh Button</span></button>
 		<div class="col-md-12 "
 			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
 			<div class="heading">
@@ -183,10 +214,10 @@ td .autoResize {
 									style="width: 100%">
 					</div>
 					<div class="col-md-3">
-						<button class="btn btn-grad astro-MG2CNCJP " type="button"
+						<button class="btn btn-grad astro-MG2CNCJP tool" type="button"
 							style="margin-top: 11%;background-image: linear-gradient(to right, #517fa4 0%, #243949  51%, #517fa4  100%);"
 							ng-click="cCctr.generateExcel('apiRODetails/generateExcel/','RODetails')">Export
-							to Excel</button>
+							to Excel<span class="tooltiptext tooltip-top4">Export to Excel</span></button>
 					</div>
 
 				</div>
@@ -194,22 +225,23 @@ td .autoResize {
 			<div class="text-right" style="margin-top: -33px">
 				<button
 					ng-click="cCctr.searchEntities(true,'RODetails','RODetails')"
-					class="btn btn-grad astro-MG2CNCJP"
+					class="btn btn-grad astro-MG2CNCJP tool"
 					style="background-image: linear-gradient(to right, #093028 0%, #237A57  51%, #093028  100%)"><i class="fa fa-search" aria-hidden="true"></i>
-					Search</button>
+					Search<span class="tooltiptext tooltip-top1">Search Button</span></button>
 					
 					
-				<button class="btn btn-grad astro-MG2CNCJP" style="background-color: #FFA500; margin-left: 8px;background-image: linear-gradient(to right, #F09819 0%, #EDDE5D 51%, #F09819 100%)"
+				<button class="btn btn-grad astro-MG2CNCJP tool" style="background-color: #FFA500; margin-left: 8px;background-image: linear-gradient(to right, #F09819 0%, #EDDE5D 51%, #F09819 100%)"
 					data-toggle="collapse" data-target="#collapseExample4"
 					aria-expanded="false" aria-controls="collapseExample"><i
 											class="fa fa-search" aria-hidden="true"></i>&nbsp;Advance
-					Search</button>
+					Search<span class="tooltiptext tooltip-top2">Advanced Search Button</span></button>
 				<!--  <button class="btn btn-Primary" data-toggle="modal"
 					ng-click="cCctr.gotoListPage('addRODetails','addRODetails');">Add
 				 </button> -->
-				<button class="btn btn-grad astro-MG2CNCJP" data-toggle="modal" style="background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA  51%, #1FA2FF  100%)"
+				<button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal" style="background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA  51%, #1FA2FF  100%)"
 					ng-click="cCctr.gotoAddPage('addRODetails')"><i
-											class="fa fa-plus" aria-hidden="true"></i>&nbsp;Add RO</button>
+											class="fa fa-plus" aria-hidden="true"></i>&nbsp;Add RO
+											<span class="tooltiptext tooltip-top3">Add RO</span></button>
 			</div>
 
 			<div class="row" id="hide">
@@ -276,10 +308,12 @@ td .autoResize {
 									aria-hidden="true" style="color: #ff0000"></i></td>
 							</div>
 							<td><a
+							class="tool"
 								ng-click="cCctr.gotoDetailPage('RODetails',a.id,'UpdateRODetails')"
 								style="color: blue"><img src="static\img\edit.png"
 									width="22px" height="22px" alt="Details"
-									style="margin-top: 5px; margin-bottom: 5px;" /></a></td>
+									style="margin-top: 5px; margin-bottom: 5px;" />
+									<span class="tooltiptext tooltip-top5">Detail</span></a></td>
 
 
 

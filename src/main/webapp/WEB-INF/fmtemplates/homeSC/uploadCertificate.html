@@ -57,14 +57,36 @@ td .autoResize {
 	overflow: auto;
 	display: block 
 }
+
+/*Refresh Button*/
+.tooltip-top {
+  bottom: 85%;
+  margin-left:-6%;
+}
+/*Search Button*/
+.tooltip-top1 {
+  bottom: 115%;
+  margin-left:-23%;
+}
+/*Upload Certificate Button*/
+.tooltip-top2 {
+  bottom: 115%;
+  margin-left:-38%;
+}
+/*Export to Excel Button*/
+.tooltip-top3 {
+ bottom: 115%;
+  margin-left:-31%;
+}
+
 </style>
 
 <div id="page-wrapper" ng-controller="CommonController as cCctr">
 	<div class="container-fluid">
-	<button class="btn btn-grad astro-MG2CNCJP" data-toggle="modal"
+	<button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
 					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
 						 onClick="refreshPageButton()"><i
-						class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh</button>
+						class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh<span class="tooltiptext tooltip-top">Refresh Button</span></button>
 		<div class="col-md-12 "
 			style="padding-left: 0px; font-size: 12px; margin-top: 2%">
 			<div class="heading">
@@ -102,13 +124,13 @@ td .autoResize {
 				</div>
 				<div class="col-md-2">
 					<h6>
-						<b>Form</b>
+						<b>Certificate</b>
 					</h6>
 					<select ng-model="cCctr.search.form"
 						class="form-control" required>
-						<option disabled value="">Select Form</option>
-						<#list Form as f>
-						<option value="${f}">${f}</option>
+						<option disabled value="">Select Certificate</option>
+						<#list typeOfCertificate as Certificate>
+						<option value="${Certificate}">${Certificate}</option>
 						</#list>
 					</select>
 				</div>
@@ -118,19 +140,20 @@ td .autoResize {
 	<div class="row text-right" id="hide">
 				<div class="col-md-4" style="margin-left: 60%; margin-top: -45px;display:ruby">
 					<button ng-click="cCctr.searchEntities(true,'uploadCertificate','uploadCertificate')"
-						class="btn btn-grad astro-MG2CNCJP"
+						class="btn btn-grad astro-MG2CNCJP tool"
 						style="padding: 6px 9px; background-image: linear-gradient(to right, #093028 0%, #237A57 51%, #093028 100%)"
 						onclick="scrollWin()">
 						<i class="fa fa-search" aria-hidden="true"></i> Search
+						<span class="tooltiptext tooltip-top1">Search Button</span>
 					</button>
 					<button  data-toggle="modal" data-target="#myModal"  style="background-image: linear-gradient(to right, #F09819 0%, #EDDE5D 51%, #F09819 100%);"
-						class="btn btn-grad astro-MG2CNCJP">
-						Upload Certificate</button>
+						class="btn btn-grad astro-MG2CNCJP tool">
+						Upload Certificate<span class="tooltiptext tooltip-top2">Upload Certificate Button</span></button>
 					
-						<button class="btn btn-grad astro-MG2CNCJP " type="button"
+						<button class="btn btn-grad astro-MG2CNCJP tool" type="button"
 							style=" background-image: linear-gradient(to right, #517fa4 0%, #243949 51%, #517fa4 100%);"
 							ng-click="cCctr.generateExcel('apiuploadCertificate/generateExcel/','uploadCertificate')">Export
-							to Excel</button>
+							to Excel<span class="tooltiptext tooltip-top3">Export to Excel</span></button>
 					<div class="text-right"></div>
 				</div>
 			</div>
@@ -277,7 +300,7 @@ td .autoResize {
 									<div class="col-md-12">
 										<div class="form-group">
 											<label style="font-size: 15px">Type of Certificate*</label> <select
-												name="form" id="form"
+												name="typeofCertificate" id="typeofCertificate"
 												class="form-control"
 												ng-model="cCctr.entity.form" ng-required="true"
 												ng-model-options="{updateOn: 'blur'}">
@@ -287,9 +310,9 @@ td .autoResize {
 												<option value="${Certificate}">${Certificate}</option>
 												</#list>
 											</select> <span style="color: red"
-												ng-show="downloadCertificateFrom.submitted ||downloadCertificateFrom.typeofCertificate.$dirty && downloadCertificateFrom.typeofCertificate.$invalid">
+												ng-show="certificateDetails.submitted ||certificateDetails.typeofCertificate.$dirty && certificateDetails.typeofCertificate.$invalid">
 												<span class="error"
-												ng-show="downloadCertificateFrom.typeofCertificate.$error.required">Type
+												ng-show="certificateDetails.typeofCertificate.$error.required">Type
 													of Certificate is Required.</span>
 											</span>
 										</div>
@@ -406,7 +429,7 @@ td .autoResize {
 
 			<div class="modal-footer">
 			<button class="pushable darkgreen"
-							ng-click="certificateDetails.submitted=true;cCctr.saveDocument(certificateDetails.$valid,cCctr.entity,'uploadCertificate')">
+							ng-click="certificateDetails.submitted=true;cCctr.saveDocument(certificateDetails.$valid,cCctr.entity,'uploadCertificate','close')">
 							<span class="front darkgreenspan"> Add</span>
 						</button>
 						<button class="pushable darkred" 
@@ -419,3 +442,24 @@ td .autoResize {
 
 	</div>
 </div>
+<a id="viewProgressBar" onclick="test('#progressBar')"> </a> <a
+		id="viewFileClick" onclick="test('#viewFile')"> </a> <a
+		id="noviewFileClick" onclick="test('#noviewFile')"> </a>
+	<div id="progressBar" class="modal fade" data-backdrop="static"
+		data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true"
+		style="padding-top: 15%; overflow-y: visible;">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 style="margin: 0;">Uploading...</h3>
+				</div>
+				<div class="modal-body">
+					<div class="progress progress-striped active"
+						style="margin-bottom: 0;">
+						<div class="progress-bar progress-bar-success" style="width: 100%">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

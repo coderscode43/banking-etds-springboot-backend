@@ -73,13 +73,45 @@
 	color: #fff;
 	text-decoration: none;
 }
+
+.tool .tooltiptext {
+    visibility: hidden;
+    font-size: small;
+    width: auto;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+}
+.tool:hover .tooltiptext {
+    visibility: visible;
+}
+.tooltip-top {
+  bottom: 125%;
+  margin-left:-22%;
+}
+.tooltip-top1 {
+  bottom: 125%;
+  margin-left:-38%;
+}
+.tooltip-top2 {
+  bottom: 125%;
+  margin-left:-30%;
+}
+.tooltip-top3 {
+  bottom: 85%;
+  margin-left:-6%;
+}
 </style>
 <div id="page-wrapper">
 	<div class="container-fluid">
-	<button class="btn btn-grad astro-MG2CNCJP" data-toggle="modal"
+	<button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
 					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
 						 onClick="refreshPageButton()"><i
-						class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh</button>
+						class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh<span class="tooltiptext tooltip-top3">Refresh Button</span></button>
 		<div class="col-md-12 "
 			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
 			<div class="heading">
@@ -111,20 +143,20 @@
 									<div style="display:ruby">
 										<button
 											ng-click="cCctr.searchEntities(true,'branch','branch')"
-											class="btn btn-grad astro-MG2CNCJP"
+											class="btn btn-grad astro-MG2CNCJP tool"
 											style="background-image: linear-gradient(to right, #093028 0%, #237A57  51%, #093028  100%)"><i class="fa fa-search" aria-hidden="true"></i>
-											Search</button>
+											Search<span class="tooltiptext tooltip-top">Search Button</span> </button>
 											
-										<button class="btn btn-grad astro-MG2CNCJP"
+										<button class="btn btn-grad astro-MG2CNCJP tool"
 											style="background-image: linear-gradient(to right, #F09819 0%, #EDDE5D 51%, #F09819 100%)" data-toggle="collapse"
 											data-target="#collapseExample4" aria-expanded="false"
 											aria-controls="collapseExample"><i
-											class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;Advance Search</button>
+											class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;Advance Search<span class="tooltiptext tooltip-top1">Advance Search Button</span></button>
 											
-										<button class="btn btn-grad astro-MG2CNCJP" data-toggle="modal" style="background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA  51%, #1FA2FF  100%)"
+										<button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal" style="background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA  51%, #1FA2FF  100%)"
 											ng-click="cCctr.gotoAddPage('addBranch')"
 											ng-hide=("admin"!="${typeOfUser}");><i class="fa fa-plus"></i>&nbsp;&nbsp;Add
-											Branch</button>
+											Branch<span class="tooltiptext tooltip-top2">Add Branch Button</span></button>
 									</div>
 								</div>
 							</div>

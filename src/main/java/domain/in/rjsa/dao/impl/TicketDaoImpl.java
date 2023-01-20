@@ -186,7 +186,7 @@ public class TicketDaoImpl extends AbstractDaoForm<Long, Ticket> implements Tick
 	public List<Ticket> searchExcel(HashMap entity) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
-	//	entity.remove("fy");
+		entity.remove("fy");
 		if (entity.get("branchId") != null) {
 			criteria.add(Restrictions.eqOrIsNull("branchId", entity.get("branchId")));
 		}

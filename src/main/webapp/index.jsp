@@ -41,7 +41,7 @@
 <body style="width:100%">
 
     
-   <div ng-http-loader methods="['GET']" ttl="1" id="example/loader" style="position: fixed;
+   <div ng-http-loader methods="['GET']" ttl="4" id="example/loader" style="position: fixed;
   left: 50%;
   top: 40%;z-index:9999"
 		template="index/example-loader.tpl"></div>

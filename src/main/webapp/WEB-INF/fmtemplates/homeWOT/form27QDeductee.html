@@ -83,6 +83,38 @@ th {
 	color: #fff;
 	text-decoration: none;
 }
+
+/*Refresh Button  */
+.tooltip-top {
+ bottom: 83%;
+  margin-left:-7%;
+}
+/*Search Button  */
+.tooltip-top1 {
+ bottom: 116%;
+margin-left: -30%;
+}
+/*Advance Search Button  */
+.tooltip-top2 {
+ bottom: 116%;
+margin-left: -57%;
+}
+/*Export to Excel Button  */
+.tooltip-top3 {
+ bottom: 63%;
+margin-left: -47%;
+}
+/*Table Coloumn Button */
+.tooltip-top4{
+ bottom: 116%;
+margin-left: -47%;
+}
+
+/*Detail Page Button */
+.tooltip-top5{
+margin-left: -6%;
+}
+
 </style>
 
 
@@ -90,10 +122,10 @@ th {
 
 <div id="page-wrapper" ng-controller="CommonWOTController as cWctr">
 	<div class="container-fluid">
-	<button class="btn btn-grad astro-MG2CNCJP" data-toggle="modal"
+	<button class="removeAll btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
 					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
 					 onClick="refreshPageButton()"><i
-					class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh</button>
+					class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh<span class="tooltiptext tooltip-top">Refresh Button</span></button>
 		<div class="col-md-12 "
 			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
 			<div class="heading">
@@ -246,9 +278,9 @@ th {
 								</select>
 					</div>
 					<div class="col-md-3">
-						<button class="btn btn-grad astro-MG2CNCJP " type="button" style="margin-top: 11%;background-image: linear-gradient(to right, #517fa4 0%, #243949  51%, #517fa4  100%);"
+						<button class="btn btn-grad astro-MG2CNCJP tool" type="button" style="margin-top: 15%;margin-left: -9%;background-image: linear-gradient(to right, #517fa4 0%, #243949  51%, #517fa4  100%);"
 							ng-click="cCctr.generateProcessExcel('apiform27QDeductee/generateExcel/','regular27QDeductee')">Export
-							to Excel</button>
+							to Excel<span class="tooltiptext tooltip-top3">Export Excel Button</span></button>
 					</div>
 				</div>
 
@@ -257,24 +289,24 @@ th {
 
 			</div>
 			<div class="row text-right" id="hide">
-				<div class="col-md-3" style="margin-left:64%; margin-top: -45px;display:ruby">
+				<div class="col-md-3" style="margin-left:60%; margin-top: -45px;display:ruby">
 					<button
 						ng-click="cCctr.searchFYEntities(true,'form27QDeductee','form27QDeductee')"
 						style="background-image: linear-gradient(to right, #093028 0%, #237A57  51%, #093028  100%)"
-						class="btn btn-grad astro-MG2CNCJP" onclick="scrollWin()"><i class="fa fa-search" aria-hidden="true"></i>
-						Search</button>
+						class="btn btn-grad astro-MG2CNCJP tool" onclick="scrollWin()"><i class="fa fa-search" aria-hidden="true"></i>
+						Search<span class="tooltiptext tooltip-top1">Search Button</span></button>
 						
-					<button class="btn btn-grad astro-MG2CNCJP" style="background-image: linear-gradient(to right, #F09819 0%, #EDDE5D 51%, #F09819 100%)"
+					<button class="btn btn-grad astro-MG2CNCJP tool" style="background-image: linear-gradient(to right, #F09819 0%, #EDDE5D 51%, #F09819 100%)"
 						data-toggle="collapse" data-target="#collapseExample4"
 						aria-expanded="false" aria-controls="collapseExample">
 						<i
-											class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;Advance Search</button>
+											class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;Advance Search<span class="tooltiptext tooltip-top2">Advance Search Button</span></button>
 
-					<button class="btn btn-grad astro-MG2CNCJP advsearchbtn"style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);color:#fff;"
+					<button class="btn btn-grad astro-MG2CNCJP advsearchbtn tool"style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);color:#fff;"
 						data-color1="#F09819" data-color2="#EDDE5D;"
 						data-toggle="collapse" data-target="#checkList"
 						aria-expanded="false" aria-controls="collapseExample">
-						</i>&nbsp;Table Column <i class="fa fa-angle-down" aria-hidden="true"></i></button>	
+						</i>&nbsp;Table Column <span class="tooltiptext tooltip-top4">Table Column Button</span><i class="fa fa-angle-down" aria-hidden="true"></i></button>	
 					
 					
 					<!--  <button class="btn btn-Primary" data-toggle="modal"
@@ -360,8 +392,7 @@ th {
     
     <td><input type="checkbox" name="address">address</td>
      <td><input type="checkbox" name="taxIdentification">taxIdentification </td>
-    <td><input type="checkbox" name="errorDesc">errorDesc</td>
-    <td><input type="checkbox" name="warningDesc">warningDesc</td>
+   
     <td><input type="checkbox" name="ShortDeduction">ShortDeduction</td>
     <td><input type="checkbox" name="InterestOnShortDeduction">InterestOnShortDeduction</td>
   </tr>
@@ -418,8 +449,8 @@ th {
 						<th class="hideClass contactNo"><div class="autoResize">Contact Number of Deductee</div></th>
 						<th class="hideClass address"><div class="autoResize">Address of Deductee in Country of Residence</div></th>
 						<th class="hideClass taxIdentification"><div class="autoResize">Tax Identification Number</div></th>
-						<th class="hideClass errorDesc"><div class="autoResize">Error Description</div></th>
-						<th class="hideClass warningDesc"><div class="autoResize">Warning Description</div></th>
+						<th class=" errorDesc"><div class="autoResize">Error Description</div></th>
+						<th class=" warningDesc"><div class="autoResize">Warning Description</div></th>
 						<th class="hideClass ShortDeduction"><div class="autoResize">Short Deduction</div></th>
 						<th class="hideClass InterestOnShortDeduction"><div class="autoResize">Interest on Short Deduction</div></th>
 						<th class="hideClass InterestOnLatePayment"><div class="autoResize">Interest on Late Payment</div></th>
@@ -568,14 +599,14 @@ th {
 						<td class="hideClass taxIdentification" style="width: 2%; background-color:#ff3232" ng-if="a.resolved == 1">{{a.taxIdentificationNo}}</td>
 						
 						
-						<td class="ellipsis hideClass errorDesc" data-toggle="tooltip" ng-if="a.resolved == 0"
+						<td class="ellipsis  errorDesc" data-toggle="tooltip" ng-if="a.resolved == 0"
 							data-placement="bottom" title="{{a.errorDescription}}">{{a.errorDescription}}</td>
-						<td class="ellipsis hideClass errorDesc" data-toggle="tooltip" ng-if="a.resolved == 1" style="background-color:#ff3232"
+						<td class="ellipsis  errorDesc" data-toggle="tooltip" ng-if="a.resolved == 1" style="background-color:#ff3232"
 							data-placement="bottom" title="{{a.errorDescription}}">{{a.errorDescription}}</td>
 								
-						<td class="ellipsis hideClass warningDesc" data-toggle="tooltip" ng-if="a.resolved == 0"
+						<td class="ellipsis  warningDesc" data-toggle="tooltip" ng-if="a.resolved == 0"
 							data-placement="bottom" title="{{a.warningDescription}}">{{a.warningDescription}}</td>
-						<td class="ellipsis hideClass warningDesc" data-toggle="tooltip" ng-if="a.resolved == 1" style="background-color:#ff3232"
+						<td class="ellipsis  warningDesc" data-toggle="tooltip" ng-if="a.resolved == 1" style="background-color:#ff3232"
 							data-placement="bottom" title="{{a.warningDescription}}">{{a.warningDescription}}</td>
 								
 						<td class=" ShortDeduction" data-toggle="tooltip" ng-if="a.resolved == 0"
@@ -609,11 +640,11 @@ th {
 						<td ng-if="a.verify == 0"><i class="fa fa-times"
 							aria-hidden="true" style="color: #ff0000"></i></td>
 					</div> -->
-						<td ><a
+						<td ><a class="tool"
 							ng-click="cCctr.gotoWFYDetailPage('form27QDeductee',a.id,'detailForm27QDeductee')"
 							style="color: blue" onclick="scrollWin()"><img
 								src="static\img\edit.png" width="22px" height="22px"
-								alt="Details" style="margin-top: 5px; margin-bottom: 5px;" /></a></td>
+								alt="Details" style="margin-top: 5px; margin-bottom: 5px;" /><span class="tooltiptext tooltip-top5">Detail</span></a></td>
 						<!-- <td>{{a.total-a.amountPaid}}</td> -->
 					</tr>
 				<tr>
@@ -640,8 +671,8 @@ th {
 							<td class="hideClass contactNo"></td>
 							<td class="hideClass address"></td>
 							<td class="hideClass taxIdentification"></td>
-							<td class="hideClass errorDesc"></td>
-							<td class="hideClass warningDesc"></td>
+							<td class=" errorDesc"></td>
+							<td class=" warningDesc"></td>
 							<td class="hideClass ShortDeduction"><b>{{filteredList | sumByKey:'ShortDeduction' 	| number : fractionSize}}</b></td>
 							<td class="hideClass InterestOnShortDeduction" ><b>{{filteredList 	| sumByKey:'InterestOnShortDeduction' | number : fractionSize}}</b></td>
 							<td class="hideClass InterestOnLatePayment"><b>{{ttl=(filteredList | sumByKey:'InterestOnLatePayment'	| number : fractionSize)}}</b></td>

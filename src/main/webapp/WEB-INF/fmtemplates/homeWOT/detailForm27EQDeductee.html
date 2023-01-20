@@ -100,6 +100,31 @@
 	outline-offset: 4px;
 	margin-top: 2%;
 }
+/*Add Remark Button  */
+.tooltip-top {
+ bottom: 116%;
+margin-left: -89%;
+}
+/*Edit Button  */
+.tooltip-top1 {
+ bottom: 116%;
+margin-left: -85%;
+}
+/*Resolved Button  */
+.tooltip-top2 {
+ bottom: 116%;
+margin-left: -90%;
+}
+/*Reject Button  */
+.tooltip-top3 {
+ bottom: 116%;
+margin-left: -86%;
+}
+/*Back Button */
+.tooltip-top4{
+ bottom: 116%;
+margin-left:-93%;
+}
 </style>
 
 <div id="page-warapper"
@@ -350,16 +375,16 @@
 								ng-model="cCctr.newEntity.branchCode = cCctr.entity.branchCode"
 								id="branchCode" name="branchCode" style="display: none">
 
-							<button class="pushable darkblue" style="margin-left: 43%;"
+							<button class="pushable darkblue tool" style="margin-left: 43%;"
 								data-target="#myModal" data-toggle="modal">
 								<span class="front darkbluespan"><i class="fa fa-plus"
-									aria-hidden="true"></i> Add Remark</span>
+									aria-hidden="true"></i> Add Remark<span class="tooltiptext tooltip-top">Add Remark Button</span></span>
 							</button>
 
-							<button class="pushable lightblue" data-toggle="modal"
+							<button class="pushable lightblue tool" data-toggle="modal"
 								data-target="#edit">
 								<span class="front lightbluespan"><i class="fa fa-edit"
-									aria-hidden="true"></i>&nbsp;&nbsp;Edit</span>
+									aria-hidden="true"></i>&nbsp;&nbsp;Edit<span class="tooltiptext tooltip-top1">Edit Button</span></span>
 							</button>
 
 
@@ -368,10 +393,10 @@
 								"admin"!="${typeOfUser}"
 								);
 									style="margin: -3.8% 0 0% 60.6%">
-								<button class="pushable darkgreen" data-toggle="modal"
+								<button class="pushable darkgreen tool" data-toggle="modal"
 									data-target="#resolveModal">
 									<span class="front darkgreenspan"><i
-										class="fa fa-thumbs-up" aria-hidden="true"></i> Resolved</span>
+										class="fa fa-thumbs-up" aria-hidden="true"></i> Resolved<span class="tooltiptext tooltip-top2">Resolved Button</span></span>
 								</button>
 							</div>
 							<div ng-if="cCctr.entity.resolved == 0" ng-hide=(
@@ -389,10 +414,10 @@
 								"admin"!="${typeOfUser}"
 								);
 									style="margin: -3.6% 0 0% 69.8%">
-								<button class="pushable darkred" data-toggle="modal"
+								<button class="pushable darkred tool" data-toggle="modal"
 									data-target="#rejectModal">
 									<span class="front darkredspan"><i
-										class="fa fa-thumbs-down" aria-hidden="true"></i> Reject</span>
+										class="fa fa-thumbs-down" aria-hidden="true"></i> Reject<span class="tooltiptext tooltip-top3">Reject Button</span></span>
 								</button>
 							</div>
 							<div ng-if="cCctr.entity.resolved == 0" ng-hide=(
@@ -407,10 +432,10 @@
 							</div>
 
 							<div style="margin: -3.4% 0 0% 77.6%">
-								<button class="pushable black"
+								<button class="pushable black tool"
 									ng-click="cCctr.gotoWFYListPage('form27EQDeductee','form27EQDeductee')">
 									<span class="front blackspan"><i
-										class="fa fa-arrow-left" aria-hidden="true"></i> Back</span>
+										class="fa fa-arrow-left" aria-hidden="true"></i>Back<span class="tooltiptext tooltip-top4">Back Button</span></span>
 								</button>
 							</div>
 

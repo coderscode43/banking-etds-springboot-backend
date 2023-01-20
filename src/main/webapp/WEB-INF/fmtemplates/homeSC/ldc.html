@@ -235,7 +235,7 @@ td {
 						aria-controls="collapseExample">Advance Search</button> -->
 						<button
 						ng-click="cCctr.searchEntities(true,'ldc','ldc')"
-						class="btn btn-grad astro-MG2CNCJP"
+						class="removeAll btn btn-grad astro-MG2CNCJP"
 						onclick="scrollWin()"
 						style="background-image: linear-gradient(to right, #093028 0%, #237A57  51%, #093028  100%)"
 						data-color1="#67B26F" data-color2="#4ca2cd"><i class="fa fa-search" aria-hidden="true"></i>
@@ -248,11 +248,7 @@ td {
 											class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;Advance
 						Search</button>
 						
-					<button class="btn btn-grad astro-MG2CNCJP advsearchbtn"style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);color:#fff;"
-						data-color1="#F09819" data-color2="#EDDE5D;"
-						data-toggle="collapse" data-target="#checkList"
-						aria-expanded="false" aria-controls="collapseExample">
-						</i>&nbsp;Table Column <i class="fa fa-angle-down" aria-hidden="true"></i></button>	
+					
 
 					<!-- <button class="btn btn-Primary" data-toggle="modal"
 					ng-click="cCctr.gotoListPage('addLDC','addLDC');">Add</button> -->
@@ -282,23 +278,7 @@ td {
 		</div>
 	</div>
 	
-		<table style="font-size: 12px; padding: 5px; margin: 5px;"class="collapse panel-collapse table table-bordered table-hover  table-striped" id="checkList">
-  <tr>
-  
-  <td><button class="showAll"  for='selectAll'>Show All</button></td>
-  <td><button class="removeAll"  for='selectAll'>Remove All</button></td>
-   <td><input  type="checkbox" name="certificate">Certificate Limit</td>
-    <td> <input type="checkbox" name="issueDate">Issue Date</td>
-    <td><input type="checkbox" name="cancelDate">Cancel Date</td>
-    </tr>
-    <tr>
-     <td><input type="checkbox" name="validFrom">Valid From</td>
-    <td><input type="checkbox" name="validTo">Valid To</td>
-     <td><input type="checkbox" name="amountConsumed">Amount Consumed</td>
-      <td> <input type="checkbox" name="asOnDate" >As On Date</td>
-    </tr>
-   
-</table>
+		
 
 	<div class="panel-body" style="margin-left: 0%;">
 
@@ -320,16 +300,16 @@ td {
 							<th><div class="autoResizeQuarter">TAN</div></th>
 							<th><div class="autoResizeQuarter">PAN</div></th>
 							<th><div class="autoResizeQuarter">Financial Year</div></th>
-							<th class="hideClass validFrom"><div class="autoResizeQuarter">Valid From</div></th>
-							<th class="hideClass validTo"><div class="autoResizeQuarter">Valid To</div></th>
+							<th class=" validFrom"><div class="autoResizeQuarter">Valid From</div></th>
+							<th class=" validTo"><div class="autoResizeQuarter">Valid To</div></th>
 							<th><div class="autoResizeQuarter">Section Code</div></th>
 							<th><div class="autoResizeQuarter">Nature of Payment</div></th>
 							<th><div class="autoResizeQuarter">LDC Rate</div></th>
-							<th class="hideClass certificate"><div class="autoResizeQuarter">Certificate Limit</div></th>
-							<th class="hideClass amountConsumed"><div class="autoResizeQuarter">Amount Consumed</div></th>
-							<th class="hideClass issueDate"><div class="autoResizeQuarter">Issue Date</div></th>
-							<th class="hideClass cancelDate"><div class="autoResizeQuarter">Cancel Date</div></th>
-							<th class="hideClass asOnDate"><div class="autoResizeQuarter">As On Date</div></th>
+							<th class=" certificate"><div class="autoResizeQuarter">Certificate Limit</div></th>
+							<th class="amountConsumed"><div class="autoResizeQuarter">Amount Consumed</div></th>
+							<th class=" issueDate"><div class="autoResizeQuarter">Issue Date</div></th>
+							<th class=" cancelDate"><div class="autoResizeQuarter">Cancel Date</div></th>
+							<th class=" asOnDate"><div class="autoResizeQuarter">As On Date</div></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -347,17 +327,17 @@ td {
 							<td>{{a.TAN}}</td>
 							<td>{{a.PAN}}</td>
 							<td>{{a.FY}}</td>
-							<td class="hideClass validFrom">{{a.VALID_FROM | date:'dd-MM-yyyy'}}</td>
-							<td class="hideClass validTo">{{a.VALID_TO | date:'dd-MM-yyyy'}}</td>
+							<td class=" validFrom">{{a.VALID_FROM | date:'dd-MM-yyyy'}}</td>
+							<td class=" validTo">{{a.VALID_TO | date:'dd-MM-yyyy'}}</td>
 							<td>{{a.SECTION_CODE}}</td>
 							<td  data-toggle="tooltip"
 								data-placement="bottom" title="{{a.NATURE_OF_PAYMENT}}">{{a.NATURE_OF_PAYMENT}}</td>
 							<td>{{a.LDC_RATE}}</td>
-							<td class="hideClass certificate">{{a.CERTIFICATE_LIMIT}}</td>
-							<td class="hideClass amountConsumed">{{a.AMOUNT_CONSUMED}}</td>
-							<td class="hideClass issueDate">{{a.ISSUE_DATE | date:'dd-MM-yyyy'}}</td>
-							<td class="hideClass cancelDate">{{a.CANCEL_DATE}}</td>
-							<td class="hideClass asOnDate">{{a.AS_ON_DATE | date:'dd-MM-yyyy'}}</td>
+							<td class=" certificate">{{a.CERTIFICATE_LIMIT}}</td>
+							<td class="amountConsumed">{{a.AMOUNT_CONSUMED}}</td>
+							<td class=" issueDate">{{a.ISSUE_DATE | date:'dd-MM-yyyy'}}</td>
+							<td class=" cancelDate">{{a.CANCEL_DATE}}</td>
+							<td class=" asOnDate">{{a.AS_ON_DATE | date:'dd-MM-yyyy'}}</td>
 
 							<!-- <td>{{a.total-a.amountPaid}}</td> -->
 
@@ -365,7 +345,7 @@ td {
 						<tr>
 							<th class="one" colspan="12"
 								style="text-align: center; height: 40px" ng-init="ttl=0"><b>TOTAL</b></th>
-							<td class="hideClass amountConsumed"><b>{{ filteredList | sumByKey :
+							<td class=" amountConsumed"><b>{{ filteredList | sumByKey :
 									'AMOUNT_CONSUMED' | number : fractionSize}}</b></td>
 						</tr>
 
@@ -454,16 +434,7 @@ $("input[type=checkbox]").click(function() {
 });
 </script>
 
-<script>
-$(".removeAll").click(function() {
-	 $(".hideClass").hide();
-});
-</script>
-<script>
-$(".showAll").click(function() {
-	 $(".hideClass").show();
-});
-</script>
+
 
 <script>
 $(function() {

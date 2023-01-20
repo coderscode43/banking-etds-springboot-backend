@@ -43,6 +43,37 @@ th {
 .heading {
   font-size: 12px;
 }
+
+/*Refresh Button  */
+.tooltip-top {
+ bottom: 83%;
+  margin-left:-7%;
+}
+/*Search Button  */
+.tooltip-top1 {
+ bottom: 116%;
+margin-left: -16%;
+}
+/*Add Button  */
+.tooltip-top2 {
+ bottom: 116%;
+margin-left: -14%;
+}
+/*Export to Excel Button  */
+.tooltip-top3 {
+ bottom: 116%;
+margin-left: -26%;
+}
+/*Table Coloumn Button */
+.tooltip-top4{
+ bottom: 116%;
+margin-left: -45%;
+}
+
+/*Detail Page Button */
+.tooltip-top5{
+margin-left: -13%;
+}
 </style>
 
 
@@ -50,10 +81,10 @@ th {
 
 <div id="page-wrapper" ng-controller="CommonController as cCctr">
 		<div class="container-fluid">
-		<button class="btn btn-grad astro-MG2CNCJP" data-toggle="modal"
+		<button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
 					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
 					 onClick="refreshPageButton()"><i
-					class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh</button>
+					class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh<span class="tooltiptext tooltip-top">Refresh Button</span></button>
 			<div class="col-md-12 "
 				style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
 				<div class="heading">
@@ -100,16 +131,16 @@ th {
 					<button
 						ng-click="cCctr.searchFYEntities(true,'generateReport','generateReport')"
 						style="background-image: linear-gradient(to right, #093028 0%, #237A57  51%, #093028  100%)"
-						class="btn btn-grad astro-MG2CNCJP" onclick="scrollWin()"
+						class="btn btn-grad astro-MG2CNCJP tool" onclick="scrollWin()"
 						style="margin-left: 30px;"><i class="fa fa-search" aria-hidden="true"></i>
-						Search</button>
-					<button type="button" class="btn btn-grad astro-MG2CNCJP"
+						Search<span class="tooltiptext tooltip-top1">Search Button</span></button>
+					<button type="button" class="btn btn-grad astro-MG2CNCJP tool"
 						style="margin-right: 1px;background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA  51%, #1FA2FF  100%)" data-toggle="modal" data-target="#add"><i
-											class="fa fa-plus" aria-hidden="true"></i>&nbsp;Add</button>
-					<button type="button" class="btn btn-grad astro-MG2CNCJP" style="background-image: linear-gradient(to right, #517fa4 0%, #243949  51%, #517fa4  100%);"
+											class="fa fa-plus" aria-hidden="true"></i>&nbsp;Add<span class="tooltiptext tooltip-top2">Add Button</span></button>
+					<button type="button" class="btn btn-grad astro-MG2CNCJP tool" style="background-image: linear-gradient(to right, #517fa4 0%, #243949  51%, #517fa4  100%);"
 						ng-click="cCctr.generateProcessExcel('apigenerateReport/generateExcel/','MisReport')"><i
 											class="fa fa-plus" aria-hidden="true"></i>&nbsp;Export
-						to Excel</button>
+						to Excel<span class="tooltiptext tooltip-top3">Export Excel Button</span></button>
 
 
 				</div>
@@ -185,10 +216,10 @@ th {
 					<td>{{a.reportType}}</td>
 					<td>{{a.userName}}</td>
 					<td style="height: 40px">
-						<button class="btn btn-outline-primary waves-effect waves-light"
+						<button class="btn btn-outline-primary waves-effect waves-light tool"
 							ng-click="cCctr.download('static/file/generateReport/'+ a.reportType +'.pdf')"
 							style="cursor: pointer; display: block; margin: auto; justify-content: center; font-size: small;">Download
-						</button>
+						<span class="tooltiptext tooltip-top5">Detail</span></button>
 					</td>
 				</tr>
 			</tbody>

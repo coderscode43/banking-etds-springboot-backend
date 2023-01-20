@@ -777,10 +777,12 @@ App
 								if (valid == true) {
 									console.log("Common Controller submit " + entity);
 									//self.object = object;
+									progressBar();
 									CommonService
 											.documentSave(object, entity)
 											.then(
 													function(data) {
+														progressBar();
 														console
 																.log(entity
 																		+ ' Add successfully');
@@ -812,6 +814,7 @@ App
 
 													},
 													function(error) {
+														progressBar();
 														console
 																.error('Error while creating saving Details, '
 																		+ status);

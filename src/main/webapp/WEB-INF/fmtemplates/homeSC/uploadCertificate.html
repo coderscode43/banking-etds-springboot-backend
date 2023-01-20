@@ -406,7 +406,7 @@ td .autoResize {
 
 			<div class="modal-footer">
 			<button class="pushable darkgreen"
-							ng-click="certificateDetails.submitted=true;cCctr.saveDocument(certificateDetails.$valid,cCctr.entity,'uploadCertificate')">
+							ng-click="certificateDetails.submitted=true;cCctr.saveDocument(certificateDetails.$valid,cCctr.entity,'uploadCertificate','close')">
 							<span class="front darkgreenspan"> Add</span>
 						</button>
 						<button class="pushable darkred" 
@@ -419,3 +419,24 @@ td .autoResize {
 
 	</div>
 </div>
+<a id="viewProgressBar" onclick="test('#progressBar')"> </a> <a
+		id="viewFileClick" onclick="test('#viewFile')"> </a> <a
+		id="noviewFileClick" onclick="test('#noviewFile')"> </a>
+	<div id="progressBar" class="modal fade" data-backdrop="static"
+		data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true"
+		style="padding-top: 15%; overflow-y: visible;">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 style="margin: 0;">Uploading...</h3>
+				</div>
+				<div class="modal-body">
+					<div class="progress progress-striped active"
+						style="margin-bottom: 0;">
+						<div class="progress-bar progress-bar-success" style="width: 100%">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

@@ -333,7 +333,7 @@ td .autoResize {
 				<button
 					ng-click="cCctr.searchEntities(true,'form27EQDeductee','form27EQDeductee')"
 					style="background-image: linear-gradient(to right, #093028 0%, #237A57  51%, #093028  100%)"
-					class="btn btn-grad astro-MG2CNCJP" onclick="scrollWin()"><i class="fa fa-search" aria-hidden="true"></i>
+					class="removeAll btn btn-grad astro-MG2CNCJP" onclick="scrollWin()"><i class="fa fa-search" aria-hidden="true"></i>
 					Search</button>
 
 
@@ -390,7 +390,7 @@ td .autoResize {
     </tr>
   <tr>
    <td><input type="checkbox" name="errorDesc">Error Desc</td>
-    <td><input type="checkbox" name="warningDesc">Warning Desc</td>
+    
   <td><input type="checkbox" name="ShortDeduction">ShortDeduction</td>
     <td><input type="checkbox" name="InterestOnShortDeduction">InterestOnShortDeduction</td>
      <td><input type="checkbox" name="InterestOnLatePayment">InterestOnLatePayment </td>
@@ -456,7 +456,7 @@ td .autoResize {
 							Answer to 681A is Yes Then Date Of Payment Of TDS To Central
 							Government</div></th>
 						<th class="hideClass errorDesc"><div class="autoResize">Error Description</div></th>
-						<th class="hideClass warningDesc"><div class="autoResize">Warning Description</div></th>
+						<th class=" warningDesc"><div class="autoResize">Warning Description</div></th>
 						<th class="hideClass ShortDeduction" ><div class="autoResize">Short Deduction</div></th>
 						<th class="hideClass InterestOnShortDeduction" data-toggle="tooltip"
 							data-placement="bottom" title="Interest on Short Deduction"><div class="autoResize">Interest
@@ -596,9 +596,9 @@ td .autoResize {
 						<td class="ellipsis hideClass errorDesc" data-toggle="tooltip" style="background-color:#ff3232" ng-if="a.resolved == 1"
 							data-placement="bottom" title="{{a.errorDescription}}">{{a.errorDescription}}</td>	
 						
-						<td class="ellipsis hideClass warningDesc" data-toggle="tooltip" ng-if="a.resolved == 0"
+						<td class="ellipsis  warningDesc" data-toggle="tooltip" ng-if="a.resolved == 0"
 							data-placement="bottom" title="{{a.warningDescription}}">{{a.warningDescription}}</td>
-						<td class="ellipsis hideClass warningDesc" data-toggle="tooltip" style="background-color:#ff3232" ng-if="a.resolved == 1"
+						<td class="ellipsis  warningDesc" data-toggle="tooltip" style="background-color:#ff3232" ng-if="a.resolved == 1"
 							data-placement="bottom" title="{{a.warningDescription}}">{{a.warningDescription}}</td>
 								
 						<td class="hideClass ShortDeduction" data-toggle="tooltip" ng-if="a.resolved == 0"
@@ -659,7 +659,7 @@ td .autoResize {
 							<td class="hideClass ifAnswerto681AChallan"></td>
 							<td class="hideClass ifAnswerto681ATDS"></td>
 							<td class="hideClass errorDesc"></td>
-							<td class="hideClass warningDesc"></td>
+							<td class=" warningDesc"></td>
 							<td class="hideClass ShortDeduction"><b>{{filteredList | sumByKey:'ShortDeduction' 	| number : fractionSize}}</b></td>
 							<td class="hideClass InterestOnShortDeduction"><b>{{filteredList | sumByKey:'InterestOnShortDeduction' 	| number : fractionSize}}</b></td>
 							<td class="hideClass InterestOnLatePayment"><b>{{filteredList | sumByKey:'InterestOnLatePayment' 	| number : fractionSize}}</b></td>

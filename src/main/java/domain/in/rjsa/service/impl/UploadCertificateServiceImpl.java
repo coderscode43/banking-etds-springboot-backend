@@ -131,30 +131,40 @@ public class UploadCertificateServiceImpl extends AbstractServiceForm<Long, Uplo
 			} else {
 				details.createCell(1).setCellValue(uploadCertificate.getFileName());
 			}
-			if (uploadCertificate.getTAN() == null) {
+			if (uploadCertificate.getUserName() == null) {
 				details.createCell(2).setCellValue(" ");
 			} else {
-				details.createCell(2).setCellValue(uploadCertificate.getTAN());
+				details.createCell(2).setCellValue(uploadCertificate.getUserName());
 			}
-			if (uploadCertificate.getFy() == null) {
+			if (uploadCertificate.getTAN() == null) {
 				details.createCell(3).setCellValue(" ");
 			} else {
-				details.createCell(3).setCellValue(uploadCertificate.getFy());
+				details.createCell(3).setCellValue(uploadCertificate.getTAN());
 			}
-			if (uploadCertificate.getQuarter() == null) {
+			if (uploadCertificate.getFy() == null) {
 				details.createCell(4).setCellValue(" ");
 			} else {
-				details.createCell(4).setCellValue(uploadCertificate.getQuarter());
+				details.createCell(4).setCellValue(uploadCertificate.getFy());
 			}
-			if (uploadCertificate.getForm() == null) {
+			if (uploadCertificate.getQuarter() == null) {
 				details.createCell(5).setCellValue(" ");
 			} else {
-				details.createCell(5).setCellValue(uploadCertificate.getForm());
+				details.createCell(5).setCellValue(uploadCertificate.getQuarter());
 			}
-			if (uploadCertificate.getUploadedTime() == null) {
+			if (uploadCertificate.getForm() == null) {
 				details.createCell(6).setCellValue(" ");
 			} else {
-				details.createCell(6).setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(uploadCertificate.getUploadedTime()));
+				details.createCell(6).setCellValue(uploadCertificate.getForm());
+			}
+			if (uploadCertificate.getUploadedTime() == null) {
+				details.createCell(7).setCellValue(" ");
+			} else {
+				details.createCell(7).setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(uploadCertificate.getUploadedTime()));
+			}
+			if (uploadCertificate.getStatus() == null) {
+				details.createCell(8).setCellValue(" ");
+			} else {
+				details.createCell(8).setCellValue(uploadCertificate.getStatus());
 			}
 			
 			if (row > 1000000) {

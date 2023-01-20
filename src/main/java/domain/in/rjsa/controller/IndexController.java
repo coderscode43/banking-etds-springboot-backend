@@ -75,6 +75,7 @@ public class IndexController extends AbstractController {
 		setStaticData();
 		model.addAttribute("typeOfUser", getBranchCode());
 		model.addAttribute("financialYear", StaticData.financialYear);
+		model.addAttribute("Month", StaticData.Month);
 		model.addAttribute("Quarter", StaticData.Quarter);
 		model.addAttribute("ClientName", StaticData.ClientName);
 		model.addAttribute("ClientPAN", StaticData.ClientPAN);

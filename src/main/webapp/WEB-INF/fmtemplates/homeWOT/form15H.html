@@ -108,15 +108,45 @@ th {
 	color: #fff;
 	text-decoration: none;
 }
+/*Refresh Button  */
+.tooltip-top {
+ bottom: 83%;
+  margin-left:-7%;
+}
+/*Search Button  */
+.tooltip-top1 {
+ bottom: 116%;
+margin-left: -22%;
+}
+/*Advance Search Button  */
+.tooltip-top2 {
+ bottom: 116%;
+margin-left: -43%;
+}
+/*Export to Excel Button  */
+.tooltip-top3 {
+ bottom: 108%;
+margin-left: -192%;
+}
+/*Table Coloumn Button */
+.tooltip-top4{
+ bottom: 116%;
+margin-left: -35%;
+}
+
+/*Detail Page Button */
+.tooltip-top5{
+margin-left: -6%;
+}
 </style>
 </head>
 <body>
 	<div id="page-wrapper" ng-controller="CommonController as cCctr">
 		<div class="container-fluid">
-		<button class="btn btn-grad astro-MG2CNCJP" data-toggle="modal"
+		<button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
 					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
 					 onClick="refreshPageButton()"><i
-					class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh</button>
+					class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh<span class="tooltiptext tooltip-top">Refresh Button</span></button>
 			<div class="col-md-12 "
 				style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
 				<div class="heading">
@@ -171,7 +201,7 @@ th {
 						
 						<div class="col-md-4">
 							<h6>
-								<b>Name</b>
+								<b>Name Of Assessee Declarant</b>
 								<h6>
 									<input type="text"
 										ng-model="cCctr.search.nameofAssesseeDeclarant"
@@ -196,32 +226,32 @@ th {
 					<div class="row">
 						<div class="col-md-3">
 							<div class="col-md-3">
-								<button class="btn btn-grad astro-MG2CNCJP " type="button"
+								<button class="btn btn-grad astro-MG2CNCJP tool" type="button"
 									style="margin-top: 11%;background-image: linear-gradient(to right, #517fa4 0%, #243949  51%, #517fa4  100%);"
 									ng-click="cCctr.generateProcessExcel('apiform15H/generateExcel/','H15')">Export
-									to Excel</button>
+									to Excel<span class="tooltiptext tooltip-top3">Export Excel Button</span></button>
 							</div>
 
 						</div>
 					</div>
 				</div>
 				<div class="row text-right" id="hide">
-					<div class="col-md-4" style="margin-left: 63%; margin-top: -44px;display:ruby">
+					<div class="col-md-4" style="margin-left: 60%; margin-top: -44px;display:ruby">
 						<button
 							ng-click="cCctr.searchFYEntities(true,'form15H','form15H')"
 							style="background-image: linear-gradient(to right, #093028 0%, #237A57  51%, #093028  100%)"
-							class="btn btn-grad astro-MG2CNCJP" onclick="scrollWin()"><i class="fa fa-search" aria-hidden="true"></i>
-							Search</button>
-						<button class="btn btn-grad astro-MG2CNCJP"
+							class="btn btn-grad astro-MG2CNCJP tool" onclick="scrollWin()"><i class="fa fa-search" aria-hidden="true"></i>
+							Search<span class="tooltiptext tooltip-top1">Search Button</span></button>
+						<button class="btn btn-grad astro-MG2CNCJP tool"
 							style="background-image: linear-gradient(to right, #F09819 0%, #EDDE5D 51%, #F09819 100%)" data-toggle="collapse"
 							data-target="#collapseExample4" aria-expanded="false"
 							aria-controls="collapseExample"><i
-											class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;Advance Search</button>
-							<button class="btn btn-grad astro-MG2CNCJP advsearchbtn"style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);color:#fff;"
+											class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;Advance Search<span class="tooltiptext tooltip-top2">Advance Search Button</span></button>
+							<button class="btn btn-grad astro-MG2CNCJP advsearchbtn tool"style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);color:#fff;"
 						data-color1="#F09819" data-color2="#EDDE5D;"
 						data-toggle="collapse" data-target="#checkList"
 						aria-expanded="false" aria-controls="collapseExample">
-						</i>&nbsp;Table Column <i class="fa fa-angle-down" aria-hidden="true"></i></button>								
+						</i>&nbsp;Table Column <span class="tooltiptext tooltip-top4">Table Column Button</span><i class="fa fa-angle-down" aria-hidden="true"></i></button>								
 					</div>
 					<div class="col-md-3">
 						<div class="text-right"></div>

@@ -27,21 +27,32 @@
 <link rel="shortcut icon" type="image/x-icon"
 	href="static/img/favicon.ico" />
 <script src="static/js/lib/bootstrap.js"></script>
-
+<style>
+	form{
+		  height: 50%;
+  margin-left: 5%;
+  border-radius: 7px !important;
+ box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07)
+ 			 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 
+ 			 0px 8px 16px, rgba(0, 0, 0, 0.07) 
+ 			 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}	
+	
+</style>
 </head>
 <body style="background-color: white">
 	<div class="row">
 		<div class="container-fluid">
-			<div class="col-md-4" style="margin-top: 2%">
+			<div class="col-md-4">
 				<img src="static/img/tds.png" alt="tdsosmart"
 					height="400px" width="100%">
 
 			</div>
 			<br>
 
-			<div class="col-md-4" style="margin-top: 2%">
-				<p style="font-size: 15px">
-					<b>TDS Software is an Intelligent TDS Return Filing Software
+			<div class="col-md-4" style="">
+				<p style="font-size: 14px">
+					<b>&nbsp;&nbsp;&nbsp;&nbsp;TDS Software is an Intelligent TDS Return Filing Software
 						built in state-of-the-art technology, complying with TDS/TCS
 						prescribed as per Income Tax Laws of India. 
 				</p>
@@ -71,17 +82,17 @@
 				</ul>
 			</div>
 
-			<div class="col-md-4">
+			<div class="col-md-4" style="">
 				<form class="form-signin mui-card xl-shadow" method="post"
 					action="login" style="height: 50%; margin-left: 5%">
 					<img src = "static/img/KBlogo.png" alt="Karnataka Bank" style="width: 100%;"></img>
 					<!-- /////////////UCO BANK//////////// -->
 					<!-- <img src = "static/img/UcoBank.png" alt="Uco Bank" style="width: 90%;margin-left:5%"></img> -->
-					<h2 class="form-signin-heading">
+					<h3 class="form-signin-heading">
 						<center>
 							<b style="color: #79BD3C">LOGIN</b>
 						</center>
-					</h2>
+					</h3>
 					
 					<p style="color: red;">
 								<b><span>${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</span></b>
@@ -118,16 +129,16 @@
 
 
 	<div class="row">
-		<div class="col-md-6" style="margin-top: 13px">
-			<p style="margin-left: 83%; font-size: 20px">Powered By</p>
+		<div class="col-md-6" style="margin-top: -35px;">
+			<p style="margin-left: 78%; font-size: 18px">Powered By</p>
 		</div>
 	</div>
 
 
 
-	<div class="row" style="margin-left: 39%; margin-top: -10px">
+	<div class="row">
 		<div class="col-md-6" style="margin-top: -5px">
-			<a class="icon-cog" style="line-height: 0.9%; text-decoration: none"
+			<!-- <a class="icon-cog" style="line-height: 0.9%; text-decoration: none"
 				ng-click="cCctr.homepage('homepage')"> <span
 				class="icon-tax-o-smart"
 				style="font-size: 70px; color: #0F316D; position: relative; top: 13px;">
@@ -137,7 +148,13 @@
 			</a> <br> <span color="whitle" class="serif"
 				style="font-size: 14px; color: #79BD3C; position: relative; bottom: 15px;">&emsp;&emsp;&emsp;
 				&emsp;&emsp;<b>Technology empowering your business</b>
-			</span>
+			</span> -->
+			<a class="icon-cog" style="line-height: 0.9%; text-decoration: none"
+				ng-click="cCctr.homepage('homepage')"> 
+			<img src = "static/img/TOS.png" alt="Tax O smart" style="width: 40%;margin-left: 88%;"></img></a>
+			
+			
+			
 		</div>
 	</div>
 	<footer>

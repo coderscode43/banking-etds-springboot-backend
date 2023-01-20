@@ -115,6 +115,7 @@
 		visibility: visible;
 	}
 }
+
 .btn-grad {
 	background-image: linear-gradient(to right, #FF8008 0%, #FFC837 51%, #FF8008 100%);
 	transition: 0.5s;
@@ -132,33 +133,33 @@
 	text-decoration: none;
 }
 
-
 td .autoResize {
-	min-width:100px;
+	min-width: 100px;
 	width: auto;
 }
+
 .autoResize {
-	min-width:115px;
+	min-width: 115px;
 	resize: horizontal;
 	overflow: auto;
-	display: block 
+	display: block
 }
 
 .autoResizeQuarter {
-	min-width:70px;
+	min-width: 70px;
 	resize: horizontal;
 	overflow: auto;
-	display: block 
+	display: block
 }
-
 </style>
 
 <div id="page-wrapper" ng-controller="CommonController as cCctr">
 	<div class="container-fluid">
-	<button class="btn btn-grad astro-MG2CNCJP" data-toggle="modal"
-					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
-						 onClick="refreshPageButton()"><i
-						class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh</button>
+		<button class="btn btn-grad astro-MG2CNCJP" data-toggle="modal"
+			style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%); float: right;"
+			onClick="refreshPageButton()">
+			<i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh
+		</button>
 		<div class="col-md-12 "
 			style="padding-left: 0px; font-size: 12px; margin-top: 2%">
 			<div class="heading">
@@ -207,27 +208,37 @@ td .autoResize {
 						<h6>
 							<b>Month</b>
 							<h6>
-								<input type="text" ng-model="cCctr.search.month"
+								<select type="text" ng-model="cCctr.search.month"
 									class="form-control" placeholder="Month" style="width: 100%">
+									<option disabled value="">Select Month</option>
+									<#list Month as m>
+									<option value="${m}">${m}</option>
+									</#list>
+								</select>
 					</div>
 					<div class="col-md-3">
 						<h6>
-							<b>FY</b>
-							<h6>
-								<input type="text" ng-model="cCctr.search.fy;"
-									class="form-control" placeholder="FY" style="width: 100%">
+							<b>Financial Year</b>
+						</h6>
+						<select ng-model="cCctr.search.fy" style="width: 100%"
+							class="form-control">
+							<option disabled value="">Select financial Year</option>
+							<#list financialYear as year>
+							<option value="${year}">${year}</option>
+							</#list>
+						</select>
 					</div>
 					<div class="col-md-3">
 						<h6>
 							<b>Section </b>
 						</h6>
 						<select class="form-control" ng-model="cCctr.search.sectionCode"
-									required>
-									<option disabled value="">Select Section</option>
-									<#list Section as section>
-									<option value="${section}">${section}</option>
-									</#list>
-								</select>
+							required>
+							<option disabled value="">Select Section</option>
+							<#list Section as section>
+							<option value="${section}">${section}</option>
+							</#list>
+						</select>
 					</div>
 					<!-- <div class="col-md-3">
 						<h6>
@@ -263,7 +274,8 @@ td .autoResize {
 								<b>System Tax Amount</b>
 							</h6>
 							<input type="text" ng-model="cCctr.search.totaltaxRaw"
-								class="form-control" placeholder="System Tax Amount" style="width: 100%">
+								class="form-control" placeholder="System Tax Amount"
+								style="width: 100%">
 						</div>
 
 					</div>
@@ -284,7 +296,7 @@ td .autoResize {
 				<div class="row">
 					<div class="col-md-3">
 						<button class="btn btn-grad astro-MG2CNCJP " type="button"
-							style="margin-top: 6%;background-image: linear-gradient(to right, #517fa4 0%, #243949 51%, #517fa4 100%);"
+							style="margin-top: 6%; background-image: linear-gradient(to right, #517fa4 0%, #243949 51%, #517fa4 100%);"
 							ng-click="cCctr.generateExcel('apitotalAmount/generateExcel/','totalAmount')">Export
 							to Excel</button>
 					</div>
@@ -295,13 +307,17 @@ td .autoResize {
 			<div class="row text-right" id="hide">
 				<div class="col-md-4" style="margin-left: 70%; margin-top: -35px">
 					<button ng-click="cCctr.searchEntities(true,'totalAmount')"
-						class="btn btn-grad astro-MG2CNCJP" onclick="scrollWin()" style="background-image: linear-gradient(to right, #093028 0%, #237A57  51%, #093028  100%)"><i class="fa fa-search" aria-hidden="true"></i>
-						Search</button>
+						class="btn btn-grad astro-MG2CNCJP" onclick="scrollWin()"
+						style="background-image: linear-gradient(to right, #093028 0%, #237A57 51%, #093028 100%)">
+						<i class="fa fa-search" aria-hidden="true"></i> Search
+					</button>
 					<button class="btn btn-grad astro-MG2CNCJP"
-						style="background-image: linear-gradient(to right, #F09819 0%, #EDDE5D 51%, #F09819 100%)" data-toggle="collapse"
-						data-target="#collapseExample4" aria-expanded="false"
-						aria-controls="collapseExample"><i
-											class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;Advance Search</button>
+						style="background-image: linear-gradient(to right, #F09819 0%, #EDDE5D 51%, #F09819 100%)"
+						data-toggle="collapse" data-target="#collapseExample4"
+						aria-expanded="false" aria-controls="collapseExample">
+						<i class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;Advance
+						Search
+					</button>
 				</div>
 			</div>
 		</div>

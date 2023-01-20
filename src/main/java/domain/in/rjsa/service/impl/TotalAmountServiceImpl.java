@@ -119,7 +119,7 @@ public class TotalAmountServiceImpl extends AbstractServiceFY<Long, TotalAmount,
 			if (totalAmount.getSource() == null) {
 				details.createCell(12).setCellValue(" ");
 			} else {
-				details.createCell(1).setCellValue(totalAmount.getSource());
+				details.createCell(12).setCellValue(totalAmount.getSource());
 			}
 			
 			if (row > 1000000) {

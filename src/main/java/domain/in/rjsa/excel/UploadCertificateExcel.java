@@ -334,7 +334,7 @@ public class UploadCertificateExcel {
 			Sheet sheet = wbs.createSheet(name);
 			Row row0 = sheet.createRow(0);
 
-			for (int i = 0; i < 7; i++) {
+			for (int i = 0; i < 9; i++) {
 				row0.createCell(i);
 				row0.getCell(i).setCellStyle(styleMatch1);
 			}
@@ -343,15 +343,19 @@ public class UploadCertificateExcel {
 			sheet.setColumnWidth(1, 4000);
 			row0.getCell(1).setCellValue("Zip File");
 			sheet.setColumnWidth(2, 5000);
-			row0.getCell(2).setCellValue("TAN");
-			sheet.setColumnWidth(3, 4000);
-			row0.getCell(3).setCellValue("Financial Year");
+			row0.getCell(2).setCellValue("UserName");
+			sheet.setColumnWidth(3, 5000);
+			row0.getCell(3).setCellValue("TAN");
 			sheet.setColumnWidth(4, 4000);
-			row0.getCell(4).setCellValue("Quarter");
+			row0.getCell(4).setCellValue("Financial Year");
 			sheet.setColumnWidth(5, 4000);
-			row0.getCell(5).setCellValue("Form");
+			row0.getCell(5).setCellValue("Quarter");
 			sheet.setColumnWidth(6, 4000);
-			row0.getCell(6).setCellValue("Uploaded Time");
+			row0.getCell(6).setCellValue("Form");
+			sheet.setColumnWidth(7, 4000);
+			row0.getCell(7).setCellValue("Uploaded Time");
+			sheet.setColumnWidth(8, 4000);
+			row0.getCell(8).setCellValue("Status");
 
 			return sheet;
 	} catch (Exception e) {

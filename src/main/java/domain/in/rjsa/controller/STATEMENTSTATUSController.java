@@ -35,18 +35,7 @@ public class STATEMENTSTATUSController extends AbstractControllerTaxo<Long, STAT
 
 	public List<?> getSearch(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
-		if (map.containsKey("FY")) {
-			String Date = map.get("FY").toString();
-			String[] parts = Date.split("-");
-			String part1 = parts[0];
-			String part2 = parts[1];
-
-			LinkedHashMap<String, Object> d = new LinkedHashMap<String, Object>();
-			d.put("FY", part1 + part2);
-			return getService().search(d, pageNo, resultPerPage);
-		} else {
 			return getService().search(map, pageNo, resultPerPage);
-		}
 	}
 
 }

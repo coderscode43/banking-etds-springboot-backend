@@ -44,7 +44,10 @@ public class STATEMENTSTATUSDaoImpl extends AbstractDaoTaxo<Long, STATEMENTSTATU
 			criteria.add(Restrictions.eqOrIsNull("STATUS", String.valueOf((String) entity.get("STATUS"))));
 		}
 		if (entity.get("FY") != null) {
-			criteria.add(Restrictions.eqOrIsNull("FY", String.valueOf((String) entity.get("FY"))));
+			String Date = entity.get("FY").toString();
+			String[] parts = Date.split("-");
+			String fy = parts[0] + parts[1];
+			criteria.add(Restrictions.eqOrIsNull("FY", String.valueOf(fy)));
 		}
 		if (entity.get("QUARTER") != null) {
 			criteria.add(Restrictions.eqOrIsNull("QUARTER", String.valueOf((String) entity.get("QUARTER"))));
@@ -77,6 +80,12 @@ public class STATEMENTSTATUSDaoImpl extends AbstractDaoTaxo<Long, STATEMENTSTATU
 		if (entity.get("branchState") != null) {
 			criteria.add(Restrictions.eqOrIsNull("branchState", entity.get("branchState").toString()));
 		}
+		if (entity.get("FY") != null) {
+			String Date = entity.get("FY").toString();
+			String[] parts = Date.split("-");
+			String fy = parts[0] + parts[1];
+			criteria.add(Restrictions.eqOrIsNull("FY", String.valueOf(fy)));
+		}
 		if (entity.get("RT") != null) {
 			criteria.add(Restrictions.eqOrIsNull("RT", entity.get("RT")));
 		}
@@ -107,13 +116,10 @@ public class STATEMENTSTATUSDaoImpl extends AbstractDaoTaxo<Long, STATEMENTSTATU
 		}
 
 		if (entity.get("FY") != null) {
-			if (entity.containsKey("FY")) {
-				String Date = entity.get("FY").toString();
-				String[] parts = Date.split("-");
-				String part1 = parts[0];
-				String part2 = parts[1];
-				criteria.add(Restrictions.eqOrIsNull("FY", part1 + part2));
-			}
+			String Date = entity.get("FY").toString();
+			String[] parts = Date.split("-");
+			String fy = parts[0] + parts[1];
+			criteria.add(Restrictions.eqOrIsNull("FY", String.valueOf(fy)));
 		}
 		if (entity.get("QUARTER") != null) {
 			criteria.add(Restrictions.eqOrIsNull("QUARTER", String.valueOf((String) entity.get("QUARTER"))));

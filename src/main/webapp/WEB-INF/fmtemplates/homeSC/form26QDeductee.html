@@ -181,7 +181,22 @@ th {
   margin-top: -24px;
 }
 
-
+.tooltip-top {
+  bottom: 125%;
+  margin-left:-31%;
+}
+.tooltip-top1 {
+  bottom: 125%;
+  margin-left:-53%;
+}
+.tooltip-top2 {
+  bottom: 125%;
+  margin-left:-41%;
+}
+.tooltip-top3 {
+  bottom: 85%;
+  margin-left:-6%;
+}
 
 </style>
 
@@ -190,10 +205,10 @@ th {
 
 <div id="page-wrapper" ng-controller="CommonController as cCctr">
 	<div class="container-fluid">
-	<button class="btn btn-grad astro-MG2CNCJP" data-toggle="modal"
+	<button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
 					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
 						onClick="refreshPageButton()"><i
-						class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh</button>
+						class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh<span class="tooltiptext tooltip-top3">Refresh Button</span></button>
 						
 			
 		<div class="col-md-12 "
@@ -376,22 +391,24 @@ th {
 
 
 			<div class="row text-right" id="hide">
-				<div class="col-md-3" style="margin-left:64%; margin-top: -44px;display: ruby;">
+				<div class="col-md-3" style="margin-left:60%; margin-top: -44px;display: ruby;">
 					<button
 						ng-click="cCctr.searchEntities(true,'form26QDeductee','form26QDeductee')"
 						style="background-image: linear-gradient(to right, #093028 0%, #237A57  51%, #093028  100%)"
-						class="btn btn-grad astro-MG2CNCJP" onclick="scrollWin()"><i class="fa fa-search" aria-hidden="true"></i>
+						class="removeAll btn btn-grad astro-MG2CNCJP" onclick="scrollWin()"><i class="fa fa-search" aria-hidden="true"></i>
 						Search</button>
-					<button class="btn btn-grad astro-MG2CNCJP" style="background-color: #FFA500; margin-left: 8px; background-image: linear-gradient(to right, #F09819 0%, #EDDE5D 51%, #F09819 100%)"
+						
+					<button class="btn btn-grad astro-MG2CNCJP tool" style="background-color: #FFA500; margin-left: 8px; background-image: linear-gradient(to right, #F09819 0%, #EDDE5D 51%, #F09819 100%)"
 						data-toggle="collapse" data-target="#collapseExample4"
 						aria-expanded="false" aria-controls="collapseExample"><i
 											class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;Advance
-						Search</button>
-						<button class="btn btn-grad astro-MG2CNCJP advsearchbtn"style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);color:#fff;"
+						Search<span class="tooltiptext tooltip-top1">Advance Search Button</span></button>
+						
+						<button class="btn btn-grad astro-MG2CNCJP advsearchbtn tool"style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);color:#fff;"
 						data-color1="#F09819" data-color2="#EDDE5D;"
 						data-toggle="collapse" data-target="#checkList"
 						aria-expanded="false" aria-controls="collapseExample">
-						</i>&nbsp;Table Column <i class="fa fa-angle-down" aria-hidden="true"></i></button>	
+						</i>&nbsp;Table Column<span class="tooltiptext tooltip-top2">Table Column Button</span> <i class="fa fa-angle-down" aria-hidden="true"></i></button>	
 				</div>
 				<div class="col-md-3">
 					<div class="text-right">
@@ -451,7 +468,7 @@ th {
  
     <td><input type="checkbox" name="cashWithdrawal194N1Cr">Cash Withdrawal 194N1Cr</td>
     <td><input type="checkbox" name="errorDesc">Error Desc</td>
-    <td><input type="checkbox" name="warningDesc">Warning Desc </td>
+   
     <td><input type="checkbox" name="ShortDeduction">Short Deduction</td>
     <td><input type="checkbox" name="InterestOnShortDeduction">Interest On ShortDeduction</td>
     <td><input type="checkbox" name="InterestOnLateDeduction">Interest On Late Deduction</td>
@@ -499,7 +516,7 @@ th {
 						<th class="hideClass cashWithdrawal194N20Lto1Cr"><div class="autoResize">Cash Withdrawl 194N(20L to 1cr)</div></th>
 						<th class="hideClass cashWithdrawal194N1Cr"><div class="autoResize">Cash Withdrawl 194N(>1cr)</div></th>
 						<th class="hideClass errorDesc"><div class="autoResize">Error Description</div></th>
-						<th class="hideClass warningDesc"><div class="autoResize">Warning Description</div></th>
+						<th class=" warningDesc"><div class="autoResize">Warning Description</div></th>
 						<th class="hideClass ShortDeduction"><div class="autoResize">Short Deduction</div></th>
 						<th class="hideClass InterestOnShortDeduction"><div class="autoResize">Interest on Short Deduction</div></th>
 						<th class="hideClass InterestOnLatePayment"><div class="autoResize">Interest on Late Payment</div></th>
@@ -625,7 +642,7 @@ th {
 						<td class="ellipsis hideClass errorDesc" data-toggle="tooltip" style="background-color:#ff3232" ng-if="a.resolved == 1"
 							data-placement="bottom" title="{{a.errorDescription}}">{{a.errorDescription}}</td>
 								
-						<td class="ellipsis hideClass warningDesc" data-toggle="tooltip" ng-if="a.resolved == 0"
+						<td class="ellipsis  warningDesc" data-toggle="tooltip" ng-if="a.resolved == 0"
 							data-placement="bottom" title="{{a.warningDescription}}">{{a.warningDescription}}</td>
 						<td class="ellipsis hideClass warningDesc" data-toggle="tooltip" style="background-color:#ff3232" ng-if="a.resolved == 1"
 							data-placement="bottom" title="{{a.warningDescription}}">{{a.warningDescription}}</td>

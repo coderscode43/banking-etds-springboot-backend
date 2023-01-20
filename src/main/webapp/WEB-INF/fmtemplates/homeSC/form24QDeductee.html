@@ -91,16 +91,36 @@ td .autoResize {
 . {
   display: none;
 }
+.tooltip-top {
+  bottom: 125%;
+  margin-left:-31%;
+}
+.tooltip-top1 {
+  bottom: 125%;
+  margin-left:-53%;
+}
+.tooltip-top2 {
+  bottom: 125%;
+  margin-left:-41%;
+}
+.tooltip-top3 {
+  bottom: 85%;
+  margin-left:-6%;
+}
+.tooltip-top4 {
+ 
+  margin-left:-6%;
+}
 </style>
 
 
 
 <div id="page-wrapper" ng-controller="CommonController as cCctr">
 	<div class="container-fluid">
-	<button class="btn btn-grad astro-MG2CNCJP" data-toggle="modal"
+	<button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
 					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
 						onClick="refreshPageButton()"><i
-						class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh</button>
+						class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh<span class="tooltiptext tooltip-top3">Refresh Button</span></button>
 		<div class="col-md-12 "
 			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
 			<div class="heading">
@@ -282,24 +302,25 @@ td .autoResize {
 
 
 			<div class="row text-right" id="hide">
-				<div class="col-md-3" style="margin-left: 63%; margin-top: -44px;display: ruby;">
-					<button
+				<div class="col-md-3" style="margin-left: 60%; margin-top: -44px;display: ruby;">
+				<button
 						ng-click="cCctr.searchEntities(true,'form24QDeductee','form24QDeductee')"
-						class="btn btn-grad astro-MG2CNCJP searchbtn" onclick="scrollWin()"
+						class="removeAll btn btn-grad astro-MG2CNCJP searchbtn" onclick="scrollWin()"
 						data-color1="#67B26F" data-color2="#4ca2cd"><i class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;Search</button>
 					
-					<button class="btn btn-grad astro-MG2CNCJP advsearchbtn"
+					<button class="btn btn-grad astro-MG2CNCJP advsearchbtn tool"
 						data-color1="#F09819" data-color2="#EDDE5D;"
 						data-toggle="collapse" data-target="#collapseExample4"
 						aria-expanded="false" aria-controls="collapseExample">
 						<i class="fa fa-search" aria-hidden="true"></i>&nbsp;Advance
-						Search
+						Search<span class="tooltiptext tooltip-top1">Advanced Search Button</span>
 					</button>
-					<button class="btn btn-grad astro-MG2CNCJP advsearchbtn"style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);color:#fff;"
+					
+					<button class="btn btn-grad astro-MG2CNCJP advsearchbtn tool"style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);color:#fff;"
 						data-color1="#F09819" data-color2="#EDDE5D;"
 						data-toggle="collapse" data-target="#checkList"
 						aria-expanded="false" aria-controls="collapseExample">
-						</i>&nbsp;Table Column <i class="fa fa-angle-down" aria-hidden="true"></i></button>	
+						</i>&nbsp;Table Column<span class="tooltiptext tooltip-top2">Table Column Button</span> <i class="fa fa-angle-down" aria-hidden="true"></i></button>	
 				</div>
 				<div class="col-md-3">
 					<div class="text-right">
@@ -350,8 +371,7 @@ td .autoResize {
    <tr>
    
     <td><input type="checkbox" name="panRefNo">Pan Ref No</td>
-    <td><input type="checkbox" name="errorDesc">Error Desc</td>
-    <td><input type="checkbox" name="warningDesc">warningDesc</td>
+    
     <td><input type="checkbox" name="ShortDeduction">ShortDeduction</td>
     <td><input type="checkbox" name="interestOnShortDeduction">InterestOnShortDeduction</td>
     <td><input type="checkbox" name="interestOnLatePayment">InterestOnLatePayment</td>
@@ -404,8 +424,8 @@ td .autoResize {
 						<th class="hideClass certificateNo"><div class="autoResize">Certificate No.</div></th>
 						<th class="hideClass remarksReason"><div class="autoResize">Remarks Reason</div></th>
 						<th class="hideClass panRefNo"><div class="autoResize">Pan Ref. No.</div></th>
-						<th class="hideClass errorDesc"><div class="autoResize">Error Description</div></th>
-						<th class="hideClass warningDesc"><div class="autoResize">Warning Description</div></th>
+						<th class=" errorDesc"><div class="autoResize">Error Description</div></th>
+						<th class=" warningDesc"><div class="autoResize">Warning Description</div></th>
 						<th class="hideClass ShortDeduction"><div class="autoResize">Short Deduction</div></th>
 						<th class="hideClass interestOnShortDeduction"><div class="autoResize">Interest on Short Deduction</div></th>
 						<th class="hideClass interestOnLatePayment"><div class="autoResize">Interest on Late Payment</div></th>
@@ -537,17 +557,17 @@ td .autoResize {
 							style="background-color: #ff3232" ng-if="a.resolved == 1"
 							data-placement="bottom" title="{{a.panRefNo}}">{{a.panRefNo}}</td>
 
-						<td class="ellipsis hideClass errorDesc" data-toggle="tooltip"
+						<td class=" errorDesc" data-toggle="tooltip"
 							ng-if="a.resolved == 0" data-placement="bottom"
 							title="{{a.errorDescription}}">{{a.errorDescription}}</td>
-						<td class="ellipsis hideClass errorDesc" data-toggle="tooltip"
+						<td class=" errorDesc" data-toggle="tooltip"
 							style="background-color: #ff3232" ng-if="a.resolved == 1"
 							data-placement="bottom" title="{{a.errorDescription}}">{{a.errorDescription}}</td>
 
-						<td class="ellipsis hideClass warningDesc" data-toggle="tooltip"
+						<td class=" warningDesc" data-toggle="tooltip"
 							ng-if="a.resolved == 0" data-placement="bottom"
 							title="{{a.warningDescription}}">{{a.warningDescription}}</td>
-						<td class="ellipsis hideClass warningDesc" data-toggle="tooltip"
+						<td class=" warningDesc" data-toggle="tooltip"
 							style="background-color: #ff3232" ng-if="a.resolved == 1"
 							data-placement="bottom" title="{{a.warningDescription}}">{{a.warningDescription}}</td>
 
@@ -590,10 +610,11 @@ td .autoResize {
 								aria-hidden="true" style="color: #ff0000"></i></td>
 						</div> -->
 						<td ><a
+						class="tool"
 							ng-click="cCctr.gotoDetailFormPage('form24QDeductee',a.id,a.fy,a.branchCode,'detailForm24QDeductee')"
 							style="color: blue" onclick="scrollWin()"><img
 								src="static\img\edit.png" width="22px" height="22px"
-								alt="Details" style="margin-top: 5px; margin-bottom: 5px;" /></a></td>
+								alt="Details" style="margin-top: 5px; margin-bottom: 5px;" /><span class="tooltiptext tooltip-top4">Detail</span></a></td>
 
 						<!-- <td>{{a.total-a.amountPaid}}</td> -->
 
@@ -616,8 +637,8 @@ td .autoResize {
 						<td class="hideClass certificateNo"></td>
 						<td class="hideClass remarksReason"></td>
 						<td class="hideClass panRefNo"></td>
-						<td class="hideClass errorDesc"></td>
-						<td class="hideClass warningDesc"></td>
+						<td class=" errorDesc"></td>
+						<td class=" warningDesc"></td>
 						<td class="hideClass ShortDeduction"><b>{{filteredList |
 								sumByKey:'ShortDeduction' | number : fractionSize}}</b></td>
 						<td class="hideClass interestOnShortDeduction"><b >{{filteredList |

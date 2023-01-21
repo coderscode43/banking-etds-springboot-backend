@@ -1,12 +1,28 @@
-
+<style>
+/*Refresh Button*/
+.tooltip-top {
+  bottom: 83%;
+  margin-left:-7%;
+}
+/*Search Button*/
+.tooltip-top1 {
+  bottom: 125%;
+  margin-left:-128%;
+}
+/*Advanced Search Button*/
+.tooltip-top2 {
+  bottom: 125%;
+  margin-left:-121%;
+}
+</style>
 <br>
 <div id="page-wrapper">
 	<div class="container-fluid">
 
-	<button class="btn btn-grad astro-MG2CNCJP" data-toggle="modal"
+	<button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
 					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
 					 onClick="refreshPageButton()"><i
-					class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh</button>
+					class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh<span class="tooltiptext tooltip-top">Refresh Button</span></button>
 						
 		<div class="col-md-12 "
 			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
@@ -159,16 +175,16 @@
 
 					<div class="row">
 						<div class="modal-footer">
-							<button class="pushable darkgreen"
+							<button class="pushable darkgreen tool"
 								style="margin-top: 2%;"
 								ng-click="formRODetails.submitted=true; cCctr.submit(formRODetails.$valid,cCctr.entity,'RODetails')">
-								<span class="front darkgreenspan"> Save</span>
+								<span class="front darkgreenspan">Save<span class="tooltiptext tooltip-top1">Save Button</span></span>
 							</button>
-							<button class="pushable darkred" ng-click="cCctr.gotoListPage('RODetails','RODetails');"
+							<button class="pushable darkred tool" ng-click="cCctr.gotoListPage('RODetails','RODetails');"
 								style="margin-top: 2%;"
 								onclick="scrollWin()">
 								<span class="front darkredspan">
-									Back</span>
+									Back<span class="tooltiptext tooltip-top2">Back Button</span></span>
 							</button>
 						</div>
 					</div>

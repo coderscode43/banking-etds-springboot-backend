@@ -182,81 +182,86 @@ implements H15Service {
 			} else {
 				details.createCell(22).setCellValue(h15.getPostOffice());
 			}
-			if (h15.getDistrict() == null) {
+			if (h15.getAreaLocality() == null) {
 				details.createCell(23).setCellValue(" ");
 			} else {
-				details.createCell(23).setCellValue(h15.getDistrict());
+				details.createCell(23).setCellValue(h15.getAreaLocality());
 			}
-			if (h15.getState() == null) {
+			if (h15.getDistrict() == null) {
 				details.createCell(24).setCellValue(" ");
 			} else {
-				details.createCell(24).setCellValue(h15.getState());
+				details.createCell(24).setCellValue(h15.getDistrict());
 			}
-			if (h15.getEmail() == null) {
+			if (h15.getState() == null) {
 				details.createCell(25).setCellValue(" ");
 			} else {
-				details.createCell(25).setCellValue(h15.getEmail());
+				details.createCell(25).setCellValue(h15.getState());
 			}
-			if (h15.getSTDCode() == null) {
+			if (h15.getEmail() == null) {
 				details.createCell(26).setCellValue(" ");
 			} else {
-				details.createCell(26).setCellValue(h15.getSTDCode());
+				details.createCell(26).setCellValue(h15.getEmail());
 			}
-			if (h15.getTelephoneNo() == null) {
+			if (h15.getSTDCode() == null) {
 				details.createCell(27).setCellValue(" ");
 			} else {
-				details.createCell(27).setCellValue(h15.getTelephoneNo());
+				details.createCell(27).setCellValue(h15.getSTDCode());
 			}
-			if (h15.getMobileNo() == null) {
+			if (h15.getTelephoneNo() == null) {
 				details.createCell(28).setCellValue(" ");
 			} else {
-				details.createCell(28).setCellValue(h15.getMobileNo());
+				details.createCell(28).setCellValue(h15.getTelephoneNo());
 			}
-			if (h15.getWhetherAssessedtotax() == null) {
+			if (h15.getMobileNo() == null) {
 				details.createCell(29).setCellValue(" ");
 			} else {
-				details.createCell(29).setCellValue(h15.getWhetherAssessedtotax());
+				details.createCell(29).setCellValue(h15.getMobileNo());
 			}
-			if (h15.getLatestassessmentyearforwhichassessed() == null) {
+			if (h15.getWhetherAssessedtotax() == null) {
 				details.createCell(30).setCellValue(" ");
 			} else {
-				details.createCell(30).setCellValue(h15.getLatestassessmentyearforwhichassessed());
+				details.createCell(30).setCellValue(h15.getWhetherAssessedtotax());
 			}
-			if (h15.getEstimatedtotalincomeofthePY() == null) {
+			if (h15.getLatestassessmentyearforwhichassessed() == null) {
 				details.createCell(31).setCellValue(" ");
 			} else {
-				details.createCell(31).setCellValue(h15.getEstimatedtotalincomeofthePY());
+				details.createCell(31).setCellValue(h15.getLatestassessmentyearforwhichassessed());
 			}
-			if (h15.getEstimatedIncomeforwhichthisdeclarationismade() == null) {
+			if (h15.getEstimatedtotalincomeofthePY() == null) {
 				details.createCell(32).setCellValue(" ");
 			} else {
-				details.createCell(32).setCellValue(h15.getEstimatedIncomeforwhichthisdeclarationismade());
+				details.createCell(32).setCellValue(h15.getEstimatedtotalincomeofthePY());
 			}
-			if (h15.getTotalNoofFormNo15Hfiled() == null) {
+			if (h15.getEstimatedIncomeforwhichthisdeclarationismade() == null) {
 				details.createCell(33).setCellValue(" ");
 			} else {
-				details.createCell(33).setCellValue(h15.getTotalNoofFormNo15Hfiled());
+				details.createCell(33).setCellValue(h15.getEstimatedIncomeforwhichthisdeclarationismade());
 			}
-			if (h15.getAggregateAmountofincomeforwhichFormNo15Hfiled() == null) {
+			if (h15.getTotalNoofFormNo15Hfiled() == null) {
 				details.createCell(34).setCellValue(" ");
 			} else {
-				details.createCell(34).setCellValue(h15.getAggregateAmountofincomeforwhichFormNo15Hfiled());
-			}if (h15.getAmountofincomepaid() == null) {
+				details.createCell(34).setCellValue(h15.getTotalNoofFormNo15Hfiled());
+			}
+			if (h15.getAggregateAmountofincomeforwhichFormNo15Hfiled() == null) {
 				details.createCell(35).setCellValue(" ");
 			} else {
-				details.createCell(35).setCellValue(h15.getAmountofIncome());
+				details.createCell(35).setCellValue(h15.getAggregateAmountofincomeforwhichFormNo15Hfiled());
+			
 			}if (h15.getDateonwhichDeclarationisreceived() == null) {
 				details.createCell(36).setCellValue(" ");
 			} else {
 				details.createCell(36).setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(h15.getDateonwhichDeclarationisreceived()));
+			
 			}if (h15.getAmountofincomepaid() == null) {
 				details.createCell(37).setCellValue(" ");
 			} else {
 				details.createCell(37).setCellValue(h15.getAmountofincomepaid());
+				
 			}if (h15.getDateonwhichtheincomehasbeenpaidcredited() == null) {
 				details.createCell(38).setCellValue(" ");
 			} else {
 				details.createCell(38).setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(h15.getDateonwhichtheincomehasbeenpaidcredited()));
+		
 			}if (h15.getFy() == null) {
 				details.createCell(39).setCellValue(" ");
 			} else {

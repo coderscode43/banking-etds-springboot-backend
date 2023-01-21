@@ -411,7 +411,7 @@ margin-left: -6%;
 				<th class=""><div class="autoResizeQuarter">Quarter</div></th>
 						<th class=""><div class="autoResizeQuarter">Month</div></th>
 						<th class=""><div class="autoResizeQuarter">RO Code</div></th>
-						<th class=""><div class="autoResizeQuarter">Branch Code</div></th>
+						<!-- <th class=""><div class="autoResizeQuarter">Branch Code</div></th> -->
 						<th class=""><div class="autoResizeQuarter">Cust/Vend Id</div></th>
 						<th class=""><div class="autoResize">Unique Ref No</div></th>
 						<th class=""><div class="autoResize">Account Number</div></th>
@@ -479,8 +479,8 @@ margin-left: -6%;
 						<td  ng-if="a.resolved == 0">{{a.roCode}}</td>
 						<td  style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.roCode}}</td>
 						
-						<td  ng-if="a.resolved == 0">{{a.branchCode}}</td>
-						<td  style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.branchCode}}</td>
+					<!-- 	<td  ng-if="a.resolved == 0">{{a.branchCode}}</td>
+						<td  style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.branchCode}}</td> -->
 						
 						<td  ng-if="a.resolved == 0">{{a.custVendId}}</td>
 						<td  style="background-color:#ff3232" ng-if="a.resolved == 1">{{a.custVendId}}</td>
@@ -623,7 +623,7 @@ margin-left: -6%;
 							<!-- <td>{{a.total-a.amountPaid}}</td> -->
 						</tr>
 						<tr>
-							<th class="one" colspan="15" style="text-align: center; height: 40px" ng-init="ttl=0"><b>TOTAL</b></th>
+							<th class="one" colspan="14" style="text-align: center; height: 40px" ng-init="ttl=0"><b>TOTAL</b></th>
 							<td class="hideClass amountPaid"><b>{{filteredList | sumByKey:'amountPaid'  	| number : fractionSize}}</b></td>
 							<td class="hideClass tds"><b>{{filteredList | sumByKey:'tds' 	| number : fractionSize}}</b></td>
 							<td class="hideClass surcharge"><b>{{filteredList | sumByKey:'surcharge' 	| number : fractionSize}}</b></td>

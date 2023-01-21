@@ -357,10 +357,10 @@ margin-left: -6%;
   <tr>
   <td><button class="showAll"  for='selectAll'>Show All</button></td>
      <td><button class="removeAll"  for='selectAll'>Remove All</button></td>
-    <td> <input type="checkbox" name="quarter">Quarter</td>
     <td> <input type="checkbox" name="dateOfPayment">Date of Payment</td>
     <td><input type="checkbox" name="dateOfDeduction">Date of Deduction</td>
     <td><input type="checkbox" name="amountPaid">Amount paid</td>
+      <td><input type="checkbox" name="tds">TDS</td>
     </tr>
  
   <tr>
@@ -369,7 +369,7 @@ margin-left: -6%;
     <td><input type="checkbox" name="totalTaxDeducted">Total Tax Deducted</td>
     <td><input type="checkbox" name="totalTaxDeposited">Total Tax Deposited</td>
      <td><input type="checkbox" name="certificateNo">Certificate No </td>
-     <td><input type="checkbox" name="tds">TDS</td>
+   <td><input type="checkbox" name="InterestOnLatePayment">Interest On Late Payment</td>
   </tr>
   
  <tr>
@@ -379,14 +379,13 @@ margin-left: -6%;
     <td><input type="checkbox" name="rateTaxDeductee">Rate Tax Deductee</td>
       <td><input type="checkbox" name="cashWithdrawal194N">cashWithdrawal194N </td>
     <td><input type="checkbox" name="cashWithdrawal194N20Lto1Cr">Cash Withdrawal 194N20Lto1Cr</td>
-     <td><input type="checkbox" name="InterestOnLatePayment">Interest On Late Payment</td>
+    <td><input type="checkbox" name="ShortDeduction">Short Deduction</td>
+     
  </tr>
  
  <tr>
  
     <td><input type="checkbox" name="cashWithdrawal194N1Cr">Cash Withdrawal 194N1Cr</td>
-   
-    <td><input type="checkbox" name="ShortDeduction">Short Deduction</td>
     <td><input type="checkbox" name="InterestOnShortDeduction">Interest On ShortDeduction</td>
     <td><input type="checkbox" name="InterestOnLateDeduction">Interest On Late Deduction</td>
  </tr>
@@ -621,8 +620,8 @@ margin-left: -6%;
 							<td class="hideClass cashWithdrawal194N"><b>{{ filteredList | sumByKey : 'cashWithdrawal194N' | number : fractionSize}}</b></td>
 							<td class="hideClass cashWithdrawal194N20Lto1Cr"><b>{{ filteredList | sumByKey : 'cashWithdrawal194N20Lto1Cr' | number : fractionSize}}</b></td>
 							<td class="hideClass cashWithdrawal194N1Cr"><b>{{ filteredList | sumByKey : 'cashWithdrawal194N1Cr' | number : fractionSize}}</b></td>
-							<td class=" errorDesc"></td>
-							<td class=" warningDesc"></td>
+							<td class="hideClass errorDesc"></td>
+							<td class="hideClass warningDesc"></td>
 							<td class="hideClass ShortDeduction"><b>{{ filteredList | sumByKey : 'ShortDeduction' | number : fractionSize}}</b></td>
 							<td class="hideClass InterestOnShortDeduction"><b>{{ filteredList | sumByKey : 'InterestOnShortDeduction' | number : fractionSize}}</b></td>
 							<td class="hideClass InterestOnLatePayment"><b>{{ filteredList | sumByKey : 'InterestOnLatePayment' | number : fractionSize}}</b></td>

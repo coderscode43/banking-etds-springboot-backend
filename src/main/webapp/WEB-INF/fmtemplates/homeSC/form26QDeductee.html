@@ -447,10 +447,10 @@ th {
   <tr>
   <td><button class="showAll"  for='selectAll'>Show All</button></td>
      <td><button class="removeAll"  for='selectAll'>Remove All</button></td>
-    <td> <input type="checkbox" name="quarter">Quarter</td>
     <td> <input type="checkbox" name="dateOfPayment">Date of Payment</td>
     <td><input type="checkbox" name="dateOfDeduction">Date of Deduction</td>
     <td><input type="checkbox" name="amountPaid">Amount paid</td>
+     <td><input type="checkbox" name="tds">TDS</td>
     </tr>
  
   <tr>
@@ -459,7 +459,8 @@ th {
     <td><input type="checkbox" name="totalTaxDeducted">Total Tax Deducted</td>
     <td><input type="checkbox" name="totalTaxDeposited">Total Tax Deposited</td>
      <td><input type="checkbox" name="certificateNo">Certificate No </td>
-     <td><input type="checkbox" name="tds">TDS</td>
+     <td><input type="checkbox" name="InterestOnLatePayment">Interest On Late Payment</td>
+    
   </tr>
   
  <tr>
@@ -469,15 +470,14 @@ th {
     <td><input type="checkbox" name="rateTaxDeductee">Rate Tax Deductee</td>
       <td><input type="checkbox" name="cashWithdrawal194N">cashWithdrawal194N </td>
     <td><input type="checkbox" name="cashWithdrawal194N20Lto1Cr">Cash Withdrawal 194N20Lto1Cr</td>
-     <td><input type="checkbox" name="InterestOnLatePayment">Interest On Late Payment</td>
+    <td><input type="checkbox" name="ShortDeduction">Short Deduction</td>
+     
  </tr>
  
  <tr>
  
     <td><input type="checkbox" name="cashWithdrawal194N1Cr">Cash Withdrawal 194N1Cr</td>
     <td><input type="checkbox" name="errorDesc">Error Desc</td>
-   
-    <td><input type="checkbox" name="ShortDeduction">Short Deduction</td>
     <td><input type="checkbox" name="InterestOnShortDeduction">Interest On ShortDeduction</td>
     <td><input type="checkbox" name="InterestOnLateDeduction">Interest On Late Deduction</td>
  </tr>
@@ -496,7 +496,7 @@ th {
 				<thead"rowgroup">
 					<tr role="row" style="background-color: #81b7db; height: 40px">
 						<th>Sr. No.</th>
-						<th class="hideClass quarter">Quarter</th>
+						<th class="quarter">Quarter</th>
 						<th class="">Month</th>
 						<th class="">RO Code</th>
 						<th ><div class="autoResizeQuarter">Branch Code</div></th>
@@ -552,8 +552,8 @@ th {
 						<td  ng-if="a.resolved == 0">{{$index+1}}</td>
 						<td style=" background-color:#ff3232" ng-if="a.resolved == 1">{{$index+1}}</td>
 						
-						<td class="hideClass quarter" ng-if="a.resolved == 0">{{a.quarter}}</td>
-						<td class="hideClass quarter" style=" background-color:#ff3232" ng-if="a.resolved == 1">{{a.quarter}}</td>
+						<td class=" quarter" ng-if="a.resolved == 0">{{a.quarter}}</td>
+						<td class=" quarter" style=" background-color:#ff3232" ng-if="a.resolved == 1">{{a.quarter}}</td>
 						
 						<td class="" ng-if="a.resolved == 0">{{a.month}}</td>
 						<td class="" style=" background-color:#ff3232" ng-if="a.resolved == 1">{{a.month}}</td>

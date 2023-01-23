@@ -74,6 +74,18 @@ margin-left: -45%;
 .tooltip-top5{
 margin-left: -20%;
 }
+
+/*Add Button*/
+.tooltip-top6{
+bottom: 47%;
+margin-left: -7%;
+}
+
+/*Close Button*/
+.tooltip-top7{
+bottom: 19%;
+margin-left: -7%;
+}
 </style>
 
 
@@ -297,7 +309,7 @@ margin-left: -20%;
 										<div>
 											<label>Section*</label> <select name="section"
 												ng-model="cCctr.entity.reportType" class="form-control"
-												required>
+												title="Select Report Type"  required>
 												<option value=" " ng-selected="true" disabled>Select Report
 													Type</option>
 												<option value="section">Section</option>
@@ -321,6 +333,7 @@ margin-left: -20%;
 									<div class="col-md-4">
 										<div>
 											<label>From Date*</label> <input class="form-control" name="fromDate"
+											    title="Select From Date"
 												type="date" ng-model="cCctr.entity.fromDate" required>
 												<span style="color: red"
 									ng-show="fileForm.submitted ||fileForm.fromDate.$dirty && fileForm.fromDate.$invalid">
@@ -332,7 +345,7 @@ margin-left: -20%;
 									</div>
 									<div class="col-md-4">
 										<div>
-											<label>To Date*</label> <input class="form-control" name="toDate"
+											<label>To Date*</label> <input class="form-control" name="toDate" title="Select To Date"
 												type="date" ng-model="cCctr.entity.toDate" required>
                                                 <span style="color: red"
 									ng-show="fileForm.submitted ||fileForm.toDate.$dirty && fileForm.toDate.$invalid">
@@ -349,8 +362,9 @@ margin-left: -20%;
 									<label class="control-label" for="save"></label>
 									<div class="controls">
 										<button id="add" name="add"
-											class="btn btn-success btn-block btn-primary"
-											ng-click="fileForm.submitted=true;cCctr.submitFY(fileForm.$valid,cCctr.entity,'generateReport','close')">Add</button>
+											class="btn btn-success btn-block btn-primary tool"
+											ng-click="fileForm.submitted=true;cCctr.submitFY(fileForm.$valid,cCctr.entity,'generateReport','close')">
+											Add<span class="tooltiptext tooltip-top6">Add Button</span></button>
 									</div>
 								</div>
 							</fieldset>
@@ -360,8 +374,8 @@ margin-left: -20%;
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" id="close"
-					data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-default tool" id="close"
+					data-dismiss="modal">Close<span class="tooltiptext tooltip-top7">Close Button</span></button>
 			</div>
 		</div>
 	</div>

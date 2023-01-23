@@ -78,7 +78,16 @@ td .autoResize {
  bottom: 115%;
   margin-left:-31%;
 }
-
+/*Add Button*/
+.tooltip-top4 {
+  bottom: 115%;
+  margin-left:-67%;
+}
+/*Close Button*/
+.tooltip-top5 {
+  bottom: 115%;
+  margin-left:-67%;
+}
 </style>
 
 <div id="page-wrapper" ng-controller="CommonController as cCctr">
@@ -280,7 +289,7 @@ td .autoResize {
 									<label style="font-size: 15px">TAN*</label>
 								</h6>
 								<select
-									class="form-control" id="TAN" name="TAN"
+									class="form-control" id="TAN" name="TAN" title="Select TAN Number"
 									ng-model="cCctr.entity.TAN" ng-required="true">
 									<option disabled value="">Select TAN Number</option>
 									<#list Tan as TAN>
@@ -301,6 +310,7 @@ td .autoResize {
 										<div class="form-group">
 											<label style="font-size: 15px">Type of Certificate*</label> <select
 												name="typeofCertificate" id="typeofCertificate"
+												title="Select Type of Certificate"
 												class="form-control"
 												ng-model="cCctr.entity.form" ng-required="true"
 												ng-model-options="{updateOn: 'blur'}">
@@ -335,6 +345,7 @@ td .autoResize {
 							<div>
 								<label style="font-size: 15px">Financial Year*</label> <select
 									class="form-control" id="fy" name="fy"
+									title="Select Financial Year"
 									ng-model="cCctr.entity.fy" ng-required="true">
 									<option disabled value="">Select financial Year</option>
 									<#list financialYear as year>
@@ -354,6 +365,7 @@ td .autoResize {
 							<div>
 								<label style="font-size: 15px">Quarter*</label> <select
 									class="form-control" id="quarter" name="quarter"
+									title="Select Quarter"
 									ng-model="cCctr.entity.quarter" ng-required="true">
 									<option disabled value="">Select Quarter</option>
 									<#list Quarter as quarter>
@@ -404,7 +416,8 @@ td .autoResize {
 							<div class="col-md-12">
 							<div class="form-group">
 								<label for="name" style="font-size: 15px"> File*</label> 
-									<input multiple id="file-upload" type="file" name="zipFile" class="form-control"
+									<input multiple id="file-upload" type="file" name="zipFile"
+									       title="Select File" title="Select TAN Number" class="form-control"
 										ng-required="true" file-model="cCctr.entity.zipFile" accept=".zip"/>	
 										 <span style="color: red"
 												ng-show="certificateDetails.submitted ||certificateDetails.zipFile.$dirty && certificateDetails.zipFile.$invalid">
@@ -428,13 +441,15 @@ td .autoResize {
 				</div>
 
 			<div class="modal-footer">
-			<button class="pushable darkgreen"
+			<button class="pushable darkgreen tool"
 							ng-click="certificateDetails.submitted=true;cCctr.saveDocument(certificateDetails.$valid,cCctr.entity,'uploadCertificate','close')">
-							<span class="front darkgreenspan"> Add</span>
+							<span class="front darkgreenspan"> Add
+							<span class="tooltiptext tooltip-top4">Add Button</span></span>
 						</button>
-						<button class="pushable darkred" 
+						<button class="pushable darkred tool" 
 							data-dismiss="modal">
-							<span class="front darkredspan"> Close</span>
+							<span class="front darkredspan"> Close
+							<span class="tooltiptext tooltip-top5">Close Button</span></span>
 						</button>
 			<!-- 	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
 			</div>

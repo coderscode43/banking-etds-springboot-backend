@@ -38,12 +38,17 @@
 /*Download button  */
 .tooltip-top {
  bottom: 125%;
-margin-left: -102%;
+margin-left: -91%;
 }
 /*Refresh Button  */
 .tooltip-top1 {
 bottom: 84%;
 margin-left: -7%;
+}
+/*Download button  */
+.tooltip-top2 {
+ bottom: 125%;
+margin-left: -102%;
 }
 </style>
 
@@ -87,7 +92,7 @@ margin-left: -7%;
 										<div class="form-group">
 											<label for="pan" class="col-form-label"
 												style="font-size: 12px"> PAN Number / Customer Id*:</label> <input type="text"
-												class="form-control" id="pan" name="pan" placeholder="Enter PAN / Customer Id"
+												class="form-control" id="pan" name="pan" title="Enter Enter PAN / Customer Id" placeholder="Enter PAN / Customer Id"
 												ng-model="cCctr.entity.pan" ng-required="true"
 												required="required" style="font-size: 15px"> <span
 												style="color: red"
@@ -112,7 +117,7 @@ margin-left: -7%;
 												ng-pattern="/^[A-Z]{4}[0-9]{5}[A-Z]{1}$/"
 												required="required" style="font-size: 15px"> -->
 												<select
-												name="tan" id="tan"
+												name="tan" id="tan" title="Select TAN"
 												class="form-control"
 												ng-model="cCctr.entity.tan" ng-required="true"
 												ng-model-options="{updateOn: 'blur'}">
@@ -134,7 +139,7 @@ margin-left: -7%;
 									<div class="col-md-12">
 										<div class="form-group">
 											<label style="font-size: 12px">Type of Certificate*</label> <select
-												name="typeofCertificate" id="typeofCertificate"
+												name="typeofCertificate" id="typeofCertificate" title="Select Type of Certificate"
 												class="form-control"
 												ng-model="cCctr.entity.typeofCertificate" ng-required="true"
 												ng-model-options="{updateOn: 'blur'}">
@@ -157,7 +162,7 @@ margin-left: -7%;
 									<div class="col-md-12">
 										<div class="form-group">
 											<label style="font-size: 12px">Financial Year*</label> <select
-												name="financialYear" class="form-control" id="financialYear"
+												name="financialYear" class="form-control" title="Select Financial Year" id="financialYear"
 												ng-model="cCctr.entity.financialYear" ng-required="true"
 												ng-model-options="{updateOn: 'blur'}">
 												<option disabled value="">Select financial Year</option>
@@ -177,7 +182,7 @@ margin-left: -7%;
 									<div class="col-md-12">
 										<div class="form-group">
 											<label style="font-size: 12px">Quarter*</label> <select
-												name="quarter" class="form-control" id="quarter"
+												name="quarter" class="form-control" title="Select Quarter" id="quarter"
 												ng-model="cCctr.entity.quarter" ng-required="true"
 												ng-model-options="{updateOn: 'blur'}">
 												<option disabled value="">Select Quarter</option>

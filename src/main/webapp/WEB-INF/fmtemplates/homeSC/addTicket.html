@@ -1,10 +1,30 @@
+<style>
+/*Refresh button  */
+.tooltip-top {
+ bottom: 84%;
+margin-left: -7%;
+}
+/*Add Button  */
+.tooltip-top1 {
+bottom: 125%;
+margin-left: -67%;
+}
+/*Back button  */
+.tooltip-top2 {
+ bottom: 125%;
+margin-left: -67%;
+}
+
+</style>
+
 <div id="page-wrapper">
 	<div class="container-fluid">
 	
-	<button class="btn btn-grad astro-MG2CNCJP" data-toggle="modal"
+	<button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
 					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
 					 onClick="refreshPageButton()"><i
-					class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh</button>
+					class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh
+					<span class="tooltiptext tooltip-top">Refresh Button</span></button>
 					
 		<div class="col-md-12 "
 			style="margin: 2% 0 2% 0; font-size: 12pxp;">
@@ -35,7 +55,7 @@
 								<label style="font-size: 15px">Form*</label>
 								<div>
 									<select name="form" id="form" ng-model="cCctr.entity.form"
-										class="form-control" required>
+										title="Select Form" class="form-control" required>
 										<option disabled value="">Select Form</option>
 										<#list Form as f>
 										<option value="${f}">${f}</option>
@@ -64,7 +84,7 @@
 						<div class="col-md-4">
 							<div>
 								<label style="font-size: 15px">Financial Year*</label> <select
-									class="form-control" id="fy" name="fy"
+									class="form-control" id="fy" name="fy" title="Select Financial Year"
 									ng-model="cCctr.entity.fy" ng-required="true">
 									<option disabled value="">Select financial Year</option>
 									<#list financialYear as year>
@@ -82,7 +102,7 @@
 						<div class="col-md-4">
 							<div>
 								<label style="font-size: 15px">Quarter*</label> <select
-									class="form-control" id="quarter" name="quarter"
+									class="form-control" id="quarter" name="quarter" title="Select Quarter"
 									ng-model="cCctr.entity.quarter" ng-required="true">
 									<option disabled value="">Select Quarter</option>
 									<#list Quarter as quarter>
@@ -100,8 +120,9 @@
 					<div class="row">
 						<div class="col-md-6">
 								<div>
-									<label style="font-size: 15px">Customer/Vendor Id</label> <input
-										name="custVendId" id="custVendId" ng-maxlength = "15"
+									<label style="font-size: 15px">Customer/Vendor Id</label> <input class="form-control"
+										name="custVendId" title="Enter Customer/Vendor Id" id="custVendId" Customer/Vendor Id
+										ng-maxlength = "15"
 										ng-model="cCctr.entity.custVendId" placeholder="Customer/Vendor Id"
 										class="form-control">
 								</div>
@@ -118,7 +139,7 @@
 							</div>
 						<div class="col-md-6">
 								<div>
-									<label style="font-size: 15px">PAN</label> <input name="pan"
+									<label style="font-size: 15px">PAN</label> <input class="form-control" name="pan" title="Enter PAN"
 										id="pan" ng-model="cCctr.entity.pan" placeholder="PAN"
 										ng-pattern="/^([A-Za-z]{5}[0-9]{4}[A-Za-z]{1})*$/"
 										class="form-control">
@@ -137,7 +158,8 @@
 						<div class="col-md-12">
 							<div style="margin-left: 0%">
 								<label style="font-size: 15px">Branch Code*</label> <input
-									class="form-control" name="branchCode" id="branchCode" type="number"
+									class="form-control" name="branchCode" title="Enter Branch Code"
+									id="branchCode" type="number"
 									ng-model="cCctr.entity.branchCode" placeholder="Branch Code"
 									ng-required="true">
 							</div>
@@ -167,7 +189,7 @@
 						<div class="col-md-12">
 							<div class="">
 								<label style="font-size: 15px">Description*</label>
-								<textarea class="form-control" name="description"
+								<textarea class="form-control" name="description" title="Add Description"
 									id="description" ng-model="cCctr.entity.description"
 									style="width: 100%;" required></textarea>
 								<span style="color: red"
@@ -196,14 +218,16 @@
 
 					<div class="modal-footer" style="text-align: center">
 
-						<button class="pushable darkgreen" style="margin-top: 2%;"
+						<button class="pushable darkgreen tool" style="margin-top: 2%;"
 							data-dismiss="modal"
 							ng-click="fileForm.submitted=true;cCctr.submit(fileForm.$valid,cCctr.entity,'ticket')">
-							<span class="front darkgreenspan"> Add</span>
+							<span class="front darkgreenspan"> Add
+							<span class="tooltiptext tooltip-top1">Add Button</span></span>
 						</button>
-						<button class="pushable darkred" style="margin-top: 2%;"
+						<button class="pushable darkred tool" style="margin-top: 2%;"
 							ng-click="cCctr.gotoListPage('ticket','ticket');">
-							<span class="front darkredspan"> Back</span>
+							<span class="front darkredspan"> Back
+							<span class="tooltiptext tooltip-top2">Back Button</span></span>
 						</button>
 
 

@@ -4,15 +4,15 @@
   bottom: 83%;
   margin-left:-7%;
 }
-/*Search Button*/
+/*Save Button*/
 .tooltip-top1 {
   bottom: 125%;
-  margin-left:-128%;
+  margin-left:-92%;
 }
-/*Advanced Search Button*/
+/*Back Button*/
 .tooltip-top2 {
   bottom: 125%;
-  margin-left:-121%;
+  margin-left:-92%;
 }
 </style>
 <br>
@@ -22,7 +22,8 @@
 	<button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
 					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
 					 onClick="refreshPageButton()"><i
-					class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh<span class="tooltiptext tooltip-top">Refresh Button</span></button>
+					class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh
+					<span class="tooltiptext tooltip-top">Refresh Button</span></button>
 						
 		<div class="col-md-12 "
 			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
@@ -39,7 +40,7 @@
 								<h6>
 									<label>RO Code*</label>
 								</h6>
-								<input class="form-control" type="text" name="roCode"
+								<input class="form-control" type="text" name="roCode" title="Enter RO code"
 									placeholder="ROCode" ng-model="cCctr.entity.roCode"
 									autocomplete="off" ng-required="true" ng-maxlength="10"
 									ng-pattern="/^[a-zA-Z0-9]*$/"
@@ -63,7 +64,7 @@
 								<h6>
 									<label>RO Name*</label>
 								</h6>
-								<input class="form-control" type="text" name="roName"
+								<input class="form-control" type="text" name="roName" title="Enter RO Name"
 									placeholder="ROName" ng-model="cCctr.entity.roName"
 									autocomplete="off" ng-required="true" ng-maxlength="45"
 									ng-pattern="/^[a-zA-Z0-9]*$/"
@@ -87,7 +88,7 @@
 								<h6>
 									<label>RO State*</label>
 								</h6>
-								<select class="form-control" name="roState"
+								<select class="form-control" name="roState" title="Select RO State"
 									placeholder="RO State" ng-model="cCctr.entity.roState"
 									autocomplete="off" ng-required="true" ng-maxlength="50"
 									ng-model-options="{updateOn:'blur'}">
@@ -108,7 +109,7 @@
 								<h6>
 									<label>RO Email*</label>
 								</h6>
-								<input class="form-control" type="text" name="roEmail"
+								<input class="form-control" type="text" name="roEmail" title="Enter RO Email"
 									id="roEmail" placeholder="RO Email"
 									ng-model="cCctr.entity.roEmail" ng-required="true"
 									style="text-transform: lowercase"
@@ -134,7 +135,7 @@
 								<h6>
 									<label>RO Pincode*</label>
 								</h6>
-								<input class="form-control" type="text" name="roPincode"
+								<input class="form-control" type="text" name="roPincode" title="Enter RO Pincode"
 									placeholder="RO Pincode" ng-model="cCctr.entity.roPincode"
 									autocomplete="off" ng-required="true" ng-pattern="/^[0-9]{6}$/"
 									ng-model-options="{updateOn:'blur'}" /> <span
@@ -155,7 +156,7 @@
 								<h6>
 									<label>RO Address*</label>
 								</h6>
-								<textarea class="form-control" type="text" name="roAddress"
+								<textarea class="form-control" type="text" name="roAddress" title="Enter RO Address"
 									placeholder="RO Address" ng-model="cCctr.entity.roAddress"
 									autocomplete="off" ng-required="true" ng-maxlength="50"
 									ng-model-options="{updateOn: 'blur'}" /></textarea>

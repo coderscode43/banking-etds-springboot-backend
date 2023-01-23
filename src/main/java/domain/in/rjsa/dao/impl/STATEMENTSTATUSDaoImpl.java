@@ -39,15 +39,11 @@ public class STATEMENTSTATUSDaoImpl extends AbstractDaoTaxo<Long, STATEMENTSTATU
 		if (entity.get("FORM") != null) {
 			criteria.add(Restrictions.eqOrIsNull("FORM", String.valueOf((String) entity.get("FORM"))));
 		}
-
+		if (entity.get("FY") != null) {
+			criteria.add(Restrictions.eqOrIsNull("FY", String.valueOf((String) entity.get("FY"))));
+		}
 		if (entity.get("STATUS") != null) {
 			criteria.add(Restrictions.eqOrIsNull("STATUS", String.valueOf((String) entity.get("STATUS"))));
-		}
-		if (entity.get("FY") != null) {
-			String Date = entity.get("FY").toString();
-			String[] parts = Date.split("-");
-			String fy = parts[0] + parts[1];
-			criteria.add(Restrictions.eqOrIsNull("FY", String.valueOf(fy)));
 		}
 		if (entity.get("QUARTER") != null) {
 			criteria.add(Restrictions.eqOrIsNull("QUARTER", String.valueOf((String) entity.get("QUARTER"))));
@@ -135,6 +131,82 @@ public class STATEMENTSTATUSDaoImpl extends AbstractDaoTaxo<Long, STATEMENTSTATU
 //  		criteria.setFirstResult(pageNo * noOfResult);
 //  		criteria.setMaxResults(noOfResult);
 		return (List<STATEMENTSTATUS>) criteria.list();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<STATEMENTSTATUS> findall(HashMap<String, Object> constrains, int pageNo, int noOfResult) {
+		Criteria criteria = createEntityCriteria();
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
+		criteria.add(Restrictions.allEq(constrains));
+		if (constrains.get("fromDate") != null) {
+			criteria.add(Restrictions.ge("AS_ON_DATE",
+					Date.from(ZonedDateTime.parse((String) constrains.get("fromDate")).toInstant())));
+		}
+		if (constrains.get("toDate") != null) {
+			criteria.add(Restrictions.le("AS_ON_DATE",
+					Date.from(ZonedDateTime.parse((String) constrains.get("toDate")).toInstant())));
+		}
+		if (constrains.get("TAN") != null) {
+			criteria.add(Restrictions.eqOrIsNull("TAN", constrains.get("TAN")));
+		}
+		if (constrains.get("FORM") != null) {
+			criteria.add(Restrictions.eqOrIsNull("FORM", String.valueOf((String) constrains.get("FORM"))));
+		}
+
+		if (constrains.get("FY") != null) {
+			String Date = constrains.get("FY").toString();
+			String[] parts = Date.split("-");
+			String fy = parts[0] + parts[1];
+			criteria.add(Restrictions.eqOrIsNull("FY", String.valueOf(fy)));
+		}
+		if (constrains.get("QUARTER") != null) {
+			criteria.add(Restrictions.eqOrIsNull("QUARTER", String.valueOf((String) constrains.get("QUARTER"))));
+		}
+		if (constrains.get("RT") != null) {
+			criteria.add(Restrictions.eqOrIsNull("RT", constrains.get("RT")));
+		}
+		if (constrains.get("STATUS") != null) {
+			criteria.add(Restrictions.eqOrIsNull("STATUS", constrains.get("STATUS")));
+		}
+		criteria.addOrder(Order.desc("id"));
+		criteria.setFirstResult(pageNo * noOfResult);
+		criteria.setMaxResults(noOfResult);
+		return (List<STATEMENTSTATUS>) criteria.list();
+
+	}
+	
+	public Long findallCount(HashMap<String, Object> constrains) {
+		Criteria criteria = createEntityCriteria();
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
+		criteria.add(Restrictions.allEq(constrains));
+		if (constrains.get("fromDate") != null) {
+			criteria.add(Restrictions.ge("AS_ON_DATE",
+					Date.from(ZonedDateTime.parse((String) constrains.get("fromDate")).toInstant())));
+		}
+		if (constrains.get("toDate") != null) {
+			criteria.add(Restrictions.le("AS_ON_DATE",
+					Date.from(ZonedDateTime.parse((String) constrains.get("toDate")).toInstant())));
+		}
+		if (constrains.get("TAN") != null) {
+			criteria.add(Restrictions.eqOrIsNull("TAN", constrains.get("TAN")));
+		}
+		if (constrains.get("FORM") != null) {
+			criteria.add(Restrictions.eqOrIsNull("FORM", String.valueOf((String) constrains.get("FORM"))));
+		}
+		if (constrains.get("FY") != null) {
+			criteria.add(Restrictions.eqOrIsNull("FY", String.valueOf((String) constrains.get("FY"))));
+		}
+		if (constrains.get("QUARTER") != null) {
+			criteria.add(Restrictions.eqOrIsNull("QUARTER", String.valueOf((String) constrains.get("QUARTER"))));
+		}
+		if (constrains.get("RT") != null) {
+			criteria.add(Restrictions.eqOrIsNull("RT", constrains.get("RT")));
+		}
+		if (constrains.get("STATUS") != null) {
+			criteria.add(Restrictions.eqOrIsNull("STATUS", constrains.get("STATUS")));
+		}
+		return (Long) criteria.setProjection(Projections.rowCount()).uniqueResult();
+
 	}
 
 }

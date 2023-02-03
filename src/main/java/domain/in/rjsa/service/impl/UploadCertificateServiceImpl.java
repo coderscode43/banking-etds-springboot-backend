@@ -1,19 +1,20 @@
 package domain.in.rjsa.service.impl;
 
+import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -39,9 +40,9 @@ import domain.in.rjsa.util.StaticData;
 @Service("uploadCertificateService")
 public class UploadCertificateServiceImpl extends AbstractServiceForm<Long, UploadCertificate, UploadCertificateDao>
 		implements UploadCertificateService {
-	
+
 	private final Logger logger = LoggerFactory.getLogger(getClass());
-	
+
 	@Autowired
 	UploadCertificateDao dao;
 
@@ -87,17 +88,18 @@ public class UploadCertificateServiceImpl extends AbstractServiceForm<Long, Uplo
 					String path = "download\\" + lessonMap.get("fy") + "\\" + lessonMap.get("quarter") + "\\" + f[0]
 							+ "\\" + t[0];
 					logger.info(path);
+					System.out.println(path);
 					unzip(downloadFile, path);
 					uploadCertificate.setStatus("success");
 					dao.update(uploadCertificate);
 				} catch (Exception e) {
-					
+
 					System.out.println("completable future error :");
 					uploadCertificate.setStatus("failed");
 					dao.update(uploadCertificate);
 					e.printStackTrace();
 					throw new CustomException(e.getMessage());
-					
+
 				}
 			});
 
@@ -204,22 +206,76 @@ public class UploadCertificateServiceImpl extends AbstractServiceForm<Long, Uplo
 
 	}
 
-	public void unzip(MultipartFile zip, String path) throws IllegalStateException, IOException, InterruptedException {
+	public void unzip(MultipartFile zip, String path) throws Exception {
 		final Path destDir = Paths.get(StaticData.CertificatePath + path);
 		final Path newPath = destDir.resolve(zip.getOriginalFilename());
 		zip.transferTo(newPath);
-		String command = "tar -xf " + zip.getOriginalFilename();
+		logger.info("zip transferred in " + newPath);
+//		File file = new File(newPath.toString());
+//		FileOutputStream fos = new FileOutputStream(file);
+//		fos.write(zip.getBytes());
+//		fos.close();
+		System.out.println(newPath);
+		String command;
+		if (StaticData.command.contains("powershell.exe")) {
+			String[] c = StaticData.command.split(",");
+			command = c[0] + newPath + c[1] + destDir;
+			// powershell.exe Expand-Archive
+			// D:\download\2022-23\Q1\Form16\ABCD12345F\AAAAU9895N_Q2_2023-24.zip,
+			// -DestinationPath D:\download\2022-23\Q1\Form16\ABCD12345F
+			logger.info(command);
+			System.out.println(command);
+		} else {
+			if (StaticData.command.contains(",")) {
+				String[] c = StaticData.command.split(",");
+				command = c[0] + zip.getOriginalFilename() + c[1];
+				// "C:\Program Files\7-Zip\7z.exe" AAAAU9895N_Q2_2023-24.zip -o./ -y -r
+				logger.info(zip.getOriginalFilename());
+				logger.info(command);
+				System.out.println(command);
+			} else {
+				command = StaticData.command + zip.getOriginalFilename();
+				// tar -xf AAAAU9895N_Q2_2023-24.zip
+				logger.info(command);
+				System.out.println(command);
+			}
+		}
 		try {
-			Process process = Runtime.getRuntime().exec("cmd /c start " + command, null, new File(destDir.toString()));
-//			process.wait();
-			Thread.sleep(500);
+			logger.info(command);
+			Process process;
+			if (StaticData.command.contains("powershell.exe")) {
+				process = Runtime.getRuntime().exec(command);
+				process.waitFor();
+			} else {
+				process = Runtime.getRuntime().exec("cmd /c start " + command, null, new File(destDir.toString()));
+				process.waitFor();
+
+			}
+			logger.info("unzip in " + destDir);
+			
+			BufferedReader input = new BufferedReader(new InputStreamReader(process.getInputStream()));
+			ArrayList<String> procs = new ArrayList<String>();
+			String line = null;
+			while ((line = input.readLine()) != null) {
+			    procs.add(line);
+			}
+			input.close();
+			Boolean processFound = procs.stream().filter(row -> row.indexOf("cmd.exe") > -1).count() > 0;
+			while(processFound) {
+				Thread.sleep(1000);	
+			}
+//			taskkill \m \im 
+
+			moveToFolder(destDir);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			
 			e.printStackTrace();
 			throw new CustomException("Error while Uploading file :" + e.getMessage());
 		} finally {
-			newPath.toFile().delete();
+			String fName = newPath.getFileName().toString();
+			Character c = fName.charAt(4);
+			Path targetPath = Paths.get(destDir.toString() + "\\" + c +"\\"+fName);
+			targetPath.toFile().delete();
 		}
 	}
 
@@ -236,4 +292,31 @@ public class UploadCertificateServiceImpl extends AbstractServiceForm<Long, Uplo
 
 	}
 
+	public void moveToFolder(Path destDir) {
+		File file = new File(destDir.toString());
+		File newFile = null;
+		if (file.listFiles() != null) {
+			File[] listOfFiles = file.listFiles();
+			for (File f : listOfFiles) {
+				String fName = f.getName();
+				Character c = fName.charAt(4);
+				newFile = new File(destDir.toString() + "\\" + c);
+				if (!newFile.exists()) {
+					newFile.mkdirs();
+				}
+				try {
+					Path target = Paths.get(newFile.toString() + "\\" + f.getName());
+					Files.move(f.toPath(), target, StandardCopyOption.REPLACE_EXISTING);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
+		}
+	}
+
+	public static void main(String[] args) {
+		Path destDir = Paths.get("D:\\download\\2022-23\\Q1\\Form16A\\ABCD12345F");
+	}
 }

@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import domain.in.rjsa.exception.CustomException;
+import domain.in.rjsa.exception.FieldErrorDTO;
 import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.fy.UploadCertificate;
 import domain.in.rjsa.service.UploadCertificateService;
@@ -67,6 +72,7 @@ public class UploadCertificateController extends AbstractControllerForm<Long, Up
 			
 		//	@RequestParam("uploadedTime") String uploadedTime
 			) {
+		FieldErrorDTO ermsg = new FieldErrorDTO();
 		try {
 			if (downloadFile.getOriginalFilename().endsWith(".zip")) {
 				HashMap<String, String> lessonMap = new HashMap<String, String>();
@@ -79,12 +85,16 @@ public class UploadCertificateController extends AbstractControllerForm<Long, Up
 				return new ResponseEntity<>(HttpStatus.OK);
 
 			} else {
-				return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+				
+				throw new CustomException("Invalid File Type");
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			ermsg.setEntityName("Upload Certificate");
+			ermsg.setExceptionMsg(e.getMessage());
+			
+			return new ResponseEntity<>(ermsg,HttpStatus.BAD_REQUEST);
 		}
 
 	}

@@ -1,5 +1,4 @@
 <style>
-
 @media only screen and (max-width: 1000px) {
 	#hide {
 		display: none;
@@ -18,6 +17,7 @@
 		visibility: visible;
 	}
 }
+
 .btn-grad {
 	background-image: linear-gradient(to right, #FF8008 0%, #FFC837 51%, #FF8008 100%);
 	transition: 0.5s;
@@ -35,67 +35,69 @@
 	text-decoration: none;
 }
 
-th{
-text-align: center;
+th {
+	text-align: center;
 }
-
 
 td .autoResize {
-	min-width:100px;
+	min-width: 100px;
 	width: auto;
 }
+
 .autoResize {
-	min-width:115px;
+	min-width: 115px;
 	resize: horizontal;
 	overflow: auto;
-	display: block 
+	display: block
 }
 
 .autoResizeQuarter {
-	min-width:70px;
+	min-width: 70px;
 	resize: horizontal;
 	overflow: auto;
-	display: block 
+	display: block
 }
 
 /*Refresh Button*/
 .tooltip-top {
-  bottom: 85%;
-  margin-left:-6%;
+	bottom: 85%;
+	margin-left: -6%;
 }
 /*Search Button*/
 .tooltip-top1 {
-  bottom: 115%;
-  margin-left:-23%;
+	bottom: 115%;
+	margin-left: -23%;
 }
 /*Upload Certificate Button*/
 .tooltip-top2 {
-  bottom: 115%;
-  margin-left:-38%;
+	bottom: 115%;
+	margin-left: -38%;
 }
 /*Export to Excel Button*/
 .tooltip-top3 {
- bottom: 115%;
-  margin-left:-31%;
+	bottom: 115%;
+	margin-left: -31%;
 }
 /*Add Button*/
 .tooltip-top4 {
-  bottom: 115%;
-  margin-left:-67%;
+	bottom: 115%;
+	margin-left: -67%;
 }
 /*Close Button*/
 .tooltip-top5 {
-  bottom: 115%;
-  margin-left:-67%;
+	bottom: 115%;
+	margin-left: -67%;
 }
 </style>
 
 <div id="page-wrapper" ng-controller="CommonController as cCctr">
 	<div class="container-fluid">
-	<button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
-					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
-						 onClick="refreshPageButton()"><i
-						class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh<span class="tooltiptext tooltip-top">Refresh Button</span></button>
+		<button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
+			style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%); float: right;"
+			onClick="refreshPageButton()">
+			<i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh<span
+				class="tooltiptext tooltip-top">Refresh Button</span>
+		</button>
 		<div class="col-md-12 "
 			style="padding-left: 0px; font-size: 12px; margin-top: 2%">
 			<div class="heading">
@@ -103,7 +105,7 @@ td .autoResize {
 			</div>
 
 		</div>
-	<div class="collapse dont-collapse-sm" id="collapseExample2">
+		<div class="collapse dont-collapse-sm" id="collapseExample2">
 			<div class="row">
 				<div class="form-group">
 					<div class="col-md-2">
@@ -124,7 +126,7 @@ td .autoResize {
 						<b>Financial Year</b>
 					</h6>
 					<select ng-model="cCctr.search.fy" style="width: 100%"
-						class="form-control" >
+						class="form-control">
 						<option disabled value="">Select financial Year</option>
 						<#list financialYear as year>
 						<option value="${year}">${year}</option>
@@ -135,8 +137,7 @@ td .autoResize {
 					<h6>
 						<b>Certificate</b>
 					</h6>
-					<select ng-model="cCctr.search.form"
-						class="form-control" required>
+					<select ng-model="cCctr.search.form" class="form-control" required>
 						<option disabled value="">Select Certificate</option>
 						<#list typeOfCertificate as Certificate>
 						<option value="${Certificate}">${Certificate}</option>
@@ -145,89 +146,96 @@ td .autoResize {
 				</div>
 			</div>
 
-	</div>
-	<div class="row text-right" id="hide">
-				<div class="col-md-4" style="margin-left: 60%; margin-top: -45px;display:ruby">
-					<button ng-click="cCctr.searchEntities(true,'uploadCertificate','uploadCertificate')"
-						class="btn btn-grad astro-MG2CNCJP tool"
-						style="padding: 6px 9px; background-image: linear-gradient(to right, #093028 0%, #237A57 51%, #093028 100%)"
-						onclick="scrollWin()">
-						<i class="fa fa-search" aria-hidden="true"></i> Search
-						<span class="tooltiptext tooltip-top1">Search Button</span>
-					</button>
-					<button  data-toggle="modal" data-target="#myModal"  style="background-image: linear-gradient(to right, #F09819 0%, #EDDE5D 51%, #F09819 100%);"
-						class="btn btn-grad astro-MG2CNCJP tool">
-						Upload Certificate<span class="tooltiptext tooltip-top2">Upload Certificate Button</span></button>
-					
-						<button class="btn btn-grad astro-MG2CNCJP tool" type="button"
-							style=" background-image: linear-gradient(to right, #517fa4 0%, #243949 51%, #517fa4 100%);"
-							ng-click="cCctr.generateExcel('apiuploadCertificate/generateExcel/','uploadCertificate')">Export
-							to Excel<span class="tooltiptext tooltip-top3">Export to Excel</span></button>
-					<div class="text-right"></div>
-				</div>
-			</div>
-	<div class="row">
-		<div class="col-xs-12">
-			<div class="col-md-4" style="margin-top: 5px"></div>
-			<div class="text-right" style="width: 100%"></div>
 		</div>
-	</div>
-	<div class="row">
-		<!--   <div class=" table-responsive">  -->
-		<table class=" table table-bordered table-hover table-striped"
-			role="table"
-			style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+		<div class="row text-right" id="hide">
+			<div class="col-md-4"
+				style="margin-left: 60%; margin-top: -45px; display: ruby">
+				<button
+					ng-click="cCctr.searchEntities(true,'uploadCertificate','uploadCertificate')"
+					class="btn btn-grad astro-MG2CNCJP tool"
+					style="padding: 6px 9px; background-image: linear-gradient(to right, #093028 0%, #237A57 51%, #093028 100%)"
+					onclick="scrollWin()">
+					<i class="fa fa-search" aria-hidden="true"></i> Search <span
+						class="tooltiptext tooltip-top1">Search Button</span>
+				</button>
+				<button data-toggle="modal" data-target="#myModal"
+					style="background-image: linear-gradient(to right, #F09819 0%, #EDDE5D 51%, #F09819 100%);"
+					class="btn btn-grad astro-MG2CNCJP tool">
+					Upload Certificate<span class="tooltiptext tooltip-top2">Upload
+						Certificate Button</span>
+				</button>
 
-			<thead>
-			<colgroup>
-				<col span="14" style="background-color: #ffffff">
-			</colgroup>
-			<tr >
-			<thead role="rowgroup" >
-				<tr role="row" style="height: 40px; background-color: #81b7db;">
-					<th >Sr. No.</th>
-					<th><div class="autoResize">Zip File</div></th>
-					<th><div class="autoResize">User Name</div></th>
-					<th><div class="autoResize">TAN</div></th>
-					<th><div class="autoResize">Financial Year</div></th>
-					<th><div class="autoResize">Quarter</div></th>
-					<th><div class="autoResize">Form</div></th>
-					<th><div class="autoResize">Date</div></th>
-					<th><div class="autoResize">Status</div></th>
-					<!-- <th><div class="autoResize">File</div></th> -->
+				<button class="btn btn-grad astro-MG2CNCJP tool" type="button"
+					style="background-image: linear-gradient(to right, #517fa4 0%, #243949 51%, #517fa4 100%);"
+					ng-click="cCctr.generateExcel('apiuploadCertificate/generateExcel/','uploadCertificate')">
+					Export to Excel<span class="tooltiptext tooltip-top3">Export
+						to Excel</span>
+				</button>
+				<div class="text-right"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="col-md-4" style="margin-top: 5px"></div>
+				<div class="text-right" style="width: 100%"></div>
+			</div>
+		</div>
+		<div class="row">
+			<!--   <div class=" table-responsive">  -->
+			<table class=" table table-bordered table-hover table-striped"
+				role="table"
+				style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
 
-					<!-- 	<th>Action</th> -->
-				</tr>
-			</thead>
-			<tbody  style="text-align: center;">
-				<tr style="color: red"
-					ng-show="cCctr.getEntityListData().length <= 0">
-					<td colspan="14" style="text-align: center;"><b><h3
-								style="text-align: center;">No data found!!</h3></b></td>
-				<tr role="row" ng-repeat="a in cCctr.getEntityListData()">
-					<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
-					<td>{{a.fileName}}</td>
-					<td>{{a.userName}}</td>
-					<td>{{a.TAN}}</td>
-					<td>{{a.fy}}</td>
-					<td>{{a.quarter}}</td>
-					<td>{{a.form}}</td>
-					<td>{{a.uploadedTime |date:'dd-MM-yyyy hh:mm:ss a'}}</td>
-					<td>{{a.status}}</td>
-					<!-- <td>{{a.file}}</td> -->
-					
+				<thead>
+				<colgroup>
+					<col span="14" style="background-color: #ffffff">
+				</colgroup>
+				<tr>
+				<thead role="rowgroup">
+					<tr role="row" style="height: 40px; background-color: #81b7db;">
+						<th>Sr. No.</th>
+						<th><div class="autoResize">Zip File</div></th>
+						<th><div class="autoResize">User Name</div></th>
+						<th><div class="autoResize">TAN</div></th>
+						<th><div class="autoResize">Financial Year</div></th>
+						<th><div class="autoResize">Quarter</div></th>
+						<th><div class="autoResize">Form</div></th>
+						<th><div class="autoResize">Date</div></th>
+						<th><div class="autoResize">Status</div></th>
+						<!-- <th><div class="autoResize">File</div></th> -->
 
-					<!-- <td><a
+						<!-- 	<th>Action</th> -->
+					</tr>
+				</thead>
+				<tbody style="text-align: center;">
+					<tr style="color: red"
+						ng-show="cCctr.getEntityListData().length <= 0">
+						<td colspan="14" style="text-align: center;"><b><h3
+									style="text-align: center;">No data found!!</h3></b></td>
+					<tr role="row" ng-repeat="a in cCctr.getEntityListData()">
+						<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
+						<td>{{a.fileName}}</td>
+						<td>{{a.userName}}</td>
+						<td>{{a.TAN}}</td>
+						<td>{{a.fy}}</td>
+						<td>{{a.quarter}}</td>
+						<td>{{a.form}}</td>
+						<td>{{a.uploadedTime |date:'dd-MM-yyyy hh:mm:ss a'}}</td>
+						<td>{{a.status}}</td>
+						<!-- <td>{{a.file}}</td> -->
+
+
+						<!-- <td><a
 							ng-click="cCctr.gotoDetailPage('challan',a.id,'detailchallan')"
 							style="color: blue" onclick="scrollWin()"><img
 								src="static\img\edit.png" width="22px" height="22px"
 								alt="Details" style="margin-top: 5px; margin-bottom: 5px;" /></a></td> -->
-				</tr>
-			</tbody>
-		</table>
+					</tr>
+				</tbody>
+			</table>
 
-	</div>
-	<div class="row" ng-show="cCctr.getNoPage() > 0">
+		</div>
+		<div class="row" ng-show="cCctr.getNoPage() > 0">
 			<div class="row" align="center">
 				<span ng-show="cCctr.currentPage != 1"> <a
 					ng-click="cCctr.getPage(true,'uploadCertificate',cCctr.currentPage-1)"><strong>Previous</strong></a>
@@ -246,7 +254,8 @@ td .autoResize {
 						name="pageNo" ng-model="cCctr.currentPage"
 						ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
 						ng-min="1" min="1" max="{{cCctr.getNoPage()}}
-						"ng-max="cCctr.getNoPage()" ng-required="true">
+						"
+						ng-max="cCctr.getNoPage()" ng-required="true">
 					&nbsp;&nbsp;&nbsp;
 					<button style="height: 25px;"
 						ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'uploadCertificate',cCctr.currentPage)"
@@ -265,199 +274,145 @@ td .autoResize {
 				</div>
 			</form>
 		</div>
-	
-</div>
 
-<div id="myModal" class="modal fade" role="dialog">
-	<div class="modal-dialog">
+	</div>
 
-		<!-- Modal content-->
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Upload Certificate</h4>
-			</div>
-			<div class="modal-body">
-				
-					<form role="form" name="certificateDetails" enctype="multipart/form-data" 
-							modelAttribute="uploadForm" method="POST">
+	<div id="myModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Upload Certificate</h4>
+				</div>
+				<div class="modal-body">
+
+					<form role="form" name="certificateDetails"
+						enctype="multipart/form-data" modelAttribute="uploadForm"
+						method="POST">
 						<div class="row">
-						
-						<div class="col-md-12">
-							<div class="form-group">
-								<h6>
-									<label style="font-size: 15px">TAN*</label>
-								</h6>
-								<select
-									class="form-control" id="TAN" name="TAN" title="Select TAN Number"
-									ng-model="cCctr.entity.TAN" ng-required="true">
-									<option disabled value="">Select TAN Number</option>
-									<#list Tan as TAN>
-									<option value="${TAN}">${TAN}</option>
-									</#list>
-								</select> 
-								 <span style="color: red"
-												ng-show="certificateDetails.submitted ||certificateDetails.TAN.$dirty && certificateDetails.TAN.$invalid">
-												<span class="error"
-												ng-show="certificateDetails.TAN.$error.required">TAN
-													is Required. </span>
-											</span>
-							</div>
-						</div>
-						
-						<div>
-									<div class="col-md-12">
-										<div class="form-group">
-											<label style="font-size: 15px">Type of Certificate*</label> <select
-												name="typeofCertificate" id="typeofCertificate"
-												title="Select Type of Certificate"
-												class="form-control"
-												ng-model="cCctr.entity.form" ng-required="true"
-												ng-model-options="{updateOn: 'blur'}">
-												<option disabled value="">Select Certificate</option>
-												<#list typeOfCertificate as Certificate>
 
-												<option value="${Certificate}">${Certificate}</option>
-												</#list>
-											</select> <span style="color: red"
-												ng-show="certificateDetails.submitted ||certificateDetails.typeofCertificate.$dirty && certificateDetails.typeofCertificate.$invalid">
-												<span class="error"
-												ng-show="certificateDetails.typeofCertificate.$error.required">Type
-													of Certificate is Required.</span>
-											</span>
-										</div>
-									</div>
-								</div>
-								
-						<!-- <div class="col-md-12">
-							<div class="form-group">
-								<h6>
-									<label>Date*</label>
-								</h6>
-								<input type="date"
-									class="form-control" id="uploadedTime" name="uploadedTime"
-									ng-model="cCctr.entity.uploadedTime" ng-required="true">
-								</input> 
-							</div>
-						</div> -->
-						
-						<div class="col-md-12">
-							<div>
-								<label style="font-size: 15px">Financial Year*</label> <select
-									class="form-control" id="fy" name="fy"
-									title="Select Financial Year"
-									ng-model="cCctr.entity.fy" ng-required="true">
-									<option disabled value="">Select financial Year</option>
-									<#list financialYear as year>
-									<option value="${year}">${year}</option>
-									</#list>
-								</select>
-								 <span style="color: red"
-												ng-show="certificateDetails.submitted ||certificateDetails.fy.$dirty && certificateDetails.fy.$invalid">
-												<span class="error"
-												ng-show="certificateDetails.fy.$error.required">Financial Year
-													is Required. </span>
-											</span>
-							</div>
-						</div>
-						
-						<div class="col-md-12">
-							<div>
-								<label style="font-size: 15px">Quarter*</label> <select
-									class="form-control" id="quarter" name="quarter"
-									title="Select Quarter"
-									ng-model="cCctr.entity.quarter" ng-required="true">
-									<option disabled value="">Select Quarter</option>
-									<#list Quarter as quarter>
-									<option value="${quarter}">${quarter}</option>
-									</#list>
-								</select>
-								 <span style="color: red"
-												ng-show="certificateDetails.submitted ||certificateDetails.quarter.$dirty && certificateDetails.quarter.$invalid">
-												<span class="error"
-												ng-show="certificateDetails.quarter.$error.required">Quarter
-													is Required. </span>
-											</span>
-							</div>
-						
-						</div>
-						
-						<!--
-						<div class="col-md-12">
-							<div>
-								<label style="font-size: 15px">Form*</label>
-								<div>
-									<select name="form" id="form" ng-model="cCctr.entity.form"
-										class="form-control" required>
-										<option disabled value="">Select Form</option>
-										<#list Form as f>
-										<option value="${f}">${f}</option>
-										</#list>
-									</select>
-									 <span style="color: red"
-												ng-show="certificateDetails.submitted ||certificateDetails.form.$dirty && certificateDetails.form.$invalid">
-												<span class="error"
-												ng-show="certificateDetails.form.$error.required">Form
-													is Required. </span>
-											</span>
-								</div>
-							</div>
-							
-						</div>
-						  -->
-						<!-- <div class="col-md-12">
+							<div class="col-md-12">
 								<div class="form-group">
 									<h6>
-										<label for="myfile">Upload File*</label>
+										<label style="font-size: 15px">TAN*</label>
 									</h6>
-									  <input type="file" id="myFile" name="filename" ng-model="cCctr.entity.zipFile">
-								</div>
-							</div> -->
-							<div class="col-md-12">
-							<div class="form-group">
-								<label for="name" style="font-size: 15px"> File*</label> 
-									<input multiple id="file-upload" type="file" name="zipFile"
-									       title="Select File" title="Select TAN Number" class="form-control"
-										ng-required="true" file-model="cCctr.entity.zipFile" accept=".zip"/>	
-										 <span style="color: red"
-												ng-show="certificateDetails.submitted ||certificateDetails.zipFile.$dirty && certificateDetails.zipFile.$invalid">
-												<span class="error"
-												ng-show="certificateDetails.zipFile.$error.required">File
-													is Required. </span>
-											</span>
-									<!-- <span style="color: red"
-										ng-show="documentForm.submitted || documentForm.blob.$dirty && documentForm.blob.$invalid">
-										
+									<select class="form-control" id="TAN" name="TAN"
+										title="Select TAN Number" ng-model="cCctr.entity.TAN"
+										ng-required="true">
+										<option disabled value="">Select TAN Number</option>
+										<#list Tan as TAN>
+										<option value="${TAN}">${TAN}</option>
+										</#list>
+									</select> <span style="color: red"
+										ng-show="certificateDetails.submitted ||certificateDetails.TAN.$dirty && certificateDetails.TAN.$invalid">
 										<span class="error"
-										ng-show="documentForm.blob.$error.required">file
-											is Required.</span>
-									</span> <span id="blob" style="display: none; color: red">file
-										size should be less than 64kb</span> -->
+										ng-show="certificateDetails.TAN.$error.required">TAN is
+											Required. </span>
+									</span>
+								</div>
 							</div>
-						</div>
-						
+
+							<div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<label style="font-size: 15px">Type of Certificate*</label> <select
+											name="typeofCertificate" id="typeofCertificate"
+											title="Select Type of Certificate" class="form-control"
+											ng-model="cCctr.entity.form" ng-required="true"
+											ng-model-options="{updateOn: 'blur'}">
+											<option disabled value="">Select Certificate</option>
+											<#list typeOfCertificate as Certificate>
+
+											<option value="${Certificate}">${Certificate}</option>
+											</#list>
+										</select> <span style="color: red"
+											ng-show="certificateDetails.submitted ||certificateDetails.typeofCertificate.$dirty && certificateDetails.typeofCertificate.$invalid">
+											<span class="error"
+											ng-show="certificateDetails.typeofCertificate.$error.required">Type
+												of Certificate is Required.</span>
+										</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-12">
+								<div>
+									<label style="font-size: 15px">Financial Year*</label> <select
+										class="form-control" id="fy" name="fy"
+										title="Select Financial Year" ng-model="cCctr.entity.fy"
+										ng-required="true">
+										<option disabled value="">Select financial Year</option>
+										<#list financialYear as year>
+										<option value="${year}">${year}</option>
+										</#list>
+									</select> <span style="color: red"
+										ng-show="certificateDetails.submitted ||certificateDetails.fy.$dirty && certificateDetails.fy.$invalid">
+										<span class="error"
+										ng-show="certificateDetails.fy.$error.required">Financial
+											Year is Required. </span>
+									</span>
+								</div>
+							</div>
+
+							<div class="col-md-12">
+								<div>
+									<label style="font-size: 15px">Quarter*</label> <select
+										class="form-control" id="quarter" name="quarter"
+										title="Select Quarter" ng-model="cCctr.entity.quarter"
+										ng-required="true">
+										<option disabled value="">Select Quarter</option>
+										<#list Quarter as quarter>
+										<option value="${quarter}">${quarter}</option>
+										</#list>
+									</select> <span style="color: red"
+										ng-show="certificateDetails.submitted ||certificateDetails.quarter.$dirty && certificateDetails.quarter.$invalid">
+										<span class="error"
+										ng-show="certificateDetails.quarter.$error.required">Quarter
+											is Required. </span>
+									</span>
+								</div>
+
+							</div>
+
+							<div class="col-md-12">
+								<div class="form-group">
+									<label for="name" style="font-size: 15px"> File*</label><span
+										style="font-size: small">(upload .zip file only)</span> <input
+										multiple id="file-upload" type="file" name="zipFile"
+										title="Select File" title="Select TAN Number"
+										class="form-control" ng-required="true"
+										file-model="cCctr.entity.zipFile" accept=".zip" required/> <span
+										style="color: red"
+										ng-show="certificateDetails.submitted ||certificateDetails.zipFile.$dirty && certificateDetails.zipFile.$invalid">
+										<span class="error"
+										ng-show="certificateDetails.zipFile.$error.required">File
+											is Required. </span>
+									</span>
+								</div>
+							</div>
+
 						</div>
 					</form>
 				</div>
 
-			<div class="modal-footer">
-			<button class="pushable darkgreen tool"
-							ng-click="certificateDetails.submitted=true;cCctr.saveDocument(certificateDetails.$valid,cCctr.entity,'uploadCertificate','close')">
-							<span class="front darkgreenspan"> Add
-							<span class="tooltiptext tooltip-top4">Add Button</span></span>
-						</button>
-						<button class="pushable darkred tool" 
-							data-dismiss="modal">
-							<span class="front darkredspan"> Close
-							<span class="tooltiptext tooltip-top5">Close Button</span></span>
-						</button>
-			<!-- 	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+				<div class="modal-footer">
+					<button class="pushable darkgreen tool"
+						ng-click="certificateDetails.submitted=true;cCctr.saveDocument(certificateDetails.$valid,cCctr.entity,'uploadCertificate','close')">
+						<span class="front darkgreenspan"> Add <span
+							class="tooltiptext tooltip-top4">Add Button</span></span>
+					</button>
+					<button class="pushable darkred tool" data-dismiss="modal">
+						<span class="front darkredspan"> Close <span
+							class="tooltiptext tooltip-top5">Close Button</span></span>
+					</button>
+				</div>
 			</div>
-		</div>
 
+		</div>
 	</div>
-</div>
-<a id="viewProgressBar" onclick="test('#progressBar')"> </a> <a
+	<a id="viewProgressBar" onclick="test('#progressBar')"> </a> <a
 		id="viewFileClick" onclick="test('#viewFile')"> </a> <a
 		id="noviewFileClick" onclick="test('#noviewFile')"> </a>
 	<div id="progressBar" class="modal fade" data-backdrop="static"

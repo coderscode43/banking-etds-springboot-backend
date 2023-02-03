@@ -26,6 +26,8 @@ public class StaticData {
 	public static String[] Form =null;
 	public static String CertificatePath =null;
 	public static String directDownloadAuth = "";
+	public static String command = null;
+	
 	
 	
 	/* public static String[] ChallanMismatch =null; */

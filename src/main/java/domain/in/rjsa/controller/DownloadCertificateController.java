@@ -154,7 +154,7 @@ public class DownloadCertificateController {
 		String path = StaticData.CertificatePath; //?????
 		String[] c = certificate.split("-");
 		String[] t = tan.split("-");
-		
+		Character ch = pan.charAt(4);
 	
 
 		if (tan.equals("ALL TAN") && q.equals("ALL QUARTER")) {
@@ -162,7 +162,7 @@ public class DownloadCertificateController {
 				for (String t1 : StaticData.Tan) {
 					t = t1.split("-");
 					String pdfFileName = pan + "_" + q1 + "_" + ay + ".pdf";
-					String filePath = path + "download/" + fy + "/" + q1 + "/" + c[0] + "/" + t[0] + "/" + pdfFileName;
+					String filePath = path + "download/" + fy + "/" + q1 + "/" + c[0] + "/" + t[0] + "/" + ch + "/" + pdfFileName;
 					addFileIfExist(filePath, filePaths);
 				}
 			}
@@ -170,24 +170,54 @@ public class DownloadCertificateController {
 			for (String t1 : StaticData.Tan) {
 				t = t1.split("-");
 				String pdfFileName = pan + "_" + q + "_" + ay + ".pdf";
-				String filePath = path + "download/" + fy + "/" + q + "/" + c[0] + "/" + t[0] + "/" + pdfFileName;
+				String filePath = path + "download/" + fy + "/" + q + "/" + c[0] + "/" + t[0] + "/" + ch + "/" + pdfFileName;
 				addFileIfExist(filePath, filePaths);
 			}
 
 		}else if(q.equals("ALL QUARTER")){
 			for (String q1 : StaticData.Quarter) {
 				String pdfFileName = pan + "_" + q1 + "_" + ay + ".pdf";
-				String filePath = path + "download/" + fy + "/" + q1 + "/" + c[0] + "/" + t[0] + "/" + pdfFileName;
+				String filePath = path + "download/" + fy + "/" + q1 + "/" + c[0] + "/" + t[0] + "/" + ch +  "/" + pdfFileName;
 				addFileIfExist(filePath, filePaths);
 			}
 		} 
 		else {
 			String pdfFileName = pan + "_" + q + "_" + ay + ".pdf";
-			String filePath = path + "download/" + fy + "/" + q + "/" + c[0] + "/" + t[0] + "/" + pdfFileName;
+			String filePath = path + "download/" + fy + "/" + q + "/" + c[0] + "/" + t[0] + "/" + ch +  "/" + pdfFileName;
 			
 			addFileIfExist(filePath, filePaths);
 		}
-	
+		if(filePaths.isEmpty()) {
+			if (tan.equals("ALL TAN") && q.equals("ALL QUARTER")) {
+				for (String q1 : StaticData.Quarter) {
+					for (String t1 : StaticData.Tan) {
+						t = t1.split("-");
+						String pdfFileName = pan + "_" + q1 + "_" + ay + ".pdf";
+						String filePath = path + "download/" + fy + "/" + q1 + "/" + c[0] + "/" + t[0] + "/" + pdfFileName;
+						addFileIfExist(filePath, filePaths);
+					}
+				}
+			} else if (tan.equals("ALL TAN")) {
+				for (String t1 : StaticData.Tan) {
+					t = t1.split("-");
+					String pdfFileName = pan + "_" + q + "_" + ay + ".pdf";
+					String filePath = path + "download/" + fy + "/" + q + "/" + c[0] + "/" + t[0] + "/" + pdfFileName;
+					addFileIfExist(filePath, filePaths);
+				}
+
+			}else if(q.equals("ALL QUARTER")){
+				for (String q1 : StaticData.Quarter) {
+					String pdfFileName = pan + "_" + q1 + "_" + ay + ".pdf";
+					String filePath = path + "download/" + fy + "/" + q1 + "/" + c[0] + "/" + t[0] +  "/" + pdfFileName;
+					addFileIfExist(filePath, filePaths);
+				}
+			} 
+			else {
+				String pdfFileName = pan + "_" + q + "_" + ay + ".pdf";
+				String filePath = path + "download/" + fy + "/" + q + "/" + c[0] + "/" + t[0] + "/"  + pdfFileName;
+				addFileIfExist(filePath, filePaths);
+			}
+		}
 	
 		
 		return filePaths;

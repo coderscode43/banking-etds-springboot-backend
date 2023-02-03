@@ -18,6 +18,8 @@ import java.util.zip.ZipInputStream;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -32,15 +34,20 @@ import domain.in.rjsa.model.fy.UploadCertificate;
 import domain.in.rjsa.service.AbstractServiceForm;
 import domain.in.rjsa.service.UploadCertificateService;
 import domain.in.rjsa.util.StaticData;
+
 @Transactional("transactionManager")
 @Service("uploadCertificateService")
-public class UploadCertificateServiceImpl extends AbstractServiceForm<Long, UploadCertificate, UploadCertificateDao> implements UploadCertificateService{
-    @Autowired
-    UploadCertificateDao dao;
+public class UploadCertificateServiceImpl extends AbstractServiceForm<Long, UploadCertificate, UploadCertificateDao>
+		implements UploadCertificateService {
 	
-    UploadCertificateExcel uploadCertificateExcel;
-    public static String path;
-    public String ExcelFile;
+	private final Logger logger = LoggerFactory.getLogger(getClass());
+	
+	@Autowired
+	UploadCertificateDao dao;
+
+	UploadCertificateExcel uploadCertificateExcel;
+	public static String path;
+	public String ExcelFile;
 
 	@Override
 	public UploadCertificateDao getPrimaryDao() {
@@ -48,13 +55,12 @@ public class UploadCertificateServiceImpl extends AbstractServiceForm<Long, Uplo
 		return dao;
 	}
 
-
 	@Override
 	public UploadCertificate getByKey(Long id) {
 		// TODO Auto-generated method stub
 		return dao.getByKey(id);
 	}
-	
+
 	@Override
 	public void saveDocument(MultipartFile downloadFile, HashMap<String, String> lessonMap) {
 		try {
@@ -66,38 +72,42 @@ public class UploadCertificateServiceImpl extends AbstractServiceForm<Long, Uplo
 			uploadCertificate.setFy(lessonMap.get("fy"));
 			uploadCertificate.setQuarter(lessonMap.get("quarter"));
 			uploadCertificate.setForm(lessonMap.get("form"));
-			
-			Date date= new Date();
+
+			Date date = new Date();
 			uploadCertificate.setUploadedTime(date);
 			uploadCertificate.setUserName(getPrincipal());
 			uploadCertificate.setStatus("pending");
 			dao.persist(uploadCertificate);
-			
+
 			CompletableFuture<Void> completableFuture = CompletableFuture.runAsync(() -> {
 				try {
 					System.out.println("completable thread : " + Thread.currentThread().getName());
 					String[] t = lessonMap.get("TAN").split("-");
 					String[] f = lessonMap.get("form").split("-");
-					String path = "download\\"+lessonMap.get("fy")+"\\"+lessonMap.get("quarter")+"\\"+f[0]+"\\"+t[0];
-					unzip(downloadFile,path);
+					String path = "download\\" + lessonMap.get("fy") + "\\" + lessonMap.get("quarter") + "\\" + f[0]
+							+ "\\" + t[0];
+					logger.info(path);
+					unzip(downloadFile, path);
 					uploadCertificate.setStatus("success");
 					dao.update(uploadCertificate);
 				} catch (Exception e) {
+					
 					System.out.println("completable future error :");
 					uploadCertificate.setStatus("failed");
 					dao.update(uploadCertificate);
 					e.printStackTrace();
+					throw new CustomException(e.getMessage());
+					
 				}
 			});
-			
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new CustomException("File Not uploaded");
+			throw new CustomException(e.getMessage());
 		}
-		
+
 	}
-	
+
 	public String createUserExcel(LinkedHashMap<String, Object> map) {
 		List<UploadCertificate> listUsers = searchExcel(map);
 
@@ -118,11 +128,11 @@ public class UploadCertificateServiceImpl extends AbstractServiceForm<Long, Uplo
 
 		int row = 1;
 		int part = 1;
-		
+
 		Workbook wb = uploadCertificateExcel.getWorkbook();
 		Sheet uploadCertificatesheet = wb.getSheet("uploadCertificate-" + part);
-		for (UploadCertificate uploadCertificate: listUsers) {
-			
+		for (UploadCertificate uploadCertificate : listUsers) {
+
 			Row details = uploadCertificatesheet.createRow(row);
 			details.createCell(0).setCellValue(row);
 
@@ -159,19 +169,21 @@ public class UploadCertificateServiceImpl extends AbstractServiceForm<Long, Uplo
 			if (uploadCertificate.getUploadedTime() == null) {
 				details.createCell(7).setCellValue(" ");
 			} else {
-				details.createCell(7).setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(uploadCertificate.getUploadedTime()));
+				details.createCell(7)
+						.setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(uploadCertificate.getUploadedTime()));
 			}
 			if (uploadCertificate.getStatus() == null) {
 				details.createCell(8).setCellValue(" ");
 			} else {
 				details.createCell(8).setCellValue(uploadCertificate.getStatus());
 			}
-			
+
 			if (row > 1000000) {
 				part++;
 				wb = uploadCertificateExcel.getWorkbook();
-				uploadCertificate = (UploadCertificate) uploadCertificateExcel.initializeSheet("UploadCertificate-" + part);
-				row =0;
+				uploadCertificate = (UploadCertificate) uploadCertificateExcel
+						.initializeSheet("UploadCertificate-" + part);
+				row = 0;
 			}
 			row++;
 
@@ -191,50 +203,26 @@ public class UploadCertificateServiceImpl extends AbstractServiceForm<Long, Uplo
 		}
 
 	}
-	
-	public void unzip(MultipartFile zip, String path) throws IllegalStateException, IOException {
+
+	public void unzip(MultipartFile zip, String path) throws IllegalStateException, IOException, InterruptedException {
 		final Path destDir = Paths.get(StaticData.CertificatePath + path);
-//		final Path destDir = Paths.get("C:\\Users\\TAXO-TD-1248\\Desktop\\UploadCertificate");
-//		final Path destDir = Paths.get("C:\\Users\\TAXO-TD-1248\\download\\2020-21\\Q1\\Form16\\ABCD12345F");
-		//		C:\\Users\\RJSA-22-12-2022-01\\Desktop\\uploads
-		
 		final Path newPath = destDir.resolve(zip.getOriginalFilename());
 		zip.transferTo(newPath);
-	    final File dest = new File(destDir.toString());
-	    final byte[] buffer = new byte[1024];
-	    try {
-		    final ZipInputStream zis = new ZipInputStream(new FileInputStream(newPath.toString()));
-		    ZipEntry zipEntry = zis.getNextEntry();
-		    while (zipEntry != null) {
-		        final File newFile = new File(dest, zipEntry.getName());
-		        if (zipEntry.isDirectory()) {
-		            if (!newFile.isDirectory() && !newFile.mkdirs()) {
-		                throw new IOException("Failed to create directory " + newFile);
-		            }
-		        } else {
-		        	if(!newFile.getParentFile().exists()) {
-		        		newFile.getParentFile().mkdirs();
-		        	}
-		            final FileOutputStream fos = new FileOutputStream(newFile);
-		            int len;
-		            while ((len = zis.read(buffer)) > 0) {
-		                fos.write(buffer, 0, len);
-		            }
-		            fos.close();
-		        }
-		        zipEntry = zis.getNextEntry();
-		    }
-		    zis.closeEntry();
-		    zis.close();
-	    }
-	    catch(Exception e) {
-	    	throw e;
-	    }
-	    finally {
-	    	newPath.toFile().delete();
-	    }
+		String command = "tar -xf " + zip.getOriginalFilename();
+		try {
+			Process process = Runtime.getRuntime().exec("cmd /c start " + command, null, new File(destDir.toString()));
+//			process.wait();
+			Thread.sleep(500);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+			throw new CustomException("Error while Uploading file :" + e.getMessage());
+		} finally {
+			newPath.toFile().delete();
+		}
 	}
-	
+
 	public String getPrincipal() {
 		String userName = null;
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -247,5 +235,5 @@ public class UploadCertificateServiceImpl extends AbstractServiceForm<Long, Uplo
 		return userName;
 
 	}
-	
+
 }

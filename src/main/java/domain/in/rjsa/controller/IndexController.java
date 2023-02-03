@@ -300,6 +300,11 @@ public class IndexController extends AbstractController {
 					StaticData.directDownloadAuth = xString;
 					// model.addAttribute("ChallanMismatch", stringArray);
 					break;
+				case "command":
+					xString = list1.getValue();
+					StaticData.command = xString;
+					// model.addAttribute("ChallanMismatch", stringArray);
+					break;
 
 				default:
 					System.out.println("Not Match");

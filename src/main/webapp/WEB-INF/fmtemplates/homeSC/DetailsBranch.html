@@ -100,6 +100,16 @@
   bottom: 125%;
   margin-left:-91%;
 }
+/*Close Button*/
+.tooltip-top11 {
+  bottom: 125%;
+  margin-left:-91%;
+}
+/*Update Button*/
+.tooltip-top12 {
+  bottom: 125%;
+  margin-left:-91%;
+}
 </style>
 <div id="page-wrapper" ng-init="cCctr.entity=cCctr.getEntityData();">
 	<div class="container-fluid">
@@ -374,19 +384,21 @@
 														<div class="row">
 															<div class="col-md-6">
 
-																<button class="pushable darkblue"
+																<button class="pushable darkblue tool"
 																	style="margin-top: 2%;"
 																	data-dismiss="modal"
 																	ng-click="profileForm.submitted=true;cCctr.updateData(profileForm.$valid,cCctr.entity,'branch')">
 																	<span class="front darkbluespan"
 																		>
-																		Update</span>
+																		Update
+																		<span class="tooltiptext tooltip-top12">Update Button</span></span>
 																</button>
-																<button class="pushable lightblack"
+																<button class="pushable lightblack tool"
 																	style="margin-top: 2%;"
 																	data-dismiss="modal">
 																	<span class="front lightblackspan"
-																		>Close</span>
+																		>Close
+																		<span class="tooltiptext tooltip-top11">Close Button</span></span>
 																</button>
 															</div>
 														</div>

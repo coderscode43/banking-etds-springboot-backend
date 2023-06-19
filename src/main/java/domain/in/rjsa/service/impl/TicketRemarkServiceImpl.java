@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.TicketRemarkDao;
-import domain.in.rjsa.model.fy.TicketRemark;
+import domain.in.rjsa.model.form.TicketRemark;
 import domain.in.rjsa.service.AbstractServiceForm;
 import domain.in.rjsa.service.TicketRemarkService;
 

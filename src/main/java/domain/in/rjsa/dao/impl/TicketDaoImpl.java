@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
@@ -16,7 +15,7 @@ import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractDaoForm;
 import domain.in.rjsa.dao.TicketDao;
-import domain.in.rjsa.model.fy.Ticket;
+import domain.in.rjsa.model.form.Ticket;
 
 @Repository("ticketDao")
 public class TicketDaoImpl extends AbstractDaoForm<Long, Ticket> implements TicketDao {

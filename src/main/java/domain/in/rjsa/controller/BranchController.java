@@ -148,7 +148,7 @@ public class BranchController extends AbstractController {
 			entity.remove("userName");
 			entity.remove("password");
 			create(entity);
-			addLogs(entity);
+			addLogs(entity, "Add");
 
 			return new ResponseEntity<Object>(HttpStatus.CREATED);
 		}
@@ -201,12 +201,13 @@ public class BranchController extends AbstractController {
 
 	// ------------------- Update Entity ---------------------------------
 	@RequestMapping(value = "/update", method = RequestMethod.PUT)
-	public ResponseEntity<?> update(@RequestBody LinkedHashMap<?, ?> entity, HttpServletResponse response,
+	public ResponseEntity<?> update(@RequestBody LinkedHashMap<String, Object> entity, HttpServletResponse response,
 			UriComponentsBuilder ucBuilder) {
 		if ("admin".equals(getBranchCode())) {
 			FieldErrorDTO ermsg = new FieldErrorDTO();
 			Long id = Long.valueOf(entity.get("id").toString());
 			update(entity, id);
+			addLogs(entity, "Update");
 			ermsg.setMessage("Updated Successfully");
 			return new ResponseEntity<String>(HttpStatus.ACCEPTED);
 		}
@@ -313,22 +314,22 @@ public class BranchController extends AbstractController {
 		return service.findAll(constrains, pageNo, resultPerPage);
 	}
 
-	public void addLogs(HashMap<String, Object> entity) {
+	public void addLogs(HashMap<String, Object> entity, String process) {
 
 		// Login l = applicationCache.getLoginDetail(getPrincipal());
 		HashMap<String, Object> constrains = new HashMap<>();
-		constrains.put("id", entity.get("id"));
-		Logs log = lservice.uniqueSearch(constrains);
-		log = new Logs();
+//		constrains.put("id", entity.get("id"));
+//		Logs log = lservice.uniqueSearch(constrains);
+		Logs log = new Logs();
 
-		log.setAction("Added");
+		log.setAction(process);
 		log.setIpaddrs(getIp());
-		String s = getEntity().getName();
-		String[] arrOfStr = s.split(".", 27);
-		for (String a : arrOfStr)
-			log.setEntity(a);
-		Gson gason = new Gson();
-		String json = gason.toJson(entity);
+		String s = getEntity().getName().replace(getEntity().getPackageName()+".","");
+//		String[] arrOfStr = s.split(".", 27);
+//		for (String a : arrOfStr)
+		log.setEntity(process+" "+ s);
+		Gson gson = new Gson();
+//		String json = gson.toJson(entity);
 		log.setDate(new Date(System.currentTimeMillis()));
 		log.setUsername(getPrincipal());
 

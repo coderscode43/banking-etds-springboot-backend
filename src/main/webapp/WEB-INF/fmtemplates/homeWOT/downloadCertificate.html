@@ -1,213 +1,393 @@
 <style>
-
 .mui-card {
-    background: #fff;
-  border-radius: 2px;
-  display: inline-block;
-  height: auto;
-  position: relative;
-  width: 60%;
-  margin-left: 18%;
-  margin-top: 5%;
-  border-radius: 5px;
+	background: #fff;
+	border-radius: 2px;
+	display: inline-block;
+	height: auto;
+	position: relative;
+	width: 60%;
+	margin-left: 18%;
+	margin-top: 5%;
+	border-radius: 5px;
 }
+
 #tan {
-  color: #000;
+	color: #000;
 }
+
 #typeofCertificate {
-  color: #000;
+	color: #000;
 }
-#financialYear{
-	 color: #000;
+
+#financialYear {
+	color: #000;
 }
-#quarter{
-	 color: #000;
+
+#quarter {
+	color: #000;
 }
-.form-control.ng-dirty.ng-valid-parse.ng-valid.ng-valid-required.ng-touched {
-  color: #000;
+
+.form-control.ng-dirty.ng-valid-parse.ng-valid.ng-valid-required.ng-touched
+	{
+	color: #000;
 }
+
 .xl-shadow {
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px
+		rgba(0, 0, 0, 0.22);
 }
 
 .xl-shadow:hover {
-      box-shadow: 0 14px 28px
-  rgba(0,0,0,0.25), 0 10px 10px
-  rgba(0,0,0,0.22);
+	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px
+		rgba(0, 0, 0, 0.22);
 }
 /*Download button  */
 .tooltip-top {
- bottom: 125%;
-margin-left: -91%;
+	bottom: 125%;
+	margin-left: -91%;
 }
 /*Refresh Button  */
 .tooltip-top1 {
-bottom: 84%;
-margin-left: -9%;
+	bottom: 84%;
+	margin-left: -9%;
 }
 /*Download button  */
 .tooltip-top2 {
- bottom: 125%;
-margin-left: -102%;
+	bottom: 125%;
+	margin-left: -102%;
+}
+
+/* Style the tab */
+.tab {
+	overflow: hidden;
+	border: 1px solid #ccc;
+	background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+	background-color: inherit;
+	float: left;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 14px 16px;
+	transition: 0.3s;
+	font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+	background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+	background-color: #0F316D;
+	color: #fff;
+}
+
+/* Style the tab content */
+.tabcontent {
+	display: none;
+	padding: 6px 12px;
+	border: 1px solid #ccc;
+	border-top: none;
 }
 </style>
 
 
 <div id="page-wrapper">
 	<div class="container-fluid">
-	<button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
-					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
-					 onClick="refreshPageButton()"><i
-					class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh<span class="tooltiptext tooltip-top1">Refresh or Press F5</span></button>
-<div class="mui-card xl-shadow">
+		<div class="col-md-9"></div>
+		<div class="col-md-2">
+			<button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
+				style="background-image: linear-gradient(to right, #0076CE 0%, #012169 100%); color: #fff; float: right;"
+				data-target="#branchCode" id="defaultOpen"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;Download All
+				Certificate For Branch</button>
+		</div>
+		<div class="col-md-1">
+			<button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
+				style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%); float: right;"
+				onClick="refreshPageButton()">
+				<i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh<span
+					class="tooltiptext tooltip-top1">Refresh or Press F5</span>
+			</button>
+		</div>
 
-<div id="download-box">
-							<form id="download-form" name="downloadCertificateFrom"
-								class="form">
 
-								<div class="col-md-12 "
-									style="font-size: 12px; margin: 2% 0 2% 0; text-align: center">
-									<div class="heading">
-										<strong>Download Certificate(Form 16A/16/27D)</strong>
-									</div>
-									<br>
-								</div>
-								<div>
-									<div class="col-md-12">
-										<label style="font-size: 12px">Select Following: </label>
-									</div>
-								</div>
-								<!-- <label for="chkPan"> 
+		<div class="mui-card xl-shadow">
+			<div id="download-box">
+				<form id="download-form" name="downloadCertificateFrom" class="form">
+
+					<div class="col-md-12 "
+						style="font-size: 12px; margin: 2% 0 2% 0; text-align: center">
+						<div class="heading">
+							<strong>Download Certificate using PAN</strong>
+							<h4>
+								<strong>(Form 16A/16/27D)</strong>
+							</h4>
+						</div>
+						<br>
+					</div>
+					<div>
+						<div class="col-md-12">
+							<label style="font-size: 12px">Select Following: </label>
+						</div>
+					</div>
+					<!-- <label for="chkPan"> 
 								<input type="radio" id="chkPan" name="chkPassPort" onclick="myFunction()"checked/> PAN
 							</label> 
 							<label for="chkId"> 
 								<input type="radio" id="chkId" name="chkPassPort" onclick="myFunction()"/> ID
 							</label> -->
-								<br>
-								<!-- pan -->
-								<div class="" id="pan">
-									<!-- PAN: <input type="text" id="pan" /> -->
+					<br>
+					<!-- pan -->
+					<div class="" id="pan">
+						<!-- PAN: <input type="text" id="pan" /> -->
 
-									<div class="col-md-12">
-										<div class="form-group">
-											<label for="pan" class="col-form-label"
-												style="font-size: 12px"> PAN Number / Customer Id*:</label> <input type="text"
-												class="form-control" id="pan" name="pan" title="Enter Enter PAN / Customer Id" placeholder="Enter PAN / Customer Id"
-												ng-model="cCctr.entity.pan" ng-required="true"
-												required="required" style="font-size: 15px"> <span
-												style="color: red"
-												ng-show="downloadCertificateFrom.submitted || downloadCertificateFrom.pan.$dirty && downloadCertificateFrom.pan.$invalid">
-												<span class="error"
-												ng-show="downloadCertificateFrom.pan.$error.required">PAN
-													Number Required. </span> <span class="error"
-												ng-show="downloadCertificateFrom.pan.$error.pattern">PAN
-													number should be capital and valid </span>
-											</span>
-										</div>
-									</div>
-								</div>
-								<!-- id -->
+						<div class="col-md-12">
+							<div class="form-group">
+								<label for="pan" class="col-form-label" style="font-size: 12px">
+									PAN Number*:</label> <input type="text" class="form-control" id="pan"
+									name="pan" title="Enter Enter PAN Number"
+									placeholder="Enter PAN Number" ng-model="cCctr.entity.pan"
+									ng-required="true" required="required" style="font-size: 15px">
+								<span style="color: red"
+									ng-show="downloadCertificateFrom.submitted || downloadCertificateFrom.pan.$dirty && downloadCertificateFrom.pan.$invalid">
+									<span class="error"
+									ng-show="downloadCertificateFrom.pan.$error.required">PAN
+										Number Required. </span> <span class="error"
+									ng-show="downloadCertificateFrom.pan.$error.pattern">PAN
+										number should be capital and valid </span>
+								</span>
+							</div>
+						</div>
+					</div>
+					<!-- id -->
 
-								<div>
-									<div class="col-md-12">
-										<div class="form-group">
-											<label style="font-size: 12px">TAN Number*</label> <!-- <input type="text"
+					<div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<label style="font-size: 12px">TAN Number*</label>
+								<!-- <input type="text"
 												class="form-control" id="tan" name="tan" placeholder="TAN"
 												ng-model="cCctr.entity.tan" ng-required="true"
 												ng-pattern="/^[A-Z]{4}[0-9]{5}[A-Z]{1}$/"
 												required="required" style="font-size: 15px"> -->
-												<select
-												name="tan" id="tan" title="Select TAN"
-												class="form-control"
-												ng-model="cCctr.entity.tan" ng-required="true"
-												ng-model-options="{updateOn: 'blur'}">
-												<option disabled value="">Select Tan</option>
-												<option value="ALL TAN" selected>ALL TAN</option>
-												<#list Tan as T>
-												<option value="${T}">${T}</option>
-												</#list>
-											</select>
-												 <span style="color: red"
-												ng-show="downloadCertificateFrom.submitted ||downloadCertificateFrom.tan.$dirty && downloadCertificateFrom.tan.$invalid">
-												<span class="error"
-												ng-show="downloadCertificateFrom.tan.$error.required">TAN is Required. </span>
-											</span>
-										</div>
-									</div>
-								</div>
-								<div>
-									<div class="col-md-12">
-										<div class="form-group">
-											<label style="font-size: 12px">Type of Certificate*</label> <select
-												name="typeofCertificate" id="typeofCertificate" title="Select Type of Certificate"
-												class="form-control"
-												ng-model="cCctr.entity.typeofCertificate" ng-required="true"
-												ng-model-options="{updateOn: 'blur'}">
-												<option disabled value="">Select Certificate</option>
-												<#list typeOfCertificate as Certificate>
-
-												<option value="${Certificate}">${Certificate}</option>
-												</#list>
-											</select> <span style="color: red"
-												ng-show="downloadCertificateFrom.submitted ||downloadCertificateFrom.typeofCertificate.$dirty && downloadCertificateFrom.typeofCertificate.$invalid">
-												<span class="error"
-												ng-show="downloadCertificateFrom.typeofCertificate.$error.required">Type
-													of Certificate is Required.</span>
-											</span>
-										</div>
-									</div>
-								</div>
-								<!-- financial year code -->
-								<div>
-									<div class="col-md-12">
-										<div class="form-group">
-											<label style="font-size: 12px">Financial Year*</label> <select
-												name="financialYear" class="form-control" title="Select Financial Year" id="financialYear"
-												ng-model="cCctr.entity.financialYear" ng-required="true"
-												ng-model-options="{updateOn: 'blur'}">
-												<option disabled value="">Select financial Year</option>
-												<#list financialYear as year>
-												<option value="${year}">${year}</option>
-												</#list>
-											</select> <span style="color: red"
-												ng-show="downloadCertificateFrom.submitted ||downloadCertificateFrom.financialYear.$dirty && downloadCertificateFrom.financialYear.$invalid">
-												<span class="error"
-												ng-show="downloadCertificateFrom.financialYear.$error.required">Financial
-													Year is Required.</span>
-											</span>
-										</div>
-									</div>
-								</div>
-								<div>
-									<div class="col-md-12">
-										<div class="form-group">
-											<label style="font-size: 12px">Quarter*</label> <select
-												name="quarter" class="form-control" title="Select Quarter" id="quarter"
-												ng-model="cCctr.entity.quarter" ng-required="true"
-												ng-model-options="{updateOn: 'blur'}">
-												<option disabled value="">Select Quarter</option>
-												<option value="ALL QUARTER" selected>ALL QUARTERS</option>
-												<#list Quarter as quarter>
-												<option value="${quarter}">${quarter}</option>
-												</#list>
-											</select> <span style="color: red"
-												ng-show="downloadCertificateFrom.submitted ||downloadCertificateFrom.quarter.$dirty && downloadCertificateFrom.quarter.$invalid">
-												<span class="error"
-												ng-show="downloadCertificateFrom.quarter.$error.required">Quarter
-													is Required. </span>
-											</span>
-										</div>
-									</div>
-								</div>
-								
-									
-								<button class="pushable darkgreen tool"
-										style="margin-top: 2%;margin-left: 43%"
-										ng-click="downloadCertificateFrom.submitted=true;cCctr.download(downloadCertificateFrom.$valid,'apidownloadCertificate/files/'+cCctr.entity.tan+'/'+cCctr.entity.typeofCertificate+'/'+cCctr.entity.financialYear+'/'+cCctr.entity.quarter+'/'+cCctr.entity.pan)">
-										<span class="front darkgreenspan" style="">Download<span class="tooltiptext tooltip-top">Download Button</span></span>
-									</button>	
-							</form>
+								<select name="tan" id="tan" title="Select TAN"
+									class="form-control" ng-model="cCctr.entity.tan"
+									ng-required="true" ng-model-options="{updateOn: 'blur'}">
+									<option disabled value="">Select Tan</option>
+									<option value="ALL TAN" selected>ALL TAN</option>
+									<#list Tan as T>
+									<option value="${T}">${T}</option>
+									</#list>
+								</select> <span style="color: red"
+									ng-show="downloadCertificateFrom.submitted ||downloadCertificateFrom.tan.$dirty && downloadCertificateFrom.tan.$invalid">
+									<span class="error"
+									ng-show="downloadCertificateFrom.tan.$error.required">TAN
+										is Required. </span>
+								</span>
+							</div>
 						</div>
+					</div>
+					<div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<label style="font-size: 12px">Type of Certificate*</label> <select
+									name="typeofCertificate" id="typeofCertificate"
+									title="Select Type of Certificate" class="form-control"
+									ng-model="cCctr.entity.typeofCertificate" ng-required="true"
+									ng-model-options="{updateOn: 'blur'}">
+									<option disabled value="">Select Certificate</option>
+									<#list typeOfCertificate as Certificate>
+
+									<option value="${Certificate}">${Certificate}</option>
+									</#list>
+								</select> <span style="color: red"
+									ng-show="downloadCertificateFrom.submitted ||downloadCertificateFrom.typeofCertificate.$dirty && downloadCertificateFrom.typeofCertificate.$invalid">
+									<span class="error"
+									ng-show="downloadCertificateFrom.typeofCertificate.$error.required">Type
+										of Certificate is Required.</span>
+								</span>
+							</div>
+						</div>
+					</div>
+					<!-- financial year code -->
+					<div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<label style="font-size: 12px">Financial Year*</label> <select
+									name="financialYear" class="form-control"
+									title="Select Financial Year" id="financialYear"
+									ng-model="cCctr.entity.financialYear" ng-required="true"
+									ng-model-options="{updateOn: 'blur'}">
+									<option disabled value="">Select financial Year</option>
+									<#list financialYear as year>
+									<option value="${year}">${year}</option>
+									</#list>
+								</select> <span style="color: red"
+									ng-show="downloadCertificateFrom.submitted ||downloadCertificateFrom.financialYear.$dirty && downloadCertificateFrom.financialYear.$invalid">
+									<span class="error"
+									ng-show="downloadCertificateFrom.financialYear.$error.required">Financial
+										Year is Required.</span>
+								</span>
+							</div>
+						</div>
+					</div>
+					<div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<label style="font-size: 12px">Quarter*</label> <select
+									name="quarter" class="form-control" title="Select Quarter"
+									id="quarter" ng-model="cCctr.entity.quarter" ng-required="true"
+									ng-model-options="{updateOn: 'blur'}">
+									<option disabled value="">Select Quarter</option>
+									<option value="ALL QUARTER" selected>ALL QUARTERS</option>
+									<#list Quarter as quarter>
+									<option value="${quarter}">${quarter}</option>
+									</#list>
+								</select> <span style="color: red"
+									ng-show="downloadCertificateFrom.submitted ||downloadCertificateFrom.quarter.$dirty && downloadCertificateFrom.quarter.$invalid">
+									<span class="error"
+									ng-show="downloadCertificateFrom.quarter.$error.required">Quarter
+										is Required. </span>
+								</span>
+							</div>
+						</div>
+					</div>
 
 
+					<button class="pushable darkgreen tool"
+						style="margin-top: 2%; margin-left: 43%"
+						ng-click="downloadCertificateFrom.submitted=true;cCctr.download(downloadCertificateFrom.$valid,'apidownloadCertificate/files/'+cCctr.entity.tan+'/'+cCctr.entity.typeofCertificate+'/'+cCctr.entity.financialYear+'/'+cCctr.entity.quarter+'/'+cCctr.entity.pan)">
+						<span class="front darkgreenspan" style=""> <i class="fa fa-download" aria-hidden="true"></i>&nbsp;Download<span
+							class="tooltiptext tooltip-top">Download Button</span></span>
+					</button>
+				</form>
+			</div>
+
+
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="branchCode" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Download All Certificate for Branch</h4>
+				<h5>
+					<strong>(Form 16A)</strong><!-- (Form 16A/16/27D) -->
+				</h5>
+			</div>
+			<form id="downloadform" name="downloadCertificateForm" class="form"  style="margin-top: -2%">
+				<div class="col-md-12">
+					<div class="col-md-12">
+						<!-- <label style="font-size: 13px; margin-top: 2%">Select
+							Following:&nbsp;:</label> -->
+					</div>
+				</div>
+				<div style="margin-top: 2%">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label style="font-size: 12px">Branch Code*</label><input
+								type="text" class="form-control"
+								ng-init="cCctr.temp.branchCode='${branchCode}'.split(',').join('')"
+								ng-model="cCctr.newEntity.branchCode=cCctr.temp.branchCode"
+								style="font-size: 15px" disabled>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="form-group">
+							<label style="font-size: 12px">Type of Certificate*</label>
+							<input
+								type="text" class="form-control"
+								ng-model="cCctr.newEntity.typeofCertificate='Form16A-FDR_194N_Vendor'"
+								style="font-size: 15px" disabled>
+							 <!-- <select
+								name="typeofCertificate" id="typeofCertificate"
+								title="Select Type of Certificate" class="form-control"
+								ng-model="cCctr.newEntity.typeofCertificate" ng-required="true"
+								ng-model-options="{updateOn: 'blur'}">
+								<option disabled value="">Select Certificate</option>
+								<#list typeOfCertificate as Certificate>
+
+								<option value="${Certificate}">${Certificate}</option>
+								</#list>
+							</select> <span style="color: red"
+								ng-show="downloadCertificateForm.submitted ||downloadCertificateForm.typeofCertificate.$dirty && downloadCertificateForm.typeofCertificate.$invalid">
+								<span class="error"
+								ng-show="downloadCertificateForm.typeofCertificate.$error.required">Type
+									of Certificate is Required.</span>
+							</span> -->
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="col-md-12">
+						<div class="form-group">
+							<label style="font-size: 12px">Financial Year*</label> 
+							<input
+								type="text" class="form-control"
+								ng-model="cCctr.newEntity.financialYear='2022-23'"
+								style="font-size: 15px" disabled>
+							
+							<!-- <select
+								name="financialYear" class="form-control"
+								title="Select Financial Year" id="financialYear"
+								ng-model="cCctr.newEntity.financialYear" ng-required="true"
+								ng-model-options="{updateOn: 'blur'}">
+								<option disabled value="">Select financial Year</option>
+								<#list financialYear as year>
+								<option value="${year}">${year}</option>
+								</#list>
+							</select> <span style="color: red"
+								ng-show="downloadCertificateForm.submitted ||downloadCertificateForm.financialYear.$dirty && downloadCertificateForm.financialYear.$invalid">
+								<span class="error"
+								ng-show="downloadCertificateForm.financialYear.$error.required">Financial
+									Year is Required.</span>
+							</span> -->
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="col-md-12">
+						<div class="form-group">
+							<label style="font-size: 12px">Quarter*</label>
+							<input
+								type="text" class="form-control"
+								ng-model="cCctr.newEntity.quarter='Q4'"
+								style="font-size: 15px" disabled>
+							 <!-- <select
+								name="quarter" class="form-control" title="Select Quarter"
+								id="quarter" ng-model="cCctr.newEntity.quarter" ng-required="true"
+								ng-model-options="{updateOn: 'blur'}">
+								<option disabled value="">Select Quarter</option>
+								<option value="ALL QUARTER" selected>ALL QUARTERS</option>
+								<#list Quarter as quarter>
+								<option value="${quarter}">${quarter}</option>
+								</#list>
+							</select> <span style="color: red"
+								ng-show="downloadCertificateForm.submitted ||downloadCertificateForm.quarter.$dirty && downloadCertificateForm.quarter.$invalid">
+								<span class="error"
+								ng-show="downloadCertificateForm.quarter.$error.required">Quarter
+									is Required. </span>
+							</span> -->
+						</div>
+					</div>
+				</div>
+			</form>
+			<div class="modal-footer">
+				<button class="pushable darkgreen tool"
+					style="margin-top: 2%; margin-left: 43%"
+					ng-click="downloadCertificateForm.submitted=true;cCctr.downloadBranchZip(downloadCertificateForm.$valid,'apidownloadCertificate/downloadBranchZip/'+cCctr.newEntity.branchCode+'/'+cCctr.newEntity.typeofCertificate+'/'+cCctr.newEntity.financialYear+'/'+cCctr.newEntity.quarter)">
+					<span class="front darkgreenspan" style=""><i class="fa fa-download" aria-hidden="true"></i>&nbsp;Download<span
+						class="tooltiptext tooltip-top">Download Button</span></span>
+				</button>
+			</div>
+		</div>
+	</div>
 </div>

@@ -84,9 +84,9 @@ public class IndexController extends AbstractController {
 		model.addAttribute("Form", StaticData.Form);
 		// for Dashboard
 		model.addAttribute("statementStatus", applicationCache.getStatementStatus());
-		if(isAdmin) {
+		if (isAdmin) {
 			return "homeSC";
-		}else {
+		} else {
 			return "homeSCBranch";
 		}
 	}
@@ -110,27 +110,27 @@ public class IndexController extends AbstractController {
 		Map<String, Long> ticketDetails = tcService.getStatusDetails(branchCode, isAdmin);
 		if (ticketDetails.get("Open") != null) {
 			model.addAttribute("openTicket", ticketDetails.get("Open"));
-		}else {
+		} else {
 			model.addAttribute("openTicket", "0");
 		}
 		if (ticketDetails.get("Resolve") != null) {
 			model.addAttribute("resolveTicket", ticketDetails.get("Resolve"));
-		}else {
+		} else {
 			model.addAttribute("resolveTicket", "0");
 		}
 		if (ticketDetails.get("Reject") != null) {
 			model.addAttribute("rejectTicket", ticketDetails.get("Reject"));
-		}else {
+		} else {
 			model.addAttribute("rejectTicket", "0");
 		}
-		
-		if(isAdmin) {
+
+		if (isAdmin) {
 			return "homeSC/homeSCHomepage";
-		}else {
-			//get branch Details based on branchCode.
+		} else {
+			// get branch Details based on branchCode.
 			Branch branch = applicationCache.getBranch(branchCode);
 			model.addAttribute("branchName", branch.getBranchName());
-			model.addAttribute("branchCode", branchCode);
+			model.addAttribute("branchCode", String.valueOf(Integer.parseInt(branchCode.toString())));
 			return "homeSC/homeSCBranchHomepage";
 		}
 	}
@@ -201,6 +201,29 @@ public class IndexController extends AbstractController {
 //		model.addAttribute("TanDB", applicationCache.getTanDB());
 		// for Dashboard
 		model.addAttribute("statementStatus", applicationCache.getStatementStatus());
+		return sendPage(action, page);
+	}
+
+	@RequestMapping(value = "/downloadCertificate/{branchCode}/{action}/{page}")
+	public String getDownloadCertificate(@PathVariable Long branchCode, @PathVariable String action,
+			@PathVariable String page, ModelMap model) {
+		setStaticData();
+		model.addAttribute("typeOfUser", getBranchCode());
+		model.addAttribute("financialYear", StaticData.financialYear);
+		model.addAttribute("Quarter", StaticData.Quarter);
+		model.addAttribute("typeOfDeductee", StaticData.typeOfDeductee);
+		model.addAttribute("typeOfCertificate", StaticData.typeOfCertificate);
+		model.addAttribute("Month", StaticData.Month);
+		model.addAttribute("Tan", StaticData.Tan);
+		model.addAttribute("Section", StaticData.Section);
+		model.addAttribute("Form", StaticData.Form);
+//		model.addAttribute("TanDB", applicationCache.getTanDB());
+		// for Dashboard
+		model.addAttribute("statementStatus", applicationCache.getStatementStatus());
+		//get branch Details based on branchCode.
+		Branch branch = applicationCache.getBranch(branchCode);
+		model.addAttribute("branchName", branch.getBranchName());
+		model.addAttribute("branchCode", String.valueOf(Integer.parseInt(branchCode.toString())));
 		return sendPage(action, page);
 	}
 

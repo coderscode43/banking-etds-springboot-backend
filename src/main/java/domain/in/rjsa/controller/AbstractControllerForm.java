@@ -220,7 +220,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 		logger.info("Creating new Return instance");
 		adminValidation(entity);
 		create(entity);
-		addLogs(entity);
+		addLogs(entity, "Add");
 		// ermsg.setMessage(" Saved Successfully");
 		return new ResponseEntity<Object>(HttpStatus.CREATED);
 
@@ -236,23 +236,24 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	}
 
-	public void addLogs(HashMap<String, Object> entity) {
+	public void addLogs(HashMap<String, Object> entity, String Action) {
 		
 		// Login l = applicationCache.getLoginDetail(getPrincipal());
 		HashMap<String, Object> constrains = new HashMap<>();
 		constrains.put("id", entity.get("id"));
-		Logs log = lservice.uniqueSearch(constrains);
-		log = new Logs();
-		log.setAction("Added ");
+//		Logs log = lservice.uniqueSearch(constrains);
+		Logs log = new Logs();
+		log.setAction(Action);
 		log.setIpaddrs(getIp());
-		String s = getEntity().getName();
-		String[] arrOfStr = s.split(".", 25);
-		for (String a : arrOfStr)
-			log.setEntity(a);
-		Gson gason = new Gson();
-		String json = gason.toJson(entity);
+		String s = getEntity().getName().replace(getEntity().getPackageName()+".", "");
+//		String[] arrOfStr = s.split(".", 25);
 		log.setDate(new Date(System.currentTimeMillis()));
 		log.setUsername(getPrincipal());
+//		for (String a : arrOfStr)
+		log.setEntity(Action+" "+s);
+//		Gson gason = new Gson();
+//		String json = gason.toJson(entity);
+		
 		lservice.save(log);
 
 	}
@@ -300,7 +301,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 		HashMap<String, Object> map = oMapper.convertValue(o, HashMap.class);
 		adminValidation(entity);
 		update(entity);
-		addLogsU(entity);
+		addLogsU(entity,"Update");
 		ermsg.setMessage(" Updated Successfully");
 		return new ResponseEntity<String>(HttpStatus.ACCEPTED);
 	}
@@ -328,7 +329,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	}
 
-	public void addLogsU(HashMap<String, Object> entity) {
+	public void addLogsU(HashMap<String, Object> entity, String Action) {
 
 //		Login l = applicationCache.getLoginDetail(getPrincipal());
 		HashMap<String, Object> constrains = new HashMap<>();
@@ -337,12 +338,12 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 		log = new Logs();
 		log.setAction("Updated");
 		log.setIpaddrs(getIp());
-		String s = getEntity().getName();
-		String[] arrOfStr = s.split(".", 25);
-		for (String a : arrOfStr)
-			log.setEntity(a);
+		String s = getEntity().getName().replace(getEntity().getPackageName()+".", "");
+//		String[] arrOfStr = s.split(".", 25);
+//		for (String a : arrOfStr)
+		log.setEntity(Action+" "+s);
 		Gson gason = new Gson();
-		String json = gason.toJson(entity);
+//		String json = gason.toJson(entity);
 		log.setDate(new Date(System.currentTimeMillis()));
 		log.setUsername(getPrincipal());
 		lservice.save(log);

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractDaoForm;
 import domain.in.rjsa.dao.TicketRemarkDao;
-import domain.in.rjsa.model.fy.TicketRemark;
+import domain.in.rjsa.model.form.TicketRemark;
 @Repository("ticketRemarkDao")
 public class TicketRemarkDaoImpl extends AbstractDaoForm<Long, TicketRemark> implements TicketRemarkDao{
 	
@@ -21,7 +21,7 @@ public class TicketRemarkDaoImpl extends AbstractDaoForm<Long, TicketRemark> imp
 	public List<TicketRemark> search(HashMap entity, Long clientId) {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
-		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
+		Map<String, Object> propertyNameValues = new HashMap<String, Object>(	);
 		propertyNameValues.put("clientId", clientId);
 		criteria.add(Restrictions.allEq(propertyNameValues));
 		

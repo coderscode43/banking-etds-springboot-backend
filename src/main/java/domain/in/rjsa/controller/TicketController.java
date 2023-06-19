@@ -25,10 +25,11 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import domain.in.rjsa.model.form.ListCount;
+import domain.in.rjsa.model.form.Ticket;
 import domain.in.rjsa.model.fy.Remark;
-import domain.in.rjsa.model.fy.Ticket;
 import domain.in.rjsa.service.RemarkService;
 import domain.in.rjsa.service.TicketService;
+import domain.in.rjsa.web.ApplicationCache;
 
 @Controller
 @RequestMapping("/apiticket")
@@ -37,6 +38,8 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 	TicketService service;
 	@Autowired
 	RemarkService rService;
+	@Autowired
+	ApplicationCache appliactionCache;
 
 	@Override
 	public TicketService getService() {
@@ -92,7 +95,7 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 		entity.put("userName", userName);
 		entity.put("branchCode",branchCode);
 		create(entity);
-//		addLogs(entity);
+		addLogs(entity, "Add");
 		// ermsg.setMessage(" Saved Successfully");
 		return new ResponseEntity<Object>(HttpStatus.CREATED);
 	}
@@ -107,7 +110,7 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 		entity.put("userName", userName);
 		entity.put("branchCode",branchCode);
 		create(entity);
-//		addLogs(entity);
+		addLogs(entity,"Add");
 		// ermsg.setMessage(" Saved Successfully");
 		return new ResponseEntity<Object>(HttpStatus.CREATED);
 	}
@@ -124,7 +127,10 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 //		String[] f = form.split(Pattern.quote("-"),-1);
 //		entity.put("form", f[0]);
 		create(entity);
-		addLogs(entity);
+//		Login login = appliactionCache.getLoginDetail(userName);
+//		entity.put("id", login.getId());
+		addLogs(entity,"Add");
+		
 		// ermsg.setMessage(" Saved Successfully");
 		return new ResponseEntity<Object>(HttpStatus.CREATED);
 

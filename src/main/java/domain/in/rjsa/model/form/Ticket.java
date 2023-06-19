@@ -1,4 +1,4 @@
-package domain.in.rjsa.model.fy;
+package domain.in.rjsa.model.form;
 
 import java.util.Date;
 
@@ -20,7 +20,7 @@ import domain.in.rjsa.model.form.CommonModelAbstract;
 import lombok.Data;
 @Data
 @Entity
-@Table(name = "FYDetails.ticket")
+@Table(name = "form.ticket")
 public class Ticket extends CommonModelAbstract {
 
 	@Id

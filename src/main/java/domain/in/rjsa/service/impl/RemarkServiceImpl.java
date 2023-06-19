@@ -18,12 +18,12 @@ import domain.in.rjsa.dao.Regular27EQDeducteeDao;
 import domain.in.rjsa.dao.Regular27QDeducteeDao;
 import domain.in.rjsa.dao.RemarkDao;
 import domain.in.rjsa.dao.TicketDao;
+import domain.in.rjsa.model.form.Ticket;
 import domain.in.rjsa.model.fy.Regular24QDeductee;
 import domain.in.rjsa.model.fy.Regular26QDeductee;
 import domain.in.rjsa.model.fy.Regular27EQDeductee;
 import domain.in.rjsa.model.fy.Regular27QDeductee;
 import domain.in.rjsa.model.fy.Remark;
-import domain.in.rjsa.model.fy.Ticket;
 import domain.in.rjsa.service.AbstractServiceFY;
 import domain.in.rjsa.service.RemarkService;
 

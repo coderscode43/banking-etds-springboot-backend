@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.TicketDao;
 import domain.in.rjsa.excel.TicketExcel;
-import domain.in.rjsa.model.fy.Ticket;
+import domain.in.rjsa.model.form.Ticket;
 import domain.in.rjsa.service.AbstractServiceForm;
 import domain.in.rjsa.service.TicketService;
 
@@ -31,7 +31,7 @@ TicketDao dao;
 TicketExcel ticketExcel;
 public static String path;
 public String ExcelFile;
-	@Override
+	@Override		
 	public TicketDao getPrimaryDao() {
 		// TODO Auto-generated method stub
 		return dao;

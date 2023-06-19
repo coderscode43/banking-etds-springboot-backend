@@ -4,7 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import domain.in.rjsa.model.fy.Ticket;
+import domain.in.rjsa.model.form.Ticket;
 
 public interface TicketService extends ServiceInterfaceForm<Long, Ticket>{
 	

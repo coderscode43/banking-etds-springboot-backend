@@ -339,8 +339,8 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 //		Login l = applicationCache.getLoginDetail(getPrincipal());
 		HashMap<String, Object> constrains = new HashMap<>();
 		constrains.put("id", entity.get("id"));
-		Logs log = lservice.uniqueSearch(constrains);
-		log = new Logs();
+//		Logs log = lservice.uniqueSearch(constrains);
+		Logs log = new Logs();
 
 		log.setAction("Added");
 		log.setIpaddrs(getIp());

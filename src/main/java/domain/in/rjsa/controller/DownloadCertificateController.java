@@ -3,6 +3,8 @@ package domain.in.rjsa.controller;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URLConnection;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.compress.utils.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -26,40 +29,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import domain.in.rjsa.exception.FieldErrorDTO;
+import domain.in.rjsa.model.form.Branch;
+import domain.in.rjsa.service.BranchService;
 import domain.in.rjsa.util.StaticData;
 
 @Controller
 @RequestMapping("/apidownloadCertificate")
 public class DownloadCertificateController {
+
+	@Autowired
+	BranchService bService;
 	private static final String EXTENSION = "zip";
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
 	// get file from system folderz
-	@RequestMapping(
-			value = "/files/{tan}/{certificate}/{fy}/{q}/{pan}", 
-			method = RequestMethod.GET ,produces="application/octet-stream" )
-	public void download(
-			HttpServletRequest request, 
-			HttpServletResponse response, 
-			@PathVariable String tan,
-			@PathVariable String certificate, 
-			@PathVariable String fy,
-			@PathVariable String q,
+	@RequestMapping(value = "/files/{tan}/{certificate}/{fy}/{q}/{pan}", method = RequestMethod.GET, produces = "application/octet-stream")
+	public void download(HttpServletRequest request, HttpServletResponse response, @PathVariable String tan,
+			@PathVariable String certificate, @PathVariable String fy, @PathVariable String q,
 			@PathVariable String pan) {
-		
-		
+
 		FieldErrorDTO ermsg = new FieldErrorDTO();
 		try {
 			String userName = getPrincipal();
-			if(userName==null||"anonymousUser".equals(userName)) {
+			if (userName == null || "anonymousUser".equals(userName)) {
 				String auth = request.getHeader("directDownloadAuth");
-				if(auth!=null) { 
-					if(auth.equals(StaticData.directDownloadAuth)) {
+				if (auth != null) {
+					if (auth.equals(StaticData.directDownloadAuth)) {
 						logger.info("Direct download certificate through auth");
-					}else {
+					} else {
 						throw new Exception("Invalid AUTH");
 					}
-				}else {
+				} else {
 					throw new Exception("Invalid AUTH");
 				}
 			}
@@ -72,9 +72,9 @@ public class DownloadCertificateController {
 				throw new Exception("Invalid PAN.");
 			}
 			// verify regx tan or if All TAN
-			
+
 			List<String> tanList = Arrays.asList(StaticData.Tan);
-			
+
 			if (tanList.contains(tan) || tan.equalsIgnoreCase("ALL TAN")) {
 				tan = tan;
 			} else {
@@ -98,38 +98,41 @@ public class DownloadCertificateController {
 			List<String> cList = Arrays.asList(StaticData.typeOfCertificate);
 			if (cList.contains(certificate)) {
 				certificate = certificate;
-			} else if(StaticData.certificateType.contains(certificate)){
-				
-			}else {
+			} else if (StaticData.certificateType.contains(certificate)) {
+
+			} else {
 				throw new Exception("Invalid Certificate.");
 			}
 			String ay = fyToAy(fy);
 
 			List<String> filesToSend = getAllFiles(fy, ay, q, certificate, tan, pan);
-			
+			System.out.println(filesToSend);
 			if (filesToSend.isEmpty()) {
 				// return no certificate found
 				throw new Exception("No certificate found.");
 			} else {
 				// create zip and send the file also delete the file after sending
 				response.setStatus(HttpServletResponse.SC_OK);
-				response.addHeader("Content-Disposition", " attachment; filename="+pan+"_"+fy+"_"+q+ ".zip");
+				response.addHeader("Content-Disposition", " attachment; filename=" + pan + "_" + fy + "_" + q + ".zip");
 				response.setHeader("Content-Type", "application/zip");
-				
+
 				ZipOutputStream zipOutputStream = new ZipOutputStream(response.getOutputStream());
 				int i = filesToSend.size();
 				for (String filePath : filesToSend) {
 					File file = new File(filePath);
-					// new zip entry and copying inputstream with file to zipOutputStream, after all closing streams
-					zipOutputStream.putNextEntry( new ZipEntry( file.getName().split( Pattern.quote("."), -1)[0] + "_" + i + ".pdf" ) );
+					// new zip entry and copying inputstream with file to zipOutputStream, after all
+					// closing streams
+					zipOutputStream.putNextEntry(
+							new ZipEntry(file.getName().split(Pattern.quote("."), -1)[0] + "_" + i + ".pdf"));
 					FileInputStream fileInputStream = new FileInputStream(file);
 					IOUtils.copy(fileInputStream, zipOutputStream);
 					fileInputStream.close();
 					zipOutputStream.closeEntry();
-					i--;														
+					i--;
 				}
 				zipOutputStream.close();
 			}
+			System.out.println("File Download");
 		} catch (Exception e) {
 			// send dto object with error
 			ermsg.setMessage("File not found");
@@ -147,22 +150,109 @@ public class DownloadCertificateController {
 
 	}
 
+	@RequestMapping(value = "/downloadBranchZip/{branchCode}/{certificate}/{fy}/{q}", method = RequestMethod.GET, produces = "application/octet-stream")
+	public void downloadBranchZip(HttpServletRequest request, HttpServletResponse response,
+			@PathVariable String branchCode, @PathVariable String certificate, @PathVariable String fy,
+			@PathVariable String q) {
+
+		FieldErrorDTO ermsg = new FieldErrorDTO();
+		try {
+			String userName = getPrincipal();
+			if (userName == null || "anonymousUser".equals(userName)) {
+				String auth = request.getHeader("directDownloadAuth");
+				if (auth != null) {
+					if (auth.equals(StaticData.directDownloadAuth)) {
+						logger.info("Direct download certificate through auth");
+					} else {
+						throw new Exception("Invalid AUTH");
+					}
+				} else {
+					throw new Exception("Invalid AUTH");
+				}
+			}
+			branchCode = branchCode.trim();
+			Branch branch = bService.getByKey(Long.valueOf(branchCode));
+			if (branch != null) {
+				branchCode = branchCode;
+			} else {
+				throw new Exception("Invalid Branch Code");
+			}
+			// verify regX fy
+			List<String> yearList = Arrays.asList(StaticData.financialYear);
+			if (yearList.contains(fy)) {
+				fy = fy;
+			} else {
+				throw new Exception("Invalid Financial Year.");
+			}
+			// vwerify q
+			List<String> qList = Arrays.asList(StaticData.Quarter);
+			if (qList.contains(q) || q.equalsIgnoreCase("ALL QUARTER")) {
+				q = q;
+			} else {
+				throw new Exception("Invalid Quarter.");
+			}
+			// verify certificate
+			List<String> cList = Arrays.asList(StaticData.typeOfCertificate);
+			if (cList.contains(certificate)) {
+				certificate = certificate;
+			} else if (StaticData.certificateType.contains(certificate)) {
+
+			} else {
+				throw new Exception("Invalid Certificate.");
+			}
+			String[] c = certificate.split(Pattern.quote("-"), -1);
+			String path = StaticData.CertificatePath;
+			String filePath = path + "download/" + fy + "/" + q + "/" + c[0] + "/" + branchCode + ".zip";
+			File file = new File(filePath);
+			byte[] fileContent = Files.readAllBytes(file.toPath());
+			String mimeType = URLConnection.guessContentTypeFromName(branchCode + "_" + fy + "_" + q + ".zip");
+			response.setContentType(mimeType);
+			response.setStatus(HttpServletResponse.SC_OK);
+			response.setHeader("Content-Disposition",
+					" attachment; filename=" + branchCode + "_" + fy + "_" + q + ".zip");
+			response.getOutputStream().write(fileContent);
+			response.getOutputStream().close();
+
+			response.setStatus(HttpServletResponse.SC_OK);
+			response.addHeader("Content-Disposition",
+					" attachment; filename=" + branchCode + "_" + fy + "_" + q + ".zip");
+			response.setHeader("Content-Type", "application/zip");
+
+			System.out.println("File Download");
+		} catch (Exception e) {
+			// send dto object with error
+			ermsg.setMessage("File not found");
+			ermsg.setExceptionMsg(e.getMessage());
+			ermsg.setEntityName("Certificate");
+			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+			ResponseEntity re = new ResponseEntity<Object>(ermsg, HttpStatus.BAD_REQUEST);
+			try {
+				response.getWriter().write(re.getBody().toString());
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+
+	}
+
 	private List<String> getAllFiles(String fy, String ay, String q, String certificate, String tan, String pan) {
 
 		List<String> filePaths = new ArrayList<String>();
 
-		String path = StaticData.CertificatePath; //?????
+		String path = StaticData.CertificatePath; // ?????
 		String[] c = certificate.split("-");
 		String[] t = tan.split("-");
+		System.out.println(c[0] + "&&" + t[0]);
 		Character ch = pan.charAt(4);
-	
 
 		if (tan.equals("ALL TAN") && q.equals("ALL QUARTER")) {
 			for (String q1 : StaticData.Quarter) {
 				for (String t1 : StaticData.Tan) {
 					t = t1.split("-");
 					String pdfFileName = pan + "_" + q1 + "_" + ay + ".pdf";
-					String filePath = path + "download/" + fy + "/" + q1 + "/" + c[0] + "/" + t[0] + "/" + ch + "/" + pdfFileName;
+					String filePath = path + "download/" + fy + "/" + q1 + "/" + c[0] + "/" + t[0] + "/" + ch + "/"
+							+ pdfFileName;
 					addFileIfExist(filePath, filePaths);
 				}
 			}
@@ -170,30 +260,33 @@ public class DownloadCertificateController {
 			for (String t1 : StaticData.Tan) {
 				t = t1.split("-");
 				String pdfFileName = pan + "_" + q + "_" + ay + ".pdf";
-				String filePath = path + "download/" + fy + "/" + q + "/" + c[0] + "/" + t[0] + "/" + ch + "/" + pdfFileName;
+				String filePath = path + "download/" + fy + "/" + q + "/" + c[0] + "/" + t[0] + "/" + ch + "/"
+						+ pdfFileName;
 				addFileIfExist(filePath, filePaths);
 			}
 
-		}else if(q.equals("ALL QUARTER")){
+		} else if (q.equals("ALL QUARTER")) {
 			for (String q1 : StaticData.Quarter) {
 				String pdfFileName = pan + "_" + q1 + "_" + ay + ".pdf";
-				String filePath = path + "download/" + fy + "/" + q1 + "/" + c[0] + "/" + t[0] + "/" + ch +  "/" + pdfFileName;
+				String filePath = path + "download/" + fy + "/" + q1 + "/" + c[0] + "/" + t[0] + "/" + ch + "/"
+						+ pdfFileName;
 				addFileIfExist(filePath, filePaths);
 			}
-		} 
-		else {
+		} else {
 			String pdfFileName = pan + "_" + q + "_" + ay + ".pdf";
-			String filePath = path + "download/" + fy + "/" + q + "/" + c[0] + "/" + t[0] + "/" + ch +  "/" + pdfFileName;
-			
+			String filePath = path + "download/" + fy + "/" + q + "/" + c[0] + "/" + t[0] + "/" + ch + "/"
+					+ pdfFileName;
+
 			addFileIfExist(filePath, filePaths);
 		}
-		if(filePaths.isEmpty()) {
+		if (filePaths.isEmpty()) {
 			if (tan.equals("ALL TAN") && q.equals("ALL QUARTER")) {
 				for (String q1 : StaticData.Quarter) {
 					for (String t1 : StaticData.Tan) {
 						t = t1.split("-");
 						String pdfFileName = pan + "_" + q1 + "_" + ay + ".pdf";
-						String filePath = path + "download/" + fy + "/" + q1 + "/" + c[0] + "/" + t[0] + "/" + pdfFileName;
+						String filePath = path + "download/" + fy + "/" + q1 + "/" + c[0] + "/" + t[0] + "/"
+								+ pdfFileName;
 						addFileIfExist(filePath, filePaths);
 					}
 				}
@@ -205,26 +298,54 @@ public class DownloadCertificateController {
 					addFileIfExist(filePath, filePaths);
 				}
 
-			}else if(q.equals("ALL QUARTER")){
+			} else if (q.equals("ALL QUARTER")) {
 				for (String q1 : StaticData.Quarter) {
 					String pdfFileName = pan + "_" + q1 + "_" + ay + ".pdf";
-					String filePath = path + "download/" + fy + "/" + q1 + "/" + c[0] + "/" + t[0] +  "/" + pdfFileName;
+					String filePath = path + "download/" + fy + "/" + q1 + "/" + c[0] + "/" + t[0] + "/" + pdfFileName;
 					addFileIfExist(filePath, filePaths);
 				}
-			} 
-			else {
+			} else {
 				String pdfFileName = pan + "_" + q + "_" + ay + ".pdf";
-				String filePath = path + "download/" + fy + "/" + q + "/" + c[0] + "/" + t[0] + "/"  + pdfFileName;
+				String filePath = path + "download/" + fy + "/" + q + "/" + c[0] + "/" + t[0] + "/" + pdfFileName;
 				addFileIfExist(filePath, filePaths);
 			}
 		}
-	
-		
+
+		return filePaths;
+	}
+
+	private List<String> getAllQuatersFiles(String fy, String ay, String q, String certificate, String branchCode) {
+
+		List<String> filePaths = new ArrayList<String>();
+		String path = StaticData.CertificatePath; // ?????
+		String[] c = certificate.split("-");
+		if (q.equals("ALL QUARTER")) {
+			for (String q1 : StaticData.Quarter) {
+				String filePath = path + "download/" + fy + "/" + q1 + "/" + c[0] + "/" + branchCode + ".zip";
+				addFileIfExist(filePath, filePaths);
+			}
+		} else {
+			String filePath = path + "download/" + fy + "/" + q + "/" + c[0] + "/" + branchCode + ".zip";
+			addFileIfExist(filePath, filePaths);
+		}
+		if (filePaths.isEmpty()) {
+			if (q.equals("ALL QUARTER")) {
+				for (String q1 : StaticData.Quarter) {
+					String filePath = path + "download/" + fy + "/" + q1 + "/" + c[0] + "/" + branchCode + ".zip";
+					addFileIfExist(filePath, filePaths);
+				}
+			} else {
+				String filePath = path + "download/" + fy + "/" + q + "/" + c[0] + "/" + branchCode + ".zip";
+				addFileIfExist(filePath, filePaths);
+			}
+		}
 		return filePaths;
 	}
 
 	private void addFileIfExist(String filePath, List<String> filePaths) {
 		if (new File(filePath).exists()) {
+			System.out.println(filePath);
+			logger.info(filePath);
 			filePaths.add(filePath);
 		}
 	}
@@ -234,7 +355,6 @@ public class DownloadCertificateController {
 		String[] yr = fy.split("-");
 		int y1 = Integer.parseInt(yr[0]);
 		int y2 = Integer.parseInt(yr[1]);
-
 		int Ay1 = y1 + 1;
 		int Ay2 = y2 + 1;
 		return Ay1 + "-" + Ay2;
@@ -244,7 +364,6 @@ public class DownloadCertificateController {
 	public String getPrincipal() {
 		String userName = null;
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
 		if (principal instanceof UserDetails) {
 			userName = ((UserDetails) principal).getUsername();
 		} else {

@@ -67,11 +67,12 @@
 	line-height: 1;
 	text-align: center;
 }
+
 .sidebar-content {
-  max-height: calc(100% - 30px);
-  height: calc(100% - 30px);
-  overflow-y: initial;
-  position: relative;
+	max-height: calc(100% - 30px);
+	height: calc(100% - 30px);
+	overflow-y: initial;
+	position: relative;
 }
 </style>
 <div class=" page-wrapper chiller-theme ng-scope toggled"
@@ -83,13 +84,10 @@
 		style="margin-top: -3px; background-color: #0F316D">
 		<div class="sidebar-content">
 			<div class="sidebar-brand" style="box-shadow: 0px 5px;">
-			<!-- ng-click="cCctr.gotoListPage('homeSCHomepage','homeSCHomepage')" -->
-				<div
-					ng-click="cCctr.gotoHomePage()"
-					style="color: white">
+				<!-- ng-click="cCctr.gotoListPage('homeSCHomepage','homeSCHomepage')" -->
+				<div ng-click="cCctr.gotoHomePage()" style="color: white">
 					<img src="static/img/tdsosmart1.png"
-						style="height: 165px; width: 140%; margin-left: 14%;"
-						>
+						style="height: 165px; width: 140%; margin-left: 14%;">
 				</div>
 				<div onclick="slideIn()" style="margin-left: 40%; margin-top: -35%">
 					<i class="fa fa-times"></i>
@@ -102,8 +100,7 @@
 			<div class="sidebar-menu">
 				<ul id="menu-content" class="menu-list">
 
-					<li ng-click="cCctr.gotoListPage('branch','branch')"
-						onclick="refreshPage()"><a> <i class="fa fa-mail-forward"></i><b>Select
+					<li ng-click="cCctr.gotoListPage('branch','branch')"><a> <i class="fa fa-mail-forward"></i><b>Select
 								Branch</b>
 					</a></li>
 
@@ -158,8 +155,8 @@
 					</ul>
 
 					<li data-toggle="collapse" data-target="#form27eq"
-						class="collapsed" ng-show="'admin'=='${typeOfUser}'"><a
-						><i class="fa fa-credit-card"></i><b>Form 27EQ </b><i
+						class="collapsed" ng-show="'admin'=='${typeOfUser}'"><a><i
+							class="fa fa-credit-card"></i><b>Form 27EQ </b><i
 							class="fa fa-chevron-down" aria-hidden="true"
 							style="float: right"></i></a></li>
 
@@ -216,12 +213,12 @@
 						onclick="scrollWin()" ng-show="'admin'=='${typeOfUser}'"><a>
 							<i class="fa fa-book"></i><b>Challan</b>
 					</a></li>
-					
+
 					<li ng-click="cCctr.gotoListPage('totalAmount','totalAmount')"
 						onclick="scrollWin()" ng-show="'admin'=='${typeOfUser}'"><a>
 							<i class="fa fa-book"></i><b>Total Amount</b>
 					</a></li>
-					
+
 					<li ng-click="cCctr.gotoListPage('panUpdateList','panUpdateList')"
 						onclick="scrollWin()" ng-show="'admin'=='${typeOfUser}'"><a>
 							<i class="fa fa-book"></i><b>Pan Update List</b>
@@ -248,15 +245,24 @@
 						onclick="scrollWin()" ng-show="'admin'=='${typeOfUser}'"><a><i
 							class="fa fa-desktop" aria-hidden="true"></i><b>Generate
 								Ticket</b> </a></li>
-								
-					<li ng-click="cCctr.gotoListPage('uploadCertificate','uploadCertificate')"
+
+					<li
+						ng-click="cCctr.gotoListPage('correctionRequest','correctionRequest')"
 						onclick="scrollWin()" ng-show="'admin'=='${typeOfUser}'"><a><i
-							class="fa fa-desktop" aria-hidden="true"></i><b>Upload Certificate
-								</b> </a></li>
+							class="fa fa-desktop" aria-hidden="true"></i><b>Correction
+								Request </b> </a></li>
+
+					<li
+						ng-click="cCctr.gotoListPage('uploadCertificate','uploadCertificate')"
+						onclick="scrollWin()" ng-show="'admin'=='${typeOfUser}'"><a><i
+							class="fa fa-desktop" aria-hidden="true"></i><b>Upload
+								Certificate </b> </a></li>
+
+
 
 					<li data-toggle="collapse" data-target="#ldcDetails"
-						class="collapsed" ng-show="'admin'=='${typeOfUser}'"><a
-						><i class="fa fa-file-text"></i><b>LDC Details </b> <i
+						class="collapsed" ng-show="'admin'=='${typeOfUser}'"><a><i
+							class="fa fa-file-text"></i><b>LDC Details </b> <i
 							class="fa fa-chevron-down" aria-hidden="true"
 							style="float: right"></i></a></li>
 
@@ -274,9 +280,9 @@
 							onclick="scrollWin()" ng-show="'admin'=='${typeOfUser}'">15H</li>
 					</ul>
 
-					<li ng-click="cCctr.gotoListPage('userDetails','userDetails')" ng-show="'admin'=='${typeOfUser}'"
-						onclick="scrollWin()"><a><i class="fa fa-group"
-							aria-hidden="true"></i><b>User</b> </a></li>
+					<li ng-click="cCctr.gotoListPage('userDetails','userDetails')"
+						ng-show="'admin'=='${typeOfUser}'" onclick="scrollWin()"><a><i
+							class="fa fa-group" aria-hidden="true"></i><b>User</b> </a></li>
 
 					<li ng-click="cCctr.gotoListPage('logs','logs')"
 						onclick="scrollWin()" ng-show="'admin'=='${typeOfUser}'"><a><i
@@ -285,21 +291,27 @@
 					<!-- <li ng-click="cCctr.gotoListPage('Notice','Notice')"
 						onclick="scrollWin()" ng-show="'admin'=='${typeOfUser}'"><a><i
 							class="fa fa-history" aria-hidden="true"></i><b>Notice</b> </a></li> -->
-						
 
-				<li ui-sref="logout" onclick="scrollWin()"><a><i
+
+					<!-- <li ui-sref="logout" onclick="scrollWin()"><a><i
 							class="fa fa-power-off" aria-hidden="true"></i><b>logout</b> </a></li>
+
+                    -->     
+                        <li class="nav-item pointer" data-toggle="modal" data-target="#myModal2" data-backdrop="false"><a class="nav-link"><i
+							class="fa fa-power-off" aria-hidden="true"></i>
+				            <b>logout</b> </a></li>	
+
 
 
 					<!-- sidebar-menu  -->
-					</ul>
+				</ul>
 			</div>
-			</div>
+		</div>
 	</nav>
 	<!-- sidebar-wrapper  -->
 	<main class="page-content" style="margin-top: -3.5%">
 		<div class="container-fluid">
-		
+
 			<!-- <div ng-http-loader methods="['GET']" ttl="1" id="example/loader" 
 		template="index/example-loader.tpl"></div> -->
 
@@ -505,7 +517,7 @@
 
 <div id="myModal" class="modal" role="dialog">
 	<div class="modal-dialog modal-sm">
-		
+
 		<div class="modal-content">
 			<div class="modal-header">
 				<h4 style="color: red;">
@@ -520,7 +532,7 @@
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="msg" style="font-size: 18px;">
-						<p>Do you really want to delete these User?</p>
+							<p>Do you really want to delete these User?</p>
 						</div>
 					</div>
 				</div>
@@ -528,7 +540,7 @@
 			<div class="modal-footer">
 				<button type="button" class="btn btn-success" data-dismiss="modal"
 					ng-click="cCctr.deleteById('userDetails',cCctr.delete)">Yes</button>
-					<button type="button" class="btn btn-danger" data-dismiss="modal"
+				<button type="button" class="btn btn-danger" data-dismiss="modal"
 					ng-click="cCctr.reload();">No</button>
 				<!-- id="reload" -->
 			</div>
@@ -536,6 +548,39 @@
 	</div>
 </div>
 
+<!-- logout modal -->
+<div id="myModal2" class="modal" role="dialog">
+	<div class="modal-dialog modal-sm">
+		
+		<div class="modal-content">
+			<div class="modal-header" style="background-color: #505d82 ">
+				<h4 style="color: white;">
+					<!--  <picture>
+					<source type="image/webp" srcset="static/img/errorNew.webp">
+					<img src="./././static/img/errorNew.png" height="30" width="30">
+					</picture> -->
+					<span class="headingMsg">Are you sure?</span>
+				</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="msg" style="font-size: 18px;">
+						<p>Do you want to logout !!!</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-success" data-dismiss="modal"	
+					ng-click="cCctr.logout()">Yes</button>
+					<button  id="reload" type="button" class="btn btn-default" data-dismiss="modal"
+					ng-click="cCctr.reload()">No</button>
+				<!-- id="reload" -->
+			</div>
+		</div>
+	</div>
+   </div>       
 
 
 <script>
@@ -620,8 +665,7 @@
 	});
 </script>
 <script>
-
-function refreshPageButton(){
-    window.location.reload();
-} 
+	function refreshPageButton() {
+		window.location.reload();
+	}
 </script>

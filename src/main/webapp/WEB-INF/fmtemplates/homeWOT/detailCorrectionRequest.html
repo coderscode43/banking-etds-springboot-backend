@@ -1,0 +1,578 @@
+
+<style>
+/*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+@media only screen and (max-width: 760px) , ( min-device-width : 768px)
+	and (max-device-width: 1024px) {
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr {
+		display: block;
+	}
+
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	tr {
+		margin: 0 0 1rem 0;
+	}
+	tr:nth-child(odd) {
+		background: #ccc;
+	}
+	td {
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee;
+		position: relative;
+		padding-left: 50%;
+	}
+	td:before {
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 0;
+		left: 6px;
+		width: 45%;
+		padding-right: 10px;
+		white-space: nowrap;
+	}
+
+	/*
+		Label the data
+    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+		*/
+	td:nth-of-type(1):before {
+		content: "Sr. No.";
+	}
+	td:nth-of-type(2):before {
+		content: "Employee Code";
+	}
+	td:nth-of-type(3):before {
+		content: "Name";
+	}
+	td:nth-of-type(4):before {
+		content: "PAN";
+	}
+	td:nth-of-type(5):before {
+		content: "Designation";
+	}
+	td:nth-of-type(6):before {
+		content: "Email";
+	}
+	td:nth-of-type(7):before {
+		content: "Mobile";
+	}
+	td:nth-of-type(8):before {
+		content: "Address";
+	}
+	td:nth-of-type(9):before {
+		content: "Branch";
+	}
+	td:nth-of-type(10):before {
+		content: "Group Code";
+	}
+	td:nth-of-type(11):before {
+		content: "Action";
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.one {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.two {
+		padding: 8px;
+	}
+}
+
+@media only screen and (min-width:600px) {
+	#three {
+		display: none;
+		max-height: 0;
+		overflow: hidden;
+	}
+}
+
+@media only screen and (min-width:1000px) {
+	#search {
+		margin-left: 45%;
+		margin-top: 2px;
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	#hide {
+		display: none;
+	}
+}
+
+.table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
+	{
+	background-color: whitesmoke;
+}
+
+@media ( min-width : 768px) {
+	.collapse.dont-collapse-sm {
+		display: block;
+		height: auto !important;
+		visibility: visible;
+	}
+}
+
+/*Add Remark Button*/
+.tooltip-top {
+	bottom: 125%;
+	margin-left: -85%;
+}
+/*Resolved Button*/
+.tooltip-top1 {
+	bottom: 125%;
+	margin-left: -80%;
+}
+/*Reject Button*/
+.tooltip-top2 {
+	bottom: 125%;
+	margin-left: -76%;
+}
+/*Back Button*/
+.tooltip-top3 {
+	bottom: 125%;
+	margin-left: -76%;
+}
+</style>
+
+
+
+
+<div id="page-wrapper" ng-init="cCctr.entity=cCctr.getEntityDataFY();">
+	<div class="container-fluid">
+
+		<div>
+
+			<div class="row">
+				<h3 class="page-header" style="margin-top: 2%;">Details of
+					Correction Request</h3>
+			</div>
+
+			<div class="panel panel-default"
+				style="margin-top: -2%; border: none !important;">
+				<div class="panel-body">
+					<div class="container">
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-3">
+								<label>Ticket Number &nbsp;:</label>
+								{{cCctr.entity.details.ticketNumber}}
+							</div>
+							<div class="col-md-3">
+								<label>Financial Year &nbsp;:</label>
+								{{cCctr.entity.details.fy}}
+							</div>
+							<div class="col-md-3">
+								<label>Quarter &nbsp;:</label> {{cCctr.entity.details.quarter}}
+							</div>
+						</div>
+						<br>
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-3">
+								<label>Date of Request &nbsp;:</label>
+								{{cCctr.entity.details.date | date:'dd-MM-yyyy'}}
+							</div>
+							<div class="col-md-3">
+								<label>Name of Customer &nbsp;:</label>
+								{{cCctr.entity.details.nameOfCust}}
+							</div>
+							<div class="col-md-3">
+								<label>PAN of Customer &nbsp;:</label>
+								{{cCctr.entity.details.panOfCust}}
+							</div>
+						</div>
+						<br>
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-3">
+								<label>Branch Code&nbsp;:</label>
+								{{cCctr.entity.details.branchCode}}
+							</div>
+							<div class="col-md-3">
+								<label>Employee Number &nbsp;:</label>
+								{{cCctr.entity.details.empNo}}
+							</div>
+							<div class="col-md-3">
+								<label>Type of Correction &nbsp;:</label>
+								{{cCctr.entity.details.typeOfCorrection}}
+							</div>
+						</div>
+						<br>
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-12">
+								<label>Remark &nbsp;:</label> {{cCctr.entity.details.remark}}
+							</div>
+						</div>
+						<br>
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-3">
+								<label>Date Of Payment &nbsp;:</label>
+								{{cCctr.entity.amountDetails.dateOfPayment| date:'dd-MM-yyyy'}}
+							</div>
+							<div class="col-md-3">
+								<label>Amount Paid &nbsp;:</label>
+								{{cCctr.entity.amountDetails.amountPaid}}
+							</div>
+							<div class="col-md-3">
+								<label>TDS &nbsp;:</label>
+								{{cCctr.entity.amountDetails.tdsDeducted}}
+							</div>
+						</div>
+						<br>
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-3">
+								<label>Amount Paid 26AS &nbsp;:</label>
+								{{cCctr.entity.amountDetails.amountPaid26as}}
+							</div>
+							<div class="col-md-3">
+								<label>TDS 26AS &nbsp;:</label>
+								{{cCctr.entity.amountDetails.tds26as}}
+							</div>
+						</div>
+						<br>
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-3">
+								<label>Remark for Amount Correction&nbsp;:</label>
+								{{cCctr.entity.amountDetails.remark}}
+							</div>
+						</div>
+						<hr>
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-3">
+								<label>Request Created By &nbsp;:</label>
+								{{cCctr.entity.details.makerBy}}
+							</div>
+							<div class="col-md-3">
+								<label>Request Created On &nbsp;:</label>
+								{{cCctr.entity.details.date | date:'dd-MM-yyyy'}}
+							</div>
+							<div class="col-md-3">
+								<label>Status &nbsp;:</label> {{cCctr.entity.details.status}}
+							</div>
+						</div>
+						<br>
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-3">
+								<label>Checker Approved By &nbsp;:</label>
+								{{cCctr.entity.details.checkerApprovedBy}}
+							</div>
+							<div class="col-md-3">
+								<label>Checker Approved On&nbsp;:</label>
+								{{cCctr.entity.details.checkerApprovedOn}}
+							</div>
+							<div class="col-md-3">
+								<label>Tax Team Approved By &nbsp;:</label>
+								{{cCctr.entity.details.taxTeamApprovedBy}}
+							</div>
+
+						</div>
+						<br>
+						<div class="row" style="font-size: 13px;">
+							<div class="col-md-3">
+								<label>Tax Team Approved On&nbsp;:</label>
+								{{cCctr.entity.details.taxTeamApprovedOn}}
+							</div>
+							<div class="col-md-3">
+								<label>Correction By &nbsp;:</label>
+								{{cCctr.entity.details.correctionBy}}
+							</div>
+							<div class="col-md-3">
+								<label>Correction On&nbsp;:</label>
+								{{cCctr.entity.details.correctionOn}}
+							</div>
+
+						</div>
+
+
+
+					</div>
+				</div>
+			</div>
+			<br>
+			<!-- <div class="row">
+				<h3 class="page-header" style="margin-top: 2%;">Details of
+					Correction Amount</h3>
+			</div> -->
+			<!-- <div class="container">
+				<div class="row" style="font-size: 13px;">
+					<div class="col-md-3">
+						<label>Date Of Payment &nbsp;:</label>
+						{{cCctr.entity.amountDetails.dateOfPayment| date:'dd-MM-yyyy'}}
+					</div>
+					<div class="col-md-3">
+						<label>Amount Paid &nbsp;:</label>
+						{{cCctr.entity.amountDetails.amountPaid}}
+					</div>
+					<div class="col-md-3">
+						<label>TDS &nbsp;:</label>
+						{{cCctr.entity.amountDetails.tdsDeducted}}
+					</div>
+				</div>
+				<br>
+				<div class="row" style="font-size: 13px;">
+					<div class="col-md-3">
+						<label>Amount Paid 26AS &nbsp;:</label>
+						{{cCctr.entity.amountDetails.amountPaid26as}}
+					</div>
+					<div class="col-md-3">
+						<label>TDS 26AS &nbsp;:</label>
+						{{cCctr.entity.amountDetails.tds26as}}
+					</div>
+				</div>
+				<br>
+				<div class="row" style="font-size: 13px;">
+					<div class="col-md-3">
+						<label>Remark for Amount Correction&nbsp;:</label>
+						{{cCctr.entity.amountDetails.remark}}
+					</div>
+				</div>
+			</div> -->
+			<br>
+			<div class="row">
+				<div class="modal fade" id="myModal" role="dialog">
+					<form role="form" name="correctionRemark">
+						<div class="modal-dialog">
+							<!-- Modal content-->
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4 class="modal-title">Add Correction Remark</h4>
+								</div>
+								<input class="form-control"
+									ng-model="cCctr.newEntity.branchCode = cCctr.entity.details.branchCode"
+									id="branchCode" name="branchCode" style="display: none">
+								<input class="form-control"
+									ng-model="cCctr.newEntity.correctionRequestId = cCctr.entity.details.id"
+									id="correctionRequestId" name="correctionRequestId"
+									style="display: none">
+								<input class="form-control"
+									ng-model="cCctr.newEntity.remarkStatus = 'Remark'"
+									id="remarkStatus" name="remarkStatus" style="display: none">
+
+								<div class="col-md-12">
+									<div class="col-md-12">
+										<label style="font-size: 13px; margin-top: 2%">Remarks&nbsp;:</label>
+									</div>
+									<textarea ng-model="cCctr.newEntity.correctionRemark"
+										id="correctionRemark" name="correctionRemark"
+										style="width: 90%; height: 20%; font-size: 15px; margin-left: 5%;"
+										ng-required="true" required></textarea>
+									<span style="color: red; margin-left: 5%;" class="error"
+										ng-show="correctionRemark.submitted || correctionRemark.correctionRemark.$dirty && correctionRemark.correctionRemark.$invalid"><span
+										class="error"
+										ng-show="correctionRemark.correctionRemark.$error.required">Please
+											enter valid Correction Remark</span> <span class="error"
+										id="correctionRemark"> </span> </span>
+								</div>
+								<div class="col-md-12">
+									<div class="col-md-12">
+										<label style="font-size: 13px; margin-top: 2%">Supporting
+											Document&nbsp;:</label> <input multiple id="file-upload" type="file"
+											name="file" title="Select File" class="form-control"
+											file-model="cCctr.newEntity.blob" accept="" />
+									</div>
+								</div>
+								<div class="modal-footer">
+
+									<button class="pushable darkgreen" style="margin-top: 2%;"
+										style="margin: 2% 5% 0 0; width: 15%;"
+										ng-click="correctionRemark.submitted=true;cCctr.submitRemark(correctionRemark.$valid,'correctionRemark',cCctr.newEntity,'close')">
+										<span class="front darkgreenspan"> Add</span>
+									</button>
+									<button class="pushable darkred" style="margin-top: 2%;"
+										data-dismiss="modal">
+										<span class="front darkredspan"> No</span>
+									</button>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<!-- Reject Remark model -->
+				<div class="modal fade" id="rejectModal" role="dialog">
+					<form role="form" name="rejectRemark">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4 class="modal-title">Reject</h4>
+								</div>
+								<div class="col-md-12 ">
+									<input class="form-control"
+										ng-model="cCctr.reject.branchCode = cCctr.entity.details.branchCode"
+										id="branchCode" name="branchCode" style="display: none">
+									<input class="form-control"
+										ng-model="cCctr.reject.correctionRequestId = cCctr.entity.details.id"
+										id="correctionRequestId" name="correctionRequestId"
+										style="display: none"> <input class="form-control"
+										ng-model="cCctr.reject.remarkStatus = 'Rejected'"
+										id="remarkStatus" name="remarkStatus" style="display: none">
+
+
+									<label style="font-size: 13px; margin-top: 2%">Why do
+										you want to reject?</label><br>
+									<textarea ng-model="cCctr.reject.correctionRemark"
+										id="correctionRemark" name="correctionRemark"
+										style="width: 90%; height: 20%; font-size: 15px; margin-left: 5%;"
+										ng-required="true"></textarea>
+									<span style="color: red; margin-left: 5%;" class="error"
+										ng-show="rejectRemark.submitted || rejectRemark.correctionRemark.$dirty && rejectRemark.correctionRemark.$invalid"><span
+										class="error"
+										ng-show="rejectRemark.correctionRemark.$error.required">Please
+											Enter valid Remark </span></span>
+								</div>
+								<div class="modal-footer">
+
+									<button class="pushable darkgreen" style="margin-top: 2%;"
+										ng-click="rejectRemark.submitted=true;cCctr.submitRemark(rejectRemark.$valid,'correctionRemark',cCctr.reject,'close')">
+										<span class="front darkgreenspan"> Yes</span>
+									</button>
+									<button class="pushable darkred" style="margin-top: 2%;"
+										data-dismiss="modal">
+										<span class="front darkredspan"> No</span>
+									</button>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+
+				<!-- Resolve Remark model -->
+				<div class="modal fade" id="resolveModal" role="dialog">
+					<form role="form" name="approvedRemark">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4 class="modal-title">Approved</h4>
+								</div>
+								<div class="col-md-12 ">
+									<input class="form-control"
+										ng-model="cCctr.resolve.branchCode = cCctr.entity.details.branchCode"
+										id="branchCode" name="branchCode" style="display: none">
+									<input class="form-control"
+										ng-model="cCctr.resolve.correctionRequestId = cCctr.entity.details.id"
+										id="correctionRequestId" name="correctionRequestId"
+										style="display: none"> <input class="form-control"
+										ng-model="cCctr.resolve.remarkStatus = 'Approved'"
+										id="remarkStatus" name="remarkStatus" style="display: none">
+									<label style="font-size: 13px; margin-top: 2%">Approved</label><br>
+									<textarea ng-model="cCctr.resolve.correctionRemark"
+										id="correctionRemark" name="correctionRemark"
+										style="width: 90%; height: 20%; font-size: 15px; margin-left: 5%;"
+										ng-required="true"></textarea>
+									<span style="color: red; margin-left: 5%;" class="error"
+										ng-show="approvedRemark.submitted || approvedRemark.correctionRemark.$dirty && approvedRemark.correctionRemark.$invalid"><span
+										class="error"
+										ng-show="approvedRemark.correctionRemark.$error.required">Please
+											enter valid Remark</span></span>
+								</div>
+								<div class="modal-footer">
+									<button class="pushable darkgreen" style="margin-top: 2%;"
+										ng-click="approvedRemark.submitted=true;cCctr.submitRemark(approvedRemark.$valid,'correctionRemark',cCctr.resolve,'close')">
+										<span class="front darkgreenspan"> Yes</span>
+									</button>
+									<button class="pushable darkred" style="margin-top: 2%;"
+										data-dismiss="modal">
+										<span class="front darkredspan"> No</span>
+									</button>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<br>
+			<div class="row">
+				<h3 class="page-header" style="margin-top: 2%;">Remarks &
+					Supporting Document</h3>
+				<button class="pushable darkblue tool" style="margin-left: 43%;"
+					data-target="#myModal" data-toggle="modal">
+					<span class="front darkbluespan"><i class="fa fa-plus"
+						aria-hidden="true"></i> Add Correction Remark <span
+						class="tooltiptext tooltip-top">Add Correction Remark
+							Button</span></span>
+				</button>
+
+				<button class="pushable darkgreen tool" data-toggle="modal"
+					data-target="#resolveModal" ng-if="cCctr.entity.disable" >
+					<span class="front darkgreenspan"><i class="fa fa-thumbs-up"
+						aria-hidden="true"></i> Approved <span
+						class="tooltiptext tooltip-top1">Approved Button</span></span>
+				</button>
+				<button class="pushable lightgreen" data-toggle="modal"
+					data-target="#resolveModal" ng-hide="cCctr.entity.disable" disabled>
+					<span class="front lightgreenspan"><i
+						class="fa fa-thumbs-up" aria-hidden="true"></i> Approved </span>
+				</button>
+				<button class="pushable darkred tool" data-toggle="modal"
+					data-target="#rejectModal" ng-if="cCctr.entity.disable" >
+					<span class="front darkredspan"><i class="fa fa-thumbs-down"
+						aria-hidden="true"></i> Reject <span
+						class="tooltiptext tooltip-top2">Reject Button</span></span>
+				</button>
+				<button class="pushable darkred" data-toggle="modal"
+					style="background-color: hsl(11.2, 81.2%, 37.5%, 0.53)"
+					data-target="#rejectModal" ng-hide="cCctr.entity.disable" disabled>
+					<span class="front lightredspan"><i
+						class="fa fa-thumbs-down" aria-hidden="true"></i> Reject </span>
+				</button>
+				<button class="pushable black tool"
+					ng-click="cCctr.gotoWFYListPage('correctionRequest','correctionRequest')">
+					<span class="front blackspan"><i class="fa fa-arrow-left"
+						aria-hidden="true"></i> Back <span
+						class="tooltiptext tooltip-top3">Back Button</span></span>
+				</button>
+			</div>
+			<div class="table-responsive" style="overflow-x: inherit">
+				<table class=" table table-bordered table-hover  table-striped"
+					role="table"
+					style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+					<thead>
+					<colgroup>
+						<col span="14" style="background-color: #ffffff">
+					</colgroup>
+					<tr>
+					<thead>
+						<tr role="row" style="height: 40px; background-color: #81b7db">
+							<th>Sr.No</th>
+							<th>Correction Remark</th>
+							<th>Supporting Document Name</th>
+							<th>Added By</th>
+							<th>Added On</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="a in cCctr.getEntityDataFY().remark">
+							<td>{{$index+1}}</td>
+							<td>{{a.correctionRemark}}</td>
+							<td>{{a.supportingDocName}}</td>
+							<td>{{a.addedBy}}</td>
+							<td>{{a.dateTime | date:'dd-MM-yyyy'}}</td>
+							<td ng-hide="a.supportingDocName"></td>
+							<td ng-show="a.supportingDocName"
+								ng-click="cCctr.download(true,'apicorrectionRemark/downloadDoc/'+a.id)"><span
+								class="frontButton lightbluespan"><i
+									class="fa fa-download" aria-hidden="true"></i></span></td>
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<br> <br> <br>
+
+		</div>
+	</div>
+</div>

@@ -147,7 +147,7 @@ App.factory('CommonServiceFY', [
 			entityList = [];
 			var deferred = $q.defer();
 			$http.get(
-				REST_SERVICE_URI + entity + '/search/' + $stateParams.fy + '/' + $stateParams.branchCode + '/0/100/'
+				REST_SERVICE_URI + entity + '/search/' + fy + '/' + branchCode + '/0/100/'
 				+ map).success(function(data) {
 					count = data.count;
 					entityList = data.entities;

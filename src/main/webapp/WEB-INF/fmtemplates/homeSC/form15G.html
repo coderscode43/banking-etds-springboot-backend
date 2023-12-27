@@ -79,36 +79,11 @@ th {
 .truncate {
 	display: block;
 	white-space: nowrap;
-	text-overflow:;
 	overflow: hidden;
 	width: 5%;
 	height: 60px;
 }
-.
-{
-max-width:70px;
-min-width:200px;
 
-	
-text-overflow
-:
- 
-;
-overflow
-:
- 
-hidden
-;
-
-	
-white-space
-:
- 
-nowrap
-;
-
-
-}
 .btn-grad {
 	background-image: linear-gradient(to right, #FF8008 0%, #FFC837 51%, #FF8008 100%);
 	transition: 0.5s;
@@ -127,43 +102,42 @@ nowrap
 }
 /*Refresh Button*/
 .tooltip-top {
-  bottom: 84%;
-  margin-left:-9%;
+	bottom: 84%;
+	margin-left: -9%;
 }
 /*Search Button*/
 .tooltip-top1 {
-  bottom: 125%;
-  margin-left:-30%;
+	bottom: 125%;
+	margin-left: -30%;
 }
 /*Advanced Search Button*/
 .tooltip-top2 {
-  bottom: 125%;
-  margin-left:-51%;
+	bottom: 125%;
+	margin-left: -51%;
 }
 /*Table column Button*/
 .tooltip-top3 {
-  bottom: 125%;
-  margin-left:-49%;
+	bottom: 125%;
+	margin-left: -49%;
 }
 /*Export to Excel Button*/
 .tooltip-top4 {
- bottom: 120%;
-  margin-left:-182%;
+	bottom: 120%;
+	margin-left: -182%;
 }
-
 </style>
 </head>
 <body>
 	<div id="page-wrapper" ng-controller="CommonController as cCctr">
 		<div class="container-fluid">
-			<button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
+			<!-- <button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
 				style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%); float: right;"
 				onClick="refreshPageButton()">
 				<i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh
 				<span class="tooltiptext tooltip-top">Refresh or Press F5</span>
-			</button>
+			</button> -->
 			<div class="col-md-12 "
-				style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
+				style="padding-left: 0px; font-size: 12pxp; margin-top: 1%">
 				<div class="heading">
 					<strong>Form 15G</strong>
 				</div>
@@ -198,14 +172,6 @@ nowrap
 										class="form-control" placeholder="PAN" style="width: 100%">
 						</div>
 
-
-
-					</div>
-				</div>
-
-				<div class=" collapse  panel-collapse" id="collapseExample4">
-
-					<div class="row">
 						<div class="col-md-3">
 							<h6>
 								<b>Customer / Vendor No</b>
@@ -214,6 +180,16 @@ nowrap
 										class="form-control" placeholder="Customer / Vendor No"
 										style="width: 100%">
 						</div>
+
+
+
+					</div>
+				</div>
+
+				<div class=" collapse  panel-collapse" id="collapseExample4">
+
+					<div class="row">
+
 
 						<!-- <div class="col-md-3">
 							<h6>
@@ -230,7 +206,7 @@ nowrap
 										ng-model="cCctr.search.nameofAssesseeDeclarant"
 										class="form-control" placeholder="Name" style="width: 100%">
 						</div>
-						
+
 						<div class="col-md-3">
 							<h6>
 								<b>Warning</b>
@@ -238,20 +214,21 @@ nowrap
 									<input type="text" ng-model="cCctr.search.warning"
 										class="form-control" placeholder="Warning" style="width: 100%">
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-3">
-							<div class="col-md-3">
-								<button class="btn btn-grad astro-MG2CNCJP tool" type="button"
-									style="margin-top: 11%; background-image: linear-gradient(to right, #517fa4 0%, #243949 51%, #517fa4 100%);"
-									ng-click="cCctr.generateExcel('apiform15G/generateExcel/','G15')">Export
-									to Excel<span class="tooltiptext tooltip-top4">Export to Excel</span></button>
-							</div>
 
+						<div class="col-md-3">
+							<button class="btn btn-grad astro-MG2CNCJP tool" type="button"
+								style="margin-top: 13%; background-image: linear-gradient(to right, #517fa4 0%, #243949 51%, #517fa4 100%);"
+								ng-click="cCctr.generateExcel('apiform15G/generateExcel/','G15')">
+								Export to Excel<span class="tooltiptext tooltip-top4">Export
+									to Excel</span>
+							</button>
 						</div>
+
+
 					</div>
+
 				</div>
-				<div class="row text-right" id="hide">
+				<!-- <div class="row text-right" id="hide">
 					<div class="col-md-3"
 						style="margin-left: 60%; margin-top: -44px; display: ruby;">
 						<button ng-click="cCctr.searchEntities(true,'form15G','form15G')"
@@ -278,7 +255,43 @@ nowrap
 					<div class="col-md-3">
 						<div class="text-right"></div>
 					</div>
+				</div> -->
+
+				<div
+					style="right: 3%; position: absolute; gap: 20px; margin-top: -3%; display: flex"
+					class="">
+
+
+					<button ng-click="cCctr.searchEntities(true,'form15G','form15G')"
+						class="btn btn-success mobile tool" onclick="scrollWin()">
+						<i class="fa fa-search border-0 p-0"
+							style="color: inherit; background-color: transparent; font-size: large;"></i>
+						<span class="tooltiptext tooltip-top">Search Button</span>
+					</button>
+
+					<button class="btn btn-primary mobile collapsed tool"
+						style="background-color: #FFA500; border-color: #FFA500;"
+						data-toggle="collapse" data-target="#collapseExample4"
+						aria-expanded="false" data-parent="#navaccordion"
+						aria-controls="collapseExample">
+						<i class="fa fa-filter border-0 p-0"
+							style="color: #fff; background-color: transparent; font-size: large;"></i>
+						<span class="tooltiptext tooltip-top1">Advance Search
+							Button</span>
+					</button>
+
+					<button class="btn btn-primary mobile tool" data-toggle="collapse"
+						data-target="#checkList" aria-expanded="false"
+						aria-controls="collapseExample" data-target="#bd-example-modal-xl">
+						<i class="fa fa-table border-0 p-0"
+							style="color: inherit; background-color: transparent; font-size: large;"></i>
+						<span class="tooltiptext tooltip-top2">Table Column Button</span>
+					</button>
+
+
+
 				</div>
+
 			</div>
 		</div>
 
@@ -291,27 +304,41 @@ nowrap
 			id="checkList">
 			<tr>
 
-				<td><button class="showAll"  for='selectAll'>Show All</button></td>
- 				<td><button class="removeAll"  for='selectAll'>Remove All</button></td> 
-				<td><input type="checkbox" name="amountIncome">Amount of income</td>
-				<td><input type="checkbox" name="aadharNo">Aadhaar Number</td>
-				<td><input type="checkbox" name="branchCode">Branch Code</td>
+				<td><button class="showAll" for='selectAll'>Show All</button></td>
+				<td><button class="removeAll" for='selectAll'>Remove
+						All</button></td>
+				<td><input type="checkbox" name="amountIncome">Amount
+					of income</td>
+				<td><input type="checkbox" name="aadharNo">Aadhaar
+					Number</td>
+				<td><input type="checkbox" name="branchCode">Branch
+					Code</td>
 				<td><input type="checkbox" name="tanNo">Tan No</td>
 			</tr>
 			<tr>
-				<td><input type="checkbox" name="uniqueRefNo">Unique Reference No</td>
-				<td><input type="checkbox" name="uniqueIdeNo">Unique Identification No</td>
-				<td><input type="checkbox" name="ideNumber">Identification number of relevant investment/account, etc.</td>
-				<td><input type="checkbox" name="naturOfIncome">Nature of income</td>
-				<td><input type="checkbox" name="sectionUnder">Section under which tax is deductible</td>
+				<td><input type="checkbox" name="uniqueRefNo">Unique
+					Reference No</td>
+				<td><input type="checkbox" name="uniqueIdeNo">Unique
+					Identification No</td>
+				<td><input type="checkbox" name="ideNumber">Identification
+					number of relevant investment/account, etc.</td>
+				<td><input type="checkbox" name="naturOfIncome">Nature
+					of income</td>
+				<td><input type="checkbox" name="sectionUnder">Section
+					under which tax is deductible</td>
 
 			</tr>
 			<tr>
-				<td><input type="checkbox" name="incomeDeclarationMade">Estimated income for which this declaration is made</td>
-				<td><input type="checkbox" name="totalIncomeOfPY">Estimated total income of the P.Y.</td>
-				<td><input type="checkbox" name="amtIncomeForForm15GFilled">Aggregate amount of income for which Form No.15G filed</td>
-				<td><input type="checkbox" name="amountOfIncomePaid">Amount of income paid</td>
-				<td><input type="checkbox" name="dateDeclarationReceived">Date on which Declaration is received</td>
+				<td><input type="checkbox" name="incomeDeclarationMade">Estimated
+					income for which this declaration is made</td>
+				<td><input type="checkbox" name="totalIncomeOfPY">Estimated
+					total income of the P.Y.</td>
+				<td><input type="checkbox" name="amtIncomeForForm15GFilled">Aggregate
+					amount of income for which Form No.15G filed</td>
+				<td><input type="checkbox" name="amountOfIncomePaid">Amount
+					of income paid</td>
+				<td><input type="checkbox" name="dateDeclarationReceived">Date
+					on which Declaration is received</td>
 			</tr>
 
 		</table>
@@ -332,12 +359,17 @@ nowrap
 							<th>Sr. No.</th>
 							<th><div class="autoResizeQuarter">Quarter</div></th>
 							<th><div class="autoResizeQuarter">Month</div></th>
-							<th class="custNo"><div class="autoResizeQuarter">Customer/Vendor Id</div></th>
-							<th class="accNo"><div class="autoResizeQuarter">Account No</div></th>
-							<th class="hideClass branchCode"><div class="autoResizeQuarter">Branch Code</div></th>
-							<th class="hideClass tanNo"><div class="autoResizeQuarter">Tan No</div></th>
-							<th class="hideClass uniqueRefNo"><div class="autoResizeQuarter">Unique Reference No</div></th>
-							
+							<th class="custNo"><div class="autoResizeQuarter">Customer/Vendor
+									Id</div></th>
+							<th class="accNo"><div class="autoResizeQuarter">Account
+									No</div></th>
+							<th class="hideClass branchCode"><div
+									class="autoResizeQuarter">Branch Code</div></th>
+							<th class="hideClass tanNo"><div class="autoResizeQuarter">Tan
+									No</div></th>
+							<th class="hideClass uniqueRefNo"><div
+									class="autoResizeQuarter">Unique Reference No</div></th>
+
 							<th class="hideClass uniqueIdeNo " data-toggle="tooltip"
 								data-placement="bottom" title="Unique Identification No"><div
 									class="autoResizeQuarter">Unique Identification No</div></th>
@@ -346,21 +378,21 @@ nowrap
 								title="Identification number of relevant investment/account, etc."><div
 									class="autoResizeQuarter">Identification number of
 									relevant investment/account, etc.</div></th>
-							<th class="hideClass naturOfIncome"><div class="autoResizeQuarter">Nature
-									of income</div></th>
+							<th class="hideClass naturOfIncome"><div
+									class="autoResizeQuarter">Nature of income</div></th>
 							<th class="hideClass sectionUnder  " data-toggle="tooltip"
 								data-placement="bottom"
 								title="Section under which tax is deductible"><div
 									class="autoResizeQuarter">Section under which tax is
 									deductible</div></th>
-							<th class="hideClass amountIncome"><div class="autoResizeQuarter">Amount
-									of income</div></th>
+							<th class="hideClass amountIncome"><div
+									class="autoResizeQuarter">Amount of income</div></th>
 							<th class="nameOfAssessee"><div class="autoResizeQuarter">Name
 									of Assessee (Declarant)</div></th>
 							<th class="panOfAssessee"><div class="autoResizeQuarter">PAN
 									of the Assessee</div></th>
-							<th class="hideClass aadharNo"><div class="autoResizeQuarter">Aadhaar
-									Number</div></th>
+							<th class="hideClass aadharNo"><div
+									class="autoResizeQuarter">Aadhaar Number</div></th>
 							<th class="status"><div class="autoResizeQuarter">Status</div></th>
 							<th><div class="autoResizeQuarter">Sub-Status</div></th>
 							<th class="" data-toggle="tooltip" data-placement="bottom"
@@ -389,26 +421,31 @@ nowrap
 								title="If yes, latest assessment year for which assessed"><div
 									class="autoResize">If yes, latest assessment year for
 									which assessed</div></th>
-							<th class="hideClass  incomeDeclarationMade" data-toggle="tooltip" data-placement="bottom"
+							<th class="hideClass  incomeDeclarationMade"
+								data-toggle="tooltip" data-placement="bottom"
 								title="Estimated income for which this declaration is made"><div
 									class="autoResizeQuarter">Estimated income for which this
 									declaration is made</div></th>
-							<th class="hideClass totalIncomeOfPY" data-toggle="tooltip" data-placement="bottom"
+							<th class="hideClass totalIncomeOfPY" data-toggle="tooltip"
+								data-placement="bottom"
 								title="Estimated total income of the P.Y. (including income for which this declaration is made)"><div
 									class="autoResizeQuarter">Estimated total income of the
 									P.Y. (including income for which this declaration is made)</div></th>
-							<th class="total15G" data-toggle="tooltip" data-placement="bottom"
-								title="Total No. of Form No. 15G filed"><div
+							<th class="total15G" data-toggle="tooltip"
+								data-placement="bottom" title="Total No. of Form No. 15G filed"><div
 									class="autoResizeQuarter">Total No. of Form No. 15G filed</div></th>
-							<th class="hideClass amtIncomeForForm15GFilled" data-toggle="tooltip" data-placement="bottom"
+							<th class="hideClass amtIncomeForForm15GFilled"
+								data-toggle="tooltip" data-placement="bottom"
 								title="Aggregate amount of income for which Form No.15G filed"><div
 									class="autoResizeQuarter">Aggregate amount of income for
 									which Form No.15G filed</div></th>
-							<th class="hideClass dateDeclarationReceived"><div class="autoResizeQuarter">Date on which
-									Declaration is received</div></th>
-							<th class="hideClass amountOfIncomePaid"><div class="autoResizeQuarter">Amount of income
-									paid</div></th>
-							<th class="datePaidCredited" data-toggle="tooltip" data-placement="bottom"
+							<th class="hideClass dateDeclarationReceived"><div
+									class="autoResizeQuarter">Date on which Declaration is
+									received</div></th>
+							<th class="hideClass amountOfIncomePaid"><div
+									class="autoResizeQuarter">Amount of income paid</div></th>
+							<th class="datePaidCredited" data-toggle="tooltip"
+								data-placement="bottom"
 								title="Date on which the income has been paid/credited"><div
 									class="autoResizeQuarter">Date on which the income has
 									been paid/credited</div></th>
@@ -459,10 +496,10 @@ nowrap
 							<td class="previousYearforwhichdeclarationisbeingmade">{{a.previousYearforwhichdeclarationisbeingmade}}</td>
 							<td class="residentialStatus">{{a.residentialStatus}}</td>
 							<td class="country">{{a.country}}</td>
-							<td class="flatDoorBuilding" data-toggle="tooltip" data-placement="bottom"
-								title="{{a.flatDoorBuilding}}">{{a.flatDoorBuilding}}</td>
-							<td class="roadStreetBlockSector" data-toggle="tooltip" data-placement="bottom"
-								title="{{a.roadStreetBlockSector}}">{{a.roadStreetBlockSector}}</td>
+							<td class="flatDoorBuilding" data-toggle="tooltip"
+								data-placement="bottom" title="{{a.flatDoorBuilding}}">{{a.flatDoorBuilding}}</td>
+							<td class="roadStreetBlockSector" data-toggle="tooltip"
+								data-placement="bottom" title="{{a.roadStreetBlockSector}}">{{a.roadStreetBlockSector}}</td>
 							<td class=" pincode">{{a.pincode}}</td>
 							<td class=" postOffice">{{a.postOffice}}</td>
 							<td class=" areaLocality">{{a.areaLocality}}</td>
@@ -477,10 +514,11 @@ nowrap
 							<td class="hideClass totalIncomeOfPY">{{a.estimatedtotalincomeofthePY}}</td>
 							<td class=" total15G">{{a.totalNoofFormNo15Gfiled}}</td>
 							<td class="hideClass amtIncomeForForm15GFilled">{{a.aggregateAmountofincomeforwhichFormNo15Gfiled}}</td>
-							<td class="hideClass dateDeclarationReceived">{{a.dateonwhichDeclarationisreceived |date:'dd-MM-yyyy'}}</td>
+							<td class="hideClass dateDeclarationReceived">{{a.dateonwhichDeclarationisreceived
+								|date:'dd-MM-yyyy'}}</td>
 							<td class="hideClass amountOfIncomePaid">{{a.amountofincomepaid}}</td>
-							<td class="datePaidCredited">{{a.dateonwhichtheincomehasbeenpaidcredited |
-								date:'dd-MM-yyyy'}}</td>
+							<td class="datePaidCredited">{{a.dateonwhichtheincomehasbeenpaidcredited
+								| date:'dd-MM-yyyy'}}</td>
 							<td>{{a.fy}}</td>
 							<td class=" " data-toggle="tooltip" data-placement="bottom"
 								title="{{a.warning}}">{{a.warning}}</td>
@@ -499,8 +537,8 @@ nowrap
 						<tr>
 							<th class="one" colspan="12"
 								style="text-align: center; height: 40px" ng-init="ttl=0"><b>TOTAL</b></th>
-							<td class="hideClass amountIncome"><b>{{ filteredList | sumByKey :
-									'amountofIncome' | number : fractionSize}}</b></td>
+							<td class="hideClass amountIncome"><b>{{ filteredList |
+									sumByKey : 'amountofIncome' | number : fractionSize}}</b></td>
 							<td class=" nameOfAssessee"></td>
 							<td class=" panOfAssessee"></td>
 							<td class="hideClass aadharNo"></td>
@@ -519,21 +557,26 @@ nowrap
 							<td class="hideClass email"></td>
 							<td class="hideClass telephoneNo"></td>
 							<td class="hideClass mobileNo"></td>
-							<td class="hideClass whetherAssessedtotaxundertheIncometaxAct1961"></td>
+							<td
+								class="hideClass whetherAssessedtotaxundertheIncometaxAct1961"></td>
 							<td class="hideClass ifyeslatestassessmentyearforwhichassessed"></td>
-							
-							<td class="hideClass incomeDeclarationMade"><b></b>{{ filteredList | sumByKey :
+
+							<td class="hideClass incomeDeclarationMade"><b></b>{{
+								filteredList | sumByKey :
 								'estimatedIncomeforwhichthisdeclarationismade' | number :
 								fractionSize}}</td>
-							<td class="hideClass totalIncomeOfPY"><b></b>{{ filteredList | sumByKey :
-								'estimatedtotalincomeofthePY' | number : fractionSize}}</td>
-								<td class="hideClass total15G"></td>
-							<td class="hideClass amtIncomeForForm15GFilled"><b>{{ filteredList | sumByKey :
+							<td class="hideClass totalIncomeOfPY"><b></b>{{ filteredList
+								| sumByKey : 'estimatedtotalincomeofthePY' | number :
+								fractionSize}}</td>
+							<td class="hideClass total15G"></td>
+							<td class="hideClass amtIncomeForForm15GFilled"><b>{{
+									filteredList | sumByKey :
 									'aggregateAmountofincomeforwhichFormNo15Gfiled' | number :
 									fractionSize}}</b></td>
 							<td class="hideClass dateDeclarationReceived"></td>
-							<td class="hideClass amountOfIncomePaid"><b>{{ filteredList | sumByKey :
-									'amountofincomepaid' | number : fractionSize}}</b></td>
+							<td class="hideClass amountOfIncomePaid"><b>{{
+									filteredList | sumByKey : 'amountofincomepaid' | number :
+									fractionSize}}</b></td>
 						</tr>
 
 					</tbody>
@@ -559,7 +602,7 @@ nowrap
 							style="width: 70px; text-align: center;" type="number"
 							name="pageNo" ng-model="cCctr.currentPage"
 							ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
-							ng-min="1" min="1" max="{{cCctr.getNoPage()}}" 
+							ng-min="1" min="1" max="{{cCctr.getNoPage()}}"
 							ng-max="cCctr.getNoPage()" ng-required="true">
 						&nbsp;&nbsp;&nbsp;
 						<button style="height: 25px;"
@@ -594,47 +637,46 @@ nowrap
 
 
 <script>
-$("input:checkbox:not(:checked)").each(function() {
-	    var column = "table ." + $(this).attr("name");
-   
-  $(column).hide();
-});
+	$("input:checkbox:not(:checked)").each(function() {
+		var column = "table ." + $(this).attr("name");
 
-$("input:checkbox").click(function(){
-    var column = "table ." + $(this).attr("name");
-    $(column).toggle();
-});
+		$(column).hide();
+	});
 
+	$("input:checkbox").click(function() {
+		var column = "table ." + $(this).attr("name");
+		$(column).toggle();
+	});
 </script>
 <script>
-$(".selectAll").click(function() {
-	$("input[type=checkbox]").prop("checked", $(this).prop("checked"));
-});
+	$(".selectAll").click(function() {
+		$("input[type=checkbox]").prop("checked", $(this).prop("checked"));
+	});
 
-$("input[type=checkbox]").click(function() {
-	if (!$(this).prop("checked")) {
-		$(".selectAll").prop("checked", false);
-	}
-});
-</script>
-
-<script>
-$(".removeAll").click(function() {
-	 $(".hideClass").hide();
-});
-</script>
-<script>
-$(".showAll").click(function() {
-	 $(".hideClass").show();
-});
+	$("input[type=checkbox]").click(function() {
+		if (!$(this).prop("checked")) {
+			$(".selectAll").prop("checked", false);
+		}
+	});
 </script>
 
 <script>
-$(function() {
-	  $("table th").resizable({
-	      handles: "e",
-	      minWidth: 40,
-	  });
+	$(".removeAll").click(function() {
+		$(".hideClass").hide();
+	});
+</script>
+<script>
+	$(".showAll").click(function() {
+		$(".hideClass").show();
+	});
+</script>
+
+<script>
+	$(function() {
+		$("table th").resizable({
+			handles : "e",
+			minWidth : 40,
+		});
 	});
 </script>
 </html>

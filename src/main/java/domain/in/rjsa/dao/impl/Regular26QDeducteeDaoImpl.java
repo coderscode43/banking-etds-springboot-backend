@@ -76,7 +76,7 @@ public class Regular26QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular26QDed
    			criteria.add(Restrictions.eqOrIsNull("TAN",  Tan[0]));
    		}
            if (entity.get("roCode") != null) {
-   			criteria.add(Restrictions.eqOrIsNull("roCode",  Long.parseLong(entity.get("roCode").toString())));
+   			criteria.add(Restrictions.eqOrIsNull("roCode",  entity.get("roCode")));
    			
    		}
            criteria.setFirstResult(pageNo * noOfResult);
@@ -142,7 +142,7 @@ public class Regular26QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular26QDed
    			criteria.add(Restrictions.eqOrIsNull("TAN",  entity.get("TAN")));
    		}
            if (entity.get("roCode") != null) {
-   			criteria.add(Restrictions.eqOrIsNull("roCode", Long.parseLong(entity.get("roCode").toString())));
+   			criteria.add(Restrictions.eqOrIsNull("roCode", entity.get("roCode")));
    			
    		}
 //           criteria.setFirstResult(pageNo * noOfResult);
@@ -224,7 +224,7 @@ public class Regular26QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular26QDed
    			criteria.add(Restrictions.eqOrIsNull("TAN",  entity.get("TAN")));
    		}
            if (entity.get("roCode") != null) {
-   			criteria.add(Restrictions.eqOrIsNull("roCode",  Long.parseLong(entity.get("roCode").toString())));
+   			criteria.add(Restrictions.eqOrIsNull("roCode",  entity.get("roCode")));
    			
    		}
 //           criteria.setFirstResult(pageNo * noOfResult);

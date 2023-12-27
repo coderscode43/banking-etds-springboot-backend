@@ -4,6 +4,7 @@ package domain.in.rjsa.service.impl;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -17,8 +18,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.ibm.icu.text.SimpleDateFormat;
 
 import domain.in.rjsa.dao.Regular27QDeducteeDao;
+import domain.in.rjsa.dao.RemarkDao;
 import domain.in.rjsa.excel.Form27QDeducteeExcel;
 import domain.in.rjsa.model.fy.Regular27QDeductee;
+import domain.in.rjsa.model.fy.Remark;
 import domain.in.rjsa.service.AbstractServiceFY;
 import domain.in.rjsa.service.Regular27QDeducteeService;
 @Transactional("transactionManager")
@@ -27,10 +30,31 @@ public class Regular27QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 
 	@Autowired 
 	Regular27QDeducteeDao dao;
-	
+	@Autowired
+	RemarkDao rDao;
 	Form27QDeducteeExcel form27QDeduceteeExcel;
 	public static String path;
 	public String ExcelFile;
+	
+	public void update(Regular27QDeductee entity) {
+		// TODO Auto-generated method stub
+
+		LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
+		Object id = entity.getId();
+//		Regular24QDeductee regular24QWeb = new Regular24QDeductee();//from Gson //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+		map.put("id", id);
+		Regular27QDeductee regular27Q = (Regular27QDeductee) dao.uniqueSearch(map);
+		regular27Q.updateAllowedFields(entity);
+		getPrimaryDao().update(regular27Q);
+//		HashMap<String, Object> m = new HashMap<>();
+//		m.put("deducteeId", entity.getId());
+//		m.put("deducteeForm", "27QForm");
+//		List<Remark> remark = rDao.findall(m, 0, 100);
+//		for(Remark r : remark) {
+//			r.setBranchCode(entity.getBranchCode());
+//			rDao.persist(r);
+//		}
+	}
 	
 	@Override
 	public Regular27QDeducteeDao getPrimaryDao() {

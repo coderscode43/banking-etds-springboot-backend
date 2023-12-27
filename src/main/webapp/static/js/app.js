@@ -24,16 +24,16 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 
 
 	$urlRouterProvider.otherwise("/home/homepage")
-		
-//	 $urlRouterProvider.otherwise(function ($injector, $location) {
-//				    var $state = $location.get('$state');
-//				    if ($state == '/home') {
-//				    	$urlRouterProvider.otherwise("/home/homepage");
-//				    }
-//				    else {
-//				        return '/homeWOT/2/2022-23/homepage';
-//				    }
-//				});
+
+	//	 $urlRouterProvider.otherwise(function ($injector, $location) {
+	//				    var $state = $location.get('$state');
+	//				    if ($state == '/home') {
+	//				    	$urlRouterProvider.otherwise("/home/homepage");
+	//				    }
+	//				    else {
+	//				        return '/homeWOT/2/2022-23/homepage';
+	//				    }
+	//				});
 
 	$stateProvider
 		.state('logout', {
@@ -77,18 +77,18 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 
 
 		})
-		
-		.state('home.add',{
+
+		.state('home.add', {
 			url: "/add/:page",
-				params:{
-					page:null,
-				},
-			templateUrl: function($stateParams){
+			params: {
+				page: null,
+			},
+			templateUrl: function($stateParams) {
 				return 'index/add/homeSC/' + $stateParams.page;
 			},
-			controller : "CommonController as cCctr",
+			controller: "CommonController as cCctr",
 		})
-		
+
 		//Get Details detail
 		.state('home.detail', {
 			url: "/detail/:entity/:detailId/:page",
@@ -125,7 +125,7 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 				list: function($q, $state, CommonService, $stateParams) {
 					console.log('Get Detail  ' + $stateParams.detailId);
 					var deferred = $q.defer();
-					CommonService.detail1($stateParams.entity,$stateParams.id,$stateParams.din).then(deferred.resolve, deferred.resolve);
+					CommonService.detail1($stateParams.entity, $stateParams.id, $stateParams.din).then(deferred.resolve, deferred.resolve);
 					return deferred.promise;
 				}
 			}
@@ -134,10 +134,10 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 		.state('home.detailForm', {
 			url: "/detail/:entity/:detailId/:fy/:branchCode/:page",
 			params: {
-				detailId:null,
+				detailId: null,
 				fy: null,
 				entity: null,
-				branchCode:null,
+				branchCode: null,
 				page: null
 			},
 			templateUrl: function($stateParams) {
@@ -147,7 +147,7 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 				list: function($q, $state, CommonService, $stateParams) {
 					console.log('Get Detail  ' + $stateParams.detailId);
 					var deferred = $q.defer();
-					CommonService.detailForm($stateParams.entity, $stateParams.fy, $stateParams.branchCode,$stateParams.detailId).then(deferred.resolve, deferred.resolve);
+					CommonService.detailForm($stateParams.entity, $stateParams.fy, $stateParams.branchCode, $stateParams.detailId).then(deferred.resolve, deferred.resolve);
 					return deferred.promise;
 				}
 			}
@@ -157,10 +157,12 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 			url: "/list/:entity/:page",
 			params: {
 				entity: null,
-				page: null
+				page: null,
+				pageParam:null
 			},
 			templateUrl: function($stateParams) {
-				return 'index/list/homeSC/'  + $stateParams.page;
+				return 'index/list/homeSC/' + $stateParams.page+ '/'
+				+ $stateParams.pageParam;
 			},
 			resolve: {
 				list: function($q, $state, CommonService, $stateParams) {
@@ -172,29 +174,30 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 			}
 
 		})
-		.state('home.search',{
-			url : "/listSearch/:entity/:page/:searchParams",
+		.state('home.search', {
+			url: "/listSearch/:entity/:page/:searchParams",
 			params: {
 				entity: null,
-				page : null,
-				searchParams:null
-			   },
-			   templateUrl : function($stateParams) {
-					return 'index/list/homeSC/'+$stateParams.entity +'/'+$stateParams.page;
-					/*return 'index/list/homeSC/'+$stateParams.entity +'/'+$stateParams.page;*/
-				},
-				resolve : {
-					list : function($q, $state,CommonService,$stateParams) {
-						console.log('Get Search List of '+$stateParams.entity);
-						var deferred = $q.defer();
-						CommonService.searchEntities(
-											$stateParams.entity,
-											$stateParams.searchParams).then(deferred.resolve, deferred.resolve);
-						return deferred.promise;
-					}
+				page: null,
+				searchParams: null
+			},
+			templateUrl: function($stateParams) {
+				return 'index/list/homeSC/' + $stateParams.page+ '/'
+				+ $stateParams.searchParams;
+				/*return 'index/list/homeSC/'+$stateParams.entity +'/'+$stateParams.page;*/
+			},
+			resolve: {
+				list: function($q, $state, CommonService, $stateParams) {
+					console.log('Get Search List of ' + $stateParams.entity);
+					var deferred = $q.defer();
+					CommonService.searchEntities(
+						$stateParams.entity,
+						$stateParams.searchParams).then(deferred.resolve, deferred.resolve);
+					return deferred.promise;
 				}
-				
-			
+			}
+
+
 		})
 		//homeWot-sideMenu for Branch
 		.state('homeWot', {
@@ -204,7 +207,7 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 				fy: null,
 			},
 			templateUrl: function($stateParams) {
-				return 'index/homeWOT/' +$stateParams.branchCode+'/'+ $stateParams.fy;
+				return 'index/homeWOT/' + $stateParams.branchCode + '/' + $stateParams.fy;
 			},
 			controller: "CommonController as cCctr"
 		}
@@ -216,15 +219,15 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 
 
 		})
-		.state('homeWot.add',{
+		.state('homeWot.add', {
 			url: "/add/:page",
-				params:{
-					page:null,
-				},
-			templateUrl: function($stateParams){
+			params: {
+				page: null,
+			},
+			templateUrl: function($stateParams) {
 				return 'index/add/homeWOT/' + $stateParams.page;
 			},
-			controller : "CommonController as cCctr",
+			controller: "CommonController as cCctr",
 		})
 
 
@@ -251,18 +254,40 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 			}
 
 		})
-
-
-
-
-		.state('homeWot.list', {
-			url: "/list/:entity/:page",
+		.state('homeWot.downloadCertificate', {
+			url: "/:entity/:page",
 			params: {
+				branchCode: null,
 				entity: null,
 				page: null
 			},
 			templateUrl: function($stateParams) {
-				return 'index/list/homeWOT/' + $stateParams.page;
+				return 'index/downloadCertificate/' + $stateParams.branchCode + '/homeWOT/' + $stateParams.page;
+			}
+			/*,
+			resolve: {
+				list: function($q, $state, CommonServiceFY, $stateParams) {
+					console.log('Get List of ' + $stateParams.entity);
+					var deferred = $q.defer();
+					CommonServiceFY.countFunction($stateParams.entity, $stateParams.fy, $stateParams.branchCode).then(deferred.resolve, deferred.resolve);
+					return deferred.promise;
+				}
+			}*/
+
+		})
+
+
+
+				.state('homeWot.list', {
+			url: "/list/:entity/:page",
+			params: {
+				entity: null,
+				page: null,
+				pageParam: null
+			},
+			templateUrl: function($stateParams) {
+				return 'index/list/homeWOT/' + $stateParams.page+ '/'
+				+ $stateParams.pageParam;
 			},
 			resolve: {
 				list: function($q, $state, CommonServiceFY, $stateParams) {
@@ -295,28 +320,29 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 			}
 
 		})
-		
-		
-		.state('homeWot.search',{
-			url : "/listSearch/:entity/:page/:searchParams",
+
+
+		.state('homeWot.search', {
+			url: "/listSearch/:entity/:page/:searchParams",
 			params: {
 				entity: null,
-				page:null,
-				searchParams:null
-			   },
-			   templateUrl : function($stateParams) {
-					return 'index/list/homeWOT/'+$stateParams.entity +'/'+$stateParams.page;
-				},
-				resolve : {
-					list : function($q, $state,CommonServiceFY,$stateParams) {
-						console.log('Get Search List of '+$stateParams.entity);
-						var deferred = $q.defer();
-						CommonServiceFY.searchEntities($stateParams.fy,$stateParams.entity,$stateParams.searchParams,$stateParams.branchCode).then(deferred.resolve, deferred.resolve);
-						return deferred.promise;
-					}
+				page: null,
+				searchParams: null
+			},
+			templateUrl: function($stateParams) {
+				return 'index/list/homeWOT/' + $stateParams.page+ '/'
+				+ $stateParams.searchParams;
+			},
+			resolve: {
+				list: function($q, $state, CommonServiceFY, $stateParams) {
+					console.log('Get Search List of ' + $stateParams.entity);
+					var deferred = $q.defer();
+					CommonServiceFY.searchEntities($stateParams.fy, $stateParams.entity, $stateParams.searchParams, $stateParams.branchCode).then(deferred.resolve, deferred.resolve);
+					return deferred.promise;
 				}
-				
-			
+			}
+
+
 		})
 
 

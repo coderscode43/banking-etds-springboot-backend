@@ -13,7 +13,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "FYDetails.monthlyChallan1")
+@Table(name = "AAACU3561B_2324.monthlyChallan1")
 public class MonthlyChallan extends CommonModelAbstract{
 	private static final long serialVersionUID = 1L;
 	@Id

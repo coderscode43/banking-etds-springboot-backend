@@ -122,12 +122,12 @@ margin-left: -6%;
 
 <div id="page-wrapper" ng-controller="CommonController as cCctr">
 	<div class="container-fluid">
-	<button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
+	<!-- <button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
 					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
 					 onClick="refreshPageButton()"><i
-					class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh<span class="tooltiptext tooltip-top">Refresh or Press F5</span></button>
+					class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh<span class="tooltiptext tooltip-top">Refresh or Press F5</span></button> -->
 		<div class="col-md-12 "
-			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
+			style="padding-left: 0px; font-size: 12pxp; margin-top: 1%">
 			<div class="heading">
 				<strong>Form 27EQ Deductee Details</strong>
 			</div>
@@ -166,19 +166,21 @@ margin-left: -6%;
 							<input type="text" ng-model="cCctr.search.pan"
 								class="form-control" placeholder="PAN" style="width: 100%">
 				</div>
-			</div>
-		</div>
-
-		<div class=" collapse  panel-collapse" id="collapseExample4">
-			
-			<div class="row">
-			<div class="col-md-3">
+				
+				<div class="col-md-3">
 				<h6>
 					<b>Name</b>
 					<h6>
 						<input type="text" ng-model="cCctr.search.name"
 							class="form-control" placeholder="Name" style="width: 100%">
 			</div>
+			</div>
+		</div>
+
+		<div class=" collapse  panel-collapse" id="collapseExample4">
+			
+			<div class="row">
+			
 
 			<div class="col-md-3">
 				<h6>
@@ -285,7 +287,7 @@ margin-left: -6%;
 		
 		
 		</div>
-		<div class="row text-right" id="hide">
+		<!-- <div class="row text-right" id="hide">
 					<div class="col-md-3" style="margin-left:60%; margin-top: -45px;display:ruby">
 						<button
 					ng-click="cCctr.searchFYEntities(true,'form27EQDeductee','form27EQDeductee')"
@@ -306,11 +308,48 @@ margin-left: -6%;
 						</i>&nbsp;Table Column <span class="tooltiptext tooltip-top4">Table Column Button</span><i class="fa fa-angle-down" aria-hidden="true"></i></button>	
 
 
-						<!--  <button class="btn btn-Primary" data-toggle="modal"
-					ng-click="cCctr.gotoList2Page('addMonthlyChallan','addMonthlyChallan');">Add</button>-->
+						 <button class="btn btn-Primary" data-toggle="modal"
+					ng-click="cCctr.gotoList2Page('addMonthlyChallan','addMonthlyChallan');">Add</button>
 						<div class="text-right"></div>
 					</div>
-				</div>
+				</div> -->
+				
+				
+			<div style="right: 3%; position: absolute; gap: 20px;margin-top:-3%;display:flex"
+		class="">
+
+
+		<button 	ng-click="cCctr.searchFYEntities(true,'form27EQDeductee','form27EQDeductee')"
+			class="btn btn-success mobile tool" onclick="scrollWin()">
+			<i class="fa fa-search border-0 p-0"
+				style="color: inherit; background-color: transparent;font-size: large;"></i>
+		<span class="tooltiptext tooltip-top">Search Button</span> </button>
+
+		<button class="btn btn-primary mobile collapsed tool"
+			style="background-color: #FFA500; border-color: #FFA500;"
+			data-toggle="collapse" data-target="#collapseExample4"
+			aria-expanded="false" data-parent="#navaccordion"
+			aria-controls="collapseExample">
+			<i class="fa fa-filter border-0 p-0"
+				style="color: #fff; background-color: transparent;font-size: large;"></i>
+		<span class="tooltiptext tooltip-top1">Advance Search Button</span></button>
+
+		<button class="btn btn-primary mobile tool" data-toggle="collapse" data-target="#checkList"
+						aria-expanded="false" aria-controls="collapseExample"
+			data-target="#bd-example-modal-xl">
+			<i class="fa fa-table border-0 p-0"
+				style="color: inherit; background-color: transparent;font-size: large;"></i>
+		<span class="tooltiptext tooltip-top2">Table Column Button</span></button> 
+		
+	
+
+	</div>	
+				
+				
+				
+				
+				
+				
 		<!-- 	<div class="row" id="search">
 				<div class="col-md-2" id="search">
 					<button ng-click="cCctr.searchEntities(true,'form27EQDeductee','form27EQDeductee')"
@@ -456,7 +495,7 @@ margin-left: -6%;
 						<th><div class="autoResize">TAN</div></th>
 						<th><div class="autoResize">Comments</div></th>
 						<th><div class="autoResize">Status</div></th>
-						<th><div class="autoResize">Action</div></th>
+						<th class="hide-on-desktop"><div class="autoResize">Action</div></th>
 					</tr>
 				</thead>
 			<tbody>
@@ -467,7 +506,8 @@ margin-left: -6%;
                     </h3></b></td>
             </tr>
 						<tr role="row"
-							ng-repeat="a in ( filteredList =( cCctr.getEntityListDataFY()  ) )">
+							ng-repeat="a in ( filteredList =( cCctr.getEntityListDataFY()  ) )"
+							ng-dblclick="cCctr.gotoWFYDetailPage('form27EQDeductee',a.id,'detailForm27EQDeductee')">
 						<td ng-if="a.resolved == 0">{{$index+1}}</td>
 						<td style="background-color:#ff3232" ng-if="a.resolved == 	1">{{$index+1}}</td>
 						<td  ng-if="a.resolved == 0">{{a.quarter}}</td>
@@ -615,7 +655,7 @@ margin-left: -6%;
 								<td ng-if="a.verify == 0"><i class="fa fa-times"
 									aria-hidden="true" style="color: #ff0000"></i></td>
 							</div> -->
-							<td style="width:2%"><a class="tool"
+							<td class="hide-on-desktop" style="width:2%"><a class="tool"
 						ng-click="cCctr.gotoWFYDetailPage('form27EQDeductee',a.id,'detailForm27EQDeductee')"
 						style="color: blue" onclick="scrollWin()"><img
 							src="static\img\edit.png" width="22px" height="22px"

@@ -41,9 +41,11 @@ import domain.in.rjsa.model.form.Ajax;
 import domain.in.rjsa.model.form.ListCount;
 import domain.in.rjsa.model.form.Model;
 import domain.in.rjsa.model.fy.Logs;
+import domain.in.rjsa.service.CorrectionRequestService;
 import domain.in.rjsa.service.LogsService;
 import domain.in.rjsa.service.ServiceInterfaceForm;
 import domain.in.rjsa.service.UserDetailsService;
+import javassist.bytecode.stackmap.BasicBlock.Catch;
 
 public abstract class AbstractControllerForm<K extends Serializable, E extends Model, S extends ServiceInterfaceForm<K, E>>
 		extends AbstractController {
@@ -52,6 +54,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	@Autowired
 	UserDetailsService userDetailsService;
+	CorrectionRequestService service;
 
 	@Autowired
 	LogsService lservice;
@@ -63,8 +66,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 	@RequestMapping(value = "/list/get/{pageNo}/{resultPerPage}", method = RequestMethod.GET)
 	public ResponseEntity<?> listAll(HttpServletRequest request, @PathVariable int pageNo,
 			@PathVariable int resultPerPage) {
-		
-		
+
 		try {
 			List<?> list = getList(pageNo, resultPerPage);
 			return new ResponseEntity<>(list, HttpStatus.OK);
@@ -79,14 +81,14 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
 		if (!"admin".equals(getBranchCode())) {
-			Long b=1L;
+			Long b = 1L;
 			try {
-				b =Long.valueOf(getBranchCode());
-			}catch (Exception e) {
+				b = Long.valueOf(getBranchCode());
+			} catch (Exception e) {
 				// TODO: handle exception
 			}
 			constrains.put("branchCode", b);
-		}else {
+		} else {
 		}
 
 		return getService().findAll(constrains, pageNo, resultPerPage);
@@ -103,14 +105,14 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 		String mapping = request.getPathInfo();
 		if (!"admin".equals(getBranchCode())) {
-			Long b=1L;
+			Long b = 1L;
 			try {
-				b =Long.valueOf(getBranchCode());
-			}catch (Exception e) {
+				b = Long.valueOf(getBranchCode());
+			} catch (Exception e) {
 				// TODO: handle exception
 			}
 			constrains.put("branchCode", b);
-		}else {
+		} else {
 		}
 
 		try {
@@ -152,16 +154,15 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 			// convert JSON string to Map
 			map = mapper.readValue(searchParam, new TypeReference<Map<String, String>>() {
 			});
-			for (String key : map.keySet()) {
-				if (key.endsWith("Code")) {
-					map.put(key, Long.valueOf((String) map.get(key)));
-				}
+			if (map.containsKey("branchCode")) {
+				Long branchCode = Long.valueOf((String) map.get("branchCode"));
+				map.put("branchCode", branchCode);
 			}
-			if(map.containsKey("TAN")) {
-				String TAN = (map.get("TAN").toString().split(Pattern.quote("-"),-1))[0];
+			if (map.containsKey("TAN")) {
+				String TAN = (map.get("TAN").toString().split(Pattern.quote("-"), -1))[0];
 				map.put("TAN", TAN);
 			}
-			
+
 			adminValidation(map);
 			Long count = getService().findallCount(map);
 			List<?> list = getSearch(map, pageNo, resultPerPage);
@@ -179,14 +180,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	public List<?> getSearch(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
-		return getService().search(map);
-	}
-
-	public List<?> getSearch(LinkedHashMap<String, Object> map) {
-		// TODO Auto-generated method stub
-		// Login l = applicationCache.getLoginDetail(getPrincipal());
-//		map.put("employeeId", l.getEmployeeId());
-		return getService().search(map);
+		return getService().search(map, pageNo, resultPerPage);
 	}
 
 	// ------------------- Search Single Entity ---------------------------------
@@ -205,9 +199,6 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 	}
 
 	public E getSearchEntity(LinkedHashMap<String, Object> map) {
-		// TODO Auto-generated method stub
-		// Login l = applicationCache.getLoginDetail(getPrincipal());
-//		map.put("employeeId", l.getEmployeeId());
 		return getService().uniqueSearch(map);
 	}
 
@@ -220,10 +211,9 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 		logger.info("Creating new Return instance");
 		adminValidation(entity);
 		create(entity);
-		addLogs(entity, "Add");
+		addLogs("Add");
 		// ermsg.setMessage(" Saved Successfully");
 		return new ResponseEntity<Object>(HttpStatus.CREATED);
-
 	}
 
 	public void create(LinkedHashMap<String, Object> entity) {
@@ -236,24 +226,14 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	}
 
-	public void addLogs(HashMap<String, Object> entity, String Action) {
-		
-		// Login l = applicationCache.getLoginDetail(getPrincipal());
-		HashMap<String, Object> constrains = new HashMap<>();
-		constrains.put("id", entity.get("id"));
-//		Logs log = lservice.uniqueSearch(constrains);
+	public void addLogs(String Action) {
 		Logs log = new Logs();
 		log.setAction(Action);
 		log.setIpaddrs(getIp());
-		String s = getEntity().getName().replace(getEntity().getPackageName()+".", "");
-//		String[] arrOfStr = s.split(".", 25);
+		String s = getEntity().getName().replace(getEntity().getPackage().getName() + ".", "");
 		log.setDate(new Date(System.currentTimeMillis()));
 		log.setUsername(getPrincipal());
-//		for (String a : arrOfStr)
-		log.setEntity(Action+" "+s);
-//		Gson gason = new Gson();
-//		String json = gason.toJson(entity);
-		
+		log.setEntity(Action + " " + s);
 		lservice.save(log);
 
 	}
@@ -276,14 +256,14 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
 		if (!"admin".equals(getBranchCode())) {
-			Long b=1L;
+			Long b = 1L;
 			try {
-				b =Long.valueOf(getBranchCode());
-			}catch (Exception e) {
+				b = Long.valueOf(getBranchCode());
+			} catch (Exception e) {
 				// TODO: handle exception
 			}
 			constrains.put("branchCode", b);
-		}else {
+		} else {
 		}
 		constrains.put("id", id);
 		return getService().uniqueSearch(constrains);
@@ -301,7 +281,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 		HashMap<String, Object> map = oMapper.convertValue(o, HashMap.class);
 		adminValidation(entity);
 		update(entity);
-		addLogsU(entity,"Update");
+		addLogsU("Update");
 		ermsg.setMessage(" Updated Successfully");
 		return new ResponseEntity<String>(HttpStatus.ACCEPTED);
 	}
@@ -309,41 +289,18 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 	public void update(LinkedHashMap<String, Object> entity) {
 
 		Gson gson = new Gson();
-		// Login l = applicationCache.getLoginDetail(getPrincipal());
 		JsonElement jsonElement = gson.toJsonTree(entity);
 		getService().update(gson.fromJson(jsonElement, getEntity()));
 
-//		Gson gson = new Gson();
-//		Login l = applicationCache.getLoginDetail(getPrincipal());
-//		if (entity.containsKey("clientId")) {
-//			entity.put("clientId", l.getClientId());
-//		}
-		// if (entity.containsKey("employeeId")) {
-//		entity.put("employeeId",  l.getEmployeeId());
-		// }
-		// JsonElement jsonElement = gson.toJsonTree(entity);
-
-		// getEntity from controller and validate that with validate method in
-		// contorller and message from Service
-		// getService().update(gson.fromJson(jsonElement, getEntity()));
-
 	}
 
-	public void addLogsU(HashMap<String, Object> entity, String Action) {
+	public void addLogsU(String Action) {
 
-//		Login l = applicationCache.getLoginDetail(getPrincipal());
-		HashMap<String, Object> constrains = new HashMap<>();
-		constrains.put("id", Long.valueOf(entity.get("id").toString()));
-		Logs log = lservice.uniqueSearch(constrains);
-		log = new Logs();
-		log.setAction("Updated");
+		Logs log = new Logs();
+		log.setAction(Action);
 		log.setIpaddrs(getIp());
-		String s = getEntity().getName().replace(getEntity().getPackageName()+".", "");
-//		String[] arrOfStr = s.split(".", 25);
-//		for (String a : arrOfStr)
-		log.setEntity(Action+" "+s);
-		Gson gason = new Gson();
-//		String json = gason.toJson(entity);
+		String s = getEntity().getName().replace(getEntity().getPackage().getName() + ".", "");
+		log.setEntity(Action + " " + s);
 		log.setDate(new Date(System.currentTimeMillis()));
 		log.setUsername(getPrincipal());
 		lservice.save(log);
@@ -355,7 +312,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 	public ResponseEntity<?> ajax(@RequestBody Ajax ajax) {
 		// verify the clientId authorization
 		try {
-			
+
 			List<?> list = getAjax(ajax.getName(), ajax.getTerm());
 			return new ResponseEntity<>(list, HttpStatus.OK);
 		} catch (Exception e) {
@@ -369,109 +326,63 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 		// TODO Auto-generated method stub
 		return getService().ajax(name, term);
 	}
-	
-	
+
 	// ------------------- Generate Excel ---------------------------------
-	
-	
-		@RequestMapping(value = "/generateExcel/{json}/**", method = RequestMethod.GET)
-		public void generateExcel(@PathVariable String json, HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+	@RequestMapping(value = "/generateExcel/{json}/**", method = RequestMethod.GET)
+	public void generateExcel(@PathVariable String json, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		try {
+			final String path = request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE).toString();
+			final String bestMatchingPattern = request.getAttribute(HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE)
+					.toString();
+
+			String arguments = new AntPathMatcher().extractPathWithinPattern(bestMatchingPattern, path);
+
+			String searchParam;
+			if (null != arguments && !arguments.isEmpty()) {
+				searchParam = json + '/' + arguments;
+			} else {
+				searchParam = json;
+			}
+			ObjectMapper mapper = new ObjectMapper();
+
+			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
+
+			// convert JSON string to Map
+			map = mapper.readValue(searchParam, new TypeReference<Map<String, String>>() {
+			});
+			if (map.containsKey("TAN")) {
+				String TAN = (map.get("TAN").toString().split(Pattern.quote("-"), -1))[0];
+				map.put("TAN", TAN);
+			}
+			adminValidation(map);
+			String address = getService().createUserExcel(map);
+
+			File file = new File(address);
+			response.setContentType("application/vnd.ms-excel");
+			response.setHeader("Content-disposition", "attachment; filename=" + file.getName());
+			Path p = file.toPath();
+			OutputStream out;
 			try {
-				final String path = request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE).toString();
-				final String bestMatchingPattern = request.getAttribute(HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE)
-						.toString();
 
-				String arguments = new AntPathMatcher().extractPathWithinPattern(bestMatchingPattern, path);
+				out = response.getOutputStream();
+				out.flush();
+				Files.copy(p, out);
 
-				String searchParam;
-				if (null != arguments && !arguments.isEmpty()) {
-					searchParam = json + '/' + arguments;
-				} else {
-					searchParam = json;
-				}
-				ObjectMapper mapper = new ObjectMapper();
-
-				LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
-				
-
-				// convert JSON string to Map
-				map = mapper.readValue(searchParam, new TypeReference<Map<String, String>>() {
-				});
-				if(map.containsKey("TAN")) {
-					String TAN = (map.get("TAN").toString().split(Pattern.quote("-"),-1))[0];
-					map.put("TAN", TAN);
-				}
-				adminValidation(map);
-//				if (!"admin".equals(getBranchCode())) {
-//					Long b=1L;
-//					try {
-//						b =Long.valueOf(getBranchCode());
-//					}catch (Exception e) {
-//						// TODO: handle exception
-//					}
-//					map.put("branchCode", b);
-//				}else{
-//					if(map.containsKey("branchCode")) {
-//						Long b=1L;
-//						try {
-//							b =Long.valueOf(map.get("branchCode").toString());
-//						}catch (Exception e) {
-//							// TODO: handle exception
-//						}
-//						map.put("branchCode", b);
-//					}
-//				}
-				
-
-				String address = getService().createUserExcel(map);
-
-				File file = new File(address);
-				response.setContentType("application/vnd.ms-excel");
-				response.setHeader("Content-disposition", "attachment; filename=" + file.getName());
-				Path p = file.toPath();
-				OutputStream out;
-				try {
-
-					out = response.getOutputStream();
-					out.flush();
-					Files.copy(p, out);
-
-					out.close();
-					file.delete();
-				} catch (Exception e) {
-					e.printStackTrace();
-//					logger.error("Error in downloading the " + entity.get("type") + ".xlsx file", e);
-				}
-
-//				try {
-//					StringBuilder fw = new StringBuilder();
-//					for (User user : users) {
-//						fw.append(user.getId() + ";" + user.getName() + ";" + user.getUserName() + ";"
-//								+ user.getDateOfSignup() + "\n");
-//					}
-//					 File file = File.createTempFile("temp", null);
-//					 FileInputStream is =new FileInputStream(file);
-//					 FileWriter fw1 = new FileWriter(file);
-//					 fw1.append(fw.toString());
-//					 fw1.flush();
-//					 fw1.close();
-//					
-//					String mimeType= URLConnection.guessContentTypeFromName("myFile.txt");
-//					response.setContentType(mimeType);
-//					response.addHeader("Content-Disposition","attachment; filename=\"" + "myFile.csv" + "\"");
-//					FileCopyUtils.copy(is, response.getOutputStream());
-//	                response.getOutputStream().flush();
-	//
-//				} catch (IOException e) {
-//					e.printStackTrace();
-//				}
-
+				out.close();
+				file.delete();
 			} catch (Exception e) {
 				e.printStackTrace();
-				throw new Exception("Excel Can Not Export.");
-//				logger.error("Error in listALL", e);
+//					logger.error("Error in downloading the " + entity.get("type") + ".xlsx file", e);
 			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception("Excel Can Not Export.");
+//				logger.error("Error in listALL", e);
 		}
+	}
 
 	// ------------------- Other Methods ---------------------------------
 

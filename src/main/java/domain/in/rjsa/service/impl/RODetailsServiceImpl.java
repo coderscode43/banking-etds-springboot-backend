@@ -17,7 +17,6 @@ import org.springframework.transaction.annotation.Transactional;
 import domain.in.rjsa.dao.RODetailsDao;
 import domain.in.rjsa.excel.RODetailsExcel;
 import domain.in.rjsa.model.form.RODetails;
-import domain.in.rjsa.model.form.UserDetails;
 import domain.in.rjsa.service.AbstractServiceForm;
 import domain.in.rjsa.service.RODetailsService;
 
@@ -128,6 +127,12 @@ implements RODetailsService{
 			e1.printStackTrace();
 		}
 
+	}
+
+	@Override
+	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+		// TODO Auto-generated method stub
+		return dao.search(map);
 	}
 
 	

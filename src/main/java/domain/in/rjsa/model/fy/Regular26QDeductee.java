@@ -21,7 +21,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "FYDetails.regular26QDeductee")
+@Table(name = "AAACU3561B_2324.regular26QDeductee")
 public class Regular26QDeductee extends CommonModelAbstract{
 	/**
 	 * 
@@ -123,7 +123,7 @@ public class Regular26QDeductee extends CommonModelAbstract{
 	public String TAN ;
 	
 	@Column(name = "roCode")
-	public Long roCode ;
+	public String roCode ;
 	
 	@Column(name = "errorDescription")
 	public String errorDescription ;
@@ -152,6 +152,12 @@ public class Regular26QDeductee extends CommonModelAbstract{
 	
 	@Column(name = "deducteeSrNo")
 	public Long deducteeSrNo;
+	
+	@Column(name = "tranAmt")
+	public Long tranAmt;
+	
+	@Column(name = "additionalDetail")
+	public String additionalDetail;
 	
 	@JsonSerialize(using=JsonDateSerializer.class)
 	public Date getDateOfPayment() {
@@ -205,5 +211,7 @@ public class Regular26QDeductee extends CommonModelAbstract{
 //		this.totalTaxDeposit=regular26qWeb.getTotalTaxDeposit();
 //		this.uniqueRefNo=regular26qWeb.getUniqueRefNo();
 //		this.warningDescription=regular26qWeb.getWarningDescription();
+//		this.tranAmt = entuty.getTranAmt();
+//		this.additionalDetail = entuty.getAdditionalDetail();
 	}
 }

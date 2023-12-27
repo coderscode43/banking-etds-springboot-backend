@@ -860,22 +860,37 @@ margin-left: -89%;
 									<label style="font-size: 12px;">RO Code</label> <input
 										class="form-control" type="text" name="roCode"
 										placeholder="RO Code" ng-model="cCctr.entity.deductee.roCode"
+										ng-pattern="/^[0-9]+$/" ng-maxlength="10" ng-required="true"
 										ng-model-options="{updateOn: 'blur'}" /> <span
 										style="color: red"
 										ng-show="form27qdeductee.submitted ||form27qdeductee.roCode.$dirty && form27qdeductee.roCode.$invalid">
-									</span> <span class="error" id="roCode"></span>
+									<span class="error"
+								       ng-show="form27qdeductee.roCode.$error.pattern">Please
+									enter valid roCode. </span> <span class="error"
+								       ng-show="form27qdeductee.roCode.$error.maxlength">roCode
+									should not be greater than 10 characters.</span> <span class="error"
+								       ng-show="form27qdeductee.roCode.$error.required">roCode
+									is Required.</span>
+							</span> 
 								</div>
 
 								<div class="col-md-6">
 
 									<label style="font-size: 12px;">Branch Code</label> <input
 										class="form-control" type="text" name="branchCode"
-										placeholder="Branch Code"
+										placeholder="Branch Code" ng-pattern="/^[0-9]+$/" ng-maxlength="10" ng-required="true"
 										ng-model="cCctr.entity.deductee.branchCode"
 										ng-model-options="{updateOn: 'blur'}" /> <span
 										style="color: red"
 										ng-show="form27qdeductee.submitted ||form27qdeductee.branchCode.$dirty && form27qdeductee.branchCode.$invalid">
-									</span> <span class="error" id="branchCode"></span>
+									<span class="error"
+								       ng-show="form27qdeductee.branchCode.$error.pattern">Please
+									enter valid branchCode. </span> <span class="error"
+								       ng-show="form27qdeductee.branchCode.$error.maxlength">branchCode
+									should not be greater than 10 characters.</span> <span class="error"
+								      ng-show="form27qdeductee.branchCode.$error.required">branchCode
+									is Required.</span>
+							</span> 
 								</div>
 							</div>
 
@@ -1333,7 +1348,7 @@ margin-left: -89%;
 								<div class="col-md-12" style="text-align: right">
 									<button class="pushable darkblue" style="margin-top: 2%;"
 										data-dismiss="modal"
-										ng-click="cCctr.updateData(true,cCctr.entity.deductee,'form27QDeductee')">
+										ng-click="form27qdeductee.submitted=true;cCctr.updateForm(form27qdeductee.$valid,cCctr.entity.deductee,'form27QDeductee')">
 										<span class="front darkbluespan"> Update</span>
 									</button>
 									<button class="pushable lightblack" style="margin-top: 2%;"
@@ -1352,7 +1367,35 @@ margin-left: -89%;
 </div>
 
 
-
+<!-- Success Modal -->
+<div id="successMsgDetail" class="modal" role="dialog">
+	<div class="modal-dialog modal-sm">
+		Modal content
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 style="color: green;">
+					<picture>
+					<source type="image/webp" srcset="static/img/success.webp">
+					<img src="./././static/img/success.webp" height="30" width="30">
+					</picture>
+					<span class="headingMsg"></span>
+				</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="msg" style="font-size: 18px;"></div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal"
+					ng-click="cCctr.gotoDetailFormPage('form27QDeductee',cCctr.entity.deductee.id,cCctr.entity.deductee.fy,cCctr.entity.deductee.branchCode,'detailForm27QDeductee')">Ok</button>
+				<!-- id="reload" -->
+			</div>
+		</div>
+	</div>
+</div>
 
 
 

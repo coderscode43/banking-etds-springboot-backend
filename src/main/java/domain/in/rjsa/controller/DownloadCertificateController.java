@@ -3,8 +3,11 @@ package domain.in.rjsa.controller;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.URLConnection;
+import java.net.UnknownHostException;
 import java.nio.file.Files;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -30,7 +33,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import domain.in.rjsa.exception.FieldErrorDTO;
 import domain.in.rjsa.model.form.Branch;
+import domain.in.rjsa.model.form.CorrectionRemarks;
+import domain.in.rjsa.model.fy.Logs;
 import domain.in.rjsa.service.BranchService;
+import domain.in.rjsa.service.LogsService;
 import domain.in.rjsa.util.StaticData;
 
 @Controller
@@ -39,6 +45,9 @@ public class DownloadCertificateController {
 
 	@Autowired
 	BranchService bService;
+
+	@Autowired
+	LogsService lservice;
 	private static final String EXTENSION = "zip";
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -69,39 +78,51 @@ public class DownloadCertificateController {
 			if (Pattern.matches("^[A-Z]{5}[0-9]{4}[A-Z]{1}$", pan) || pan.equalsIgnoreCase("ALL PAN")) {
 				pan = pan;
 			} else {
+				logger.info("Invalid PAN");
 				throw new Exception("Invalid PAN.");
+
 			}
 			// verify regx tan or if All TAN
 
 			List<String> tanList = Arrays.asList(StaticData.Tan);
-
+//			for (String t : tanList) {
+//				logger.info(t+"^"+t.split(Pattern.quote("-"))[0]+"^"+tan);
+			logger.info(tanList+"^"+tan);
 			if (tanList.contains(tan) || tan.equalsIgnoreCase("ALL TAN")) {
 				tan = tan;
 			} else {
+				logger.info("Invalid TAN");
 				throw new Exception("Invalid TAN.");
 			}
+//			}
 			// verify regX fy
 			List<String> yearList = Arrays.asList(StaticData.financialYear);
 			if (yearList.contains(fy)) {
 				fy = fy;
 			} else {
+				logger.info("Invalid Financial Year");
 				throw new Exception("Invalid Financial Year.");
 			}
-			// vwerify q
+			// verify q
 			List<String> qList = Arrays.asList(StaticData.Quarter);
 			if (qList.contains(q) || q.equalsIgnoreCase("ALL QUARTER")) {
 				q = q;
 			} else {
+				logger.info("Invalid Quarter");
 				throw new Exception("Invalid Quarter.");
 			}
 			// verify certificate
 			List<String> cList = Arrays.asList(StaticData.typeOfCertificate);
-			if (cList.contains(certificate)) {
-				certificate = certificate;
-			} else if (StaticData.certificateType.contains(certificate)) {
+			for (String c : cList) {
+				if (c.split(Pattern.quote("-"))[0].equalsIgnoreCase(certificate.split(Pattern.quote("-"))[0])) {
+					certificate = certificate;
+					break;
+				} else if (StaticData.certificateType.contains(certificate.split(Pattern.quote("-"))[0])) {
 
-			} else {
-				throw new Exception("Invalid Certificate.");
+				} else {
+					logger.info("Invalid certificate");
+					throw new Exception("Invalid Certificate.");
+				}
 			}
 			String ay = fyToAy(fy);
 
@@ -129,12 +150,16 @@ public class DownloadCertificateController {
 					fileInputStream.close();
 					zipOutputStream.closeEntry();
 					i--;
+					logger.info(filePath);
 				}
 				zipOutputStream.close();
+				System.out.println("File Download");
+				addLogs("Certificate");
 			}
-			System.out.println("File Download");
+
 		} catch (Exception e) {
 			// send dto object with error
+			logger.info(e.getMessage());
 			ermsg.setMessage("File not found");
 			ermsg.setExceptionMsg(e.getMessage());
 			ermsg.setEntityName("Certificate");
@@ -213,12 +238,8 @@ public class DownloadCertificateController {
 			response.getOutputStream().write(fileContent);
 			response.getOutputStream().close();
 
-			response.setStatus(HttpServletResponse.SC_OK);
-			response.addHeader("Content-Disposition",
-					" attachment; filename=" + branchCode + "_" + fy + "_" + q + ".zip");
-			response.setHeader("Content-Type", "application/zip");
-
 			System.out.println("File Download");
+			addLogs("Branch Certifiicate");
 		} catch (Exception e) {
 			// send dto object with error
 			ermsg.setMessage("File not found");
@@ -253,6 +274,7 @@ public class DownloadCertificateController {
 					String pdfFileName = pan + "_" + q1 + "_" + ay + ".pdf";
 					String filePath = path + "download/" + fy + "/" + q1 + "/" + c[0] + "/" + t[0] + "/" + ch + "/"
 							+ pdfFileName;
+					logger.info(filePath);
 					addFileIfExist(filePath, filePaths);
 				}
 			}
@@ -262,6 +284,7 @@ public class DownloadCertificateController {
 				String pdfFileName = pan + "_" + q + "_" + ay + ".pdf";
 				String filePath = path + "download/" + fy + "/" + q + "/" + c[0] + "/" + t[0] + "/" + ch + "/"
 						+ pdfFileName;
+				logger.info(filePath);
 				addFileIfExist(filePath, filePaths);
 			}
 
@@ -270,13 +293,14 @@ public class DownloadCertificateController {
 				String pdfFileName = pan + "_" + q1 + "_" + ay + ".pdf";
 				String filePath = path + "download/" + fy + "/" + q1 + "/" + c[0] + "/" + t[0] + "/" + ch + "/"
 						+ pdfFileName;
+				logger.info(filePath);
 				addFileIfExist(filePath, filePaths);
 			}
 		} else {
 			String pdfFileName = pan + "_" + q + "_" + ay + ".pdf";
 			String filePath = path + "download/" + fy + "/" + q + "/" + c[0] + "/" + t[0] + "/" + ch + "/"
 					+ pdfFileName;
-
+			logger.info(filePath);
 			addFileIfExist(filePath, filePaths);
 		}
 		if (filePaths.isEmpty()) {
@@ -287,6 +311,7 @@ public class DownloadCertificateController {
 						String pdfFileName = pan + "_" + q1 + "_" + ay + ".pdf";
 						String filePath = path + "download/" + fy + "/" + q1 + "/" + c[0] + "/" + t[0] + "/"
 								+ pdfFileName;
+						logger.info(filePath);
 						addFileIfExist(filePath, filePaths);
 					}
 				}
@@ -295,6 +320,7 @@ public class DownloadCertificateController {
 					t = t1.split("-");
 					String pdfFileName = pan + "_" + q + "_" + ay + ".pdf";
 					String filePath = path + "download/" + fy + "/" + q + "/" + c[0] + "/" + t[0] + "/" + pdfFileName;
+					logger.info(filePath);
 					addFileIfExist(filePath, filePaths);
 				}
 
@@ -302,11 +328,13 @@ public class DownloadCertificateController {
 				for (String q1 : StaticData.Quarter) {
 					String pdfFileName = pan + "_" + q1 + "_" + ay + ".pdf";
 					String filePath = path + "download/" + fy + "/" + q1 + "/" + c[0] + "/" + t[0] + "/" + pdfFileName;
+					logger.info(filePath);
 					addFileIfExist(filePath, filePaths);
 				}
 			} else {
 				String pdfFileName = pan + "_" + q + "_" + ay + ".pdf";
 				String filePath = path + "download/" + fy + "/" + q + "/" + c[0] + "/" + t[0] + "/" + pdfFileName;
+				logger.info(filePath);
 				addFileIfExist(filePath, filePaths);
 			}
 		}
@@ -322,20 +350,24 @@ public class DownloadCertificateController {
 		if (q.equals("ALL QUARTER")) {
 			for (String q1 : StaticData.Quarter) {
 				String filePath = path + "download/" + fy + "/" + q1 + "/" + c[0] + "/" + branchCode + ".zip";
+				logger.info(filePath);
 				addFileIfExist(filePath, filePaths);
 			}
 		} else {
 			String filePath = path + "download/" + fy + "/" + q + "/" + c[0] + "/" + branchCode + ".zip";
+			logger.info(filePath);
 			addFileIfExist(filePath, filePaths);
 		}
 		if (filePaths.isEmpty()) {
 			if (q.equals("ALL QUARTER")) {
 				for (String q1 : StaticData.Quarter) {
 					String filePath = path + "download/" + fy + "/" + q1 + "/" + c[0] + "/" + branchCode + ".zip";
+					logger.info(filePath);
 					addFileIfExist(filePath, filePaths);
 				}
 			} else {
 				String filePath = path + "download/" + fy + "/" + q + "/" + c[0] + "/" + branchCode + ".zip";
+				logger.info(filePath);
 				addFileIfExist(filePath, filePaths);
 			}
 		}
@@ -373,4 +405,26 @@ public class DownloadCertificateController {
 
 	}
 
+	protected String getIp() {
+		try {
+			InetAddress ipAddr = InetAddress.getLocalHost();
+			String str = ipAddr.getHostAddress();
+			return str;
+		} catch (UnknownHostException ex) {
+			ex.printStackTrace(); // print Exception StackTrace
+
+			return null;
+		}
+	}
+
+	public void addLogs(String Action) {
+		Logs log = new Logs();
+		log.setAction("Download");
+		log.setIpaddrs(getIp());
+		log.setDate(new Date(System.currentTimeMillis()));
+		log.setUsername(getPrincipal());
+		log.setEntity("Download " + Action);
+		lservice.save(log);
+
+	}
 }

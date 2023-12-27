@@ -3,6 +3,7 @@ package domain.in.rjsa.service.impl;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -16,8 +17,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.ibm.icu.text.SimpleDateFormat;
 
 import domain.in.rjsa.dao.Regular24QDeducteeDao;
+import domain.in.rjsa.dao.RemarkDao;
 import domain.in.rjsa.excel.Form24QDeducteeExcel;
 import domain.in.rjsa.model.fy.Regular24QDeductee;
+import domain.in.rjsa.model.fy.Remark;
 import domain.in.rjsa.service.AbstractServiceFY;
 import domain.in.rjsa.service.Regular24QDeducteeService;
 
@@ -28,6 +31,8 @@ public class Regular24QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 
 	@Autowired
 	Regular24QDeducteeDao dao;
+	@Autowired
+	RemarkDao rDao;
 
 	Form24QDeducteeExcel form24QDeduceteeExcel;
 	public static String path;
@@ -44,18 +49,25 @@ public class Regular24QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 		// TODO Auto-generated method stub
 		return dao;
 	}
-		
-	
+
 	public void update(Regular24QDeductee entity) {
 		// TODO Auto-generated method stub
-		
+
 		LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
 		Object id = entity.getId();
 //		Regular24QDeductee regular24QWeb = new Regular24QDeductee();//from Gson //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-		map.put("id",id);
-		Regular24QDeductee regular24Q =  (Regular24QDeductee) dao.uniqueSearch(map);
+		map.put("id", id);
+		Regular24QDeductee regular24Q = (Regular24QDeductee) dao.uniqueSearch(map);
 		regular24Q.updateAllowedFields(entity);
 		getPrimaryDao().update(regular24Q);
+//		HashMap<String, Object> m = new HashMap<>();
+//		m.put("deducteeId", entity.getId());
+//		m.put("deducteeForm", "24QForm");
+//		List<Remark> remark = rDao.findall(m, 0, 100);
+//		for(Remark r : remark) {
+//			r.setBranchCode(entity.getBranchCode());
+//			rDao.persist(r);
+//		}
 	}
 
 	public String createUserExcel(LinkedHashMap<String, Object> map) {
@@ -82,7 +94,7 @@ public class Regular24QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 		Workbook wb = form24QDeduceteeExcel.getWorkbook();
 		Sheet form24QDeductee = wb.getSheet("form24QDeductee-" + part);
 		for (Regular24QDeductee form24Q : listUsers) {
-			
+
 			Row details = form24QDeductee.createRow(row);
 			details.createCell(0).setCellValue(row);
 
@@ -149,12 +161,14 @@ public class Regular24QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 			if (form24Q.getDateOfPayment() == null) {
 				details.createCell(13).setCellValue(" ");
 			} else {
-				details.createCell(13).setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(form24Q.getDateOfPayment()));
+				details.createCell(13)
+						.setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(form24Q.getDateOfPayment()));
 			}
 			if (form24Q.getDateOfDeduction() == null) {
 				details.createCell(14).setCellValue(" ");
 			} else {
-				details.createCell(14).setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(form24Q.getDateOfDeduction()));
+				details.createCell(14)
+						.setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(form24Q.getDateOfDeduction()));
 			}
 			if (form24Q.getAmountPaid() == null) {
 				details.createCell(15).setCellValue(" ");
@@ -246,12 +260,12 @@ public class Regular24QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 			} else {
 				details.createCell(32).setCellValue("Resolved");
 			}
-			
+
 			if (row > 1000000) {
 				part++;
 				wb = form24QDeduceteeExcel.getWorkbook();
 				form24QDeductee = form24QDeduceteeExcel.initializeSheet("form24QDeductee-" + part);
-				row =0;
+				row = 0;
 			}
 			row++;
 

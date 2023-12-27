@@ -14,7 +14,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "FYDetails.PANUpdateList")
+@Table(name = "AAACU3561B_2324.PANUpdateList")
 
 public class PanUpdateList extends CommonModelAbstract<PanUpdateList> {/**
 	 * 

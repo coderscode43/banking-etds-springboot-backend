@@ -25,6 +25,8 @@ public interface ServiceInterfaceForm<K, E> {
 
 	public String createUserExcel(LinkedHashMap<String, Object> map);
 
+	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage);
+
 	
 
 //	List<E> search(HashMap map, Long clientId);

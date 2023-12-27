@@ -72,7 +72,7 @@ public class WebSecurityConfigAD extends WebSecurityConfigurerAdapter {
 //		return new AuthenticationTrustResolverImpl();
 //	}
 	
-////////////////////////////////////////////////UCO BANK///////////////////////////////////////////////	
+////////////////////////////////////////////////UCO BANK and NIA///////////////////////////////////////////////	
 	
 	
 	@Autowired
@@ -82,15 +82,18 @@ public class WebSecurityConfigAD extends WebSecurityConfigurerAdapter {
 	HibernateTokenRepositoryImpl tokenRepository;
 	@Autowired
 	private CustomAuthenticationProvider authProvider;
-	
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http.formLogin().loginPage("/login.jsp").loginProcessingUrl("/login").defaultSuccessUrl("/", true).permitAll()
 				.and().authorizeRequests()
-				.antMatchers("/login", "/", "/static/css/fonts/untitled-font-2*", "/static/img/favicon.ico","/static/img/tds.png","/static/img/UcoBank.png","/static/js/bootstrap.min.js","/static/js/lib/bootstrap.js","/static/js/jquery.min.js","/static/css/font-awesome.min.css","/static/fonts/css/font-awesome.css","/static/css/signin.css","/static/css/bootstrap.min.css","/apidownloadCertificate/**").permitAll()
-				.anyRequest().authenticated().and().rememberMe().rememberMeParameter("remember-me")
+				.antMatchers("/login", "/", "/static/css/fonts/untitled-font-2*", "/static/img/favicon.ico",
+						"/static/img/tds.png","/static/assets/**", "/static/img/UcoBank.png", "/static/js/bootstrap.min.js",
+						"/static/js/lib/bootstrap.js", "/static/js/jquery.min.js", "/static/css/font-awesome.min.css",
+						"/static/fonts/css/font-awesome.css", "/static/css/signin.css", "/static/css/bootstrap.min.css",
+						"/static/img/TOS.png", "/apidownloadCertificate/**")
+				.permitAll().anyRequest().authenticated().and().rememberMe().rememberMeParameter("remember-me")
 				.tokenRepository(tokenRepository).tokenValiditySeconds(10000).and().exceptionHandling()
 				.accessDeniedPage("/Access_Denied").and().csrf().disable().headers().frameOptions().sameOrigin();
 	}

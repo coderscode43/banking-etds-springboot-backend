@@ -38,12 +38,12 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<h6>
-									<label>RO Code*</label>
+									<label>RO Code<span style="color:red;">*</span></label>
 								</h6>
 								<input class="form-control" type="text" name="roCode" title="Enter RO code"
 									placeholder="ROCode" ng-model="cCctr.entity.roCode"
 									autocomplete="off" ng-required="true" ng-maxlength="10"
-									ng-pattern="/^[a-zA-Z0-9]*$/"
+									ng-pattern="/^[a-zA-Z0-9][a-zA-z0-9 -\]+$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
 									ng-show="formRODetails.submitted || formRODetails.roCode.$dirty && formRODetails.roCode.$invalid">
@@ -62,12 +62,12 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<h6>
-									<label>RO Name*</label>
+									<label>RO Name<span style="color:red;">*</span></label>
 								</h6>
 								<input class="form-control" type="text" name="roName" title="Enter RO Name"
 									placeholder="ROName" ng-model="cCctr.entity.roName"
 									autocomplete="off" ng-required="true" ng-maxlength="45"
-									ng-pattern="/^[a-zA-Z0-9]*$/"
+									ng-pattern="/^[a-zA-Z0-9][a-zA-Z0-9 -_]+$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
 									ng-show="formRODetails.submitted || formRODetails.roName.$dirty && formRODetails.roName.$invalid">
@@ -86,7 +86,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<h6>
-									<label>RO State*</label>
+									<label>RO State<span style="color:red;">*</span></label>
 								</h6>
 								<select class="form-control" name="roState" title="Select RO State"
 									placeholder="RO State" ng-model="cCctr.entity.roState"
@@ -107,7 +107,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<h6>
-									<label>RO Email*</label>
+									<label>RO Email<span style="color:red;">*</span></label>
 								</h6>
 								<input class="form-control" type="text" name="roEmail" title="Enter RO Email"
 									id="roEmail" placeholder="RO Email"
@@ -133,7 +133,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<h6>
-									<label>RO Pincode*</label>
+									<label>RO Pincode<span style="color:red;">*</span></label>
 								</h6>
 								<input class="form-control" type="text" name="roPincode" title="Enter RO Pincode"
 									placeholder="RO Pincode" ng-model="cCctr.entity.roPincode"
@@ -154,7 +154,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<h6>
-									<label>RO Address*</label>
+									<label>RO Address<span style="color:red;">*</span></label>
 								</h6>
 								<textarea class="form-control" type="text" name="roAddress" title="Enter RO Address"
 									placeholder="RO Address" ng-model="cCctr.entity.roAddress"

@@ -319,4 +319,10 @@ public class UploadCertificateServiceImpl extends AbstractServiceForm<Long, Uplo
 	public static void main(String[] args) {
 		Path destDir = Paths.get("D:\\download\\2022-23\\Q1\\Form16A\\ABCD12345F");
 	}
+
+	@Override
+	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+		// TODO Auto-generated method stub
+		return dao.search(map, pageNo, resultPerPage);
+	}
 }

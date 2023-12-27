@@ -164,7 +164,10 @@ h5:hover {
 	<div class="sidebar-menu" style="float:right;margin-top:-8%">
 				
 
-				<button class="btn btn-primary" ui-sref="logout" onclick="scrollWin()">logout</button>
+				<!-- <button class="btn btn-primary" ui-sref="logout" onclick="scrollWin()">logout</button> -->
+				<button class="btn btn-primary" data-toggle="modal" data-target="#myModal2" data-backdrop="false"><i
+							class="fa fa-power-off" aria-hidden="true"></i>
+				            <b>logout</b></button>	
 
 					<!-- sidebar-menu  -->
 			</div>
@@ -230,7 +233,7 @@ h5:hover {
 						</div>
 						
 						<button type="button" class="pushable darkblue" style="float:right;margin-top:2%"
-						ng-click="cCctr.gotoHomePageWOTOFPresentFY(${branchCode})"
+						ng-click="cCctr.gotoHomePageWOTOFPresentFY(${branchCode},'2023-24')"
 						><span class="front darkbluespan">Continue</span></button>
 					
 					</div>

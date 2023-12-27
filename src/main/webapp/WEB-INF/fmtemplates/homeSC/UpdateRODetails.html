@@ -207,20 +207,18 @@ margin-left: -89%;
 										<th>Sr. No.</th>
 										<th>Branch Code</th>
 										<th>Branch Name</th>
-										<th>Action</th>
+										 
 
 									</tr>
 								</thead>
-
-								<tr ng-repeat="a in cCctr.getEntityData().branch">
+                                         
+								<tr
+							 	ng-dblclick="cCctr.gotoDetailPage('branch',a.id,'roBranchDetail')"
+								 ng-repeat="a in cCctr.getEntityData().branch">
 									<td>{{$index+1}}</td>
 									<td>{{a.branchCode}}</td>
 									<td>{{a.branchName}}</td>
-									<td><a
-										ng-click="cCctr.gotoDetailPage('branch',a.id,'roBranchDetail')"
-										style="color: blue"><img src="static\img\edit.png"
-											width="22px" height="22px" alt="Details"
-											style="margin-top: 5px; margin-bottom: 5px;" /></a></td>
+									
 
 
 								</tr>
@@ -248,12 +246,12 @@ margin-left: -89%;
 												enctype="multipart/form-data">
 												<div class="row">
 													<div class="col-md-6">
-														<label style="font-size: 12px;">ROCode*</label> <input
+														<label style="font-size: 12px;">ROCode<span style="color:red;">*</span></label> <input
 															class="form-control" type="text" name="roCode"
 															placeholder="RO Code"
 															ng-model="cCctr.entity.roDetails.roCode"
 															ng-required="true" ng-maxlength="10"
-															ng-pattern="/^[a-zA-Z0-9]*$/"
+															ng-pattern="/^[a-zA-Z0-9][a-zA-z0-9 -\]+$/"
 															ng-model-options="{updateOn: 'blur'}" /> <span
 															style="color: red"
 															ng-show="profileForm.submitted || profileForm.roCode.$dirty && profileForm.roCode.$invalid">
@@ -270,12 +268,12 @@ margin-left: -89%;
 
 													<div class="col-md-6">
 
-														<label style="font-size: 12px;">ROName*</label> <input
+														<label style="font-size: 12px;">ROName<span style="color:red;">*</span></label> <input
 															class="form-control" type="text" name="roName"
 															placeholder="RO Name" ng-required="true"
 															ng-model="cCctr.entity.roDetails.roName"
 															ng-model-options="{updateOn: 'blur'}"
-															ng-pattern="/^[a-zA-Z0-9]*$/" ng-maxlength="20" />
+															ng-pattern="/^[a-zA-Z0-9][a-zA-Z0-9 -_]+$/" ng-maxlength="20" />
 														<span style="color: red"
 															ng-show="profileForm.submitted || profileForm.roName.$dirty && profileForm.roName.$invalid">
 															<span class="error"
@@ -293,7 +291,7 @@ margin-left: -89%;
 												<div class="row">
 													<div class="col-md-6">
 
-														<label style="font-size: 12px;">RO Address*</label>
+														<label style="font-size: 12px;">RO Address<span style="color:red;">*</span></label>
 														<textarea class="form-control" type="text"
 															name="roAddress" placeholder="Pan Reference No."
 															ng-required="true"
@@ -309,7 +307,7 @@ margin-left: -89%;
 
 													<div class="col-md-6">
 
-														<label style="font-size: 12px;">ROEmail*</label> <input
+														<label style="font-size: 12px;">ROEmail<span style="color:red;">*</span></label> <input
 															class="form-control" type="text" name="roEmail"
 															placeholder="RO Email" ng-required="true"
 															ng-model="cCctr.entity.roDetails.roEmail"
@@ -328,7 +326,7 @@ margin-left: -89%;
 												</div>
 												<div class="row">
 													<div class="col-md-6">
-														<label style="font-size: 12px;">ROState*</label> <select
+														<label style="font-size: 12px;">ROState<span style="color:red;">*</span></label> <select
 															class="form-control" type="text" name="roState"
 															placeholder="RO State" ng-required="true"
 															ng-model="cCctr.entity.roDetails.roState"
@@ -353,13 +351,13 @@ margin-left: -89%;
 
 													<div class="col-md-6">
 
-														<label style="font-size: 12px;">ROPincode*</label> <input
+														<label style="font-size: 12px;">ROPincode<span style="color:red;">*</span></label> <input
 															class="form-control" type="text" name="roPincode"
 															ng-required="true" placeholder="ROPincode"
-															ng-model="cCctr.entity.roDetails.roPincode" ng-pattern=""
-															ng-model-options="{updateOn: 'blur'}" /> <span
-															style="color: red" ng-required="true"
+															ng-model="cCctr.entity.roDetails.roPincode" ng-required="true"
 															ng-pattern="/^[0-9]{6}$/"
+															ng-model-options="{updateOn: 'blur'}" /> <span
+															style="color: red" 
 															ng-show="profileForm.submitted || profileForm.roPincode.$dirty && profileForm.roPincode.$invalid">
 															<span class="error"
 															ng-show="profileForm.roPincode.$error.pattern">Please
@@ -406,4 +404,5 @@ margin-left: -89%;
 
 			</div>
 		</div>
+	</div>
 	</div>

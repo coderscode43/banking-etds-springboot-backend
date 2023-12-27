@@ -52,7 +52,7 @@ margin-left: -67%;
 					<div class="row">
 						<div class="col-md-4">
 							<div>
-								<label style="font-size: 15px">Form*</label>
+								<label style="font-size: 15px">Form<span style="color:red;">*</span></label>
 								<div>
 									<select name="form" id="form" ng-model="cCctr.entity.form"
 										title="Select Form" class="form-control" required>
@@ -83,7 +83,7 @@ margin-left: -67%;
 
 						<div class="col-md-4">
 							<div>
-								<label style="font-size: 15px">Financial Year*</label> <select
+								<label style="font-size: 15px">Financial Year<span style="color:red;">*</span></label> <select
 									class="form-control" id="fy" name="fy" title="Select Financial Year"
 									ng-model="cCctr.entity.fy" ng-required="true">
 									<option disabled value="">Select financial Year</option>
@@ -101,7 +101,7 @@ margin-left: -67%;
 						</div>
 						<div class="col-md-4">
 							<div>
-								<label style="font-size: 15px">Quarter*</label> <select
+								<label style="font-size: 15px">Quarter<span style="color:red;">*</span></label> <select
 									class="form-control" id="quarter" name="quarter" title="Select Quarter"
 									ng-model="cCctr.entity.quarter" ng-required="true">
 									<option disabled value="">Select Quarter</option>
@@ -139,9 +139,9 @@ margin-left: -67%;
 							</div>
 						<div class="col-md-6">
 								<div>
-									<label style="font-size: 15px">PAN</label> <input class="form-control" name="pan" title="Enter PAN"
-										id="pan" ng-model="cCctr.entity.pan" placeholder="PAN"
-										ng-pattern="/^([A-Za-z]{5}[0-9]{4}[A-Za-z]{1})*$/"
+									<label style="font-size: 15px">PAN NUMBER</label> <input class="form-control" name="pan" title="Enter PAN"
+										id="pan" ng-model="cCctr.entity.pan" placeholder="PAN NUMBER"
+										ng-pattern="/^([A-Za-z]{5}[0-9]{4}[A-Za-z]{1})*$/" style="text-transform:uppercase"
 										class="form-control">
 								</div>
 								<span style="color: red"
@@ -157,9 +157,9 @@ margin-left: -67%;
 					<div class="row">
 						<div class="col-md-12">
 							<div style="margin-left: 0%">
-								<label style="font-size: 15px">Branch Code*</label> <input
+								<label style="font-size: 15px">Branch Code<span style="color:red;">*</span></label> <input
 									class="form-control" name="branchCode" title="Enter Branch Code"
-									id="branchCode" type="number"
+									id="branchCode" type="number" ng-pattern="/^[0-9]+$/" ng-maxlength="10" min="1"
 									ng-model="cCctr.entity.branchCode" placeholder="Branch Code"
 									ng-required="true">
 							</div>
@@ -168,6 +168,12 @@ margin-left: -67%;
 								<span class="error"
 								ng-show="fileForm.branchCode.$error.required">Branch Code
 									is Required </span>
+									<span class="error"
+								ng-show="fileForm.branchCode.$error.pattern">Enter valid Branch Code
+									  </span>
+									  <span class="error"
+								ng-show="fileForm.branchCode.$error.maxlength">Branch Code
+									should be less then 10 </span>
 							</span>
 						</div>
 					</div>
@@ -188,7 +194,7 @@ margin-left: -67%;
 					<div class="row">
 						<div class="col-md-12">
 							<div class="">
-								<label style="font-size: 15px">Description*</label>
+								<label style="font-size: 15px">Description<span style="color:red;">*</span></label>
 								<textarea class="form-control" name="description" title="Add Description"
 									id="description" ng-model="cCctr.entity.description"
 									style="width: 100%;" required></textarea>

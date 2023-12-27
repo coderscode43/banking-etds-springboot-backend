@@ -63,6 +63,7 @@ public class UserDetailsController extends AbstractController {
 		try {
 			if ("admin".equals(getBranchCode())) {
 				getService().deleteT(id);
+				addLogs("Delete");
 				return new ResponseEntity<>(HttpStatus.OK);
 			} else {
 				return new ResponseEntity<>("Bad request", HttpStatus.BAD_REQUEST);
@@ -150,13 +151,12 @@ public class UserDetailsController extends AbstractController {
 				// convert JSON string to Map
 				map = mapper.readValue(searchParam, new TypeReference<Map<String, String>>() {
 				});
-				for (String key : map.keySet()) {
-					if (key.endsWith("Code")) {
-						map.put(key, Long.valueOf((String) map.get(key)));
-					}
+				if (map.containsKey("branchCode")) {
+					Long branchCode = Long.valueOf((String) map.get("branchCode"));
+					map.put("branchCode", branchCode);
 				}
-				if(map.containsKey("TAN")) {
-					String TAN = (map.get("TAN").toString().split(Pattern.quote("-"),-1))[0];
+				if (map.containsKey("TAN")) {
+					String TAN = (map.get("TAN").toString().split(Pattern.quote("-"), -1))[0];
 					map.put("TAN", TAN);
 				}
 				Long count = getService().findallCount(map);
@@ -196,8 +196,8 @@ public class UserDetailsController extends AbstractController {
 			// FieldErrorDTO ermsg=new FieldErrorDTO();
 			logger.info("Creating new Return instance");
 			create(entity);
-			
-			addLogs(entity);
+
+			addLogs("Add");
 			// ermsg.setMessage(" Saved Successfully");
 			return new ResponseEntity<Object>(HttpStatus.CREATED);
 		}
@@ -208,37 +208,25 @@ public class UserDetailsController extends AbstractController {
 	public void create(LinkedHashMap<String, Object> entity) {
 		Gson gson = new Gson();
 		JsonElement jsonElement = gson.toJsonTree(entity);
-		UserDetails u =gson.fromJson(jsonElement, UserDetails.class);
+		UserDetails u = gson.fromJson(jsonElement, UserDetails.class);
 		getService().save(u);
 		applicationCache.adminRefresh(u.getEmployeeId());
 
 	}
 
-	public void addLogs(HashMap<String, Object> entity) {
-
-		// Login l = applicationCache.getLoginDetail(getPrincipal());
-		HashMap<String, Object> constrains = new HashMap<>();
-		constrains.put("id", entity.get("id"));
-		Logs log = lservice.uniqueSearch(constrains);
-		log = new Logs();
-		log.setAction("Added ");
+	public void addLogs(String Action) {
+		Logs log = new Logs();
+		log.setAction(Action);
 		log.setIpaddrs(getIp());
-		String s = "User Details";
-		String[] arrOfStr = s.split(".", 25);
-		for (String a : arrOfStr)
-			log.setEntity(a);
-		Gson gason = new Gson();
-		String json = gason.toJson(entity);
 		log.setDate(new Date(System.currentTimeMillis()));
 		log.setUsername(getPrincipal());
+		log.setEntity(Action + " User");
 		lservice.save(log);
 
 	}
-	
-	
+
 	// ------------------- Generate Excel ---------------------------------
-	
-	
+
 	@RequestMapping(value = "/generateExcel/{json}/**", method = RequestMethod.GET)
 	public void generateExcel(@PathVariable String json, HttpServletRequest request, HttpServletResponse response) {
 		try {
@@ -257,25 +245,24 @@ public class UserDetailsController extends AbstractController {
 			ObjectMapper mapper = new ObjectMapper();
 
 			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
-			
 
 			// convert JSON string to Map
 			map = mapper.readValue(searchParam, new TypeReference<Map<String, String>>() {
 			});
 			if (!"admin".equals(getBranchCode())) {
-				Long b=1L;
+				Long b = 1L;
 				try {
-					b =Long.valueOf(getBranchCode());
-				}catch (Exception e) {
+					b = Long.valueOf(getBranchCode());
+				} catch (Exception e) {
 					// TODO: handle exception
 				}
 				map.put("branchCode", b);
-			}else{
-				if(map.containsKey("branchCode")) {
-					Long b=1L;
+			} else {
+				if (map.containsKey("branchCode")) {
+					Long b = 1L;
 					try {
-						b =Long.valueOf(map.get("branchCode").toString());
-					}catch (Exception e) {
+						b = Long.valueOf(map.get("branchCode").toString());
+					} catch (Exception e) {
 						// TODO: handle exception
 					}
 					map.put("branchCode", b);

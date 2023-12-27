@@ -149,10 +149,11 @@
 						<div class="col-md-12">
 							<div class="form-group">
 								<label for="pan" class="col-form-label" style="font-size: 12px">
-									PAN Number*:</label> <input type="text" class="form-control" id="pan"
+									PAN Number<span style="color:red;">*</span>:</label> <input type="text" class="form-control" id="pan"
 									name="pan" title="Enter Enter PAN Number"
 									placeholder="Enter PAN Number" ng-model="cCctr.entity.pan"
-									ng-required="true" required="required" style="font-size: 15px">
+									ng-pattern="/^[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}$/"
+									ng-required="true" required="required" style="font-size: 15px;text-transform:uppercase">
 								<span style="color: red"
 									ng-show="downloadCertificateFrom.submitted || downloadCertificateFrom.pan.$dirty && downloadCertificateFrom.pan.$invalid">
 									<span class="error"
@@ -169,7 +170,7 @@
 					<div>
 						<div class="col-md-12">
 							<div class="form-group">
-								<label style="font-size: 12px">TAN Number*</label>
+								<label style="font-size: 12px">TAN Number<span style="color:red;">*</span></label>
 								<!-- <input type="text"
 												class="form-control" id="tan" name="tan" placeholder="TAN"
 												ng-model="cCctr.entity.tan" ng-required="true"
@@ -195,7 +196,7 @@
 					<div>
 						<div class="col-md-12">
 							<div class="form-group">
-								<label style="font-size: 12px">Type of Certificate*</label> <select
+								<label style="font-size: 12px">Type of Certificate<span style="color:red;">*</span></label> <select
 									name="typeofCertificate" id="typeofCertificate"
 									title="Select Type of Certificate" class="form-control"
 									ng-model="cCctr.entity.typeofCertificate" ng-required="true"
@@ -218,7 +219,7 @@
 					<div>
 						<div class="col-md-12">
 							<div class="form-group">
-								<label style="font-size: 12px">Financial Year*</label> <select
+								<label style="font-size: 12px">Financial Year<span style="color:red;">*</span></label> <select
 									name="financialYear" class="form-control"
 									title="Select Financial Year" id="financialYear"
 									ng-model="cCctr.entity.financialYear" ng-required="true"
@@ -239,7 +240,7 @@
 					<div>
 						<div class="col-md-12">
 							<div class="form-group">
-								<label style="font-size: 12px">Quarter*</label> <select
+								<label style="font-size: 12px">Quarter<span style="color:red;">*</span></label> <select
 									name="quarter" class="form-control" title="Select Quarter"
 									id="quarter" ng-model="cCctr.entity.quarter" ng-required="true"
 									ng-model-options="{updateOn: 'blur'}">
@@ -293,7 +294,7 @@
 				<div style="margin-top: 2%">
 					<div class="col-md-12">
 						<div class="form-group">
-							<label style="font-size: 12px">Branch Code*</label><input
+							<label style="font-size: 12px">Branch Code<span style="color:red;">*</span></label><input
 								type="text" class="form-control"
 								ng-init="cCctr.temp.branchCode='${branchCode}'.split(',').join('')"
 								ng-model="cCctr.newEntity.branchCode=cCctr.temp.branchCode"
@@ -302,7 +303,7 @@
 					</div>
 					<div class="col-md-12">
 						<div class="form-group">
-							<label style="font-size: 12px">Type of Certificate*</label>
+							<label style="font-size: 12px">Type of Certificate<span style="color:red;">*</span></label>
 							<input
 								type="text" class="form-control"
 								ng-model="cCctr.newEntity.typeofCertificate='Form16A-FDR_194N_Vendor'"
@@ -329,7 +330,7 @@
 				<div>
 					<div class="col-md-12">
 						<div class="form-group">
-							<label style="font-size: 12px">Financial Year*</label> 
+							<label style="font-size: 12px">Financial Year<span style="color:red;">*</span></label> 
 							<input
 								type="text" class="form-control"
 								ng-model="cCctr.newEntity.financialYear='2022-23'"
@@ -356,7 +357,7 @@
 				<div>
 					<div class="col-md-12">
 						<div class="form-group">
-							<label style="font-size: 12px">Quarter*</label>
+							<label style="font-size: 12px">Quarter<span style="color:red;">*</span></label>
 							<input
 								type="text" class="form-control"
 								ng-model="cCctr.newEntity.quarter='Q4'"

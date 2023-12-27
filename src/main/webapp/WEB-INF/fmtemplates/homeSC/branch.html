@@ -57,6 +57,7 @@
 	overflow: hidden;
 	white-space: nowrap;
 }
+
 .btn-grad {
 	background-image: linear-gradient(to right, #FF8008 0%, #FFC837 51%, #FF8008 100%);
 	transition: 0.5s;
@@ -75,55 +76,63 @@
 }
 
 .tool .tooltiptext {
-    visibility: hidden;
-    font-size: small;
-    width: auto;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px;
-    position: absolute;
-    z-index: 1;
+	visibility: hidden;
+	font-size: small;
+	width: auto;
+	background-color: #555;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px;
+	position: absolute;
+	z-index: 1;
 }
+
 .tool:hover .tooltiptext {
-    visibility: visible;
+	visibility: visible;
 }
+
 .tooltip-top {
-  bottom: 125%;
-  margin-left:-22%;
+	bottom: 125%;
+	margin-left: -22%;
 }
+
 .tooltip-top1 {
-  bottom: 125%;
-  margin-left:-42%;
+	bottom: 125%;
+	margin-left: -42%;
 }
+
 .tooltip-top2 {
-  bottom: 125%;
-  margin-left:-35%;
+	bottom: 125%;
+	margin-left: -35%;
 }
+
 .tooltip-top3 {
-  bottom: 83%;
-  margin-left:-9%;
+	bottom: 83%;
+	margin-left: -9%;
 }
+
 .tooltip-top4 {
-  bottom: 70%;
-  margin-left:-41%;
+	bottom: 70%;
+	margin-left: -41%;
 }
+
 .tooltip-top5 {
-  margin-left: -14%;
+	margin-left: -14%;
 }
+
 .tooltip-top6 {
-  margin-left: -5%;
+	margin-left: -5%;
 }
 </style>
 <div id="page-wrapper">
 	<div class="container-fluid">
-	<button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
+		<!-- <button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
 					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
 						 onClick="refreshPageButton()"><i
-						class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh<span class="tooltiptext tooltip-top3">Refresh or Press F5</span></button>
+						class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh<span class="tooltiptext tooltip-top3">Refresh or Press F5</span></button> -->
 		<div class="col-md-12 "
-			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
+			style="padding-left: 0px; font-size: 12pxp; margin-top: 1%">
 			<div class="heading">
 				<strong>Branch Details</strong>
 			</div>
@@ -149,8 +158,8 @@
 												name="roCode" class="form-control" placeholder="Branch Code"
 												style="width: 100%">
 								</div>
-								<div class="col-md-4" style="margin-top:2.9%">
-									<div style="display:ruby">
+								<div class="col-md-4" style="margin-top: 3.9%">
+									<!-- <div style="display:ruby">
 										<button
 											ng-click="cCctr.searchEntities(true,'branch','branch')"
 											class="btn btn-grad astro-MG2CNCJP tool"
@@ -167,7 +176,48 @@
 											ng-click="cCctr.gotoAddPage('addBranch')"
 											ng-hide=("admin"!="${typeOfUser}");><i class="fa fa-plus"></i>&nbsp;&nbsp;Add
 											Branch<span class="tooltiptext tooltip-top2">Add Branch Button</span></button>
+									</div> -->
+
+									<div
+										style="right: 3%; position: absolute; gap: 20px; margin-top: -3%; display: flex"
+										class="">
+
+
+										<button
+											ng-click="cCctr.searchEntities(true,'branch','branch')"
+											class="btn btn-success mobile tool" onclick="scrollWin()">
+											<i class="fa fa-search border-0 p-0"
+												style="color: inherit; background-color: transparent; font-size: large;"></i>
+											<span class="tooltiptext tooltip-top">Search Button</span>
+										</button>
+
+										<button class="btn btn-primary mobile collapsed tool"
+											style="background-color: #FFA500; border-color: #FFA500;"
+											data-toggle="collapse" data-target="#collapseExample4"
+											aria-expanded="false" data-parent="#navaccordion"
+											aria-controls="collapseExample">
+											<i class="fa fa-filter border-0 p-0"
+												style="color: #fff; background-color: transparent; font-size: large;"></i>
+											<span class="tooltiptext tooltip-top1">Advance Search
+												Button</span>
+										</button>
+
+										<button class="btn btn-primary mobile tool"
+											data-toggle="modal" ng-click="cCctr.gotoAddPage('addBranch')"
+											ng-hide=( "admin"!="${typeOfUser}"
+											);
+			data-target="#bd-example-modal-xl">
+											<i class="fa fa-edit border-0 p-0"
+												style="color: inherit; background-color: transparent; font-size: large;"></i>
+											<span class="tooltiptext tooltip-top2">Add Branch
+												Button</span>
+										</button>
+
+
+
 									</div>
+
+
 								</div>
 							</div>
 
@@ -202,15 +252,23 @@
 						<h6>
 							<b>Branch State</b>
 							<h6>
-								<input type="text" ng-model="cCctr.search.branchState"
-									name="Branch State" class="form-control"
-									placeholder="Branch State" style="width: 100%">
+								<select name="branchState" id="branchState"
+									title="Select Branch State" class="form-control"
+									ng-model="cCctr.search.branchState" ng-required="true"
+									ng-model-options="{updateOn: 'blur'}">
+									<option disabled value="">Select State</option>
+									<#list State as state>
+									<option value="${state}">${state}</option>
+									</#list>
+								</select>
 					</div>
 					<div class="col-md-3">
 						<button class="btn btn-grad astro-MG2CNCJP tool" type="button"
-							style="margin-top:11%;background-image: linear-gradient(to right, #517fa4 0%, #243949  51%, #517fa4  100%);"
-							ng-click="cCctr.generateExcel('apibranch/generateExcel/','Branch')">Export
-							to Excel<span class="tooltiptext tooltip-top4">Export Excel Button</span></button>
+							style="margin-top: 11%; background-image: linear-gradient(to right, #517fa4 0%, #243949 51%, #517fa4 100%);"
+							ng-click="cCctr.generateExcel('apibranch/generateExcel/','Branch')">
+							Export to Excel<span class="tooltiptext tooltip-top4">Export
+								Excel Button</span>
+						</button>
 					</div>
 
 				</div>
@@ -244,7 +302,7 @@
 					<th width="13%">Branch PinCode</th>
 					<th width="10%">Branch State</th>
 					<th width="10%">Branch Edit</th>
-					<th width="10%">Action</th>
+					<th class="hide-on-desktop" width="10%">Action</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -256,7 +314,8 @@
 					<!-- <tr style="color: red" ng-show="cCctr.getEntityListData().length <= 0">
 					<td colspan="14" style="text-align: center;"><b><h3 style="text-align:center;">No data
 					found!!</h3></b></td>track by a.id -->
-				<tr ng-repeat="a in cCctr.getEntityListData()">
+				<tr ng-repeat="a in cCctr.getEntityListData()"
+					ng-dblclick="cCctr.gotoHomePageWOTOFPresentFY(a.branchCode,'2023-24')">
 					<td>{{$index+1}}</td>
 					<td>{{a.branchCode}}</td>
 					<td>{{a.roCode}}</td>
@@ -279,13 +338,17 @@
 						ng-click="cCctr.gotoDetailPage('branch',a.id,'DetailsBranch')"
 						style="color: blue"><img src="static\img\edit.png"
 							width="22px" height="22px" alt="Details"
-							style="margin-top: 5px; margin-bottom: 5px;" /><span class="tooltiptext tooltip-top6">Edit</span></a></td>
+							style="margin-top: 5px; margin-bottom: 5px;" /><span
+							class="tooltiptext tooltip-top6">Edit</span></a></td>
 
 					<td><button
-							ng-click="cCctr.gotoHomePageWOTOFPresentFY(a.branchCode)"
-							class="btn btn-success tool" onclick="scrollWin()"
-							style="height: 30px; margin-top: 10px; margin-bottom: 10px; background-color: #0f316d">Work
-							on this<span class="tooltiptext tooltip-top5">Detail Button</span></button></td>
+							ng-click="cCctr.gotoHomePageWOTOFPresentFY(a.branchCode, '2023-24')"
+							class="btn btn-success tool hide-on-desktop"
+							onclick="scrollWin()"
+							style="height: 30px; margin-top: 10px; margin-bottom: 10px; background-color: #0f316d">
+							Work on this<span class="tooltiptext tooltip-top5">Detail
+								Button</span>
+						</button></td>
 				</tr>
 			</tbody>
 

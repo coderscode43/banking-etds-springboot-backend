@@ -1314,7 +1314,7 @@ margin-left:-90%;
 								<div class="col-md-12" style="text-align: right">
 									<button class="pushable darkblue" style="margin-top: 2%;"
 										data-dismiss="modal"
-										ng-click="form27qdeductee.submitted=true;cCctr.updateData(form27qdeductee.$valid,cCctr.entity,'form27QDeductee')">
+										ng-click="form27qdeductee.submitted=true;cCctr.updateForm(form27qdeductee.$valid,cCctr.entity,'form27QDeductee')">
 										<span class="front darkbluespan"> Update</span>
 									</button>
 									<button class="pushable lightblack" style="margin-top: 2%;"
@@ -1330,4 +1330,33 @@ margin-left:-90%;
 		</div>
 	</div>
 
+</div>
+<!-- Success Modal -->
+<div id="successMsgDetail" class="modal" role="dialog">
+	<div class="modal-dialog modal-sm">
+		Modal content
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 style="color: green;">
+					<picture>
+					<source type="image/webp" srcset="static/img/success.webp">
+					<img src="./././static/img/success.webp" height="30" width="30">
+					</picture>
+					<span class="headingMsg"></span>
+				</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="msg" style="font-size: 18px;"></div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal"
+					ng-click="cCctr.gotoWFYDetailPage('form27QDeductee',cCctr.entity.deductee.id,'detailForm27QDeductee')">Ok</button>
+				<!-- id="reload" -->
+			</div>
+		</div>
+	</div>
 </div>

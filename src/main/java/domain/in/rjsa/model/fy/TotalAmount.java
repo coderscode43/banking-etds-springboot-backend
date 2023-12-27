@@ -14,7 +14,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "FYDetails.TotalAmount")
+@Table(name = "AAACU3561B_2324.TotalAmount")
 public class TotalAmount extends CommonModelAbstract<TotalAmount>{
 	
 	/**

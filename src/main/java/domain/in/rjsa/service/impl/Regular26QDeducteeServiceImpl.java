@@ -17,8 +17,11 @@ import org.springframework.transaction.annotation.Transactional;
 import com.ibm.icu.text.SimpleDateFormat;
 
 import domain.in.rjsa.dao.Regular26QDeducteeDao;
+import domain.in.rjsa.dao.RemarkDao;
 import domain.in.rjsa.excel.Form26QDeducteeExcel;
+import domain.in.rjsa.model.fy.Regular24QDeductee;
 import domain.in.rjsa.model.fy.Regular26QDeductee;
+import domain.in.rjsa.model.fy.Remark;
 import domain.in.rjsa.service.AbstractServiceFY;
 import domain.in.rjsa.service.Regular26QDeducteeService;
 
@@ -29,7 +32,8 @@ public class Regular26QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 
 	@Autowired
 	Regular26QDeducteeDao dao;
-
+	@Autowired
+	RemarkDao rDao;
 	Form26QDeducteeExcel form26QDeduceteeExcel;
 	public static String path;
 	public String ExcelFile;
@@ -45,6 +49,26 @@ public class Regular26QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 	// TODO Auto-generated method stub
 	// return dao.getByKey(branchCode);
 	// }
+	public void update(Regular26QDeductee entity) {
+		// TODO Auto-generated method stub
+
+		LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
+		Object id = entity.getId();
+//		Regular24QDeductee regular24QWeb = new Regular24QDeductee();//from Gson //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+		map.put("id", id);
+		Regular26QDeductee regular26Q = (Regular26QDeductee) dao.uniqueSearch(map);
+		regular26Q.updateAllowedFields(entity);
+		getPrimaryDao().update(regular26Q);
+//		HashMap<String, Object> m = new HashMap<>();
+//		m.put("deducteeId", entity.getId());
+//		m.put("deducteeForm", "26QForm");
+//		List<Remark> remark = rDao.findall(m, 0, 100);
+//		for (Remark r : remark) {
+//			r.setBranchCode(entity.getBranchCode());
+//			rDao.persist(r);
+//		}
+	}
+
 	@Override
 	public Regular26QDeductee getByKey(Long id) {
 		// TODO Auto-generated method stub
@@ -76,7 +100,7 @@ public class Regular26QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 		this.ExcelFile = file.getPath() + "/TDS-" + timestamp + "-26QDeductee.xlsx";
 
 		int row = 1;
-		int part =1;
+		int part = 1;
 
 		Workbook wb = form26QDeduceteeExcel.getWorkbook();
 		Sheet form26QDeductee = wb.getSheet("form26QDeductee-" + part);
@@ -153,7 +177,8 @@ public class Regular26QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 			if (form26Q.getDateOfDeduction() == null) {
 				details.createCell(14).setCellValue(" ");
 			} else {
-				details.createCell(14).setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(form26Q.getDateOfDeduction()));
+				details.createCell(14)
+						.setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(form26Q.getDateOfDeduction()));
 			}
 			if (form26Q.getAmountPaid() == null) {
 				details.createCell(15).setCellValue(" ");
@@ -265,12 +290,12 @@ public class Regular26QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 			} else {
 				details.createCell(36).setCellValue("Resolved");
 			}
-			
+
 			if (row > 1000000) {
 				part++;
 				wb = form26QDeduceteeExcel.getWorkbook();
 				form26QDeductee = form26QDeduceteeExcel.initializeSheet("form26QDeductee-" + part);
-				row =0;
+				row = 0;
 			}
 
 			row++;
@@ -302,11 +327,10 @@ public class Regular26QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 		LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
 		Object id = entity.getId();
 //		Regular26QDeductee regular26QWeb = new Regular26QDeductee();//from Gson //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-		map.put("id",id);
-		Regular26QDeductee regular26Q =  (Regular26QDeductee) dao.uniqueSearch(map);
+		map.put("id", id);
+		Regular26QDeductee regular26Q = (Regular26QDeductee) dao.uniqueSearch(map);
 		regular26Q.updateAllowedFields(entity);
 		getPrimaryDao().update(regular26Q);
 	}
 
-	
 }

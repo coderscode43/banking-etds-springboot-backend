@@ -7,31 +7,32 @@
 <style>
 /*Refresh Button*/
 .tooltip-top {
-  bottom: 83%;
-  margin-left:-7%;
+	bottom: 83%;
+	margin-left: -7%;
 }
 /*Yes Button*/
 .tooltip-top1 {
-  bottom: 125%;
-  margin-left:-92%;
+	bottom: 125%;
+	margin-left: -92%;
 }
 /*No Button*/
 .tooltip-top2 {
-  bottom: 125%;
-  margin-left:-92%;
+	bottom: 125%;
+	margin-left: -92%;
 }
 </style>
 <body>
 	<br>
 	<div id="page-wrapper">
 		<div class="container-fluid">
-		
-		<button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
-					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
-					 onClick="refreshPageButton()"><i
-					class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh
-					<span class="tooltiptext tooltip-top">Refresh Button</span></button>
-					
+
+			<button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
+				style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%); float: right;"
+				onClick="refreshPageButton()">
+				<i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh <span
+					class="tooltiptext tooltip-top">Refresh Button</span>
+			</button>
+
 			<div class="row">
 				<h3 style="margin-left: 14px;">Add User Details</h3>
 			</div>
@@ -42,35 +43,37 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<h6>
-										<label>Employee Id*</label>
+										<label>Employee Id<span style="color:red;">*</span></label>
 									</h6>
 									<input class="form-control" type="text" id="employeeId"
-									        title="Enter Employee Id"
-										name="employeeId" placeholder="Employee Id"
-										ng-model="cCctr.entity.employeeId" autocomplete="on "
-										ng-required="true" ng-model-options="{updateOn: 'blur'}" /> <span
+										title="Enter Employee Id" name="employeeId"
+										placeholder="Employee Id" ng-model="cCctr.entity.employeeId" ng-pattern="/^[a-zA-Z0-9][a-zA-Z0-9 -_]*$/"
+										autocomplete="on " ng-required="true"
+										ng-model-options="{updateOn: 'blur'}" /> <span
 										style="color: red"
 										ng-show="formUserDetails.submitted || formUserDetails.employeeId.$dirty && formUserDetails.employeeId.$invalid">
 										<span class="error"
 										ng-show="formUserDetails.employeeId.$error.required">
 											Employee Id is Required.</span>
+											<span class="error"
+										ng-show="formUserDetails.employeeId.$error.pattern">
+											Enter valid Employee Id.</span>
 									</span>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<h6>
-										<label>Type Of User*</label>
+										<label>Type Of User<span style="color:red;">*</span></label>
 									</h6>
 									<select class="form-control" type="text" id="typeOfUser"
-									        title="Select Type Of User"
-										name="typeOfUser" placeholder="Type Of User"
-										ng-model="cCctr.entity.typeOfUser" autocomplete="on" ng-required="true">
+										title="Select Type Of User" name="typeOfUser"
+										placeholder="Type Of User" ng-model="cCctr.entity.typeOfUser"
+										autocomplete="on" ng-required="true">
 										<option disabled value="">Select Type of User</option>
 										<option value="admin">Admin</option>
 										<option value="Super Admin">Super Admin</option>
-										</select>
-									<span style="color: red"
+									</select> <span style="color: red"
 										ng-show="formUserDetails.submitted || formUserDetails.typeOfUser.$dirty && formUserDetails.typeOfUser.$invalid">
 										<span class="error"
 										ng-show="formUserDetails.typeOfUser.$error.required">
@@ -81,19 +84,18 @@
 						</div>
 						<div class="row">
 							<div class="modal-footer">
-								
-								<button class="pushable darkgreen tool"
-														style="margin-top: 2%;"
-														ng-click=" formUserDetails.submitted=true;cCctr.submit(formUserDetails.$valid,cCctr.entity,'userDetails');">
-														<span class="front darkgreenspan"
-															> Yes<span class="tooltiptext tooltip-top1">Yes Button</span></span>
-													</button>
-													<button class="pushable darkred tool"
-														style="margin-top: 2%;"
-														ng-click="cCctr.gotoListPage('userDetails','userDetails');"onclick="scrollWin()">
-														<span class="front darkredspan"
-															> No<span class="tooltiptext tooltip-top2">No Button</span></span>
-													</button>	
+
+								<button class="pushable darkgreen tool" style="margin-top: 2%;"
+									ng-click=" formUserDetails.submitted=true;cCctr.submit(formUserDetails.$valid,cCctr.entity,'userDetails');">
+									<span class="front darkgreenspan"> Yes<span
+										class="tooltiptext tooltip-top1">Yes Button</span></span>
+								</button>
+								<button class="pushable darkred tool" style="margin-top: 2%;"
+									ng-click="cCctr.gotoListPage('userDetails','userDetails');"
+									onclick="scrollWin()">
+									<span class="front darkredspan"> No<span
+										class="tooltiptext tooltip-top2">No Button</span></span>
+								</button>
 							</div>
 						</div>
 					</form>

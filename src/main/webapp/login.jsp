@@ -7,169 +7,30 @@
 	content="width=device-width, initial-scale=1  maximum-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
- <base href="/bankingETDS/" />
+<base href="/bankingETDS/" />
 <title>Please sign in</title>
-<link rel="stylesheet"
-	href="static/css/font-awesome.min.css">
-<link
-	href="static/css/bootstrap.min.css"
-	rel="stylesheet">
-<link
-	href="static/css/signin.css"
-	rel="stylesheet" crossorigin="anonymous" />
+<link rel="stylesheet" href="static/css/font-awesome.min.css">
+<link href="static/css/bootstrap.min.css" rel="stylesheet">
+<link href="static/css/signin.css" rel="stylesheet"
+	crossorigin="anonymous" />
 <!-- Latest compiled and minified CSS -->
 <!-- jQuery library -->
-<script
-	src="static/js/jquery.min.js"></script>
+<script src="static/js/jquery.min.js"></script>
 <!-- Latest compiled JavaScript -->
-<script
-	src="static/js/bootstrap.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
 <link rel="shortcut icon" type="image/x-icon"
 	href="static/img/favicon.ico" />
 <script src="static/js/lib/bootstrap.js"></script>
 <style>
-	form{
-		  height: 50%;
-  margin-left: 5%;
-  border-radius: 7px !important;
- box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07)
- 			 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 
- 			 0px 8px 16px, rgba(0, 0, 0, 0.07) 
- 			 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
-}	
-	
-</style>
-</head>
-<body style="background-color: white">
-	<div class="row">
-		<div class="container-fluid">
-			<div class="col-md-4">
-				<img src="static/img/tds.png" alt="tdsosmart"
-					height="400px" width="100%">
+form {
+	height: 50%;
+	margin-left: 5%;
+	border-radius: 7px !important;
+	box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px
+		4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
+		rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
 
-			</div>
-			<br>
-
-			<div class="col-md-4" style="">
-				<p style="font-size: 14px">
-					<b>&nbsp;&nbsp;&nbsp;&nbsp;TDS Software is an Intelligent TDS Return Filing Software
-						built in state-of-the-art technology, complying with TDS/TCS
-						prescribed as per Income Tax Laws of India. 
-				</p>
-				</b>
-				<ul>
-					<br>
-					<p style="font-size: 17px">
-						<span class="fa fa-check-circle" style="color: green"></span>&nbsp;Supports
-						Unlimited Deductees
-					</p>
-					<p style="font-size: 17px">
-						<span class="fa fa-check-circle" style="color: green"></span>&nbsp;Completely
-						Automated Features
-					</p>
-					<p style="font-size: 17px">
-						<span class="fa fa-check-circle" style="color: green"></span>&nbsp;Easy
-						to Import/Export files From Ms-Excel
-					</p>
-					<p style="font-size: 17px">
-						<span class="fa fa-check-circle" style="color: green"></span>&nbsp;More
-						Than 500 types of TRACES level Checks
-					</p>
-					<p style="font-size: 17px">
-						<span class="fa fa-check-circle" style="color: green"></span>&nbsp;File
-						Error Free TDS Returns in Just Few Minutes
-					</p>
-				</ul>
-			</div>
-
-			<div class="col-md-4" style="">
-				<form class="form-signin mui-card xl-shadow" method="post"
-					action="login" style="height: 50%; margin-left: 5%">
-					<img src = "static/img/KBlogo.png" alt="Karnataka Bank" style="width: 100%;"></img>
-					<!-- /////////////UCO BANK//////////// -->
-					<!--  <img src = "static/img/UcoBank.png" alt="Uco Bank" style="width: 90%;margin-left:5%"></img> -->
-					<h3 class="form-signin-heading">
-						<center>
-							<b style="color: #79BD3C">LOGIN</b>
-						</center>
-					</h3>
-					
-					<p style="color: red;">
-								<b><span>${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</span></b>
-							</p>
-					<p>
-						<label for="username" class="sr-only">Username</label> <input
-							type="text" id="username" name="username" class="form-control"
-							placeholder="Username" required autofocus>
-					</p>
-					<br>
-					<p>
-						<label for="password" class="sr-only">Password</label> <input
-							type="password" id="password" name="password"
-							class="form-control" placeholder="Password" required>
-					</p>
-					<br>
-					<!--  <p>  
-                       <label for="username" class="sr-only">Select financial year</label>
-                  <select style="height:40px;width:100%" required>
-                            <option value="" disabled selected>Select Financial Year</option>
-                            <option>The first option</option>
-                            <option>The second option</option>
-                            <option>The third option</option>
-                            <option>The Fourth option</option>
-                 </select> </p> -->
-					<br>
-					<button class="btn btn-lg btn-primary btn-block" type="submit"
-						style="background-color: #0F316D">Sign in</button>
-					<br>
-				</form>
-			</div>
-		</div>
-	</div>
-
-
-	<div class="row">
-		<div class="col-md-6" style="margin-top: -35px;">
-			<p style="margin-left: 78%; font-size: 18px">Powered By</p>
-		</div>
-	</div>
-
-
-
-	<div class="row">
-		<div class="col-md-6" style="margin-top: -5px">
-			<!-- <a class="icon-cog" style="line-height: 0.9%; text-decoration: none"
-				ng-click="cCctr.homepage('homepage')"> <span
-				class="icon-tax-o-smart"
-				style="font-size: 70px; color: #0F316D; position: relative; top: 13px;">
-			</span> <span color="whitle"
-				style="font-size: 30px; color: #0F316D; position: relative; bottom: 10px"><b>Tax-</b><strong
-					style="color: #79BD3C;"><b>O</b></strong><b>-Smart</b> </span>
-			</a> <br> <span color="whitle" class="serif"
-				style="font-size: 14px; color: #79BD3C; position: relative; bottom: 15px;">&emsp;&emsp;&emsp;
-				&emsp;&emsp;<b>Technology empowering your business</b>
-			</span> -->
-			<a class="icon-cog" style="line-height: 0.9%; text-decoration: none"
-				ng-click="cCctr.homepage('homepage')"> 
-			<img src = "static/img/TOS.png" alt="Tax O smart" style="width: 40%;margin-left: 88%;"></img></a>
-			
-			
-			
-		</div>
-	</div>
-	<footer>
-	<div>
-	<p style="Float: right;margin-right: 2%;">Version 1.0</p>
-	</div>
-	</footer>
-
-
-
-</body>
-</html>
-
-
-<style>
 .form-signin {
 	max-width: 390px;
 	background-color: rgba(0, 0, 0, 0.2);
@@ -296,17 +157,149 @@ option {
 	color: black;
 }
 </style>
+</head>
+<body style="background-color: white">
+	<div class="row">
+		<div class="container-fluid">
+			<div class="col-md-4">
+				<img src="static/img/tds.png" alt="tdsosmart" height="400px"
+					width="100%">
 
-<!--  <a class="icon-cog" style="line-height: 0.5%; text-decoration: none;"
-			      ng-click="cCctr.homepage('homepage')"> <span
-				    class="icon-tax-o-smart"
-				      style="font-size: 75px; color: #0F316D; position: relative; top: 20px;"></span>
-				        <span color="whitle"
-			             style="font-size: 30px; color: #0F316D; position: relative; bottom: 10px;"><b>Tax-</b><strong
-			              style="color: #79BD3C;"><b>O</b></strong><b>-Smart</b> </span>
-              </a> 
-			        <br> 
-			             <span color="whitle" class="serif"
-			                	style="font-size: 18px; color: #79BD3C; position: relative; bottom: 15px">&emsp;&emsp;&emsp;
-				                &emsp;<b>Technology empowering your business</b>
-			              </span> -->
+			</div>
+			<br>
+
+			<div class="col-md-4" style="">
+				<p style="font-size: 14px">
+					<b>&nbsp;&nbsp;&nbsp;&nbsp;TDS Software is an Intelligent TDS
+						Return Filing Software built in state-of-the-art technology,
+						complying with TDS/TCS prescribed as per Income Tax Laws of India.
+
+					</b>
+				</p>
+				<br>
+				<ul>
+					<li style="font-size: 20px; color: green">
+						<p style="font-size: 17px; color: black">&nbsp;Supports
+							Unlimited Deductees</p>
+					</li>
+					<li style="font-size: 20px; color: green"><p
+							style="font-size: 17px; color: black">&nbsp;Completely
+							Automated Features</p></li>
+					<li style="font-size: 20px; color: green"><p
+							style="font-size: 17px; color: black">&nbsp;Easy to
+							Import/Export files From Ms-Excel</p></li>
+					<li style="font-size: 20px; color: green"><p
+							style="font-size: 17px; color: black">&nbsp;More Than 500
+							types of TRACES level Checks</p></li>
+					<li style="font-size: 20px; color: green"><p
+							style="font-size: 17px; color: black">&nbsp;File Error Free
+							TDS Returns in Just Few Minutes</p></li>
+				</ul>
+			</div>
+
+			<div class="col-md-4" style="">
+				<form class="form-signin mui-card xl-shadow" method="post"
+					action="login" style="height: 50%; margin-left: 5%">
+					<!-- <img src="static/img/KBlogo.png" alt="Karnataka Bank"
+						style="width: 100%;"></img> -->
+					<!-- <img src="static/img/nialogo.png" alt="New India Assurance"
+						style="width: 100%;"></img> -->
+					<!-- /////////////UCO BANK//////////// -->
+					<img src="static/img/UcoBank.png" alt="Uco Bank"
+						style="width: 90%; margin-left: 5%"></img>
+					<h3 class="form-signin-heading">
+						<center>
+							<b style="color: #79BD3C">LOGIN</b>
+						</center>
+					</h3>
+
+					<p style="color: red;">
+						<b><span>${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</span></b>
+					</p>
+					<p>
+						<label for="fy" class="sr-only">Financial Year</label><select
+							id="dropdown" class="form-control" ng-required="true" required>
+							<option value="/2022-23/login.jsp">2022-23</option>
+							<option value="/login.jsp" Selected>2023-24</option>
+						</select>
+					</p>
+					<br>
+					<p>
+						<label for="username" class="sr-only">Username</label> <input
+							type="text" id="username" name="username" class="form-control"
+							placeholder="Username" required autofocus>
+					</p>
+					<br>
+					<p>
+						<label for="password" class="sr-only">Password</label> <input
+							type="password" id="password" name="password"
+							class="form-control" placeholder="Password" required>
+					</p>
+					<br>
+					<button class="btn btn-lg btn-primary btn-block" type="submit"
+						style="background-color: #0F316D">Sign in</button>
+					<br>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div class="col-md-6" style="margin-top: -35px;">
+			<p style="margin-left: 78%; font-size: 18px">Powered By</p>
+		</div>
+	</div>
+
+
+
+	<div class="row">
+		<div class="col-md-6" style="margin-top: -5px">
+			<a class="icon-cog" style="line-height: 0.9%; text-decoration: none"
+				ng-click="cCctr.homepage('homepage')"> <img
+				src="static/img/TOS.png" alt="Tax O smart"
+				style="width: 40%; margin-left: 88%;"></img></a>
+		</div>
+	</div>
+	<footer>
+		<div>
+			<p style="Float: right; margin-right: 2%;">Version 1.0</p>
+		</div>
+	</footer>
+	<!-- <script>
+		$(document).ready(function() {
+			window.history.pushState(null, "", window.location.href);
+			window.onpopstate = function() {
+				window.history.pushState(null, "", window.location.href);
+			};
+		});
+	</script> -->
+	<script type='text/javascript'>
+		(function() {
+			if (window.localStorage) {
+				if (!localStorage.getItem('firstLoad')) {
+					localStorage['firstLoad'] = true;
+					window.location.reload();
+					/* var url = window.location.href;
+					window.location.replace(url) */
+				} else
+					localStorage.removeItem('firstLoad');
+			}
+		})();
+	</script>
+	<script>
+		document.getElementById("dropdown").addEventListener("change",
+				function() {
+					var selectedOption = this.value;
+					if (selectedOption !== '') {
+						/*   window.location.href = selectedOption; */// Redirect to the selected URL
+						window.open(selectedOption, '_blank');
+					}
+				});
+	</script>
+</body>
+</html>
+
+
+
+

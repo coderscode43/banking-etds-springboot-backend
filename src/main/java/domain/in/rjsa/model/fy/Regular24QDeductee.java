@@ -24,7 +24,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "FYDetails.regular24QDeductee")
+@Table(name = "AAACU3561B_2324.regular24QDeductee")
 public class Regular24QDeductee extends CommonModelAbstract {
 	/**
 	 * 
@@ -119,7 +119,7 @@ public class Regular24QDeductee extends CommonModelAbstract {
 	@Column(name = "TAN")
 	public String TAN ;
 	@Column(name = "roCode")
-	public Long roCode ;
+	public String roCode ;
 	@Column(name = "errorDescription")
 	public String errorDescription ;
 	@Column(name = "warningDescription")
@@ -142,6 +142,12 @@ public class Regular24QDeductee extends CommonModelAbstract {
 	
 	@Column(name = "deducteeSrNo")
 	public Long deducteeSrNo;
+	
+	@Column(name = "tranAmt")
+	public Long tranAmt;
+	
+	@Column(name = "additionalDetail")
+	public String additionalDetail;
 	
 	@JsonSerialize(using = JsonDateSerializer.class)
 	public Date getDateOfPayment() {
@@ -193,7 +199,8 @@ public class Regular24QDeductee extends CommonModelAbstract {
 //		this.uniqueRefNo=entuty.getUniqueRefNo();
 //		this.warningDescription=entuty.getWarningDescription();
 		//Same way add all the fields that are allowed to update
-		
+//		this.tranAmt = entuty.getTranAmt();
+//		this.additionalDetail = entuty.getAdditionalDetail();
 		
 	}
 }

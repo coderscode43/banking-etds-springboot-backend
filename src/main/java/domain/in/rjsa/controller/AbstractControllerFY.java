@@ -334,25 +334,15 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 
 	}
 
-	public void addLogs(HashMap<String, Object> entity) {
+	public void addLogs(String Action) {
 
-//		Login l = applicationCache.getLoginDetail(getPrincipal());
-		HashMap<String, Object> constrains = new HashMap<>();
-		constrains.put("id", entity.get("id"));
-//		Logs log = lservice.uniqueSearch(constrains);
 		Logs log = new Logs();
-
-		log.setAction("Added");
+		log.setAction(Action);
 		log.setIpaddrs(getIp());
-		String s = getEntity().getName();
-		String[] arrOfStr = s.split(".", 25);
-		for (String a : arrOfStr)
-			log.setEntity(a);
-		Gson gason = new Gson();
-		String json = gason.toJson(entity);
+		String s = getEntity().getName().replace(getEntity().getPackage().getName() + ".", "");
 		log.setDate(new Date(System.currentTimeMillis()));
 		log.setUsername(getPrincipal());
-
+		log.setEntity(Action + " " + s);
 		lservice.save(log);
 
 	}

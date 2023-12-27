@@ -144,12 +144,12 @@ margin-left: -6%;
 <body>
 	<div id="page-wrapper" ng-controller="CommonController as cCctr">
 		<div class="container-fluid">
-		<button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
+	<!-- 	<button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
 					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
 					 onClick="refreshPageButton()"><i
-					class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh<span class="tooltiptext tooltip-top">Refresh or Press F5</span></button>
+					class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh<span class="tooltiptext tooltip-top">Refresh or Press F5</span></button> -->
 			<div class="col-md-12 "
-				style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
+				style="padding-left: 0px; font-size: 12pxp; margin-top: 1%">
 				<div class="heading">
 					<strong>Form 15G</strong>
 				</div>
@@ -183,14 +183,6 @@ margin-left: -6%;
 									<input type="text" ng-model="cCctr.search.panoftheAssessee"
 										class="form-control" placeholder="PAN" style="width: 100%">
 						</div>
-						
-
-					</div>
-				</div>
-
-				<div class=" collapse  panel-collapse" id="collapseExample4">
-
-					<div class="row">
 						<div class="col-md-3">
 							<h6>
 								<b>Customer / Vendor No</b>
@@ -199,6 +191,15 @@ margin-left: -6%;
 										class="form-control" placeholder="Customer / Vendor No"
 										style="width: 100%">
 						</div>
+						
+
+					</div>
+				</div>
+
+				<div class=" collapse  panel-collapse" id="collapseExample4">
+
+					<div class="row">
+						
 						
 						<div class="col-md-3">
 							<h6>
@@ -237,7 +238,7 @@ margin-left: -6%;
 						</div>
 					</div>
 				</div>
-				<div class="row text-right" id="hide">
+			<!-- 	<div class="row text-right" id="hide">
 					<div class="col-md-3" style="margin-left: 60%; margin-top: -44px;display:ruby">
 						<button
 							ng-click="cCctr.searchFYEntities(true,'form15G','form15G')"
@@ -259,7 +260,39 @@ margin-left: -6%;
 					<div class="col-md-3">
 						<div class="text-right"></div>
 					</div>
-				</div>
+				</div> -->
+				
+				
+				<div style="right: 3%; position: absolute; gap: 20px;margin-top:-3%;display:flex"
+		class="">
+
+
+		<button 	ng-click="cCctr.searchFYEntities(true,'form15G','form15G')"
+			class="btn btn-success mobile tool" onclick="scrollWin()">
+			<i class="fa fa-search border-0 p-0"
+				style="color: inherit; background-color: transparent;font-size: large;"></i>
+		<span class="tooltiptext tooltip-top">Search Button</span> </button>
+
+		<button class="btn btn-primary mobile collapsed tool"
+			style="background-color: #FFA500; border-color: #FFA500;"
+			data-toggle="collapse" data-target="#collapseExample4"
+			aria-expanded="false" data-parent="#navaccordion"
+			aria-controls="collapseExample">
+			<i class="fa fa-filter border-0 p-0"
+				style="color: #fff; background-color: transparent;font-size: large;"></i>
+		<span class="tooltiptext tooltip-top1">Advance Search Button</span></button>
+
+		<button class="btn btn-primary mobile tool" data-toggle="collapse" data-target="#checkList"
+						aria-expanded="false" aria-controls="collapseExample"
+			data-target="#bd-example-modal-xl">
+			<i class="fa fa-table border-0 p-0"
+				style="color: inherit; background-color: transparent;font-size: large;"></i>
+		<span class="tooltiptext tooltip-top2">Table Column Button</span></button> 
+		
+	
+
+	</div>
+				
 			</div>
 		</div>
 

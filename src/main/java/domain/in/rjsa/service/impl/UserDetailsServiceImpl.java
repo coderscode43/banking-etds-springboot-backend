@@ -130,6 +130,12 @@ public class UserDetailsServiceImpl extends AbstractServiceForm<String, UserDeta
 		}
 
 	}
+
+	@Override
+	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 }

@@ -41,7 +41,7 @@
 <body style="width:100%">
 
     
-   <div ng-http-loader methods="['GET']" ttl="3" id="example/loader" style="position: fixed;
+   <div ng-http-loader methods="['GET']" ttl="2" id="example/loader" style="position: fixed;
   left: 50%;
   top: 40%;z-index:9999"
 		template="index/example-loader.tpl"></div>
@@ -78,8 +78,8 @@
       <script src = "static/js/lib/angular-aria.min.js"></script>
       <script src = "static/js/lib/angular-messages.min.js"></script>
       <script src = "static/js/lib/angular-material.min.js"></script>
-      <link rel = "stylesheet"
-         href = "https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+    <!--   <link rel = "stylesheet"
+         href = "https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css"> -->
     
       
 	<!-- <script type='text/javascript'

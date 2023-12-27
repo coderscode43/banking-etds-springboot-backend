@@ -142,12 +142,12 @@
 <div id="page-wrapper">
 
 	<div class="container-fluid">
-	<button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
+	<!-- <button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
 					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
 						 onClick="refreshPageButton()"><i
-						class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh<span class="tooltiptext tooltip-top">Refresh or Press F5</span></button>
+						class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh<span class="tooltiptext tooltip-top">Refresh or Press F5</span></button> -->
 		<div class="col-md-12 "
-			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
+			style="padding-left: 0px; font-size: 12pxp; margin-top: 1%">
 			<div class="heading">
 				<strong>Logs</strong>
 			</div>
@@ -176,6 +176,14 @@
 								<input type="text" ng-model="cCctr.search.entity"
 									class="form-control" placeholder="Entity" style="width: 100%">
 					</div>
+					
+					<div class="col-md-3">
+						<h6>
+							<b>IP-Address</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.ipaddrs"
+									class="form-control" placeholder="ipaddrs" style="width: 100%">
+					</div>
 
 
 				</div>
@@ -202,13 +210,7 @@
 					</div>
 
 
-					<div class="col-md-3">
-						<h6>
-							<b>IP-Address</b>
-							<h6>
-								<input type="text" ng-model="cCctr.search.ipaddrs"
-									class="form-control" placeholder="ipaddrs" style="width: 100%">
-					</div>
+					
 				</div>
 				<div class="row">
 					<div class="col-md-3">
@@ -219,7 +221,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="row text-right" id="hide">
+		<!-- 	<div class="row text-right" id="hide">
 				<div class="col-md-4" style="margin-left: 60%; margin-top: -44px">
 					<button ng-click="cCctr.searchEntities(true,'logs','logs')"
 					style="background-image: linear-gradient(to right, #093028 0%, #237A57  51%, #093028  100%)"
@@ -231,11 +233,39 @@
 						data-target="#collapseExample4" aria-expanded="false"
 						aria-controls="collapseExample"><i
 											class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;Advance Search<span class="tooltiptext tooltip-top2">Advanced Search Button</span></button>
-					<!-- <button type="button" class="btn btn-primary"
-					ng-click="cCctr.gotoListPage('form26QDeductee','addForm26QDeductee');">Add</button> -->
+					<button type="button" class="btn btn-primary"
+					ng-click="cCctr.gotoListPage('form26QDeductee','addForm26QDeductee');">Add</button>
 					<div class="text-right"></div>
 				</div>
-			</div>
+			</div> -->
+			
+			
+			
+			
+			<div style="right: 3%; position: absolute; gap: 20px;display:flex;margin-top: -3%;"
+		class="">
+
+
+		<button  ng-click="cCctr.searchEntities(true,'logs','logs')"
+			class="btn btn-success mobile tool" onclick="scrollWin()">
+			<i class="fa fa-search border-0 p-0"
+				style="color: inherit; background-color: transparent;font-size: large;"></i>
+		<span class="tooltiptext tooltip-top">Search Button</span> </button>
+
+		<button class="btn btn-primary mobile collapsed tool"
+			style="background-color: #FFA500; border-color: #FFA500;"
+			data-toggle="collapse" data-target="#collapseExample4"
+			aria-expanded="false" data-parent="#navaccordion"
+			aria-controls="collapseExample">
+			<i class="fa fa-filter border-0 p-0"
+				style="color: #fff; background-color: transparent;font-size: large;"></i>
+		<span class="tooltiptext tooltip-top1">Advance Search Button</span></button>
+
+		
+		
+	
+
+	</div>
 
 
 
@@ -272,7 +302,7 @@
 										<th>IP Address</th>
 										<th><div class="autoResize">Entity</div></th>
 										<th>Date</th>
-										<th><div class="autoResize">Details</div></th>
+							<!-- 			<th><div class="autoResize">Details</div></th> -->
 										<th>Action</th>
 
 
@@ -291,7 +321,7 @@
 										<td>{{a.ipaddrs}}</td>
 										<td>{{a.entity}}</td>
 										<td>{{a.date | date:'dd-MM-yyyy'}}</td>
-										<td>{{a.details}}</td>
+							<!-- 			<td>{{a.details}}</td> -->
 										<td>{{a.action}}</td>
 
 									</tr>

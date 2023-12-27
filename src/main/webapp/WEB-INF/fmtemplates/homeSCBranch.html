@@ -72,28 +72,23 @@
 
 <div class=" page-wrapper chiller-theme ng-scope "
 	ng-Controller="CommonWOTController as cWctr">
-	
-					<img src="static/img/tdsosmart1.png" ng-click="cCctr.gotoHomePage()"
-						style="height: 165px;margin-left:2%;"
-						>
-				
-	
-	<a id="show-sidebar " class="btn btn-primary hide-on-desktop" style="z-index: 1000">
-		<i class="fa fa-bars"></i>
+
+	<img src="static/img/tdsosmart1.png" ng-click="cCctr.gotoHomePage()"
+		style="height: 165px; margin-left: 2%;"> <a
+		id="show-sidebar " class="btn btn-primary hide-on-desktop"
+		style="z-index: 1000"> <i class="fa fa-bars"></i>
 	</a>
-	<nav id="sidebar" class="sidebar-wrapper nav-side-menu nav-side-menus hide-on-desktop "
+	<nav id="sidebar"
+		class="sidebar-wrapper nav-side-menu nav-side-menus hide-on-desktop "
 		style="margin-top: -3px; background-color: #0F316D">
-		
-		
+
+
 		<div class="sidebar-content">
 			<div class="sidebar-brand" style="box-shadow: 0px 5px;">
-			<!-- ng-click="cCctr.gotoListPage('homeSCHomepage','homeSCHomepage')" -->
-				<div
-					ng-click="cCctr.gotoHomePage()"
-					style="color: white">
+				<!-- ng-click="cCctr.gotoListPage('homeSCHomepage','homeSCHomepage')" -->
+				<div ng-click="cCctr.gotoHomePage()" style="color: white">
 					<img src="static/img/tdsosmart1.png"
-						style="height: 165px; width: 140%; margin-left: 14%;"
-						>
+						style="height: 165px; width: 140%; margin-left: 14%;">
 				</div>
 				<div onclick="slideIn()" style="margin-left: 40%; margin-top: -35%">
 					<i class="fa fa-times"></i>
@@ -106,8 +101,12 @@
 			<div class="sidebar-menu">
 				<ul id="menu-content" class="menu-list">
 
-				<li ui-sref="logout" onclick="scrollWin()"><a><i
-							class="fa fa-power-off" aria-hidden="true"></i><b>logout</b> </a></li>
+					<!-- <li ui-sref="logout" onclick="scrollWin()"><a><i
+							class="fa fa-power-off" aria-hidden="true"></i><b>logout</b> </a></li> -->
+					<li class="nav-item pointer" data-toggle="modal"
+						data-target="#myModal2" data-backdrop="false"><a
+						class="nav-link"><i class="fa fa-power-off" aria-hidden="true"></i>
+							<b>logout</b> </a></li>
 
 					<!-- sidebar-menu  -->
 			</div>
@@ -320,7 +319,7 @@
 
 <div id="myModal" class="modal" role="dialog">
 	<div class="modal-dialog modal-sm">
-		
+
 		<div class="modal-content">
 			<div class="modal-header">
 				<h4 style="color: red;">
@@ -335,7 +334,7 @@
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="msg" style="font-size: 18px;">
-						<p>Do you really want to delete these User?</p>
+							<p>Do you really want to delete these User?</p>
 						</div>
 					</div>
 				</div>
@@ -343,13 +342,46 @@
 			<div class="modal-footer">
 				<button type="button" class="btn btn-success" data-dismiss="modal"
 					ng-click="cCctr.deleteById('userDetails',cCctr.delete)">Yes</button>
-					<button type="button" class="btn btn-danger" data-dismiss="modal"
+				<button type="button" class="btn btn-danger" data-dismiss="modal"
 					ng-click="cCctr.reload();">No</button>
 				<!-- id="reload" -->
 			</div>
 		</div>
 	</div>
 </div>
+<!-- logout modal -->
+<div id="myModal2" class="modal" role="dialog">
+	<div class="modal-dialog modal-sm">
+		
+		<div class="modal-content">
+			<div class="modal-header" style="background-color: #505d82 ">
+				<h4 style="color: white;">
+					<!--  <picture>
+					<source type="image/webp" srcset="static/img/errorNew.webp">
+					<img src="./././static/img/errorNew.png" height="30" width="30">
+					</picture> -->
+					<span class="headingMsg">Are you sure?</span>
+				</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="msg" style="font-size: 18px;">
+						<p>Do you want to logout !!!</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-success" data-dismiss="modal"	
+					ng-click="cCctr.logout()">Yes</button>
+					<button  id="reload" type="button" class="btn btn-default" data-dismiss="modal"
+					ng-click="cCctr.reload()">No</button>
+				<!-- id="reload" -->
+			</div>
+		</div>
+	</div>
+   </div>       
 
 
 
@@ -435,8 +467,7 @@
 	});
 </script>
 <script>
-
-function refreshPageButton(){
-    window.location.reload();
-} 
+	function refreshPageButton() {
+		window.location.reload();
+	}
 </script>

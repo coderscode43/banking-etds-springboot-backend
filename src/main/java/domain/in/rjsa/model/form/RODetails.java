@@ -7,14 +7,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 import org.hibernate.annotations.GenericGenerator;
-
 
 import lombok.Data;
 @Data
 @Entity
-@Table(name = "form.RODetails")
+@Table(name = "AAACU3561B_form.RODetails")
 public class RODetails extends CommonModelAbstract {
 	
 
@@ -25,7 +23,7 @@ public class RODetails extends CommonModelAbstract {
 		@Column(name = "id")
 		private Long id;
 		@Column(name = "roCode")
-		private Long roCode;
+		private String roCode;
 		@Column(name = "roName")
 		private String roName;
 		@Column(name = "roAddress")

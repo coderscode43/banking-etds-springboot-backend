@@ -1,0 +1,374 @@
+<style>
+.pushable {
+	background: hsl(205.3, 80.4%, 56.1%, 0.84);
+	border-radius: 12px;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	outline-offset: 4px;
+}
+
+.front {
+	display: block;
+	padding: 7px 14px;
+	border-radius: 12px;
+	font-size: 1.45rem;
+	background: hsl(205.3, 80.4%, 56.1%);
+	color: white;
+	transform: translateY(-6px);
+}
+
+.pushable:active .front {
+	transform: translateY(-2px);
+}
+
+.front:hover {
+	background: hsl(205.2, 80.7%, 42.7%);
+}
+/*Refresh button  */
+.tooltip-top {
+	bottom: 85%;
+	margin-left: -7%;
+}
+/*Add Button  */
+.tooltip-top1 {
+	bottom: 125%;
+	margin-left: -67%;
+}
+/*Back button  */
+.tooltip-top2 {
+	bottom: 125%;
+	margin-left: -67%;
+}
+
+.red {
+	color: red;
+}
+</style>
+
+
+<div id="page-wrapper">
+	<div class="container-fluid">
+		<button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
+			style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%); float: right;"
+			onClick="refreshPageButton()">
+			<i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh <span
+				class="tooltiptext tooltip-top">Refresh Button</span>
+		</button>
+		<div class="col-md-12 " style="margin: 2% 0 2% 0; font-size: 12pxp">
+			<div class="heading" style="margin-left: 13%;">
+				<strong>Add Correction Request</strong>
+
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-8">
+				<div class="tab-pane fade active in">
+					<form name="fileForm" class="form-horizontal" role="form"
+						enctype="multipart/form-data"
+						style="font-size: 20px; margin-left: 134px; margin-right: -134px;">
+						<!-- Hidden Filed -->
+						<div class="row">
+							<!-- <div class="col-md-4">
+								<div class="">
+									<label style="font-size: 15px">Ticket Number<span
+										class="red">*</span></label>   
+										<input title="Ticket Number" class="form-control"  name="ticketNumber" id="ticketNumber"
+										ng-model="cCctr.entity.ticketNumber"
+										placeholder="Ticket Number" 
+										ng-required="true">
+								
+								<span style="color: red"
+										ng-show="fileForm.submitted || fileForm.ticketNumber.$dirty && fileForm.ticketNumber.$invalid">
+										<span class="error" ng-show="fileForm.ticketNumber.$error.required">
+											Ticket is Required </span>
+									</span>			
+							</div>	</div> -->
+							
+							<div class="col-md-6">
+								<div>
+									<label style="font-size: 15px">Financial Year<span
+										class="red">*</span></label> <select class="form-control" id="fy"
+										name="fy" title="Select Financial Year"
+										ng-model="cCctr.entity.fy" ng-required="true">
+										<option disabled value="">Select financial Year</option>
+										<#list financialYear as year>
+										<option value="${year}">${year}</option>
+										</#list>
+									</select>
+
+								</div>
+								<span style="color: red"
+									ng-show="fileForm.submitted || fileForm.fy.$dirty && fileForm.fy.$invalid">
+									<span class="error" ng-show="fileForm.fy.$error.required">
+										Financial Year is Required </span>
+								</span>
+							</div>
+							<div class="col-md-6">
+								<div>
+									<label style="font-size: 15px"> Quarter<span
+										class="red">*</span></label><select class="form-control" id="Quarter"
+										name="quarter" title="Select Quarter Year"
+										ng-model="cCctr.entity.quarter" ng-required="true">
+										<option disabled value="">Select Quarter</option>
+										<#list Quarter as quarter>
+										<option value="${quarter}">${quarter}</option>
+										</#list>
+									</select>
+								</div>
+								<span style="color: red"
+									ng-show="fileForm.submitted || fileForm.quarter.$dirty && fileForm.quarter.$invalid">
+									<span class="error" ng-show="fileForm.quarter.$error.required">
+										Quarter is Required </span>
+								</span>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-4">
+								<div>
+									<label style="font-size: 15px">Name of Customer<span
+										class="red">*</span></label> <input class="form-control"
+										title="Name of Customer" name="nameOfCust" id="nameOfCust"
+										ng-maxlength="15" ng-model="cCctr.entity.nameOfCust"
+										placeholder="Name of Customer" class="form-control"
+										ng-required="true">
+								</div>
+								<span style="color: red"
+									ng-show="fileForm.submitted || fileForm.nameOfCust.$dirty && fileForm.nameOfCust.$invalid">
+									<span class="error"
+									ng-show="fileForm.nameOfCust.$error.required"> Name of
+										Customer Id is Required </span> <span class="error"
+									ng-show="fileForm.nameOfCust.$error.maxlength"> Name of
+										Customer Id is less than 15 Characters. </span>
+								</span>
+							</div>
+							<div class="col-md-4">
+								<div>
+									<label style="font-size: 15px">PAN Number<span
+										class="red">*</span></label> <input class="form-control"
+										name="panOfCust" id="panOfCust" title="Enter PAN Number"
+										ng-model="cCctr.entity.panOfCust" placeholder="PAN"
+										ng-pattern="/^([A-Za-z]{5}[0-9]{4}[A-Za-z]{1})*$/" style="text-transform:uppercase"
+										class="form-control" ng-required="true">
+								</div>
+								<span style="color: red"
+									ng-show="fileForm.submitted || fileForm.panOfCust.$dirty && fileForm.panOfCust.$invalid">
+									<span class="error"
+									ng-show="fileForm.panOfCust.$error.required"> PAN is
+										Required </span> <span class="error" id="panOfCust"></span> <span
+									class="error" ng-show="fileForm.panOfCust.$error.pattern">Please
+										enter valid Pan</span>
+								</span>
+							</div>
+							<div class="col-md-4">
+								<div style="margin-left: 0%">
+									<label style="font-size: 15px">Type Of Correction<span
+										class="red">*</span></label> <select class="form-control"
+										ng-model="cCctr.entity.typeOfCorrection" id="typeOfCorrection"
+										name="typeOfCorrection" ng-required="true"
+										title="Select Type Of Correction">
+										<option disabled value="">Select Type Of Correction</option>
+										<#list typeOfCorrection as tos>
+										<option value="${tos}">${tos}</option>
+										</#list>
+									</select>
+								</div>
+								<span style="color: red"
+									ng-show="fileForm.submitted || fileForm.typeOfCorrection.$dirty && fileForm.typeOfCorrection.$invalid">
+									<span class="error"
+									ng-show="fileForm.typeOfCorrection.$error.required">
+										Type Of Correction is Required </span>
+								</span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div style="margin-left: 0%">
+									<label style="font-size: 15px">Branch Code<span
+										class="red">*</span></label> <input class="form-control"
+										name="branchCode" title="Enter Branch Code" id="branchCode"
+										ng-maxlength="10"
+										type="number" ng-model="cCctr.entity.branchCode" min="1"
+										placeholder="Branch Code" required></input>
+								</div>
+								<span style="color: red"
+									ng-show="fileForm.submitted || fileForm.branchCode.$dirty && fileForm.branchCode.$invalid">
+									<span class="error"
+									ng-show="fileForm.branchCode.$error.required">Branch
+										Code is Required </span>
+								<span class="error"
+									ng-show="fileForm.branchCode.$error.maxlength">Branch
+										Code should less then 10 </span>
+								
+								
+								</span>
+							</div>
+							<div class="col-md-6">
+								<div>
+									<label style="font-size: 15px">Employee Number<span
+										class="red">*</span></label> <input class="form-control"
+										title="Name Of Request" name="empNo" id="empNo"
+										ng-maxlength="15" ng-model="cCctr.entity.empNo"
+										placeholder="Employee Number" class="form-control" required>
+								</div>
+								<span style="color: red"
+									ng-show="fileForm.submitted || fileForm.empNo.$dirty && fileForm.empNo.$invalid">
+									<span class="error" ng-show="fileForm.empNo.$error.required">Employee
+										Number Id is Required </span> <span class="error"
+									ng-show="fileForm.empNo.$error.maxlength">Employee
+										Number Id is less than 15 Characters. </span>
+								</span>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-12">
+								<div class="">
+									<label style="font-size: 15px">Remark for Correction<span class="red">*</span></label>
+									<textarea class="form-control" name="remark" title="Add Remark"
+										id="remark" ng-model="cCctr.entity.remark"
+										style="width: 100%;" ng-required="true"></textarea>
+									<span style="color: red"
+										ng-show="fileForm.submitted || fileForm.remark.$dirty && fileForm.remark.$invalid">
+										<span class="error" ng-show="fileForm.remark.$error.required">Remark 
+											is Required </span>
+									</span>
+								</div>
+							</div>
+						</div>
+					
+				
+		
+		<div class="col-md-12 " style="margin: 2% 0 2% 0; font-size: 12pxp">
+			<div class="heading" style="margin-left: 13%;">
+				<strong>Add Correction Amount Details</strong>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="tab-pane fade active in">
+					
+						<!-- Hidden Filed -->
+						<div class="row">
+							<div class="col-md-4">
+								<div>
+									<label style="font-size: 15px">Date Of Payment<span
+										class="red">*</span></label> <input class="form-control" type="Date"
+										title="Date Of Payment" name="dateOfPayment"
+										id="dateOfPayment" ng-model="cCctr.entity.dateOfPayment"
+										placeholder="Date Of Payment" class="form-control" ng-required="true">
+								</div>
+								<span style="color: red"
+									ng-show="fileForm.submitted || fileForm.dateOfPayment.$dirty && fileForm.dateOfPayment.$invalid">
+									<span class="error"
+									ng-show="fileForm.dateOfPayment.$error.required"> Date
+										of Payment is Required </span>
+								</span>
+							</div>
+
+							<div class="col-md-4">
+								<div>
+									<label style="font-size: 15px" class="required-field">Amount Paid<span
+										class="red">*</span></label> <input class="form-control" type="number"
+										title="Amount Paid" name="amountPaid" id="amountPaid" min = "0"
+										ng-model="cCctr.entity.amountPaid" placeholder="Amount Paid"
+										class="form-control" ng-required="true">
+								</div>
+								<span style="color: red"
+									ng-show="fileForm.submitted || fileForm.amountPaid.$dirty && fileForm.amountPaid.$invalid">
+									<span class="error"
+									ng-show="fileForm.amountPaid.$error.required"> Amount
+										Paid is Required </span>
+								</span>
+							</div>
+							<div class="col-md-4">
+								<div>
+									<label style="font-size: 15px">TDS<span class="red">*</span></label>
+									<input class="form-control" title="tds" name="tds" id="tds" 
+										ng-model="cCctr.entity.tds" placeholder="TDS" type="number" min = "0"
+										class="form-control" ng-required="true">
+								</div>
+								<span style="color: red"
+									ng-show="fileForm.submitted || fileForm.tds.$dirty && fileForm.tds.$invalid">
+									<span class="error" ng-show="fileForm.tds.$error.required">
+										TDS is Required </span>
+								</span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div>
+									<label style="font-size: 15px">Amount Paid 26AS<span
+										class="red">*</span></label> <input class="form-control"
+										title="Amount Paid 26AS" name="amountPaid26as" type="number" min = "0"
+										id="amountPaid26as" ng-model="cCctr.entity.amountPaid26as"
+										placeholder="Amount Paid 26AS" class="form-control" ng-required="true">
+								</div>
+								<span style="color: red"
+									ng-show="fileForm.submitted || fileForm.amountPaid26as.$dirty && fileForm.amountPaid26as.$invalid">
+									<span class="error"
+									ng-show="fileForm.amountPaid26as.$error.required">
+										Amount Paid 26AS is Required </span>
+								</span>
+							</div>
+							<div class="col-md-6">
+								<div>
+									<label style="font-size: 15px">TDS 26AS<span
+										class="red">*</span></label> <input class="form-control"
+										title="TDS 26AS" name="tds26as" id="tds26as"   type="number" min = "0"
+										ng-model="cCctr.entity.tds26as" placeholder="TDS 26AS"
+										class="form-control" ng-required="true">
+								</div>
+								<span style="color: red"
+									ng-show="fileForm.submitted || fileForm.tds26as.$dirty && fileForm.tds26as.$invalid">
+									<span class="error" ng-show="fileForm.tds26as.$error.required">
+										TDS 26AS is Required </span>
+								</span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="">
+									<label style="font-size: 15px">Remark for amount Correction<span class="red">*</span></label>
+									<textarea class="form-control" name="amountRemark" title="Add Remark"
+										id="amountRemark" ng-model="cCctr.entity.amountRemark"
+										style="width: 100%;" required></textarea>
+									<span style="color: red"
+										ng-show="fileForm.submitted || fileForm.amountRemark.$dirty && fileForm.amountRemark.$invalid">
+										<span class="error" ng-show="fileForm.amountRemark.$error.required">Remark
+											is Required </span>
+									</span>
+								</div>
+							</div>
+						</div>
+					
+				</div>
+			</div>
+		</div>
+
+
+		<div class="modal-footer" style="text-align: center">
+			<button class="pushable tool"
+				style="background: hsl(115.5, 77.1%, 30.8%, 0.54); margin-top: 2%;"
+				data-dismiss="modal"
+				ng-click="fileForm.submitted=true;cCctr.submit(fileForm.$valid,cCctr.entity,'correctionRequest','close')"
+				ng-required="true">
+				<span class="front" style="background: hsl(115.5, 77.1%, 30.8%);">
+					Add <span class="tooltiptext tooltip-top1">Add Button</span>
+				</span>
+			</button>
+			<button class="pushable tool"
+								style="background: hsl(11.2, 81.2%, 37.5%, 0.53); margin-top: 2%;"
+									ng-click="cCctr.gotoListPage('correctionRequest','correctionRequest')">
+							     
+								<span class="front" style="background: hsl(11.2, 81.2%, 37.5%);">
+									Back<span class="tooltiptext tooltip-top2">close Button</span></span>
+							</button>
+			</div>
+		
+		</form>
+	</div>	</div>
+	</div>	
+</div>
+</div>

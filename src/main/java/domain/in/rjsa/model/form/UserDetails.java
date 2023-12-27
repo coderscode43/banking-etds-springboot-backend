@@ -8,7 +8,7 @@ import javax.persistence.Table;
 import lombok.Data;
 @Data
 @Entity
-@Table(name = "form.userDetails")
+@Table(name = "AAACU3561B_form.userDetails")
 public class UserDetails extends CommonModelAbstract<UserDetails>{
 	
 	/**

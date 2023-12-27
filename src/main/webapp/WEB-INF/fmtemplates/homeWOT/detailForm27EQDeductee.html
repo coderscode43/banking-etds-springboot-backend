@@ -892,7 +892,7 @@ margin-left:-93%;
 								<div class="col-md-6">
 
 									<label style="font-size: 12px;">Interest On Short
-										Deduction *</label> <input class="form-control" type="text"
+										Deduction <span style="color:red;">*</span></label> <input class="form-control" type="text"
 										name="InterestOnShortDeduction"
 										placeholder="Interest On Short Deduction"
 										ng-model="cCctr.entity.InterestOnShortDeduction"
@@ -1146,7 +1146,7 @@ margin-left:-93%;
 									<button class="pushable darkblue"
 										style="background: hsl(224.9, 87.1%, 39.4%, 0.59); margin-top: 2%;"
 										data-dismiss="modal"
-										ng-click="cCctr.updateData(true,cCctr.entity,'form27EQDeductee')">
+										ng-click="cCctr.updateForm(true,cCctr.entity,'form27EQDeductee')">
 										<span class="front darkbluespan"
 											style="background: hsl(224.9, 87.1%, 39.4%);"> Update</span>
 									</button>
@@ -1165,4 +1165,34 @@ margin-left:-93%;
 		</div>
 	</div>
 
+</div>
+
+<!-- Success Modal -->
+<div id="successMsgDetail" class="modal" role="dialog">
+	<div class="modal-dialog modal-sm">
+		Modal content
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 style="color: green;">
+					<picture>
+					<source type="image/webp" srcset="static/img/success.webp">
+					<img src="./././static/img/success.webp" height="30" width="30">
+					</picture>
+					<span class="headingMsg"></span>
+				</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="msg" style="font-size: 18px;"></div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal"
+					ng-click="cCctr.gotoWFYDetailPage('form27EQDeductee',cCctr.entity.deductee.id,'detailForm27EQDeductee')">Ok</button>
+				<!-- id="reload" -->
+			</div>
+		</div>
+	</div>
 </div>

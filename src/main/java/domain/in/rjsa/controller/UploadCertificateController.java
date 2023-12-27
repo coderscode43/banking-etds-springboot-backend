@@ -26,36 +26,6 @@ public class UploadCertificateController extends AbstractControllerForm<Long, Up
 	
 	static final org.slf4j.Logger logger = LoggerFactory.getLogger(UploadCertificateController.class);
 
-//	@RequestMapping(value = "/{fy}/{q}/{type}", method = RequestMethod.POST)
-//	public void getStatus(HttpServletRequest request, HttpServletResponse response,@RequestParam("file") MultipartFile file,
-//			@PathVariable("fy") String fy, @PathVariable("q") String q, @PathVariable("type") String type) throws IOException {
-//		
-//		String zipPath = System.getProperty("user.home") + "/download/" + fy + "/" + q + "/" + type+ "/" + file;
-//		File doc = new File(zipPath);
-//		OutputStream out = new FileOutputStream(doc);
-//		out.close();
-//
-//	}
-	
-	
-	
-	
-	
-	
-
-//	public void save(LinkedHashMap<String, Object> map, MultipartFile file) {
-//		UploadCertificate doc = new UploadCertificate();
-//		Login l = applicationCache.getLoginDetail(getPrincipal());
-//		doc.setTAN(file.getOriginalFilename());
-//		try {
-//			doc.setZipFile(file.getBytes());
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		getService().save(doc);
-//	}
-
 	@RequestMapping(value = "/addFile", method = RequestMethod.POST)
 	public ResponseEntity<?> addDocument(
 			@RequestParam("zipFile") MultipartFile downloadFile,
@@ -76,6 +46,8 @@ public class UploadCertificateController extends AbstractControllerForm<Long, Up
 				lessonMap.put("form", form);
 				// lessonMap.put("uploadedTime", uploadedTime);
 				service.saveDocument(downloadFile, lessonMap);
+				HashMap<String, Object> entity = new HashMap<>();
+				addLogs("Add");
 				return new ResponseEntity<>(HttpStatus.OK);
 
 			} else {

@@ -19,7 +19,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "FYDetails.regular27QDeductee")
+@Table(name = "AAACU3561B_2324.regular27QDeductee")
 public class Regular27QDeductee extends CommonModelAbstract {
 	/**
 	 * 
@@ -146,7 +146,7 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	public String TAN ;
 	
 	@Column(name = "roCode")
-	public Long roCode ;
+	public String roCode ;
 	
 	@Column(name = "errorDescription")
 	public String errorDescription ;
@@ -181,6 +181,12 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	
 	@Column(name = "deducteeSrNo")
 	public Long deducteeSrNo;
+	
+	@Column(name = "tranAmt")
+	public Long tranAmt;
+	
+	@Column(name = "additionalDetail")
+	public String additionalDetail;
 	
 	public void setEntity(Regular27QDeductee form27Q){
 		this.dateOfPayment=form27Q.getDateOfPayment();		
@@ -248,6 +254,9 @@ public class Regular27QDeductee extends CommonModelAbstract {
 //		this.uniqueAcknowledgeNo=regular27qWeb.getUniqueAcknowledgeNo();
 //		this.uniqueRefNo=regular27qWeb.getUniqueRefNo();
 //		this.warningDescription=regular27qWeb.getWarningDescription();
+//		this.tranAmt = entuty.getTranAmt();
+//		this.additionalDetail = entuty.getAdditionalDetail();
+		
 	}
 }
 

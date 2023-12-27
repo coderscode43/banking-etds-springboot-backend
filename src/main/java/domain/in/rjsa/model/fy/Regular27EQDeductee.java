@@ -21,7 +21,7 @@ import domain.in.rjsa.util.JsonDateSerializer;
 import lombok.Data;
 @Data
 @Entity
-@Table(name = "FYDetails.regular27EQDeductee")
+@Table(name = "AAACU3561B_2324.regular27EQDeductee")
 public class Regular27EQDeductee extends CommonModelAbstract {
 	/**
 	 * 
@@ -107,7 +107,7 @@ public class Regular27EQDeductee extends CommonModelAbstract {
 	@Column(name = "TAN")
 	public String TAN ;
 	@Column(name = "roCode")
-	public Long roCode ;
+	public String roCode ;
 	@Column(name = "sectionCode")
 	public String sectionCode ;
 	@Column(name = "errorDescription")
@@ -131,6 +131,12 @@ public class Regular27EQDeductee extends CommonModelAbstract {
 	
 	@Column(name = "deducteeSrNo")
 	public Long deducteeSrNo;
+	
+	@Column(name = "tranAmt")
+	public Long tranAmt;
+	
+	@Column(name = "additionalDetail")
+	public String additionalDetail;
 	
 	
 	/*
@@ -195,6 +201,8 @@ public class Regular27EQDeductee extends CommonModelAbstract {
 //		this.totalValueofPurchase=regular27eqWeb.getTotalValueofPurchase();
 //		this.uniqueRefNo=regular27eqWeb.getUniqueRefNo();
 //		this.warningDescription=regular27eqWeb.getWarningDescription();	
+//		this.tranAmt = entuty.getTranAmt();
+//		this.additionalDetail = entuty.getAdditionalDetail();
 		
 	}
 	

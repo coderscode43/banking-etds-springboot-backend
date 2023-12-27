@@ -324,7 +324,7 @@ public class BranchController extends AbstractController {
 
 		log.setAction(process);
 		log.setIpaddrs(getIp());
-		String s = getEntity().getName().replace(getEntity().getPackageName()+".","");
+		String s = getEntity().getName().replace(getEntity().getPackage().getName()+".","");
 //		String[] arrOfStr = s.split(".", 27);
 //		for (String a : arrOfStr)
 		log.setEntity(process+" "+ s);

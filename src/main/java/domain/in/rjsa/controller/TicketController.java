@@ -95,7 +95,7 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 		entity.put("userName", userName);
 		entity.put("branchCode",branchCode);
 		create(entity);
-		addLogs(entity, "Add");
+		addLogs("Add");
 		// ermsg.setMessage(" Saved Successfully");
 		return new ResponseEntity<Object>(HttpStatus.CREATED);
 	}
@@ -110,7 +110,7 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 		entity.put("userName", userName);
 		entity.put("branchCode",branchCode);
 		create(entity);
-		addLogs(entity,"Add");
+		addLogs("Add");
 		// ermsg.setMessage(" Saved Successfully");
 		return new ResponseEntity<Object>(HttpStatus.CREATED);
 	}
@@ -123,13 +123,8 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 		Ticket ticket = new Ticket();
 		adminValidation(entity);		String userName = getPrincipal();
 		entity.put("userName", userName);
-//		String form = entity.get("form").toString();
-//		String[] f = form.split(Pattern.quote("-"),-1);
-//		entity.put("form", f[0]);
 		create(entity);
-//		Login login = appliactionCache.getLoginDetail(userName);
-//		entity.put("id", login.getId());
-		addLogs(entity,"Add");
+		addLogs("Add");
 		
 		// ermsg.setMessage(" Saved Successfully");
 		return new ResponseEntity<Object>(HttpStatus.CREATED);
@@ -165,11 +160,6 @@ public class TicketController extends AbstractControllerForm<Long, Ticket, Ticke
 			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
 			map = mapper.readValue(json, new TypeReference<Map<String, String>>() {
 			});
-			for (String key : map.keySet()) {
-				if (key.endsWith("Code")) {
-					map.put(key, Long.valueOf((String) map.get(key)));
-				}
-			}
 			adminValidation(map);
 			//map.put("fy", fy);
 			map.put("branchCode", branchCode);

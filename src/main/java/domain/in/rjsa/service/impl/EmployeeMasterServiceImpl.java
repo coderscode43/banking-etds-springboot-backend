@@ -1,6 +1,7 @@
 package domain.in.rjsa.service.impl;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,6 +34,12 @@ implements EmployeeMasterService{
 
 	@Override
 	public String createUserExcel(LinkedHashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
 		return null;
 	}

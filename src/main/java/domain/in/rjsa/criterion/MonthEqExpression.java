@@ -6,7 +6,6 @@ import org.hibernate.HibernateException;
 import org.hibernate.criterion.CriteriaQuery;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.engine.spi.TypedValue;
-import org.hibernate.type.IntegerType;
 
 
 

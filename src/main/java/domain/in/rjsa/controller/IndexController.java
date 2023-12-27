@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,7 +54,7 @@ public class IndexController extends AbstractController {
 		String pageName = "resetPass";
 		return pageName;
 	}
-	
+
 	@RequestMapping(value = "/example-loader.tpl")
 	public String getLoader(ModelMap model) {
 		return "example-loader.tpl";
@@ -61,7 +62,7 @@ public class IndexController extends AbstractController {
 
 	@RequestMapping(value = "/home")
 	public String gethome(ModelMap model) {
-		
+
 		String branchCodeS = getBranchCode();
 		boolean isAdmin = false;
 		Long branchCode = 0L;
@@ -82,6 +83,9 @@ public class IndexController extends AbstractController {
 		model.addAttribute("Tan", StaticData.Tan);
 		model.addAttribute("Section", StaticData.Section);
 		model.addAttribute("Form", StaticData.Form);
+		model.addAttribute("status", StaticData.status);
+		model.addAttribute("typeOfCorrection", StaticData.typeOfCorrection);
+		model.addAttribute("State", StaticData.State);
 		// for Dashboard
 		model.addAttribute("statementStatus", applicationCache.getStatementStatus());
 		if (isAdmin) {
@@ -144,6 +148,9 @@ public class IndexController extends AbstractController {
 		model.addAttribute("Tan", StaticData.Tan);
 		model.addAttribute("Section", StaticData.Section);
 		model.addAttribute("Form", StaticData.Form);
+		model.addAttribute("status", StaticData.status);
+		model.addAttribute("typeOfCorrection", StaticData.typeOfCorrection);
+		model.addAttribute("State", StaticData.State);
 		// for Dashboard
 		model.addAttribute("statementStatus", applicationCache.getStatementStatus());
 		return "homeWOT";
@@ -167,6 +174,8 @@ public class IndexController extends AbstractController {
 		model.addAttribute("Quarter", StaticData.Quarter);
 		model.addAttribute("State", StaticData.State);
 		model.addAttribute("Form", StaticData.Form);
+		model.addAttribute("status", StaticData.status);
+		model.addAttribute("typeOfCorrection", StaticData.typeOfCorrection);
 		// for Dashboard
 		model.addAttribute("statementStatus", applicationCache.getStatementStatus());
 		return sendPage(action, page);
@@ -181,13 +190,15 @@ public class IndexController extends AbstractController {
 		model.addAttribute("State", StaticData.State);
 		model.addAttribute("Tan", StaticData.Tan);
 		model.addAttribute("Form", StaticData.Form);
+		model.addAttribute("status", StaticData.status);
+		model.addAttribute("typeOfCorrection", StaticData.typeOfCorrection);
 		// for Dashboard
 		model.addAttribute("statementStatus", applicationCache.getStatementStatus());
 		return sendPage(action, page);
 	}
 
-	@RequestMapping(value = "/list/{action}/{page}")
-	public String getListPage(@PathVariable String action, @PathVariable String page, ModelMap model) {
+	@RequestMapping(value = "/list/{action}/{page}/{pageParam}")
+	public String getListPage(@PathVariable String action, @PathVariable String page,  @PathVariable String pageParam, ModelMap model) {
 		setStaticData();
 		model.addAttribute("typeOfUser", getBranchCode());
 		model.addAttribute("financialYear", StaticData.financialYear);
@@ -198,6 +209,9 @@ public class IndexController extends AbstractController {
 		model.addAttribute("Tan", StaticData.Tan);
 		model.addAttribute("Section", StaticData.Section);
 		model.addAttribute("Form", StaticData.Form);
+		model.addAttribute("status", StaticData.status);
+		model.addAttribute("typeOfCorrection", StaticData.typeOfCorrection);
+		model.addAttribute("State", StaticData.State);
 //		model.addAttribute("TanDB", applicationCache.getTanDB());
 		// for Dashboard
 		model.addAttribute("statementStatus", applicationCache.getStatementStatus());
@@ -217,10 +231,12 @@ public class IndexController extends AbstractController {
 		model.addAttribute("Tan", StaticData.Tan);
 		model.addAttribute("Section", StaticData.Section);
 		model.addAttribute("Form", StaticData.Form);
+		model.addAttribute("status", StaticData.status);
+		model.addAttribute("typeOfCorrection", StaticData.typeOfCorrection);
 //		model.addAttribute("TanDB", applicationCache.getTanDB());
 		// for Dashboard
 		model.addAttribute("statementStatus", applicationCache.getStatementStatus());
-		//get branch Details based on branchCode.
+		// get branch Details based on branchCode.
 		Branch branch = applicationCache.getBranch(branchCode);
 		model.addAttribute("branchName", branch.getBranchName());
 		model.addAttribute("branchCode", String.valueOf(Integer.parseInt(branchCode.toString())));
@@ -328,7 +344,23 @@ public class IndexController extends AbstractController {
 					StaticData.command = xString;
 					// model.addAttribute("ChallanMismatch", stringArray);
 					break;
-
+				case "status":
+					xString = list1.getValue();
+					stringArray = xString.split(",");
+					StaticData.status = stringArray;
+					// model.addAttribute("ChallanMismatch", stringArray);
+					break;
+				case "typeOfCorrection":
+					xString = list1.getValue();
+					stringArray = xString.split(",");
+					StaticData.typeOfCorrection = stringArray;
+					// model.addAttribute("ChallanMismatch", stringArray);
+					break;
+				case "documentSave":
+					xString = list1.getValue();
+					StaticData.documentSave = xString;
+					// model.addAttribute("ChallanMismatch", stringArray);
+					break;
 				default:
 					System.out.println("Not Match");
 					break;

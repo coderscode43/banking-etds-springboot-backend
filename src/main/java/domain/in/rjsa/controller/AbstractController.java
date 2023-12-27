@@ -1,3 +1,4 @@
+
 package domain.in.rjsa.controller;
 
 import java.net.InetAddress;
@@ -19,76 +20,76 @@ public class AbstractController {
 
 	@Autowired
 	ApplicationCache applicationCache;
-	
+
 	static final Logger logger = LoggerFactory.getLogger(IndexController.class);
 /////////////////////////////////KARNATAKA BANK////////////////////////////////////////	
 
-	public String getBranchCode() {
-		LdapContext ctxGC = null;
-		CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication()
-				.getPrincipal();
-		;
-		if (applicationCache.getAdminUser(getPrincipal()) != null) {
-			return "admin";
-
-		} else {
-			String branch = userDetails.getPhysicalDeliveryOfficeName();
-			try {
-				int b = Integer.valueOf(branch);
-				return String.valueOf(b);
-			} catch (Exception e) {
-				// TODO: handle exception
-				logger.info("Login as:",branch);
-				return branch;
-			}
-		}
-
-	}
-	
-	
-/////////////////////////////////UCO BANK////////////////////////////////////////
-	
 //	public String getBranchCode() {
-////		LdapContext ctxGC = null;
-//		Object userDetails =  SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//		LdapContext ctxGC = null;
+//		CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication()
+//				.getPrincipal();
+//		;
 //		if (applicationCache.getAdminUser(getPrincipal()) != null) {
 //			return "admin";
 //
 //		} else {
-//			String branch = ((UserDetails) userDetails).getUsername();
+//			String branch = userDetails.getPhysicalDeliveryOfficeName();
 //			try {
-//				int b = Integer.parseInt(branch);
+//				int b = Integer.valueOf(branch);
 //				return String.valueOf(b);
 //			} catch (Exception e) {
 //				// TODO: handle exception
-//				return branch;//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx // if check for branch change to "1"
+//				logger.info("Login as:",branch);
+//				return branch;
 //			}
 //		}
 //
 //	}
-	
-	public void adminValidation(LinkedHashMap<String, Object> map) {
-		
-		if (!"admin".equals(getBranchCode())) {
-			Long b=1L;
+
+/////////////////////////////////UCO BANK and NIA////////////////////////////////////////
+
+	public String getBranchCode() {
+//		LdapContext ctxGC = null;
+		Object userDetails = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//		domain.in.rjsa.model.form.UserDetails user = applicationCache.getAdminUser(getPrincipal());
+//		if (user.getTypeOfUser().equalsIgnoreCase("admin")) {
+		if (applicationCache.getAdminUser(getPrincipal()) != null) {
+			return "admin";
+		} else {
+			String branch = ((UserDetails) userDetails).getUsername();
 			try {
-				b =Long.valueOf(getBranchCode());
-			}catch (Exception e) {
+				int b = Integer.parseInt(branch);
+				return String.valueOf(b);
+			} catch (Exception e) {
+				// TODO: handle exception
+				return branch;// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx // if check for branch change to "1"
+			}
+		}
+
+	}
+
+	public void adminValidation(LinkedHashMap<String, Object> map) {
+
+		if (!"admin".equals(getBranchCode())) {
+			Long b = 1L;
+			try {
+				b = Long.valueOf(getBranchCode());
+			} catch (Exception e) {
 				// TODO: handle exception
 			}
 			map.put("branchCode", b);
-		}else{
-			if(map.containsKey("branchCode")) {
-				Long b=1L;
+		} else {
+			if (map.containsKey("branchCode")) {
+				Long b = 1L;
 				try {
-					b =Long.valueOf(map.get("branchCode").toString());
-				}catch (Exception e) {
+					b = Long.valueOf(map.get("branchCode").toString());
+				} catch (Exception e) {
 					// TODO: handle exception
 				}
 				map.put("branchCode", b);
 			}
 		}
-		
+
 	}
 
 	public String getPrincipal() {

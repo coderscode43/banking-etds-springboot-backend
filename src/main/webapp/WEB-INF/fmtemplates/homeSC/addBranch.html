@@ -36,20 +36,21 @@ margin-left: -67%;
 						<div class="col-md-6">
 							<div class="form-group">
 								<h6>
-									<label>RO Code*</label>
+									<label>RO  Code</label><span style="color:red">*</span>
 								</h6>
 								<input class="form-control" type="text" name="roCode" title="Enter RO Code"
 									id="roCode" placeholder="ROCode" ng-model="cCctr.entity.roCode"
 									autocomplete="off" ng-required="true" ng-maxlength="10"
-									ng-pattern="/^[a-zA-Z0-9]*$/"
+									ng-pattern="/^[a-zA-Z0-9][a-zA-z0-9 -\]+$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
 									ng-show="formBranchDetails.submitted || formBranchDetails.roCode.$dirty && formBranchDetails.roCode.$invalid">
 									<span class="error"
-									ng-show="formRODetails.roCode.$error.pattern">Enter
+									ng-show="formBranchDetails.roCode.$error.pattern">Enter
 										valid RO Code </span> <span class="error"
 									ng-show="formBranchDetails.roCode.$error.maxlength">RO
-										Code should not be greater than 10 digits.</span> <span class="error"
+										Code should not be greater than 10 digits.</span>
+										 <span class="error"
 									ng-show="formBranchDetails.roCode.$error.required">RO
 										Code is Required.</span>
 								</span> <span class="error" id="roCode"></span>
@@ -59,20 +60,20 @@ margin-left: -67%;
 						<div class="col-md-6">
 							<div class="form-group">
 								<h6>
-									<label>Branch Code*</label>
+									<label>Branch Code<span style="color:red">*</span></label>
 								</h6>
 								<input class="form-control" type="text" name="branchCode" title="Enter Branch Code"
 									placeholder="Branch Code" ng-model="cCctr.entity.branchCode"
 									autocomplete="off" ng-required="true" ng-maxlength="10"
-									ng-pattern="/^[a-zA-Z0-9]*$/"
+									ng-pattern="/^[0-9]+$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
 									ng-show="formBranchDetails.submitted || formBranchDetails.branchCode.$dirty && formBranchDetails.branchCode.$invalid">
 									<span class="error"
-									ng-show="formBranchDetails.roCode.$error.pattern">Enter
+									ng-show="formBranchDetails.branchCode.$error.pattern">Enter
 										valid Branch Code </span> <span class="error"
 									ng-show="formBranchDetails.branchCode.$error.maxlength">Branch
-										Code should not be greater than 45 characters.</span> <span
+										Code should not be greater than 10 characters.</span> <span
 									class="error"
 									ng-show="formBranchDetails.branchCode.$error.required">Branch
 										Code is Required.</span>
@@ -84,17 +85,21 @@ margin-left: -67%;
 						<div class="col-md-6">
 							<div class="form-group">
 								<h6>
-									<label>Branch Name*</label>
+									<label>Branch Name<span style="color:red;">*</span></label>
 								</h6>
 								<input class="form-control" type="text" name="branchName" title="Enter Branch Name"
 									placeholder="Branch Name" ng-model="cCctr.entity.branchName"
-									autocomplete="off" ng-required="true"
+									autocomplete="off" ng-required="true" ng-pattern="/^[a-zA-Z0-9][a-zA-z0-9 -\]+$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
 									ng-show="formBranchDetails.submitted|| formBranchDetails.branchName.$dirty && formBranchDetails.branchName.$invalid">
 									<span class="error"
 									ng-show="formBranchDetails.branchName.$error.required">
 										Branch Name is Required</span>
+										<span class="error"
+									ng-show="formBranchDetails.branchName.$error.pattern">
+										Enter valid Branch Name</span>
+										
 								</span> <span class="error" id="branchName"></span>
 							</div>
 						</div>
@@ -102,7 +107,7 @@ margin-left: -67%;
 						<div class="col-md-6">
 							<div class="form-group">
 								<h6>
-									<label>Branch Email*</label>
+									<label>Branch Email<span style="color:red;">*</span></label>
 								</h6>
 								<input class="form-control" type="text" name="branchEmail" title="Enter Branch Email"
 									placeholder="Branch Email" ng-model="cCctr.entity.branchEmail"
@@ -125,7 +130,7 @@ margin-left: -67%;
 						<div class="col-md-6">
 							<div class="form-group">
 								<h6>
-									<label>Branch Contact No*</label>
+									<label>Branch Contact No<span style="color:red;">*</span></label>
 								</h6>
 								<input class="form-control" type="text" name="branchContactNo" title="Enter Branch Contact Number"
 									placeholder="Branch Contact No"
@@ -145,7 +150,7 @@ margin-left: -67%;
 						<div class="col-md-6">
 							<div class="form-group">
 								<h6>
-									<label>Branch Address*</label>
+									<label>Branch Address<span style="color:red;">*</span></label>
 								</h6>
 								<textarea class="form-control" name="branchAddress" title="Enter Branch Address"
 									placeholder="Branch Address"
@@ -167,7 +172,7 @@ margin-left: -67%;
 						<div class="col-md-6" style="margin-top: -21px;">
 							<div class="form-group">
 								<h6>
-									<label>Branch Pincode*</label>
+									<label>Branch Pincode<span style="color:red;">*</span></label>
 								</h6>
 								<input class="form-control" type="text" name="branchPinCode" title="Enter Branch Pincode"
 									placeholder="Branch Pincode"
@@ -189,7 +194,7 @@ margin-left: -67%;
 
 						<div class="col-md-6">
 							<div class="form-group">
-								<label style="font-size:12px">Branch State*</label> <select name="branchState"
+								<label style="font-size:12px">Branch State<span style="color:red;">*</span></label> <select name="branchState"
 									id="branchState" title="Select Branch State" class="form-control"
 									ng-model="cCctr.entity.branchState" ng-required="true"
 									ng-model-options="{updateOn: 'blur'}">
@@ -210,7 +215,7 @@ margin-left: -67%;
 							<div class="col-md-6">
 								<div class="form-group">
 									<h6>
-										<label>User Name*</label>
+										<label>User Name<span style="color:red;">*</span></label>
 									</h6>
 									<input class="form-control" type="text" id="userName" name="userName"
 										placeholder="User Name" ng-model="cCctr.entity.userName"
@@ -234,7 +239,7 @@ margin-left: -67%;
 								<div class="col-md-6">
 								<div class="form-group">
 									<h6>
-										<label>User PAN*</label>
+										<label>User PAN<span style="color:red;">*</span></label>
 									</h6>
 									<input class="form-control" type="text" name="pan" style="text-transform:uppercase"
 												placeholder="PAN" ng-model="cCctr.entity.pan" ng-pattern="/^([A-Za-z]{5}[0-9]{4}[A-Za-z]{1})*$/"
@@ -258,7 +263,7 @@ margin-left: -67%;
 						<div class="col-md-6">
 								<div class="form-group">
 									<h6>
-										<label>Enter Password*</label>
+										<label>Enter Password<span style="color:red;">*</span></label>
 									</h6>
 									<input type="password" class="form-control" name="passwordOfUser"
 										id="passwordOfUser"  placeholder="Enter New Password"
@@ -288,7 +293,7 @@ margin-left: -67%;
 								<div class="col-md-6">
 								<div class="form-group">
 									<h6>
-										<label>Confirm Password*</label>
+										<label>Confirm Password<span style="color:red;">*</span></label>
 									</h6>
 									<input type="password" class="form-control" name="password1"
 											id="password1" placeholder="Confirm New Password"

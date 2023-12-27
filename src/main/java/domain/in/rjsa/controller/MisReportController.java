@@ -48,7 +48,7 @@ public class MisReportController extends AbstractControllerFY<Long, MisReport, M
 	  String userName = getPrincipal(); 
 	  entity.put("userName", userName); 
 	  create(entity); 
-	  //addLogs(entity); // ermsg.setMessage(" Saved Successfully"); 
+	  addLogs("Add"); // ermsg.setMessage(" Saved Successfully"); 
 	  return new ResponseEntity<Object>(HttpStatus.CREATED);
 	  
 	  }

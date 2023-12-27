@@ -68,5 +68,11 @@ public class RemarkServiceNewImpl extends AbstractServiceForm<Long, Remark, Rema
 		
 	}
 
+	@Override
+	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

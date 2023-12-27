@@ -18,7 +18,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "FYDetails.G15")
+@Table(name = "AAACU3561B_2324.G15")
 public class G15 extends CommonModelAbstract{
 	
 	
@@ -156,7 +156,7 @@ private static final long serialVersionUID = 1L;
 	private Long branchCode;
 	
 	@Column(name = "roCode")
-	private Long roCode;
+	private String roCode;
 	
 	@Column(name = "tan")
 	private String tan;

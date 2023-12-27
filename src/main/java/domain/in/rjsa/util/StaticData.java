@@ -27,7 +27,9 @@ public class StaticData {
 	public static String CertificatePath =null;
 	public static String directDownloadAuth = "";
 	public static String command = null;
-	
+	public static String[] status = null;
+	public static String[] typeOfCorrection = null;
+	public static String documentSave = null;
 	
 	
 	/* public static String[] ChallanMismatch =null; */

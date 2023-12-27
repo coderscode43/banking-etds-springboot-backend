@@ -1,0 +1,986 @@
+
+<style>
+/*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+@media only screen and (max-width: 760px) , ( min-device-width : 768px)
+	and (max-device-width: 1024px) {
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr {
+		display: block;
+	}
+
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	tr {
+		margin: 0 0 1rem 0;
+	}
+	tr:nth-child(odd) {
+		background: #ccc;
+	}
+	td {
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee;
+		position: relative;
+		padding-left: 50%;
+	}
+	td:before {
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 0;
+		left: 6px;
+		width: 45%;
+		padding-right: 10px;
+		white-space: nowrap;
+	}
+
+	/*
+		Label the data
+    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+		*/
+}
+
+@media only screen and (max-width: 1000px) {
+	.one {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.two {
+		padding: 8px;
+	}
+}
+
+@media only screen and (min-width:600px) {
+	#three {
+		display: none;
+		max-height: 0;
+		overflow: hidden;
+	}
+}
+
+@media only screen and (min-width:1000px) {
+	#search {
+		margin-left: 45%;
+		margin-top: 2px;
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	#hide {
+		display: none;
+	}
+}
+
+.table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
+	{
+	background-color: whitesmoke;
+}
+
+@media ( min-width : 768px) {
+	.collapse.dont-collapse-sm {
+		display: block;
+		height: auto !important;
+		visibility: visible;
+	}
+}
+</style>
+
+
+
+
+<div id="page-wrapper" ng-init="cCctr.entity=cCctr.getEntityData();">
+	<div class="container-fluid">
+
+		<div ng-show="cCctr.show != true">
+
+			<div class="row">
+				<h3 class="page-header" style="margin-top: 2%;">
+					<Strong>Details Of Form 26Q Deductee</Strong>
+				</h3>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="text-left">
+						<button class="btn btn-primary" data-toggle="modal"
+							onclick="test('#profile')" onclick="scrollWin()">Edit</button>
+					</div>
+				</div>
+			</div>
+
+
+
+			<div class="panel panel-default"
+				style="margin-top: -2%; border: none !important;">
+				<div class="panel-body">
+					<br>
+
+
+
+					<h4>Deductee Details:</h4>
+
+					<div class="container">
+
+						<div class="collapse dont-collapse-sm" id="collapseExample2">
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-6">
+									<label>Challan Sr.No &nbsp;:</label>
+									{{cCctr.entity.deductee2.challanSrNo}}
+								</div>
+								<div class="col-md-6">
+									<label>Deductee Reference No.&nbsp;:</label>
+									{{cCctr.entity.deductee2.deducteeRefNo}}
+								</div>
+							</div>
+
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-6">
+									<label>Deductee Code &nbsp;:</label>
+									{{cCctr.entity.deductee2.deducteeCode}}
+								</div>
+
+								<div class="col-md-6">
+
+									<label>Deductee PAN&nbsp;:</label>
+									{{cCctr.entity.deductee2.deducteePan}}
+								</div>
+							</div>
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-6">
+									<label>Deductee Id &nbsp;:</label>
+									{{cCctr.entity.deductee2.deducteeId}}
+								</div>
+								<div class="col-md-6">
+									<label>Challan Heading&nbsp;:</label>
+									{{cCctr.entity.deductee2.challanHeading}}
+								</div>
+							</div>
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-6">
+									<label>Deductee Name&nbsp;:</label>
+									{{cCctr.entity.deductee2.deducteeName}}
+								</div>
+								<div class="col-md-6">
+									<label>Section Code &nbsp;:</label>
+									{{cCctr.entity.deductee2.sectionCode }}
+								</div>
+							</div>
+
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-6">
+									<label>Date of Payment&nbsp;:</label>
+									{{cCctr.entity.deductee2.paymentDate| date:'dd-MM-yyyy'}}
+								</div>
+								<div class="col-md-6">
+									<label>Paid Amount&nbsp;:</label>
+									{{cCctr.entity.deductee2.paidAmt}}
+								</div>
+							</div>
+							
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-6">
+									<label>Branch Code&nbsp;:</label>
+									{{cCctr.entity.deductee2.branchCode}}
+								</div>
+								<div class="col-md-6">
+									<label>CIF&nbsp;:</label>
+									{{cCctr.entity.deductee2.cif}}
+								</div>
+							</div>
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-6">
+									<label>Id Number&nbsp;:</label>
+									{{cCctr.entity.deductee2.idNo}}
+								</div>
+								<div class="col-md-6">
+									<label>Account Number&nbsp;:</label>
+									{{cCctr.entity.deductee2.accNo}}
+								</div>
+							</div>
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-6">
+									<label>Type&nbsp;:</label>
+									{{cCctr.entity.deductee2.type}}
+								</div>
+								<div class="col-md-6">
+									<label>Month&nbsp;:</label>
+									{{cCctr.entity.deductee2.month}}
+								</div>
+							</div>
+
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-6">
+									<label>TDS&nbsp;:</label> {{cCctr.entity.deductee2.tds}}
+								</div>
+								<div class="col-md-6">
+									<label>Surcharge &nbsp;:</label>
+									{{cCctr.entity.deductee2.surcharge}}
+								</div>
+							</div>
+
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-6">
+									<label>Education Cess &nbsp;:</label>
+									{{cCctr.entity.deductee2.eduCess}}
+								</div>
+								<div class="col-md-6">
+									<label>Total Tax Deducted &nbsp;:</label>
+									{{cCctr.entity.deductee2.totalTaxDeduct}}
+								</div>
+
+							</div>
+
+							<div class="row" style="font-size: 13px;">
+
+								<div class="col-md-6">
+									<label>Total Tax Deposited &nbsp;:</label>
+									{{cCctr.entity.deductee2.totalTaxDeposit}}
+								</div>
+								<div class="col-md-6">
+									<label>Deduct Date&nbsp;:</label>
+									{{cCctr.entity.deductee2.deductDate| date:'dd-MM-yyyy'}}
+								</div>
+
+							</div>
+							<div class="row" style="font-size: 13px;">
+
+								<div class="col-md-6">
+									<label>Rate Tax Deduct&nbsp;:</label>
+									{{cCctr.entity.deductee2.rateTaxDeduct}}
+								</div>
+								<div class="col-md-6">
+									<label>Remarks&nbsp;:</label>
+									{{cCctr.entity.deductee2.remarks}}
+								</div>
+
+							</div>
+							<div class="row" style="font-size: 13px;">
+
+								<div class="col-md-6">
+									<label>Certificate No.&nbsp;:</label>
+									{{cCctr.entity.deductee2.certificateNo}}
+								</div>
+								<div class="col-md-6">
+									<label>Financial Year&nbsp;:</label>
+									{{cCctr.entity.deductee2.fy}}
+								</div>
+
+							</div>
+							
+							<div class="row" style="font-size: 13px;">
+
+								<div class="col-md-6">
+									<label>Month.&nbsp;:</label>
+									{{cCctr.entity.deductee2.month}}
+								</div>
+								<div class="col-md-6">
+									<label>Remark&nbsp;:</label>
+									{{cCctr.entity.deductee2.remarks}}
+								</div>
+
+							</div>
+
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-6">
+									<label>Quarter &nbsp;:</label>
+									{{cCctr.entity.deductee2.quarter}}
+								</div>
+								<div class="col-md-6">
+									<div ng-if="cCctr.entity.deductee2.verify == 1">
+										<label>Verified &nbsp;:&nbsp;</label><i class="fa fa-check"
+											aria-hidden="true" style="color: #5cb85c"></i>
+									</div>
+									<div ng-if="cCctr.entity.deductee2.verify == 0">
+										<label>Verified &nbsp;:&nbsp;</label><i class="fa fa-times"
+											aria-hidden="true" style="color: #ff0000"></i>
+									</div>
+								</div>
+							</div>
+
+
+							<div>
+								<button
+									ng-click="profileForm.submitted=true;cCctr.updateData(profileForm.$valid,'form26QDeducteeDefault',cCctr.entity.deductee2,'closeU')"
+									class="btn btn-success" data-dismiss="model"
+									style="margin-left: 780px" onclick="scrollWin()">Save</button>
+								<button class="btn btn-danger"
+									onclick="history.back()">Back</button>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<div id="profile" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-md">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" id="closeU"
+						data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">
+						<strong>Edit Form 26Q Deductee Details</strong>
+					</h4>
+				</div>
+				<div class="modal-body">
+
+					<div id="myTabContent" class="tab-content">
+						<div class="tab-pane fade active in" id="signin">
+							<form name="profileForm" class="form-horizontal"
+								enctype="multipart/form-data">
+
+
+								<div class="row">
+									<div class="col-md-6">
+
+										<label>Challan Sr.No<span style="color:red;">*</span></label> <input class="form-control"
+											type="text" name="challanSrNo" placeholder="Challan Sr.No"
+											ng-model="cCctr.entity.deductee2.challanSrNo"
+											autocomplete="off" ng-pattern="/^[0-9]*$/" ng-maxlength="15"
+											ng-required="true" ng-model-options="{updateOn: 'blur'}" />
+										<span style="color: red"
+											ng-show="profileForm.submitted ||profileForm.challanSrNo.$dirty && profileForm.challanSrNo.$invalid">
+											<span class="error"
+											ng-show="profileForm.challanSrNo.$error.pattern">Please
+												enter valid ChallanSrNo. </span> <span class="error"
+											ng-show="profileForm.challanSrNo.$error.maxlength">ChallanSrNo
+												should not be greater than 15 characters.</span> <span
+											class="error"
+											ng-show="profileForm.challanSrNo.$error.required">ChallanSrNo
+												is Required.</span>
+										</span> <span class="error" id="challanSrNo"></span>
+
+									</div>
+
+									<div class="col-md-6">
+
+										<label>Deductee Reference No.<span style="color:red;">*</span></label> <input
+											class="form-control" type="text" name="deducteeRefNo"
+											placeholder="Deductee Reference No."
+											ng-model="cCctr.entity.deductee2.deducteeRefNo"
+											autocomplete="off" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+											ng-maxlength="45" ng-required="true"
+											ng-model-options="{updateOn: 'blur'}" /> <span
+											style="color: red"
+											ng-show="profileForm.submitted ||profileForm.deducteeRefNo.$dirty && profileForm.deducteeRefNo.$invalid">
+											<span class="error"
+											ng-show="profileForm.deducteeRefNo.$error.pattern">Please
+												enter valid DeducteeRefNo. </span> <span class="error"
+											ng-show="profileForm.deducteeRefNo.$error.maxlength">DeducteeRefNo
+												should not be greater than 45 characters.</span> <span
+											class="error"
+											ng-show="profileForm.deducteeRefNo.$error.required">DeducteeRefNo
+												is Required.</span>
+										</span> <span class="error" id="deducteeRefNo"></span>
+
+									</div>
+
+
+								</div>
+
+								<div class="row">
+									<div class="col-md-6">
+
+										<label>Deductee Code<span style="color:red;">*</span></label> <input class="form-control"
+											type="text" name="deducteeCode" placeholder="Deductee Code"
+											ng-model="cCctr.entity.deductee2.deducteeCode"
+											autocomplete="off" ng-maxlength="45" ng-required="true"
+											ng-model-options="{updateOn: 'blur'}" /> <span
+											style="color: red"
+											ng-show="profileForm.submitted ||profileForm.deducteeCode.$dirty && profileForm.deducteeCode.$invalid">
+											<span class="error"
+											ng-show="profileForm.deducteeCode.$error.maxlength">Deductee
+												Code should not be greater than 45 characters.</span> <span
+											class="error"
+											ng-show="profileForm.deducteeCode.$error.required">Deductee
+												Code is Required.</span>
+										</span> <span class="error" id="deducteeCode"></span>
+
+									</div>
+
+									<div class="col-md-6">
+
+										<label>Deductee PAN<span style="color:red;">*</span></label> <input class="form-control"
+											type="text" name="deducteePan" placeholder="Deductee PAN"
+											ng-model="cCctr.entity.deductee2.deducteePan"
+											autocomplete="off"
+											ng-pattern="/^[a-zA-Z]{5}[0-9]{4}[a-zA-Z]{1}$/"
+											ng-maxlength="45" ng-required="true"
+											ng-model-options="{updateOn: 'blur'}" /> <span
+											style="color: red"
+											ng-show="profileForm.submitted ||profileForm.deducteePan.$dirty && profileForm.deducteePan.$invalid">
+											<span class="error"
+											ng-show="profileForm.deducteePan.$error.pattern">Please
+												enter valid DeducteePan. </span> <span class="error"
+											ng-show="profileForm.deducteePan.$error.maxlength">DeducteePan
+												should not be greater than 45 characters.</span> <span
+											class="error"
+											ng-show="profileForm.deducteePan.$error.required">DeducteePan
+												is Required.</span>
+										</span> <span class="error" id="deducteePan"></span>
+
+									</div>
+
+
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<label>deductee Id</label> <input class="form-control"
+											type="text" name="deducteeId" placeholder="deductee Id"
+											ng-model="cCctr.entity.deductee2.deducteeId"
+											autocomplete="off" ng-pattern="/^[0-9]*$/" ng-maxlength="15" ng-required="true"
+											ng-model-options="{updateOn: 'blur'}" /> <span
+											style="color: red"
+											ng-show="profileForm.submitted ||profileForm.deducteeId.$dirty && profileForm.deducteeId.$invalid">
+											<span class="error"
+											ng-show="profileForm.deducteeId.$error.maxlength">Deductee
+												ID should not be greater than 15 characters.</span> <span
+											class="error"
+											ng-show="profileForm.deducteeId.$error.required">Deductee
+												ID is Required.</span>
+										</span> <span class="error" id="deducteeId"></span>
+
+									</div>
+
+									<div class="col-md-6">
+
+										<label>Challan Heading</label> <input class="form-control"
+											type="text" name="challanHeading" placeholder="Deductee PAN"
+											ng-model="cCctr.entity.deductee2.challanHeading"
+											autocomplete="off"
+											ng-pattern="/^[a-zA-Z0-9]*$/"
+											ng-maxlength="45" ng-required="true"
+											ng-model-options="{updateOn: 'blur'}" /> <span
+											style="color: red"
+											ng-show="profileForm.submitted ||profileForm.challanHeading.$dirty && profileForm.challanHeading.$invalid">
+											<span class="error"
+											ng-show="profileForm.challanHeading.$error.pattern">Please
+												enter valid challanHeading. </span> <span class="error"
+											ng-show="profileForm.challanHeading.$error.maxlength">challanHeading
+												should not be greater than 45 characters.</span> <span
+											class="error"
+											ng-show="profileForm.challanHeading.$error.required">challanHeading
+												is Required.</span>
+										</span> <span class="error" id="challanHeading"></span>
+
+									</div>
+
+
+								</div>
+								
+								
+								<div class="row">
+									<div class="col-md-6">
+
+										<label>Deductee Name<span style="color:red;">*</span></label> <input class="form-control"
+											type="text" name="deducteeName" placeholder="Deductee Name"
+											ng-model="cCctr.entity.deductee2.deducteeName"
+											autocomplete="off"
+											ng-pattern="/^\s*$|^$|^[ A-Za-z0-9_.,()\/&-]*$/"
+											ng-maxlength="45" ng-required="true"
+											ng-model-options="{updateOn: 'blur'}" /> <span
+											style="color: red"
+											ng-show="profileForm.submitted ||profileForm.deducteeName.$dirty && profileForm.deducteeName.$invalid">
+											<span class="error"
+											ng-show="profileForm.deducteeName.$error.pattern">Please
+												enter valid DeducteeName. </span> <span class="error"
+											ng-show="profileForm.deducteeName.$error.maxlength">DeducteeName
+												should not be greater than 45 characters.</span> <span
+											class="error"
+											ng-show="profileForm.deducteeName.$error.required">DeducteeName
+												is Required.</span>
+										</span> <span class="error" id="deducteeName"></span>
+
+									</div>
+
+									<div class="col-md-6">
+
+										<label>Section Code<span style="color:red;">*</span></label> <input class="form-control"
+											type="text" name="sectionCode" placeholder="Section Code"
+											ng-model="cCctr.entity.deductee2.sectionCode"
+											autocomplete="off" ng-maxlength="45" ng-required="true"
+											ng-model-options="{updateOn: 'blur'}" /> <span
+											style="color: red"
+											ng-show="profileForm.submitted ||profileForm.sectionCode.$dirty && profileForm.sectionCode.$invalid">
+											<span class="error"
+											ng-show="profileForm.sectionCode.$error.maxlength">Section
+												Code should not be greater than 45 characters.</span> <span
+											class="error"
+											ng-show="profileForm.sectionCode.$error.required">Section
+												Code is Required.</span>
+										</span> <span class="error" id="sectionCode"></span>
+
+									</div>
+
+
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+
+										<label>Branch Code<span style="color:red;">*</span></label> <input class="form-control" type="text"
+											name="branchCode" placeholder="Branch Code"
+											ng-model="cCctr.entity.deductee2.branchCode" autocomplete="off"
+											ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-maxlength="12"
+											ng-required="true" ng-model-options="{updateOn: 'blur'}" />
+										<span style="color: red"
+											ng-show="profileForm.submitted ||profileForm.branchCode.$dirty && profileForm.branchCode.$invalid">
+											<span class="error" ng-show="profileForm.branchCode.$error.pattern">Please
+												enter valid Tds. </span> <span class="error"
+											ng-show="profileForm.branchCode.$error.maxlength">Branch Code should
+												not be greater than 12 characters.</span> <span class="error"
+											ng-show="profileForm.branchCode.$error.required">Branch Code is
+												Required.</span>
+										</span> <span class="error" id="branchCode"></span>
+
+									</div>
+
+
+
+									<div class="col-md-6">
+
+										<label>Account Number<span style="color:red;">*</span></label> <input class="form-control"
+											type="text" name="Account Number" placeholder="Account Number"
+											ng-model="cCctr.entity.deductee2.accNo"
+											autocomplete="off" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+											ng-maxlength="15" ng-required="true"
+											ng-model-options="{updateOn: 'blur'}" /> <span
+											style="color: red"
+											ng-show="profileForm.submitted ||profileForm.accNo.$dirty && profileForm.accNo.$invalid">
+											<span class="error"
+											ng-show="profileForm.accNo.$error.pattern">Please
+												enter valid Account Number </span> <span class="error"
+											ng-show="profileForm.accNo.$error.maxlength">Surcharge
+												should not be greater than 12 characters.</span> <span
+											class="error" ng-show="profileForm.accNo.$error.required">Account Number
+												is Required.</span>
+										</span> <span class="error" id="accNo"></span>
+
+									</div>
+                                </div>
+								
+								<div class="row">
+									<div class="col-md-6">
+
+										<label>Id Number<span style="color:red;">*</span></label> <input class="form-control" type="text"
+											name="idNo" placeholder="ID Number"
+											ng-model="cCctr.entity.deductee2.idNo" autocomplete="off"
+											ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-maxlength="12"
+											ng-required="true" ng-model-options="{updateOn: 'blur'}" />
+										<span style="color: red"
+											ng-show="profileForm.submitted ||profileForm.idNo.$dirty && profileForm.idNo.$invalid">
+											<span class="error" ng-show="profileForm.idNo.$error.pattern">Please
+												enter valid idNo. </span> <span class="error"
+											ng-show="profileForm.idNo.$error.maxlength">ID Number should
+												not be greater than 12 characters.</span> <span class="error"
+											ng-show="profileForm.idNo.$error.required">ID Number is
+												Required.</span>
+										</span> <span class="error" id="idNo"></span>
+
+									</div>
+
+
+
+									<div class="col-md-6">
+
+										<label>CIF<span style="color:red;">*</span></label> <input class="form-control"
+											type="text" name="CIF" placeholder="CIF"
+											ng-model="cCctr.entity.deductee2.cif"
+											autocomplete="off" 
+											ng-maxlength="15" ng-required="true"
+											ng-model-options="{updateOn: 'blur'}" /> <span
+											style="color: red"
+											ng-show="profileForm.submitted ||profileForm.cif.$dirty && profileForm.cif.$invalid">
+											<span class="error"
+											ng-show="profileForm.cif.$error.pattern">Please
+												enter valid CIFF </span> <span class="error"
+											ng-show="profileForm.cif.$error.maxlength">CIF
+												should not be greater than 12 characters.</span> <span
+											class="error" ng-show="profileForm.cif.$error.required">CIF
+												is Required.</span>
+										</span> <span class="error" id="cif"></span>
+
+									</div>
+                                </div>
+                                
+                                
+                                <div class="row">
+						<div class="col-md-6">
+
+							<label>Type<span style="color:red;">*</span></label> <select name="type"
+								class="form-control" ng-model="cCctr.entity.deductee2.type"
+								ng-required="true" ng-model-options="{updateOn: 'blur'}">
+								<option value="cbs">Core Banking System</option>
+								<option value="vps">Vendor Payment System</option>
+								<option value="hrms">Human Resource Management System</option>
+								<option value="cpps">Central Pension Payment System</option>
+							</select> <span style="color: red"
+								ng-show="form26qdeductee.submitted ||form26qdeductee.type.$dirty && form26qdeductee.type.$invalid">
+								<span class="error"
+								ng-show="form26qdeductee.type.$error.required">type
+									is Required.</span>
+							</span> <span class="error" id="type"></span>
+						</div>
+						<div class="col-md-6">
+
+							<label>Month<span style="color:red;">*</span></label> <select name="quarter"
+								class="form-control" ng-model="cCctr.entity.deductee2.month"
+								ng-required="true" ng-model-options="{updateOn: 'blur'}">
+  <option selected value='1'>Janaury</option>
+    <option value='2'>February</option>
+    <option value='3'>March</option>
+    <option value='4'>April</option>
+    <option value='5'>May</option>
+    <option value='6'>June</option>
+    <option value='7'>July</option>
+    <option value='8'>August</option>
+    <option value='9'>September</option>
+    <option value='10'>October</option>
+    <option value='11'>November</option>
+    <option value='12'>December</option>
+							</select> <span style="color: red"
+								ng-show="form26qdeductee.submitted ||form26qdeductee.month.$dirty && form26qdeductee.month.$invalid">
+								<span class="error"
+								ng-show="form26qdeductee.month.$error.required">Month
+									is Required.</span>
+							</span> <span class="error" id="month"></span>
+						</div>
+
+					</div>
+                             
+								<div class="row">
+									<div class="col-md-6">
+
+										<label>Date of Payment<span style="color:red;">*</span></label> <input type="date"
+											class="form-control" style="padding-top: 0px;"
+											name="paymentDate"
+											value={{cCctr.entity.deductee2.paymentDate}}
+											ng-model="cCctr.entity.deductee2.paymentDate"
+											autocomplete="off" ng-model-options="{updateOn: 'blur'}" /> <span
+											style="color: red"
+											ng-show="profileForm.submitted ||profileForm.paymentDate.$dirty && profileForm.paymentDate.$invalid">
+											<span class="error"
+											ng-show="profileForm.paymentDate.$error.required">Payment
+												Date is Required.</span>
+										</span> <span class="error" id="paymentDate"></span>
+
+
+									</div>
+
+									<div class="col-md-6">
+
+										<label>Paid Amount<span style="color:red;">*</span></label> <input class="form-control"
+											type="text" name="paidAmt" placeholder="Paid Amount"
+											ng-model="cCctr.entity.deductee2.paidAmt" autocomplete="off"
+											ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-maxlength="12"
+											ng-required="true" ng-model-options="{updateOn: 'blur'}" />
+										<span style="color: red"
+											ng-show="profileForm.submitted ||profileForm.paidAmt.$dirty && profileForm.paidAmt.$invalid">
+											<span class="error"
+											ng-show="profileForm.paidAmt.$error.pattern">Please
+												enter valid Paid Amt. </span> <span class="error"
+											ng-show="profileForm.paidAmt.$error.maxlength">Paid
+												Amt should not be greater than 12 characters.</span> <span
+											class="error" ng-show="profileForm.paidAmt.$error.required">Paid
+												Amt is Required.</span>
+										</span> <span class="error" id="paidAmt"></span>
+
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+
+										<label>TDS<span style="color:red;">*</span></label> <input class="form-control" type="text"
+											name="tds" placeholder="TDS"
+											ng-model="cCctr.entity.deductee2.tds" autocomplete="off"
+											ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-maxlength="12"
+											ng-required="true" ng-model-options="{updateOn: 'blur'}" />
+										<span style="color: red"
+											ng-show="profileForm.submitted ||profileForm.tds.$dirty && profileForm.tds.$invalid">
+											<span class="error" ng-show="profileForm.tds.$error.pattern">Please
+												enter valid Tds. </span> <span class="error"
+											ng-show="profileForm.tds.$error.maxlength">Tds should
+												not be greater than 12 characters.</span> <span class="error"
+											ng-show="profileForm.tds.$error.required">Tds is
+												Required.</span>
+										</span> <span class="error" id="tds"></span>
+
+									</div>
+
+
+
+									<div class="col-md-6">
+
+										<label>Surcharge<span style="color:red;">*</span></label> <input class="form-control"
+											type="text" name="surcharge" placeholder="Surcharge"
+											ng-model="cCctr.entity.deductee2.surcharge"
+											autocomplete="off" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+											ng-maxlength="12" ng-required="true"
+											ng-model-options="{updateOn: 'blur'}" /> <span
+											style="color: red"
+											ng-show="profileForm.submitted ||profileForm.surcharge.$dirty && profileForm.surcharge.$invalid">
+											<span class="error"
+											ng-show="profileForm.surcharge.$error.pattern">Please
+												enter valid Surcharge </span> <span class="error"
+											ng-show="profileForm.surcharge.$error.maxlength">Surcharge
+												should not be greater than 12 characters.</span> <span
+											class="error" ng-show="profileForm.surcharge.$error.required">Surcharge
+												is Required.</span>
+										</span> <span class="error" id="surcharge"></span>
+
+									</div>
+
+
+								</div>
+								<div class="row">
+
+									<div class="col-md-6">
+
+										<label>Education Cess<span style="color:red;">*</span></label> <input class="form-control"
+											type="text" name="eduCess" placeholder="Education Cess"
+											ng-model="cCctr.entity.deductee2.eduCess" autocomplete="off"
+											ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-maxlength="12"
+											ng-required="true" ng-model-options="{updateOn: 'blur'}" />
+										<span style="color: red"
+											ng-show="profileForm.submitted ||profileForm.eduCess.$dirty && profileForm.eduCess.$invalid">
+											<span class="error"
+											ng-show="profileForm.eduCess.$error.pattern">Please
+												enter valid Education cess . </span> <span class="error"
+											ng-show="profileForm.eduCess.$error.maxlength">Education
+												cess should not be greater than 12 characters.</span> <span
+											class="error" ng-show="profileForm.eduCess.$error.required">Education
+												cess is Required.</span>
+										</span> <span class="error" id="eduCess"></span>
+
+									</div>
+									<div class="col-md-6">
+
+										<label>Total Tax Deducted<span style="color:red;">*</span></label> <input class="form-control"
+											type="text" name="totalTaxDeduct"
+											placeholder="Total Tax Deducted"
+											ng-model="cCctr.entity.deductee2.totalTaxDeduct"
+											autocomplete="off" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+											ng-maxlength="12" ng-required="true"
+											ng-model-options="{updateOn: 'blur'}" /> <span
+											style="color: red"
+											ng-show="profileForm.submitted ||profileForm.totalTaxDeduct.$dirty && profileForm.totalTaxDeduct.$invalid">
+											<span class="error"
+											ng-show="profileForm.totalTaxDeduct.$error.pattern">Please
+												enter valid TotalTaxDeduct. </span> <span class="error"
+											ng-show="profileForm.totalTaxDeduct.$error.maxlength">TotalTaxDeduct
+												should not be greater than 12 characters.</span> <span
+											class="error"
+											ng-show="profileForm.totalTaxDeduct.$error.required">TotalTaxDeduct
+												is Required.</span>
+										</span> <span class="error" id="totalTaxDeduct"></span>
+
+									</div>
+
+								</div>
+
+
+
+								<div class="row">
+									<div class="col-md-6">
+
+										<label>Total Tax Deposited<span style="color:red;">*</span></label> <input
+											class="form-control" type="text" name="totalTaxDeposit"
+											placeholder="Total Tax Deposited"
+											ng-model="cCctr.entity.deductee2.totalTaxDeposit"
+											autocomplete="off" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+											ng-maxlength="12" ng-required="true"
+											ng-model-options="{updateOn: 'blur'}" /> <span
+											style="color: red"
+											ng-show="profileForm.submitted ||profileForm.totalTaxDeposit.$dirty && profileForm.totalTaxDeposit.$invalid">
+											<span class="error"
+											ng-show="profileForm.totalTaxDeposit.$error.pattern">Please
+												enter valid TotalTaxDeposit. </span> <span class="error"
+											ng-show="profileForm.totalTaxDeposit.$error.maxlength">TotalTaxDeposit
+												should not be greater than 12 characters.</span> <span
+											class="error"
+											ng-show="profileForm.totalTaxDeposit.$error.required">TotalTaxDeposit
+												is Required.</span>
+										</span> <span class="error" id="totalTaxDeposit"></span>
+
+									</div>
+									<div class="col-md-6">
+
+										<label>Deduct Date<span style="color:red;">*</span></label> <input type="date"
+											class="form-control" style="padding-top: 0px;"
+											name="paymentDate"
+											value={{cCctr.entity.deductee2.deductDate}}
+											ng-model="cCctr.entity.deductee2.deductDate"
+											autocomplete="off" ng-model-options="{updateOn: 'blur'}" /> <span
+											style="color: red"
+											ng-show="profileForm.submitted ||profileForm.deductDate.$dirty && profileForm.deductDate.$invalid">
+											<span class="error"
+											ng-show="profileForm.deductDate.$error.required">DeductDate
+												is Required.</span>
+										</span> <span class="error" id="deductDate"></span>
+
+									</div>
+
+								</div>
+
+								<div class="row">
+									<div class="col-md-6">
+
+										<label>Rate Tax Deduct<span style="color:red;">*</span></label> <input class="form-control"
+											type="text" name="rateTaxDeduct"
+											placeholder="Rate Tax Deduct"
+											ng-model="cCctr.entity.deductee2.rateTaxDeduct"
+											autocomplete="off" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+											ng-maxlength="12" ng-required="true"
+											ng-model-options="{updateOn: 'blur'}" /> <span
+											style="color: red"
+											ng-show="profileForm.submitted ||profileForm.rateTaxDeduct.$dirty && profileForm.rateTaxDeduct.$invalid">
+											<span class="error"
+											ng-show="profileForm.rateTaxDeduct.$error.pattern">Please
+												enter valid Rate Tax Deduct. </span> <span class="error"
+											ng-show="profileForm.rateTaxDeduct.$error.maxlength">Rate
+												Tax Deduct should not be greater than 12 characters.</span> <span
+											class="error"
+											ng-show="profileForm.rateTaxDeduct.$error.required">Rate
+												Tax Deduct is Required.</span>
+										</span> <span class="error" id="rateTaxDeduct"></span>
+
+									</div>
+									<div class="col-md-6">
+
+										<label>Remarks<span style="color:red;">*</span></label> <input class="form-control"
+											type="text" name=" remarks" placeholder="Remarks"
+											ng-model="cCctr.entity.deductee2.remarks" autocomplete="off"
+											ng-maxlength="45" ng-required="true"
+											ng-model-options="{updateOn: 'blur'}" /> <span
+											style="color: red"
+											ng-show="profileForm.submitted ||profileForm.remarks.$dirty && profileForm.remarks.$invalid">
+											<span class="error"
+											ng-show="profileForm.remarks.$error.maxlength">Remarks
+												should not be greater than 45 characters.</span> <span
+											class="error" ng-show="profileForm.remarks.$error.required">Remarks
+												is Required.</span>
+										</span> <span class="error" id="remarks"></span>
+
+									</div>
+
+
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+
+										<label>Certificate No.<span style="color:red;">*</span></label> <input class="form-control"
+											type="text" name="certificateNo"
+											placeholder="Certificate No."
+											ng-model="cCctr.entity.deductee2.certificateNo"
+											autocomplete="off" ng-pattern="/^[a-zA-Z0-9]*$/"
+											ng-maxlength="45" ng-required="true"
+											ng-model-options="{updateOn: 'blur'}" /> <span
+											style="color: red"
+											ng-show="profileForm.submitted ||profileForm.certificateNo.$dirty && profileForm.certificateNo.$invalid">
+											<span class="error"
+											ng-show="profileForm.certificateNo.$error.pattern">Please
+												enter valid CertificateNo. </span> <span class="error"
+											ng-show="profileForm.certificateNo.$error.maxlength">CertificateNo
+												should not be greater than 45 characters.</span> <span
+											class="error"
+											ng-show="profileForm.certificateNo.$error.required">CertificateNo
+												is Required.</span>
+										</span> <span class="error" id="certificateNo"></span>
+
+									</div>
+									<div class="col-md-6">
+
+										<label>Financial Year<span style="color:red;">*</span></label> <select name="fy"
+											class="form-control" ng-model="cCctr.entity.deductee2.fy"
+											ng-required="true" ng-model-options="{updateOn: 'blur'}">
+											<option value="201920">201920</option>
+											<option value="201819">201819</option>
+											<option value="201718">201718</option>
+											<option value="201617">201617</option>
+											<option value="201516">201516</option>
+											<option value="201415">201415</option>
+											<option value="201314">201314</option>
+											<option value="201213">201213</option>
+											<option value="201112">201112</option>
+											<option value="201011">201011</option>
+											<option value="200910">200910</option>
+											<option value="200809">200809</option>
+											<option value="200708">200708</option>
+										</select> <span style="color: red"
+											ng-show="profileForm.submitted ||profileForm.fy.$dirty && profileForm.fy.$invalid">
+											<span class="error" ng-show="profileForm.fy.$error.required">Financial
+												Year is Required.</span>
+										</span> <span class="error" id="fy"></span>
+
+									</div>
+								</div>
+
+								<div class="row">
+
+									<div class="col-md-6">
+
+										<label> Quarter<span style="color:red;">*</span></label> <select name="quarter"
+											class="form-control"
+											ng-model="cCctr.entity.deductee2.quarter" ng-required="true"
+											ng-model-options="{updateOn: 'blur'}">
+											<option value="Q1">Q1</option>
+											<option value="Q2">Q2</option>
+											<option value="Q3">Q3</option>
+											<option value="Q4">Q4</option>
+										</select> <span style="color: red"
+											ng-show="profileForm.submitted ||profileForm.quarter.$dirty && profileForm.quarter.$invalid">
+											<span class="error"
+											ng-show="profileForm.quarter.$error.required">Quarter
+												is Required.</span>
+										</span> <span class="error" id="quarter"></span>
+
+									</div>
+								</div>
+
+							</form>
+						</div>
+
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-success" data-dismiss="modal">Ok</button>
+						<button class="btn btn-danger" data-dismiss="modal">Back</button>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -230,8 +230,15 @@
 					<h6>
 						<b>State</b>
 					</h6>
-					<input type="text" ng-model="cCctr.search.STATE"
-						class="form-control" placeholder="STATE" style="width: 100%">
+					<select name="state" id="state"
+						title="Select State" class="form-control"
+						ng-model="cCctr.search.STATE" ng-required="true"
+						ng-model-options="{updateOn: 'blur'}">
+						<option disabled value="">Select State</option>
+						<#list State as state>
+						<option value="${state}">${state}</option>
+						</#list>
+					</select>
 				</div>
 
 				<div class="col-md-3">

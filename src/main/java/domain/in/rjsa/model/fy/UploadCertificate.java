@@ -19,7 +19,7 @@ import domain.in.rjsa.model.form.CommonModelAbstract;
 import lombok.Data;
 @Data
 @Entity
-@Table(name = "FYDetails.uploadCertificate")
+@Table(name = "AAACU3561B_2324.uploadCertificate")
 public class UploadCertificate extends CommonModelAbstract{
 	
 	@Id

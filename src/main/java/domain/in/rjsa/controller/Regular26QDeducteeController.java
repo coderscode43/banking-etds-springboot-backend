@@ -122,10 +122,6 @@ public class Regular26QDeducteeController
 					Long branchCode = Long.valueOf(map.get("branchCode").toString());
 					map.put("branchCode", branchCode);
 				}
-				if(map.containsKey("roCode")) {
-					Long roCode = Long.valueOf(map.get("roCode").toString());
-					map.put("roCode", roCode);
-				}
 				if(map.containsKey("resolved")) {
 					Boolean resolved = Boolean.valueOf(map.get("resolved").toString());
 					map.put("resolved", resolved);

@@ -12,7 +12,7 @@ import org.hibernate.annotations.GenericGenerator;
 import lombok.Data;
 @Data
 @Entity
-@Table(name = "form.pensionMaster")
+@Table(name = "AAACU3561B_form.pensionMaster")
 public class PensionMaster extends CommonModelAbstract{
 	private static final long serialVersionUID = 1L;
 	@Id

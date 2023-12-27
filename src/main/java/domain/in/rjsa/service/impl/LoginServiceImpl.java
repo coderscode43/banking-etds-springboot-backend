@@ -86,4 +86,10 @@ public class LoginServiceImpl extends AbstractServiceForm<Long, Login, LoginDao>
 		// TODO Auto-generated method stub
 		return dao.getByuserName(userName);
 	}
+
+	@Override
+	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

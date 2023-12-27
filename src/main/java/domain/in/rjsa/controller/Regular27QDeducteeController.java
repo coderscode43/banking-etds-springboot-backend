@@ -122,10 +122,6 @@ public class Regular27QDeducteeController
 					Long branchCode = Long.valueOf(map.get("branchCode").toString());
 					map.put("branchCode", branchCode);
 				}
-				if(map.containsKey("roCode")) {
-					Long roCode = Long.valueOf(map.get("roCode").toString());
-					map.put("roCode", roCode);
-				}
 				if(map.containsKey("TAN")) {
 					String TAN = (map.get("TAN").toString().split(Pattern.quote("-"),-1))[0];
 					map.put("TAN", TAN);

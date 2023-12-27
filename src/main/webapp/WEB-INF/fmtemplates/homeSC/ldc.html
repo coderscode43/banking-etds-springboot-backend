@@ -103,12 +103,12 @@ td {
 
 <div id="page-wrapper" ng-controller="CommonController as cCctr">
 	<div class="container-fluid">
-	<button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
+	<!-- <button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
 					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
 						 onClick="refreshPageButton()"><i
-						class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh<span class="tooltiptext tooltip-top">Refresh or Press F5</span></button>
+						class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh<span class="tooltiptext tooltip-top">Refresh or Press F5</span></button> -->
 		<div class="col-md-12 "
-			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
+			style="padding-left: 0px; font-size: 12pxp; margin-top: 1%">
 			<div class="heading">Lower Deduction Certificate</div>
 
 
@@ -123,7 +123,7 @@ td {
 		<div class="collapse dont-collapse-sm" id="collapseExample2">
 			<div class="row">
 				<div class="form-group">
-					<div class="col-md-4">
+					<div class="col-md-3">
 
 						<h6>
 							<b>Financial Year</b>
@@ -145,6 +145,14 @@ td {
 						<input type="text" ng-model="cCctr.search.PAN"
 							class="form-control" placeholder="PAN" style="width: 100%">
 					</div>
+					
+					<div class="col-md-3">
+						<h6>
+							<b>NAME</b>
+							<h6>
+								<input type="text" ng-model="cCctr.search.NAME"
+									class="form-control" placeholder="Name" style="width: 100%">
+					</div>
 
 					<!-- <div class="col-md-3">
 						<h6>
@@ -164,13 +172,7 @@ td {
 			<div class="collapse  panel-collapse" id="collapseExample4">
 
 				<div class="row">
-					<div class="col-md-3">
-						<h6>
-							<b>NAME</b>
-							<h6>
-								<input type="text" ng-model="cCctr.search.NAME"
-									class="form-control" placeholder="Name" style="width: 100%">
-					</div>
+					
 
 					<div class="col-md-3">
 						<h6>
@@ -197,10 +199,7 @@ td {
 									</#list>
 								</select>
 					</div>
-
-
-				</div>
-				<div class="row">
+					
 					<div class="col-md-3">
 						<h6>
 							<b>LDC Rate</b>
@@ -208,6 +207,11 @@ td {
 								<input type="text" ng-model="cCctr.search.LDC_RATE"
 									class="form-control" placeholder="LDC Rate" style="width: 100%">
 					</div>
+
+
+				</div>
+				<div class="row">
+					
 
 					<!-- <div class="col-md-3">
 						<h6>
@@ -233,9 +237,7 @@ td {
 									class="form-control" placeholder="Amount Consumed"
 									style="width: 100%">
 					</div>
-
-				</div>
-				<div class="row">
+					
 					<div class="col-md-3">
 						<h6>
 							<b>Nature of Payment</b>
@@ -244,6 +246,10 @@ td {
 									class="form-control" placeholder="Nature of Payment"
 									style="width: 100%">
 					</div>
+
+				</div>
+				<div class="row">
+					
 					<div class="col-md-3">
 						<button class="btn btn-grad exportbtn tool" type="button"
 							style="margin-top:14%;background-image: linear-gradient(to right, #517fa4 0%, #243949 51%, #517fa4 100%);"
@@ -252,14 +258,14 @@ td {
 					</div>
 				</div>
 			</div>
-			<div class="row text-right" id="hide">
+			<!-- <div class="row text-right" id="hide">
 				<div class="col-md-3" style="margin-left: 60%; margin-top: -35px;display: ruby;">
-					<!-- <button ng-click="cCctr.searchEntities(true,'ldc','ldc')"
-						class="btn btn-success">Search</button> -->
-					<!-- <button class="btn btn-secondary"
+					<button ng-click="cCctr.searchEntities(true,'ldc','ldc')"
+						class="btn btn-success">Search</button>
+					<button class="btn btn-secondary"
 						style="background-color: #FFA500;" data-toggle="collapse"
 						data-target="#collapseExample4" aria-expanded="false"
-						aria-controls="collapseExample">Advance Search</button> -->
+						aria-controls="collapseExample">Advance Search</button>
 						<button
 						ng-click="cCctr.searchEntities(true,'ldc','ldc')"
 						class="removeAll btn btn-grad astro-MG2CNCJP tool"
@@ -277,11 +283,36 @@ td {
 						Search<span class="tooltiptext tooltip-top2">Advanced Search Button</span></button>
 						
 					
-					<!-- <button class="btn btn-Primary" data-toggle="modal"
-					ng-click="cCctr.gotoListPage('addLDC','addLDC');">Add</button> -->
+					<button class="btn btn-Primary" data-toggle="modal"
+					ng-click="cCctr.gotoListPage('addLDC','addLDC');">Add</button>
 					<div class="text-right"></div>
 				</div>
-			</div>
+			</div> -->
+			
+			<div style="right: 3%; position: absolute; gap: 20px;margin-top:-3%;display:flex"
+		class="">
+
+
+		<button ng-click="cCctr.searchEntities(true,'ldc','ldc')"
+			class="btn btn-success mobile tool" onclick="scrollWin()">
+			<i class="fa fa-search border-0 p-0"
+				style="color: inherit; background-color: transparent;font-size: large;"></i>
+		<span class="tooltiptext tooltip-top">Search Button</span> </button>
+
+		<button class="btn btn-primary mobile collapsed tool"
+			style="background-color: #FFA500; border-color: #FFA500;"
+			data-toggle="collapse" data-target="#collapseExample4"
+			aria-expanded="false" data-parent="#navaccordion"
+			aria-controls="collapseExample">
+			<i class="fa fa-filter border-0 p-0"
+				style="color: #fff; background-color: transparent;font-size: large;"></i>
+		<span class="tooltiptext tooltip-top1">Advance Search Button</span></button>
+
+		
+		
+	
+
+	</div>
 
 
 			<div class="row" id="hide">

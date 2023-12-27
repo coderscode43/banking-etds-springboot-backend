@@ -26,7 +26,7 @@ public class RODetailsDaoImpl extends AbstractDaoForm<Long, RODetails> implement
 		//propertyNameValues.put("clientId", clientId);
 		criteria.add(Restrictions.allEq(propertyNameValues));
 		if (entity.get("roCode") != null) {
-			criteria.add(Restrictions.eqOrIsNull("roCode", Long.parseLong(entity.get("roCode").toString())));
+			criteria.add(Restrictions.eqOrIsNull("roCode", entity.get("roCode")));
 		}
 		if (entity.get("roName") != null) {
 			criteria.add(Restrictions.eqOrIsNull("roName", entity.get("roName")));
@@ -70,7 +70,7 @@ public class RODetailsDaoImpl extends AbstractDaoForm<Long, RODetails> implement
 		//propertyNameValues.put("clientId", clientId);
 		criteria.add(Restrictions.allEq(propertyNameValues));
 		if (entity.get("roCode") != null) {
-			criteria.add(Restrictions.eqOrIsNull("roCode", Long.parseLong(entity.get("roCode").toString())));
+			criteria.add(Restrictions.eqOrIsNull("roCode", entity.get("roCode")));
 		}
 		if (entity.get("roName") != null) {
 			criteria.add(Restrictions.eqOrIsNull("roName", entity.get("roName")));

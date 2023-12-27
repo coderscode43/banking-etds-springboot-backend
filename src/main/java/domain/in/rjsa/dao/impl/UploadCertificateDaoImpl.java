@@ -3,6 +3,7 @@ package domain.in.rjsa.dao.impl;
 import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -46,6 +47,39 @@ public class UploadCertificateDaoImpl extends AbstractDaoForm<Long, UploadCertif
 					Restrictions.le("uploadedTime", Date.from(ZonedDateTime.parse((String) entity.get("toDate")).toInstant())));
 		} 
 		criteria.addOrder(Order.desc("id"));
+		return (List<UploadCertificate>) criteria.list();
+	}
+
+	@Override
+	public List<?> search(LinkedHashMap<?, ?> entity, int pageNo, int resultPerPage) {
+		Criteria criteria = createEntityCriteria();
+		criteria.addOrder(Order.desc("id")).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
+		if (entity.get("fileName") != null) {
+			criteria.add(Restrictions.eqOrIsNull("fileName", entity.get("fileName")));
+		}
+		if (entity.get("TAN") != null) {
+			criteria.add(Restrictions.eqOrIsNull("TAN", entity.get("TAN")));
+		}
+		if (entity.get("fy") != null) {
+			criteria.add(Restrictions.eqOrIsNull("fy", entity.get("fy")));
+		}
+		if (entity.get("quarter") != null) {
+			criteria.add(Restrictions.eqOrIsNull("quarter", entity.get("quarter")));
+		}
+		if (entity.get("form") != null) {
+			criteria.add(Restrictions.eqOrIsNull("form", entity.get("form")));
+		}
+		if (entity.get("fromDate") != null) {
+			criteria.add(Restrictions.ge("uploadedTime",
+					Date.from(ZonedDateTime.parse((String) entity.get("fromDate")).toInstant())));
+		}
+		if (entity.get("toDate") != null) {
+			criteria.add(
+					Restrictions.le("uploadedTime", Date.from(ZonedDateTime.parse((String) entity.get("toDate")).toInstant())));
+		} 
+		criteria.addOrder(Order.desc("id"));
+		criteria.setFirstResult(pageNo * resultPerPage);
+		criteria.setMaxResults(resultPerPage);
 		return (List<UploadCertificate>) criteria.list();
 	}
 

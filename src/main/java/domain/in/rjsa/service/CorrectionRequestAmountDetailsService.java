@@ -13,4 +13,6 @@ public interface CorrectionRequestAmountDetailsService extends ServiceInterfaceF
 	public void setResolve(CorrectionRequestAmountDetails remark, String type);
 	
 	public List<CorrectionRequestAmountDetails> findForm(HashMap<String, Object> constrains);
+
+	public List<CorrectionRequestAmountDetails> getByCorrectionId(Long correctionRequestId);
 }

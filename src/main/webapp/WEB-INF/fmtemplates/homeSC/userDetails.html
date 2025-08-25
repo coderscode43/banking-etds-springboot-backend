@@ -4,6 +4,10 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <style>
+.ExcelBtn {
+	text-align: center;
+}
+
 @media ( min-width : 768px) {
 	.collapse.dont-collapse-sm {
 		display: block;
@@ -15,6 +19,7 @@
 th {
 	text-align: center;
 }
+
 .btn-grad {
 	background-image: linear-gradient(to right, #FF8008 0%, #FFC837 51%, #FF8008 100%);
 	transition: 0.5s;
@@ -31,60 +36,46 @@ th {
 	color: #fff;
 	text-decoration: none;
 }
-/*Refresh Button*/
-.tooltip-top {
-  bottom: 84%;
-  margin-left:-9%;
-}
-/*Search Button*/
-.tooltip-top1 {
-  bottom: 125%;
-  margin-left:-22%;
-}
-/*Advanced Search Button*/
-.tooltip-top2 {
-  bottom: 125%;
-  margin-left:-42%;
-}
-/*Add Button*/
-.tooltip-top3 {
-  bottom: 125%;
-  margin-left:-15%;
-}
-/*Export to Excel Button*/
-.tooltip-top4 {
-bottom: 85%;
-margin-left: -43%;
-}
-/*Delete*/
-.tooltip-top5 {
- margin-left:-6%;
+
+.Btns {
+	gap: 15px;
+	display: flex;
 }
 </style>
 
 </head>
 <body>
-	<div class="container-fluid">
-	<!-- <button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
-					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
-						 onClick="refreshPageButton()"><i
-						class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh<span class="tooltiptext tooltip-top">Refresh or Press F5</span></button> -->
-
-		<div class="col-md-12 "
-			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
-			<div class="heading">
-				<strong>User Details</strong>
+	<div
+		ng-init="cCctr.helpFolder = 'homeSChelpPage' ;  cCctr.helpPage = 'userDetailsHelp' ">
+		<div class="container-fluid">
+			<div class="row ">
+				<div class="heading">
+					<strong>User Details</strong>
+				</div>
 			</div>
+			<div class="row ">
+				<div class="col-md-12" style="padding-left: 0px;">
+					<div class="col-md-4" style="padding-left: 0px;">
 
-			<div class="heading">Employee Id</div>
-		</div>
-		<div class="row">
-			<div class="col-md-8">
-				<input type="text" name="employeeId" class="form-control"
-					ng-model="cCctr.search.employeeId" placeholder="Employee Id">
+						<h6>
+							<b>Employee Id</b>
+						</h6>
+						<input type="text" name="employeeId" class="form-control"
+							ng-model="cCctr.search.employeeId" placeholder="Employee Id">
 
-			</div>
-			<!-- <div class="row" id="hide">
+					</div>
+					<div class="col-md-4  " style="padding-left: 0px;">
+						<h6>
+							<b>Type Of User</label></b>
+						</h6>
+						<select type="text" ng-model="cCctr.search.typeOfUser"
+							class="form-control" placeholder="Type Of User">
+							<option value="" selected disabled>Type Of User</option>
+							<option value="admin">Admin</option>
+							<option value="super admin">Super Admin</option>
+						</select>
+					</div>
+					<!-- <div class="row" id="hide">
 				<div class="col-md-4" style="margin-top: 0%">
 					<button ng-click="cCctr.searchEntities(true,'userDetails')"
 					style="background-image: linear-gradient(to right, #093028 0%, #237A57  51%, #093028  100%)"
@@ -101,151 +92,197 @@ margin-left: -43%;
 											class="fa fa-plus" aria-hidden="true"></i>&nbsp;Add<span class="tooltiptext tooltip-top3">Add Button</span></button>
 				</div>
 			</div> -->
-			
-			<div style="right: 3%; position: absolute; gap: 20px;display:flex;margin-top: 6%;"
-		class="">
+
+					<div class="col-md-4 Btns  ">
 
 
-		<button ng-click="cCctr.searchEntities(true,'userDetails','userDetails')"
-			class="btn btn-success mobile tool" onclick="scrollWin()">
-			<i class="fa fa-search border-0 p-0"
-				style="color: inherit; background-color: transparent;font-size: large;"></i>
-		<span class="tooltiptext tooltip-top">Search Button</span> </button>
+						<button
+							ng-click="cCctr.searchEntities(true,'userDetails','userDetails')"
+							class="btn btn-success  tool" onclick="scrollWin()">
 
-		<button class="btn btn-primary mobile collapsed tool"
-			style="background-color: #FFA500; border-color: #FFA500;"
-			data-toggle="collapse" data-target="#collapseExample4"
-			aria-expanded="false" data-parent="#navaccordion"
-			aria-controls="collapseExample">
-			<i class="fa fa-filter border-0 p-0"
-				style="color: #fff; background-color: transparent;font-size: large;"></i>
-		<span class="tooltiptext tooltip-top1">Advance Search Button</span></button>
+							<div class=button-main-box>
+								<i class="fa fa-search border-0 p-0"
+									style="color: inherit; display: block; background-color: transparent; font-size: 23px;"></i>
+								<div class="button-tooltip-box">
+									<span class="tooltiptext Search">Search Button</span>
+								</div>
+							</div>
+						</button>
 
-		<button class="btn btn-primary mobile tool" data-toggle="modal" ng-click="cCctr.gotoListPage('addUserDetails','addUserDetails');";
+						<!-- <button class="btn btn-primary  collapsed tool"
+						style="background-color: #FFA500; border-color: #FFA500;"
+						data-toggle="collapse" data-target="#collapseExample4"
+						aria-expanded="false" data-parent="#collapseExample4"
+						aria-controls="collapseExample">
+						<i class="fa fa-filter border-0 p-0"
+							style="color: #fff;display:block; background-color: transparent; font-size: 23px;"></i>
+						<span class="tooltiptext Search">Advance Search Button</span>
+					</button> -->
+						<!-- <button class="btn btn-grad astro-MG2CNCJP tool" type="button"
+							style="background-image: linear-gradient(to right, #517fa4 0%, #243949 51%, #517fa4 100%);"
+							ng-click="cCctr.generateExcel('apiuserDetails/generateExcel/','UserDetails')">
+							Export to Excel<span class="tooltiptext ExportExcel">Export
+								to Excel</span>
+						</button> -->
+
+						<button class="btn btn-primary  collapsed tool" type="button"
+							ng-click="cCctr.generateExcel('apiuserDetails/generateExcel/','UserDetails')"
+							aria-controls="collapseExample">
+							<div class=button-main-box>
+								Export to Excel
+								<div class="button-tooltip-box">
+									<span class="tooltiptext Search" style="margin-left: -50px;">Export
+										to Excel Button</span>
+								</div>
+							</div>
+						</button>
+
+						<button class="btn btn-primary mobile tool" data-toggle="modal"
+							ng-click="cCctr.gotoListPage('addUserDetails','addUserDetails');"
+							;
 			data-target="#bd-example-modal-xl">
-			<i class="fa fa-edit border-0 p-0"
-				style="color: inherit; background-color: transparent;font-size: large;"></i>
-		<span class="tooltiptext tooltip-top2">Add Branch Button</span></button>
-		
-	
+							<div class=button-main-box>
+								<i class="fa fa-plus border-0 p-0"
+									style="color: inherit; display: block; background-color: transparent; font-size: 23px;"></i>
+								<div class="button-tooltip-box">
+									<span class="tooltiptext Search">Add User Button</span>
+								</div>
+							</div>
+						</button>
 
-	</div>
-			
-			
-			<div class="col-md-12 collapse  panel-collapse "
-				id="collapseExample4" style="margin-bottom: 12px;">
-				<div class="row">
+
+
+					</div>
+				</div>
+
+
+				<!-- <div class=" collapse  panel-collapse "  id="collapseExample4" style="margin-left: -15px;">
+				<div class="col-md-12">
 					<div class="col-md-3">
 						<label style="font-size: 12px">Type Of User</label> <select
 							type="text" ng-model="cCctr.search.typeOfUser"
 							class="form-control" placeholder="Type Of User">
-							<option value=""selected disabled>Type Of User</option>
+							<option value="" selected disabled>Type Of User</option>
 							<option value="admin">Admin</option>
 							<option value="super admin">Super Admin</option>
 						</select>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-3 ExcelBtn">
 						<button class="btn btn-grad astro-MG2CNCJP tool" type="button"
-							style="margin-top:7%;background-image: linear-gradient(to right, #517fa4 0%, #243949  51%, #517fa4  100%);"
-							ng-click="cCctr.generateExcel('apiuserDetails/generateExcel/','UserDetails')">Export
-							to Excel<span class="tooltiptext tooltip-top4">Export to Excel</span></button>
+							style="background-image: linear-gradient(to right, #517fa4 0%, #243949 51%, #517fa4 100%);"
+							ng-click="cCctr.generateExcel('apiuserDetails/generateExcel/','UserDetails')">
+							Export to Excel<span class="tooltiptext ExportExcel">Export
+								to Excel</span>
+						</button>
 					</div>
 				</div>
+			</div> -->
 			</div>
+
+
+
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="col-md-4" style="margin-top: 5px"></div>
+					<div class="text-right" style="width: 100%"></div>
+				</div>
+			</div>
+
+			<div class="row  "
+				ng-init="cCctr.entity=cCctr.getEntityListData('userDetails')">
+				<div ng-show="cCctr.getEntityListData('userDetails')">
+
+					<table class="table  table-bordered table-sm"
+						style="font-size: 12px; width: 100%; margin-top: 1.5%;">
+						<thead align="center">
+							<tr role="row">
+							<tr
+								style="background-color: #7482f45e; height: 40px; cursor: pointer">
+								<th><b>Sr.no</b></th>
+								<th><b>Employee id</b></th>
+								<th><b>Type Of Admin</b></th>
+								<th><b>Action</b></th>
+
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr style="color: red"
+								ng-show="cCctr.getEntityListData().length <= 0">
+								<td colspan="14" style="text-align: center;"><h3
+										style="text-align: center;">
+										<b> No data found!!</b>
+									</h3></td>
+							<tr style="text-align: center; cursor: pointer"
+								ng-repeat="a in cCctr.getEntityListData() track by a.employeeId">
+								<td role="cell" class="one" style="padding: 5px">{{$index+cCctr.srNo}}</td>
+								<td>{{a.employeeId}}</td>
+								<td>{{a.typeOfUser}}</td>
+								<td><button type="button"
+										class="btn btn-md btn-primary tool" href="#myModal"
+										data-toggle="modal" ng-click="cCctr.delete=a.employeeId">
+										<i class="fa fa-trash" aria-hidden="true"> </i>
+									</button></td>
+							</tr>
+						</tbody>
+					</table>
+					<!--end table-->
+				</div>
+				<!--end card-body-->
+			</div>
+			<!--end card-->
+
+			<!-- end row -->
+			<div class="row" ng-show="cCctr.getNoPage() > 0">
+				<div align="center">
+					<span ng-show="cCctr.PreviousNo != 1"> <a
+						ng-show="cCctr.PreviousNo >= 1 && cCctr.PreviousNo <= cCctr.getNoPage()"
+						ng-click="cCctr.getPage(true,'userDetails',cCctr.PreviousNo-1);cCctr.DisplayNo(cCctr.currentPage)"><strong>Previous</strong></a>
+					</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.PreviousNo}}</strong>&nbsp;
+						of &nbsp;<strong>{{cCctr.getNoPage()}}</strong>
+						&nbsp;&nbsp;&nbsp;&nbsp; <span
+						ng-show="cCctr.PreviousNo != cCctr.getNoPage()"> <a
+							ng-show="cCctr.PreviousNo >= 1 && cCctr.PreviousNo <= cCctr.getNoPage()"
+							ng-click="cCctr.getPage(true,'userDetails',cCctr.PreviousNo+1);cCctr.DisplayNo(cCctr.currentPage)"><strong>Next</strong></a>
+					</span>
+					</span>
+				</div>
+				<form role="form" name="gotoForm" ng-if="cCctr.getNoPage()!=1">
+					<div align="center" style="margin-top: 1%;">
+						<span>Go to</span> &nbsp;&nbsp;&nbsp; <input
+							style="width: 70px; text-align: center;" type="number"
+							name="pageNo" id="pageNo" ng-model="cCctr.currentPage"
+							oninput="javascript: if (this.value.length > this.max.length) this.value = this.value.slice(0, this.max.length);"
+							autocomplete="off" ng-min="1" min="1" max="{{cCctr.getNoPage()}}"
+							ng-max="cCctr.getNoPage()" ng-required="true">
+						&nbsp;&nbsp;&nbsp;
+						<button
+							ng-show="cCctr.currentPage >= 1 && cCctr.currentPage <= cCctr.getNoPage()"
+							ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'userDetails',cCctr.currentPage);cCctr.DisplayNo(cCctr.currentPage)"
+							class="btn btn-primary btn-sm">Go</button>
+					</div>
+					<div align="center">
+						<span style="color: red"
+							ng-show="gotoForm.submitted || gotoForm.pageNo.$dirty && gotoForm.pageNo.$invalid">
+							<span class="error" ng-show="gotoForm.pageNo.$error.min">Page
+								No. should not be less than 1.</span> <span class="error"
+							ng-show="gotoForm.pageNo.$error.max">Page No. should not
+								be greater than {{cCctr.getNoPage()}}.</span> <span class="error"
+							ng-show="gotoForm.pageNo.$error.required">Please enter
+								page number.</span>
+						</span>
+					</div>
+				</form>
+			</div>
+
 		</div>
-	</div><br>
-	<div class="row"
-		ng-init="cCctr.entity=cCctr.getEntityListData('userDetails')">
-		<div class="col-12" ng-show="cCctr.getEntityListData('userDetails')">
-			<div class="">
-				<table class="table  table-bordered table-sm"
-					style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
-					<thead align="center">
-						<tr role="row">
-						<tr style="background-color: #81b7db; height: 40px">
-							<th><b>Sr.no</b></th>
-							<th><b>Employee id</b></th>
-							<th><b>Type Of Admin</b></th>
-							<th><b>Action</b></th>
-
-						</tr>
-					</thead>
-
-					<tbody>
-						<tr style="color: red"
-							ng-show="cCctr.getEntityListData().length <= 0">
-							<td colspan="14" style="text-align: center;"><h3
-									style="text-align: center;">
-									<b> No data found!!</b>
-								</h3></td>
-						<tr style="text-align: center"
-							ng-repeat="a in cCctr.getEntityListData() track by a.employeeId">
-							<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
-							<td>{{a.employeeId}}</td>
-							<td>{{a.typeOfUser}}</td>
-							<td><button type="button" class="btn btn-md btn-primary tool"
-									href="#myModal" data-toggle="modal"
-									ng-click="cCctr.delete=a.employeeId">
-									<i class="fa fa-trash" aria-hidden="true">
-									<span class="tooltiptext tooltip-top5">Delete</span></i>
-								</button></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<!--end table-->
-		</div>
-		<!--end card-body-->
-	</div>
-	<!--end card-->
-	</div>
-	<!-- end col -->
-	</div>
-	<!-- end row -->
-	<div ng-show="cCctr.getNoPage() > 0 ">
-		<div style="text-align: center">
-			<span ng-show="cCctr.currentPage != 1"> <a
-				ng-click="cCctr.getPage(true,'userDetails',cCctr.currentPage-1)"><strong
-					style="color: #6C5DD3; cursor: pointer">Previous</strong></a>
-			</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.currentPage}}</strong>&nbsp;
-				of &nbsp;<strong>{{cCctr.getNoPage()}}</strong>
-				&nbsp;&nbsp;&nbsp;&nbsp; <span
-				ng-show="cCctr.currentPage != cCctr.getNoPage()"> <a
-					ng-click="cCctr.getPage(true,'userDetails',cCctr.currentPage+1)"><strong
-						style="color: #6C5DD3; cursor: pointer">Next</strong></a>
-			</span>
-			</span>
-		</div>
-		<form role="form" name="gotoForm">
-			<div style="text-align: center">
-				<span>Go to</span> &nbsp;&nbsp;&nbsp; <input
-					style="width: 70px; text-align: center; border: 1px solid #6C5DD3"
-					type="number" name="pageNo" ng-model="cCctr.currentPage"
-					ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
-					ng-min="1" min="1" max="{{cCctr.getNoPage()}}"
-					ng-max="cCctr.getNoPage()" ng-required="true">
-				&nbsp;&nbsp;&nbsp;
-				<button style="height: 30px"
-					ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'userDetails',cCctr.currentPage)"
-					class="btn btn-primary px-3">Go</button>
-			</div>
-			<div class="row" align="center">
-				<span style="color: red"
-					ng-show="gotoForm.submitted || gotoForm.pageNo.$dirty && gotoForm.pageNo.$invalid">
-					<span class="error" ng-show="gotoForm.pageNo.$error.min">Page
-						No. should not be less than 1.</span> <span class="error"
-					ng-show="gotoForm.pageNo.$error.max">Page No. should not be
-						greater than {{cCctr.getNoPage()}}.</span> <span class="error"
-					ng-show="gotoForm.pageNo.$error.required">Please enter page
-						number.</span>
-				</span>
-			</div>
-		</form>
 	</div>
 
-	</div>
-
-
+	<script>
+		$(document).ready(function() {
+			$(this).scrollTop(0);
+		});
+	</script>
 </body>
 </html>
 

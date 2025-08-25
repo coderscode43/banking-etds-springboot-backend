@@ -1,5 +1,7 @@
 package domain.in.rjsa.service;
 
-public interface ADDITIONALDETAILSService {
+import domain.in.rjsa.model.tds.ADDITIONALDETAILS;
+
+public interface ADDITIONALDETAILSService extends ServiceInterfaceForm<Long, ADDITIONALDETAILS>{
 
 }

@@ -1,5 +1,7 @@
 package domain.in.rjsa.dao;
 
-public interface REQUESTSTATUSDao {
+import domain.in.rjsa.model.tds.REQUESTSTATUS;
+
+public interface REQUESTSTATUSDao extends DaoInterfaceTaxo<String, REQUESTSTATUS>{
 
 }

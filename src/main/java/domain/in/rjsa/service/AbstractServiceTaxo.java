@@ -4,28 +4,40 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import domain.in.rjsa.dao.DaoInterfaceTaxo;
 
 public abstract class AbstractServiceTaxo<K extends Serializable, E, D extends DaoInterfaceTaxo<K, E>>
 		implements ServiceInterfaceTaxo<K, E> {
 	
+	public static final ObjectMapper mapper = new ObjectMapper()
+			.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
 	@Override
 	public List<E> findAll(HashMap<String, Object> constrains, int pageNo, int noOfResult) {
 		// TODO Auto-generated method stub
 		return getPrimaryDao().findall(constrains, pageNo, noOfResult);
 	}
+
 	@Override
 	public Long findallCount(HashMap<String, Object> constrains) {
 		// TODO Auto-generated method stub
 		return getPrimaryDao().findallCount(constrains);
 	}
-	
+
 	public List<E> search(HashMap map) {
 		// TODO Auto-generated method stub
 		return getPrimaryDao().search(map);
 	}
-	
+
+	@Override
+	public void update(E entity) {
+		// TODO Auto-generated method stub
+		getPrimaryDao().update(entity);
+	}
+
 	public List<E> searchExcel(HashMap map) {
 		// TODO Auto-generated method stub
 		return getPrimaryDao().searchExcel(map);
@@ -34,7 +46,7 @@ public abstract class AbstractServiceTaxo<K extends Serializable, E, D extends D
 	@Override
 	public E uniqueSearch(HashMap map) {
 		// TODO Auto-generated method stub
-		return getPrimaryDao().uniqueSearch(map);
+		return (E) getPrimaryDao().uniqueSearch(map);
 	}
 
 	@Override
@@ -42,7 +54,7 @@ public abstract class AbstractServiceTaxo<K extends Serializable, E, D extends D
 		// TODO Auto-generated method stub
 		return getPrimaryDao().ajax(name, term);
 	}
-	
+
 	public abstract D getPrimaryDao();
 
 //	@Override
@@ -64,7 +76,5 @@ public abstract class AbstractServiceTaxo<K extends Serializable, E, D extends D
 //		update(entity);
 //		
 //	}
-	
-	
 
 }

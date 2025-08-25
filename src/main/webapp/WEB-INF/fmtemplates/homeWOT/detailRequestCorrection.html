@@ -115,7 +115,7 @@
 
 .table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
 	{
-	background-color: whitesmoke;
+	background-color: white;
 }
 
 @media ( min-width : 768px) {
@@ -254,7 +254,7 @@
 						</colgroup>
 						<tr>
 						<thead role="rowgroup">
-							<tr role="row" style="height: 40px; background-color: #81b7db">
+							<tr role="row" style="height: 40px; background-color: #7482f45e">
 								<th >Sr. No.</th>
 								<th >CIN</th>
 								<th >TAN</th>
@@ -272,7 +272,7 @@
 						<tbody>
 							<tr role="row"
 								ng-repeat="a in cCctr.entity.vpList track by a.id">
-								<td role="cell" class="one" style=" padding: 5px">{{$index+1}}</td>
+								<td role="cell" class="one" style=" padding: 5px">{{$index+cCctr.srNo}}</td>
 								<td>{{a.CIN}}</td>
 								<td>{{a.TAN}}</td>
 								<td>{{a.AVAILABLE_BALENCE}}</td>
@@ -309,7 +309,7 @@
 						</colgroup>
 						<tr>
 						<thead role="rowgroup">
-							<tr role="row" style="height: 40px; background-color: #81b7db">
+							<tr role="row" style="height: 40px; background-color: #7482f45e">
 								<th >Sr. No.</th>
 								<th >Challan Serial No</th>
 								<th >Deductee Ref No</th>
@@ -332,7 +332,7 @@
 						<tbody>
 							<tr role="row"
 								ng-repeat="a in cCctr.entity.Regular26QDeducteeList track by a.id">
-								<td role="cell" class="one" style=" padding: 5px">{{$index+1}}</td>
+								<td role="cell" class="one" style=" padding: 5px">{{$index+cCctr.srNo}}</td>
 								<td>{{a.challanSrNo}}</td>
 								<td>{{a.deducteeRefNo}}</td>
 								<td>{{a.deducteeCode}}</td>
@@ -369,7 +369,7 @@
 						</colgroup>
 						<tr>
 						<thead role="rowgroup">
-							<tr role="row" style="height: 40px; background-color: #81b7db">
+							<tr role="row" style="height: 40px; background-color: #7482f45e">
 								<th >Sr. No.</th>
 								<th >Invoice Date</th>
 								<th >Payment Done</th>
@@ -395,7 +395,7 @@
 						<tbody>
 							<tr role="row"
 								ng-repeat="a in cCctr.entity.vpList track by a.id">
-								<td role="cell" class="one" style=" padding: 5px">{{$index+1}}</td>
+								<td role="cell" class="one" style=" padding: 5px">{{$index+cCctr.srNo}}</td>
 								<td>{{a.invoiceDate}}</td>
 								<td>{{a.paymentDone}}</td>
 								<td>{{a.paymentDate}}</td>

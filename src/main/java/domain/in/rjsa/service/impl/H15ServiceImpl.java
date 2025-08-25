@@ -4,18 +4,24 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import domain.in.rjsa.dao.H15Dao;
 import domain.in.rjsa.excel.H15Excel;
+import domain.in.rjsa.exception.CustomException;
 import domain.in.rjsa.model.fy.H15;
 import domain.in.rjsa.service.AbstractServiceFY;
 import domain.in.rjsa.service.H15Service;
@@ -308,8 +314,33 @@ implements H15Service {
 }
 
 	@Override
-	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+	public List<?> search(LinkedHashMap<String, Object> map, int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
 		return dao.search(map, pageNo, resultPerPage);
+	}
+
+	@Override
+	public List<?> findAll(HashMap<String, Object> constrains, int pageNo, int resultPerPage) {
+		// TODO Auto-generated method stub
+		return getPrimaryDao().findall(constrains, pageNo, resultPerPage);
+	}
+
+	@Override
+	public void addData(String json) {
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			List<JSONObject> jsonObject =  mapper.readValue(json, new TypeReference <List<JSONObject>>() {
+			});
+			
+			for (JSONObject object : jsonObject) {
+				H15 h15 = new H15();
+				h15.setData(object);
+				dao.persist(h15);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new CustomException("Could Not Persist Data");
+		}
 	}
 }

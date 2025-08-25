@@ -50,7 +50,7 @@ public String ExcelFile;
 		return dao.findSearchCount(map);
 	}
 	@Override
-	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+	public List<?> search(LinkedHashMap<String, Object> map, int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
 		return dao.search(map, pageNo, resultPerPage);
 	}
@@ -96,10 +96,10 @@ public String ExcelFile;
 			} else {
 				details.createCell(3).setCellValue(log.getEntity());
 			}
-			if (log.getDate() == null) {
+			if (log.getLogsDate() == null) {
 				details.createCell(4).setCellValue(" ");
 			} else {
-				details.createCell(4).setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(log.getDate()));
+				details.createCell(4).setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(log.getLogsDate()));
 			}
 			if (log.getDetails() == null) {
 				details.createCell(5).setCellValue(" ");

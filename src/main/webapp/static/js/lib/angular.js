@@ -9424,7 +9424,6 @@
                 //ensure that the preparation animation is properly flushed so that
                 //the active state picks up from there. DO NOT REMOVE THIS LINE.
                 //DO NOT OPTIMIZE THIS LINE. THE MINIFIER WILL REMOVE IT OTHERWISE WHICH
-                //WILL RESULT IN AN UNPREDICTABLE BUG THAT IS VERY HARD TO TRACK DOWN AND
                 //WILL TAKE YEARS AWAY FROM YOUR LIFE.
                 if (domNode) {
                     if (!domNode.nodeType && domNode instanceof jqLite) {

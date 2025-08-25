@@ -7,11 +7,11 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import domain.in.rjsa.dao.LoginDao;
 import domain.in.rjsa.model.form.Branch;
 import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.form.OrganizationDetails;
 import domain.in.rjsa.service.BranchService;
-import domain.in.rjsa.service.LoginService;
 import domain.in.rjsa.service.OrganizationDetailsService;
 import domain.in.rjsa.service.STATEMENTSTATUSService;
 import domain.in.rjsa.service.UserDetailsService;
@@ -24,16 +24,16 @@ public class ApplicationCache {
 	private OrganizationDetailsService organizationDetailsService;
 	private BranchService branchService;
 	private UserDetailsService userDetailsService;
-	private LoginService loginService;
 
-	
+	@Autowired
+	private LoginDao loginDao;
+
 	@Cacheable(value = "allAdminUsers", key = "#username")
 	public domain.in.rjsa.model.form.UserDetails getAdminUser(String username) {
 		// TODO Auto-generated method stub
 		return userDetailsService.getByKey(username);
 	}
-	
-	
+
 	@CacheEvict(value = "allAdminUsers", key = "#username")
 	public void adminRefresh(String username) {
 	}
@@ -43,32 +43,27 @@ public class ApplicationCache {
 		// TODO Auto-generated method stub
 		return organizationDetailsService.getByKey(id);
 	}
-	
-	
 
 	@Cacheable(value = "branch")
 	public Branch getBranch(Long id) {
 		// TODO Auto-generated method stub
 		return branchService.getByKey(id);
 	}
-	
-	
-	
+
 	@Autowired
 	public void setOrganizationDetailsService(OrganizationDetailsService organizationDetailsService) {
 		this.organizationDetailsService = organizationDetailsService;
 	}
 
-	
 	@Autowired
 	public void setBranchService(BranchService branchService) {
 		this.branchService = branchService;
 	}
+
 	@Autowired
 	public void setUserDetailsService(UserDetailsService userDetailsService) {
 		this.userDetailsService = userDetailsService;
 	}
-
 
 	public Object getStatementStatus() {
 		// TODO Auto-generated method stub
@@ -76,17 +71,16 @@ public class ApplicationCache {
 		return sService.findAll(constrains, 0, 10);
 	}
 
-
-	@Cacheable(value = "login")
-	public Login getLoginDetail(String userName) {
+	@Cacheable(value = "login", key = "#username")
+	public Login getLoginDetail(String username) {
 		// TODO Auto-generated method stub
-		return loginService.getLogin(userName);
+		return loginDao.getByuserName(username);
 	}
 
+	@Cacheable(value = "auth")
+	public Login getLoginBasedOnAuth(String auth) {
+		return loginDao.getByAuth(auth);
 
-
-
-
-	
+	}
 
 }

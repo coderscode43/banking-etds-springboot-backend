@@ -17,10 +17,5 @@ public class ChallanDetailsDaoImpl extends AbstractDaoFY<Long, ChallanDetails> i
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	
-	
-	
-
 	
 }

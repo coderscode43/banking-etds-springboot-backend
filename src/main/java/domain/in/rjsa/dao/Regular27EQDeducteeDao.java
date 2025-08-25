@@ -15,6 +15,8 @@ public interface Regular27EQDeducteeDao extends DaoInterfaceFY<Long,  Regular27E
 	public Long findallCount(HashMap<String,Object> constrains);
 	
 	public List<Regular27EQDeductee> searchExcel(HashMap map);
+	
+	public List<String> getPanList(String s, String fy, Long branchCode);
 
 }
 

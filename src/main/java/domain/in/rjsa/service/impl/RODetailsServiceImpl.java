@@ -130,7 +130,7 @@ implements RODetailsService{
 	}
 
 	@Override
-	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+	public List<?> search(LinkedHashMap<String, Object> map, int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
 		return dao.search(map);
 	}

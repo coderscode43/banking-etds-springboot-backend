@@ -1,0 +1,276 @@
+<style>
+.tooltip-top {
+	margin-top: -0.4%;
+	margin-left: -13.4%;
+}
+
+.tooltip-top1 {
+	width: max-content !important;
+	margin-left: -100%;
+	margin-top: -63%;
+}
+
+.tooltip-top2 {
+	width: max-content !important;
+	margin-left: -100%;
+	margin-top: -63%;
+}
+
+/* Style for the help button image */
+.help-button {
+	display: none !important;
+	width: 75px;
+	height: 122px;
+	transition: transform .2s;
+	position: fixed;
+	right: -60px !important;
+	bottom: 10px;
+	border-radius: 5px;
+	background-color: #1e3361;
+	display: flex;
+	transition: 0.5s;
+	width: 75px;
+}
+
+/* Style for the help button image */
+.support-button {
+	width: 60px;
+	height: 122px;
+	transition: transform .2s;
+	position: fixed;
+	right: -40px !important;
+	bottom: 10px;
+	border-radius: 5px;
+	background-color: #1e3361;
+	display: flex;
+	transition: 0.5s;
+}
+
+.support-button .supportspan {
+	width: 5px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: bold;
+	color: white;
+	font-size: 14px;
+	word-break: break-all;
+	line-height: initial;
+	font-family: 'Roboto', sans-serif;
+	position: relative;
+	left: 0px;
+}
+
+.support-button .himg1 {
+	width: 25px;
+	filter: brightness(100);
+	position: absolute;
+	top: 0px;
+	left: 15px;
+}
+
+.support-button .himg2 {
+	width: 120px;
+	filter: brightness(100);
+	rotate: -90deg;
+	position: absolute;
+	right: -20px;
+	top: 44px;
+}
+
+/* Style for the help button when hovered */
+.support-button:hover {
+	transition: 0.5s;
+	box-shadow: 0px 0px 10px black;
+	right: -40px !important;
+}
+
+.support-button .tooltiptext {
+	visibility: hidden;
+	width: 200px;
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px;
+	position: absolute;
+	z-index: 1;
+	top: 13px;
+	right: 110%;
+	opacity: 0;
+	transition: opacity 1s;
+}
+
+.support-button:hover .tooltiptext {
+	visibility: visible;
+	opacity: 1;
+	filter: drop-shadow(0px 0px 10px #222);
+}
+</style>
+
+<div
+	ng-init="cCctr.helpFolder = 'homeSChelpPage' ;  cCctr.helpPage = 'AddRegularReturnSCHelp' ">
+	<div id="page-wrapper">
+		<div class="container-fluid">
+			<div class="col-md-12 "
+				style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
+				<div class="heading">
+					<strong>Add Regular Return</strong>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<form role="form" name="formRegularReturn">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<h6>
+										<label>Financial year<span style="color: red;">*</span></label>
+									</h6>
+									<select class="form-control" id="fy" name="fy"
+										ng-model="cCctr.entity.fy" ng-required="true">
+										<option disabled value="">Select financial Year</option>
+										<#list financialYear as year>
+										<option value="${year}">${year}</option>
+										</#list>
+									</select> <span style="color: red"
+										ng-show="formRegularReturn.submitted ||formRegularReturn.fy.$dirty && formRegularReturn.fy.$invalid">
+										<span class="error"
+										ng-show="formRegularReturn.fy.$error.required">
+											Financial Year is Required. </span>
+									</span>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<h6>
+										<label>TAN<span style="color: red;">*</span></label>
+									</h6>
+									<select class="form-control" id="tan" name="tan"
+										ng-model="cCctr.entity.tan" ng-required="true">
+										<option disabled value="">Select TAN Number</option>
+										<option value="selectAll">All TAN</option>
+										<#list Tan as TAN>
+										<option value="${TAN}">${TAN}</option>
+										</#list>
+									</select> <span style="color: red"
+										ng-show="formRegularReturn.submitted ||formRegularReturn.tan.$dirty && formRegularReturn.tan.$invalid">
+										<span class="error"
+										ng-show="formRegularReturn.tan.$error.required"> TAN
+											Number is Required. </span>
+									</span>
+								</div>
+							</div>
+
+
+						</div>
+						<div class="row">
+
+
+							<div class="col-md-6">
+								<div class="form-group">
+									<h6>
+										<label>Quarter<span style="color: red;">*</span></label>
+									</h6>
+									<select id="quarter" name="quarter" class="form-control"
+										ng-model="cCctr.entity.quarter" ng-required="true">
+										<option disabled value="">Select Quarter</option>
+										<#list Quarter as quarter>
+										<option value="${quarter}">${quarter}</option>
+										</#list>
+									</select> <span style="color: red"
+										ng-show="formRegularReturn.submitted ||formRegularReturn.quarter.$dirty && formRegularReturn.quarter.$invalid">
+										<span class="error"
+										ng-show="formRegularReturn.quarter.$error.required">
+											Quarter is Required. </span>
+									</span>
+								</div>
+							</div>
+
+							<div class="col-md-6">
+								<div class="form-group">
+									<h6>
+										<label>Form<span style="color: red;">*</span></label>
+									</h6>
+									<select id="form" name="form" ng-model="cCctr.entity.form"
+										class="form-control" ng-required="true">
+										<option disabled value="">Select Form</option>
+										<#list typeOfForm as tof>
+										<option value="${tof}">${tof}</option>
+										</#list>
+									</select> <span style="color: red"
+										ng-show="formRegularReturn.submitted ||formRegularReturn.form.$dirty && formRegularReturn.form.$invalid">
+										<span class="error"
+										ng-show="formRegularReturn.form.$error.required"> Form
+											is Required. </span>
+									</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="modal-footer" style="margin-top: 0%;">
+								<button
+									class="btn btn-outline-success waves-effect waves-light tool"
+									style="margin-top: 2%; margin-right: 0.5%;"
+									ng-click="formRegularReturn.submitted=true; cCctr.submitWithFile(formRegularReturn.$valid,cCctr.entity,'regularReturn','close')">
+									<span class=""><i class="fa fa-save"></i>&nbsp;Save<span
+										class="tooltiptext tooltip-top1">Save Button</span></span>
+								</button>
+								<button
+									class="btn btn-outline-danger waves-effect waves-light tool"
+									ng-click="cCctr.gotoListPage('regularReturn','regularReturn');"
+									style="margin-top: 2%;" onclick="scrollWin()">
+									<i class="mdi mdi-arrow-left-bold-outline mr-2"></i>Back<span
+										class="tooltiptext tooltip-top2">Back Button</span>
+								</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Success Modal -->
+<div id="successMsgReturn" class="modal" role="dialog"
+	data-backdrop="static">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 style="color: green;">
+					<picture>
+					<source type="image/webp" srcset="static/img/success.webp">
+					<img src="./././static/img/success.webp" height="30" width="30">
+					</picture>
+					<span class="headingMsg"></span>
+				</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="msg" style="font-size: 18px;"></div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal"
+					id="reload" ng-click="cCctr.gotoListPage('regularReturn','regularReturn');">Ok</button>
+				<!-- id="reload" -->
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<button class="support-button" style="bottom: 50px;"
+	ng-click="cCctr.gotoHelpSC('homeSChelpPage','AddRegularReturnSCHelp')">
+	<span class="supportspan">SUPPORT</span>
+	<div style="width: 150px; position: relative">
+		<!-- <img src="static/img/ROBO-TRANSPARENT.png" alt="Help" class="himg1"> -->
+		<!-- <img src="static/img/TOS-TRANSPARENT.png " alt="Help" class="himg2"> -->
+	</div>
+</button>
+<script>
+	$(document).ready(function() {
+		$(this).scrollTop(0);
+	});
+</script>

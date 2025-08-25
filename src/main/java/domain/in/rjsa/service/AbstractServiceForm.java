@@ -1,22 +1,38 @@
 package domain.in.rjsa.service;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.OffsetDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import domain.in.rjsa.dao.DaoInterfaceForm;
 
 public abstract class AbstractServiceForm<K extends Serializable, E, D extends DaoInterfaceForm<K, E>>
 		implements ServiceInterfaceForm<K, E> {
+	
+	public static final ObjectMapper mapper = new ObjectMapper()
+			.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+	
 //	@Autowired
 //	FileDetailDao fDao;
-	
-	
+
 	@Override
 	public void save(E entity) {
 		// TODO Auto-generated method stub
 		getPrimaryDao().persist(entity);
-		
+
 	}
 
 	@Override
@@ -24,7 +40,6 @@ public abstract class AbstractServiceForm<K extends Serializable, E, D extends D
 		// TODO Auto-generated method stub
 		getPrimaryDao().update(entity);
 	}
-	
 
 	@Override
 	public void deleteT(K key) {
@@ -49,7 +64,7 @@ public abstract class AbstractServiceForm<K extends Serializable, E, D extends D
 		// TODO Auto-generated method stub
 		return getPrimaryDao().search(map);
 	}
-	
+
 	public List<E> searchExcel(HashMap map) {
 		// TODO Auto-generated method stub
 		return getPrimaryDao().searchExcel(map);
@@ -58,7 +73,7 @@ public abstract class AbstractServiceForm<K extends Serializable, E, D extends D
 	@Override
 	public E uniqueSearch(HashMap map) {
 		// TODO Auto-generated method stub
-		return getPrimaryDao().uniqueSearch(map);
+		return (E) getPrimaryDao().uniqueSearch(map);
 	}
 
 	@Override
@@ -66,7 +81,7 @@ public abstract class AbstractServiceForm<K extends Serializable, E, D extends D
 		// TODO Auto-generated method stub
 		return getPrimaryDao().ajax(name, term);
 	}
-	
+
 	public abstract D getPrimaryDao();
 
 //	@Override
@@ -88,7 +103,7 @@ public abstract class AbstractServiceForm<K extends Serializable, E, D extends D
 //		update(entity);
 //		
 //	}
-	
+
 	@Override
 	public E getByKey(K key) {
 		return getPrimaryDao().getByKey(key);

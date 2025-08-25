@@ -3,10 +3,9 @@ package domain.in.rjsa.controller;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Pattern;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,11 +27,12 @@ import domain.in.rjsa.service.LDCService;
 
 @Controller
 @RequestMapping("/apildc")
-public class LDCController extends AbstractControllerTaxo<String, LDC, LDCService>{
+public class LDCController extends AbstractControllerTaxo<String, LDC, LDCService> {
 
 	@Autowired
 	LDCService service;
 	private final Logger logger = LoggerFactory.getLogger(getClass());
+
 	@Override
 	public LDCService getService() {
 		// TODO Auto-generated method stub
@@ -44,21 +44,21 @@ public class LDCController extends AbstractControllerTaxo<String, LDC, LDCServic
 		// TODO Auto-generated method stub
 		return LDC.class;
 	}
+
 	@RequestMapping(value = "/list/{fy}/{branchCode}/count/", method = RequestMethod.GET)
-	public ResponseEntity<?> count(@PathVariable String fy, @PathVariable Long branchCode,
-			HttpServletRequest request) {
+	public ResponseEntity<?> count(@PathVariable String fy, @PathVariable Long branchCode, HttpServletRequest request) {
 		HashMap<String, Object> constrains = new HashMap<>();
 //		constrains.put("fy",fy);
 //		constrains.put("branchCode",branchCode);
 		if (!"admin".equals(getBranchCode())) {
-			Long b=1L;
+			Long b = 1L;
 			try {
-				b =Long.valueOf(getBranchCode());
-			}catch (Exception e) {
+				b = Long.valueOf(getBranchCode());
+			} catch (Exception e) {
 				// TODO: handle exception
 			}
 			constrains.put("branchCode", b);
-		}else {
+		} else {
 		}
 		try {
 			Long count = getService().findallCount(constrains);
@@ -74,30 +74,31 @@ public class LDCController extends AbstractControllerTaxo<String, LDC, LDCServic
 		}
 
 	}
-	
+
 	public List<?> getList(String fy, Long branchCode, int pageNo, int resultPerPage) {
 		HashMap<String, Object> constrains = new HashMap<>();
 		if (!"admin".equals(getBranchCode())) {
-			Long b=1L;
+			Long b = 1L;
 			try {
-				b =Long.valueOf(getBranchCode());
-			}catch (Exception e) {
+				b = Long.valueOf(getBranchCode());
+			} catch (Exception e) {
 				// TODO: handle exception
 			}
 			constrains.put("branchCode", b);
-		}else {
+		} else {
 		}
 //		constrains.put("fy", fy);
 //		constrains.put("branchCode", branchCode);
 		return getService().findAll(constrains, pageNo, resultPerPage);
 	}
+
 	@RequestMapping(value = "/search/{fy}/{branchCode}/{pageNo}/{resultPerPage}/{json}", method = RequestMethod.GET)
-	public ResponseEntity<?> search(@PathVariable String fy, @PathVariable Long branchCode, @PathVariable String json, HttpServletRequest request, @PathVariable int pageNo,
-			@PathVariable int resultPerPage) {
+	public ResponseEntity<?> search(@PathVariable String fy, @PathVariable Long branchCode, @PathVariable String json,
+			HttpServletRequest request, @PathVariable int pageNo, @PathVariable int resultPerPage) {
 		try {
 			ObjectMapper mapper = new ObjectMapper();
 			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
-			map = mapper.readValue(json, new TypeReference<Map<String, String>>() {
+			map = mapper.readValue(json, new TypeReference<LinkedHashMap<String, Object>>() {
 			});
 //		if (map.containsKey("branchCode")) {
 //			Long branchCode = Long.valueOf((String) map.get("branchCode"));
@@ -105,8 +106,8 @@ public class LDCController extends AbstractControllerTaxo<String, LDC, LDCServic
 //		}
 //			map.put("fy", fy);
 //			map.put("branchCode", branchCode);
-			if(map.containsKey("TAN")) {
-				String TAN = (map.get("TAN").toString().split(Pattern.quote("-"),-1))[0];
+			if (map.containsKey("TAN")) {
+				String TAN = (map.get("TAN").toString().split(Pattern.quote("-"), -1))[0];
 				map.put("TAN", TAN);
 			}
 			adminValidation(map);
@@ -115,7 +116,7 @@ public class LDCController extends AbstractControllerTaxo<String, LDC, LDCServic
 			ListCount send = new ListCount();
 			send.setCount(count);
 			send.setEntities(list);
-			
+
 			return new ResponseEntity<>(send, HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("Error in listALL", e);
@@ -124,14 +125,11 @@ public class LDCController extends AbstractControllerTaxo<String, LDC, LDCServic
 
 	}
 
-	
-
-	public List<?> getSearch(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+	public List<?> getSearch(LinkedHashMap<String, Object> map, int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
 		return service.search(map, pageNo, resultPerPage);
 	}
-	
-	
+
 	@RequestMapping(value = "/searchEntity/{fy}/{branchCode}", method = RequestMethod.POST)
 	public ResponseEntity<?> searchEntity(@RequestBody LinkedHashMap<String, Object> map, @PathVariable String fy,
 			@PathVariable Long branchCode) {
@@ -153,4 +151,3 @@ public class LDCController extends AbstractControllerTaxo<String, LDC, LDCServic
 	}
 
 }
-

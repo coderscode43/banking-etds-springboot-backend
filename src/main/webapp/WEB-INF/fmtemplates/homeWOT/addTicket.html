@@ -1,200 +1,166 @@
 <style>
-.pushable {
-	background: hsl(205.3, 80.4%, 56.1%, 0.84);
-	border-radius: 12px;
-	border: none;
-	padding: 0;
-	cursor: pointer;
-	outline-offset: 4px;
-}
-
-.front {
-	display: block;
-	padding: 7px 14px;
-	border-radius: 12px;
-	font-size: 1.45rem;
-	background: hsl(205.3, 80.4%, 56.1%);
-	color: white;
-	transform: translateY(-6px);
-}
-
-.pushable:active .front {
-	transform: translateY(-2px);
-}
-
-.front:hover {
-	background: hsl(205.2, 80.7%, 42.7%);
-}
-/*Refresh button  */
 .tooltip-top {
- bottom: 85%;
-margin-left: -7%;
+	margin-top: -0.3%;
+	margin-left: -13.4%;
 }
-/*Add Button  */
+
 .tooltip-top1 {
-bottom: 125%;
-margin-left: -67%;
+	width: max-content !important;
+	margin-left: -100%;
+	margin-top: -95%;
 }
-/*Back button  */
+
 .tooltip-top2 {
- bottom: 125%;
-margin-left: -67%;
+	width: max-content !important;
+	margin-left: -88%;
+	margin-top: -61%;
 }
 </style>
 
-
 <div id="page-wrapper">
 	<div class="container-fluid">
-	 
-	<button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
-					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
-					 onClick="refreshPageButton()"><i
-					class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh
-					<span class="tooltiptext tooltip-top">Refresh Button</span></button>
-					
-		<div class="col-md-12 "
-			style="margin: 2% 0 2% 0; font-size: 12pxp">
-			<div class="heading" style="margin-left: 13%;"> 
-				<strong>Add Ticket Details</strong>
 
+		<!--<button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
+			style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%); float: right;"
+			onClick="refreshPageButton()">
+			<i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh <span
+				class="tooltiptext tooltip-top">Refresh Button</span>
+		</button>-->
+
+		<div class="col-md-12 " style="margin: 2% 0 2% 0; font-size: 12pxp;">
+			<div class="heading">
+				<strong>Add Ticket Details</strong>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-md-8">
 
-				<div class="tab-pane fade active in">
-					<form name="fileForm" class="form-horizontal" role="form"
-						enctype="multipart/form-data" style="font-size: 20px; margin-left: 134px; margin-right: -134px;">
-						<!-- Hidden Filed -->
-						<input type="hidden" ng-model="cCctr.entity.dateOfOpening"
-							ng-init="cCctr.entity.dateOfOpening=cCctr.presentDate()">
+		<div class="col-md-12">
 
-						<input type="hidden" ng-model="cCctr.entity.dateOfChange"
-							ng-init="cCctr.entity.dateOfChange=cCctr.presentDate()">
+			<div class="tab-pane  active in">
+				<form name="fileForm" class="form-horizontal" role="form"
+					enctype="multipart/form-data" style="font-size: 20px;">
+					<!-- Hidden Filed -->
+					<input type="hidden" ng-model="cCctr.entity.dateOfOpening"
+						ng-init="cCctr.entity.dateOfOpening=cCctr.presentDate()">
 
-						<input type="hidden" ng-model="cCctr.entity.resolved"
-							ng-init="cCctr.entity.resolved= 'true' "> <input
-							type="hidden" ng-model="cCctr.entity.status"
-							ng-init="cCctr.entity.status='Open'">
+					<input type="hidden" ng-model="cCctr.entity.dateOfChange"
+						ng-init="cCctr.entity.dateOfChange=cCctr.presentDate()"> <input
+						type="hidden" ng-model="cCctr.entity.resolved"
+						ng-init="cCctr.entity.resolved= 'true' "> <input
+						type="hidden" ng-model="cCctr.entity.status"
+						ng-init="cCctr.entity.status='Open'">
 
-						<div class="row">
-							<div class="col-md-4">
+					<div class="row">
+						<div class="col-md-6">
+							<div>
+								<label style="font-size: 15px">Form<span
+									style="color: red;">*</span></label>
 								<div>
-									<label style="font-size: 15px">Form<span style="color:red;">*</span></label>
-									<div>
-										<select name="form" id="form" ng-model="cCctr.entity.form"
-											class="form-control" title="Select Form" required>
-											<option disabled value="">Select Form</option>
-											<#list Form as f>
-											<option value="${f}">${f}</option>
-											</#list>
-										</select>
-										<!-- <select name="form" id="form" ng-model="cCctr.entity.form"
-											class="form-control" required>
-											<option disabled value="">Select Form</option>
-											<option value="24Q">24Q</option>
-											<option value="26Q">26Q</option>
-											<option value="27Q">27Q</option>
-											<option value="27EQ">27EQ</option>
-											<option value="15G">15G</option>
-											<option value="15H">15H</option>
-										</select> -->
-									</div>
-								</div>
-								<span style="color: red"
-									ng-show="fileForm.submitted || fileForm.form.$dirty && fileForm.form.$invalid">
-									<span class="error" ng-show="fileForm.form.$error.required">
-										Form is Required </span>
-								</span>
-							</div>
-
-
-							<div class="col-md-4">
-								<div>
-									<label style="font-size: 15px">Financial Year<span style="color:red;">*</span></label> <select
-										name="fy" id="fy" ng-model="cCctr.entity.fy"
-										class="form-control" title="Select Financial Year" required>
-										<option disabled value="">Select Financial Year</option>
-										<#list financialYear as year>
-										<option value="${year}">${year}</option>
-										</#list>
-									</select>
-
-								</div>
-								<span style="color: red"
-									ng-show="fileForm.submitted || fileForm.fy.$dirty && fileForm.fy.$invalid">
-									<span class="error" ng-show="fileForm.fy.$error.required">
-										Financial Year is Required </span>
-								</span>
-
-							</div>
-							<div class="col-md-4">
-								<div>
-									<label style="font-size: 15px">Quarter<span style="color:red;">*</span></label> <select
-										class="form-control" id="quarter" name="quarter" title="Select Quarter"
-										ng-model="cCctr.entity.quarter" ng-required="true">
-										<option disabled value="">Select Quarter</option>
-										<#list Quarter as quarter>
-										<option value="${quarter}">${quarter}</option>
+									<select name="form" id="form" ng-model="cCctr.entity.form"
+										title="Select Form" class="form-control" required>
+										<option disabled value="">Select Form</option>
+										<#list Form as f>
+										<option value="${f}">${f}</option>
 										</#list>
 									</select>
 								</div>
-								<span style="color: red"
-									ng-show="fileForm.submitted || fileForm.quarter.$dirty && fileForm.quarter.$invalid">
-									<span class="error" ng-show="fileForm.quarter.$error.required">
-										Quarter is Required </span>
-								</span>
 							</div>
+							<span style="color: red"
+								ng-show="fileForm.submitted || fileForm.form.$dirty && fileForm.form.$invalid">
+								<span class="error" ng-show="fileForm.form.$error.required">
+									Form is Required </span>
+							</span>
 						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<div>
-									<label style="font-size: 15px">Customer/Vendor Id</label> <input class="form-control"
-									    title="Enter Customer/Vendor Id"
-										name="custVendId" id="custVendId" ng-maxlength = "15"
-										ng-model="cCctr.entity.custVendId" placeholder="Customer/Vendor Id"
-										class="form-control">
-								</div>
-								<span style="color: red"
-									ng-show="fileForm.submitted || fileForm.custVendId.$dirty && fileForm.custVendId.$invalid">
-									<span class="error"
-									ng-show="fileForm.custVendId.$error.required"> Customer/Vendor
-										Id is Required </span>
-										<span class="error"
-									ng-show="fileForm.custVendId.$error.maxlength"> Customer/Vendor
-										Id is less than 15 Characters. </span>
-								</span>
+
+
+						<div class="col-md-6">
+							<div>
+								<label style="font-size: 15px">Financial Year<span
+									style="color: red;">*</span></label> <select class="form-control"
+									id="fy" name="fy" title="Select Financial Year"
+									ng-model="cCctr.entity.fy" ng-required="true">
+									<option disabled value="">Select financial Year</option>
+									<#list financialYear as year>
+									<option value="${year}">${year}</option>
+									</#list>
+								</select>
 
 							</div>
-							<div class="col-md-6">
-								<div>
-									<label style="font-size: 15px">PAN NUMBER</label> <input class="form-control" name="pan"
-										id="pan" title="Enter PAN" ng-model="cCctr.entity.pan" placeholder="PAN NUMBER" style="text-transform:uppercase"
-										ng-pattern="/^([A-Za-z]{5}[0-9]{4}[A-Za-z]{1})*$/"
-										class="form-control">
-								</div>
-								<span style="color: red"
-									ng-show="fileForm.submitted || fileForm.pan.$dirty && fileForm.pan.$invalid">
-									<span class="error" ng-show="fileForm.pan.$error.required">
-										PAN NUMBER is Required </span> <span class="error" id="pan"></span> <span
-									class="error" ng-show="fileForm.pan.$error.pattern">Please
-										enter valid Pan</span>
-								</span>
+							<span style="color: red"
+								ng-show="fileForm.submitted || fileForm.fy.$dirty && fileForm.fy.$invalid">
+								<span class="error" ng-show="fileForm.fy.$error.required">
+									Finacial Year is Required </span>
+							</span>
+						</div>
 
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div>
+								<label style="font-size: 15px">Quarter<span
+									style="color: red;">*</span></label> <select class="form-control"
+									id="quarter" name="quarter" title="Select Quarter"
+									ng-model="cCctr.entity.quarter" ng-required="true">
+									<option disabled value="">Select Quarter</option>
+									<#list Quarter as quarter>
+									<option value="${quarter}">${quarter}</option>
+									</#list>
+								</select>
+							</div>
+							<span style="color: red"
+								ng-show="fileForm.submitted || fileForm.quarter.$dirty && fileForm.quarter.$invalid">
+								<span class="error" ng-show="fileForm.quarter.$error.required">
+									Quarter is Required </span>
+							</span>
+						</div>
+						<div class="col-md-6">
+							<div>
+								<label style="font-size: 15px">Customer/Vendor Id</label> <input
+									class="form-control" name="custVendId"
+									title="Enter Customer/Vendor Id" id="custVendId"
+									Customer/Vendor Id ng-maxlength="15"
+									ng-model="cCctr.entity.custVendId"
+									placeholder="Customer/Vendor Id" class="form-control">
+							</div>
+							<span style="color: red"
+								ng-show="fileForm.submitted || fileForm.custVendId.$dirty && fileForm.custVendId.$invalid">
+								<span class="error"
+								ng-show="fileForm.custVendId.$error.required">
+									Customer/Vendor Id is Required </span> <span class="error"
+								ng-show="fileForm.custVendId.$error.maxlength">
+									Customer/Vendor Id is less than 15 Characters. </span>
+							</span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div>
+								<label style="font-size: 15px">PAN NUMBER</label> <input
+									class="form-control" name="pan" title="Enter PAN" id="pan"
+									ng-model="cCctr.entity.pan" placeholder="PAN NUMBER"
+									ng-pattern="/^([A-Za-z]{5}[0-9]{4}[A-Za-z]{1})*$/"
+									style="text-transform: uppercase" class="form-control">
+							</div>
+							<span style="color: red"
+								ng-show="fileForm.submitted || fileForm.pan.$dirty && fileForm.pan.$invalid">
+								<span class="error" ng-show="fileForm.pan.$error.required">
+									PAN is Required </span> <span class="error" id="pan"></span> <span
+								class="error" ng-show="fileForm.pan.$error.pattern">Please
+									enter valid Pan</span>
+							</span>
+
+						</div>
+						<div class="col-md-6">
+							<div style="margin-left: 0%">
+								<label style="font-size: 15px">Branch Code<span
+									style="color: red;">*</span></label> <input type="text"
+									class="form-control" name="branchCode" type="number"
+									ng-init="cCctr.entity.branchCode=cCctr.getStateParamValue('branchCode');"
+									id="branchCode" ng-model="cCctr.entity.branchCode"
+									style="width: 100%;" readonly />
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<div style="margin-left: 0%">
-									<label style="font-size: 15px">Branch Code<span style="color:red;">*</span></label> <input
-										type="text" class="form-control" name="branchCode" type="number"
-										ng-init="cCctr.entity.branchCode=cCctr.getStateParamValue('branchCode');"
-										id="branchCode" ng-model="cCctr.entity.branchCode"
-										style="width: 100%;" readonly />
-								</div>
-							</div>
-						</div>
-						<!-- <div class="row">
+					</div>
+					<!-- <div class="row">
 							<div class="col-md-12">
 								<div style="margin-left: 0%">
 									<md-autocomplete md-input-name="branchCode"
@@ -208,50 +174,76 @@ margin-left: -67%;
 								</div>
 							</div>
 						</div> -->
-						<div class="row">
-							<div class="col-md-12">
-								<div class="">
-									<label style="font-size: 15px">Description<span style="color:red;">*</span></label>
-									<textarea class="form-control" name="description" title="Add Description"
-										id="description" ng-model="cCctr.entity.description"
-										style="width: 100%;" required></textarea>
-									<span style="color: red"
-										ng-show="fileForm.submitted || fileForm.description.$dirty && fileForm.description.$invalid">
-										<span class="error"
-										ng-show="fileForm.description.$error.required">Description
-											is Required </span>
-									</span>
-								</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="">
+								<label style="font-size: 15px">Description<span
+									style="color: red;">*</span></label>
+								<textarea class="form-control" name="description"
+									title="Add Description" id="description"
+									ng-model="cCctr.entity.description" style="width: 100%;"
+									required></textarea>
+								<span style="color: red"
+									ng-show="fileForm.submitted || fileForm.description.$dirty && fileForm.description.$invalid">
+									<span class="error"
+									ng-show="fileForm.description.$error.required">Description
+										is Required </span>
+								</span>
 							</div>
 						</div>
-						<br>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
 
+							<label for="name" style="font-size: 15px"> File</label><input
+								multiple id="file-upload" type="file" name="zipFile"
+								title="Select File" class="form-control"
+								file-model="cCctr.entity.file" />
 
-						<div class="modal-footer" style="text-align: center">
-
-							<button class="pushable tool"
-								style="background: hsl(115.5, 77.1%, 30.8%, 0.54); margin-top: 2%;"
-								data-dismiss="modal"
-								ng-click="fileForm.submitted=true;cCctr.submitFY(fileForm.$valid,cCctr.entity,'ticket')">
-								<span class="front"
-									style="background: hsl(115.5, 77.1%, 30.8%);"> Add
-									<span class="tooltiptext tooltip-top1">Add Button</span></span>
-							</button>
-							<button class="pushable tool"
-								style="background: hsl(11.2, 81.2%, 37.5%, 0.53); margin-top: 2%;"
-								ng-click="cCctr.gotoWFYListPage('ticket','ticket')">
-								<span class="front" style="background: hsl(11.2, 81.2%, 37.5%);">
-									Back<span class="tooltiptext tooltip-top2">Back Button</span></span>
-							</button>
 						</div>
+					</div>
+					<br>
+					<!-- <div class="control-group">
+							<label class="control-label" for="save"></label>
+							<div class="controls">
+								<button id="add" name="add"
+									class="btn btn-success btn-primary"
+									ng-click="fileForm.submitted=true;cCctr.submit(fileForm.$valid,cCctr.entity,'ticket')">Add</button>
+									<button id="add" name="add"
+									class="btn btn-danger btn-primary"
+									ng-click="fileForm.submitted=true;cCctr.submit(fileForm.$valid,cCctr.entity,'ticket')">Back</button>
+									
+							</div>
+						</div> -->
 
 
+					<div class="modal-footer"
+						style="text-align: center; margin-top: 0px">
 
-					</form>
+						<button
+							class="btn btn-outline-success waves-effect waves-light tool"
+							style="margin-top: 2%;" data-dismiss="modal"
+							ng-click="fileForm.submitted=true;cCctr.submitTicketFY(fileForm.$valid,'ticket',cCctr.entity)">
+							<span class="   "><i class="typcn typcn-plus-outline "></i>
+								Add <span class="tooltiptext tooltip-top1">Add Button</span></span>
+						</button>
+						<button
+							class="btn btn-outline-danger waves-effect waves-light tool"
+							style="margin-top: 2%;"
+							ng-click="cCctr.gotoListPage('ticket','ticket');">
+							<i class="mdi mdi-arrow-left-bold-outline mr-2"></i>Back <span
+								class="tooltiptext tooltip-top2">Back Button</span></span>
+						</button>
 
-				</div>
+
+					</div>
+
+
+				</form>
 
 			</div>
+
 		</div>
 	</div>
+</div>
 </div>

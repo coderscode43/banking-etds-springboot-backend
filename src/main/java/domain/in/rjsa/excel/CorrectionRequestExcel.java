@@ -128,7 +128,7 @@ public class CorrectionRequestExcel{
 
 	public void createStylematch5() {
 		CellStyle styleMatch = wbs.createCellStyle();
-		styleMatch.setFillForegroundColor(IndexedColors.YELLOW.index);
+		styleMatch.setFillForegroundColor(IndexedColors.LIGHT_CORNFLOWER_BLUE.index);
 		styleMatch.setFillPattern(FillPatternType.SOLID_FOREGROUND);
 		styleMatch.setAlignment(HorizontalAlignment.JUSTIFY);
 		styleMatch.setVerticalAlignment(VerticalAlignment.CENTER);
@@ -322,9 +322,9 @@ public class CorrectionRequestExcel{
 	}
 	
 	public Sheet initializeSheet(String name) {
-//		createStylematch1();
-//		createStylematch2();
-//		createStylematch3();
+		createStylematch1();
+		createStylematch2();
+		createStylematch3();
 //		createStylematch4();
 //		createStylematch5();
 //		createstylematch6();
@@ -333,45 +333,103 @@ public class CorrectionRequestExcel{
 			Sheet sheet = wbs.createSheet(name);
 			Row row0 = sheet.createRow(0);
 
-			for (int i = 0; i < 17; i++) {
+			for (int i = 0; i < 12; i++) {
 				row0.createCell(i);
 				row0.getCell(i).setCellStyle(styleMatch1);
 			}
+			for (int i = 12; i < 22; i++) {
+				row0.createCell(i);
+				row0.getCell(i).setCellStyle(styleMatch2);
+			}
+			for (int i = 22; i < 28; i++) {
+				row0.createCell(i);
+				row0.getCell(i).setCellStyle(styleMatch6);
+			}
+			for (int i = 28; i < 35; i++) {
+				row0.createCell(i);
+				row0.getCell(i).setCellStyle(styleMatch1);
+			}
+			
+			
+			
 			sheet.setColumnWidth(0, 2000);
 			row0.getCell(0).setCellValue("Sr no.");
 			sheet.setColumnWidth(1, 4000);
-			row0.getCell(1).setCellValue("Id");
+			row0.getCell(1).setCellValue("Ticket Number");
 			sheet.setColumnWidth(2, 4000);
-			row0.getCell(2).setCellValue("Date of Request");
+			row0.getCell(2).setCellValue("Financial Year");
 			sheet.setColumnWidth(3, 2000);
-			row0.getCell(3).setCellValue("Cust Id");
+			row0.getCell(3).setCellValue("Quarter");
 			sheet.setColumnWidth(4, 5000);
-			row0.getCell(4).setCellValue("Name of Customer");
+			row0.getCell(4).setCellValue("Branch Code");
 			sheet.setColumnWidth(5, 4000);
-			row0.getCell(5).setCellValue("PAN of Customer");
+			row0.getCell(5).setCellValue("Type of Form");
 			sheet.setColumnWidth(6, 4000);
-			row0.getCell(6).setCellValue("Name of Request");
+			row0.getCell(6).setCellValue("Type of Correction");
 			sheet.setColumnWidth(7, 4000);
-			row0.getCell(7).setCellValue("Branch Code");
+			row0.getCell(7).setCellValue("Name of Customer");
 			sheet.setColumnWidth(8, 4000);
-			row0.getCell(8).setCellValue("Employee Number");
+			row0.getCell(8).setCellValue("PAN of Customer");
 			sheet.setColumnWidth(9, 4000);
-			row0.getCell(9).setCellValue("Correction Request Number");
+			row0.getCell(9).setCellValue("Employee Number");
 			sheet.setColumnWidth(10, 4000);
-			row0.getCell(10).setCellValue("Type of Correction");
+			row0.getCell(10).setCellValue("Remark");
 			sheet.setColumnWidth(11, 4000);
-			row0.getCell(11).setCellValue("Remark");
-			sheet.setColumnWidth(12, 4000);
-			row0.getCell(12).setCellValue("Approved By");
-			sheet.setColumnWidth(13, 4000);
-			row0.getCell(13).setCellValue("Approved on");
-			sheet.setColumnWidth(14, 4000);
-			row0.getCell(14).setCellValue("Correction By");
-			sheet.setColumnWidth(15, 4000);
-			row0.getCell(15).setCellValue("Correction on");
-			sheet.setColumnWidth(16, 4000);
-			row0.getCell(16).setCellValue("Status");
+			row0.getCell(11).setCellValue("Attached Document");
 			
+			
+			sheet.setColumnWidth(12, 4000);
+			row0.getCell(12).setCellValue("Date Of Payment");
+			sheet.setColumnWidth(13, 4000);
+			row0.getCell(13).setCellValue("PAN Number");
+			sheet.setColumnWidth(14, 4000);
+			row0.getCell(14).setCellValue("Correct PAN Number");
+			sheet.setColumnWidth(15, 4000);
+			row0.getCell(15).setCellValue("Amount Paid");
+			sheet.setColumnWidth(16, 4000);
+			row0.getCell(16).setCellValue("Correct Amount Paid");
+			sheet.setColumnWidth(17, 4000);
+			row0.getCell(17).setCellValue("TDS");
+			sheet.setColumnWidth(18, 4000);
+			row0.getCell(18).setCellValue("Correct TDS");
+			sheet.setColumnWidth(19, 4000);
+			row0.getCell(19).setCellValue("Section");
+			sheet.setColumnWidth(20, 4000);
+			row0.getCell(20).setCellValue("Correct Section");
+			sheet.setColumnWidth(21, 4000);
+			row0.getCell(21).setCellValue("Remark for Amount Correction");
+			
+			
+			sheet.setColumnWidth(22, 4000);
+			row0.getCell(22).setCellValue("Challan Serial Number");
+			sheet.setColumnWidth(23, 4000);
+			row0.getCell(23).setCellValue("BSR Code");
+			sheet.setColumnWidth(24, 4000);
+			row0.getCell(24).setCellValue("Challan Section");
+			sheet.setColumnWidth(25, 4000);
+			row0.getCell(25).setCellValue("Challan Amount");
+			sheet.setColumnWidth(26, 4000);
+			row0.getCell(26).setCellValue("Challan Date");
+			sheet.setColumnWidth(27, 4000);
+			row0.getCell(27).setCellValue("Challan Supporting Document");
+			
+			
+			sheet.setColumnWidth(28, 4000);
+			row0.getCell(28).setCellValue("Status");
+			sheet.setColumnWidth(29, 4000);
+			row0.getCell(29).setCellValue("Request Created By");
+			sheet.setColumnWidth(30, 4000);
+			row0.getCell(30).setCellValue("Date of Request");
+			sheet.setColumnWidth(31, 4000);
+			row0.getCell(31).setCellValue("Approved By");
+			sheet.setColumnWidth(32, 4000);
+			row0.getCell(32).setCellValue("Approved on");
+			sheet.setColumnWidth(33, 4000);
+			row0.getCell(33).setCellValue("Correction By");
+			sheet.setColumnWidth(34, 4000);
+			row0.getCell(34).setCellValue("Correction on");
+			
+		
 
 			return sheet;
 	} catch (Exception e) {

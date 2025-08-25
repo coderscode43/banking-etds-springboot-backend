@@ -12,6 +12,7 @@ public class CustomUserDetails implements LdapUserDetails {
 	 */
 	private static final long serialVersionUID = 1L;
 	private String physicalDeliveryOfficeName;
+	private String branchCode;
 	private LdapUserDetails details;
     public CustomUserDetails(LdapUserDetails details) {
     	this.details=details;
@@ -23,6 +24,16 @@ public class CustomUserDetails implements LdapUserDetails {
     public String getPhysicalDeliveryOfficeName() {
         return this.physicalDeliveryOfficeName;
     }
+    
+    
+    public void setBranchCode(String branchCode) {
+        this.branchCode = branchCode;
+    }
+    public String getBranchCode() {
+        return this.branchCode;
+    }
+    
+    
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub

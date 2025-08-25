@@ -1,12 +1,12 @@
 package domain.in.rjsa.controller;
 
+import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Pattern;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,13 +22,11 @@ import org.springframework.web.servlet.HandlerMapping;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 
 import domain.in.rjsa.exception.CustomException;
 import domain.in.rjsa.model.form.ListCount;
+import domain.in.rjsa.model.fy.DeducteeRemark;
 import domain.in.rjsa.model.fy.Regular27QDeductee;
-import domain.in.rjsa.model.fy.Remark;
 import domain.in.rjsa.service.Regular27QDeducteeService;
 import domain.in.rjsa.service.RemarkService;
 
@@ -42,7 +40,6 @@ public class Regular27QDeducteeController
 	@Autowired
 	RemarkService rService;
 	private final Logger logger = LoggerFactory.getLogger(getClass());
-	
 
 	@Override
 	public Regular27QDeducteeService getService() {
@@ -68,100 +65,102 @@ public class Regular27QDeducteeController
 		}
 
 	}
+
 	public HashMap<String, Object> getDetail(Long id, String fy, Long branchCode) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
 		if (!"admin".equals(getBranchCode())) {
-			Long b=1L;
+			Long b = 1L;
 			try {
-				b =Long.valueOf(getBranchCode());
-			}catch (Exception e) {
+				b = Long.valueOf(getBranchCode());
+			} catch (Exception e) {
 				// TODO: handle exception
 			}
 			constrains.put("branchCode", b);
-		}else {
+		} else {
 		}
 		constrains.put("id", id);
 		constrains.put("fy", fy);
 		constrains.put("branchCode", branchCode);
 		HashMap<String, Object> map = new HashMap<>();
-		map.put("deductee",getService().uniqueSearch(constrains));
-		constrains.remove("id", id);
-		constrains.put("deducteeId",id);
-		List<Remark> remark = rService.findForm(constrains, 0, 100,"27Qform");
-		map.put("remark",remark);
-		return map; 
-	}
-	
-	
-	// ------------------- Search Single Entity ---------------------------------
-		@RequestMapping(value = "/search/get/{pageNo}/{resultPerPage}/{json}/**", method = RequestMethod.GET)
-		public ResponseEntity<?> search(@PathVariable String json, HttpServletRequest request, @PathVariable int pageNo,
-				@PathVariable int resultPerPage) {
-			try {
-				final String path = request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE).toString();
-				final String bestMatchingPattern = request.getAttribute(HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE)
-						.toString();
+		map.put("deductee", getService().uniqueSearch(constrains));
 
-				String arguments = new AntPathMatcher().extractPathWithinPattern(bestMatchingPattern, path);
+		constrains.clear();
+		constrains.put("DEDUCTEEID", id);
 
-				String searchParam;
-				if (null != arguments && !arguments.isEmpty()) {
-					searchParam = json + '/' + arguments;
-				} else {
-					searchParam = json;
-				}
-				ObjectMapper mapper = new ObjectMapper();
-
-				LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
-
-				// convert JSON string to Map
-				map = mapper.readValue(searchParam, new TypeReference<Map<String, String>>() {
-				});
-				if(map.containsKey("branchCode")) {
-					Long branchCode = Long.valueOf(map.get("branchCode").toString());
-					map.put("branchCode", branchCode);
-				}
-				if(map.containsKey("TAN")) {
-					String TAN = (map.get("TAN").toString().split(Pattern.quote("-"),-1))[0];
-					map.put("TAN", TAN);
-				}
-				
-				adminValidation(map);
-				Long count = getService().findallCount(map);
-				List<?> list = getSearch(map, pageNo, resultPerPage);
-				ListCount send = new ListCount();
-				send.setCount(count);
-				send.setEntities(list);
-
-				return new ResponseEntity<>(send, HttpStatus.OK);
-			} catch (Exception e) {
-				logger.error("Error in listALL", e);
-				return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-			}
-
-		}
-
-		public List<?> getSearch(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
-			// TODO Auto-generated method stub
-			return getService().search(map,pageNo,resultPerPage);
-		}
+		List<DeducteeRemark> remarks = deducteeService.search(constrains);
+		map.put("remarks", remarks);
 		
-		public void update(LinkedHashMap<String, Object> entity) {
-			try {
-			Gson gson = new Gson();
-			//object of the 
-			//regular24DDFromUI
-			//below all code in service
-			
-			JsonElement jsonElement = gson.toJsonTree(entity);
-			getService().update(gson.fromJson(jsonElement, getEntity()));
+		return map;
+	}
 
-					
-			}catch(Exception e){
-					throw new CustomException(e.getMessage());
+	// ------------------- Search Single Entity ---------------------------------
+	@RequestMapping(value = "/search/get/{pageNo}/{resultPerPage}/{json}/**", method = RequestMethod.GET)
+	public ResponseEntity<?> search(@PathVariable String json, HttpServletRequest request, @PathVariable int pageNo,
+			@PathVariable int resultPerPage) {
+		try {
+			final String path = request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE).toString();
+			final String bestMatchingPattern = request.getAttribute(HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE)
+					.toString();
+
+			String arguments = new AntPathMatcher().extractPathWithinPattern(bestMatchingPattern, path);
+
+			String searchParam;
+			if (null != arguments && !arguments.isEmpty()) {
+				String decodedString = URLDecoder.decode(arguments, "UTF-8");
+				decodedString = decodedString.replace(", \"", "\"");
+				searchParam = json + '/' + decodedString;
+			} else {
+				searchParam = json;
 			}
+			ObjectMapper mapper = new ObjectMapper();
+
+			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
+
+			// convert JSON string to Map
+			map = mapper.readValue(searchParam, new TypeReference<LinkedHashMap<String, Object>>() {
+			});
+			if (map.containsKey("branchCode")) {
+				Long branchCode = Long.valueOf(map.get("branchCode").toString());
+				map.put("branchCode", branchCode);
+			}
+			if (map.containsKey("TAN")) {
+				String TAN = (map.get("TAN").toString().split(Pattern.quote("-"), -1))[0];
+				map.put("TAN", TAN);
+			}
+
+			adminValidation(map);
+			Long count = getService().findallCount(map);
+			List<?> list = getSearch(map, pageNo, resultPerPage);
+			ListCount send = new ListCount();
+			send.setCount(count);
+			send.setEntities(list);
+
+			return new ResponseEntity<>(send, HttpStatus.OK);
+		} catch (Exception e) {
+			logger.error("Error in listALL", e);
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-	
-	
+
+	}
+
+	public List<?> getSearch(LinkedHashMap<String, Object> map, int pageNo, int resultPerPage) {
+		// TODO Auto-generated method stub
+		return getService().search(map, pageNo, resultPerPage);
+	}
+
+	public void update(LinkedHashMap<String, Object> entity) {
+		try {
+			// object of the
+			// regular24DDFromUI
+			// below all code in service
+
+			String jsonNode = mapper.writeValueAsString(entity);
+			getService().update(mapper.readValue(jsonNode, getEntity()));
+
+		} catch (Exception e) {
+			throw new CustomException(e.getMessage());
+		}
+	}
+
 }

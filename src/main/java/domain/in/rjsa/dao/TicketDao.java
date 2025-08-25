@@ -4,10 +4,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import domain.in.rjsa.model.form.Ticket;
+import domain.in.rjsa.model.fy.Tickets;
 
-public interface TicketDao extends DaoInterfaceForm<Long,  Ticket>{
+public interface TicketDao extends DaoInterfaceForm<Long,  Tickets>{
 	
-	List<Ticket> search(HashMap entity, int pageNo, int noOfResult);
+	List<Tickets> search(HashMap entity, int pageNo, int noOfResult);
 	public Map<String,Long> getStatusCounts(Long branchCode, boolean isAdmin);
 }

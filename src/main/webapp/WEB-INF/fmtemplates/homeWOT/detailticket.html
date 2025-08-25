@@ -1,5 +1,8 @@
 
 <style>
+body {
+	overflow-x: hidden;
+}
 /*
 	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
 	*/
@@ -115,7 +118,7 @@
 
 .table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
 	{
-	background-color: whitesmoke;
+	background-color: white;
 }
 
 @media ( min-width : 768px) {
@@ -125,56 +128,67 @@
 		visibility: visible;
 	}
 }
-.pushable {
-	background: hsl(205.3, 80.4%, 56.1%, 0.84);
-	border-radius: 12px;
-	border: none;
-	padding: 0;
-	cursor: pointer;
-	outline-offset: 4px;
-}
 
-.front {
-	display: block;
-	padding: 7px 14px;
-	border-radius: 12px;
-	font-size: 1.45rem;
-	background: hsl(205.3, 80.4%, 56.1%);
-	color: white;
-	transform: translateY(-6px);
-}
-
-.pushable:active .front {
-	transform: translateY(-2px);
-}
-
-.front:hover {
-	background: hsl(205.2, 80.7%, 42.7%);
-}
 /*Add Remark Button  */
 .tooltip-top {
- bottom: 116%;
-margin-left: -89%;
+	bottom: 116%;
+	margin-left: -89%;
 }
 /*Edit Button  */
 .tooltip-top1 {
- bottom: 116%;
-margin-left: -85%;
+	bottom: 116%;
+	margin-left: -85%;
 }
 /*Resolved Button  */
 .tooltip-top2 {
- bottom: 116%;
-margin-left: -90%;
+	bottom: 116%;
+	margin-left: -90%;
 }
 /*Reject Button  */
 .tooltip-top3 {
- bottom: 116%;
-margin-left: -86%;
+	bottom: 116%;
+	margin-left: -86%;
 }
 /*Back Button */
-.tooltip-top4{
- bottom: 116%;
-margin-left:-90%;
+.tooltip-top4 {
+	bottom: 116%;
+	margin-left: -90%;
+}
+
+.TopHead {
+	padding-bottom: 0px;
+	border-bottom: none;
+}
+
+.table-responsive {
+	overflow-x: inherit;
+	margin-left: -3%;
+	margin-right: 2%;
+}
+
+.BtnDiv {
+	margin-right: 3%;
+}
+
+.tooltiptext.tooltip-download {
+	margin-left: 5%;
+}
+
+.tooltiptext.tooltip-download1 {
+	margin-left: 2%;
+}
+
+.frontButton1 {
+	padding: 4px 14px;
+	border-radius: 4px;
+	font-size: 0.9rem;
+	color: white;
+	transform: none !important;
+	margin-right: 1%;
+}
+
+.frontButton1 i {
+	margin-top: 7px;
 }
 </style>
 
@@ -183,17 +197,17 @@ margin-left:-90%;
 
 <div id="page-wrapper"
 	ng-init="cCctr.entity=cCctr.getEntityDataFY().deductee;">
-	<div class="container-fluid">
+	<div class="container-fluid ContFluid">
 
 		<div ng-show="cCctr.show != true">
 
 			<div class="row">
-				<h3 class="page-header" style="margin-top: 2%;">Details of
-					Ticket</h3>
+				<h4 class="page-header TopHead">
+					<strong>Details of Ticket</strong>
+					</h3>
 			</div>
 
-			<div class="panel panel-default"
-				style="margin-top: -2%; border: none !important;">
+			<div class="panel panel-default">
 				<div class="panel-body">
 
 					<!-- <div class="row">
@@ -206,62 +220,73 @@ margin-left:-90%;
 					</div> -->
 
 					<br>
-					<div class="container">
-						<div class="row" style="font-size: 13px;">
-							<div class="col-md-3">
-								<label>Financial Year &nbsp;:</label> {{cCctr.entity.fy}}
-							</div>
-							<div class="col-md-3">
-								<label>Quarter &nbsp;:</label> {{cCctr.entity.quarter}}
-							</div>
-							<div class="col-md-3">
-								<label>Form &nbsp;:</label> {{cCctr.entity.form}}
-							</div>
+					<div style="line-height: 1.6; margin-top: -1%;">
+						<div class="dataDiv">
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-2">
+									<label>Financial Year &nbsp;</label>
+								</div>
+								<div class="col-md-2">: {{cCctr.entity.fy}}</div>
+								<div class="col-md-2">
+									<label>Quarter &nbsp;</label>
+								</div>
+								<div class="col-md-2">: {{cCctr.entity.quarter}}</div>
+								<div class="col-md-2">
+									<label>Form &nbsp;</label>
+								</div>
+								<div class="col-md-2">: {{cCctr.entity.form}}</div>
 
-						</div>
-						<br>
-						<div class="row" style="font-size: 13px;">
-							<!-- <div class="col-md-3">
+							</div>
+							<br>
+							<div class="row" style="font-size: 13px;">
+								<!-- <div class="col-md-3">
 							<label>Type &nbsp;:</label> {{cCctr.entity.type}}
 						</div> -->
-							<div class="col-md-3">
-								<label>Status &nbsp;:</label> <span
-									ng-if="cCctr.entity.resolved == 0"> Resolved</span> <span
-									ng-if="cCctr.entity.resolved == 1"> Not Resolved</span>
+								<div class="col-md-2">
+									<label>Status &nbsp;</label>
+								</div>
+								<div class="col-md-2">
+									<span ng-if="cCctr.entity.resolved == 0">: Resolved</span> <span
+										ng-if="cCctr.entity.resolved == 1" style="color: red">
+										: Not Resolved</span>
+								</div>
+								<div class="col-md-2">
+									<label>Description &nbsp;</label>
+								</div>
+								<div class="col-md-2">: {{cCctr.entity.description}}</div>
+								<div class="col-md-2">
+									<label>Branch Code &nbsp;</label>
+								</div>
+								<div class="col-md-2">: {{cCctr.entity.branchCode}}</div>
 							</div>
-							<div class="col-md-3">
-								<label>Description &nbsp;:</label> {{cCctr.entity.description}}
-							</div>
-							<div class="col-md-3">
-								<label>Branch Code. &nbsp;:</label> {{cCctr.entity.branchCode}}
-							</div>
-							<!-- <div class="col-md-3">
-								<label>Remarks &nbsp;:</label> {{cCctr.entity.status}}
-							</div> -->
+							<br>
 
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-2">
+									<label>Date Of Opening &nbsp;</label>
+								</div>
+								<div class="col-md-2">: {{cCctr.entity.dateOfOpening |
+									date:'dd-MM-yyyy'}}</div>
+								<div class="col-md-2">
+									<label>Date of Change &nbsp;</label>
+								</div>
+								<div class="col-md-2">: {{cCctr.entity.dateOfChange |
+									date:'dd-MM-yyyy'}}</div>
+								<div ng-show="cCctr.entity.attachment" class="col-md-2">
+									<label>Document &nbsp;</label>
+								</div>
+								<div ng-show="cCctr.entity.attachment" class="col-md-2">:
+									{{cCctr.entity.attachment}}</div>
 
-						</div>
-						<br>
-
-						<div class="row" style="font-size: 13px;">
-							<!-- <div class="col-md-3">
-							<label>Attachment &nbsp;:</label> {{cCctr.entity.attachment}}
-						</div> -->
-							<div class="col-md-3">
-								<label>Date Of Opening &nbsp;:</label>
-								{{cCctr.entity.dateOfOpening | date:'dd-MM-yyyy'}}
 							</div>
-							<div class="col-md-3">
-								<label>Date of Change &nbsp;:</label>
-								{{cCctr.entity.dateOfChange | date:'dd-MM-yyyy'}}
-							</div>
+							<br>
 
 						</div>
 						<br>
 						<div class="row" style="font-size: 13px;"></div>
 
 
-						<div class="row">
+						<div class="BtnDiv">
 							<form role="form" name="remark">
 								<input ng-model="cCctr.newEntity.deducteeId = cCctr.entity.id"
 									id="deducteeId" name="deducteeId" style="display: none">
@@ -271,83 +296,96 @@ margin-left:-90%;
 									ng-model="cCctr.newEntity.deducteeForm ='ticket'"
 									id="deducteeForm" name="deducteeForm" style="display: none">
 
+								<input ng-model="cCctr.newEntity.form = cCctr.entity.form"
+									id="deducteeId" name="deducteeId" style="display: none"
+									class="ng-pristine ng-untouched ng-valid" aria-invalid="false">
+
+								<input ng-model="cCctr.newEntity.quarter = cCctr.entity.quarter"
+									id="quarter" name="quarter" style="display: none"
+									class="ng-pristine ng-untouched ng-valid" aria-invalid="false">
+
 								<input class="form-control"
 									ng-model="cCctr.newEntity.branchCode = cCctr.entity.branchCode"
 									id="branchCode" name="branchCode" style="display: none">
-
-								<button class="pushable tool"
-										style="margin-left: 50%; background: hsl(224.9, 87.1%, 39.4%, 0.59);"
-										data-target="#myModal" data-toggle="modal">
-										<span class="front darkblue"
-											style="background: hsl(224.9, 87.1%, 39.4%);"><i
-											class="fa fa-plus" aria-hidden="true"></i> Add Remark<span class="tooltiptext tooltip-top">Add Remark Button</span></span>
+								<div class="Buttons" style="gap: 3px;">
+									<div class="frontButton1 lightbluespan tool" ng-show="cCctr.entity.attachment" ng-click="cCctr.download(true,'apiticket/downloadDoc/'+cCctr.entity.id)">
+										<div class=button-main-box>
+											<i
+												class="fa fa-download" aria-hidden="true"></i>
+											<div class="button-tooltip-box">
+												<span class="tooltiptext tooltip-download"> Download
+													Document</span>
+											</div>
+										</div>
+									</div>
+									<button data-target="#myModal" data-toggle="modal"
+										type="button"
+										class="btn btn-outline-primary waves-effect waves-light tool">
+										<i class="mdi mdi-plus mr-2"></i>Add Remark<span
+											class="tooltiptext tooltip-top">Add Remark Button</span>
 									</button>
 
-								
 
-								<div ng-if="cCctr.entity.resolved == 1" ng-hide=(
-									"admin"!="${typeOfUser}"
-									);
-									style="margin: -2.9% 0 0% 60.9%;">
-									<button class="pushable tool"
-											style="background: hsl(115.5, 77.1%, 30.8%, 0.54);"
+									<div ng-if="cCctr.entity.resolved == 1"
+										ng-show="'admin'=='${typeOfUser}'";
+								 >
+										<button
+											class="btn btn-outline-warning waves-effect waves-light tool"
 											data-toggle="modal" data-target="#resolveModal">
-											<span class="front"
-												style="background: hsl(115.5, 77.1%, 30.8%);"><i
-												class="fa fa-thumbs-up" aria-hidden="true"></i> Resolved<span class="tooltiptext tooltip-top2">Resolved Button</span></span>
+											<span class="   "><i class="fa fa-thumbs-up"
+												aria-hidden="true"></i> Resolved <span
+												class="tooltiptext tooltip-top1">Resolved Button</span></span>
 										</button>
-								</div>
-								<div ng-if="cCctr.entity.resolved == 0" ng-hide=(
-									"admin"!="${typeOfUser}"
-									);
-									style="margin: -2.9% 0 0% 60.9%;">
-									<button class="pushable"
-											style="background: hsl(115.5, 77.1%, 30.8%, 0.54);"
-											data-toggle="modal" data-target="#resolveModal" disabled>
-											<span class="front"
-												style="background: hsl(116.1, 44.3%, 72.5%);"><i
-												class="fa fa-thumbs-up" aria-hidden="true"></i> Resolved</span>
+									</div>
+									<div ng-if="cCctr.entity.resolved == 0"
+										ng-show="'admin'=='${typeOfUser}'";>
+										<button
+											class="btn btn-outline-warning waves-effect waves-light tool"
+											data-toggle="modal" data-target="#resolveModal">
+											<span class="   "><i class="fa fa-thumbs-up"
+												aria-hidden="true"></i> Resolved <span
+												class="tooltiptext tooltip-top1">Resolved Button</span></span>
 										</button>
-								</div>
+									</div>
 
-								<div ng-if="cCctr.entity.resolved == 1" ng-hide=(
-									"admin"!="${typeOfUser}"
-									);
-									style="margin: -2.9% 0 0% 70.2%">
-									<button class="pushable tool"
-											style="background: hsl(11.2, 81.2%, 37.5%, 0.53);"
+									<div ng-if="cCctr.entity.resolved == 1"
+										ng-show="'admin'=='${typeOfUser}'");
+									 >
+										<button disabled
+											class="btn btn-outline-danger waves-effect waves-light tool"
 											data-toggle="modal" data-target="#rejectModal">
-											<span class="front"
-												style="background: hsl(11.2, 81.2%, 37.5%);"><i
-												class="fa fa-thumbs-down" aria-hidden="true"></i> Reject<span class="tooltiptext tooltip-top3">Reject Button</span></span>
+											<span class="   "><i class="fa fa-thumbs-down"
+												aria-hidden="true"></i> Reject <span
+												class="tooltiptext tooltip-top2">Reject Button</span></span>
 										</button>
+									</div>
+									<div ng-if="cCctr.entity.resolved == 0"
+										ng-show="'admin'=='${typeOfUser}'");
+									 >
+										<button disabled
+											class="btn btn-outline-danger waves-effect waves-light tool"
+											data-toggle="modal" data-target="#rejectModal">
+											<span class="   "><i class="fa fa-thumbs-down"
+												aria-hidden="true"></i> Reject <span
+												class="tooltiptext tooltip-top2">Reject Button</span></span>
+										</button>
+									</div>
+
+									<div>
+										<button type="button" onclick="history.back()"
+											class="btn btn-outline-danger waves-effect waves-light tool  ">
+											<i class="mdi mdi-arrow-left-bold-outline mr-2"></i>Back<span
+												class="tooltiptext tooltip-top2">Back Button</span>
+										</button>
+									</div>
 								</div>
-								<div ng-if="cCctr.entity.resolved == 0" ng-hide=(
-									"admin"!="${typeOfUser}"
-									);
-									style="margin: -2.9% 0 0% 70.2%;">
-									<button class="pushable"
-											style="background: hsl(11.2, 81.2%, 37.5%, 0.53);"
-											data-toggle="modal" data-target="#rejectModal" disabled>
-											<span class="front"
-												style="background: hsl(11.6, 47.5%, 72.4%);"><i
-												class="fa fa-thumbs-down" aria-hidden="true"></i> Reject</span>
-										</button>
-								</div>
-									<div style="margin: -2.9% 0 0% 77.7%">
-									<button class="pushable tool"
-											style="background: hsl(0, 0%, 4.7%, 0.45);"
-											ng-click="cCctr.gotoWFYListPage('ticket','ticket')">
-											<span class="front" style="background: hsl(0, 0%, 4.7%);"><i
-												class="fa fa-arrow-left" aria-hidden="true"></i> Back<span class="tooltiptext tooltip-top4">Back Button</span></span>
-										</button>
-										</div>
-									
+								&nbsp
+
 								<div class="modal fade" id="myModal" role="dialog">
 									<div class="modal-dialog">
 
 										<!-- Modal content-->
-										<div class="modal-content">
+										<div class="modal-content" style="top: 40px;">
 											<div class="modal-header">
 												<button type="button" class="close" data-dismiss="modal">&times;</button>
 												<h4 class="modal-title">Add Remark</h4>
@@ -358,26 +396,32 @@ margin-left:-90%;
 												</div>
 												<textarea ng-model="cCctr.newEntity.remark" id="remark"
 													name="remark"
-													style="width: 90%; height: 20%; font-size: 15px; margin-left: 5%;"
+													style="width: 90%; margin-bottom: 5%; font-size: 15px; margin-left: 5%;"
 													ng-required="true"></textarea>
 												<span style="color: red; margin-left: 5%;" class="error"
 													ng-show="remark.submitted || remark.remark.$dirty && remark.remark.$invalid"><span
 													class="error" ng-show="remark.remark.$error.required">Please
-													enter valid Remark</span></span>
+														enter valid Remark</span></span>
+											</div>
+
+											<div class="col-md-12">
+												<div class="col-md-12">
+													<label style="font-size: 13px; margin-top: 2%">Supporting
+														Document&nbsp;:</label> <input multiple id="file-upload"
+														type="file" name="file" title="Select File"
+														class="form-control" file-model="cCctr.newEntity.blob"
+														accept="" />
+												</div>
 											</div>
 											<div class="modal-footer">
-											<button class="pushable"
-														style="background: hsl(115.5, 77.1%, 30.8%, 0.54); margin-top: 2%;"
-														ng-click="remark.submitted=true;cCctr.addRemark(remark.$valid,'remark',cCctr.newEntity,'Remark','close')">
-														<span class="front"
-															style="background: hsl(115.5, 77.1%, 30.8%);"> Add</span>
-													</button>	
-													<button class="pushable"
-														style="background: hsl(11.2, 81.2%, 37.5%, 0.53); margin-top: 2%;"
-														data-dismiss="modal">
-														<span class="front"
-															style="background: hsl(11.2, 81.2%, 37.5%);"> No</span>
-													</button>		
+												<button class="btn btn-success  waves-effect waves-light "
+													ng-click="remark.submitted=true;cCctr.submitTicketRemark(remark.$valid,'remark',cCctr.newEntity,'close')">
+													<span> Add</span>
+												</button>
+												<button class="btn btn-danger waves-effect waves-light"
+													data-dismiss="modal">
+													<span> No</span>
+												</button>
 											</div>
 										</div>
 
@@ -386,7 +430,7 @@ margin-left:-90%;
 								<!-- Reject Remark model -->
 								<div class="modal fade" id="rejectModal" role="dialog">
 									<div class="modal-dialog">
-										<div class="modal-content">
+										<div class="modal-content" style="top: 40px;">
 											<div class="modal-header">
 												<button type="button" class="close" data-dismiss="modal">&times;</button>
 												<h4 class="modal-title">Reject</h4>
@@ -396,26 +440,23 @@ margin-left:-90%;
 													do you want to reject?</label><br>
 												<textarea ng-model="cCctr.newEntity.remark" id="remark"
 													name="remark"
-													style="width: 90%; height: 20%; font-size: 15px; margin-left: 5%;"
-													ng-required="true"></textarea><span style="color: red; margin-left: 5%;" class="error"
+													style="width: 90%; margin-bottom: 5%; font-size: 15px; margin-left: 5%;"
+													ng-required="true"></textarea>
+												<span style="color: red; margin-left: 5%;" class="error"
 													ng-show="remark.submitted || remark.remark.$dirty && remark.remark.$invalid"><span
 													class="error" ng-show="remark.remark.$error.required">Please
-													enter valid Remark</span> </span>
+														enter valid Remark</span> </span>
 											</div>
 											<div class="modal-footer">
-												<button class="pushable"
-														style="background: hsl(115.5, 77.1%, 30.8%, 0.54); margin-top: 2%;"
-														ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.deductee.id"
+												<button class="btn btn-success  waves-effect waves-light"
+													ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.deductee.id"
 													ng-click="remark.submitted=true; cCctr.addRemark(remark.$valid,'remark',cCctr.newEntity,'Reject','close')">
-														<span class="front"
-															style="background: hsl(115.5, 77.1%, 30.8%);"> Yes</span>
-													</button>
-													<button class="pushable"
-														style="background: hsl(11.2, 81.2%, 37.5%, 0.53); margin-top: 2%;"
-														data-dismiss="modal">
-														<span class="front"
-															style="background: hsl(11.2, 81.2%, 37.5%);"> No</span>
-													</button>	
+													<span> Yes</span>
+												</button>
+												<button class="btn btn-danger waves-effect waves-light"
+													data-dismiss="modal">
+													<span> No</span>
+												</button>
 											</div>
 										</div>
 									</div>
@@ -424,7 +465,7 @@ margin-left:-90%;
 								<!-- Resolve Remark model -->
 								<div class="modal fade" id="resolveModal" role="dialog">
 									<div class="modal-dialog">
-										<div class="modal-content">
+										<div class="modal-content" style="top: 40px;">
 											<div class="modal-header">
 												<button type="button" class="close" data-dismiss="modal">&times;</button>
 												<h4 class="modal-title">Resolved</h4>
@@ -433,75 +474,82 @@ margin-left:-90%;
 												<label style="font-size: 13px; margin-top: 2%">Resolve</label><br>
 												<textarea ng-model="cCctr.newEntity.remark" id="remark"
 													name="remark"
-													style="width: 90%; height: 20%; font-size: 15px; margin-left: 5%;"
-													ng-required="true"></textarea><span style="color: red; margin-left: 5%;" class="error"
+													style="width: 90%; margin-bottom: 5%; font-size: 15px; margin-left: 5%;"
+													ng-required="true"></textarea>
+												<span style="color: red; margin-left: 5%;" class="error"
 													ng-show="remark.submitted || remark.remark.$dirty && remark.remark.$invalid"><span
 													class="error" ng-show="remark.remark.$error.required">Please
-													enter valid Remark</span> </span>
+														enter valid Remark</span> </span>
 											</div>
 											<div class="modal-footer">
-											<button class="pushable"
-														style="background: hsl(115.5, 77.1%, 30.8%, 0.54); margin-top: 2%;"
-														ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.deductee.id"
+												<button class="btn btn-success  waves-effect waves-light"
+													ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.deductee.id"
 													ng-click="remark.submitted=true;cCctr.addRemark(remark.$valid,'remark',cCctr.newEntity,'Resolve','close')">
-														<span class="front"
-															style="background: hsl(115.5, 77.1%, 30.8%);"> Yes</span>
-													</button>
-													<button class="pushable"
-														style="background: hsl(11.2, 81.2%, 37.5%, 0.53); margin-top: 2%;"
-														data-dismiss="modal">
-														<span class="front"
-															style="background: hsl(11.2, 81.2%, 37.5%);"> No</span>
-													</button>		
+													<span> Yes</span>
+												</button>
+												<button class="btn btn-danger waves-effect waves-light"
+													data-dismiss="modal">
+													<span> No</span>
+												</button>
 											</div>
 										</div>
 									</div>
 								</div>
 							</form>
 						</div>
-					</div>
-					<br>
-					<div>
-						<div class="table-responsive" style="overflow-x: inherit">
-							<!-- 	<div class="col-md-12" style="margin-left:-30px"> -->
-							<table class=" table table-bordered table-hover  table-striped"
-								role="table"
-								style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+						<br>
+						<div>
+							<div class="table-responsive" style="overflow-x: inherit">
+								<!-- 	<div class="col-md-12" style="margin-left:-30px"> -->
+								<table class=" table table-bordered table-hover  table-striped"
+									role="table"
+									style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
 
-								<thead>
-								<colgroup>
-									<col span="14" style="background-color: #ffffff">
-								</colgroup>
-								<tr>
-								<thead>
-									<tr role="row" style="height: 40px; background-color: #81b7db">
-										<th>Sr.No</th>
-										<th style="width: 50%">Remark</th>
-										<th>Status</th>
-										<th>Remark By</th>
-										<th>Date & Time</th>
+									<thead>
+									<colgroup>
+										<col span="14" style="background-color: #ffffff">
+									</colgroup>
+									<tr>
+									<thead>
+										<tr role="row"
+											style="height: 40px; background-color: #7482f45e">
+											<th>Sr.No</th>
+											<th style="width: 50%">Remark</th>
+											<th>Status</th>
+											<th>Remark By</th>
+											<th>Date & Time</th>
+											<th>File</th>
 
-									</tr>
+										</tr>
 
-								</thead>
-								<tbody>
-									<tr ng-repeat="a in cCctr.getEntityListDataFY().remark">
-										<th>{{$index+1}}</th>
-										<th>{{a.remark}}</th>
-										<th>{{a.status}}</th>
-										<th>{{a.userName}}</th>
-										<th>{{a.dateTime | date:'dd-MM-yyyyTHH:mm:ss'}}</th>
-									</tr>
-								</tbody>
-							</table>
+									</thead>
+									<tbody>
+										<tr ng-repeat="a in cCctr.getEntityListDataFY().remark">
+											<td>{{$index+cCctr.srNo}}</td>
+											<td>{{a.remark}}</td>
+											<td>{{a.status}}</td>
+											<td>{{a.userName}}</td>
+											<td>{{a.dateTime | date:'dd-MM-yyyyTHH:mm:ss'}}</td>
+											<td ng-hide="a.fileName"></td>
+											<td ng-show="a.fileName"
+												ng-click="cCctr.download(true,'apiremark/downloadDoc/'+a.id)"><span
+												class="frontButton lightbluespan tool"><i
+													class="fa fa-download" aria-hidden="true"></i> <span
+													class="tooltiptext tooltip-download1"> Download
+														Button</span></span></td>
+										</tr>
+									</tbody>
+								</table>
 
+							</div>
 						</div>
-					</div>
 
 
-					<!-- <div style="text-align:center">
+						<!-- <div style="text-align:center">
 					<button class="btn btn-success"  ng-click="cCctr.viewFile('fileDetail',cCctr.entity,'viewFile');">Download Ticket</button>
                     </div> -->
+
+					</div>
 				</div>
 
 
@@ -513,7 +561,7 @@ margin-left:-90%;
 			<div id="profile" class="modal fade" role="dialog">
 				<div class="modal-dialog modal-lg">
 					<!-- Modal content-->
-					<div class="modal-content">
+					<div class="modal-content" style="top: 40px;">
 						<div class="modal-header">
 							<button type="button" class="close" id="closeU"
 								data-dismiss="modal">&times;</button>
@@ -527,9 +575,10 @@ margin-left:-90%;
 										enctype="multipart/form-data">
 										<div class="row">
 											<div class="col-md-6">
-												<label>Financial Year<span style="color:red;">*</span></label> <select name="fy"
-													class="form-control" ng-model="cCctr.entity.fy"
-													ng-required="true" ng-model-options="{updateOn: 'blur'}">
+												<label>Financial Year<span style="color: red;">*</span></label>
+												<select name="fy" class="form-control"
+													ng-model="cCctr.entity.fy" ng-required="true"
+													ng-model-options="{updateOn: 'blur'}">
 													<option value="201920">201920</option>
 													<option value="201819">201819</option>
 													<option value="201718">201718</option>
@@ -546,9 +595,10 @@ margin-left:-90%;
 												</select>
 											</div>
 											<div class="col-md-6">
-												<label>Quarter<span style="color:red;">*</span></label> <select name="quarter"
-													class="form-control" ng-model="cCctr.entity.quarter"
-													ng-required="true" ng-model-options="{updateOn: 'blur'}">
+												<label>Quarter<span style="color: red;">*</span></label> <select
+													name="quarter" class="form-control"
+													ng-model="cCctr.entity.quarter" ng-required="true"
+													ng-model-options="{updateOn: 'blur'}">
 													<option value="Q1">Q1</option>
 													<option value="Q2">Q2</option>
 													<option value="Q3">Q3</option>
@@ -558,9 +608,10 @@ margin-left:-90%;
 										</div>
 										<div class="row">
 											<div class="col-md-6">
-												<label>Form<span style="color:red;">*</span></label> <select name="quarter"
-													class="form-control" ng-model="cCctr.entity.form"
-													ng-required="true" ng-model-options="{updateOn: 'blur'}">
+												<label>Form<span style="color: red;">*</span></label> <select
+													name="quarter" class="form-control"
+													ng-model="cCctr.entity.form" ng-required="true"
+													ng-model-options="{updateOn: 'blur'}">
 													<option value="24Q">24Q</option>
 													<option value="26Q">26Q</option>
 													<option value="27Q">27Q</option>
@@ -568,27 +619,28 @@ margin-left:-90%;
 												</select>
 											</div>
 											<div class="col-md-6">
-												<label>Type<span style="color:red;">*</span></label> <input class="form-control" type="text"
-													name="type" placeholder="type" ng-maxlenght="45"
-													ng-required="true" ng-model="cCctr.entity.type"
-													autocomplete="off" ng-model-options="{updateOn: 'blur'}" />
+												<label>Type<span style="color: red;">*</span></label> <input
+													class="form-control" type="text" name="type"
+													placeholder="type" ng-maxlenght="45" ng-required="true"
+													ng-model="cCctr.entity.type" autocomplete="off"
+													ng-model-options="{updateOn: 'blur'}" />
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-md-6">
-												<label>Attachment<span style="color:red;">*</span></label> <input class="form-control"
-													type="text" name="attachment" placeholder="Attachment"
-													ng-maxlenght="45" ng-required="true"
-													ng-model="cCctr.entity.attachment" autocomplete="off"
-													ng-model-options="{updateOn: 'blur'}" />
+												<label>Attachment<span style="color: red;">*</span></label>
+												<input class="form-control" type="text" name="attachment"
+													placeholder="Attachment" ng-maxlenght="45"
+													ng-required="true" ng-model="cCctr.entity.attachment"
+													autocomplete="off" ng-model-options="{updateOn: 'blur'}" />
 
 											</div>
 
 											<div class="col-md-6">
 
-												<label>Status<span style="color:red;">*</span></label> <input class="form-control"
-													type="text" name="status" placeholder="Status"
-													ng-maxlenght="45" ng-required="true"
+												<label>Status<span style="color: red;">*</span></label> <input
+													class="form-control" type="text" name="status"
+													placeholder="Status" ng-maxlenght="45" ng-required="true"
 													ng-model="cCctr.entity.status" autocomplete="off"
 													ng-model-options="{updateOn: 'blur'}" />
 
@@ -596,32 +648,34 @@ margin-left:-90%;
 										</div>
 										<div class="row">
 											<div class="col-md-6">
-												<label>Description<span style="color:red;">*</span></label> <input class="form-control"
-													type="text" name="Description" placeholder="Description"
-													ng-maxlenght="45" ng-required="true"
-													ng-model="cCctr.entity.description" autocomplete="off"
-													ng-model-options="{updateOn: 'blur'}" />
+												<label>Description<span style="color: red;">*</span></label>
+												<input class="form-control" type="text" name="Description"
+													placeholder="Description" ng-maxlenght="45"
+													ng-required="true" ng-model="cCctr.entity.description"
+													autocomplete="off" ng-model-options="{updateOn: 'blur'}" />
 											</div>
 											<div class="col-md-6">
-												<label>Remark<span style="color:red;">*</span></label> <input class="form-control"
-													type="text" name="remark" placeholder="Remark"
-													ng-maxlenght="45" ng-required="true"
+												<label>Remark<span style="color: red;">*</span></label> <input
+													class="form-control" type="text" name="remark"
+													placeholder="Remark" ng-maxlenght="45" ng-required="true"
 													ng-model="cCctr.entity.remarks" autocomplete="off"
 													ng-model-options="{updateOn: 'blur'}" />
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-md-6">
-												<label>Date Of Opening<span style="color:red;">*</span></label> <input type="date"
-													class="form-control" style="padding-top: 0px;"
-													name="dateOfOpening" value={{cCctr.entity.dateOfOpening}}
+												<label>Date Of Opening<span style="color: red;">*</span></label>
+												<input type="date" class="form-control"
+													style="padding-top: 0px;" name="dateOfOpening"
+													value={{cCctr.entity.dateOfOpening}}
 													ng-model="cCctr.entity.dateOfOpening" autocomplete="off"
 													ng-model-options="{updateOn: 'blur'}" />
 											</div>
 											<div class="col-md-6">
-												<label>Date Of Change<span style="color:red;">*</span></label> <input type="date"
-													class="form-control" style="padding-top: 0px;"
-													name="dateOfChange" value={{cCctr.entity.dateOfChange}}
+												<label>Date Of Change<span style="color: red;">*</span></label>
+												<input type="date" class="form-control"
+													style="padding-top: 0px;" name="dateOfChange"
+													value={{cCctr.entity.dateOfChange}}
 													ng-model="cCctr.entity.dateOfChange" autocomplete="off"
 													ng-model-options="{updateOn: 'blur'}" />
 											</div>
@@ -644,7 +698,17 @@ margin-left:-90%;
 		</div>
 	</div>
 </div>
-
+<script>
+	$(document).ready(function() {
+		$("button").click(function() {
+			if ($(".fade").length > 0) {
+				$(".fade").removeClass("fade");
+			} else {
+				$("fade").removeClass("fade");
+			}
+		});
+	});
+</script>
 
 
 

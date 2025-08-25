@@ -1,34 +1,71 @@
 <style>
-/*Refresh Button*/
 .tooltip-top {
-  bottom: 83%;
-  margin-left:-7%;
+	margin-top: -0.4%;
+	margin-left: -13.4%;
 }
-/*Save Button*/
+
 .tooltip-top1 {
-  bottom: 125%;
-  margin-left:-92%;
+	width: max-content !important;
+	margin-left: -100%;
+	margin-top: -70%;
 }
-/*Back Button*/
+
 .tooltip-top2 {
-  bottom: 125%;
-  margin-left:-92%;
+	width: max-content !important;
+	margin-left: -100%;
+	margin-top: -60%;
+}
+
+/* Style for the help button image */
+.help-button {
+	transition: transform .2s;
+	position: fixed;
+	right: 10px;
+	bottom: 10px;
+	border-radius: 10px;
+	background-color: #1e3361;
+}
+
+.help-button img {
+	width: 50%; /* Ensure the image covers the button */
+	height: auto; /* Maintain aspect ratio */
+	filter: brightness(100);
+}
+
+/* Style for the help button when hovered */
+.help-button:hover {
+	transition: 0.5s;
+	box-shadow: 0px 10px 10px black;
+}
+
+.help-button .tooltiptext {
+	visibility: hidden;
+	width: 200px;
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px;
+	position: absolute;
+	z-index: 1;
+	top: 13px;
+	right: 110%;
+	opacity: 0;
+	transition: opacity 1s;
+}
+
+.help-button:hover .tooltiptext {
+	visibility: visible;
+	opacity: 1;
+	filter: drop-shadow(0px 0px 10px #222);
 }
 </style>
-<br>
 <div id="page-wrapper">
 	<div class="container-fluid">
-
-	<button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
-					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
-					 onClick="refreshPageButton()"><i
-					class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh
-					<span class="tooltiptext tooltip-top">Refresh Button</span></button>
-						
 		<div class="col-md-12 "
 			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
 			<div class="heading">
-				<strong>Add RODetails</strong>
+				<strong>Add RO details</strong>
 			</div>
 		</div>
 		<div class="row">
@@ -38,11 +75,12 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<h6>
-									<label>RO Code<span style="color:red;">*</span></label>
+									<label>RO Code<span style="color: red;">*</span></label>
 								</h6>
-								<input class="form-control" type="text" name="roCode" title="Enter RO code"
-									placeholder="ROCode" ng-model="cCctr.entity.roCode"
-									autocomplete="off" ng-required="true" ng-maxlength="10"
+								<input class="form-control" type="text" name="roCode"
+									title="Enter RO code" placeholder="RO Code"
+									ng-model="cCctr.entity.roCode" autocomplete="off"
+									ng-required="true" ng-maxlength="10"
 									ng-pattern="/^[a-zA-Z0-9][a-zA-z0-9 -\]+$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
@@ -62,11 +100,12 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<h6>
-									<label>RO Name<span style="color:red;">*</span></label>
+									<label>RO Name<span style="color: red;">*</span></label>
 								</h6>
-								<input class="form-control" type="text" name="roName" title="Enter RO Name"
-									placeholder="ROName" ng-model="cCctr.entity.roName"
-									autocomplete="off" ng-required="true" ng-maxlength="45"
+								<input class="form-control" type="text" name="roName"
+									title="Enter RO Name" placeholder="RO Name"
+									ng-model="cCctr.entity.roName" autocomplete="off"
+									ng-required="true" ng-maxlength="45"
 									ng-pattern="/^[a-zA-Z0-9][a-zA-Z0-9 -_]+$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
@@ -86,11 +125,12 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<h6>
-									<label>RO State<span style="color:red;">*</span></label>
+									<label>RO State<span style="color: red;">*</span></label>
 								</h6>
-								<select class="form-control" name="roState" title="Select RO State"
-									placeholder="RO State" ng-model="cCctr.entity.roState"
-									autocomplete="off" ng-required="true" ng-maxlength="50"
+								<select class="form-control" name="roState"
+									title="Select RO State" placeholder="RO State"
+									ng-model="cCctr.entity.roState" autocomplete="off"
+									ng-required="true" ng-maxlength="50"
 									ng-model-options="{updateOn:'blur'}">
 									<option disabled value="">Select State</option>
 									<#list State as state>
@@ -107,13 +147,13 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<h6>
-									<label>RO Email<span style="color:red;">*</span></label>
+									<label>RO Email<span style="color: red;">*</span></label>
 								</h6>
-								<input class="form-control" type="text" name="roEmail" title="Enter RO Email"
-									id="roEmail" placeholder="RO Email"
+								<input class="form-control" type="text" name="roEmail"
+									title="Enter RO Email" id="roEmail" placeholder="RO Email"
 									ng-model="cCctr.entity.roEmail" ng-required="true"
 									style="text-transform: lowercase"
-									ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
+									ng-pattern="/^[a-zA-Z0-9][a-zA-Z0-9 .@]+$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red;"
 									ng-show="formRODetails.submitted || formRODetails.roEmail.$dirty && formRODetails.roEmail.$invalid">
@@ -133,11 +173,12 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<h6>
-									<label>RO Pincode<span style="color:red;">*</span></label>
+									<label>RO Pin code<span style="color: red;">*</span></label>
 								</h6>
-								<input class="form-control" type="text" name="roPincode" title="Enter RO Pincode"
-									placeholder="RO Pincode" ng-model="cCctr.entity.roPincode"
-									autocomplete="off" ng-required="true" ng-pattern="/^[0-9]{6}$/"
+								<input class="form-control" type="text" name="roPincode"
+									title="Enter RO Pincode" placeholder="RO Pin code"
+									ng-model="cCctr.entity.roPincode" autocomplete="off"
+									ng-required="true" ng-pattern="/^[0-9]{6}$/"
 									ng-model-options="{updateOn:'blur'}" /> <span
 									style="color: red"
 									ng-show="formRODetails.submitted || formRODetails.roPincode.$dirty && formRODetails.roPincode.$invalid">
@@ -154,11 +195,12 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<h6>
-									<label>RO Address<span style="color:red;">*</span></label>
+									<label>RO Address<span style="color: red;">*</span></label>
 								</h6>
-								<textarea class="form-control" type="text" name="roAddress" title="Enter RO Address"
-									placeholder="RO Address" ng-model="cCctr.entity.roAddress"
-									autocomplete="off" ng-required="true" ng-maxlength="50"
+								<textarea class="form-control" type="text" name="roAddress"
+									title="Enter RO Address" placeholder="RO Address"
+									ng-model="cCctr.entity.roAddress" autocomplete="off"
+									ng-required="true" ng-maxlength="50"
 									ng-model-options="{updateOn: 'blur'}" /></textarea>
 
 								<span style="color: red"
@@ -175,17 +217,18 @@
 
 
 					<div class="row">
-						<div class="modal-footer">
-							<button class="pushable darkgreen tool"
-								style="margin-top: 2%;"
+						<div class="modal-footer"  style="margin-top: 0%;">
+							<button class="btn btn-outline-success waves-effect waves-light tool"
+								style="margin-top: 2%; margin-right: 0.5%;"
 								ng-click="formRODetails.submitted=true; cCctr.submit(formRODetails.$valid,cCctr.entity,'RODetails')">
-								<span class="front darkgreenspan">Save<span class="tooltiptext tooltip-top1">Save Button</span></span>
+								<span class=""><i class="fa fa-save"></i>&nbsp;Save<span
+									class="tooltiptext tooltip-top1">Save Button</span></span>
 							</button>
-							<button class="pushable darkred tool" ng-click="cCctr.gotoListPage('RODetails','RODetails');"
-								style="margin-top: 2%;"
-								onclick="scrollWin()">
-								<span class="front darkredspan">
-									Back<span class="tooltiptext tooltip-top2">Back Button</span></span>
+							<button class="btn btn-outline-danger waves-effect waves-light tool"
+								ng-click="cCctr.gotoListPage('RODetails','RODetails');"
+								style="margin-top: 2%;" onclick="scrollWin()">
+								<i class="mdi mdi-arrow-left-bold-outline mr-2"></i>Back<span
+									class="tooltiptext tooltip-top2">Back Button</span>
 							</button>
 						</div>
 					</div>
@@ -194,3 +237,18 @@
 		</div>
 	</div>
 </div>
+
+<button class="help-button"
+	ng-click="cCctr.gotoHelp('homeSChelpPage', 'addRoDetails')"
+	style="margin-bottom: 0%; width: 75px; height: 75px;">
+	<img src="static/img/ROBO-TRANSPARENT.png" alt="Help">
+	<!-- <span class="tooltiptext"
+			style="font-family: 'Roboto', sans-serif;">Support</span> -->
+	<span class=""
+		style="font-family: 'Roboto', sans-serif; font-weight: bold; color: white; font-size: 14px;">SUPPORT</span>
+</button>
+<script>
+	$(document).ready(function() {
+		$(this).scrollTop(0);
+	});
+</script>

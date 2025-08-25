@@ -2,6 +2,7 @@ package domain.in.rjsa.service.impl;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -10,17 +11,19 @@ import java.util.List;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ibm.icu.text.SimpleDateFormat;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import domain.in.rjsa.dao.Regular27EQDeducteeDao;
 import domain.in.rjsa.dao.RemarkDao;
 import domain.in.rjsa.excel.Form27EQDeducteeExcel;
+import domain.in.rjsa.exception.CustomException;
 import domain.in.rjsa.model.fy.Regular27EQDeductee;
-import domain.in.rjsa.model.fy.Remark;
 import domain.in.rjsa.service.AbstractServiceFY;
 import domain.in.rjsa.service.Regular27EQDeducteeService;
 
@@ -38,23 +41,12 @@ public class Regular27EQDeducteeServiceImpl extends AbstractServiceFY<Long, Regu
 	public String ExcelFile;
 	
 	public void update(Regular27EQDeductee entity) {
-		// TODO Auto-generated method stub
-
 		LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
-		Object id = entity.getId();
-//		Regular24QDeductee regular24QWeb = new Regular24QDeductee();//from Gson //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-		map.put("id", id);
+		map.put("id", entity.getId());
 		Regular27EQDeductee regular27EQ = (Regular27EQDeductee) dao.uniqueSearch(map);
 		regular27EQ.updateAllowedFields(entity);
 		getPrimaryDao().update(regular27EQ);
-//		HashMap<String, Object> m = new HashMap<>();
-//		m.put("deducteeId", entity.getId());
-//		m.put("deducteeForm", "27EQForm");
-//		List<Remark> remark = rDao.findall(m, 0, 100);
-//		for(Remark r : remark) {
-//			r.setBranchCode(entity.getBranchCode());
-//			rDao.persist(r);
-//		}
+		
 	}
 
 	@Override
@@ -123,183 +115,173 @@ public class Regular27EQDeducteeServiceImpl extends AbstractServiceFY<Long, Regu
 			} else {
 				details.createCell(4).setCellValue(form27EQ.getBranchCode());
 			}
-			if (form27EQ.getCustVendId() == null) {
+			if (form27EQ.getChallanHeading() == null) {
 				details.createCell(5).setCellValue(" ");
 			} else {
-				details.createCell(5).setCellValue(form27EQ.getCustVendId());
-			}
-			if (form27EQ.getUniqueRefNo() == null) {
-				details.createCell(6).setCellValue(" ");
-			} else {
-				details.createCell(6).setCellValue(form27EQ.getUniqueRefNo());
-			}
-			if (form27EQ.getAccNo() == null) {
-				details.createCell(7).setCellValue(" ");
-			} else {
-				details.createCell(7).setCellValue(form27EQ.getAccNo());
-			}
-			if (form27EQ.getChallanHeading() == null) {
-				details.createCell(8).setCellValue(" ");
-			} else {
-				details.createCell(8).setCellValue(form27EQ.getChallanHeading());
-			}
-			if (form27EQ.getDeducteeRefNo() == null) {
-				details.createCell(9).setCellValue(" ");
-			} else {
-				details.createCell(9).setCellValue(form27EQ.getDeducteeRefNo());
+				details.createCell(5).setCellValue(form27EQ.getChallanHeading());
 			}
 			if (form27EQ.getPan() == null) {
-				details.createCell(10).setCellValue(" ");
+				details.createCell(6).setCellValue(" ");
 			} else {
-				details.createCell(10).setCellValue(form27EQ.getPan());
+				details.createCell(6).setCellValue(form27EQ.getPan());
 			}
 			if (form27EQ.getName() == null) {
-				details.createCell(11).setCellValue(" ");
+				details.createCell(7).setCellValue(" ");
 			} else {
-				details.createCell(11).setCellValue(form27EQ.getName());
+				details.createCell(7).setCellValue(form27EQ.getName());
 			}
 			if (form27EQ.getSectionCode() == null) {
-				details.createCell(12).setCellValue(" ");
+				details.createCell(8).setCellValue(" ");
 			} else {
-				details.createCell(12).setCellValue(form27EQ.getSectionCode());
+				details.createCell(8).setCellValue(form27EQ.getSectionCode());
+			}
+			if (form27EQ.getTAN() == null) {
+				details.createCell(9).setCellValue(" ");
+			} else {
+				details.createCell(9).setCellValue(form27EQ.getTAN());
+			}
+			if (form27EQ.getUniqueRefNo() == null) {
+				details.createCell(10).setCellValue(" ");
+			} else {
+				details.createCell(10).setCellValue(form27EQ.getUniqueRefNo());
+			}
+			if (form27EQ.getAccNo() == null) {
+				details.createCell(11).setCellValue(" ");
+			} else {
+				details.createCell(11).setCellValue(form27EQ.getAccNo());
 			}
 			if (form27EQ.getDateOfPayment() == null) {
-				details.createCell(13).setCellValue(" ");
+				details.createCell(12).setCellValue(" ");
 			} else {
-				details.createCell(13)
+				details.createCell(12)
 						.setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(form27EQ.getDateOfPayment()));
 			}
 			if (form27EQ.getDateOfDeduction() == null) {
-				details.createCell(14).setCellValue(" ");
+				details.createCell(13).setCellValue(" ");
 			} else {
-				details.createCell(14)
+				details.createCell(13)
 						.setCellValue(new SimpleDateFormat("dd-MM-yyyy").format(form27EQ.getDateOfDeduction()));
 			}
 			if (form27EQ.getAmountPaid() == null) {
-				details.createCell(15).setCellValue(" ");
+				details.createCell(14).setCellValue(" ");
 			} else {
-				details.createCell(15).setCellValue(form27EQ.getAmountPaid());
+				details.createCell(14).setCellValue(form27EQ.getAmountPaid());
 			}
 			if (form27EQ.getTds() == null) {
-				details.createCell(16).setCellValue(" ");
+				details.createCell(15).setCellValue(" ");
 			} else {
-				details.createCell(16).setCellValue(form27EQ.getTds());
+				details.createCell(15).setCellValue(form27EQ.getTds());
 			}
 			if (form27EQ.getSurcharge() == null) {
-				details.createCell(17).setCellValue(" ");
+				details.createCell(16).setCellValue(" ");
 			} else {
-				details.createCell(17).setCellValue(form27EQ.getSurcharge());
+				details.createCell(16).setCellValue(form27EQ.getSurcharge());
 			}
 			if (form27EQ.getEduCess() == null) {
-				details.createCell(18).setCellValue(" ");
+				details.createCell(17).setCellValue(" ");
 			} else {
-				details.createCell(18).setCellValue(form27EQ.getEduCess());
+				details.createCell(17).setCellValue(form27EQ.getEduCess());
 			}
 			if (form27EQ.getTotalTaxDeducted() == null) {
-				details.createCell(19).setCellValue(" ");
+				details.createCell(18).setCellValue(" ");
 			} else {
-				details.createCell(19).setCellValue(form27EQ.getTotalTaxDeducted());
+				details.createCell(18).setCellValue(form27EQ.getTotalTaxDeducted());
 			}
 			if (form27EQ.getTotalTaxDeposited() == null) {
-				details.createCell(20).setCellValue(" ");
+				details.createCell(19).setCellValue(" ");
 			} else {
-				details.createCell(20).setCellValue(form27EQ.getTotalTaxDeposited());
+				details.createCell(19).setCellValue(form27EQ.getTotalTaxDeposited());
 			}
 			if (form27EQ.getCertificateNumber() == null) {
-				details.createCell(21).setCellValue(" ");
+				details.createCell(20).setCellValue(" ");
 			} else {
-				details.createCell(21).setCellValue(form27EQ.getCertificateNumber());
+				details.createCell(20).setCellValue(form27EQ.getCertificateNumber());
 			}
 			if (form27EQ.getRemarksReason() == null) {
-				details.createCell(22).setCellValue(" ");
+				details.createCell(21).setCellValue(" ");
 			} else {
-				details.createCell(22).setCellValue(form27EQ.getRemarksReason());
+				details.createCell(21).setCellValue(form27EQ.getRemarksReason());
 			}
 			if (form27EQ.getDeducteeCode() == null) {
-				details.createCell(23).setCellValue(" ");
+				details.createCell(22).setCellValue(" ");
 			} else {
-				details.createCell(23).setCellValue(form27EQ.getDeducteeCode());
+				details.createCell(22).setCellValue(form27EQ.getDeducteeCode());
 			}
 			if (form27EQ.getRateatwhichTaxCollected() == null) {
-				details.createCell(24).setCellValue(" ");
+				details.createCell(23).setCellValue(" ");
 			} else {
-				details.createCell(24).setCellValue(form27EQ.getRateatwhichTaxCollected());
+				details.createCell(23).setCellValue(form27EQ.getRateatwhichTaxCollected());
 			}
 			if (form27EQ.getTotalValueofPurchase() == null) {
-				details.createCell(25).setCellValue(" ");
+				details.createCell(24).setCellValue(" ");
 			} else {
-				details.createCell(25).setCellValue(form27EQ.getTotalValueofPurchase());
+				details.createCell(24).setCellValue(form27EQ.getTotalValueofPurchase());
 			}
 			if (form27EQ.getDeducteeisNonResident() == null) {
-				details.createCell(26).setCellValue(" ");
+				details.createCell(25).setCellValue(" ");
 			} else {
-				details.createCell(26).setCellValue(form27EQ.getDeducteeisNonResident());
+				details.createCell(25).setCellValue(form27EQ.getDeducteeisNonResident());
 			}
 			if (form27EQ.getPermanentEstablishment() == null) {
-				details.createCell(27).setCellValue(" ");
+				details.createCell(26).setCellValue(" ");
 			} else {
-				details.createCell(27).setCellValue(form27EQ.getPermanentEstablishment());
+				details.createCell(26).setCellValue(form27EQ.getPermanentEstablishment());
 			}
 			if (form27EQ.getReasonForNonCollectionForG() == null) {
-				details.createCell(28).setCellValue(" ");
+				details.createCell(27).setCellValue(" ");
 			} else {
-				details.createCell(28).setCellValue(form27EQ.getReasonForNonCollectionForG());
+				details.createCell(27).setCellValue(form27EQ.getReasonForNonCollectionForG());
 			}
 			if (form27EQ.getIfAnswerTo681AisyesthenChallanNumber() == null) {
-				details.createCell(29).setCellValue(" ");
+				details.createCell(28).setCellValue(" ");
 			} else {
-				details.createCell(29).setCellValue(form27EQ.getIfAnswerTo681AisyesthenChallanNumber());
+				details.createCell(28).setCellValue(form27EQ.getIfAnswerTo681AisyesthenChallanNumber());
 			}
 			if (form27EQ.getIfAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment() == null) {
-				details.createCell(30).setCellValue(" ");
+				details.createCell(29).setCellValue(" ");
 			} else {
-				details.createCell(30)
+				details.createCell(29)
 						.setCellValue(form27EQ.getIfAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment());
 			}
 			if (form27EQ.getErrorDescription() == null) {
-				details.createCell(31).setCellValue(" ");
+				details.createCell(30).setCellValue(" ");
 			} else {
-				details.createCell(31).setCellValue(form27EQ.getErrorDescription());
+				details.createCell(30).setCellValue(form27EQ.getErrorDescription());
 			}
 			if (form27EQ.getWarningDescription() == null) {
-				details.createCell(32).setCellValue(" ");
+				details.createCell(31).setCellValue(" ");
 			} else {
-				details.createCell(32).setCellValue(form27EQ.getWarningDescription());
+				details.createCell(31).setCellValue(form27EQ.getWarningDescription());
 			}
 			if (form27EQ.getShortDeduction() == null) {
-				details.createCell(33).setCellValue(" ");
+				details.createCell(32).setCellValue(" ");
 			} else {
-				details.createCell(33).setCellValue(form27EQ.getShortDeduction());
+				details.createCell(32).setCellValue(form27EQ.getShortDeduction());
 			}
 			if (form27EQ.getInterestOnShortDeduction() == null) {
-				details.createCell(34).setCellValue(" ");
+				details.createCell(33).setCellValue(" ");
 			} else {
-				details.createCell(34).setCellValue(form27EQ.getInterestOnShortDeduction());
+				details.createCell(33).setCellValue(form27EQ.getInterestOnShortDeduction());
 			}
 			if (form27EQ.getInterestOnLatePayment() == null) {
-				details.createCell(35).setCellValue(" ");
+				details.createCell(34).setCellValue(" ");
 			} else {
-				details.createCell(35).setCellValue(form27EQ.getInterestOnLatePayment());
+				details.createCell(34).setCellValue(form27EQ.getInterestOnLatePayment());
 			}
 			if (form27EQ.getInterestOnLateDeduction() == null) {
-				details.createCell(36).setCellValue(" ");
+				details.createCell(35).setCellValue(" ");
 			} else {
-				details.createCell(36).setCellValue(form27EQ.getInterestOnLateDeduction());
-			}
-			if (form27EQ.getTAN() == null) {
-				details.createCell(37).setCellValue(" ");
-			} else {
-				details.createCell(37).setCellValue(form27EQ.getTAN());
+				details.createCell(35).setCellValue(form27EQ.getInterestOnLateDeduction());
 			}
 			if (form27EQ.getComments() == null) {
-				details.createCell(38).setCellValue(" ");
+				details.createCell(36).setCellValue(" ");
 			} else {
-				details.createCell(38).setCellValue(form27EQ.getComments());
+				details.createCell(36).setCellValue(form27EQ.getComments());
 			}
 			if (form27EQ.isResolved()) {
-				details.createCell(39).setCellValue("Not Resolved");
+				details.createCell(37).setCellValue("Not Resolved");
 			} else {
-				details.createCell(39).setCellValue("Resolved");
+				details.createCell(37).setCellValue("Resolved");
 			}
 			if (row > 1000000) {
 				part++;
@@ -327,7 +309,7 @@ public class Regular27EQDeducteeServiceImpl extends AbstractServiceFY<Long, Regu
 	}
 
 	@Override
-	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+	public List<?> search(LinkedHashMap<String, Object> map, int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
 		return dao.search(map, pageNo, resultPerPage);
 	}
@@ -340,6 +322,31 @@ public class Regular27EQDeducteeServiceImpl extends AbstractServiceFY<Long, Regu
 		Regular27EQDeductee regular27EQ =  (Regular27EQDeductee) dao.uniqueSearch(map);
 		regular27EQ.updateAllowedFields(entity);
 		getPrimaryDao().update(regular27EQ);
+	}
+
+	@Override
+	public List<String> getPanList(String q, String fy, Long branchCode) {
+		// TODO Auto-generated method stub
+		return dao.getPanList(q, fy, branchCode);
+	}
+
+	@Override
+	public void addData(String json) {
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			List<JSONObject> jsonObject =  mapper.readValue(json, new TypeReference <List<JSONObject>>() {
+			});
+			
+			for (JSONObject object : jsonObject) {
+				Regular27EQDeductee deductee = new Regular27EQDeductee();
+				deductee.setData(object);
+				dao.persist(deductee);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new CustomException("Could Not Persist Data");
+		}
 	}
 
 }

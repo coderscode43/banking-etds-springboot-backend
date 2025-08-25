@@ -10,4 +10,5 @@ public interface LoginDao extends DaoInterfaceForm<Long, Login>{
 	void update(Login login);
 	void persist(Login login);
 	List<Login> findall();
+	Login getByAuth(String auth);
 }

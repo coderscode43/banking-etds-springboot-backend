@@ -3,7 +3,7 @@ package domain.in.rjsa.controller;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,9 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 
 import domain.in.rjsa.exception.FieldErrorDTO;
 import domain.in.rjsa.model.form.CorrectionRemarks;
@@ -54,9 +51,9 @@ public class CorrectionRemarksController
 
 			logger.info("Creating new Return instance");
 			adminValidation(entity);
-			Gson gson = new Gson();
-			JsonElement jsonElement = gson.toJsonTree(entity);
-			service.saveRemark(gson.fromJson(jsonElement, getEntity()), getPrincipal());
+			String json = mapper.writeValueAsString(entity);
+			CorrectionRemarks correctionRemarks = mapper.readValue(json, CorrectionRemarks.class);
+			service.saveRemark(correctionRemarks, getPrincipal());
 			addLogs("Add");
 //		addRemarkLogs(entity);
 			return new ResponseEntity<Object>(HttpStatus.CREATED);
@@ -72,13 +69,14 @@ public class CorrectionRemarksController
 	@RequestMapping(value = "/addRemarkWithDocument", method = RequestMethod.POST)
 	public ResponseEntity<?> addDocument(@RequestParam("downloadFile") MultipartFile downloadFile,
 			@RequestParam("branchCode") Long branchCode, @RequestParam("crId") Long crId,
-			@RequestParam("remark") String remark, @RequestParam("status") String status) {
+			@RequestParam("remark") String remark, @RequestParam("status") String status,
+			@RequestParam("fy") String fy,@RequestParam("quarter") String quarter) {
 		FieldErrorDTO ermsg = new FieldErrorDTO();
 		try {
 //			if (downloadFile.getOriginalFilename().endsWith(".zip")) {
 			// lessonMap.put("uploadedTime", uploadedTime);
 			HashMap<String, Object> entity = new HashMap<>();
-			service.SaveRemarkWithDocument(downloadFile, branchCode, crId, remark, getPrincipal(), status);
+			service.SaveRemarkWithDocument(downloadFile, branchCode, crId, remark, getPrincipal(), status,fy,quarter);
 			addLogs("Add");
 			return new ResponseEntity<>(HttpStatus.OK);
 //			} else {

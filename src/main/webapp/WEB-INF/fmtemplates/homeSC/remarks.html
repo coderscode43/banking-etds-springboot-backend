@@ -81,7 +81,7 @@
 
 .table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
 	{
-	background-color: whitesmoke;
+	background-color: white;
 }
 
 @media ( min-width : 768px) {
@@ -249,11 +249,11 @@ table {
 												class="btn btn-info" disabled>Reject</button>
 										</div>
 
-										<div class="modal fade" id="myModal" role="dialog">
+										<div class="modal fade"    data-backdrop="static"   id="myModal" role="dialog">
 											<div class="modal-dialog">
 
 												<!-- Modal content-->
-												<div class="modal-content">
+												<div class="modal-content" style="top: 40px;">
 													<div class="modal-header">
 														<button type="button" class="close" data-dismiss="modal">&times;</button>
 														<h4 class="modal-title">Add Remark</h4>
@@ -293,9 +293,9 @@ table {
 											</div>
 										</div>
 										<!-- Reject Remark model -->
-										<div class="modal fade" id="rejectModal" role="dialog">
+										<div class="modal fade"    data-backdrop="static"   id="rejectModal" role="dialog">
 											<div class="modal-dialog">
-												<div class="modal-content">
+												<div class="modal-content" style="top: 40px;">
 													<div class="modal-header">
 														<button type="button" class="close" data-dismiss="modal">&times;</button>
 														<h4 class="modal-title">Reject</h4>
@@ -321,9 +321,9 @@ table {
 										</div>
 
 										<!-- Resolve Remark model -->
-										<div class="modal fade" id="resolveModal" role="dialog">
+										<div class="modal fade"    data-backdrop="static"   id="resolveModal" role="dialog">
 											<div class="modal-dialog">
-												<div class="modal-content">
+												<div class="modal-content" style="top: 40px;">
 													<div class="modal-header">
 														<button type="button" class="close" data-dismiss="modal">&times;</button>
 														<h4 class="modal-title">Resolve</h4>
@@ -365,7 +365,7 @@ table {
 								</colgroup>
 								<tr>
 								<thead>
-									<tr role="row" style="height: 40px; background-color: #81b7db">
+									<tr role="row" style="height: 40px; background-color: #7482f45e">
 										<th>Sr.No</th>
 										<th>User Name</th>
 										<th style="width: 50%">Remark</th>
@@ -378,7 +378,7 @@ table {
 								</thead>
 								<tbody ng-show="cCctr.getEntityListData().remarkList.length>0">
 									<tr ng-repeat="a in cCctr.getEntityListData().remarkList">
-										<th>{{$index+1}}</th>
+										<th>{{$index+cCctr.srNo}}</th>
 										<th>{{a.username}}</th>
 										<th>{{a.remark}}</th>
 

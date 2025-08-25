@@ -2,6 +2,7 @@ package domain.in.rjsa.service.impl;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -9,44 +10,45 @@ import java.util.List;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ibm.icu.text.SimpleDateFormat;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import domain.in.rjsa.dao.PanUpdateListDao;
 import domain.in.rjsa.excel.PanUpdateListExcel;
+import domain.in.rjsa.exception.CustomException;
 import domain.in.rjsa.model.fy.PanUpdateList;
 import domain.in.rjsa.service.AbstractServiceFY;
 import domain.in.rjsa.service.PanUpdateListService;
 
-
 @Transactional("transactionManager")
 @Service("panUpdateListService")
 public class PanUpdateListServiceImpl extends AbstractServiceFY<Long, PanUpdateList, PanUpdateListDao>
-implements PanUpdateListService{
-	
+		implements PanUpdateListService {
+
 	@Autowired
 	PanUpdateListDao dao;
-
 
 	@Override
 	public PanUpdateListDao getPrimaryDao() {
 		// TODO Auto-generated method stub
 		return dao;
 	}
-	
+
 	@Override
-	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+	public List<?> search(LinkedHashMap<String, Object> map, int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
 		return dao.search(map, pageNo, resultPerPage);
 	}
-	
+
 	public static String path;
 	public String ExcelFile;
 	PanUpdateListExcel panUpdateListExcel;
-	
+
 	@Override
 	public String createUserExcel(LinkedHashMap<String, Object> map) {
 		// TODO Auto-generated method stub
@@ -73,7 +75,7 @@ implements PanUpdateListService{
 		Workbook wb = panUpdateListExcel.getWorkbook();
 		Sheet PanUpdateList = wb.getSheet("PanUpdateList-" + part);
 		for (PanUpdateList panUpdateList : listUsers) {
-			
+
 			Row details = PanUpdateList.createRow(row);
 			details.createCell(0).setCellValue(row);
 
@@ -112,12 +114,12 @@ implements PanUpdateListService{
 			} else {
 				details.createCell(7).setCellValue(panUpdateList.getRemark());
 			}
-			
+
 			if (row > 1000000) {
 				part++;
 				wb = panUpdateListExcel.getWorkbook();
 				PanUpdateList = panUpdateListExcel.initializeSheet("PanUpdateList-" + part);
-				row =0;
+				row = 0;
 			}
 			row++;
 
@@ -125,8 +127,8 @@ implements PanUpdateListService{
 		panUpdateListExcel.close();
 		return ExcelFile;
 
-	
 	}
+
 	public void setPath() {
 		File myClass = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getFile());
 
@@ -138,5 +140,23 @@ implements PanUpdateListService{
 
 	}
 
+	@Override
+	public void addData(String json) {
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			List<JSONObject> jsonObject = mapper.readValue(json, new TypeReference<List<JSONObject>>() {
+			});
+
+			for (JSONObject object : jsonObject) {
+				PanUpdateList panlist = new PanUpdateList();
+				panlist.setData(object);
+				dao.persist(panlist);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new CustomException("Could Not Persist Data");
+		}
+	}
 
 }

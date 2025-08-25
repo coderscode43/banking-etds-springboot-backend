@@ -2,14 +2,14 @@ package domain.in.rjsa.model.fy;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -18,34 +18,34 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import domain.in.rjsa.model.form.CommonModelAbstract;
 import lombok.Data;
 @Data
-@Entity
-@Table(name = "AAACU3561B_2324.uploadCertificate")
+//@Entity
+//@Table(name = "AAACN4165C_2324.uploadCertificate")
 public class UploadCertificate extends CommonModelAbstract{
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-	@GenericGenerator(name = "native", strategy = "native")
-	@Column(name = "id")
+	//@Id
+	//@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+	//@GenericGenerator(name = "native", strategy = "native")
+	//@Column(name = "id")
 	public Long id;
-//	@Column(name = "zipFile")
+//	//@Column(name = "zipFile")
 //	private byte[] zipFile;
-	@Column(name = "TAN")
+	//@Column(name = "TAN")
 	public String TAN;
-	@Column(name = "fy")
+	//@Column(name = "fy")
 	public String fy;
-	@Column(name = "quarter")
+	//@Column(name = "quarter")
 	public String quarter;
-	@Column(name = "form")
+	//@Column(name = "form")
 	public String form;
-	@Column(name = "fileName")
+	//@Column(name = "fileName")
 	public String fileName;
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "uploadedTime")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+	//@Temporal(TemporalType.TIMESTAMP)
+	//@Column(name = "uploadedTime")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "Asia/Kolkata")
 	public Date uploadedTime;
-	@Column(name = "userName")
+	//@Column(name = "userName")
 	public String userName;
-	@Column(name = "status")
+	//@Column(name = "status")
 	public String status;
 
 }

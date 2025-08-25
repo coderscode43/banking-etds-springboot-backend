@@ -1,6 +1,6 @@
 'use strict';
-var App = angular.module('myApp', ['ui.router', 'angularUtils.directives.dirPagination', 'ngMaterial', 'ngMessages', 'ng.httpLoader']);
-App.value('restUrl', this.window.location.protocol + '//' + this.window.location.hostname + ':' + this.window.location.port + '/bankingETDS/');
+var App = angular.module('myApp', ['ui.router', 'angularUtils.directives.dirPagination', 'ngMaterial', 'ngMessages', 'ng.httpLoader', 'angular-loading-bar']);
+App.value('restUrl', this.window.location.protocol + '//' + this.window.location.hostname + ':' + this.window.location.port + '/');
 App.filter('sumByKey', function() {
 	return function(data, key) {
 		if (typeof (data) === 'undefined' || typeof (key) === 'undefined') {
@@ -18,13 +18,7 @@ App.filter('sumByKey', function() {
 
 App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
-
-
-
-
-
 	$urlRouterProvider.otherwise("/home/homepage")
-
 	//	 $urlRouterProvider.otherwise(function ($injector, $location) {
 	//				    var $state = $location.get('$state');
 	//				    if ($state == '/home') {
@@ -34,6 +28,8 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 	//				        return '/homeWOT/2/2022-23/homepage';
 	//				    }
 	//				});
+
+
 
 	$stateProvider
 		.state('logout', {
@@ -88,6 +84,30 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 			},
 			controller: "CommonController as cCctr",
 		})
+		.state('home.searchData', {
+			url: "/add/:page/:entity/:searchParams",
+			params: {
+				page: null,
+				entity: null,
+				searchParams: null
+			},
+			templateUrl: function($stateParams) {
+				return 'index/add/homeSC/' + $stateParams.page;
+			},
+			controller: "CommonController as cCctr",
+			resolve: {
+				list: function($q, $state, CommonService, $stateParams) {
+					console.log('Get Search List of ' + $stateParams.entity);
+					var deferred = $q.defer();
+					CommonService.searchEntities(
+						$stateParams.entity,
+						$stateParams.searchParams).then(deferred.resolve, deferred.resolve);
+					return deferred.promise;
+				}
+			}
+		})
+
+
 
 		//Get Details detail
 		.state('home.detail', {
@@ -151,18 +171,16 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 					return deferred.promise;
 				}
 			}
-
 		})
 		.state('home.list', {
 			url: "/list/:entity/:page",
 			params: {
 				entity: null,
 				page: null,
-				pageParam:null
+				pageParam: null
 			},
 			templateUrl: function($stateParams) {
-				return 'index/list/homeSC/' + $stateParams.page+ '/'
-				+ $stateParams.pageParam;
+				return 'index/list/homeSC/' + $stateParams.page;
 			},
 			resolve: {
 				list: function($q, $state, CommonService, $stateParams) {
@@ -182,8 +200,7 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 				searchParams: null
 			},
 			templateUrl: function($stateParams) {
-				return 'index/list/homeSC/' + $stateParams.page+ '/'
-				+ $stateParams.searchParams;
+				return 'index/list/homeSC/' + $stateParams.page;
 				/*return 'index/list/homeSC/'+$stateParams.entity +'/'+$stateParams.page;*/
 			},
 			resolve: {
@@ -278,7 +295,7 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 
 
 
-				.state('homeWot.list', {
+		.state('homeWot.list', {
 			url: "/list/:entity/:page",
 			params: {
 				entity: null,
@@ -286,8 +303,7 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 				pageParam: null
 			},
 			templateUrl: function($stateParams) {
-				return 'index/list/homeWOT/' + $stateParams.page+ '/'
-				+ $stateParams.pageParam;
+				return 'index/list/homeWOT/' + $stateParams.page;
 			},
 			resolve: {
 				list: function($q, $state, CommonServiceFY, $stateParams) {
@@ -330,8 +346,7 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 				searchParams: null
 			},
 			templateUrl: function($stateParams) {
-				return 'index/list/homeWOT/' + $stateParams.page+ '/'
-				+ $stateParams.searchParams;
+				return 'index/list/homeWOT/' + $stateParams.page;
 			},
 			resolve: {
 				list: function($q, $state, CommonServiceFY, $stateParams) {
@@ -343,6 +358,59 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 			}
 
 
+		})
+
+		//homeHelp-sideMenu for Help Pages
+		.state('homeHelpSC', {
+			url: "/homeHelpSC",
+			params: {
+				helpFolder: null,
+				helpPage: null,
+			},
+			templateUrl: function() {
+				return 'index/HomehelpSC';
+			},
+			controller: "CommonController as cCctr"
+		})
+
+		.state('homeHelpSC.homePage', {
+			url: "/homeHelp/:helpFolder/:helpPage",
+			params: {
+				helpFolder: null,
+				helpPage: null,
+			},
+			templateUrl: function($stateParams) {
+				return 'index/help/' + $stateParams.helpFolder + '/'
+					+ $stateParams.helpPage;
+			},
+			controller: "CommonController as cCctr"
+		})
+		
+		
+		//homeHelp-sideMenu for Help Pages
+		.state('homeHelpWOT', {
+			url: "/homeHelpWOT",
+			params: {
+				helpFolder: null,
+				helpPage: null,
+			},
+			templateUrl: function() {
+				return 'index/HomehelpWOT';
+			},
+			controller: "CommonController as cCctr"
+		})
+
+		.state('homeHelpWOT.homePage', {
+			url: "/homeHelp/:helpFolder/:helpPage",
+			params: {
+				helpFolder: null,
+				helpPage: null,
+			},
+			templateUrl: function($stateParams) {
+				return 'index/help/' + $stateParams.helpFolder + '/'
+					+ $stateParams.helpPage;
+			},
+			controller: "CommonController as cCctr"
 		})
 
 

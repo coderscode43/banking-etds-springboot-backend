@@ -2,14 +2,14 @@ package domain.in.rjsa.model.fy;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -19,35 +19,35 @@ import domain.in.rjsa.model.form.CommonModelAbstract;
 import lombok.Data;
 
 @Data
-@Entity
-@Table(name = "AAACU3561B_2324.logs")
+//@Entity
+//@Table(name = "AAACN4165C_2324.logs")
 public class Logs extends CommonModelAbstract{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy= GenerationType.AUTO, generator="native")
-	@GenericGenerator(name = "native", strategy = "native")
-	@Column(name = "id")
+	//@Id
+	//@GeneratedValue(strategy= GenerationType.AUTO, generator="native")
+	//@GenericGenerator(name = "native", strategy = "native")
+	//@Column(name = "id")
 	public Long id;		
-	@Column(name = "username")
+	//@Column(name = "username")
 	public String username;
-	@Temporal(TemporalType.DATE)
-	@Column(name = "date")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
-	public Date date;
-	@Column(name = "ipaddrs")
+	//@Temporal(TemporalType.DATE)
+	//@Column(name = "logsDate")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Kolkata")
+	public Date logsDate;
+	//@Column(name = "ipaddrs")
 	public String ipaddrs;
-	@Column(name = "entity")
+	//@Column(name = "entity")
 	public String entity;
-//	@Column(name = "idoftheuser")
+//	//@Column(name = "idoftheuser")
 //	public Long idoftheuser;
-	@Column(name = "action")
+	//@Column(name = "action")
 	public String action;
-	@Column(name = "details")
+	//@Column(name = "details")
 	public String details;
-	@Column(name = "fy")
+	//@Column(name = "fy")
 	public String fy;
 	
 	//Entity

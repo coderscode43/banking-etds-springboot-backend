@@ -4,12 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import domain.in.rjsa.model.form.TicketRemark;
+import domain.in.rjsa.model.fy.TicketRemarks;
 import domain.in.rjsa.service.TicketRemarkService;
 
 @Controller
 @RequestMapping("/apiticketRemark")
-public class TicketRemarkController extends AbstractControllerForm<Long, TicketRemark, TicketRemarkService>{
+public class TicketRemarkController extends AbstractControllerForm<Long, TicketRemarks, TicketRemarkService>{
 	@Autowired
 	TicketRemarkService service;
 
@@ -20,8 +20,8 @@ public class TicketRemarkController extends AbstractControllerForm<Long, TicketR
 	}
 
 	@Override
-	public Class<TicketRemark> getEntity() {
+	public Class<TicketRemarks> getEntity() {
 		// TODO Auto-generated method stub
-		return TicketRemark.class;
+		return TicketRemarks.class;
 	}
 }

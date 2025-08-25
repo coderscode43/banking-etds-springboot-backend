@@ -1,14 +1,33 @@
+<style>
+.modal-footer {
+	border-top: none !important;
+}
 
+.HrLine {
+	margin-top: 20px;
+	margin-bottom: 40px;
+	border: 0;
+	border-top-width: 0px;
+	border-top-style: none;
+	border-top-color: currentcolor;
+	border-top-width: 0px;
+	border-top-style: none;
+	border-top-color: currentcolor;
+	border-top: 1px solid #e3ebf6;
+	margin-right: -0.5%;
+}
+</style>
 <div id="page-wrapper">
-	<div class="container-fluid">
-		<div class="row">
-			<h1>Add MIS Report</h1>
+	<div class="container-fluid" class="col-md-12 "
+		style="padding-left: 0px; font-size: 12pxp; margin-top: 2%;">
+		<div class="heading">
+			<strong>Add MIS Report</strong>
 		</div>
 		<div class="row">
 			<div class="col-md-12">
 				<form role="form" name="messageForm">
 					<div class="row">
-						
+
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>From Date</label> <input class="form-control" type="date"
@@ -19,48 +38,50 @@
 							</div>
 						</div>
 						<div class="col-md-6">
-						<div class="form-group">
+							<div class="form-group">
 								<label>To Date</label> <input class="form-control" type="date"
-									name="NAME" placeholder="Name" ng-model="cCctr.entity.toDate"
-								 />
+									name="NAME" placeholder="Name" ng-model="cCctr.entity.toDate" />
 
 							</div>
-						
-						
-						</div>
-					</div>
-					
-					<div class="row">
-					
-							<div class="form-group">
-  	         <div class="col-md-6">	
-                  <label>Report Type</label>
-                  <select style="width:100%" class="form-control" ng-model="cCctr.entity.reportType">
-                    <option value="section">Section</option>
-                    <option value="Month Wise">Month Wise</option>
-                     <option value="Tax Audit Report">Tax Audit Report</option>
-                     <option value="Default Tax Audit Report"> Default Tax Audit Report</option>
-                 </select> 
-		   </div> 
-	    </div>
-						</div>
-					
-					</div>
 
-				</form>
+
+						</div>
+					</div>
 
 					<div class="row">
-						<div class="modal-footer">
-							<button
-								ng-click="messageForm.submitted=true; cCctr.submit(messageForm.$valid,'generateReport',true)"
-								class="btn btn-success" onclick="scrollWin()">Save</button>
-							<button ng-click="cCctr.gotoListPage('generateReport','generateReport');"
-								class="btn btn-danger" onclick="scrollWin()">Back</button>
+
+						<div class="form-group">
+							<div class="col-md-6">
+								<label>Report Type</label> <select style="width: 100%"
+									class="form-control" ng-model="cCctr.entity.reportType">
+									<option value="section">Section</option>
+									<option value="Month Wise">Month Wise</option>
+									<option value="Tax Audit Report">Tax Audit Report</option>
+									<option value="Default Tax Audit Report">Default Tax
+										Audit Report</option>
+								</select>
+							</div>
 						</div>
 					</div>
-				</form>
-
+					<hr class="HrLine">
 			</div>
+
+			</form>
+
+			<div class="row">
+				<div class="modal-footer">
+					<button
+						ng-click="messageForm.submitted=true; cCctr.submit(messageForm.$valid,'generateReport',true)"
+						class="btn btn-outline-success  waves-effect waves-light tool"
+						onclick="scrollWin()">Save</button>
+					<button onclick="history.back()"
+						class="btn btn-outline-danger waves-effect waves-light"
+						onclick="scrollWin()" style="margin-top: -0.2%;">Back</button>
+				</div>
+			</div>
+			</form>
+
 		</div>
 	</div>
+</div>
 </div>

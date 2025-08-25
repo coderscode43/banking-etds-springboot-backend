@@ -1,5 +1,7 @@
 package domain.in.rjsa.dao;
 
-public interface ADDITIONALDETAILSDao {
+import domain.in.rjsa.model.tds.ADDITIONALDETAILS;
+
+public interface ADDITIONALDETAILSDao extends DaoInterfaceTaxo<String, ADDITIONALDETAILS>{
 
 }

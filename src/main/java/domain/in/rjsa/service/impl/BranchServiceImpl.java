@@ -80,7 +80,7 @@ public class BranchServiceImpl extends AbstractServiceForm<Long, Branch, BranchD
 		return dao.findSearchCount(map);
 	}
 	@Override
-	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+	public List<?> search(LinkedHashMap<String, Object> map, int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
 		return dao.search(map, pageNo, resultPerPage);
 	}

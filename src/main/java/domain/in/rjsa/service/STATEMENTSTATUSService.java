@@ -10,7 +10,7 @@ public interface STATEMENTSTATUSService extends ServiceInterfaceTaxo<Long,STATEM
 	
 	public Long findSearchCount(LinkedHashMap<String, Object> map);
 
-	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage);
+	public List<?> search(LinkedHashMap<String, Object> map, int pageNo, int resultPerPage);
 
 	
 }

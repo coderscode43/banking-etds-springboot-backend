@@ -24,7 +24,7 @@
 }
 
 .center_topButton {
-	margin-left: 2%;
+	margin-left: -4%;
 }
 
 @media ( min-width : 300px) and (max-width: 700px) {
@@ -74,9 +74,9 @@
 	ng-Controller="CommonWOTController as cWctr">
 
 	<img src="static/img/tdsosmart1.png" ng-click="cCctr.gotoHomePage()"
-		style="height: 165px; margin-left: 2%;"> <a
-		id="show-sidebar " class="btn btn-primary hide-on-desktop"
-		style="z-index: 1000"> <i class="fa fa-bars"></i>
+		style="height: 165px; margin-left: 2%;"> <a id="show-sidebar "
+		class="btn btn-primary hide-on-desktop" style="z-index: 1000"> <i
+		class="fa fa-bars"></i>
 	</a>
 	<nav id="sidebar"
 		class="sidebar-wrapper nav-side-menu nav-side-menus hide-on-desktop "
@@ -126,27 +126,19 @@
 </div>
 
 <div class="top row col-lg-8 center_topButton">
-
-
-	<div class="top-item top1 col-lg-offset-5" style="border-radius: 5px;">
+	<div class="top-item top1 col-lg-offset-5"
+		style="border-radius: 5px; font-size: x-large;width: max-content;">
 		<p>
-			<b>${ClientName}</b>
+			<b>${ClientName}</b> : <b>${ClientPAN}</b>
 		</p>
 	</div>
-	<div class="top-item top2 col-lg-offset-5"
-		style="border-radius: 5px; background-color: #7AAE60">
-		<p>
-			<b>${ClientPAN}</b>
-		</p>
-	</div>
-
 </div>
 
-<div class="modal fade" id="exampleModalLogin" tabindex="-1"
-	role="dialog" aria-labelledby="exampleModalDefaultLogin"
+<div class="modal fade" data-backdrop="static" id="exampleModalLogin"
+	tabindex="-1" role="dialog" aria-labelledby="exampleModalDefaultLogin"
 	aria-hidden="true">
 	<div class="modal-dialog" role="document">
-		<div class="modal-content">
+		<div class="modal-content" style="top: 40px;">
 			<div class="modal-header">
 
 				<button type="button" class="close " data-dismiss="modal"
@@ -256,10 +248,11 @@
 
 
 <!-- Error Modal -->
-<div id="errorMsg" class="modal fade" role="dialog">
+<div id="errorMsg" class="modal fade" data-backdrop="static"
+	role="dialog">
 	<div class="modal-dialog modal-sm">
-		Modal content
-		<div class="modal-content">
+
+		<div class="modal-content" style="top: 40px;">
 			<div class="modal-header">
 				<h4 style="color: red;">
 					<picture>
@@ -285,10 +278,10 @@
 <!-- Success Modal -->
 
 
-<div id="successMsg" class="modal" role="dialog">
+<div id="successMsg" class="modal" role="dialog" style="top: 40px;">
 	<div class="modal-dialog modal-sm">
-		Modal content
-		<div class="modal-content">
+
+		<div class="modal-content" style="top: 40px;">
 			<div class="modal-header">
 				<h4 style="color: green;">
 					<picture>
@@ -320,7 +313,7 @@
 <div id="myModal" class="modal" role="dialog">
 	<div class="modal-dialog modal-sm">
 
-		<div class="modal-content">
+		<div class="modal-content" style="top: 40px;">
 			<div class="modal-header">
 				<h4 style="color: red;">
 					<picture>
@@ -352,9 +345,9 @@
 <!-- logout modal -->
 <div id="myModal2" class="modal" role="dialog">
 	<div class="modal-dialog modal-sm">
-		
-		<div class="modal-content">
-			<div class="modal-header" style="background-color: #505d82 ">
+
+		<div class="modal-content" style="top: 40px;">
+			<div class="modal-header" style="background-color: #505d82">
 				<h4 style="color: white;">
 					<!--  <picture>
 					<source type="image/webp" srcset="static/img/errorNew.webp">
@@ -367,21 +360,21 @@
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="msg" style="font-size: 18px;">
-						<p>Do you want to logout !!!</p>
+							<p>Do you want to logout !!!</p>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-success" data-dismiss="modal"	
+				<button type="button" class="btn btn-success" data-dismiss="modal"
 					ng-click="cCctr.logout()">Yes</button>
-					<button  id="reload" type="button" class="btn btn-default" data-dismiss="modal"
-					ng-click="cCctr.reload()">No</button>
+				<button id="reload" type="button" class="btn btn-danger"
+					data-dismiss="modal" ng-click="cCctr.reload()">No</button>
 				<!-- id="reload" -->
 			</div>
 		</div>
 	</div>
-   </div>       
+</div>
 
 
 

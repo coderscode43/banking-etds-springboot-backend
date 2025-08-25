@@ -1,48 +1,6 @@
 <style>
-/*
-	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
-	*/
-@media only screen and (max-width: 760px) , ( min-device-width : 768px)
-	and (max-device-width: 1024px) {
-	/* Force table to not be like tables anymore */
-	table, thead, tbody, th, td, tr {
-		display: block;
-	}
-
-	/* Hide table headers (but not display: none;, for accessibility) */
-	thead tr {
-		position: absolute;
-		top: -9999px;
-		left: -9999px;
-	}
-	tr {
-		margin: 0 0 1rem 0;
-	}
-	tr:nth-child(odd) {
-		background: #ccc;
-	}
-	td {
-		/* Behave  like a "row" */
-		border: none;
-		border-bottom: 1px solid #eee;
-		position: relative;
-		padding-left: 50%;
-	}
-	td:before {
-		/* Now like a table header */
-		position: absolute;
-		/* Top/left values mimic padding */
-		top: 0;
-		left: 6px;
-		width: 45%;
-		padding-right: 10px;
-		white-space: nowrap;
-	}
-
-	/*
-		Label the data
-    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
-		*/
+.page-header {
+	border-bottom: none;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -81,7 +39,7 @@
 
 .table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
 	{
-	background-color: whitesmoke;
+	background-color: white;
 }
 
 @media ( min-width : 768px) {
@@ -102,44 +60,48 @@
 }
 /*Add Remark Button  */
 .tooltip-top {
- bottom: 116%;
-margin-left: -89%;
+	margin-left: -89%;
+	width: max-content !important;
+	margin-top: -35%;
 }
 /*Edit Button  */
 .tooltip-top1 {
- bottom: 116%;
-margin-left: -85%;
+	margin-left: -82%;
+	width: max-content !important;
+	margin-top: -56%;
 }
+
 /*Resolved Button  */
 .tooltip-top2 {
- bottom: 116%;
-margin-left: -90%;
+	margin-left: -89%;
+	width: max-content !important;
+	margin-top: -40%;
 }
 /*Reject Button  */
 .tooltip-top3 {
- bottom: 116%;
-margin-left: -86%;
+	margin-left: -88%;
+	width: max-content !important;
+	margin-top: -48%;
 }
 /*Back Button */
-.tooltip-top4{
- bottom: 116%;
-margin-left:-93%;
+.tooltip-top4 {
+	margin-left: -88%;
+	width: max-content !important;
+	margin-top: -53%;
 }
 </style>
 
 <div id="page-warapper"
 	ng-init="cCctr.entity=cCctr.getEntityDataFY().deductee;">
-	<div class="container-fluid">
+	<div class="container-fluid ContFluid">
 		<div ng-show="cCctr.show != true">
-			<h3 class="page-header" style="margin-top: 2%;">Details of 27EQ
-				Deductee</h3>
+			<h4 class="page-header">
+				<strong>Details of Form 27EQ Deductee</strong>
+			</h4>
 		</div>
-		<div class="panel panel-default"
-			style="margin-top: -2%; border: none !important;">
+		<div class="panel  panel-default">
 			<div class="panel-body">
-				<br>
-				<h4>Dedcutee Details</h4>
-				<div class="container">
+				<div>
 					<div class="collapse dont-collapse-sm" id="collapseExample2">
 						<div class="row" style="font-size: 13px;">
 							<div class="col-md-3">
@@ -340,29 +302,19 @@ margin-left:-93%;
 						</div>
 						<div class="row" style="font-size: 13px;">
 							<div class="col-md-3">
-								<label>Interest on Late Deduction. &nbsp;</label>
-							</div>
-							<div class="col-md-3">:
-								{{cCctr.entity.InterestOnLateDeduction}}</div>
-							<div class="col-md-3">
 								<label>Status &nbsp;</label>
 							</div>
 							<div class="col-md-3" ng-if="cCctr.entity.resolved == 0">:
 								Resolved</div>
 							<div class="col-md-3" ng-if="cCctr.entity.resolved == 1"
 								style="color: red">: Not Resolved</div>
+							<div class="col-md-3">
+								<label>Interest on Late Deduction. &nbsp;</label>
+							</div>
+							<div class="col-md-3">:
+								{{cCctr.entity.InterestOnLateDeduction}}</div>
 						</div>
-
-
 						<div class="row">
-							<!-- 								<input ng-model="cCctr.newEntityId = cCctr.entity.id"
-									id="deducteeId" name="deducteeId" style="display: none">
-
-								<input ng-model="cCctr.newEntity.fy = cCctr.entity.fy" id="fy"
-									name="fy" style="display: none"> <input
-									ng-model="cCctr.newEntityForm ='27EQform'"
-									id="deducteeForm" name="deducteeForm" style="display: none"> -->
-
 							<input ng-model="cCctr.newEntity.deducteeId = cCctr.entity.id"
 								id="deducteeId" name="deducteeId" style="display: none">
 
@@ -374,825 +326,42 @@ margin-left:-93%;
 							<input class="form-control"
 								ng-model="cCctr.newEntity.branchCode = cCctr.entity.branchCode"
 								id="branchCode" name="branchCode" style="display: none">
-
-							<button class="pushable darkblue tool" style="margin-left: 43%;"
-								data-target="#myModal" data-toggle="modal">
-								<span class="front darkbluespan"><i class="fa fa-plus"
-									aria-hidden="true"></i> Add Remark<span class="tooltiptext tooltip-top">Add Remark Button</span></span>
-							</button>
-
-							<button class="pushable lightblue tool" data-toggle="modal"
-								data-target="#edit">
-								<span class="front lightbluespan"><i class="fa fa-edit"
-									aria-hidden="true"></i>&nbsp;&nbsp;Edit<span class="tooltiptext tooltip-top1">Edit Button</span></span>
-							</button>
-
-
-
-							<div ng-if="cCctr.entity.resolved == 1" ng-hide=(
-								"admin"!="${typeOfUser}"
-								);
-									style="margin: -3.8% 0 0% 60.6%">
-								<button class="pushable darkgreen tool" data-toggle="modal"
-									data-target="#resolveModal">
-									<span class="front darkgreenspan"><i
-										class="fa fa-thumbs-up" aria-hidden="true"></i> Resolved<span class="tooltiptext tooltip-top2">Resolved Button</span></span>
-								</button>
-							</div>
-							<div ng-if="cCctr.entity.resolved == 0" ng-hide=(
-								"admin"!="${typeOfUser}"
-								);
-									style="margin: -3.8% 0 0% 60.6%">
-								<button class="pushable lightgreen" data-toggle="modal"
-									data-target="#resolveModal" disabled>
-									<span class="front lightgreenspan"><i
-										class="fa fa-thumbs-up" aria-hidden="true"></i> Resolved</span>
-								</button>
-							</div>
-
-							<div ng-if="cCctr.entity.resolved == 1" ng-hide=(
-								"admin"!="${typeOfUser}"
-								);
-									style="margin: -3.6% 0 0% 69.8%">
-								<button class="pushable darkred tool" data-toggle="modal"
-									data-target="#rejectModal">
-									<span class="front darkredspan"><i
-										class="fa fa-thumbs-down" aria-hidden="true"></i> Reject<span class="tooltiptext tooltip-top3">Reject Button</span></span>
-								</button>
-							</div>
-							<div ng-if="cCctr.entity.resolved == 0" ng-hide=(
-								"admin"!="${typeOfUser}"
-								);
-									style="margin: -3.6% 0 0% 69.8%">
-								<button class="pushable lightred" data-toggle="modal"
-									data-target="#rejectModal" disabled>
-									<span class="front lightredspan"><i
-										class="fa fa-thumbs-down" aria-hidden="true"></i> Reject</span>
-								</button>
-							</div>
-
-							<div style="margin: -3.4% 0 0% 77.6%">
-								<button class="pushable black tool"
-									ng-click="cCctr.gotoWFYListPage('form27EQDeductee','form27EQDeductee')">
-									<span class="front blackspan"><i
-										class="fa fa-arrow-left" aria-hidden="true"></i>Back<span class="tooltiptext tooltip-top4">Back Button</span></span>
-								</button>
-							</div>
-
-							<div class="modal fade" id="myModal" role="dialog">
-								<div class="modal-dialog">
-
-									<!--Add Modal content-->
-									<div class="modal-content">
-										<form name="addRemark">
-											<div class="modal-header">
-												<button type="button" class="close" data-dismiss="modal">&times;</button>
-												<h4 class="modal-title">Add Remark</h4>
-											</div>
-											<div class="col-md-12">
-												<div class="col-md-12">
-													<label style="font-size: 13px; margin-top: 2%">Remarks&nbsp;:</label>
-												</div>
-												<textarea ng-model="cCctr.newEntity.remark" id="remark"
-													name="remark"
-													style="width: 90%; height: 20%; font-size: 15px; margin-left: 5%;"
-													ng-required="true"></textarea>
-												<span style="color: red; margin-left: 5%;" class="error"
-													ng-show="addRemark.submitted || addRemark.remark.$dirty && addRemark.remark.$invalid">
-													<span class="error"
-													ng-show="addRemark.remark.$error.required"> Please
-														enter valid Remark</span>
-												</span> <span class="error" id="remark"></span>
-											</div>
-											<div class="modal-footer">
-												<button class="pushable darkgreen" style="margin-top: 2%;"
-													ng-click="addRemark.submitted=true;cCctr.addRemark(addRemark.$valid,'remark',cCctr.newEntity,'Remark','close')">
-													<span class="front darkgreenspan"> Add</span>
-												</button>
-												<button class="pushable darkred" style="margin-top: 2%;"
-													data-dismiss="modal">
-													<span class="front darkredspan"> No</span>
-												</button>
-											</div>
-										</form>
-									</div>
-
+							<div class="Buttons" style="gap: 3px; float: left">
+								<div>
+									<button type="button" onclick="history.back()"
+										class="btn btn-outline-danger waves-effect waves-light tool  ">
+										<i class="mdi mdi-arrow-left-bold-outline mr-2"></i>Back<span
+											class="tooltiptext tooltip-top2">Back Button</span>
+									</button>
 								</div>
-							</div>
-							<!-- Reject Remark model -->
-							<div class="modal fade" id="rejectModal" role="dialog">
-								<form name="rejectRemark">
-									<div class="modal-dialog">
-										<div class="modal-content">
-											<div class="modal-header">
-												<button type="button" class="close" data-dismiss="modal">&times;</button>
-												<h4 class="modal-title">Reject</h4>
-											</div>
-											<div class="col-md-12 ">
-												<label style="font-size: 13px; margin-top: 2%">Why
-													do you want to reject?</label><br>
-												<textarea ng-model="cCctr.newEntity.remark" id="remark"
-													name="remark"
-													style="width: 90%; height: 20%; font-size: 15px; margin-left: 5%;"
-													ng-required="true"></textarea>
-												<span style="color: red; margin-left: 5%;" class="error"
-													ng-show="rejectRemark.submitted || rejectRemark.remark.$dirty && rejectRemark.remark.$invalid"><span
-													class="error" ng-show="rejectRemark.remark.$error.required">Please
-														enter valid Remark</span></span> <span class="error" id="remark"></span>
-											</div>
-											<div class="modal-footer">
-												<button class="pushable darkgreen" style="margin-top: 2%;"
-													ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.id"
-													ng-click="rejectRemark.submitted=true;cCctr.addRemark(rejectRemark.$valid,'remark',cCctr.newEntity,'Reject','close')">
-													<span class="front darkgreenspan"> Yes</span>
-												</button>
-												<button class="pushable darkred" style="margin-top: 2%;"
-													data-dismiss="modal">
-													<span class="front darkredspan"
-														style="background: hsl(11.2, 81.2%, 37.5%);"> No</span>
-												</button>
-											</div>
-										</div>
-									</div>
-								</form>
-							</div>
-
-							<!-- Resolve Remark model -->
-							<div class="modal fade" id="resolveModal" role="dialog">
-								<form name="resolvedRemark">
-									<div class="modal-dialog">
-										<div class="modal-content">
-											<div class="modal-header">
-												<button type="button" class="close" data-dismiss="modal">&times;</button>
-												<h4 class="modal-title">Resolve</h4>
-											</div>
-											<div class="col-md-12 ">
-												<label style="font-size: 13px; margin-top: 2%">Resolve</label><br>
-												<textarea ng-model="cCctr.newEntity.remark" id="remark"
-													name="remark"
-													style="width: 90%; height: 20%; font-size: 15px; margin-left: 5%;"
-													ng-required="true"></textarea>
-												<span style="color: red; margin-left: 5%;" class="error"
-													ng-show="resolvedRemark.submitted || resolvedRemark.remark.$dirty && resolvedRemark.remark.$invalid">
-													<span class="error"
-													ng-show="resolvedRemark.remark.$error.required">
-														Please enter valid Remark</span>
-												</span> <span class="error" id="remark"></span>
-											</div>
-											<div class="modal-footer">
-												<button class="pushable darkgreen" style="margin-top: 2%;"
-													ng-init="cCctr.resolve.resolved = 'false'; cCctr.resolve.id = cCctr.entity.id"
-													ng-click="resolvedRemark.submitted=true;cCctr.addRemark(resolvedRemark.$valid,'remark',cCctr.newEntity,'Resolve','close')">
-													<span class="front darkgreenspan"> Yes</span>
-												</button>
-												<button class="pushable darkred" style="margin-top: 2%;"
-													data-dismiss="modal">
-													<span class="front darkredspan"> No</span>
-												</button>
-											</div>
-										</div>
-									</div>
-								</form>
 							</div>
 						</div>
 					</div>
 				</div>
-				<br>
-				<div>
-					<div class="table-responsive" style="overflow-x: inherit">
-						<!-- 	<div class="col-md-12" style="margin-left:-30px"> -->
-						<table class=" table table-bordered table-hover  table-striped"
-							role="table"
-							style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
-
-							<thead>
-							<colgroup>
-								<col span="14" style="background-color: #ffffff">
-							</colgroup>
-							<tr>
-							<thead>
-								<tr role="row" style="height: 40px; background-color: #81b7db">
-									<th>Sr.No</th>
-									<th style="width: 50%">Remark</th>
-									<th>Status</th>
-									<th>Remark By</th>
-									<th>Date & Time</th>
-
-								</tr>
-
-							</thead>
-							<tbody>
-								<tr ng-repeat="a in cCctr.getEntityListDataFY().remark">
-									<th>{{$index+1}}</th>
-									<th>{{a.remark}}</th>
-									<th>{{a.status}}</th>
-									<th>{{a.userName}}</th>
-									<th>{{a.dateTime | date:'dd-MM-yyyyTHH:mm:ss'}}</th>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
-
-<div id="edit" class="modal fade" role="dialog">
-	<div class="modal-dialog modal-lg">
-		<!-- Modal content-->
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" id="closeU" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Edit Details of Form 27EQ Deductee</h4>
-			</div>
-			<div class="modal-body">
-
-				<div id="myTabContent" class="tab-content">
-					<div class="tab-pane fade active in" id="signin">
-						<form name="form27eqDeductee" class="form-horizontal"
-							enctype="multipart/form-data">
-							<div class="row">
-								<div class="col-md-6">
-
-									<label style="font-size: 12px;">Quarter</label> <select
-										name="quarter" class="form-control"
-										ng-model="cCctr.entity.quarter"
-										ng-model-options="{updateOn: 'blur'}" disabled>
-										<option value="Q1">Q1</option>
-										<option value="Q2">Q2</option>
-										<option value="Q3">Q3</option>
-										<option value="Q4">Q4</option>
-									</select> <span style="color: red"
-										ng-show="form27eqDeductee.submitted || form27eqDeductee.quarter.$dirty && form27eqDeductee.quarter.$invalid">
-									</span> <span class="error" id="quarter"></span>
-
-								</div>
-								<div class="col-md-6">
-
-									<label style="font-size: 12px;">Month</label> <select
-										name="month" class="form-control"
-										ng-model="cCctr.entity.month"
-										ng-model-options="{updateOn: 'blur'}" disabled>
-										<option selected value='Janaury'>Janaury</option>
-										<option value='February'>February</option>
-										<option value='March'>March</option>
-										<option value='April'>April</option>
-										<option value='May'>May</option>
-										<option value='June'>June</option>
-										<option value='July'>July</option>
-										<option value='August'>August</option>
-										<option value='September'>September</option>
-										<option value='October'>October</option>
-										<option value='November'>November</option>
-										<option value='December'>December</option>
-									</select> <span style="color: red"
-										ng-show="form26qdeductee.submitted ||form26qdeductee.month.$dirty && form26qdeductee.month.$invalid">
-									</span> <span class="error" id="month"></span>
-								</div>
-							</div>
-
-							<div class="row">
-								<div class="col-md-6">
-
-									<label style="font-size: 12px;">RO Code</label> <input
-										class="form-control" type="text" name="roCode"
-										placeholder="RO Code" ng-model="cCctr.entity.roCode"
-										ng-model-options="{updateOn: 'blur'}" /> <span
-										style="color: red"
-										ng-show="form27eqDeductee.submitted || form27eqDeductee.roCode.$dirty && form27eqDeductee.roCode.$invalid">
-								</div>
-
-								<div class="col-md-6">
-
-									<label style="font-size: 12px;">Branch Code</label> <input
-										class="form-control" type="text" name="branchCode"
-										placeholder="Branch Code" ng-model="cCctr.entity.branchCode"
-										ng-model-options="{updateOn: 'blur'}" /> <span
-										style="color: red"
-										ng-show="form27eqDeductee.submitted ||form27eqDeductee.challanSrNo.$dirty && form27eqDeductee.challanSrNo.$invalid">
-									</span> <span class="error" id="branchCode"></span>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-6">
-
-									<label style="font-size: 12px;">Vend/Cust/Id</label> <input
-										class="form-control" type="text" name="custVendId"
-										placeholder="Vend/Cust/Id" ng-model="cCctr.entity.custVendId"
-										ng-model-options="{updateOn: 'blur'}" disabled /> <span
-										style="color: red"
-										ng-show="form26qdeductee.submitted ||form26qdeductee.custVendId.$dirty && form26qdeductee.custVendId.$invalid">
-									</span> <span class="error" id="custVendId"></span>
-								</div>
-
-								<div class="col-md-6">
-
-									<label style="font-size: 12px;">Unique Ref No.</label> <input
-										class="form-control" type="text" name="uniqueRefNo"
-										placeholder="Unique Ref No"
-										ng-model="cCctr.entity.uniqueRefNo"
-										ng-model-options="{updateOn: 'blur'}" disabled /> <span
-										style="color: red"
-										ng-show="form27eqDeductee.submitted ||form27eqDeductee.uniqueRefNo.$dirty && form27eqDeductee.uniqueRefNo.$invalid">
-										<span class="error"
-										ng-show="form27eqDeductee.uniqueRefNo.$error.pattern">Please
-											enter valid Unique Ref No. </span> <span class="error"
-										ng-show="form27eqDeductee.uniqueRefNo.$error.maxlength">Unique
-											Ref No should not be greater than 15 characters.</span> <span
-										class="error"
-										ng-show="form27eqDeductee.uniqueRefNo.$error.required">Unique
-											Ref No is Required.</span>
-									</span> <span class="error" id="staffId"></span>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-6">
-
-									<label style="font-size: 12px;">Account No.</label> <input
-										class="form-control" type="text" name="accNo"
-										placeholder="Account No" ng-model="cCctr.entity.accNo"
-										ng-pattern="/^[0-9]*$/" ng-maxlength="12"
-										ng-model-options="{updateOn: 'blur'}" disabled /> <span
-										style="color: red"
-										ng-show="form27eqDeductee.submitted ||form27eqDeductee.accNo.$dirty && form27eqDeductee.accNo.$invalid">
-										<span class="error"
-										ng-show="form27eqDeductee.accNo.$error.pattern">Please
-											enter valid Account Number. </span> <span class="error"
-										ng-show="form27eqDeductee.accNo.$error.maxlength">Account
-											Number should not be greater than 12 characters.</span> <span
-										class="error" ng-show="form27eqDeductee.accNo.$error.required">Account
-											Number is Required.</span>
-									</span> <span class="error" id="accNo"></span>
-								</div>
-
-								<div class="col-md-6">
-
-									<label style="font-size: 12px;">Challan Heading</label> <input
-										class="form-control" type="text" name="challanHeading"
-										placeholder="Challan Heading"
-										ng-model="cCctr.entity.challanHeading"
-										ng-model-options="{updateOn: 'blur'}" disabled /> <span
-										style="color: red"
-										ng-show="form27eqDeductee.submitted ||form27eqDeductee.challanHeading.$dirty && form27eqDeductee.challanHeading.$invalid">
-									</span> <span class="error" id="challanHeading"></span>
-								</div>
-							</div>
-							<div class="row">
-
-
-								<div class="col-md-6">
-
-									<label style="font-size: 12px;">Party Code</label> <input
-										class="form-control" type="text" name="deducteeCode"
-										placeholder="Party Code" ng-model="cCctr.entity.deducteeCode"
-										ng-model-options="{updateOn: 'blur'}" disabled /> <span
-										style="color: red"
-										ng-show="form27eqDeductee.submitted ||form27eqDeducteeCode.$dirty && form27eqDeducteeCode.$invalid">
-									</span> <span class="error" id="deducteeCode"></span>
-								</div>
-
-								<div class="col-md-6">
-
-									<label style="font-size: 12px;">Party Reference No</label> <input
-										class="form-control" type="text" name="deducteeRefNo"
-										placeholder="Party Reference No"
-										ng-model="cCctr.entity.deducteeRefNo"
-										ng-model-options="{updateOn: 'blur'}" disabled /> <span
-										style="color: red"
-										ng-show="form27eqDeductee.submitted ||form27eqdeducteeRefNo.$dirty && form27eqdeducteeRefNo.$invalid">
-									</span> <span class="error" id="deducteeRefNo"></span>
-								</div>
-							</div>
-
-
-
-
-							<div class="row">
-								<div class="col-md-6">
-
-									<label style="font-size: 12px;">Surcharge</label> <input
-										class="form-control" type="text" name="surcharge"
-										placeholder="Surcharge" ng-model="cCctr.entity.surcharge"
-										ng-model-options="{updateOn: 'blur'}" disabled /> <span
-										style="color: red"
-										ng-show="form27eqDeductee.submitted || form27eqDeductee.surcharge.$dirty && form27eqDeductee.surcharge.$invalid">
-									</span><span class="error" id="surcharge"></span>
-								</div>
-
-								<div class="col-md-6">
-
-									<label style="font-size: 12px;">Education Cess</label> <input
-										class="form-control" type="text" name="Education Cess"
-										ng-model="cCctr.entity.eduCess"
-										ng-model-options="{updateOn: 'blur'}" disabled /> <span
-										style="color: red"
-										ng-show="form27eqDeductee.submitted || form27eqDeductee.eduCess.$dirty && form27eqDeductee.eduCess.$invalid">
-									</span> <span class="error" id="eduCess"></span>
-								</div>
-							</div>
-
-							<div class="row">
-								<div class="col-md-6">
-
-									<label style="font-size: 12px;">Total Tax Collected</label> <input
-										class="form-control" type="text" name="totalTaxDeducted"
-										placeholder="Total Tax Collected"
-										ng-model="cCctr.entity.totalTaxDeducted"
-										ng-model-options="{updateOn: 'blur'}" disabled /> <span
-										style="color: red"
-										ng-show="form27eqDeductee.submitted || form27eqDeductee.totalTaxDeducted.$dirty && form27eqDeductee.totalTaxDeducted.$invalid">
-									</span> <span class="error" id="totalTaxDeducted"></span>
-								</div>
-
-								<div class="col-md-6">
-
-									<label style="font-size: 12px;">Total Tax Deposited</label> <input
-										class="form-control" type="text" name="totalTaxDeposited"
-										placeholder="Total Tax Deposited"
-										ng-model="cCctr.entity.totalTaxDeposited"
-										ng-model-options="{updateOn: 'blur'}" disabled /> <span
-										style="color: red"
-										ng-show="form27eqDeductee.submitted || form27eqDeductee.totalTaxDeposited.$dirty && form27eqDeductee.totalTaxDeposited.$invalid">
-									</span> <span class="error" id="totalTaxDeposited"></span>
-								</div>
-							</div>
-
-							<div class="row">
-								<div class="col-md-6">
-
-									<label style="font-size: 12px;">TAN</label> <input
-										class="form-control" type="text" name="TAN" placeholder="TAN"
-										ng-model="cCctr.entity.TAN"
-										ng-pattern="[A-Za-z]{4}[0-9]{5}[A-Za-z]{1}" ng-maxlenght="10"
-										ng-model-options="{updateOn: 'blur'}" disabled /> <span
-										style="color: red"
-										ng-show="form27eqDeductee.submitted || form27eqDeductee.TAN.$dirty && form27eqDeductee.TAN.$invalid">
-										<span class="error"
-										ng-show="form26qdeductee.TAN.$error.pattern">Please
-											enter valid TAN </span> <span class="error"
-										ng-show="form26qdeductee.TAN.$error.maxlength">TAN
-											should not be greater than 10 characters.</span>
-									</span> <span class="error" id="TAN"></span>
-								</div>
-
-								<div class="col-md-6">
-
-									<label style="font-size: 12px;">Certificate Number</label> <input
-										class="form-control" type="text" name="certificateNumber"
-										placeholder="Certificate Number"
-										ng-model="cCctr.entity.certificateNumber"
-										ng-model-options="{updateOn: 'blur'}" disabled /> <span
-										style="color: red"
-										ng-show="form27eqDeductee.submitted || form27eqDeductee.certificateNumber.$dirty && form27eqDeductee.certificateNumber.$invalid">
-									</span> <span class="error" id="certificateNumber"></span>
-								</div>
-							</div>
-
-							<div class="row">
-								<div class="col-md-6">
-
-									<label style="font-size: 12px;">Error Description</label> <input
-										class="form-control" type="text" name="errorDescription"
-										placeholder="Error Description"
-										ng-model="cCctr.entity.errorDescription"
-										ng-model-options="{updateOn: 'blur'}" disabled /> <span
-										style="color: red"
-										ng-show="form27eqDeductee.submitted || form27eqDeductee.errorDescription.$dirty && form27eqDeductee.errorDescription.$invalid">
-									</span> <span class="error" id="errorDescription"></span>
-								</div>
-
-								<div class="col-md-6">
-
-									<label style="font-size: 12px;">Warning Description</label> <input
-										class="form-control" type="text" name="warningDescription"
-										placeholder="Warning Description"
-										ng-model="cCctr.entity.warningDescription"
-										ng-model-options="{updateOn: 'blur'}" disabled /> <span
-										style="color: red"
-										ng-show="form27eqDeductee.submitted || form27eqDeductee.warningDescription.$dirty && form27eqDeductee.errorDescription.$invalid">
-									</span> <span class="error" id="warningDescription"></span>
-								</div>
-							</div>
-
-							<div class="row">
-								<div class="col-md-6">
-
-									<label style="font-size: 12px;">Short Deduction</label> <input
-										class="form-control" type="text" name="ShortDeduction"
-										placeholder="Short Deduction"
-										ng-model="cCctr.entity.ShortDeduction"
-										ng-model-options="{updateOn: 'blur'}" disabled /> <span
-										style="color: red"
-										ng-show="form27eqDeductee.submitted || form27eqDeductee.ShortDeduction.$dirty && form27eqDeductee.ShortDeduction.$invalid">
-									</span> <span class="error" id="ShortDeduction"></span>
-								</div>
-
-								<div class="col-md-6">
-
-									<label style="font-size: 12px;">Interest On Short
-										Deduction <span style="color:red;">*</span></label> <input class="form-control" type="text"
-										name="InterestOnShortDeduction"
-										placeholder="Interest On Short Deduction"
-										ng-model="cCctr.entity.InterestOnShortDeduction"
-										ng-model-options="{updateOn: 'blur'}" disabled /> <span
-										style="color: red"
-										ng-show="form27eqDeductee.submitted || form27eqDeductee.InterestOnShortDeduction.$dirty && form27eqDeductee.InterestOnShortDeduction.$invalid">
-									</span> <span class="error" id="InterestOnShortDeduction"></span>
-								</div>
-							</div>
-
-							<div class="row">
-								<div class="col-md-6">
-									<label style="font-size: 12px;">Interest On Late
-										Payment</label> <input class="form-control" type="text"
-										name="InterestOnLatePayment"
-										placeholder="Interest On Late Payment"
-										ng-model="cCctr.entity.InterestOnLatePayment"
-										ng-model-options="{updateOn: 'blur'}" disabled /> <span
-										style="color: red"
-										ng-show="form27eqDeductee.submitted || form27eqDeductee.InterestOnLatePayment.$dirty && form27eqDeductee.InterestOnLatePayment.$invalid">
-									</span> <span class="error" id="InterestOnLatePayment"></span>
-								</div>
-
-								<div class="col-md-6">
-									<label style="font-size: 12px;">Interest On Late
-										Deduction</label> <input class="form-control" type="text"
-										name="InterestOnLateDeduction"
-										placeholder="Interest On Late Deduction*"
-										ng-model="cCctr.entity.InterestOnLateDeduction"
-										ng-model-options="{updateOn: 'blur'}" disabled /> <span
-										style="color: red"
-										ng-show="form27eqDeductee.submitted || form27eqDeductee.InterestOnLateDeduction.$dirty && form27eqDeductee.InterestOnLateDeduction.$invalid">
-									</span> <span class="error" id="InterestOnLateDeduction"></span>
-								</div>
-							</div>
-
-
-							<div class="row">
-								<div class="col-md-6">
-									<label style="font-size: 12px;">PAN of the Deductee</label> <input
-										class="form-control" type="text" name="deducteePan"
-										placeholder="PAN of the Deductee" ng-model="cCctr.entity.pan"
-										ng-model-options="{updateOn: 'blur'}" disabled /> <span
-										style="color: red"
-										ng-show="form27eqDeductee.submitted || form27eqDeducteePan.$dirty && form27eqDeducteePan.$invalid">
-									</span><span class="error" id="deducteePan"></span>
-								</div>
-
-								<div class="col-md-6">
-									<label style="font-size: 12px;">Name of the Party</label> <input
-										class="form-control" type="text" name="name"
-										placeholder="Name of the Party" ng-model="cCctr.entity.name"
-										ng-model-options="{updateOn: 'blur'}" disabled /> <span
-										style="color: red"
-										ng-show="form27eqDeductee.submitted || form27eqDeductee.name.$dirty && form27eqDeductee.name.$invalid">
-									</span> <span class="error" id="name"></span>
-								</div>
-							</div>
-
-
-							<div class="row">
-								<div class="col-md-6">
-									<label style="font-size: 12px;">Amount Receipt/Debited</label>
-									<input class="form-control" type="text" name="amountPaid"
-										placeholder="Amount Receipt/Debited"
-										ng-model="cCctr.entity.amountPaid"
-										ng-model-options="{updateOn: 'blur'}" disabled /> <span
-										style="color: red"
-										ng-show="form27eqDeductee.submitted || form27eqDeductee.amountPaid.$dirty && form27eqDeductee.amountPaid.$invalid">
-									</span> <span class="error" id="amountPaid"></span>
-								</div>
-
-								<div class="col-md-6">
-									<label style="font-size: 12px;">Date of
-										Received/Debited</label> <input class="form-control" type="Date"
-										name="dateOfPayment" placeholder="Date of Received/Debited"
-										ng-value='"{{cCctr.entity.dateOfPayment}}"'
-										ng-model="cCctr.temp.dateOfPayment"
-										ng-blur="cCctr.entity.dateOfPayment = cCctr.temp.dateOfPayment"
-										disabled />
-								</div>
-							</div>
-
-
-							<div class="row">
-								<div class="col-md-6">
-									<label style="font-size: 12px;">TDS</label> <input
-										class="form-control" type="text" name="tds" placeholder="TDS"
-										ng-model="cCctr.entity.tds"
-										ng-model-options="{updateOn: 'blur'}" disabled /> <span
-										style="color: red"
-										ng-show="form27eqDeductee.submitted || form27eqDeductee.tds.$dirty && form27eqDeductee.tds.$invalid">
-									</span> <span class="error" id="tds"></span>
-								</div>
-
-								<div class="col-md-6">
-									<label style="font-size: 12px;">Total Value of Purchase</label>
-									<input class="form-control" type="text"
-										name="totalValueofPurchase"
-										placeholder="Total Value of Purchase"
-										ng-model="cCctr.entity.totalValueofPurchase"
-										ng-model-options="{updateOn: 'blur'}" disabled /> <span
-										style="color: red"
-										ng-show="form27eqDeductee.submitted || form27eqDeductee.totalValueofPurchase.$dirty && form27eqDeductee.totalValueofPurchase.$invalid">
-									</span> <span class="error" id="totalValueofPurchase"></span>
-								</div>
-							</div>
-
-							<div class="row">
-								<div class="col-md-6">
-									<label style="font-size: 12px;">Rate at which Tax
-										Collected</label> <input class="form-control" type="text"
-										name="rateatwhichTaxCollected"
-										placeholder="Rate at which Tax Collected"
-										ng-model="cCctr.entity.rateatwhichTaxCollected"
-										ng-model-options="{updateOn: 'blur'}" disabled /> <span
-										style="color: red"
-										ng-show="form27eqDeductee.submitted || form27eqDeductee.rateatwhichTaxCollected.$dirty && form27eqDeductee.rateatwhichTaxCollected.$invalid">
-									</span> <span class="error" id="rateatwhichTaxCollected"></span>
-								</div>
-
-								<div class="col-md-6">
-									<label style="font-size: 12px;">Reason for Non
-										Collection</label> <input class="form-control" type="text"
-										name="remarksReason" placeholder="Reason for Non Collection"
-										ng-model="cCctr.entity.remarksReason"
-										ng-model-options="{updateOn: 'blur'}" disabled /> <span
-										style="color: red"
-										ng-show="form27eqDeductee.submitted || form27eqDeductee.remarksReason.$dirty && form27eqDeductee.remarksReason.$invalid">
-									</span> <span class="error" id="remarksReason"></span>
-								</div>
-							</div>
-
-
-							<div class="row">
-								<div class="col-md-6">
-									<label style="font-size: 12px;">Section / Collection
-										Code</label> <input class="form-control" type="text" name="roName"
-										placeholder="Section / Collection Code"
-										ng-model="cCctr.entity.sectionCode"
-										ng-model-options="{updateOn: 'blur'}" disabled /> <span
-										style="color: red"
-										ng-show="form27eqDeductee.submitted || form27eqDeductee.sectionCode.$dirty && form27eqDeductee.sectionCode.$invalid">
-									</span> <span class="error" id="sectionCode"></span>
-								</div>
-
-
-
-
-
-								<div class="col-md-6">
-
-									<label style="font-size: 12px;">Deductee is
-										Non-Resident</label> <input class="form-control" type="text"
-										name="deducteeisNonResident"
-										placeholder="Deductee is Non-Resident"
-										ng-model="cCctr.entity.deducteeisNonResident"
-										ng-model-options="{updateOn: 'blur'}" disabled /> <span
-										style="color: red"
-										ng-show="form27eqDeductee.submitted || form27eqDeducteeisNonResident.$dirty && form27eqDeducteeisNonResident.$invalid">
-									</span> <span class="error" id="deducteeisNonResident"></span>
-								</div>
-							</div>
-
-							<div class="row">
-								<div class="col-md-6">
-
-									<label style="font-size: 12px;">Permanent Establishment</label>
-									<input class="form-control" type="text"
-										name="permanentEstablishment"
-										placeholder="Permanent Establishment"
-										ng-model="cCctr.entity.permanentEstablishment"
-										ng-model-options="{updateOn: 'blur'}" disabled /> <span
-										style="color: red"
-										ng-show="form27eqDeductee.submitted || form27eqDeducteeisNonResident.$dirty && form27eqDeducteeisNonResident.$invalid">
-									</span> <span class="error" id="deducteeisNonResident"></span>
-								</div>
-
-
-
-
-								<div class="col-md-6">
-
-									<label style="font-size: 12px;">Reason For
-										NonCollection F or G</label> <input class="form-control" type="text"
-										name="reasonForNonCollectionForG"
-										placeholder="Reason For NonCollection F or G"
-										ng-model="cCctr.entity.reasonForNonCollectionForG"
-										ng-model-options="{updateOn: 'blur'}" disabled /> <span
-										style="color: red"
-										ng-show="form27eqDeductee.submitted || form27eqDeductee.reasonForNonCollectionForG.$dirty && form27eqDeductee.reasonForNonCollectionForG.$invalid">
-									</span> <span class="error" id="reasonForNonCollectionForG"></span>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-6">
-
-									<label style="font-size: 12px;">if Answer to 681A is
-										Yes Then Challan Number</label> <input class="form-control"
-										type="text" name="ifAnswerTo681AisyesthenChallanNumber"
-										placeholder="if Answer to 681A is Yes Then Challan Number"
-										ng-model="cCctr.entity.ifAnswerTo681AisyesthenChallanNumber"
-										ng-model-options="{updateOn: 'blur'}" disabled /> <span
-										style="color: red"
-										ng-show="form27eqDeductee.submitted || form27eqDeductee.ifAnswerTo681AisyesthenChallanNumber.$dirty && form27eqDeductee.ifAnswerTo681AisyesthenChallanNumber.$invalid">
-									</span> <span class="error" id="ifAnswerTo681AisyesthenChallanNumber"></span>
-								</div>
-
-								<div class="col-md-6">
-
-									<label style="font-size: 12px;">if Answer to 681A is
-										Yes Then Date Of Payment Of TDS To Central Government</label> <input
-										class="form-control" type="Date"
-										name="ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment"
-										placeholder="if Answer to 681A is Yes Then Date Of Payment Of TDS To Central Government"
-										ng-value='"{{cCctr.entity.ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment}}"'
-										ng-model="cCctr.temp.ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment"
-										ng-blur="cCctr.entity.ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment = cCctr.temp.ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment"
-										disabled /> <span style="color: red"
-										ng-show="form27eqDeductee.submitted || form27eqDeductee.ifAnswerTo681AisyesthenChallanNumber.$dirty && form27eqDeductee.ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment.$invalid">
-									</span> <span class="error"
-										id="ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment"></span>
-								</div>
-
-							</div>
-
-							<div class="row">
-								<div class="col-md-6">
-
-									<label style="font-size: 12px;">Date of Collected</label> <input
-										class="form-control" type="Date" name="roName"
-										placeholder="Date of Collected"
-										ng-value='"{{cCctr.entity.dateOfDeduction}}"'
-										ng-model="cCctr.temp.dateOfDeduction"
-										ng-blur="cCctr.entity.dateOfDeduction=cCctr.temp.dateOfDeduction"
-										disabled />
-								</div>
-								<div class="col-md-6">
-
-									<label style="font-size: 12px;">Status</label> <input
-										class="form-control" type="text" name="Status"
-										placeholder="Status" ng-model="cCctr.entity.resolved"
-										ng-model-options="{updateOn: 'blur'}" disabled />
-								</div>
-
-							</div>
-
-							<br> <br>
-							<div class="row">
-								<div class="col-md-12" style="text-align: right">
-									<button class="pushable darkblue"
-										style="background: hsl(224.9, 87.1%, 39.4%, 0.59); margin-top: 2%;"
-										data-dismiss="modal"
-										ng-click="cCctr.updateForm(true,cCctr.entity,'form27EQDeductee')">
-										<span class="front darkbluespan"
-											style="background: hsl(224.9, 87.1%, 39.4%);"> Update</span>
-									</button>
-									<button class="pushable lightblack"
-										style="background: hsl(0, 0.7%, 71.2%, 0.53); margin-top: 2%;"
-										data-dismiss="modal">
-										<span class="front lightblackspan"
-											style="background: hsl(240, 0.4%, 48.8%);">Close</span>
-									</button>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-</div>
-
-<!-- Success Modal -->
-<div id="successMsgDetail" class="modal" role="dialog">
-	<div class="modal-dialog modal-sm">
-		Modal content
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 style="color: green;">
-					<picture>
-					<source type="image/webp" srcset="static/img/success.webp">
-					<img src="./././static/img/success.webp" height="30" width="30">
-					</picture>
-					<span class="headingMsg"></span>
-				</h4>
-			</div>
-			<div class="modal-body">
-				<div class="row">
-					<div class="col-sm-12">
-						<div class="msg" style="font-size: 18px;"></div>
-					</div>
-				</div>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal"
-					ng-click="cCctr.gotoWFYDetailPage('form27EQDeductee',cCctr.entity.deductee.id,'detailForm27EQDeductee')">Ok</button>
-				<!-- id="reload" -->
-			</div>
-		</div>
-	</div>
-</div>
+<script>
+	$(document).ready(function() {
+		$(this).scrollTop(0);
+	});
+</script>
+<script>
+	$('#reload').click(function() {
+		location.reload();
+	});
+</script>
+
+
+<script>
+	$(document).ready(function() {
+		$("button").click(function() {
+			if ($(".fade").length > 0) {
+				$(".fade").removeClass("fade");
+			} else {
+				$("fade").removeClass("fade");
+			}
+		});
+	});
+</script>

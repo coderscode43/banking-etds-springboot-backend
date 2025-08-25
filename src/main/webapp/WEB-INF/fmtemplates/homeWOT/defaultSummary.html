@@ -39,7 +39,7 @@
         }
     }
      .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
-   background-color: whitesmoke;
+   background-color: white;
 }
 @media (min-width: 768px) {
   .collapse.dont-collapse-sm {
@@ -117,7 +117,7 @@
  <div class="table-responsive" style="overflow-x:scroll;height:100%;width:100%;overflow: auto;">
 	<table class=" table table-striped table-bordered table-sm " style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
 		<thead>
-			<tr  style="background-color: #81b7db;font-size:13px">
+			<tr  style="background-color: #7482f45e;font-size:13px">
 			 <th width="10%">Sr. No.</th>
 				<th width="18%">TAN</th>
 				<th width="20%">Financial Year</th>
@@ -146,7 +146,7 @@
 		</thead>
 		<tbody>
 			<tr ng-repeat="a in cCctr.getEntityListData() track by a.id" style="font-size:13px">
-			<td role="cell" class="one" style="padding:10px">{{$index+1}}</td>
+			<td role="cell" class="one" style="padding:10px">{{$index+cCctr.srNo}}</td>
 				<td>{{a.TAN}}</td>
 				<td>{{a.FY}}</td>
 				<td>{{a.QUARTER}}</td>

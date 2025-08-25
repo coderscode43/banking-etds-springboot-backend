@@ -3,26 +3,34 @@ package domain.in.rjsa.service.impl;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import domain.in.rjsa.dao.RESPONSIBLEPERSONEDETAILSDao;
+import domain.in.rjsa.exception.CustomException;
 import domain.in.rjsa.model.tds.RESPONSIBLEPERSONEDETAILS;
 import domain.in.rjsa.service.AbstractServiceTaxo;
 import domain.in.rjsa.service.RESPONSIBLEPERSONEDETAILSService;
 
 @Transactional("tdsTxManager")
 @Service("RESPONSIBLEPERSONEDETAILSService")
-public class RESPONSIBLEPERSONEDETAILSServiceImpl extends AbstractServiceTaxo<String, RESPONSIBLEPERSONEDETAILS, RESPONSIBLEPERSONEDETAILSDao> implements RESPONSIBLEPERSONEDETAILSService{
+public class RESPONSIBLEPERSONEDETAILSServiceImpl
+		extends AbstractServiceTaxo<String, RESPONSIBLEPERSONEDETAILS, RESPONSIBLEPERSONEDETAILSDao>
+		implements RESPONSIBLEPERSONEDETAILSService {
 	@Autowired
 	RESPONSIBLEPERSONEDETAILSDao dao;
+
 	@Override
 	public RESPONSIBLEPERSONEDETAILSDao getPrimaryDao() {
 		// TODO Auto-generated method stub
 		return dao;
 	}
-	
+
 	@Override
 	public RESPONSIBLEPERSONEDETAILS getByKey(String tan) {
 		// TODO Auto-generated method stub
@@ -36,10 +44,29 @@ public class RESPONSIBLEPERSONEDETAILSServiceImpl extends AbstractServiceTaxo<St
 	}
 
 	@Override
-	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+	public List<?> search(LinkedHashMap<String, Object> map, int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
 		return dao.search(map, pageNo, resultPerPage);
 	}
 
+	@Override
+	public void addData(String json) {
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			List<JSONObject> jsonObject = mapper.readValue(json, new TypeReference<List<JSONObject>>() {
+			});
+
+			for (JSONObject object : jsonObject) {
+				RESPONSIBLEPERSONEDETAILS respone = new RESPONSIBLEPERSONEDETAILS();
+				respone.setData(object);
+				dao.persist(respone);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new CustomException("Could Not Persist Data");
+
+		}
+
+	}
 
 }

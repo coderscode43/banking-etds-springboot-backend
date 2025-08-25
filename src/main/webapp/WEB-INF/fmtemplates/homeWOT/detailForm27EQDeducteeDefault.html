@@ -237,10 +237,10 @@
 		</div>
 	</div>
 	
-	<div id="profile" class="modal fade" role="dialog">
+	<div id="profile" class="modal fade"    data-backdrop="static"   role="dialog">
 		<div class="modal-dialog modal-lg">
 			<!-- Modal content-->
-			<div class="modal-content">
+			<div class="modal-content" style="top: 40px;">
 				<div class="modal-header">
 					<button type="button" class="close" id="closeU"
 						data-dismiss="modal">&times;</button>
@@ -290,7 +290,7 @@
 											ng-show="profileForm.partyReferenceNo.$error.pattern">Please
 												enter valid Deductee Sr No. in challan</span> <span class="error"
 											ng-show="profileForm.partyReferenceNo.$error.max">Deductee
-												Sr.No should not be greater than {{cCctr.getNoPage()}}.</span> <span
+												Sr.No should not be greater than {{cCctr.getNoPages()}}.</span> <span
 											class="error"
 											ng-show="profileForm.partyReferenceNo.$error.required">Please
 												enter Deductee Sr.No.</span> <span class="error" id="partyReferenceNo"></span>
@@ -904,6 +904,10 @@
 	</div>
 	
 	</div>
-	
+	<script>
+	$(document).ready(function() {
+		$(this).scrollTop(0);
+	});
+</script>
 </body>
 </html>

@@ -1,3 +1,4 @@
+
 <style>
 @media only screen and (max-width: 1000px) {
 	.one {
@@ -33,10 +34,10 @@
 	}
 }
 
-.table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
+/* .table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
 	{
-	background-color: whitesmoke;
-}
+	background-color: white;
+} */
 
 @media ( min-width : 768px) {
 	.collapse.dont-collapse-sm {
@@ -80,13 +81,6 @@ th {
 	height: 60px;
 }
 
-.ellipsis {
-	max-width: 70px;
-	min-width: 200px;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
-}
 .btn-grad {
 	background-image: linear-gradient(to right, #FF8008 0%, #FFC837 51%, #FF8008 100%);
 	transition: 0.5s;
@@ -105,261 +99,111 @@ th {
 }
 
 .dropdown-check-list {
-  display: inline-block;
+	display: inline-block;
 }
 
 .dropdown-check-list .anchor {
-  position: relative;
-  cursor: pointer;
-  display: inline-block;
-  padding: 5px 50px 5px 10px;
-  border: 1px solid #ccc;
+	position: relative;
+	cursor: pointer;
+	display: inline-block;
+	padding: 5px 50px 5px 10px;
+	border: 1px solid #ccc;
 }
 
 .dropdown-check-list .anchor:after {
-  position: absolute;
-  content: "";
-  border-left: 2px solid black;
-  border-top: 2px solid black;
-  padding: 5px;
-  right: 10px;
-  top: 20%;
-  -moz-transform: rotate(-135deg);
-  -ms-transform: rotate(-135deg);
-  -o-transform: rotate(-135deg);
-  -webkit-transform: rotate(-135deg);
-  transform: rotate(-135deg);
+	position: absolute;
+	content: "";
+	border-left: 2px solid black;
+	border-top: 2px solid black;
+	padding: 5px;
+	right: 10px;
+	top: 20%;
+	-moz-transform: rotate(-135deg);
+	-ms-transform: rotate(-135deg);
+	-o-transform: rotate(-135deg);
+	-webkit-transform: rotate(-135deg);
+	transform: rotate(-135deg);
 }
 
 .dropdown-check-list .anchor:active:after {
-  right: 8px;
-  top: 21%;
+	right: 8px;
+	top: 21%;
 }
 
 .dropdown-check-list ul.items {
-  padding: 2px;
-  display: none;
-  margin: 0;
-  border: 1px solid #ccc;
-  border-top: none;
+	padding: 2px;
+	display: none;
+	margin: 0;
+	border: 1px solid #ccc;
+	border-top: none;
 }
 
 .dropdown-check-list ul.items li {
-  list-style: none;
+	list-style: none;
 }
 
 .dropdown-check-list.visible .anchor {
-  color: #0094ff;
+	color: #0094ff;
 }
 
 .dropdown-check-list.visible .items {
-  display: block;
-}
-.anchor.dropdown-toggle {
-  font-size: 15px;
-  border-radius: 20px;
-  background-image: linear-gradient(to right, #52B337 0%, #B5F0B0 51%, #38F71E87 100%);
-  color: #fff;
-}
-.scrollable-menu {
-    height: auto;
-    max-height: 200px;
-    overflow-x: hidden;
-}
-.dropdown-menu > li > a {
-  display: block;
-  padding: 3px 20px;
-  clear: both;
-  font-weight: 400;
-  line-height: 1.42857143;
-  color: #333;
-  white-space: nowrap;
-  margin-top: -24px;
-}
-/*Refresh Button*/
-.tooltip-top {
-  bottom: 83%;
-  margin-left:-9%;
-}
-/*Search Button*/
-.tooltip-top1 {
-  bottom: 116%;
-  margin-left:-30%;
-}
-/*Advanced Search Button*/
-.tooltip-top2 {
-  bottom: 116%;
-  margin-left:-57%;
-}
-/*Table column Button*/
-.tooltip-top3 {
-  bottom: 116%;
-  margin-left:-46%;
-}
-/*Export to Excel Button*/
-.tooltip-top4 {
- bottom: 66%;
-  margin-left:-41%;
-}
-/*Detail*/
-.tooltip-top5 {
- margin-left:-6%;
+	display: block;
 }
 
+.anchor.dropdown-toggle {
+	font-size: 15px;
+	border-radius: 20px;
+	background-image: linear-gradient(to right, #52B337 0%, #B5F0B0 51%, #38F71E87 100%);
+	color: #fff;
+}
+
+.scrollable-menu {
+	height: auto;
+	max-height: 200px;
+	overflow-x: hidden;
+}
+
+.dropdown-menu>li>a {
+	display: block;
+	padding: 3px 20px;
+	clear: both;
+	font-weight: 400;
+	line-height: 1.42857143;
+	color: #333;
+	white-space: nowrap;
+	margin-top: -24px;
+}
+
+/*Detail*/
+.tooltip-top5 {
+	margin-left: -6%;
+}
+
+th {
+	vertical-align: middle !important
+}
 </style>
 
 
 
+<div
+	ng-init="cCctr.helpFolder = 'homeSChelpPage' ;  cCctr.helpPage = 'form26QSCHelp' ">
+	<div id="page-wrapper">
+		<div class="container-fluid">
 
-<div id="page-wrapper" ng-controller="CommonController as cCctr">
-	<div class="container-fluid">
-	<!-- <button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
-					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
-						onClick="refreshPageButton()"><i
-						class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh<span class="tooltiptext tooltip-top">Refresh or Press F5</span></button> -->
-						
-			
-		<div class="col-md-12 "
-			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
-			<div class="heading">
-				<strong>Form 26Q Deductee Detail</strong>
-			</div>
-
-		</div>
-
-
-		<br>
-		<button class="btn btn-primary hidden visible-xs" type="button"
-			data-toggle="collapse" data-target="#collapseExample2"
-			aria-expanded="false" aria-controls="collapseExample">Search</button>
-		<div class="collapse dont-collapse-sm" id="collapseExample2">
-			<div class="row">
-				<div class="form-group">
-
-
-					<div class="col-md-3">
-						<h6>
-							<b>Section Code</b>
-							<h6>
-								<select class="form-control" ng-model="cCctr.search.sectionCode"
-									required>
-									<option disabled value="">Select Section</option>
-									<#list Section as section>
-									<option value="${section}">${section}</option>
-									</#list>
-								</select>
-					</div>
-					<div class="col-md-3">
-						<h6>
-							<b>Branch Code</b>
-							<h6>
-								<input type="text" ng-model="cCctr.search.branchCode"
-									class="form-control" placeholder="Branch Code"
-									style="width: 100%">
-					</div>
-					
-					
-					<div class="col-md-3">
-						<h6>
-							<b>Name</b>
-							<h6>
-								<input type="text" ng-model="cCctr.search.name"
-									class="form-control" placeholder="Name" style="width: 100%">
-					</div>
-
-					<!-- <div class="col-md-3">
-						<h6>
-							<b>PAN</b>
-							<h6>
-								<input type="text" ng-model="cCctr.search.pan"
-									class="form-control" placeholder="PAN" style="width: 100%">
-					</div> -->
-
-
-				</div>
-			</div>
-
-			<div class=" collapse  panel-collapse" id="collapseExample4">
-
+			<div class="collapse dont-collapse-sm" id="collapseExample2">
 				<div class="row">
-					
-
-					<div class="col-md-3">
-						<h6>
-							<b>Account Number</b>
-							<h6>
-								<input type="text" ng-model="cCctr.search.accNo"
-									class="form-control" placeholder="Account Number"
-									style="width: 100%">
-					</div>
-
-					<div class="col-md-3">
-						<h6>
-							<b>Vendor/Customer ID</b>
-							<h6>
-								<input type="text" ng-model="cCctr.search.custVendId"
-									class="form-control" placeholder="Vendor/Customer ID"
-									style="width: 100%">
-					</div>
-					<div class="col-md-3">
-						<h6>
-							<b>Status</b>
-						</h6>
-						<select ng-model="cCctr.search.resolved" class="form-control">
-							<option disabled value="">Status</option>
-							<option value="false">Resolved</option>
-							<option value="true">Not Resolved</option>
-						</select>
+					<div class="heading">
+						<strong>Form 26Q Deductee Details</strong>
 					</div>
 				</div>
-
-
-
 				<div class="row">
-
-
-					<div class="col-md-3">
-						<h6>
-							<b>Challan Heading</b>
-							<h6>
-								<input type="text" ng-model="cCctr.search.challanHeading"
-									class="form-control" placeholder="Challan Heading"
-									style="width: 100%">
-					</div>
-
-					 <div class="col-md-3">
-						<h6>
-							<b>PAN</b>
-							<h6>
-								<input type="text" ng-model="cCctr.search.pan"
-									class="form-control" placeholder="PAN" style="width: 100%">
-					</div>
-					<div class="col-md-3">
-						<h6>
-							<b>Warning Description</b>
-							<h6>
-								<input type="text" ng-model="cCctr.search.warningDescription"
-									class="form-control" placeholder="Warning Description"
-									style="width: 100%">
-					</div>
-					<div class="col-md-3">
-						<h6>
-							<b>RO Code</b>
-							<h6>
-								<input type="text" ng-model="cCctr.search.roCode"
-									class="form-control" placeholder="RO Code" style="width: 100%">
-					</div>
-
-
-
-				</div>
-
-				<div class="row">
-
-					<div class="col-md-3">
-						<h6>
-							<b>Quarter</b>
-							<h6>
+					<div class="form-group">
+						<div class="col-md-12" style="padding-left: 0px;">
+							<div class="col-md-3">
+								<h6>
+									<b>Quarter</b>
+								</h6>
 								<select class="form-control" ng-model="cCctr.search.quarter"
 									required>
 									<option disabled value="">Select Quarter</option>
@@ -367,11 +211,144 @@ th {
 									<option value="${quarter}">${quarter}</option>
 									</#list>
 								</select>
+							</div>
+							<div class="col-md-3">
+								<h6>
+									<b>Branch Code</b>
+								</h6>
+								<input type="text" ng-model="cCctr.search.branchCode"
+									class="form-control" placeholder="Branch Code"
+									style="width: 100%">
+							</div>
+
+
+							<div class="col-md-3">
+								<h6>
+									<b>Name</b>
+								</h6>
+								<input type="text" ng-model="cCctr.search.name"
+									class="form-control" placeholder="Name" style="width: 100%">
+							</div>
+
+							<div class="col-md-3 Btns">
+
+
+								<button
+									id="searchButton" 
+									ng-click="cCctr.searchEntities(true,'form26QDeductee','form26QDeductee')"
+									class="btn btn-success  tool" onclick="scrollWin()">
+									<div class=button-main-box>
+										<i class="fa fa-search border-0 p-0"
+											style="color: inherit; display: block; background-color: transparent; font-size: 23px;"></i>
+										<div class="button-tooltip-box">
+											<span class="tooltiptext Search">Search Button</span>
+										</div>
+									</div>
+								</button>
+
+								<button class="btn btn-primary  collapsed tool"
+									style="background-color: #FFA500; border-color: #FFA500;"
+									data-toggle="collapse" data-target="#collapseExample4"
+									aria-expanded="false" data-parent="#collapseExample4"
+									aria-controls="collapseExample">
+									<div class=button-main-box>
+										<i class="fa fa-filter border-0 p-0"
+											style="color: #fff; display: block; background-color: transparent; font-size: 23px;"></i>
+										<div class="button-tooltip-box">
+											<span class="tooltiptext Search">Advance Search Button</span>
+										</div>
+									</div>
+								</button>
+
+								<div data-control="checkbox-dropdown" class="dropdown"
+									id="checkList">
+									<button class="btn btn-primary dropdown-label tool">Select</button>
+									<div class="dropdown-list">
+
+										<a data-toggle="check-all" class="dropdown-option"> Check
+											All </a>
+										<!--  <label class="dropdown-option"><input type="checkbox" name="sectionCode">Section Code</label> -->
+										<label class="dropdown-option"> <input type="checkbox"
+											name="dateOfPayment">Date of Payment
+										</label> <label class="dropdown-option"><input type="checkbox"
+											name="dateOfDeduction">Date of Deduction</label><label
+											class="dropdown-option"><input type="checkbox"
+											name="uniqueRefNo">Unique Ref Id</label> <label
+											class="dropdown-option"><input type="checkbox"
+											name="amountPaid">Amount paid</label> <label
+											class="dropdown-option"><input type="checkbox"
+											name="accNo">Account Number</label><label
+											class="dropdown-option"><input type="checkbox"
+											name="tds">TDS</label> <label class="dropdown-option"><input
+											type="checkbox" name="surcharge">Surcharge</label> <label
+											class="dropdown-option"><input type="checkbox"
+											name="eduCess">Education cess</label> <label
+											class="dropdown-option"><input type="checkbox"
+											name="totalTaxDeducted">Total Tax Deducted</label> <label
+											class="dropdown-option"><input type="checkbox"
+											name="totalTaxDeposited">Total Tax Deposited</label> <label
+											class="dropdown-option"><input type="checkbox"
+											name="certificateNo">Certificate No </label> <label
+											class="dropdown-option"><input type="checkbox"
+											name="InterestOnLatePayment">Interest On Late Payment</label>
+										<label class="dropdown-option"><input type="checkbox"
+											name="remarksReason">Remarks Reason</label> <label
+											class="dropdown-option"><input type="checkbox"
+											name="deducteeCode">Deductee Code</label> <label
+											class="dropdown-option"><input type="checkbox"
+											name="rateTaxDeductee">Rate Tax Deductee</label> <label
+											class="dropdown-option"><input type="checkbox"
+											name="cashWithdrawal194N">cashWithdrawal194N</label> <label
+											class="dropdown-option"><input type="checkbox"
+											name="cashWithdrawal194N20Lto1Cr">Cash Withdrawal
+											194N20Lto1Cr</label> <label class="dropdown-option"><input
+											type="checkbox" name="ShortDeduction">Short Deduction</label>
+										<label class="dropdown-option"><input type="checkbox"
+											name="cashWithdrawal194N1Cr">Cash Withdrawal 194N1Cr</label>
+										<label class="dropdown-option"><input type="checkbox"
+											name="errorDesc">Error Desc</label> <label
+											class="dropdown-option"><input type="checkbox"
+											name="InterestOnShortDeduction">Interest On
+											ShortDeduction</label> <label class="dropdown-option"><input
+											type="checkbox" name="InterestOnLateDeduction">Interest
+											On Late Deduction</label><label class="dropdown-option"><input
+											type="checkbox" name="errorDesc">Error Description</label> <label
+											class="dropdown-option"><input type="checkbox"
+											name="warningDesc">Warning Description</label> <label
+											class="dropdown-option"><input type="checkbox"
+											name="comments">Comments</label> <label
+											class="dropdown-option"><input type="checkbox"
+											name="status">Status</label>
+
+
+									</div>
+								</div>
+
+								<div class="col-md-4">
+									<label class="switch tool sliderButton"> <input
+										type="checkbox"> <span class="slider round "></span>
+										<div class="button-tooltip-box">
+											<span class="tooltiptext Search"> Resize Table</span>
+										</div>
+									</label>
+								</div>
+							</div>
+						</div>
+
+
 					</div>
-					<div class="col-md-3">
-						<h6>
-							<b>TAN</b>
-							<h6>
+				</div>
+
+				<div class=" collapse  panel-collapse" id="collapseExample4"
+					style="margin-left: -15px;">
+
+					<div class="row">
+
+						<div class="col-md-12" style="padding-left: 15px;">
+							<div class="col-md-3">
+								<h6>
+									<b>TAN</b>
+								</h6>
 								<select name="tan" id="tan" class="form-control"
 									ng-model="cCctr.search.TAN">
 									<option disabled value="">Select Tan</option>
@@ -379,433 +356,373 @@ th {
 									<option value="${T}">${T}</option>
 									</#list>
 								</select>
-					</div>
-					<div class="col-md-3">
-						<button class="btn btn-grad exportbtn tool" type="button"
-							style="margin-top:15%;margin-left: -8%;background-image: linear-gradient(to right, #517fa4 0%, #243949 51%, #517fa4 100%);"
-							ng-click="cCctr.generateExcel('apiform26QDeductee/generateExcel/','regular26QDeductee')">Export
-							to Excel<span class="tooltiptext tooltip-top4">Export to Excel</span></button>
-					</div>
-				</div>
+							</div>
+							<div class="col-md-3">
+								<h6>
+									<b>PAN</b>
+								</h6>
+								<input type="text" ng-model="cCctr.search.pan"
+									class="form-control" placeholder="PAN" style="width: 100%">
+							</div>
 
-
-
-
-			</div>
-			<!-- <div class="row mobile" id="search">
-				<div class="col-md-2" id="search">
-					<button
-						ng-click="cCctr.searchEntities(true,'form26QDeductee')"
-						class="btn btn-success" onclick="scrollWin()">Search</button>
-				</div>
-			</div> -->
-
-
-			<!-- <div class="row text-right" id="hide">
-				<div class="col-md-3" style="margin-left:60%; margin-top: -44px;display: ruby;">
-					<button
-						ng-click="cCctr.searchEntities(true,'form26QDeductee','form26QDeductee')"
-						style="background-image: linear-gradient(to right, #093028 0%, #237A57  51%, #093028  100%)"
-						class="removeAll btn btn-grad astro-MG2CNCJP tool" onclick="scrollWin()"><i class="fa fa-search" aria-hidden="true"></i>
-						Search<span class="tooltiptext tooltip-top1">Search Button</span></button>
-						
-					<button class="btn btn-grad astro-MG2CNCJP tool" style="background-color: #FFA500; margin-left: 8px; background-image: linear-gradient(to right, #F09819 0%, #EDDE5D 51%, #F09819 100%)"
-						data-toggle="collapse" data-target="#collapseExample4"
-						aria-expanded="false" aria-controls="collapseExample"><i
-											class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;Advance
-						Search<span class="tooltiptext tooltip-top2">Advance Search Button</span></button>
-						
-						<button class="btn btn-grad astro-MG2CNCJP advsearchbtn tool"style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);color:#fff;"
-						data-color1="#F09819" data-color2="#EDDE5D;"
-						data-toggle="collapse" data-target="#checkList"
-						aria-expanded="false" aria-controls="collapseExample">
-						</i>&nbsp;Table Column<span class="tooltiptext tooltip-top3">Table Column Button</span> <i class="fa fa-angle-down" aria-hidden="true"></i></button>	
-				</div>
-				<div class="col-md-3">
-					<div class="text-right">
-
-						<button type="button" class="btn btn-primary"
-					ng-click="cCctr.gotoListPage('addForm26QDeductee','addForm26QDeductee');">Add</button>
-					</div>
-				</div>
-			</div>
-
- -->
-
-
-
-<div style="right: 3%; position: absolute; gap: 20px;margin-top:-3%;display:flex"
-		class="">
-
-
-		<button 	ng-click="cCctr.searchEntities(true,'form26QDeductee','form26QDeductee')"
-			class="btn btn-success mobile tool" onclick="scrollWin()">
-			<i class="fa fa-search border-0 p-0"
-				style="color: inherit; background-color: transparent;font-size: large;"></i>
-		<span class="tooltiptext tooltip-top">Search Button</span> </button>
-
-		<button class="btn btn-primary mobile collapsed tool"
-			style="background-color: #FFA500; border-color: #FFA500;"
-			data-toggle="collapse" data-target="#collapseExample4"
-			aria-expanded="false" data-parent="#navaccordion"
-			aria-controls="collapseExample">
-			<i class="fa fa-filter border-0 p-0"
-				style="color: #fff; background-color: transparent;font-size: large;"></i>
-		<span class="tooltiptext tooltip-top1">Advance Search Button</span></button>
-
-		<button class="btn btn-primary mobile tool" data-toggle="collapse" data-target="#checkList"
-						aria-expanded="false" aria-controls="collapseExample"
-			data-target="#bd-example-modal-xl">
-			<i class="fa fa-table border-0 p-0"
-				style="color: inherit; background-color: transparent;font-size: large;"></i>
-		<span class="tooltiptext tooltip-top2">Table Column Button</span></button> 
-		
-	
-
-	</div>
-
-
-
-
-			<!-- 	<div class="row" id="search">
-				<div class="col-md-3" id="search">
-					<button ng-click="cCctr.searchFYEntities(true,'form26QDeductee','form26QDeductee')"
-						class="btn btn-success" onclick="scrollWin()">Search</button>
-				</div>
-			</div> -->
-		</div>
-	</div>
-
-	<div style="float: right; margin-top: -13px"></div>
-
-	<div class="row"></div>
-	
-<table style="font-size: 12px; padding: 5px; margin: 5px;"class="collapse panel-collapse table table-bordered table-hover  table-striped" id="checkList">
-  <tr>
-  <td><button class="showAll"  for='selectAll'>Show All</button></td>
-     <td><button class="removeAll"  for='selectAll'>Remove All</button></td>
-    <td> <input type="checkbox" name="dateOfPayment">Date of Payment</td>
-    <td><input type="checkbox" name="dateOfDeduction">Date of Deduction</td>
-    <td><input type="checkbox" name="amountPaid">Amount paid</td>
-     <td><input type="checkbox" name="tds">TDS</td>
-    </tr>
- 
-  <tr>
-     <td><input type="checkbox" name="surcharge">Surcharge </td>
-    <td><input type="checkbox" name="eduCess">Education cess</td>
-    <td><input type="checkbox" name="totalTaxDeducted">Total Tax Deducted</td>
-    <td><input type="checkbox" name="totalTaxDeposited">Total Tax Deposited</td>
-     <td><input type="checkbox" name="certificateNo">Certificate No </td>
-     <td><input type="checkbox" name="InterestOnLatePayment">Interest On Late Payment</td>
-    
-  </tr>
-  
- <tr>
-  
-    <td><input type="checkbox" name="remarksReason">Remarks Reason</td>
-    <td><input type="checkbox" name="deducteeCode">Deductee Code</td>
-    <td><input type="checkbox" name="rateTaxDeductee">Rate Tax Deductee</td>
-      <td><input type="checkbox" name="cashWithdrawal194N">cashWithdrawal194N </td>
-    <td><input type="checkbox" name="cashWithdrawal194N20Lto1Cr">Cash Withdrawal 194N20Lto1Cr</td>
-    <td><input type="checkbox" name="ShortDeduction">Short Deduction</td>
-     
- </tr>
- 
- <tr>
- 
-    <td><input type="checkbox" name="cashWithdrawal194N1Cr">Cash Withdrawal 194N1Cr</td>
-    <td><input type="checkbox" name="errorDesc">Error Desc</td>
-    <td><input type="checkbox" name="InterestOnShortDeduction">Interest On ShortDeduction</td>
-    <td><input type="checkbox" name="InterestOnLateDeduction">Interest On Late Deduction</td>
- </tr>
-</table>
-	<div class="row">
-		<div class="table-responsive" style="overflow-x: inherit; width:100%">
-			<!-- 	<div class="col-md-12" style="margin-left:-30px"> -->
-			<table class=" table table-bordered table-hover  table-striped"
-				role="table" style="font-size: 12px; padding: 5px; margin: 5px;">
-
-				<thead>
-				<colgroup>
-					<col span="14" style="background-color: #ffffff">
-				</colgroup>
-				<tr>
-				<thead"rowgroup">
-					<tr role="row" style="background-color: #81b7db; height: 40px">
-						<th>Sr. No.</th>
-						<th class="quarter">Quarter</th>
-						<th class="">Month</th>
-						<th class="">RO Code</th>
-						<th ><div class="autoResizeQuarter">Branch Code</div></th>
-						<th><div class="autoResizeQuarter">Cust/Vend Id</div></th>
-						<th><div class="autoResizeQuarter">Unique Ref No</div></th>
-						<th><div class="autoResize">Account Number</div></th>
-						<th><div class="autoResize">Challan Heading</div></th>
-						<th><div class="autoResizeQuarter">Deductee Reference No</div></th>
-						<th><div class="autoResizeQuarter">PAN</div></th>
-						<th><div class="autoResize">Name</div></th>
-						<th><div class="autoResize">Section Code</div></th>
-						<th class="hideClass dateOfPayment">Date of Payment</th>
-						<th class="hideClass dateOfDeduction">Date of Deduction</th>
-						<th class="hideClass amountPaid"><div class="autoResize">Amount Paid</div></th>
-						<th class="hideClass tds"><div class="autoResize">TDS</div></th>
-						<th class="hideClass surcharge"><div class="autoResize">Surcharge</div></th>
-						<th class="hideClass eduCess"><div class="autoResize">Education cess</div></th>
-						<th class="hideClass totalTaxDeducted"><div class="autoResize">Total Tax Deducted</div></th>
-						<th class="hideClass totalTaxDeposited"><div class="autoResize">Total Tax Deposited</div></th>
-						<th class="hideClass certificateNo"><div class="autoResize">Certificate No.</div></th>
-						<th class="hideClass remarksReason"><div class="autoResize">Remarks Reason</div></th>
-						<th class="hideClass deducteeCode"><div class="autoResize">Deductee Code</div></th>
-						<th class="hideClass rateTaxDeductee"><div class="autoResize">Rate at which Tax Deducted</div></th>
-						<th class="hideClass cashWithdrawal194N"><div class="autoResize">Cash Withdrawl (194N)</div></th>
-						<th class="hideClass cashWithdrawal194N20Lto1Cr"><div class="autoResize">Cash Withdrawl 194N(20L to 1cr)</div></th>
-						<th class="hideClass cashWithdrawal194N1Cr"><div class="autoResize">Cash Withdrawl 194N(>1cr)</div></th>
-						<th class="hideClass errorDesc"><div class="autoResize">Error Description</div></th>
-						<th class=" warningDesc"><div class="autoResize">Warning Description</div></th>
-						<th class="hideClass ShortDeduction"><div class="autoResize">Short Deduction</div></th>
-						<th class="hideClass InterestOnShortDeduction"><div class="autoResize">Interest on Short Deduction</div></th>
-						<th class="hideClass InterestOnLatePayment"><div class="autoResize">Interest on Late Payment</div></th>
-						<th class="hideClass InterestOnLateDeduction"><div class="autoResize">Interest on Late Deduction</div></th>
-						<th><div class="autoResizeQuarter">TAN</div></th>
-						<th><div class="autoResizeQuarter">Comments</div></th>
-						<th><div class="autoResizeQuarter">Status</div></th>
-						 <th class="hide-on-desktop"><div class="autoResizeQuarter">Action</div></th> 
-
-
-
-
-
-					</tr>
-				</thead>
-				<tbody>
-					<tr style="color: red"
-						ng-show="cCctr.getEntityListData().length <= 0">
-						<td colspan="40" style="text-align: center;"><b><h3
-									style="text-align: center; text-align-last: 5;">No data
-									found!!</h3></b></td>
-					</tr>
-					<tr role="row"
-						ng-repeat="a in ( filteredList =( cCctr.getEntityListData()  ) )"
-						ng-dblclick="cCctr.gotoDetailFormPage('form26QDeductee',a.id,a.fy,a.branchCode,'detailForm26QDeductee')"
-						>
-						<td  ng-if="a.resolved == 0">{{$index+1}}</td>
-						<td style=" background-color:#ff3232" ng-if="a.resolved == 1">{{$index+1}}</td>
-						
-						<td class=" quarter" ng-if="a.resolved == 0">{{a.quarter}}</td>
-						<td class=" quarter" style=" background-color:#ff3232" ng-if="a.resolved == 1">{{a.quarter}}</td>
-						
-						<td class="" ng-if="a.resolved == 0">{{a.month}}</td>
-						<td class="" style=" background-color:#ff3232" ng-if="a.resolved == 1">{{a.month}}</td>
-						
-						<td class=""  ng-if="a.resolved == 0" >{{a.roCode}}</td>
-						<td class="" style=" background-color:#ff3232" ng-if="a.resolved == 1">{{a.roCode}}</td>
-						
-						<td   ng-if="a.resolved == 0">{{a.branchCode}}</td>
-						<td  style=" background-color:#ff3232" ng-if="a.resolved == 1">{{a.branchCode}}</td>
-						
-						<td  ng-if="a.resolved == 0" >{{a.custVendId}}</td>
-						<td style=" background-color:#ff3232" ng-if="a.resolved == 1" >{{a.custVendId}}</td>
-						
-						<td  ng-if="a.resolved == 0" 
-							data-placement="bottom" title="{{a.uniqueRefNo}}">{{a.uniqueRefNo}}</td>
-						<td  data-toggle="tooltip" style="background-color:#ff3232" ng-if="a.resolved == 1"
-							data-placement="bottom" title="{{a.uniqueRefNo}}">{{a.uniqueRefNo}}</td>
-								
-						<td   ng-if="a.resolved == 0">{{a.accNo}}</td>
-						<td  style=" background-color:#ff3232" ng-if="a.resolved == 1">{{a.accNo}}</td>
-						
-						<td  data-toggle="tooltip" ng-if="a.resolved == 0"
-							data-placement="bottom" title="{{a.challanHeading}}">{{a.challanHeading}}</td>
-						<td  data-toggle="tooltip" style="background-color:#ff3232" ng-if="a.resolved == 1"
-							data-placement="bottom" title="{{a.challanHeading}}">{{a.challanHeading}}</td>
-								
-						<td  ng-if="a.resolved == 0">{{a.deducteeRefNo}}</td>
-						<td  style=" background-color:#ff3232" ng-if="a.resolved == 1">{{a.deducteeRefNo}}</td>
-						
-						<td  data-toggle="tooltip" ng-if="a.resolved == 0"
-							data-placement="bottom" title="{{a.pan}}">{{a.pan}}</td>
-						<td  data-toggle="tooltip" style="background-color:#ff3232" ng-if="a.resolved == 1"
-							data-placement="bottom" title="{{a.pan}}">{{a.pan}}</td>
-								
-						<td  data-toggle="tooltip" ng-if="a.resolved == 0"
-							data-placement="bottom" title="{{a.name}}">{{a.name}}</td>
-						<td  data-toggle="tooltip" style="background-color:#ff3232" ng-if="a.resolved == 1"
-							data-placement="bottom" title="{{a.name}}">{{a.name}}</td>
-							
-						<td  ng-if="a.resolved == 0">{{a.sectionCode}}</td>
-						<td   style=" background-color: #ff3232" ng-if="a.resolved == 1">{{a.sectionCode}}</td>
-						
-						<td class="hideClass dateOfPayment" ng-if="a.resolved == 0">{{a.dateOfPayment | date:'dd-MM-yyyy'}}</td>
-						<td  class="hideClass dateOfPayment" style=" background-color:#ff3232" ng-if="a.resolved == 1">{{a.dateOfPayment | date:'dd-MM-yyyy'}}</td>
-						
-						<td class="hideClass dateOfDeduction" ng-if="a.resolved == 0">{{a.dateOfDeduction| date:'dd-MM-yyyy'}}</td>
-						<td class="hideClass dateOfDeduction" style=" background-color:#ff3232" ng-if="a.resolved == 1">{{a.dateOfDeduction| date:'dd-MM-yyyy'}}</td>
-						
-						<td class="hideClass amountPaid"  ng-if="a.resolved == 0">{{a.amountPaid}}</td>
-						<td class="hideClass amountPaid" style=" background-color:#ff3232" ng-if="a.resolved == 1">{{a.amountPaid}}</td>
-						
-						<td class="hideClass tds" ng-if="a.resolved == 0">{{a.tds}}</td>
-						<td class="hideClass tds" style=" background-color:#ff3232" ng-if="a.resolved == 1">{{a.tds}}</td>
-						
-						<td class="hideClass surcharge" ng-if="a.resolved == 0">{{a.surcharge}}</td>
-						<td class="hideClass surcharge" style=" background-color:#ff3232" ng-if="a.resolved == 1">{{a.surcharge}}</td>
-						
-						<td  class="hideClass eduCess" ng-if="a.resolved == 0">{{a.eduCess}}</td>
-						<td  class="hideClass eduCess" style=" background-color:#ff3232" ng-if="a.resolved == 1">{{a.eduCess}}</td>
-						
-						<td class="hideClass totalTaxDeducted"  ng-if="a.resolved == 0">{{a.totalTaxDeducted}}</td>
-						<td class="hideClass totalTaxDeducted"  style=" background-color:#ff3232" ng-if="a.resolved == 1">{{a.totalTaxDeducted}}</td>
-						
-						<td class="hideClass totalTaxDeposited" ng-if="a.resolved == 0">{{a.totalTaxDeposited}}</td>
-						<td class="hideClass totalTaxDeposited" style=" background-color:#ff3232" ng-if="a.resolved == 1">{{a.totalTaxDeposited}}</td>
-							
-						<td class="hideClass certificateNo"  ng-if="a.resolved == 0">{{a.certificateNumber}}</td>
-						<td class="hideClass certificateNo" style=" background-color:#ff3232" ng-if="a.resolved == 1">{{a.certificateNumber}}</td>
-	
-						<td class="hideClass  remarksReason" data-toggle="tooltip" ng-if="a.resolved == 0"
-							data-placement="bottom" title="{{a.remarksReason}}">{{a.remarksReason}}</td>
-						<td class="hideClass  remarksReason" data-toggle="tooltip" style="background-color:#ff3232" ng-if="a.resolved == 1"
-							data-placement="bottom" title="{{a.remarksReason}}">{{a.remarksReason}}</td>
-							
-						<td class="hideClass deducteeCode" ng-if="a.resolved == 0">{{a.deducteeCode}}</td>
-						<td class="hideClass deducteeCode" style=" background-color:#ff3232" ng-if="a.resolved == 1">{{a.deducteeCode}}</td>
-	
-						<td class="hideClass rateTaxDeductee" ng-if="a.resolved == 0">{{a.rateAtWhichTaxCollected}}</td>
-						<td class="hideClass rateTaxDeductee" style=" background-color:#ff3232" ng-if="a.resolved == 1">{{a.rateAtWhichTaxCollected}}</td>
-						
-							
-											
-						<td class="hideClass cashWithdrawal194N"  ng-if="a.resolved == 0">{{a.cashWithdrawal194N}}</td>
-						<td  class="hideClass cashWithdrawal194N" style=" background-color:#ff3232" ng-if="a.resolved == 1">{{a.cashWithdrawal194N}}</td>
-						
-						<td class="hideClass cashWithdrawal194N20Lto1Cr" ng-if="a.resolved == 0">{{a.cashWithdrawal194N20Lto1Cr}}</td>
-						<td class="hideClass cashWithdrawal194N20Lto1Cr" style=" background-color:#ff3232" ng-if="a.resolved == 1">{{a.cashWithdrawal194N20Lto1Cr}}</td>
-						
-						<td class="hideClass cashWithdrawal194N1Cr"  ng-if="a.resolved == 0">{{a.cashWithdrawal194N1Cr}}</td>
-						<td class="hideClass cashWithdrawal194N1Cr" style=" background-color:#ff3232" ng-if="a.resolved == 1">{{a.cashWithdrawal194N1Cr}}</td>
-						
-						<td class="ellipsis hideClass errorDesc" data-toggle="tooltip" ng-if="a.resolved == 0"
-							data-placement="bottom" title="{{a.errorDescription}}">{{a.errorDescription}}</td>
-						<td class="ellipsis hideClass errorDesc" data-toggle="tooltip" style="background-color:#ff3232" ng-if="a.resolved == 1"
-							data-placement="bottom" title="{{a.errorDescription}}">{{a.errorDescription}}</td>
-								
-						<td class="ellipsis  warningDesc" data-toggle="tooltip" ng-if="a.resolved == 0"
-							data-placement="bottom" title="{{a.warningDescription}}">{{a.warningDescription}}</td>
-						<td class="ellipsis hideClass warningDesc" data-toggle="tooltip" style="background-color:#ff3232" ng-if="a.resolved == 1"
-							data-placement="bottom" title="{{a.warningDescription}}">{{a.warningDescription}}</td>
-								
-						<td class="hideClass ShortDeduction" data-toggle="tooltip" ng-if="a.resolved == 0"
-							data-placement="bottom" title="{{a.ShortDeduction}}">{{a.ShortDeduction}}</td>
-						<td class="hideClass ShortDeduction" data-toggle="tooltip" style="background-color:#ff3232" ng-if="a.resolved == 1"
-							data-placement="bottom" title="{{a.ShortDeduction}}">{{a.ShortDeduction}}</td>
-								
-						<td class="hideClass InterestOnShortDeduction" ng-if="a.resolved == 0">{{a.InterestOnShortDeduction}}</td>
-						<td class="hideClass InterestOnShortDeduction"  style=" background-color:#ff3232" ng-if="a.resolved == 1">{{a.InterestOnShortDeduction}}</td>
-						
-						<td class="hideClass InterestOnLatePayment"  ng-if="a.resolved == 0">{{a.InterestOnLatePayment}}</td>
-						<td class="hideClass InterestOnLatePayment" style=" background-color:#ff3232" ng-if="a.resolved == 1">{{a.InterestOnLatePayment}}</td>
-						
-						<td class="hideClass InterestOnLateDeduction"  ng-if="a.resolved == 0">{{a.InterestOnLateDeduction}}</td>
-						<td class="hideClass InterestOnLateDeduction" style=" background-color:#ff3232" ng-if="a.resolved == 1"">{{a.InterestOnLateDeduction}}</td>
-						
-						<td  ng-if="a.resolved == 0">{{a.TAN}}</td>
-						<td style=" background-color:#ff3232" ng-if="a.resolved == 1">{{a.TAN}}</td>
-						
-						<td  ng-if="a.resolved == 0">{{a.comments}}</td>
-						<td style=" background-color:#ff3232" ng-if="a.resolved == 1">{{a.comments}}</td>
-
-						<div>
-							<td ng-if="a.resolved == 0" >Resolved</td>
-							<td ng-if="a.resolved == 1" style=" background-color:#ff3232">Not Resolved</td>
+							<div class="col-md-3">
+								<h6>
+									<b>Challan Heading</b>
+								</h6>
+								<input type="text" ng-model="cCctr.search.challanHeading"
+									class="form-control" placeholder="Challan Heading"
+									style="width: 100%">
+							</div>
 						</div>
 
-						<!-- <div>
-							<td ng-if="a.verify == 1"><i class="fa fa-check"
-								aria-hidden="true" style="color: # 5cb85c"></i></td>
-							<td ng-if="a.verify == 0"><i class="fa fa-times"
-								aria-hidden="true" style="color: #ff0000"></i></td>
-						</div> -->
-						<td ><a
-						class="tool hide-on-desktop"
-							ng-click="cCctr.gotoDetailFormPage('form26QDeductee',a.id,a.fy,a.branchCode,'detailForm26QDeductee')"
-							style="color: blue" onclick="scrollWin()"><img
-								src="static\img\edit.png" width="22px" height="22px"
-								alt="Details" style="margin-top: 5px; margin-bottom: 5px;" /><span class="tooltiptext tooltip-top5">Detail</span></a></td>
 
-						 <!-- <td>{{a.total-a.amountPaid}}</td> -->
+					</div>
 
-					</tr>
-					<tr>
-							<th class="one" colspan="15" style="text-align: center; height: 40px" ng-init="ttl=0"><b>TOTAL</b></th>
-							<td class="hideClass amountPaid"><b>{{ filteredList | sumByKey : 'amountPaid' | number : fractionSize}}</b></td>
-							<td class="hideClass tds"><b>{{ filteredList | sumByKey : 'tds' | number : fractionSize}}</b></td>
-							<td class="hideClass surcharge"><b>{{ filteredList | sumByKey : 'surcharge' | number : fractionSize}}</b></td>
-							<td class="hideClass eduCess"><b>{{ filteredList | sumByKey : 'eduCess' | number : fractionSize}}</b></td>
-							<td class="hideClass totalTaxDeducted"><b>{{ filteredList | sumByKey : 'totalTaxDeducted' | number : fractionSize}}</b></td>
-							<td class="hideClass totalTaxDeposited"><b>{{ filteredList | sumByKey : 'totalTaxDeposited' | number : fractionSize}}</b></td>
-							<td class="hideClass certificateNo"></td>
-							<td class="hideClass remarksReason"></td>
-							<td class="hideClass deducteeCode"></td>
-							<td class="hideClass rateTaxDeductee"></td>
-							<td class="hideClass cashWithdrawal194N"><b>{{ filteredList | sumByKey : 'cashWithdrawal194N' | number : fractionSize}}</b></td>
-							<td class="hideClass cashWithdrawal194N20Lto1Cr"><b>{{ filteredList | sumByKey : 'cashWithdrawal194N20Lto1Cr' | number : fractionSize}}</b></td>
-							<td class="hideClass cashWithdrawal194N1Cr"><b>{{ filteredList | sumByKey : 'cashWithdrawal194N1Cr' | number : fractionSize}}</b></td>
-							<td class="hideClass errorDesc"></td>
-							<td class="hideClass warningDesc"></td>
-							<td class="hideClass ShortDeduction"><b>{{ filteredList | sumByKey : 'ShortDeduction' | number : fractionSize}}</b></td>
-							<td class="hideClass InterestOnShortDeduction"><b>{{ filteredList | sumByKey : 'InterestOnShortDeduction' | number : fractionSize}}</b></td>
-							<td class="hideClass InterestOnLatePayment"><b>{{ filteredList | sumByKey : 'InterestOnLatePayment' | number : fractionSize}}</b></td>
-							<td class="hideClass InterestOnLateDeduction"><b>{{ filteredList | sumByKey : 'InterestOnLateDeduction' | number : fractionSize}}</b></td>
-						</tr>
+					<div class="row">
+						<div class="col-md-12" style="padding-left: 15px;">
 
-				</tbody>
-			</table>
+							<div class="col-md-3">
+								<h6>
+									<b>RO Code</b>
+								</h6>
+								<input type="text" ng-model="cCctr.search.roCode"
+									class="form-control" placeholder="RO Code" style="width: 100%">
+							</div>
+							<div class="col-md-3">
+								<h6>
+									<b>Section Code</b>
+								</h6>
+								<select class="form-control" ng-model="cCctr.search.sectionCode"
+									required>
+									<option disabled value="">Select Section</option>
+									<#list Section as section>
+									<option value="${section}">${section}</option>
+									</#list>
+								</select>
+							</div>
+							<div class="col-md-3"></div>
 
-		</div>
-
-		<div class="row" ng-show="cCctr.getNoPage() > 0">
-			<div class="row" align="center">
-				<span ng-show="cCctr.currentPage != 1"> <a
-					ng-click="cCctr.getPage(true,'form26QDeductee',cCctr.currentPage-1)"><strong>Previous</strong></a>
-				</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.currentPage}}</strong>&nbsp;
-					of &nbsp;<strong>{{cCctr.getNoPage()}}</strong>
-					&nbsp;&nbsp;&nbsp;&nbsp; <span
-					ng-show="cCctr.currentPage != cCctr.getNoPage()"> <a
-						ng-click="cCctr.getPage(true,'form26QDeductee',cCctr.currentPage+1)"><strong>Next</strong></a>
-				</span>
-				</span>
+							<div class="col-md-3 ExcelBtn">
+								<button class="btn btn-primary waves-effect waves-light tool"
+									type="button" style="float: inherit;"
+									ng-click="cCctr.generateExcel('apiform26QDeductee/generateExcel/','regular26QDeductee')">
+									Export to Excel<span class="tooltiptext ExportExcel">Export
+										to Excel</span>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-			<form role="form" name="gotoForm">
-				<div class="row" align="center">
-					<span>Go to</span> &nbsp;&nbsp;&nbsp; <input
-						style="width: 70px; text-align: center;" type="number"
-						name="pageNo" ng-model="cCctr.currentPage"
-						ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
-						ng-min="1" min="1" max="{{cCctr.getNoPage()}}"
-						ng-max="cCctr.getNoPage()" ng-required="true">
-					&nbsp;&nbsp;&nbsp;
-					<button style="height: 25px;"
-						ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'form26QDeductee',cCctr.currentPage)"
-						class="btn btn-primary">Go</button>
+
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="col-md-4" style="margin-top: 5px"></div>
+					<div class="text-right" style="width: 100%"></div>
 				</div>
-				<div class="row" align="center">
-					<span style="color: red"
-						ng-show="gotoForm.submitted || gotoForm.pageNo.$dirty && gotoForm.pageNo.$invalid">
-						<span class="error" ng-show="gotoForm.pageNo.$error.min">Page
-							No. should not be less than 1.</span> <span class="error"
-						ng-show="gotoForm.pageNo.$error.max">Page No. should not be
-							greater than {{cCctr.getNoPage()}}.</span> <span class="error"
-						ng-show="gotoForm.pageNo.$error.required">Please enter page
-							number.</span>
-					</span>
+			</div>
+
+
+			<div class="row">
+				<div class="table-responsive"
+					style="overflow-x: inherit; width: 100%">
+					<!-- 	<div class="col-md-12" style="margin-left:-30px"> -->
+					<table class=" table table-bordered table-hover  table-striped"
+						role="table" style="font-size: 12px; margin-top: 1.5%;">
+
+						<thead>
+						<colgroup>
+							<col span="14" style="background-color: #ffffff">
+						</colgroup>
+						<tr>
+						<thead"rowgroup">
+							<tr role="row" style="background-color: #7482f45e; height: 40px;">
+								<th>Sr. No.</th>
+								<th class="quarter">Quarter</th>
+								<th class="">Month</th>
+								<th class="">RO Code</th>
+								<th><div class="autoResizeQuarter">Branch Code</div></th>
+								<!-- <th><div class="autoResizeQuarter">Transaction Id</div></th> -->
+								<th><div class="autoResizeQuarter">Challan Heading</div></th>
+								<!-- <th><div class="autoResizeQuarter">Party Id</div></th> -->
+								<th><div class="autoResizeQuarter">PAN</div></th>
+								<th><div class="autoResizeQuarter">Name</div></th>
+								<th><div class="autoResizeQuarter">Section Code</div></th>
+								<th><div class="autoResizeQuarter">TAN</div></th>
+								<th class="hideClass uniqueRefNo"><div
+										class="autoResizeQuarter">Unique Ref No</div></th>
+								<th class="hideClass accNo"><div class="autoResizeQuarter">Account
+										Number</div></th>
+								<th class="hideClass dateOfPayment">Date of Payment</th>
+								<th class="hideClass dateOfDeduction">Date of Deduction</th>
+								<th class="hideClass amountPaid"><div
+										class="autoResizeQuarter">Amount Paid</div></th>
+								<th class="hideClass tds"><div class="autoResizeQuarter">TDS</div></th>
+								<th class="hideClass surcharge"><div
+										class="autoResizeQuarter">Surcharge</div></th>
+								<th class="hideClass eduCess"><div
+										class="autoResizeQuarter">Education cess</div></th>
+								<th class="hideClass totalTaxDeducted"><div
+										class="autoResizeQuarter">Total Tax Deducted</div></th>
+								<th class="hideClass totalTaxDeposited"><div
+										class="autoResizeQuarter">Total Tax Deposited</div></th>
+								<th class="hideClass certificateNo"><div
+										class="autoResizeQuarter">Certificate No.</div></th>
+								<th class="hideClass remarksReason"><div
+										class="autoResizeQuarter">Remarks Reason</div></th>
+								<th class="hideClass deducteeCode"><div
+										class="autoResizeQuarter">Deductee Code</div></th>
+								<th class="hideClass rateTaxDeductee"><div
+										class="autoResizeQuarter">Rate at which Tax Deducted</div></th>
+								<th class="hideClass cashWithdrawal194N"><div
+										class="autoResizeQuarter">Cash Withdrawl (194N)</div></th>
+								<th class="hideClass cashWithdrawal194N20Lto1Cr"><div
+										class="autoResizeQuarter">Cash Withdrawl 194N(20L to
+										1cr)</div></th>
+								<th class="hideClass cashWithdrawal194N1Cr"><div
+										class="autoResizeQuarter">Cash Withdrawl 194N(>1cr)</div></th>
+								<th class="hideClass errorDesc"><div
+										class="autoResizeQuarter">Error Description</div></th>
+								<th class="hideClass warningDesc"><div
+										class="autoResizeQuarter">Warning Description</div></th>
+								<th class="hideClass ShortDeduction"><div
+										class="autoResizeQuarter">Short Deduction</div></th>
+								<th class="hideClass InterestOnShortDeduction"><div
+										class="autoResizeQuarter">Interest on Short Deduction</div></th>
+								<th class="hideClass InterestOnLatePayment"><div
+										class="autoResizeQuarter">Interest on Late Payment</div></th>
+								<th class="hideClass InterestOnLateDeduction"><div
+										class="autoResizeQuarter">Interest on Late Deduction</div></th>
+
+								<th class="hideClass comments"><div
+										class="autoResizeQuarter">Comments</div></th>
+								<th class="hideClass status"><div class="autoResizeQuarter">Status</div></th>
+								<th class=""><div class="autoResizeQuarter">Action</div></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr style="color: red"
+								ng-show="cCctr.getEntityListData().length <= 0">
+								<td colspan="11" style="text-align: center;"><b><h3
+											style="text-align: center; text-align-last: 5;">No data
+											found!!</h3></b></td>
+							</tr>
+							<tr role="row"
+								ng-repeat="a in ( filteredList =( cCctr.getEntityListData()  ) )"
+								ng-dblclick="cCctr.gotoDetailFormPage('form26QDeductee',a.id,a.fy,a.branchCode,'detailForm26QDeductee')"
+								ng-style="{'background-color': a.resolved ? 'rgb(255, 255, 112)' : ''}">
+								<td>{{$index+cCctr.srNo}}</td>
+
+								<td class=" quarter">{{a.quarter}}</td>
+
+								<td>{{a.month}}</td>
+
+								<td>{{a.roCode}}</td>
+
+								<td>{{a.branchCode}}</td>
+
+								<!-- 	<td ng-if="a.resolved == 0">{{a.custVendId}}</td>
+							<td style="background-color: #ff3232; color: #fff"
+								ng-if="a.resolved == 1">{{a.custVendId}}</td> -->
+
+								<td class="" data-toggle="tooltip" data-placement="bottom"
+									title="{{a.challanHeading}}">{{a.challanHeading}}</td>
+
+								<!-- <td class=" " ng-if="a.resolved == 0">{{a.deducteeRefNo}}</td>
+							<td class=" " style="background-color: #ff3232; color: #fff"
+								ng-if="a.resolved == 1">{{a.deducteeRefNo}}</td> -->
+
+								<td data-toggle="tooltip" data-placement="bottom"
+									title="{{a.pan}}">{{a.pan}}</td>
+
+								<td class="  ellipsis" data-toggle="tooltip"
+									data-placement="bottom" title="{{a.name}}"
+									style="white-space: preserve;">{{a.name}}</td>
+
+								<td class=" ">{{a.sectionCode}}</td>
+
+								<td>{{a.TAN}}</td>
+
+								<td class="hideClass  uniqueRefNo" data-placement="bottom"
+									title="{{a.uniqueRefNo}}">{{a.uniqueRefNo}}</td>
+
+								<td class="hideClass  accNo">{{a.accNo}}</td>
+
+								<td class="hideClass  dateOfPayment">{{a.dateOfPayment |
+									date:'dd-MM-yyyy'}}</td>
+
+								<td class="hideClass  dateOfDeduction">{{a.dateOfDeduction|
+									date:'dd-MM-yyyy'}}</td>
+
+								<td class="hideClass  amountPaid">{{a.amountPaid}}</td>
+
+								<td class="hideClass  tds">{{a.tds}}</td>
+
+								<td class="hideClass  surcharge">{{a.surcharge}}</td>
+
+								<td class="hideClass  eduCess">{{a.eduCess}}</td>
+
+								<td class="hideClass  totalTaxDeducted">{{a.totalTaxDeducted}}</td>
+
+								<td class="hideClass  totalTaxDeposited">{{a.totalTaxDeposited}}</td>
+
+								<td class="hideClass  certificateNo">{{a.certificateNumber}}</td>
+
+								<td class="hideClass   remarksReason" data-toggle="tooltip"
+									data-placement="bottom" title="{{a.remarksReason}}">{{a.remarksReason}}</td>
+
+								<td class="hideClass  deducteeCode">{{a.deducteeCode}}</td>
+
+								<td class="hideClass  rateTaxDeductee">{{a.rateAtWhichTaxCollected}}</td>
+
+								<td class="hideClass  cashWithdrawal194N">{{a.cashWithdrawal194N}}</td>
+
+								<td class="hideClass  cashWithdrawal194N20Lto1Cr">{{a.cashWithdrawal194N20Lto1Cr}}</td>
+
+								<td class="hideClass  cashWithdrawal194N1Cr">{{a.cashWithdrawal194N1Cr}}</td>
+
+								<td class=" hideClass errorDesc" data-toggle="tooltip"
+									data-placement="bottom" title="{{a.errorDescription}}">{{a.errorDescription}}</td>
+
+								<td class="hideClass  warningDesc" data-toggle="tooltip"
+									data-placement="bottom" title="{{a.warningDescription}}">{{a.warningDescription}}</td>
+
+								<td class="hideClass  ShortDeduction" data-toggle="tooltip"
+									data-placement="bottom" title="{{a.ShortDeduction}}">{{a.ShortDeduction}}</td>
+
+								<td class="hideClass  InterestOnShortDeduction">{{a.InterestOnShortDeduction}}</td>
+
+								<td class="hideClass  InterestOnLatePayment">{{a.InterestOnLatePayment}}</td>
+
+								<td class="hideClass  InterestOnLateDeduction">{{a.InterestOnLateDeduction}}</td>
+
+								<td class="ellipsis hideClass comments">{{a.comments}}</td>
+
+								<div>
+									<td class="hideClass  status  ellipsis">{{ a.resolved ?
+										'Pending' : 'Resolved' }}</td>
+								</div>
+								<!-- <div>
+									<td class="hideClass  status  ellipsis" ng-if="a.resolved == 0">Resolved</td>
+									<td class="hideClass  status   ellipsis"
+										ng-if="a.resolved == 1"
+										style="background-color: #ff3232; color: #fff">Not
+										Resolved</td>
+								</div> -->
+								<td
+									style="align-items: center; display: flex; justify-content: center;"><a
+									class="tool"
+									ng-click="cCctr.gotoDetailFormPage('form26QDeductee',a.id,a.fy,a.branchCode,'detailForm26QDeductee')"
+									style="color: blue" onclick="scrollWin()"><img
+										src="static\img\edit.png" width="22px" height="22px"
+										alt="Details" style="margin-top: 5px; margin-bottom: 5px;" /><span
+										class="tooltiptext tooltip-top5">Detail</span></a></td>
+							</tr>
+							<tr>
+								<td class="one" colspan="10"
+									style="text-align: center; height: 40px" ng-init="ttl=0"><b>TOTAL</b></td>
+								<td class="hideClass uniqueRefNo"></td>
+								<td class="hideClass accNo"></td>
+								<td class="hideClass dateOfPayment"></td>
+								<td class="hideClass dateOfDeduction"></td>
+								<td class="hideClass amountPaid"><b>{{ filteredList |
+										sumByKey : 'amountPaid' | number : fractionSize}}</b></td>
+								<td class="hideClass tds"><b>{{ filteredList | sumByKey
+										: 'tds' | number : fractionSize}}</b></td>
+								<td class="hideClass surcharge"><b>{{ filteredList |
+										sumByKey : 'surcharge' | number : fractionSize}}</b></td>
+								<td class="hideClass eduCess"><b>{{ filteredList |
+										sumByKey : 'eduCess' | number : fractionSize}}</b></td>
+								<td class="hideClass totalTaxDeducted"><b>{{
+										filteredList | sumByKey : 'totalTaxDeducted' | number :
+										fractionSize}}</b></td>
+								<td class="hideClass totalTaxDeposited"><b>{{
+										filteredList | sumByKey : 'totalTaxDeposited' | number :
+										fractionSize}}</b></td>
+								<td class="hideClass certificateNo"></td>
+								<td class="hideClass remarksReason"></td>
+								<td class="hideClass deducteeCode"></td>
+								<td class="hideClass rateTaxDeductee"></td>
+								<td class="hideClass cashWithdrawal194N"><b>{{
+										filteredList | sumByKey : 'cashWithdrawal194N' | number :
+										fractionSize}}</b></td>
+								<td class="hideClass cashWithdrawal194N20Lto1Cr"><b>{{
+										filteredList | sumByKey : 'cashWithdrawal194N20Lto1Cr' |
+										number : fractionSize}}</b></td>
+								<td class="hideClass cashWithdrawal194N1Cr"><b>{{
+										filteredList | sumByKey : 'cashWithdrawal194N1Cr' | number :
+										fractionSize}}</b></td>
+								<td class="hideClass errorDesc"></td>
+								<td class="hideClass  warningDesc"></td>
+								<td class="hideClass ShortDeduction"><b>{{ filteredList
+										| sumByKey : 'ShortDeduction' | number : fractionSize}}</b></td>
+								<td class="hideClass InterestOnShortDeduction"><b>{{
+										filteredList | sumByKey : 'InterestOnShortDeduction' | number
+										: fractionSize}}</b></td>
+								<td class="hideClass InterestOnLatePayment"><b>{{
+										filteredList | sumByKey : 'InterestOnLatePayment' | number :
+										fractionSize}}</b></td>
+								<td class="hideClass InterestOnLateDeduction"><b>{{
+										filteredList | sumByKey : 'InterestOnLateDeduction' | number :
+										fractionSize}}</b></td>
+								<td class="hideClass comments"></td>
+								<td class="hideClass status"></td>
+								<td class=""></td>
+							</tr>
+
+						</tbody>
+					</table>
+
 				</div>
-			</form>
+
+				<div class="row" ng-show="cCctr.getNoPage() > 0">
+					<div align="center">
+						<span ng-show="cCctr.PreviousNo != 1"> <a
+							ng-show="cCctr.PreviousNo >= 1 && cCctr.PreviousNo <= cCctr.getNoPage()"
+							ng-click="cCctr.getPage(true,'form26QDeductee',cCctr.PreviousNo-1);cCctr.DisplayNo(cCctr.currentPage)"><strong>Previous</strong></a>
+						</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.PreviousNo}}</strong>&nbsp;
+							of &nbsp;<strong>{{cCctr.getNoPage()}}</strong>
+							&nbsp;&nbsp;&nbsp;&nbsp; <span
+							ng-show="cCctr.PreviousNo != cCctr.getNoPage()"> <a
+								ng-show="cCctr.PreviousNo >= 1 && cCctr.PreviousNo <= cCctr.getNoPage()"
+								ng-click="cCctr.getPage(true,'form26QDeductee',cCctr.PreviousNo+1);cCctr.DisplayNo(cCctr.currentPage)"><strong>Next</strong></a>
+						</span>
+						</span>
+					</div>
+					<form role="form" name="gotoForm" ng-if="cCctr.getNoPage()!=1">
+						<div align="center" style="margin-top: 1%;">
+							<span>Go to</span> &nbsp;&nbsp;&nbsp; <input
+								style="width: 70px; text-align: center;" type="number"
+								name="pageNo" id="pageNo" ng-model="cCctr.currentPage"
+								oninput="javascript: if (this.value.length > this.max.length) this.value = this.value.slice(0, this.max.length);"
+								autocomplete="off" ng-min="1" min="1"
+								max="{{cCctr.getNoPage()}}" ng-max="cCctr.getNoPage()"
+								ng-required="true"> &nbsp;&nbsp;&nbsp;
+							<button
+								ng-show="cCctr.currentPage >= 1 && cCctr.currentPage <= cCctr.getNoPage()"
+								ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'form26QDeductee',cCctr.currentPage);cCctr.DisplayNo(cCctr.currentPage)"
+								class="btn btn-primary btn-sm">Go</button>
+						</div>
+						<div align="center">
+							<span style="color: red"
+								ng-show="gotoForm.submitted || gotoForm.pageNo.$dirty && gotoForm.pageNo.$invalid">
+								<span class="error" ng-show="gotoForm.pageNo.$error.min">Page
+									No. should not be less than 1.</span> <span class="error"
+								ng-show="gotoForm.pageNo.$error.max">Page No. should not
+									be greater than {{cCctr.getNoPage()}}.</span> <span class="error"
+								ng-show="gotoForm.pageNo.$error.required">Please enter
+									page number.</span>
+							</span>
+						</div>
+					</form>
+				</div>
+			</div>
 		</div>
+
 	</div>
 
+
 </div>
-
-
 <script>
 	$(document).ready(function() {
 		$('th').tooltip({
@@ -816,47 +733,244 @@ th {
 
 
 <script>
-$("input:checkbox:not(:checked)").each(function() {
-	    var column = "table ." + $(this).attr("name");
-   
-  $(column).hide();
-});
+	$("input:checkbox:not(:checked)").each(function() {
+		var column = "table ." + $(this).attr("name");
 
-$("input:checkbox").click(function(){
-    var column = "table ." + $(this).attr("name");
-    $(column).toggle();
-});
+		$(column).hide();
+	});
 
+	$("input:checkbox").click(function() {
+		var column = "table ." + $(this).attr("name");
+		$(column).toggle();
+	});
 </script>
 <script>
-$(".selectAll").click(function() {
-	$("input[type=checkbox]").prop("checked", $(this).prop("checked"));
-});
+	$(".selectAll").click(function() {
+		$("input[type=checkbox]").prop("checked", $(this).prop("checked"));
+	});
 
-$("input[type=checkbox]").click(function() {
-	if (!$(this).prop("checked")) {
-		$(".selectAll").prop("checked", false);
-	}
-});
-</script>
-
-<script>
-$(".removeAll").click(function() {
-	 $(".hideClass").hide();
-});
-</script>
-<script>
-$(".showAll").click(function() {
-	 $(".hideClass").show();
-});
-</script>
-
-<script>
-$(function() {
-	  $("table th").resizable({
-	      handles: "e",
-	      minWidth: 40,
-	  });
+	$("input[type=checkbox]").click(function() {
+		if (!$(this).prop("checked")) {
+			$(".selectAll").prop("checked", false);
+		}
 	});
 </script>
 
+<script>
+	$(".removeAll").click(function() {
+		$(".hideClass").hide();
+	});
+</script>
+<script>
+	$(".showAll").click(function() {
+		$(".hideClass").show();
+	});
+</script>
+
+<script>
+	$(function() {
+		$("table th").resizable({
+			handles : "e",
+			minWidth : 40,
+		});
+	});
+</script>
+<script>
+	(function($) {
+		var CheckboxDropdown = function(el) {
+			var _this = this;
+			this.isOpen = false;
+			this.areAllChecked = false;
+			this.$el = $(el);
+			this.$label = this.$el.find('.dropdown-label');
+			this.$checkAll = this.$el.find('[data-toggle="check-all"]').first();
+			this.$inputs = this.$el.find('[type="checkbox"]');
+
+			this.onCheckBox();
+
+			this.$label.on('click', function(e) {
+				e.preventDefault();
+				_this.toggleOpen();
+			});
+
+			this.$checkAll.on('click', function(e) {
+				e.preventDefault();
+				_this.onCheckAll();
+			});
+
+			this.$inputs.on('change', function(e) {
+				_this.onCheckBox();
+			});
+		};
+
+		CheckboxDropdown.prototype.onCheckBox = function() {
+			this.updateStatus();
+		};
+
+		CheckboxDropdown.prototype.updateStatus = function() {
+			var checked = this.$el.find(':checked');
+
+			this.areAllChecked = false;
+			this.$checkAll.html('Check All');
+
+			if (checked.length <= 0) {
+				this.$label
+						.html('<i class="fa fa-table filterButton" ></i> <div class="button-tooltip-box"> <span class="tooltiptext Search" style="margin: -10px;">filter  Column</span> </div>   ');
+			} else if (checked.length === this.$inputs.length) {
+				this.areAllChecked = true;
+				this.$checkAll.html('Uncheck All');
+			}
+
+		};
+
+		CheckboxDropdown.prototype.onCheckAll = function(checkAll) {
+			if (!this.areAllChecked || checkAll) {
+				this.areAllChecked = true;
+				this.$checkAll.html('Uncheck All');
+				this.$inputs.prop('checked', true);
+				$(".hideClass").show();
+			} else {
+				this.areAllChecked = false;
+				this.$checkAll.html('Check All');
+				this.$inputs.prop('checked', false);
+				$(".hideClass").hide();
+
+			}
+
+			this.updateStatus();
+		};
+
+		CheckboxDropdown.prototype.toggleOpen = function(forceOpen) {
+			var _this = this;
+
+			if (!this.isOpen || forceOpen) {
+				this.isOpen = true;
+				this.$el.addClass('on');
+				$(document).on('click', function(e) {
+					if (!$(e.target).closest('[data-control]').length) {
+						_this.toggleOpen();
+					}
+				});
+			} else {
+				this.isOpen = false;
+				this.$el.removeClass('on');
+				$(document).off('click');
+			}
+		};
+
+		var checkboxesDropdowns = document
+				.querySelectorAll('[data-control="checkbox-dropdown"]');
+		for (var i = 0, length = checkboxesDropdowns.length; i < length; i++) {
+			new CheckboxDropdown(checkboxesDropdowns[i]);
+		}
+	})(jQuery);
+</script>
+
+<script>
+	$(document).ready(function() {
+		$(".slider").click(function() {
+			$("th div").toggleClass("autoResizeQuarter");
+
+		});
+	});
+</script>
+
+<script>
+	$(document).ready(function() {
+		$(".slider").click(function() {
+			$("td ").toggleClass("ellipsise");
+
+		});
+	});
+</script>
+
+
+<script>
+	$(document).ready(function() {
+		$(".slider").click(function() {
+			$(".desc").toggleClass("ellip");
+			$(".custName").toggleClass("ellipName");
+
+		});
+	});
+</script>
+
+<script>
+	$(".btnTextChange").click(function() {
+
+		var lable = $(".btnTextChange").text().trim();
+
+		if (lable == "Resize Table") {
+			$(".btnTextChange").text("Normal Table");
+			$(".myText").hide();
+		} else {
+			$(".btnTextChange").text("Resize Table");
+			$(".myText").show();
+		}
+
+	});
+</script>
+<script>
+$(function ($) {
+	const SELECTOR = '.table-responsive';
+	const stickyBarTemplate = '<div class="sticky-scrollbar"><div></div></div>';
+	const stickyBarCSS = {
+	    display: 'none',
+	    overflowX: 'scroll',
+	    position: 'sticky',
+	    width: '100%',
+	    height: '3%',
+	    bottom: 0,
+	    'z-index': 999
+	};
+
+	renderBars();
+	$(window).on('load pageUpdate', renderBars);
+
+	function renderBars() {
+	    $(SELECTOR).each(function () {
+	        let $container = $(this);
+	        let $table = $container.find("table:first");
+	        let $bar = $container.find('.sticky-scrollbar');
+	        if (!$bar.length) {
+	            $bar = $(stickyBarTemplate).appendTo($container).css(stickyBarCSS);
+
+	            const resizeObserver = new ResizeObserver(entries => {
+	                updateBar()
+	            });
+	            resizeObserver.observe($container[0]);
+	            resizeObserver.observe($table[0]);
+
+	            updateBar();
+	            function updateBar() {
+	                $bar.children('div').height(1).width($table.width());
+	                $bar.width($container.width()).scrollLeft($container.scrollLeft());
+
+	                requestAnimationFrame(function () {
+	                    if ($table.width() > $container.width()) {
+	                        $bar.show();
+
+	                        $bar.scroll(function () {
+	                            $table
+	                                .css({"transform": "translateX(-" + $bar.scrollLeft() + "px)"});
+	                            $container
+	                                .find('.left-header, .top-left-header')
+	                                .css({"transform": "translateX(" + $bar.scrollLeft() + "px)"});
+	                        });
+
+	                        $bar.scrollLeft($container.scrollLeft());
+	                    } else {
+	                        $bar.hide();
+	                    }
+	                });
+	            }
+	        }
+	    });
+	}
+	});
+</script>
+<script>
+	$(document).ready(function() {
+		$(this).scrollTop(0);
+	});
+</script>

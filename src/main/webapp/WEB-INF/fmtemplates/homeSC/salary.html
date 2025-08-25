@@ -115,7 +115,7 @@
         }
     }
      .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
-   background-color: whitesmoke;
+   background-color: white;
 }
 @media (min-width: 768px) {
   .collapse.dont-collapse-sm {
@@ -234,7 +234,7 @@
   </thead>
 								<tbody>
 									<tr role="row" ng-repeat="a in cCctr.getEntityListData() track by a.id">
-										<td role="cell" class="one" style="height: 30px;padding:10px">{{$index+1}}</td>
+										<td role="cell" class="one" style="height: 30px;padding:10px">{{$index+cCctr.srNo}}</td>
 											<td>{{a.employeeNo}}</td>
 											<td>{{a.basicSalary}}</td>
 											<td>{{a.hra}}</td>
@@ -278,7 +278,7 @@
 			</span>
 			</span>
 		</div>
-		<form role="form" name="gotoForm">
+		<form role="form" name="gotoForm" ng-if="cCctr.getNoPage()!=1">
 			<div class="row" align="center">
 				<span>Go to</span> &nbsp;&nbsp;&nbsp; <input
 					style="width: 70px; text-align: center;" type="number"

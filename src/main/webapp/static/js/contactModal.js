@@ -12,7 +12,7 @@ function showModal (options) {
 		$('BODY').append(
 			'<div id="contactModal" class="modal fade">' +
 			'<div class="modal-dialog" class="' + defaults.modalSize + '">' +
-			'<div class="modal-content">' +
+			'<div class="modal-content" style="top: 40px;">' +
 			'<div id="contactModal-body" class="modal-body">' +
 			'<center>' +
 			'<div id="contactModal-message" >Thank you for contacting with us!<br><br>' +

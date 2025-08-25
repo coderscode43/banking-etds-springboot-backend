@@ -10,41 +10,50 @@ import java.util.List;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import domain.in.rjsa.dao.STATEMENTSTATUSDao;
 import domain.in.rjsa.excel.StatementStatusExcel;
+import domain.in.rjsa.exception.CustomException;
 import domain.in.rjsa.model.tds.STATEMENTSTATUS;
 import domain.in.rjsa.service.AbstractServiceTaxo;
 import domain.in.rjsa.service.STATEMENTSTATUSService;
 
 @Transactional("transactionManager")
 @Service("STATEMENTSTATUSService")
-public class STATEMENTSTATUSServiceImpl extends AbstractServiceTaxo<Long, STATEMENTSTATUS, STATEMENTSTATUSDao> implements STATEMENTSTATUSService{
-	@Autowired 
+public class STATEMENTSTATUSServiceImpl extends AbstractServiceTaxo<Long, STATEMENTSTATUS, STATEMENTSTATUSDao>
+		implements STATEMENTSTATUSService {
+	@Autowired
 	STATEMENTSTATUSDao dao;
-	
+
 	StatementStatusExcel statementStatusExcel;
 	public static String path;
 	public String ExcelFile;
-	
+
 	@Override
 	public STATEMENTSTATUSDao getPrimaryDao() {
 		// TODO Auto-generated method stub
 		return dao;
 	}
+
 	@Override
 	public Long findSearchCount(LinkedHashMap<String, Object> map) {
 		// TODO Auto-generated method stub
 		return dao.findSearchCount(map);
 	}
+
 	@Override
-	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+	public List<?> search(LinkedHashMap<String, Object> map, int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
 		return dao.search(map, pageNo, resultPerPage);
 	}
+
 	@Override
 	public STATEMENTSTATUS getByKey(Long id) {
 		// TODO Auto-generated method stub
@@ -56,7 +65,7 @@ public class STATEMENTSTATUSServiceImpl extends AbstractServiceTaxo<Long, STATEM
 		// TODO Auto-generated method stub
 		return dao.ajax(name, term);
 	}
-	
+
 	public String createUserExcel(LinkedHashMap<String, Object> map) {
 		List<STATEMENTSTATUS> listUsers = searchExcel(map);
 
@@ -76,12 +85,12 @@ public class STATEMENTSTATUSServiceImpl extends AbstractServiceTaxo<Long, STATEM
 		this.ExcelFile = file.getPath() + "/TDS-" + timestamp + "-StatementStatusExcel.xlsx";
 
 		int row = 1;
-		int part =1;
-		
+		int part = 1;
+
 		Workbook wb = statementStatusExcel.getWorkbook();
-		Sheet statementStatus = wb.getSheet("statementStatus-"+ part);
+		Sheet statementStatus = wb.getSheet("statementStatus-" + part);
 		for (STATEMENTSTATUS stmtStatus : listUsers) {
-			
+
 			Row details = statementStatus.createRow(row);
 			details.createCell(0).setCellValue(row);
 
@@ -120,12 +129,12 @@ public class STATEMENTSTATUSServiceImpl extends AbstractServiceTaxo<Long, STATEM
 			} else {
 				details.createCell(7).setCellValue(stmtStatus.getRT());
 			}
-			
+
 			if (row > 1000000) {
 				part++;
 				wb = statementStatusExcel.getWorkbook();
 				statementStatus = statementStatusExcel.initializeSheet("statementStatus-" + part);
-				row =0;
+				row = 0;
 			}
 			row++;
 
@@ -145,4 +154,23 @@ public class STATEMENTSTATUSServiceImpl extends AbstractServiceTaxo<Long, STATEM
 		}
 
 	}
+
+	@Override
+	public void addData(String json) {
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			List<JSONObject> jsonObject = mapper.readValue(json, new TypeReference<List<JSONObject>>() {
+			});
+
+			for (JSONObject object : jsonObject) {
+				STATEMENTSTATUS statement = new STATEMENTSTATUS();
+				statement.setData(object);
+				dao.persist(statement);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new CustomException("Could Not Persist Data");
+		}
+	}
 }
+

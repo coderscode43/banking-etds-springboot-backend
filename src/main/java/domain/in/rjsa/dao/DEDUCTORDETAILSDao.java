@@ -12,6 +12,6 @@ public interface DEDUCTORDETAILSDao extends DaoInterfaceTaxo<Long,  DEDUCTORDETA
 
 	public Long findSearchCount(LinkedHashMap<String, Object> map);
 
-	List<DEDUCTORDETAILS> search(HashMap entity, int pageNo, int noOfResult);
+	List<DEDUCTORDETAILS> search(HashMap<String, Object> entity, int pageNo, int noOfResult);
 
 }

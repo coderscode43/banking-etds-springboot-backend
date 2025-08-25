@@ -8,19 +8,19 @@ import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractDaoFY;
 import domain.in.rjsa.dao.RemarkDao;
-import domain.in.rjsa.model.fy.Remark;
+import domain.in.rjsa.model.fy.Remarks;
 
 @Repository("remarkDao")
-public class RemarkDaoImpl extends AbstractDaoFY<Long, Remark> implements RemarkDao{
+public class RemarkDaoImpl extends AbstractDaoFY<Long, Remarks> implements RemarkDao{
 
 	@Override
-	public List<Remark> searchExcel(HashMap map) {
+	public List<Remarks> searchExcel(HashMap map) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Remark> search(HashMap entity, int pageNo, int noOfResult) {
+	public List<Remarks> search(HashMap entity, int pageNo, int noOfResult) {
 		// TODO Auto-generated method stub
 		return null;
 	}

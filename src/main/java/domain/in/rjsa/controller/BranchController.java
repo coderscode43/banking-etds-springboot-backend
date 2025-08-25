@@ -3,17 +3,17 @@ package domain.in.rjsa.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.net.URLDecoder;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Pattern;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,10 +32,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 
 import domain.in.rjsa.exception.FieldErrorDTO;
 import domain.in.rjsa.model.form.Ajax;
@@ -91,7 +90,9 @@ public class BranchController extends AbstractController {
 
 			String searchParam;
 			if (null != arguments && !arguments.isEmpty()) {
-				searchParam = json + '/' + arguments;
+				String decodedString = URLDecoder.decode(arguments, "UTF-8");
+				decodedString = decodedString.replace(", \"", "\"");
+				searchParam = json + '/' + decodedString;
 			} else {
 				searchParam = json;
 			}
@@ -100,7 +101,7 @@ public class BranchController extends AbstractController {
 			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
 
 			// convert JSON string to Map
-			map = mapper.readValue(searchParam, new TypeReference<Map<String, String>>() {
+			map = mapper.readValue(searchParam, new TypeReference<LinkedHashMap<String, Object>>() {
 			});
 
 			if (!"admin".equals(getBranchCode())) {
@@ -112,8 +113,8 @@ public class BranchController extends AbstractController {
 				}
 				map.put("branchCode", b);
 			}
-			if(map.containsKey("TAN")) {
-				String TAN = (map.get("TAN").toString().split(Pattern.quote("-"),-1))[0];
+			if (map.containsKey("TAN")) {
+				String TAN = (map.get("TAN").toString().split(Pattern.quote("-"), -1))[0];
 				map.put("TAN", TAN);
 			}
 			Long count = service.findSearchCount(map);
@@ -130,7 +131,7 @@ public class BranchController extends AbstractController {
 
 	}
 
-	public List<?> getSearch(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+	public List<?> getSearch(LinkedHashMap<String, Object> map, int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
 		return service.search(map, pageNo, resultPerPage);
 	}
@@ -157,11 +158,9 @@ public class BranchController extends AbstractController {
 	}
 
 	public void create(LinkedHashMap<?, ?> entity) {
-		Gson gson = new Gson();
-		JsonElement jsonElement = gson.toJsonTree(entity);
 		ObjectMapper om = new ObjectMapper();
 		try {
-			service.save(om.readValue(gson.toJson(entity), Branch.class));
+			service.save(om.readValue(mapper.writeValueAsString(entity), Branch.class));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -186,14 +185,14 @@ public class BranchController extends AbstractController {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
 		if (!"admin".equals(getBranchCode())) {
-			Long b=1L;
+			Long b = 1L;
 			try {
-				b =Long.valueOf(getBranchCode());
-			}catch (Exception e) {
+				b = Long.valueOf(getBranchCode());
+			} catch (Exception e) {
 				// TODO: handle exception
 			}
 			constrains.put("branchCode", b);
-		}else {
+		} else {
 		}
 		constrains.put("id", id);
 		return service.uniqueSearch(constrains);
@@ -215,9 +214,14 @@ public class BranchController extends AbstractController {
 	}
 
 	public void update(LinkedHashMap<?, ?> entity, Long id) {
-		Gson gson = new Gson();
-		JsonElement jsonElement = gson.toJsonTree(entity);
-		service.update(gson.fromJson(jsonElement, Branch.class));
+		try {
+			String jsonNode = mapper.writeValueAsString(entity);
+			Branch branch;
+			branch = mapper.readValue(jsonNode, Branch.class);
+			service.update(branch);
+		} catch (JsonProcessingException | IllegalArgumentException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/* END-pranay */
@@ -324,13 +328,12 @@ public class BranchController extends AbstractController {
 
 		log.setAction(process);
 		log.setIpaddrs(getIp());
-		String s = getEntity().getName().replace(getEntity().getPackage().getName()+".","");
+		String s = getEntity().getName().replace(getEntity().getPackage().getName() + ".", "");
 //		String[] arrOfStr = s.split(".", 27);
 //		for (String a : arrOfStr)
-		log.setEntity(process+" "+ s);
-		Gson gson = new Gson();
-//		String json = gson.toJson(entity);
-		log.setDate(new Date(System.currentTimeMillis()));
+		log.setEntity(process + " " + s);
+//		String json = mapper.writeValueAsString(entity);
+		log.setLogsDate(new Date(System.currentTimeMillis()));
 		log.setUsername(getPrincipal());
 
 		lservice.save(log);
@@ -353,7 +356,9 @@ public class BranchController extends AbstractController {
 
 			String searchParam;
 			if (null != arguments && !arguments.isEmpty()) {
-				searchParam = json + '/' + arguments;
+				String decodedString = URLDecoder.decode(arguments, "UTF-8");
+				decodedString = decodedString.replace(", \"", "\"");
+				searchParam = json + '/' + decodedString;
 			} else {
 				searchParam = json;
 			}
@@ -362,7 +367,7 @@ public class BranchController extends AbstractController {
 			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
 
 			// convert JSON string to Map
-			map = mapper.readValue(searchParam, new TypeReference<Map<String, String>>() {
+			map = mapper.readValue(searchParam, new TypeReference<LinkedHashMap<String, Object>>() {
 			});
 			adminValidation(map);
 

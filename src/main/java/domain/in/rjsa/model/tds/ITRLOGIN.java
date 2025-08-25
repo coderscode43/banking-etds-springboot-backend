@@ -1,30 +1,42 @@
 package domain.in.rjsa.model.tds;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.text.ParseException;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.json.simple.JSONObject;
 
 import domain.in.rjsa.model.form.CommonModelAbstract;
 import lombok.Data;
 
 @Data
-@Entity
-@Table(name = "Taxo.ITRLOGIN")
+//@Entity
+//@Table(name = "Taxo.ITRLOGIN")
 public class ITRLOGIN extends CommonModelAbstract{
-	@Id
-	@GeneratedValue(strategy= GenerationType.AUTO, generator="native")
-	@GenericGenerator(name = "native", strategy = "native")
-	@Column(name = "TAN")
+	//@Id
+	//@GeneratedValue(strategy= GenerationType.AUTO, generator="native")
+	//@GenericGenerator(name = "native", strategy = "native")
+	//@Column(name = "TAN")
 	public String TAN;
-	@Column(name = "USERNAME")
+	//@Column(name = "USERNAME")
 	public String USERNAME;
-	@Column(name = "PASSWORD")
+	//@Column(name = "PASSWORD")
 	public String PASSWORD;
-	@Column(name = "ITDREIN")
+	//@Column(name = "ITDREIN")
 	public String ITDREIN;
+
+
+    public void setdata(JSONObject dataObject) throws ParseException{
+        this.TAN = (String) dataObject.get("TAN");
+        this.USERNAME = (String) dataObject.get("USERNAME");
+        this.PASSWORD = (String) dataObject.get("PASSWORD");
+        this.ITDREIN = (String) dataObject.get("ITDREIN");
+    }
+
 }

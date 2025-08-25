@@ -1,14 +1,15 @@
 package domain.in.rjsa.controller;
 
-import java.text.SimpleDateFormat;
+import java.net.URLDecoder;
 import java.util.ArrayList;
-import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.regex.Pattern;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,25 +17,37 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.AntPathMatcher;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.HandlerMapping;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import domain.in.rjsa.model.form.CorrectionRemarks;
+import domain.in.rjsa.exception.CustomException;
+import domain.in.rjsa.exception.FieldErrorDTO;
+import domain.in.rjsa.model.form.AddChallan;
 import domain.in.rjsa.model.form.CorrectionRequest;
 import domain.in.rjsa.model.form.CorrectionRequestAmountDetails;
 import domain.in.rjsa.model.form.ListCount;
-import domain.in.rjsa.model.form.UserDetails;
+import domain.in.rjsa.service.AddChallanService;
+import domain.in.rjsa.service.BranchService;
 import domain.in.rjsa.service.CorrectionRemarksService;
 import domain.in.rjsa.service.CorrectionRequestAmountDetailsService;
 import domain.in.rjsa.service.CorrectionRequestService;
+import domain.in.rjsa.service.Regular24QDeducteeService;
+import domain.in.rjsa.service.Regular26QDeducteeService;
+import domain.in.rjsa.service.Regular27EQDeducteeService;
+import domain.in.rjsa.service.Regular27QDeducteeService;
 
 @Controller
 @RequestMapping("/apicorrectionRequest")
@@ -50,6 +63,20 @@ public class CorrectionRequestController
 	CorrectionRemarksService rService;
 	@Autowired
 	CorrectionRequestAmountDetailsService crService;
+	@Autowired
+	Regular24QDeducteeService r24qService;
+	@Autowired
+	Regular26QDeducteeService r26qService;
+	@Autowired
+	Regular27EQDeducteeService r27eqService;
+	@Autowired
+	Regular27QDeducteeService r27qService;
+
+	@Autowired
+	BranchService bService;
+
+	@Autowired
+	AddChallanService challanService;
 
 	@Override
 	public CorrectionRequestService getService() {
@@ -72,7 +99,6 @@ public class CorrectionRequestController
 			try {
 				b = Long.valueOf(getBranchCode());
 			} catch (Exception e) {
-				// TODO: handle exception
 			}
 			constrains.put("branchCode", b);
 		} else {
@@ -93,6 +119,31 @@ public class CorrectionRequestController
 
 	}
 
+	@RequestMapping(value = "/list/{fy}/{branchCode}/get/{pageNo}/{resultPerPage}", method = RequestMethod.GET)
+	public ResponseEntity<?> listAll(@PathVariable String fy, @PathVariable Long branchCode, HttpServletRequest request,
+			@PathVariable int pageNo, @PathVariable int resultPerPage) {
+		try {
+
+			if (!"admin".equals(getBranchCode())) {
+				Long b = 1L;
+				try {
+					b = Long.valueOf(getBranchCode());
+				} catch (Exception e) {
+				}
+				branchCode = b;
+			} else {
+			}
+
+			List<?> list = getList(fy, branchCode, pageNo, resultPerPage);
+
+			return new ResponseEntity<>(list, HttpStatus.OK);
+		} catch (Exception e) {
+			logger.error("Error in listALL", e);
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+	}
+
 	public List<?> getList(String fy, Long branchCode, int pageNo, int resultPerPage) {
 		HashMap<String, Object> constrains = new HashMap<>();
 		if (!"admin".equals(getBranchCode())) {
@@ -100,7 +151,6 @@ public class CorrectionRequestController
 			try {
 				b = Long.valueOf(getBranchCode());
 			} catch (Exception e) {
-				// TODO: handle exception
 			}
 			constrains.put("branchCode", b);
 		} else {
@@ -111,14 +161,12 @@ public class CorrectionRequestController
 	}
 
 	public List<?> getList(int pageNo, int resultPerPage) {
-		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
 		if (!"admin".equals(getBranchCode())) {
 			Long b = 1L;
 			try {
 				b = Long.valueOf(getBranchCode());
 			} catch (Exception e) {
-				// TODO: handle exception
 			}
 			constrains.put("branchCode", b);
 		}
@@ -141,14 +189,12 @@ public class CorrectionRequestController
 	}
 
 	public Object getDetail(Long id, String fy, Long branchCode) {
-		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
 		if (!"admin".equals(getBranchCode())) {
 			Long b = 1L;
 			try {
 				b = Long.valueOf(getBranchCode());
 			} catch (Exception e) {
-				// TODO: handle exception
 			}
 			constrains.put("branchCode", b);
 		}
@@ -161,38 +207,294 @@ public class CorrectionRequestController
 	@ResponseBody
 	public ResponseEntity<?> createEntity(@RequestBody LinkedHashMap<String, Object> entity, @PathVariable String fy,
 			@PathVariable String branchCode) {
-		logger.info("Creating new Return instance");
+		try {
+			logger.info("Creating new Return instance");
 
-		adminValidation(entity);
-		create(entity);
-		addLogs("Add");
-		// ermsg.setMessage(" Saved Successfully");
-		return new ResponseEntity<Object>(HttpStatus.CREATED);
+			adminValidation(entity);
+			create(entity);
+			addLogs("Add");
+
+			// ermsg.setMessage(" Saved Successfully");
+			return new ResponseEntity<Object>(HttpStatus.CREATED);
+		} catch (Exception e) {
+			// TODO: handle exception
+			return new ResponseEntity<Object>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 
 	public void create(LinkedHashMap<String, Object> entity) {
-		Gson gson = new Gson();
-		// Login l = applicationCache.getLoginDetail(getPrincipal());
-		String timeStamp = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
-		entity.put("date", timeStamp);
-		service.autoGenerateTicketNumber(entity);
-		entity.put("makerBy", getPrincipal());
-		entity.put("status", "Pending Checker Approval");
-		entity.put("rejectStatus", "0");
-		JsonElement jsonElement = gson.toJsonTree(entity);
-		getService().save(gson.fromJson(jsonElement, getEntity()));
-		getService().saveAmount(entity);
+		try {
+			service.saveCorrection(entity, getPrincipal());
+		} catch (Exception e) {
+			throw new CustomException(e.getMessage());
+		}
 
 	}
 
-	// ------------------- Get Search ---------------------------------
-	@RequestMapping(value = "/search/{fy}/{branchCode}/{pageNo}/{resultPerPage}/{json}", method = RequestMethod.GET)
-	public ResponseEntity<?> search(@PathVariable String fy, @PathVariable Long branchCode, @PathVariable int pageNo,
-			@PathVariable int resultPerPage, @PathVariable String json) {
+	@SuppressWarnings({ "deprecation", "unused" })
+	@RequestMapping(value = "/addCorrection/singleFile", method = RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity<?> addCorrection(@RequestParam("blob") List<MultipartFile> listsd,
+			@RequestParam("dec") String entity) {
+		logger.info("Creating new Return instance");
+		FieldErrorDTO ermsg = new FieldErrorDTO();
 		try {
 			ObjectMapper mapper = new ObjectMapper();
 			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
-			map = mapper.readValue(json, new TypeReference<Map<String, String>>() {
+			map = mapper.readValue(entity, new TypeReference<LinkedHashMap<String, Object>>() {
+			});
+			adminValidation(map);
+//			JsonParser jsonParser = new JsonParser();
+//			JsonObject jsonObject = (JsonObject) jsonParser.parse(entity.toString());
+//			JsonObject jsonObject1 = (JsonObject) jsonObject.get("cd");
+//			JsonObject jsonObject2 = (JsonObject) jsonObject.get("cad");
+			// Parse JSON string into a JsonNode
+			JsonNode rootNode = mapper.readTree(entity.toString());
+
+			// Access nested objects
+			JsonNode jsonObject1 = rootNode.get("cd");
+			JsonNode jsonObject2 = rootNode.get("cad");
+			HashMap<String, Object> fn = new HashMap<>();
+			int i = 1;
+			String fname = "";
+			Long ticketNumber = service.autoGenerateTicketNumber();
+			for (MultipartFile sd : listsd) {
+				if (jsonObject2 != null) {
+					if (jsonObject2.has("challanSupportingDoc")) {
+						fn.put("cd", sd.getOriginalFilename());
+					}
+				} else if (jsonObject1 != null) {
+					if (rootNode.has("docs")) {
+						fname = fname + sd.getOriginalFilename() + "^";
+						fn.put("sd", fname);
+						i++;
+					}
+				}
+				getService().saveFile(sd, entity, ticketNumber);
+			}
+			createWithFileName(entity, fn, ticketNumber);
+//			getService().saveAmount(map);
+			addLogs("Add");
+			// ermsg.setMessage(" Saved Successfully");
+			return new ResponseEntity<Object>(HttpStatus.CREATED);
+
+		} catch (Exception e) {
+			ermsg.setExceptionMsg(e.getMessage());
+			ermsg.setEntityName("Correction Request");
+			return new ResponseEntity<Object>(ermsg, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+	}
+
+	@RequestMapping(value = "/addCorrection/multipleFile", method = RequestMethod.POST)
+	public ResponseEntity<?> addCorrection(@RequestParam("blob") List<MultipartFile> listsd,
+			@RequestParam("blob2") MultipartFile cd, @RequestParam("dec") String entity) {
+		logger.info("Creating new Return instance");
+		FieldErrorDTO ermsg = new FieldErrorDTO();
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
+			map = mapper.readValue(entity, new TypeReference<LinkedHashMap<String, Object>>() {
+			});
+			adminValidation(map);
+			HashMap<String, Object> fn = new HashMap<>();
+			Long ticketNumber = service.autoGenerateTicketNumber();
+			getService().saveMultiFile(listsd, cd, entity, ticketNumber);
+			String fname = "";
+			for (MultipartFile sd : listsd) {
+				fname = fname + sd.getOriginalFilename() + "^";
+			}
+			fn.put("sd", fname);
+			fn.put("cd", cd.getOriginalFilename());
+			createWithFileName(entity, fn, ticketNumber);
+//			getService().saveAmount(map);
+			addLogs("Add");
+			// ermsg.setMessage(" Saved Successfully");
+			return new ResponseEntity<Object>(HttpStatus.CREATED);
+
+		} catch (Exception e) {
+			ermsg.setExceptionMsg(e.getMessage());
+			ermsg.setEntityName("Correction Request");
+			return new ResponseEntity<Object>(ermsg, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+	}
+
+	@SuppressWarnings("deprecation")
+	public void createWithFileName(String entity, HashMap<String, Object> fileName, Long ticketNumber) {
+		try {
+			// Parse the JSON into a tree
+			JsonNode rootNode = mapper.readTree(entity.toString());
+
+			// Extract the "cd" part
+			JsonNode cdNode = rootNode.get("cd");
+
+			// Convert that node into your target type
+			CorrectionRequest cr = mapper.treeToValue(cdNode, getEntity());
+			cr.setCorrectionRequestDate(new Date());
+			cr.setTicketNumber(ticketNumber);
+			cr.setMakerBy(getPrincipal());
+			cr.setStatus("Pending Checker Approval");
+			cr.setRejectStatus(false);
+			if (fileName.containsKey("sd")) {
+				cr.setFileName(fileName.get("sd").toString());
+			}
+			String q = cr.getQuarter().substring(0, cr.getQuarter().toString().length() - 2);
+			cr.setQuarter(q);
+			String tos = cr.getTypeOfCorrection().substring(0, cr.getTypeOfCorrection().toString().length() - 2);
+			cr.setTypeOfCorrection(tos);
+			cr.setLastUpdatedOn(new Date());
+			getService().save(cr);
+
+			if (rootNode.has("correctAmount")) {
+				ArrayNode jsonArray = (ArrayNode) rootNode.get("correctAmount");
+				if (jsonArray.size() != 0) {
+					String name = "";
+					String pan = "";
+					String quarter = "";
+					for (JsonNode node : jsonArray) {
+						 CorrectionRequestAmountDetails requestAmountDetails =
+						            mapper.treeToValue(node, CorrectionRequestAmountDetails.class);
+						requestAmountDetails.setCorrectionRequestId(cr.getId());
+						crService.save(requestAmountDetails);
+						if (!quarter.contains(requestAmountDetails.getQuarter())) {
+							quarter = quarter + requestAmountDetails.getQuarter() + ", ";
+						}
+						if (cr.getName() == null || cr.getName() == "") {
+							name = node.get("name").toString();
+						}
+						if (cr.getPan() == null || cr.getPan() == "") {
+							if (!pan.contains(node.get("pan").toString())) {
+								pan += node.get("pan").toString() + ", ";
+							}
+						}
+					}
+					if (quarter != null || quarter != "") {
+						cr.setQuarter(quarter.substring(0, quarter.toString().length() - 2));
+					}
+					if (cr.getName() == null || cr.getName() == "") {
+						cr.setName(name.replace("\"", ""));
+					}
+					if (cr.getPan() == null || cr.getPan() == "") {
+						cr.setPan(pan.substring(0, pan.toString().length() - 2).replace("\"", ""));
+					}
+					getService().update(cr);
+				}
+			}
+
+			if (rootNode.has("cad")) {
+				ObjectNode dataObject = (ObjectNode) rootNode.get("cad");
+				if (!dataObject.isNull()) {
+					AddChallan cad = mapper.treeToValue(dataObject, AddChallan.class);
+					cad.setCorrectionRequestId(cr.getId());
+					if (dataObject.has("challanSupportingDoc")) {
+						if (fileName.containsKey("cd")) {
+							cad.setChallanSupportingDocument(fileName.get("cd").toString());
+						}
+					}
+					challanService.save(cad);
+				}
+			}
+			
+			try {
+				getService().sendMail(cr);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			System.out.println("done");
+
+		} catch (Exception e) {
+			throw new CustomException(e.getMessage());
+		}
+	}
+
+	@RequestMapping(value = "/regenerateCorrectionRequest", method = RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity<?> regenerateCorrectionRequest(@RequestParam("crId") Long correctionRequestId,
+			@RequestParam("crRemark") String correctionRequestremark) {
+		logger.info("Creating new Return instance");
+		FieldErrorDTO ermsg = new FieldErrorDTO();
+		try {
+			CorrectionRequest cr = getService().getByKey(correctionRequestId);
+			Long ticketNumber = service.autoGenerateTicketNumber();
+			cr.setTicketNumber(ticketNumber);
+			String remark = "Old Ticket Response : "+ cr.getRemark().toString() + "; Latest Ticket Response : " + correctionRequestremark ;
+			cr.setRemark(remark);
+			cr.setId(null);
+			cr.setStatus("Pending Checker Approval");
+			cr.setCheckerApprovedBy(null);
+			cr.setCheckerApprovedOn(null);
+			cr.setRejectStatus(false);
+			cr.setRegenarateRequest(false);
+			getService().save(cr);
+			CorrectionRequest crr = getService().getByKey(correctionRequestId);
+			updateOldcr(crr,ticketNumber);
+			List<CorrectionRequestAmountDetails> cradList = crService.getByCorrectionId(correctionRequestId);
+			if (!cradList.isEmpty()) {
+				for (CorrectionRequestAmountDetails cd : cradList) {
+					cd.setCorrectionRequestId(cr.getId());
+					cd.setCradId(null);
+					crService.save(cd);
+				}
+			}
+			AddChallan ac = challanService.getByCorrectionId(correctionRequestId);
+			if (ac != null) {
+				ac.setCorrectionRequestId(cr.getId());
+				ac.setId(null);
+				challanService.save(ac);
+			}
+			
+			try {
+				getService().sendMail(cr);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			addLogs("Add");
+			// ermsg.setMessage(" Saved Successfully");
+			return new ResponseEntity<Object>(HttpStatus.CREATED);
+
+		} catch (Exception e) {
+			ermsg.setExceptionMsg(e.getMessage());
+			ermsg.setEntityName("Correction Request");
+			return new ResponseEntity<Object>(ermsg, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+	}
+
+	private void updateOldcr(CorrectionRequest cr, Long ticketNumber) {
+		cr.setRegenarateRequest(true);
+		cr.setNewRequestTicketNo(ticketNumber);
+		service.update(cr);
+		
+	}
+
+	// ------------------- Get Search ---------------------------------
+	@RequestMapping(value = "/search/{fy}/{branchCode}/{pageNo}/{resultPerPage}/{json}/**", method = RequestMethod.GET)
+	public ResponseEntity<?> search(HttpServletRequest request, @PathVariable String fy, @PathVariable Long branchCode,
+			@PathVariable int pageNo, @PathVariable int resultPerPage, @PathVariable String json) {
+		try {
+			final String path = request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE).toString();
+			final String bestMatchingPattern = request.getAttribute(HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE)
+					.toString();
+
+			String arguments = new AntPathMatcher().extractPathWithinPattern(bestMatchingPattern, path);
+
+			String searchParam;
+			if (null != arguments && !arguments.isEmpty()) {
+				String decodedString = URLDecoder.decode(arguments, "UTF-8");
+				decodedString = decodedString.replace(", \"", "\"");
+				searchParam = json + '/' + decodedString;
+			} else {
+				searchParam = json;
+			}
+			ObjectMapper mapper = new ObjectMapper();
+
+			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
+
+			// convert JSON string to Map
+			map = mapper.readValue(searchParam, new TypeReference<LinkedHashMap<String, Object>>() {
 			});
 			adminValidation(map);
 			// map.put("fy", fy);
@@ -206,6 +508,131 @@ public class CorrectionRequestController
 		} catch (Exception e) {
 			logger.error("Error in listALL", e);
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+	}
+
+	// ------------------- Search Table ---------------------------------
+	@RequestMapping(value = "/searchTable/get/{pageNo}/{resultPerPage}/{json}/**", method = RequestMethod.GET)
+	public ResponseEntity<?> searchTable(@PathVariable String json, HttpServletRequest request,
+			@PathVariable int pageNo, @PathVariable int resultPerPage) {
+		try {
+			final String path = request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE).toString();
+			final String bestMatchingPattern = request.getAttribute(HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE)
+					.toString();
+
+			String arguments = new AntPathMatcher().extractPathWithinPattern(bestMatchingPattern, path);
+
+			String searchParam;
+
+			if (null != arguments && !arguments.isEmpty()) {
+				String decodedString = URLDecoder.decode(arguments, "UTF-8");
+				decodedString = decodedString.replace(", \"", "\"");
+				searchParam = json + '/' + decodedString;
+			} else {
+				searchParam = json;
+			}
+			ObjectMapper mapper = new ObjectMapper();
+
+			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
+
+			// convert JSON string to Map
+			map = mapper.readValue(searchParam, new TypeReference<LinkedHashMap<String, Object>>() {
+			});
+			if (map.containsKey("branchCode")) {
+				Long branchCode = Long.valueOf((String) map.get("branchCode"));
+				map.put("branchCode", branchCode);
+			}
+			if (map.containsKey("TAN")) {
+				String TAN = (map.get("TAN").toString().split(Pattern.quote("-"), -1))[0];
+				map.put("TAN", TAN);
+			}
+			adminValidation(map);
+			Long count = 0L;
+			List<?> list = new ArrayList<>();
+			if (map.containsKey("typeOfForm")) {
+				if (map.get("typeOfForm").toString().trim().equals("24Q-Salary")) {
+					map.remove("typeOfForm");
+					map.remove("typeOfCorrection");
+					map.remove("mobileNumber");
+					map.remove("remark");
+					if (map.get("empNo") != "" && map.get("empNo") != null) {
+						map.put("custVendId", map.get("empNo"));
+					}
+					if (map.get("tanOfCust") == "" || map.get("tanOfCust") == null) {
+						map.remove("tanOfCust");
+					}
+					map.remove("empNo");
+					count = r24qService.findallCount(map);
+					list = r24qService.search(map, pageNo, resultPerPage);
+				} else if (map.get("typeOfForm").toString().trim().equals("26Q-Other than Salary")) {
+					map.remove("typeOfForm");
+					map.remove("typeOfCorrection");
+					map.remove("mobileNumber");
+					map.remove("remark");
+					if (map.get("empNo") != "" && map.get("empNo") != null) {
+						map.put("custVendId", map.get("empNo"));
+					}
+					if (map.get("tanOfCust") == "" || map.get("tanOfCust") == null) {
+						map.remove("tanOfCust");
+					}
+					map.remove("empNo");
+					count = r26qService.findallCount(map);
+					list = r26qService.search(map, pageNo, resultPerPage);
+				} else if (map.get("typeOfForm").toString().trim().equals("27Q-Other than Salary/NRI")) {
+					map.remove("typeOfForm");
+					map.remove("typeOfCorrection");
+					map.remove("mobileNumber");
+					map.remove("remark");
+					if (map.get("empNo") != "" && map.get("empNo") != null) {
+						map.put("custVendId", map.get("empNo"));
+					}
+					if (map.get("tanOfCust") == "" || map.get("tanOfCust") == null) {
+						map.remove("tanOfCust");
+					}
+					map.remove("empNo");
+					count = r27qService.findallCount(map);
+					list = r27qService.search(map, pageNo, resultPerPage);
+				} else if (map.get("typeOfForm").toString().trim().equals("27EQ-TCS")) {
+					map.remove("typeOfForm");
+					map.remove("typeOfCorrection");
+					map.remove("mobileNumber");
+					map.remove("remark");
+					if (map.get("empNo") != "" && map.get("empNo") != null) {
+						map.put("custVendId", map.get("empNo"));
+					}
+					if (map.get("tanOfCust") == "" || map.get("tanOfCust") == null) {
+						map.remove("tanOfCust");
+					}
+					map.remove("empNo");
+					count = r27eqService.findallCount(map);
+					list = r27eqService.search(map, pageNo, resultPerPage);
+				}
+			}
+
+			ListCount send = new ListCount();
+			send.setCount(count);
+			send.setEntities(list);
+
+			return new ResponseEntity<>(send, HttpStatus.OK);
+		} catch (Exception e) {
+			logger.error("Error in listALL", e);
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+	}
+
+	@RequestMapping(value = "/downloadDoc/{id}", method = RequestMethod.GET)
+	public ResponseEntity<?> downloadDocument(HttpServletResponse response, @PathVariable Long id) {
+		FieldErrorDTO ermsg = new FieldErrorDTO();
+		try {
+			service.downloadDocument(id, response);
+			return new ResponseEntity<>(response, HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			ermsg.setEntityName("Upload Document");
+			ermsg.setExceptionMsg(e.getMessage());
+			return new ResponseEntity<>(ermsg, HttpStatus.BAD_REQUEST);
 		}
 
 	}

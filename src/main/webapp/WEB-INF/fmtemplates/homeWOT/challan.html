@@ -40,7 +40,7 @@
         }
     }
      .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
-   background-color: whitesmoke;
+   background-color: white;
 }
 @media (min-width: 768px) {
   .collapse.dont-collapse-sm {
@@ -145,7 +145,7 @@
   </thead>
 								<tbody>
 									<tr role="row" ng-repeat="a in cCctr.getEntityListData() track by a.id">
-										<td role="cell" class="one" style="height: 60px;padding:10px">{{$index+1}}</td>
+										<td role="cell" class="one" style="height: 60px;padding:10px">{{$index+cCctr.srNo}}</td>
 											<td>{{a.LDC_NUMBER}}</td>
 											<td>{{a.NAME}}</td>
 											<td>{{a.TAN}}</td>
@@ -171,12 +171,11 @@
 							</div>
 						</div>
 					</div>
- 
- 
- 
- 
-	
- 
 
 </div>
 </div>
+<script>
+	$(document).ready(function() {
+		$(this).scrollTop(0);
+	});
+</script>

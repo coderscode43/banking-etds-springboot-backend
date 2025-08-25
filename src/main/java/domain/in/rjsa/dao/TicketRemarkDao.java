@@ -1,7 +1,7 @@
 package domain.in.rjsa.dao;
 
-import domain.in.rjsa.model.form.TicketRemark;
+import domain.in.rjsa.model.fy.TicketRemarks;
 
-public interface TicketRemarkDao extends DaoInterfaceForm<Long,  TicketRemark>{
+public interface TicketRemarkDao extends DaoInterfaceForm<Long,  TicketRemarks>{
 
 }

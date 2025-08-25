@@ -11,5 +11,5 @@ public interface LDCService extends ServiceInterfaceTaxo<String, LDC>{
 	
 	public Long findallCount(HashMap<String, Object> constrains);
 
-	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage);
+	public List<?> search(LinkedHashMap<String, Object> map, int pageNo, int resultPerPage);
 }

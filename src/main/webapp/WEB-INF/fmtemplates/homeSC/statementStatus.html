@@ -2,15 +2,15 @@
 @media only screen and (max-width: 760px) , ( min-device-width : 768px)
 	and (max-device-width: 1024px) {
 	/* Force table to not be like tables anymore */
-	table, thead, tbody, th, td, tr {
+	/* table, thead, tbody, th, td, tr {
 		display: block;
-	}
-
+	} */
 	/* Hide table headers (but not display: none;, for accessibility) */
 	thead tr {
-		position: absolute;
+		/* 	position: absolute;
 		top: -9999px;
-		left: -9999px;
+		left: -9999px; */
+		border: 2px solid #dddddd;
 	}
 	tr {
 		margin: 0 0 1rem 0;
@@ -20,10 +20,10 @@
 	}
 	td {
 		/* Behave  like a "row" */
-		border: none;
+		/* 	border: none; */
 		border-bottom: 1px solid #eee;
-		position: relative;
-		padding-left: 50%;
+		/* position: relative;
+		padding-left: 50%; */
 	}
 	td:before {
 		/* Now like a table header */
@@ -102,7 +102,7 @@
 
 .table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
 	{
-	background-color: whitesmoke;
+	background-color: white;
 }
 
 @media ( min-width : 768px) {
@@ -112,6 +112,7 @@
 		visibility: visible;
 	}
 }
+
 .btn-grad {
 	background-image: linear-gradient(to right, #FF8008 0%, #FFC837 51%, #FF8008 100%);
 	transition: 0.5s;
@@ -129,82 +130,54 @@
 	text-decoration: none;
 }
 
-th{
-text-align:center;
+th {
+	text-align: center;
 }
 
 td .autoResize {
-	min-width:100px;
+	min-width: 100px;
 	width: auto;
 }
+
 .autoResize {
-	min-width:115px;
+	min-width: 115px;
 	resize: horizontal;
 	overflow: auto;
-	display: block 
+	display: block
 }
 
 .autoResizeQuarter {
-	min-width:70px;
+	min-width: 70px;
 	resize: horizontal;
 	overflow: auto;
-	display: block 
+	display: block
 }
-
-/*Refresh Button*/
-.tooltip-top {
-  bottom: 84%;
-  margin-left:-9%;
-}
-/*Search Button*/
-.tooltip-top1 {
-  bottom: 125%;
-  margin-left:-22%;
-}
-/*Advanced Search Button*/
-.tooltip-top2 {
-  bottom: 125%;
-  margin-left:-41%;
-}
-/*Export to Excel*/
-.tooltip-top3 {
-  bottom: 95%;
-  margin-left:-40%;
-}
-
 </style>
 
 
+<div
+	ng-init="cCctr.helpFolder = 'homeSChelpPage' ;  cCctr.helpPage = 'statementStatusHelp' ">
 
+	<div id="page-wrapper">
 
-<div id="page-wrapper" ng-controller="CommonController as cCctr">
-
-	<div class="container-fluid">
-	<!-- <button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
-					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
-						 onClick="refreshPageButton()"><i
-						class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh<span class="tooltiptext tooltip-top">Refresh or Press F5</span></button> -->
-		<div class="col-md-12 "
-			style="padding-left: 0px; font-size: 12pxp; margin-top: 2%">
-			<div class="heading">
-				<strong>Statement Status</strong>
-			</div>
-
-		</div>
-
-		<br>
-		<button class="btn btn-primary hidden visible-xs" type="button"
-			data-toggle="collapse" data-target="#collapseExample2"
-			aria-expanded="false" aria-controls="collapseExample">
-			Search</button>
-		<div class="collapse dont-collapse-sm" id="collapseExample2">
-			<div class="row">
-				<div class="form-group">
-
-					<div class="col-md-3">
-						<h6>
-							<b>TAN</b>
-							<h6>
+		<div class="container-fluid">
+			<button class="btn btn-primary hidden visible-xs" type="button"
+				data-toggle="collapse" data-target="#collapseExample2"
+				aria-expanded="false" aria-controls="collapseExample">
+				Search</button>
+			<div class="collapse dont-collapse-sm" id="collapseExample2">
+				<div class="row">
+					<div class="heading">
+						<strong>Statement Status</strong>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group">
+						<div class="col-md-12" style="padding-left: 0px;">
+							<div class="col-md-3">
+								<h6>
+									<b>TAN</b>
+								</h6>
 								<select name="tan" id="tan" class="form-control"
 									ng-model="cCctr.search.TAN">
 									<option disabled value="">Select Tan</option>
@@ -212,244 +185,220 @@ td .autoResize {
 									<option value="${T}">${T}</option>
 									</#list>
 								</select>
-					</div>
-					<div class="col-md-3">
-						<h6>
-							<b>QUARTER</b>
-						</h6>
-						<select class="form-control" ng-model="cCctr.search.QUARTER"
+							</div>
+							<div class="col-md-3">
+								<h6>
+									<b>QUARTER</b>
+								</h6>
+								<select class="form-control" ng-model="cCctr.search.QUARTER"
 									required>
 									<option disabled value="">Select Section</option>
 									<#list Quarter as quarter>
 									<option value="${quarter}">${quarter}</option>
 									</#list>
 								</select>
+							</div>
+
+							<div class="col-md-3">
+								<h6>
+									<b>Financial Year</b>
+								</h6>
+								<select class="form-control" ng-model="cCctr.search.FY"
+									style="width: 100%">
+									<option disabled value="">Select financial Year</option>
+									<#list financialYear as year>
+									<option value="${year}">${year}</option>
+									</#list>
+								</select>
+							</div>
+							<div class="col-md-3 Btns">
+
+
+								<button
+								id="searchButton" 
+									ng-click="cCctr.searchEntities(true,'statementStatus','statementStatus')"
+									class="btn btn-success  tool" onclick="scrollWin()">
+									<div class=button-main-box>
+										<i class="fa fa-search border-0 p-0"
+											style="color: inherit; display: block; background-color: transparent; font-size: 23px;"></i>
+
+										<div class="button-tooltip-box">
+											<span class="tooltiptext Search">Search Button</span>
+										</div>
+									</div>
+								</button>
+
+								<button class="btn btn-primary  collapsed tool"
+									style="background-color: #FFA500; border-color: #FFA500;"
+									data-toggle="collapse" data-target="#collapseExample4"
+									aria-expanded="false" data-parent="#collapseExample4"
+									aria-controls="collapseExample">
+									<div class=button-main-box>
+										<i class="fa fa-filter border-0 p-0"
+											style="color: #fff; display: block; background-color: transparent; font-size: 23px;"></i>
+										<div class="button-tooltip-box">
+											<span class="tooltiptext  Search">Advance Search
+												Button</span>
+										</div>
+									</div>
+								</button>
+
+							</div>
+
+						</div>
 					</div>
 				</div>
-				<div class="col-md-3">
-					<h6>
-						<b>Financial Year</b>
-					</h6>
-					<select class="form-control" ng-model="cCctr.search.FY"
-						style="width: 100%">
-						<option disabled value="">Select financial Year</option>
-						<#list financialYear as year>
-						<option value="${year}">${year}</option>
-						</#list>
-					</select>
-				</div>
-
-			</div>
-
-			<div class="collapse  panel-collapse" id="collapseExample4">
-
-				<div class="row">
-					<!-- <div class="col-md-3">
-						<h6>
-							<b>From Date</b>
-							<h6>
-								<input type="date" ng-model="cWctr.search.fromDate"
-									ng-change="cWctr.search.fromDate=cWctr.date(cWctr.search.fromDate);"
-									class="form-control" placeholder="Date" style="width: 100%">
-					</div> -->
-
-					<!-- <div class="col-md-3">
-						<h6>
-							<b>To Date</b>
-							<h6>
-								<input type="date" ng-model="cWctr.search.toDate"
-									ng-change="cWctr.search.toDate=cWctr.date(cWctr.search.toDate);"
-									class="form-control" placeholder="Date" style="width: 100%">
-					</div> -->
 
 
+				<div class="collapse  panel-collapse" id="collapseExample4"
+					style="margin-left: -15px;">
 
-
-
-				</div>
-				<div class="row">
-					<div class="col-md-3">
-						<h6>
-							<b>Status</b>
-							<h6>
+					<div class="row">
+						<div class="col-md-12" style="padding-left: 15px;">
+							<div class="col-md-3">
+								<h6>
+									<b>Status</b>
+								</h6>
 								<input type="text" ng-model="cCctr.search.STATUS"
 									class="form-control" placeholder="Status" style="width: 100%">
-					</div>
+							</div>
 
 
 
-					<div class="col-md-3">
-						<h6>
-							<b>RT</b>
-							<h6>
+							<div class="col-md-3">
+								<h6>
+									<b>RT</b>
+								</h6>
 								<input type="text" ng-model="cCctr.search.RT"
 									class="form-control" placeholder="RT" style="width: 100%">
-					</div>
-					<div class="col-md-3">
-						<h6>
-							<b>Form</b>
-						</h6>
-						<select ng-model="cCctr.search.FORM" class="form-control">
-							<option disabled value="">Form</option>
-							<option value="24Q">24Q</option>
-							<option value="26Q">26Q</option>
-							<option value="27Q">27Q</option>
-							<option value="27EQ">27EQ</option>
-						</select>
-					</div>
+							</div>
+							<div class="col-md-3">
+								<h6>
+									<b>Form</b>
+								</h6>
+								<select ng-model="cCctr.search.FORM" class="form-control">
+									<option disabled value="">Form</option>
+									<option value="24Q">24Q</option>
+									<option value="26Q">26Q</option>
+									<option value="27Q">27Q</option>
+									<option value="27EQ">27EQ</option>
+								</select>
+							</div>
 
+							<div class="col-md-3 ExcelBtn">
+								<button class="btn btn-primary waves-effect waves-light tool"
+									type="button" style="float: inherit;"
+									ng-click="cCctr.generateExcel('apistatementStatus/generateExcel/','STATEMENTSTATUS')">
+									Export to Excel<span class="tooltiptext ExportExcel">Export
+										to Excel</span>
+								</button>
+							</div>
 
-
-
-				</div>
-				<div class="row">
-					<div class="col-md-3">
-						<button class="btn btn-grad astro-MG2CNCJP tool" type="button"
-							style="margin-top:8%;background-image: linear-gradient(to right, #517fa4 0%, #243949  51%, #517fa4  100%);"
-							ng-click="cCctr.generateExcel('apistatementStatus/generateExcel/','STATEMENTSTATUS')">Export
-							to Excel<span class="tooltiptext tooltip-top3">Export to Excel</span></button>
+						</div>
 					</div>
 
 				</div>
 
 			</div>
-			<!-- <div class="row text-right" id="hide">
-				<div class="col-md-4" style="margin-left: 67%; margin-top: -44px">
-					<button
-						ng-click="cCctr.searchEntities(true,'statementStatus','statementStatus')"
-						class="btn btn-grad astro-MG2CNCJP tool" onclick="scrollWin()" style="background-image: linear-gradient(to right, #093028 0%, #237A57  51%, #093028  100%)"><i class="fa fa-search" aria-hidden="true"></i>
-						Search<span class="tooltiptext tooltip-top1">Search Button</span></button>
-						
-					<button class="btn btn-grad astro-MG2CNCJP tool"
-						style="background-image: linear-gradient(to right, #F09819 0%, #EDDE5D 51%, #F09819 100%)" data-toggle="collapse"
-						data-target="#collapseExample4" aria-expanded="false"
-						aria-controls="collapseExample"><i
-											class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;Advance Search
-											<span class="tooltiptext tooltip-top2">Advanced Search Button</span></button>
 
-
-
-					<div class="text-right"></div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="col-md-4" style="margin-top: 5px"></div>
+					<div class="text-right" style="width: 100%"></div>
 				</div>
-			</div> -->
-			
-			
-			
-			<div style="right: 3%; position: absolute; gap: 20px;margin-top:-3%;display:flex"
-		class="">
+			</div>
+			<div class="row">
+				<!-- 	<div class="table-responsive">  -->
 
+				<table class=" table table-bordered table-hover table-striped"
+					role="table"
+					style="font-size: 12px; width: 100%; margin-top: 1.5%;">
 
-		<button ng-click="cCctr.searchEntities(true,'statementStatus','statementStatus')"
-			class="btn btn-success mobile tool" onclick="scrollWin()">
-			<i class="fa fa-search border-0 p-0"
-				style="color: inherit; background-color: transparent;font-size: large;"></i>
-		<span class="tooltiptext tooltip-top">Search Button</span> </button>
+					<thead>
+					<colgroup>
+						<col span="14" style="background-color: #ffffff">
+					</colgroup>
+					<tr>
+					<thead role="rowgroup">
+						<tr role="row"
+							style="height: 40px; background-color: #7482f45e; cursor: pointer">
+							<th>Sr. No.</th>
+							<th>TAN</th>
+							<th>FORM</th>
+							<th>QUARTER</th>
+							<th>AS_ON_DATE</th>
+							<th>Financial Year</th>
+							<th>STATUS</th>
+							<th>RT</th>
 
-		<button class="btn btn-primary mobile collapsed tool"
-			style="background-color: #FFA500; border-color: #FFA500;"
-			data-toggle="collapse" data-target="#collapseExample4"
-			aria-expanded="false" data-parent="#navaccordion"
-			aria-controls="collapseExample">
-			<i class="fa fa-filter border-0 p-0"
-				style="color: #fff; background-color: transparent;font-size: large;"></i>
-		<span class="tooltiptext tooltip-top1">Advance Search Button</span></button>
+						</tr>
+					</thead>
+					<tbody style="text-align: center;">
+						<tr style="color: red"
+							ng-show="cCctr.getEntityListData().length <= 0">
+							<td colspan="14" style="text-align: center;"><b><h3>No
+										data found!!</h3></b></td>
+						</tr>
+						<tr role="row" style="cursor: pointer"
+							ng-repeat="a in cCctr.getEntityListData()">
+							<td>{{$index+cCctr.srNo}}</td>
+							<td>{{a.TAN}}</td>
+							<td>{{a.FORM}}</td>
+							<td>{{a.QUARTER}}</td>
+							<td>{{a.AS_ON_DATE | date:'dd-MM-yyyy'}}</td>
+							<td>{{a.FY}}</td>
+							<td>{{a.STATUS}}</td>
+							<td>{{a.RT}}</td>
+							<!-- <td>{{a.total-a.amountPaid}}</td> -->
+						</tr>
+					</tbody>
+				</table>
 
-		
-		
-	
+			</div>
 
-	</div>
-			
-			
+			<div class="row" ng-show="cCctr.getNoPage() > 0">
+				<div align="center">
+					<span ng-show="cCctr.PreviousNo != 1"> <a
+						ng-show="cCctr.PreviousNo >= 1 && cCctr.PreviousNo <= cCctr.getNoPage()"
+						ng-click="cCctr.getPage(true,'statementStatus',cCctr.PreviousNo-1);cCctr.DisplayNo(cCctr.currentPage)"><strong>Previous</strong></a>
+					</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.PreviousNo}}</strong>&nbsp;
+						of &nbsp;<strong>{{cCctr.getNoPage()}}</strong>
+						&nbsp;&nbsp;&nbsp;&nbsp; <span
+						ng-show="cCctr.PreviousNo != cCctr.getNoPage()"> <a
+							ng-show="cCctr.PreviousNo >= 1 && cCctr.PreviousNo <= cCctr.getNoPage()"
+							ng-click="cCctr.getPage(true,'statementStatus',cCctr.PreviousNo+1);cCctr.DisplayNo(cCctr.currentPage)"><strong>Next</strong></a>
+					</span>
+					</span>
+				</div>
+				<form role="form" name="gotoForm" ng-if="cCctr.getNoPage()!=1">
+					<div align="center" style="margin-top: 1%;">
+						<span>Go to</span> &nbsp;&nbsp;&nbsp; <input
+							style="width: 70px; text-align: center;" type="number"
+							name="pageNo" id="pageNo" ng-model="cCctr.currentPage"
+							oninput="javascript: if (this.value.length > this.max.length) this.value = this.value.slice(0, this.max.length);"
+							autocomplete="off" ng-min="1" min="1" max="{{cCctr.getNoPage()}}"
+							ng-max="cCctr.getNoPage()" ng-required="true">
+						&nbsp;&nbsp;&nbsp;
+						<button
+							ng-show="cCctr.currentPage >= 1 && cCctr.currentPage <= cCctr.getNoPage()"
+							ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'statementStatus',cCctr.currentPage);cCctr.DisplayNo(cCctr.currentPage)"
+							class="btn btn-primary btn-sm">Go</button>
+					</div>
+					<div align="center">
+						<span style="color: red"
+							ng-show="gotoForm.submitted || gotoForm.pageNo.$dirty && gotoForm.pageNo.$invalid">
+							<span class="error" ng-show="gotoForm.pageNo.$error.min">Page
+								No. should not be less than 1.</span> <span class="error"
+							ng-show="gotoForm.pageNo.$error.max">Page No. should not
+								be greater than {{cCctr.getNoPage()}}.</span> <span class="error"
+							ng-show="gotoForm.pageNo.$error.required">Please enter
+								page number.</span>
+						</span>
+					</div>
+				</form>
+			</div>
+
 
 		</div>
 	</div>
-	<div class="row">
-		<!-- 	<div class="table-responsive">  -->
-
-		<table class=" table table-bordered table-hover table-striped"
-			role="table"
-			style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
-
-			<thead>
-			<colgroup>
-				<col span="14" style="background-color: #ffffff">
-			</colgroup>
-			<tr>
-			<thead role="rowgroup">
-				<tr role="row" style="height: 40px; background-color: #81b7db">
-					<th>Sr. No.</th>
-					<th>TAN</th>
-					<th>FORM</th>
-					<th>QUARTER</th>
-					<th>AS_ON_DATE</th>
-					<th>Financial Year</th>
-					<th>STATUS</th>
-					<th>RT</th>
-
-				</tr>
-			</thead>
-			<tbody style="text-align:center;">
-				<tr style="color: red"
-					ng-show="cCctr.getEntityListData().length <= 0">
-					<td colspan="14" style="text-align: center;"><b><h3>No
-								data found!!</h3></b></td>
-				</tr>
-				<tr role="row"
-					ng-repeat="a in cCctr.getEntityListData()">
-					<td>{{$index+1}}</td>
-					<td>{{a.TAN}}</td>
-					<td>{{a.FORM}}</td>
-					<td>{{a.QUARTER}}</td>
-					<td>{{a.AS_ON_DATE | date:'dd-MM-yyyy'}}</td>
-					<td>{{a.FY}}</td>
-					<td>{{a.STATUS}}</td>
-					<td>{{a.RT}}</td>
-					<!-- <td>{{a.total-a.amountPaid}}</td> -->
-				</tr>
-			</tbody>
-		</table>
-
-	</div>
-
-	<div class="row" ng-show="cCctr.getNoPage() > 0">
-		<div class="row" align="center">
-			<span ng-show="cCctr.currentPage != 1"> <a
-				ng-click="cCctr.getPage(true,'statementStatus',cCctr.currentPage-1)"><strong>Previous</strong></a>
-			</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.currentPage}}</strong>&nbsp;
-				of &nbsp;<strong>{{cCctr.getNoPage()}}</strong>
-				&nbsp;&nbsp;&nbsp;&nbsp; <span
-				ng-show="cCctr.currentPage != cCctr.getNoPage()"> <a
-					ng-click="cCctr.getPage(true,'statementStatus',cCctr.currentPage+1)"><strong>Next</strong></a>
-			</span>
-			</span>
-		</div>
-		<form role="form" name="gotoForm">
-			<div class="row" align="center">
-				<span>Go to</span> &nbsp;&nbsp;&nbsp; <input
-					style="width: 70px; text-align: center;" type="number"
-					name="pageNo" ng-model="cCctr.currentPage"
-					ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
-					ng-min="1" min="1" max="{{cCctr.getNoPage()}}" 
-					ng-max="cCctr.getNoPage()" ng-required="true">
-				&nbsp;&nbsp;&nbsp;
-				<button style="height: 25px;"
-					ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'statementStatus',cCctr.currentPage)"
-					class="btn btn-primary">Go</button>
-			</div>
-			<div class="row" align="center">
-				<span style="color: red"
-					ng-show="gotoForm.submitted || gotoForm.pageNo.$dirty && gotoForm.pageNo.$invalid">
-					<span class="error" ng-show="gotoForm.pageNo.$error.min">Page
-						No. should not be less than 1.</span> <span class="error"
-					ng-show="gotoForm.pageNo.$error.max">Page No. should not be
-						greater than {{cCctr.getNoPage()}}.</span> <span class="error"
-					ng-show="gotoForm.pageNo.$error.required">Please enter page
-						number.</span>
-				</span>
-			</div>
-		</form>
-	</div>
-
-
 </div>

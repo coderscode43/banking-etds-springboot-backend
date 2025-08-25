@@ -1,87 +1,4 @@
 <style>
-
-/*
-	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
-	*/
-@media only screen and (max-width: 760px) , ( min-device-width : 768px)
-	and (max-device-width: 1024px) {
-	/* Force table to not be like tables anymore */
-	table, thead, tbody, th, td, tr {
-		display: block;
-	}
-
-	/* Hide table headers (but not display: none;, for accessibility) */
-	thead tr {
-		position: absolute;
-		top: -9999px;
-		left: -9999px;
-	}
-	tr {
-		margin: 0 0 1rem 0;
-	}
-	tr:nth-child(odd) {
-		background: #ccc;
-	}
-	td {
-		/* Behave  like a "row" */
-		border: none;
-		border-bottom: 1px solid #eee;
-		position: relative;
-		padding-left: 50%;
-	}
-	td:before {
-		/* Now like a table header */
-		position: absolute;
-		/* Top/left values mimic padding */
-		top: 0;
-		left: 6px;
-		width: 45%;
-		padding-right: 10px;
-		white-space: nowrap;
-	}
-
-	/*
-		Label the data
-    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
-		*/
-	td:nth-of-type(1):before {
-		content: "Sr. No.";
-	}
-	td:nth-of-type(2):before {
-		content: "Description";
-	}
-	td:nth-of-type(3):before {
-		content: "Attachment";
-	}
-	td:nth-of-type(4):before {
-		content: "Financial Year";
-	}
-	td:nth-of-type(5):before {
-		content: "Quarter";
-	}
-	td:nth-of-type(6):before {
-		content: "Form";
-	}
-	td:nth-of-type(7):before {
-		content: "Date Of Opening";
-	}
-	td:nth-of-type(8):before {
-		content: "Date Of Change";
-	}
-	td:nth-of-type(9):before {
-		content: "Type";
-	}
-	td:nth-of-type(10):before {
-		content: "Status";
-	}
-	td:nth-of-type(11):before {
-		content: "Remarks";
-	}
-	td:nth-of-type(12):before {
-		content: "Action";
-	}
-}
-
 @media only screen and (min-width:1000px) {
 	#search {
 		margin-left: 45%;
@@ -98,7 +15,7 @@
 
 .table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
 	{
-	background-color: whitesmoke;
+	background-color: white;
 }
 
 @media ( min-width : 768px) {
@@ -129,32 +46,6 @@
 .col-md-4 {
 	width: 34.333%;
 }
-
-/*Refresh Button*/
-.tooltip-top {
-	bottom: 84%;
-	margin-left: -9%;
-}
-/*Search Button*/
-.tooltip-top1 {
-	bottom: 125%;
-	margin-left: -22%;
-}
-/*Advanced Search Button*/
-.tooltip-top2 {
-	bottom: 125%;
-	margin-left: -41%;
-}
-/*Add Ticket*/
-.tooltip-top3 {
-	bottom: 125%;
-	margin-left: -28%;
-}
-/*Export to Excel Button*/
-.tooltip-top4 {
-	bottom: 85%;
-	margin-left: -41%;
-}
 /*Detail*/
 .tooltip-top5 {
 	margin-left: -6%;
@@ -163,344 +54,431 @@
 .checker {
 	background-color: yellow;
 }
+
+.heading {
+	font-size: 20px;
+}
 </style>
 
-<div id="page-wrapper" ng-controller="CommonController as cCctr">
-	<div class="container-fluid">
-		<div class="col-md-12 " style="font-size: 12pxp; margin-top: 3%">
-			<div class="heading">
-				<strong>Correction Request Details</strong>
-			</div>
+<div
+	ng-init="cCctr.helpFolder = 'homeWOThelpPage' ;  cCctr.helpPage = 'correctionRequestWOT' ">
 
-		</div>
-
+	<div id="page-wrapper">
 		<br>
-		<!-- <button class="btn btn-primary hidden visible-xs" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample" >
-             Search 
-          </button> -->
+		<div class="container-fluid">
 
-
-		<div class="collapse dont-collapse-sm" id="collapseExample2">
 			<div class="row">
-				<div class="form-group">
-					<div class="col-md-3">
-						<h6>
-							<b>Status</b>
-						</h6>
-						<select class="form-control" ng-model="cCctr.search.status"
-							ng-required="true" title="Select Status">
-							<option disabled value="">Select Status</option>
-							<#list status as s>
-							<option value="${s}">${s}</option>
-							</#list>
-						</select>
+				<div class="col-md-12 " style="padding-left: 0px; font-size: 12pxp;">
+					<div class="heading">
+						<strong>Correction Request Details</strong>
 					</div>
 				</div>
-				<div class="col-md-3">
-					<h6>
-						<b>Financial Year</b>
-					</h6>
-					<select class="form-control" id="fy" name="fy"
-						title="Select Financial Year" ng-model="cCctr.search.fy"
-						ng-required="true">
-						<option disabled value="">Select financial Year</option>
-						<#list financialYear as year>
-						<option value="${year}">${year}</option>
-						</#list>
-					</select>
-				</div>
-				<div class="col-md-3">
-					<h6>
-						<b>Quarter</b>
-					</h6>
-					<select class="form-control" ng-model="cCctr.search.quarter"
-						ng-required="true" title="Select Quarter">
-						<option disabled value="">Select Quarter</option>
-						<#list Quarter as quarter>
-						<option value="${quarter}">${quarter}</option>
-						</#list>
-					</select>
-				</div>
-
-			</div>
-			<div class="row">
-				<div class="col-md-3">
-					<h6>
-						<b>Branch Code</b>
-					</h6>
-					<input type="text" ng-model="cCctr.search.branchCode"
-						class="form-control" placeholder="Branch Code" style="width: 100%">
-				</div>
-				<div class="col-md-3">
-					<h6>
-						<b>Name of Customer</b>
-					</h6>
-					<input type="text" ng-model="cCctr.search.nameOfCust"
-						class="form-control" placeholder="Name of Customer"
-						style="width: 100%">
-				</div>
-				<div class="col-md-3">
-					<h6>
-						<b>PAN of Customer</b>
-					</h6>
-					<input type="text" ng-model="cCctr.search.panOfCust" style="text-transform:uppercase"
-						class="form-control" placeholder="PAN Number" style="width: 100%">
-				</div>
-
 			</div>
 
-			<div class="collapse  panel-collapse" id="collapseExample4">
-
+			<div class="collapse dont-collapse-sm" id="collapseExample2">
 				<div class="row">
+					<div class="form-group">
+						<div class="col-md-12" style="padding-left: 0px;">
+							<div class="col-md-3">
+								<h6>
+									<b>Status</b>
+								</h6>
+								<select class="form-control" ng-model="cCctr.search.status"
+									ng-required="true" title="Select Status">
+									<option disabled value="">Select Status</option>
+									<#list status as s>
+									<option value="${s}">${s}</option>
+									</#list>
+								</select>
+							</div>
+
+							<div class="col-md-3">
+								<h6>
+									<b>Financial Year</b>
+								</h6>
+								<select class="form-control" id="fy" name="fy"
+									title="Select Financial Year" ng-model="cCctr.search.fy"
+									ng-required="true">
+									<option disabled value="">Select financial Year</option>
+									<#list financialYear as year>
+									<option value="${year}">${year}</option>
+									</#list>
+								</select>
+							</div>
+							<div class="col-md-3">
+								<h6>
+									<b>Quarter</b>
+								</h6>
+								<select class="form-control" ng-model="cCctr.search.quarter"
+									ng-required="true" title="Select Quarter">
+									<option disabled value="">Select Quarter</option>
+									<#list Quarter as quarter>
+									<option value="${quarter}">${quarter}</option>
+									</#list>
+								</select>
+							</div>
+							<div class="col-md-3 Btns">
+								<button
+									id="searchButton" 
+									ng-click="cCctr.searchFYEntities(true,'correctionRequest','correctionRequest')"
+									class="btn btn-success  tool" onclick="scrollWin()">
+									<div class=button-main-box>
+										<i class="fa fa-search border-0 p-0"
+											style="color: inherit; background-color: transparent; font-size: large;"></i>
+										<div class="button-tooltip-box">
+											<span class="tooltiptext Search">Search Button</span>
+										</div>
+									</div>
+								</button>
 
 
-					<div class="col-md-3">
-						<h6>
-							<b>Type of Correction</b>
-						</h6>
-						<select class="form-control"
-							ng-model="cCctr.search.typeOfCorrection" ng-required="true"
-							title="Select Type Of Correction">
-							<option disabled value="">Select Type Of Correction</option>
-							<#list typeOfCorrection as toc>
-							<option value="${toc}">${toc}</option>
-							</#list>
-						</select>
+								<button class="btn btn-primary  collapsed tool"
+									style="background-color: #FFA500; border-color: #FFA500;"
+									data-toggle="collapse" data-target="#collapseExample4"
+									aria-expanded="false" data-parent="#collapseExample4"
+									aria-controls="collapseExample">
+									<div class=button-main-box>
+										<i class="fa fa-filter border-0 p-0"
+											style="color: #fff; background-color: transparent; font-size: large;"></i>
+										<div class="button-tooltip-box">
+											<span class="tooltiptext Search">Advance Search Button</span>
+										</div>
+									</div>
+								</button>
+
+
+								<button class="btn btn-primary mobile tool" data-toggle="modal"
+									ng-click="cCctr.gotoAddWFYPage('addCorrectionRequest')"
+									data-target="#bd-example-modal-xl">
+									<div class=button-main-box>
+										<i class="fa fa-plus border-0 p-0"
+											style="color: inherit; background-color: transparent; font-size: large;"></i>
+										<div class="button-tooltip-box">
+											<span class="tooltiptext Search">Add Button</span>
+										</div>
+									</div>
+								</button>
+								<div class="col-md-4">
+									<label class="switch tool sliderButton"> <input
+										type="checkbox"> <span class="slider round "></span>
+										<div class="button-tooltip-box">
+											<span class="tooltiptext Search"> Resize Table</span>
+										</div>
+								</div>
+							</div>
+						</div>
+
 					</div>
-					<!-- <div class="col-md-2">
-						<h6>
-							<b>Approved By</b>
-							<h6>
-								<input type="text" ng-model="cCctr.search.approvedBy"
-									class="form-control" placeholder="Approved By"
+				</div>
+
+				<div class="collapse  panel-collapse" id="collapseExample4"
+					style="margin-left: -8px;">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="col-md-3">
+								<h6>
+									<b>Ticket Number </b>
+								</h6>
+								<input type="text" ng-model="cCctr.search.ticketNumber"
+									class="form-control" placeholder="Ticket Number"
 									style="width: 100%">
-					</div> -->
-					<div class="col-md-3">
-						<h6>
-							<b>From Date Of Request</b>
-						</h6>
-						<input type="date" ng-model="cCctr.search.fromDate"
-							ng-change="cCctr.search.fromDate=cCctr.date(cCctr.search.fromDate);"
-							class="form-control inputfont" placeholder="From Date">
+							</div>
+							<div class="col-md-3">
+								<h6>
+									<b>Name of Customer</b>
+								</h6>
+								<input type="text" ng-model="cCctr.search.name"
+									class="form-control" placeholder="Name of Customer"
+									style="width: 100%">
+							</div>
+							<div class="col-md-3">
+								<h6>
+									<b>PAN of Customer</b>
+								</h6>
+								<input type="text" ng-model="cCctr.search.pan"
+									style="text-transform: uppercase" class="form-control"
+									placeholder="PAN Number" style="width: 100%">
+							</div>
+
+						</div>
+
 					</div>
 
-					<div class="col-md-3">
-						<h6>
-							<b>To Date Of Request</b>
-						</h6>
-						<input type="date" ng-model="cCctr.search.toDate"
-							ng-change="cCctr.search.toDate=cCctr.date(cCctr.search.toDate);"
-							class="form-control inputfont" placeholder="To Date"
-							style="size: 15px">
-					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="col-md-3">
+								<h6>
+									<b>Type of Correction</b>
+								</h6>
+								<select class="form-control"
+									ng-model="cCctr.search.typeOfCorrection" ng-required="true"
+									title="Select Type Of Correction">
+									<option disabled value="">Select Type Of Correction</option>
+									<#list typeOfCorrection as toc>
+									<option value="${toc}">${toc}</option>
+									</#list>
+								</select>
+							</div>
+							<div class="col-md-3">
+								<h6>
+									<b>From Date Of Request</b>
+								</h6>
+								<input type="date" ng-model="cCctr.search.fromDate"
+									ng-change="cCctr.search.fromDate=cCctr.date(cCctr.search.fromDate);"
+									class="form-control inputfont" placeholder="From Date">
+							</div>
 
-					<!-- 	<div class="col-md-2">
-						<h6>
-							<b>Remark</b>
-						</h6>
-						<input type="text" ng-model="cCctr.search.remarks"
-							class="form-control" placeholder="Remark" style="width: 100%">
-					</div> -->
+							<div class="col-md-3">
+								<h6>
+									<b>To Date Of Request</b>
+								</h6>
+								<input type="date" ng-model="cCctr.search.toDate"
+									ng-change="cCctr.search.toDate=cCctr.date(cCctr.search.toDate);"
+									class="form-control inputfont" placeholder="To Date"
+									style="size: 15px">
+							</div>
+							<div class="col-md-3 ExcelBtn">
+								<button class="btn btn-primary waves-effect waves-light tool"
+									type="button"
+									ng-click="cCctr.generateCorrectionRequestExcel('apicorrectionRequest/generateExcel/','CorrectionRequest')">
+									Export to Excel<span class="tooltiptext ExportExcel">Export
+										to Excel</span>
+								</button>
+							</div>
+						</div>
+					</div>
 				</div>
 
 				<div class="row">
-
-					<!-- 	<div class="col-md-2">
-						<h6>
-							<b>Remark</b>
-						</h6>
-						<input type="text" ng-model="cCctr.search.remarks"
-							class="form-control" placeholder="Remark" style="width: 100%">
-					</div> -->
-				</div>
-				<div class="row">
-					<div class="col-md-3">
-						<button class="btn btn-grad astro-MG2CNCJP tool" type="button"
-							style="margin-top: 11%; background-image: linear-gradient(to right, #517fa4 0%, #243949 51%, #517fa4 100%);"
-							ng-click="cCctr.generateExcel('apicorrectionRequest/generateExcel/','CorrectionRequest')">
-							Export to Excel<span class="tooltiptext tooltip-top4">Export
-								to Excel</span>
-						</button>
+					<div class="col-xs-12">
+						<div class="col-md-4" style="margin-top: 5px"></div>
+						<div class="text-right" style="width: 100%"></div>
 					</div>
+				</div>
 
+				<div class="row">
+					<div class="table-responsive">
+						<table class=" table table-bordered table-hover table-striped"
+							role="table"
+							style="font-size: 12px; width: 100%; margin-top: 1.5%;">
+							<thead>
+
+								<tr>
+							<thead role="rowgroup">
+								<tr role="row" style="height: 40px; background-color: #7482f45e">
+									<th>Sr. No.</th>
+									<th><div class="autoResizeQuarter">Ticket Number</div></th>
+									<th><div class="autoResizeQuarter">Financial Year</div></th>
+									<th><div class="autoResizeQuarter">Branchcode</div></th>
+									<th><div class="autoResizeQuarter">Quarter</div></th>
+									<th><div class="autoResizeQuarter">Name of Customer</div></th>
+									<th><div class="autoResizeQuarter">PAN of Customer</div></th>
+									<th><div class="autoResize">Type of Correction</div></th>
+									<th><div class="autoResize">Status</div></th>
+									<th><div class="autoResize">Last Updated On</div></th>
+									<th><div class="autoResize">Action</div></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr style="color: red"
+									ng-show="cCctr.getEntityListDataFY().length <= 0">
+									<td colspan="14" style="text-align: center;"><h3
+											style="text-align: center; text-align-last: 5;">
+											<b>No data found!!</b>
+										</h3></td>
+								</tr>
+								<tr role="row" ng-repeat="a in cCctr.getEntityListDataFY()"
+									ng-dblclick="cCctr.gotoWFYDetailPage('correctionRequest',a.id,'detailCorrectionRequest')">
+									<td ng-style="{'background-color' : '{{a.color}}'}">{{$index+cCctr.srNo}}</td>
+									<td ng-style="{'background-color' : '{{a.color}}'}">{{a.ticketNumber}}</td>
+									<td ng-style="{'background-color' : '{{a.color}}'}">{{a.fy}}</td>
+									<td ng-style="{'background-color' : '{{a.color}}'}">{{a.branchCode}}</td>
+									<td class="ellipsis"
+										ng-style="{'background-color' : '{{a.color}}'}">{{a.quarter}}</td>
+									<td class="ellipsis"
+										ng-style="{'background-color' : '{{a.color}}'}">{{a.name}}</td>
+									<td class="ellipsis"
+										ng-style="{'background-color' : '{{a.color}}'}">{{a.pan}}</td>
+									<td class="ellipsis"
+										ng-style="{'background-color' : '{{a.color}}'}">{{a.typeOfCorrection}}</td>
+									<td class="ellipsis"
+										ng-style="{'background-color' : '{{a.color}}'}">{{a.status}}</td>
+									<td class="ellipsis"
+										ng-style="{'background-color' : '{{a.color}}'}">{{a.lastUpdatedOn
+										| date:'dd-MM-yyyy'}}</td>
+									<td class="" style="align-items: center;display: flex;justify-content: center;"><a class="tool"
+										ng-click="cCctr.gotoWFYDetailPage('correctionRequest',a.id,'detailCorrectionRequest')"
+										style="color: blue" onclick="scrollWin()"><img
+											src="static\img\edit.png" width="22px" height="22px"
+											alt="Details" style="margin-top: 5px; margin-bottom: 5px;" /><span
+											class="tooltiptext tooltip-top5">Detail</span></a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="row" ng-show="cCctr.getNoPages() > 0">
+					<div align="center">
+						<span ng-show="cCctr.PreviousNo != 1"> <a
+							ng-show="cCctr.PreviousNo >= 1 && cCctr.PreviousNo <= cCctr.getNoPages()"
+							ng-click="cCctr.getPages(true,'correctionRequest',cCctr.PreviousNo-1);cCctr.DisplayNo(cCctr.currentPage)"><strong>Previous</strong></a>
+						</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.PreviousNo}}</strong>&nbsp;
+							of &nbsp;<strong>{{cCctr.getNoPages()}}</strong>
+							&nbsp;&nbsp;&nbsp;&nbsp; <span
+							ng-show="cCctr.PreviousNo != cCctr.getNoPages()"> <a
+								ng-show="cCctr.PreviousNo >= 1 && cCctr.PreviousNo <= cCctr.getNoPages()"
+								ng-click="cCctr.getPages(true,'correctionRequest',cCctr.PreviousNo+1);cCctr.DisplayNo(cCctr.currentPage)"><strong>Next</strong></a>
+						</span>
+						</span>
+					</div>
+					<form role="form" name="gotoForm" ng-if="cCctr.getNoPages()!=1">
+						<div align="center" style="margin-top: 1%;">
+							<span>Go to</span> &nbsp;&nbsp;&nbsp; <input
+								style="width: 70px; text-align: center;" type="number"
+								name="pageNo" id="pageNo" ng-model="cCctr.currentPage"
+								oninput="javascript: if (this.value.length > this.max.length) this.value = this.value.slice(0, this.max.length);"
+								autocomplete="off" ng-min="1" min="1"
+								max="{{cCctr.getNoPages()}}" ng-max="cCctr.getNoPages()"
+								ng-required="true"> &nbsp;&nbsp;&nbsp;
+							<button
+								ng-show="cCctr.currentPage >= 1 && cCctr.currentPage <= cCctr.getNoPages()"
+								ng-click="gotoForm.submitted=true;cCctr.getPages(gotoForm.$valid,'correctionRequest',cCctr.currentPage);cCctr.DisplayNo(cCctr.currentPage)"
+								class="btn btn-primary btn-sm">Go</button>
+						</div>
+						<div align="center">
+							<span style="color: red"
+								ng-show="gotoForm.submitted || gotoForm.pageNo.$dirty && gotoForm.pageNo.$invalid">
+								<span class="error" ng-show="gotoForm.pageNo.$error.min">Page
+									No. should not be less than 1.</span> <span class="error"
+								ng-show="gotoForm.pageNo.$error.max">Page No. should not
+									be greater than {{cCctr.getNoPages()}}.</span> <span class="error"
+								ng-show="gotoForm.pageNo.$error.required">Please enter
+									page number.</span>
+							</span>
+						</div>
+					</form>
 				</div>
 			</div>
-			<div
-				style="right: 3%; position: absolute; gap: 20px; margin-top: -3%; display: flex"
-				class="">
-				<button
-					ng-click="cCctr.searchFYEntities(true,'correctionRequest','correctionRequest')"
-					class="btn btn-success mobile tool" onclick="scrollWin()">
-					<i class="fa fa-search border-0 p-0"
-						style="color: inherit; background-color: transparent; font-size: large;"></i>
-					<span class="tooltiptext tooltip-top">Search Button</span>
-				</button>
-
-
-				<button class="btn btn-primary mobile collapsed tool"
-					style="background-color: #FFA500; border-color: #FFA500;"
-					data-toggle="collapse" data-target="#collapseExample4"
-					aria-expanded="false" data-parent="#navaccordion"
-					aria-controls="collapseExample">
-					<i class="fa fa-filter border-0 p-0"
-						style="color: #fff; background-color: transparent; font-size: large;"></i>
-					<span class="tooltiptext tooltip-top1">Advance Search Button</span>
-				</button>
-
-
-				<button class="btn btn-primary mobile tool" data-toggle="modal"
-					ng-click="cCctr.gotoAddWFYPage('addCorrectionRequest')"
-					data-target="#bd-example-modal-xl">
-					<i class="fa fa-edit border-0 p-0"
-						style="color: inherit; background-color: transparent; font-size: large;"></i>
-					<span class="tooltiptext tooltip-top2">Add Button</span>
-				</button>
-				<div class="text-right"></div>
-			</div>
-			<div class="row" id="hide"></div>
-
-			<div class="row" id="search">
-				<div class="col-md-3" id="search">
-					<button ng-click="cCctr.searchFYEntities(true,'correctionRequest')"
-						class="btn btn-success" onclick="scrollWin()">Search</button>
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="col-md-4" style="margin-top: 5px; margin-left: -15px;">
-
-				</div>
-				<div class="text-right"></div>
-			</div>
-		</div>
-
-
-		<div class="row">
-			<!-- <div class="table-responsive">  -->
-			<table class=" table table-bordered table-hover table-striped"
-				role="table"
-				style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
-				<thead>
-
-					<tr>
-				<thead role="rowgroup">
-					<tr role="row" style="height: 40px; background-color: #81b7db">
-						<th>Sr. No.</th>
-						<th><div class="autoResizeQuarter">Ticket Number</div></th>
-						<th><div class="autoResizeQuarter">Financial Year</div></th>
-						<th><div class="autoResizeQuarter">Quarter</div></th>
-						<th><div class="autoResizeQuarter">Branch Code</div></th>
-						<th>Name of Customer</th>
-						<th>PAN of Customer</th>
-						<th><div class="autoResizeQuarter">Employee Number</div></th>
-						<th><div class="autoResize">Type of Correction</div></th>
-						<th><div class="autoResize">Remark</div></th>
-						<th><div class="autoResize">Status</div></th>
-						<th><div class="autoResize">Request Create By</div></th>
-						<th><div class="autoResize">Date of Request</div></th>
-						<th><div class="autoResize">Checker Approved/Rejected
-								By</div></th>
-						<th><div class="autoResizeQuarter">Checker
-								Approved/Rejected on</div></th>
-						<th><div class="autoResize">Tax Team Approved/Rejected
-								By</div></th>
-						<th><div class="autoResizeQuarter">Tax Team
-								Approved/Rejected on</div></th>
-						<th><div class="autoResize">Correction By</div></th>
-						<th><div class="autoResize">Correction on</div></th>
-						<th class="hide-on-desktop"><div class="autoResize">Action</div></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr style="color: red"
-						ng-show="cCctr.getEntityListDataFY().length <= 0">
-						<td colspan="14" style="text-align: center;"><b><h3
-									style="text-align: center; text-align-last: 5;">No data
-									found!!</h3></b></td>
-					</tr>
-					<tr role="row" ng-repeat="a in cCctr.getEntityListDataFY()"
-						ng-dblclick="cCctr.gotoWFYDetailPage('correctionRequest',a.id,'DetailCorrectionRequest')">
-						<td ng-style="{'background-color' : '{{a.color}}'}">{{$index+1}}</td>
-						<td ng-style="{'background-color' : '{{a.color}}'}">{{a.ticketNumber}}</td>
-						<td ng-style="{'background-color' : '{{a.color}}'}">{{a.fy}}</td>
-						<td ng-style="{'background-color' : '{{a.color}}'}">{{a.quarter}}</td>
-						<td ng-style="{'background-color' : '{{a.color}}'}">{{a.branchCode}}</td>
-						<td ng-style="{'background-color' : '{{a.color}}'}">{{a.nameOfCust}}</td>
-						<td ng-style="{'background-color' : '{{a.color}}'}">{{a.panOfCust}}</td>
-						<td ng-style="{'background-color' : '{{a.color}}'}">{{a.empNo}}</td>
-						<td ng-style="{'background-color' : '{{a.color}}'}">{{a.typeOfCorrection}}</td>
-						<td ng-style="{'background-color' : '{{a.color}}'}">{{a.remark}}</td>
-						<td ng-style="{'background-color' : '{{a.color}}'}">{{a.status}}</td>
-						<td ng-style="{'background-color' : '{{a.color}}'}">{{a.makerBy}}</td>
-						<td ng-style="{'background-color' : '{{a.color}}'}">{{a.date
-							| date:'dd-MM-yyyy'}}</td>
-						<td ng-style="{'background-color' : '{{a.color}}'}">{{a.checkerApprovedBy}}</td>
-						<td ng-style="{'background-color' : '{{a.color}}'}">{{a.checkerApprovedOn
-							| date:'dd-MM-yyyy'}}</td>
-						<td ng-style="{'background-color' : '{{a.color}}'}">{{a.taxTeamApprovedBy}}</td>
-						<td ng-style="{'background-color' : '{{a.color}}'}">{{a.taxTeamApprovedOn
-							| date:'dd-MM-yyyy'}}</td>
-						<td ng-style="{'background-color' : '{{a.color}}'}">{{a.correctionBy}}</td>
-						<td ng-style="{'background-color' : '{{a.color}}'}">{{a.correctionOn
-							| date:'dd-MM-yyyy'}}</td>
-						<td class="hide-on-desktop"><a class="tool"
-							ng-click="cCctr.gotoDetailPage('correctionRequest',a.id,'DetailCorrectionRequest')"
-							style="color: blue"><img src="static\img\edit.png"
-								width="22px" height="22px" alt="Details"
-								style="margin-top: 5px; margin-bottom: 5px;" /><span
-								class="tooltiptext tooltip-top5">Detail</span></a></td>
-
-						<!-- <td><a ng-click="cCctr.viewFile('fileDetail',a,'viewFile');"
-					style="color: blue">View</a></td> -->
-
-
-						<!-- <td>{{a.total-a.amountPaid}}</td> -->
-
-					</tr>
-				</tbody>
-			</table>
-
-		</div>
-		<div class="row" ng-show="cCctr.getNoPage() > 0">
-			<div class="row" align="center">
-				<span ng-show="cCctr.currentPage != 1"> <a
-					ng-click="cCctr.getPage(true,'correctionRequest',cCctr.currentPage-1)"><strong>Previous</strong></a>
-				</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.currentPage}}</strong>&nbsp;
-					of &nbsp;<strong>{{cCctr.getNoPage()}}</strong>
-					&nbsp;&nbsp;&nbsp;&nbsp; <span
-					ng-show="cCctr.currentPage != cCctr.getNoPage()"> <a
-						ng-click="cCctr.getPage(true,'correctionRequest',cCctr.currentPage+1)"><strong>Next</strong></a>
-				</span>
-				</span>
-			</div>
-			<form role="form" name="gotoForm">
-				<div class="row" align="center">
-					<span>Go to</span> &nbsp;&nbsp;&nbsp; <input
-						style="width: 70px; text-align: center;" type="number"
-						name="pageNo" ng-model="cCctr.currentPage"
-						ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
-						ng-min="1" min="1" max="{{cCctr.getNoPage()}}"
-						ng-max="cCctr.getNoPage()" ng-required="true">
-					&nbsp;&nbsp;&nbsp;
-					<button style="height: 25px;"
-						ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'correctionRequest',cCctr.currentPage)"
-						class="btn btn-primary">Go</button>
-				</div>
-				<div class="row" align="center">
-					<span style="color: red"
-						ng-show="gotoForm.submitted || gotoForm.pageNo.$dirty && gotoForm.pageNo.$invalid">
-						<span class="error" ng-show="gotoForm.pageNo.$error.min">Page
-							No. should not be less than 1.</span> <span class="error"
-						ng-show="gotoForm.pageNo.$error.max">Page No. should not be
-							greater than {{cCctr.getNoPage()}}.</span> <span class="error"
-						ng-show="gotoForm.pageNo.$error.required">Please enter page
-							number.</span>
-					</span>
-				</div>
-			</form>
 		</div>
 	</div>
 </div>
 
+
+<script>
+	$('.btnNext').click(function() {
+		$('.nav-item .active').parent().next('li').find('a').trigger('click');
+	});
+
+	$('.btnPrevious').click(function() {
+		$('.nav-item .active').parent().prev('li').find('a').trigger('click');
+	});
+</script>
+
+<script>
+	$(document).ready(function() {
+		$(".slider").click(function() {
+			$("th div").toggleClass("autoResizeQuarter");
+
+		});
+	});
+</script>
+
+<script>
+	$(document).ready(function() {
+		$(".slider").click(function() {
+			$("td ").toggleClass("ellipsise");
+
+		});
+	});
+</script>
+
+
+<script>
+	$(document).ready(function() {
+		$(".slider").click(function() {
+			$(".desc").toggleClass("ellip");
+			$(".custName").toggleClass("ellipName");
+
+		});
+	});
+</script>
+
+<script>
+	$(".btnTextChange").click(function() {
+
+		var lable = $(".btnTextChange").text().trim();
+
+		if (lable == "Resize Table") {
+			$(".btnTextChange").text("Normal Table");
+			$(".myText").hide();
+		} else {
+			$(".btnTextChange").text("Resize Table");
+			$(".myText").show();
+		}
+
+	});
+</script>
+<script>
+$(function ($) {
+	const SELECTOR = '.table-responsive';
+	const stickyBarTemplate = '<div class="sticky-scrollbar"><div></div></div>';
+	const stickyBarCSS = {
+	    display: 'none',
+	    overflowX: 'scroll',
+	    position: 'sticky',
+	    width: '100%',
+	    height: '3%',
+	    bottom: 0,
+	    'z-index': 999
+	};
+
+	renderBars();
+	$(window).on('load pageUpdate', renderBars);
+
+	function renderBars() {
+	    $(SELECTOR).each(function () {
+	        let $container = $(this);
+	        let $table = $container.find("table:first");
+	        let $bar = $container.find('.sticky-scrollbar');
+	        if (!$bar.length) {
+	            $bar = $(stickyBarTemplate).appendTo($container).css(stickyBarCSS);
+
+	            const resizeObserver = new ResizeObserver(entries => {
+	                updateBar()
+	            });
+	            resizeObserver.observe($container[0]);
+	            resizeObserver.observe($table[0]);
+
+	            updateBar();
+	            function updateBar() {
+	                $bar.children('div').height(1).width($table.width());
+	                $bar.width($container.width()).scrollLeft($container.scrollLeft());
+
+	                requestAnimationFrame(function () {
+	                    if ($table.width() > $container.width()) {
+	                        $bar.show();
+
+	                        $bar.scroll(function () {
+	                            $table
+	                                .css({"transform": "translateX(-" + $bar.scrollLeft() + "px)"});
+	                            $container
+	                                .find('.left-header, .top-left-header')
+	                                .css({"transform": "translateX(" + $bar.scrollLeft() + "px)"});
+	                        });
+
+	                        $bar.scrollLeft($container.scrollLeft());
+	                    } else {
+	                        $bar.hide();
+	                    }
+	                });
+	            }
+	        }
+	    });
+	}
+	});
+</script>
+<script>
+	$(document).ready(function() {
+		$(this).scrollTop(0);
+	});
+</script>

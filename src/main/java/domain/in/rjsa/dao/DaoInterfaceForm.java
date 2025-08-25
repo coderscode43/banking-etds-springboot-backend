@@ -15,11 +15,11 @@ public interface DaoInterfaceForm<K, E> {
 	public void delete(K key);
 	public void deleteByKey(K key);
 	public void update(E entity);
-	public List<E> search(HashMap map);
-	public E uniqueSearch(HashMap map);
+	public List<E> search(HashMap<String, Object> map);
+	E uniqueSearch(HashMap<String, Object> entity);
 	public List<String> ajax(String name, String term);
 	public Long getMaxValue(String name,Map<String, Object> propertyNameValues);
 	public void changeValue(Map<String, Object> propertyNameValuesToUpdate,String operator, Map<String, Object> propertyNameValues);
 	public List<E> searchIn(HashSet set,String property);
-	public List<E> searchExcel(HashMap map);
+	public List<E> searchExcel(HashMap<String, Object> map);
 }

@@ -40,7 +40,7 @@
 
 .table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
 	{
-	background-color: whitesmoke;
+	background-color: white;
 }
 
 @media ( min-width : 768px) {
@@ -113,133 +113,215 @@ th {
 	color: #fff;
 	text-decoration: none;
 }
-
-/*Refresh Button*/
-.tooltip-top {
-	bottom: 84%;
-	margin-left: -9%;
-}
-/*Search Button*/
-.tooltip-top1 {
-	bottom: 125%;
-	margin-left: -30%;
-}
-/*Advanced Search Button*/
-.tooltip-top2 {
-	bottom: 125%;
-	margin-left: -57%;
-}
-/*Table column Button*/
-.tooltip-top3 {
-	bottom: 125%;
-	margin-left: -49%;
-}
-/*Export to Excel Button*/
-.tooltip-top4 {
-	bottom: 120%;
-	margin-left: -182%;
-}
 </style>
+
+
 </head>
 <body>
-	<div id="page-wrapper" ng-controller="CommonController as cCctr">
-		<div class="container-fluid">
-			<!-- <button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
-				style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%); float: right;"
-				onClick="refreshPageButton()">
-				<i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh<span
-					class="tooltiptext tooltip-top">Refresh or Press F5</span>
-			</button> -->
-			<div class="col-md-12 "
-				style="padding-left: 0px; font-size: 12pxp; margin-top:1%">
-				<div class="heading">
-					<strong>Form 15H</strong>
-				</div>
+	<div
+		ng-init="cCctr.helpFolder = 'homeSChelpPage' ;  cCctr.helpPage = 'form15HHelp' ">
+		<div id="page-wrapper">
+			<div class="container-fluid">
 
-
-
-			</div>
-
-
-			<br>
-			<button class="btn btn-primary hidden visible-xs" type="button"
-				data-toggle="collapse" data-target="#collapseExample2"
-				aria-expanded="false" aria-controls="collapseExample">Search</button>
-			<div class="collapse dont-collapse-sm" id="collapseExample2">
-				<div class="row">
-					<div class="form-group">
-
-						<div class="col-md-3">
-							<h6>
-								<b>Account No</b>
-								<h6>
+				<div class="collapse dont-collapse-sm" id="collapseExample2">
+					<div class="row">
+						<div class="heading">
+							<strong>Form 15H</strong>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group">
+							<div class="col-md-12" style="padding-left: 0px;">
+								<div class="col-md-3">
+									<h6>
+										<b>Account No</b>
+									</h6>
 									<input type="text" ng-model="cCctr.search.accNo"
 										class="form-control" placeholder="Account No"
 										style="width: 100%">
-						</div>
-						<div class="col-md-3">
-							<h6>
-								<b>PAN</b>
-								<h6>
+								</div>
+								<div class="col-md-3">
+									<h6>
+										<b>PAN</b>
+									</h6>
 									<input type="text" ng-model="cCctr.search.panoftheAssessee"
 										class="form-control" placeholder="PAN" style="width: 100%">
-						</div>
-						
-						<div class="col-md-3">
-							<h6>
-								<b>Customer / Vendor No</b>
-								<h6>
+								</div>
+
+								<div class="col-md-3">
+									<h6>
+										<b>Customer / Vendor No</b>
+									</h6>
 									<input type="text" ng-model="cCctr.search.custVendId"
 										class="form-control" placeholder="Customer / Vendor No"
 										style="width: 100%">
+								</div>
+								<div class="col-md-3 Btns">
+
+
+									<button
+										ng-click="cCctr.searchEntities(true,'form15H','form15H')"
+										class="btn btn-success  tool" onclick="scrollWin()">
+										<div class=button-main-box>
+											<i class="fa fa-search border-0 p-0"
+												style="color: inherit; display: block; background-color: transparent; font-size: 23px;"></i>
+											<div class="button-tooltip-box">
+												<span class="tooltiptext Search">Search Button</span>
+											</div>
+										</div>
+									</button>
+
+									<button class="btn btn-primary  collapsed tool"
+										style="background-color: #FFA500; border-color: #FFA500;"
+										data-toggle="collapse" data-target="#collapseExample4"
+										aria-expanded="false" data-parent="#collapseExample4"
+										aria-controls="collapseExample">
+										<div class=button-main-box>
+											<i class="fa fa-filter border-0 p-0"
+												style="color: #fff; display: block; background-color: transparent; font-size: 23px;"></i>
+											<div class="button-tooltip-box">
+												<span class="tooltiptext Search">Advance Search
+													Button</span>
+											</div>
+										</div>
+									</button>
+
+									<!--		<button class="btn btn-primary mobile tool"
+									data-toggle="collapse" data-target="#checkList"
+									aria-expanded="false" aria-controls="collapseExample"
+									data-target="#bd-example-modal-xl">
+									<div class=button-main-box>
+									<i class="fa fa-table border-0 p-0"
+										style="color: inherit;display:block; background-color: transparent; font-size: 23px;"></i>
+									<div class=button-main-box>
+									<span class="tooltiptext Search">Table Column Button</span>
+									</div>
+									</div>
+								</button>-->
+
+									<div data-control="checkbox-dropdown" class="dropdown"
+										id="checkList">
+										<button class="btn btn-primary dropdown-label tool">Select</button>
+										<div class="dropdown-list">
+
+											<a data-toggle="check-all" class="dropdown-option"> Check
+												All </a> <label class="dropdown-option"><input
+												type="checkbox" name="amountofIncome">Amount Of
+												Income</label> <label class="dropdown-option"><input
+												type="checkbox" name="panoftheAssessee">pan of the
+												Assessee</label> <label class="dropdown-option"><input
+												type="checkbox" name="aadhaarNumberoftheAssessee">aadhaar
+												Number of the Assessee</label> <label class="dropdown-option"><input
+												type="checkbox" name="dateofBirth">Date of Birth</label> <label
+												class="dropdown-option"><input type="checkbox"
+												name="previousYearforwhichdeclarationisbeingmade">Previous
+												Year for which declaration is being made</label> <label
+												class="dropdown-option"><input type="checkbox"
+												name="country">country</label> <label
+												class="dropdown-option"><input type="checkbox"
+												name="flatDoorBuilding">flatDoorBuilding</label> <label
+												class="dropdown-option"><input type="checkbox"
+												name="roadStreetBlockSector">roadStreetBlockSector</label> <label
+												class="dropdown-option"><input type="checkbox"
+												name="pincode">pincode</label> <label
+												class="dropdown-option"><input type="checkbox"
+												name="postOffice">postOffice</label> <label
+												class="dropdown-option"><input type="checkbox"
+												name="areaLocality">areaLocality</label> <label
+												class="dropdown-option"><input type="checkbox"
+												name="district">district</label> <label
+												class="dropdown-option"><input type="checkbox"
+												name="state">state</label> <label class="dropdown-option"><input
+												type="checkbox" name="email">email</label> <label
+												class="dropdown-option"><input type="checkbox"
+												name="STDCode">STDCode</label> <label
+												class="dropdown-option"><input type="checkbox"
+												name="telephoneNo">telephoneNo</label> <label
+												class="dropdown-option"><input type="checkbox"
+												name="mobileNo">mobileNo</label> <label
+												class="dropdown-option"><input type="checkbox"
+												name="whetherAssessedtotax">whether Assessed to tax</label>
+											<label class="dropdown-option"><input type="checkbox"
+												name="latestassessmentyearforwhichassessed">latest
+												assessment year for which assessed</label> <label
+												class="dropdown-option"><input type="checkbox"
+												name="estimatedtotalincomeofthePY">Estimated total
+												income of the PY</label> <label class="dropdown-option"><input
+												type="checkbox"
+												name="estimatedIncomeforwhichthisdeclarationismade">Estimated
+												Income for whichth is declaration is made</label> <label
+												class="dropdown-option"><input type="checkbox"
+												name="totalNoofFormNo15Hfiled">Total No of FormNo15H
+												filed</label> <label class="dropdown-option"><input
+												type="checkbox"
+												name="aggregateAmountofincomeforwhichFormNo15Hfiled">Aggregate
+												Amount of income for which FormNo15H filed</label> <label
+												class="dropdown-option"><input type="checkbox"
+												name="dateonwhichDeclarationisreceived">Date on
+												which Declaration is received</label> <label class="dropdown-option"><input
+												type="checkbox" name="amountofincomepaid">Amount of
+												income paid</label>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<label class="switch tool sliderButton"> <input
+											type="checkbox"> <span class="slider round "></span>
+											<div class="button-tooltip-box">
+												<span class="tooltiptext Search"> Resize Table</span>
+											</div>
+										</label>
+									</div>
+
+								</div>
+							</div>
 						</div>
 
+						<div class=" collapse  panel-collapse" id="collapseExample4"
+							style="margin-left: -15px;">
 
-					</div>
-				</div>
+							<div class="row">
 
-				<div class=" collapse  panel-collapse" id="collapseExample4">
 
-					<div class="row">
-						
-
-						<!-- <div class="col-md-3">
+								<!-- <div class="col-md-3">
 							<h6>
 								<b> Error</b>
 								<h6>
 									<input type="text" ng-model="cCctr.search.error"
 										class="form-control" placeholder="Error" style="width: 100%">
 						</div> -->
-						<div class="col-md-3">
-							<h6>
-								<b>Name Of Assessee Declarant</b>
-								<h6>
-									<input type="text"
-										ng-model="cCctr.search.nameofAssesseeDeclarant"
-										class="form-control" placeholder="Name" style="width: 100%">
-						</div>
+								<div class="col-md-12" style="padding-left: 15px;">
+									<div class="col-md-3">
+										<h6>
+											<b>Name Of Assessee Declarant</b>
+										</h6>
+										<input type="text"
+											ng-model="cCctr.search.nameofAssesseeDeclarant"
+											class="form-control" placeholder="Name" style="width: 100%">
+									</div>
 
 
-						<div class="col-md-3">
-							<h6>
-								<b>Warning</b>
-								<h6>
-									<input type="text" ng-model="cCctr.search.warning"
-										class="form-control" placeholder="Warning" style="width: 100%">
-						</div>
-						
-						<div class="col-md-3">
-								<button class="btn btn-grad astro-MG2CNCJP tool" type="button"
-									style="margin-top: 13%; background-image: linear-gradient(to right, #517fa4 0%, #243949 51%, #517fa4 100%);"
-									ng-click="cCctr.generateExcel('apiform15H/generateExcel/','H15')">
-									Export to Excel<span class="tooltiptext tooltip-top4">Export
-										to Excel</span>
-								</button>
+									<div class="col-md-3">
+										<h6>
+											<b>Warning</b>
+										</h6>
+										<input type="text" ng-model="cCctr.search.warning"
+											class="form-control" placeholder="Warning"
+											style="width: 100%">
+									</div>
+
+									<div class="col-md-3 ExcelBtn">
+										<button class="btn btn-primary waves-effect waves-light tool"
+											type="button" style="float: inherit;"
+											ng-click="cCctr.generateExcel('apiform15H/generateExcel/','H15')">
+											Export to Excel<span class="tooltiptext ExportExcel">Export
+												to Excel</span>
+										</button>
+									</div>
+								</div>
 							</div>
-					</div>
-					
-				</div>
-				<!-- <div class="row text-right" id="hide">
+
+						</div>
+						<!-- <div class="row text-right" id="hide">
 					<div class="col-md-3"
 						style="margin-left: 64%; margin-top: -44px; display: ruby">
 						<button ng-click="cCctr.searchEntities(true,'form15H','form15H')"
@@ -272,423 +354,538 @@ th {
 						<div class="text-right"></div>
 					</div>
 				</div> -->
-				
-				
-				
-				
-				<div style="right: 3%; position: absolute; gap: 20px;margin-top:-3%;display:flex"
-		class="">
-
-
-		<button 	ng-click="cCctr.searchEntities(true,'form15H','form15H')"
-			class="btn btn-success mobile tool" onclick="scrollWin()">
-			<i class="fa fa-search border-0 p-0"
-				style="color: inherit; background-color: transparent;font-size: large;"></i>
-		<span class="tooltiptext tooltip-top">Search Button</span> </button>
-
-		<button class="btn btn-primary mobile collapsed tool"
-			style="background-color: #FFA500; border-color: #FFA500;"
-			data-toggle="collapse" data-target="#collapseExample4"
-			aria-expanded="false" data-parent="#navaccordion"
-			aria-controls="collapseExample">
-			<i class="fa fa-filter border-0 p-0"
-				style="color: #fff; background-color: transparent;font-size: large;"></i>
-		<span class="tooltiptext tooltip-top1">Advance Search Button</span></button>
-
-		<button class="btn btn-primary mobile tool" data-toggle="collapse" data-target="#checkList"
-						aria-expanded="false" aria-controls="collapseExample"
-			data-target="#bd-example-modal-xl">
-			<i class="fa fa-table border-0 p-0"
-				style="color: inherit; background-color: transparent;font-size: large;"></i>
-		<span class="tooltiptext tooltip-top2">Table Column Button</span></button> 
-		
-	
-
-	</div>
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-			</div>
-		</div>
 
 
 
-		<table style="font-size: 12px; padding: 5px; margin: 5px;"
-			class="collapse panel-collapse table table-bordered table-hover  table-striped"
-			id="checkList">
 
 
-			<tr>
-				<td><button class="showAll" for='selectAll'>Show All</button></td>
-				<td><button class="removeAll" for='selectAll'>Remove
-						All</button></td>
-				<td><input type="checkbox" name="amountofIncome">Amount
-					Of Income</td>
-
-				<td><input type="checkbox" name="panoftheAssessee">pan
-					of the Assessee</td>
-				<td><input type="checkbox" name="aadhaarNumberoftheAssessee">aadhaar
-					Number of the Assessee</td>
-			</tr>
-
-			<tr>
-				<td><input type="checkbox" name="dateofBirth">Date of
-					Birth</td>
-				<td><input type="checkbox"
-					name="previousYearforwhichdeclarationisbeingmade">Previous
-					Year for which declaration is being made</td>
-				<td><input type="checkbox" name="country">country</td>
-				<td><input type="checkbox" name="flatDoorBuilding">flatDoorBuilding</td>
-				<td><input type="checkbox" name="roadStreetBlockSector">roadStreetBlockSector</td>
-				<td><input type="checkbox" name="pincode">pincode</td>
-			</tr>
-
-			<tr>
-				<td><input type="checkbox" name="postOffice">postOffice</td>
-				<td><input type="checkbox" name="areaLocality">areaLocality</td>
-				<td><input type="checkbox" name="district">district</td>
-				<td><input type="checkbox" name="state">state</td>
-				<td><input type="checkbox" name="email">email</td>
-				<td><input type="checkbox" name="STDCode">STDCode</td>
-			</tr>
-			<tr>
-				<td><input type="checkbox" name="telephoneNo">telephoneNo</td>
-				<td><input type="checkbox" name="mobileNo">mobileNo</td>
-				<td><input type="checkbox" name="whetherAssessedtotax">whether
-					Assessed to tax</td>
-				<td><input type="checkbox"
-					name="latestassessmentyearforwhichassessed">latest
-					assessment year for which assessed</td>
-				<td><input type="checkbox" name="estimatedtotalincomeofthePY">Estimated
-					total income of the PY</td>
-				<td><input type="checkbox"
-					name="estimatedIncomeforwhichthisdeclarationismade">Estimated
-					Income for whichth is declaration is made</td>
-			</tr>
-			<tr>
-				<td><input type="checkbox" name="totalNoofFormNo15Hfiled">Total
-					No of FormNo15H filed</td>
-				<td><input type="checkbox"
-					name="aggregateAmountofincomeforwhichFormNo15Hfiled">Aggregate
-					Amount of income for which FormNo15H filed</td>
-				<td><input type="checkbox"
-					name="dateonwhichDeclarationisreceived">Date on which
-					Declaration is received</td>
-				<td><input type="checkbox" name="amountofincomepaid">Amount
-					of income paid</td>
-
-			</tr>
-
-		</table>
-
-		<div class="">
-			<div style="overflow-x: inherit; width: 100%">
-
-				<table class="tables table-bordered ">
 
 
-					<thead>
-						<tr style="height: 40px; background-color: #81b7db">
-							<th>Sr. No.</th>
-							<th>Quarter</th>
-							<th>Month</th>
-							<th>Customer /Vendor Id</th>
-							<th><div class="autoResizeQuarter">Account No</div></th>
-							<th>Branch Code</th>
-							<th>Tan No</th>
-							<th><div class="autoResizeQuarter">Unique Reference No</div></th>
-							<th><div class="autoResizeQuarter">Unique
-									Identification No</div></th>
-							<th><div class="autoResizeQuarter">Identification
-									number of relevant investment/account, etc.</div></th>
-							<th><div class="autoResizeQuarter">Nature of income</div></th>
-							<th><div class="autoResizeQuarter">Section under which
-									tax is deductible</div></th>
-							<th class="hideClass amountofIncome"><div
-									class="autoResizeQuarter">Amount of income</div></th>
-							<th class=" nameofAssesseeDeclarant"><div
-									class="autoResizeQuarter">Name of Assessee (Declarant)</div></th>
-							<th class="hideClass panoftheAssessee"><div
-									class="autoResizeQuarter">PAN of the Assessee</div></th>
-							<th class="hideClass aadhaarNumberoftheAssessee"><div
-									class="autoResizeQuarter">Aadhaar Number of the Assessee</div></th>
-							<th class="hideClass dateofBirth"><div
-									class="autoResizeQuarter">Date of Birth</div></th>
-							<th class="hideClass previousYearforwhichdeclarationisbeingmade"><div
-									class="autoResizeQuarter">Previous year (P.Y.) (for which
-									declaration is being made)</div></th>
-							<th class="hideClass country"><div class="autoResizeQuarter">Country</div></th>
-							<th class="hideClass flatDoorBuilding"><div
-									class="autoResizeQuarter">Flat / Door / Building</div></th>
-							<th class="hideClass roadStreetBlockSector"><div
-									class="autoResizeQuarter">Road / Street / Block / Sector</div></th>
-							<th class="hideClass pincode"><div class="autoResizeQuarter">Pincode</div></th>
-							<th class="hideClass postOffice"><div
-									class="autoResizeQuarter">Post Office</div></th>
-							<th class="hideClass areaLocality"><div
-									class="autoResizeQuarter">Area/ Locality</div></th>
-							<th class="hideClass district"><div
-									class="autoResizeQuarter ">District</div></th>
-							<th class="hideClass state"><div class="autoResizeQuarter ">State</div></th>
-							<th class="hideClass email"><div class="autoResizeQuarter ">Email</div></th>
-							<th class="hideClass STDCode"><div
-									class="autoResizeQuarter ">STD Code</div></th>
-							<th class="hideClass telephoneNo"><div
-									class="autoResizeQuarter ">Telephone No.</div></th>
-							<th class="hideClass mobileNo"><div
-									class="autoResizeQuarter ">Mobile No.</div></th>
-							<th class="hideClass whetherAssessedtotax"><div
-									class="autoResizeQuarter">Whether assessed to tax</div></th>
-							<th class="hideClass latestassessmentyearforwhichassessed"><div
-									class="autoResizeQuarter">Latest assessment year for
-									which assessed</div></th>
-							<th class="hideClass estimatedtotalincomeofthePY">
-								<div class="autoResizeQuarter">Estimated total income of
-									the P.Y. (including income for which this declaration is made)</div>
-							</th>
-							<th
-								class="hideClass estimatedIncomeforwhichthisdeclarationismade"><div
-									class="autoResizeQuarter">Estimated income for which this
-									declaration is made</div></th>
-							<th class="hideClass totalNoofFormNo15Hfiled"><div
-									class="autoResizeQuarter">Total No. of Form No. 15H filed</div></th>
-							<th
-								class="hideClass aggregateAmountofincomeforwhichFormNo15Hfiled"><div
-									class="autoResizeQuarter">Aggregate amount of income for
-									which Form No.15H filed</div></th>
-							<th class="hideClass dateonwhichDeclarationisreceived"><div
-									class="autoResizeQuarter">Date on which Declaration is
-									received</div></th>
-							<th class="hideClass amountofincomepaid"><div
-									class="autoResizeQuarter">Amount of income paid</div></th>
-							<th><div class="autoResizeQuarter">Date on which the
-									income has been paid/credited</div></th>
-							<th>Financial Year</th>
-							<th><div class="autoResizeQuarter">Warning</div></th>
-							<th><div class="autoResizeQuarter">Error</div></th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr style="color: red"
-							ng-show="cCctr.getEntityListData().length <= 0">
-							<td colspan="20" style="text-align: center;"><b><h3
-										style="text-align: center; text-align-last: 5; margin-right: 10%;">No
-										data found!!</h3></b></td>
-							<td colspan="25" style="text-align: center;"><b><h3
-										style="text-align: center; text-align-last: 5; margin-right: 10%;">
-									</h3></b></td>
-						</tr>
-						<tr
-							ng-repeat="a in ( filteredList =( cCctr.getEntityListData() ) )">
-							<td style="width: 0.5%">{{$index+1}}</td>
-							<td style="width: 0.5%">{{a.quarter}}</td>
-							<td style="width: 1%">{{a.month}}</td>
-							<td style="width: 1%">{{a.custVendId}}</td>
-							<td style="width: 1%">{{a.accNo}}</td>
-							<td style="width: 1%">{{a.branchCode}}</td>
-							<td style="width: 1%">{{a.tan}}</td>
-							<td style="width: 1%">{{a.uniqueRefNo}}</td>
-							<td class=" ellipsis" data-toggle="tooltip"
-								data-placement="bottom" title="{{a.uniqueIdentificationNo}}">{{a.uniqueIdentificationNo}}</td>
-							<td style="width: 1%">{{a.identificationNumberofRelevantInvestmentAccount}}</td>
-							<td class=" ellipsis" data-toggle="tooltip"
-								data-placement="bottom" title="{{a.natureofIncome}}">{{a.natureofIncome}}</td>
-							<td style="width: 1%">{{a.sectionUnderWhichTaxisDeductible}}</td>
-							<td class="hideClass amountofIncome">{{a.amountofIncome}}</td>
-							<td class=" nameofAssesseeDeclarant">{{a.nameofAssesseeDeclarant}}</td>
-							<td class="hideClass panoftheAssessee">{{a.panoftheAssessee}}</td>
-							<td class="hideClass aadhaarNumberoftheAssessee">{{a.aadhaarNumberoftheAssessee}}</td>
-							<td class="hideClass dateofBirth">{{a.dateofBirth |
-								date:'dd-MM-yyyy'}}</td>
-							<td class="hideClass previousYearforwhichdeclarationisbeingmade">{{a.previousYearforwhichdeclarationisbeingmade}}</td>
-							<td class="hideClass country">{{a.country}}</td>
-							<td class="hideClass flatDoorBuilding">{{a.flatDoorBuilding}}</td>
-							<td class="hideClass roadStreetBlockSector">{{a.roadStreetBlockSector}}</td>
-							<td class="hideClass pincode">{{a.pincode}}</td>
-							<td class="hideClass postOffice">{{a.postOffice}}</td>
-							<td class="hideClass areaLocality">{{a.areaLocality}}</td>
-							<td class="hideClass  district">{{a.district}}</td>
-							<td class="hideClass state">{{a.state}}</td>
-							<td class="hideClass email">{{a.email}}</td>
-							<td class="hideClass STDCode">{{a.STDCode}}</td>
-							<td class="hideClass telephoneNo">{{a.telephoneNo}}</td>
-							<td class="hideClass mobileNo">{{a.mobileNo}}</td>
-							<td class="hideClass whetherAssessedtotax">{{a.whetherAssessedtotax}}</td>
-							<td class="hideClass latestassessmentyearforwhichassessed">{{a.latestassessmentyearforwhichassessed}}</td>
-							<td class="hideClass estimatedtotalincomeofthePY">{{a.estimatedtotalincomeofthePY}}</td>
-							<td
-								class="hideClass estimatedIncomeforwhichthisdeclarationismade">{{a.estimatedIncomeforwhichthisdeclarationismade}}</td>
-							<td class="hideClass totalNoofFormNo15Hfiled">{{a.totalNoofFormNo15Hfiled}}</td>
-							<td
-								class="hideClass aggregateAmountofincomeforwhichFormNo15Hfiled">{{a.aggregateAmountofincomeforwhichFormNo15Hfiled}}</td>
-							<td class="hideClass dateonwhichDeclarationisreceived ">{{a.dateonwhichDeclarationisreceived
-								| date:'dd-MM-yyyy'}}</td>
-							<td class="hideClass amountofincomepaid">{{a.amountofincomepaid}}</td>
-							<td>{{a.dateonwhichtheincomehasbeenpaidcredited |
-								date:'dd-MM-yyyy'}}</td>
-							<td>{{a.fy}}</td>
-							<td>{{a.warning}}</td>
-							<td>{{a.error}}</td>
-							<!-- <td><a
+						<div class="row">
+							<div class="col-xs-12">
+								<div class="col-md-4" style="margin-top: 5px"></div>
+								<div class="text-right" style="width: 100%"></div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="table-responsive">
+								<table class="table table-bordered table-hover table-striped  "
+									style="overflow-x: inherit; width: 100%; margin-top: 1.5%; font-size: 12px;">
+
+
+									<thead>
+										<tr
+											style="height: 40px; background-color: #7482f45e; cursor: pointer">
+											<th>Sr. No.</th>
+											<th>Quarter</th>
+											<th>Month</th>
+											<th>Customer/Vendor Id</th>
+											<th><div class="autoResizeQuarter">Account No</div></th>
+											<th>Branch Code</th>
+											<th>Tan No</th>
+											<th><div class="autoResizeQuarter">Unique
+													Reference No</div></th>
+											<th><div class="autoResizeQuarter">Unique
+													Identification No</div></th>
+											<th><div class="autoResizeQuarter">Identification
+													number of relevant investment/account, etc.</div></th>
+											<th><div class="autoResizeQuarter">Nature of
+													income</div></th>
+											<th><div class="autoResizeQuarter">Section under
+													which tax is deductible</div></th>
+											<th class="hideClass amountofIncome"><div
+													class="autoResizeQuarter">Amount of income</div></th>
+											<th class=" nameofAssesseeDeclarant"><div
+													class="autoResizeQuarter">Name of Assessee
+													(Declarant)</div></th>
+											<th class="hideClass panoftheAssessee"><div
+													class="autoResizeQuarter">PAN of the Assessee</div></th>
+											<th class="hideClass aadhaarNumberoftheAssessee"><div
+													class="autoResizeQuarter">Aadhaar Number of the
+													Assessee</div></th>
+											<th class="hideClass dateofBirth"><div
+													class="autoResizeQuarter">Date of Birth</div></th>
+											<th
+												class="hideClass previousYearforwhichdeclarationisbeingmade"><div
+													class="autoResizeQuarter">Previous year (P.Y.) (for
+													which declaration is being made)</div></th>
+											<th class="hideClass country"><div
+													class="autoResizeQuarter">Country</div></th>
+											<th class="hideClass flatDoorBuilding"><div
+													class="autoResizeQuarter">Flat / Door / Building</div></th>
+											<th class="hideClass roadStreetBlockSector"><div
+													class="autoResizeQuarter">Road / Street / Block /
+													Sector</div></th>
+											<th class="hideClass pincode"><div
+													class="autoResizeQuarter">Pincode</div></th>
+											<th class="hideClass postOffice"><div
+													class="autoResizeQuarter">Post Office</div></th>
+											<th class="hideClass areaLocality"><div
+													class="autoResizeQuarter">Area/ Locality</div></th>
+											<th class="hideClass district"><div
+													class="autoResizeQuarter ">District</div></th>
+											<th class="hideClass state"><div
+													class="autoResizeQuarter ">State</div></th>
+											<th class="hideClass email"><div
+													class="autoResizeQuarter ">Email</div></th>
+											<th class="hideClass STDCode"><div
+													class="autoResizeQuarter ">STD Code</div></th>
+											<th class="hideClass telephoneNo"><div
+													class="autoResizeQuarter ">Telephone No.</div></th>
+											<th class="hideClass mobileNo"><div
+													class="autoResizeQuarter ">Mobile No.</div></th>
+											<th class="hideClass whetherAssessedtotax"><div
+													class="autoResizeQuarter">Whether assessed to tax</div></th>
+											<th class="hideClass latestassessmentyearforwhichassessed"><div
+													class="autoResizeQuarter">Latest assessment year for
+													which assessed</div></th>
+											<th class="hideClass estimatedtotalincomeofthePY">
+												<div class="autoResizeQuarter">Estimated total income
+													of the P.Y. (including income for which this declaration is
+													made)</div>
+											</th>
+											<th
+												class="hideClass estimatedIncomeforwhichthisdeclarationismade"><div
+													class="autoResizeQuarter">Estimated income for which
+													this declaration is made</div></th>
+											<th class="hideClass totalNoofFormNo15Hfiled"><div
+													class="autoResizeQuarter">Total No. of Form No. 15H
+													filed</div></th>
+											<th
+												class="hideClass aggregateAmountofincomeforwhichFormNo15Hfiled"><div
+													class="autoResizeQuarter">Aggregate amount of income
+													for which Form No.15H filed</div></th>
+											<th class="hideClass dateonwhichDeclarationisreceived"><div
+													class="autoResizeQuarter">Date on which Declaration
+													is received</div></th>
+											<th class="hideClass amountofincomepaid"><div
+													class="autoResizeQuarter">Amount of income paid</div></th>
+											<th><div class="autoResizeQuarter">Date on which
+													the income has been paid/credited</div></th>
+											<th>Financial Year</th>
+											<th><div class="autoResizeQuarter">Warning</div></th>
+											<th><div class="autoResizeQuarter">Error</div></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr style="color: red"
+											ng-show="cCctr.getEntityListData().length <= 0">
+											<td colspan="16" style="text-align: center;"><b><h3
+														style="text-align: center; text-align-last: 5; margin-right: 10%;">No
+														data found!!</h3></b></td>
+											<td colspan="26" style="text-align: center;"><b><h3
+														style="text-align: center; text-align-last: 5; margin-right: 10%;">
+													</h3></b></td>
+										</tr>
+										<tr style="cursor: pointer"
+											ng-repeat="a in ( filteredList =( cCctr.getEntityListData() ) )">
+											<td style="width: 0.5%">{{$index+cCctr.srNo}}</td>
+											<td style="width: 0.5%">{{a.quarter}}</td>
+											<td style="width: 1%">{{a.month}}</td>
+											<td style="width: 1%">{{a.custVendId}}</td>
+											<td style="width: 1%">{{a.accNo}}</td>
+											<td style="width: 1%">{{a.branchCode}}</td>
+											<td style="width: 1%">{{a.tan}}</td>
+											<td style="width: 1%">{{a.uniqueRefNo}}</td>
+											<td class=" ellipsis" data-toggle="tooltip"
+												data-placement="bottom" title="{{a.uniqueIdentificationNo}}">{{a.uniqueIdentificationNo}}</td>
+											<td style="width: 1%">{{a.identificationNumberofRelevantInvestmentAccount}}</td>
+											<td class=" ellipsis" data-toggle="tooltip"
+												data-placement="bottom" title="{{a.natureofIncome}}">{{a.natureofIncome}}</td>
+											<td style="width: 1%">{{a.sectionUnderWhichTaxisDeductible}}</td>
+											<td class="hideClass amountofIncome">{{a.amountofIncome}}</td>
+											<td class="ellipsis nameofAssesseeDeclarant">{{a.nameofAssesseeDeclarant}}</td>
+											<td class="hideClass panoftheAssessee">{{a.panoftheAssessee}}</td>
+											<td class="hideClass aadhaarNumberoftheAssessee">{{a.aadhaarNumberoftheAssessee}}</td>
+											<td class="hideClass dateofBirth">{{a.dateofBirth |
+												date:'dd-MM-yyyy'}}</td>
+											<td
+												class="hideClass previousYearforwhichdeclarationisbeingmade">{{a.previousYearforwhichdeclarationisbeingmade}}</td>
+											<td class="hideClass country">{{a.country}}</td>
+											<td class="hideClass flatDoorBuilding">{{a.flatDoorBuilding}}</td>
+											<td class="hideClass roadStreetBlockSector">{{a.roadStreetBlockSector}}</td>
+											<td class="hideClass pincode">{{a.pincode}}</td>
+											<td class="hideClass ellipsis postOffice">{{a.postOffice}}</td>
+											<td class="hideClass ellipsis areaLocality">{{a.areaLocality}}</td>
+											<td class="hideClass ellipsis district">{{a.district}}</td>
+											<td class="hideClass ellipsis state">{{a.state}}</td>
+											<td class="hideClass  ellipsis email">{{a.email}}</td>
+											<td class="hideClass STDCode">{{a.stdcode}}</td>
+											<td class="hideClass telephoneNo">{{a.telephoneNo}}</td>
+											<td class="hideClass mobileNo">{{a.mobileNo}}</td>
+											<td class="hideClass whetherAssessedtotax">{{a.whetherAssessedtotax}}</td>
+											<td class="hideClass latestassessmentyearforwhichassessed">{{a.latestassessmentyearforwhichassessed}}</td>
+											<td class="hideClass estimatedtotalincomeofthePY">{{a.estimatedtotalincomeofthePY}}</td>
+											<td
+												class="hideClass estimatedIncomeforwhichthisdeclarationismade">{{a.estimatedIncomeforwhichthisdeclarationismade}}</td>
+											<td class="hideClass totalNoofFormNo15Hfiled">{{a.totalNoofFormNo15Hfiled}}</td>
+											<td
+												class="hideClass aggregateAmountofincomeforwhichFormNo15Hfiled">{{a.aggregateAmountofincomeforwhichFormNo15Hfiled}}</td>
+											<td class="hideClass dateonwhichDeclarationisreceived ">{{a.dateonwhichDeclarationisreceived
+												| date:'dd-MM-yyyy'}}</td>
+											<td class="hideClass amountofincomepaid">{{a.amountofincomepaid}}</td>
+											<td>{{a.dateonwhichtheincomehasbeenpaidcredited |
+												date:'dd-MM-yyyy'}}</td>
+											<td>{{a.fy}}</td>
+											<td class=" ellipsis">{{a.warning}}</td>
+											<td class=" ellipsis">{{a.error}}</td>
+											<!-- <td><a
 							ng-click="cCctr.gotoDetailFormPage('form15g',a.id,a.fy,a.branchCode,'detailform15H')"
 							style="color: blue" onclick="scrollWin()"><img src="static\img\edit.png"
 								width="22px" height="22px" alt="Details"
 								style="margin-top: 5px; margin-bottom: 5px;" /></a></td> -->
 
-							<!-- <td>{{a.total-a.amountPaid}}</td> -->
-						</tr>
-						<tr>
-							<th colspan="12" style="text-align: center; height: 40px"
-								ng-init="ttl=0"><b>TOTAL</b></th>
-							<td class="hideClass amountofIncome"><b>{{ filteredList
-									| sumByKey : 'amountofIncome' | number : fractionSize}}</b></td>
-							<td class=" nameofAssesseeDeclarant"></td>
-							<td class="hideClass panoftheAssessee"></td>
-							<td class="hideClass aadhaarNumberoftheAssessee"></td>
-							<td class="hideClass dateofBirth"></td>
-							<td class="hideClass previousYearforwhichdeclarationisbeingmade"></td>
-							<td class="hideClass country"></td>
-							<td class="hideClass flatDoorBuilding"></td>
-							<td class="hideClass roadStreetBlockSector"></td>
-							<td class="hideClass pincode"></td>
-							<td class="hideClass postOffice"></td>
-							<td class="hideClass areaLocality"></td>
-							<td class="hideClass district"></td>
-							<td class="hideClass state"></td>
-							<td class="hideClass email"></td>
-							<td class="hideClass STDCode"></td>
-							<td class="hideClass telephoneNo"></td>
-							<td class="hideClass mobileNo"></td>
-							<td class="hideClass whetherAssessedtotax"></td>
-							<td class="hideClass latestassessmentyearforwhichassessed"></td>
-							<td class="hideClass estimatedtotalincomeofthePY"><b>{{
-									filteredList | sumByKey : 'estimatedtotalincomeofthePY' |
-									number : fractionSize}}</b></td>
-							<td
-								class="hideClass estimatedIncomeforwhichthisdeclarationismade"><b>{{
-									filteredList | sumByKey :
-									'estimatedIncomeforwhichthisdeclarationismade' | number :
-									fractionSize}}</b></td>
-							<td class="hideClass totalNoofFormNo15Hfiled"></td>
-							<td
-								class="hideClass aggregateAmountofincomeforwhichFormNo15Hfiled"><b>{{
-									filteredList | sumByKey :
-									'aggregateAmountofincomeforwhichFormNo15Hfiled' | number :
-									fractionSize}}</b></td>
-							<td class="hideClass dateonwhichDeclarationisreceived"></td>
-							<td class="hideClass amountofincomepaid"><b>{{
-									filteredList | sumByKey : 'amountofincomepaid' | number :
-									fractionSize}}</b></td>
-							<th colspan="17" style="text-align: center; height: 40px"
-								ng-init="ttl=0"><b></b></th>
-						</tr>
+											<!-- <td>{{a.total-a.amountPaid}}</td> -->
+										</tr>
+										<tr>
+											<td colspan="12" style="text-align: center; height: 40px"
+												ng-init="ttl=0"><b>TOTAL</b></td>
+											<td class="hideClass amountofIncome"><b>{{
+													filteredList | sumByKey : 'amountofIncome' | number :
+													fractionSize}}</b></td>
+											<td class=" nameofAssesseeDeclarant"></td>
+											<td class="hideClass panoftheAssessee"></td>
+											<td class="hideClass aadhaarNumberoftheAssessee"></td>
+											<td class="hideClass dateofBirth"></td>
+											<td
+												class="hideClass previousYearforwhichdeclarationisbeingmade"></td>
+											<td class="hideClass country"></td>
+											<td class="hideClass flatDoorBuilding"></td>
+											<td class="hideClass roadStreetBlockSector"></td>
+											<td class="hideClass pincode"></td>
+											<td class="hideClass postOffice"></td>
+											<td class="hideClass areaLocality"></td>
+											<td class="hideClass district"></td>
+											<td class="hideClass state"></td>
+											<td class="hideClass email"></td>
+											<td class="hideClass STDCode"></td>
+											<td class="hideClass telephoneNo"></td>
+											<td class="hideClass mobileNo"></td>
+											<td class="hideClass whetherAssessedtotax"></td>
+											<td class="hideClass latestassessmentyearforwhichassessed"></td>
+											<td class="hideClass estimatedtotalincomeofthePY"><b>{{
+													filteredList | sumByKey : 'estimatedtotalincomeofthePY' |
+													number : fractionSize}}</b></td>
+											<td
+												class="hideClass estimatedIncomeforwhichthisdeclarationismade"><b>{{
+													filteredList | sumByKey :
+													'estimatedIncomeforwhichthisdeclarationismade' | number :
+													fractionSize}}</b></td>
+											<td class="hideClass totalNoofFormNo15Hfiled"></td>
+											<td
+												class="hideClass aggregateAmountofincomeforwhichFormNo15Hfiled"><b>{{
+													filteredList | sumByKey :
+													'aggregateAmountofincomeforwhichFormNo15Hfiled' | number :
+													fractionSize}}</b></td>
+											<td class="hideClass dateonwhichDeclarationisreceived"></td>
+											<td class="hideClass amountofincomepaid"><b>{{
+													filteredList | sumByKey : 'amountofincomepaid' | number :
+													fractionSize}}</b></td>
+											<td colspan="17" style="text-align: center; height: 40px"
+												ng-init="ttl=0"><b></b></td>
+										</tr>
 
-					</tbody>
-				</table>
+									</tbody>
+								</table>
+							</div>
+						</div>
 
-			</div>
-
-			<div class="row" ng-show="cCctr.getNoPage() > 0">
-				<div class="row" align="center">
-					<span ng-show="cCctr.currentPage != 1"> <a
-						ng-click="cCctr.getPage(true,'form15H',cCctr.currentPage-1)"><strong>Previous</strong></a>
-					</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.currentPage}}</strong>&nbsp;
-						of &nbsp;<strong>{{cCctr.getNoPage()}}</strong>
-						&nbsp;&nbsp;&nbsp;&nbsp; <span
-						ng-show="cCctr.currentPage != cCctr.getNoPage()"> <a
-							ng-click="cCctr.getPage(true,'form15H',cCctr.currentPage+1)"><strong>Next</strong></a>
-					</span>
-					</span>
+						<div class="row" ng-show="cCctr.getNoPage() > 0">
+							<div align="center">
+								<span ng-show="cCctr.PreviousNo != 1"> <a
+									ng-show="cCctr.PreviousNo >= 1 && cCctr.PreviousNo <= cCctr.getNoPage()"
+									ng-click="cCctr.getPage(true,'form15H',cCctr.PreviousNo-1);cCctr.DisplayNo(cCctr.currentPage)"><strong>Previous</strong></a>
+								</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.PreviousNo}}</strong>&nbsp;
+									of &nbsp;<strong>{{cCctr.getNoPage()}}</strong>
+									&nbsp;&nbsp;&nbsp;&nbsp; <span
+									ng-show="cCctr.PreviousNo != cCctr.getNoPage()"> <a
+										ng-show="cCctr.PreviousNo >= 1 && cCctr.PreviousNo <= cCctr.getNoPage()"
+										ng-click="cCctr.getPage(true,'form15H',cCctr.PreviousNo+1);cCctr.DisplayNo(cCctr.currentPage)"><strong>Next</strong></a>
+								</span>
+								</span>
+							</div>
+							<form role="form" name="gotoForm" ng-if="cCctr.getNoPage()!=1">
+								<div align="center" style="margin-top: 1%;">
+									<span>Go to</span> &nbsp;&nbsp;&nbsp; <input
+										style="width: 70px; text-align: center;" type="number"
+										name="pageNo" id="pageNo" ng-model="cCctr.currentPage"
+										oninput="javascript: if (this.value.length > this.max.length) this.value = this.value.slice(0, this.max.length);"
+										autocomplete="off" ng-min="1" min="1"
+										max="{{cCctr.getNoPage()}}" ng-max="cCctr.getNoPage()"
+										ng-required="true"> &nbsp;&nbsp;&nbsp;
+									<button
+										ng-show="cCctr.currentPage >= 1 && cCctr.currentPage <= cCctr.getNoPage()"
+										ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'form15H',cCctr.currentPage);cCctr.DisplayNo(cCctr.currentPage)"
+										class="btn btn-primary btn-sm">Go</button>
+								</div>
+								<div align="center">
+									<span style="color: red"
+										ng-show="gotoForm.submitted || gotoForm.pageNo.$dirty && gotoForm.pageNo.$invalid">
+										<span class="error" ng-show="gotoForm.pageNo.$error.min">Page
+											No. should not be less than 1.</span> <span class="error"
+										ng-show="gotoForm.pageNo.$error.max">Page No. should
+											not be greater than {{cCctr.getNoPage()}}.</span> <span
+										class="error" ng-show="gotoForm.pageNo.$error.required">Please
+											enter page number.</span>
+									</span>
+								</div>
+							</form>
+						</div>
+					</div>
 				</div>
-				<form role="form" name="gotoForm">
-					<div class="row" align="center">
-						<span>Go to</span> &nbsp;&nbsp;&nbsp; <input
-							style="width: 70px; text-align: center;" type="number"
-							name="pageNo" ng-model="cCctr.currentPage"
-							ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
-							ng-min="1" min="1" max="{{cCctr.getNoPage()}}"
-							ng-max="cCctr.getNoPage()" ng-required="true">
-						&nbsp;&nbsp;&nbsp;
-						<button style="height: 25px;"
-							ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'form15H',cCctr.currentPage)"
-							class="btn btn-primary">Go</button>
-					</div>
-					<div class="row" align="center">
-						<span style="color: red"
-							ng-show="gotoForm.submitted || gotoForm.pageNo.$dirty && gotoForm.pageNo.$invalid">
-							<span class="error" ng-show="gotoForm.pageNo.$error.min">Page
-								No. should not be less than 1.</span> <span class="error"
-							ng-show="gotoForm.pageNo.$error.max">Page No. should not
-								be greater than {{cCctr.getNoPage()}}.</span> <span class="error"
-							ng-show="gotoForm.pageNo.$error.required">Please enter
-								page number.</span>
-						</span>
-					</div>
-				</form>
 			</div>
 		</div>
+	</div>
 
 
+	<script>
+		$(document).ready(function() {
+			$('th').tooltip({
+				selector : '[data-toggle="tooltip"]'
+			});
+		});
+	</script>
 
-		<script>
-			$(document).ready(function() {
-				$('th').tooltip({
-					selector : '[data-toggle="tooltip"]'
+
+	<script>
+		$("input:checkbox:not(:checked)").each(function() {
+			var column = "table ." + $(this).attr("name");
+
+			$(column).hide();
+		});
+
+		$("input:checkbox").click(function() {
+			var column = "table ." + $(this).attr("name");
+			$(column).toggle();
+		});
+	</script>
+	<script>
+		$(".selectAll").click(function() {
+			$("input[type=checkbox]").prop("checked", $(this).prop("checked"));
+		});
+
+		$("input[type=checkbox]").click(function() {
+			if (!$(this).prop("checked")) {
+				$(".selectAll").prop("checked", false);
+			}
+		});
+	</script>
+
+	<script>
+		$(".removeAll").click(function() {
+			$(".hideClass").hide();
+		});
+	</script>
+	<script>
+		$(".showAll").click(function() {
+			$(".hideClass").show();
+		});
+	</script>
+	<script>
+		(function($) {
+			var CheckboxDropdown = function(el) {
+				var _this = this;
+				this.isOpen = false;
+				this.areAllChecked = false;
+				this.$el = $(el);
+				this.$label = this.$el.find('.dropdown-label');
+				this.$checkAll = this.$el.find('[data-toggle="check-all"]')
+						.first();
+				this.$inputs = this.$el.find('[type="checkbox"]');
+
+				this.onCheckBox();
+
+				this.$label.on('click', function(e) {
+					e.preventDefault();
+					_this.toggleOpen();
 				});
-			});
-		</script>
 
+				this.$checkAll.on('click', function(e) {
+					e.preventDefault();
+					_this.onCheckAll();
+				});
 
-		<script>
-			$("input:checkbox:not(:checked)").each(function() {
-				var column = "table ." + $(this).attr("name");
+				this.$inputs.on('change', function(e) {
+					_this.onCheckBox();
+				});
+			};
 
-				$(column).hide();
-			});
+			CheckboxDropdown.prototype.onCheckBox = function() {
+				this.updateStatus();
+			};
 
-			$("input:checkbox").click(function() {
-				var column = "table ." + $(this).attr("name");
-				$(column).toggle();
-			});
-		</script>
-		<script>
-			$(".selectAll").click(
-					function() {
-						$("input[type=checkbox]").prop("checked",
-								$(this).prop("checked"));
-					});
+			CheckboxDropdown.prototype.updateStatus = function() {
+				var checked = this.$el.find(':checked');
 
-			$("input[type=checkbox]").click(function() {
-				if (!$(this).prop("checked")) {
-					$(".selectAll").prop("checked", false);
+				this.areAllChecked = false;
+				this.$checkAll.html('Check All');
+
+				if (checked.length <= 0) {
+
+					this.$label
+							.html('<i class="fa fa-table filterButton" ></i> <div class="button-tooltip-box"> <span class="tooltiptext Search" style="margin: -10px;">filter  Column</span> </div>   ');
+
+				} else if (checked.length === this.$inputs.length) {
+					this.areAllChecked = true;
+					this.$checkAll.html('Uncheck All');
 				}
-			});
-		</script>
 
-		<script>
-			$(".removeAll").click(function() {
-				$(".hideClass").hide();
-			});
-		</script>
-		<script>
-			$(".showAll").click(function() {
-				$(".hideClass").show();
-			});
-		</script>
+			};
 
-		<script>
-			$(function() {
-				$("table th").resizable({
-					handles : "e",
-					minWidth : 40,
-				});
+			CheckboxDropdown.prototype.onCheckAll = function(checkAll) {
+				if (!this.areAllChecked || checkAll) {
+					this.areAllChecked = true;
+					this.$checkAll.html('Uncheck All');
+					this.$inputs.prop('checked', true);
+					$(".hideClass").show();
+				} else {
+					this.areAllChecked = false;
+					this.$checkAll.html('Check All');
+					this.$inputs.prop('checked', false);
+					$(".hideClass").hide();
+
+				}
+
+				this.updateStatus();
+			};
+
+			CheckboxDropdown.prototype.toggleOpen = function(forceOpen) {
+				var _this = this;
+
+				if (!this.isOpen || forceOpen) {
+					this.isOpen = true;
+					this.$el.addClass('on');
+					$(document).on('click', function(e) {
+						if (!$(e.target).closest('[data-control]').length) {
+							_this.toggleOpen();
+						}
+					});
+				} else {
+					this.isOpen = false;
+					this.$el.removeClass('on');
+					$(document).off('click');
+				}
+			};
+
+			var checkboxesDropdowns = document
+					.querySelectorAll('[data-control="checkbox-dropdown"]');
+			for (var i = 0, length = checkboxesDropdowns.length; i < length; i++) {
+				new CheckboxDropdown(checkboxesDropdowns[i]);
+			}
+		})(jQuery);
+	</script>
+
+
+
+
+	<script>
+		$(document).ready(function() {
+			$(".slider").click(function() {
+				$("th div").toggleClass("autoResizeQuarter");
+
 			});
-		</script>
+		});
+	</script>
+
+	<script>
+		$(document).ready(function() {
+			$(".slider").click(function() {
+				$("td ").toggleClass("ellipsise");
+
+			});
+		});
+	</script>
+
+
+	<script>
+		$(document).ready(function() {
+			$(".slider").click(function() {
+				$(".desc").toggleClass("ellip");
+				$(".custName").toggleClass("ellipName");
+
+			});
+		});
+	</script>
+
+	<script>
+		$(".btnTextChange").click(function() {
+
+			var lable = $(".btnTextChange").text().trim();
+
+			if (lable == "Resize Table") {
+				$(".btnTextChange").text("Normal Table");
+				$(".myText").hide();
+			} else {
+				$(".btnTextChange").text("Resize Table");
+				$(".myText").show();
+			}
+
+		});
+	</script>
+	<script>
+$(function ($) {
+	const SELECTOR = '.table-responsive';
+	const stickyBarTemplate = '<div class="sticky-scrollbar"><div></div></div>';
+	const stickyBarCSS = {
+	    display: 'none',
+	    overflowX: 'scroll',
+	    position: 'sticky',
+	    width: '100%',
+	    height: '3%',
+	    bottom: 0,
+	    'z-index': 999
+	};
+
+	renderBars();
+	$(window).on('load pageUpdate', renderBars);
+
+	function renderBars() {
+	    $(SELECTOR).each(function () {
+	        let $container = $(this);
+	        let $table = $container.find("table:first");
+	        let $bar = $container.find('.sticky-scrollbar');
+	        if (!$bar.length) {
+	            $bar = $(stickyBarTemplate).appendTo($container).css(stickyBarCSS);
+
+	            const resizeObserver = new ResizeObserver(entries => {
+	                updateBar()
+	            });
+	            resizeObserver.observe($container[0]);
+	            resizeObserver.observe($table[0]);
+
+	            updateBar();
+	            function updateBar() {
+	                $bar.children('div').height(1).width($table.width());
+	                $bar.width($container.width()).scrollLeft($container.scrollLeft());
+
+	                requestAnimationFrame(function () {
+	                    if ($table.width() > $container.width()) {
+	                        $bar.show();
+
+	                        $bar.scroll(function () {
+	                            $table
+	                                .css({"transform": "translateX(-" + $bar.scrollLeft() + "px)"});
+	                            $container
+	                                .find('.left-header, .top-left-header')
+	                                .css({"transform": "translateX(" + $bar.scrollLeft() + "px)"});
+	                        });
+
+	                        $bar.scrollLeft($container.scrollLeft());
+	                    } else {
+	                        $bar.hide();
+	                    }
+	                });
+	            }
+	        }
+	    });
+	}
+	});
+</script>
+	<script>
+	$(document).ready(function() {
+		$(this).scrollTop(0);
+	});
+</script>
+</body>
+</html>

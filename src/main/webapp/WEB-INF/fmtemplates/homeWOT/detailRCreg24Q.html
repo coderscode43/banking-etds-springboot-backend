@@ -82,7 +82,7 @@
 
 .table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
 	{
-	background-color: whitesmoke;
+	background-color: white;
 }
 
 @media ( min-width : 768px) {
@@ -396,7 +396,7 @@
 						</colgroup>
 						<tr>
 						<thead role="rowgroup">
-							<tr role="row" style="height: 40px; background-color: #81b7db">
+							<tr role="row" style="height: 40px; background-color: #7482f45e">
 								<th >Sr. No.</th>
 								<th >TDS</th>
 								<th >Surcharge</th>
@@ -424,7 +424,7 @@
 						<tbody>
 							<tr role="row"
 								ng-repeat="a in cCctr.entity.Regular24Q4ChallanList track by a.id">
-								<td  style=" padding: 5px">{{$index+1}}</td>
+								<td  style=" padding: 5px">{{$index+cCctr.srNo}}</td>
 								<td>{{a.tds}}</td>
 								<td>{{a.surcharge}}</td>
 								<td>{{a.educationCess}}</td>
@@ -474,7 +474,7 @@
 						</colgroup>
 						<tr>
 						<thead role="rowgroup">
-							<tr role="row" style="height: 40px; background-color: #81b7db">
+							<tr role="row" style="height: 40px; background-color: #7482f45e">
 								<th >Sr. No.</th>
 								<th >Challan Serial No</th>
 								<th >employee Ref No</th>
@@ -558,7 +558,7 @@
 						</colgroup>
 						<tr>
 						<thead role="rowgroup">
-							<tr role="row" style="height: 40px; background-color: #81b7db">
+							<tr role="row" style="height: 40px; background-color: #7482f45e">
 								<th >Sr. No.</th>
 								<th >Deductee PAN</th>
 								<th >Deductee PAN Ref No</th>
@@ -651,7 +651,7 @@
 						<tbody>
 							<tr role="row"
 								ng-repeat="a in cCctr.entity.Regular24Q4SalaryList track by a.id">
-								<td role="cell" class="one" style=" padding: 5px">{{$index+1}}</td>
+								<td role="cell" class="one" style=" padding: 5px">{{$index+cCctr.srNo}}</td>
 								<td>{{a.srNo}}</td>
 								<td>{{a.pan}}</td>
 								<td>{{a.panRefNo}}</td>

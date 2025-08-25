@@ -11,5 +11,5 @@ public interface BranchDao extends DaoInterfaceForm<Long,  Branch>{
 
 	public Long findSearchCount(LinkedHashMap<String, Object> map);
 
-	List<Branch> search(HashMap entity, int pageNo, int noOfResult);
+	List<Branch> search(LinkedHashMap<String, Object> entity, int pageNo, int noOfResult);
 }

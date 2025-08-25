@@ -3,17 +3,17 @@ package domain.in.rjsa.controller;
 import java.io.File;
 import java.io.OutputStream;
 import java.io.Serializable;
+import java.net.URLDecoder;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Pattern;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,9 +33,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 
+import domain.in.rjsa.exception.CustomException;
 import domain.in.rjsa.exception.FieldErrorDTO;
 import domain.in.rjsa.model.form.Ajax;
 import domain.in.rjsa.model.form.ListCount;
@@ -45,7 +44,6 @@ import domain.in.rjsa.service.CorrectionRequestService;
 import domain.in.rjsa.service.LogsService;
 import domain.in.rjsa.service.ServiceInterfaceForm;
 import domain.in.rjsa.service.UserDetailsService;
-import javassist.bytecode.stackmap.BasicBlock.Catch;
 
 public abstract class AbstractControllerForm<K extends Serializable, E extends Model, S extends ServiceInterfaceForm<K, E>>
 		extends AbstractController {
@@ -143,7 +141,9 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 			String searchParam;
 			if (null != arguments && !arguments.isEmpty()) {
-				searchParam = json + '/' + arguments;
+				String decodedString = URLDecoder.decode(arguments, "UTF-8");
+				decodedString = decodedString.replace(", \"", "\"");
+				searchParam = json + '/' + decodedString;
 			} else {
 				searchParam = json;
 			}
@@ -152,7 +152,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
 
 			// convert JSON string to Map
-			map = mapper.readValue(searchParam, new TypeReference<Map<String, String>>() {
+			map = mapper.readValue(searchParam, new TypeReference<LinkedHashMap<String, Object>>() {
 			});
 			if (map.containsKey("branchCode")) {
 				Long branchCode = Long.valueOf((String) map.get("branchCode"));
@@ -178,7 +178,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	}
 
-	public List<?> getSearch(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+	public List<?> getSearch(LinkedHashMap<String, Object> map, int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
 		return getService().search(map, pageNo, resultPerPage);
 	}
@@ -207,34 +207,49 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<?> createEntity(@RequestBody LinkedHashMap<String, Object> entity) {
-		// FieldErrorDTO ermsg=new FieldErrorDTO();
-		logger.info("Creating new Return instance");
-		adminValidation(entity);
-		create(entity);
-		addLogs("Add");
-		// ermsg.setMessage(" Saved Successfully");
-		return new ResponseEntity<Object>(HttpStatus.CREATED);
+		FieldErrorDTO ermsg = new FieldErrorDTO();
+		try {
+			logger.info("################# Creating new Return instance");
+			adminValidation(entity);
+			create(entity);
+			addLogs("Add");
+			// ermsg.setMessage(" Saved Successfully");
+			return new ResponseEntity<Object>(HttpStatus.CREATED);
+		} catch (CustomException cEx) {
+			logger.error("################# Error adding details: ", cEx);
+			ermsg.setMessage("Error");
+			ermsg.setEntityName(getEntity().getSimpleName());
+			ermsg.setExceptionMsg(cEx.getMessage());
+			return new ResponseEntity<Object>(ermsg, HttpStatus.BAD_REQUEST);
+		} catch (Exception e) {
+			logger.error("################# Error adding details: ", e);
+			return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
+		}
 	}
 
 	public void create(LinkedHashMap<String, Object> entity) {
-		Gson gson = new Gson();
-		// Login l = applicationCache.getLoginDetail(getPrincipal());
-
-		JsonElement jsonElement = gson.toJsonTree(entity);
-
-		getService().save(gson.fromJson(jsonElement, getEntity()));
-
+		try {
+			String json = mapper.writeValueAsString(entity);
+			getService().save(mapper.readValue(json, getEntity()));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void addLogs(String Action) {
-		Logs log = new Logs();
-		log.setAction(Action);
-		log.setIpaddrs(getIp());
-		String s = getEntity().getName().replace(getEntity().getPackage().getName() + ".", "");
-		log.setDate(new Date(System.currentTimeMillis()));
-		log.setUsername(getPrincipal());
-		log.setEntity(Action + " " + s);
-		lservice.save(log);
+		try {
+			Logs log = new Logs();
+			log.setAction(Action);
+			log.setIpaddrs(getIp());
+			String s = getEntity().getName().replace(getEntity().getPackage().getName() + ".", "");
+			log.setLogsDate(new Date(System.currentTimeMillis()));
+			log.setUsername(getPrincipal());
+			log.setEntity(Action + " " + s);
+			lservice.save(log);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 
 	}
 
@@ -287,11 +302,12 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 	}
 
 	public void update(LinkedHashMap<String, Object> entity) {
-
-		Gson gson = new Gson();
-		JsonElement jsonElement = gson.toJsonTree(entity);
-		getService().update(gson.fromJson(jsonElement, getEntity()));
-
+		try {
+			String json = mapper.writeValueAsString(entity);
+			getService().update(mapper.readValue(json, getEntity()));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void addLogsU(String Action) {
@@ -301,7 +317,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 		log.setIpaddrs(getIp());
 		String s = getEntity().getName().replace(getEntity().getPackage().getName() + ".", "");
 		log.setEntity(Action + " " + s);
-		log.setDate(new Date(System.currentTimeMillis()));
+		log.setLogsDate(new Date(System.currentTimeMillis()));
 		log.setUsername(getPrincipal());
 		lservice.save(log);
 	}
@@ -341,7 +357,9 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 			String searchParam;
 			if (null != arguments && !arguments.isEmpty()) {
-				searchParam = json + '/' + arguments;
+				String decodedString = URLDecoder.decode(arguments, "UTF-8");
+				decodedString = decodedString.replace(", \"", "\"");
+				searchParam = json + '/' + decodedString;
 			} else {
 				searchParam = json;
 			}
@@ -350,7 +368,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
 
 			// convert JSON string to Map
-			map = mapper.readValue(searchParam, new TypeReference<Map<String, String>>() {
+			map = mapper.readValue(searchParam, new TypeReference<LinkedHashMap<String, Object>>() {
 			});
 			if (map.containsKey("TAN")) {
 				String TAN = (map.get("TAN").toString().split(Pattern.quote("-"), -1))[0];

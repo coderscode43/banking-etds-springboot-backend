@@ -3,14 +3,17 @@ package domain.in.rjsa.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -18,11 +21,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import domain.in.rjsa.dao.StaticDataDao;
 import domain.in.rjsa.model.form.Branch;
+import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.model.form.StaticDataModel;
-import domain.in.rjsa.service.TicketService;
+import domain.in.rjsa.service.BranchService;
+import domain.in.rjsa.service.CorrectionRequestService;
 import domain.in.rjsa.util.StaticData;
 import domain.in.rjsa.web.ApplicationCache;
 
@@ -37,7 +43,12 @@ public class IndexController extends AbstractController {
 	@Autowired
 	private StaticDataDao dao;
 	@Autowired
-	private TicketService tcService;
+	private CorrectionRequestService crService;
+	@Autowired
+	private BranchService brService;
+	
+	@Value("${panel.access:}")
+	private String panelAccess;
 
 	@RequestMapping(value = "/logout")
 	public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
@@ -62,37 +73,39 @@ public class IndexController extends AbstractController {
 
 	@RequestMapping(value = "/home")
 	public String gethome(ModelMap model) {
+		setStaticData();
+		setModel(model);
 
 		String branchCodeS = getBranchCode();
-		boolean isAdmin = false;
-		Long branchCode = 0L;
-		if ("admin".equals(branchCodeS)) {
-			logger.info(branchCodeS);
-			isAdmin = true;
+
+		if ("branch16A".equals(branchCodeS)) {
+			addAttributes(model);
+			return "homeWOT";
 		} else {
-			branchCode = Long.valueOf(branchCodeS);
-			logger.info(branchCode.toString());
+			boolean isAdmin = false;
+			Long branchCode = 0L;
+			if ("admin".equals(branchCodeS)) {
+				logger.info(branchCodeS);
+				isAdmin = true;
+			} else {
+				branchCode = Long.valueOf(branchCodeS);
+				logger.info(branchCode.toString());
+			}
+			if (isAdmin) {
+				return "homeSC";
+			} else {
+				return "homeSCBranch";
+			}
 		}
-		setStaticData();
-		model.addAttribute("typeOfUser", getBranchCode());
-		model.addAttribute("financialYear", StaticData.financialYear);
-		model.addAttribute("Month", StaticData.Month);
-		model.addAttribute("Quarter", StaticData.Quarter);
-		model.addAttribute("ClientName", StaticData.ClientName);
-		model.addAttribute("ClientPAN", StaticData.ClientPAN);
-		model.addAttribute("Tan", StaticData.Tan);
-		model.addAttribute("Section", StaticData.Section);
-		model.addAttribute("Form", StaticData.Form);
-		model.addAttribute("status", StaticData.status);
-		model.addAttribute("typeOfCorrection", StaticData.typeOfCorrection);
-		model.addAttribute("State", StaticData.State);
-		// for Dashboard
-		model.addAttribute("statementStatus", applicationCache.getStatementStatus());
-		if (isAdmin) {
-			return "homeSC";
-		} else {
-			return "homeSCBranch";
-		}
+	}
+	
+	public void addAttributes(ModelMap model) {
+		Login login = applicationCache.getLoginDetail(getPrincipal());
+		Long branchCode = login.getBranchCode();
+		Branch branch = applicationCache.getBranch(branchCode);
+		model.addAttribute("branchName", branch.getBranchName());
+		model.addAttribute("branchCode", String.valueOf(Integer.parseInt(branchCode.toString())));
+		model.addAttribute("fy", "2024-25");
 	}
 
 	@RequestMapping(value = "/homePage")
@@ -100,32 +113,83 @@ public class IndexController extends AbstractController {
 		String branchCodeS = getBranchCode();
 //		String branchCodeS = "101";
 		model.addAttribute("typeOfUser", branchCodeS);
+		model.addAttribute("latestFy", StaticData.latestFy);
 // 		for Dashboard
 		model.addAttribute("statementStatus", applicationCache.getStatementStatus());
 		boolean isAdmin = false;
 		Long branchCode = 0L;
-		if ("admin".equals(branchCodeS)) {
+
+		if ("branch16A".equals(branchCodeS)) {
+			setStaticData();
+			setModel(model);
+			addAttributes(model);
+			return "homeWOT/downloadCertificate16A";
+		} else if ("admin".equals(branchCodeS)) {
 			logger.info(branchCodeS);
 			isAdmin = true;
 		} else {
 			branchCode = Long.valueOf(branchCodeS);
 			logger.info(branchCode.toString());
 		}
-		Map<String, Long> ticketDetails = tcService.getStatusDetails(branchCode, isAdmin);
-		if (ticketDetails.get("Open") != null) {
-			model.addAttribute("openTicket", ticketDetails.get("Open"));
+//		Map<String, Long> ticketDetails = tcService.getStatusDetails(branchCode, isAdmin);
+//		if (ticketDetails.get("Open") != null) {
+//			model.addAttribute("openTicket", ticketDetails.get("Open"));
+//		} else {
+//			model.addAttribute("openTicket", "0");
+//		}
+//		if (ticketDetails.get("Resolve") != null) {
+//			model.addAttribute("resolveTicket", ticketDetails.get("Resolve"));
+//		} else {
+//			model.addAttribute("resolveTicket", "0");
+//		}
+//		if (ticketDetails.get("Reject") != null) {
+//			model.addAttribute("rejectTicket", ticketDetails.get("Reject"));
+//		} else {
+//			model.addAttribute("rejectTicket", "0");
+//		}
+
+		Map<String, Long> correctionDetails = crService.getStatusDetails(branchCode, isAdmin);
+		Long totalCount = 0L;
+		if (correctionDetails.get("Pending Checker Approval") != null) {
+			model.addAttribute("pendingCheckerApproval", correctionDetails.get("Pending Checker Approval"));
+			totalCount += correctionDetails.get("Pending Checker Approval");
 		} else {
-			model.addAttribute("openTicket", "0");
+			model.addAttribute("pendingCheckerApproval", "0");
 		}
-		if (ticketDetails.get("Resolve") != null) {
-			model.addAttribute("resolveTicket", ticketDetails.get("Resolve"));
+		if (correctionDetails.get("Sent for Clarification") != null) {
+			model.addAttribute("sendForClarification", correctionDetails.get("Sent for Clarification"));
+			totalCount += correctionDetails.get("Sent for Clarification");
 		} else {
-			model.addAttribute("resolveTicket", "0");
+			model.addAttribute("sendForClarification", "0");
 		}
-		if (ticketDetails.get("Reject") != null) {
-			model.addAttribute("rejectTicket", ticketDetails.get("Reject"));
+		if (correctionDetails.get("Correction Checked") != null) {
+			model.addAttribute("correctionChecked", correctionDetails.get("Correction Checked"));
+			totalCount += correctionDetails.get("Correction Checked");
 		} else {
-			model.addAttribute("rejectTicket", "0");
+			model.addAttribute("correctionChecked", "0");
+		}
+		if (correctionDetails.get("Sent for Correction") != null) {
+			model.addAttribute("sendForCorrection", correctionDetails.get("Sent for Correction"));
+			totalCount += correctionDetails.get("Sent for Correction");
+		} else {
+			model.addAttribute("sendForCorrection", "0");
+		}
+		if (correctionDetails.get("Resolved") != null) {
+			model.addAttribute("resolveRequest", correctionDetails.get("Resolved"));
+			totalCount += correctionDetails.get("Resolved");
+		} else {
+			model.addAttribute("resolveRequest", "0");
+		}
+		if (correctionDetails.get("Rejected") != null) {
+			model.addAttribute("rejectRequest", correctionDetails.get("Rejected"));
+			totalCount += correctionDetails.get("Rejected");
+		} else {
+			model.addAttribute("rejectRequest", "0");
+		}
+		if (!correctionDetails.isEmpty()) {
+			model.addAttribute("totalCount", totalCount);
+		} else {
+			model.addAttribute("totalCount", "0");
 		}
 
 		if (isAdmin) {
@@ -142,17 +206,10 @@ public class IndexController extends AbstractController {
 	@RequestMapping(value = "/homeWOT/{branchCode}/{fy}")
 	public String gethomeWOT(@PathVariable String fy, @PathVariable Long branchCode, ModelMap model) {
 		setStaticData();
-		model.addAttribute("typeOfUser", getBranchCode());
-		model.addAttribute("financialYear", StaticData.financialYear);
-		model.addAttribute("branchCode", branchCode.toString());
-		model.addAttribute("Tan", StaticData.Tan);
-		model.addAttribute("Section", StaticData.Section);
-		model.addAttribute("Form", StaticData.Form);
-		model.addAttribute("status", StaticData.status);
-		model.addAttribute("typeOfCorrection", StaticData.typeOfCorrection);
-		model.addAttribute("State", StaticData.State);
-		// for Dashboard
-		model.addAttribute("statementStatus", applicationCache.getStatementStatus());
+		setModel(model);
+		Branch branch = applicationCache.getBranch(branchCode);
+		model.addAttribute("branchName", branch.getBranchName());
+		model.addAttribute("branchCode", String.valueOf(Integer.parseInt(branchCode.toString())));
 		return "homeWOT";
 	}
 
@@ -169,52 +226,27 @@ public class IndexController extends AbstractController {
 		logger.info("Get add page for " + page);
 		// add Branch State-pranay
 		setStaticData();
-		model.addAttribute("typeOfUser", getBranchCode());
-		model.addAttribute("financialYear", StaticData.financialYear);
-		model.addAttribute("Quarter", StaticData.Quarter);
-		model.addAttribute("State", StaticData.State);
-		model.addAttribute("Form", StaticData.Form);
-		model.addAttribute("status", StaticData.status);
-		model.addAttribute("typeOfCorrection", StaticData.typeOfCorrection);
-		// for Dashboard
-		model.addAttribute("statementStatus", applicationCache.getStatementStatus());
+		setModel(model);
+		if (!getBranchCode().equalsIgnoreCase("admin")) {
+			Branch b = brService.getByKey(Long.valueOf(getBranchCode()));
+			model.addAttribute("tan", b.getTan());
+		} else {
+			model.addAttribute("tan", "");
+		}
 		return sendPage(action, page);
 	}
 
 	@RequestMapping(value = "/detail/{action}/{page}")
 	public String getPage(@PathVariable String action, @PathVariable String page, ModelMap model) {
 		setStaticData();
-		model.addAttribute("typeOfUser", getBranchCode());
-		model.addAttribute("financialYear", StaticData.financialYear);
-		model.addAttribute("Quarter", StaticData.Quarter);
-		model.addAttribute("State", StaticData.State);
-		model.addAttribute("Tan", StaticData.Tan);
-		model.addAttribute("Form", StaticData.Form);
-		model.addAttribute("status", StaticData.status);
-		model.addAttribute("typeOfCorrection", StaticData.typeOfCorrection);
-		// for Dashboard
-		model.addAttribute("statementStatus", applicationCache.getStatementStatus());
+		setModel(model);
 		return sendPage(action, page);
 	}
 
-	@RequestMapping(value = "/list/{action}/{page}/{pageParam}")
-	public String getListPage(@PathVariable String action, @PathVariable String page,  @PathVariable String pageParam, ModelMap model) {
+	@RequestMapping(value = "/list/{action}/{page}")
+	public String getListPage(@PathVariable String action, @PathVariable String page, ModelMap model) {
 		setStaticData();
-		model.addAttribute("typeOfUser", getBranchCode());
-		model.addAttribute("financialYear", StaticData.financialYear);
-		model.addAttribute("Quarter", StaticData.Quarter);
-		model.addAttribute("typeOfDeductee", StaticData.typeOfDeductee);
-		model.addAttribute("typeOfCertificate", StaticData.typeOfCertificate);
-		model.addAttribute("Month", StaticData.Month);
-		model.addAttribute("Tan", StaticData.Tan);
-		model.addAttribute("Section", StaticData.Section);
-		model.addAttribute("Form", StaticData.Form);
-		model.addAttribute("status", StaticData.status);
-		model.addAttribute("typeOfCorrection", StaticData.typeOfCorrection);
-		model.addAttribute("State", StaticData.State);
-//		model.addAttribute("TanDB", applicationCache.getTanDB());
-		// for Dashboard
-		model.addAttribute("statementStatus", applicationCache.getStatementStatus());
+		setModel(model);
 		return sendPage(action, page);
 	}
 
@@ -222,7 +254,18 @@ public class IndexController extends AbstractController {
 	public String getDownloadCertificate(@PathVariable Long branchCode, @PathVariable String action,
 			@PathVariable String page, ModelMap model) {
 		setStaticData();
+		setModel(model);
+		// get branch Details based on branchCode.
+		Branch branch = applicationCache.getBranch(branchCode);
+		model.addAttribute("branchName", branch.getBranchName());
+		model.addAttribute("branchCode", String.valueOf(Integer.parseInt(branchCode.toString())));
+		return sendPage(action, page);
+	}
+
+	private void setModel(ModelMap model) {
+		model.addAttribute("userName", getPrincipal());
 		model.addAttribute("typeOfUser", getBranchCode());
+		model.addAttribute("latestFy", StaticData.latestFy);
 		model.addAttribute("financialYear", StaticData.financialYear);
 		model.addAttribute("Quarter", StaticData.Quarter);
 		model.addAttribute("typeOfDeductee", StaticData.typeOfDeductee);
@@ -233,14 +276,18 @@ public class IndexController extends AbstractController {
 		model.addAttribute("Form", StaticData.Form);
 		model.addAttribute("status", StaticData.status);
 		model.addAttribute("typeOfCorrection", StaticData.typeOfCorrection);
-//		model.addAttribute("TanDB", applicationCache.getTanDB());
+		model.addAttribute("typeOfForm", StaticData.typeOfForm);
+		model.addAttribute("regularReturnStatus", StaticData.regularReturnStatus);
+		model.addAttribute("exemption", StaticData.exemption);
+		model.addAttribute("typeOfReport", StaticData.typeOfReport);
+		model.addAttribute("ClientName", StaticData.ClientName);
+		model.addAttribute("ClientPAN", StaticData.ClientPAN);
+		model.addAttribute("State", StaticData.State);
 		// for Dashboard
 		model.addAttribute("statementStatus", applicationCache.getStatementStatus());
-		// get branch Details based on branchCode.
-		Branch branch = applicationCache.getBranch(branchCode);
-		model.addAttribute("branchName", branch.getBranchName());
-		model.addAttribute("branchCode", String.valueOf(Integer.parseInt(branchCode.toString())));
-		return sendPage(action, page);
+		
+		model.addAttribute("panelAccess", panelAccess);
+
 	}
 
 	public String sendPage(String action, String page) {
@@ -319,13 +366,23 @@ public class IndexController extends AbstractController {
 					break;
 				case "Section":
 					xString = list1.getValue();
-					stringArray = xString.split(",");
+					stringArray = xString.split(Pattern.quote("^"));
 					StaticData.Section = stringArray;
 					// model.addAttribute("ChallanMismatch", stringArray);
 					break;
 				case "CertificatePath":
 					xString = list1.getValue();
 					StaticData.CertificatePath = xString;
+					// model.addAttribute("ChallanMismatch", stringArray);
+					break;
+				case "latestFy":
+					xString = list1.getValue();
+					StaticData.latestFy = xString;
+					// model.addAttribute("ChallanMismatch", stringArray);
+					break;
+				case "taxAuditReportPath":
+					xString = list1.getValue();
+					StaticData.TaxAuditReportPath = xString;
 					// model.addAttribute("ChallanMismatch", stringArray);
 					break;
 				case "Form":
@@ -356,10 +413,38 @@ public class IndexController extends AbstractController {
 					StaticData.typeOfCorrection = stringArray;
 					// model.addAttribute("ChallanMismatch", stringArray);
 					break;
+				case "typeOfForm":
+					xString = list1.getValue();
+					stringArray = xString.split(",");
+					StaticData.typeOfForm = stringArray;
+					// model.addAttribute("ChallanMismatch", stringArray);
+					break;
 				case "documentSave":
 					xString = list1.getValue();
 					StaticData.documentSave = xString;
 					// model.addAttribute("ChallanMismatch", stringArray);
+					break;
+				case "regularReturnStatus":
+					xString = list1.getValue();
+					stringArray = xString.split(",");
+					StaticData.regularReturnStatus = stringArray;
+					// model.addAttribute("ChallanMismatch", stringArray);
+					break;
+				case "exemption":
+					xString = list1.getValue();
+					stringArray = xString.split(",");
+					StaticData.exemption = stringArray;
+					// model.addAttribute("ChallanMismatch", stringArray);
+					break;
+				case "typeOfReport":
+					xString = list1.getValue();
+					stringArray = xString.split(",");
+					StaticData.typeOfReport = stringArray;
+					// model.addAttribute("ChallanMismatch", stringArray);
+					break;
+				case "annualReportPath":
+					xString = list1.getValue();
+					StaticData.annualReportPath = xString;
 					break;
 				default:
 					System.out.println("Not Match");
@@ -368,4 +453,26 @@ public class IndexController extends AbstractController {
 			}
 		}
 	}
+
+	@RequestMapping(value = "/HomehelpSC")
+	public String getHelpHomePageSC() {
+		return "homeHelpSC";
+	}
+
+	@RequestMapping(value = "/HomehelpWOT")
+	public String getHelpHomePageWOT() {
+		return "homeHelpWOT";
+	}
+
+	@RequestMapping(value = "/help/{helpFolder}/{helpPage}")
+	public String getHelpPage(@PathVariable String helpFolder, @PathVariable String helpPage, ModelMap model) {
+		return "helpPage/" + helpFolder + "/" + helpPage;
+	}
+
+	/*------------------- Test Connection -------------------------------*/
+	@RequestMapping(value = "/testConnection", method = RequestMethod.GET)
+	public ResponseEntity<?> testConnection() {
+		return new ResponseEntity<String>("Connection Active", HttpStatus.OK);
+	}
+	
 }

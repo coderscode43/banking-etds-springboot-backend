@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 import domain.in.rjsa.model.form.SupportingDocuments;
 import domain.in.rjsa.service.SupportingDocumentsService;
@@ -60,12 +59,18 @@ public class SupportingDocumentsController extends AbstractControllerForm<Long, 
 		}
 
 		public void create(LinkedHashMap<String, Object> entity) {
-			Gson gson = new Gson();
-			// Login l = applicationCache.getLoginDetail(getPrincipal());
 
-			JsonElement jsonElement = gson.toJsonTree(entity);
 
-			getService().save(gson.fromJson(jsonElement, getEntity()));
+			try {
+				String jsonElement = mapper.writeValueAsString(entity);
+				getService().save(mapper.readValue(jsonElement, getEntity()));
+			} catch (JsonProcessingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalArgumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 		}
 }

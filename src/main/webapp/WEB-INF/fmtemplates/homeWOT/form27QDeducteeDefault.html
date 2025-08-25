@@ -151,7 +151,7 @@
 
 .table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
 	{
-	background-color: whitesmoke;
+	background-color: white;
 }
 
 @media ( min-width : 768px) {
@@ -244,7 +244,7 @@
 					</div>
 				</div>
 			</div>
-			<div class=" collapse  panel-collapse " id="collapseExample4">
+			<div class=" collapse  panel-collapse "  id="collapseExample4" style="margin-left: -8px;">
 
 				<div class="row">
 					<div class="col-md-3">
@@ -473,7 +473,7 @@
 					<div class="col-md-3">
 						<h6>
 							<b>Branch Code</b>
-							<h6>
+							</h6>
 								<input type="text" ng-model="cWctr.search.branchCode"
 									class="form-control" placeholder="BranchCode"
 									style="width: 100%">
@@ -487,7 +487,7 @@
 					<div class="col-md-3">
 						<h6>
 							<b>Account Number</b>
-							<h6>
+							</h6>
 								<input type="text" ng-model="cWctr.search.accNo"
 									class="form-control" placeholder="Account Number"
 									style="width: 100%">
@@ -496,7 +496,7 @@
 					<div class="col-md-3">
 						<h6>
 							<b>ID Number</b>
-							<h6>
+							</h6>
 								<input type="text" ng-model="cWctr.search.idNo"
 									class="form-control" placeholder="ID Number"
 									style="width: 100%">
@@ -512,7 +512,7 @@
 					<div class="col-md-3">
 						<h6>
 							<b>CIF</b>
-							<h6>
+							</h6>
 								<input type="text" ng-model="cWctr.search.cif"
 									class="form-control" placeholder="CIF" style="width: 100%">
 					</div>
@@ -612,7 +612,7 @@
 
 			<table class=" table table-bordered table-hover table-striped"
 				role="table"
-				style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+				style="font-size: 12px; width: 100%;  margin-top: 1.5%;">
 
 
 				<thead>
@@ -621,7 +621,7 @@
 				</colgroup>
 				<tr>
 				<thead role="rowgroup">
-					<tr style="background-color: #81b7db">
+					<tr style="background-color: #7482f45e">
 						<th>Sr. No.</th>
 						<th>BranchCode</th>
 						<th>Id No</th>
@@ -681,7 +681,7 @@
 				<tbody>
 					<tr role="row"
 						ng-repeat="a in cCctr.getEntityListData() track by a.id">
-						<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
+						<td role="cell" class="one" style="padding: 5px">{{$index+cCctr.srNo}}</td>
 						
 						<td>{{a.branchCode}}</td>
 						<td>{{a.idNo}}</td>
@@ -749,28 +749,28 @@
 
 		</div>
 
-		<div class="row" ng-show="cCctr.getNoPage() > 0">
+		<div class="row" ng-show="cCctr.getNoPages() > 0">
 			<div class="row" align="center">
 				<span ng-show="cCctr.currentPage != 1"> <a
-					ng-click="cCctr.getPage(true,'form27QDeducteeDefault',cCctr.currentPage-1)"><strong>Previous</strong></a>
+					ng-click="cCctr.getPages(true,'form27QDeducteeDefault',cCctr.currentPage-1)"><strong>Previous</strong></a>
 				</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.currentPage}}</strong>&nbsp;
-					of &nbsp;<strong>{{cCctr.getNoPage()}}</strong>
+					of &nbsp;<strong>{{cCctr.getNoPages()}}</strong>
 					&nbsp;&nbsp;&nbsp;&nbsp; <span
-					ng-show="cCctr.currentPage != cCctr.getNoPage()"> <a
-						ng-click="cCctr.getPage(true,'form27QDeducteeDefault',cCctr.currentPage+1)"><strong>Next</strong></a>
+					ng-show="cCctr.currentPage != cCctr.getNoPages()"> <a
+						ng-click="cCctr.getPages(true,'form27QDeducteeDefault',cCctr.currentPage+1)"><strong>Next</strong></a>
 				</span>
 				</span>
 			</div>
-			<form role="form" name="gotoForm">
+			<form role="form" name="gotoForm" ng-if="cCctr.getNoPages()!=1">
 				<div class="row" align="center">
 					<span>Go to</span> &nbsp;&nbsp;&nbsp; <input
 						style="width: 70px; text-align: center;" type="number"
 						name="pageNo" ng-model="cCctr.currentPage"
 						ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
-						ng-min="1" ng-max="cCctr.getNoPage()" ng-required="true">
+						ng-min="1" ng-max="cCctr.getNoPages()" ng-required="true">
 					&nbsp;&nbsp;&nbsp;
 					<button style="height: 25px;"
-						ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'form27QDeducteeDefault',cCctr.currentPage)"
+						ng-click="gotoForm.submitted=true;cCctr.getPages(gotoForm.$valid,'form27QDeducteeDefault',cCctr.currentPage)"
 						class="btn btn-primary">Go</button>
 				</div>
 				<div class="row" align="center">
@@ -779,7 +779,7 @@
 						<span class="error" ng-show="gotoForm.pageNo.$error.min">Page
 							No. should not be less than 1.</span> <span class="error"
 						ng-show="gotoForm.pageNo.$error.max">Page No. should not be
-							greater than {{cCctr.getNoPage()}}.</span> <span class="error"
+							greater than {{cCctr.getNoPages()}}.</span> <span class="error"
 						ng-show="gotoForm.pageNo.$error.required">Please enter page
 							number.</span>
 					</span>

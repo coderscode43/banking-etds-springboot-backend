@@ -10,6 +10,6 @@ public interface CorrectionRemarksDao extends DaoInterfaceForm<Long,  Correction
 	
 	public List<CorrectionRemarks> findForm(HashMap<String,Object> constrains);
 
-	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage);
+	public List<?> search(LinkedHashMap<String, Object> map, int pageNo, int resultPerPage);
 
 }

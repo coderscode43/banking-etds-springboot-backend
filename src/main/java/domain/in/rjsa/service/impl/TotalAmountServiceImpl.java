@@ -2,6 +2,7 @@ package domain.in.rjsa.service.impl;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -9,14 +10,17 @@ import java.util.List;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ibm.icu.text.SimpleDateFormat;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import domain.in.rjsa.dao.TotalAmountDao;
 import domain.in.rjsa.excel.TotalAmountExcel;
+import domain.in.rjsa.exception.CustomException;
 import domain.in.rjsa.model.fy.TotalAmount;
 import domain.in.rjsa.service.AbstractServiceFY;
 import domain.in.rjsa.service.TotalAmountSerivce;
@@ -154,9 +158,28 @@ public class TotalAmountServiceImpl extends AbstractServiceFY<Long, TotalAmount,
 	}
 
 	@Override
-	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+	public List<?> search(LinkedHashMap<String, Object> map, int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
 		return dao.search(map, pageNo, resultPerPage);
+	}
+	@Override
+	public void addData(String json) {
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			List<JSONObject> jsonObject =  mapper.readValue(json, new TypeReference <List<JSONObject>>() {
+			});
+			
+			for (JSONObject object : jsonObject) {
+				TotalAmount total = new TotalAmount();
+				total.setData(object);
+				dao.persist(total);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new CustomException("Could Not Persist Data");
+		}
+		
 	}
 
 }

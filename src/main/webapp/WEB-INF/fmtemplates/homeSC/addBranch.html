@@ -1,33 +1,129 @@
+<html>
+<body>
+<head>
 <style>
-/*Refresh button  */
-.tooltip-top {
- bottom: 84%;
-margin-left: -7%;
-}
+
 /*Save Button  */
 .tooltip-top1 {
-bottom: 125%;
-margin-left: -67%;
+	width: max-content !important;
+	margin-left: -90%;
+	margin-top: -65%;
 }
+
 /*Back button  */
 .tooltip-top2 {
- bottom: 125%;
-margin-left: -67%;
+	width: max-content !important;
+	margin-left: -90%;
+	margin-top: -60%;
+}
+
+/* Style for the help button image */
+.help-button {
+	display: none !important;
+	width: 75px;
+	height: 122px;
+	transition: transform .2s;
+	position: fixed;
+	right: -60px !important;
+	bottom: 10px;
+	border-radius: 5px;
+	background-color: #1e3361;
+	display: flex;
+	transition: 0.5s;
+	width: 75px;
+}
+/* Style for the help button image */
+.support-button {
+	width: 60px;
+	height: 122px;
+	transition: transform .2s;
+	position: fixed;
+	right: -40px !important;
+	bottom: 10px;
+	border-radius: 5px;
+	background-color: #1e3361;
+	display: flex;
+	transition: 0.5s;
+}
+
+.support-button .supportspan {
+	width: 5px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: bold;
+	color: white;
+	font-size: 14px;
+	word-break: break-all;
+	line-height: initial;
+	font-family: 'Roboto', sans-serif;
+	position: relative;
+	left: 0px;
+}
+
+.support-button .himg1 {
+	width: 25px;
+	filter: brightness(100);
+	position: absolute;
+	top: 0px;
+	left: 15px;
+}
+
+.support-button .himg2 {
+	width: 120px;
+	filter: brightness(100);
+	rotate: -90deg;
+	position: absolute;
+	right: -20px;
+	top: 44px;
+}
+
+/* Style for the help button when hovered */
+.support-button:hover {
+	transition: 0.5s;
+	box-shadow: 0px 0px 10px black;
+	right: -40px !important;
+}
+
+.support-button .tooltiptext {
+	visibility: hidden;
+	width: 200px;
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px;
+	position: absolute;
+	z-index: 1;
+	top: 13px;
+	right: 110%;
+	opacity: 0;
+	transition: opacity 1s;
+}
+
+.support-button:hover .tooltiptext {
+	visibility: visible;
+	opacity: 1;
+	filter: drop-shadow(0px 0px 10px #222);
 }
 </style>
 
-<br>
-<div id="page-wrapper">
+</head>
+<body>
+
+
+	<!-- <div
+		ng-init="cCctr.helpFolder = 'homeSChelpPage' ;  cCctr.helpPage = 'addBranchDetails' ">
+		<div id="page-wrapper"> -->
 	<div class="container-fluid">
-	
-	<button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
-					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
-					 onClick="refreshPageButton()"><i
-					class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh
-					<span class="tooltiptext tooltip-top">Refresh Button</span></button>
-					
-		<div class="row">
-			<h1>Add Branch Details</h1>
+
+		<!--<button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
+			style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%); float: right;"
+			onClick="refreshPageButton()">
+			<i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh <span
+				class="tooltiptext Refresh">Refresh Button</span>
+		</button>-->
+
+		<div class="heading">
+			<strong>Add Branch Details</strong>
 		</div>
 		<div class="row">
 			<div class="col-md-12">
@@ -36,11 +132,12 @@ margin-left: -67%;
 						<div class="col-md-6">
 							<div class="form-group">
 								<h6>
-									<label>RO  Code</label><span style="color:red">*</span>
+									<label>RO Code</label><span style="color: red">*</span>
 								</h6>
-								<input class="form-control" type="text" name="roCode" title="Enter RO Code"
-									id="roCode" placeholder="ROCode" ng-model="cCctr.entity.roCode"
-									autocomplete="off" ng-required="true" ng-maxlength="10"
+								<input class="form-control" type="text" name="roCode"
+									title="Enter RO Code" id="roCode" placeholder="ROCode"
+									ng-model="cCctr.entity.roCode" autocomplete="off"
+									ng-required="true" ng-maxlength="10"
 									ng-pattern="/^[a-zA-Z0-9][a-zA-z0-9 -\]+$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
@@ -49,8 +146,7 @@ margin-left: -67%;
 									ng-show="formBranchDetails.roCode.$error.pattern">Enter
 										valid RO Code </span> <span class="error"
 									ng-show="formBranchDetails.roCode.$error.maxlength">RO
-										Code should not be greater than 10 digits.</span>
-										 <span class="error"
+										Code should not be greater than 10 digits.</span> <span class="error"
 									ng-show="formBranchDetails.roCode.$error.required">RO
 										Code is Required.</span>
 								</span> <span class="error" id="roCode"></span>
@@ -60,12 +156,12 @@ margin-left: -67%;
 						<div class="col-md-6">
 							<div class="form-group">
 								<h6>
-									<label>Branch Code<span style="color:red">*</span></label>
+									<label>Branch Code<span style="color: red">*</span></label>
 								</h6>
-								<input class="form-control" type="text" name="branchCode" title="Enter Branch Code"
-									placeholder="Branch Code" ng-model="cCctr.entity.branchCode"
-									autocomplete="off" ng-required="true" ng-maxlength="10"
-									ng-pattern="/^[0-9]+$/"
+								<input class="form-control" type="text" name="branchCode"
+									title="Enter Branch Code" placeholder="Branch Code"
+									ng-model="cCctr.entity.branchCode" autocomplete="off"
+									ng-required="true" ng-maxlength="10" ng-pattern="/^[0-9]+$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
 									ng-show="formBranchDetails.submitted || formBranchDetails.branchCode.$dirty && formBranchDetails.branchCode.$invalid">
@@ -85,21 +181,21 @@ margin-left: -67%;
 						<div class="col-md-6">
 							<div class="form-group">
 								<h6>
-									<label>Branch Name<span style="color:red;">*</span></label>
+									<label>Branch Name<span style="color: red;">*</span></label>
 								</h6>
-								<input class="form-control" type="text" name="branchName" title="Enter Branch Name"
-									placeholder="Branch Name" ng-model="cCctr.entity.branchName"
-									autocomplete="off" ng-required="true" ng-pattern="/^[a-zA-Z0-9][a-zA-z0-9 -\]+$/"
+								<input class="form-control" type="text" name="branchName"
+									title="Enter Branch Name" placeholder="Branch Name"
+									ng-model="cCctr.entity.branchName" autocomplete="off"
+									ng-required="true" ng-pattern="/^[a-zA-Z0-9][a-zA-z0-9 -\]+$/"
 									ng-model-options="{updateOn: 'blur'}" /> <span
 									style="color: red"
 									ng-show="formBranchDetails.submitted|| formBranchDetails.branchName.$dirty && formBranchDetails.branchName.$invalid">
 									<span class="error"
 									ng-show="formBranchDetails.branchName.$error.required">
-										Branch Name is Required</span>
-										<span class="error"
+										Branch Name is Required</span> <span class="error"
 									ng-show="formBranchDetails.branchName.$error.pattern">
 										Enter valid Branch Name</span>
-										
+
 								</span> <span class="error" id="branchName"></span>
 							</div>
 						</div>
@@ -107,15 +203,14 @@ margin-left: -67%;
 						<div class="col-md-6">
 							<div class="form-group">
 								<h6>
-									<label>Branch Email<span style="color:red;">*</span></label>
+									<label>Branch Email<span style="color: red;">*</span></label>
 								</h6>
-								<input class="form-control" type="text" name="branchEmail" title="Enter Branch Email"
-									placeholder="Branch Email" ng-model="cCctr.entity.branchEmail"
-									ng-required="true"
+								<input class="form-control" type="text" name="branchEmail"
+									title="Enter Branch Email" placeholder="Branch Email"
+									ng-model="cCctr.entity.branchEmail" ng-required="true"
 									ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
-									ng-model-options="{updateOn: 'blur'}" 
-									style="text-transform:lowercase"/> <span
-									style="color: red"
+									ng-model-options="{updateOn: 'blur'}"
+									style="text-transform: lowercase" /> <span style="color: red"
 									ng-show="formBranchDetails.submitted || formBranchDetails.branchEmail.$dirty && formBranchDetails.branchEmail.$invalid">
 									<span class="error"
 									ng-show="formBranchDetails.branchEmail.$error.required">Email
@@ -130,9 +225,10 @@ margin-left: -67%;
 						<div class="col-md-6">
 							<div class="form-group">
 								<h6>
-									<label>Branch Contact No<span style="color:red;">*</span></label>
+									<label>Branch Contact No<span style="color: red;">*</span></label>
 								</h6>
-								<input class="form-control" type="text" name="branchContactNo" title="Enter Branch Contact Number"
+								<input class="form-control" type="text" name="branchContactNo"
+									title="Enter Branch Contact Number"
 									placeholder="Branch Contact No"
 									ng-model="cCctr.entity.branchContactNo" autocomplete="off"
 									ng-required="true" ng-pattern="/^[0-9]{10}$/"
@@ -150,10 +246,10 @@ margin-left: -67%;
 						<div class="col-md-6">
 							<div class="form-group">
 								<h6>
-									<label>Branch Address<span style="color:red;">*</span></label>
+									<label>Branch Address<span style="color: red;">*</span></label>
 								</h6>
-								<textarea class="form-control" name="branchAddress" title="Enter Branch Address"
-									placeholder="Branch Address"
+								<textarea class="form-control" name="branchAddress"
+									title="Enter Branch Address" placeholder="Branch Address"
 									ng-model="cCctr.entity.branchAddress" autocomplete="off"
 									ng-required="true" ng-maxlength="50"
 									ng-model-options="{updateOn:'blur'}"></textarea>
@@ -172,10 +268,10 @@ margin-left: -67%;
 						<div class="col-md-6" style="margin-top: -21px;">
 							<div class="form-group">
 								<h6>
-									<label>Branch Pincode<span style="color:red;">*</span></label>
+									<label>Branch Pincode<span style="color: red;">*</span></label>
 								</h6>
-								<input class="form-control" type="text" name="branchPinCode" title="Enter Branch Pincode"
-									placeholder="Branch Pincode"
+								<input class="form-control" type="text" name="branchPinCode"
+									title="Enter Branch Pincode" placeholder="Branch Pincode"
 									ng-model="cCctr.entity.branchPinCode" ng-required="true"
 									ng-pattern="/^[0-9]{6}$/" ng-model-options="{updateOn:'blur'}" />
 								<span style="color: red"
@@ -194,10 +290,11 @@ margin-left: -67%;
 
 						<div class="col-md-6">
 							<div class="form-group">
-								<label style="font-size:12px">Branch State<span style="color:red;">*</span></label> <select name="branchState"
-									id="branchState" title="Select Branch State" class="form-control"
-									ng-model="cCctr.entity.branchState" ng-required="true"
-									ng-model-options="{updateOn: 'blur'}">
+								<label style="font-size: 12px">Branch State<span
+									style="color: red;">*</span></label> <select name="branchState"
+									id="branchState" title="Select Branch State"
+									class="form-control" ng-model="cCctr.entity.branchState"
+									ng-required="true" ng-model-options="{updateOn: 'blur'}">
 									<option disabled value="">Select State</option>
 									<#list State as state>
 									<option value="${state}">${state}</option>
@@ -308,68 +405,91 @@ margin-left: -67%;
 							</div> -->
 					</div>
 					<div class="row">
-						<div class="modal-footer">
-							
-								<button class="pushable darkblue tool"
-										style="margin-top: 2%;"
-										ng-click="formBranchDetails.submitted=true;cCctr.submit(formBranchDetails.$valid,cCctr.entity,'branch')">
-										<span class="front darkbluespan"
-											> Save<span class="tooltiptext tooltip-top1">Save Button</span></span>
-									</button>
-									<button class="pushable lightblack tool"
-										style="margin-top: 2%;"
-										ng-click="cCctr.gotoListPage('branch','branch')"onclick="scrollWin(/'branch'/)">
-										<span class="front lightblackspan">Back<span class="tooltiptext tooltip-top2">Back Button</span></span>
-									</button>
+						<div class="modal-footer" style="margin-top: 0px">
+
+							<button
+								class="btn btn-outline-success waves-effect waves-light tool"
+								style="margin-top: 2%;"
+								ng-click="formBranchDetails.submitted=true;cCctr.submit(formBranchDetails.$valid,cCctr.entity,'branch')">
+								<span class=""><i class="fa fa-save"></i> Save<span
+									class="tooltiptext tooltip-top1">Save Button</span></span>
+							</button>
+							<button
+								class="btn btn-outline-danger waves-effect waves-light tool"
+								style="margin-top: 2%;"
+								ng-click="cCctr.gotoListPage('branch','branch')"
+								onclick="scrollWin(/'branch'/)">
+								<i class="mdi mdi-arrow-left-bold-outline mr-2"></i>Back<span
+									class="tooltiptext tooltip-top2">Back Button</span></span>
+							</button>
 						</div>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
-</div>
-<script>
-	function viewP() {
-		var x = document.getElementById("passwordOfUser");
-		if (x.type === "password") {
-			x.type = "text";
-		} else {
-			x.type = "password";
+	<!-- </div>
+	</div> -->
+
+	<button class="support-button" style="bottom: 50px;"
+		ng-click="cCctr.gotoHelpSC('homeSChelpPage','addBranchDetails')">
+		<span class="supportspan">SUPPORT</span>
+		<div style="width: 150px; position: relative">
+			<!-- <img src="static/img/ROBO-TRANSPARENT.png" alt="Help" class="himg1"> -->
+			<!-- <img src="static/img/TOS-TRANSPARENT.png " alt="Help" class="himg2"> -->
+		</div>
+	</button>
+	<script>
+		function viewP() {
+			var x = document.getElementById("passwordOfUser");
+			if (x.type === "password") {
+				x.type = "text";
+			} else {
+				x.type = "password";
+			}
 		}
-	}
 
-	function viewConfirmP() {
-		var x = document.getElementById("password1");
-		if (x.type === "password") {
-			x.type = "text";
-		} else {
-			x.type = "password";
+		function viewConfirmP() {
+			var x = document.getElementById("password1");
+			if (x.type === "password") {
+				x.type = "text";
+			} else {
+				x.type = "password";
+			}
 		}
-	}
-</script>
-<script>
-	$('#reload').click(function() {
-		location.reload();
-	});
-</script>
+	</script>
+	<script>
+		$(document).ready(function() {
+			$(this).scrollTop(0);
+		});
+	</script>
+	<script>
+		$('#reload').click(function() {
+			location.reload();
+		});
+	</script>
 
-<script>
-	$('#passwordOfUser, #password1')
-			.on(
-					'keyup',
-					function() {
-						if ($('#passwordOfUser').val() == $('#password1').val()) {
-							$('#changePassword').removeAttr('disabled');
-							console.log('Password correct');
-							$('#conErr').html('');
+	<script>
+		$('#passwordOfUser, #password1')
+				.on(
+						'keyup',
+						function() {
+							if ($('#passwordOfUser').val() == $('#password1')
+									.val()) {
+								$('#changePassword').removeAttr('disabled');
+								console.log('Password correct');
+								$('#conErr').html('');
 
-						} else {
-							$('#conErr')
-									.html(
-											'Confirm Password should have the same value with new password')
-									.css('color', 'red');
-								
-							$('#changePassword').attr('disabled', true);
-						}
-					});
-</script>
+							} else {
+								$('#conErr')
+										.html(
+												'Confirm Password should have the same value with new password')
+										.css('color', 'red');
+
+								$('#changePassword').attr('disabled', true);
+							}
+						});
+	</script>
+
+</body>
+</html>

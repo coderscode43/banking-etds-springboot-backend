@@ -9,4 +9,5 @@ public interface Regular24QDeducteeDao extends DaoInterfaceFY<Long,   Regular24Q
 
 	public List<Regular24QDeductee> searchExcel(HashMap map);
 	List<Regular24QDeductee> search(HashMap entity, int pageNo, int noOfResult);
+	public List<String> getPanList(String s, String fy, Long branchCode);
 }

@@ -1,74 +1,5 @@
 <style>
-
-/*
-	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
-	*/
-@media only screen and (max-width: 760px) , ( min-device-width : 768px)
-	and (max-device-width: 1024px) {
-	/* Force table to not be like tables anymore */
-	table, thead, tbody, th, td, tr {
-		display: block;
-	}
-
-	/* Hide table headers (but not display: none;, for accessibility) */
-	thead tr {
-		position: absolute;
-		top: -9999px;
-		left: -9999px;
-	}
-	tr {
-		margin: 0 0 1rem 0;
-	}
-	tr:nth-child(odd) {
-		background: #ccc;
-	}
-	td {
-		/* Behave  like a "row" */
-		border: none;
-		border-bottom: 1px solid #eee;
-		position: relative;
-		padding-left: 50%;
-	}
-	td:before {
-		/* Now like a table header */
-		position: absolute;
-		/* Top/left values mimic padding */
-		top: 0;
-		left: 6px;
-		width: 45%;
-		padding-right: 10px;
-		white-space: nowrap;
-	}
-
-	/*
-		Label the data
-    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
-		*/
-	td:nth-of-type(1):before {
-		content: "Sr. No.";
-	}
-	td:nth-of-type(2):before {
-		content: "TAN";
-	}
-	td:nth-of-type(3):before {
-		content: "Quarter";
-	}
-	td:nth-of-type(4):before {
-		content: "FORM";
-	}
-	td:nth-of-type(5):before {
-		content: "RT";
-	}
-	td:nth-of-type(6):before {
-		content: "PRN";
-	}
-	td:nth-of-type(7):before {
-		content: "STATUS";
-	}
-	td:nth-of-type(8):before {
-		content: "AS_ON_DATE";
-	}
-}
+ 
 
 @media only screen and (max-width: 1000px) {
 	.one {
@@ -106,7 +37,7 @@
 
 .table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
 	{
-	background-color: whitesmoke;
+	background-color: white;
 }
 
 @media ( min-width : 768px) {
@@ -190,7 +121,7 @@
 				</div>
 			</div>
 
-			<div class="collapse  panel-collapse" id="collapseExample4">
+			<div class="collapse  panel-collapse"  id="collapseExample4" style="margin-left: -15px;">
 
 				<div class="row">
 					<div class="col-md-3">
@@ -281,7 +212,7 @@
 				</colgroup>
 				<tr>
 				<thead role="rowgroup">
-					<tr role="row" style="height: 40px; background-color: #81b7db">
+					<tr role="row" style="height: 40px; background-color: #7482f45e">
 						<th width="10%">Sr. No.</th>
 						<th width="10%">TAN</th>
 						<th width="10%">QUARTER</th>
@@ -296,7 +227,7 @@
 				<tbody>
 					<tr role="row"
 						ng-repeat="a in cCctr.getEntityListData() track by a.id">
-						<td role="cell" class="one" style="padding: 5px">{{$index+1}}</td>
+						<td role="cell" class="one" style="padding: 5px">{{$index+cCctr.srNo}}</td>
 						<td>{{a.TAN}}</td>
 						<td>{{a.QUARTER}}</td>
 						<td>{{a.FORM}}</td>
@@ -326,7 +257,7 @@
 			</span>
 			</span>
 		</div>
-		<form role="form" name="gotoForm">
+		<form role="form" name="gotoForm" ng-if="cCctr.getNoPage()!=1">
 			<div class="row" align="center">
 				<span>Go to</span> &nbsp;&nbsp;&nbsp; <input
 					style="width: 70px; text-align: center;" type="number"
@@ -358,3 +289,8 @@
 
 </div>
 </div>
+<script>
+	$(document).ready(function() {
+		$(this).scrollTop(0);
+	});
+</script>

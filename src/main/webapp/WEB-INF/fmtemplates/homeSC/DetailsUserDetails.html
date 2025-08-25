@@ -4,52 +4,6 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <style>
-/*
-	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
-	*/
-@media only screen and (max-width: 760px) , ( min-device-width : 768px)
-	and (max-device-width: 1024px) {
-	/* Force table to not be like tables anymore */
-	table, thead, tbody, th, td, tr {
-		display: block;
-	}
-
-	/* Hide table headers (but not display: none;, for accessibility) */
-	thead tr {
-		position: absolute;
-		top: -9999px;
-		left: -9999px;
-	}
-	tr {
-		margin: 0 0 1rem 0;
-	}
-	tr:nth-child(odd) {
-		background: #ccc;
-	}
-	td {
-		/* Behave  like a "row" */
-		border: none;
-		border-bottom: 1px solid #eee;
-		position: relative;
-		padding-left: 50%;
-	}
-	td:before {
-		/* Now like a table header */
-		position: absolute;
-		/* Top/left values mimic padding */
-		top: 0;
-		left: 6px;
-		width: 45%;
-		padding-right: 10px;
-		white-space: nowrap;
-	}
-
-	/*
-		Label the data
-    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
-		*/
-}
-
 @media only screen and (max-width: 1000px) {
 	.one {
 		display: none;
@@ -86,7 +40,7 @@
 
 .table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
 	{
-	background-color: whitesmoke;
+	background-color: white;
 }
 
 @media ( min-width : 768px) {
@@ -99,533 +53,545 @@
 /*
  CSS for the main interaction
 */
-.tabset > input[type="radio"] {
-  position: absolute;
-  left: -200vw;
+.tabset>input[type="radio"] {
+	position: absolute;
+	left: -200vw;
 }
 
 .tabset .tab-panel {
-  display: none;
+	display: none;
 }
 
-.tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
-.tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
-.tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
-.tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
-.tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
-.tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
-  display: block;
+.tabset>input:first-child:checked ~ .tab-panels>.tab-panel:first-child,
+	.tabset>input:nth-child(3):checked ~ .tab-panels>.tab-panel:nth-child(2),
+	.tabset>input:nth-child(5):checked ~ .tab-panels>.tab-panel:nth-child(3),
+	.tabset>input:nth-child(7):checked ~ .tab-panels>.tab-panel:nth-child(4),
+	.tabset>input:nth-child(9):checked ~ .tab-panels>.tab-panel:nth-child(5),
+	.tabset>input:nth-child(11):checked ~ .tab-panels>.tab-panel:nth-child(6)
+	{
+	display: block;
 }
 
 /*
  Styling
 */
 body {
-  font: 16px/1.5em "Overpass", "Open Sans", Helvetica, sans-serif;
-  color: #333;
-  font-weight: 300;
+	font: 16px/1.5em "Overpass", "Open Sans", Helvetica, sans-serif;
+	color: #333;
+	font-weight: 300;
 }
 
-.tabset > label {
-  position: relative;
-  display: inline-block;
-  padding: 15px 15px 25px;
-  border: 1px solid transparent;
-  border-bottom: 0;
-  cursor: pointer;
-  font-weight: 600;
+.tabset>label {
+	position: relative;
+	display: inline-block;
+	padding: 15px 15px 25px;
+	border: 1px solid transparent;
+	border-bottom: 0;
+	cursor: pointer;
+	font-weight: 600;
 }
 
-.tabset > label::after {
-  content: "";
-  position: absolute;
-  left: 15px;
-  bottom: 10px;
-  width: 22px;
-  height: 4px;
-  background: #8d8d8d;
+.tabset>label::after {
+	content: "";
+	position: absolute;
+	left: 15px;
+	bottom: 10px;
+	width: 22px;
+	height: 4px;
+	background: #8d8d8d;
 }
 
-.tabset > label:hover,
-.tabset > input:focus + label {
-  color: #06c;
+.tabset>label:hover, .tabset>input:focus+label {
+	color: #06c;
 }
 
-.tabset > label:hover::after,
-.tabset > input:focus + label::after,
-.tabset > input:checked + label::after {
-  background: #06c;
+.tabset>label:hover::after, .tabset>input:focus+label::after, .tabset>input:checked+label::after
+	{
+	background: #06c;
 }
 
-.tabset > input:checked + label {
-  border-color: #ccc;
-  border-bottom: 1px solid #fff;
-  margin-bottom: -1px;
+.tabset>input:checked+label {
+	border-color: #ccc;
+	border-bottom: 1px solid #fff;
+	margin-bottom: -1px;
 }
 
 .tab-panel {
-  padding: 30px 0;
-  border-top: 1px solid #ccc;
+	padding: 30px 0;
+	border-top: 1px solid #ccc;
 }
 
 /*
  Demo purposes only
 */
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
+*, *:before, *:after {
+	box-sizing: border-box;
 }
 
 body {
-  padding: 30px;
+	padding: 30px;
 }
 
 .tabset {
-  max-width: 65em;
+	max-width: 65em;
 }
 </style>
 </head>
 <body>
-<div id="page-wrapper" ng-init="cCctr.entity=cCctr.getEntityData();">
-	<div class="container-fluid">
+	<div id="page-wrapper" ng-init="cCctr.entity=cCctr.getEntityData();">
+		<div class="container-fluid">
 
-		<div ng-show="cCctr.show != true">
+			<div ng-show="cCctr.show != true">
 
-			<div class="row">
-				<h3 class="page-header" style="margin-top: 2%;">
-					<strong> User Detail</strong>
-				</h3>
-			</div>
-			<div class="panel panel-default"
-				style="margin-top: -2%; border: none !important;">
-				<div class="panel-body">
-	<div class="row">
-						<div class="col-md-6">
-							<button class="btn btn-primary" data-toggle="modal"
-								onclick="test('#profile')">Edit</button>
-							<button class="btn btn-primary" data-toggle="modal"
-								ng-click="cCctr.gotoListPage('userDetails','userDetails')">Back</button>
-						</div>
-					</div>
-					
-					<br> <br>
-					<div class="container">
-
-						<div class="collapse dont-collapse-sm" id="collapseExample2">
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-2">
-									<label>Branch Code &nbsp;</label></div><div class="col-md-4">:
-									{{cCctr.entity.branchCode}}
-								</div>
-								<div class="col-md-2">
-									<label>Name. &nbsp;</label></div><div class="col-md-4">:
-									 {{cCctr.entity.userName}}
-								</div>
-							</div>
-
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-2">
-									<label>PAN &nbsp;</label></div><div class="col-md-4">:
-									{{cCctr.entity.pan}}
-								</div>
-
-								<div class="col-md-2">
-									<label>Zone &nbsp;</label></div><div class="col-md-4">:
-									 {{cCctr.entity.zone}}
-								</div>
-							</div>
-
-							<div class="row" style="font-size: 13px;">
-								<div class="col-md-2">
-									<label>Type &nbsp;</label></div><div class="col-md-4">:
-									{{cCctr.entity.type}}
-								</div>
-								
-							</div>
-
-						</div>
-					</div>
-					<br>
-
-
-
+				<div class="row">
+					<h3 class="page-header" style="margin-top: 2%;">
+						<strong> User Detail</strong>
+					</h3>
 				</div>
-				<div id="profile" class="modal fade" role="dialog">
-					<div class="modal-dialog modal-lg">
-						<!-- Modal content-->
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" id="closeU"
-									data-dismiss="modal">&times;</button>
-								<h4 class="modal-title">Edit User Details</h4>
+				<div class="panel panel-default"
+					style="margin-top: -2%; border: none !important;">
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-6">
+								<button class="btn btn-primary" data-toggle="modal"
+									onclick="test('#profile')">Edit</button>
+								<button class="btn btn-primary" data-toggle="modal"
+									ng-click="cCctr.gotoListPage('userDetails','userDetails')">Back</button>
 							</div>
-							<div class="modal-body">
+						</div>
 
-								<div id="myTabContent" class="tab-content">
-									<div class="tab-pane fade active in" id="signin">
-										<form name="profileForm" class="form-horizontal"
-											enctype="multipart/form-data">
-											<div class="row">
-												<div class="col-md-6">
-													<label style="font-size:12px;">Branch Code<span style="color:red;">*</span></label> <input class="form-control"
-														type="text" name="branch Code" placeholder="Branch Code"
-														ng-model="cCctr.entity.branchCode" ng-required="true"
-														ng-maxlength="10" ng-pattern="/^[a-zA-Z0-9]*$/"
-														ng-model-options="{updateOn: 'blur'}" /> <span
-														style="color: red"
-														ng-show="profileForm.submitted || profileForm.branchCode.$dirty && profileForm.branch.$invalid">
-														<span class="error"
-														ng-show="profileForm.branch.$error.pattern">Enter
-															valid Branch Code </span> <span class="error"
-														ng-show="profileForm.branchCode.$error.maxlength">RO
-															Code should not be greater than 10 characters. </span> <span
-														class="error" ng-show="profileForm.branchCode.$error.required">Branch
-															Code is Required. </span>
-													</span>
+						<br> <br>
+						<div class="container">
+
+							<div class="collapse dont-collapse-sm" id="collapseExample2">
+								<div class="row" style="font-size: 13px;">
+									<div class="col-md-2">
+										<label>Branch Code &nbsp;</label>
+									</div>
+									<div class="col-md-4">: {{cCctr.entity.branchCode}}</div>
+									<div class="col-md-2">
+										<label>Name. &nbsp;</label>
+									</div>
+									<div class="col-md-4">: {{cCctr.entity.userName}}</div>
+								</div>
+
+								<div class="row" style="font-size: 13px;">
+									<div class="col-md-2">
+										<label>PAN &nbsp;</label>
+									</div>
+									<div class="col-md-4">: {{cCctr.entity.pan}}</div>
+
+									<div class="col-md-2">
+										<label>Zone &nbsp;</label>
+									</div>
+									<div class="col-md-4">: {{cCctr.entity.zone}}</div>
+								</div>
+
+								<div class="row" style="font-size: 13px;">
+									<div class="col-md-2">
+										<label>Type &nbsp;</label>
+									</div>
+									<div class="col-md-4">: {{cCctr.entity.type}}</div>
+
+								</div>
+
+							</div>
+						</div>
+						<br>
+
+
+
+					</div>
+					<div id="profile" class="modal fade" data-backdrop="static"
+						role="dialog">
+						<div class="modal-dialog modal-lg">
+							<!-- Modal content-->
+							<div class="modal-content" style="top: 40px;">
+								<div class="modal-header">
+									<button type="button" class="close" id="closeU"
+										data-dismiss="modal">&times;</button>
+									<h4 class="modal-title">Edit User Details</h4>
+								</div>
+								<div class="modal-body">
+
+									<div id="myTabContent" class="tab-content">
+										<div class="tab-pane fade active in" id="signin">
+											<form name="profileForm" class="form-horizontal"
+												enctype="multipart/form-data">
+												<div class="row">
+													<div class="col-md-6">
+														<label style="font-size: 12px;">Branch Code<span
+															style="color: red;">*</span></label> <input class="form-control"
+															type="text" name="branch Code" placeholder="Branch Code"
+															ng-model="cCctr.entity.branchCode" ng-required="true"
+															ng-maxlength="10" ng-pattern="/^[a-zA-Z0-9]*$/"
+															ng-model-options="{updateOn: 'blur'}" /> <span
+															style="color: red"
+															ng-show="profileForm.submitted || profileForm.branchCode.$dirty && profileForm.branch.$invalid">
+															<span class="error"
+															ng-show="profileForm.branch.$error.pattern">Enter
+																valid Branch Code </span> <span class="error"
+															ng-show="profileForm.branchCode.$error.maxlength">RO
+																Code should not be greater than 10 characters. </span> <span
+															class="error"
+															ng-show="profileForm.branchCode.$error.required">Branch
+																Code is Required. </span>
+														</span>
+													</div>
+
+													<div class="col-md-6">
+
+														<label style="font-size: 12px;">Name<span
+															style="color: red;">*</span></label> <input class="form-control"
+															type="text" name="name" placeholder="Name"
+															ng-required="true" ng-model="cCctr.entity.userName"
+															ng-model-options="{updateOn: 'blur'}"
+															ng-pattern="/^[a-zA-Z0-9]*$/" ng-maxlength="20"
+															ng-required="true" readonly /> <span style="color: red"
+															ng-show="profileForm.submitted || profileForm.userName.$dirty && profileForm.userName.$invalid">
+															<span class="error"
+															ng-show="profileForm.userName.$error.pattern">Please
+																enter valid Ro Name. </span> <span class="error"
+															ng-show="profileForm.userName.$error.maxlength">
+																Ro Name. should not be greater than 20 characters.</span> <span
+															class="error"
+															ng-show="profileForm.userName.$error.required"> RO
+																Name. is Required.</span>
+														</span>
+													</div>
 												</div>
 
-												<div class="col-md-6">
+												<div class="row">
+													<div class="col-md-6">
 
-													<label style="font-size:12px;">Name<span style="color:red;">*</span></label> <input class="form-control"
-														type="text" name="name" placeholder="Name"
-														ng-required="true" ng-model="cCctr.entity.userName"
-														ng-model-options="{updateOn: 'blur'}"
-														ng-pattern="/^[a-zA-Z0-9]*$/" ng-maxlength="20"
-														ng-required="true" readonly/> <span style="color: red"
-														ng-show="profileForm.submitted || profileForm.userName.$dirty && profileForm.userName.$invalid">
-														<span class="error"
-														ng-show="profileForm.userName.$error.pattern">Please
-															enter valid Ro Name. </span> <span class="error"
-														ng-show="profileForm.userName.$error.maxlength"> Ro
-															Name. should not be greater than 20 characters.</span> <span
-														class="error" ng-show="profileForm.userName.$error.required">
-															RO Name. is Required.</span>
-													</span>
+														<label style="font-size: 12px;">PAN<span
+															style="color: red;">*</span></label>
+														<textarea class="form-control" type="text" name="pan"
+															style="text-transform: uppercase" placeholder="Pan"
+															ng-required="true"
+															ng-pattern="/^([A-Z]{5}[0-9]{4}[A-Z]{1})*$/"
+															ng-model="cCctr.entity.pan"
+															ng-model-options="{updateOn: 'blur'}" /></textarea>
+														<span style="color: red"
+															ng-show="profileForm.submitted || profileForm.pan.$dirty && profileForm.pan.$invalid">
+															<span class="error"
+															ng-show="profileForm.pan.$error.required">RO
+																Address is Required.</span>
+														</span>
+													</div>
+
+													<div class="col-md-6">
+
+														<label style="font-size: 12px;">Type<span
+															style="color: red;">*</span></label> <input class="form-control"
+															type="text" name="roEmail" placeholder="type"
+															ng-required="true" ng-model="cCctr.entity.type"
+															ng-required="true" ng-model-options="{updateOn: 'blur'}" />
+														<span style="color: red"
+															ng-show="profileForm.submitted || profileForm.type.$dirty && profileForm.type.$invalid">
+															<span class="error"
+															ng-show="profileForm.type.$error.pattern">Please
+																enter valid type </span> <span class="error"
+															ng-show="profileForm.type.$error.required">Type is
+																Required.</span>
+														</span>
+													</div>
 												</div>
-											</div>
+												<div class="row">
 
-											<div class="row">
-												<div class="col-md-6">
 
-													<label style="font-size:12px;">PAN<span style="color:red;">*</span></label>
-													<textarea class="form-control" type="text" name="pan" style="text-transform:uppercase"
-														placeholder="Pan" ng-required="true" ng-pattern="/^([A-Z]{5}[0-9]{4}[A-Z]{1})*$/"
-														ng-model="cCctr.entity.pan"
-														ng-model-options="{updateOn: 'blur'}" /></textarea>
-													<span style="color: red"
-														ng-show="profileForm.submitted || profileForm.pan.$dirty && profileForm.pan.$invalid">
-														<span class="error"
-														ng-show="profileForm.pan.$error.required">RO
-															Address is Required.</span>
-													</span>
+													<div class="col-md-6">
+
+														<label style="font-size: 12px;">Zone<span
+															style="color: red;">*</span></label> <input class="form-control"
+															type="text" name="roPincode" ng-required="true"
+															placeholder="zone" ng-model="cCctr.entity.zone"
+															ng-pattern="" ng-model-options="{updateOn: 'blur'}" /> <span
+															style="color: red" ng-required="true"
+															ng-show="profileForm.submitted || profileForm.zone.$dirty && profileForm.zone.$invalid">
+															<span class="error"
+															ng-show="profileForm.zone.$error.pattern">Please
+																enter valid zone </span> <span class="error"
+															ng-show="profileForm.roPincode.$error.required">Zone
+																is Required.</span>
+														</span>
+
+													</div>
 												</div>
-
-												<div class="col-md-6">
-
-													<label style="font-size:12px;">Type<span style="color:red;">*</span></label> <input class="form-control"
-														type="text" name="roEmail" placeholder="type"
-														ng-required="true" ng-model="cCctr.entity.type"
-														ng-required="true"
-														
-														ng-model-options="{updateOn: 'blur'}" /> <span
-														style="color: red"
-														ng-show="profileForm.submitted || profileForm.type.$dirty && profileForm.type.$invalid">
-														<span class="error"
-														ng-show="profileForm.type.$error.pattern">Please
-															enter valid  type </span> <span class="error"
-														ng-show="profileForm.type.$error.required">Type
-															is Required.</span>
-													</span>
+												<br> <br>
+												<div class="row">
+													<div class="col-md-12" style="text-align: right">
+														<button type="submit" class="btn btn-primary"
+															ng-click="profileForm.submitted=true;cCctr.updateData(profileForm.$valid,cCctr.entity,'userDetails')">Update
+														</button>
+														<button type="button" class="btn btn-secondary"
+															data-dismiss="modal">Close</button>
+													</div>
 												</div>
-											</div>
-											<div class="row">
-												
-
-												<div class="col-md-6">
-
-													<label style="font-size:12px;">Zone<span style="color:red;">*</span></label> <input class="form-control"
-														type="text" name="roPincode" ng-required="true"
-														placeholder="zone" ng-model="cCctr.entity.zone"
-														ng-pattern="" ng-model-options="{updateOn: 'blur'}" /> <span
-														style="color: red" ng-required="true"
-														
-														ng-show="profileForm.submitted || profileForm.zone.$dirty && profileForm.zone.$invalid">
-														<span class="error"
-														ng-show="profileForm.zone.$error.pattern">Please
-															enter valid zone </span>
-														<span
-														class="error"
-														ng-show="profileForm.roPincode.$error.required">Zone
-															 is Required.</span>
-													</span> 
-
-												</div>
-											</div>
-											<br> <br>
-											<div class="row">
-												<div class="col-md-12" style="text-align:right">
-													<button type="submit" class="btn btn-primary"
-														ng-click="profileForm.submitted=true;cCctr.updateData(profileForm.$valid,cCctr.entity,'userDetails')">Update
-													</button>
-													<button type="button" class="btn btn-secondary"
-														data-dismiss="modal">Close</button>
-												</div>
-											</div>
-										</form>
+											</form>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+
 					</div>
 
 				</div>
 
 			</div>
+			<div class="tabset">
+				<!-- Tab 1 -->
+				<input type="radio" name="tabset" id="tab1" aria-controls="marzen"
+					checked> <label for="tab1">Permision</label>
+				<!-- Tab 2 -->
+				<input type="radio" name="tabset" id="tab2"
+					aria-controls="rauchbier"> <label for="tab2">Branch</label>
 
-		</div>
-		<div class="tabset">
-  <!-- Tab 1 -->
-  <input type="radio" name="tabset" id="tab1" aria-controls="marzen" checked>
-  <label for="tab1">Permision</label>
-  <!-- Tab 2 -->
-  <input type="radio" name="tabset" id="tab2" aria-controls="rauchbier">
-  <label for="tab2">Branch</label>
- 
-  
-  <div class="tab-panels">
-    <section id="marzen" class="tab-panel">
-      <h2>Entity</h2>
-      <div class="row">
-		<div class="col-md-4">
-		<input type="checkbox" id="check" name="check" value="okay">
-		<labal>Regular26QDeductee</labal>
-		
-		</div>
-		<div class="col-md-4">
-		<input type="checkbox" id="check" name="check" value="okay">
-		<labal>Regular26QDeducteeDefault</labal>
-		
-		</div>
-		<div class="col-md-4">
-		<input type="checkbox" id="check" name="check" value="okay">
-		<labal>Regular27QDeductee</labal>
-		
-		</div>
-		
-		</div>
-		<div class="row">
-		<div class="col-md-4">
-		<input type="checkbox" id="check" name="check" value="okay">
-		<labal>Regular27QDeducteeDefault</labal>
-		
-		</div>
-		<div class="col-md-4">
-		<input type="checkbox" id="check" name="check" value="okay">
-		<labal>Regular24QDeductee</labal>
-		
-		</div>
-		<div class="col-md-4">
-		<input type="checkbox" id="check" name="check" value="okay">
-		<labal>Regular24QDeducteeDefault</labal>
-		
-		</div>
-		
-		</div>
-		<div class="row">
-		<div class="col-md-4">
-		<input type="checkbox" id="check" name="check" value="okay">
-		<labal>Regular27EQDeductee</labal>
-		
-		</div>
-		<div class="col-md-4">
-		<input type="checkbox" id="check" name="check" value="okay">
-		<labal>Regular27EQDeducteeDefault</labal>
-		
-		</div>
-		<div class="col-md-4">
-		<input type="checkbox" id="check" name="check" value="okay">
-		<labal>Vendor Master</labal>
-		
-		</div>
-		
-		</div>
-		<div class="row">
-		<div class="col-md-4">
-		<input type="checkbox" id="check" name="check" value="okay">
-		<labal>Employee Details</labal>
-		
-		</div>
-		<div class="col-md-4">
-		<input type="checkbox" id="check" name="check" value="okay">
-		<labal>Pension Details</labal>
-		
-		</div>
-		<div class="col-md-4">
-		<input type="checkbox" id="check" name="check" value="okay">
-		<labal>Vendor Details</labal>
-		
-		</div>
-		
-		</div>
-		<div class="row">
-		<div class="col-md-4">
-		<input type="checkbox" id="check" name="check" value="okay">
-		<labal>Vendor Payment Details</labal>
-		
-		</div>
-		<div class="col-md-4">
-		<input type="checkbox" id="check" name="check" value="okay">
-		<labal>Pensioner Details</labal>
-		
-		</div>
-		<div class="col-md-4">
-		<input type="checkbox" id="check" name="check" value="okay">
-		<labal>Vendor Details</labal>
-		
-		</div>
-		
-		</div>
-		<div class="row">
-		<div class="col-md-4">
-		<input type="checkbox" id="check" name="check" value="okay">
-		<labal>LDC</labal>
-		
-		</div>
-		<div class="col-md-4">
-		<input type="checkbox" id="check" name="check" value="okay">
-		<labal>Downloaad Certificate</labal>
-		
-		</div>
-		<div class="col-md-4">
-		<input type="checkbox" id="check" name="check" value="okay">
-		<labal>Generate Ticket</labal>
-		
-		</div>
-		
-		</div>
-		<div class="row">
-		<div class="col-md-4">
-		<input type="checkbox" id="check" name="check" value="okay">
-		<labal>MIS Report</labal>
-		
-		</div>
-		<div class="col-md-4">
-		<input type="checkbox" id="check" name="check" value="okay">
-		<labal>Challan</labal>
-		
-		</div>
-		<div class="col-md-4">
-		<input type="checkbox" id="check" name="check" value="okay">
-		<labal>Statement Status</labal>
-		
-		</div>
-		
-		</div>
-		<div class="row">
-		<div class="col-md-4">
-		<input type="checkbox" id="check" name="check" value="okay">
-		<labal>Deductor Details</labal>
-		
-		</div>
-		
-		
-		</div>
-  </section>
-    <section id="rauchbier" class="tab-panel" style="width:100%">
-      <h2>Branch</h2>
-      <div class="table-responsive"> 
 
-							<table class="table table-bordered table-hover table-striped" role="table"
-								style="font-size: 12px">
+				<div class="tab-panels">
+					<section id="marzen" class="tab-panel">
+						<h2>Entity</h2>
+						<div class="row">
+							<div class="col-md-4">
+								<input type="checkbox" id="check" name="check" value="okay">
+								<labal>Regular26QDeductee</labal>
+
+							</div>
+							<div class="col-md-4">
+								<input type="checkbox" id="check" name="check" value="okay">
+								<labal>Regular26QDeducteeDefault</labal>
+
+							</div>
+							<div class="col-md-4">
+								<input type="checkbox" id="check" name="check" value="okay">
+								<labal>Regular27QDeductee</labal>
+
+							</div>
+
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<input type="checkbox" id="check" name="check" value="okay">
+								<labal>Regular27QDeducteeDefault</labal>
+
+							</div>
+							<div class="col-md-4">
+								<input type="checkbox" id="check" name="check" value="okay">
+								<labal>Regular24QDeductee</labal>
+
+							</div>
+							<div class="col-md-4">
+								<input type="checkbox" id="check" name="check" value="okay">
+								<labal>Regular24QDeducteeDefault</labal>
+
+							</div>
+
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<input type="checkbox" id="check" name="check" value="okay">
+								<labal>Regular27EQDeductee</labal>
+
+							</div>
+							<div class="col-md-4">
+								<input type="checkbox" id="check" name="check" value="okay">
+								<labal>Regular27EQDeducteeDefault</labal>
+
+							</div>
+							<div class="col-md-4">
+								<input type="checkbox" id="check" name="check" value="okay">
+								<labal>Vendor Master</labal>
+
+							</div>
+
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<input type="checkbox" id="check" name="check" value="okay">
+								<labal>Employee Details</labal>
+
+							</div>
+							<div class="col-md-4">
+								<input type="checkbox" id="check" name="check" value="okay">
+								<labal>Pension Details</labal>
+
+							</div>
+							<div class="col-md-4">
+								<input type="checkbox" id="check" name="check" value="okay">
+								<labal>Vendor Details</labal>
+
+							</div>
+
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<input type="checkbox" id="check" name="check" value="okay">
+								<labal>Vendor Payment Details</labal>
+
+							</div>
+							<div class="col-md-4">
+								<input type="checkbox" id="check" name="check" value="okay">
+								<labal>Pensioner Details</labal>
+
+							</div>
+							<div class="col-md-4">
+								<input type="checkbox" id="check" name="check" value="okay">
+								<labal>Vendor Details</labal>
+
+							</div>
+
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<input type="checkbox" id="check" name="check" value="okay">
+								<labal>LDC</labal>
+
+							</div>
+							<div class="col-md-4">
+								<input type="checkbox" id="check" name="check" value="okay">
+								<labal>Downloaad Certificate</labal>
+
+							</div>
+							<div class="col-md-4">
+								<input type="checkbox" id="check" name="check" value="okay">
+								<labal>Generate Ticket</labal>
+
+							</div>
+
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<input type="checkbox" id="check" name="check" value="okay">
+								<labal>MIS Report</labal>
+
+							</div>
+							<div class="col-md-4">
+								<input type="checkbox" id="check" name="check" value="okay">
+								<labal>Challan</labal>
+
+							</div>
+							<div class="col-md-4">
+								<input type="checkbox" id="check" name="check" value="okay">
+								<labal>Statement Status</labal>
+
+							</div>
+
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<input type="checkbox" id="check" name="check" value="okay">
+								<labal>Deductor Details</labal>
+
+							</div>
+
+
+						</div>
+					</section>
+					<section id="rauchbier" class="tab-panel" style="width: 100%">
+						<h2>Branch</h2>
+						<div class="table-responsive">
+
+							<table class="table table-bordered table-hover table-striped"
+								role="table" style="font-size: 12px">
 								<thead>
-							<colgroup>
+								<colgroup>
 									<col span="14" style="background-color: #ffffff">
 								</colgroup>
-							 <tr>
-							  <thead role="rowgroup">
-							      <tr style="height:40px;background-color:#81b7db">
-							      <th >Sr. No.</th>
-							      <th >Branch Name</th>
-							      <th >Branch Code</th>
-							      <th  >Tan</th>
-							      <th >Pan</th>
-							      <th  >Type Of Deductor</th>
-							      <th >Email</th>
-							      <th >Action</th>
-                                  </tr>
-                               </thead>
+								<tr>
+								<thead role="rowgroup">
+									<tr style="height: 40px; background-color: #81b7db">
+										<th>Sr. No.</th>
+										<th>Branch Name</th>
+										<th>Branch Code</th>
+										<th>Tan</th>
+										<th>Pan</th>
+										<th>Type Of Deductor</th>
+										<th>Email</th>
+										<th>Action</th>
+									</tr>
+								</thead>
 								<tbody>
 									<tr>
-										<td >1</td>
-											<td>Pune</td>
-											<td>123</td>
-											<td>RJRT1546F</td>
-											<td>BZBPN1644D</td>
-											<td>K-Company</td>
-											<td>raju456@gmail.com</td>
-											<td><button  class="btn btn-success" onclick="scrollWin()" style="height:30px; margin-top:10px; margin-bottom:10px; background-color:#0f316d">Allow</button></td>
-										
-										
-									</tr>	
-									<tr>
-										<td >2</td>
-											<td>Mumbai</td>
-											<td>156</td>
-											<td>SBIJ1546F</td>
-											<td>BZBPN4544D</td>
-											<td>D-Company</td>
-											<td>ram456@gmail.com</td>
-											<td><button  class="btn btn-success" onclick="scrollWin()" style="height:30px; margin-top:10px; margin-bottom:10px; background-color:#0f316d">Allow</button></td>
-										
-										
-									</tr>	
-									<tr>
-										<td >2</td>
-											<td>Delhi</td>
-											<td>186</td>
-											<td>HSIYB154D</td>
-											<td>DHSTN4544D</td>
-											<td>D-Company</td>
-											<td>shubham456@gmail.com</td>
-											<td><button  class="btn btn-success" onclick="scrollWin()" style="height:30px; margin-top:10px; margin-bottom:10px; background-color:#0f316d">Allow</button></td>
-										
-										
+										<td>1</td>
+										<td>Pune</td>
+										<td>123</td>
+										<td>RJRT1546F</td>
+										<td>BZBPN1644D</td>
+										<td>K-Company</td>
+										<td>raju456@gmail.com</td>
+										<td><button class="btn btn-success" onclick="scrollWin()"
+												style="height: 30px; margin-top: 10px; margin-bottom: 10px; background-color: #0f316d">Allow</button></td>
+
+
 									</tr>
 									<tr>
-										<td >3</td>
-											<td>Baramati</td>
-											<td>986</td>
-											<td>HIDSA1546N</td>
-											<td>BZAGD1546D</td>
-											<td>D-Company</td>
-											<td>rohit456@gmail.com</td>
-											<td><button  class="btn btn-success" onclick="scrollWin()" style="height:30px; margin-top:10px; margin-bottom:10px; background-color:#0f316d">Allow</button></td>
-										
-										
+										<td>2</td>
+										<td>Mumbai</td>
+										<td>156</td>
+										<td>SBIJ1546F</td>
+										<td>BZBPN4544D</td>
+										<td>D-Company</td>
+										<td>ram456@gmail.com</td>
+										<td><button class="btn btn-success" onclick="scrollWin()"
+												style="height: 30px; margin-top: 10px; margin-bottom: 10px; background-color: #0f316d">Allow</button></td>
+
+
 									</tr>
 									<tr>
-										<td >3</td>
-											<td>Solapur</td>
-											<td>98656</td>
-											<td>TIKSA1546N</td>
-											<td>BHJGD1546D</td>
-											<td>D-Company</td>
-											<td>sandip456@gmail.com</td>
-											<td><button  class="btn btn-success" onclick="scrollWin()" style="height:30px; margin-top:10px; margin-bottom:10px; background-color:#0f316d">Allow</button></td>
-										
-										
-									</tr>						
+										<td>2</td>
+										<td>Delhi</td>
+										<td>186</td>
+										<td>HSIYB154D</td>
+										<td>DHSTN4544D</td>
+										<td>D-Company</td>
+										<td>shubham456@gmail.com</td>
+										<td><button class="btn btn-success" onclick="scrollWin()"
+												style="height: 30px; margin-top: 10px; margin-bottom: 10px; background-color: #0f316d">Allow</button></td>
+
+
+									</tr>
+									<tr>
+										<td>3</td>
+										<td>Baramati</td>
+										<td>986</td>
+										<td>HIDSA1546N</td>
+										<td>BZAGD1546D</td>
+										<td>D-Company</td>
+										<td>rohit456@gmail.com</td>
+										<td><button class="btn btn-success" onclick="scrollWin()"
+												style="height: 30px; margin-top: 10px; margin-bottom: 10px; background-color: #0f316d">Allow</button></td>
+
+
+									</tr>
+									<tr>
+										<td>3</td>
+										<td>Solapur</td>
+										<td>98656</td>
+										<td>TIKSA1546N</td>
+										<td>BHJGD1546D</td>
+										<td>D-Company</td>
+										<td>sandip456@gmail.com</td>
+										<td><button class="btn btn-success" onclick="scrollWin()"
+												style="height: 30px; margin-top: 10px; margin-bottom: 10px; background-color: #0f316d">Allow</button></td>
+
+
+									</tr>
 								</tbody>
 							</table>
-							</div>
-    </section>
-   
-  </div>
-  
-</div>
+						</div>
+					</section>
+
+				</div>
+
+			</div>
+		</div>
+
 	</div>
-	
-</div>
+	<script>
+		$(document).ready(function() {
+			$(this).scrollTop(0);
+		});
+	</script>
 </body>
 </html>

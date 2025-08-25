@@ -1,149 +1,480 @@
 <style>
-
-
-@media only screen and (min-width:1000px) {
-	#search {
-		margin-left: 45%;
-		margin-top: 2px;
-		display: none;
-	}
+.mui-card {
+	background: #fff;
+	border-radius: 2px;
+	display: inline-block;
+	height: auto;
+	position: relative;
+	width: 60%;
+	margin-left: 18%;
+	border-radius: 5px;
 }
 
-@media only screen and (max-width: 1000px) {
-	#hide {
-		display: none;
-	}
+#tan {
+	color: #000;
 }
 
+#typeofCertificate {
+	color: #000;
+}
 
-@media ( min-width : 768px) {
-	.collapse.dont-collapse-sm {
-		display: block;
-		height: auto !important;
-		visibility: visible;
-	}
+#financialYear {
+	color: #000;
+}
+
+#quarter {
+	color: #000;
+}
+
+.form-control.ng-dirty.ng-valid-parse.ng-valid.ng-valid-required.ng-touched
+	{
+	color: #000;
+}
+
+.xl-shadow {
+	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px
+		rgba(0, 0, 0, 0.22);
+}
+
+.xl-shadow:hover {
+	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px
+		rgba(0, 0, 0, 0.22);
+}
+
+/*Refresh button  */
+.tool .refreshicontool {
+	width: auto;
+}
+
+.tooltip-top {
+	position: absolute;
+	top: -2px;
+	right: 30px;
+	width: auto;
+	height: 30px;
+}
+
+.tooltip-top1 {
+	width: max-content !important;
+	margin-top: 48%;
+	float: right;
+	right: 20%;
+} /*Download button  */
+.tooltip-top2 {
+	bottom: 125%;
+	margin-left: -102%;
+}
+
+/* Style the tab */
+.tab {
+	overflow: hidden;
+	border: 1px solid #ccc;
+	background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+	background-color: inherit;
+	float: left;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 14px 16px;
+	transition: 0.3s;
+	font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+	background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+	background-color: #0F316D;
+	color: #fff;
+}
+
+/* Style the tab content */
+.tabcontent {
+	display: none;
+	padding: 6px 12px;
+	border: 1px solid #ccc;
+	border-top: none;
+}
+
+.tool .Refresh {
+	rotate: 0deg;
+	transition: 1s;
+}
+
+.tool .rotateclass {
+	rotate: 360deg;
+	transition: 1s;
+}
+
+.tool .tooltiptext {
+	visibility: hidden;
+	font-size: small;
+	width: auto;
+	background-color: #555;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px;
+	position: absolute;
+	z-index: 1;
+}
+
+.tool:hover .tooltiptext {
+	visibility: visible;
+}
+
+.button-tooltip-box {
+	position: absolute;
+	bottom: 120px;
+	right: 0px;
 }
 </style>
 
 
-
-
 <div id="page-wrapper">
-	<div class="heading">MIS Report Generate</div>
+	<br>
 	<div class="container-fluid">
-	<button class="btn btn-grad astro-MG2CNCJP" data-toggle="modal"
-					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
-					 onClick="refreshPageButton()"><i
-					class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh</button>
-	<div class="collapse dont-collapse-sm" id="collapseExample2">
-		<div class="row">
-			<div class="form-group">
-	<div class="col-md-3">
-					<h6>
-						<b>From Date</b>
-						<h6>
-							<input type="date" ng-model="cCctr.search.fromDate"
-							ng-change="cCctr.search.fromDate=cCctr.date(cCctr.search.fromDate);"
-							class="form-control" placeholder="Date" style="width: 100%">
-				</div>
-					<div class="col-md-3">
-					<h6>
-						<b> To Date</b>
-						<h6>
-								<input type="date" ng-model="cCctr.search.toDate"
-							ng-change="cCctr.search.toDate=cCctr.date(cCctr.search.toDate);"
-							class="form-control" placeholder="Date" style="width: 100%">
-				</div>
+		<ul class="nav nav-pills nav-justified" role="tablist">
+			<li class="nav-item waves-effect waves-light"><a
+				class="nav-link active" data-toggle="tab" data-target="#singlePAN"
+				role="tab" aria-selected="true">Download TAX AUDIT REPORT</a></li>
+			<!-- <li class="nav-item waves-effect waves-light"><a
+				class="nav-link" data-toggle="tab" data-target="#multiplePAN"
+				role="tab" aria-selected="false">Download Certificate For
+					Multiple PAN</a></li>
+			<li class="nav-item waves-effect waves-light"><a
+				class="nav-link" data-toggle="tab"
+				data-target="#downloadForAllBranch" role="tab" aria-selected="false">Download
+					All Certificates</a></li> -->
+		</ul>
+		<div class="tab-content">
+			<div class="tab-pane p-3 active" id="singlePAN" role="tabpanel">
+				<div class="mui-card xl-shadow">
+					<div id="download-box">
+						<form id="download-form" name="downloadSingleCertificate"
+							class="form">
+							<div class="col-md-12 "
+								style="font-size: 12px; margin: 2% 0 0 0; text-align: center">
+								<div class="heading">
+									<strong>Download Certificate For Single PAN</strong>
+									<h4>
+										<strong>(Form 16A/16/27D)</strong>
+									</h4>
+								</div>
+								<br>
+							</div>
+							<div>
+								<div class="col-md-12">
+									<label style="font-size: 12px"><b>Select Following:</b>
+									</label>
+								</div>
+							</div>
+							<!-- pan -->
+							<div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<label style="font-size: 12px"> PAN Number<span
+											style="color: red;">*</span>:
+										</label> <input type="text" class="form-control" id="pan" name="pan"
+											title="Enter PAN Number" placeholder="Enter PAN Number"
+											ng-model="cCctr.entity.pan"
+											ng-pattern="/^[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}$/"
+											ng-required="true"
+											style="font-size: 15px; text-transform: uppercase"> <span
+											style="color: red"
+											ng-show="downloadSingleCertificate.submitted || downloadSingleCertificate.pan.$dirty && downloadSingleCertificate.pan.$invalid">
+											<span class="error"
+											ng-show="downloadSingleCertificate.pan.$error.required">PAN
+												Number Required. </span> <span class="error"
+											ng-show="downloadSingleCertificate.pan.$error.pattern">PAN
+												number should be CAPITAL and VALID. </span>
+										</span>
+									</div>
+								</div>
+							</div>
+							<div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<label style="font-size: 12px">TAN Number<span
+											style="color: red;">*</span></label>
+										<!-- <input type="text"
+												class="form-control" id="tan" name="tan" placeholder="TAN"
+												ng-model="cCctr.entity.tan" ng-required="true"
+												ng-pattern="/^[A-Z]{4}[0-9]{5}[A-Z]{1}$/"
+												required="required" style="font-size: 15px"> -->
+										<select name="tan" id="tan" title="Select TAN"
+											class="form-control" ng-model="cCctr.entity.tan"
+											ng-required="true" ng-model-options="{updateOn: 'blur'}">
+											<option disabled value="">Select Tan</option>
+											<option value="ALL TAN" selected>ALL TAN</option>
+											<#list Tan as T>
+											<option value="${T}">${T}</option>
+											</#list>
+										</select> <span style="color: red"
+											ng-show="downloadSingleCertificate.submitted ||downloadSingleCertificate.tan.$dirty && downloadSingleCertificate.tan.$invalid">
+											<span class="error"
+											ng-show="downloadSingleCertificate.tan.$error.required">TAN
+												is Required. </span>
+										</span>
+									</div>
+								</div>
+							</div>
+							<div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<label style="font-size: 12px">Type of Certificate<span
+											style="color: red;">*</span></label> <select name="typeofCertificate"
+											id="typeofCertificate" title="Select Type of Certificate"
+											class="form-control"
+											ng-model="cCctr.entity.typeofCertificate" ng-required="true"
+											ng-model-options="{updateOn: 'blur'}">
+											<option disabled value="">Select Certificate</option>
+											<#list typeOfCertificate as Certificate>
 
-				
-
-				<div class="col-md-3">
-					<h6>
-						<b>Report Type</b>
-						<h6>
-							<select class="form-control" ng-model="cCctr.search.reportType">
-							<option value=" " ng-selected="true">Select Report Type</option>
-							<option value="MonthWise">Month Wise</option>
-							<option value="Yearly">Yearly</option>
-							<option value="TaxAuditReport">Tax Audit Report</option>
-							<option value="DefaultTaxAuditReport">Default Tax Audit Report</option>
-						</select>
+											<option value="${Certificate}">${Certificate}</option>
+											</#list>
+										</select> <span style="color: red"
+											ng-show="downloadSingleCertificate.submitted ||downloadSingleCertificate.typeofCertificate.$dirty && downloadSingleCertificate.typeofCertificate.$invalid">
+											<span class="error"
+											ng-show="downloadSingleCertificate.typeofCertificate.$error.required">Type
+												of Certificate is Required.</span>
+										</span>
+									</div>
+								</div>
+							</div>
+							<div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<label style="font-size: 12px">Financial Year<span
+											style="color: red;">*</span></label> <select name="financialYear"
+											class="form-control" title="Select Financial Year"
+											id="financialYear" ng-model="cCctr.entity.financialYear"
+											ng-required="true" ng-model-options="{updateOn: 'blur'}">
+											<option disabled value="">Select financial Year</option>
+											<#list financialYear as year>
+											<option value="${year}">${year}</option>
+											</#list>
+										</select> <span style="color: red"
+											ng-show="downloadSingleCertificate.submitted ||downloadSingleCertificate.financialYear.$dirty && downloadSingleCertificate.financialYear.$invalid">
+											<span class="error"
+											ng-show="downloadSingleCertificate.financialYear.$error.required">Financial
+												Year is Required.</span>
+										</span>
+									</div>
+								</div>
+							</div>
+							<div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<label style="font-size: 12px">Quarter<span
+											style="color: red;">*</span></label> <select name="quarter"
+											class="form-control" title="Select Quarter" id="quarter"
+											ng-model="cCctr.entity.quarter" ng-required="true"
+											ng-model-options="{updateOn: 'blur'}">
+											<option disabled value="">Select Quarter</option>
+											<option value="ALL QUARTER" selected>ALL QUARTERS</option>
+											<#list Quarter as quarter>
+											<option value="${quarter}">${quarter}</option>
+											</#list>
+										</select> <span style="color: red"
+											ng-show="downloadSingleCertificate.submitted ||downloadSingleCertificate.quarter.$dirty && downloadSingleCertificate.quarter.$invalid">
+											<span class="error"
+											ng-show="downloadSingleCertificate.quarter.$error.required">Quarter
+												is Required. </span>
+										</span>
+									</div>
+								</div>
+							</div>
+							<button class="btn btn-success mobile collapsed tool"
+								style="margin-bottom: 2%; margin-left: 43%"
+								ng-click="downloadSingleCertificate.submitted=true;cCctr.downloadSingle(downloadSingleCertificate.$valid,'apidownloadCertificate/files/'+cCctr.entity.tan+'/'+cCctr.entity.typeofCertificate+'/'+cCctr.entity.financialYear+'/'+cCctr.entity.quarter+'/'+cCctr.entity.pan)">
+								<span class="" style=""> <i class="fa fa-download"
+									aria-hidden="true"></i>&nbsp;Download
+								</span>
+							</button>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
-		
-		<div class="row" id="search">
-			<div class="col-md-2" id="search">
-				<button
-					ng-click="cCctr.searchEntities(true,'generateReport','generateReport')"
-					class="btn btn-success" onclick="scrollWin()">Search</button>
-			</div>
-		</div>
-
-
-
-		<div class="row" id="hide">
-			<div class="col-md-3" style="margin-left: 80%; margin-top: -50px">
-				<button
-					ng-click="cCctr.searchEntities(true,'generateReport')"
-					class="btn btn-success" onclick="scrollWin()">Search</button>
-			</div>
-
-
-			<div class="row">
-				<div class="col-md-3" id="search">
-					<button
-						ng-click="cCctr.searchEntities(true,'generateReport')"
-						class="btn btn-success" onclick="scrollWin()">Search</button>
-
-				</div>
-			</div>
-		</div>
-		</div>
-	
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="text-right">
-					<button class="btn btn-secondary"
-						style="background-color: #FFA500;" data-toggle="collapse"
-						data-target="#collapseExample4" aria-expanded="false"
-						aria-controls="collapseExample">Advance Search</button>
-
-					<button class="btn btn-Primary" data-toggle="modal"
-						ng-click="cCctr.gotoListPage('addReport','addReport	');">Add</button>
-				</div>
-			</div>
-		</div>
-		<div class="row " style="font-size: 12px">
-          <!-- <div class="table-responsive"> -->
-			<table class=" table table-bordered table-hover table-striped ">
-				<thead>
-					<tr style="background-color: #81b7db; font-size: 13px">
-						<th>Sr No</th>
-						<th>From Date</th>
-						<th>To Date</th>
-						<th>Report Type</th>
-
-					</tr>
-				</thead>
-				<tbody>
-					<tr ng-repeat="a in cCctr.getEntityListData() track by a.id"
-						style="font-size: 13px">
-						<td>{{$index+1}}</td>
-						<td>{{a.fromDate | date:'dd-MM-yyyy'}}</td>
-						<td>{{a.toDate | date:'dd-MM-yyyy'}}</td>
-						<td>{{a.reportType}}</td>
-
-					</tr>
-				</tbody>
-			</table>
-
-		</div>
-
-
 	</div>
-
-
-
+</div>
+<!-- Success Modal -->
+<div id="successMsg" class="modal" role="dialog" data-backdrop="static">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 style="color: green;">
+					<picture>
+					<source type="image/webp" srcset="static/img/success.webp">
+					<img src="./././static/img/success.webp" height="30" width="30">
+					</picture>
+					<span class="headingMsg"></span>
+				</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="msg" style="font-size: 18px;"></div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal"
+					ng-click="cCctr.reload();" id="reload">Ok</button>
+				<!-- id="reload" -->
+			</div>
+		</div>
+	</div>
+</div>
+<!-- zip Modal -->
+<div id="zipMsg" class="modal" role="dialog" data-backdrop="static">
+	<div class="modal-dialog modal-md">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 style="color: green;">
+					<picture>
+					<source type="image/webp" srcset="static/img/success.webp">
+					<img src="./././static/img/success.webp" height="30" width="30">
+					</picture>
+					<span class="headingMsg"></span>
+				</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="msg" style="font-size: 18px;"></div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal"
+					ng-click="cCctr.reload();" id="reload">Ok</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Download all certificate model -->
+<div id="download" class="modal" role="dialog" data-backdrop="static">
+	<div class="modal-dialog modal-md">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 style="color: green;">
+					<picture>
+					<source type="image/webp" srcset="static/img/success.webp">
+					<img src="./././static/img/success.webp" height="30" width="30">
+					</picture>
+					<span class="headingMsg"></span>
+				</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row" style="text-align: center">
+					<div class="col-sm-12">
+						<div class="msg" style="font-size: 25px; margin-bottom: 5%"></div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<div class="col-md-12">
+					<div class="col-sm-3"></div>
+					<div class="col-sm-2">
+						<button class="btn btn-success" style="margin-top: 2%;"
+							data-dismiss="modal"
+							ng-click="downloadCertificateFrom.submitted=true;cCctr.downloadBranchZip(downloadCertificateFrom.$valid,'apidownloadCertificate/downloadBranchZip/'+cCctr.entity.tan+'/'+cCctr.entity.typeofCertificate+'/'+cCctr.entity.financialYear+'/'+cCctr.entity.quarter)">
+							<span> Download</span>
+						</button>
+					</div>
+					<div class="col-sm-2"></div>
+					<div class="col-sm-2">
+						<button type="button" class="btn btn-primary"
+							style="margin-top: 2%;" data-dismiss="modal"
+							ng-click="downloadCertificateFrom.submitted=true;cCctr.createBranchZip(downloadCertificateFrom.$valid,'apidownloadCertificate/createBranchZip/'+cCctr.entity.tan+'/'+cCctr.entity.typeofCertificate+'/'+cCctr.entity.financialYear+'/'+cCctr.entity.quarter)">
+							Regenerate</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
+<!-- Generate Modal -->
+<div id="generateZip" class="modal fade" role="dialog"
+	data-backdrop="static">
+	<div class="modal-dialog modal-md">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 style="color: #008000;">
+					<picture>
+					<source type="image/webp" srcset="static/img/error.png">
+					<img src="./././static/img/errorNew.png" height="30" width="30">&nbsp;Zip
+					File Not found! </picture>
+				</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-12" style="font-size: 25px; text-align: center">
+						<div class="msg"></div>
+						<div class="msg1"></div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-dismiss="modal"
+					ng-click="downloadCertificateFrom.submitted=true;cCctr.createBranchZip(downloadCertificateFrom.$valid,'apidownloadCertificate/createBranchZip/'+cCctr.entity.tan+'/'+cCctr.entity.typeofCertificate+'/'+cCctr.entity.financialYear+'/'+cCctr.entity.quarter)">Generate
+					ZIP File</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="errorMsg" class="modal  " role="dialog" data-backdrop="static">
+	<div class="modal-dialog modal-sm">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 style="color: #008000;">
+					<span class="blink_me"> <img
+						src="./././static/img/error.png" height="30" width="30"></span>&nbsp;Certificate
+					not available!
+				</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="msg" style="font-size: 18px;"></div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal"
+					onclick="refreshPage()"">Ok</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	$('.btnNext').click(function() {
+		$('.nav-item .active').parent().next('li').find('a').trigger('click');
+	});
+
+	$('.btnPrevious').click(function() {
+		$('.nav-item .active').parent().prev('li').find('a').trigger('click');
+	});
+</script>
+
+<script>
+	function rotate() {
+		document.getElementById('refreshicon').style.rotate = '360deg';
+	}
+
+	function rerotate() {
+		document.getElementById('refreshicon').style.rotate = '0deg';
+	}
+</script>

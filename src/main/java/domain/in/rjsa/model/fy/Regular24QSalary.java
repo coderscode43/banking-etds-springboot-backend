@@ -1,355 +1,347 @@
-	package domain.in.rjsa.model.fy;
+package domain.in.rjsa.model.fy;
 
+import java.text.ParseException;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.validator.constraints.NotBlank;
+import org.json.simple.JSONObject;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import domain.in.rjsa.model.form.CommonModelAbstract;
 import domain.in.rjsa.util.JsonDateSerializer;
+import jakarta.validation.constraints.Digits;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
-@Entity
-@Table(name = "AAACU3561B_2324.regular24QSalary")
+//@Entity
+//@Table(name = "AAACN4165C_2324.regular24QSalary")
 public class Regular24QSalary extends CommonModelAbstract {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-	@GenericGenerator(name = "native", strategy = "native")
-	@Column(name = "id")
+	//@Id
+	//@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+	//@GenericGenerator(name = "native", strategy = "native")
+	//@Column(name = "id")
 	public Long id;
-	@Column(name = "branchId")
+	//@Column(name = "branchId")
 	public Long branchId;
-	@Column(name = "srNo")
+	//@Column(name = "srNo")
 	public Long srNo;
-	@Column(name = "pan")
+	//@Column(name = "pan")
 	@NotBlank(message = "PAN is required")
 	@Size(min = 0, max = 10, message = "PAN size should not be greater than 10")
 	public String pan;
-	@Column(name = "panRefNo")
+	//@Column(name = "panRefNo")
 	@NotNull(message = "PAN ref number is required")
 	@Size(min = 0, max = 45, message = "Invalid PAN reference number")
 	public String panRefNo;
-	@Column(name = "name")
+	//@Column(name = "name")
 	@NotNull(message = "Name is required")
 	@Size(min = 0, max = 45, message = "Invalid name")
 	public String name;
-	@Column(name = "category")
+	//@Column(name = "category")
 	@NotNull(message = "Category is required")
 	@Size(min = 0, max = 45, message = "Invalid Category")
 	public String category;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "fromDateOfEmployment")
+	//@Temporal(TemporalType.DATE)
+	//@Column(name = "fromDateOfEmployment")
 	@NotNull(message = "From Date Of Employment is required")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Kolkata")
 	public Date fromDateOfEmployment;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "toDateOfEmployment")
+	//@Temporal(TemporalType.DATE)
+	//@Column(name = "toDateOfEmployment")
 	@NotNull(message = "To Date Of Employment is required")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Kolkata")
 	public Date toDateOfEmployment;
 
-	@Column(name = "grossSalaryAsPerProvision")
+	//@Column(name = "grossSalaryAsPerProvision")
 	@NotNull(message = "Gross Salary As Per Provision is required")
-	@Digits(integer = 12, fraction = 2, message = "Invalid Gross Salary as per Provision")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid Gross Salary as per Provision")
 	public Double grossSalaryAsPerProvision;
-	@Column(name = "valueOfPerquisites")
+	//@Column(name = "valueOfPerquisites")
 	@NotNull(message = "Value of perquisites is required")
 	@Size(min = 0, max = 45, message = "Invalid Value of Perquisites")
 	public String valueOfPerquisites;
-	@Column(name = "profitInSalary")
+	//@Column(name = "profitInSalary")
 	@NotNull(message = "Profit in Salary is required")
-	@Digits(integer = 12, fraction = 2, message = "Invalid Profit in Salary")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid Profit in Salary")
 	public Double profitInSalary;
-	@Column(name = "taxableSalaryFromCurrentEmp")
+	//@Column(name = "taxableSalaryFromCurrentEmp")
 	@NotNull(message = "Taxable Salary from Current Employee is required")
-	@Digits(integer = 12, fraction = 2, message = "Invalid Taxable Salary from Current Employee")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid Taxable Salary from Current Employee")
 	public Double taxableSalaryFromCurrentEmp;
-	@Column(name = "reportedSalaryFromOtherEmp")
+	//@Column(name = "reportedSalaryFromOtherEmp")
 	@NotNull(message = "Reported Salary from other Employee is required")
-	@Digits(integer = 12, fraction = 2, message = "Invalid Reported Salary from other Employee")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid Reported Salary from other Employee")
 	public Double reportedSalaryFromOtherEmp;
-	@Column(name = "totalAmountOfSalary")
+	//@Column(name = "totalAmountOfSalary")
 	@NotNull(message = "Total amount of salary is required")
-	@Digits(integer = 12, fraction = 2, message = "Invalid Total amount of salary")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid Total amount of salary")
 	public Double totalAmountOfSalary;
-	@Column(name = "leaveTravelAllowance")
+	//@Column(name = "leaveTravelAllowance")
 	@NotNull(message = "Leave Travel Allowance is required")
 	@Size(min = 0, max = 45, message = "Invalid Leave Travel Allowance")
 	public String leaveTravelAllowance;
-	@Column(name = "gratuity")
+	//@Column(name = "gratuity")
 	@NotNull(message = "Gratuity is required")
 	@Size(min = 0, max = 45, message = "Invalid Gratuity")
 	public String gratuity;
-	@Column(name = "commutedValueOfPension")
+	//@Column(name = "commutedValueOfPension")
 	@NotNull(message = "Commuted value is required")
-	@Digits(integer = 12, fraction = 2, message = "Invalid Commuted Value of Pension")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid Commuted Value of Pension")
 	public Double commutedValueOfPension;
-	@Column(name = "leaveEncashmentSalary")
+	//@Column(name = "leaveEncashmentSalary")
 	@NotNull(message = "Leave Encashment is required")
-	@Digits(integer = 12, fraction = 2, message = "Invalid Leave Encashment Salary")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid Leave Encashment Salary")
 	public Double leaveEncashmentSalary;
-	@Column(name = "houseRentAllowance")
+	//@Column(name = "houseRentAllowance")
 	@NotNull(message = "HouseRent Allowance is required")
 	@Size(min = 0, max = 45, message = "Invalid House Rent Allownace")
 	public String houseRentAllowance;
-	@Column(name = "anyOtherExemptionus10")
+	//@Column(name = "anyOtherExemptionus10")
 	@NotNull(message = "Any Other exemptionus 10 is required")
-	@Digits(integer = 12, fraction = 2, message = "Invalid Any other Exemtionus 10")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid Any other Exemtionus 10")
 	public Double anyOtherExemptionus10;
-	@Column(name = "totalAmountOfExemption")
+	//@Column(name = "totalAmountOfExemption")
 	@NotNull(message = "Total Amount of Exemption is required")
-	@Digits(integer = 12, fraction = 2, message = "Invalid Total amount of Exemption")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid Total amount of Exemption")
 	public Double totalAmountOfExemption;
-	@Column(name = "entertainmentAllowance")
+	//@Column(name = "entertainmentAllowance")
 	@NotNull(message = "Entertainment Allowance is a required field")
 	@Size(min = 0, max = 45, message = "Invalid Entertainment Allowance")
 	public String entertainmentAllowance;
-	@Column(name = "pTax")
+	//@Column(name = "pTax")
 	@NotNull(message = "PTax is required")
-	@Digits(integer = 12, fraction = 2, message = "Invalid PTax")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid PTax")
 	public Double pTax;
-	@Column(name = "standardDeduction")
+	//@Column(name = "standardDeduction")
 	@NotNull(message = "Standard Deduction is required")
-	@Digits(integer = 12, fraction = 2, message = "Invalid Standard Deduction")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid Standard Deduction")
 	public Double standardDeduction;
-	@Column(name = "totalDeductionUnderSection16")
+	//@Column(name = "totalDeductionUnderSection16")
 	@NotNull(message = "Total Deduction Under Section 16 is required")
-	@Digits(integer = 12, fraction = 2, message = "Invalid Total Deduction Under Section 16")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid Total Deduction Under Section 16")
 	public Double totalDeductionUnderSection16;
-	@Column(name = "incomeFromSalary")
+	//@Column(name = "incomeFromSalary")
 	@NotNull(message = "Income from Salary is a required field")
-	@Digits(integer = 12, fraction = 2, message = "Invalid Income from Salary")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid Income from Salary")
 	public Double incomeFromSalary;
-	@Column(name = "incomeFromHouseProperty")
+	//@Column(name = "incomeFromHouseProperty")
 	@NotNull(message = "Income from House Property is required")
-	@Digits(integer = 12, fraction = 2, message = "Invalid Income from House Property")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid Income from House Property")
 	public Double incomeFromHouseProperty;
-	@Column(name = "incomeFromOtherSources")
+	//@Column(name = "incomeFromOtherSources")
 	@NotNull(message = "Income from other Sources is required")
-	@Digits(integer = 12, fraction = 2, message = "Invalid Income from other Sources")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid Income from other Sources")
 	public Double incomeFromOtherSources;
-	@Column(name = "grossTotalIncome")
+	//@Column(name = "grossTotalIncome")
 	@NotNull(message = "Gross total income is required")
-	@Digits(integer = 12, fraction = 2, message = "Invalid Gross total income")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid Gross total income")
 	public Double grossTotalIncome;
-	@Column(name = "deductionUs80C")
+	//@Column(name = "deductionUs80C")
 	@NotNull(message = "DeductionUs80C is required")
-	@Digits(integer = 12, fraction = 2, message = "Invalid DeductionUs80C")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid DeductionUs80C")
 	public Double deductionUs80C;
-	@Column(name = "deductionUs80CCC")
+	//@Column(name = "deductionUs80CCC")
 	@NotNull(message = "DeductionUs80CCC is required")
-	@Digits(integer = 12, fraction = 2, message = "Invalid DeductionUs80CCC")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid DeductionUs80CCC")
 	public Double deductionUs80CCC;
-	@Column(name = "deductionUs80CCD1")
+	//@Column(name = "deductionUs80CCD1")
 	@NotNull(message = "DeductionUs80CCD1 is required")
-	@Digits(integer = 12, fraction = 2, message = "Invalid DeductionUs80CCD1")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid DeductionUs80CCD1")
 	public Double deductionUs80CCD1;
-	@Column(name = "deductionUs80C80CCC80CCD1")
+	//@Column(name = "deductionUs80C80CCC80CCD1")
 	@NotNull(message = "DeductionUs80C80CCC80CCD1 is a required field")
-	@Digits(integer = 12, fraction = 2, message = "Invalid deductionUs80C80CCC80CCD1")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid deductionUs80C80CCC80CCD1")
 	public Double deductionUs80C80CCC80CCD1;
-	@Column(name = "deductionUs80CCD1B")
+	//@Column(name = "deductionUs80CCD1B")
 	@NotNull(message = "DeductionUs80CCD1B is required")
-	@Digits(integer = 12, fraction = 2, message = "Invalid deductionUs80CCD1B")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid deductionUs80CCD1B")
 	public Double deductionUs80CCD1B;
-	@Column(name = "deductionUs80CCD2")
+	//@Column(name = "deductionUs80CCD2")
 	@NotNull(message = "DeductionUs80CCD2 is required")
-	@Digits(integer = 12, fraction = 2, message = "Invalid deductionUs80CCD2")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid deductionUs80CCD2")
 	public Double deductionUs80CCD2;
-	@Column(name = "deductionUs80D")
+	//@Column(name = "deductionUs80D")
 	@NotNull(message = "DeductionUs80D is required")
-	@Digits(integer = 12, fraction = 2, message = "Invalid deductionUs80D")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid deductionUs80D")
 	public Double deductionUs80D;
-	@Column(name = "deductionUs80E")
+	//@Column(name = "deductionUs80E")
 	@NotNull(message = "DeductionUs80E is required")
-	@Digits(integer = 12, fraction = 2, message = "Invalid deductionUs80E")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid deductionUs80E")
 	public Double deductionUs80E;
-	@Column(name = "deductionUs80G")
+	//@Column(name = "deductionUs80G")
 	@NotNull(message = "DeductionUs80G is required")
-	@Digits(integer = 12, fraction = 2, message = "Invalid deductionUs80G")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid deductionUs80G")
 	public Double deductionUs80G;
-	@Column(name = "deductionUs80TTA")
+	//@Column(name = "deductionUs80TTA")
 	@NotNull(message = "DeductionUs80TTA is required")
-	@Digits(integer = 12, fraction = 2, message = "Invalid deductionUs80TTA")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid deductionUs80TTA")
 	public Double deductionUs80TTA;
-	@Column(name = "amountDeductible80ccg")
+	//@Column(name = "amountDeductible80ccg")
 	@NotNull(message = "Amount Deductible 80ccg is required")
-	@Digits(integer = 12, fraction = 2, message = "Invalid Amount Deductible 80ccg")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid Amount Deductible 80ccg")
 	public Double amountDeductible80ccg;
-	@Column(name = "anyOtherDeduction")
+	//@Column(name = "anyOtherDeduction")
 	@NotNull(message = "Any other Deduction is required")
-	@Digits(integer = 12, fraction = 2, message = "Invalid any other deduction")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid any other deduction")
 	public Double anyOtherDeduction;
-	@Column(name = "totalDeductionUnderChapterVIA")
+	//@Column(name = "totalDeductionUnderChapterVIA")
 	@NotNull(message = "Total Deduction Under Chapter VIA is a required field")
-	@Digits(integer = 12, fraction = 2, message = "Invalid Total Deduction Under Chapter VIA")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid Total Deduction Under Chapter VIA")
 	public Double totalDeductionUnderChapterVIA;
-	@Column(name = "totalTaxableIncome")
+	//@Column(name = "totalTaxableIncome")
 	@NotNull(message = "Total Taxable Income is required")
-	@Digits(integer = 12, fraction = 2, message = "Invalid Total Taxable Income")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid Total Taxable Income")
 	public Double totalTaxableIncome;
-	@Column(name = "incomeTaxOnTotalIncome")
+	//@Column(name = "incomeTaxOnTotalIncome")
 	@NotNull(message = "Income Taxable on total income is a required field")
-	@Digits(integer = 12, fraction = 2, message = "Invalid Income Taxable on total income")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid Income Taxable on total income")
 	public Double incomeTaxOnTotalIncome;
-	@Column(name = "rebateUs87A")
+	//@Column(name = "rebateUs87A")
 	@NotNull(message = "RebateUs87A is required")
-	@Digits(integer = 12, fraction = 2, message = "Invalid RebateUs87A")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid RebateUs87A")
 	public Double rebateUs87A;
-	@Column(name = "surcharge")
+	//@Column(name = "surcharge")
 	@NotNull(message = "Surcharge is required")
-	@Digits(integer = 12, fraction = 2, message = "Invalid Surcharge")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid Surcharge")
 	public Double surcharge;
-	@Column(name = "educationCess")
+	//@Column(name = "educationCess")
 	@NotNull(message = "Education Cess is a required field")
-	@Digits(integer = 12, fraction = 2, message = "Invalid Education Cess")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid Education Cess")
 	public Double educationCess;
-	@Column(name = "incomeTaxReliefUs89")
+	//@Column(name = "incomeTaxReliefUs89")
 	@NotNull(message = "Income Tax Relief Us89 is required")
-	@Digits(integer = 12, fraction = 2, message = "Invalid Income Tax Relief Us89")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid Income Tax Relief Us89")
 	public Double incomeTaxReliefUs89;
-	@Column(name = "netIncomeTaxPayable")
+	//@Column(name = "netIncomeTaxPayable")
 	@NotNull(message = "Net Income Tax Payable is required")
-	@Digits(integer = 12, fraction = 2, message = "Invalid Net Income Tax Payable")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid Net Income Tax Payable")
 	public Double netIncomeTaxPayable;
-	@Column(name = "tdsFromCurrentEmployer")
+	//@Column(name = "tdsFromCurrentEmployer")
 	@NotNull(message = "TDS from Current Employer is required")
-	@Digits(integer = 12, fraction = 2, message = "Invalid Tds From Current Employer")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid Tds From Current Employer")
 	public Double tdsFromCurrentEmployer;
-	@Column(name = "reportedTdsFromPreviousEmployer")
+	//@Column(name = "reportedTdsFromPreviousEmployer")
 	@NotNull(message = "Reported Tds From Previous Employer is required")
-	@Digits(integer = 12, fraction = 2, message = "Invalid Reported Tds From Previous Employer")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid Reported Tds From Previous Employer")
 	public Double reportedTdsFromPreviousEmployer;
-	@Column(name = "totalTds")
+	//@Column(name = "totalTds")
 	@NotNull(message = "Total Tds is a required field")
-	@Digits(integer = 12, fraction = 2, message = "Invalid Total Tds")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid Total Tds")
 	public Double totalTds;
-	@Column(name = "shortfallInTaxDeduction")
+	//@Column(name = "shortfallInTaxDeduction")
 	@NotNull(message = "Short fall In Tax Deduction is required")
-	@Digits(integer = 12, fraction = 2, message = "Invalid Short fall In Tax Deduction")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid Short fall In Tax Deduction")
 	public Double shortfallInTaxDeduction;
-	@Column(name = "whetherTaxDeductedAtHigherRate")
+	//@Column(name = "whetherTaxDeductedAtHigherRate")
 	@NotNull(message = "Whether Tax Deducted At Higher Rate is required")
 	@Size(min = 0, max = 45, message = "Invalid Whether Tax Deducted At Higher Rate")
 	public String whetherTaxDeductedAtHigherRate;
-	@Column(name = "countOfPanOfLandlord")
+	//@Column(name = "countOfPanOfLandlord")
 	// @NotBlank(message = "Count of PAN of Landlord is required")
-	@Digits(integer = 12, fraction = 0, message = "Invalid Count Of Pan Of Landlord")
+	//@Digits(integer = 12, fraction = 0, message = "Invalid Count Of Pan Of Landlord")
 	public Long countOfPanOfLandlord;
-	@Column(name = "panOfLandlord1")
+	//@Column(name = "panOfLandlord1")
 	@Size(min = 0, max = 45, message = "Invalid Pan Of Landlord1")
 	public String panOfLandlord1;
-	@Column(name = "nameOfLandlord1")
+	//@Column(name = "nameOfLandlord1")
 	@Size(min = 0, max = 45, message = "Invalid Name Of Landlord1")
 	public String nameOfLandlord1;
-	@Column(name = "panOfLandlord2")
+	//@Column(name = "panOfLandlord2")
 	@Size(min = 0, max = 45, message = "Invalid Pan Of Landlord2")
 	public String panOfLandlord2;
-	@Column(name = "nameOfLandlord2")
+	//@Column(name = "nameOfLandlord2")
 	@Size(min = 0, max = 45, message = "Invalid Name Of Landlord2")
 	public String nameOfLandlord2;
-	@Column(name = "panOfLandlord3")
+	//@Column(name = "panOfLandlord3")
 	@Size(min = 0, max = 45, message = "Invalid Pan Of Landlord3")
 	public String panOfLandlord3;
-	@Column(name = "nameOfLandlord3")
+	//@Column(name = "nameOfLandlord3")
 	@Size(min = 0, max = 45, message = "Invalid Name Of Landlord3")
 	public String nameOfLandlord3;
-	@Column(name = "panOfLandlord4")
+	//@Column(name = "panOfLandlord4")
 	@Size(min = 0, max = 45, message = "Invalid Pan Of Landlord4")
 	public String panOfLandlord4;
-	@Column(name = "nameOfLandlord4")
+	//@Column(name = "nameOfLandlord4")
 	@Size(min = 0, max = 45, message = "Invalid Name Of Landlord4")
 	public String nameOfLandlord4;
-	@Column(name = "whetherInterestPaidToBeLender")
+	//@Column(name = "whetherInterestPaidToBeLender")
 	@NotNull(message = "Whether Interest Paid to be lender is required")
 	@Size(min = 0, max = 45, message = "Invalid Whether Interest Paid To Be Lender")
 	public String whetherInterestPaidToBeLender;
-	@Column(name = "countOfPanOfLender")
+	//@Column(name = "countOfPanOfLender")
 	// @NotNull(message = "Count of PAN of lender is required")
-	@Digits(integer = 12, fraction = 0, message = "Invalid Count Of Pan Of Lender")
+	//@Digits(integer = 12, fraction = 0, message = "Invalid Count Of Pan Of Lender")
 	public Long countOfPanOfLender;
-	@Column(name = "panOfLender1")
+	//@Column(name = "panOfLender1")
 	@Size(min = 0, max = 45, message = "Invalid Pan Of Lender1")
 	public String panOfLender1;
-	@Column(name = "nameOfLender1")
+	//@Column(name = "nameOfLender1")
 	@Size(min = 0, max = 45, message = "Invalid Name Of Lender1")
 	public String nameOfLender1;
-	@Column(name = "panOfLender2")
+	//@Column(name = "panOfLender2")
 	@Size(min = 0, max = 45, message = "Invalid Pan Of Lender2")
 	public String panOfLender2;
-	@Column(name = "nameOfLender2")
+	//@Column(name = "nameOfLender2")
 	@Size(min = 0, max = 45, message = "Invalid Name Of Lender2")
 	public String nameOfLender2;
-	@Column(name = "panOfLender3")
+	//@Column(name = "panOfLender3")
 	@Size(min = 0, max = 45, message = "Invalid Pan Of Lender3")
 	public String panOfLender3;
-	@Column(name = "nameOfLender3")
+	//@Column(name = "nameOfLender3")
 	@Size(min = 0, max = 45, message = "Invalid Name Of Lender3")
 	public String nameOfLender3;
-	@Column(name = "panOfLender4")
+	//@Column(name = "panOfLender4")
 	@Size(min = 0, max = 45, message = "Invalid Pan Of Lender4")
 	public String panOfLender4;
-	@Column(name = "nameOfLender4")
+	//@Column(name = "nameOfLender4")
 	@Size(min = 0, max = 45, message = "Invalid Name Of Lender4")
 	public String nameOfLender4;
-	@Column(name = "contributionPaidByTrustees")
-	@Digits(integer = 12, fraction = 2, message = "Invalid Contribution Paid By Trustees")
+	//@Column(name = "contributionPaidByTrustees")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid Contribution Paid By Trustees")
 	public Double contributionPaidByTrustees;
 
-	@Column(name = "nameOfTheSuperAnnuationFund")
+	//@Column(name = "nameOfTheSuperAnnuationFund")
 	@Size(min = 0, max = 45, message = "Invalid Name Of The Super Annuation Fund")
 	public String nameOfTheSuperAnnuationFund;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "SuperannuationFundFromDate")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+	//@Temporal(TemporalType.DATE)
+	//@Column(name = "SuperannuationFundFromDate")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Kolkata")
 	public Date SuperannuationFundFromDate;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "SuperannuationFundToDate")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+	//@Temporal(TemporalType.DATE)
+	//@Column(name = "SuperannuationFundToDate")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Kolkata")
 	public Date SuperannuationFundToDate;
 
-	@Column(name = "contributionSuperannuationFund")
-	@Digits(integer = 12, fraction = 2, message = "Invalid Contribution Super Annuation Fund")
+	//@Column(name = "contributionSuperannuationFund")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid Contribution Super Annuation Fund")
 	public Double contributionSuperannuationFund;
-	@Column(name = "averageRateOfDeduction")
-	@Digits(integer = 12, fraction = 2, message = "Invalid Average Rate Of Deduction")
+	//@Column(name = "averageRateOfDeduction")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid Average Rate Of Deduction")
 	public Double averageRateOfDeduction;
-	@Column(name = "taxDeductedOfSuperannuationFund")
-	@Digits(integer = 12, fraction = 2, message = "Invalid Tax Deducted Of Super Annuation Fund")
+	//@Column(name = "taxDeductedOfSuperannuationFund")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid Tax Deducted Of Super Annuation Fund")
 	public Double taxDeductedOfSuperannuationFund;
-	@Column(name = "grossTotalIncomeincludingContribution")
-	@Digits(integer = 12, fraction = 2, message = "Invalid Gross Total Income including Contribution")
+	//@Column(name = "grossTotalIncomeincludingContribution")
+	//@Digits(integer = 12, fraction = 2, message = "Invalid Gross Total Income including Contribution")
 	public Double grossTotalIncomeincludingContribution;
-	@Column(name = "remarks")
+	//@Column(name = "remarks")
 	public String remarks;
 
-	@Column(name = "fy")
+	//@Column(name = "fy")
 	public String fy;
-	@Column(name = "quarter")
+	//@Column(name = "quarter")
 	@Size(min = 0, max = 45, message = "Invalid quarter")
 	public String quarter;
 
@@ -387,6 +379,97 @@ public class Regular24QSalary extends CommonModelAbstract {
 
 	public void setSuperannuationFundToDate(Date SuperannuationFundToDate) {
 		this.SuperannuationFundToDate = SuperannuationFundToDate;
+	}
+
+	public void setData(JSONObject dataObject) throws ParseException{
+		this.branchId = Long.valueOf(dataObject.get("BRANCHID").toString());
+		this.srNo = Long.valueOf(dataObject.get("SRNO").toString());
+		this.pan = dataObject.get("PAN").toString();
+		this.panRefNo = dataObject.get("PANREFNO").toString();
+		this.name = dataObject.get("NAME").toString();
+		this.category = dataObject.get("CATEGORY").toString();
+		this.grossSalaryAsPerProvision = Double.valueOf(dataObject.get("GROSSSALARYASPERPROVISION").toString());
+		this.valueOfPerquisites = dataObject.get("VALUEOFPERQUISITES").toString();
+		this.profitInSalary = Double.valueOf(dataObject.get("PROFITINSALARY").toString());
+		this.taxableSalaryFromCurrentEmp = Double.valueOf(dataObject.get("TAXABLESALARYFROMCURRENTEMP").toString());
+		this.reportedSalaryFromOtherEmp = Double.valueOf(dataObject.get("REPORTEDSALARYFROMOTHEREMP").toString());
+		this.totalAmountOfSalary = Double.valueOf(dataObject.get("TOTALAMOUNTOFSALARY").toString());
+		this.leaveTravelAllowance = dataObject.get("LEAVETRAVELALLOWANCE").toString();
+		this.gratuity = dataObject.get("GRATUITY").toString();
+		this.commutedValueOfPension = Double.valueOf(dataObject.get("COMMUTEDVALUEOFPENSION").toString());
+		this.leaveEncashmentSalary = Double.valueOf(dataObject.get("LEAVEENCASHMENTSALARY").toString());
+		this.houseRentAllowance = dataObject.get("HOUSERENTALLOWANCE").toString();
+		this.anyOtherExemptionus10 = Double.valueOf(dataObject.get("ANYOTHEREXEMPTIONUS10").toString());
+		this.totalAmountOfExemption = Double.valueOf(dataObject.get("TOTALAMOUNTOFEXEMPTION").toString());
+		this.entertainmentAllowance = dataObject.get("ENTERTAINMENTALLOWANCE").toString();
+		this.pTax = Double.valueOf(dataObject.get("PTAX").toString());
+		this.standardDeduction = Double.valueOf(dataObject.get("STANDARDDEDUCTION").toString());
+		this.totalDeductionUnderSection16 = Double.valueOf(dataObject.get("TOTALDEDUCTIONUNDERSECTION16").toString());
+		this.incomeFromSalary = Double.valueOf(dataObject.get("INCOMEFROMSALARY").toString());
+		this.incomeFromHouseProperty = Double.valueOf(dataObject.get("INCOMEFROMHOUSEPROPERTY").toString());
+		this.incomeFromOtherSources = Double.valueOf(dataObject.get("INCOMEFROMOTHERSOURCES").toString());
+		this.grossTotalIncome = Double.valueOf(dataObject.get("GROSSTOTALINCOME").toString());
+		this.deductionUs80C = Double.valueOf(dataObject.get("DEDUCTIONUS80C").toString());
+		this.deductionUs80CCC = Double.valueOf(dataObject.get("DEDUCTIONUS80CCC").toString());
+		this.deductionUs80CCD1 = Double.valueOf(dataObject.get("DEDUCTIONUS80CCD1").toString());
+		this.deductionUs80C80CCC80CCD1 = Double.valueOf(dataObject.get("DEDUCTIONUS80C80CCC80CCD1").toString());
+		this.deductionUs80CCD1B = Double.valueOf(dataObject.get("DEDUCTIONUS80CCD1B").toString());
+		this.deductionUs80CCD2 = Double.valueOf(dataObject.get("DEDUCTIONUS80CCD2").toString());
+		this.deductionUs80D = Double.valueOf(dataObject.get("DEDUCTIONUS80D").toString());
+		this.deductionUs80E = Double.valueOf(dataObject.get("DEDUCTIONUS80E").toString());
+		this.deductionUs80G = Double.valueOf(dataObject.get("DEDUCTIONUS80G").toString());
+		this.deductionUs80TTA = Double.valueOf(dataObject.get("DEDUCTIONUS80TTA").toString());
+		this.amountDeductible80ccg = Double.valueOf(dataObject.get("AMOUNTDEDUCTIBLE80CCG").toString());
+		this.anyOtherDeduction = Double.valueOf(dataObject.get("ANYOTHERDEDUCTION").toString());
+		this.totalDeductionUnderChapterVIA = Double.valueOf(dataObject.get("TOTALDEDUCTIONUNDERCHAPTERVIA").toString());
+		this.totalTaxableIncome = Double.valueOf(dataObject.get("TOTALTAXABLEINCOME").toString());
+		this.incomeTaxOnTotalIncome = Double.valueOf(dataObject.get("INCOMETAXONTOTALINCOME").toString());
+		this.rebateUs87A = Double.valueOf(dataObject.get("REBATEUS87A").toString());
+		this.surcharge = Double.valueOf(dataObject.get("SURCHARGE").toString());
+		this.educationCess = Double.valueOf(dataObject.get("EDUCATIONCESS").toString());
+		this.incomeTaxReliefUs89 = Double.valueOf(dataObject.get("INCOMETAXRELIEFUS89").toString());
+		this.netIncomeTaxPayable = Double.valueOf(dataObject.get("NETINCOMETAXPAYABLE").toString());
+		this.tdsFromCurrentEmployer = Double.valueOf(dataObject.get("TDSFROMCURRENTPLOYER").toString());
+		this.reportedTdsFromPreviousEmployer = Double
+				.valueOf(dataObject.get("REPORTEDTDSFROMPREVIOUSEMPLOYER").toString());
+		this.totalTds = Double.valueOf(dataObject.get("TOTALTDS").toString());
+		this.shortfallInTaxDeduction = Double.valueOf(dataObject.get("SHORTFALLINTAXDEDUCTION").toString());
+		this.whetherTaxDeductedAtHigherRate = dataObject.get("WHETHERTAXDEDUCTEDATHIGHERRATE").toString();
+		this.countOfPanOfLandlord = Long.valueOf(dataObject.get("COUNTOFPANOFLANDLORD").toString());
+		this.panOfLandlord1 = dataObject.get("PANOFLANDLORD1").toString();
+		this.nameOfLandlord1 = dataObject.get("NAMEOFLANDLORD1").toString();
+		this.panOfLandlord2 = dataObject.get("PANOFLANDLORD2").toString();
+		this.nameOfLandlord2 = dataObject.get("NAMEOFLANDLORD2").toString();
+		this.panOfLandlord3 = dataObject.get("PANOFLANDLORD3").toString();
+		this.nameOfLandlord3 = dataObject.get("NAMEOFLANDLORD3").toString();
+		this.panOfLandlord4 = dataObject.get("PANOFLANDLORD4").toString();
+		this.nameOfLandlord4 = dataObject.get("NAMEOFLANDLORD4").toString();
+		this.whetherInterestPaidToBeLender = dataObject.get("WHETHERINTERESTPAIDTOBELENDER").toString();
+		this.countOfPanOfLender = Long.valueOf(dataObject.get("COUNTOFPANOFLENDER").toString());
+		this.panOfLender1 = dataObject.get("PANOFLENDER1").toString();
+		this.nameOfLender1 = dataObject.get("NAMEOFLENDER1").toString();
+		this.panOfLender2 = dataObject.get("PANOFLENDER2").toString();
+		this.nameOfLender2 = dataObject.get("NAMEOFLENDER2").toString();
+		this.panOfLender3 = dataObject.get("PANOFLENDER3").toString();
+		this.nameOfLender3 = dataObject.get("NAMEOFLENDER3").toString();
+		this.panOfLender4 = dataObject.get("PANOFLENDER4").toString();
+		this.nameOfLender4 = dataObject.get("NAMEOFLENDER4").toString();
+		this.contributionPaidByTrustees = Double.valueOf(dataObject.get("CONTRIBUTIONPAIDBYTRUSTEES").toString());
+		this.nameOfTheSuperAnnuationFund = dataObject.get("NAMEOFTHESUPERANNUATIONFUND").toString();
+
+		this.contributionSuperannuationFund = Double
+				.valueOf(dataObject.get("CONTRIBUTIONSUPERANNUATIONFUND").toString());
+		this.averageRateOfDeduction = Double.valueOf(dataObject.get("AVERAGERATEOFDEDUCTION").toString());
+		this.taxDeductedOfSuperannuationFund = Double
+				.valueOf(dataObject.get("TAXDEDUCTEDOFSUPERANNUATIONFUND").toString());
+		this.grossTotalIncomeincludingContribution = Double
+				.valueOf(dataObject.get("GROSSTOTALINCOMEINCLUDINGCONTRIBUTION").toString());
+		this.remarks = dataObject.get("REMARKS").toString();
+
+		this.fromDateOfEmployment = returnDate(dataObject.get("FROMDATEOFEMPLOYMENT").toString());
+		this.toDateOfEmployment = returnDate(dataObject.get("TODATEOFEMPLOYMENT").toString());
+		this.SuperannuationFundFromDate = returnDate(dataObject.get("SUPERANNUATIONFUNDFROMDATE").toString());
+		this.SuperannuationFundToDate = returnDate(dataObject.get("SUPERANNUATIONFUNDTODATE").toString());
 	}
 
 }

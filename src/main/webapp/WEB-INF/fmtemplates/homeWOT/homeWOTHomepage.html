@@ -1,81 +1,179 @@
+<style>
+/* Style for the help button image */
+.help-button {
+	display: none !important;
+	width: 75px;
+	height: 122px;
+	transition: transform .2s;
+	position: fixed;
+	right: -60px !important;
+	bottom: 10px;
+	border-radius: 5px;
+	background-color: #1e3361;
+	display: flex;
+	transition: 0.5s;
+	width: 75px;
+}
+/* Style for the help button image */
+.support-button {
+	width: 60px;
+	height: 122px;
+	transition: transform .2s;
+	position: fixed;
+	right: -40px !important;
+	bottom: 10px;
+	border-radius: 5px;
+	background-color: #1e3361;
+	display: flex;
+	transition: 0.5s;
+}
+
+.support-button .supportspan {
+	width: 5px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: bold;
+	color: white;
+	font-size: 14px;
+	word-break: break-all;
+	line-height: initial;
+	font-family: 'Roboto', sans-serif;
+	position: relative;
+	left: 0px;
+}
+
+.support-button .himg1 {
+	width: 25px;
+	filter: brightness(100);
+	position: absolute;
+	top: 0px;
+	left: 15px;
+}
+
+.support-button .himg2 {
+	width: 120px;
+	filter: brightness(100);
+	rotate: -90deg;
+	position: absolute;
+	right: -20px;
+	top: 44px;
+}
+
+/* Style for the help button when hovered */
+.support-button:hover {
+	transition: 0.5s;
+	box-shadow: 0px 0px 10px black;
+	right: -40px !important;
+}
+
+.support-button .tooltiptext {
+	visibility: hidden;
+	width: 200px;
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px;
+	position: absolute;
+	z-index: 1;
+	top: 13px;
+	right: 110%;
+	opacity: 0;
+	transition: opacity 1s;
+}
+
+.support-button:hover .tooltiptext {
+	visibility: visible;
+	opacity: 1;
+	filter: drop-shadow(0px 0px 10px #222);
+}
+</style>
+
 <br>
 <div class="container">
 	<center>
-		<h2>TDS/TCS Monthly Last Date Of Challan Payment</h2>
+		<h2>TDS Monthly Due Dates</h2>
 	</center>
 
 	<table class="table">
 		<thead>
 			<tr>
-				<th style="background-color: #fff">Month</th>
-				<th style="background-color: #fff">Last Date Of Challan Payment</th>
-				<th style="background-color: #fff">Last Date Of Return Filling</th>
+				<th style="background-color: #fff; text-align: center">Month</th>
+				<th style="background-color: #fff; text-align: center">Due Date
+					Of Challan Payment</th>
+				<th style="background-color: #fff; text-align: center">Due Date
+					Of Return Filling</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr ng-if="cCctr.presentMonth() == 03"
-				style="background-color: #BECFFD">
+				style="background-color: #BECFFD; text-align: center">
 				<td>April</td>
 				<td>7 May</td>
 				<td>31 July</td>
 			</tr>
-			<tr ng-if="cCctr.presentMonth() != 03" style="background-color: #fff">
+			<tr ng-if="cCctr.presentMonth() != 03"
+				style="background-color: #fff; text-align: center">
 				<td>April</td>
 				<td>7 May</td>
 				<td>31 July</td>
 			</tr>
 			<tr ng-if="cCctr.presentMonth() == 04"
-				style="background-color: #BECFFD">
+				style="background-color: #BECFFD; text-align: center">
 				<td>May</td>
 				<td>7 June</td>
 				<td>31 July</td>
 			</tr>
-			<tr ng-if="cCctr.presentMonth() != 04" style="background-color: #fff">
+			<tr ng-if="cCctr.presentMonth() != 04"
+				style="background-color: #fff; text-align: center">
 				<td>May</td>
 				<td>7 June</td>
 				<td>31 July</td>
 			</tr>
 			<tr ng-if="cCctr.presentMonth() == 05"
-				style="background-color: #BECFFD">
+				style="background-color: #BECFFD; text-align: center">
 				<td>June</td>
 				<td>7 July</td>
 				<td>31 July</td>
 			</tr>
-			<tr ng-if="cCctr.presentMonth() != 05" style="background-color: #fff">
+			<tr ng-if="cCctr.presentMonth() != 05"
+				style="background-color: #fff; text-align: center">
 				<td>June</td>
 				<td>7 July</td>
 				<td>31 July</td>
 			</tr>
 			<tr ng-if="cCctr.presentMonth() == 06"
-				style="background-color: #BECFFD">
+				style="background-color: #BECFFD; text-align: center">
 				<td>July</td>
 				<td>7 August</td>
 				<td>31 October</td>
 			</tr>
-			<tr ng-if="cCctr.presentMonth() != 06" style="background-color: #fff">
+			<tr ng-if="cCctr.presentMonth() != 06"
+				style="background-color: #fff; text-align: center">
 				<td>July</td>
 				<td>7 August</td>
 				<td>31 October</td>
 			</tr>
 			<tr ng-if="cCctr.presentMonth() == 07"
-				style="background-color: #BECFFD">
+				style="background-color: #BECFFD; text-align: center">
 				<td>August</td>
 				<td>7 September</td>
 				<td>31 October</td>
 			</tr>
-			<tr ng-if="cCctr.presentMonth() != 07" style="background-color: #fff">
+			<tr ng-if="cCctr.presentMonth() != 07"
+				style="background-color: #fff; text-align: center">
 				<td>August</td>
 				<td>7 September</td>
 				<td>31 October</td>
 			</tr>
 
 			<tr ng-if="cCctr.presentMonth() == 08"
-				style="background-color: #BECFFD">
+				style="background-color: #BECFFD; text-align: center">
 				<td>September</td>
 				<td>7 October</td>
 				<td>31 October</td>
 			</tr>
-			<tr ng-if="cCctr.presentMonth() != 08" style="background-color: #fff">
+			<tr ng-if="cCctr.presentMonth() != 08"
+				style="background-color: #fff; text-align: center">
 				<td>September</td>
 				<td>7 October</td>
 				<td>31 October</td>
@@ -83,67 +181,73 @@
 
 
 			<tr ng-if="cCctr.presentMonth() == 09"
-				style="background-color: #BECFFD">
+				style="background-color: #BECFFD; text-align: center">
 				<td>October</td>
 				<td>7 November</td>
 				<td>31 January</td>
 			</tr>
-			<tr ng-if="cCctr.presentMonth() != 09" style="background-color: #fff">
+			<tr ng-if="cCctr.presentMonth() != 09"
+				style="background-color: #fff; text-align: center">
 				<td>October</td>
 				<td>7 November</td>
 				<td>31 January</td>
 			</tr>
 			<tr ng-if="cCctr.presentMonth() == 10"
-				style="background-color: #BECFFD">
+				style="background-color: #BECFFD; text-align: center">
 				<td>November</td>
 				<td>7 December</td>
 				<td>31 January</td>
 			</tr>
-			<tr ng-if="cCctr.presentMonth() != 10" style="background-color: #fff">
+			<tr ng-if="cCctr.presentMonth() != 10"
+				style="background-color: #fff; text-align: center">
 				<td>November</td>
 				<td>7 December</td>
 				<td>31 January</td>
 			</tr>
 			<tr ng-if="cCctr.presentMonth() == 11"
-				style="background-color: #BECFFD">
+				style="background-color: #BECFFD; text-align: center">
 				<td>December</td>
 				<td>7 January</td>
 				<td>31 January</td>
 			</tr>
-			<tr ng-if="cCctr.presentMonth() != 11" style="background-color: #fff">
+			<tr ng-if="cCctr.presentMonth() != 11"
+				style="background-color: #fff; text-align: center">
 				<td>December</td>
 				<td>7 January</td>
 				<td>31 January</td>
 			</tr>
 			<tr ng-if="cCctr.presentMonth() == 00"
-				style="background-color: #BECFFD">
+				style="background-color: #BECFFD; text-align: center">
 				<td>January</td>
 				<td>7 February</td>
 				<td>31 May</td>
 			</tr>
-			<tr ng-if="cCctr.presentMonth() != 00" style="background-color: #fff">
+			<tr ng-if="cCctr.presentMonth() != 00"
+				style="background-color: #fff; text-align: center">
 				<td>January</td>
 				<td>7 February</td>
 				<td>31 May</td>
 			</tr>
 			<tr ng-if="cCctr.presentMonth() == 01"
-				style="background-color: #BECFFD">
+				style="background-color: #BECFFD; text-align: center">
 				<td>February</td>
 				<td>7 March</td>
 				<td>31 May</td>
 			</tr>
-			<tr ng-if="cCctr.presentMonth() != 01" style="background-color: #fff">
+			<tr ng-if="cCctr.presentMonth() != 01"
+				style="background-color: #fff; text-align: center">
 				<td>February</td>
 				<td>7 March</td>
 				<td>31 May</td>
 			</tr>
 			<tr ng-if="cCctr.presentMonth() == 02"
-				style="background-color: #BECFFD">
+				style="background-color: #BECFFD; text-align: center">
 				<td>March</td>
 				<td>30 April</td>
 				<td>31 May</td>
 			</tr>
-			<tr ng-if="cCctr.presentMonth() != 02" style="background-color: #fff">
+			<tr ng-if="cCctr.presentMonth() != 02"
+				style="background-color: #fff; text-align: center">
 				<td>March</td>
 				<td>30 April</td>
 				<td>31 May</td>
@@ -153,10 +257,21 @@
 </div>
 <br>
 
+<button class="support-button" style="bottom: 50px;"
+	ng-click="cCctr.gotoHelpSC('homeWOThelpPage','homePageHelp')">
+	<span class="supportspan">SUPPORT</span>
+	<div style="width: 150px; position: relative">
+		<!-- <img src="static/img/ROBO-TRANSPARENT.png" alt="Help" class="himg1"> -->
+		<!-- <img src="static/img/TOS-TRANSPARENT.png " alt="Help" class="himg2"> -->
+	</div>
+</button>
 
 
-
-
+<script>
+	$(document).ready(function() {
+		$(this).scrollTop(0);
+	});
+</script>
 
 
 

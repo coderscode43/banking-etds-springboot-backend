@@ -37,7 +37,7 @@
 
 .table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
 	{
-	background-color: whitesmoke;
+	background-color: white;
 }
 
 @media ( min-width : 768px) {
@@ -57,17 +57,10 @@
 	height: 60px;
 }
 
-.ellipsis {
-	max-width: 70px;
-	min-width: 200px;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
-}
-
 td {
 	width: 5%;
 }
+
 .btn-grad {
 	background-image: linear-gradient(to right, #FF8008 0%, #FFC837 51%, #FF8008 100%);
 	transition: 0.5s;
@@ -85,35 +78,13 @@ td {
 	text-decoration: none;
 }
 
-/*Refresh Button  */
-.tooltip-top {
- bottom: 83%;
-  margin-left:-9%;
-}
-/*Search Button  */
-.tooltip-top1 {
- bottom: 116%;
-margin-left: -22%;
-}
-/*Advance Search Button  */
-.tooltip-top2 {
- bottom: 116%;
-margin-left: -43%;
-}
-/*Export to Excel Button  */
-.tooltip-top3 {
- bottom: 81%;
-margin-left: -49%;
-}
-/*Table Coloumn Button */
-.tooltip-top4{
- bottom: 116%;
-margin-left: -35%;
+/*Detail Page Button */
+.tooltip-top5 {
+	margin-left: -6%;
 }
 
-/*Detail Page Button */
-.tooltip-top5{
-margin-left: -6%;
+.panel-body {
+	padding: 0;
 }
 </style>
 
@@ -122,19 +93,12 @@ margin-left: -6%;
 
 <div id="page-wrapper">
 	<div class="container-fluid">
-	<!-- <button class="removeAll btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
-					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
-					 onClick="refreshPageButton()"><i
-					class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh<span class="tooltiptext tooltip-top">Refresh or Press F5</span></button> -->
-		<div class="col-md-12 "
-			style="padding-left: 0px; font-size: 12pxp; margin-top: 1%">
-			<div class="heading">Lower Deduction Certificate</div>
-
-
-
-		</div>
-
 		<br>
+		<div class="row">
+			<div class="heading">
+				<strong>Lower Deduction Certificate</strong>
+			</div>
+		</div>
 		<button class="btn btn-primary hidden visible-xs" type="button"
 			data-toggle="collapse" data-target="#collapseExample2"
 			aria-expanded="false" aria-controls="collapseExample">
@@ -142,132 +106,172 @@ margin-left: -6%;
 		<div class="collapse dont-collapse-sm" id="collapseExample2">
 			<div class="row">
 				<div class="form-group">
-					<div class="col-md-3">
+					<div class="col-md-12" style="padding-left: 0px;">
+						<div class="col-md-3">
 
-						<h6>
-							<b>Financial Year</b>
-						</h6>
-						<select ng-model="cCctr.search.FY" style="width: 100%"
-							class="form-control">
-							<option disabled value="">Select financial Year</option>
-							<#list financialYear as year>
-							<option value="${year}">${year}</option>
-							</#list>
-						</select>
-
-					</div>
-
-					<div class="col-md-3">
-						<h6>
-							<b>PAN</b>
-						</h6>
-						<input type="text" ng-model="cCctr.search.PAN"
-							class="form-control" placeholder="PAN" style="width: 100%">
-					</div>
-					
-					<div class="col-md-3">
-						<h6>
-							<b>NAME</b>
 							<h6>
-								<input type="text" ng-model="cCctr.search.NAME"
-									class="form-control" placeholder="Name" style="width: 100%">
-					</div>
+								<b>Financial Year</b>
+							</h6>
+							<select ng-model="cCctr.search.FY" style="width: 100%"
+								class="form-control">
+								<option disabled value="">Select financial Year</option>
+								<#list financialYear as year>
+								<option value="${year}">${year}</option>
+								</#list>
+							</select>
 
-					
+						</div>
 
-
-
-				</div>
-
-
-			</div>
-
-			<div class="collapse  panel-collapse" id="collapseExample4">
-
-				<div class="row">
-					
-
-					<div class="col-md-3">
-						<h6>
-							<b>TAN</b>
+						<div class="col-md-3">
 							<h6>
-								<select name="tan" id="tan" class="form-control"
-									ng-model="cCctr.search.TAN">
-									<option disabled value="">Select Tan</option>
-									<#list Tan as T>
-									<option value="${T}">${T}</option>
-									</#list>
-								</select>
-					</div>
+								<b>PAN</b>
+							</h6>
+							<input type="text" ng-model="cCctr.search.PAN"
+								class="form-control" placeholder="PAN" style="width: 100%">
+						</div>
 
-					<div class="col-md-3">
-						<h6>
-							<b>Section Code</b>
+						<div class="col-md-3">
 							<h6>
-								<select name="tan" id="tan" class="form-control"
-									ng-model="cCctr.search.SECTION_CODE">
-									<option disabled value="">Select Section Code</option>
-									<#list Section as S>
-									<option value="${S}">${S}</option>
-									</#list>
-								</select>
-					</div>
-					<div class="col-md-3">
-						<h6>
-							<b>Nature of Payment</b>
-							<h6>
-								<input type="text" ng-model="cCctr.search.NATURE_OF_PAYMENT"
-									class="form-control" placeholder="Nature of Payment"
-									style="width: 100%">
-					</div>
+								<b>NAME</b>
+							</h6>
+							<input type="text" ng-model="cCctr.search.NAME"
+								class="form-control" placeholder="Name" style="width: 100%">
+						</div>
+						<div class="col-md-3 Btns">
 
-				</div>
-				<div class="row">
-					<div class="col-md-3">
-						<h6>
-							<b>LDC Rate</b>
-							<h6>
-								<input type="text" ng-model="cCctr.search.LDC_RATE"
-									class="form-control" placeholder="LDC Rate" style="width: 100%">
-					</div>
 
-					<div class="col-md-3">
-						<h6>
-							<b>Certificate Limit</b>
-							<h6>
-								<input type="text" ng-model="cCctr.search.CERTIFICATE_LIMIT"
-									class="form-control" placeholder="Certificate Limit"
-									style="width: 100%">
-					</div>
+							<button ng-click="cCctr.searchFYEntities(true,'ldc','ldc')"
+								class="btn btn-success  tool" onclick="scrollWin()">
+								<div class=button-main-box>
+									<i class="fa fa-search border-0 p-0"
+										style="color: inherit; background-color: transparent; font-size: large;"></i>
+									<div class="button-tooltip-box">
+										<span class="tooltiptext Search ">Search Button</span>
+									</div>
+								</div>
+							</button>
 
-					<div class="col-md-3">
-						<h6>
-							<b>Amount Consumed</b>
-							<h6>
-								<input type="text" ng-model="cCctr.search.AMOUNT_CONSUMED"
-									class="form-control" placeholder="Amount Consumed"
-									style="width: 100%">
-					</div>
-					<div class="col-md-3">
-						<h6>
-							<b>LDC Number</b>
-						</h6>
-						<input type="text" ng-model="cCctr.search.LDC_NUMBER"
-							class="form-control" placeholder="LDC Number" style="width: 100%">
-					</div>
-					</div>
-					<div class="row">
-					<div class="col-md-3">
-						<button class="btn btn-grad astro-MG2CNCJP tool" type="button"
-							style="margin-top: 8%;background-image: linear-gradient(to right, #517fa4 0%, #243949  51%, #517fa4  100%);"
-							ng-click="cCctr.generateExcel('apildc/generateExcel/','LDC')"><i
-											class="fa fa-plus" aria-hidden="true"></i>&nbsp;Export
-							to Excel<span class="tooltiptext tooltip-top3">Export Excel Button</span></button>
-					</div>
+							<button class="btn btn-primary  collapsed tool"
+								style="background-color: #FFA500; border-color: #FFA500;"
+								data-toggle="collapse" data-target="#collapseExample4"
+								aria-expanded="false" data-parent="#collapseExample4"
+								aria-controls="collapseExample">
+								<div class=button-main-box>
+									<i class="fa fa-filter border-0 p-0"
+										style="color: #fff; background-color: transparent; font-size: large;"></i>
+									<div class="button-tooltip-box">
+										<span class="tooltiptext Search">Advance Search Button</span>
+									</div>
+								</div>
+							</button>
+							<div class="col-md-4">
+								<label class="switch tool sliderButton"> <input
+									type="checkbox"> <span class="slider round "></span>
+								<div class="button-tooltip-box">
+										<span class="tooltiptext Search"> Resize Table</span>
+									</div>
+								</label>
+							</div>
 
+
+
+
+						</div>
+					</div>
 				</div>
 			</div>
-			<!-- <div class="row text-right" id="hide">
+
+			<div class="collapse  panel-collapse" id="collapseExample4"
+				style="margin-left: -8px;">
+
+				<div class="row">
+
+					<div class="col-md-12">
+						<div class="col-md-3">
+							<h6>
+								<b>TAN</b>
+							</h6>
+							<select name="tan" id="tan" class="form-control"
+								ng-model="cCctr.search.TAN">
+								<option disabled value="">Select Tan</option>
+								<#list Tan as T>
+								<option value="${T}">${T}</option>
+								</#list>
+							</select>
+						</div>
+
+						<div class="col-md-3">
+							<h6>
+								<b>Section Code</b>
+							</h6>
+							<select name="tan" id="tan" class="form-control"
+								ng-model="cCctr.search.SECTION_CODE">
+								<option disabled value="">Select Section Code</option>
+								<#list Section as S>
+								<option value="${S}">${S}</option>
+								</#list>
+							</select>
+						</div>
+						<div class="col-md-3">
+							<h6>
+								<b>Nature of Payment</b>
+							</h6>
+							<input type="text" ng-model="cCctr.search.NATURE_OF_PAYMENT"
+								class="form-control" placeholder="Nature of Payment"
+								style="width: 100%">
+						</div>
+
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="col-md-3">
+							<h6>
+								<b>LDC Rate</b>
+							</h6>
+							<input type="text" ng-model="cCctr.search.LDC_RATE"
+								class="form-control" placeholder="LDC Rate" style="width: 100%">
+						</div>
+
+						<!-- <div class="col-md-3">
+							<h6>
+								<b>Certificate Limit</b>
+								</h6>
+									<input type="text" ng-model="cCctr.search.CERTIFICATE_LIMIT"
+										class="form-control" placeholder="Certificate Limit"
+										style="width: 100%">
+						</div> -->
+
+						<div class="col-md-3">
+							<h6>
+								<b>Amount Consumed</b>
+							</h6>
+							<input type="text" ng-model="cCctr.search.AMOUNT_CONSUMED"
+								class="form-control" placeholder="Amount Consumed"
+								style="width: 100%">
+						</div>
+						<div class="col-md-3">
+							<h6>
+								<b>LDC Number</b>
+							</h6>
+							<input type="text" ng-model="cCctr.search.LDC_NUMBER"
+								class="form-control" placeholder="LDC Number"
+								style="width: 100%">
+						</div>
+
+						<div class="row">
+							<div class="col-md-3 ExcelBtn">
+								<button class="btn btn-primary waves-effect waves-light tool"
+									type="button"
+									ng-click="cCctr.generateExcel('apildc/generateExcel/','LDC')">
+									Export to Excel<span class="tooltiptext ExportExcel">Export
+										to Excel</span>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- <div class="row text-right" id="hide">
 				<div class="col-md-4" style="margin-left: 60%; margin-top: -35px;display:ruby">
 					<button ng-click="cCctr.searchFYEntities(true,'ldc','ldc')"
 					style="background-image: linear-gradient(to right, #093028 0%, #237A57  51%, #093028  100%)"
@@ -285,166 +289,151 @@ margin-left: -6%;
 					<div class="text-right"></div>
 				</div>
 			</div> -->
-			
-			
-			
-			<div style="right: 3%; position: absolute; gap: 20px;margin-top:-3%;display:flex"
-		class="">
 
 
-		<button ng-click="cCctr.searchFYEntities(true,'ldc','ldc')"
-			class="btn btn-success mobile tool" onclick="scrollWin()">
-			<i class="fa fa-search border-0 p-0"
-				style="color: inherit; background-color: transparent;font-size: large;"></i>
-		<span class="tooltiptext tooltip-top">Search Button</span> </button>
+				<div class="row" id="hide">
+					<div class="col-md-3" style="margin-left: 85%; margin-top: -70px">
 
-		<button class="btn btn-primary mobile collapsed tool"
-			style="background-color: #FFA500; border-color: #FFA500;"
-			data-toggle="collapse" data-target="#collapseExample4"
-			aria-expanded="false" data-parent="#navaccordion"
-			aria-controls="collapseExample">
-			<i class="fa fa-filter border-0 p-0"
-				style="color: #fff; background-color: transparent;font-size: large;"></i>
-		<span class="tooltiptext tooltip-top1">Advance Search Button</span></button>
-
-		
-	
-
-	</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			<div class="row" id="hide">
-				<div class="col-md-3" style="margin-left: 85%; margin-top: -70px">
-
+					</div>
 				</div>
-			</div>
 
-			<div class="row" id="search">
-				<div class="col-md-3" id="search">
-					<button ng-click="cCctr.searchFYEntities(true,'ldc','ldc')"
-						class="btn btn-success" onclick="scrollWin()">Search</button>
+				<div class="row" id="search">
+					<div class="col-md-3" id="search">
+						<button ng-click="cCctr.searchFYEntities(true,'ldc','ldc')"
+							class="btn btn-success" onclick="scrollWin()">Search</button>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-
-
-
-	<div class="panel-body">
 
 		<div class="row">
-			<div style="overflow-x: inherit; width: 100%">
-
-				<table class="tables table-bordered table-hover table-striped"
-					role="table" style="font-size: 12px">
-
-
-					<thead>
-					<colgroup>
-						<col span="14" style="background-color: #ffffff">
-					</colgroup>
-					<tr>
-					<thead role="rowgroup">
-						<tr role="row" style="background-color: #81b7db; height: 40px">
-							<th>Sr. No.</th>
-							<th><div class="autoResizeQuarter">LDC_NUMBER</div></th>
-							<th><div class="autoResizeQuarter">NAME</div></th>
-							<th><div class="autoResizeQuarter">TAN</div></th>
-							<th><div class="autoResizeQuarter">PAN</div></th>
-							<th><div class="autoResizeQuarter">Financial Year</div></th>
-							<th class=" validFrom"><div class="autoResizeQuarter">Valid From</div></th>
-							<th class=" validTo"><div class="autoResizeQuarter">Valid To</div></th>
-							<th><div class="autoResizeQuarter">Section Code</div></th>
-							<th><div class="autoResizeQuarter">Nature of Payment</div></th>
-							<th><div class="autoResizeQuarter">LDC Rate</div></th>
-							<th class=" certificate"><div class="autoResizeQuarter">Certificate Limit</div></th>
-							<th class=" amountConsumed"><div class="autoResizeQuarter">Amount Consumed</div></th>
-							<th class=" issueDate"><div class="autoResizeQuarter">Issue Date</div></th>
-							<th class=" cancelDate"><div class="autoResizeQuarter">Cancel Date</div></th>
-							<th class=" asOnDate"><div class="autoResizeQuarter">As On Date</div></th>
+			<div class="col-xs-12">
+				<div class="text-right"></div>
+			</div>
+		</div>
 
 
+		<div class="panel-body" style="margin-top: 1.1%;">
 
-						</tr>
-					</thead>
-					<tbody>
-						<tr style="color: red" ng-show="cCctr.getEntityListDataFY().length <= 0">
-					<td colspan="20" style="text-align: center;"><b><h3 style="text-align:center;text-align-last: 5;">No data
-					found!!</h3></b></td>
+			<div class="row">
+				<div class="table-responsive"
+					style="overflow-x: inherit; width: 100%">
+
+					<table class="tables table-bordered table-hover table-striped"
+						role="table" style="font-size: 12px">
+
+
+						<thead>
+						<colgroup>
+							<col span="14" style="background-color: #ffffff">
+						</colgroup>
+						<tr>
+						<thead role="rowgroup">
+							<tr role="row" style="height: 40px">
+								<th>Sr. No.</th>
+								<th><div class="autoResizeQuarter">LDC_NUMBER</div></th>
+								<th><div class="autoResizeQuarter">NAME</div></th>
+								<th><div class="autoResizeQuarter">TAN</div></th>
+								<th><div class="autoResizeQuarter">PAN</div></th>
+								<th><div class="autoResizeQuarter">Financial Year</div></th>
+								<th class=" validFrom"><div class="autoResizeQuarter">Valid
+										From</div></th>
+								<th class=" validTo"><div class="autoResizeQuarter">Valid
+										To</div></th>
+								<th><div class="autoResizeQuarter">Section Code</div></th>
+								<th><div class="autoResizeQuarter">Nature of Payment</div></th>
+								<th><div class="autoResizeQuarter">LDC Rate</div></th>
+								<th class=" certificate"><div class="autoResizeQuarter">Certificate
+										Limit</div></th>
+								<th class=" amountConsumed"><div class="autoResizeQuarter">Amount
+										Consumed</div></th>
+								<th class=" issueDate"><div class="autoResizeQuarter">Issue
+										Date</div></th>
+								<th class=" cancelDate"><div class="autoResizeQuarter">Cancel
+										Date</div></th>
+								<th class=" asOnDate"><div class="autoResizeQuarter">As
+										On Date</div></th>
+
+
+
+							</tr>
+						</thead>
+						<tbody>
+							<tr style="color: red"
+								ng-show="cCctr.getEntityListDataFY().length <= 0">
+								<td colspan="20" style="text-align: center;"><b><h3
+											style="text-align: center; text-align-last: 5;">No data
+											found!!</h3></b></td>
 							<tr role="row"
 								ng-repeat="a in ( filteredList =( cCctr.getEntityListDataFY() ) )">
-							<td>{{$index+1}}</td>
-							<td>{{a.LDC_NUMBER}}</td>
-							<td class="" data-toggle="tooltip"
-								data-placement="bottom" title="{{a.NAME}}">{{a.NAME}}</td>
-							<td>{{a.TAN}}</td>
-							<td>{{a.PAN}}</td>
-							<td>{{a.FY}}</td>
-							<td class=" validFrom">{{a.VALID_FROM | date:'dd-MM-yyyy'}}</td>
-							<td class=" validTo">{{a.VALID_TO | date:'dd-MM-yyyy'}}</td>
-							<td>{{a.SECTION_CODE}}</td>
-							<td  data-toggle="tooltip"
-								data-placement="bottom" title="{{a.NATURE_OF_PAYMENT}}">{{a.NATURE_OF_PAYMENT}}</td>
-							<td>{{a.LDC_RATE}}</td>
-							<td class=" certificate">{{a.CERTIFICATE_LIMIT}}</td>
-							<td class=" amountConsumed">{{a.AMOUNT_CONSUMED}}</td>
-							<td class=" issueDate">{{a.ISSUE_DATE | date:'dd-MM-yyyy'}}</td>
-							<td class=" cancelDate">{{a.CANCEL_DATE}}</td>
-							<td class=" asOnDate">{{a.AS_ON_DATE | date:'dd-MM-yyyy'}}</td>
+								<td>{{$index+cCctr.srNo}}</td>
+								<td>{{a.LDC_NUMBER}}</td>
+								<td class="" data-toggle="tooltip" data-placement="bottom"
+									title="{{a.NAME}}">{{a.NAME}}</td>
+								<td>{{a.TAN}}</td>
+								<td>{{a.PAN}}</td>
+								<td>{{a.FY}}</td>
+								<td class=" validFrom">{{a.VALID_FROM | date:'dd-MM-yyyy'}}</td>
+								<td class=" validTo">{{a.VALID_TO | date:'dd-MM-yyyy'}}</td>
+								<td>{{a.SECTION_CODE}}</td>
+								<td data-toggle="tooltip" data-placement="bottom"
+									title="{{a.NATURE_OF_PAYMENT}}">{{a.NATURE_OF_PAYMENT}}</td>
+								<td>{{a.LDC_RATE}}</td>
+								<td class=" certificate">{{a.CERTIFICATE_LIMIT}}</td>
+								<td class=" amountConsumed">{{a.AMOUNT_CONSUMED}}</td>
+								<td class=" issueDate">{{a.ISSUE_DATE | date:'dd-MM-yyyy'}}</td>
+								<td class=" cancelDate">{{a.CANCEL_DATE}}</td>
+								<td class=" asOnDate">{{a.AS_ON_DATE | date:'dd-MM-yyyy'}}</td>
 
 								<!-- <td>{{a.total-a.amountPaid}}</td> -->
 
 							</tr>
 							<tr>
-							<th class="one" colspan="12"
-								style="text-align: center; height: 40px" ng-init="ttl=0"><b>TOTAL</b></th>
-							<td class=" amountConsumed"><b>{{ filteredList | sumByKey :
-									'AMOUNT_CONSUMED' | number : fractionSize}}</b></td>
-						</tr>
+								<th class="one" colspan="12"
+									style="text-align: center; height: 40px" ng-init="ttl=0"><b>TOTAL</b></th>
+								<td class=" amountConsumed"><b>{{ filteredList |
+										sumByKey : 'AMOUNT_CONSUMED' | number : fractionSize}}</b></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
 
 						</tbody>
-				</table>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>
 
-
-
-
 	<div class="row" ng-show="cCctr.getNoPages() > 0">
-		<div class="row" align="center">
-			<span ng-show="cCctr.currentPage != 1"> <a
-				ng-click="cCctr.getPages(true,'ldc',cCctr.currentPage-1)"><strong>Previous</strong></a>
-			</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.currentPage}}</strong>&nbsp;
+		<div align="center">
+			<span ng-show="cCctr.PreviousNo != 1"> <a
+				ng-show="cCctr.PreviousNo >= 1 && cCctr.PreviousNo <= cCctr.getNoPages()"
+				ng-click="cCctr.getPages(true,'ldc',cCctr.PreviousNo-1);cCctr.DisplayNo(cCctr.currentPage)"><strong>Previous</strong></a>
+			</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.PreviousNo}}</strong>&nbsp;
 				of &nbsp;<strong>{{cCctr.getNoPages()}}</strong>
 				&nbsp;&nbsp;&nbsp;&nbsp; <span
-				ng-show="cCctr.currentPage != cCctr.getNoPages()"> <a
-					ng-click="cCctr.getPages(true,'ldc',cCctr.currentPage+1)"><strong>Next</strong></a>
+				ng-show="cCctr.PreviousNo != cCctr.getNoPages()"> <a
+					ng-show="cCctr.PreviousNo >= 1 && cCctr.PreviousNo <= cCctr.getNoPages()"
+					ng-click="cCctr.getPages(true,'ldc',cCctr.PreviousNo+1);cCctr.DisplayNo(cCctr.currentPage)"><strong>Next</strong></a>
 			</span>
 			</span>
 		</div>
-		<form role="form" name="gotoForm">
-			<div class="row" align="center">
+		<form role="form" name="gotoForm" ng-if="cCctr.getNoPages()!=1">
+			<div align="center" style="margin-top: 1%;">
 				<span>Go to</span> &nbsp;&nbsp;&nbsp; <input
 					style="width: 70px; text-align: center;" type="number"
-					name="pageNo" ng-model="cCctr.currentPage"
-					ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
-					ng-min="1" min="1" max="{{cCctr.getNoPages()}}"
+					name="pageNo" id="pageNo" ng-model="cCctr.currentPage"
+					oninput="javascript: if (this.value.length > this.max.length) this.value = this.value.slice(0, this.max.length);"
+					autocomplete="off" ng-min="1" min="1" max="{{cCctr.getNoPages()}}"
 					ng-max="cCctr.getNoPages()" ng-required="true">
 				&nbsp;&nbsp;&nbsp;
-				<button style="height: 25px;"
-					ng-click="gotoForm.submitted=true;cCctr.getPages(gotoForm.$valid,'ldc',cCctr.currentPage)"
-					class="btn btn-primary">Go</button>
+				<button
+					ng-show="cCctr.currentPage >= 1 && cCctr.currentPage <= cCctr.getNoPages()"
+					ng-click="gotoForm.submitted=true;cCctr.getPages(gotoForm.$valid,'ldc',cCctr.currentPage);cCctr.DisplayNo(cCctr.currentPage)"
+					class="btn btn-primary btn-sm">Go</button>
 			</div>
-			<div class="row" align="center">
+			<div align="center">
 				<span style="color: red"
 					ng-show="gotoForm.submitted || gotoForm.pageNo.$dirty && gotoForm.pageNo.$invalid">
 					<span class="error" ng-show="gotoForm.pageNo.$error.min">Page
@@ -460,7 +449,6 @@ margin-left: -6%;
 
 
 </div>
-</div>
 
 <script>
 	$(document).ready(function() {
@@ -472,37 +460,81 @@ margin-left: -6%;
 
 
 <script>
-$("input:checkbox:not(:checked)").each(function() {
-	    var column = "table ." + $(this).attr("name");
-   
-  $(column).hide();
-});
+	$("input:checkbox:not(:checked)").each(function() {
+		var column = "table ." + $(this).attr("name");
 
-$("input:checkbox").click(function(){
-    var column = "table ." + $(this).attr("name");
-    $(column).toggle();
-});
+		$(column).hide();
+	});
 
+	$("input:checkbox").click(function() {
+		var column = "table ." + $(this).attr("name");
+		$(column).toggle();
+	});
 </script>
 <script>
-$(".selectAll").click(function() {
-	$("input[type=checkbox]").prop("checked", $(this).prop("checked"));
-});
+	$(".selectAll").click(function() {
+		$("input[type=checkbox]").prop("checked", $(this).prop("checked"));
+	});
 
-$("input[type=checkbox]").click(function() {
-	if (!$(this).prop("checked")) {
-		$(".selectAll").prop("checked", false);
-	}
-});
+	$("input[type=checkbox]").click(function() {
+		if (!$(this).prop("checked")) {
+			$(".selectAll").prop("checked", false);
+		}
+	});
 </script>
 
 
 
 <script>
-$(function() {
-	  $("table th").resizable({
-	      handles: "e",
-	      minWidth: 40,
-	  });
+	$(function() {
+		$("table th").resizable({
+			handles : "e",
+			minWidth : 40,
+		});
+	});
+</script>
+
+<script>
+	$(document).ready(function() {
+		$(".slider").click(function() {
+			$("th div").toggleClass("autoResizeQuarter");
+
+		});
+	});
+</script>
+
+<script>
+	$(document).ready(function() {
+		$(".slider").click(function() {
+			$("td ").toggleClass("ellipsise");
+
+		});
+	});
+</script>
+
+
+<script>
+	$(document).ready(function() {
+		$(".slider").click(function() {
+			$(".desc").toggleClass("ellip");
+			$(".custName").toggleClass("ellipName");
+
+		});
+	});
+</script>
+
+<script>
+	$(".btnTextChange").click(function() {
+
+		var lable = $(".btnTextChange").text().trim();
+
+		if (lable == "Resize Table") {
+			$(".btnTextChange").text("Normal Table");
+			$(".myText").hide();
+		} else {
+			$(".btnTextChange").text("Resize Table");
+			$(".myText").show();
+		}
+
 	});
 </script>

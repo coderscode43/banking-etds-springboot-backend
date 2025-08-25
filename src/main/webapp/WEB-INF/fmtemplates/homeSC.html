@@ -1,671 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8" />
+<title>Dastone - Admin & Dashboard Template</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta content="Premium Multipurpose Admin & Dashboard Template"
+	name="description" />
+<meta content="" name="author" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<!-- App css -->
+
+<link href="static/assets/css/icons.min.css" rel="stylesheet"
+	type="text/css" />
+<link href="static/assets/css/metisMenu.min.css" rel="stylesheet"
+	type="text/css" />
+
+<link href="static/assets/css/app.min.css" rel="stylesheet"
+	type="text/css" />
+<!--<link href="static/assets/plugins/RWD-Table-Patterns/dist/css/rwd-table.min.css" rel="stylesheet" type="text/css"
+		media="screen">-->
+</head>
 
 <style>
-@media ( min-width :1456px) { /* hi-res laptops and desktops */
-	.nav-side-menu {
-		width: 100%;
-	}
+.page-wrapper .page-content {
+	width: 100%;
+	position: relative;
+	min-height: 100vh;
+	padding-left: 20px;
+	display: inline-block;
 }
 
-@media ( max-width :1456px) { /* hi-res laptops and desktops */
-	.nav-side-menus {
-		width: 20%;
-	}
-}
-
-/*----------------sidebar-wrapper----------------*/
-.sidebar-wrapper {
-	width: 270px;
-	height: 100%;
-	max-height: 100%;
+.topbar {
+	width: calc(100% - 70px);
 	position: fixed;
-	top: 0;
-	left: -300px;
-	z-index: 999;
+	z-index: 100;
+	transition: 0.7s;
 }
 
-.center_topButton {
-	margin-left: 2%;
+.show12 {
+	width: calc(100% - 220px);
 }
 
-@media ( min-width : 300px) and (max-width: 700px) {
-	.center_topButton {
-		margin-left: 23%;
-	}
-}
-
-@media only screen and (min-width:700px) {
-	.hide-on-desktop, * [aria-labelledby='hide-on-desktop'] {
-		display: none;
-	}
-}
-
-@media ( min-width : 300px) and (max-width: 700px) {
-	.mobile {
-		display: none;
-	}
-}
-
-@media only screen and (min-width:700px) {
-	.hide-on-desktop, * [aria-labelledby='hide-on-desktop'] {
-		display: none;
-	}
-}
-
-/* iPad Landscape */
 @media only screen and (min-device-width: 768px) and (max-device-width:
 	1024px) {
-	/* CSS */
-	.center_topButton {
-		margin-left: 34%;
+	.topbar {
+		position: fixed;
+		z-index: 100;
+	}
+	.show12 {
+		width: calc(100% - 220px);
 	}
 }
 
-.input {
-	padding: 6px 12px;
-	font-size: 14px;
-	font-weight: 400;
-	line-height: 1;
-	text-align: center;
+.waves-effect {
+	position: relative;
+	cursor: pointer;
+	display: inline-block;
+	overflow: inherit;
+	user-select: none;
+	-webkit-tap-highlight-color: transparent;
 }
 
-.sidebar-content {
-	max-height: calc(100% - 30px);
-	height: calc(100% - 30px);
-	overflow-y: initial;
+.frontButton {
+	padding: 4px 10px;
+	border-radius: 4px;
+	font-size: 0.9rem;
+	color: white;
+	transform: translateY(-6px);
+	margin-left: 5%;
+}
+
+.modal-backdrop.in {
+	opacity: 0;
+}
+
+.panel {
+	box-shadow: none !important;
+	/* top: -20px; */
 	position: relative;
+	border: none !important;
+}
+
+/* .table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
+	{
+	background-color: white;
+} */
+
+table, th, tr, td {
+	cursor: pointer;
+}
+
+/* */
+.add {
+	margin-left: 0px !important;
+	transition: 0.5s ease-out;
+}
+
+.logobox {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.logobox {
+	width: 200px;
+}
+
+.logobox .img1 {
+	width: 70%;
+	position: relative;
+	left: -10px;
+	top: 10px;
+}
+
+.logobox .img2 {
+	width: 30px;
+	position: relative;
+	left: 0px;
+	top: 5px;
+}
+
+#subMenu {
+	position: relative;
+	display: none;
+	top: 0px;
+	transition: 0.7s ease-out;
+}
+
+.mainMenu:hover>#subMenu {
+	display: block;
+	position: relative;
+	transition: 0.7s ease-out;
+	top: 0px;
+}
+
+.arrowicon {
+	rotate: 0deg;
+}
+
+.arrowicon1 {
+	rotate: 90deg;
+}
+
+/*
+	.mainMenu .subMenu {
+		display: none;
+	}
+
+
+	
+	.main-menu:hover{
+		 
+	}
+
+		.maincontainer {
+		transition: 7s !important;
+	}
+
+	.ani1 {
+		transition: 7s !important;
+	} */
+
+/* overflow-y: scroll !important;
+	  overflow-x: hidden; */
+/* .left-sidenav-menu {
+	width: 220px !important;
+	border: 2px solid white;
+}
+ */
+.left-sidenav-menu {
+	width: 220px;
+	border: 2px solid white !important;
+	overflow-y: scroll !important;
+	overflow-x: hidden;
+	scrollbar-width: none;
+}
+
+.left-sidenav-menu::-webkit-scrollbar {
+	width: 0;
+	height: 0;
+}
+
+.tooltiptext.refresh {
+	margin-top: -0.5%;
+	margin-left: -12%;
+}
+
+/* Style for the help button image */
+.help-button {
+	width: 60px;
+	height: 122px;
+	transition: transform .2s;
+	position: fixed;
+	right: -40px !important;
+	bottom: 10px;
+	border-radius: 5px;
+	background-color: #1e3361;
+	display: flex;
+	transition: 0.5s;
+}
+
+.help-button .supportspan {
+	width: 5px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: bold;
+	color: white;
+	font-size: 14px;
+	word-break: break-all;
+	line-height: initial;
+	font-family: 'Roboto', sans-serif;
+	position: relative;
+	left: 0px;
+}
+
+.help-button .himg1 {
+	width: 25px;
+	filter: brightness(100);
+	position: absolute;
+	top: 0px;
+	left: 15px;
+}
+
+.help-button .himg2 {
+	width: 120px;
+	filter: brightness(100);
+	rotate: -90deg;
+	position: absolute;
+	right: -20px;
+	top: 44px;
+}
+
+/* Style for the help button when hovered */
+.help-button:hover {
+	transition: 0.5s;
+	box-shadow: 0px 0px 10px black;
+	right: -40px !important;
+}
+
+.help-button .tooltiptext {
+	visibility: hidden;
+	width: 200px;
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px;
+	position: absolute;
+	z-index: 1;
+	top: 13px;
+	right: 110%;
+	opacity: 0;
+	transition: opacity 1s;
+}
+
+.help-button:hover .tooltiptext {
+	visibility: visible;
+	opacity: 1;
+	filter: drop-shadow(0px 0px 10px #222);
+}
+
+/* Style for the help button */
+.Ai-button {
+	position: absolute;
+	z-index: 9;
+	background-color: #f1f1f1;
+	text-align: center;
+	border: 1px solid #d3d3d3;
+}
+
+#innerAi-btn {
+	border: none;
+	width: 100%;
+	height: 4em;
+	border-radius: 1em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 12px;
+	background: #1C1A1C;
+	cursor: pointer;
+	transition: all 450ms ease-in-out;
+	padding: 10px;
+	cursor: move;
+	z-index: 10;
+	color: white;
+}
+
+#innerAi-btn img {
+	width: 25px;
+	filter: brightness(100);
+	transition: 0.5s;
+}
+
+#innerAi-btn:hover img {
+	transform: rotateY(150deg);
+	transition: 0.5s;
+}
+
+.sparkle {
+	width: 50px;
+}
+
+.text {
+	font-weight: 600;
+	color: #AAAAAA;
+	font-size: medium;
+}
+
+#innerAi-btn {
+	background: linear-gradient(0deg, #A47CF3, #683FEA);
+	box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4), inset 0px
+		-4px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 4px
+		rgba(255, 255, 255, 0.2), 0px 0px 20px 0px #9917FF;
+}
+
+.Ai-button:hover .text {
+	color: white;
+}
+
+.Ai-button:hover .sparkle {
+	fill: white;
+	transform: scale(1.2);
+}
+
+/*  */
+.AiBox {
+	display: block;
+}
+
+.AiBox .mainAi {
+	position: fixed;
+	width: 400px;
+	border: 1px solid #9b9b9b;
+	z-index: 1;
+	right: 10px;
+	bottom: 0px;
+	border-radius: 10px;
+	transform: translate(500px);
+	transition: 1s;
+	background-color: transparent;
+	backdrop-filter: blur(10px);
+}
+
+.showmainAi {
+	transform: translate(0px) !important;
+}
+
+.AiBox .mainAi .innerAi {
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	border-radius: 10px;
+}
+
+.AiBox .mainAi .innerAi .closebtn {
+	border: 1px solid #515151;
+	padding: 0px 5px 0px;
+	font-size: 30px;
+	border-radius: 5px;
+	margin-right: -10px;
+}
+
+.approveToolTip {
+	margin-left: -7%;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	left: -132px; 
+	background-color: #fff;
+	min-width: 150px;
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+	padding: 10px 0;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+.dropdown-content a {
+	color: #022755;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	padding: 10px 15px;
+}
+
+.dropdown-content a:hover {
+	background-color: #f1f1f1;
+}
+
+.logoutBtn {
+	height: 30px !important;
+	width: 30px !important;
+	margin-left: -68%;
+	margin-top: -18%;
 }
 </style>
-<div class=" page-wrapper chiller-theme ng-scope toggled"
-	ng-Controller="CommonWOTController as cWctr">
-	<a id="show-sidebar" class="btn btn-primary" style="z-index: 1000">
-		<i class="fa fa-bars"></i>
-	</a>
-	<nav id="sidebar" class="sidebar-wrapper nav-side-menu nav-side-menus"
-		style="margin-top: -3px; background-color: #0F316D">
-		<div class="sidebar-content">
-			<div class="sidebar-brand" style="box-shadow: 0px 5px;">
-				<!-- ng-click="cCctr.gotoListPage('homeSCHomepage','homeSCHomepage')" -->
-				<div ng-click="cCctr.gotoHomePage()" style="color: white">
-					<img src="static/img/tdsosmart1.png"
-						style="height: 165px; width: 140%; margin-left: 14%;">
-				</div>
-				<div onclick="slideIn()" style="margin-left: 40%; margin-top: -35%">
-					<i class="fa fa-times"></i>
-				</div>
+
+<body ng-Controller="CommonWOTController as cWctr">
+	<div class="left-sidenav" id="left-Sidenav" style="z-index: 1000"
+		onmouseenter='add()' onmouseleave='remove()'>
+		<div class="login100-pic" align="center" data-tilt>
+
+			<div ng-click="cCctr.gotoHomePage()" style="color: white"
+				class="js-tilt logobox">
+				<img src="static/img/TOS-TRANSPARENT.png "
+					ng-click="cCctr.gotoHomePage()" class="img1"> <img
+					src="static/img/ROBO-TRANSPARENT.png"
+					ng-click="cCctr.gotoHomePage()" class="img2">
 			</div>
-
-			<!-- sidebar-header  -->
-
-			<!-- sidebar-search  -->
-			<div class="sidebar-menu">
-				<ul id="menu-content" class="menu-list">
-
-					<li ng-click="cCctr.gotoListPage('branch','branch')"><a> <i class="fa fa-mail-forward"></i><b>Select
-								Branch</b>
-					</a></li>
-
-					<li data-toggle="collapse" data-target="#form24Q" class="collapsed"
-						ng-show="'admin'=='${typeOfUser}'"><a><i
-							class="fa fa-group"></i><b>Form 24Q </b><i
-							class="fa fa-chevron-down" aria-hidden="true"
-							style="float: right"></i></a></li>
-
-					<ul class="sub-menu collapse" id="form24Q">
-						<!-- <li
-							ng-click="cCctr.gotoList2Page('regular24Q4Challan','regular24Q4Challan')"
-							onclick="scrollWin()">Challan Details</li> -->
-						<li
-							ng-click="cCctr.gotoListPage('form24QDeductee','form24QDeductee')"
-							onclick="scrollWin()" ng-show="'admin'=='${typeOfUser}'">Deductee
-							Details</li>
-						<!--  <li
-							ng-click="cCctr.gotoWFYListPage('form24QDeducteeDefault','form24QDeducteeDefault')"
-							onclick="scrollWin()">Deductee Default Details</li>
-				    	<li
-						
-							onclick="scrollWin()">Employee Tax Details</li>
-							<li
-						   ng-click="cCctr.gotoWFYListPage('form24Qsalary','form24Qsalary')"
-							onclick="scrollWin()">Salary Details</li>-->
-
-					</ul>
-
-					<li data-toggle="collapse" data-target="#newsss" class="collapsed"
-						ng-show="'admin'=='${typeOfUser}'"><a><i
-							class="fa fa-credit-card"></i><b>Form 26Q </b><i
-							class="fa fa-chevron-down" aria-hidden="true"
-							style="float: right"></i></a></li>
-					<ul class="sub-menu collapse" id="newsss">
-						<!--   <li
-							ng-click="cCctr.gotoList2Page('formchallan26Q','formchallan26Q')"
-							onclick="scrollWin()">Challan Details</li> -->
-						<li
-							ng-click="cCctr.gotoListPage('form26QDeductee','form26QDeductee')"
-							onclick="scrollWin()" ng-show="'admin'=='${typeOfUser}'">Deductee
-							Details</li>
-
-						<!--<li
-							ng-click="cCctr.gotoWFYListPage('form26QDeducteeDefault','form26QDeducteeDefault')"
-							onclick="scrollWin()">Deductee Default Details</li>
-							
-						<li
-						
-							onclick="scrollWin()">Vendor Details</li>-->
-
-					</ul>
-
-					<li data-toggle="collapse" data-target="#form27eq"
-						class="collapsed" ng-show="'admin'=='${typeOfUser}'"><a><i
-							class="fa fa-credit-card"></i><b>Form 27EQ </b><i
-							class="fa fa-chevron-down" aria-hidden="true"
-							style="float: right"></i></a></li>
-
-					<ul class="sub-menu collapse" id="form27eq">
-						<li
-							ng-click="cCctr.gotoListPage('form27EQDeductee','form27EQDeductee')"
-							onclick="scrollWin()" ng-show="'admin'=='${typeOfUser}'">Deductee
-							Details</li>
-						<!--  	<li
-							ng-click="cCctr.gotoWFYListPage('form27EQDeducteeDefault','form27EQDeducteeDefault')"
-							onclick="scrollWin()">Deductee Default Details</li>
-
-						
-							
-							<li
-						ng-click="cCctr.gotoWFYListPage('form27EQDeducteeDefault','form27EQDeducteeDefault')"
-							onclick="scrollWin()">Vendor Details</li>-->
-					</ul>
-
-					<li data-toggle="collapse" data-target="#newssss" class="collapsed"
-						ng-show="'admin'=='${typeOfUser}'"><a><i
-							class="fa fa-credit-card"></i><b>Form 27Q </b><i
-							class="fa fa-chevron-down" aria-hidden="true"
-							style="float: right"></i></a></li>
-					<ul class="sub-menu collapse" id="newssss">
-
-						<li
-							ng-click="cCctr.gotoListPage('form27QDeductee','form27QDeductee')"
-							onclick="scrollWin()" ng-show="'admin'=='${typeOfUser}'">Deductee
-							Details</li>
-
-						<!--	<li
-							ng-click="cCctr.gotoWFYListPage('form27QDeducteeDefault','form27QDeducteeDefault')"
-							onclick="scrollWin()">Deductee Default Details</li>-->
-
-						<!--	<li onclick="scrollWin()">Vendor Details</li>-->
-
-						<!-- <li ng-click="cCctr.gotoList2Page('regular24Q4Challan','regular24Q4Challan')"
-									onclick="scrollWin()">Challan Details</li> -->
-						<!-- <li
-							ng-click="cCctr.gotoList2Page('regular27QChallan','regular27QChallan')"
-							onclick="scrollWin()">Challan Details</li> -->
-					</ul>
-
-					<li ng-click="cCctr.gotoListPage('RODetails','RODetails')"
-						onclick="scrollWin()" ng-show="'admin'=='${typeOfUser}'"><a>
-							<i class="fa fa-building-o"></i><b>RO Details</b>
-					</a></li>
-
-
-
-
-					<li ng-click="cCctr.gotoListPage('challan','challan')"
-						onclick="scrollWin()" ng-show="'admin'=='${typeOfUser}'"><a>
-							<i class="fa fa-book"></i><b>Challan</b>
-					</a></li>
-
-					<li ng-click="cCctr.gotoListPage('totalAmount','totalAmount')"
-						onclick="scrollWin()" ng-show="'admin'=='${typeOfUser}'"><a>
-							<i class="fa fa-book"></i><b>Total Amount</b>
-					</a></li>
-
-					<li ng-click="cCctr.gotoListPage('panUpdateList','panUpdateList')"
-						onclick="scrollWin()" ng-show="'admin'=='${typeOfUser}'"><a>
-							<i class="fa fa-book"></i><b>Pan Update List</b>
-					</a></li>
-
-					<li
-						ng-click="cCctr.gotoListPage('statementStatus','statementStatus')"
-						onclick="scrollWin()" ng-show="'admin'=='${typeOfUser}'"><a>
-							<i class="fa fa-file-text-o"></i><b>Statement Status</b>
-					</a></li>
-
-
-					<!--  <li ng-click="cCctr.gotoListPage('misReport','misReport')"
-						onclick="scrollWin()"><a> <i class="fa fa-book"></i><b>MISReport</b>
-					</a></li> -->
-
-					<li
-						ng-click="cCctr.gotoListPage('deductorDetails','deductorDetails')"
-						onclick="scrollWin()" ng-show="'admin'=='${typeOfUser}'"><a><i
-							class="fa fa-desktop" aria-hidden="true"></i><b>Deductor
-								Details</b> </a></li>
-
-					<li ng-click="cCctr.gotoListPage('ticket','ticket')"
-						onclick="scrollWin()" ng-show="'admin'=='${typeOfUser}'"><a><i
-							class="fa fa-desktop" aria-hidden="true"></i><b>Generate
-								Ticket</b> </a></li>
-
-					<li
-						ng-click="cCctr.gotoListPage('correctionRequest','correctionRequest')"
-						onclick="scrollWin()" ng-show="'admin'=='${typeOfUser}'"><a><i
-							class="fa fa-desktop" aria-hidden="true"></i><b>Correction
-								Request </b> </a></li>
-
-					<li
-						ng-click="cCctr.gotoListPage('uploadCertificate','uploadCertificate')"
-						onclick="scrollWin()" ng-show="'admin'=='${typeOfUser}'"><a><i
-							class="fa fa-desktop" aria-hidden="true"></i><b>Upload
-								Certificate </b> </a></li>
-
-
-
-					<li data-toggle="collapse" data-target="#ldcDetails"
-						class="collapsed" ng-show="'admin'=='${typeOfUser}'"><a><i
-							class="fa fa-file-text"></i><b>LDC Details </b> <i
-							class="fa fa-chevron-down" aria-hidden="true"
-							style="float: right"></i></a></li>
-
-					<ul class="sub-menu collapse" id="ldcDetails">
-
-
-						<li ng-click="cCctr.gotoListPage('ldc','ldc')"
-							onclick="scrollWin()" ng-show="'admin'=='${typeOfUser}'">LDC
-							Certificate</li>
-
-						<li ng-click="cCctr.gotoListPage('form15G','form15G')"
-							onclick="scrollWin()" ng-show="'admin'=='${typeOfUser}'">15G</li>
-
-						<li ng-click="cCctr.gotoListPage('form15H','form15H')"
-							onclick="scrollWin()" ng-show="'admin'=='${typeOfUser}'">15H</li>
-					</ul>
-
-					<li ng-click="cCctr.gotoListPage('userDetails','userDetails')"
-						ng-show="'admin'=='${typeOfUser}'" onclick="scrollWin()"><a><i
-							class="fa fa-group" aria-hidden="true"></i><b>User</b> </a></li>
-
-					<li ng-click="cCctr.gotoListPage('logs','logs')"
-						onclick="scrollWin()" ng-show="'admin'=='${typeOfUser}'"><a><i
-							class="fa fa-history" aria-hidden="true"></i><b>logs</b> </a></li>
-
-					<!-- <li ng-click="cCctr.gotoListPage('Notice','Notice')"
-						onclick="scrollWin()" ng-show="'admin'=='${typeOfUser}'"><a><i
-							class="fa fa-history" aria-hidden="true"></i><b>Notice</b> </a></li> -->
-
-
-					<!-- <li ui-sref="logout" onclick="scrollWin()"><a><i
-							class="fa fa-power-off" aria-hidden="true"></i><b>logout</b> </a></li>
-
-                    -->     
-                        <li class="nav-item pointer" data-toggle="modal" data-target="#myModal2" data-backdrop="false"><a class="nav-link"><i
-							class="fa fa-power-off" aria-hidden="true"></i>
-				            <b>logout</b> </a></li>	
-
-
-
-					<!-- sidebar-menu  -->
-				</ul>
-			</div>
-		</div>
-	</nav>
-	<!-- sidebar-wrapper  -->
-	<main class="page-content" style="margin-top: -3.5%">
-		<div class="container-fluid">
-
-			<!-- <div ng-http-loader methods="['GET']" ttl="1" id="example/loader" 
-		template="index/example-loader.tpl"></div> -->
-
-
-			<div style="padding-top: 1%" ui-view></div>
 
 		</div>
-	</main>
-	<!-- page-content" -->
-</div>
+		<div class="menu-content" data-simplebar
+			style="margin-top: 10px; font-size: larger;">
+			<ul class="metismenu left-sidenav-menu">
+				<li><a ng-click="cCctr.gotoListPage('branch','branch')">
+						<div class="col-sm-10">Select RO</div>
+						<div class="col-sm-2">
+							<i class="fas fa-address-book"
+								class="align-self-center menu-icon"></i>
+						</div>
+				</a></li>
+				<li ng-show="'admin'=='${typeOfUser}' && 'IOB' != '${panelAccess}'"><a
+					ng-click="cCctr.gotoListPage('form24QDeductee','form24QDeductee')">
+						<div class="col-sm-10">Form 24Q</div>
+						<div class="col-sm-2">
+							<i class="align-self-center menu-icon"
+								style="margin-left: -10px;">24Q</i>
+						</div>
+				</a></li>
+				<li ng-show="'admin'=='${typeOfUser}' && 'IOB' != '${panelAccess}'"><a
+					ng-click="cCctr.gotoListPage('form26QDeductee','form26QDeductee')">
+						<div class="col-sm-10">Form 26Q</div>
+						<div class="col-sm-2">
+							<i class="align-self-center menu-icon"
+								style="margin-left: -10px;">26Q</i>
+						</div>
+				</a></li>
+				<li ng-show="'admin'=='${typeOfUser}' && 'IOB' != '${panelAccess}'"><a
+					ng-click="cCctr.gotoListPage('form27EQDeductee','form27EQDeductee')">
+						<div class="col-sm-10">Form 27EQ</div>
+						<div class="col-sm-2">
+							<i style="margin-left: -10px;">27EQ</i>
+						</div>
+				</a></li>
+				<li ng-show="'admin'=='${typeOfUser}' && 'IOB' != '${panelAccess}'"><a
+					ng-click="cCctr.gotoListPage('form27QDeductee','form27QDeductee')">
+						<div class="col-sm-10">Form 27Q</div>
+						<div class="col-sm-2">
+							<i style="margin-left: -10px;">27Q</i>
+						</div>
+				</a></li>
+				<!-- <li><a ng-click="cCctr.gotoListPage('RODetails','RODetails')">
+						<div class="col-sm-10">RO Details</div>
+						<div class="col-sm-2">
+							<i class="fas fa-info-circle"></i>
+						</div>
+				</a></li> -->
+				<li ng-show="'IOB' != '${panelAccess}'"><a ng-click="cCctr.gotoListPage('challan','challan')">
+						<div class="col-sm-10">Challan</div>
+						<div class="col-sm-2">
+							<i class="ti-receipt"></i>
+						</div>
+				</a></li>
+				<li ng-show="'IOB' != '${panelAccess}'"><a
+					ng-click="cCctr.gotoListPage('totalAmount','totalAmount')">
+						<div class="col-sm-10">Total Amount</div>
+						<div class="col-sm-10">
+							<i class="fas fa-wallet"></i>
+						</div>
+				</a></li>
+				<li ng-show="'IOB' != '${panelAccess}'"><a
+					ng-click="cCctr.gotoListPage('panUpdateList','panUpdateList')">
+						<div class="col-sm-10">Pan Update List</div>
+						<div class="col-sm-2">
+							<i class="fas fa-clipboard-list"></i>
+						</div>
+				</a></li>
+				<li ng-show="'IOB' != '${panelAccess}'"><a
+					ng-click="cCctr.gotoListPage('statementStatus','statementStatus')">
+						<div class="col-sm-10">
+							Statement<br>Status
+						</div>
+						<div class="col-sm-10">
+							<i class="fas fa-clock" class="align-self-center menu-icon"></i>
+						</div>
+				</a></li>
 
-<div class="top row col-lg-8 center_topButton">
-
-
-	<div class="top-item top1 col-lg-offset-5" style="border-radius: 5px;">
-		<p>
-			<b>${ClientName}</b>
-		</p>
-	</div>
-	<div class="top-item top2 col-lg-offset-5"
-		style="border-radius: 5px; background-color: #7AAE60">
-		<p>
-			<b>${ClientPAN}</b>
-		</p>
-	</div>
-
-</div>
-
-<div class="modal fade" id="exampleModalLogin" tabindex="-1"
-	role="dialog" aria-labelledby="exampleModalDefaultLogin"
-	aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-
-				<button type="button" class="close " data-dismiss="modal"
-					aria-label="Close">
-					<span aria-hidden="true"><i class="fa fa-times"></i></span>
-				</button>
-			</div>
-			<!--end modal-header-->
-			<div class="modal-body">
-				<div class="card-body p-0 auth-header-box">
-					<div class="text-center p-1">
-						<a href="index.html" class="logo logo-admin"> <img
-							src="static/img/tdsosmart.png" height="50" alt="logo"
-							class="auth-logo">
-						</a>
-						<!-- <h4 class="mt-3 mb-1 font-weight-semibold font-18">TDS-O-Smart</h4> -->
-					</div>
-				</div>
-				<div class="card-body">
-					<ul class="nav-border nav nav-pills" role="tablist"
-						style="margin: 0% 0% 0 30%; font-size: x-large;">
-						<li class="nav-item"><a
-							class="nav-link active font-weight-semibold" data-toggle="tab"
-							href="#LogIn_Tab" role="tab">Change Password</a></li>
+				<li ng-show="'IOB' != '${panelAccess}'"><a
+					ng-click="cCctr.gotoListPage('deductorDetails','deductorDetails')">
+						<div class="col-sm-10">
+							Deductor<br>Details
+						</div>
+						<div class="col-sm-2">
+							<i class="fas fa-money-check" class="align-self-center menu-icon"></i>
+						</div>
+				</a></li>
+				<!-- <li><a ng-click="cCctr.gotoListPage('ticket','ticket')">
+						<div class="col-sm-10">Generate Ticket</div>
+						<div class="col-sm-2">
+							<i class="fas fa-ticket-alt" class="align-self-center menu-icon"></i>
+						</div>
+				</a></li> -->
+				<li><a
+					ng-click="cCctr.gotoListPage('correctionRequest','correctionRequest')">
+						<div class="col-sm-9">Correction/Query Request</div>
+						<div class="col-sm-1"></div>
+						<div class="col-sm-2">
+							<i class="mdi mdi-clipboard-flow"
+								class="align-self-center menu-icon"></i>
+						</div>
+				</a></li>
+				<li ng-show="'IOB' != '${panelAccess}'"><a
+					ng-click="cCctr.gotoListPage('regularReturn','regularReturn')">
+						<div class="col-sm-9">Regular Return</div>
+						<div class="col-sm-1"></div>
+						<div class="col-sm-2">
+							<i class="mdi mdi-file-check" class="align-self-center menu-icon"></i>
+						</div>
+				</a></li>
+				<!-- <li><a
+					ng-click="cCctr.gotoListPage('uploadCertificate','uploadCertificate')">
+						<div class="col-sm-10" style="letter-spacing: 0px;">Upload Certificate</div>
+						<div class="col-sm-2">
+							<i class="mdi mdi-file-upload"></i>
+						</div>
+				</a></li> -->
+				<li ng-show="'admin'=='${typeOfUser}'" class="mainMenu"
+					id="mainMenu" onmouseenter="arrow()" onmouseleave="removearrow()">
+					<a href="javascript: void(0);">
+						<div class="col-sm-10">
+							LDC Details <span class="menu-arrow"></span>
+						</div>
+						<div class="col-sm-2">
+							<i class="mdi mdi-certificate"
+								class="align-self-center menu-icon"></i>
+						</div>
+				</a>
+					<ul class="nav-second-level" aria-expanded="false" class="subMenu"
+						id="subMenu" id="ldcul">
+						<!--<li class="nav-item"><a class="nav-link" ng-click="cCctr.gotListPage('ldc','ldc')"
+								onclick="scrollWin()" ng-show="'admin'=='${typeOfUser}'"><i
+									class="ti-control-record"></i>LDC Certificate </a></li>-->
+						<li class="nav-item"><a class="nav-link"
+							ng-click="cCctr.gotoListPage('ldc','ldc')" onclick="scrollWin()"
+							ng-show="'admin'=='${typeOfUser}'"><i
+								class="ti-control-record"></i>LDC Certificate</a></li>
+						<!-- <li class="nav-item"><a class="nav-link"
+							ng-click="cCctr.gotoListPage('form15G','form15G')"
+							onclick="scrollWin()" ng-show="'admin'=='${typeOfUser}'"><i
+								class="ti-control-record"></i>15G</a></li>
+						<li class="nav-item"><a class="nav-link"
+							ng-click="cCctr.gotoListPage('form15H','form15H')"
+							onclick="scrollWin()" ng-show="'admin'=='${typeOfUser}'"><i
+								class="ti-control-record"></i>15H</a></li> -->
 					</ul>
-					<!-- Tab panes -->
-					<div class="tab-content"
-						ng-init="cCctr.entity=cCctr.getEntityData('login')">
-						<div class="tab-pane active p-1 pt-1" id="LogIn_Tab"
-							role="tabpanel">
-							<form class=" auth-form my-4" name="changePassword"
-								action="index.html">
+				</li>
+				<li ng-show="'admin'=='${typeOfUser}'"><a
+					ng-click="cCctr.gotoListPage('userDetails','userDetails')">
+						<div class="col-sm-10">Users</div>
+						<div class="col-sm-2">
+							<i class="fa fa-users" class="align-self-center menu-icon"></i>
+						</div>
+				</a></li>
+				<li ng-show="'admin'=='${typeOfUser}'"><a
+					ng-click="cCctr.gotoListPage('logs','logs')">
+						<div class="col-sm-10">Logs</div>
+						<div class="col-sm-2">
+							<i class="fas fa-history" class="align-self-center menu-icon"></i>
+						</div>
+				</a></li>
+				<li ng-show="'admin'=='${typeOfUser}'"><a
+					ng-click="cCctr.logoutButton()">
+						<div class="col-sm-10">Logout</div>
+						<div class="col-sm-2">
+							<i class="fas fa-power-off" class="align-self-center menu-icon"></i>
+						</div>
+				</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="page-wrapper">
+		<!-- Top Bar Start -->
+		<div onclick="show()">
+			<div class="topbar" id="navtopbar" style="margin-bottom: 10px;">
+				<nav class="navbar-custom">
+					<ul class="list-unstyled topbar-nav float-right mb-0">
+						<li class="d-flex" style="float: right; margin-top: 14%;">
+							<button
+								style="margin-right: 32px; margin-top: -6px; padding: 0.175rem .55rem;"
+								type="button" onClick="window.location.reload()"
+								class="btn btn-info tool">
+								Refresh <span class="tooltiptext refresh">Refresh Button</span>
+							</button>
+							<div class="dropdown">
+								<a role="button"> <img
+									src="static/img/user.png" alt="Logout"
+									class="rounded-circle thumb-xs logoutBtn">
+								</a>
+								<div class="dropdown-content">
+									<a class="nav-link waves-effect waves-light nav-user"
+										style="cursor: default;"> <img
+										src="static/img/user.png" alt="User Profile"
+										class="rounded-circle thumb-xs"
+										style="height: 24px !important; width: 24px !important;">
+										<b style="color: #022755; font-size: 16px; font-weight: 500;width: max-content;">&nbsp;&nbsp;${userName}</b>
+									</a> <a class="nav-link waves-effect waves-light nav-user"
+										data-toggle="modal" data-target="#myModal2" role="button">
+										<img src="static/img/signOut.png" alt="Logout"
+										class="rounded-circle thumb-xs"
+										style="height: 24px !important; width: 24px !important;">
+										<b style="color: #022755; font-size: 16px; font-weight: 500;">&nbsp;&nbsp;&nbsp;Logout</b>
+									</a>
+								</div>
+							</div>
+						</li>
 
-								<div class="">
-									<label for="password" style="font-size: large;">New
-										Password</label>
-									<div class=" mb-2">
-										<input type="password" class="form-control" name="pass"
-											id="pass" type="password" placeholder="Enter New Password"
-											ng-model="cCctr.getUserData().user.pass" ng-minlength="8"
-											ng-pattern="/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/"
-											ng-required="true" required="required" style="width: 95%;">
-										<span class="input"
-											style="float: right; margin: -5.5% -2% 0 0;"><i
-											class="fa fa-fw fa-eye field-icon" style="cursor: pointer"
-											onclick="viewP()"></i></span> <span style="color: red"
-											ng-show="changePassword.submitted || changePassword.pass.$dirty && changePasswords.pass.$invalid">
-											<span id="error"
-											ng-show="changePassword.pass.$error.minlength">8
-												character Password is Required. </span> <span id="error"
-											ng-show="changePassword.pass.$error.required">Password
-												is Required. </span> <span class="error"
-											ng-show="changePassword.pass.$error.pattern">Password
-												should be at least 8 characters long and should contain one
-												number,one character and one special character.. </span>
+					</ul>
+					<ul class="list-unstyled topbar-nav mb-0"
+						style="border-bottom: 1px solid #e3ebf6;">
+						<li id="navli" onclick="show12()">
+							<button class="nav-link button-menu-mobile">
+								<i data-feather="menu" class="align-self-center topbar-icon"></i>
+							</button>
+						</li>
+						<div
+							style="font-size: x-large; text-align: center; padding-top: 7px;">
+							<b style="margin-top: 1%">${ClientName}</b> - <b>${ClientPAN}</b>
+						</div>
+						<li></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+
+		<div class="page-content">
+			<br> <br> <br>
+			<div class="container-fluid ">
+
+				<div ui-view></div>
+
+			</div>
+		</div>
+	</div>
+
+
+	<!-- <div id="AiBox" class="AiBox">
+		<div class="mainAi" id="mainAi">
+			<div class="innerAi">
+
+				<div class="ayush">
+					<div class="">
+						<div class="modal-content" style="background-color: transparent;">
+							<div class="modal-header" style="background-color: transparent;">
+								<h5 class="modal-title" id="exampleModalLabel">
+									Generate Data With AI&nbsp; <i class="fas fa-robot"></i>
+								</h5>
+								<button type="button" class="close closebtn"
+									onclick="gotoHelp()">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							Error message display
+							<div id="sqlAIError">
+								<div style="color: red; font-size: 13px; margin-left: 15px;"
+									class="msg"></div>
+							</div>
+							<div class="modal-body">
+								<form name="MysqlData">
+									<div class="">
+										<label for="exampleInputEmail1" class="form-label">Message
+											AI </label>
+										<textarea rows="5" cols="2" name="prompt" class="form-control"
+											ng-required="true" ng-model="cCctr.sqlAI.prompt"></textarea>
+										<span class="error"
+											ng-show="MysqlData.submitted || MysqlData.prompt.$dirty && MysqlData.prompt.$invalid">
+											<span class="error"
+											ng-show="MysqlData.prompt.$error.required">Please
+												enter a message.</span>
 										</span>
 									</div>
-								</div>
-								<!--end form-group-->
-
-								<div class="">
-									<label for="userpassword"
-										style="font-size: large; margin-top: 3%;">Confirm New
-										Password</label>
-									<div class=" mb-2">
-										<input type="password" class="form-control" name="password1"
-											id="password1" placeholder="Confirm New Password"
-											style="width: 95%;"> <span class="input"
-											style="float: right; margin: -5.5% -2% 0 0;"><i
-											class="fa fa-fw fa-eye field-icon" style="cursor: pointer"
-											onclick="viewConfirmP()"></i></span> <span id="conErr"></span>
+									&nbsp;
+									<div class="col-md-12">
+										<div class="col-md-8">
+											<label for="exampleInputPassword1" class="form-label">File
+												Type</label> <select class="form-control" name="fileType"
+												ng-model="cCctr.sqlAI.fileType" ng-required="true">
+												<option style="display: none" value=""></option>
+												<option value="CSV" ng-selected="true"
+													ng-init="cCctr.sqlAI.fileType = 'CSV'">.CSV</option>
+												<option value="EXCEL">.EXCEL</option>
+											</select> <span class="error"
+												ng-show="MysqlData.submitted || MysqlData.fileType.$dirty && MysqlData.fileType.$invalid">
+												<span class="error"
+												ng-show="MysqlData.fileType.$error.required">Please
+													select file type.</span>
+											</span>
+										</div>
+										<button type="button" style="margin-top: 30px;"
+											class="btn btn-primary col-md-4"
+											ng-click="MysqlData.submitted=true;cCctr.MysqlData(MysqlData.$valid,cCctr.sqlAI,'promptQuery')">Generate</button>
 									</div>
-								</div>
-								<!--end form-group-->
-								<div class="form-group mt-2 row">
-									<div class="col-12 mt-1">
-										<button
-											class="btn btn-primary btn-block waves-effect waves-light"
-											type="button" id="changePassword"
-											ng-click="addRemitteeForm.submitted=true;cCctr.changePassword(changePassword.$valid,cCctr.getUserData().user.pass);cCctr.updateData(ProfileForm.$valid,'login',cCctr.entity.user)"
-											disabled="disabled" style="margin: 4% 0 0 25%; width: 50%;">
-											Change Password
-											<!-- <i class="fas fa-sign-in-alt ml-1"></i> -->
-										</button>
-									</div>
-									<!--end col-->
-								</div>
-								<!--end form-group-->
-							</form>
-							<!--end form-->
+								</form>
+							</div>
 						</div>
 					</div>
 				</div>
-				<!--end card-body-->
-				<!-- <div class="card-body bg-light-alt text-center">
-					<span class="text-muted d-none d-sm-inline-block">Tax-O-Smart
-						� 2020</span>
-				</div> -->
-			</div>
-			<!--end modal-body-->
 
+			</div>
 		</div>
-		<!--end modal-content-->
-	</div>
-	<!--end modal-dialog-->
-</div>
+	</div> -->
 
-
-<!-- Error Modal -->
-<div id="errorMsg" class="modal fade" role="dialog">
-	<div class="modal-dialog modal-sm">
-		Modal content
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 style="color: red;">
-					<picture>
-					<source type="image/webp" srcset="static/img/errorNew.webp">
-					<img src="./././static/img/errorNew.png" height="30" width="30">Error!
-					</picture>
-				</h4>
-			</div>
-			<div class="modal-body">
-				<div class="row">
-					<div class="col-sm-12">
-						<div class="msg" style="font-size: 18px;"></div>
-					</div>
+	<div class="modal" data-backdrop="static" id="exampleModalLogin"
+		tabindex="-1" role="dialog" aria-labelledby="exampleModalDefaultLogin"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close " data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true"><i class="fa fa-times"></i></span>
+					</button>
 				</div>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
-			</div>
-		</div>
-	</div>
-</div>
-
-<!-- Success Modal -->
-
-
-<div id="successMsg" class="modal" role="dialog">
-	<div class="modal-dialog modal-sm">
-		Modal content
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 style="color: green;">
-					<picture>
-					<source type="image/webp" srcset="static/img/success.webp">
-					<img src="./././static/img/success.webp" height="30" width="30">
-					</picture>
-					<span class="headingMsg"></span>
-				</h4>
-			</div>
-			<div class="modal-body">
-				<div class="row">
-					<div class="col-sm-12">
-						<div class="msg" style="font-size: 18px;"></div>
+				<div class="modal-body">
+					<div class="card-body p-0 auth-header-box">
+						<div class="text-center p-1">
+							<a href="index.html" class="logo logo-admin"> <img
+								src="static/img/tdsosmart.png" height="50" alt="logo"
+								class="auth-logo">
+							</a>
+						</div>
 					</div>
-				</div>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal"
-					ng-click="cCctr.reload();" id="reload">Ok</button>
-				<!-- id="reload" -->
-			</div>
-		</div>
-	</div>
-</div>
-<!-- Delete Modal -->
-<!-- Success Modal -->
-
-
-<div id="myModal" class="modal" role="dialog">
-	<div class="modal-dialog modal-sm">
-
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 style="color: red;">
-					<picture>
-					<source type="image/webp" srcset="static/img/errorNew.webp">
-					<img src="./././static/img/errorNew.png" height="30" width="30">
-					</picture>
-					<span class="headingMsg">Are you sure?</span>
-				</h4>
-			</div>
-			<div class="modal-body">
-				<div class="row">
-					<div class="col-sm-12">
-						<div class="msg" style="font-size: 18px;">
-							<p>Do you really want to delete these User?</p>
+					<div class="card-body">
+						<ul class="nav-border nav nav-pills" role="tablist"
+							style="margin: 0% 0% 0 30%; font-size: x-large;">
+							<li class="nav-item"><a
+								class="nav-link active font-weight-semibold" data-toggle="tab"
+								href="#LogIn_Tab" role="tab">Change Password</a></li>
+						</ul>
+						<div class="tab-content"
+							ng-init="cCctr.entity=cCctr.getEntityData('login')">
+							<div class="tab-pane active p-1 pt-1" id="LogIn_Tab"
+								role="tabpanel">
+								<form class=" auth-form my-4" name="changePassword"
+									action="index.html">
+									<div class="">
+										<label for="password" style="font-size: large;">New
+											Password</label>
+										<div class=" mb-2">
+											<input type="password" class="form-control" name="pass"
+												id="pass" type="password" placeholder="Enter New Password"
+												ng-model="cCctr.getUserData().user.pass" ng-minlength="8"
+												ng-pattern="/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/"
+												ng-required="true" required="required" style="width: 95%;">
+											<span class="input"
+												style="float: right; margin: -5.5% -2% 0 0;"><i
+												class="fa fa-fw fa-eye field-icon" style="cursor: pointer"
+												onclick="viewP()"></i></span> <span style="color: red"
+												ng-show="changePassword.submitted || changePassword.pass.$dirty && changePasswords.pass.$invalid">
+												<span id="error"
+												ng-show="changePassword.pass.$error.minlength">8
+													character Password is Required. </span> <span id="error"
+												ng-show="changePassword.pass.$error.required">Password
+													is Required. </span> <span class="error"
+												ng-show="changePassword.pass.$error.pattern">Password
+													should be at least 8 characters long and should contain one
+													number,one character and one special character.. </span>
+											</span>
+										</div>
+									</div>
+									<div class="">
+										<label for="userpassword"
+											style="font-size: large; margin-top: 3%;">Confirm New
+											Password</label>
+										<div class=" mb-2">
+											<input type="password" class="form-control" name="password1"
+												id="password1" placeholder="Confirm New Password"
+												style="width: 95%;"> <span class="input"
+												style="float: right; margin: -5.5% -2% 0 0;"><i
+												class="fa fa-fw fa-eye field-icon" style="cursor: pointer"
+												onclick="viewConfirmP()"></i></span> <span id="conErr"></span>
+										</div>
+									</div>
+									<div class="form-group mt-2 row">
+										<div class="col-12 mt-1">
+											<button
+												class="btn btn-primary btn-block waves-effect waves-light"
+												type="button" id="changePassword"
+												ng-click="addRemitteeForm.submitted=true;cCctr.changePassword(changePassword.$valid,cCctr.getUserData().user.pass);cCctr.updateData(ProfileForm.$valid,'login',cCctr.entity.user)"
+												disabled="disabled" style="margin: 4% 0 0 25%; width: 50%;">
+												Change Password</button>
+										</div>
+									</div>
+								</form>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-success" data-dismiss="modal"
-					ng-click="cCctr.deleteById('userDetails',cCctr.delete)">Yes</button>
-				<button type="button" class="btn btn-danger" data-dismiss="modal"
-					ng-click="cCctr.reload();">No</button>
-				<!-- id="reload" -->
+		</div>
+	</div>
+
+
+	<!-- Error Modal -->
+	<div id="errorMsg" class="modal" role="dialog" data-backdrop="static">
+		<div class="modal-dialog modal-sm">
+			Modal content
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 style="color: red;">
+						<picture>
+						<source type="image/webp" srcset="static/img/errorNew.webp">
+						<img src="./././static/img/errorNew.png" height="30" width="30">Error!
+						</picture>
+					</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="msg" style="font-size: 18px;"></div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal"
+						ng-click="cCctr.ok();">Ok</button>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
 
-<!-- logout modal -->
-<div id="myModal2" class="modal" role="dialog">
-	<div class="modal-dialog modal-sm">
-		
-		<div class="modal-content">
-			<div class="modal-header" style="background-color: #505d82 ">
-				<h4 style="color: white;">
-					<!--  <picture>
+	<!-- Success Modal -->
+	<div id="successMsg" class="modal" role="dialog" data-backdrop="static">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 style="color: green;">
+						<picture>
+						<source type="image/webp" srcset="static/img/success.webp">
+						<img src="./././static/img/success.webp" height="30" width="30">
+						</picture>
+						<span class="headingMsg"></span>
+					</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="msg" style="font-size: 18px;"></div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal"
+						ng-click="cCctr.reload();">Ok</button>
+					<!-- id="reload" -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- error Modal -->
+	<div id="myModal" class="modal" role="dialog" data-backdrop="static">
+		<div class="modal-dialog modal-sm">
+
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 style="color: red;">
+						<picture>
+						<source type="image/webp" srcset="static/img/errorNew.webp">
+						<img src="./././static/img/errorNew.png" height="30" width="30">
+						</picture>
+						<span class="headingMsg">Are you sure?</span>
+					</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="msg" style="font-size: 18px;">
+								<p>Do you really want to delete these User?</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-success" data-dismiss="modal"
+						ng-click="cCctr.deleteById('userDetails',cCctr.delete)">Yes</button>
+					<button type="button" class="btn btn-danger " data-dismiss="modal">No</button>
+					<!-- id="reload" -->
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- logout modal -->
+	<div id="myModal2" class="modal" role="dialog" data-backdrop="static">
+		<div class="modal-dialog modal-sm">
+
+			<div class="modal-content">
+				<div class="modal-header" style="background-color: #505d82">
+					<h4 style="color: white;">
+						<!--  <picture>
 					<source type="image/webp" srcset="static/img/errorNew.webp">
 					<img src="./././static/img/errorNew.png" height="30" width="30">
 					</picture> -->
-					<span class="headingMsg">Are you sure?</span>
-				</h4>
-			</div>
-			<div class="modal-body">
-				<div class="row">
-					<div class="col-sm-12">
-						<div class="msg" style="font-size: 18px;">
-						<p>Do you want to logout !!!</p>
+						<span class="headingMsg">Are you sure?</span>
+					</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="msg" style="font-size: 18px;">
+								<p>Do you want to logout !!!</p>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-success" data-dismiss="modal"	
-					ng-click="cCctr.logout()">Yes</button>
-					<button  id="reload" type="button" class="btn btn-default" data-dismiss="modal"
-					ng-click="cCctr.reload()">No</button>
-				<!-- id="reload" -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-success" data-dismiss="modal"
+						ng-click="cCctr.logout()">Yes</button>
+					<button id="reload" type="button" class="btn btn-danger"
+						data-dismiss="modal" ng-click="cCctr.closeDialog()">No</button>
+					<!-- id="reload" -->
+				</div>
 			</div>
 		</div>
 	</div>
-   </div>       
 
 
-<script>
-	function viewP() {
-		var x = document.getElementById("pass");
-		if (x.type === "password") {
-			x.type = "text";
-		} else {
-			x.type = "password";
+	<!-- <div id="Ai-button" onclick="gotoHelp()"
+		style="width: 210px; height: 52px; border-radius: 15px; background: lightblue; position: absolute; right: 10px; bottom: 10px; z-index: 1;">
+		<div id="innerAi-btn">
+			<img src="static/img/ROBO-TRANSPARENT.png" alt="Help"> <span
+				class="tooltiptext"
+				style="font-family: 'Roboto', sans-serif; font-size: 15px;">Get
+				Data With AI</span>
+		</div>
+	</div> -->
+
+
+
+	<button class="help-button" style="bottom: 50px;"
+		ng-click="cCctr.gotoHelpSC( cCctr.helpFolder , cCctr.helpPage )">
+		<span class="supportspan">SUPPORT</span>
+		<div style="width: 150px; position: relative">
+			<!-- <img src="static/img/ROBO-TRANSPARENT.png" alt="Help" class="himg1"> -->
+			<!-- <img src="static/img/TOS-TRANSPARENT.png " alt="Help" class="himg2"> -->
+		</div>
+	</button>
+
+	<!-- jQuery  -->
+	<script src="static/assets/js/jquery.min.js"></script>
+	<script src="static/assets/js/bootstrap.bundle.min.js"></script>
+	<script src="static/assets/js/metismenu.min.js"></script>
+	<script src="static/assets/js/waves.js"></script>
+	<script src="static/assets/js/feather.min.js"></script>
+	<script src="static/assets/js/simplebar.min.js"></script>
+	<script src="static/assets/js/moment.js"></script>
+	<script src="static/assets/plugins/daterangepicker/daterangepicker.js"></script>
+
+	<script src="static/assets/plugins/apex-charts/apexcharts.min.js"></script>
+	<script src="static/assets/pages/jquery.analytics_dashboard.init.js"></script>
+
+	<!-- App js -->
+	<script src="static/assets/js/app.js"></script>
+	<script src="static/assets/vendor/tilt/tilt.jquery.min.js"></script>
+
+	<script>
+		$('.js-tilt').tilt({
+			scale : 1.0
+		})
+	</script>
+	<script>
+		function gotoHelp() {
+			document.getElementById('mainAi').classList.toggle('showmainAi');
+
 		}
-	}
+	</script>
+	<script>
+		function gotoHelp() {
+			document.getElementById('mainAi').classList.toggle('showmainAi');
 
-	function viewConfirmP() {
-		var x = document.getElementById("password1");
-		if (x.type === "password") {
-			x.type = "text";
-		} else {
-			x.type = "password";
 		}
-	}
-</script>
-<script>
-	$('#reload').click(function() {
-		location.reload();
-	});
-</script>
+	</script>
+	<script>
+		//Make the DIV element draggagle:
+		dragElement(document.getElementById("Ai-button"));
 
-<script>
-	$('#pass, #password1')
-			.on(
-					'keyup',
-					function() {
-						if ($('#pass').val() == $('#password1').val()) {
-							$('#changePassword').removeAttr('disabled');
-							console.log('Password correct');
-							$('#conErr').html('');
+		function dragElement(elmnt) {
+			var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+			if (document.getElementById(elmnt.id + "header")) {
+				/* if present, the header is where you move the DIV from:*/
+				document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+			} else {
+				/* otherwise, move the DIV from anywhere inside the DIV:*/
+				elmnt.onmousedown = dragMouseDown;
+			}
 
-						} else {
-							$('#conErr')
-									.html(
-											'Confirm Password should have the same value with new password')
-									.css('color', 'red');
-							$('#changePassword').attr('disabled', true);
-						}
-					});
-</script>
+			function dragMouseDown(e) {
+				e = e || window.event;
+				e.preventDefault();
+				// get the mouse cursor position at startup:
+				pos3 = e.clientX;
+				pos4 = e.clientY;
+				document.onmouseup = closeDragElement;
+				// call a function whenever the cursor moves:
+				document.onmousemove = elementDrag;
+			}
 
-<script>
-	/* SCRIPT FOR OPEN CLOSE SIDEBAR  */
+			function elementDrag(e) {
+				e = e || window.event;
+				e.preventDefault();
+				// calculate the new cursor position:
+				pos1 = pos3 - e.clientX;
+				pos2 = pos4 - e.clientY;
+				pos3 = e.clientX;
+				pos4 = e.clientY;
+				// set the element's new position:
+				elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+				elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+			}
 
-	$(".sidebar-dropdown > a").click(function() {
-		$(".sidebar-submenu").slideUp(200);
-		if ($(this).parent().hasClass("active")) {
-			$(".sidebar-dropdown").removeClass("active");
-			$(this).parent().removeClass("active");
-		} else {
-			$(".sidebar-dropdown").removeClass("active");
-			$(this).next(".sidebar-submenu").slideDown(200);
-			$(this).parent().addClass("active");
+			function closeDragElement() {
+				/* stop moving when mouse button is released:*/
+				document.onmouseup = null;
+				document.onmousemove = null;
+			}
 		}
-	});
+	</script>
+	<script>
+		function show12() {
+			document.getElementById('navtopbar').classList.toggle('show12');
+			document.getElementById('left-Sidenav').classList.add('ani');
 
-	$("#close-sidebar").click(function() {
-		$(".page-wrapper").removeClass("toggled");
-	});
-	$("#show-sidebar").click(function() {
-		$(".page-wrapper").addClass("toggled");
-		slideOut();
-	});
+		}
+		function add() {
+			document.getElementById('left-Sidenav').classList.add('add');
+		}
+		function remove() {
+			document.getElementById('left-Sidenav').classList.remove('add');
+		}
 
-	$(".menu-list a").on("click", function() {
-		$(".menu-list").find(".active").removeClass("active");
-		$(this).parent().addClass("active");
+		function submenu() {
+			document.getElementById('ldcul').classList.add('arrowicon1');
 
-	});
+		}
+		function arrow() {
+			document.getElementById('arrowicon').classList.add('arrowicon1');
+		}
 
-	var selector = '.menu-list li ';
+		function removearrow() {
+	
+		document.getElementById('arrowicon').classList.remove('arrowicon1');
 
-	$(selector).on('click', function() {
-		$(selector).removeClass('active');
-		$(this).addClass('active');
-	});
-</script>
-<script>
-	function refreshPageButton() {
-		window.location.reload();
-	}
-</script>
+		}
+	</script>
+
+	<script>
+		document.addEventListener('keydown', function(event) {
+			if (event.key === 'Enter') {
+				var searchButton = document.getElementById('searchButton');
+				if (searchButton) {
+					searchButton.click();
+				}
+			}
+		});
+	</script>
+
+</body>
+
+</html>

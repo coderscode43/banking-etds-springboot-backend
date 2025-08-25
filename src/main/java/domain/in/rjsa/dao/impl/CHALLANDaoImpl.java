@@ -1,16 +1,21 @@
-
 package domain.in.rjsa.dao.impl;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Projections;
-import org.hibernate.criterion.Restrictions;
+import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
+
 import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractDaoTaxo;
@@ -19,110 +24,92 @@ import domain.in.rjsa.model.tds.CHALLAN;
 
 @Repository("CHALLANDao")
 public class CHALLANDaoImpl extends AbstractDaoTaxo<String, CHALLAN> implements CHALLANDao {
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<CHALLAN> search(HashMap entity, int pageNo, int noOfResult) {
-		Criteria criteria = createEntityCriteria();
-		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
-		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
-		criteria.add(Restrictions.allEq(propertyNameValues));
 
-		if (entity.get("CIN") != null) {
-			criteria.add(Restrictions.eqOrIsNull("CIN", entity.get("CIN")));
-		}
-		if (entity.get("TAN") != null) {
-			criteria.add(Restrictions.eqOrIsNull("TAN", entity.get("TAN")));
-		}
-		if (entity.get("AMOUNT_OF_CLALLAN") != null) {
-			criteria.add(Restrictions.eqOrIsNull("AMOUNT_OF_CLALLAN", entity.get("AMOUNT_OF_CLALLAN")));
-		}
-		if (entity.get("CHALLAN_MISMATCH") != null) {
-			criteria.add(Restrictions.eqOrIsNull("CHALLAN_MISMATCH", entity.get("CHALLAN_MISMATCH")));
-		}
-		if (entity.get("dateOfDeposition") != null) {
-			criteria.add(Restrictions.eqOrIsNull("DATE_OF_DEPOSITION",
-					Date.from(ZonedDateTime.parse((String) entity.get("dateOfDeposition")).toInstant())));
-		}
-		if (entity.get("asOnDate") != null) {
-			criteria.add(Restrictions.eqOrIsNull("AS_ON_DATE",
-					Date.from(ZonedDateTime.parse((String) entity.get("asOnDate")).toInstant())));
-		}
+    @Override
+    public List<CHALLAN> search(HashMap<String, Object> entity, int pageNo, int noOfResult) {
+        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<CHALLAN> cq = cb.createQuery(CHALLAN.class);
+        Root<CHALLAN> root = cq.from(CHALLAN.class);
 
-		criteria.addOrder(Order.desc("CIN"));
-		criteria.setFirstResult(pageNo * noOfResult);
-		criteria.setMaxResults(noOfResult);
-		return (List<CHALLAN>) criteria.list();
-	}
+        Predicate[] predicates = buildPredicates(cb, root, entity);
+        cq.select(root).where(predicates);
+        cq.orderBy(cb.desc(root.get("CIN")));
 
-	@Override
-	public Long findallCount(HashMap<String, Object> entity) {
-		Criteria criteria = createEntityCriteria();
-		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
-		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
-		criteria.add(Restrictions.allEq(propertyNameValues));
+        TypedQuery<CHALLAN> query = getEntityManager().createQuery(cq);
+        query.setFirstResult(pageNo * noOfResult);
+        query.setMaxResults(noOfResult);
 
-		if (entity.get("CIN") != null) {
-			criteria.add(Restrictions.eqOrIsNull("CIN", entity.get("CIN")));
-		}
-		if (entity.get("TAN") != null) {
-			criteria.add(Restrictions.eqOrIsNull("TAN", entity.get("TAN")));
-		}
-		if (entity.get("AMOUNT_OF_CLALLAN") != null) {
-			criteria.add(Restrictions.eqOrIsNull("AMOUNT_OF_CLALLAN", entity.get("AMOUNT_OF_CLALLAN")));
-		}
-		if (entity.get("CHALLAN_MISMATCH") != null) {
-			criteria.add(Restrictions.eqOrIsNull("CHALLAN_MISMATCH", entity.get("CHALLAN_MISMATCH")));
-		}
-		if (entity.get("dateOfDeposition") != null) {
-			criteria.add(Restrictions.eqOrIsNull("DATE_OF_DEPOSITION",
-					Date.from(ZonedDateTime.parse((String) entity.get("dateOfDeposition")).toInstant())));
-		}
-		if (entity.get("asOnDate") != null) {
-			criteria.add(Restrictions.eqOrIsNull("AS_ON_DATE",
-					Date.from(ZonedDateTime.parse((String) entity.get("asOnDate")).toInstant())));
-		}
+        return query.getResultList();
+    }
 
-		return (Long) criteria.setProjection(Projections.rowCount()).uniqueResult();
+    @Override
+    public Long findallCount(HashMap<String, Object> entity) {
+        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<Long> cq = cb.createQuery(Long.class);
+        Root<CHALLAN> root = cq.from(CHALLAN.class);
 
-	}
-	
-	@Override
-	public CHALLAN getByKey(String key) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+        Predicate[] predicates = buildPredicates(cb, root, entity);
+        cq.select(cb.count(root)).where(predicates);
 
-	@Override
-	public List<CHALLAN> searchExcel(HashMap entity) {
-		Criteria criteria = createEntityCriteria();
-		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
-		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
-		criteria.add(Restrictions.allEq(propertyNameValues));
+        return getEntityManager().createQuery(cq).getSingleResult();
+    }
 
-		if (entity.get("CIN") != null) {
-			criteria.add(Restrictions.eqOrIsNull("CIN", entity.get("CIN")));
-		}
-		if (entity.get("TAN") != null) {
-			criteria.add(Restrictions.eqOrIsNull("TAN", entity.get("TAN")));
-		}
-		if (entity.get("AMOUNT_OF_CLALLAN") != null) {
-			criteria.add(Restrictions.eqOrIsNull("AMOUNT_OF_CLALLAN", entity.get("AMOUNT_OF_CLALLAN")));
-		}
-		if (entity.get("CHALLAN_MISMATCH") != null) {
-			criteria.add(Restrictions.eqOrIsNull("CHALLAN_MISMATCH", entity.get("CHALLAN_MISMATCH")));
-		}
-		if (entity.get("dateOfDeposition") != null) {
-			criteria.add(Restrictions.eqOrIsNull("DATE_OF_DEPOSITION",
-					Date.from(ZonedDateTime.parse((String) entity.get("dateOfDeposition")).toInstant())));
-		}
-		if (entity.get("asOnDate") != null) {
-			criteria.add(Restrictions.eqOrIsNull("AS_ON_DATE",
-					Date.from(ZonedDateTime.parse((String) entity.get("asOnDate")).toInstant())));
-		}
+    @Override
+    public CHALLAN getByKey(String key) {
+        return getEntityManager().find(CHALLAN.class, key);
+    }
 
-		criteria.addOrder(Order.desc("CIN"));
-//		criteria.setFirstResult(pageNo * noOfResult);
-//		criteria.setMaxResults(noOfResult);
-		return (List<CHALLAN>) criteria.list();
-	}
+    @Override
+    public List<CHALLAN> searchExcel(HashMap entity) {
+        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<CHALLAN> cq = cb.createQuery(CHALLAN.class);
+        Root<CHALLAN> root = cq.from(CHALLAN.class);
+
+        Predicate[] predicates = buildPredicates(cb, root, entity);
+        cq.select(root).where(predicates);
+        cq.orderBy(cb.desc(root.get("CIN")));
+
+        return getEntityManager().createQuery(cq).getResultList();
+    }
+
+    private Predicate[] buildPredicates(CriteriaBuilder cb, Root<CHALLAN> root, Map<String, Object> entity) {
+        List<Predicate> predicates = new ArrayList<>();
+
+        if (entity.get("CIN") != null) {
+            predicates.add(cb.equal(root.get("CIN"), entity.get("CIN")));
+        }
+        if (entity.get("TAN") != null) {
+            predicates.add(cb.equal(root.get("TAN"), entity.get("TAN")));
+        }
+        if (entity.get("AMOUNT_OF_CLALLAN") != null) {
+            predicates.add(cb.equal(root.get("AMOUNT_OF_CLALLAN"), entity.get("AMOUNT_OF_CLALLAN")));
+        }
+        if (entity.get("CHALLAN_MISMATCH") != null) {
+            predicates.add(cb.equal(root.get("CHALLAN_MISMATCH"), entity.get("CHALLAN_MISMATCH")));
+        }
+        if (entity.get("dateOfDeposition") != null) {
+            Date date = parseDateFromString((String) entity.get("dateOfDeposition"));
+            if (date != null) {
+                predicates.add(cb.equal(root.get("DATE_OF_DEPOSITION"), date));
+            }
+        }
+        if (entity.get("asOnDate") != null) {
+            Date date = parseDateFromString((String) entity.get("asOnDate"));
+            if (date != null) {
+                predicates.add(cb.equal(root.get("AS_ON_DATE"), date));
+            }
+        }
+
+        return predicates.toArray(new Predicate[0]);
+    }
+
+    private Date parseDateFromString(String isoDate) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            return sdf.parse(ZonedDateTime.parse(isoDate).truncatedTo(ChronoUnit.DAYS).toLocalDate().toString());
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

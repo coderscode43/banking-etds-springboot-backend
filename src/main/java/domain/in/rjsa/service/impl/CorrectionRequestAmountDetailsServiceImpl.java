@@ -29,7 +29,7 @@ CorrectionRequestAmountDetailsDao dao;
 	}
 
 	@Override
-	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+	public List<?> search(LinkedHashMap<String, Object> map, int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -50,6 +50,14 @@ CorrectionRequestAmountDetailsDao dao;
 	public List<CorrectionRequestAmountDetails> findForm(HashMap<String, Object> constrains) {
 		// TODO Auto-generated method stub
 		return dao.findForm(constrains);
+	}
+
+	@Override
+	public List<CorrectionRequestAmountDetails> getByCorrectionId(Long correctionRequestId) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("correctionRequestId", correctionRequestId);
+		return dao.search(map);
 	}
  
 

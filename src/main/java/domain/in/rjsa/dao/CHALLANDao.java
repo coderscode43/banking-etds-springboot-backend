@@ -7,6 +7,6 @@ import domain.in.rjsa.model.tds.CHALLAN;
 
 public interface CHALLANDao extends DaoInterfaceTaxo<String,  CHALLAN> {
 	public CHALLAN getByKey(String key) ;
-	List<CHALLAN> search(HashMap entity, int pageNo, int noOfResult);
+	List<CHALLAN> search(HashMap<String, Object> entity, int pageNo, int noOfResult);
 	public Long findallCount(HashMap<String, Object> constrains);
 }

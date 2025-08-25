@@ -217,7 +217,7 @@ body {
 				</div>
 			</div>
 
-			<div class="collapse  panel-collapse" id="collapseExample4">
+			<div class="collapse  panel-collapse"  id="collapseExample4" style="margin-left: -8px;">
 
 				<div class="row">
 
@@ -310,7 +310,7 @@ body {
 								ng-click="cCctr.gotoList2Page('addvendorMaster','addvendorMaster');">Add</button>
 							<table class=" table table-bordered table-hover table-striped ">
 								<thead>
-									<tr style="background-color: #81b7db; font-size: 13px">
+									<tr style="background-color: #7482f45e; font-size: 13px">
 										<th>Sr No</th>
 										<th>Vendor Id</th>
 										<th>Vendor Code</th>
@@ -326,7 +326,7 @@ body {
 								<tbody>
 									<tr ng-repeat="a in cCctr.getEntityListData() | filter: {status: '!Pending for approval'}""
 										style="font-size: 13px">
-										<td>{{$index+1}}</td>
+										<td>{{$index+cCctr.srNo}}</td>
 										<td>{{a.vendorId}}</td>
 										<td>{{a.vendorCode}}</td>
 										<td>{{a.vendorName}}</td>
@@ -348,7 +348,7 @@ body {
 
 							<table class=" table table-bordered table-hover table-striped ">
 								<thead>
-									<tr style="background-color: #81b7db; font-size: 13px">
+									<tr style="background-color: #7482f45e; font-size: 13px">
 										<th>Sr No</th>
 										<th>Vendor Id</th>
 										<th>Vendor Code</th>
@@ -366,7 +366,7 @@ body {
 									<tr
 										ng-repeat="a in cCctr.getEntityListData() | filter: {status: '!Verified'}"
 										style="font-size: 13px">
-										<td>{{$index+1}}</td>
+										<td>{{$index+cCctr.srNo}}</td>
 										<td>{{a.vendorId}}</td>
 										<td>{{a.vendorCode}}</td>
 										<td>{{a.vendorName}}</td>

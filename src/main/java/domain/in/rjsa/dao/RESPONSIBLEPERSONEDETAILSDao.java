@@ -6,5 +6,5 @@ import java.util.List;
 import domain.in.rjsa.model.tds.RESPONSIBLEPERSONEDETAILS;
 
 public interface RESPONSIBLEPERSONEDETAILSDao extends DaoInterfaceTaxo<String,  RESPONSIBLEPERSONEDETAILS>{
-	List<RESPONSIBLEPERSONEDETAILS> search(HashMap entity, int pageNo, int noOfResult);
+	List<RESPONSIBLEPERSONEDETAILS> search(HashMap<String, Object> entity, int pageNo, int noOfResult);
 }

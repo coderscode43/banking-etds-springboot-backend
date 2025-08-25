@@ -1,10 +1,10 @@
 package domain.in.rjsa.controller;
 
+import java.net.URLDecoder;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,11 +27,11 @@ import domain.in.rjsa.service.PanUpdateListService;
 
 @Controller
 @RequestMapping("/apipanUpdateList")
-public class PanUpdateListController extends AbstractControllerFY<Long, PanUpdateList, PanUpdateListService>{
-	
+public class PanUpdateListController extends AbstractControllerFY<Long, PanUpdateList, PanUpdateListService> {
+
 	@Autowired
 	PanUpdateListService service;
-	
+
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
 	@Override
@@ -45,7 +45,7 @@ public class PanUpdateListController extends AbstractControllerFY<Long, PanUpdat
 		// TODO Auto-generated method stub
 		return service;
 	}
-	
+
 	// ------------------- Search Single Entity ---------------------------------
 	@RequestMapping(value = "/search/get/{pageNo}/{resultPerPage}/{json}/**", method = RequestMethod.GET)
 	public ResponseEntity<?> search(@PathVariable String json, HttpServletRequest request, @PathVariable int pageNo,
@@ -59,7 +59,9 @@ public class PanUpdateListController extends AbstractControllerFY<Long, PanUpdat
 
 			String searchParam;
 			if (null != arguments && !arguments.isEmpty()) {
-				searchParam = json + '/' + arguments;
+				String decodedString = URLDecoder.decode(arguments, "UTF-8");
+				decodedString = decodedString.replace(", \"", "\"");
+				searchParam = json + '/' + decodedString;
 			} else {
 				searchParam = json;
 			}
@@ -68,17 +70,17 @@ public class PanUpdateListController extends AbstractControllerFY<Long, PanUpdat
 			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
 
 			// convert JSON string to Map
-			map = mapper.readValue(searchParam, new TypeReference<Map<String, String>>() {
+			map = mapper.readValue(searchParam, new TypeReference<LinkedHashMap<String, Object>>() {
 			});
-			if(map.containsKey("branchCode")) {
+			if (map.containsKey("branchCode")) {
 				Long branchCode = Long.valueOf(map.get("branchCode").toString());
 				map.put("branchCode", branchCode);
 			}
-			if(map.containsKey("roCode")) {
+			if (map.containsKey("roCode")) {
 				Long roCode = Long.valueOf(map.get("roCode").toString());
 				map.put("roCode", roCode);
 			}
-			if(map.containsKey("resolved")) {
+			if (map.containsKey("resolved")) {
 				Boolean resolved = Boolean.valueOf(map.get("resolved").toString());
 				map.put("resolved", resolved);
 			}
@@ -97,10 +99,9 @@ public class PanUpdateListController extends AbstractControllerFY<Long, PanUpdat
 
 	}
 
-	public List<?> getSearch(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+	public List<?> getSearch(LinkedHashMap<String, Object> map, int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
-		return getService().search(map,pageNo,resultPerPage);
+		return getService().search(map, pageNo, resultPerPage);
 	}
-
 
 }

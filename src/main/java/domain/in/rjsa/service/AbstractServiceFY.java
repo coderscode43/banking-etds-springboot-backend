@@ -4,10 +4,16 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import domain.in.rjsa.dao.DaoInterfaceFY;
 
 public abstract class AbstractServiceFY<K extends Serializable, E, D extends DaoInterfaceFY<K, E>>
 		implements ServiceInterfaceFY<K, E> {
+	
+	public static final ObjectMapper mapper = new ObjectMapper()
+			.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 //	@Autowired
 //	FileDetailDao fDao;
 	
@@ -63,7 +69,7 @@ public abstract class AbstractServiceFY<K extends Serializable, E, D extends Dao
 	@Override
 	public E uniqueSearch(HashMap map) {
 		// TODO Auto-generated method stub
-		return getPrimaryDao().uniqueSearch(map);
+		return (E) getPrimaryDao().uniqueSearch(map);
 	}
 
 	@Override

@@ -3,6 +3,7 @@ package domain.in.rjsa.service.impl;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -15,6 +16,8 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -252,17 +255,17 @@ public class UploadCertificateServiceImpl extends AbstractServiceForm<Long, Uplo
 
 			}
 			logger.info("unzip in " + destDir);
-			
+
 			BufferedReader input = new BufferedReader(new InputStreamReader(process.getInputStream()));
 			ArrayList<String> procs = new ArrayList<String>();
 			String line = null;
 			while ((line = input.readLine()) != null) {
-			    procs.add(line);
+				procs.add(line);
 			}
 			input.close();
 			Boolean processFound = procs.stream().filter(row -> row.indexOf("cmd.exe") > -1).count() > 0;
-			while(processFound) {
-				Thread.sleep(1000);	
+			while (processFound) {
+				Thread.sleep(1000);
 			}
 //			taskkill \m \im 
 
@@ -274,7 +277,7 @@ public class UploadCertificateServiceImpl extends AbstractServiceForm<Long, Uplo
 		} finally {
 			String fName = newPath.getFileName().toString();
 			Character c = fName.charAt(4);
-			Path targetPath = Paths.get(destDir.toString() + "\\" + c +"\\"+fName);
+			Path targetPath = Paths.get(destDir.toString() + "\\" + c + "\\" + fName);
 			targetPath.toFile().delete();
 		}
 	}
@@ -321,8 +324,56 @@ public class UploadCertificateServiceImpl extends AbstractServiceForm<Long, Uplo
 	}
 
 	@Override
-	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+	public List<?> search(LinkedHashMap<String, Object> map, int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
 		return dao.search(map, pageNo, resultPerPage);
 	}
+
+	@Override
+	public void uploadCertificate(MultipartFile downloadFile, HashMap<String, String> lessonMap) {
+		try {
+			String[] t = lessonMap.get("tan").split("-");
+			String[] f = lessonMap.get("typeofCertificate").split("-");
+			String path = StaticData.CertificatePath + "download\\" + lessonMap.get("fy") + "\\"
+					+ lessonMap.get("quarter") + "\\" + f[0] + "\\" + t[0];
+
+			File file = new File(path.toString());
+			if (!file.exists()) {
+				file.mkdirs();
+			}
+
+			if (downloadFile.getOriginalFilename().endsWith(".zip")) {
+				unzipAndTransfer(downloadFile, path);
+			} else {
+
+				InputStream inputStream = downloadFile.getInputStream();
+				Path fp = Paths.get(path, downloadFile.getOriginalFilename());
+
+				// Copy file to path, replacing existing file if it exists
+				Files.copy(inputStream, fp, StandardCopyOption.REPLACE_EXISTING);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	private void unzipAndTransfer(MultipartFile downloadFile, String filePath) {
+
+		try (InputStream inputStream = downloadFile.getInputStream();
+				ZipInputStream zipInputStream = new ZipInputStream(inputStream)) {
+			ZipEntry entry;
+			while ((entry = zipInputStream.getNextEntry()) != null) {
+				if (entry.toString().endsWith(".pdf")) {
+					Path fp = Paths.get(filePath, entry.toString());
+					Files.copy(zipInputStream, fp, StandardCopyOption.REPLACE_EXISTING);
+				}
+			}
+			zipInputStream.closeEntry();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 }

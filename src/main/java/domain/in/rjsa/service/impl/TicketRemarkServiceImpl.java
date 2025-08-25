@@ -8,13 +8,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import domain.in.rjsa.dao.TicketRemarkDao;
-import domain.in.rjsa.model.form.TicketRemark;
+import domain.in.rjsa.model.fy.TicketRemarks;
 import domain.in.rjsa.service.AbstractServiceForm;
 import domain.in.rjsa.service.TicketRemarkService;
 
 @Transactional("transactionManager")
 @Service("ticketRemark")
-public class TicketRemarkServiceImpl extends AbstractServiceForm<Long, TicketRemark, TicketRemarkDao> implements TicketRemarkService{
+public class TicketRemarkServiceImpl extends AbstractServiceForm<Long, TicketRemarks, TicketRemarkDao> implements TicketRemarkService{
 	@Autowired
 	TicketRemarkDao dao;
 		@Override
@@ -23,7 +23,7 @@ public class TicketRemarkServiceImpl extends AbstractServiceForm<Long, TicketRem
 			return dao;
 		}
 		@Override
-		public TicketRemark getByKey(Long id) {
+		public TicketRemarks getByKey(Long id) {
 			// TODO Auto-generated method stub
 			return dao.getByKey(id);
 		}
@@ -33,7 +33,7 @@ public class TicketRemarkServiceImpl extends AbstractServiceForm<Long, TicketRem
 			return null;
 		}
 		@Override
-		public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+		public List<?> search(LinkedHashMap<String, Object> map, int pageNo, int resultPerPage) {
 			// TODO Auto-generated method stub
 			return null;
 		}

@@ -1,43 +1,45 @@
 package domain.in.rjsa.model.form;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
 import lombok.Data;
+//@Entity
+//@Table(name = "AAACN4165C_form.login")
 @Data
-@Entity
-@Table(name = "AAACU3561B_form.login")
 public class Login extends CommonModelAbstract{
 
 	private static final long serialVersionUID = 8520939778549419922L;
-	@Id
-	@GeneratedValue(strategy= GenerationType.AUTO, generator="native")
-	@GenericGenerator(name = "native", strategy = "native")
-	@Column(name = "id")
+	//@Id
+	//@GeneratedValue(strategy= GenerationType.AUTO, generator="native")
+	//@GenericGenerator(name = "native", strategy = "native")
+	//@Column(name = "id")
 	private long id;
-	@Column(name = "userName")
+	//@Column(name = "userName")
 	private String userName;
-	@Column(name = "password")
+	//@Column(name = "password")
 	private String password;
-	@Column(name = "accessLevel")
+	//@Column(name = "accessLevel")
 	private int accessLevel;
-	@Column(name = "enabled")
+	//@Column(name = "enabled")
 	private Boolean enabled;
-	@Column(name = "type")
+	//@Column(name = "type")
 	private String type;
-	@Column(name = "refId")
+	//@Column(name = "refId")
 	private long refId;
-	@Column(name = "clientId")
+	//@Column(name = "clientId")
 	private long clientId;
-	@Column(name = "passwordReset")
+	//@Column(name = "passwordReset")
 	private Boolean passwordReset;
-	@Column(name = "branchCode")
+	//@Column(name = "branchCode")
 	private Long branchCode;
+	//@Column(name = "authtoken")
+	private String authtoken;
 	
 }

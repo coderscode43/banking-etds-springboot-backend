@@ -1,11 +1,11 @@
 package domain.in.rjsa.controller;
 
+import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -73,7 +73,9 @@ public class LogsController extends AbstractControllerForm<Long, Logs, LogsServi
 
 			String searchParam;
 			if (null != arguments && !arguments.isEmpty()) {
-				searchParam = json + '/' + arguments;
+				String decodedString = URLDecoder.decode(arguments, "UTF-8");
+				decodedString = decodedString.replace(", \"", "\"");
+				searchParam = json + '/' + decodedString;
 			} else {
 				searchParam = json;
 			}
@@ -82,7 +84,7 @@ public class LogsController extends AbstractControllerForm<Long, Logs, LogsServi
 			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
 
 			// convert JSON string to Map
-			map = mapper.readValue(searchParam, new TypeReference<Map<String, String>>() {
+			map = mapper.readValue(searchParam, new TypeReference<LinkedHashMap<String, Object>>() {
 			});
 			adminValidation(map);
 			Long count = service.findSearchCount(map);
@@ -99,7 +101,7 @@ public class LogsController extends AbstractControllerForm<Long, Logs, LogsServi
 
 	}
 
-	public List<?> getSearch(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+	public List<?> getSearch(LinkedHashMap<String, Object> map, int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
 		return service.search(map, pageNo, resultPerPage);
 	}
@@ -158,14 +160,14 @@ public class LogsController extends AbstractControllerForm<Long, Logs, LogsServi
 	public List<?> getList(int pageNo, int resultPerPage) {
 		HashMap<String, Object> constrains = new HashMap<>();
 		if (!"admin".equals(getBranchCode())) {
-			Long b=1L;
+			Long b = 1L;
 			try {
-				b =Long.valueOf(getBranchCode());
-			}catch (Exception e) {
+				b = Long.valueOf(getBranchCode());
+			} catch (Exception e) {
 				// TODO: handle exception
 			}
 			constrains.put("branchCode", b);
-		}else {
+		} else {
 		}
 		return service.findAll(constrains, pageNo, resultPerPage);
 	}

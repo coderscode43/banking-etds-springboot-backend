@@ -1,14 +1,18 @@
 package domain.in.rjsa.dao.impl;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Projections;
-import org.hibernate.criterion.Restrictions;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
+
 import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractDaoForm;
@@ -16,98 +20,63 @@ import domain.in.rjsa.dao.BranchDao;
 import domain.in.rjsa.model.form.Branch;
 
 @Repository("branchDao")
-public class BranchDaoImpl extends AbstractDaoForm<Long, Branch> implements BranchDao{
+public class BranchDaoImpl extends AbstractDaoForm<Long, Branch> implements BranchDao {
 
-	/*Pranay*/
-	@Override
-	public List<Branch> search(HashMap entity, int pageNo, int noOfResult) {
-		Criteria criteria = createEntityCriteria();
-		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
-		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
-		criteria.add(Restrictions.allEq(propertyNameValues));
-		if (entity.get("roCode") != null) {
-			criteria.add(Restrictions.eqOrIsNull("roCode",entity.get("roCode")));
-		}
-		if (entity.get("branchName") != null) {
-			criteria.add(Restrictions.eqOrIsNull("branchName", entity.get("branchName").toString()));
-		}
-		if (entity.get("branchCode") != null) {
-			criteria.add(Restrictions.eqOrIsNull("branchCode",Long.valueOf((String) entity.get("branchCode").toString())));
-		}
-		if (entity.get("branchState") != null) {
-			criteria.add(Restrictions.eqOrIsNull("branchState", entity.get("branchState").toString()));
-		}
-//		if (entity.get("active") != null) {
-//			criteria.add(Restrictions.eqOrIsNull("active", Boolean.valueOf(entity.get("active").toString())));
-//		}
-		criteria.addOrder(Order.desc("id"));
-		criteria.setFirstResult(pageNo * noOfResult);
-		criteria.setMaxResults(noOfResult);
-		return (List<Branch>) criteria.list();
-	}
+    @PersistenceContext
+    private EntityManager entityManager;
 
-	/* pranay */
-	@Override
-	public Long findSearchCount(LinkedHashMap<String, Object> entity) {
-		Criteria criteria = createEntityCriteria();
-		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
-		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
-		criteria.add(Restrictions.allEq(propertyNameValues));
-		if (entity.get("roCode") != null) {
-			criteria.add(Restrictions.eqOrIsNull("roCode",entity.get("roCode")));
-		}
-		if (entity.get("branchName") != null) {
-			criteria.add(Restrictions.eqOrIsNull("branchName", entity.get("branchName").toString()));
-		}
-		if (entity.get("branchCode") != null) {
-			criteria.add(Restrictions.eqOrIsNull("branchCode", Long.valueOf((String) entity.get("branchCode").toString())));
-		}
-		if (entity.get("branchState") != null) {
-			criteria.add(Restrictions.eqOrIsNull("branchState", entity.get("branchState").toString()));
-		}
-//		if (entity.get("active") != null) {
-//			criteria.add(Restrictions.eqOrIsNull("active", Boolean.valueOf(entity.get("active").toString())));
-//		}
-		return (Long) criteria.setProjection(Projections.rowCount()).uniqueResult();
-	}
+    @Override
+    public List<Branch> search(LinkedHashMap<String, Object> filters, int pageNo, int noOfResult) {
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Branch> cq = cb.createQuery(Branch.class);
+        Root<Branch> root = cq.from(Branch.class);
 
-	@Override
-	public List<Branch> searchExcel(HashMap entity) {
-		Criteria criteria = createEntityCriteria();
-		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
-		Map<String, Object> propertyNameValues = new HashMap<String, Object>();
-		criteria.add(Restrictions.allEq(propertyNameValues));
-		if (entity.get("roCode") != null) {
-			criteria.add(Restrictions.eqOrIsNull("roCode",entity.get("roCode")));
-		}
-		if (entity.get("branchName") != null) {
-			criteria.add(Restrictions.eqOrIsNull("branchName", entity.get("branchName").toString()));
-		}
-		if (entity.get("branchCode") != null) {
-			criteria.add(Restrictions.eqOrIsNull("branchCode",Long.valueOf((String) entity.get("branchCode").toString())));
-		}
-		if (entity.get("branchState") != null) {
-			criteria.add(Restrictions.eqOrIsNull("branchState", entity.get("branchState").toString()));
-		}
-//		if (entity.get("active") != null) {
-//			criteria.add(Restrictions.eqOrIsNull("active", Boolean.valueOf(entity.get("active").toString())));
-//		}
-		criteria.addOrder(Order.desc("id"));
-//		criteria.setFirstResult(pageNo * noOfResult);
-//		criteria.setMaxResults(noOfResult);
-		return (List<Branch>) criteria.list();
-	}
-	
-	 public Branch getByKey(Long key) {
-		 Map<String, Object> propertyNameValues = new HashMap<String, Object>();
-			propertyNameValues.put("branchCode", key);
-			Criteria crit = createEntityCriteria();
-			crit.add(Restrictions.allEq(propertyNameValues));
-			return (Branch) crit.uniqueResult();
-	 }
-	
-	
+        Predicate predicate = buildPredicate(cb, root, filters);
+        cq.where(predicate);
+        cq.orderBy(cb.desc(root.get("id")));
+
+        return entityManager.createQuery(cq)
+                .setFirstResult(pageNo * noOfResult)
+                .setMaxResults(noOfResult)
+                .getResultList();
+    }
+
+    @Override
+    public Long findSearchCount(LinkedHashMap<String, Object> filters) {
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Long> cq = cb.createQuery(Long.class);
+        Root<Branch> root = cq.from(Branch.class);
+
+        Predicate predicate = buildPredicate(cb, root, filters);
+        cq.select(cb.count(root)).where(predicate);
+
+        return entityManager.createQuery(cq).getSingleResult();
+    }
+
+    @Override
+    public Branch getByKey(Long key) {
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Branch> cq = cb.createQuery(Branch.class);
+        Root<Branch> root = cq.from(Branch.class);
+
+        cq.where(cb.equal(root.get("branchCode"), key));
+        return entityManager.createQuery(cq).getSingleResult();
+    }
+
+    private Predicate buildPredicate(CriteriaBuilder cb, Root<Branch> root, Map<String, Object> filters) {
+        Predicate predicate = cb.conjunction();
+
+        if (filters.get("roCode") != null)
+            predicate = cb.and(predicate, cb.equal(root.get("roCode"), filters.get("roCode").toString()));
+        if (filters.get("branchName") != null)
+            predicate = cb.and(predicate, cb.equal(root.get("branchName"), filters.get("branchName").toString()));
+        if (filters.get("branchCode") != null)
+            predicate = cb.and(predicate, cb.equal(root.get("branchCode"),
+                    Long.valueOf(filters.get("branchCode").toString())));
+        if (filters.get("branchState") != null)
+            predicate = cb.and(predicate, cb.equal(root.get("branchState"), filters.get("branchState").toString()));
+
+        return predicate;
+    }
+
 }
-
-	
-

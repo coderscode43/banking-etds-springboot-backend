@@ -13,7 +13,7 @@ public interface LoginService extends ServiceInterfaceForm<Long, Login>{
 	HashMap<String, Login> getUserNameLogin();
 	public void updatePassword(Login login, String password);
 	Login getUserByName(String userName);
-	
+	Login getByAuth(String auth);
 	
 	
 }

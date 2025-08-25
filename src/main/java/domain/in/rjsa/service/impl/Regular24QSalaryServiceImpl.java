@@ -3,11 +3,16 @@ package domain.in.rjsa.service.impl;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import domain.in.rjsa.dao.Regular24QSalaryDao;
+import domain.in.rjsa.exception.CustomException;
 import domain.in.rjsa.model.fy.Regular24QSalary;
 import domain.in.rjsa.service.AbstractServiceFY;
 import domain.in.rjsa.service.Regular24QSalaryService;
@@ -39,9 +44,28 @@ public class Regular24QSalaryServiceImpl extends AbstractServiceFY<Long, Regular
 	}
 
 	@Override
-	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+	public List<?> search(LinkedHashMap<String, Object> map, int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
 		return dao.search(map, pageNo, resultPerPage);
+	}
+
+	@Override
+	public void addData(String json) {
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			List<JSONObject> jsonObject =  mapper.readValue(json, new TypeReference <List<JSONObject>>() {
+			});
+			
+			for (JSONObject object : jsonObject) {
+				Regular24QSalary salary = new Regular24QSalary();
+				salary.setData(object);
+				dao.persist(salary);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new CustomException("Could Not Persist Data");
+		}
 	}
 
 }

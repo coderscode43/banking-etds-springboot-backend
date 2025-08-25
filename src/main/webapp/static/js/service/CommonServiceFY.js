@@ -20,7 +20,6 @@ App.factory('CommonServiceFY', [
 			update: update,
 			save: save,
 			ajax: ajax,
-			//deleteEntity:deleteEntity,
 			getEntityList: getEntityList,
 			updateStatus: updateStatus,
 			getEntity: getEntity,
@@ -33,7 +32,8 @@ App.factory('CommonServiceFY', [
 			rejectUpdate: rejectUpdate,
 			add:add,
 			check:check,
-			downloadCertificate : downloadCertificate
+			downloadCertificate : downloadCertificate,
+			saveWithFile: saveWithFile,
 
 		};
 		return factory;
@@ -53,6 +53,31 @@ App.factory('CommonServiceFY', [
 
 			return deferred.promise;
 		}
+		
+		function saveWithFile(entitySave, entity) {
+				var dat = new FormData();
+				if(entitySave.blob==null || entitySave.blob==undefined){
+				return save(entitySave, entity)
+				}else{
+				      dat.append('blob', entitySave.blob)
+				dat.append('dec', JSON.stringify(entitySave));
+				
+				var deferred = $q.defer();
+				$http.post(
+						REST_SERVICE_URI + entity + '/addWithFile/'+$stateParams.fy + '/' + $stateParams.branchCode,
+						dat, {
+							transformRequest: angular.identity,
+				            headers: {'Content-Type': undefined}
+						}).success(function(data) {
+
+					deferred.resolve(data);
+				}).error(function(status) {
+					deferred.reject(status);
+				});
+
+				return deferred.promise;
+
+			} }
 		
 		function check(url) {
 			var deferred = $q.defer();
@@ -155,9 +180,7 @@ App.factory('CommonServiceFY', [
 				}).error(function(status) {
 					deferred.reject(status);
 				});
-
 			return deferred.promise;
-
 		}
 
 		function ajax(entity, ajax, fy, branchCode) {

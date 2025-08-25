@@ -4,40 +4,27 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.hibernate5.HibernateTransactionManager;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
  
 @Configuration
 @EnableTransactionManagement
-@ComponentScan({ "domain.in.rjsa.configuration" })
+@ComponentScan({ "domain.in.rjsa" })
 @PropertySource(value = { "classpath:application.properties" })
 public class HibernateConfiguration {
  
     @Autowired
     private Environment environment;
-    @Autowired
-    @Qualifier("sessionFactory")
-    private SessionFactory sessionFactory;
-    
- 
-    @Bean
-    public LocalSessionFactoryBean sessionFactory() {
-        LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-        sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan(new String[] { "domain.in.rjsa.model" });
-        sessionFactory.setHibernateProperties(hibernateProperties());
-        return sessionFactory;
-     }
      
     @Bean
     public DataSource dataSource() {
@@ -49,18 +36,39 @@ public class HibernateConfiguration {
         return dataSource;
     }
      
-    private Properties hibernateProperties() {
-        Properties properties = new Properties();
-        properties.put("hibernate.dialect", environment.getRequiredProperty("hibernate.dialect"));
-        properties.put("hibernate.show_sql", environment.getRequiredProperty("hibernate.show_sql"));
-        properties.put("hibernate.format_sql", environment.getRequiredProperty("hibernate.format_sql"));
-        return properties;        
-    }
-     
     @Bean
-    public HibernateTransactionManager transactionManager() {
-       HibernateTransactionManager txManager = new HibernateTransactionManager();
-       txManager.setSessionFactory(this.sessionFactory);
-       return txManager;
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+        LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
+        emf.setDataSource(dataSource());
+//        emf.setPackagesToScan("domain.in.rjsa.model");
+        emf.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
+        emf.setJpaProperties(jpaProperties());
+        String xmlFileName = environment.getRequiredProperty("hibernate.xmlFileName");
+        emf.setMappingResources(xmlFileName);
+        return emf;
+    }
+
+    @Bean
+    public JpaTransactionManager transactionManager(LocalContainerEntityManagerFactoryBean factoryBean) {
+        JpaTransactionManager txManager = new JpaTransactionManager();
+        txManager.setEntityManagerFactory(factoryBean.getObject());
+        return txManager;
+    }
+
+    @Bean
+    public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
+        return new PersistenceExceptionTranslationPostProcessor();
+    }
+
+    private Properties jpaProperties() {
+        Properties props = new Properties();
+        props.put("hibernate.dialect", environment.getRequiredProperty("hibernate.dialect"));
+        props.put("hibernate.hbm2ddl.auto", "none");
+        props.put("hibernate.show_sql", environment.getRequiredProperty("hibernate.show_sql"));
+        props.put("hibernate.format_sql", environment.getRequiredProperty("hibernate.format_sql"));
+        if (environment.getRequiredProperty("hibernate.dialect").toLowerCase().contains("oracle")) {
+        	props.put("hibernate.id.new_generator_mappings", "false");
+		}
+        return props;
     }
 }

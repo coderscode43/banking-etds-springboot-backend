@@ -1,0 +1,366 @@
+<style>
+@media only screen and (max-width: 1000px) {
+	.one {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.two {
+		padding: 8px;
+	}
+}
+
+@media only screen and (min-width:600px) {
+	#three {
+		display: none;
+		max-height: 0;
+		overflow: hidden;
+	}
+}
+
+@media only screen and (min-width:1000px) {
+	#search {
+		margin-left: 45%;
+		margin-top: 2px;
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	#hide {
+		display: none;
+	}
+}
+
+.table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
+	{
+	background-color: white;
+}
+
+@media ( min-width : 768px) {
+	.collapse.dont-collapse-sm {
+		display: block;
+		height: auto !important;
+		visibility: visible;
+	}
+}
+
+/*Edit Button*/
+.tooltip-top {
+	bottom: 118%;
+	margin-left: -89%;
+}
+
+/*Back Button*/
+
+/*Close Button*/
+.tooltip-top11 {
+	top: -36px;
+	margin-left: -100%;
+	width: max-content !important;
+}
+
+/*Update Button*/
+.tooltip-top12 {
+	top: -36px;
+	margin-left: -100%;
+	width: max-content !important;
+}
+
+.row1 {
+	margin-bottom: 2%;
+	margin-top: -1.5%;
+}
+
+.BtnDiv {
+	float: right;
+	margin-right: 3%;
+}
+
+.tooltip-top1 {
+	width: max-content !important;
+	margin-top: -75%;
+	margin-left: -97%;
+}
+
+.tooltip-download1 {
+	margin-left: -8.5%;
+}
+
+.myFrontButton {
+	padding: 4px 10px;
+	border-radius: 4px;
+	font-size: 0.9rem;
+	color: white;
+	transform: translateY(-6px);
+	margin-left: 2%;
+}
+
+tbody {
+	text-align: center;
+}
+</style>
+<div
+	ng-init="cCctr.helpFolder = 'homeSChelpPage' ;  cCctr.helpPage = 'detailRegularReturnHelp' ">
+	<div id="page-wrapper" ng-init="cCctr.entity=cCctr.getEntityData()">
+		<div class="container-fluid ContFluid">
+			<div ng-show="cCctr.show != true">
+				<h4 class="TopHead">
+					<strong>Regular Return</strong>
+				</h4>
+			</div>
+			<div class="panel  panel-default">
+				<div class="panel-body">
+					<div>
+						<div class="collapse dont-collapse-sm" id="collapseExample2"
+							style="line-height: 2.3;">
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-2">
+									<label>Financial Year &nbsp;</label>
+								</div>
+								<div class="col-md-4">: {{cCctr.entity.RR.fy}}</div>
+
+								<div class="col-md-2">
+									<label>TAN &nbsp;</label>
+								</div>
+								<div class="col-md-4">: {{cCctr.entity.RR.tan}}</div>
+							</div>
+							<div class="row" style="font-size: 13px;">
+
+								<div class="col-md-2">
+									<label>Quarter &nbsp;</label>
+								</div>
+								<div class="col-md-4">: {{cCctr.entity.RR.quarter}}</div>
+								<div class="col-md-2">
+									<label>Form &nbsp;</label>
+								</div>
+								<div class="col-md-4">: {{cCctr.entity.RR.form}}</div>
+							</div>
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-2">
+									<label>added On &nbsp;</label>
+								</div>
+								<div class="col-md-4">: {{cCctr.entity.RR.addedOn |
+									date:'dd-MM-yyyy HH:mm:ss'}}</div>
+								<div class="col-md-2">
+									<label>Added By &nbsp;</label>
+								</div>
+								<div class="col-md-4">: {{cCctr.entity.RR.addedBy}}</div>
+							</div>
+							<div class="row" style="font-size: 13px;">
+								<div class="col-md-2">
+									<label>Latest Response &nbsp;</label>
+								</div>
+								<div class="col-md-4">: {{cCctr.entity.RR.latestRemark}}</div>
+								<div class="col-md-2">
+									<label>Status &nbsp;</label>
+								</div>
+								<div class="col-md-4">: {{cCctr.entity.RR.status}}</div>
+							</div>
+							<div class="row" style="font-size: 13px;"
+								ng-if="cCctr.entity.RR.returnFilingDate">
+								<div class="col-md-2">
+									<label>Return Filing Date&nbsp;</label>
+								</div>
+								<div class="col-md-4">: {{ cCctr.entity.RR.returnFilingDate | date:'dd-MM-yyyy' }}</div>
+							</div>
+
+						</div>
+						<div class="row"
+							style="float: right; margin-top: 10px; padding-bottom: 1%;">
+							<button
+								ng-hide="cCctr.entity.RR.status == 'Certificate Generated'"
+								data-target="#myModal" data-toggle="modal" type="button"
+								class="btn btn-outline-primary waves-effect waves-light tool">
+								<i class="mdi mdi-plus mr-2"></i>Add Response<span
+									class="tooltiptext tooltip-top">Add Response Button</span>
+							</button>
+
+							<button
+								class="btn btn-outline-danger waves-effect waves-light tool"
+								onclick="window.history.back()">
+								<span><i class="fa fa-arrow-left" aria-hidden="true"></i>
+									Back <span class="tooltiptext tooltip-top">Back Button</span></span>
+							</button>
+						</div>
+						<table class=" table table-bordered table-hover  table-striped"
+							role="table"
+							style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+							<thead>
+							<colgroup>
+								<col span="14" style="background-color: #ffffff">
+							</colgroup>
+							<tr>
+							<thead>
+								<tr role="row" style="height: 40px; background-color: #7482f45e">
+									<th>Sr.No</th>
+									<th>Correction Response</th>
+									<th>Status</th>
+									<th>Supporting Document Name</th>
+									<th>Added By</th>
+									<th>Added On</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="a in cCctr.getEntityData().RRR">
+									<td>{{$index+cCctr.srNo}}</td>
+									<td>{{a.remark}}</td>
+									<td>{{a.remarkStatus}}</td>
+									<td>{{a.supportingDocName}}</td>
+									<td>{{a.addedBy}}</td>
+									<td>{{a.addedOn | date:'dd-MM-yyyy HH:mm:ss'}}</td>
+									<td ng-hide="a.supportingDocName"></td>
+									<td ng-show="a.supportingDocName"
+										ng-click="cCctr.download(true,'apiregularReturnRemark/downloadDoc/'+a.id)"><span
+										class="myFrontButton lightbluespan tool"><i
+											class="fa fa-download" aria-hidden="true"></i> <span
+											class="tooltiptext tooltip-download1">Download</span></span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<div class="row">
+						<div class="modal fade" id="myModal" role="dialog">
+							<form role="form" name="regularReturnRemark">
+								<div class="modal-dialog">
+									<!-- Modal content-->
+									<div class="modal-content">
+										<div class="modal-header">
+
+											<h4 class="modal-title">Add Regular Return Response</h4>
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+										</div>
+										<input class="form-control"
+											ng-model="cCctr.newEntity.regularReturnId = cCctr.entity.RR.id"
+											id="regularReturnId" name="regularReturnId"
+											style="display: none">
+
+										<div class="col-md-12">
+											<div class="col-md-12">
+												<label style="font-size: 13px; margin-top: 2%">Remarks&nbsp;:<span
+													style="color: red;">*</span></label>
+											</div>
+											<textarea ng-model="cCctr.newEntity.remark" id="remark"
+												name="remark"
+												style="width: 90%; font-size: 15px; margin-left: 5%;"
+												ng-required="true" required></textarea>
+											<span style="color: red; margin-left: 5%;" class="error"
+												ng-show="regularReturnRemark.submitted || regularReturnRemark.remark.$dirty && regularReturnRemark.remark.$invalid"><span
+												class="error"
+												ng-show="regularReturnRemark.remark.$error.required">Please
+													enter valid Response</span> <span class="error"
+												id="correctionRemark"> </span> </span>
+										</div>
+										<div class="col-md-12">
+											<div class="col-md-12">
+												<label>Select Status<span style="color: red;">*</span></label>
+											</div>
+											<select class="form-control" id="status" name="status"
+												title="Select Status"
+												ng-model="cCctr.newEntity.remarkStatus" ng-required="true"
+												style="width: 90%; margin-left: 5%;">
+												<option disabled value="">Select Status</option>
+												<#list regularReturnStatus as status>
+												<option value="${status}">${status}</option>
+												</#list>
+											</select> <span style="color: red"
+												ng-show="regularReturnRemark.submitted ||regularReturnRemark.status.$dirty && regularReturnRemark.status.$invalid">
+												<span class="error"
+												ng-show="regularReturnRemark.status.$error.required">Status
+													is Required. </span>
+											</span>
+										</div>
+										<div class="col-md-12"
+											ng-if="cCctr.newEntity.remarkStatus == 'Return filed'">
+											<div class="col-md-12">
+												<label style="font-size: 13px; margin-top: 2%">Return
+													Filing Date&nbsp;:<span style="color: red;">*</span>
+												</label>
+											</div>
+											<input ng-model="cCctr.newEntity.returnFilingDate" id="date"
+												name="date" type="date"
+												style="width: 90%; font-size: 15px; margin-left: 5%;"
+												ng-required="true" required> <span
+												style="color: red; margin-left: 5%;" class="error"
+												ng-show="regularReturnRemark.submitted || regularReturnRemark.date.$dirty && regularReturnRemark.date.$invalid"><span
+												class="error"
+												ng-show="regularReturnRemark.date.$error.required">Please
+													enter valid Date Of Return Filing</span> <span class="error"
+												id="correctionRemark"> </span> </span>
+										</div>
+										<div class="col-md-12">
+											<div class="col-md-10">
+												<label style="font-size: 13px; margin-top: 2%">Supporting
+													Document&nbsp;:</label> <input multiple id="file-upload"
+													type="file" name="file" title="Select File"
+													class="form-control" file-model="cCctr.newEntity.blob"
+													accept="" style="width: 94%; margin-left: 3%;" />
+											</div>
+											<div class="col-md-2">
+												<button class="btn btn-danger" onclick="clearFileInput()"
+													style="margin-top: 58%" ng-if="cCctr.newEntity.blob">X</button>
+											</div>
+										</div>
+										<div class="modal-footer">
+											<button style="margin-top: 2%;" type="button"
+												class="btn btn-primary waves-effect waves-light"
+												ng-click="regularReturnRemark.submitted=true; cCctr.submitWithFile(regularReturnRemark.$valid,cCctr.newEntity,'regularReturnRemark','close')">Add</button>
+											<button type="button"
+												class="btn btn-danger waves-effect waves-light"
+												style="margin-top: 2%;" data-dismiss="modal">No</button>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Success Modal -->
+	<div id="successMsgReturn" class="modal" role="dialog"
+		data-backdrop="static">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 style="color: green;">
+						<picture>
+						<source type="image/webp" srcset="static/img/success.webp">
+						<img src="./././static/img/success.webp" height="30" width="30">
+						</picture>
+						<span class="headingMsg"></span>
+					</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="msg" style="font-size: 18px;"></div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal"
+						id="reload" ng-click="cCctr.reload();">Ok</button>
+					<!-- id="reload" -->
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<script>
+	function clearFileInput() {
+		// Reset the value of the file input
+		document.getElementById('file-upload').value = '';
+	}
+</script>
+<script>
+	$(document).ready(function() {
+		$(this).scrollTop(0);
+	});
+</script>

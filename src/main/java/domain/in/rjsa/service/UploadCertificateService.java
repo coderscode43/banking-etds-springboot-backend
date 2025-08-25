@@ -13,4 +13,5 @@ public interface UploadCertificateService extends ServiceInterfaceForm<Long, Upl
 	
 	void saveDocument(MultipartFile downloadFile, HashMap<String, String> lessonMap);
 	
+	void uploadCertificate(MultipartFile downloadFile, HashMap<String, String> lessonMap);
 }

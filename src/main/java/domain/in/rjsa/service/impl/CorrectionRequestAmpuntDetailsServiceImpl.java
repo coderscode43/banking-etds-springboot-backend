@@ -33,7 +33,7 @@ public class CorrectionRequestAmpuntDetailsServiceImpl extends AbstractServiceFo
 	}
 
 	@Override
-	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+	public List<?> search(LinkedHashMap<String, Object> map, int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -54,6 +54,13 @@ public class CorrectionRequestAmpuntDetailsServiceImpl extends AbstractServiceFo
 	public List<CorrectionRequestAmountDetails> findForm(HashMap<String, Object> constrains) {
 		// TODO Auto-generated method stub
 		return dao.findForm(constrains);
+	}
+
+	@Override
+	public List<CorrectionRequestAmountDetails> getByCorrectionId(Long correctionRequestId) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("correctionRequestId", correctionRequestId);
+		return dao.search(map);
 	}
 
 }

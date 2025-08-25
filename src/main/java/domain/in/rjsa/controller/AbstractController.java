@@ -5,18 +5,27 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.LinkedHashMap;
 
-import javax.naming.ldap.LdapContext;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import domain.in.rjsa.model.form.Login;
 import domain.in.rjsa.security.CustomUserDetails;
 import domain.in.rjsa.web.ApplicationCache;
 
 public class AbstractController {
+
+	public static final ObjectMapper mapper = new ObjectMapper()
+			.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
+	@Value("${panel.access:}")
+	private String panelAccess;
 
 	@Autowired
 	ApplicationCache applicationCache;
@@ -49,23 +58,48 @@ public class AbstractController {
 /////////////////////////////////UCO BANK and NIA////////////////////////////////////////
 
 	public String getBranchCode() {
-//		LdapContext ctxGC = null;
-		Object userDetails = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//		domain.in.rjsa.model.form.UserDetails user = applicationCache.getAdminUser(getPrincipal());
-//		if (user.getTypeOfUser().equalsIgnoreCase("admin")) {
-		if (applicationCache.getAdminUser(getPrincipal()) != null) {
-			return "admin";
-		} else {
-			String branch = ((UserDetails) userDetails).getUsername();
-			try {
-				int b = Integer.parseInt(branch);
-				return String.valueOf(b);
-			} catch (Exception e) {
-				// TODO: handle exception
-				return branch;// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx // if check for branch change to "1"
+		// IOB
+		if ("IOB".equalsIgnoreCase(panelAccess)) {
+			CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication()
+					.getPrincipal();
+			domain.in.rjsa.model.form.UserDetails user = applicationCache.getAdminUser(getPrincipal());
+			if (user == null && userDetails.getBranchCode() != null) {
+				userDetails.getBranchCode();
+			} else {
+				if (user != null && user.getTypeOfUser().equalsIgnoreCase("admin")) {
+					return "admin";
+				}
+			}
+			return userDetails.getBranchCode();
+		}
+		// NIA
+		else {
+			Object userDetails = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			Login login = applicationCache.getLoginDetail(getPrincipal());
+			domain.in.rjsa.model.form.UserDetails ud = null;
+
+			if (login.getType() != null && login.getType().equalsIgnoreCase("admin")) {
+				try {
+					ud = applicationCache.getAdminUser(getPrincipal());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			String type = login.getType();
+			if (type != null && type.equals("branch16A")) {
+				return type;
+			} else if (ud != null) {
+				return "admin";
+			} else {
+				String branch = ((UserDetails) userDetails).getUsername();
+				try {
+					int b = Integer.parseInt(branch);
+					return String.valueOf(b);
+				} catch (Exception e) {
+					return branch;
+				}
 			}
 		}
-
 	}
 
 	public void adminValidation(LinkedHashMap<String, Object> map) {
@@ -75,7 +109,7 @@ public class AbstractController {
 			try {
 				b = Long.valueOf(getBranchCode());
 			} catch (Exception e) {
-				// TODO: handle exception
+				logger.warn("Error in admin validation: ", e);
 			}
 			map.put("branchCode", b);
 		} else {
@@ -84,7 +118,7 @@ public class AbstractController {
 				try {
 					b = Long.valueOf(map.get("branchCode").toString());
 				} catch (Exception e) {
-					// TODO: handle exception
+					logger.warn("Error in admin validation: ", e);
 				}
 				map.put("branchCode", b);
 			}

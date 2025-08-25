@@ -1,14 +1,11 @@
 <style>
-
-
 #popup {
-width: 50%;
-position: fixed;
-top: 10%;
-left: 25%;
-transform: translate(-50%, -50%);
-box-shadow: 2px 2px 5px 3px white;
-
+	width: 50%;
+	position: fixed;
+	top: 10%;
+	left: 25%;
+	transform: translate(-50%, -50%);
+	box-shadow: 2px 2px 5px 3px white;
 }
 
 .opacity-animate4 {
@@ -16,23 +13,50 @@ box-shadow: 2px 2px 5px 3px white;
 	animation-fill-mode: forwards
 }
 
-@keyframes opt-animation4 {
- 0% {
+@keyframes opt-animation4 { 0% {
 	transform: scale(0) rotate(360deg);
-	}
+}
 
-60%{
-transform:scale(1) rotate(-10deg);
-}
-100%{
-transform: scale(1) rotate(0deg);
-}
-}
-#forpo{
-position: relative;
-right:230px;
+60%
+{
+transform
+:
+scale
+(
 
+
+1
+)
+rotate
+(
+
+
+-10deg
+);
 }
+100%
+{
+transform
+:
+scale
+(
+
+
+1
+)
+rotate
+(
+
+
+0deg
+);
+}
+}
+#forpo {
+	position: relative;
+	right: 230px;
+}
+
 .fade {
 	transition: opacity 0.3s;
 	-webkit-transition: opacity 0.3s;
@@ -44,282 +68,146 @@ h5 {
 	padding: 0.01em 16px;
 	border-radius: 16px;
 }
+
 h5:hover {
 	text-decoration: none;
 }
 
 .red {
 	box-sizing: border-box;
-	background-color: rgba(170, 52, 52);
-	border: 1px solid rgba(170, 52, 52);
-	box-shadow: 0 3px 5px 3px rgba(0, 0, 0, 0.5);
+	background-color: rgba(255, 0, 0);
+	border: 1px solid rgba(255, 0, 0);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 40px;
 	color: white;
+	transition: 0.5s;
 }
 
-/* .red:hover {
+.red:hover {
+	box-shadow: 0 0px 10px 5px gray;
+	transition: 0.5s;
+}
+
+.brown {
 	box-sizing: border-box;
 	background-color: rgba(170, 52, 52);
 	border: 1px solid rgba(170, 52, 52);
-	box-shadow: 0 3px 5px 3px rgba(0, 0, 0, 0.5);
-	font-size:20px;
-	font-weight:bold;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 40px;
 	color: white;
-	text-decoration: none;
-} */
+	transition: 0.5s;
+}
+
+.brown:hover {
+	box-shadow: 0 0px 10px 5px gray;
+	transition: 0.5s;
+}
 
 .green {
 	box-sizing: border-box;
 	background-color: rgba(21, 165, 21, 0.9);
 	border: 1px solid rgba(21, 165, 21, 0.9);
-	box-shadow: 0 3px 5px 3px rgba(0, 0, 0, 0.5);
-    color: white;
-}
-/* .green:hover {
-	box-sizing: border-box;
-	background-color: rgba(21, 165, 21, 0.9);
-	border: 1px solid rgba(21, 165, 21, 0.9);
-	box-shadow: 0 3px 5px 3px rgba(0, 0, 0, 0.5);
-	font-size:20px;
-	font-weight:bold;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 40px;
 	color: white;
-	text-decoration: none;
-} */
+	transition: 0.5s;
+}
+
+.green:hover {
+	box-shadow: 0 0px 10px 5px gray;
+	transition: 0.5s;
+}
+
+.gray {
+	box-sizing: border-box;
+	background-color: rgba(120, 120, 120, 0.9);
+	border: 1px solid rgba(120, 120, 120, 0.9);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 40px;
+	color: white;
+	transition: 0.5s;
+}
+
+.gray:hover {
+	box-shadow: 0 0px 10px 5px gray;
+	transition: 0.5s;
+}
 
 .blue {
 	box-sizing: border-box;
-	background-color: rgba(182, 213, 30, 0.9);
-	border: 1px solid rgba(182, 213, 30, 0.9);
-	box-shadow: 0 3px 5px 3px rgba(0, 0, 0, 0.5);
+	background-color: rgba(0, 0, 100, 0.9);
+	border: 1px solid rgba(0, 0, 100, 0.9);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 40px;
 	color: white;
+	transition: 0.5s;
 }
-/* .blue:hover {
+
+.blue:hover {
+	box-shadow: 0 0px 10px 5px gray;
+	transition: 0.5s;
+}
+
+.displayNone {
+	display: none;
+}
+
+#popup {
+	width: 50%;
+	position: fixed;
+	top: 10%;
+	left: 25%;
+	transform: translate(-50%, -50%);
+	box-shadow: 2px 2px 5px 3px white;
+}
+
+.roundBox {
 	box-sizing: border-box;
-	background-color: rgba(182, 213, 30, 0.9);
-	border: 1px solid rgba(182, 213, 30, 0.9);
-	box-shadow: 0 3px 5px 3px rgba(0, 0, 0, 0.5);
-	font-size:20px;
-	font-weight:bold;
-	color: white;
-	text-decoration: none;
-} */
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 40px;
+	color: black;
+	transition: 0.5s;
+}
 </style>
-<br>
-<br>
-
-<script>
-	// When document is ready
-	$(document).ready(function() {
-		// SetTimeout function
-		// Will execute the function
-		// after 2 sec
-		setTimeout(function() {
-			$(".POPmain").css("display", "block");
-			$('.myModal').modal({
-				backdrop : 'static',
-				keyboard : false
-			})
-		}, 10000);
-	});
-	$(".submitId").click(function() {
-		$(".POPmain").css("display", "none");
-		$('.myModal').modal({
-			backdrop : 'static',
-			keyboard : false
-		})
-
-	});
-</script>
 
 
-
-<script>
-	jQuery(document).ready(function() {
-		jQuery("#popup").css("display", "block");
-		jQuery(".close_popup").click(function() {
-			$('#popup').modal('hide');
-
-		});
-	});
-</script>
-<script>
-	function closeDialog() {
-		let d = document.getElementById('popup')
-		d.style.display = "none"
-		d.close()
-	}
-</script>
-
-
+<div ng-init="cCctr.helpFolder = 'homeSChelpPage' ;  cCctr.helpPage = 'homepageSCHelp' " >
 
 <div class="container">
 
-	<div class="POPmain myModal mobile fade" >
-		<div class="modal-dialog modal-lg opacity-animate4  fade" id="popup">
-
-			<div class="modal-content" style="border-radius: 5px;">
-				<button type="button" class="close" onclick="closeDialog()"
-					style="color: white; margin: 10px 15px 0px 0px">&times;</button>
-				<div class="modal-header" style="color: #fff;background-color:#0F316D;padding:6px;border-radius: 6px 6px 0 0;">
-					<div class="col-md-4">
-					
-					
-
-                  </div>
-					
-					<div class="col-md-8">
-					<h3 style="margin-top:0%">
-						<b><i class="fa fa-file-text" aria-hidden="true" style="font-size:52px;margin-left:5%"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ticket Details</b>
-					</h3>
-					</div>
-				</div>
-				<div class="modal-body"
-					style="text-align: center; margin-bottom: 20%;">
-					<div class="col-md-12" style="margin-top:2%">
-						<div class="col-md-4">
-							<h5 class="red" style="padding-top: 15%;
-								padding-bottom: 8%;"  ng-click="cCctr.gotoListPage('ticket','ticket')">
-								<a style="color: white">Number of Open Ticket:</a>
-								<p style="font-size: 16px">
-									<b>${openTicket}</b>
-								</p>
-							</h5>
-
-						</div>
-						<div class="col-md-4">
-							<h5 class="green" style="padding-top: 15%;
-								padding-bottom: 8%;" ng-click="cCctr.gotoListPage('ticket','ticket')">
-								<a style="color: white">Number of Resolve Ticket:</a>
-								<p style="font-size: 16px">
-									<b>${resolveTicket}</b>
-								</p>
-							</h5>
-
-						</div>
-						<div class="col-md-4">
-							<h5 class="blue" style="padding-top: 15%;
-								padding-bottom: 8%;" ng-click="cCctr.gotoListPage('ticket','ticket')">
-								<a style="color: white">Number of Reject Ticket:</a>
-								<p style="font-size: 16px">
-									<b>${rejectTicket}</b>
-								</p>
-							</h5>
-
-						</div>
-					</div>
-				</div>
-
-				<div class="modal-footer">
-					<button type="button" class="pushable darkblue"
-						ng-click="cCctr.gotoListPage('ticket','ticket')"
-						ng-show="'admin'=='${typeOfUser}'"><span class="front darkbluespan"
-											> Detail</span></button>
-					<button type="button" class="pushable darkblue"
-						ng-click="cCctr.gotoWFYTicketListPage('ticket','ticket','${typeOfUser}','2022-23')"
-						ng-hide="'admin'=='${typeOfUser}'"><span class="front darkbluespan">Detail</span></button>
-					<button type="button" class="pushable lightblack"
-						onclick="closeDialog()" aria-label="Close"><span class="front lightblackspan">Close</span></button>
-				</div>
-			</div>
-		</div>
 
 
-		<center>
-			<h2>TDS/TCS QUARTER</h2>
-		</center>
+	<!-- <div>
+		<h2>
+			<center>15G/15H</center>
+		</h2>
 
 		<table class="table">
 			<thead>
 				<tr>
-					<th style="background-color: #fff">Quarter</th>
-					<th style="background-color: #fff">Period</th>
-					<th style="background-color: #fff">Last Date Of Return Filling</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr
-					ng-if="(cCctr.presentMonth() == 03) ||(cCctr.presentMonth() == 04) ||(cCctr.presentMonth() == 05)"
-					style="background-color: #F9FDBF">
-					<td>Q1</td>
-					<td>1 April-30 June</td>
-					<td>31 July</td>
-				</tr>
-				<tr
-					ng-if="!(cCctr.presentMonth() == 03 || cCctr.presentMonth() == 04 || cCctr.presentMonth() == 05)"
-					style="background-color: #fff">
-					<td>Q1</td>
-					<td>1 April-30 June</td>
-					<td>31 July</td>
-				</tr>
-
-				<tr
-					ng-if="(cCctr.presentMonth() == 06) ||(cCctr.presentMonth() == 07) ||(cCctr.presentMonth() == 08)"
-					style="background-color: #F9FDBF">
-					<td>Q2</td>
-					<td>1 July-30 September</td>
-					<td>31 October</td>
-				</tr>
-				<tr
-					ng-if=" !(cCctr.presentMonth() == 06 || cCctr.presentMonth() == 07 || cCctr.presentMonth() == 08)"
-					style="background-color: #fff">
-					<td>Q2</td>
-					<td>1 July-30 September</td>
-					<td>31 October</td>
-				</tr>
-
-
-				<tr
-					ng-if="(cCctr.presentMonth() == 09) ||(cCctr.presentMonth() == 10) ||(cCctr.presentMonth() == 11)"
-					style="background-color: #F9FDBF">
-					<td>Q3</td>
-					<td>1 October-31 December</td>
-					<td>31 January</td>
-				</tr>
-				<tr
-					ng-if="!(cCctr.presentMonth() == 09 ||cCctr.presentMonth() == 10 ||cCctr.presentMonth() == 11)"
-					style="background-color: #fff">
-					<td>Q3</td>
-					<td>1 October-31 December</td>
-					<td>31 January</td>
-				</tr>
-
-				<tr
-					ng-if="((cCctr.presentMonth() == 00) ||(cCctr.presentMonth() == 01) ||(cCctr.presentMonth() == 02))"
-					style="background-color: #F9FDBF">
-					<td>Q4</td>
-					<td>1 January-31 March</td>
-					<td>31 May</td>
-				</tr>
-				<tr
-					ng-if="!(cCctr.presentMonth() == 00 ||cCctr.presentMonth() == 01 ||cCctr.presentMonth() == 02)"
-					style="background-color: #fff">
-					<td>Q4</td>
-					<td>1 January-31 March</td>
-					<td>31 May</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-
-	<br>
-	<div class="container">
-		<center>
-			<h2>15G/15H</h2>
-		</center>
-
-		<table class="table">
-			<thead>
-				<tr>
-					<th style="background-color: #fff">Quarter</th>
-					<th style="background-color: #fff">Period</th>
-					<th style="background-color: #fff">Last Date Of Filling
-						Returns</th>
+					<th style="background-color: #fff; text-align: center">Quarter</th>
+					<th style="background-color: #fff; text-align: center">Period</th>
+					<th style="background-color: #fff; text-align: center">Last
+						Date Of Filling Returns</th>
 
 				</tr>
 			</thead>
 			<tbody>
 				<tr
 					ng-if="(cCctr.presentMonth() == 03) ||(cCctr.presentMonth() == 04) ||(cCctr.presentMonth() == 05)"
-					style="background-color: #F9FDBF">
+					style="background-color: #F9FDBF; text-align: center;">
 					<td>Q1</td>
 					<td>1 April-30 June</td>
 					<td>15 July</td>
@@ -327,7 +215,7 @@ h5:hover {
 				</tr>
 				<tr
 					ng-if="!(cCctr.presentMonth() == 03 || cCctr.presentMonth() == 04 || cCctr.presentMonth() == 05)"
-					style="background-color: #fff">
+					style="background-color: #fff; text-align: center;">
 					<td>Q1</td>
 					<td>1 April-30 June</td>
 					<td>15 July</td>
@@ -335,7 +223,7 @@ h5:hover {
 				</tr>
 				<tr
 					ng-if="(cCctr.presentMonth() == 06) ||(cCctr.presentMonth() == 07) ||(cCctr.presentMonth() == 08)"
-					style="background-color: #F9FDBF">
+					style="background-color: #F9FDBF; text-align: center">
 					<td>Q2</td>
 					<td>1 July-30 September</td>
 					<td>15 October</td>
@@ -343,7 +231,7 @@ h5:hover {
 				</tr>
 				<tr
 					ng-if="!(cCctr.presentMonth() == 06 || cCctr.presentMonth() == 07 || cCctr.presentMonth() == 08)"
-					style="background-color: #fff">
+					style="background-color: #fff; text-align: center">
 					<td>Q2</td>
 					<td>1 July-30 September</td>
 					<td>15 October</td>
@@ -351,7 +239,7 @@ h5:hover {
 				</tr>
 				<tr
 					ng-if="(cCctr.presentMonth() == 09) ||(cCctr.presentMonth() == 10) ||(cCctr.presentMonth() == 11)"
-					style="background-color: #F9FDBF">
+					style="background-color: #F9FDBF; text-align: center">
 					<td>Q3</td>
 					<td>1 October-31 December</td>
 					<td>15 January</td>
@@ -359,7 +247,7 @@ h5:hover {
 				</tr>
 				<tr
 					ng-if="!(cCctr.presentMonth() == 09 || cCctr.presentMonth() == 10 || cCctr.presentMonth() == 11)"
-					style="background-color: #fff">
+					style="background-color: #fff; text-align: center">
 					<td>Q3</td>
 					<td>1 October-31 December</td>
 					<td>15 January</td>
@@ -367,7 +255,7 @@ h5:hover {
 				</tr>
 				<tr
 					ng-if="(cCctr.presentMonth() == 00) ||(cCctr.presentMonth() == 01) ||(cCctr.presentMonth() == 02)"
-					style="background-color: #F9FDBF">
+					style="background-color: #F9FDBF; text-align: center">
 					<td>Q4</td>
 					<td>1 January-31 March</td>
 					<td>30 April</td>
@@ -375,7 +263,7 @@ h5:hover {
 				</tr>
 				<tr
 					ng-if="!(cCctr.presentMonth() == 00 || cCctr.presentMonth() == 01 || cCctr.presentMonth() == 02)"
-					style="background-color: #fff">
+					style="background-color: #fff; text-align: center">
 					<td>Q4</td>
 					<td>1 January-31 March</td>
 					<td>30 April</td>
@@ -383,93 +271,94 @@ h5:hover {
 				</tr>
 			</tbody>
 		</table>
-	</div>
+	</div> -->
 
 	<br>
 	<div class="container">
 		<center>
-			<h2>TDS/TCS Monthly Last Date Of Challan Payment</h2>
+			<h2>TDS Monthly Due Dates</h2>
 		</center>
 
 		<table class="table">
 			<thead>
 				<tr>
-					<th style="background-color: #fff">Month</th>
-					<th style="background-color: #fff">Last Date Of Challan
-						Payment</th>
-					<th style="background-color: #fff">Last Date Of Return Filling</th>
+					<th style="background-color: #fff; text-align: center">Month</th>
+					<th style="background-color: #fff; text-align: center">Due
+						Date Of Challan Payment</th>
+					<th style="background-color: #fff; text-align: center">Due
+						Date Of Return Filling</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr ng-if="cCctr.presentMonth() == 03"
-					style="background-color: #BECFFD">
+					style="background-color: #BECFFD; text-align: center">
 					<td>April</td>
 					<td>7 May</td>
 					<td>31 July</td>
 				</tr>
 				<tr ng-if="cCctr.presentMonth() != 03"
-					style="background-color: #fff">
+					style="background-color: #fff; text-align: center">
 					<td>April</td>
 					<td>7 May</td>
 					<td>31 July</td>
 				</tr>
 				<tr ng-if="cCctr.presentMonth() == 04"
-					style="background-color: #BECFFD">
+					style="background-color: #BECFFD; text-align: center">
 					<td>May</td>
 					<td>7 June</td>
 					<td>31 July</td>
 				</tr>
 				<tr ng-if="cCctr.presentMonth() != 04"
-					style="background-color: #fff">
+					style="background-color: #fff; text-align: center">
 					<td>May</td>
 					<td>7 June</td>
 					<td>31 July</td>
 				</tr>
 				<tr ng-if="cCctr.presentMonth() == 05"
-					style="background-color: #BECFFD">
+					style="background-color: #BECFFD; text-align: center">
 					<td>June</td>
 					<td>7 July</td>
 					<td>31 July</td>
 				</tr>
 				<tr ng-if="cCctr.presentMonth() != 05"
-					style="background-color: #fff">
+					style="background-color: #fff; text-align: center">
 					<td>June</td>
 					<td>7 July</td>
 					<td>31 July</td>
 				</tr>
 				<tr ng-if="cCctr.presentMonth() == 06"
-					style="background-color: #BECFFD">
+					style="background-color: #BECFFD; text-align: center">
 					<td>July</td>
 					<td>7 August</td>
 					<td>31 October</td>
 				</tr>
 				<tr ng-if="cCctr.presentMonth() != 06"
-					style="background-color: #fff">
+					style="background-color: #fff; text-align: center">
 					<td>July</td>
 					<td>7 August</td>
 					<td>31 October</td>
 				</tr>
 				<tr ng-if="cCctr.presentMonth() == 07"
-					style="background-color: #BECFFD">
+					style="background-color: #BECFFD; text-align: center">
 					<td>August</td>
 					<td>7 September</td>
 					<td>31 October</td>
 				</tr>
 				<tr ng-if="cCctr.presentMonth() != 07"
-					style="background-color: #fff">
+					style="background-color: #fff; text-align: center">
 					<td>August</td>
 					<td>7 September</td>
 					<td>31 October</td>
 				</tr>
 
 				<tr ng-if="cCctr.presentMonth() == 08"
-					style="background-color: #BECFFD">
+					style="background-color: #BECFFD; text-align: center">
 					<td>September</td>
 					<td>7 October</td>
 					<td>31 October</td>
 				</tr>
 				<tr ng-if="cCctr.presentMonth() != 08"
-					style="background-color: #fff">
+					style="background-color: #fff; text-align: center">
 					<td>September</td>
 					<td>7 October</td>
 					<td>31 October</td>
@@ -477,73 +366,73 @@ h5:hover {
 
 
 				<tr ng-if="cCctr.presentMonth() == 09"
-					style="background-color: #BECFFD">
+					style="background-color: #BECFFD; text-align: center">
 					<td>October</td>
 					<td>7 November</td>
 					<td>31 January</td>
 				</tr>
 				<tr ng-if="cCctr.presentMonth() != 09"
-					style="background-color: #fff">
+					style="background-color: #fff; text-align: center">
 					<td>October</td>
 					<td>7 November</td>
 					<td>31 January</td>
 				</tr>
 				<tr ng-if="cCctr.presentMonth() == 10"
-					style="background-color: #BECFFD">
+					style="background-color: #BECFFD; text-align: center">
 					<td>November</td>
 					<td>7 December</td>
 					<td>31 January</td>
 				</tr>
 				<tr ng-if="cCctr.presentMonth() != 10"
-					style="background-color: #fff">
+					style="background-color: #fff; text-align: center">
 					<td>November</td>
 					<td>7 December</td>
 					<td>31 January</td>
 				</tr>
 				<tr ng-if="cCctr.presentMonth() == 11"
-					style="background-color: #BECFFD">
+					style="background-color: #BECFFD; text-align: center">
 					<td>December</td>
 					<td>7 January</td>
 					<td>31 January</td>
 				</tr>
 				<tr ng-if="cCctr.presentMonth() != 11"
-					style="background-color: #fff">
+					style="background-color: #fff; text-align: center">
 					<td>December</td>
 					<td>7 January</td>
 					<td>31 January</td>
 				</tr>
 				<tr ng-if="cCctr.presentMonth() == 00"
-					style="background-color: #BECFFD">
+					style="background-color: #BECFFD; text-align: center">
 					<td>January</td>
 					<td>7 February</td>
 					<td>31 May</td>
 				</tr>
 				<tr ng-if="cCctr.presentMonth() != 00"
-					style="background-color: #fff">
+					style="background-color: #fff; text-align: center">
 					<td>January</td>
 					<td>7 February</td>
 					<td>31 May</td>
 				</tr>
 				<tr ng-if="cCctr.presentMonth() == 01"
-					style="background-color: #BECFFD">
+					style="background-color: #BECFFD; text-align: center">
 					<td>February</td>
 					<td>7 March</td>
 					<td>31 May</td>
 				</tr>
 				<tr ng-if="cCctr.presentMonth() != 01"
-					style="background-color: #fff">
+					style="background-color: #fff; text-align: center">
 					<td>February</td>
 					<td>7 March</td>
 					<td>31 May</td>
 				</tr>
 				<tr ng-if="cCctr.presentMonth() == 02"
-					style="background-color: #BECFFD">
+					style="background-color: #BECFFD; text-align: center">
 					<td>March</td>
 					<td>30 April</td>
 					<td>31 May</td>
 				</tr>
 				<tr ng-if="cCctr.presentMonth() != 02"
-					style="background-color: #fff">
+					style="background-color: #fff; text-align: center">
 					<td>March</td>
 					<td>30 April</td>
 					<td>31 May</td>
@@ -551,7 +440,234 @@ h5:hover {
 			</tbody>
 		</table>
 	</div>
-	
-	
-	
-	
+</div>
+
+
+<!-- Ticket Detail Modal -->
+<!-- <div class="modal fade" id="modal-subscribe" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog modal-lg opacity-animate4 " role="document"
+		style="display: flex; align-items: center; justify-content: space-around;">
+		<div class="modal-content" style="width: 50%;">
+			<div class="modal-header border-0">
+				<div class="col-md-12" style="display: flex; align-items: center; justify-content: space-around;">
+					<h3 style="margin-top: 0%">
+						<b><i class="fa fa-file-text" aria-hidden="true"
+								style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;Ticket Details</b>
+					</h3>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"
+						style="margin-top: -7%; font-size: xx-large">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			</div>
+			<div class="modal-body modelpopup" style="text-align: center; margin-bottom: 20%;">
+				<div class="" style="margin-top: 2%">
+					<div class="">
+						<h5 class="red"
+							ng-click="cCctr.search.status = 'Open'; cCctr.searchEntities(true,'ticket','ticket' );">
+							<div>
+								<a style="color: white">Number of Open Ticket:</a>
+							</div>
+							<div>
+							</div>
+						</h5>
+					</div>
+					<div class="">
+						<h5 class="green"
+							ng-click="cCctr.search.status = 'Resolve'; cCctr.searchEntities(true,'ticket','ticket' );">
+							<div>
+								<a style="color: white">Number of Resolve Ticket:</a>
+							</div>
+							<div>
+							</div>
+						</h5>
+					</div>
+					<div class="">
+						<h5 class="blue"
+							ng-click="cCctr.search.status = 'Reject'; cCctr.searchEntities(true,'ticket','ticket' );">
+							<div>
+								<a style="color: white">Number of Reject Ticket: </a>&nbsp;
+							</div>
+							<div>
+							</div>
+						</h5>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer" style="margin-top: -20%">
+				<button type="button" class="btn btn-primary mobile tool" data-backdrop="false"
+					ng-click="cCctr.gotoListPage('ticket','ticket')" ng-show="'admin'=='${typeOfUser}'">
+					<span class="   "> Detail</span>
+					<span
+							class="tooltiptext toolDetail">Detail Button</span>
+				</button>
+				<button type="button" class="btn btn-primary mobile tool" data-backdrop="false"
+					ng-click="cCctr.gotoWFYTicketListPage('ticket','ticket','${typeOfUser}','2022-23')"
+					ng-hide="'admin'=='${typeOfUser}'">
+					<span class="   ">Detail</span>
+				</button>
+				<button type="button" class="btn btn-danger mobile tool" data-dismiss="modal"
+					ng-click="cCctr.closeDialog()" aria-label="Close">
+					<span class="   ">Close</span>
+					<span
+							class="tooltiptext toolDetail"> Close Button</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div> -->
+
+<!-- Correction Request model -->
+<div class="modal fade" id="modal-subscribe" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel">
+	<div class="modal-dialog modal-lg opacity-animate4 " role="document"
+		style="display: flex; align-items: center; justify-content: space-around;">
+		<div class="modal-content" style="width: 65%;">
+			<div class="modal-header border-0">
+				<div class="col-md-12"
+					style="display: flex; align-items: center; justify-content: space-around;">
+					<h3 style="margin-top: 0%">
+						<b><i class="fa fa-file-text" aria-hidden="true"
+							style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;Correction Request
+							Details</b>
+					</h3>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close" style="margin-top: -7%; font-size: xx-large">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			</div>
+			<div class="modal-body modelpopup"
+				style="text-align: center; margin-bottom: 20%;">
+				<div class="" style="margin-top: 2%">
+					<div class="">
+						<h5 class="roundBox" data-dismiss="modal"
+							ng-click="cCctr.search.status = 'Pending Checker Approval'; cCctr.searchEntities(true,'correctionRequest','correctionRequest' );">
+							<div>
+								<a style="color: black">No. of Tickets Pending for Checking:</a>&nbsp;&nbsp;
+							</div>
+							<div>
+								<b>${pendingCheckerApproval}</b>
+							</div>
+						</h5>
+					</div>
+					<div class="">
+						<h5 class="roundBox" data-dismiss="modal" style="background-color: lightblue"
+							ng-click="cCctr.search.status = 'Sent for Clarification'; cCctr.searchEntities(true,'correctionRequest','correctionRequest' );">
+							<div>
+								<a style="color: black">No. of Tickets Sent for
+									Clarification: </a>&nbsp;&nbsp;
+							</div>
+							<div>
+								<b>${sendForClarification}</b>
+							</div>
+						</h5>
+					</div>
+					<div class="">
+						<h5 class="roundBox" data-dismiss="modal"
+							style="background-color: rgba(226, 255, 22, 0.9);"
+							ng-click="cCctr.search.status = 'Correction Checked'; cCctr.searchEntities(true,'correctionRequest','correctionRequest' );">
+							<div>
+								<a style="color: black">No. of Tickets Checked: </a>&nbsp;
+							</div>
+							<div>
+								<b>${correctionChecked}</b>
+							</div>
+						</h5>
+					</div>
+					<div class="">
+						<h5 class="roundBox" data-dismiss="modal"
+							style="background-color: rgba(255, 167, 0, 0.9);"
+							ng-click="cCctr.search.status = 'Sent for Correction'; cCctr.searchEntities(true,'correctionRequest','correctionRequest' );">
+							<div>
+								<a style="color: black">No. of Tickets Sent for Correction:
+								</a>&nbsp;
+							</div>
+							<div>
+								<b>${sendForCorrection}</b>
+							</div>
+						</h5>
+					</div>
+					<div class="">
+						<h5 class="roundBox" data-dismiss="modal"
+							style="background-color: rgba(0, 193, 31, 0.9);"
+							ng-click="cCctr.search.status = 'Resolved'; cCctr.searchEntities(true,'correctionRequest','correctionRequest' );">
+							<div>
+								<a style="color: black">No. of Tickets Resolved: </a>&nbsp;
+							</div>
+							<div>
+								<b>${resolveRequest}</b>
+							</div>
+						</h5>
+					</div>
+					<div class="">
+						<h5 class="roundBox" data-dismiss="modal" style="background-color: rgb(255, 10, 10);"
+							ng-click="cCctr.search.status = 'Rejected'; cCctr.searchEntities(true,'correctionRequest','correctionRequest' );">
+							<div>
+								<a style="color: black">No. of Tickets Rejected: </a>&nbsp;
+							</div>
+							<div>
+								<b>${rejectRequest}</b>
+							</div>
+						</h5>
+					</div>
+					<div class="">
+						<h5 class="roundBox" data-dismiss="modal"
+							style="background-color: rgba(2, 2, 2, 0.18);"
+							ng-click="cCctr.search.status = ''; cCctr.searchEntities(true,'correctionRequest','correctionRequest' );">
+							<div>
+								<a style="color: black">No. of Tickets Received: </a>&nbsp;
+							</div>
+							<div>
+								<b>${totalCount}</b>
+							</div>
+						</h5>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer" style="margin-top: -20%">
+				<button type="button" class="btn btn-primary mobile tool"
+					data-backdrop="false" data-dismiss="modal"
+					ng-click="cCctr.gotoListPage('correctionRequest','correctionRequest')"
+					ng-show="'admin'=='${typeOfUser}'">
+					<span class="   "> Detail</span>
+					<!-- <span
+							class="tooltiptext toolDetail">Detail Button</span> -->
+				</button>
+				<button type="button" class="btn btn-primary mobile tool"
+					data-backdrop="false"
+					ng-click="cCctr.gotoWFYTicketListPage('correctionRequest','correctionRequest','${typeOfUser}',${latestFy})"
+					ng-hide="'admin'=='${typeOfUser}'">
+					<span class="   ">Detail</span>
+				</button>
+				<button type="button" class="btn btn-danger mobile tool"
+					data-dismiss="modal" ng-click="cCctr.closeDialog()"
+					aria-label="Close">
+					<span class="   ">Close</span>
+					<!-- <span
+							class="tooltiptext toolDetail"> Close Button</span> -->
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>
+
+<script>
+	$('body').removeClass('modal-open');
+	$('.modal-backdrop').remove();
+</script>
+
+<script>
+	$(window).ready(function() {
+		setTimeout(function() {
+			$('#modal-subscribe').modal("show")
+		}, 200)
+	})
+</script>
+<script>
+	$(document).ready(function() {
+		$(this).scrollTop(0);
+	});
+</script>

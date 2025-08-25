@@ -1,9 +1,9 @@
 package domain.in.rjsa.service;
 
-import domain.in.rjsa.model.form.TicketRemark;
+import domain.in.rjsa.model.fy.TicketRemarks;
 
-public interface TicketRemarkService extends ServiceInterfaceForm<Long, TicketRemark>{
+public interface TicketRemarkService extends ServiceInterfaceForm<Long, TicketRemarks>{
 	
-	public TicketRemark getByKey(Long id);
+	public TicketRemarks getByKey(Long id);
 
 }

@@ -10,7 +10,7 @@ public interface ServiceInterfaceTaxo<K, E> {
 
 	public Long findallCount(HashMap<String, Object> constrains);
 
-	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage);
+	public List<?> search(LinkedHashMap<String, Object> map, int pageNo, int resultPerPage);
 
 	public E uniqueSearch(HashMap map);
 
@@ -18,4 +18,9 @@ public interface ServiceInterfaceTaxo<K, E> {
 
 	public String createUserExcel(LinkedHashMap<String, Object> map);
 
+	public List<E> search(HashMap map);
+
+	public void addData(String json);
+	
+	public void update(E entity);
 }

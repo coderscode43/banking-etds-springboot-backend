@@ -6,15 +6,15 @@
 @media only screen and (max-width: 760px) , ( min-device-width : 768px)
 	and (max-device-width: 1024px) {
 	/* Force table to not be like tables anymore */
-	table, thead, tbody, th, td, tr {
+	/* table, thead, tbody, th, td, tr {
 		display: block;
-	}
-
+	} */
 	/* Hide table headers (but not display: none;, for accessibility) */
 	thead tr {
-		position: absolute;
+		/* position: absolute;
 		top: -9999px;
-		left: -9999px;
+		left: -9999px; */
+		border: 2px solid #dddddd;
 	}
 	tr {
 		margin: 0 0 1rem 0;
@@ -24,10 +24,10 @@
 	}
 	td {
 		/* Behave  like a "row" */
-		border: none;
+		/* border: none; */
 		border-bottom: 1px solid #eee;
-		position: relative;
-		padding-left: 50%;
+		/* 	position: relative;
+		padding-left: 50%; */
 	}
 	td:before {
 		/* Now like a table header */
@@ -98,7 +98,7 @@
 
 .table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
 	{
-	background-color: whitesmoke;
+	background-color: white;
 }
 
 @media ( min-width : 768px) {
@@ -125,199 +125,199 @@
 	color: #fff;
 	text-decoration: none;
 }
-.col-md-4 {
-  width: 34.333%;
-}
 
-/*Refresh Button*/
-.tooltip-top {
-  bottom: 84%;
-  margin-left:-9%;
-}
-/*Search Button*/
-.tooltip-top1 {
-  bottom: 125%;
-  margin-left:-22%;
-}
-/*Advanced Search Button*/
-.tooltip-top2 {
-  bottom: 125%;
-  margin-left:-41%;
-}
-/*Add Ticket*/
-.tooltip-top3 {
-  bottom: 125%;
-  margin-left:-28%;
-}
-/*Export to Excel Button*/
-.tooltip-top4 {
- bottom: 85%;
-  margin-left:-41%;
+.col-md-4 {
+	width: 34.333%;
 }
 /*Detail*/
 .tooltip-top5 {
- margin-left:-6%;
+	margin-left: -6%;
 }
-
 </style>
 
 <div id="page-wrapper" ng-controller="CommonController as cCctr">
 	<div class="container-fluid">
-<!-- <button class="btn btn-grad astro-MG2CNCJP tool" data-toggle="modal"
-					style="background-image: linear-gradient(to right, #5237B3 0%, #5370C6 51%, #7740B9 100%);float: right;"
-					 onClick="refreshPageButton()"><i
-											class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh
-											<span class="tooltiptext tooltip-top">Refresh or Press F5</span></button> -->
-		<div class="col-md-12 "
-			style="padding-left: 0px; font-size: 12pxp; margin-top: 3%">
+		<div class="row">
 			<div class="heading">
 				<strong>Ticket Details</strong>
 			</div>
-
 		</div>
-
-		<br>
-		<!-- <button class="btn btn-primary hidden visible-xs" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample" >
-             Search 
-          </button> -->
-
 
 		<div class="collapse dont-collapse-sm" id="collapseExample2">
 			<div class="row">
 				<div class="form-group">
-					<div class="col-md-2">
-						<h6>
-							<b>Status</b>
+					<div class="col-md-12" style="padding-left: 0px;">
+						<div class="col-md-3">
 							<h6>
-								<select ng-model="cCctr.search.status" class="form-control">
-									<option disabled value="">Status</option>
-									<option value="Open">Open</option>
-									<option value="Reject">Reject</option>
-									<option value="Resolve">Resolved</option>
+								<b>Status</b>
+							</h6>
+							<select ng-model="cCctr.search.status" class="form-control">
+								<option disabled value="">Status</option>
+								<option value="Open">Open</option>
+								<option value="Reject">Reject</option>
+								<option value="Resolve">Resolved</option>
 
-						</select>
+							</select>
+						</div>
+						<div class="col-md-3">
+							<h6>
+								<b>QUARTER</b>
+							</h6>
+							<select ng-model="cCctr.search.quarter" style="width: 100%"
+								class="form-control">
+								<option disabled value="">Select Quarter</option>
+								<#list Quarter as quarter>
+								<option value="${quarter}">${quarter}</option>
+								</#list>
+							</select>
+						</div>
+
+
+						<div class="col-md-3">
+							<h6>
+								<b>Form</b>
+							</h6>
+							<select name="fy" id="fy" ng-model="cCctr.search.form"
+								class="form-control" required>
+								<option disabled value="">Select Form</option>
+								<#list Form as f>
+								<option value="${f}">${f}</option>
+								</#list>
+							</select>
+						</div>
+						<div class="col-md-3 Btns">
+
+
+							<button ng-click="cCctr.searchEntities(true,'ticket','ticket')"
+								class="btn btn-success  tool" onclick="scrollWin()">
+								<div class=button-main-box>
+									<i class="fa fa-search border-0 p-0"
+										style="color: inherit; display: block; background-color: transparent; font-size: 23px;"></i>
+									<div class="button-tooltip-box">
+										<span class="tooltiptext Search">Search Button</span>
+									</div>
+								</div>
+							</button>
+
+							<button class="btn btn-primary  collapsed tool"
+								style="background-color: #FFA500; border-color: #FFA500;"
+								data-toggle="collapse" data-target="#collapseExample4"
+								aria-expanded="false" data-parent="#collapseExample4"
+								aria-controls="collapseExample">
+								<div class=button-main-box>
+									<i class="fa fa-filter border-0 p-0"
+										style="color: #fff; display: block; background-color: transparent; font-size: 23px;"></i>
+									<div class="button-tooltip-box">
+										<span class="tooltiptext Search">Advance Search Button</span>
+									</div>
+								</div>
+
+							</button>
+
+							<button class="btn btn-primary mobile tool" data-toggle="modal"
+								ng-click="cCctr.gotoAddPage('addTicket')"
+								data-target="#bd-example-modal-xl">
+								<div class=button-main-box>
+									<i class="fa fa-plus border-0 p-0"
+										style="color: inherit; display: block; background-color: transparent; font-size: 23px;"></i>
+									<div class="button-tooltip-box">
+										<span class="tooltiptext Search">Add Ticket Button</span>
+									</div>
+								</div>
+							</button>
+
+
+
+						</div>
 					</div>
-					<div class="col-md-2">
-						<h6>
-							<b>QUARTER</b>
-						</h6>
-						<select ng-model="cCctr.search.quarter" style="width: 100%"
-							class="form-control">
-							<option disabled value="">Select Quarter</option>
-							<#list Quarter as quarter>
-							<option value="${quarter}">${quarter}</option>
-							</#list>
-						</select>
-					</div>
 				</div>
-				<div class="col-md-2">
-					<h6>
-						<b>Financial Year</b>
-					</h6>
-					<select ng-model="cCctr.search.fy" style="width: 100%"
-						class="form-control">
-						<option disabled value="">Select financial Year</option>
-						<#list financialYear as year>
-						<option value="${year}">${year}</option>
-						</#list>
-					</select>
-				</div>
-				<div class="col-md-2">
-					<h6>
-						<b>Form</b>
-					</h6>
-					<select name="fy" id="fy" ng-model="cCctr.search.form"
-						class="form-control" required>
-						<option disabled value="">Select Form</option>
-						<#list Form as f>
-						<option value="${f}">${f}</option>
-						</#list>
-					</select>
-					<!-- <select ng-model="cCctr.search.form" class="form-control">
-						<option value="">Form</option>
-						<option value="24Q">24Q</option>
-						<option value="26Q">26Q</option>
-						<option value="27Q">27Q</option>
-						<option value="27EQ">27EQ</option>
-						<option value="15G">15G</option>
-						<option value="15H">15H</option>
-					</select> -->
-				</div>
+
 			</div>
 
-			<div class="collapse  panel-collapse" id="collapseExample4">
-			
-			<div class="row">
-					<div class="col-md-2">
-						<h6>
-							<b>Customer/Vendor ID</b>
-							<h6>
-								<input type="text" ng-model="cCctr.search.custVendId"
-									class="form-control" placeholder="Customer/Vendor ID"
-									style="width: 100%">
-					</div>
+			<div class="collapse  panel-collapse" id="collapseExample4"
+				style="margin-left: -15px;">
 
-					<div class="col-md-2">
-						<h6>
-							<b>PAN</b>
+				<div class="row">
+					<div class="col-md-12" style="padding-left: 15px;">
+						<div class="col-md-3">
 							<h6>
-								<input type="text" ng-model="cCctr.search.pan"
-									class="form-control" placeholder="PAN"
-									style="width: 100%">
-					</div>
-					<div class="col-md-2">
-						<h6>
-							<b>Branch Code</b>
+								<b>Customer/Vendor ID</b>
+							</h6>
+							<input type="text" ng-model="cCctr.search.custVendId"
+								class="form-control" placeholder="Customer/Vendor ID"
+								style="width: 100%">
+						</div>
+
+						<div class="col-md-3">
 							<h6>
-								<input type="text" ng-model="cCctr.search.branchCode"
-									class="form-control" placeholder="Branch Code"
-									style="width: 100%">
+								<b>PAN</b>
+							</h6>
+							<input type="text" ng-model="cCctr.search.pan"
+								class="form-control" placeholder="PAN" style="width: 100%">
+						</div>
+						<div class="col-md-3">
+							<h6>
+								<b>Branch Code</b>
+							</h6>
+							<input type="text" ng-model="cCctr.search.branchCode"
+								class="form-control" placeholder="Branch Code"
+								style="width: 100%">
+						</div>
+						<div class="col-md-3"></div>
 					</div>
-										<div class="col-md-2">
-						<h6>
-							<b>From Date Of Opening</b>
-						</h6>
-						<input type="date" ng-model="cCctr.search.fromDate"
-							ng-change="cCctr.search.fromDate=cCctr.date(cCctr.search.fromDate);"
-							class="form-control" placeholder="Date" style="width: 100%; padding-left: 6px;">
-					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12" style="padding-left: 15px;">
 
-					<div class="col-md-2">
-						<h6>
-							<b>To Date Of Opening</b>
-						</h6>
-						<input type="date" ng-model="cCctr.search.toDate"
-							ng-change="cCctr.search.toDate=cCctr.date(cCctr.search.toDate);"
-							class="form-control" placeholder="Date" style="width: 100%; padding-left: 6px;">
-					</div>
+						<div class="col-md-3">
+							<h6>
+								<b>Financial Year</b>
+							</h6>
+							<select ng-model="cCctr.search.fy" style="width: 100%"
+								class="form-control">
+								<option disabled value="">Select financial Year</option>
+								<#list financialYear as year>
+								<option value="${year}">${year}</option>
+								</#list>
+							</select>
+						</div>
+						<div class="col-md-3">
+							<h6>
+								<b>From Date Of Opening</b>
+							</h6>
+							<input type="date" ng-model="cCctr.search.fromDate"
+								ng-change="cCctr.search.fromDate=cCctr.date(cCctr.search.fromDate);"
+								class="form-control" placeholder="Date"
+								style="width: 100%; padding-left: 6px;">
+						</div>
 
-					<!-- 	<div class="col-md-2">
+						<div class="col-md-3">
+							<h6>
+								<b>To Date Of Opening</b>
+							</h6>
+							<input type="date" ng-model="cCctr.search.toDate"
+								ng-change="cCctr.search.toDate=cCctr.date(cCctr.search.toDate);"
+								class="form-control" placeholder="Date"
+								style="width: 100%; padding-left: 6px;">
+						</div>
+
+						<!-- 	<div class="col-md-2">
 						<h6>
 							<b>Remark</b>
 						</h6>
 						<input type="text" ng-model="cCctr.search.remarks"
 							class="form-control" placeholder="Remark" style="width: 100%">
 					</div> -->
-				</div>
 
-				<div class="row">
-
-					<!-- 	<div class="col-md-2">
-						<h6>
-							<b>Remark</b>
-						</h6>
-						<input type="text" ng-model="cCctr.search.remarks"
-							class="form-control" placeholder="Remark" style="width: 100%">
-					</div> -->
-				</div>
-				<div class="row">
-					<div class="col-md-3">
-						<button class="btn btn-grad astro-MG2CNCJP tool" type="button"
-							style="margin-top: 11%; background-image: linear-gradient(to right, #517fa4 0%, #243949 51%, #517fa4 100%);"
-							ng-click="cCctr.generateExcel('apiticket/generateExcel/','Ticket')">Export
-							to Excel<span class="tooltiptext tooltip-top4">Export to Excel</span></button>
+						<div class="col-md-3 ExcelBtn">
+							<button class="btn btn-primary waves-effect waves-light tool"
+								type="button" style="float: inherit;"
+								ng-click="cCctr.generateExcel('apiticket/generateExcel/','Ticket')">
+								Export to Excel<span class="tooltiptext ExportExcel">Export
+									to Excel</span>
+							</button>
+						</div>
 					</div>
-
 				</div>
 			</div>
 			<!-- <div class="row text-right" id="hide">
@@ -349,69 +349,32 @@
 					<div class="text-right"></div>
 				</div>
 			</div> -->
-			
-			
-			<div style="right: 3%; position: absolute; gap: 20px; margin-top:-3%;display:flex" class="">
 
 
-		<button ng-click="cCctr.searchEntities(true,'ticket','ticket')"
-			class="btn btn-success mobile tool" onclick="scrollWin()">
-			<i class="fa fa-search border-0 p-0"
-				style="color: inherit; background-color: transparent;font-size: large;"></i>
-		<span class="tooltiptext tooltip-top">Search Button</span> </button>
 
-		<button class="btn btn-primary mobile collapsed tool"
-			style="background-color: #FFA500; border-color: #FFA500;"
-			data-toggle="collapse" data-target="#collapseExample4"
-			aria-expanded="false" data-parent="#navaccordion"
-			aria-controls="collapseExample">
-			<i class="fa fa-filter border-0 p-0"
-				style="color: #fff; background-color: transparent;font-size: large;"></i>
-		<span class="tooltiptext tooltip-top1">Advance Search Button</span></button>
 
-		<button class="btn btn-primary mobile tool" data-toggle="modal" ng-click="cCctr.gotoAddPage('addTicket')"
-			data-target="#bd-example-modal-xl">
-			<i class="fa fa-edit border-0 p-0"
-				style="color: inherit; background-color: transparent;font-size: large;"></i>
-		<span class="tooltiptext tooltip-top2">Add Ticket Button</span></button>
-		
-	
-
-	</div>
-			
-			
-			
-			<div class="row" id="hide"></div>
-
-			<div class="row" id="search">
-				<div class="col-md-3" id="search">
-					<button ng-click="cCctr.searchEntities(true,'ticket')"
-						class="btn btn-success" onclick="scrollWin()">Search</button>
-				</div>
-			</div>
 		</div>
+
+
 
 		<div class="row">
 			<div class="col-xs-12">
-				<div class="col-md-4" style="margin-top: 5px; margin-left: -15px;">
-
-				</div>
-				<div class="text-right"></div>
+				<div class="col-md-4" style="margin-top: 5px"></div>
+				<div class="text-right" style="width: 100%"></div>
 			</div>
 		</div>
-
 
 		<div class="row">
 			<!-- <div class="table-responsive">  -->
 			<table class=" table table-bordered table-hover table-striped"
-				role="table"
-				style="font-size: 12px; width: 100%; padding: 5px; margin: 5px;">
+				role="table" style="font-size: 12px; width: 100%; margin-top: 1.5%;">
 				<thead>
 
 					<tr>
 				<thead role="rowgroup">
-					<tr role="row" style="height: 40px; background-color: #81b7db">
-						<th >Sr. No.</th>
+					<tr role="row"
+						style="height: 40px; background-color: #7482f45e; cursor: pointer">
+						<th>Sr. No.</th>
 						<th>Financial Year</th>
 						<th>Quarter</th>
 						<th><div class="autoResizeQuarter">Branch Code</div></th>
@@ -422,7 +385,7 @@
 						<th><div class="autoResizeQuarter">Status</div></th>
 						<th><div class="autoResize">Description</div></th>
 						<th><div class="autoResize">User</div></th>
-						<th class="hide-on-desktop"><div class="autoResize">Action</div></th>
+						<!--<th class="hide-on-desktop"><div class="autoResize">Action</div></th>-->
 					</tr>
 				</thead>
 				<tbody>
@@ -432,86 +395,89 @@
 									style="text-align: center; text-align-last: 5;">No data
 									found!!</h3></b></td>
 					</tr>
-					<tr role="row"
+					<tr role="row" style="cursor: pointer"
 						ng-repeat="a in cCctr.getEntityListData() track by a.id"
-						ng-dblclick = "cCctr.gotoDetailFormPage('ticket',a.id,a.fy,a.branchCode,'detailTicket')">
-						<td  ng-if="a.status == 'Reject'"">{{$index+1}}</td>
+						ng-dblclick="cCctr.gotoDetailFormPage('ticket',a.id,a.fy,a.branchCode,'detailTicket')">
+						<td ng-if="a.status == 'Reject'">{{$index+cCctr.srNo}}</td>
 						<td ng-if="a.status == 'Resolve'"
-								style=" background-color: Green;color:#fff;">{{$index+1}}</td>
-						<td ng-if="a.status == 'Open'""
-								style=" background-color: #ff3232;color:#fff;">{{$index+1}}</td>
-						
-						<td  ng-if="a.status == 'Reject'"">{{a.fy}}</td>
+							style="background-color: Green !important;">{{$index+cCctr.srNo}}</td>
+						<td ng-if="a.status == 'Open'"
+							style="background-color: #ff3232 !important;">{{$index+cCctr.srNo}}</td>
+
+						<td ng-if="a.status == 'Reject'">{{a.fy}}</td>
 						<td ng-if="a.status == 'Resolve'"
-								style=" background-color: Green;color:#fff;">{{a.fy}}</td>
-						<td ng-if="a.status == 'Open'""
-								style=" background-color: #ff3232;color:#fff;">{{a.fy}}</td>
-								
-						
-						<td  ng-if="a.status == 'Reject'"">{{a.quarter}}</td>
+							style="background-color: Green !important;">{{a.fy}}</td>
+						<td ng-if="a.status == 'Open'"
+							style="background-color: #ff3232 !important;">{{a.fy}}</td>
+
+
+						<td ng-if="a.status == 'Reject'">{{a.quarter}}</td>
 						<td ng-if="a.status == 'Resolve'"
-								style=" background-color: Green;color:#fff;">{{a.quarter}}</td>
-						<td ng-if="a.status == 'Open'""
-								style=" background-color: #ff3232;color:#fff;">{{a.quarter}}</td>
-						
-						<td  ng-if="a.status == 'Reject'"">{{a.branchCode}}</td>
+							style="background-color: Green !important;">{{a.quarter}}</td>
+						<td ng-if="a.status == 'Open'"
+							style="background-color: #ff3232 !important;">{{a.quarter}}</td>
+
+						<td ng-if="a.status == 'Reject'">{{a.branchCode}}</td>
 						<td ng-if="a.status == 'Resolve'"
-								style=" background-color: Green;color:#fff;">{{a.branchCode}}</td>
-						<td ng-if="a.status == 'Open'""
-								style=" background-color: #ff3232;color:#fff;">{{a.branchCode}}</td>
-						
-						<td  ng-if="a.status == 'Reject'"">{{a.form}}</td>
+							style="background-color: Green !important;">{{a.branchCode}}</td>
+						<td ng-if="a.status == 'Open'"
+							style="background-color: #ff3232 !important;">{{a.branchCode}}</td>
+
+						<td ng-if="a.status == 'Reject'">{{a.form}}</td>
 						<td ng-if="a.status == 'Resolve'"
-								style=" background-color: Green;color:#fff;">{{a.form}}</td>
-						<td ng-if="a.status == 'Open'""
-								style=" background-color: #ff3232;color:#fff;">{{a.form}}</td>
-								
-						
-						<td  ng-if="a.status == 'Reject'"">{{a.custVendId}}</td>
+							style="background-color: Green !important;">{{a.form}}</td>
+						<td ng-if="a.status == 'Open'"
+							style="background-color: #ff3232 !important;">{{a.form}}</td>
+
+
+						<td ng-if="a.status == 'Reject'">{{a.custVendId}}</td>
 						<td ng-if="a.status == 'Resolve'"
-								style=" background-color: Green;color:#fff;">{{a.custVendId}}</td>
-						<td ng-if="a.status == 'Open'""
-								style=" background-color: #ff3232;color:#fff;">{{a.custVendId}}</td>
-								
-						
-						<td  ng-if="a.status == 'Reject'"">{{a.pan}}</td>
+							style="background-color: Green !important;">{{a.custVendId}}</td>
+						<td ng-if="a.status == 'Open'"
+							style="background-color: #ff3232 !important;">{{a.custVendId}}</td>
+
+
+						<td ng-if="a.status == 'Reject'">{{a.pan}}</td>
 						<td ng-if="a.status == 'Resolve'"
-								style=" background-color: Green;color:#fff;">{{a.pan}}</td>
-						<td ng-if="a.status == 'Open'""
-								style=" background-color: #ff3232;color:#fff;">{{a.pan}}</td>
-						
-						<td  ng-if="a.status == 'Reject'"">{{a.dateOfOpening | date:'dd-MM-yyyy'}}</td>
+							style="background-color: Green !important;">{{a.pan}}</td>
+						<td ng-if="a.status == 'Open'"
+							style="background-color: #ff3232 !important;">{{a.pan}}</td>
+
+						<td ng-if="a.status == 'Reject'">{{a.dateOfOpening |
+							date:'dd-MM-yyyy'}}</td>
 						<td ng-if="a.status == 'Resolve'"
-								style=" background-color: Green;color:#fff;">{{a.dateOfOpening | date:'dd-MM-yyyy'}}</td>
-						<td ng-if="a.status == 'Open'""
-								style=" background-color: #ff3232;color:#fff;">{{a.dateOfOpening | date:'dd-MM-yyyy'}}</td>
-								
-							
-						<td ng-if="a.status == 'Reject'"" >{{a.status}}</td>
+							style="background-color: Green !important;">{{a.dateOfOpening
+							| date:'dd-MM-yyyy'}}</td>
+						<td ng-if="a.status == 'Open'"
+							style="background-color: #ff3232 !important;">{{a.dateOfOpening
+							| date:'dd-MM-yyyy'}}</td>
+
+
+						<td ng-if="a.status == 'Reject'">{{a.status}}</td>
 						<td ng-if="a.status == 'Resolve'"
-								style=" background-color: Green;color:#fff;">{{a.status}}</td>
-						<td ng-if="a.status == 'Open'""
-								style=" background-color: #ff3232;color:#fff;">{{a.status}}</td>
-								
-						<td  ng-if="a.status == 'Reject'"">{{a.description}}</td>
+							style="background-color: Green !important;">{{a.status}}</td>
+						<td ng-if="a.status == 'Open'"
+							style="background-color: #ff3232 !important;">{{a.status}}</td>
+
+						<td ng-if="a.status == 'Reject'">{{a.description}}</td>
 						<td ng-if="a.status == 'Resolve'"
-								style=" background-color: Green;color:#fff;">{{a.description}}</td>
-						<td ng-if="a.status == 'Open'""
-								style=" background-color: #ff3232;color:#fff;">{{a.description}}</td>		
-								
-								
-						<td ng-if="a.status == 'Reject'"" >{{a.userName}}</td>
-						<td ng-if="a.status == 'Resolve'"
-								style=" background-color: Green;color:#fff;">{{a.userName}}</td>
-						<td ng-if="a.status == 'Open'""
-								style=" background-color: #ff3232;color:#fff;">{{a.userName}}</td>
+							style="background-color: Green !important;">{{a.description}}</td>
+						<td class="ellipsis" ng-if="a.status == 'Open'"
+							style="background-color: #ff3232 !important;">{{a.description}}</td>
+
+
+						<td class="ellipsis" ng-if="a.status == 'Reject'">{{a.userName}}</td>
+						<td class="ellipsis" ng-if="a.status == 'Resolve'"
+							style="background-color: Green !important;">{{a.userName}}</td>
+						<td class="ellipsis" ng-if="a.status == 'Open'"
+							style="background-color: #ff3232 !important;">{{a.userName}}</td>
 						<!-- ng-click="cCctr.gotoDetailPage('ticket',a.id,a.fy,a.branchCode,'detailticket')" -->
-						<td class="hide-on-desktop"><a
-						class="tool"
+						<!--<td class="hide-on-desktop"><a class="tool"
 							ng-click="cCctr.gotoDetailFormPage('ticket',a.id,a.fy,a.branchCode,'detailTicket')"
 							style="color: blue"><img src="static\img\edit.png"
 								width="22px" height="22px" alt="Details"
-								style="margin-top: 5px; margin-bottom: 5px;" /><span class="tooltiptext tooltip-top5">Detail</span></a></td>
+								style="margin-top: 5px; margin-bottom: 5px;" /><span
+								class="tooltiptext tooltip-top5"> </span></a></td>-->
 
 						<!-- <td><a ng-click="cCctr.viewFile('fileDetail',a,'viewFile');"
 					style="color: blue">View</a></td> -->
@@ -522,34 +488,36 @@
 					</tr>
 				</tbody>
 			</table>
-
 		</div>
 		<div class="row" ng-show="cCctr.getNoPage() > 0">
-			<div class="row" align="center">
-				<span ng-show="cCctr.currentPage != 1"> <a
-					ng-click="cCctr.getPage(true,'ticket',cCctr.currentPage-1)"><strong>Previous</strong></a>
-				</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.currentPage}}</strong>&nbsp;
+			<div align="center">
+				<span ng-show="cCctr.PreviousNo != 1"> <a
+					ng-show="cCctr.PreviousNo >= 1 && cCctr.PreviousNo <= cCctr.getNoPage()"
+					ng-click="cCctr.getPage(true,'ticket',cCctr.PreviousNo-1);cCctr.DisplayNo(cCctr.currentPage)"><strong>Previous</strong></a>
+				</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.PreviousNo}}</strong>&nbsp;
 					of &nbsp;<strong>{{cCctr.getNoPage()}}</strong>
 					&nbsp;&nbsp;&nbsp;&nbsp; <span
-					ng-show="cCctr.currentPage != cCctr.getNoPage()"> <a
-						ng-click="cCctr.getPage(true,'ticket',cCctr.currentPage+1)"><strong>Next</strong></a>
+					ng-show="cCctr.PreviousNo != cCctr.getNoPage()"> <a
+						ng-show="cCctr.PreviousNo >= 1 && cCctr.PreviousNo <= cCctr.getNoPage()"
+						ng-click="cCctr.getPage(true,'ticket',cCctr.PreviousNo+1);cCctr.DisplayNo(cCctr.currentPage)"><strong>Next</strong></a>
 				</span>
 				</span>
 			</div>
-			<form role="form" name="gotoForm">
-				<div class="row" align="center">
+			<form role="form" name="gotoForm" ng-if="cCctr.getNoPage()!=1">
+				<div align="center" style="margin-top: 1%;">
 					<span>Go to</span> &nbsp;&nbsp;&nbsp; <input
 						style="width: 70px; text-align: center;" type="number"
-						name="pageNo" ng-model="cCctr.currentPage"
-						ng-init="cCctr.pageNo=cCctr.currentPage" autocomplete="off"
-						ng-min="1" min="1" max="{{cCctr.getNoPage()}}" 
+						name="pageNo" id="pageNo" ng-model="cCctr.currentPage"
+						oninput="javascript: if (this.value.length > this.max.length) this.value = this.value.slice(0, this.max.length);"
+						autocomplete="off" ng-min="1" min="1" max="{{cCctr.getNoPage()}}"
 						ng-max="cCctr.getNoPage()" ng-required="true">
 					&nbsp;&nbsp;&nbsp;
-					<button style="height: 25px;"
-						ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'ticket',cCctr.currentPage)"
-						class="btn btn-primary">Go</button>
+					<button
+						ng-show="cCctr.currentPage >= 1 && cCctr.currentPage <= cCctr.getNoPage()"
+						ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'ticket',cCctr.currentPage);cCctr.DisplayNo(cCctr.currentPage)"
+						class="btn btn-primary btn-sm">Go</button>
 				</div>
-				<div class="row" align="center">
+				<div align="center">
 					<span style="color: red"
 						ng-show="gotoForm.submitted || gotoForm.pageNo.$dirty && gotoForm.pageNo.$invalid">
 						<span class="error" ng-show="gotoForm.pageNo.$error.min">Page
@@ -565,3 +533,8 @@
 	</div>
 </div>
 
+
+<script>
+	$('body').removeClass('modal-open');
+	$('.modal-backdrop').remove();
+</script>

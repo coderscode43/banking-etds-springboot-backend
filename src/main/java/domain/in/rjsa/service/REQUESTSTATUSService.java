@@ -1,5 +1,7 @@
 package domain.in.rjsa.service;
 
-public interface REQUESTSTATUSService {
+import domain.in.rjsa.model.tds.REQUESTSTATUS;
+
+public interface REQUESTSTATUSService extends ServiceInterfaceForm<Long, REQUESTSTATUS>{
 
 }

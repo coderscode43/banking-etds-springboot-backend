@@ -1,0 +1,791 @@
+<style>
+@media only screen and (min-width:1000px) {
+	#search {
+		margin-left: 45%;
+		margin-top: 2px;
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	#hide {
+		display: none;
+	}
+}
+
+.table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th
+	{
+	background-color: white;
+}
+
+@media ( min-width : 768px) {
+	.collapse.dont-collapse-sm {
+		display: block;
+		height: auto !important;
+		visibility: visible;
+	}
+}
+
+.btn-grad {
+	background-image: linear-gradient(to right, #FF8008 0%, #FFC837 51%, #FF8008 100%);
+	transition: 0.5s;
+	background-size: 200% auto;
+	color: white;
+	box-shadow: 0 0 20px #eee;
+	border-radius: 10px;
+	padding: 8px;
+}
+
+.btn-grad:hover {
+	background-position: right center;
+	/* change the direction of the change here */
+	color: #fff;
+	text-decoration: none;
+}
+
+.col-md-4 {
+	width: 34.333%;
+}
+
+.remark {
+	margin-top: -70px;
+	margin-left: -90px;
+}
+
+input.largerCheckbox {
+	width: 29px;
+	height: 25px;
+}
+
+.ExportExcel {
+	margin-left: -150%;
+	top: -37px;
+}
+</style>
+<div
+	ng-init="cCctr.helpFolder = 'homeSChelpPage' ;  cCctr.helpPage = 'regularReturnHelp' ">
+	<div id="page-wrapper">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="heading">
+					<strong>Regular Return</strong>
+				</div>
+				<div style="float: right">
+					<button class="btn btn-secondary mobile tool" data-toggle="modal"
+						style="background-color: crimson; margin-right: 80px;"
+						data-toggle="collapse" data-target="#generateModal"
+						aria-expanded="false" data-parent="#generateModal"
+						aria-controls="collapseExample">
+						<div class=button-main-box>
+							Generate Zip Files
+							<div class="button-tooltip-box">
+								<span class="tooltiptext Search" style="margin-left: -50px;">
+									Generate Zip Files</span>
+							</div>
+						</div>
+					</button>
+				</div>
+			</div>
+			<div class="collapse dont-collapse-sm" id="collapseExample2">
+				<div class="row">
+					<div class="form-group">
+						<div class="col-md-12" style="padding-left: 0px;">
+							<div class="col-md-3">
+								<h6>
+									<b>Financial Year</b>
+								</h6>
+								<select class="form-control" id="fy" name="fy"
+									title="Select Financial Year" ng-model="cCctr.search.fy"
+									ng-required="true">
+									<option disabled value="">Select financial Year</option>
+									<#list financialYear as year>
+									<option value="${year}">${year}</option>
+									</#list>
+								</select>
+							</div>
+							<div class="col-md-3">
+								<h6>
+									<b>Quarter</b>
+								</h6>
+								<select class="form-control" ng-model="cCctr.search.quarter"
+									ng-required="true" title="Select Quarter">
+									<option disabled value="">Select Quarter</option>
+									<#list Quarter as quarter>
+									<option value="${quarter}">${quarter}</option>
+									</#list>
+								</select>
+							</div>
+							<div class="col-md-3">
+								<h6>
+									<b>Form</b>
+								</h6>
+								<select ng-model="cCctr.search.form" class="form-control">
+									<option disabled value="">Select Form</option>
+									<#list typeOfForm as tof>
+									<option value="${tof}">${tof}</option>
+									</#list>
+								</select>
+							</div>
+							<div class="col-md-3 Btns">
+								<button
+									id="searchButton" 
+									ng-click="cCctr.searchEntities(true,'regularReturn','regularReturn')"
+									class="btn btn-success  tool" onclick="scrollWin()">
+									<div class=button-main-box>
+										<i class="fa fa-search border-0 p-0"
+											style="color: inherit; display: block; background-color: transparent; font-size: 23px;"></i>
+										<div class="button-tooltip-box">
+											<span class="tooltiptext Search">Search Button</span>
+										</div>
+									</div>
+								</button>
+								<button class="btn btn-primary  collapsed tool"
+									style="background-color: #FFA500; border-color: #FFA500;"
+									data-toggle="collapse" data-target="#collapseExample4"
+									aria-expanded="false" data-parent="#collapseExample"
+									aria-controls="collapseExample">
+									<div class=button-main-box>
+										<i class="fa fa-filter border-0 p-0"
+											style="color: #fff; display: block; background-color: transparent; font-size: 23px;"></i>
+										<div class="button-tooltip-box">
+											<span class="tooltiptext Search">Advance Search Button</span>
+										</div>
+									</div>
+								</button>
+								<button class="btn btn-success  tool"
+									ng-click="cCctr.bulkRemarkReminderBtn()">
+									<div class=button-main-box>
+										<i class="fa fa-comment border-0 p-0"
+											style="color: inherit; display: block; background-color: transparent; font-size: 23px;"></i>
+										<div>
+											<span class="tooltiptext remark">Bulk
+												Response/Reminder Button</span>
+										</div>
+									</div>
+								</button>
+
+								<button class="btn btn-primary mobile tool"
+									ng-click="cCctr.gotoAddPage('AddRegularReturn')">
+									<div class=button-main-box>
+										<i class="fa fa-plus border-0 p-0"
+											style="color: inherit; display: block; background-color: transparent; font-size: 23px;"></i>
+										<div class="button-tooltip-box">
+											<span class="tooltiptext Search">Add Regular Return
+												Button</span>
+										</div>
+									</div>
+								</button>
+
+								<div class="col-md-3">
+									<label class="switch tool sliderButton"> <input
+										type="checkbox"> <span class="slider round "></span>
+										<div class="button-tooltip-box">
+											<span class="tooltiptext Search"> Resize Table</span>
+										</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<!-- <div class="collapse  panel-collapse" id="collapseExample4"
+						style="margin-left: -15px;">
+						<div class="col-md-12" style="padding-left: 15px;">
+
+							<div class="col-md-6"></div>
+							<div class="col-md-3 ExcelBtn"></div>
+						</div>
+					</div> -->
+				</div>
+
+
+				<div class=" collapse  panel-collapse" id="collapseExample4"
+					style="margin-left: -15px;">
+
+					<div class="row">
+						<div class="col-md-12" style="padding-left: 15px;">
+
+							<div class="col-md-3">
+								<h6>
+									<b>TAN</b>
+								</h6>
+								<select name="tan" id="tan" class="form-control"
+									ng-model="cCctr.search.tan">
+									<option disabled value="">Select Tan</option>
+									<#list Tan as T>
+									<option value="${T}">${T}</option>
+									</#list>
+								</select>
+							</div>
+							<div class="col-md-3">
+								<h6>
+									<b>Status</b>
+								</h6>
+								<!-- <input type="text" ng-model="cCctr.search.status"
+									class="form-control" placeholder="Status" style="width: 100%"> -->
+								<select class="form-control" id="status" name="status"
+									title="Select Status" ng-model="cCctr.search.status"
+									ng-required="true" margin-left: 5%;">
+									<option disabled value="">Select Status</option>
+									<#list regularReturnStatus as status>
+									<option value="${status}">${status}</option>
+									</#list>
+								</select>
+							</div>
+							<div class="col-md-3">
+								<h6>
+									<b>Added On Date</b>
+								</h6>
+								<input type="date" ng-model="cCctr.search.addedOn"
+									class="form-control" placeholder="Added On" style="width: 100%">
+							</div>
+							<div class="col-md-3 ExcelBtn">
+								<button class="btn btn-beanred waves-effect waves-light tool"
+									type="button" style=""
+									ng-click="cCctr.generateExcel('apiregularReturn/generateExcel/','RegularReturn')">
+									<i class="fa fa-file-export"></i><span
+										class="tooltiptext ExportExcel">Export to Excel</span>
+								</button>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="col-md-4" style="margin-top: 5px"></div>
+						<div class="text-right" style="width: 100%"></div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="table-responsive">
+						<table class=" table table-bordered table-hover table-striped"
+							role="table"
+							style="font-size: 12px; width: 100%; margin-top: 1.5%;">
+							<thead>
+
+								<tr>
+							<thead role="rowgroup">
+								<tr role="row" style="height: 40px; background-color: #7482f45e">
+									<th><input class="checkall largerCheckbox" type="checkbox"
+										ng-click="cCctr.getAllSelected()" id="selectAllCheckbox" /></th>
+									<th>Sr. No.</th>
+									<th><div class="autoResizeQuarter">Date</div></th>
+									<!-- <th><div class="autoResizeQuarter">RO Code</div></th> -->
+									<th><div class="autoResizeQuarter">Financial Year</div></th>
+									<th><div class="autoResizeQuarter">TAN</div></th>
+									<th><div class="autoResizeQuarter">Quarter</div></th>
+									<th><div class="autoResizeQuarter">Form</div></th>
+									<th><div class="autoResizeQuarter">Added By</div></th>
+									<th><div class="autoResizeQuarter">Latest Response</div></th>
+									<th><div class="autoResizeQuarter">Status</div></th>
+									<th><div class="autoResizeQuarter">Return Filing
+											Date</div></th>
+									<th><div class="autoResizeQuarter">Action</div></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr style="color: red"
+									ng-show="cCctr.getEntityListData().length <= 0">
+									<td colspan="14" style="text-align: center;"><h3
+											style="text-align: center; text-align-last: 5;">
+											<b>No data found!!</b>
+										</h3></td>
+								</tr>
+								<tr style="text-align: center;" role="row"
+									ng-repeat="a in cCctr.getEntityListData()"
+									ng-dblclick="cCctr.gotoDetailPage('regularReturn',a.id,'detailRegularReturn')">
+									<td><input class="checkhour" type="checkbox"
+										ng-model="a.selected;"
+										ng-change="cCctr.addSendEntity(a.selected,a);"></td>
+									<td ng-style="{'background-color' : '{{a.color}}'}">{{$index+cCctr.srNo}}</td>
+									<td ng-style="{'background-color' : '{{a.color}}'}">{{a.addedOn
+										| date:'dd-MM-yyyy HH:mm:ss'}}</td>
+									<!-- <td ng-style="{'background-color' : '{{a.color}}'}">{{a.roCode}}</td> -->
+									<td ng-style="{'background-color' : '{{a.color}}'}">{{a.fy}}</td>
+									<td ng-style="{'background-color' : '{{a.color}}'}">{{a.tan}}</td>
+									<td ng-style="{'background-color' : '{{a.color}}'}">{{a.quarter}}</td>
+									<td ng-style="{'background-color' : '{{a.color}}'}">{{a.form}}</td>
+									<td ng-style="{'background-color' : '{{a.color}}'}">{{a.addedBy}}</td>
+									<td ng-style="{'background-color' : '{{a.color}}'}">{{a.latestRemark}}</td>
+									<td ng-style="{'background-color' : '{{a.color}}'}">{{a.status}}</td>
+									<td ng-style="{'background-color' : '{{a.color}}'}">{{a.returnFilingDate | date:'dd-MM-yyyy'}}</td>
+									<td class=""><a class="tool"
+										ng-click="cCctr.gotoDetailPage('regularReturn',a.id,'detailRegularReturn')"
+										style="color: blue" onclick="scrollWin()"><img
+											src="static\img\edit.png" width="22px" height="22px"
+											alt="Details" style="margin-top: 5px; margin-bottom: 5px;" />
+											<span class="tooltiptext tooltip-top5">Detail</span></a></td>
+
+
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div class="modal bd-example-modal-xl ng-scope"
+						id="bd-example-modal-xl" tabindex="-1" role="dialog"
+						aria-labelledby="myExtraLargeModalLabel"
+						style="padding-left: 0px;">
+						<div class="modal-dialog modal-md" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h4 class="modal-title m-0" id="myExtraLargeModalLabel">Bulk
+										Response/Reminder</h4>
+									<button type="button" class="close" id="closeModalId"
+										data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true"><i class="la la-times"></i></span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<div class="d-flex w-100 flex-wrap">
+										<label class="col-md-6 pl-0" for="chkPassport"> <input
+											class="" type="checkbox" id="chkPassport" name="statusRR"
+											ng-click="cCctr.checkRemark();cCctr.unselectOthers_RegularReturn(1)">&nbsp;&nbsp;&nbsp;Status
+										</label> <label class="col-md-6 pl-0" for="chkPassport1"> <input
+											class="" type="checkbox" id="chkPassport1"
+											name="returnFilingDateRR"
+											ng-click="cCctr.checkRemark();cCctr.unselectOthers_RegularReturn(2)">&nbsp;&nbsp;&nbsp;Return
+											Filing Date
+										</label><label class="col-md-6 pl-0" for="chkPassport2"> <input
+											class="" type="checkbox" id="chkPassport2" name="remarkRR"
+											ng-click="cCctr.checkRemark();cCctr.unselectOthers_RegularReturn(3)">&nbsp;&nbsp;&nbsp;Response
+										</label> <label class="col-md-6 pl-0" for="chkPassport3"> <input
+											class="" type="checkbox" id="chkPassport3"
+											name="sendReminderRR"
+											ng-click="cCctr.checkRemark();cCctr.unselectOthers_RegularReturn(4)">&nbsp;&nbsp;&nbsp;Send
+											Reminder
+										</label> <span ng-if="cCctr.showCheckRemarkError" style="color: red;">Selection
+											of any one check box is Required</span>
+									</div>
+									<hr>
+
+
+									<form class="d-flex flex-column ng-pristine ng-valid"
+										style="gap: 0.5em;" role="form" name="addRemarkForm"
+										method="POST">
+
+										<div>
+											<label style="font-size: 12px;">Status</label> <select
+												disabled="disabled" id="status" name="status"
+												class="form-control" ng-model="cCctr.object.Status">
+												<option disabled value="">Select Status</option>
+												<#list regularReturnStatus as status>
+												<option value="${status}">${status}</option>
+												</#list>
+											</select> <span class="error" style="color: red"
+												ng-show="cCctr.object.Status == 'Return filed'">Return
+												Filed is not Applicable for Bulk Response. </span>
+										</div>
+										<div>
+											<label style="font-size: 12px;">Return Filing Date</label> <input
+												disabled="disabled" name="date" class="form-control"
+												type="date" id="date"
+												ng-model="cCctr.object.returnFilingDate"
+												aria-invalid="false">
+										</div>
+										<div>
+											<label style="font-size: 12px;">Response</label>
+											<textarea disabled="disabled" name="remark"
+												class="form-control" type="text" id="remark"
+												ng-model="cCctr.object.remark" aria-invalid="false"></textarea>
+										</div>
+										<!-- <div>
+									<label style="font-size: 12px;">Reminder</label>
+									<textarea disabled="disabled" name="reminder"
+										class="form-control" type="text" id="reminder"
+										ng-model="cCctr.object.reminder" aria-invalid="false"></textarea>
+								</div> -->
+									</form>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-warning btn-md"
+										disabled="disabled" name="reminder" id="reminder"
+										ng-click="cCctr.sendReminder(true,cCctr.container,'regularReturnRemark')">Send
+										Reminder</button>
+									<button type="button" class="btn btn-secondary btn-md"
+										data-dismiss="modal">Close</button>
+									<button type="button" class="btn btn-primary btn-md"
+										ng-hide="cCctr.object.Status == 'Return filed'"
+										ng-click="cCctr.addBulkRemark(true,cCctr.container,cCctr.object,'regularReturnRemark')">Save</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row" ng-show="cCctr.getNoPage() > 0">
+						<div align="center">
+							<span ng-show="cCctr.PreviousNo != 1"> <a
+								ng-show="cCctr.PreviousNo >= 1 && cCctr.PreviousNo <= cCctr.getNoPage()"
+								ng-click="cCctr.getPage(true,'regularReturn',cCctr.PreviousNo-1);cCctr.DisplayNo(cCctr.currentPage)"><strong>Previous</strong></a>
+							</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>Displaying page &nbsp;<strong>{{cCctr.PreviousNo}}</strong>&nbsp;
+								of &nbsp;<strong>{{cCctr.getNoPage()}}</strong>
+								&nbsp;&nbsp;&nbsp;&nbsp; <span
+								ng-show="cCctr.PreviousNo != cCctr.getNoPage()"> <a
+									ng-show="cCctr.PreviousNo >= 1 && cCctr.PreviousNo <= cCctr.getNoPage()"
+									ng-click="cCctr.getPage(true,'regularReturn',cCctr.PreviousNo+1);cCctr.DisplayNo(cCctr.currentPage)"><strong>Next</strong></a>
+							</span>
+							</span>
+						</div>
+						<form role="form" name="gotoForm" ng-if="cCctr.getNoPage()!=1">
+							<div align="center" style="margin-top: 1%;">
+								<span>Go to</span> &nbsp;&nbsp;&nbsp; <input
+									style="width: 70px; text-align: center;" type="number"
+									name="pageNo" id="pageNo" ng-model="cCctr.currentPage"
+									oninput="javascript: if (this.value.length > this.max.length) this.value = this.value.slice(0, this.max.length);"
+									autocomplete="off" ng-min="1" min="1"
+									max="{{cCctr.getNoPage()}}" ng-max="cCctr.getNoPage()"
+									ng-required="true"> &nbsp;&nbsp;&nbsp;
+								<button
+									ng-show="cCctr.currentPage >= 1 && cCctr.currentPage <= cCctr.getNoPage()"
+									ng-click="gotoForm.submitted=true;cCctr.getPage(gotoForm.$valid,'regularReturn',cCctr.currentPage);cCctr.DisplayNo(cCctr.currentPage)"
+									class="btn btn-primary btn-sm">Go</button>
+							</div>
+							<div align="center">
+								<span style="color: red"
+									ng-show="gotoForm.submitted || gotoForm.pageNo.$dirty && gotoForm.pageNo.$invalid">
+									<span class="error" ng-show="gotoForm.pageNo.$error.min">Page
+										No. should not be less than 1.</span> <span class="error"
+									ng-show="gotoForm.pageNo.$error.max">Page No. should not
+										be greater than {{cCctr.getNoPage()}}.</span> <span class="error"
+									ng-show="gotoForm.pageNo.$error.required">Please enter
+										page number.</span>
+								</span>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Generate Model -->
+	<div class="modal fade" id="generateModal" role="dialog">
+		<div class="modal-dialog" id="Popup">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Generate Zip Files</h4>
+
+					<button type="button" class="close" data-dismiss="modal"
+						onclick="location.reload()">&times;</button>
+
+				</div>
+				<div class="modal-body">
+
+					<form role="form" name="generateDetails">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<label style="font-size: 15px">Type of Certificate<span
+										style="color: red;">*</span></label> <select name="typeofCertificate"
+										id="typeofCertificate" title="Select Type of Certificate"
+										class="form-control" ng-model="cCctr.entity.form"
+										ng-required="true" ng-model-options="{updateOn: 'blur'}">
+										<option disabled value="">Select Certificate</option>
+										<#list typeOfCertificate as Certificate>
+										<option value="${Certificate}">${Certificate}</option>
+										</#list>
+									</select> <span style="color: red"
+										ng-show="generateDetails.submitted ||generateDetails.typeofCertificate.$dirty && generateDetails.typeofCertificate.$invalid">
+										<span class="error"
+										ng-show="generateDetails.typeofCertificate.$error.required">Type
+											of Certificate is Required.</span>
+									</span>
+								</div>
+							</div>
+
+							<div class="col-md-12">
+								<div>
+									<label style="font-size: 15px">Financial Year<span
+										style="color: red;">*</span></label> <select class="form-control"
+										id="fy" name="fy" title="Select Financial Year"
+										ng-model="cCctr.entity.fy" ng-required="true">
+										<option disabled value="">Select financial Year</option>
+										<#list financialYear as year>
+										<option value="${year}">${year}</option>
+										</#list>
+									</select> <span style="color: red"
+										ng-show="generateDetails.submitted ||generateDetails.fy.$dirty && generateDetails.fy.$invalid">
+										<span class="error"
+										ng-show="generateDetails.fy.$error.required">Financial
+											Year is Required. </span>
+									</span>
+								</div>
+							</div>
+
+							<div class="col-md-12">
+								<div>
+									<label style="font-size: 15px">Quarter<span
+										style="color: red;">*</span></label> <select class="form-control"
+										id="quarter" name="quarter" title="Select Quarter"
+										ng-model="cCctr.entity.quarter" ng-required="true">
+										<option disabled value="">Select Quarter</option>
+										<#list Quarter as quarter>
+										<option value="${quarter}">${quarter}</option>
+										</#list>
+									</select> <span style="color: red"
+										ng-show="generateDetails.submitted ||generateDetails.quarter.$dirty && generateDetails.quarter.$invalid">
+										<span class="error"
+										ng-show="generateDetails.quarter.$error.required">Quarter
+											is Required. </span>
+									</span>
+								</div>
+
+							</div>
+						</div>
+					</form>
+				</div>
+
+				<div class="modal-footer">
+					<button class="btn btn-success  tool"
+						ng-click="generateDetails.submitted=true;cCctr.createBranchZip(generateDetails.$valid,'apidownloadCertificate/createBranchZip/ALL TAN/'+cCctr.entity.form+'/'+cCctr.entity.fy+'/'+cCctr.entity.quarter)">
+						<span class="   "> Generate Zip <span
+							class="tooltiptext tooltip-top4">Generate Zip Button</span>
+						</span>
+					</button>
+					<button class="btn btn-danger waves-effect waves-light tool"
+						data-dismiss="modal">
+						<span class="   " onclick="location.reload()"> Close <span
+							class="tooltiptext tooltip-top5">Close Button</span>
+						</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Success Modal -->
+	<div id="successMsg" class="modal" role="dialog" data-backdrop="static">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 style="color: green;">
+						<picture>
+						<source type="image/webp" srcset="static/img/success.webp">
+						<img src="./././static/img/success.webp" height="30" width="30">
+						</picture>
+						<span class="headingMsg"></span>
+					</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="msg" style="font-size: 18px;"></div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal"
+						ng-click="cCctr.reload();">OK</button>
+					<!-- id="reload" -->
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Error Modal -->
+	<div id="invalidRow" class="modal" role="dialog" data-backdrop="static">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 style="color: red;">
+						<picture>
+						<source type="image/webp" srcset="static/img/errorNew.webp">
+						<img src="./././static/img/errorNew.png" height="30" width="30">Error!
+						</picture>
+					</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="msg" style="font-size: 18px;"></div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal"
+						ng-click="cCctr.ok()">Ok</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<script>
+	$(document).ready(function() {
+		$(".slider").click(function() {
+			$("th div").toggleClass("autoResizeQuarter");
+
+		});
+	});
+</script>
+
+<script>
+	$(document).ready(function() {
+		$(".slider").click(function() {
+			$("td ").toggleClass("ellipsise");
+
+		});
+	});
+</script>
+
+
+<script>
+	$(document).ready(function() {
+		$(".slider").click(function() {
+			$(".desc").toggleClass("ellip");
+			$(".custName").toggleClass("ellipName");
+
+		});
+	});
+</script>
+
+<script>
+	$(".btnTextChange").click(function() {
+
+		var lable = $(".btnTextChange").text().trim();
+
+		if (lable == "Resize Table") {
+			$(".btnTextChange").text("Normal Table");
+			$(".myText").hide();
+		} else {
+			$(".btnTextChange").text("Resize Table");
+			$(".myText").show();
+		}
+
+	});
+</script>
+<!-- <script class="ng-scope">
+	$(".checkall").click(function() {
+		$(".checkhour").prop("checked", $(this).prop("checked"));
+	});
+</script> -->
+
+
+<!-- <script>
+	$(".checkhour").click(function() {
+		if (!$(this).prop("checked")) {
+			$(".checkall").prop("checked", false);
+		}
+	});
+</script> -->
+
+<script type="text/javascript">
+	$(function() {
+		$("#chkPassport").click(function() {
+			if ($(this).is(":checked")) {
+				$("#status").removeAttr("disabled");
+				$("#status").focus();
+			} else {
+				$("#status").attr("disabled", "disabled");
+			}
+		});
+	});
+</script>
+<script type="text/javascript">
+	$(function() {
+		$("#chkPassport1").click(function() {
+			if ($(this).is(":checked")) {
+				$("#date").removeAttr("disabled");
+				$("#date").focus();
+			} else {
+				$("#date").attr("disabled", "disabled");
+			}
+		});
+	});
+</script>
+<script type="text/javascript">
+	$(function() {
+		$("#chkPassport2").click(function() {
+			if ($(this).is(":checked")) {
+				$("#remark").removeAttr("disabled");
+				$("#remark").focus();
+			} else {
+				$("#remark").attr("disabled", "disabled");
+			}
+		});
+	});
+</script>
+
+<script type="text/javascript">
+	$(function() {
+		$("#chkPassport3").click(function() {
+			if ($(this).is(":checked")) {
+				$("#reminder").removeAttr("disabled");
+				$("#reminder").focus();
+			} else {
+				$("#reminder").attr("disabled", "disabled");
+			}
+		});
+	});
+</script>
+<script>
+$(function ($) {
+	const SELECTOR = '.table-responsive';
+	const stickyBarTemplate = '<div class="sticky-scrollbar"><div></div></div>';
+	const stickyBarCSS = {
+	    display: 'none',
+	    overflowX: 'scroll',
+	    position: 'sticky',
+	    width: '100%',
+	    height: '3%',
+	    bottom: 0,
+	    'z-index': 999
+	};
+
+	renderBars();
+	$(window).on('load pageUpdate', renderBars);
+
+	function renderBars() {
+	    $(SELECTOR).each(function () {
+	        let $container = $(this);
+	        let $table = $container.find("table:first");
+	        let $bar = $container.find('.sticky-scrollbar');
+	        if (!$bar.length) {
+	            $bar = $(stickyBarTemplate).appendTo($container).css(stickyBarCSS);
+
+	            const resizeObserver = new ResizeObserver(entries => {
+	                updateBar()
+	            });
+	            resizeObserver.observe($container[0]);
+	            resizeObserver.observe($table[0]);
+
+	            updateBar();
+	            function updateBar() {
+	                $bar.children('div').height(1).width($table.width());
+	                $bar.width($container.width()).scrollLeft($container.scrollLeft());
+
+	                requestAnimationFrame(function () {
+	                    if ($table.width() > $container.width()) {
+	                        $bar.show();
+
+	                        $bar.scroll(function () {
+	                            $table
+	                                .css({"transform": "translateX(-" + $bar.scrollLeft() + "px)"});
+	                            $container
+	                                .find('.left-header, .top-left-header')
+	                                .css({"transform": "translateX(" + $bar.scrollLeft() + "px)"});
+	                        });
+
+	                        $bar.scrollLeft($container.scrollLeft());
+	                    } else {
+	                        $bar.hide();
+	                    }
+	                });
+	            }
+	        }
+	    });
+	}
+	});
+</script>
+<script>
+	$(document).ready(function() {
+		$(this).scrollTop(0);
+	});
+</script>

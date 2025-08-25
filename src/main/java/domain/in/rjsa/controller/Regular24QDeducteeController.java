@@ -1,12 +1,12 @@
 package domain.in.rjsa.controller;
 
+import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Pattern;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,13 +22,11 @@ import org.springframework.web.servlet.HandlerMapping;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 
 import domain.in.rjsa.exception.CustomException;
 import domain.in.rjsa.model.form.ListCount;
+import domain.in.rjsa.model.fy.DeducteeRemark;
 import domain.in.rjsa.model.fy.Regular24QDeductee;
-import domain.in.rjsa.model.fy.Remark;
 import domain.in.rjsa.service.Regular24QDeducteeService;
 import domain.in.rjsa.service.RemarkService;
 
@@ -72,27 +70,29 @@ public class Regular24QDeducteeController<E>
 		// TODO Auto-generated method stub
 		HashMap<String, Object> constrains = new HashMap<>();
 		if (!"admin".equals(getBranchCode())) {
-			Long b=1L;
+			Long b = 1L;
 			try {
-				b =Long.valueOf(getBranchCode());
-			}catch (Exception e) {
+				b = Long.valueOf(getBranchCode());
+			} catch (Exception e) {
 				// TODO: handle exception
 			}
 			constrains.put("branchCode", b);
-		}else {
+		} else {
 		}
 		constrains.put("id", id);
 		constrains.put("fy", fy);
 		constrains.put("branchCode", branchCode);
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("deductee", getService().uniqueSearch(constrains));
-		constrains.remove("id", id);
-		constrains.put("deducteeId", id);
-		List<Remark> remark = rService.findForm(constrains, 0, 100,"24Qform");
-		map.put("remark",remark);
+
+		constrains.clear();
+		constrains.put("DEDUCTEEID", id);
+
+		List<DeducteeRemark> remarks = deducteeService.search(constrains);
+		map.put("remarks", remarks);
+
 		return map;
 	}
-	
 
 	// ------------------- Search Single Entity ---------------------------------
 	@RequestMapping(value = "/search/get/{pageNo}/{resultPerPage}/{json}/**", method = RequestMethod.GET)
@@ -107,7 +107,9 @@ public class Regular24QDeducteeController<E>
 
 			String searchParam;
 			if (null != arguments && !arguments.isEmpty()) {
-				searchParam = json + '/' + arguments;
+				String decodedString = URLDecoder.decode(arguments, "UTF-8");
+				decodedString = decodedString.replace(", \"", "\"");
+				searchParam = json + '/' + decodedString;
 			} else {
 				searchParam = json;
 			}
@@ -116,20 +118,26 @@ public class Regular24QDeducteeController<E>
 			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
 
 			// convert JSON string to Map
-			map = mapper.readValue(searchParam, new TypeReference<Map<String, String>>() {
+			map = mapper.readValue(searchParam, new TypeReference<LinkedHashMap<String, Object>>() {
 			});
-			if(map.containsKey("branchCode")) {
+			if (map.containsKey("branchCode")) {
 				Long branchCode = Long.valueOf(map.get("branchCode").toString());
 				map.put("branchCode", branchCode);
 			}
-			if(map.containsKey("resolved")) {
+			if (map.containsKey("resolved")) {
 				Boolean resolved = Boolean.valueOf(map.get("resolved").toString());
 				map.put("resolved", resolved);
 			}
-			if(map.containsKey("TAN")) {
-				String TAN = (map.get("TAN").toString().split(Pattern.quote("-"),-1))[0];
+			if (map.containsKey("TAN")) {
+				String TAN = (map.get("TAN").toString().split(Pattern.quote("-"), -1))[0];
 				map.put("TAN", TAN);
 			}
+			if (map.containsKey("empNo")) {
+				map.put("custVendId", map.get("empNo"));
+				map.remove("empNo");
+			}
+			map.remove("typeOfCorrection");
+			map.remove("remark");
 			adminValidation(map);
 			Long count = getService().findallCount(map);
 			List<?> list = getSearch(map, pageNo, resultPerPage);
@@ -145,23 +153,17 @@ public class Regular24QDeducteeController<E>
 
 	}
 
-	public List<?> getSearch(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
+	public List<?> getSearch(LinkedHashMap<String, Object> map, int pageNo, int resultPerPage) {
 		// TODO Auto-generated method stub
-		return getService().search(map,pageNo,resultPerPage);
+		return getService().search(map, pageNo, resultPerPage);
 	}
-	
+
 	public void update(LinkedHashMap<String, Object> entity) {
 		try {
-		Gson gson = new Gson();
-		//object of the 
-		//regular24DDFromUI
-		//below all code in service
-		JsonElement jsonElement = gson.toJsonTree(entity);
-		getService().update(gson.fromJson(jsonElement, getEntity()));
-
-				
-		}catch(Exception e){
-				throw new CustomException(e.getMessage());
+			String json = mapper.writeValueAsString(entity);
+			getService().update(mapper.readValue(json, getEntity()));
+		} catch (Exception e) {
+			throw new CustomException(e.getMessage());
 		}
 	}
 }

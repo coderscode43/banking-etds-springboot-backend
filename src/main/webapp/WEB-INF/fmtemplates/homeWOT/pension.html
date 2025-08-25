@@ -217,7 +217,7 @@ body {
 				</div>
 			</div>
 
-			<div class="collapse  panel-collapse" id="collapseExample4">
+			<div class="collapse  panel-collapse"  id="collapseExample4" style="margin-left: -8px;">
 
 				<div class="row">
                     <div class="col-md-3">
@@ -278,7 +278,7 @@ body {
  <!-- <div class="table-responsive"> -->
 	<table class=" table table-bordered table-hover table-striped ">
 		<thead>
-			<tr  style="background-color: #81b7db;font-size:13px">
+			<tr  style="background-color: #7482f45e;font-size:13px">
 				<th>Sr No</th>
 				<th>Pension Id</th>
 				<th>Pension Code</th>
@@ -291,7 +291,7 @@ body {
 		</thead>
 		<tbody>
 			<tr ng-repeat="a in cCctr.getEntityListData() track by a.id" style="font-size:13px">
-				<td>{{$index+1}}</td>
+				<td>{{$index+cCctr.srNo}}</td>
 				<td>{{a.pensionId}}</td>
 				<td>{{a.pensionCode}}</td>
 				<td>{{a.pensionName}}</td>

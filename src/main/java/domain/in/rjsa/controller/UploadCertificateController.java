@@ -24,6 +24,8 @@ public class UploadCertificateController extends AbstractControllerForm<Long, Up
 	@Autowired
 	UploadCertificateService service;
 	
+	private static final long MAX_FILE_SIZE_BYTES = 10485760; // 10MB in bytes
+	
 	static final org.slf4j.Logger logger = LoggerFactory.getLogger(UploadCertificateController.class);
 
 	@RequestMapping(value = "/addFile", method = RequestMethod.POST)
@@ -65,7 +67,41 @@ public class UploadCertificateController extends AbstractControllerForm<Long, Up
 
 	}
 	
-	
+	@RequestMapping(value = "/uploadCertificate", method = RequestMethod.POST)
+	public ResponseEntity<?> uploadCertificate(@RequestParam("downloadFile") MultipartFile downloadFile,
+			@RequestParam("tan") String tan, @RequestParam("typeofCertificate") String typeofCertificate,
+			@RequestParam("fy") String fy, @RequestParam("quarter") String quarter) {
+		try {
+			if (downloadFile.getOriginalFilename().endsWith(".pdf")
+					|| downloadFile.getOriginalFilename().endsWith(".zip")) {
+				if (downloadFile.getOriginalFilename().endsWith(".pdf")
+						&& downloadFile.getSize() > MAX_FILE_SIZE_BYTES) {
+					FieldErrorDTO dto = new FieldErrorDTO();
+					dto.setEntityName("Certificate");
+					dto.setExceptionMsg("File size must not exceed 10MB");
+					return new ResponseEntity<Object>(dto, HttpStatus.FORBIDDEN);
+				} else {
+					HashMap<String, String> lessonMap = new HashMap<String, String>();
+					lessonMap.put("tan", tan);
+					lessonMap.put("typeofCertificate", typeofCertificate);
+					lessonMap.put("fy", fy);
+					lessonMap.put("quarter", quarter);
+					service.uploadCertificate(downloadFile, lessonMap);
+				}
+			} else {
+				FieldErrorDTO dto = new FieldErrorDTO();
+				dto.setEntityName("Certificate");
+				dto.setExceptionMsg("Invalid File Type");
+				return new ResponseEntity<Object>(dto, HttpStatus.FORBIDDEN);
+			}
+			return new ResponseEntity<Object>(HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return new ResponseEntity<>("Error in application. Please contact system administration",
+					HttpStatus.BAD_REQUEST);
+		}
+	}
 
 	@Override
 	public UploadCertificateService getService() {

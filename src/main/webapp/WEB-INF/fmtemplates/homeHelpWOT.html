@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="ISO-8859-1">
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+
+
+<title>Branch Details Explanation</title>
+
+<link rel="stylesheet" href="\static\css\font-awesome.min.css">
+
+
+<link rel="shortcut icon" type="image/x-icon"
+	href="/static/img/favicon.ico" />
+
+<style>
+.top-item {
+	position: absolute;
+	z-index: 4000;
+	font-size: 10px;
+	text-align: center;
+	color: #000000;
+	height: 16px;
+	float: right;
+	width: 200px;
+}
+
+.center {
+	text-align: center;
+}
+
+.top1 {
+	position: fixed;
+	margin-left: -10%;
+	display: contents;
+	padding: 0 0.75rem;
+	color: #7081b9;
+	font-size: 20px;
+	top: 8px;
+}
+
+.Img2 {
+	width: 22%;
+	margin-top: -6%;
+	height: -moz-available;
+	height: -webkit-fill-available;
+}
+
+.logo {
+	transition: transform .2s;
+}
+
+.logo:hover {
+	-ms-transform: scale(1.2);
+	/* IE 9 */
+	-webkit-transform: scale(1.2);
+	/* Safari 3-8 */
+	transform: scale(1.2);
+	filter: drop-shadow(0px 0px 10px #222);
+}
+
+/* navbar */
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+	background-color: #666;
+	padding: 30px;
+	text-align: center;
+	color: white;
+}
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+	float: left;
+	width: 20%;
+	height: 100%;
+	/* only for demonstration, should be removed */
+	background: #e2e2e2;
+	padding: 10px;
+	position: fixed;
+	overflow-y: scroll;
+}
+
+/* Style the list inside the menu */
+nav ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+article {
+	float: Left;
+	padding: 20px;
+	width: 80%;
+	background-color: #f1f1f1;
+	height: fit-content;
+	/* only for demonstration, should be removed */
+	margin: 0% 0 0 20%;
+}
+
+/* Clear floats after the columns */
+section::after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.search {
+	width: 100%;
+	height: 50px;
+	background-color: white;
+	position: fixed;
+	top: 0px;
+	z-index: 212;
+}
+
+.highlight {
+	background-color: yellow;
+	font-weight: bold;
+	color: yellow;
+}
+
+.hover-underline {
+	display: inline-block;
+	position: relative;
+	color: black;
+}
+
+.hover-underline:after {
+	content: '';
+	position: absolute;
+	width: 100%;
+	transform: scaleX(0);
+	height: 2px;
+	bottom: 0;
+	left: 0;
+	background-color: #ffcb07;
+	transform-origin: bottom right;
+	transition: transform 0.5s ease-out;
+}
+
+.hover-underline:hover:after {
+	transform: scaleX(1);
+	transform-origin: bottom left;
+}
+
+.mainmenu {
+	border: 0px solid red;
+	list-style: none;
+	cursor: pointer;
+	width: 100%;
+}
+
+.mainmenu {
+	padding: 10px 0px 10px 10px;
+}
+
+.mainmenu span {
+	margin-left: 8px;
+}
+
+.mainmenu a, h4 {
+	width: 100%;
+	list-style: none;
+	text-decoration: none;
+}
+
+.mainmenu a:hover, submenu a:hover {
+	color: black;
+}
+
+.submenu {
+	border: 0px solid blue;
+	cursor: pointer;
+}
+
+.dlinks li {
+	background-color: white;
+}
+
+.dlinks a {
+	padding: 10px 0px 10px 10px;
+	list-style: none;
+	text-decoration: none;
+	color: black;
+	font-size: 18px;
+}
+
+.submenu a {
+	padding: 10px 0px 10px 10px;
+	list-style: none;
+	text-decoration: none;
+	color: black;
+	font-size: 20px;
+}
+
+.submenu {
+	display: none;
+}
+
+.show {
+	display: block;
+}
+
+.moveicone {
+	transform: rotate(180deg);
+	color: #00529c !important;
+}
+
+#arrowicon1, #arrowicon2, #arrowicon3 {
+	margin-left: 10px;
+	color: black;
+}
+
+.forma {
+	width: 200px !important;
+	display: flex;
+	align-items: center;
+}
+
+.formi {
+	width: 65px;
+	margin: auto;
+	background-color: #303e77;
+	color: white;
+	padding: 0px 0px 0px 25px;
+	border-radius: 5px;
+}
+</style>
+</head>
+
+<body>
+
+
+	<section>
+		<nav>
+			<div>
+				<a
+					ng-click="cCctr.gotoHelpWOT('homeWOThelpPage', 'downloadCertificateHelp')"><img
+					src="/static/img/nialogo.png" alt=""
+					style="width: 100%; margin-left: 0%"></a>
+			</div>
+
+			<div id="myMenu">
+
+				<li class="mainmenu "><a class="hover-underline"
+					ng-click="cCctr.gotoHelpWOT('homeWOThelpPage', 'downloadCertificateHelp')">
+						<h4>
+							<i class="fa fa-download" aria-hidden="true"></i><span>Download
+								16A/16/27D</span>
+						</h4>
+				</a></li>
+
+				<li class="mainmenu "><a class="hover-underline"
+					ng-click="cCctr.gotoHelpWOT('homeWOThelpPage', 'monthlychallanHelp')">
+						<h4>
+							<i class="fa fa-ticket" aria-hidden="true"></i><span>Monthly
+								Challan</span>
+						</h4>
+				</a></li>
+
+				<li class="mainmenu ">
+					<h4 style="display: flex; justify-content: space-between;">
+						<div>
+							<a class="hover-underline forma"
+								ng-click="cCctr.gotoHelpWOT('homeWOThelpPage', 'form24QWOTHelp')"><img
+								src="/static/assets/images/HomeHelpPageIcon/Form24Q.jpg"
+								style="width: 30px;"><span>Form 24Q</span> </a>
+						</div>
+						<i class="fa fa-caret-down mainmenu formi" aria-hidden="true"></i>
+
+					</h4>
+
+					<ul class="dlinks submenu">
+						<li><a class="hover-underline"
+							ng-click="cCctr.gotoHelpWOT('homeWOThelpPage', 'form24qdetailsHelp')"><i
+								class="fa fa-info-circle" aria-hidden="true"></i> <span>Form
+									24Q Details</span> </a></li>
+					</ul>
+				</li>
+
+
+				<li class="mainmenu ">
+					<h4 style="display: flex; justify-content: space-between;">
+						<div>
+							<a class="hover-underline forma"
+								ng-click="cCctr.gotoHelpWOT('homeWOThelpPage', 'form26QWOTHelp')"><img
+								src="/static/assets/images/HomeHelpPageIcon/Form26Q.png"
+								style="width: 30px;"><span>Form 26Q</span> </a>
+						</div>
+						<i class="fa fa-caret-down mainmenu formi" aria-hidden="true"></i>
+
+					</h4>
+
+					<ul class="dlinks submenu">
+						<li><a class="hover-underline forma"
+							ng-click="cCctr.gotoHelpWOT('homeWOThelpPage', 'form26qdetailHelp')"><i
+								class="fa fa-info-circle" aria-hidden="true"></i> <span>Form
+									26Q Details</span> </a></li>
+					</ul>
+				</li>
+
+
+				<li class="mainmenu ">
+					<h4 style="display: flex; justify-content: space-between;">
+						<div>
+							<a class="hover-underline forma"
+								ng-click="cCctr.gotoHelpWOT('homeWOThelpPage', 'form27EQWOTHelp')"><img
+								src="/static/assets/images/HomeHelpPageIcon/Form27EQ.png"
+								style="width: 30px;"><span>Form 27EQ</span> </a>
+						</div>
+						<i class="fa fa-caret-down mainmenu formi" aria-hidden="true"></i>
+
+					</h4>
+
+					<ul class="dlinks submenu">
+						<li><a class="hover-underline"
+							ng-click="cCctr.gotoHelpWOT('homeWOThelpPage', 'form27eqdetailsHelp')"><i
+								class="fa fa-info-circle" aria-hidden="true"></i> <span>Form
+									27EQ Details</span> </a></li>
+					</ul>
+				</li>
+
+
+				<li class="mainmenu ">
+					<h4 style="display: flex; justify-content: space-between;">
+						<div>
+							<a class="hover-underline forma"
+								ng-click="cCctr.gotoHelpWOT('homeWOThelpPage', 'form27QWOTHelp')"><img
+								src="/static/assets/images/HomeHelpPageIcon/Form27Q.png"
+								style="width: 30px;"><span>Form 27Q</span> </a>
+						</div>
+						<i class="fa fa-caret-down mainmenu formi" aria-hidden="true"></i>
+
+					</h4>
+
+					<ul class="dlinks submenu">
+						<li><a class="hover-underline"
+							ng-click="cCctr.gotoHelpWOT('homeWOThelpPage', 'form27qdetailsHelp')"><i
+								class="fa fa-info-circle" aria-hidden="true"></i> <span>Form
+									27Q Details</span> </a></li>
+					</ul>
+				</li>
+
+				<li class="mainmenu "><a class="hover-underline"
+					ng-click="cCctr.gotoHelpWOT('homeWOThelpPage', 'correctionRequestWOT')">
+						<h4>
+							<i class="fa fa-file" aria-hidden="true"></i><span>Correction/Query
+								Request</span>
+						</h4>
+				</a></li>
+
+				<li class="mainmenu "><a class="hover-underline"
+					ng-click="cCctr.gotoHelpWOT('homeWOThelpPage', 'regularReturnHelp')">
+						<h4>
+							<i class="fa fa-file-o" aria-hidden="true"></i><span>Regular
+								Return</span>
+						</h4>
+				</a></li>
+
+				<li class="mainmenu "><a class="hover-underline"
+					ng-click="cCctr.gotoHelpWOT('homeWOThelpPage', 'generateReportHelp')">
+						<h4>
+							<i class="fa fa-file-text" aria-hidden="true"></i><span>MIS
+								Generate Report</span>
+						</h4>
+				</a></li>
+
+				<!-- <li class="mainmenu ">
+					<h4 style="display: flex; justify-content: space-between;">
+						<div>
+							<i class="fa fa-info-circle" aria-hidden="true"></i><span>LDC
+								Details</span>
+						</div>
+						<i class="fa fa-caret-down mainmenu formi" aria-hidden="true"
+							style="width: 55px;"></i>
+
+					</h4>
+
+					<ul class="dlinks submenu">
+						<li><a class="hover-underline"
+							ng-click="cCctr.gotoHelpWOT('homeWOThelpPage', 'form15GHelp')"><span>15G</span>
+						</a></li>
+
+						<li><a class="hover-underline"
+							ng-click="cCctr.gotoHelpWOT('homeWOThelpPage', 'form15HHelp')"><span>15H</span>
+						</a></li>
+
+					</ul>
+				</li> -->
+
+
+
+				<li class="mainmenu "><a class="hover-underline"
+					ng-click="cCctr.gotoHelpWOT('homeWOThelpPage', 'support')">
+						<h4>
+							<i class="fa fa-envelope" aria-hidden="true"></i><span>Support</span>
+						</h4>
+				</a></li>
+
+				<li class="mainmenu "><a href="https://www.taxosmart.com/"
+					target="_blank" class="hover-underline" href=""> <span
+						style="float: left; margin-left: 0px;">Powered By</span><img
+						src="/static/img/TOS.png" style="width: 100%">
+				</a></li>
+
+
+
+			</div>
+
+
+		</nav>
+
+		<article>
+
+
+
+			<div class="page-content">
+				<div class="container-fluid">
+					<div ui-view></div>
+				</div>
+			</div>
+		</article>
+	</section>
+
+
+	<script>
+
+        const mainMenus = document.querySelectorAll('.mainmenu');
+
+        mainMenus.forEach(menu => {
+            // Add click event listener to each mainmenu
+            menu.addEventListener('click', () => {
+                menu.querySelector('.submenu').classList.toggle('show');
+            });
+        });
+
+
+
+        function ucon1() {
+            document.getElementById('arrowicon1').classList.toggle('moveicone');
+        }
+        function ucon2() {
+            document.getElementById('arrowicon2').classList.toggle('moveicone');
+        }
+        function ucon3() {
+            document.getElementById('arrowicon3').classList.toggle('moveicone');
+        }
+
+
+
+
+    </script>
+
+</body>
+</html>

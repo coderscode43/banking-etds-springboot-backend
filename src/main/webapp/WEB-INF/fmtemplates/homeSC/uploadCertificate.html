@@ -197,22 +197,16 @@ td .autoResize {
 									</div>
 								</div>
 							</button>
-							<button class="btn btn-secondary mobile tool" data-toggle="modal"
-								style="background-color: #FFA500; border-color: #FFA500;"
-								data-toggle="collapse" data-target="#UploadmyModal"
-								aria-expanded="false" data-parent="#UploadmyModal"
-								aria-controls="collapseExample">
+							<button class="btn btn-danger mobile tool" data-toggle="modal"
+								data-target="#certificateModal">
 								<div class=button-main-box>
 									<i class="fa fa-upload border-0 p-0"
-										style="color: #fff; display: block; background-color: transparent; font-size: 23px;"></i>
+										style="color: inherit; display: block; background-color: transparent; font-size: 23px;"></i>
 									<div class="button-tooltip-box">
-										<span class="tooltiptext Search">Upload Certificate
-											Button</span>
+										<span class="tooltiptext Search">Upload Certificate</span>
 									</div>
 								</div>
 							</button>
-
-
 
 							<button class="btn btn-primary mobile tool" data-toggle="modal"
 								ng-click="cCctr.generateExcel('apiuploadCertificate/generateExcel/','uploadCertificate')">
@@ -325,150 +319,128 @@ td .autoResize {
 	</div>
 </div>
 
-<!-- Modal -->
-<div class="modal" id="UploadmyModal" role="dialog">
-	<div class="modal-dialog" id="Popupmodal">
+<!-- upload Certificate modal -->
+	<div class="modal fade" id="certificateModal" role="dialog">
+		<form role="form" name="uploadCertificate">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
 
-		<!-- Modal content-->
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title">Upload Certificate</h4>
-
-				<button type="button" class="close" data-dismiss="modal"
-					onclick="location.reload()">&times;</button>
-
-			</div>
-			<div class="modal-body">
-
-				<form role="form" name="certificategenerateDetails"
-					enctype="multipart/form-data" modelAttribute="uploadForm"
-					method="POST">
-					<div class="row">
-
+						<h4 class="modal-title"><b>Upload Certificate</b></h4>
+						<button type="button" class="close" style="font-size: 24px;" data-dismiss="modal">&times;</button>
+					</div>
+					<div>
 						<div class="col-md-12">
 							<div class="form-group">
-								<h6>
-									<label style="font-size: 15px">TAN<span
-										style="color: red;">*</span></label>
-								</h6>
-								<select class="form-control" id="TAN" name="TAN"
-									title="Select TAN Number" ng-model="cCctr.entity.TAN"
-									ng-required="true">
-									<option disabled value="">Select TAN Number</option>
-									<#list Tan as TAN>
-									<option value="${TAN}">${TAN}</option>
+								<label style="font-size: 12px">TAN Number<span
+									style="color: red;">*</span></label> <select name="tan" id="tan"
+									title="Select TAN" class="form-control"
+									ng-model="cCctr.entity.tan" ng-required="true">
+									<option disabled value="">Select Tan</option>
+									<!-- <option value="ALL TAN" selected>ALL TAN</option -->>
+									<#list Tan as T>
+									<option value="${T}">${T}</option>
 									</#list>
 								</select> <span style="color: red"
-									ng-show="certificategenerateDetails.submitted ||certificategenerateDetails.TAN.$dirty && certificategenerateDetails.TAN.$invalid">
+									ng-show="uploadCertificate.submitted ||uploadCertificate.tan.$dirty && uploadCertificate.tan.$invalid">
 									<span class="error"
-									ng-show="certificategenerateDetails.TAN.$error.required">TAN
-										is Required. </span>
+									ng-show="uploadCertificate.tan.$error.required">TAN is
+										Required. </span>
 								</span>
 							</div>
 						</div>
-
-						<div>
-							<div class="col-md-12">
-								<div class="form-group">
-									<label style="font-size: 15px">Type of Certificate<span
-										style="color: red;">*</span></label> <select name="typeofCertificate"
-										id="typeofCertificate" title="Select Type of Certificate"
-										class="form-control" ng-model="cCctr.entity.form"
-										ng-required="true" ng-model-options="{updateOn: 'blur'}">
-										<option disabled value="">Select Certificate</option>
-										<#list typeOfCertificate as Certificate>
-
-										<option value="${Certificate}">${Certificate}</option>
-										</#list>
-									</select> <span style="color: red"
-										ng-show="certificategenerateDetails.submitted ||certificategenerateDetails.typeofCertificate.$dirty && certificategenerateDetails.typeofCertificate.$invalid">
-										<span class="error"
-										ng-show="certificategenerateDetails.typeofCertificate.$error.required">Type
-											of Certificate is Required.</span>
-									</span>
-								</div>
+					</div>
+					<div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<label style="font-size: 12px">Type of Certificate<span
+									style="color: red;">*</span></label> <select name="typeofCertificate"
+									id="typeofCertificate" title="Select Type of Certificate"
+									class="form-control" ng-model="cCctr.entity.typeofCertificate"
+									ng-required="true">
+									<option disabled value="">Select Certificate</option>
+									<#list typeOfCertificate as Certificate>
+									<option value="${Certificate}">${Certificate}</option>
+									</#list>
+								</select> <span style="color: red"
+									ng-show="uploadCertificate.submitted ||uploadCertificate.typeofCertificate.$dirty && uploadCertificate.typeofCertificate.$invalid">
+									<span class="error"
+									ng-show="uploadCertificate.typeofCertificate.$error.required">Type
+										of Certificate is Required.</span>
+								</span>
 							</div>
 						</div>
-
+					</div>
+					<div>
 						<div class="col-md-12">
-							<div>
-								<label style="font-size: 15px">Financial Year<span
-									style="color: red;">*</span></label> <select class="form-control"
-									id="fy" name="fy" title="Select Financial Year"
-									ng-model="cCctr.entity.fy" ng-required="true">
+							<div class="form-group">
+								<label style="font-size: 12px">Financial Year<span
+									style="color: red;">*</span></label> <select name="financialYear"
+									class="form-control" title="Select Financial Year"
+									id="financialYear" ng-model="cCctr.entity.financialYear"
+									ng-required="true">
 									<option disabled value="">Select financial Year</option>
 									<#list financialYear as year>
 									<option value="${year}">${year}</option>
 									</#list>
 								</select> <span style="color: red"
-									ng-show="certificategenerateDetails.submitted ||certificategenerateDetails.fy.$dirty && certificategenerateDetails.fy.$invalid">
+									ng-show="uploadCertificate.submitted ||uploadCertificate.financialYear.$dirty && uploadCertificate.financialYear.$invalid">
 									<span class="error"
-									ng-show="certificategenerateDetails.fy.$error.required">Financial
-										Year is Required. </span>
+									ng-show="uploadCertificate.financialYear.$error.required">Financial
+										Year is Required.</span>
 								</span>
 							</div>
 						</div>
-
+					</div>
+					<div>
 						<div class="col-md-12">
-							<div>
-								<label style="font-size: 15px">Quarter<span
-									style="color: red;">*</span></label> <select class="form-control"
-									id="quarter" name="quarter" title="Select Quarter"
+							<div class="form-group">
+								<label style="font-size: 12px">Quarter<span
+									style="color: red;">*</span></label> <select name="quarter"
+									class="form-control" title="Select Quarter" id="quarter"
 									ng-model="cCctr.entity.quarter" ng-required="true">
 									<option disabled value="">Select Quarter</option>
 									<#list Quarter as quarter>
 									<option value="${quarter}">${quarter}</option>
 									</#list>
 								</select> <span style="color: red"
-									ng-show="certificategenerateDetails.submitted ||certificategenerateDetails.quarter.$dirty && certificategenerateDetails.quarter.$invalid">
+									ng-show="uploadCertificate.submitted ||uploadCertificate.quarter.$dirty && uploadCertificate.quarter.$invalid">
 									<span class="error"
-									ng-show="certificategenerateDetails.quarter.$error.required">Quarter
+									ng-show="uploadCertificate.quarter.$error.required">Quarter
 										is Required. </span>
 								</span>
 							</div>
-
 						</div>
-
-						<div class="col-md-12">
-
-							<label for="name" style="font-size: 15px"> File<span
-								style="color: red;">*</span></label><span style="font-size: small">(upload
-								.zip file only)</span> <input multiple id="file-upload" type="file"
-								required name="zipFile" title="Select File" class="form-control"
-								file-model="cCctr.entity.zipFile" accept=".zip" /> <span
-								style="color: red"
-								ng-show="certificategenerateDetails.submitted ||certificategenerateDetails.zipFile.$dirty && certificategenerateDetails.zipFile.$invalid">
-								<span class="error"
-								ng-show="certificategenerateDetails.zipFile.$error.required">File
-									is Required. </span>
-							</span>
-						</div>
-
-
 					</div>
-				</form>
-			</div>
+					<div class="col-md-12">
+						<div class="col-md-12">
+							<label style="font-size: 13px; margin-top: 2%">Upload
+								Certificate&nbsp;<span
+									style="color: red;">*</span></label> <input id="file" type="file"
+								name="file" class="form-control"
+								ng-model="cCctr.entity.blob" file-model="cCctr.entity.blob" accept=".pdf,.zip" ng-required="true"/>
+								<span style="color: red"
+									ng-show="uploadCertificate.submitted ||uploadCertificate.file.$dirty && uploadCertificate.file.$invalid">
+									<span class="error"
+									ng-show="uploadCertificate.file.$error.required">Certificate
+										is Required. </span>
+								</span>	
+							<p class="allowedCSS">For single file upload (.pdf) file,<br> For bulk files upload (.zip) file.</p>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button"
+							class="btn btn-primary waves-effect waves-light"
+							ng-click="uploadCertificate.submitted=true;cCctr.uploadCertificate(uploadCertificate.$valid,'uploadCertificate',cCctr.entity)">Upload</button>
 
-			<div class="modal-footer">
-				<button class="btn btn-success waves-effect waves-light tool"
-					disabled data-dismiss="modal"
-					ng-click="certificategenerateDetails.submitted=true;cCctr.saveDocument(certificategenerateDetails.$valid,cCctr.entity,'uploadCertificate','close')"
-					onclick="hideDiv()">
-					<span class="   "> Add <span
-						class="tooltiptext tooltip-top4">Add Button</span></span>
-				</button>
-				<button class="btn btn-danger waves-effect waves-light tool"
-					data-dismiss="modal">
-					<span class="   " onclick="location.reload()"> Close <span
-						class="tooltiptext tooltip-top5">Close Button</span>
-					</span>
-				</button>
+						<button type="button"
+							class="btn btn-danger waves-effect waves-light"
+							data-dismiss="modal">Cancel</button>
+					</div>
+				</div>
 			</div>
-		</div>
+		</form>
 	</div>
-</div>
-
-
 
 <!-- Generate Model -->
 <div class="modal" id="generateModal" role="dialog">

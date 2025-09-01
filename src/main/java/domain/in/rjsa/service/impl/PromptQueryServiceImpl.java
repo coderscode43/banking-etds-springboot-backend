@@ -28,6 +28,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import domain.in.rjsa.dao.PromptQueryDao;
 import domain.in.rjsa.excel.PromptQueryExcel;
 import domain.in.rjsa.exception.CustomException;
+import domain.in.rjsa.model.wrapper.FileTypeWrapper;
 import domain.in.rjsa.service.PromptQueryService;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -45,7 +46,7 @@ public class PromptQueryServiceImpl implements PromptQueryService {
 	PromptQueryExcel promptQueryExcel;
 
 	@Override
-	public String processRequest(HashMap<String, Object> data) throws CustomException, Exception {
+	public String processRequest(HashMap<String, Object> data, FileTypeWrapper fileTypeWrapper) throws CustomException, Exception {
 		String fileType = data.get("fileType").toString();
 		data.remove("fileType");
 

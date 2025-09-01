@@ -40,6 +40,6 @@ public class Login extends CommonModelAbstract{
 	//@Column(name = "branchCode")
 	private Long branchCode;
 	//@Column(name = "authtoken")
-	private String authtoken;
+//	private String authtoken;
 	
 }

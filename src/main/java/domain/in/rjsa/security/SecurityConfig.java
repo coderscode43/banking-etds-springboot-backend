@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -16,12 +17,12 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
-import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.header.writers.ReferrerPolicyHeaderWriter;
 import org.springframework.security.web.header.writers.StaticHeadersWriter;
 
 @Configuration
 @EnableWebSecurity
+@Profile("normal")
 public class SecurityConfig {
 
 	@Autowired
@@ -29,10 +30,10 @@ public class SecurityConfig {
 	UserDetailsService userDetailsService;
 //	@Autowired
 //	HibernateTokenRepositoryImpl tokenRepository;
-	
+
 	@Autowired
-	PersistentTokenRepository tokenRepository; 
-	
+	PersistentTokenRepository tokenRepository;
+
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http, CustomAuthenticationProvider customAuthProvider)
 			throws Exception {
@@ -42,8 +43,8 @@ public class SecurityConfig {
 				.authorizeHttpRequests(auth -> auth
 						.requestMatchers("/login", "/logout", "/static/css/fonts/untitled-font-2*",
 								"/static/img/favicon.ico", "/static/img/tds.png",
-								"/static/assets/js/bootstrap.bundle.min.js", "/static/img/nialogo.png",
-								"/static/js/bootstrap.min.js", "/static/js/lib/bootstrap.js",
+								"/static/assets/js/bootstrap.bundle.min.js", "/static/img/NIA.png",
+								"/static/img/UCO.png", "/static/js/bootstrap.min.js", "/static/js/lib/bootstrap.js",
 								"/static/js/jquery.min.js", "/static/css/font-awesome.min.css",
 								"/static/fonts/css/font-awesome.css", "/static/css/signin.css",
 								"/static/css/bootstrap.min.css", "/static/img/TOS.png", "/apidownloadCertificate/**",

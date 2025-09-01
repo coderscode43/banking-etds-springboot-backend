@@ -24,6 +24,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import domain.in.rjsa.exception.CustomException;
 import domain.in.rjsa.exception.FieldErrorDTO;
+import domain.in.rjsa.model.wrapper.FileTypeWrapper;
 import domain.in.rjsa.service.PromptQueryService;
 
 @Controller
@@ -86,75 +87,93 @@ public class PromptQueryController {
 
 	@RequestMapping(value = "/TextToSQL", method = RequestMethod.POST)
 	public DeferredResult<ResponseEntity<?>> processPromptQuery(@RequestBody String data) {
-		logger.info("Request processing started");
+	    logger.info("Request processing started");
 
-		HashMap<String, Object> map = parse(data);
-		String fileType = map.get("fileType").toString();
+	    HashMap<String, Object> map = parse(data);
+	    String fileType = "EXCEL"; 
+	    FileTypeWrapper fileTypeWrapper = new FileTypeWrapper(fileType);
 
-		// free the HTTP thread and run the processing on a new worker thread
-		DeferredResult<ResponseEntity<?>> deferredResult = new DeferredResult<ResponseEntity<?>>(900000L); // 15m
+	    // Determine file type based on query condition
+	    if (map.get("query").toString().toLowerCase().contains("certificate")) {
+	    	fileTypeWrapper.setFileType("PDF");
+	    }
 
-		// timeout callback
-		deferredResult.onTimeout(() -> {
-			deferredResult.setErrorResult(
-					ResponseEntity.status(HttpStatus.GATEWAY_TIMEOUT).body(setExeptionMsg("Request timmeout")));
-		});
+	    // free the HTTP thread and run the processing on a new worker thread
+	    DeferredResult<ResponseEntity<?>> deferredResult = new DeferredResult<>(900000L); // 15m
 
-		// pass a service method to an ExecutorService to manage concurrency.
-		CompletableFuture.supplyAsync(() -> {
-			logger.info("Processing on separate thread");
+	    // timeout callback
+	    deferredResult.onTimeout(() -> {
+	        deferredResult.setErrorResult(
+	                ResponseEntity.status(HttpStatus.GATEWAY_TIMEOUT).body(setExeptionMsg("Request timeout")));
+	    });
 
-			String encodedFile = "";
-			try {
-				encodedFile = service.processRequest(map);
+	    // pass a service method to an ExecutorService to manage concurrency
+	    CompletableFuture.supplyAsync(() -> {
+	        logger.info("Processing on separate thread");
 
-			} catch (CustomException e) {
-				logger.error("A custom exception occurred", e);
-				throw new CompletionException(e);
-			} catch (Exception e) {
-				logger.error("An error occurred", e);
-				throw new CompletionException(e);
-			}
-			return encodedFile;
+	        String encodedFile = "";
+	        try {
+	            encodedFile = service.processRequest(map,fileTypeWrapper);
 
-		}, executorService).thenAccept(encodedFile -> {
-			if (encodedFile != null && encodedFile.length() > 0) {
-				handleFileResponse(encodedFile, deferredResult, fileType);
+	            if (encodedFile.contains("ErrorMsg")) {
+	                deferredResult.setErrorResult(ResponseEntity.status(HttpStatus.BAD_REQUEST)
+	                        .body(setExeptionMsg(encodedFile)));
+	            }
 
-			} else {
-				deferredResult.setErrorResult(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-						.body(setExeptionMsg("File Path is empty.")));
-			}
+	        } catch (CustomException e) {
+	            logger.error("A custom exception occurred", e);
+	            throw new CompletionException(e);
+	        } catch (Exception e) {
+	            logger.error("An error occurred", e);
+	            throw new CompletionException(e);
+	        }
+	        return encodedFile;
 
-		}).exceptionally(ex -> {
-			logger.info("An Exception occurred in supplyAsync", ex);
-			if (ex.getCause() instanceof CustomException) {
-				deferredResult.setErrorResult(
-						ResponseEntity.status(HttpStatus.BAD_REQUEST).body(setExeptionMsg(ex.getCause().getMessage())));
-			} else {
-				deferredResult.setErrorResult(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-						.body(setExeptionMsg("An error occurred")));
-			}
-			return null;
-		});
-		logger.info("Servlet thread freed");
+	    }, executorService).thenAccept(encodedFile -> {
+	        if (encodedFile != null && encodedFile.length() > 0) {
+	            handleFileResponse(encodedFile, deferredResult, fileTypeWrapper);
+	        } else {
+	            deferredResult.setErrorResult(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+	                    .body(setExeptionMsg("File Path is empty.")));
+	        }
 
-		return deferredResult;
+	    }).exceptionally(ex -> {
+	        logger.info("An Exception occurred in supplyAsync", ex);
+	        if (ex.getCause() instanceof CustomException) {
+	            deferredResult.setErrorResult(
+	                    ResponseEntity.status(HttpStatus.BAD_REQUEST).body(setExeptionMsg(ex.getCause().getMessage())));
+	        } else {
+	            deferredResult.setErrorResult(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+	                    .body(setExeptionMsg("An error occurred")));
+	        }
+	        return null;
+	    });
+	    logger.info("Servlet thread freed");
+
+	    return deferredResult;
 	}
 
 	private void handleFileResponse(String encodedFile, DeferredResult<ResponseEntity<?>> deferredResult,
-			String fileType) {
+			FileTypeWrapper fileTypeWrapper) {
+		String fileType = fileTypeWrapper.getFileType();
+		HashMap<String,String> map = new HashMap<>();
 		try {
 			HttpHeaders headers = new HttpHeaders();
 			if (fileType.equalsIgnoreCase("EXCEL")) {
 				headers.add(HttpHeaders.CONTENT_TYPE, "application/vnd.ms-excel");
-
-			} else if (fileType.equalsIgnoreCase("CSV")) {
-				headers.add(HttpHeaders.CONTENT_TYPE, "text/csv");
 			}
-
+			else if (fileType.equalsIgnoreCase("PDF")) {
+				headers.add(HttpHeaders.CONTENT_TYPE, "application/pdf");
+			}
+			else if (fileType.equalsIgnoreCase("ZIP")) {
+				headers.add(HttpHeaders.CONTENT_TYPE, "application/zip");
+			}
+			
+			map.put("fileType", fileTypeWrapper.getFileType());
+			map.put("encodedFile", encodedFile);
+			
 			deferredResult.setResult(ResponseEntity.status(HttpStatus.OK)
-					.body(Map.of("fileType", fileType, "encodedFile", encodedFile)));
+					.body(map));
 		} catch (Exception e) {
 			logger.error("Could not read file", e);
 			e.printStackTrace();

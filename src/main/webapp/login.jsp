@@ -137,10 +137,10 @@ footer {
 						value="${_csrf.token}" />
 					<!-- CSRF Token -->
 
-					<img src="static/img/ioblogo.png" alt=""
+					<img src="static/img/${applicationScope.projectName}.png" alt=""
 						style="width: 90%; margin-left: 5%; height: 75px;">
 					<h3 class="form-signin-heading">
-						<b>LOGIN</b>
+						<b>LOGIN</b>${applicationScope.projectName}
 					</h3>
 
 					<p style="color: red;">

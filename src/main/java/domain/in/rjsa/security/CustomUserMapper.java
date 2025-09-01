@@ -75,8 +75,13 @@ public class CustomUserMapper extends LdapUserDetailsMapper{
 
 		// For Local
 		customUserDetails.setBranchCode("1015");
+		domain.in.rjsa.model.form.UserDetails user = null;
 
-		domain.in.rjsa.model.form.UserDetails user = applicationCache.getAdminUser(username);
+		try {
+			user = applicationCache.getAdminUser(username);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		String branchCode = customUserDetails.getBranchCode();
 

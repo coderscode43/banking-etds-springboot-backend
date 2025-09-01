@@ -3,6 +3,7 @@ package domain.in.rjsa.confirguration;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
@@ -12,6 +13,7 @@ import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.caffeine.CaffeineCacheManager;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.env.Environment;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -29,6 +31,7 @@ import com.github.benmanes.caffeine.cache.Caffeine;
 
 import domain.in.rjsa.interceptors.UserAuthorisationInterceptor;
 import jakarta.annotation.PostConstruct;
+import jakarta.servlet.ServletContext;
 
 @SpringBootApplication(exclude = { DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class , ErrorMvcAutoConfiguration.class})
 @EnableCaching
@@ -36,10 +39,18 @@ import jakarta.annotation.PostConstruct;
 @EnableScheduling
 @Controller
 public class BankingETDSBootApplication extends SpringBootServletInitializer implements WebMvcConfigurer {
+	
+	@Autowired
+    private ServletContext servletContext;
+	
+	@Autowired
+    private Environment environment;
 
 	@PostConstruct
 	public void init() {
 		TimeZone.setDefault(TimeZone.getTimeZone("Asia/Kolkata"));
+		String projectName = environment.getRequiredProperty("panel.access");
+        servletContext.setAttribute("projectName", projectName);
 	}
 
 	@Override

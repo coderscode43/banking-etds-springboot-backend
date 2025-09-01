@@ -44,7 +44,7 @@ App.controller('CommonController', [
 		self.company = {};
 		self.delete = {};
 		self.lastSearch = {};
-		self.currentPage = 1; 
+		self.currentPage = 1;
 		self.PreviousNo = 1;
 		self.srNo = 1;
 		self.batchColor = {};
@@ -1142,7 +1142,7 @@ App.controller('CommonController', [
 			self.temp3 = {};
 			self.temp1 = [];
 			self.company = {};
-			self.currentPage = 1; 
+			self.currentPage = 1;
 			self.PreviousNo = 1;
 			self.srNo = 1;
 			self.batchColor = {};
@@ -1593,55 +1593,55 @@ App.controller('CommonController', [
 			}
 
 		}
-		
+
 		//For downloading with branch16A login
 		self.downloadBranchZip = function(valid, url, branchCode) {
-					if (valid == true) {
-						wait(1000);
-						url = url + '/' + branchCode;
-						self.fileLoader = url;
-						CommonServiceFY.check(url)
-							.then(
-								function(data) {
-									window.open(self.fileLoader, "_blank")
-									console
-										.log('Download successfully');
-									self.ok();
-									$('#successMsg')
-										.find(
-											'.modal-header')
-										.find(
-											'.headingMsg')
-										.append(
-											"Successful");
-									$('#successMsg')
-										.find(
-											'.modal-body')
-										.find('.msg')
-										.append(
-											" Downloaded successfully");
-									$("#successMsg")
-										.modal();
+			if (valid == true) {
+				wait(1000);
+				url = url + '/' + branchCode;
+				self.fileLoader = url;
+				CommonServiceFY.check(url)
+					.then(
+						function(data) {
+							window.open(self.fileLoader, "_blank")
+							console
+								.log('Download successfully');
+							self.ok();
+							$('#successMsg')
+								.find(
+									'.modal-header')
+								.find(
+									'.headingMsg')
+								.append(
+									"Successful");
+							$('#successMsg')
+								.find(
+									'.modal-body')
+								.find('.msg')
+								.append(
+									" Downloaded successfully");
+							$("#successMsg")
+								.modal();
 
-								},
-								function(error) {
-									console
-										.error('Error while updating details, '
-											+ status);
-									$('#errorMsg')
-										.find(
-											'.modal-body')
-										.find(
-											'.msg')
-										.append(
-											"Generation of zip file in process, please check after sometime.");
-									$("#errorMsg")
-										.modal();
+						},
+						function(error) {
+							console
+								.error('Error while updating details, '
+									+ status);
+							$('#errorMsg')
+								.find(
+									'.modal-body')
+								.find(
+									'.msg')
+								.append(
+									"Generation of zip file in process, please check after sometime.");
+							$("#errorMsg")
+								.modal();
 
-								});
-					}
+						});
+			}
 
-				}
+		}
 
 		self.downloadCertificate = function(valid, deductee, certificate, fy, q, pan) {
 			if (valid == true) {
@@ -1723,7 +1723,7 @@ App.controller('CommonController', [
 			self.temp3 = {};
 			self.temp1 = [];
 			self.company = {};
-			self.currentPage = 1; 
+			self.currentPage = 1;
 			self.PreviousNo = 1;
 			self.srNo = 1;
 			self.batchColor = {};
@@ -2165,7 +2165,7 @@ App.controller('CommonController', [
 			self.temp3 = {};
 			self.temp1 = [];
 			self.company = {};
-			self.currentPage = 1; 
+			self.currentPage = 1;
 			self.PreviousNo = 1;
 			self.srNo = 1;
 			self.batchColor = {};
@@ -2221,7 +2221,7 @@ App.controller('CommonController', [
 			self.temp3 = {};
 			self.temp1 = [];
 			self.company = {};
-			self.currentPage = 1; 
+			self.currentPage = 1;
 			self.PreviousNo = 1;
 			self.srNo = 1;
 			self.batchColor = {};
@@ -2249,7 +2249,7 @@ App.controller('CommonController', [
 			self.temp3 = {};
 			self.temp1 = [];
 			self.company = {};
-			self.currentPage = 1; 
+			self.currentPage = 1;
 			self.PreviousNo = 1;
 			self.srNo = 1;
 			self.batchColor = {};
@@ -3290,117 +3290,117 @@ App.controller('CommonController', [
 		}
 
 		self.updateDeductee = function(valid, temp, object, remarkId, deducteeId, entity) {
-			if(valid == true){
-			console.log("Common Controller addDeducteeRemark");
-			if (temp.typeOfAction == 'Approved') {
-				CommonService.updatedeductee(object, remarkId, deducteeId, entity)
-					.then(
-						function(data) {
-							console
-								.log(entity
-									+ ' Updated Successfully');
-							$('.modal').modal(
-								"hide");
-							self.ok();
-							$('#successMsg')
-								.find(
-									'.modal-header')
-								.find(
-									'.headingMsg')
-								.append(
-									"Successfull");
-							$('#successMsg')
-								.find(
-									'.modal-body')
-								.find('.msg')
-								.append(
-									" Updated Successfully");
-							$("#successMsg")
-								.modal();
-
-						},
-						function(error) {
-							console
-								.error('Error while updating details, '
-									+ status);
-							self.ok();
-							if (error.exceptionMsg != null
-								&& error.exceptionMsg != undefined) {
-								$('#errorMsg')
+			if (valid == true) {
+				console.log("Common Controller addDeducteeRemark");
+				if (temp.typeOfAction == 'Approved') {
+					CommonService.updatedeductee(object, remarkId, deducteeId, entity)
+						.then(
+							function(data) {
+								console
+									.log(entity
+										+ ' Updated Successfully');
+								$('.modal').modal(
+									"hide");
+								self.ok();
+								$('#successMsg')
+									.find(
+										'.modal-header')
+									.find(
+										'.headingMsg')
+									.append(
+										"Successfull");
+								$('#successMsg')
 									.find(
 										'.modal-body')
-									.find(
-										'.msg')
+									.find('.msg')
 									.append(
-										"Can not update "
-										+ " : "
-										+ error.exceptionMsg);
-								$("#errorMsg")
+										" Updated Successfully");
+								$("#successMsg")
 									.modal();
-							} else {
-								for (var i = 0; i < error.fieldErrors.length; i++) {
-									var obj = error.fieldErrors[i];
-									document
-										.getElementById(obj.fieldName).innerHTML = obj.message;
-								}
-							}
-						});
-			}
-			else {
-				self.entity.deductee.resolved = true;
-				CommonService.rejectductee(temp.rejectRemark, self.entity.deductee, remarkId, deducteeId, entity)
-					.then(
-						function(data) {
-							console
-								.log(entity
-									+ ' Updated Successfully');
-							$('.modal').modal(
-								"hide");
-							self.ok();
-							$('#successMsg')
-								.find(
-									'.modal-header')
-								.find(
-									'.headingMsg')
-								.append(
-									"Successfull");
-							$('#successMsg')
-								.find(
-									'.modal-body')
-								.find('.msg')
-								.append(
-									" Updated Successfully");
-							$("#successMsg")
-								.modal();
 
-						},
-						function(error) {
-							console
-								.error('Error while updating details, '
-									+ status);
-							self.ok();
-							if (error.exceptionMsg != null
-								&& error.exceptionMsg != undefined) {
-								$('#errorMsg')
+							},
+							function(error) {
+								console
+									.error('Error while updating details, '
+										+ status);
+								self.ok();
+								if (error.exceptionMsg != null
+									&& error.exceptionMsg != undefined) {
+									$('#errorMsg')
+										.find(
+											'.modal-body')
+										.find(
+											'.msg')
+										.append(
+											"Can not update "
+											+ " : "
+											+ error.exceptionMsg);
+									$("#errorMsg")
+										.modal();
+								} else {
+									for (var i = 0; i < error.fieldErrors.length; i++) {
+										var obj = error.fieldErrors[i];
+										document
+											.getElementById(obj.fieldName).innerHTML = obj.message;
+									}
+								}
+							});
+				}
+				else {
+					self.entity.deductee.resolved = true;
+					CommonService.rejectductee(temp.rejectRemark, self.entity.deductee, remarkId, deducteeId, entity)
+						.then(
+							function(data) {
+								console
+									.log(entity
+										+ ' Updated Successfully');
+								$('.modal').modal(
+									"hide");
+								self.ok();
+								$('#successMsg')
+									.find(
+										'.modal-header')
+									.find(
+										'.headingMsg')
+									.append(
+										"Successfull");
+								$('#successMsg')
 									.find(
 										'.modal-body')
-									.find(
-										'.msg')
+									.find('.msg')
 									.append(
-										"Can not update "
-										+ " : "
-										+ error.exceptionMsg);
-								$("#errorMsg")
+										" Updated Successfully");
+								$("#successMsg")
 									.modal();
-							} else {
-								for (var i = 0; i < error.fieldErrors.length; i++) {
-									var obj = error.fieldErrors[i];
-									document
-										.getElementById(obj.fieldName).innerHTML = obj.message;
+
+							},
+							function(error) {
+								console
+									.error('Error while updating details, '
+										+ status);
+								self.ok();
+								if (error.exceptionMsg != null
+									&& error.exceptionMsg != undefined) {
+									$('#errorMsg')
+										.find(
+											'.modal-body')
+										.find(
+											'.msg')
+										.append(
+											"Can not update "
+											+ " : "
+											+ error.exceptionMsg);
+									$("#errorMsg")
+										.modal();
+								} else {
+									for (var i = 0; i < error.fieldErrors.length; i++) {
+										var obj = error.fieldErrors[i];
+										document
+											.getElementById(obj.fieldName).innerHTML = obj.message;
+									}
 								}
-							}
-						});
-			}
+							});
+				}
 			}
 		}
 
@@ -3608,8 +3608,8 @@ App.controller('CommonController', [
 			}
 			return true;
 		}
-		
-		
+
+
 		self.uploadRegularReturn = function(valid, entity, documents, page) {
 			if (valid == true) {
 				entity.docs = documents.docs;
@@ -3621,8 +3621,8 @@ App.controller('CommonController', [
 								.log(entity
 									+ ' added successfully');
 
-						//	angular.element('#' + closeModalId).trigger('click');
-						//	self.ok();
+							//	angular.element('#' + closeModalId).trigger('click');
+							//	self.ok();
 							$('#successMsg').find('.modal-header').find('.headingMsg').append("Successfull");
 							$('#successMsg').find('.modal-body').find('.msg').append("Saved successfully");
 							$('#myModal').modal('hide');
@@ -3650,7 +3650,7 @@ App.controller('CommonController', [
 						});
 			}
 		}
-		
+
 
 		self.submitWithFile = function(valid, entity, page, closeModalId) {
 			if (valid == true) {
@@ -3696,7 +3696,7 @@ App.controller('CommonController', [
 								$('#errorMsg').find('.modal-body').find('.msg').append("Can not save " + error.entityName + " : " + error.exceptionMsg);
 								$("#errorMsg").modal();
 							} else {
-								if(error.fieldErrors &&  error.fieldErrors.length > 0) {
+								if (error.fieldErrors && error.fieldErrors.length > 0) {
 									for (var i = 0; i < error.fieldErrors.length; i++) {
 										var obj = error.fieldErrors[i];
 										document.getElementById(obj.fieldName).innerHTML = obj.message;
@@ -3806,6 +3806,78 @@ App.controller('CommonController', [
 				});
 			}
 		}
+
+
+		self.chatMessages = []; // Store chat records
+		self.showDownloadButton = false; // Flag to control the visibility of the download button
+
+		self.sendMessageAndGenerate = function(valid) {
+			if (valid) {
+				var userQuery = self.sqlAI.query;
+				self.chatMessages.push({ sender: "You ", text: userQuery });
+				self.sqlAI.query = "";
+
+				var jsonData = JSON.stringify({ query: userQuery });
+
+				CommonService.getDataWithAI(jsonData, 'promptQuery').then(function(response) {
+					// Start polling for the result
+					pollForResult(response.requestId);
+				}, function(error) {
+					console.log(error);
+					self.chatMessages.push({ sender: "AI", text: "Error: Request failed." });
+				});
+			}
+		};
+
+		function pollForResult(requestId) {
+			var pollInterval = setInterval(function() {
+				CommonService.getStatus(requestId).then(function(response) {
+					if (response.status === "Completed") {
+						clearInterval(pollInterval);
+
+						// Determine file type and name
+						var mimeType, fileName;
+						if (response.fileType === "EXCEL") {
+							mimeType = 'application/vnd.ms-excel';
+							fileName = 'AIGeneratedFile.xlsx';
+						} else if (response.fileType === "ZIP") {
+							mimeType = 'application/zip';
+							fileName = 'AIGeneratedFile.zip';
+						} else if (response.fileType === "PDF") {
+							mimeType = 'application/pdf';
+							fileName = 'AIGeneratedFile.pdf';
+						} else {
+							mimeType = 'application/octet-stream';
+							fileName = 'AIGeneratedFile';
+						}
+
+						// Process file download
+						var byteCharacters = atob(response.encodedFile);
+						var byteNumbers = new Uint8Array(byteCharacters.length);
+						for (var i = 0; i < byteCharacters.length; i++) {
+							byteNumbers[i] = byteCharacters.charCodeAt(i);
+						}
+						var blob = new Blob([byteNumbers], { type: mimeType });
+
+						var url = window.URL.createObjectURL(blob);
+
+						self.chatMessages.push({
+							sender: 'AI',
+							text: "Your file is ready for download!",
+							showDownloadButton: true,
+							fileUrl: url,
+							fileName: fileName
+						});
+					} else {
+						clearInterval(pollInterval);
+						self.chatMessages.push({ sender: 'AI', text: "Error: " + response.status });
+					}
+				});
+			}, 5000); // Poll every 5 seconds
+		}
+
+
+
 
 	}]);
 App.directive('fileModel', ['$parse', function($parse) {

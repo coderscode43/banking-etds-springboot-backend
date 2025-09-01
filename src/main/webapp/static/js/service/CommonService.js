@@ -47,6 +47,8 @@ App.factory('CommonService', [
 			rejectductee: rejectductee,
 			uploadCertificate: uploadCertificate,
 			saveRegularReturn: saveRegularReturn,
+			getDataWithAI: getDataWithAI,
+			getStatus : getStatus,
 
 		};
 		return factory;
@@ -361,12 +363,12 @@ App.factory('CommonService', [
 		function saveRegularReturn(entitySave, entity) {
 			var dat = new FormData();
 
-				for (let i = 0; i < entitySave.docs.length; i++) {
-					if (entitySave.docs[i].blob != undefined) {
-						dat.append('blob', entitySave.docs[i].blob)
-					}
-
+			for (let i = 0; i < entitySave.docs.length; i++) {
+				if (entitySave.docs[i].blob != undefined) {
+					dat.append('blob', entitySave.docs[i].blob)
 				}
+
+			}
 
 			dat.append('tdsfileblob', entitySave.tdsfileblob);
 			//dat.append('reportfileblob', entitySave.reportfileblob);
@@ -745,6 +747,30 @@ App.factory('CommonService', [
 		function getMysql(data, entity) {
 			var deferred = $q.defer();
 			$http.get(REST_SERVICE_URI + entity + '/get/' + data)
+				.success(function(data) {
+					deferred.resolve(data);
+				}).error(function(status) {
+					deferred.reject(status);
+				});
+
+			return deferred.promise;
+		}
+
+		function getDataWithAI(data, entity) {
+			var deferred = $q.defer();
+			$http.post(REST_SERVICE_URI + entity + '/TextToSQL', data)
+				.success(function(data) {
+					deferred.resolve(data);
+				}).error(function(status) {
+					deferred.reject(status);
+				});
+
+			return deferred.promise;
+		}
+
+		function getStatus(requestId) {
+			var deferred = $q.defer();
+			$http.get(REST_SERVICE_URI + 'promptQuery/status/' + requestId)
 				.success(function(data) {
 					deferred.resolve(data);
 				}).error(function(status) {

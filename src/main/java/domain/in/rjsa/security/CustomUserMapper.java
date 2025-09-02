@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.ldap.core.DirContextOperations;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.GrantedAuthority;
@@ -21,16 +22,8 @@ public class CustomUserMapper extends LdapUserDetailsMapper{
 	@Autowired
 	ApplicationCache applicationCache;
 	
-//    @Override
-//    public CustomUserDetails mapUserFromContext(DirContextOperations ctx, String username, Collection<? extends GrantedAuthority> authorities){
-//    	LdapUserDetails details = (LdapUserDetails) super.mapUserFromContext(ctx, username, authorities);
-//    	
-//        CustomUserDetails customUserDetails = new CustomUserDetails(details);
-//        
-//       customUserDetails.setPhysicalDeliveryOfficeName(ctx.getStringAttribute("physicalDeliveryOfficeName"));
-////        customUserDetails.setPhysicalDeliveryOfficeName(ctx.getStringAttribute("cn"));
-//        return customUserDetails;
-//    }
+	@Value("${panel.access:}")
+	private String panelAccess;
 	
 	@Override
 	public CustomUserDetails mapUserFromContext(DirContextOperations ctx, String username,
@@ -66,15 +59,22 @@ public class CustomUserMapper extends LdapUserDetailsMapper{
 //	    } catch (Exception e) {
 //	        e.printStackTrace();
 //	    }
-		logger.info("============================ BranchCode from LDAP Attribute: ============================");
-		logger.info("branchCode - " + ctx.getStringAttribute("postofficebox"));
-		logger.info("============================ BranchCode from LDAP Attribute: ============================");
 
 		// For War
-//		customUserDetails.setBranchCode(ctx.getStringAttribute("postofficebox"));
-
+//		if("IOB".equalsIgnoreCase(panelAccess)) {
+//			customUserDetails.setBranchCode(ctx.getStringAttribute("postofficebox"));
+//		}else if("KB".equalsIgnoreCase(panelAccess)) {
+//			customUserDetails.setBranchCode(ctx.getStringAttribute("physicalDeliveryOfficeName"));
+//		}
+		
 		// For Local
 		customUserDetails.setBranchCode("1015");
+
+		logger.info("============================ BranchCode from LDAP Attribute: ============================");
+		logger.info("##### BranchCode - " + customUserDetails.getBranchCode() + " #####");
+		logger.info("============================ BranchCode from LDAP Attribute: ============================");
+		
+		
 		domain.in.rjsa.model.form.UserDetails user = null;
 
 		try {
@@ -93,10 +93,6 @@ public class CustomUserMapper extends LdapUserDetailsMapper{
 		} else if (user == null) {
 		    throw new BadCredentialsException("Authentication failed: Branchcode could not be found");
 		}
-
-
-		// Set the attribute in CustomUserDetails
-		customUserDetails.setPhysicalDeliveryOfficeName(ctx.getStringAttribute("physicalDeliveryOfficeName"));
 
 		return customUserDetails;
 	}

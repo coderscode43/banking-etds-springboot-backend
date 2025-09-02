@@ -4,6 +4,7 @@ import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
@@ -13,7 +14,6 @@ import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.caffeine.CaffeineCacheManager;
 import org.springframework.context.annotation.Bean;
-import org.springframework.core.env.Environment;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -43,14 +43,13 @@ public class BankingETDSBootApplication extends SpringBootServletInitializer imp
 	@Autowired
     private ServletContext servletContext;
 	
-	@Autowired
-    private Environment environment;
+	@Value("${panel.access:}")
+	private String panelAccess;
 
 	@PostConstruct
 	public void init() {
 		TimeZone.setDefault(TimeZone.getTimeZone("Asia/Kolkata"));
-		String projectName = environment.getRequiredProperty("panel.access");
-        servletContext.setAttribute("projectName", projectName);
+        servletContext.setAttribute("projectName", panelAccess);
 	}
 
 	@Override

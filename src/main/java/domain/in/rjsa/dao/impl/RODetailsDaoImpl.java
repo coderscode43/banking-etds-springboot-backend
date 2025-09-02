@@ -112,19 +112,17 @@ package domain.in.rjsa.dao.impl;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import jakarta.persistence.TypedQuery;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Predicate;
-import jakarta.persistence.criteria.Root;
 
 import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractDaoForm;
 import domain.in.rjsa.dao.RODetailsDao;
 import domain.in.rjsa.model.form.RODetails;
+import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 
 @Repository("RODetailsDao")
 public class RODetailsDaoImpl extends AbstractDaoForm<Long, RODetails> implements RODetailsDao {

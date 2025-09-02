@@ -89,23 +89,21 @@
 package domain.in.rjsa.dao.impl;
 
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.ArrayList;
 
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Predicate;
-import jakarta.persistence.criteria.Root;
-
-import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractDaoForm;
 import domain.in.rjsa.dao.UploadCertificateDao;
 import domain.in.rjsa.model.fy.UploadCertificate;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 
 @Repository("uploadCertificateDao")
 public class UploadCertificateDaoImpl extends AbstractDaoForm<Long, UploadCertificate> implements UploadCertificateDao {

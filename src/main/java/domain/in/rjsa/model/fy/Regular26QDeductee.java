@@ -3,16 +3,6 @@ package domain.in.rjsa.model.fy;
 import java.text.ParseException;
 import java.util.Date;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
-
-import org.hibernate.annotations.GenericGenerator;
 import org.json.simple.JSONObject;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -23,144 +13,95 @@ import domain.in.rjsa.util.JsonDateSerializer;
 import lombok.Data;
 
 @Data
-//@Entity
-//@Table(name = "AAACN4165C_2324.regular26QDeductee")
 public class Regular26QDeductee extends CommonModelAbstract {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	//@Id
-	//@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-	//@GenericGenerator(name = "native", strategy = "native")
-	//@Column(name = "id")
 	public Long id;
 
-	//@Column(name = "challanHeading")
 	public String challanHeading;
 
-	//@Column(name = "deducteeRefNo")
 	public String deducteeRefNo;
 
-	//@Column(name = "deducteeCode")
 	public String deducteeCode;
 
-	//@Column(name = "pan")
 	public String pan;
 
-	//@Column(name = "name")
 	public String name;
 
-	//@Column(name = "sectionCode")
 	public String sectionCode;
 
-	//@Column(name = "dateOfPayment")
-	//@Temporal(TemporalType.DATE)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Kolkata")
 	public Date dateOfPayment;
 
-	//@Column(name = "amountPaid")
 	public Double amountPaid;
 
-	//@Column(name = "tds")
 	public Double tds;
 
-	//@Column(name = "surcharge")
 	public Double surcharge;
 
-	//@Column(name = "eduCess")
 	public Double eduCess;
 
-	//@Column(name = "totalTaxDeducted")
 	public Double totalTaxDeducted;
 
-	//@Column(name = "totalTaxDeposited")
 	public Double totalTaxDeposited;
 
-	//@Column(name = "dateOfDeduction")
-	//@Temporal(TemporalType.DATE)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Kolkata")
 	public Date dateOfDeduction;
 
-	//@Column(name = "rateAtWhichTaxCollected")
 	public Double rateAtWhichTaxCollected;
 
-	//@Column(name = "remarksReason")
 	public String remarksReason;
 
-	//@Column(name = "certificateNumber")
 	public String certificateNumber;
 
-	//@Column(name = "fy")
 	public String fy;
 
-	//@Column(name = "quarter")
 	public String quarter;
 
-	//@Column(name = "branchCode")
 	public String branchCode;
 
-	//@Column(name = "accNo")
 	public String accNo;
 
-	//@Column(name = "challanSrNo")
 	public Long challanSrNo;
 
-	//@Column(name = "month")
 	public String month;
 
-	//@Column(name = "custVendId")
 	public String custVendId;
 
-	//@Column(name = "uniqueRefNo")
 	public String uniqueRefNo;
 
-	//@Column(name = "cashWithdrawal194N")
 	public Double cashWithdrawal194N;
 
-	//@Column(name = "cashWithdrawal194N20Lto1Cr")
 	public Double cashWithdrawal194N20Lto1Cr;
 
-	//@Column(name = "cashWithdrawal194N1Cr")
 	public Double cashWithdrawal194N1Cr;
 
-	//@Column(name = "TAN")
 	public String TAN;
 
-	//@Column(name = "roCode")
 	public String roCode;
 
-	//@Column(name = "errorDescription")
 	public String errorDescription;
 
-	//@Column(name = "warningDescription")
 	public String warningDescription;
 
-	//@Column(name = "ShortDeduction")
 	public Double shortDeduction;
 
-	//@Column(name = "InterestOnShortDeduction")
 	public Double interestOnShortDeduction;
 
-	//@Column(name = "InterestOnLatePayment")
 	public Double interestOnLatePayment;
 
-	//@Column(name = "InterestOnLateDeduction")
 	public Double interestOnLateDeduction;
 
-	//@Column(name = "resolved")
 	public boolean resolved;
 
-	//@Column(name = "comments")
 	public String comments;
 
-	//@Column(name = "deducteeSrNo")
 	public Long deducteeSrNo;
 
-	//@Column(name = "tranAmt")
 	public Double tranAmt;
 
-	//@Column(name = "additionalDetail")
 	public String additionalDetail;
 
 	@JsonSerialize(using = JsonDateSerializer.class)

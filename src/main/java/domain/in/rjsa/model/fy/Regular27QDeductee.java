@@ -3,16 +3,6 @@ package domain.in.rjsa.model.fy;
 import java.text.ParseException;
 import java.util.Date;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
-
-import org.hibernate.annotations.GenericGenerator;
 import org.json.simple.JSONObject;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -23,177 +13,117 @@ import domain.in.rjsa.util.JsonDateSerializer;
 import lombok.Data;
 
 @Data
-//@Entity
-//@Table(name = "AAACN4165C_2324.regular27QDeductee")
 public class Regular27QDeductee extends CommonModelAbstract {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	//@Id
-	//@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-	//@GenericGenerator(name = "native", strategy = "native")
-	//@Column(name = "id")
 	public Long id;
 
-	//@Column(name = "challanHeading")
 	public String challanHeading;
 
-	//@Column(name = "deducteeRefNo")
 	public String deducteeRefNo;
 
-	//@Column(name = "deducteeCode")
 	public String deducteeCode;
 
-	//@Column(name = "pan")
 	public String pan;
 
-	//@Column(name = "name")
 	public String name;
 
-	//@Column(name = "sectionCode")
 	public String sectionCode;
 
-	//@Temporal(TemporalType.DATE)
-	//@Column(name = "dateOfPayment")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Kolkata")
 	public Date dateOfPayment;
 
-	//@Column(name = "amountPaid")
 	public Double amountPaid;
 
-	//@Column(name = "tds")
 	public Double tds;
 
-	//@Column(name = "surcharge")
 	public Double surcharge;
 
-	//@Column(name = "eduCess")
 	public Double eduCess;
 
-	//@Column(name = "totalTaxDeducted")
 	public Double totalTaxDeducted;
 
-	//@Column(name = "totalTaxDeposited")
 	public Double totalTaxDeposited;
 
-	//@Temporal(TemporalType.DATE)
-	//@Column(name = "dateOfDeduction")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Kolkata")
 	public Date dateOfDeduction;
 
-	//@Column(name = "rateAtWhichTaxCollected")
 	public Double rateAtWhichTaxCollected;
 
-	//@Column(name = "remarksReason")
 	public String remarksReason;
 
-	//@Column(name = " grossingUpIndicator")
 	public String grossingUpIndicator;
 
-	//@Column(name = "certificateNumber")
 	public String certificateNumber;
 
-	//@Column(name = "uniqueAcknowledgeNo")
 	public Long uniqueAcknowledgeNo;
 
-	//@Column(name = "countryOfResidence")
 	public String countryOfResidence;
 
-	//@Column(name = "emailId")
 	public String emailId;
 
-	//@Column(name = "contactNoOfDeductee")
 	public Long contactNoOfDeductee;
 
-	//@Column(name = "addressOfDeductee")
 	public String addressOfDeductee;
 
-	//@Column(name = "taxIdentificationNo")
 	public Long taxIdentificationNo;
 
-	//@Column(name = "fy")
 	public String fy;
 
-	//@Column(name = "quarter")
 	public String quarter;
 
-	//@Column(name = "tdsRateAsPerItActs")
 	public String tdsRateAsPerItActs;
 
-	//@Column(name = "natureOfRemittance")
 	public String natureOfRemittance;
 
-	//@Column(name = "branchCode")
 	public Long branchCode;
 
-	//@Column(name = "accNo")
 	public String accNo;
 
-	//@Column(name = "challanSrNo")
 	public Long challanSrNo;
 
-	//@Column(name = "month")
 	public String month;
 
-	//@Column(name = "custVendId")
 	public String custVendId;
 
-	//@Column(name = "uniqueRefNo")
 	public String uniqueRefNo;
 
-	//@Column(name = "cashWithdrawal194N")
 	public Double cashWithdrawal194N;
 
-	//@Column(name = "cashWithdrawal194N20Lto1Cr")
 	public Double cashWithdrawal194N20Lto1Cr;
 
-	//@Column(name = "cashWithdrawal194N1Cr")
 	public Double cashWithdrawal194N1Cr;
 
-	//@Column(name = "TAN")
 	public String TAN;
 
-	//@Column(name = "roCode")
 	public String roCode;
 
-	//@Column(name = "errorDescription")
 	public String errorDescription;
 
-	//@Column(name = "warningDescription")
 	public String warningDescription;
 
-	//@Column(name = "ShortDeduction")
 	public Double shortDeduction;
 
-	//@Column(name = "InterestOnShortDeduction")
 	public Double interestOnShortDeduction;
 
-	//@Column(name = "InterestOnLatePayment")
 	public Double interestOnLatePayment;
 
-	//@Column(name = "InterestOnLateDeduction")
 	public Double interestOnLateDeduction;
 
-//	//@Column(name = "verify")
-//	public boolean verify = false;
+//	//	public boolean verify = false;
 
-	//@Column(name = "resolved")
 	public boolean resolved;
 
-	//@Column(name = "comments")
 	public String comments;
 
-//	//@Column(name = "remarks")
-//	public String remarks;
+//	//	public String remarks;
 
-	//@Column(name = "deducteeSrNo")
 	public Long deducteeSrNo;
 
-	//@Column(name = "tranAmt")
 	public Long tranAmt;
 
-	//@Column(name = "additionalDetail")
 	public String additionalDetail;
 
 	public void setEntity(Regular27QDeductee form27Q) {

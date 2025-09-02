@@ -1,23 +1,20 @@
 package domain.in.rjsa.dao.impl;
 
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Predicate;
-import jakarta.persistence.criteria.Root;
 
 import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractDaoForm;
 import domain.in.rjsa.dao.BranchDao;
 import domain.in.rjsa.model.form.Branch;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 
 @Repository("branchDao")
 public class BranchDaoImpl extends AbstractDaoForm<Long, Branch> implements BranchDao {

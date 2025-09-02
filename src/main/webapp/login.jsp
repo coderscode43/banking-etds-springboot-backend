@@ -140,7 +140,7 @@ footer {
 					<img src="static/img/${applicationScope.projectName}.png" alt=""
 						style="width: 90%; margin-left: 5%; height: 75px;">
 					<h3 class="form-signin-heading">
-						<b>LOGIN</b>${applicationScope.projectName}
+						<b>LOGIN</b>
 					</h3>
 
 					<p style="color: red;">

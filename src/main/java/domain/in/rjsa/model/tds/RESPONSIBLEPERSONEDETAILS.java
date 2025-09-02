@@ -2,65 +2,32 @@ package domain.in.rjsa.model.tds;
 
 import java.text.ParseException;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
-import org.hibernate.annotations.GenericGenerator;
 import org.json.simple.JSONObject;
 
 import domain.in.rjsa.model.form.CommonModelAbstract;
 import lombok.Data;
 
 @Data
-//@Entity
-//@Table(name = "Taxo.RESPONSIBLEPERSONEDETAILS")
 public class RESPONSIBLEPERSONEDETAILS extends CommonModelAbstract {
-	//@Id
-	//@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-	//@GenericGenerator(name = "native", strategy = "native")
-	//@Column(name = "TAN")
 	public String TAN;
-	//@Column(name = "NAMERESPONSIBLEPERSONE")
 	public String NAMERESPONSIBLEPERSONE;
-	//@Column(name = "PANRESPONSIBLEPERSONE")
 	public String PANRESPONSIBLEPERSONE;
-	//@Column(name = "FATHERNAMERESPONSIBLEPERSONE")
 	public String FATHERNAMERESPONSIBLEPERSONE;
-	//@Column(name = "DESIGNATION")
 	public String DESIGNATION;
-	//@Column(name = "FLATORFLOAR")
 	public String FLATORFLOAR;
-	//@Column(name = "BUILDINGNAME")
 	public String BUILDINGNAME;
-	//@Column(name = "ROADSTREET")
 	public String ROADSTREET;
-	//@Column(name = "AREALOCALITY")
 	public String AREALOCALITY;
-	//@Column(name = "CITY")
 	public String CITY;
-	//@Column(name = "STATE")
 	public String STATE;
-	//@Column(name = "PIN")
 	public String PIN;
-	//@Column(name = "STD")
 	public String STD;
-	//@Column(name = "TELEPHONE")
 	public String TELEPHONE;
-	//@Column(name = "RESPONSIBLEPERSONEMOBILE")
 	public String RESPONSIBLEPERSONEMOBILE;
-	//@Column(name = "EMAIL")
 	public String EMAIL;
-	//@Column(name = "EMAILALTERNATE")
 	public String EMAILALTERNATE;
-	//@Column(name = "STDALTERNATE")
 	public String STDALTERNATE;
-	//@Column(name = "TELEPHONEALTERNATE")
 	public String TELEPHONEALTERNATE;
-	//@Column(name = "CHANGEADDRESSSINCELASTRETURN")
 	public String CHANGEADDRESSSINCELASTRETURN;
 
 	public void setData(JSONObject dataObject) throws ParseException{

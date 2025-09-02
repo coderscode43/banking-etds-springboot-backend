@@ -93,17 +93,15 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-import jakarta.persistence.TypedQuery;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Predicate;
-import jakarta.persistence.criteria.Root;
-
 import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractDaoForm;
 import domain.in.rjsa.dao.TicketRemarkDao;
 import domain.in.rjsa.model.fy.TicketRemarks;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 
 @Repository("ticketRemarkDao")
 public class TicketRemarkDaoImpl extends AbstractDaoForm<Long, TicketRemarks> implements TicketRemarkDao {

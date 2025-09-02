@@ -5,9 +5,6 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import jakarta.transaction.Transactional;
-import jakarta.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,6 +13,8 @@ import domain.in.rjsa.dao.RemarkDaoNew;
 import domain.in.rjsa.model.form.Remark;
 import domain.in.rjsa.service.AbstractServiceForm;
 import domain.in.rjsa.service.RemarkServiceNew;
+import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 
 @Transactional
 @Service("RemarkServiceNew")

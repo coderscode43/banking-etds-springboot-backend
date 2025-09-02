@@ -4,11 +4,6 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import org.json.simple.JSONObject;
-
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 public interface ServiceInterfaceFY<K, E> {
 
 	public void save(E entity);

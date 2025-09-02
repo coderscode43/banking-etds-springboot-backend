@@ -3,8 +3,6 @@ package domain.in.rjsa.controller;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
-import jakarta.servlet.http.HttpServletResponse;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import domain.in.rjsa.exception.FieldErrorDTO;
 import domain.in.rjsa.model.form.CorrectionRemarks;
 import domain.in.rjsa.service.CorrectionRemarksService;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping("/apicorrectionRemark")

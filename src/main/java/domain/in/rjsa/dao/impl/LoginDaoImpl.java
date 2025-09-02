@@ -57,7 +57,6 @@ import org.springframework.stereotype.Repository;
 import domain.in.rjsa.dao.AbstractDaoForm;
 import domain.in.rjsa.dao.LoginDao;
 import domain.in.rjsa.model.form.Login;
-
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;

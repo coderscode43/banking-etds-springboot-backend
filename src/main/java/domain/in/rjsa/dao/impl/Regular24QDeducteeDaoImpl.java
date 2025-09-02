@@ -257,7 +257,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Pattern;
 
 import org.springframework.stereotype.Repository;
@@ -265,10 +264,8 @@ import org.springframework.stereotype.Repository;
 import domain.in.rjsa.dao.AbstractDaoFY;
 import domain.in.rjsa.dao.Regular24QDeducteeDao;
 import domain.in.rjsa.model.fy.Regular24QDeductee;
-
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Expression;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 

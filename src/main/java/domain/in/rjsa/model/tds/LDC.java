@@ -3,16 +3,6 @@ package domain.in.rjsa.model.tds;
 import java.text.ParseException;
 import java.util.Date;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
-
-import org.hibernate.annotations.GenericGenerator;
 import org.json.simple.JSONObject;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -21,51 +11,25 @@ import domain.in.rjsa.model.form.CommonModelAbstract;
 import lombok.Data;
 
 @Data
-//@Entity
-//@Table(name = "Taxo.LDC")
 public class LDC extends CommonModelAbstract{
-//	//@Id
-//	//@GeneratedValue(strategy= GenerationType.AUTO, generator="native")
-//	//@GenericGenerator(name = "native", strategy = "native")
-//	//@Column(name = "id")
-//	public Long id;
-	//@Id
-	//@Column(name = "LDC_NUMBER")
+//	//	//	//	//	public Long id;
 	public String LDC_NUMBER;
-	//@Column(name = "NAME")
 	public String NAME;
-	//@Column(name = "TAN")
 	public String TAN;
-	//@Column(name = "PAN")
 	public String PAN;
-	//@Column(name = "FY")
 	public String FY;
-    //@Temporal(TemporalType.DATE)
-	//@Column(name = "VALID_FROM")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Kolkata")
 	public Date VALID_FROM;
-    //@Temporal(TemporalType.DATE)
-	//@Column(name = "VALID_TO")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Kolkata")
 	public Date VALID_TO;
-	//@Column(name = "SECTION_CODE")
 	public String SECTION_CODE;
-	//@Column(name = "NATURE_OF_PAYMENT")
 	public String NATURE_OF_PAYMENT;
-	//@Column(name = "LDC_RATE")
 	public String LDC_RATE;
-	//@Column(name = "CERTIFICATE_LIMIT")
 	public String CERTIFICATE_LIMIT;
-	//@Column(name = "AMOUNT_CONSUMED")
 	public String AMOUNT_CONSUMED;
-    //@Temporal(TemporalType.DATE)
-	//@Column(name = "ISSUE_DATE")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Calcutta")
 	public Date ISSUE_DATE;
-	//@Column(name = "CANCEL_DATE")
 	public String CANCEL_DATE;
-    //@Temporal(TemporalType.DATE)
-	//@Column(name = "AS_ON_DATE")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Calcutta")
 	public Date AS_ON_DATE;
     

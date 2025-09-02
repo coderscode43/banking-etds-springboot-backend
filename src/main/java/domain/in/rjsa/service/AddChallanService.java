@@ -1,8 +1,7 @@
 package domain.in.rjsa.service;
 
-import jakarta.servlet.http.HttpServletResponse;
-
 import domain.in.rjsa.model.form.AddChallan;
+import jakarta.servlet.http.HttpServletResponse;
 
 public interface AddChallanService extends ServiceInterfaceForm<Long, AddChallan>{
 

@@ -79,14 +79,12 @@ package domain.in.rjsa.dao.impl;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractDaoTaxo;
 import domain.in.rjsa.dao.GH15RETURNSTATUSDao;
 import domain.in.rjsa.model.tds.GH15RETURNSTATUS;
-
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;

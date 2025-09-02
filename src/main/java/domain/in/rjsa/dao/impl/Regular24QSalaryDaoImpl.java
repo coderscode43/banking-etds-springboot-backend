@@ -491,18 +491,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Predicate;
-import jakarta.persistence.criteria.Root;
-
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractDaoFY;
 import domain.in.rjsa.dao.Regular24QSalaryDao;
 import domain.in.rjsa.model.fy.Regular24QSalary;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 
 @Repository("regular24QSalaryDao")
 public class Regular24QSalaryDaoImpl extends AbstractDaoFY<Long, Regular24QSalary> implements Regular24QSalaryDao {

@@ -38,17 +38,15 @@ package domain.in.rjsa.dao.impl;
 import java.util.HashMap;
 import java.util.List;
 
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Predicate;
-import jakarta.persistence.criteria.Root;
-
-import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractDaoTaxo;
 import domain.in.rjsa.dao.TRACESSLOGINDao;
 import domain.in.rjsa.model.tds.TRACESSLOGIN;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 
 @Repository("TRACESSLOGINDao")
 public class TRACESSLOGINDaoImpl extends AbstractDaoTaxo<String, TRACESSLOGIN> implements TRACESSLOGINDao {

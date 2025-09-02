@@ -18,7 +18,7 @@ import org.springframework.security.web.header.writers.StaticHeadersWriter;
 
 @Configuration
 @EnableWebSecurity
-@Profile("ad")
+@Profile("WithAD")
 public class SecurityConfigAD {
 
 	@Value("${ad.domain}")

@@ -18,8 +18,6 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import jakarta.servlet.http.HttpServletResponse;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +40,7 @@ import domain.in.rjsa.service.AbstractServiceForm;
 import domain.in.rjsa.service.CorrectionRemarksService;
 import domain.in.rjsa.util.StaticData;
 import domain.in.rjsa.web.ApplicationCache;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Transactional("transactionManager")
 @Service("correctionRemarkService")

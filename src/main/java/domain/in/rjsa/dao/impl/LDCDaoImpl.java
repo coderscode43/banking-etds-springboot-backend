@@ -131,7 +131,6 @@ import org.springframework.stereotype.Repository;
 import domain.in.rjsa.dao.AbstractDaoTaxo;
 import domain.in.rjsa.dao.LDCDao;
 import domain.in.rjsa.model.tds.LDC;
-
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;

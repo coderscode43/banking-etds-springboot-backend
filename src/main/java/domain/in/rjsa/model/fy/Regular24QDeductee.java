@@ -3,18 +3,6 @@ package domain.in.rjsa.model.fy;
 import java.text.ParseException;
 import java.util.Date;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
-import jakarta.validation.constraints.Digits;
-import jakarta.validation.constraints.Size;
-
-import org.hibernate.annotations.GenericGenerator;
 import org.json.simple.JSONObject;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -22,133 +10,88 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import domain.in.rjsa.model.form.CommonModelAbstract;
 import domain.in.rjsa.util.JsonDateSerializer;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
-//@Entity
-//@Table(name = "AAACN4165C_2324.regular24QDeductee")
 public class Regular24QDeductee extends CommonModelAbstract {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	//@Id
-	//@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-	//@GenericGenerator(name = "native", strategy = "native")
-	//@Column(name = "id")
 	public Long id;
-	//@Column(name = "challanHeading")
 	public String challanHeading;
-	//@Column(name = "deducteeRefNo")
 	public String deducteeRefNo;
-	//@Column(name = "panRefNo")
-//	@NotNull(message = "Pan Reference No. is a required field.")
+	//	@NotNull(message = "Pan Reference No. is a required field.")
 	@Size(min = 0, max = 45, message = "Pan Reference No. should not be greater than 45 characters.")
 	public String panRefNo;
-	//@Column(name = "pan")
-//	@NotNull(message = "Pan is a required field.")
+	//	@NotNull(message = "Pan is a required field.")
 //	@Size(min = 0, max = 45, message = "Pan should not be greater than 10 characters.")
 	public String pan;
-	//@Column(name = "name")
-//	@NotNull(message = "Name is a required field.")
+	//	@NotNull(message = "Name is a required field.")
 	@Size(min = 0, max = 45, message = "Name should not be greater than 45 characters.")
 	public String name;
-	//@Column(name = "sectionCode")
-//	@NotNull(message = "Section Code is a required field.")
+	//	@NotNull(message = "Section Code is a required field.")
 	@Size(min = 0, max = 45, message = "Section Code should not be greater than 45 characters.")
 	public String sectionCode;
-	//@Temporal(TemporalType.DATE)
-	//@Column(name = "dateOfPayment")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Kolkata")
 //	@NotNull(message = "Date is a required field.")
 	public Date dateOfPayment;
-	//@Temporal(TemporalType.DATE)
-	//@Column(name = "dateOfDeduction")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Kolkata")
 //	@NotNull(message = "Date is a required field.")
 	public Date dateOfDeduction;
-	//@Column(name = "amountPaid")
-//	@NotNull(message = "Amount Paid is a required field.")
+	//	@NotNull(message = "Amount Paid is a required field.")
 	//@Digits(integer = 12, fraction = 2, message = "Amount Paid is not proper.Maximum 2 fractions allowed.")
 	public Double amountPaid;
-	//@Column(name = "tds")
-//	@NotNull(message = "Tds is a required field.")
+	//	@NotNull(message = "Tds is a required field.")
 	//@Digits(integer = 12, fraction = 2, message = "Tds is not proper.Maximum 2 fractions allowed.Maximum 2 fractions allowed.")
 	public Double tds;
-	//@Column(name = "surcharge")
-//	@NotNull(message = "Surcharge is a required field.")
+	//	@NotNull(message = "Surcharge is a required field.")
 	//@Digits(integer = 12, fraction = 2, message = "Surcharge is not proper.Maximum 2 fractions allowed.")
 	public Double surcharge;
-	//@Column(name = "eduCess")
-//	@NotNull(message = "Education Cess is a required field.")
+	//	@NotNull(message = "Education Cess is a required field.")
 	//@Digits(integer = 12, fraction = 2, message = "Education Cess is not proper.Maximum 2 fractions allowed.")
 	public Double eduCess;
-	//@Column(name = "totalTaxDeducted")
-//	@NotNull(message = "Total Tds is a required field.")
+	//	@NotNull(message = "Total Tds is a required field.")
 	//@Digits(integer = 12, fraction = 2, message = "Education Cess is not proper.Maximum 2 fractions allowed.")
 	public Double totalTaxDeducted;
-	//@Column(name = "totalTaxDeposited")
-//	@NotNull(message = "Total Tax Deposited is a required field.")
+	//	@NotNull(message = "Total Tax Deposited is a required field.")
 	//@Digits(integer = 12, fraction = 2, message = "Total Tax Deposited value is not proper.Maximum 2 fractions allowed.")
 	public Double totalTaxDeposited;
-	//@Column(name = "certificateNumber")
-//	@NotNull(message = "Certificate Number is a required field.")
+	//	@NotNull(message = "Certificate Number is a required field.")
 	@Size(min = 0, max = 45, message = "Certificate Number should not be greater than 45 characters.")
 	public String certificateNumber;
-	//@Column(name = "remarksReason")
 	@Size(min = 0, max = 45, message = "Remarks should not be greater than 45 characters.")
 	public String remarksReason;
-	//@Column(name = "fy")
-//	@NotNull(message = "FY is a required field.")
+	//	@NotNull(message = "FY is a required field.")
 	@Size(min = 0, max = 45, message = "FY should not be greater than 45 characters.")
 	public String fy;
-	//@Column(name = "quarter")
-//	@NotNull(message = "Quarter is a required field.")
+	//	@NotNull(message = "Quarter is a required field.")
 	@Size(min = 0, max = 45, message = "Quarter should not be greater than 45 characters.")
 	public String quarter;
-	//@Column(name = "branchCode")
 	public Long branchCode;
-	//@Column(name = "accNo")
 	public String accNo;
-	//@Column(name = "challanSrNo")
 	public Long challanSrNo;
-	//@Column(name = "month")
 	public String month;
-	//@Column(name = "custVendId")
 	public String custVendId;
-	//@Column(name = "uniqueRefNo")
 	public String uniqueRefNo;
-	//@Column(name = "TAN")
 	public String TAN;
-	//@Column(name = "roCode")
 	public String roCode;
-	//@Column(name = "errorDescription")
 	public String errorDescription;
-	//@Column(name = "warningDescription")
 	public String warningDescription;
-	//@Column(name = "ShortDeduction")
 	public Double shortDeduction;
-	//@Column(name = "InterestOnShortDeduction")
 	public Double interestOnShortDeduction;
-	//@Column(name = "InterestOnLatePayment")
 	public Double interestOnLatePayment;
-	//@Column(name = "InterestOnLateDeduction")
 	public Double interestOnLateDeduction;
-//	//@Column(name = "verify")
-//	public boolean verify = false;
-	//@Column(name = "resolved")
+//	//	public boolean verify = false;
 	public boolean resolved;
 
-	//@Column(name = "comments")
 	public String comments;
 
-	//@Column(name = "deducteeSrNo")
 	public Long deducteeSrNo;
 
-	//@Column(name = "tranAmt")
 	public Long tranAmt;
 
-	//@Column(name = "additionalDetail")
 	public String additionalDetail;
 
 	@JsonSerialize(using = JsonDateSerializer.class)

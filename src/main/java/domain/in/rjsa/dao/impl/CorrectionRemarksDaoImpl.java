@@ -60,20 +60,18 @@ package domain.in.rjsa.dao.impl;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
-
-import jakarta.persistence.TypedQuery;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Predicate;
-import jakarta.persistence.criteria.Root;
 
 import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractDaoForm;
 import domain.in.rjsa.dao.CorrectionRemarksDao;
 import domain.in.rjsa.model.form.CorrectionRemarks;
+import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 
 @Repository("correctionRemarkDao")
 public class CorrectionRemarksDaoImpl extends AbstractDaoForm<Long, CorrectionRemarks> implements CorrectionRemarksDao {

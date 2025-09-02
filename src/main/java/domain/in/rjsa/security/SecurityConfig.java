@@ -22,7 +22,7 @@ import org.springframework.security.web.header.writers.StaticHeadersWriter;
 
 @Configuration
 @EnableWebSecurity
-@Profile("normal")
+@Profile("WithoutAD")
 public class SecurityConfig {
 
 	@Autowired

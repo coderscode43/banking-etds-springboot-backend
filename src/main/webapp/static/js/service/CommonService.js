@@ -49,6 +49,7 @@ App.factory('CommonService', [
 			saveRegularReturn: saveRegularReturn,
 			getDataWithAI: getDataWithAI,
 			getStatus : getStatus,
+			uploadFile: uploadFile,
 
 		};
 		return factory;
@@ -779,5 +780,26 @@ App.factory('CommonService', [
 
 			return deferred.promise;
 		}
+		
+		function uploadFile(downloadFile, entitySave, entity) {
+					var deferred = $q.defer();
+					var dat = new FormData();
+					dat.append('downloadFile', downloadFile)
+					dat.append('tan', entitySave.tan);
+					dat.append('typeofCertificate', entitySave.typeofCertificate);
+					dat.append('fy', entitySave.financialYear);
+					dat.append('quarter', entitySave.quarter);
+					$http.post(REST_SERVICE_URI + entity + '/uploadZip',
+						dat, {
+						transformRequest: angular.identity,
+						headers: { 'Content-Type': undefined }
+					}).success(function(data) {
+						deferred.resolve(data);
+					}).error(function(status) {
+						console.log("Error in Save CommonService");
+						deferred.reject(status);
+					});
+					return deferred.promise;
+				}
 
 	}]);

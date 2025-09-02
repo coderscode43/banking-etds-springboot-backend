@@ -158,17 +158,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-import jakarta.persistence.TypedQuery;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Predicate;
-import jakarta.persistence.criteria.Root;
-
 import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractDaoFY;
 import domain.in.rjsa.dao.Regular27EQDeducteeDao;
 import domain.in.rjsa.model.fy.Regular27EQDeductee;
+import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 
 @Repository("regular27EQDeducteeDao")
 public class Regular27EQDeducteeDaoImpl extends AbstractDaoFY<Long, Regular27EQDeductee>

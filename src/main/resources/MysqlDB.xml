@@ -1,0 +1,928 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping SYSTEM "hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="domain.in.rjsa.model">
+	<class name="domain.in.rjsa.model.form.AddChallan" table="addChallan" catalog="AAACN4165C_form">
+    <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+    <property name="correctionRequestId" column="CORRECTIONREQUESTID" type="long"/>
+    <property name="challanSrNo" column="CHALLANSRNO" type="string"/>
+    <property name="challanBsrCode" column="CHALLANBSRCODE" type="string"/>
+    <property name="challanSection" column="CHALLANSECTION" type="string"/>
+    <property name="challanAmount" column="CHALLANAMOUNT" type="double"/>
+    <property name="challanDate" column="CHALLANDATE" type="date"/>
+    <property name="challanSupportingDocument" column="CHALLANSUPPORTINGDOC" type="string"/>
+</class>
+	
+	<class name="domain.in.rjsa.model.form.Branch" table="branch" catalog="AAACN4165C_form">
+    <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+    <property name="roCode" column="ROCODE" type="string"/>
+    <property name="branchCode" column="BRANCHCODE" type="long"/>
+    <property name="branchName" column="BRANCHNAME" type="string"/>
+    <property name="branchEmail" column="BRANCHEMAIL" type="string"/>
+    <property name="branchContactNo" column="BRANCHCONTACTNO" type="string"/>
+    <property name="branchAddress" column="BRANCHADDRESS" type="string"/>
+    <property name="branchPinCode" column="BRANCHPINCODE" type="string"/>
+    <property name="branchState" column="BRANCHSTATE" type="string"/>
+    <property name="tan" column="TAN" type="string"/>
+</class>
+
+<class name="domain.in.rjsa.model.form.CorrectionRemarks" table="correctionRemarks" catalog="AAACN4165C_form">
+    <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+    <property name="correctionRequestId" column="CORRECTIONREQUESTID" type="long"/>
+    <property name="dateTime" column="DATETIME" type="string"/>
+    <property name="correctionRemark" column="CORRECTIONREMARK" type="string"/>
+    <property name="addedBy" column="ADDEDBY" type="string"/>
+    <property name="branchCode" column="BRANCHCODE" type="long"/>
+    <property name="supportingDocName" column="SUPPORTINGDOCNAME" type="string"/>
+    <property name="remarkStatus" column="REMARKSTATUS" type="string"/>
+</class>
+
+	<class name="domain.in.rjsa.model.form.CorrectionRequest" table="correctionRequest" catalog="AAACN4165C_form">
+    <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+    <property name="correctionRequestDate" column="CORRECTIONREQUESTDATE" type="date"/>
+    <property name="custId" column="CUSTID" type="long"/>
+    <property name="name" column="NAME" type="string"/>
+    <property name="pan" column="PAN" type="string"/>
+    <property name="nameOfRequest" column="NAMEOFREQUEST" type="string"/>
+    <property name="branchCode" column="BRANCHCODE" type="long"/>
+    <property name="empNo" column="EMPNO" type="long"/>
+    <property name="ticketNumber" column="TICKETNUMBER" type="long"/>
+    <property name="typeOfCorrection" column="TYPEOFCORRECTION" type="string"/>
+    <property name="remark" column="REMARK" type="string"/>
+    <property name="checkerApprovedBy" column="CHECKERAPPROVEDBY" type="string"/>
+    <property name="checkerApprovedOn" column="CHECKERAPPROVEDON" type="date"/>
+    <property name="taxTeamApprovedBy" column="TAXTEAMAPPROVEDBY" type="string"/>
+    <property name="taxTeamApprovedOn" column="TAXTEAMAPPROVEDON" type="date"/>
+    <property name="correctionBy" column="CORRECTIONBY" type="string"/>
+    <property name="correctionOn" column="CORRECTIONON" type="date"/>
+    <property name="makerBy" column="MAKERBY" type="string"/>
+    <property name="status" column="STATUS" type="string"/>
+    <property name="fy" column="FY" type="string"/>
+    <property name="quarter" column="QUARTER" type="string"/>
+    <property name="rejectStatus" column="REJECTSTATUS" type="boolean"/>
+    <property name="fileName" column="FILENAME" type="string"/>
+    <property name="correctionStatus" column="CORRECTIONSTATUS" type="boolean"/>
+    <property name="mobileNumber" column="MOBILENUMBER" type="string"/>
+    <property name="typeOfForm" column="TYPEOFFORM" type="string"/>
+    <property name="tan" column="TAN" type="string"/>
+    <property name="lastUpdatedOn" column="LASTUPDATEDON" type="date"/>
+    <property name="reasonForExemption" column="REASONFOREXEMPTION" type="string"/>
+</class>
+	
+	<class name="domain.in.rjsa.model.form.CorrectionRequestAmountDetails" table="correctionRequestAmountDetails" catalog="AAACN4165C_form">
+    <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+    <property name="correctionRequestId" column="CORRECTIONREQUESTID"/>
+    
+    <property name="dateOfPayment" column="DATEOFPAYMENT">
+        <type name="date"/>
+    </property>
+    <property name="amountPaid" column="AMOUNTPAID"/>
+    <property name="correctAmountPaid" column="CORRECTAMOUNTPAID"/>
+    <property name="tds" column="TDS"/>
+    <property name="correctTds" column="CORRECTTDS"/>
+    <property name="pan" column="PAN"/>
+    <property name="correctPan" column="CORRECTPAN"/>
+    <property name="sectionCode" column="SECTIONCODE"/>
+    <property name="correctSection" column="CORRECTSECTION"/>
+    <property name="correctRemark" column="CORRECTREMARK"/>
+    <property name="quarter" column="QUARTER"/>
+</class>
+	
+	<class name="domain.in.rjsa.model.form.EmployeeMaster" table="employeeMaster" catalog="AAACN4165C_form">
+    <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+    <property name="employeeId" column="EMPLOYEEID"/>
+    <property name="clientId" column="CLIENTID"/>
+    <property name="branchId" column="BRANCHID"/>
+    <property name="employeeCode" column="EMPLOYEECODE"/>
+    <property name="employeeName" column="EMPLOYEENAME"/>
+    <property name="pan" column="PAN"/>
+    <property name="dob" column="DOB"/>
+    <property name="designation" column="DESIGNATION"/>
+    <property name="maker" column="MAKER"/>
+    <property name="checker" column="CHECKER"/>
+    <property name="status" column="STATUS"/>
+</class>
+	
+	<class name="domain.in.rjsa.model.form.Login" table="login" catalog="AAACN4165C_form">
+    <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+    <property name="userName" column="USERNAME"/>
+    <property name="password" column="PASSWORD"/>
+    <property name="accessLevel" column="ACCESSLEVEL"/>
+    <property name="enabled" column="ENABLED"/>
+    <property name="type" column="TYPE"/>
+    <property name="refId" column="REFID"/>
+    <property name="clientId" column="CLIENTID"/>
+    <property name="passwordReset" column="PASSWORDRESET"/>
+    <property name="branchCode" column="BRANCHCODE"/>
+    <property name="authtoken" column="AUTHTOKEN"/>
+</class>
+	
+	<class name="domain.in.rjsa.model.form.OrganizationDetails" table="organizationDetails" catalog="AAACN4165C_form">
+    <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+    <property name="organizationName" column="ORGANIZATIONNAME" type="string"/>
+    <property name="organizationPan" column="ORGANIZATIONPAN" type="string"/>
+</class>
+	
+	<class name="domain.in.rjsa.model.form.PensionMaster" table="pensionMaster" catalog="AAACN4165C_form">
+    <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+    <property name="pensionerId" column="PENSIONERID" type="long"/>
+    <property name="clientId" column="CLIENTID" type="long"/>
+    <property name="branchId" column="BRANCHID" type="long"/>
+    <property name="pensionerCode" column="PENSIONERCODE" type="string"/>
+    <property name="pensionerName" column="PENSIONERNAME" type="string"/>
+    <property name="address" column="ADDRESS" type="string"/>
+    <property name="maker" column="MAKER" type="string"/>
+    <property name="checker" column="CHECKER" type="string"/>
+    <property name="status" column="STATUS" type="string"/>
+</class>
+	
+	<class name="domain.in.rjsa.model.form.RegularReturn" table="regularReturn" catalog="AAACN4165C_form">
+    <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+    <property name="fy" column="FY" type="string"/>
+    <property name="tan" column="TAN" type="string"/>
+    <property name="quarter" column="QUARTER" type="string"/>
+    <property name="form" column="FORM" type="string"/>
+    <property name="branchCode" column="BRANCHCODE" type="string"/>
+    <property name="addedBy" column="ADDEDBY" type="string"/>
+    <property name="addedOn" column="ADDEDON" type="date"/>
+    <property name="latestRemark" column="LATESTREMARK" type="string"/>
+    <property name="status" column="STATUS" type="string"/>
+    <property name="returnFilingDate" column="RETURNFILINGDATE" type="date"/>
+</class>
+	
+	<class name="domain.in.rjsa.model.form.RegularReturnRemark" table="regularReturnRemark" catalog="AAACN4165C_form">
+    <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+    <property name="regularReturnId" column="REGULARRETURNID" type="long"/>
+    <property name="addedOn" column="ADDEDON" type="date"/>
+    <property name="remark" column="REMARK" type="string"/>
+    <property name="addedBy" column="ADDEDBY" type="string"/>
+    <property name="roCode" column="ROCODE" type="string"/>
+    <property name="supportingDocName" column="SUPPORTINGDOCNAME" type="string"/>
+    <property name="remarkStatus" column="REMARKSTATUS" type="string"/>
+</class>
+	
+<class name="domain.in.rjsa.model.form.Remark" table="remarks" catalog="AAACN4165C_form">
+    <id name="ID" column="ID" type="long">
+        <generator class="identity"/>
+    </id>
+    <property name="DIN" column="DIN" type="string"/>
+    <property name="PAN" column="PAN" type="string"/>
+    <property name="USERNAME" column="USERNAME" type="string"/>
+    <property name="REMARK" column="REMARK" type="string"/>
+</class>
+
+<class name="domain.in.rjsa.model.form.RODetails" table="RODetails" catalog="AAACN4165C_form">
+    <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+    <property name="roCode" column="ROCODE" type="string"/>
+    <property name="roName" column="RONAME" type="string"/>
+    <property name="roAddress" column="ROADDRESS" type="string"/>
+    <property name="roState" column="ROSTATE" type="string"/>
+    <property name="roPincode" column="ROPINCODE" type="string"/>
+    <property name="roEmail" column="ROEMAIL" type="string"/>
+</class>
+
+<class name="domain.in.rjsa.model.form.StaticDataModel" table="StaticData" catalog="AAACN4165C_form">
+    <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+    <property name="key" column="KEY" type="string"/>
+    <property name="value" column="VALUE" type="string"/>
+</class>
+
+<class name="domain.in.rjsa.model.form.SupportingDocuments" table="supportingDocuments" catalog="AAACN4165C_form">
+    <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+    <property name="correctionRequestId" column="CORRECTIONREQUESTID" type="long"/>
+    <property name="dateOfAddition" column="DATEOFADDITION" type="timestamp"/>
+    <property name="fileName" column="FILENAME" type="string"/>
+</class>
+
+<class name="domain.in.rjsa.model.form.Ticket" table="ticket" catalog="AAACN4165C_form">
+    <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+    <property name="branchCode" column="BRANCHCODE" type="long"/>
+    <property name="fy" column="FY" type="string"/>
+    <property name="quarter" column="QUARTER" type="string"/>
+    <property name="form" column="FORM" type="string"/>
+    <property name="type" column="TYPE" type="string"/>
+    <property name="status" column="STATUS" type="string"/>
+    <property name="description" column="DESCRIPTION" type="string"/>
+    <property name="attachment" column="ATTACHMENT" type="string"/>
+    <property name="dateOfOpening" column="DATEOFOPENING" type="date"/>
+    <property name="dateOfChange" column="DATEOFCHANGE" type="date"/>
+    <property name="remarks" column="REMARKS" type="string"/>
+    <property name="fileId" column="FILEID" type="long"/>
+    <property name="userName" column="USERNAME" type="string"/>
+    <property name="resolved" column="RESOLVED" type="boolean"/>
+    <property name="custVendId" column="CUSTVENDID" type="string"/>
+    <property name="pan" column="PAN" type="string"/>
+</class>
+
+<class name="domain.in.rjsa.model.form.TicketRemark" table="ticketRemark" catalog="AAACN4165C_form">
+    <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+    <property name="ticketId" column="TICKETID" type="long"/>
+    <property name="description" column="DESCRIPTION" type="string"/>
+    <property name="userName" column="USERNAME" type="string"/>
+    <property name="date" column="DATE" type="date"/>
+</class>
+
+<class name="domain.in.rjsa.model.form.UserDetails" table="userDetails" catalog="AAACN4165C_form">
+    <id name="employeeId" column="EMPLOYEEID" type="string"/>
+    <property name="typeOfUser" column="TYPEOFUSER" type="string"/>
+</class>
+
+<class name="domain.in.rjsa.model.form.VendorMaster" table="vendorMaster" catalog="AAACN4165C_form">
+    <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+    <property name="vendorId" column="VENDORID" type="long"/>
+    <property name="clientId" column="CLIENTID" type="long"/>
+    <property name="branchId" column="BRANCHID" type="long"/>
+    <property name="vendorCode" column="VENDORCODE" type="string"/>
+    <property name="vendorName" column="VENDORNAME" type="string"/>
+    <property name="address" column="ADDRESS" type="string"/>
+    <property name="maker" column="MAKER" type="string"/>
+    <property name="checker" column="CHECKER" type="string"/>
+    <property name="status" column="STATUS" type="string"/>
+</class>
+
+<class name="domain.in.rjsa.model.form.ZonalBranches" table="zonalBranches" catalog="AAACN4165C_form">
+    <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+    <property name="clientId" column="CLIENTID" type="long"/>
+    <property name="zonalId" column="ZONALID" type="long"/>
+    <property name="branchId" column="BRANCHID" type="long"/>
+    <property name="zoneCode" column="ZONECODE" type="string"/>
+    <property name="branchCode" column="BRANCHCODE" type="long"/>
+</class>
+
+<class name="domain.in.rjsa.model.fy.ChallanDetails" table="CHALLANDETAILS" catalog="AAACN4165C_2324">
+    <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+
+    <property name="challanSrNo" column="CHALLANSRNO" type="long"/>
+    <property name="tds" column="TDS" type="double"/>
+    <property name="surcharge" column="SURCHARGE" type="double"/>
+    <property name="eduCess" column="EDUCESS" type="double"/>
+    <property name="interest" column="INTEREST" type="double"/>
+    <property name="fee" column="FEE" type="double"/>
+    <property name="others" column="OTHERS" type="double"/>
+    <property name="totalTaxDeposited" column="TOTALTAXDEPOSITED" type="double"/>
+    <property name="byBookEntry" column="BYBOOKENTRY" type="string"/>
+    <property name="bsrCode" column="BSRCODE" type="long"/>
+    <property name="idNo" column="IDNO" type="long"/>
+    <property name="dateOfDeposition" column="DATEOFDEPOSITION" type="date"/>
+    <property name="minorHeadOfChallan" column="MINORHEADOFCHALLAN" type="double"/>
+    <property name="interestAllocated" column="INTERESTALLOCATED" type="double"/>
+    <property name="otherAmtAllocated" column="OTHERAMTALLOCATED" type="double"/>
+    <property name="nilChallanIndicator" column="NILCHALLANINDICATOR" type="string"/>
+    <property name="errorDescription" column="ERRORDESCRIPTION" type="string"/>
+    <property name="warningDescription" column="WARNINGDESCRIPTION" type="string"/>
+    <property name="shortPayment" column="SHORTPAYMENT" type="double"/>
+    <property name="interestOnShortPayment" column="INTERESTONSHORTPAYMENT" type="double"/>
+    <property name="challanHeading" column="CHALLANHEADING" type="string"/>
+    <property name="fy" column="FY" type="string"/>
+    <property name="quarter" column="QUARTER" type="string"/>
+    <property name="month" column="MONTH" type="string"/>
+    <property name="form" column="FORM" type="string"/>
+    <property name="TAN" column="TAN" type="string"/>
+</class>
+
+<class name="domain.in.rjsa.model.fy.G15" table="G15" catalog="AAACN4165C_2324">
+    <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+    <property name="uniqueIdentificationNo" column="UNIQUEIDENTIFICATIONNO" type="string"/>
+    <property name="identificationNumberofRelevantInvestmentAccount" column="IDENTIFICATIONNUMBEROFRELEVANTINVESTMENTACCOUNT" type="string"/>
+    <property name="natureofIncome" column="NATUREOFINCOME" type="string"/>
+    <property name="sectionUnderWhichTaxisDeductible" column="SECTIONUNDERWHICHTAXISDEDUCTIBLE" type="string"/>
+    <property name="amountofIncome" column="AMOUNTOFINCOME" type="double"/>
+    <property name="nameofAssesseeDeclarant" column="NAMEOFASSESSEEDECLARANT" type="string"/>
+    <property name="panoftheAssessee" column="PANOFTHEASSESSEE" type="string"/>
+    <property name="aadhaarNumber" column="AADHAARNUMBER" type="string"/>
+    <property name="status" column="STATUS" type="string"/>
+    <property name="subStatus" column="SUBSTATUS" type="string"/>
+    <property name="previousYearforwhichdeclarationisbeingmade" column="PREVIOUSYEARFORWHICHDECLARATIONISBEINGMADE" type="string"/>
+    <property name="residentialStatus" column="RESIDENTIALSTATUS" type="string"/>
+    <property name="country" column="COUNTRY" type="string"/>
+    <property name="flatDoorBuilding" column="FLATDOORBUILDING" type="string"/>
+    <property name="roadStreetBlockSector" column="ROADSTREETBLOCKSECTOR" type="string"/>
+    <property name="pincode" column="PINCODE" type="long"/>
+    <property name="postOffice" column="POSTOFFICE" type="string"/>
+    <property name="areaLocality" column="AREALOCALITY" type="string"/>
+    <property name="district" column="DISTRICT" type="string"/>
+    <property name="state" column="STATE" type="string"/>
+    <property name="email" column="EMAIL" type="string"/>
+    <property name="telephoneNo" column="TELEPHONENO" type="string"/>
+    <property name="mobileNo" column="MOBILENO" type="string"/>
+    <property name="whetherAssessedtotaxundertheIncometaxAct1961" column="WHETHERASSESSEDTOTAXUNDERTHEINCOMETAXACT1961" type="string"/>
+    <property name="ifyeslatestassessmentyearforwhichassessed" column="IFYESLATESTASSESSMENTYEARFORWHICHASSESSED" type="string"/>
+    <property name="estimatedIncomeforwhichthisdeclarationismade" column="ESTIMATEDINCOMEFORWHICHTHISDECLARATIONISMADE" type="double"/>
+    <property name="estimatedtotalincomeofthePY" column="ESTIMATEDTOTALINCOMEOFTHEPY" type="double"/>
+    <property name="totalNoofFormNo15Gfiled" column="TOTALNOOFFORMNO15GFILED" type="long"/>
+    <property name="aggregateAmountofincomeforwhichFormNo15Gfiled" column="AGGREGATEAMOUNTOFINCOMEFORWHICHFORMNO15GFILED" type="double"/>
+    <property name="dateonwhichDeclarationisreceived" column="DATEONWHICHDECLARATIONISRECEIVED" type="date"/>
+    <property name="amountofincomepaid" column="AMOUNTOFINCOMEPAlD" type="string"/>
+    <property name="dateonwhichtheincomehasbeenpaidcredited" column="DATEONWHICHTHEINCOMEHASBEENPAIDCREDITED" type="date"/>
+    <property name="warning" column="WARNING" type="string"/>
+    <property name="error" column="ERROR" type="string"/>
+    <property name="custVendId" column="custVendId" type="string"/>
+    <property name="accNo" column="ACCNO" type="string"/>
+    <property name="uniqueRefNo" column="UNIQUEREFNO" type="string"/>
+    <property name="fy" column="FY" type="string"/>
+    <property name="quarter" column="QUARTER" type="string"/>
+    <property name="month" column="MONTH" type="string"/>
+    <property name="branchCode" column="BRANCHCODE" type="long"/>
+    <property name="roCode" column="ROCODE" type="string"/>
+    <property name="tan" column="TAN" type="string"/>
+</class>
+
+<class name="domain.in.rjsa.model.fy.H15" table="H15" catalog="AAACN4165C_2324">
+    <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+    <property name="uniqueIdentificationNo" column="UNIQUEIDENTIFICATIONNO" type="string"/>
+    <property name="identificationNumberofRelevantInvestmentAccount" column="IDENTIFICATIONNUMBEROFRELEVANTINVESTMENTACCOUNT" type="string"/>
+    <property name="natureofIncome" column="NATUREOFINCOME" type="string"/>
+    <property name="sectionUnderWhichTaxisDeductible" column="SECTIONUNDERWHICHTAXISDEDUCTIBLE" type="string"/>
+    <property name="amountofIncome" column="AMOUNTOFINCOME" type="double"/>
+    <property name="nameofAssesseeDeclarant" column="NAMEOFASSESSEEDECLARANT" type="string"/>
+    <property name="panoftheAssessee" column="PANOFTHEASSESSEE" type="string"/>
+    <property name="aadhaarNumberoftheAssessee" column="AADHAARNUMBEROFTHEASSESSEE" type="string"/>
+    <property name="dateofBirth" column="DATEOFBIRTH" type="date"/>
+    <property name="previousYearforwhichdeclarationisbeingmade" column="PREVIOUSYEARFORWHICHDECLARATIONISBEINGMADE" type="string"/>
+    <property name="country" column="COUNTRY" type="string"/>
+    <property name="flatDoorBuilding" column="FLATDOORBUILDING" type="string"/>
+    <property name="roadStreetBlockSector" column="ROADSTREETBLOCKSECTOR" type="string"/>
+    <property name="pincode" column="PINCODE" type="long"/>
+    <property name="postOffice" column="POSTOFFICE" type="string"/>
+    <property name="areaLocality" column="AREALOCALITY" type="string"/>
+    <property name="district" column="DISTRICT" type="string"/>
+    <property name="state" column="STATE" type="string"/>
+    <property name="email" column="EMAIL" type="string"/>
+    <property name="STDCode" column="STDCODE" type="long"/>
+    <property name="telephoneNo" column="TELEPHONENO" type="string"/>
+    <property name="mobileNo" column="MOBILENO" type="string"/>
+    <property name="whetherAssessedtotax" column="WHETHERASSESSEDTOTAX" type="string"/>
+    <property name="latestassessmentyearforwhichassessed" column="LATESTASSESSMENTYEARFORWHICHASSESSED" type="string"/>
+    <property name="estimatedtotalincomeofthePY" column="ESTIMATEDTOTALINCOMEOFTHEPY" type="double"/>
+    <property name="estimatedIncomeforwhichthisdeclarationismade" column="ESTIMATEDINCOMEFORWHICHTHISDECLARATIONISMADE" type="double"/>
+    <property name="totalNoofFormNo15Hfiled" column="TOTALNOOFFORMNO15HFILED" type="long"/>
+    <property name="aggregateAmountofincomeforwhichFormNo15Hfiled" column="AGGREGATEAMOUNTOFINCOMEFORWHICHFORMNO15HFILED" type="double"/>
+    <property name="dateonwhichDeclarationisreceived" column="DATEONWHICHDECLARATIONISRECEIVED" type="date"/>
+    <property name="amountofincomepaid" column="AMOUNTOFINCOMEPAlD" type="double"/>
+    <property name="dateonwhichtheincomehasbeenpaidcredited" column="DATEONWHICHTHEINCOMEHASBEENPAIDCREDITED" type="date"/>
+    <property name="warning" column="WARNING" type="string"/>
+    <property name="error" column="ERROR" type="string"/>
+    <property name="custVendId" column="CUSTVENDID" type="string"/>
+    <property name="accNo" column="ACCNO" type="string"/>
+    <property name="uniqueRefNo" column="UNIQUEREFNO" type="string"/>
+    <property name="fy" column="FY" type="string"/>
+    <property name="quarter" column="QUARTER" type="string"/>
+    <property name="month" column="MONTH" type="string"/>
+    <property name="branchCode" column="BRANCHCODE" type="long"/>
+    <property name="tan" column="TAN" type="string"/>
+    <property name="roCode" column="ROCODE" type="string"/>
+</class>
+
+
+<class name="domain.in.rjsa.model.fy.Logs" table="LOGS" catalog="AAACN4165C_2324">
+    <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+    <property name="username" column="USERNAME" type="string"/>
+    <property name="logsDate" column="LOGSDATE" type="timestamp"/>
+    <property name="ipaddrs" column="IPADDRS" type="string"/>
+    <property name="entity" column="ENTITY" type="string"/>
+    <property name="action" column="ACTION" type="string"/>
+    <property name="details" column="DETAILS" type="string"/>
+    <property name="fy" column="FY" type="string"/>
+</class>
+
+<class name="domain.in.rjsa.model.fy.MisReport" table="MISREPORT" catalog="AAACN4165C_2324">
+    <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+    <property name="branchCode" column="BRANCHCODE" type="long"/>
+    <property name="fromDate" column="FROMDATE" type="date"/>
+    <property name="toDate" column="TODATE" type="date"/>
+    <property name="reportType" column="REPORTTYPE" type="string"/>
+    <property name="fy" column="FY" type="string"/>
+    <property name="userName" column="USERNAME" type="string"/>
+</class>
+
+<class name="domain.in.rjsa.model.fy.MonthlyChallan" table="MONTHLYCHALLAN1" catalog="AAACN4165C_2324">
+    <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+    <property name="branchCode" column="BRANCHCODE" type="long"/>
+    <property name="month" column="MONTH" type="string"/>
+    <property name="amtAsPerFinacle" column="AMTASPERFINACLE" type="double"/>
+    <property name="amtAsPerTaxCalculation" column="AMTASPERTAXCALCULATION" type="double"/>
+    <property name="challanHeading" column="CHALLANHEADING" type="string"/>
+    <property name="fy" column="FY" type="string"/>
+    <property name="amountDiff" column="AMOUNTDIFF" type="double"/>
+    <property name="remarks" column="REMARKS" type="string"/>
+</class>
+
+<class name="domain.in.rjsa.model.fy.PanUpdateList" table="PANUPDATELIST" catalog="AAACN4165C_2324">
+    <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+    <property name="fy" column="FY" type="string"/>
+    <property name="month" column="MONTH" type="string"/>
+    <property name="challanHeading" column="CHALLANHEADING" type="string"/>
+    <property name="custVendId" column="CUSTVENDID" type="string"/>
+    <property name="previousPAN" column="PREVIOUSPAN" type="string"/>
+    <property name="newPAN" column="NEWPAN" type="string"/>
+    <property name="action" column="ACTION" type="string"/>
+    <property name="remark" column="REMARK" type="string"/>
+    <property name="addNewEntry" column="ADDNEWENTRY" type="string"/>
+</class>
+
+<class name="domain.in.rjsa.model.fy.Regular24QDeductee" table="REGULAR24QDEDUCTEE" catalog="AAACN4165C_2324">
+    <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+    <property name="challanHeading" column="CHALLANHEADING" type="string"/>
+    <property name="deducteeRefNo" column="DEDUCTEEREFNO" type="string"/>
+    <property name="panRefNo" column="PANREFNO" type="string"/>
+    <property name="pan" column="PAN" type="string"/>
+    <property name="name" column="NAME" type="string"/>
+    <property name="sectionCode" column="SECTIONCODE" type="string"/>
+    <property name="dateOfPayment" column="DATEOFPAYMENT" type="date"/>
+    <property name="dateOfDeduction" column="DATEOFDEDUCTION" type="date"/>
+    <property name="amountPaid" column="AMOUNTPAID" type="double"/>
+    <property name="tds" column="TDS" type="double"/>
+    <property name="surcharge" column="SURCHARGE" type="double"/>
+    <property name="eduCess" column="EDUCESS" type="double"/>
+    <property name="totalTaxDeducted" column="TOTALTAXDEDUCTED" type="double"/>
+    <property name="totalTaxDeposited" column="TOTALTAXDEPOSITED" type="double"/>
+    <property name="certificateNumber" column="CERTIFICATENUMBER" type="string"/>
+    <property name="remarksReason" column="REMARKSREASON" type="string"/>
+    <property name="fy" column="FY" type="string"/>
+    <property name="quarter" column="QUARTER" type="string"/>
+    <property name="branchCode" column="BRANCHCODE" type="long"/>
+    <property name="accNo" column="ACCNO" type="string"/>
+    <property name="challanSrNo" column="CHALLANSRNO" type="long"/>
+    <property name="month" column="MONTH" type="string"/>
+    <property name="custVendId" column="CUSTVENDID" type="string"/>
+    <property name="uniqueRefNo" column="UNIQUEREFNO" type="string"/>
+    <property name="TAN" column="TAN" type="string"/>
+    <property name="roCode" column="ROCODE" type="string"/>
+    <property name="errorDescription" column="ERRORDESCRIPTION" type="string"/>
+    <property name="warningDescription" column="WARNINGDESCRIPTION" type="string"/>
+    <property name="ShortDeduction" column="SHORTDEDUCTION" type="double"/>
+    <property name="InterestOnShortDeduction" column="INTERESTONSHORTDEDUCTION" type="double"/>
+    <property name="InterestOnLatePayment" column="INTERESTONLATEPAYMENT" type="double"/>
+    <property name="InterestOnLateDeduction" column="INTERESTONLATEDEDUCTION" type="double"/>
+    <property name="resolved" column="RESOLVED" type="boolean"/>
+    <property name="comments" column="COMMENTS" type="string"/>
+    <property name="deducteeSrNo" column="DEDUCTEESRNO" type="long"/>
+    <property name="tranAmt" column="TRANAMT" type="long"/>
+    <property name="additionalDetail" column="ADDITIONALDETAIL" type="string"/>
+</class>
+
+<class name="domain.in.rjsa.model.fy.Regular26QDeductee" table="REGULAR26QDEDUCTEE" catalog="AAACN4165C_2324">
+    <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+    
+    <property name="challanHeading" column="CHALLANHEADING" type="string"/>
+    <property name="deducteeRefNo" column="DEDUCTEEREFNO" type="string"/>
+    <property name="deducteeCode" column="DEDUCTEECODE" type="string"/>
+    <property name="pan" column="PAN" type="string"/>
+    <property name="name" column="NAME" type="string"/>
+    <property name="sectionCode" column="SECTIONCODE" type="string"/>
+    <property name="dateOfPayment" column="DATEOFPAYMENT" type="date"/>
+    <property name="amountPaid" column="AMOUNTPAID" type="double"/>
+    <property name="tds" column="TDS" type="double"/>
+    <property name="surcharge" column="SURCHARGE" type="double"/>
+    <property name="eduCess" column="EDUCESS" type="double"/>
+    <property name="totalTaxDeducted" column="TOTALTAXDEDUCTED" type="double"/>
+    <property name="totalTaxDeposited" column="TOTALTAXDEPOSITED" type="double"/>
+    <property name="dateOfDeduction" column="DATEOFDEDUCTION" type="date"/>
+    <property name="rateAtWhichTaxCollected" column="RATEATWHICHTAXCOLLECTED" type="double"/>
+    <property name="remarksReason" column="REMARKSREASON" type="string"/>
+    <property name="certificateNumber" column="CERTIFICATENUMBER" type="string"/>
+    <property name="fy" column="FY" type="string"/>
+    <property name="quarter" column="QUARTER" type="string"/>
+    <property name="branchCode" column="BRANCHCODE" type="string"/>
+    <property name="accNo" column="ACCNO" type="string"/>
+    <property name="challanSrNo" column="CHALLANSRNO" type="long"/>
+    <property name="month" column="MONTH" type="string"/>
+    <property name="custVendId" column="CUSTVENDID" type="string"/>
+    <property name="uniqueRefNo" column="UNIQUEREFNO" type="string"/>
+    <property name="cashWithdrawal194N" column="CASHWITHDRAWAL194N" type="double"/>
+    <property name="cashWithdrawal194N20Lto1Cr" column="CASHWITHDRAWAL194N20LTO1CR" type="double"/>
+    <property name="cashWithdrawal194N1Cr" column="CASHWITHDRAWAL194N1CR" type="double"/>
+    <property name="TAN" column="TAN" type="string"/>
+    <property name="roCode" column="ROCODE" type="string"/>
+    <property name="errorDescription" column="ERRORDESCRIPTION" type="string"/>
+    <property name="warningDescription" column="WARNINGDESCRIPTION" type="string"/>
+    <property name="ShortDeduction" column="SHORTDEDUCTION" type="double"/>
+    <property name="InterestOnShortDeduction" column="INTERESTONSHORTDEDUCTION" type="double"/>
+    <property name="InterestOnLatePayment" column="INTERESTONLATEPAYMENT" type="double"/>
+    <property name="InterestOnLateDeduction" column="INTERESTONLATEDEDUCTION" type="double"/>
+    <property name="resolved" column="RESOLVED" type="boolean"/>
+    <property name="comments" column="COMMENTS" type="string"/>
+    <property name="deducteeSrNo" column="DEDUCTEESRNO" type="long"/>
+    <property name="tranAmt" column="TRANAMT" type="double"/>
+    <property name="additionalDetail" column="ADDITIONALDETAIL" type="string"/>
+</class>
+
+<class name="domain.in.rjsa.model.fy.Regular27EQDeductee" table="REGULAR27EQDEDUCTEE" catalog="AAACN4165C_2324">
+   <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+    <property name="deducteeRefNo" column="DEDUCTEEREFNO" type="string"/>
+    <property name="deducteeCode" column="DEDUCTEECODE" type="string"/>
+    <property name="pan" column="PAN" type="string"/>
+    <property name="name" column="NAME" type="string"/>
+    <property name="amountPaid" column="AMOUNTPAID" type="double"/>
+    <property name="dateOfPayment" column="DATEOFPAYMENT" type="date"/>
+    <property name="tds" column="TDS" type="double"/>
+    <property name="surcharge" column="SURCHARGE" type="double"/>
+    <property name="quarter" column="QUARTER" type="string"/>
+    <property name="fy" column="FY" type="string"/>
+    <property name="eduCess" column="EDUCESS" type="double"/>
+    <property name="totalTaxDeducted" column="TOTALTAXDEDUCTED" type="double"/>
+    <property name="totalTaxDeposited" column="TOTALTAXDEPOSITED" type="double"/>
+    <property name="dateOfDeduction" column="DATEOFDEDUCTION" type="date"/>
+    <property name="totalValueofPurchase" column="TOTALVALUEOFPURCHASE" type="double"/>
+    <property name="rateatwhichTaxCollected" column="RATEATWHICHTAXCOLLECTED" type="double"/>
+    <property name="remarksReason" column="REMARKSREASON" type="string"/>
+    <property name="certificateNumber" column="CERTIFICATENUMBER" type="string"/>
+    <property name="deducteeisNonResident" column="DEDUCTEEISNONRESIDENT" type="string"/>
+    <property name="permanentEstablishment" column="PERMANENTESTABLISHMENT" type="string"/>
+    <property name="branchCode" column="BRANCHCODE" type="long"/>
+    <property name="accNo" column="ACCNO" type="string"/>
+    <property name="challanSrNo" column="CHALLANSRNO" type="long"/>
+    <property name="month" column="MONTH" type="string"/>
+    <property name="challanHeading" column="CHALLANHEADING" type="string"/>
+    <property name="custVendId" column="CUSTVENDID" type="string"/>
+    <property name="uniqueRefNo" column="UNIQUEREFNO" type="string"/>
+    <property name="reasonForNonCollectionForG" column="REASONFORNONCOLLECTIONFORG" type="string"/>
+    <property name="ifAnswerTo681AisyesthenChallanNumber" column="IFANSWERTO681AISYESTHENCHALLANNUMBER" type="long"/>
+    <property name="ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment" column="IFANSWERTO681AISYESTHENDATEOFPAYMENTOFTDSTOCENTRALGOVERNMENT" type="date"/>
+    <property name="TAN" column="TAN" type="string"/>
+    <property name="roCode" column="ROCODE" type="string"/>
+    <property name="sectionCode" column="SECTIONCODE" type="string"/>
+    <property name="errorDescription" column="ERRORDESCRIPTION" type="string"/>
+    <property name="warningDescription" column="WARNINGDESCRIPTION" type="string"/>
+    <property name="ShortDeduction" column="SHORTDEDUCTION" type="double"/>
+    <property name="InterestOnShortDeduction" column="INTERESTONSHORTDEDUCTION" type="double"/>
+    <property name="InterestOnLatePayment" column="INTERESTONLATEPAYMENT" type="double"/>
+    <property name="InterestOnLateDeduction" column="INTERESTONLATEDEDUCTION" type="double"/>
+    <property name="resolved" column="RESOLVED" type="boolean"/>
+    <property name="comments" column="COMMENTS" type="string"/>
+    <property name="deducteeSrNo" column="DEDUCTEESRNO" type="long"/>
+    <property name="tranAmt" column="TRANAMT" type="long"/>
+    <property name="additionalDetail" column="ADDITIONALDETAIL" type="string"/>
+</class>
+
+<class name="domain.in.rjsa.model.fy.Regular27QDeductee" table="REGULAR27QDEDUCTEE" catalog="AAACN4165C_2324">
+    <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+    <property name="challanHeading" column="CHALLANHEADING" type="string"/>
+    <property name="deducteeRefNo" column="DEDUCTEEREFNO" type="string"/>
+    <property name="deducteeCode" column="DEDUCTEECODE" type="string"/>
+    <property name="pan" column="PAN" type="string"/>
+    <property name="name" column="NAME" type="string"/>
+    <property name="sectionCode" column="SECTIONCODE" type="string"/>
+    <property name="dateOfPayment" column="DATEOFPAYMENT" type="date"/>
+    <property name="amountPaid" column="AMOUNTPAID" type="double"/>
+    <property name="tds" column="TDS" type="double"/>
+    <property name="surcharge" column="SURCHARGE" type="double"/>
+    <property name="eduCess" column="EDUCESS" type="double"/>
+    <property name="totalTaxDeducted" column="TOTALTAXDEDUCTED" type="double"/>
+    <property name="totalTaxDeposited" column="TOTALTAXDEPOSITED" type="double"/>
+    <property name="dateOfDeduction" column="DATEOFDEDUCTION" type="date"/>
+    <property name="rateAtWhichTaxCollected" column="RATEATWHICHTAXCOLLECTED" type="double"/>
+    <property name="remarksReason" column="REMARKSREASON" type="string"/>
+    <property name="grossingUpIndicator" column="GROSSINGUPINDICATOR" type="string"/>
+    <property name="certificateNumber" column="CERTIFICATENUMBER" type="string"/>
+    <property name="uniqueAcknowledgeNo" column="UNIQUEACKNOWLEDGENO" type="long"/>
+    <property name="countryOfResidence" column="COUNTRYOFRESIDENCE" type="string"/>
+    <property name="emailId" column="EMAILID" type="string"/>
+    <property name="contactNoOfDeductee" column="CONTACTNOOFDEDUCTEE" type="long"/>
+    <property name="addressOfDeductee" column="ADDRESSOFDEDUCTEE" type="string"/>
+    <property name="taxIdentificationNo" column="TAXIDENTIFICATIONNO" type="long"/>
+    <property name="fy" column="FY" type="string"/>
+    <property name="quarter" column="QUARTER" type="string"/>
+    <property name="tdsRateAsPerItActs" column="TDSRATEASPERITACTS" type="string"/>
+    <property name="natureOfRemittance" column="NATUREOFREMITTANCE" type="string"/>
+    <property name="branchCode" column="BRANCHCODE" type="long"/>
+    <property name="accNo" column="ACCNO" type="string"/>
+    <property name="challanSrNo" column="CHALLANSRNO" type="long"/>
+    <property name="month" column="MONTH" type="string"/>
+    <property name="custVendId" column="CUSTVENDID" type="string"/>
+    <property name="uniqueRefNo" column="UNIQUEREFNO" type="string"/>
+    <property name="cashWithdrawal194N" column="CASHWITHDRAWAL194N" type="double"/>
+    <property name="cashWithdrawal194N20Lto1Cr" column="CASHWITHDRAWAL194N20LTO1CR" type="double"/>
+    <property name="cashWithdrawal194N1Cr" column="CASHWITHDRAWAL194N1CR" type="double"/>
+    <property name="TAN" column="TAN" type="string"/>
+    <property name="roCode" column="ROCODE" type="string"/>
+    <property name="errorDescription" column="ERRORDESCRIPTION" type="string"/>
+    <property name="warningDescription" column="WARNINGDESCRIPTION" type="string"/>
+    <property name="ShortDeduction" column="SHORTDEDUCTION" type="double"/>
+    <property name="InterestOnShortDeduction" column="INTERESTONSHORTDEDUCTION" type="double"/>
+    <property name="InterestOnLatePayment" column="INTERESTONLATEPAYMENT" type="double"/>
+    <property name="InterestOnLateDeduction" column="INTERESTONLATEDEDUCTION" type="double"/>
+    <property name="resolved" column="RESOLVED" type="boolean"/>
+    <property name="comments" column="COMMENTS" type="string"/>
+    <property name="deducteeSrNo" column="DEDUCTEESRNO" type="long"/>
+    <property name="tranAmt" column="TRANAMT" type="long"/>
+    <property name="additionalDetail" column="ADDITIONALDETAIL" type="string"/>
+</class>
+
+<class name="domain.in.rjsa.model.fy.DeducteeRemark" table="DEDUCTEEREMARK" catalog="AAACN4165C_2324">
+    <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+
+    <property name="DEDUCTEEID" column="DEDUCTEEID" type="long"/>
+    <property name="ADDEDBY" column="ADDEDBY" type="string"/>
+    <property name="DATETIME" column="DATETIME" type="timestamp"/>
+    <property name="FORMDATA" column="FORMDATA" type="string"/>
+    <property name="STATUS" column="STATUS" type="string"/>
+    <property name="REMARK" column="REMARK" type="string"/>
+    <property name="APPROVEDON" column="APPROVEDON" type="timestamp"/>
+    <property name="APPROVEDBY" column="APPROVEDBY" type="string"/>
+    <property name="FY" column="FY" type="string"/>
+    <property name="DEDUCTEEFORM" column="DEDUCTEEFORM" type="string"/>
+    <property name="BRANCHCODE" column="BRANCHCODE" type="string"/>
+</class>
+
+<class name="domain.in.rjsa.model.fy.TicketRemarks" table="TICKETREMARK" catalog="AAACN4165C_2324">
+    <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+    <property name="ticketId" column="TICKETID" type="long"/>
+    <property name="description" column="DESCRIPTION" type="string"/>
+    <property name="userName" column="USERNAME" type="string"/>
+    <property name="date" column="DATE" type="date"/>
+</class>
+
+<class name="domain.in.rjsa.model.fy.Tickets" table="TICKET" catalog="AAACN4165C_2324">
+    <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+    <property name="branchCode" column="BRANCHCODE" type="long"/>
+    <property name="fy" column="FY" type="string"/>
+    <property name="quarter" column="QUARTER" type="string"/>
+    <property name="form" column="FORM" type="string"/>
+    <property name="type" column="TYPE" type="string"/>
+    <property name="status" column="STATUS" type="string"/>
+    <property name="description" column="DESCRIPTION" type="string"/>
+    <property name="attachment" column="ATTACHMENT" type="string"/>
+    <property name="dateOfOpening" column="DATEOFOPENING" type="date"/>
+    <property name="dateOfChange" column="DATEOFCHANGE" type="date"/>
+    <property name="remarks" column="REMARKS" type="string"/>
+    <property name="fileId" column="FILEID" type="long"/>
+    <property name="userName" column="USERNAME" type="string"/>
+    <property name="resolved" column="RESOLVED" type="boolean"/>
+    <property name="custVendId" column="CUSTVENDID" type="string"/>
+    <property name="pan" column="PAN" type="string"/>
+</class>
+
+<class name="domain.in.rjsa.model.fy.TotalAmount" table="TOTALAMOUNT" catalog="AAACN4165C_2324">
+    <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+    <property name="custVendId" column="CUSTVENDID" type="string"/>
+    <property name="pan" column="PAN" type="string"/>
+    <property name="sectionCode" column="SECTIONCODE" type="string"/>
+    <property name="challanHeading" column="CHALLANHEADING" type="string"/>
+    <property name="month" column="MONTH" type="string"/>
+    <property name="fy" column="FY" type="string"/>
+    <property name="totalAmountPaidRaw" column="TOTALAMOUNTPAIDRAW" type="double"/>
+    <property name="totalAmountPaidUpload" column="TOTALAMOUNTPAIDUPLOAD" type="double"/>
+    <property name="totaltaxRaw" column="TOTALTAXRAW" type="double"/>
+    <property name="totalTaxUploaded" column="TOTALTAXUPLOADED" type="double"/>
+    <property name="remark" column="REMARK" type="string"/>
+    <property name="source" column="SOURCE" type="string"/>
+</class>
+
+<class name="domain.in.rjsa.model.fy.UploadCertificate" table="UPLOADCERTIFICATE" catalog="AAACN4165C_2324">
+    <id name="id" column="ID" type="long">
+        <generator class="native"/>
+    </id>
+    <property name="TAN" column="TAN" type="string"/>
+    <property name="fy" column="FY" type="string"/>
+    <property name="quarter" column="QUARTER" type="string"/>
+    <property name="form" column="FORM" type="string"/>
+    <property name="fileName" column="FILENAME" type="string"/>
+    <property name="uploadedTime" column="UPLOADEDTIME" type="timestamp"/>
+    <property name="userName" column="USERNAME" type="string"/>
+    <property name="status" column="STATUS" type="string"/>
+</class>
+
+<class name="domain.in.rjsa.model.tds.ADDITIONALDETAILS" table="ADDITIONALDETAILS" catalog="Taxo">
+    <id name="TAN" column="TAN" type="string"/>
+    <property name="STATENAME" column="STATENAME" type="string"/>
+    <property name="HASTHESTATEMENTHASBEENFILEDEARLIER" column="HASTHESTATEMENTHASBEENFILEDEARLIER" type="string"/>
+    <property name="PRN_PREVIOUS" column="PRN_PREVIOUS" type="string"/>
+    <property name="REMARK" column="REMARK" type="string"/>
+    <property name="TDSCIRCLE1" column="TDSCIRCLE1" type="string"/>
+    <property name="TDSCIRCLE2" column="TDSCIRCLE2" type="string"/>
+    <property name="TDSCIRCLECITY" column="TDSCIRCLECITY" type="string"/>
+    <property name="TDSCIRCLEPIN" column="TDSCIRCLEPIN" type="string"/>
+</class>
+
+<class name="domain.in.rjsa.model.tds.CHALLAN" table="CHALLAN" catalog="Taxo">
+    <id name="CIN" column="CIN" type="string"/>
+    <property name="TAN" column="TAN" type="string"/>
+    <property name="AVAILABLE_BALENCE" column="AVAILABLE_BALENCE" type="string"/>
+    <property name="AMOUNT_OF_CLALLAN" column="AMOUNT_OF_CLALLAN" type="string"/>
+    <property name="DATE_OF_DEPOSITION" column="DATE_OF_DEPOSITION" type="date"/>
+    <property name="AS_ON_DATE" column="AS_ON_DATE" type="date"/>
+    <property name="CHALLAN_MISMATCH" column="CHALLAN_MISMATCH" type="string"/>
+    <property name="SECTION" column="SECTION" type="string"/>
+    <property name="MINORHEAD" column="MINORHEAD" type="string"/>
+</class>
+
+<class name="domain.in.rjsa.model.tds.DEDUCTORDETAILS" table="DEDUCTORDETAILS" catalog="Taxo">
+    <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+    <property name="clientId" column="CLIENTID" type="long"/>
+    <property name="TAN" column="TAN" type="string"/>
+    <property name="FLATORFLOAR" column="FLATORFLOAR" type="string"/>
+    <property name="BUILDINGNAME" column="BUILDINGNAME" type="string"/>
+    <property name="ROADSTREET" column="ROADSTREET" type="string"/>
+    <property name="AREALOCALITY" column="AREALOCALITY" type="string"/>
+    <property name="CITY" column="CITY" type="string"/>
+    <property name="STATE" column="STATE" type="string"/>
+    <property name="PIN" column="PIN" type="string"/>
+    <property name="STD" column="STD" type="string"/>
+    <property name="TELEPHONE" column="TELEPHONE" type="string"/>
+    <property name="COMPANYEMAIL" column="COMPANYEMAIL" type="string"/>
+    <property name="STD_ALTERNATE" column="STD_ALTERNATE" type="string"/>
+    <property name="TELEPHONEALTERNATE" column="TELEPHONEALTERNATE" type="string"/>
+    <property name="COMPANYEMAILALTERNATE" column="COMPANYEMAILALTERNATE" type="string"/>
+    <property name="CHANGEADDRESSSINCELASTRETURN" column="CHANGEADDRESSSINCELASTRETURN" type="string"/>
+    <property name="GSTIN" column="GSTIN" type="string"/>
+</class>
+
+<class name="domain.in.rjsa.model.tds.DEFAULTSUMMARY" table="DEFAULTSUMMARY" catalog="Taxo">
+    <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+    <property name="TAN" column="TAN" type="string"/>
+    <property name="FY" column="FY" type="string"/>
+    <property name="QUARTER" column="QUARTER" type="string"/>
+    <property name="FORM" column="FORM" type="string"/>
+    <property name="STATUS" column="STATUS" type="string"/>
+    <property name="AS_ON_DATE" column="AS_ON_DATE" type="string"/>
+    <property name="NET_PAY" column="NET_PAY" type="string"/>
+    <property name="TOTAL" column="TOTAL" type="string"/>
+    <property name="SHORT_PAYMENT" column="SHORT_PAYMENT" type="string"/>
+    <property name="INTEREST_SHORT_PAYMENT" column="INTEREST_SHORT_PAYMENT" type="string"/>
+    <property name="SHORT_DEDUCTION" column="SHORT_DEDUCTION" type="string"/>
+    <property name="INTEREST_SHORT_DEDUCTION" column="INTEREST_SHORT_DEDUCTION" type="string"/>
+    <property name="ADDITIONAL_LATE_PAYMENT" column="ADDITIONAL_LATE_PAYMENT" type="string"/>
+    <property name="INTEREST_ON_LATE_PAYMENT" column="INTEREST_ON_LATE_PAYMENT" type="string"/>
+    <property name="LATE_FILING" column="LATE_FILING" type="string"/>
+    <property name="INTERST_LATE_DEDUCTION" column="INTERST_LATE_DEDUCTION" type="string"/>
+    <property name="INTERST" column="INTERST" type="string"/>
+    <property name="ADDITIONAL_LATE_FILING" column="ADDITIONAL_LATE_FILING" type="string"/>
+    <property name="ADDITIONAL_LATE_DEDUCTION" column="ADDITIONAL_LATE_DEDUCTION" type="string"/>
+    <property name="ORDER_PASSED_DATE" column="ORDER_PASSED_DATE" type="string"/>
+    <property name="DEDUCTEES_WITHOUT_PAN" column="DEDUCTEES_WITHOUT_PAN" type="string"/>
+    <property name="DEDUCTEES_WITH_INVALID_PAN" column="DEDUCTEES_WITH_INVALID_PAN" type="string"/>
+</class>
+
+<class name="domain.in.rjsa.model.tds.GH15RETURNSTATUS" table="GH15RETURNSTATUS" catalog="Taxo">
+    <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+    <property name="clientId" column="clientId" type="long"/>
+    <property name="TAN" column="TAN" type="string"/>
+    <property name="QUARTER" column="QUARTER" type="string"/>
+    <property name="FORM" column="FORM" type="string"/>
+    <property name="RT" column="RT" type="string"/>
+    <property name="PRN" column="PRN" type="string"/>
+    <property name="STATUS" column="STATUS" type="string"/>
+    <property name="AS_ON_DATE" column="AS_ON_DATE" type="string"/>
+</class>
+
+<class name="domain.in.rjsa.model.tds.ITRLOGIN" table="ITRLOGIN" catalog="Taxo">
+    <id name="TAN" column="TAN" type="string"/>
+    <property name="USERNAME" column="USERNAME" type="string"/>
+    <property name="PASSWORD" column="PASSWORD" type="string"/>
+    <property name="ITDREIN" column="ITDREIN" type="string"/>
+</class>
+
+<class name="domain.in.rjsa.model.tds.LDC" table="LDC" catalog="Taxo">
+    <id name="LDC_NUMBER" column="LDC_NUMBER" type="string"/>
+    <property name="NAME" column="NAME" type="string"/>
+    <property name="TAN" column="TAN" type="string"/>
+    <property name="PAN" column="PAN" type="string"/>
+    <property name="FY" column="FY" type="string"/>
+    <property name="VALID_FROM" column="VALID_FROM" type="date"/>
+    <property name="VALID_TO" column="VALID_TO" type="date"/>
+    <property name="SECTION_CODE" column="SECTION_CODE" type="string"/>
+    <property name="NATURE_OF_PAYMENT" column="NATURE_OF_PAYMENT" type="string"/>
+    <property name="LDC_RATE" column="LDC_RATE" type="string"/>
+    <property name="CERTIFICATE_LIMIT" column="CERTIFICATE_LIMIT" type="string"/>
+    <property name="AMOUNT_CONSUMED" column="AMOUNT_CONSUMED" type="string"/>
+    <property name="ISSUE_DATE" column="ISSUE_DATE" type="date"/>
+    <property name="CANCEL_DATE" column="CANCEL_DATE" type="string"/>
+    <property name="AS_ON_DATE" column="AS_ON_DATE" type="date"/>
+</class>
+
+<class name="domain.in.rjsa.model.tds.PANITR2324" table="PANITR2324" catalog="Taxo">
+    <id name="PAN" column="PAN" type="string"/>
+    <property name="PANDetail" column="PANDETAIL" type="string"/>
+    <property name="PANVerifiedDate" column="PANVERIFIEDDATE" type="timestamp"/>
+</class>
+
+<class name="domain.in.rjsa.model.tds.REQUESTSTATUS" table="REQUESTSTATUS" catalog="Taxo">
+    <id name="ID" column="ID" type="long">
+        <generator class="identity"/>
+    </id>
+    <property name="TAN" column="TAN" type="string"/>
+    <property name="FY" column="FY" type="string"/>
+    <property name="QUARTER" column="QUARTER" type="string"/>
+    <property name="FORM" column="FORM" type="string"/>
+    <property name="RETURNTYPE" column="RETURNTYPE" type="string"/>
+    <property name="REQUESTDATE" column="REQUESTDATE" type="string"/>
+    <property name="REQUEST_NUMBER" column="REQUEST_NUMBER" type="string"/>
+    <property name="STATUS" column="STATUS" type="string"/>
+    <property name="REQUEST_TYPE" column="REQUEST_TYPE" type="string"/>
+</class>
+
+<class name="domain.in.rjsa.model.tds.RESPONSIBLEPERSONEDETAILS" table="RESPONSIBLEPERSONEDETAILS" catalog="Taxo">
+    <id name="TAN" column="TAN" type="string"/>
+    <property name="NAMERESPONSIBLEPERSONE" column="NAMERESPONSIBLEPERSONE" type="string"/>
+    <property name="PANRESPONSIBLEPERSONE" column="PANRESPONSIBLEPERSONE" type="string"/>
+    <property name="FATHERNAMERESPONSIBLEPERSONE" column="FATHERNAMERESPONSIBLEPERSONE" type="string"/>
+    <property name="DESIGNATION" column="DESIGNATION" type="string"/>
+    <property name="FLATORFLOAR" column="FLATORFLOAR" type="string"/>
+    <property name="BUILDINGNAME" column="BUILDINGNAME" type="string"/>
+    <property name="ROADSTREET" column="ROADSTREET" type="string"/>
+    <property name="AREALOCALITY" column="AREALOCALITY" type="string"/>
+    <property name="CITY" column="CITY" type="string"/>
+    <property name="STATE" column="STATE" type="string"/>
+    <property name="PIN" column="PIN" type="string"/>
+    <property name="STD" column="STD" type="string"/>
+    <property name="TELEPHONE" column="TELEPHONE" type="string"/>
+    <property name="RESPONSIBLEPERSONEMOBILE" column="RESPONSIBLEPERSONEMOBILE" type="string"/>
+    <property name="EMAIL" column="EMAIL" type="string"/>
+    <property name="EMAILALTERNATE" column="EMAILALTERNATE" type="string"/>
+    <property name="STDALTERNATE" column="STDALTERNATE" type="string"/>
+    <property name="TELEPHONEALTERNATE" column="TELEPHONEALTERNATE" type="string"/>
+    <property name="CHANGEADDRESSSINCELASTRETURN" column="CHANGEADDRESSSINCELASTRETURN" type="string"/>
+</class>
+
+<class name="domain.in.rjsa.model.tds.STATEMENTSTATUS" table="STATEMENTSTATUS" catalog="Taxo">
+    <id name="id" column="id" type="long">
+        <generator class="identity"/>
+    </id>
+    <property name="TAN" column="TAN" type="string"/>
+    <property name="FORM" column="FORM" type="string"/>
+    <property name="QUARTER" column="QUARTER" type="string"/>
+    <property name="AS_ON_DATE" column="AS_ON_DATE" type="string"/>
+    <property name="FY" column="FY" type="string"/>
+    <property name="STATUS" column="STATUS" type="string"/>
+    <property name="RT" column="RT" type="string"/>
+</class>
+
+<class name="domain.in.rjsa.model.tds.TRACESSLOGIN" table="TRACESSLOGIN" catalog="Taxo">
+    <id name="TAN" column="TAN" type="string"/>
+    <property name="USERNAME" column="USERNAME" type="string"/>
+    <property name="PASSWORD" column="PASSWORD" type="string"/>
+</class>
+
+</hibernate-mapping>

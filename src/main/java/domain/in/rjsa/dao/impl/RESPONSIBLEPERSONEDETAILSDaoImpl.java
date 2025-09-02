@@ -44,19 +44,17 @@ package domain.in.rjsa.dao.impl;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import jakarta.persistence.TypedQuery;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Predicate;
-import jakarta.persistence.criteria.Root;
 
 import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractDaoTaxo;
 import domain.in.rjsa.dao.RESPONSIBLEPERSONEDETAILSDao;
 import domain.in.rjsa.model.tds.RESPONSIBLEPERSONEDETAILS;
+import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 
 @Repository("RESPONSIBLEPERSONEDETAILSDao")
 public class RESPONSIBLEPERSONEDETAILSDaoImpl extends AbstractDaoTaxo<String, RESPONSIBLEPERSONEDETAILS>

@@ -96,7 +96,6 @@ import org.springframework.stereotype.Repository;
 import domain.in.rjsa.dao.AbstractDaoForm;
 import domain.in.rjsa.dao.LogsDao;
 import domain.in.rjsa.model.fy.Logs;
-
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;

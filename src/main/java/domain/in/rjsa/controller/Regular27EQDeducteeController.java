@@ -7,8 +7,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import jakarta.servlet.http.HttpServletRequest;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +30,7 @@ import domain.in.rjsa.model.fy.Regular27EQDeductee;
 import domain.in.rjsa.service.DeducteeRemarkService;
 import domain.in.rjsa.service.Regular27EQDeducteeService;
 import domain.in.rjsa.service.RemarkService;
+import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/apiform27EQDeductee")

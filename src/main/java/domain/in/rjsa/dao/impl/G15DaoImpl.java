@@ -115,17 +115,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Predicate;
-import jakarta.persistence.criteria.Root;
-
-import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractDaoFY;
 import domain.in.rjsa.dao.G15Dao;
 import domain.in.rjsa.model.fy.G15;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 
 @Repository("G15Dao")
 public class G15DaoImpl extends AbstractDaoFY<Long, G15> implements G15Dao {

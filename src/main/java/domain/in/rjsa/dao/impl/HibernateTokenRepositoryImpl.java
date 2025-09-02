@@ -93,9 +93,6 @@ package domain.in.rjsa.dao.impl;
 import java.util.Date;
 import java.util.HashMap;
 
-import jakarta.persistence.TypedQuery;
-import jakarta.persistence.criteria.CriteriaQuery;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.web.authentication.rememberme.PersistentRememberMeToken;
@@ -104,6 +101,8 @@ import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractDao;
 import domain.in.rjsa.model.form.PersistentLogin;
+import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.CriteriaQuery;
 
 @Repository("tokenRepositoryDao")
 public class HibernateTokenRepositoryImpl extends AbstractDao<String, PersistentLogin>

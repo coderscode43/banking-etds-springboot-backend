@@ -7,8 +7,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.TimeZone;
 
-import jakarta.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -29,6 +27,7 @@ import domain.in.rjsa.service.Regular24QDeducteeService;
 import domain.in.rjsa.service.Regular26QDeducteeService;
 import domain.in.rjsa.service.Regular27EQDeducteeService;
 import domain.in.rjsa.service.Regular27QDeducteeService;
+import jakarta.transaction.Transactional;
 
 @Transactional
 @Service("DeducteeRemarkService")

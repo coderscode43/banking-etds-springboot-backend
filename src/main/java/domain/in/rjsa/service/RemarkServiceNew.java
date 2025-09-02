@@ -4,11 +4,10 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import jakarta.validation.Valid;
-
 import org.springframework.web.multipart.MultipartFile;
 
 import domain.in.rjsa.model.form.Remark;
+import jakarta.validation.Valid;
 
 public interface RemarkServiceNew extends ServiceInterfaceForm<Long,Remark>{
 		

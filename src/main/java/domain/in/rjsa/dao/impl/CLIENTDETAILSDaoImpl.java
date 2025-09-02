@@ -1,9 +1,6 @@
 
 package domain.in.rjsa.dao.impl;
 
-import java.util.HashMap;
-import java.util.List;
-
 import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractDaoTaxo;

@@ -221,17 +221,16 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import jakarta.persistence.TypedQuery;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Predicate;
-import jakarta.persistence.criteria.Root;
-
 import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractDaoTaxo;
 import domain.in.rjsa.dao.STATEMENTSTATUSDao;
 import domain.in.rjsa.model.tds.STATEMENTSTATUS;
+import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 
 @Repository("STATEMENTSTATUSDao")
 public class STATEMENTSTATUSDaoImpl extends AbstractDaoTaxo<Long, STATEMENTSTATUS> implements STATEMENTSTATUSDao {

@@ -31,35 +31,10 @@ public class AbstractController {
 	ApplicationCache applicationCache;
 
 	static final Logger logger = LoggerFactory.getLogger(IndexController.class);
-/////////////////////////////////KARNATAKA BANK////////////////////////////////////////	
-
-//	public String getBranchCode() {
-//		LdapContext ctxGC = null;
-//		CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication()
-//				.getPrincipal();
-//		;
-//		if (applicationCache.getAdminUser(getPrincipal()) != null) {
-//			return "admin";
-//
-//		} else {
-//			String branch = userDetails.getPhysicalDeliveryOfficeName();
-//			try {
-//				int b = Integer.valueOf(branch);
-//				return String.valueOf(b);
-//			} catch (Exception e) {
-//				// TODO: handle exception
-//				logger.info("Login as:",branch);
-//				return branch;
-//			}
-//		}
-//
-//	}
-
-/////////////////////////////////UCO BANK and NIA////////////////////////////////////////
 
 	public String getBranchCode() {
-		// IOB
-		if ("IOB".equalsIgnoreCase(panelAccess)) {
+		// IOB & KB
+		if ("IOB".equalsIgnoreCase(panelAccess) || "KB".equalsIgnoreCase(panelAccess)) {
 			CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication()
 					.getPrincipal();
 			domain.in.rjsa.model.form.UserDetails user = applicationCache.getAdminUser(getPrincipal());
@@ -145,7 +120,7 @@ public class AbstractController {
 			String str = ipAddr.getHostAddress();
 			return str;
 		} catch (UnknownHostException ex) {
-			ex.printStackTrace(); // print Exception StackTrace
+			ex.printStackTrace();
 
 			return null;
 		}

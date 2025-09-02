@@ -4,9 +4,7 @@ import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +17,6 @@ import domain.in.rjsa.dao.LogsDao;
 import domain.in.rjsa.exception.CustomException;
 import domain.in.rjsa.model.fy.Logs;
 import domain.in.rjsa.model.tds.CLIENTDETAILS;
-import domain.in.rjsa.model.tds.GH15RETURNSTATUS;
 import domain.in.rjsa.service.AbstractServiceTaxo;
 import domain.in.rjsa.service.CLIENTDETAILSService;
 

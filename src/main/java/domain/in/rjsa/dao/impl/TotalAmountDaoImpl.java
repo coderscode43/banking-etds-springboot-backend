@@ -174,16 +174,15 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Predicate;
-import jakarta.persistence.criteria.Root;
-
 import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractDaoFY;
 import domain.in.rjsa.dao.TotalAmountDao;
 import domain.in.rjsa.model.fy.TotalAmount;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 
 @Repository("totalAmountDao")
 public class TotalAmountDaoImpl extends AbstractDaoFY<Long, TotalAmount> implements TotalAmountDao {

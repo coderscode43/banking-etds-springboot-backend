@@ -6,8 +6,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import jakarta.servlet.http.HttpServletResponse;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +28,7 @@ import domain.in.rjsa.exception.FieldErrorDTO;
 import domain.in.rjsa.model.form.Branch;
 import domain.in.rjsa.model.form.RegularReturnRemark;
 import domain.in.rjsa.service.RegularReturnRemarkService;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping("/apiregularReturnRemark")

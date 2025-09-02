@@ -3876,6 +3876,26 @@ App.controller('CommonController', [
 			}, 5000); // Poll every 5 seconds
 		}
 
+		self.uploadInvoice = function(valid, entity, object) {
+					if (valid == true) {
+						var downloadFile = object.blob;
+						CommonService.uploadFile(downloadFile, object, entity).then(function(data) {
+							console.log(entity + ' added successfully');
+							$('#successMsg').find('.modal-body').find('.msg').text(data.message || "Uploaded Successfully!");
+							$("#successMsg").modal('show');
+						}, function(error) {
+							console.error('CommonController error while adding Certificate');
+							if (error.exceptionMsg != null || error.exceptionMsg != undefined) {
+								$('#errorMsg').find('.modal-header').find('.headingMsg').text("Information.");
+								$('#errorMsg').find('.modal-body').find('.msg').text("Can not add " + error.entityName + " : " + error.exceptionMsg);
+								$("#errorMsg").modal({
+									keyboard: false,
+									backdrop: 'static'
+								});
+							}
+						});
+					}
+				}
 
 
 

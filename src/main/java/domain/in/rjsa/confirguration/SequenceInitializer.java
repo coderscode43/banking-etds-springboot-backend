@@ -1,24 +1,30 @@
 package domain.in.rjsa.confirguration;
 
+import java.math.BigDecimal;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
-
-import java.math.BigDecimal;
 
 @Component
 public class SequenceInitializer implements ApplicationListener<ContextRefreshedEvent> {
 
     @Autowired
     private SessionFactory sessionFactory;
-
+    
+    @Value("${hibernate.dialect:}")
+	private String dialect;
+    
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        updateSequences();
+    	if (dialect.toLowerCase().contains("oracle")) {
+			updateSequences();
+		}
     }
 
     private void updateSequences() {

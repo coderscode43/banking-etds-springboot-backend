@@ -136,7 +136,6 @@ import org.springframework.stereotype.Repository;
 import domain.in.rjsa.dao.AbstractDaoFY;
 import domain.in.rjsa.dao.MonthlyChallanDao;
 import domain.in.rjsa.model.fy.MonthlyChallan;
-
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;

@@ -1,14 +1,18 @@
 package domain.in.rjsa.service.impl;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.nio.file.StandardOpenOption;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -34,7 +38,7 @@ import org.springframework.web.multipart.MultipartFile;
 import domain.in.rjsa.dao.UploadCertificateDao;
 import domain.in.rjsa.excel.UploadCertificateExcel;
 import domain.in.rjsa.exception.CustomException;
-import domain.in.rjsa.model.fy.UploadCertificate;
+import domain.in.rjsa.model.form.UploadCertificate;
 import domain.in.rjsa.service.AbstractServiceForm;
 import domain.in.rjsa.service.UploadCertificateService;
 import domain.in.rjsa.util.StaticData;
@@ -337,7 +341,7 @@ public class UploadCertificateServiceImpl extends AbstractServiceForm<Long, Uplo
 			String path = StaticData.CertificatePath + "download\\" + lessonMap.get("fy") + "\\"
 					+ lessonMap.get("quarter") + "\\" + f[0] + "\\" + t[0];
 
-			File file = new File(path.toString());
+			File file = new File(path);
 			if (!file.exists()) {
 				file.mkdirs();
 			}
@@ -356,7 +360,36 @@ public class UploadCertificateServiceImpl extends AbstractServiceForm<Long, Uplo
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
 
+	public void uploadInvoices(String fileName, HashMap<String, String> lessonMap, InputStream inputStream) {
+		try {
+			String[] t = lessonMap.get("tan").split("-");
+			String[] f = lessonMap.get("typeofCertificate").split("-");
+			Path folderPath = Paths.get(StaticData.CertificatePath, "download", lessonMap.get("fy"),
+					lessonMap.get("quarter"), f[0], t[0]);
+
+			if (!folderPath.toFile().exists()) {
+				Files.createDirectories(folderPath);
+			}
+			
+			if (fileName.endsWith(".zip")) {
+				unzipAndUpload(inputStream, folderPath);
+
+			} else {
+				folderPath = Paths.get(folderPath.toFile().toString(),fileName);
+				Files.copy(inputStream, folderPath, StandardCopyOption.REPLACE_EXISTING);
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				inputStream.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	private void unzipAndTransfer(MultipartFile downloadFile, String filePath) {
@@ -373,6 +406,42 @@ public class UploadCertificateServiceImpl extends AbstractServiceForm<Long, Uplo
 			zipInputStream.closeEntry();
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+	}
+
+	private void unzipAndUpload(InputStream inputStream, Path folderPath) {
+		try {
+			try (ZipInputStream zis = new ZipInputStream(new BufferedInputStream(inputStream))) {
+				ZipEntry entry;
+				byte[] buffer = new byte[8192];
+
+				while ((entry = zis.getNextEntry()) != null) {
+					String entryName = entry.getName();
+
+					if (entryName.endsWith(".pdf")) {
+						// just get the file name to flatten the output
+						String fileName = Paths.get(entryName).getFileName().toString();
+
+						// Target path is just inside folderPath, no subfolders
+						Path targetPath = folderPath.resolve(fileName);
+
+						// Replace using custom buffer
+						try (OutputStream os = new BufferedOutputStream(Files.newOutputStream(targetPath,
+								StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING))) {
+							int bytesRead;
+							while ((bytesRead = zis.read(buffer)) != -1) {
+								os.write(buffer, 0, bytesRead);
+							}
+						}
+
+					}
+					zis.closeEntry();
+				}
+
+			}
+		} catch (IOException e) {
+			logger.error("Error unzipping file", e);
+			throw new RuntimeException("Failed to unzip invoice files", e);
 		}
 	}
 

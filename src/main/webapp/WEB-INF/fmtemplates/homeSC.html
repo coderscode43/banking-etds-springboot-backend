@@ -88,7 +88,6 @@
 	{
 	background-color: white;
 } */
-
 table, th, tr, td {
 	cursor: pointer;
 }
@@ -376,7 +375,7 @@ table, th, tr, td {
 .dropdown-content {
 	display: none;
 	position: absolute;
-	left: -132px; 
+	left: -132px;
 	background-color: #fff;
 	min-width: 150px;
 	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -406,6 +405,109 @@ table, th, tr, td {
 	margin-left: -68%;
 	margin-top: -18%;
 }
+
+/*  */
+.Ai-button {
+	position: absolute;
+	z-index: 9;
+	background-color: #f1f1f1;
+	text-align: center;
+	border: 1px solid #d3d3d3;
+}
+
+#innerAi-btn {
+	border: none;
+	width: 100%;
+	height: 4em;
+	border-radius: 1em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 12px;
+	background: #1C1A1C;
+	cursor: pointer;
+	transition: all 450ms ease-in-out;
+	padding: 10px;
+	cursor: move;
+	z-index: 10;
+	color: white;
+}
+
+#innerAi-btn img {
+	width: 25px;
+	filter: brightness(100);
+	transition: 0.5s;
+}
+
+#innerAi-btn:hover img {
+	transform: rotateY(150deg);
+	transition: 0.5s;
+}
+
+.sparkle {
+	width: 50px;
+}
+
+.text {
+	font-weight: 600;
+	color: #AAAAAA;
+	font-size: medium;
+}
+
+#innerAi-btn {
+	background: linear-gradient(0deg, #A47CF3, #683FEA);
+	box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4), inset 0px
+		-4px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 4px
+		rgba(255, 255, 255, 0.2), 0px 0px 20px 0px #9917FF;
+}
+
+.Ai-button:hover .text {
+	color: white;
+}
+
+.Ai-button:hover .sparkle {
+	fill: white;
+	transform: scale(1.2);
+}
+
+.AiBox {
+	display: block;
+}
+
+.AiBox .mainAi {
+	position: fixed;
+	width: 400px;
+	border: 1px solid #9b9b9b;
+	z-index: 10;
+	right: 10px;
+	bottom: 0px;
+	border-radius: 10px;
+	transform: translate(500px);
+	transition: 1s;
+	background-color: transparent;
+	backdrop-filter: blur(10px);
+}
+
+.showmainAi {
+	transform: translate(0px) !important;
+}
+
+.AiBox .mainAi .innerAi {
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	border-radius: 10px;
+}
+
+.AiBox .mainAi .innerAi .closebtn {
+	border: 1px solid #515151;
+	padding: 0px 5px 0px;
+	font-size: 30px;
+	border-radius: 5px;
+	margin-right: -10px;
+}
+
+
 </style>
 
 <body ng-Controller="CommonWOTController as cWctr">
@@ -468,7 +570,8 @@ table, th, tr, td {
 							<i class="fas fa-info-circle"></i>
 						</div>
 				</a></li> -->
-				<li ng-show="'IOB' != '${panelAccess}'"><a ng-click="cCctr.gotoListPage('challan','challan')">
+				<li ng-show="'IOB' != '${panelAccess}'"><a
+					ng-click="cCctr.gotoListPage('challan','challan')">
 						<div class="col-sm-10">Challan</div>
 						<div class="col-sm-2">
 							<i class="ti-receipt"></i>
@@ -616,17 +719,16 @@ table, th, tr, td {
 								Refresh <span class="tooltiptext refresh">Refresh Button</span>
 							</button>
 							<div class="dropdown">
-								<a role="button"> <img
-									src="static/img/user.png" alt="Logout"
-									class="rounded-circle thumb-xs logoutBtn">
+								<a role="button"> <img src="static/img/user.png"
+									alt="Logout" class="rounded-circle thumb-xs logoutBtn">
 								</a>
 								<div class="dropdown-content">
 									<a class="nav-link waves-effect waves-light nav-user"
-										style="cursor: default;"> <img
-										src="static/img/user.png" alt="User Profile"
-										class="rounded-circle thumb-xs"
+										style="cursor: default;"> <img src="static/img/user.png"
+										alt="User Profile" class="rounded-circle thumb-xs"
 										style="height: 24px !important; width: 24px !important;">
-										<b style="color: #022755; font-size: 16px; font-weight: 500;width: max-content;">&nbsp;&nbsp;${userName}</b>
+										<b
+										style="color: #022755; font-size: 16px; font-weight: 500; width: max-content;">&nbsp;&nbsp;${userName}</b>
 									</a> <a class="nav-link waves-effect waves-light nav-user"
 										data-toggle="modal" data-target="#myModal2" role="button">
 										<img src="static/img/signOut.png" alt="Logout"
@@ -667,71 +769,97 @@ table, th, tr, td {
 	</div>
 
 
-	<!-- <div id="AiBox" class="AiBox">
+	<!-- AIBOX -->
+	<div id="AiBox" class="AiBox">
 		<div class="mainAi" id="mainAi">
 			<div class="innerAi">
-
-				<div class="ayush">
+				<div>
 					<div class="">
 						<div class="modal-content" style="background-color: transparent;">
-							<div class="modal-header" style="background-color: transparent;">
-								<h5 class="modal-title" id="exampleModalLabel">
-									Generate Data With AI&nbsp; <i class="fas fa-robot"></i>
-								</h5>
+							<div class="modal-header"
+								style="background-color: transparent; align-items: center; gap: 10px;">
+								<div>
+									<h5 class="modal-title" id="exampleModalLabel">
+										Generate Data With AI&nbsp; <i class="fas fa-robot"></i>
+									</h5>
+								</div>
+								<div>
+									<!-- New Chat Button -->
+									<button type="button" class="btn btn-secondary mr-2"
+										ng-click="cCctr.newChat()">
+										<i class="fas fa-comment-alt"></i> New Chat
+									</button>
+								</div>
+
+								<!-- Close Button -->
+
 								<button type="button" class="close closebtn"
 									onclick="gotoHelp()">
 									<span aria-hidden="true">&times;</span>
 								</button>
+
 							</div>
-							Error message display
+
+							<!-- Error message box -->
 							<div id="sqlAIError">
 								<div style="color: red; font-size: 13px; margin-left: 15px;"
 									class="msg"></div>
 							</div>
+
 							<div class="modal-body">
-								<form name="MysqlData">
-									<div class="">
-										<label for="exampleInputEmail1" class="form-label">Message
-											AI </label>
-										<textarea rows="5" cols="2" name="prompt" class="form-control"
-											ng-required="true" ng-model="cCctr.sqlAI.prompt"></textarea>
-										<span class="error"
-											ng-show="MysqlData.submitted || MysqlData.prompt.$dirty && MysqlData.prompt.$invalid">
-											<span class="error"
-											ng-show="MysqlData.prompt.$error.required">Please
-												enter a message.</span>
-										</span>
-									</div>
-									&nbsp;
-									<div class="col-md-12">
-										<div class="col-md-8">
-											<label for="exampleInputPassword1" class="form-label">File
-												Type</label> <select class="form-control" name="fileType"
-												ng-model="cCctr.sqlAI.fileType" ng-required="true">
-												<option style="display: none" value=""></option>
-												<option value="CSV" ng-selected="true"
-													ng-init="cCctr.sqlAI.fileType = 'CSV'">.CSV</option>
-												<option value="EXCEL">.EXCEL</option>
-											</select> <span class="error"
-												ng-show="MysqlData.submitted || MysqlData.fileType.$dirty && MysqlData.fileType.$invalid">
-												<span class="error"
-												ng-show="MysqlData.fileType.$error.required">Please
-													select file type.</span>
-											</span>
+								<form name="DataWithAIForm">
+									<!-- Chat records: Show all previous messages -->
+									<div class="chat-box" style="margin-top: 30px;">
+										<div class="chat-records"
+											style="max-height: 250px; min-height: 250px; overflow-y: auto; margin-bottom: 15px;">
+											<div ng-repeat="message in cCctr.chatMessages"
+												class="chat-message"
+												ng-class="{'user-message': message.sender === 'You ', 'ai-message': message.sender === 'AI'}">
+												<p>
+													<strong>{{message.sender}}:</strong> {{message.text}}
+												</p>
+
+												<!-- Show the download button only for AI messages with files -->
+												<div
+													ng-if="message.sender === 'AI' && message.showDownloadButton">
+													<div class="ai-file-response">
+														<button type="button" class="btn btn-success"
+															ng-click="cCctr.downloadFile(message.fileUrl, message.fileName)">
+															Download {{message.fileName}}</button>
+													</div>
+												</div>
+											</div>
 										</div>
-										<button type="button" style="margin-top: 30px;"
-											class="btn btn-primary col-md-4"
-											ng-click="MysqlData.submitted=true;cCctr.MysqlData(MysqlData.$valid,cCctr.sqlAI,'promptQuery')">Generate</button>
+
+										<!-- Input and Send Button -->
+										<div class="d-flex align-items-center">
+											<input type="text" ng-model="cCctr.sqlAI.query"
+												placeholder="Type your prompt here..."
+												class="form-control mr-2" ng-required="true" autofocus />
+											<button type="button" class="btn btn-primary"
+												ng-click="DataWithAIForm.submitted=true;cCctr.sendMessageAndGenerate(DataWithAIForm.$valid)">
+												Send</button>
+										</div>
 									</div>
 								</form>
 							</div>
 						</div>
 					</div>
 				</div>
-
 			</div>
 		</div>
-	</div> -->
+	</div>
+	
+	<div id="Ai-button" onclick="gotoHelp()"
+		style="width: 210px; height: 52px; border-radius: 15px; background: lightblue; position: absolute; right: 10px; bottom: 10px; z-index: 1;">
+		<div id="innerAi-btn">
+			<img src="static/img/ROBO-TRANSPARENT.png" alt="Help"> <span
+				class="tooltiptext"
+				style="font-family: 'Roboto', sans-serif; font-size: 15px;">Get
+				Data With AI</span>
+		</div>
+	</div>
+	<!-- AIBOX -->
 
 	<div class="modal" data-backdrop="static" id="exampleModalLogin"
 		tabindex="-1" role="dialog" aria-labelledby="exampleModalDefaultLogin"
@@ -1070,8 +1198,8 @@ table, th, tr, td {
 		}
 
 		function removearrow() {
-	
-		document.getElementById('arrowicon').classList.remove('arrowicon1');
+
+			document.getElementById('arrowicon').classList.remove('arrowicon1');
 
 		}
 	</script>

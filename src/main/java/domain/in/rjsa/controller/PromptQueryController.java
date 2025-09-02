@@ -1,8 +1,10 @@
 package domain.in.rjsa.controller;
 
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
@@ -13,6 +15,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,9 +24,9 @@ import org.springframework.web.context.request.async.DeferredResult;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import domain.in.rjsa.exception.CustomException;
 import domain.in.rjsa.exception.FieldErrorDTO;
 import domain.in.rjsa.model.wrapper.FileTypeWrapper;
+import domain.in.rjsa.service.ProcessingStatusService;
 import domain.in.rjsa.service.PromptQueryService;
 
 @Controller
@@ -37,151 +40,87 @@ public class PromptQueryController {
 	@Autowired
 	private PromptQueryService service;
 
-//	private LongPollingController() {
-//		startMonitoring();
-//	}
-//
-//	private void startMonitoring() {
-//		Runnable monitor = () -> {
-//			while (true) {
-//				logger.info("Pool Size: " + executorService.getPoolSize());
-//				logger.info("Active Threads: " + executorService.getActiveCount());
-//				logger.info("Task Count: " + executorService.getTaskCount());
-//				logger.info("Completed Tasks: " + executorService.getCompletedTaskCount());
-//				System.out.println("------------------------------------------------------");
-//				try {
-//					Thread.sleep(5000);
-//				} catch (InterruptedException e) {
-//					// TODO: handle exception
-//					Thread.currentThread().interrupt();
-//					break;
-//				}
-//			}
-//		};
-//
-//		new Thread(monitor).start();
-//	}
-
-	/*
-	 * HTTP worker threads released immediately by passing on the work to the non
-	 * HTTP thread. The worker threads are able to handle additional HTTP request
-	 * without waiting for the long-running process to finish the work.
-	 *
-	 * The servlet thread will remain in a waiting state until you call
-	 * deferredResult.setResult(response) or deferredResult.setErrorResult(...).
-	 * 
-	 * also we can use thenApply or thenCompose accordingly as per need. Note that
-	 * thenAccept() does not return a value; it is designed solely for consuming the
-	 * result.
-	 * 
-	 * You can initiate asynchronous processing with
-	 * CompletableFuture.supplyAsync(), or by using executorService.execute() /
-	 * submit.
-	 * 
-	 * If an exception occurs in supplyAsync, we can directly call
-	 * setErrorResult(...), but this approach is not recommended. Instead, it’s
-	 * better to use an exceptionally block to handle errors.
-	 * 
-	 */
-
+	@Autowired
+	private ProcessingStatusService processingStatusService;
+	
+	
 	@RequestMapping(value = "/TextToSQL", method = RequestMethod.POST)
-	public DeferredResult<ResponseEntity<?>> processPromptQuery(@RequestBody String data) {
-	    logger.info("Request processing started");
+	public ResponseEntity<Map<String, String>> processPromptQuery(@RequestBody String data) {
+	    logger.info("Request received, processing will start asynchronously");
 
 	    HashMap<String, Object> map = parse(data);
-	    String fileType = "EXCEL"; 
-	    FileTypeWrapper fileTypeWrapper = new FileTypeWrapper(fileType);
+	    FileTypeWrapper fileTypeWrapper = new FileTypeWrapper("EXCEL");
 
-	    // Determine file type based on query condition
 	    if (map.get("query").toString().toLowerCase().contains("certificate")) {
-	    	fileTypeWrapper.setFileType("PDF");
+	        fileTypeWrapper.setFileType("PDF");
 	    }
 
-	    // free the HTTP thread and run the processing on a new worker thread
-	    DeferredResult<ResponseEntity<?>> deferredResult = new DeferredResult<>(900000L); // 15m
+	    String requestId = UUID.randomUUID().toString();
+	    processingStatusService.setStatus(requestId, "Processing");
 
-	    // timeout callback
-	    deferredResult.onTimeout(() -> {
-	        deferredResult.setErrorResult(
-	                ResponseEntity.status(HttpStatus.GATEWAY_TIMEOUT).body(setExeptionMsg("Request timeout")));
-	    });
-
-	    // pass a service method to an ExecutorService to manage concurrency
-	    CompletableFuture.supplyAsync(() -> {
-	        logger.info("Processing on separate thread");
-
-	        String encodedFile = "";
+	    CompletableFuture.runAsync(() -> {
 	        try {
-	            encodedFile = service.processRequest(map,fileTypeWrapper);
+	            logger.info("Processing in background with requestId: " + requestId);
+	            String encodedFile = service.processRequest(map, fileTypeWrapper);
 
 	            if (encodedFile.contains("ErrorMsg")) {
-	                deferredResult.setErrorResult(ResponseEntity.status(HttpStatus.BAD_REQUEST)
-	                        .body(setExeptionMsg(encodedFile)));
+	                processingStatusService.setStatus(requestId, "Error: " + encodedFile);
+	            } else {
+	                HashMap<String, String> response = new HashMap<>();
+	                handleFileResponse(encodedFile, response, fileTypeWrapper); // Use handleFileResponse
+	                
+	                processingStatusService.setStatus(requestId, "Completed");
+	                processingStatusService.setFileData(requestId, response); // Store response data
 	            }
-
-	        } catch (CustomException e) {
-	            logger.error("A custom exception occurred", e);
-	            throw new CompletionException(e);
 	        } catch (Exception e) {
-	            logger.error("An error occurred", e);
-	            throw new CompletionException(e);
+	            logger.error("Error processing request", e);
+	            processingStatusService.setStatus(requestId, "Error: Processing failed");
 	        }
-	        return encodedFile;
+	    }, executorService);
 
-	    }, executorService).thenAccept(encodedFile -> {
-	        if (encodedFile != null && encodedFile.length() > 0) {
-	            handleFileResponse(encodedFile, deferredResult, fileTypeWrapper);
-	        } else {
-	            deferredResult.setErrorResult(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-	                    .body(setExeptionMsg("File Path is empty.")));
-	        }
 
-	    }).exceptionally(ex -> {
-	        logger.info("An Exception occurred in supplyAsync", ex);
-	        if (ex.getCause() instanceof CustomException) {
-	            deferredResult.setErrorResult(
-	                    ResponseEntity.status(HttpStatus.BAD_REQUEST).body(setExeptionMsg(ex.getCause().getMessage())));
-	        } else {
-	            deferredResult.setErrorResult(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-	                    .body(setExeptionMsg("An error occurred")));
-	        }
-	        return null;
-	    });
-	    logger.info("Servlet thread freed");
+	    Map<String, String> response = new HashMap<>();
+	    response.put("requestId", requestId);
+	    response.put("status", "Processing started");
 
-	    return deferredResult;
+	    return ResponseEntity.ok(response);
 	}
 
-	private void handleFileResponse(String encodedFile, DeferredResult<ResponseEntity<?>> deferredResult,
-			FileTypeWrapper fileTypeWrapper) {
-		String fileType = fileTypeWrapper.getFileType();
-		HashMap<String,String> map = new HashMap<>();
-		try {
-			HttpHeaders headers = new HttpHeaders();
-			if (fileType.equalsIgnoreCase("EXCEL")) {
-				headers.add(HttpHeaders.CONTENT_TYPE, "application/vnd.ms-excel");
-			}
-			else if (fileType.equalsIgnoreCase("PDF")) {
-				headers.add(HttpHeaders.CONTENT_TYPE, "application/pdf");
-			}
-			else if (fileType.equalsIgnoreCase("ZIP")) {
-				headers.add(HttpHeaders.CONTENT_TYPE, "application/zip");
-			}
-			
-			map.put("fileType", fileTypeWrapper.getFileType());
-			map.put("encodedFile", encodedFile);
-			
-			deferredResult.setResult(ResponseEntity.status(HttpStatus.OK)
-					.body(map));
-		} catch (Exception e) {
-			logger.error("Could not read file", e);
-			e.printStackTrace();
+	@RequestMapping(value = "/status/{requestId}", method = RequestMethod.GET)
+	public ResponseEntity<?> getProcessingStatus(@PathVariable String requestId) {
+	    String status = processingStatusService.getStatus(requestId);
 
-			deferredResult.setErrorResult(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-					.body(setExeptionMsg("Could not read file")));
-		}
+	    if ("Completed".equals(status)) {
+	        HashMap<String, String> response = processingStatusService.getFileData(requestId);
+	        processingStatusService.removeStatus(requestId);
+	        return ResponseEntity.ok(response);
+	    } else if (status.startsWith("Error:")) {
+	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(status);
+	    }
 
+	    return ResponseEntity.ok(Collections.singletonMap("status", status));
 	}
+
+
+	private void handleFileResponse(String encodedFile, HashMap<String, String> response, FileTypeWrapper fileTypeWrapper) {
+	    String fileType = fileTypeWrapper.getFileType();
+
+	    try {
+	        if (fileType.equalsIgnoreCase("EXCEL")) {
+	            response.put("fileType", "EXCEL");
+	        } else if (fileType.equalsIgnoreCase("PDF")) {
+	            response.put("fileType", "PDF");
+	        } else if (fileType.equalsIgnoreCase("ZIP")) {
+	            response.put("fileType", "ZIP");
+	        }
+	        response.put("status", "Completed");
+	        response.put("encodedFile", encodedFile);
+	    } catch (Exception e) {
+	        logger.error("Could not prepare file response", e);
+	        response.put("error", "Could not read file");
+	    }
+	}
+
 
 	private HashMap<String, Object> parse(String data) {
 		HashMap<String, Object> map = new HashMap<String, Object>();

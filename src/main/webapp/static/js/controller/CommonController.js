@@ -3807,7 +3807,12 @@ App.controller('CommonController', [
 			}
 		}
 
-
+		self.newChat = function() {
+					self.chatMessages = [];  // Clear chat history
+					self.showDownloadButton = false;
+					self.sqlAI.query = ""; // Clear input field
+				};
+				
 		self.chatMessages = []; // Store chat records
 		self.showDownloadButton = false; // Flag to control the visibility of the download button
 

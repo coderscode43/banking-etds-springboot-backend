@@ -46,7 +46,7 @@ public class PanUpdateListController extends AbstractControllerFY<Long, PanUpdat
 	}
 
 	// ------------------- Search Single Entity ---------------------------------
-	@RequestMapping(value = "/search/get/{pageNo}/{resultPerPage}/{json}/**", method = RequestMethod.GET)
+	@RequestMapping(value = "/search/get/{pageNo}/{resultPerPage}/{json}", method = RequestMethod.GET)
 	public ResponseEntity<?> search(@PathVariable String json, HttpServletRequest request, @PathVariable int pageNo,
 			@PathVariable int resultPerPage) {
 		try {

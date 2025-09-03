@@ -96,8 +96,7 @@ td .autoResize {
 							<h6>
 								<b>Quarter</b>
 							</h6>
-							<select class="form-control" ng-model="cCctr.search.quarter"
-								required>
+							<select class="form-control" ng-model="cCctr.search.quarter">
 								<option disabled value="">Select Quarter</option>
 								<#list Quarter as quarter>
 								<option value="${quarter}">${quarter}</option>
@@ -277,7 +276,17 @@ td .autoResize {
 								</#list>
 							</select>
 						</div>
-						<div class="col-md-3"></div>
+						<div class="col-md-3">
+							<h6>
+								<b>Status</b>
+							</h6>
+							<select class="form-control" ng-model="cCctr.search.resolved"
+								title="Select Status">
+								<option disabled value="">Select Status</option>
+								<option value="true">Resolved</option>
+								<option value="false">Pending</option>
+							</select>
+						</div>
 						<div class="col-md-3 ExcelBtn">
 							<button class="btn btn-primary waves-effect waves-light tool"
 								type="button"

@@ -187,7 +187,8 @@ import jakarta.persistence.criteria.Root;
 @Repository("totalAmountDao")
 public class TotalAmountDaoImpl extends AbstractDaoFY<Long, TotalAmount> implements TotalAmountDao {
 
-    public List<TotalAmount> search(HashMap<String, Object> entity, int pageNo, int noOfResult) {
+	@Override
+    public List<TotalAmount> search(LinkedHashMap<?, ?> entity, int pageNo, int noOfResult) {
         CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<TotalAmount> cq = cb.createQuery(TotalAmount.class);
         Root<TotalAmount> root = cq.from(TotalAmount.class);
@@ -280,9 +281,4 @@ public class TotalAmountDaoImpl extends AbstractDaoFY<Long, TotalAmount> impleme
         return predicates;
     }
 
-	@Override
-	public List<?> search(LinkedHashMap<?, ?> map, int pageNo, int resultPerPage) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

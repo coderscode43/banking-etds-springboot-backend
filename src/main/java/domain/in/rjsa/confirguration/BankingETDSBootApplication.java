@@ -110,8 +110,8 @@ public class BankingETDSBootApplication extends SpringBootServletInitializer imp
 			"/{path:[^\\.]*}/list/{path3:[^\\.-]*}/{params}",
 			"/{path:[^\\.]*}/list/{path2:[^\\.-]*}/{path3:[^\\.-]*}/{params}",
 			"/{path:[^\\.]*}/{path2:[^\\.-]*}/{path3:[^\\.-]*}/{path4:[^\\.-]*}",
-			"/{path:[^\\.]*}/{path2:[^\\.-]*}/{path3:[^\\.-]*}/{path4:[^\\.-]*}/{path5:[^\\.-]*}",
 			"/{path:[^\\.]*}/{path2:[^\\.-]*}/{path3:[^\\.-]*}/{path4:[^\\.-]*}/{params}",
+			"/{path:[^\\.]*}/{path2:[^\\.-]*}/{path3:[^\\.-]*}/{path4:[^\\.-]*}/{path5:[^\\.-]*}",
 			"/{path:[^\\.]*}/{path2:[^\\.-]*}/{path3:[^\\.-]*}/{path4:[^\\.-]*}/{path5:[^\\.-]*}/{path6:[^\\.-]*}" })
 	public String redirect() {
 		return "forward:/";

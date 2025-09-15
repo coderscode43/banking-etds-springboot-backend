@@ -50,7 +50,7 @@ public class SecurityConfigAD {
                                 "/static/js/jquery.min.js", "/static/css/font-awesome.min.css",
                                 "/static/fonts/css/font-awesome.css", "/static/css/signin.css",
                                 "/static/css/bootstrap.min.css", "/static/img/TOS.png",
-                                "/apidownloadCertificate/**"
+                                "/apidownloadCertificate/**", "/index/staticData"
                         )
                         .permitAll() // Allow unrestricted access to the above URLs
                         .anyRequest().authenticated() // Require authentication for any other request
@@ -116,13 +116,14 @@ public class SecurityConfigAD {
     // CORS Configuration Source
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true); // Allow cookies or authorization headers
         config.setAllowedOrigins(
                 Arrays.asList("http://localhost:3000", "http://localhost:3001", "http://localhost:4173"));
         config.setAllowedMethods(Arrays.asList("GET", " POST", " PUT", "DELETE")); // Allow all HTTP methods (GET, POST)
         config.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type")); // Allow all headers
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config); // Apply to all endpoints
         return source;
     }

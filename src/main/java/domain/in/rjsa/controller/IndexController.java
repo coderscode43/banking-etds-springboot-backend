@@ -9,11 +9,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -449,6 +451,46 @@ public class IndexController extends AbstractController {
 			}
 		}
 	}
+
+    @GetMapping("/staticData")
+    public ResponseEntity<Map<String, Object>> staticData() {
+        // Set static data at the start of the method
+        setStaticData();
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("latestFy", StaticData.latestFy);
+        map.put("financialYear", StaticData.financialYear);
+        map.put("Quarter", StaticData.Quarter);
+        map.put("typeOfDeductee", StaticData.typeOfDeductee);
+        map.put("typeOfCertificate", StaticData.typeOfCertificate);
+        map.put("Month", StaticData.Month);
+        map.put("Tan", StaticData.Tan);
+        map.put("Section", StaticData.Section);
+        map.put("Form", StaticData.Form);
+        map.put("status", StaticData.status);
+        map.put("typeOfCorrection", StaticData.typeOfCorrection);
+        map.put("typeOfForm", StaticData.typeOfForm);
+        map.put("regularReturnStatus", StaticData.regularReturnStatus);
+        map.put("exemption", StaticData.exemption);
+        map.put("typeOfReport", StaticData.typeOfReport);
+        map.put("State", StaticData.State);
+        map.put("statementStatus", applicationCache.getStatementStatus());
+
+        // User Details
+        Map<String, Object> userDetailsMap = new HashMap<>();
+        userDetailsMap.put("userName", getPrincipal());
+        userDetailsMap.put("typeOfUser", getBranchCode());
+        map.put("userDetails", userDetailsMap);
+
+        // Client Details
+        Map<String, Object> clientDetailsMap = new HashMap<>();
+        clientDetailsMap.put("ClientName", StaticData.ClientName);
+        clientDetailsMap.put("ClientPAN", StaticData.ClientPAN);
+        clientDetailsMap.put("panelAccess", panelAccess);
+        map.put("clientDetails", clientDetailsMap);
+
+        return ResponseEntity.ok(map);
+    }
 
 	@RequestMapping(value = "/HomehelpSC")
 	public String getHelpHomePageSC() {

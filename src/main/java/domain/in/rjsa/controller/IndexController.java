@@ -96,14 +96,18 @@ public class IndexController extends AbstractController {
 			}
 		}
 	}
-	
+
+    // Get financial year from application properties to use in IndexController
+    @Value("${financialYear}")
+    private String financialYear;
+
 	public void addAttributes(ModelMap model) {
 		Login login = applicationCache.getLoginDetail(getPrincipal());
 		Long branchCode = login.getBranchCode();
 		Branch branch = applicationCache.getBranch(branchCode);
 		model.addAttribute("branchName", branch.getBranchName());
 		model.addAttribute("branchCode", String.valueOf(Integer.parseInt(branchCode.toString())));
-		model.addAttribute("fy", "2024-25");
+		model.addAttribute("fy", financialYear);
 	}
 
 	@RequestMapping(value = "/homePage")

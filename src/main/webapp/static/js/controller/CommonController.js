@@ -1732,9 +1732,9 @@ App.controller('CommonController', [
 			self.fileName = new FormData();
 			$state.go("homeWot.homepage", {
 				"branchCode": branchCode,
-				/*"fy": '2023-24'*/
+				"fy": '2023-24'
 				/*"fy": '2024-25'*/
-				"fy": '2025-26'
+                /*"fy": '2025-26'*/
 			});
 		}
 

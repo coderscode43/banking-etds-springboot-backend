@@ -73,7 +73,8 @@ App.factory('CommonService', [
 			$http.get(
 				REST_SERVICE_URI + entity + '/list' + '/get/' + pageNo
 				+ '/100').success(function(data) {
-					entityList = data;
+					count = data.count;
+					entityList = data.entities;
 					deferred.resolve(data);
 				}).error(function(status) {
 					deferred.reject(status);

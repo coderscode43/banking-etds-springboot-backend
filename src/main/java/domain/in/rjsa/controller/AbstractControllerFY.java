@@ -150,9 +150,14 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 //		applicationCache.getUserAuthorised();
 
 		try {
+			Long count = getService().findallCount(new HashMap<>());
 			List<?> list = getList(pageNo, resultPerPage);
+			
+			ListCount data = new ListCount();
+			data.setCount(count);
+			data.setEntities(list);
 
-			return new ResponseEntity<>(list, HttpStatus.OK);
+			return new ResponseEntity<>(data, HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("Error in listALL", e);
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);

@@ -83,9 +83,14 @@ public abstract class AbstractControllerTaxo<K extends Serializable, E extends M
 			@PathVariable int resultPerPage) {
 		String mapping = request.getPathInfo();
 		try {
+            Long count = getService().findallCount(new HashMap<>());
 			List<?> list = getList(pageNo, resultPerPage);
 
-			return new ResponseEntity<>(list, HttpStatus.OK);
+            ListCount data = new ListCount();
+            data.setCount(count);
+            data.setEntities(list);
+
+			return new ResponseEntity<>(data, HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("Error in listALL", e);
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);

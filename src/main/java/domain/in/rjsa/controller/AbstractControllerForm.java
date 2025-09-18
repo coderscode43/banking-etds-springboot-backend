@@ -65,7 +65,13 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 			@PathVariable int resultPerPage) {
 
 		try {
+            Long count = getService().findallCount(new HashMap<>());
 			List<?> list = getList(pageNo, resultPerPage);
+
+            ListCount data = new ListCount();
+            data.setCount(count);
+            data.setEntities(list);
+
 			return new ResponseEntity<>(list, HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("Error in listALL", e);

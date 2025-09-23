@@ -345,8 +345,22 @@ public abstract class AbstractDaoForm<K extends Serializable, E> implements DaoI
     }
 
     public List<E> searchExcel(HashMap<String, Object> map) {
-        // TODO: Implement Excel-specific search if needed
-        return null;
+        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<E> cq = cb.createQuery(persistentClass);
+        Root<E> root = cq.from(persistentClass);
+
+        // Build predicates
+        List<Predicate> predicates = new ArrayList<>();
+        for (Map.Entry<String, Object> entry : map.entrySet()) {
+            predicates.add(cb.equal(root.get(entry.getKey()), entry.getValue()));
+        }
+
+        cq.select(root).where(predicates.toArray(new Predicate[0]));
+        cq.orderBy(cb.desc(root.get("id"))); // Keep old ordering
+
+        TypedQuery<E> query = getEntityManager().createQuery(cq);
+        return query.getResultList();
+    	
     }
 
     public List<String> ajax(String name, String term) {

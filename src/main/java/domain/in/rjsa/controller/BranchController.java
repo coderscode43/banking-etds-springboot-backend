@@ -344,8 +344,8 @@ public class BranchController extends AbstractController {
 	}
 	// ------------------- Generate Excel ---------------------------------
 
-	@RequestMapping(value = "/generateExcel/{json}/**", method = RequestMethod.GET)
-	public void generateExcel(@PathVariable String json, HttpServletRequest request, HttpServletResponse response) {
+	@RequestMapping(value = "/generateExcel/{json}", method = RequestMethod.GET)
+	public void generateExcel(@PathVariable(required = false) String json, HttpServletRequest request, HttpServletResponse response) {
 		try {
 			final String path = request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE).toString();
 			final String bestMatchingPattern = request.getAttribute(HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE)

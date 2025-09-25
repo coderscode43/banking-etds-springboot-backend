@@ -72,7 +72,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
             data.setCount(count);
             data.setEntities(list);
 
-			return new ResponseEntity<>(list, HttpStatus.OK);
+			return new ResponseEntity<>(data, HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("Error in listALL", e);
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);

@@ -350,8 +350,8 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	// ------------------- Generate Excel ---------------------------------
 
-	@RequestMapping(value = "/generateExcel/{json}/**", method = RequestMethod.GET)
-	public void generateExcel(@PathVariable String json, HttpServletRequest request, HttpServletResponse response)
+	@RequestMapping(value = "/generateExcel/{json}", method = RequestMethod.GET)
+	public void generateExcel(@PathVariable(required = false) String json, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		try {
 			final String path = request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE).toString();

@@ -451,8 +451,8 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 
 	// ------------------- Generate Excel ---------------------------------
 
-	@RequestMapping(value = "/generateExcel/{json}/**", method = RequestMethod.GET)
-	public ResponseEntity<?> generateExcel(@PathVariable String json, HttpServletRequest request,
+	@RequestMapping(value = "/generateExcel/{json}", method = RequestMethod.GET)
+	public ResponseEntity<?> generateExcel(@PathVariable(required = false) String json, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		try {
 			final String path = request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE).toString();

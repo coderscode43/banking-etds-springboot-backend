@@ -286,7 +286,7 @@ App.controller('CommonController', [
 							$('#successMsg').find('.modal-header').find('.headingMsg').append("Successfull");
 							$('#successMsg').find('.modal-body').find('.msg').append("Saved Successfully");
 							$("#successMsg").modal();
-							window.location.reload();
+							/*window.location.reload();*/
 							self.gotoListPage(page, page)
 						},
 						function(error) {

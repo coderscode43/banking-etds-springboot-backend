@@ -13,6 +13,8 @@ public class FieldErrorDTO {
     
     private String exceptionMsg;
     
+    private String successMsg;
+    
     private String entityName;
      
  

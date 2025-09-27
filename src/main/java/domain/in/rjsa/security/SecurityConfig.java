@@ -62,7 +62,7 @@ public class SecurityConfig {
                                 "/static/img/TOS.png", "/apidownloadCertificate/**", "/api*/**", "/index/testConnection", "/index/staticData")
                         .permitAll()
                         .requestMatchers(HttpMethod.TRACE).denyAll()
-                        .requestMatchers(HttpMethod.OPTIONS).denyAll()
+                     // .requestMatchers(HttpMethod.OPTIONS).denyAll()
                         .requestMatchers(HttpMethod.PATCH).denyAll()
                         .anyRequest().authenticated())
 
@@ -97,7 +97,7 @@ public class SecurityConfig {
         config.setAllowCredentials(true); // Allow cookies or authorization headers
         config.setAllowedOrigins(
                 Arrays.asList("http://localhost:3000", "http://localhost:3001", "http://localhost:4173"));
-        config.setAllowedMethods(Arrays.asList("GET", " POST", " PUT", "DELETE")); // Allow all HTTP methods (GET, POST)
+        config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS")); // Allow all HTTP methods (GET, POST)
         config.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type")); // Allow all headers
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

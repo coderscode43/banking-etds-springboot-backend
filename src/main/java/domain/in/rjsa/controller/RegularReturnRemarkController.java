@@ -141,7 +141,10 @@ public class RegularReturnRemarkController
 			logger.info("Creating new Return instance");
 			adminValidation(entity);
 			service.saveBulkRemark(entity, getPrincipal());
-			return new ResponseEntity<Object>(HttpStatus.CREATED);
+			
+			ermsg.setEntityName(getEntity().getSimpleName().toString());
+			ermsg.setSuccessMsg("Added Sucessfully");
+			return new ResponseEntity<Object>(ermsg, HttpStatus.CREATED);
 		} catch (Exception e) {
 			ermsg.setEntityName(getEntity().getSimpleName().toString());
 			ermsg.setExceptionMsg(e.getMessage());
@@ -181,7 +184,9 @@ public class RegularReturnRemarkController
 					queryMail.sendEmail(map);
 				}
 			}
-			return new ResponseEntity<Object>(HttpStatus.CREATED);
+			ermsg.setEntityName(getEntity().getSimpleName().toString());
+			ermsg.setSuccessMsg("Sent Reminder Successfully");
+			return new ResponseEntity<Object>(ermsg,HttpStatus.CREATED);
 		} catch (Exception e) {
 			ermsg.setEntityName(getEntity().getSimpleName().toString());
 			ermsg.setExceptionMsg(e.getMessage());

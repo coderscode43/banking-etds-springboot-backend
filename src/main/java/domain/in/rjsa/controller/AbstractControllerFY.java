@@ -498,6 +498,7 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 				File file = new File(address);
 				response.setContentType("application/vnd.ms-excel");
 				response.setHeader("Content-disposition", "attachment; filename=" + file.getName());
+	            response.setHeader("Access-Control-Expose-Headers", "Content-Disposition");
 				Path p = file.toPath();
 				OutputStream out;
 				try {

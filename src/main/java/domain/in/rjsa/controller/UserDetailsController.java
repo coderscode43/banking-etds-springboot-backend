@@ -280,6 +280,7 @@ public class UserDetailsController extends AbstractController {
 			File file = new File(address);
 			response.setContentType("application/vnd.ms-excel");
 			response.setHeader("Content-disposition", "attachment; filename=" + file.getName());
+            response.setHeader("Access-Control-Expose-Headers", "Content-Disposition");
 			Path p = file.toPath();
 			OutputStream out;
 			try {

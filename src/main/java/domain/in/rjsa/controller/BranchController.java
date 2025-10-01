@@ -136,25 +136,31 @@ public class BranchController extends AbstractController {
 	}
 
 	// ------------------- Add Entity ---------------------------------
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	@ResponseBody
-	public ResponseEntity<?> createEntity(@RequestBody LinkedHashMap<String, Object> entity) {
-		logger.info("Creating new Return instance");
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseEntity<?> createEntity(@RequestBody LinkedHashMap<String, Object> entity) {
+        FieldErrorDTO ermsg = new FieldErrorDTO();
 
-		if ("admin".equals(getBranchCode())) {
-			// service.saveNewUser(entity.get("userName").toString(),
-			// entity.get("password").toString(),
-			// Long.valueOf(entity.get("branchCode").toString()));
-			entity.remove("userName");
-			entity.remove("password");
-			create(entity);
-			addLogs(entity, "Add");
+        logger.info("Creating new Return instance");
 
-			return new ResponseEntity<Object>(HttpStatus.CREATED);
-		}
-		return new ResponseEntity<Object>(HttpStatus.FORBIDDEN);
+        if ("admin".equals(getBranchCode())) {
+            // service.saveNewUser(entity.get("userName").toString(),
+            // entity.get("password").toString(),
+            // Long.valueOf(entity.get("branchCode").toString()));
+            entity.remove("userName");
+            entity.remove("password");
+            create(entity);
+            addLogs(entity, "Add");
 
-	}
+            ermsg.setEntityName(getEntity().getSimpleName());
+            ermsg.setSuccessMsg("Saved Successfully!");
+            return new ResponseEntity<Object>(ermsg, HttpStatus.CREATED);
+        } else {
+            ermsg.setEntityName(getEntity().getSimpleName());
+            ermsg.setMessage("Unauthorized Branch Code");
+            return new ResponseEntity<Object>(ermsg, HttpStatus.FORBIDDEN);
+        }
+    }
 
 	public void create(LinkedHashMap<?, ?> entity) {
 		ObjectMapper om = new ObjectMapper();
@@ -375,6 +381,7 @@ public class BranchController extends AbstractController {
 			File file = new File(address);
 			response.setContentType("application/vnd.ms-excel");
 			response.setHeader("Content-disposition", "attachment; filename=" + file.getName());
+            response.setHeader("Access-Control-Expose-Headers", "Content-Disposition");
 			Path p = file.toPath();
 			OutputStream out;
 			try {

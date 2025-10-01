@@ -141,9 +141,9 @@ public class RegularReturnRemarkController
 			logger.info("Creating new Return instance");
 			adminValidation(entity);
 			service.saveBulkRemark(entity, getPrincipal());
-			
+
 			ermsg.setEntityName(getEntity().getSimpleName().toString());
-			ermsg.setSuccessMsg("Added Sucessfully");
+			ermsg.setSuccessMsg("Added Successfully");
 			return new ResponseEntity<Object>(ermsg, HttpStatus.CREATED);
 		} catch (Exception e) {
 			ermsg.setEntityName(getEntity().getSimpleName().toString());

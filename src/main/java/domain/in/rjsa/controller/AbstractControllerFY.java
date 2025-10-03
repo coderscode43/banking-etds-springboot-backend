@@ -658,15 +658,19 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 	/*------------------- Add data In Table -------------------------------*/
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public ResponseEntity<?> addData(@Valid @RequestBody String json, HttpServletRequest request) {
+		FieldErrorDTO errmsg = new FieldErrorDTO();
+		errmsg.setEntityName(getEntity().getSimpleName());
 		try {
 			Login login = applicationCache.getLoginBasedOnAuth(request.getHeader("auth").toString());
 			if (login != null) {
 				getService().addData(json);
 			}
-			return new ResponseEntity<Object>(HttpStatus.OK);
+			errmsg.setSuccessMsg("Saved Successfully");
+			return new ResponseEntity<Object>(errmsg, HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new ResponseEntity<Object>("Bad Request", HttpStatus.BAD_REQUEST);
+			errmsg.setExceptionMsg(e.getMessage());
+			return new ResponseEntity<>(errmsg, HttpStatus.BAD_REQUEST);
 		}
 	}
 	

@@ -212,23 +212,24 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<?> createEntity(@RequestBody LinkedHashMap<String, Object> entity) {
-		FieldErrorDTO ermsg = new FieldErrorDTO();
+		FieldErrorDTO errmsg = new FieldErrorDTO();
+		errmsg.setEntityName(getEntity().getSimpleName());
 		try {
 			logger.info("################# Creating new Return instance");
 			adminValidation(entity);
 			create(entity);
 			addLogs("Add");
-			// ermsg.setMessage(" Saved Successfully");
-			return new ResponseEntity<Object>(HttpStatus.CREATED);
+			errmsg.setSuccessMsg("Saved Successfully");
+			return new ResponseEntity<Object>(errmsg, HttpStatus.CREATED);
 		} catch (CustomException cEx) {
 			logger.error("################# Error adding details: ", cEx);
-			ermsg.setMessage("Error");
-			ermsg.setEntityName(getEntity().getSimpleName());
-			ermsg.setExceptionMsg(cEx.getMessage());
-			return new ResponseEntity<Object>(ermsg, HttpStatus.BAD_REQUEST);
+			errmsg.setMessage("Error");
+			errmsg.setExceptionMsg(cEx.getMessage());
+			return new ResponseEntity<Object>(errmsg, HttpStatus.BAD_REQUEST);
 		} catch (Exception e) {
 			logger.error("################# Error adding details: ", e);
-			return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
+			errmsg.setExceptionMsg(e.getMessage());
+			return new ResponseEntity<Object>(errmsg, HttpStatus.BAD_REQUEST);
 		}
 	}
 

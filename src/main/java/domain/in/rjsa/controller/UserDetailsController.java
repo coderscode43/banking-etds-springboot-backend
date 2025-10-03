@@ -29,6 +29,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import domain.in.rjsa.exception.FieldErrorDTO;
 import domain.in.rjsa.model.form.ListCount;
 import domain.in.rjsa.model.form.UserDetails;
 import domain.in.rjsa.model.fy.Logs;
@@ -58,18 +59,24 @@ public class UserDetailsController extends AbstractController {
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
 	public ResponseEntity<?> delete(@PathVariable String id) {
 		// verify the clientId authorization
+		FieldErrorDTO ermsg = new FieldErrorDTO();
+		ermsg.setEntityName(getEntity().getSimpleName());
 		try {
 			if ("admin".equals(getBranchCode())) {
 				getService().deleteT(id);
 				addLogs("Delete");
-				return new ResponseEntity<>(HttpStatus.OK);
+	            ermsg.setSuccessMsg("Deleted Successfully!");
+	            return new ResponseEntity<Object>(ermsg, HttpStatus.OK);
 			} else {
-				return new ResponseEntity<>("Bad request", HttpStatus.BAD_REQUEST);
+//				return new ResponseEntity<>("Bad request", HttpStatus.BAD_REQUEST);
+	            ermsg.setMessage("Unauthorized Branch Code");
+	            return new ResponseEntity<Object>(ermsg, HttpStatus.FORBIDDEN);
 			}
 
 		} catch (Exception e) {
 			logger.error("Error in getting detail ", e);
-			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+			ermsg.setExceptionMsg(e.getMessage());
+			return new ResponseEntity<Object>(ermsg, HttpStatus.BAD_REQUEST);
 		}
 
 	}
@@ -185,22 +192,28 @@ public class UserDetailsController extends AbstractController {
 		return getService().search(map);
 	}
 
+	public Class<UserDetails> getEntity() {
+		// TODO Auto-generated method stub
+		return UserDetails.class;
+	}
 	// ------------------- Add Entity ---------------------------------
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<?> createEntity(@RequestBody LinkedHashMap<String, Object> entity) {
-		if ("admin".equals(getBranchCode())) {
-			// FieldErrorDTO ermsg=new FieldErrorDTO();
-			logger.info("Creating new Return instance");
-			create(entity);
-
-			addLogs("Add");
-			// ermsg.setMessage(" Saved Successfully");
-			return new ResponseEntity<Object>(HttpStatus.CREATED);
-		}
-		return new ResponseEntity<>("Bad Request", HttpStatus.BAD_REQUEST);
-
+	    FieldErrorDTO ermsg = new FieldErrorDTO();
+	    ermsg.setEntityName(getEntity().getSimpleName());
+	        if ("admin".equals(getBranchCode())) {
+	            logger.info("Creating new Return instance");
+	            create(entity);
+	            
+	            addLogs("Add");
+	            ermsg.setSuccessMsg("Saved Successfully");
+	            return new ResponseEntity<Object>(ermsg, HttpStatus.CREATED);
+	        } else {
+	            ermsg.setMessage("Unauthorized: Only admin can add entity");
+	            return new ResponseEntity<>(ermsg, HttpStatus.FORBIDDEN);
+	        }
 	}
 
 	public void create(LinkedHashMap<String, Object> entity) {
@@ -280,7 +293,7 @@ public class UserDetailsController extends AbstractController {
 			File file = new File(address);
 			response.setContentType("application/vnd.ms-excel");
 			response.setHeader("Content-disposition", "attachment; filename=" + file.getName());
-            response.setHeader("Access-Control-Expose-Headers", "Content-Disposition");
+			response.setHeader("Access-Control-Expose-Headers", "Content-Disposition");
 			Path p = file.toPath();
 			OutputStream out;
 			try {

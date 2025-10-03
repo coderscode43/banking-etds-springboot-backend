@@ -204,19 +204,24 @@ public class BranchController extends AbstractController {
 	}
 
 	// ------------------- Update Entity ---------------------------------
-	@RequestMapping(value = "/update", method = RequestMethod.PUT)
-	public ResponseEntity<?> update(@RequestBody LinkedHashMap<String, Object> entity, HttpServletResponse response,
-			UriComponentsBuilder ucBuilder) {
-		if ("admin".equals(getBranchCode())) {
-			FieldErrorDTO ermsg = new FieldErrorDTO();
-			Long id = Long.valueOf(entity.get("id").toString());
-			update(entity, id);
-			addLogs(entity, "Update");
-			ermsg.setMessage("Updated Successfully");
-			return new ResponseEntity<String>(HttpStatus.ACCEPTED);
-		}
-		return new ResponseEntity<Object>(HttpStatus.FORBIDDEN);
-	}
+    @RequestMapping(value = "/update", method = RequestMethod.PUT)
+    public ResponseEntity<?> update(@RequestBody LinkedHashMap<String, Object> entity, HttpServletResponse response,
+                                    UriComponentsBuilder ucBuilder) {
+        FieldErrorDTO errmsg = new FieldErrorDTO();
+        errmsg.setEntityName(getEntity().getSimpleName());
+
+        if ("admin".equals(getBranchCode())) {
+            Long id = Long.valueOf(entity.get("id").toString());
+            update(entity, id);
+            addLogs(entity, "Update");
+
+            errmsg.setSuccessMsg("Updated Successfully");
+            return new ResponseEntity<Object>(errmsg, HttpStatus.ACCEPTED);
+        } else {
+            errmsg.setMessage("Unauthorized branch code");
+            return new ResponseEntity<Object>(errmsg, HttpStatus.FORBIDDEN);
+        }
+    }
 
 	public void update(LinkedHashMap<?, ?> entity, Long id) {
 		try {

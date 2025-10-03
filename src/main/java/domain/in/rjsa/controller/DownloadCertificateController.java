@@ -27,6 +27,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -233,7 +234,7 @@ public class DownloadCertificateController {
 	}
 
 	// XXXXXXXXXXXXXXXX Single Pan Download XXXXXXXXXXXXXXXXXXXXXXXXX
-	@RequestMapping(value = "/files/{tan}/{certificate}/{fy}/{q}/{pan}", method = RequestMethod.GET, produces = "application/octet-stream")
+	@GetMapping(value = "/files/{tan}/{certificate}/{fy}/{q}/{pan}", produces = "application/octet-stream")
 	public void download(HttpServletRequest request, HttpServletResponse response, @PathVariable String tan,
 			@PathVariable String certificate, @PathVariable String fy, @PathVariable String q,
 			@PathVariable String pan) {
@@ -357,7 +358,7 @@ public class DownloadCertificateController {
 	}
 
 	// XXXXXXXXXXXXXXXX Multiple Pan Download XXXXXXXXXXXXXXXXXXXXXXX
-	@RequestMapping(value = "/downloadMultiple/{tan}/{certificate}/{fy}/{q}/{pan}", method = RequestMethod.GET, produces = "application/octet-stream")
+	@GetMapping(value = "/downloadMultiple/{tan}/{certificate}/{fy}/{q}/{pan}",produces = "application/octet-stream")
 	public void multipleDownload(HttpServletRequest request, HttpServletResponse response, @PathVariable String tan,
 			@PathVariable String certificate, @PathVariable String fy, @PathVariable String q,
 			@PathVariable String pan) {
@@ -485,7 +486,7 @@ public class DownloadCertificateController {
 	}
 
 	// XXXXXXXXXXXXXXXX Branch Zip Download XXXXXXXXXXXXXXXXXXXXXXXXX
-	@RequestMapping(value = "/downloadBranchZip/{tan}/{certificate}/{fy}/{q}/{branchCode}", method = RequestMethod.GET, produces = "application/octet-stream")
+	@GetMapping(value = "/downloadBranchZip/{tan}/{certificate}/{fy}/{q}/{branchCode}", produces = "application/octet-stream")
 	public void downloadBranchZip(HttpServletRequest request, HttpServletResponse response,
 			@PathVariable String branchCode, @PathVariable String certificate, @PathVariable String fy,
 			@PathVariable String q, @PathVariable String tan) {
@@ -605,7 +606,7 @@ public class DownloadCertificateController {
 	}
 
 	// XXXXXXXXXXXXXXXX Create Branch Zip XXXXXXXXXXXXXXXXXXXXXXXXXXX
-	@RequestMapping(value = "/createBranchZip/{tan}/{certificate}/{fy}/{q}", method = RequestMethod.GET, produces = "application/octet-stream")
+	@GetMapping(value = "/createBranchZip/{tan}/{certificate}/{fy}/{q}", produces = "application/octet-stream")
 	public void createBranchZip(HttpServletRequest request, HttpServletResponse response, @PathVariable String tan,
 			@PathVariable String certificate, @PathVariable String fy, @PathVariable String q) {
 		setStaticData();

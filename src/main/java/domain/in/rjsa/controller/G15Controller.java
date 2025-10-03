@@ -13,10 +13,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.AntPathMatcher;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.HandlerMapping;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -51,7 +52,7 @@ public class G15Controller<E> extends AbstractControllerFY<Long, G15, G15Service
 		return G15.class;
 	}
 
-	@RequestMapping(value = "/list/{fy}/{branchCode}/count/", method = RequestMethod.GET)
+	@GetMapping(value = "/list/{fy}/{branchCode}/count/")
 	public ResponseEntity<?> count(@PathVariable String fy, @PathVariable Long branchCode, HttpServletRequest request) {
 		HashMap<String, Object> constrains = new HashMap<>();
 
@@ -99,7 +100,7 @@ public class G15Controller<E> extends AbstractControllerFY<Long, G15, G15Service
 		return getService().findAll(constrains, pageNo, resultPerPage);
 	}
 
-	@RequestMapping(value = "/detail/{fy}/{branchCode}/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "/detail/{fy}/{branchCode}/{id}")
 	public ResponseEntity<?> getDetailController(@PathVariable Long id, @PathVariable String fy,
 			@PathVariable Long branchCode) {
 		// verify the clientId authorization
@@ -137,8 +138,8 @@ public class G15Controller<E> extends AbstractControllerFY<Long, G15, G15Service
 		return map;
 	}
 
-	// serarch
-	@RequestMapping(value = "/search/get/{pageNo}/{resultPerPage}/{json}", method = RequestMethod.GET)
+	// search
+	@GetMapping(value = "/search/get/{pageNo}/{resultPerPage}/{json}")
 	public ResponseEntity<?> search(@PathVariable String json, HttpServletRequest request, @PathVariable int pageNo,
 			@PathVariable int resultPerPage) {
 		try {
@@ -189,7 +190,7 @@ public class G15Controller<E> extends AbstractControllerFY<Long, G15, G15Service
 
 	// ------------------- Search Single Entity ---------------------------------
 
-	@RequestMapping(value = "/searchEntity", method = RequestMethod.POST)
+	@PostMapping(value = "/searchEntity")
 	public ResponseEntity<?> searchEntity(@RequestBody LinkedHashMap<String, Object> map) {
 		// verify the clientId authorization
 		try {

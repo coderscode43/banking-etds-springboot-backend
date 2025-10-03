@@ -10,10 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -43,7 +44,7 @@ public class RemarkController extends AbstractControllerFY<Long, Remarks, Remark
 		return Remarks.class;
 	}
 
-	@RequestMapping(value = "/add/{fy}/{branchCode}/{type}", method = RequestMethod.POST)
+	@PostMapping(value = "/add/{fy}/{branchCode}/{type}")
 	@ResponseBody
 	public ResponseEntity<?> createEntity(@RequestBody LinkedHashMap<String, Object> entity,
 			@PathVariable String type) {
@@ -67,7 +68,7 @@ public class RemarkController extends AbstractControllerFY<Long, Remarks, Remark
 
 	}
 	
-	@RequestMapping(value = "/addRemarkWithDocument", method = RequestMethod.POST)
+	@PostMapping(value = "/addRemarkWithDocument")
 	public ResponseEntity<?> addDocument(@RequestParam("downloadFile") MultipartFile downloadFile,
 			@RequestParam("branchCode") Long branchCode, @RequestParam("deducteeId") Long deducteeId,
 			@RequestParam("remark") String remark,@RequestParam("deducteeForm") String deducteeForm,
@@ -91,7 +92,7 @@ public class RemarkController extends AbstractControllerFY<Long, Remarks, Remark
 
 	}
 	
-	@RequestMapping(value = "/downloadDoc/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "/downloadDoc/{id}")
 	public ResponseEntity<?> downloadDocument(HttpServletResponse response, @PathVariable Long id) {
 		FieldErrorDTO ermsg = new FieldErrorDTO();
 		try {

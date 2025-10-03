@@ -20,10 +20,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.util.AntPathMatcher;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -60,7 +61,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	// ------------------- List Entity ---------------------------------
 
-	@RequestMapping(value = "/list/get/{pageNo}/{resultPerPage}", method = RequestMethod.GET)
+	@GetMapping(value = "/list/get/{pageNo}/{resultPerPage}")
 	public ResponseEntity<?> listAll(HttpServletRequest request, @PathVariable int pageNo,
 			@PathVariable int resultPerPage) {
 
@@ -99,7 +100,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	// ------------------- Count Entity ---------------------------------
 
-	@RequestMapping(value = "/list/count/", method = RequestMethod.GET)
+	@GetMapping(value = "/list/count/")
 	public ResponseEntity<?> count(HttpServletRequest request) {
 		// verify the clientId authorization
 //			applicationCache.getUserAuthorised();
@@ -134,7 +135,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	// ------------------- Search Entities ---------------------------------
 
-	@RequestMapping(value = "/search/get/{pageNo}/{resultPerPage}/{json}", method = RequestMethod.GET)
+	@GetMapping(value = "/search/get/{pageNo}/{resultPerPage}/{json}")
 	public ResponseEntity<?> search(@PathVariable String json, HttpServletRequest request, @PathVariable int pageNo,
 			@PathVariable int resultPerPage) {
 		try {
@@ -190,7 +191,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	// ------------------- Search Single Entity ---------------------------------
 
-	@RequestMapping(value = "/searchEntity", method = RequestMethod.POST)
+	@PostMapping(value = "/searchEntity")
 	public ResponseEntity<?> searchEntity(@RequestBody LinkedHashMap<String, Object> map) {
 		// verify the clientId authorization
 		try {
@@ -209,7 +210,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	// ------------------- Add Entity ---------------------------------
 
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	@PostMapping(value = "/add")
 	@ResponseBody
 	public ResponseEntity<?> createEntity(@RequestBody LinkedHashMap<String, Object> entity) {
 		FieldErrorDTO errmsg = new FieldErrorDTO();
@@ -261,7 +262,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	// ------------------- Get Detail ---------------------------------
 
-	@RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "/detail/{id}")
 	public ResponseEntity<?> getDetailController(@PathVariable K id) {
 		// verify the clientId authorization
 		try {
@@ -292,7 +293,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	// ------------------- Update Entity ---------------------------------
 
-	@RequestMapping(value = "/update", method = RequestMethod.PUT)
+	@PutMapping(value = "/update")
 	public ResponseEntity<?> update(@RequestBody LinkedHashMap<String, Object> entity, HttpServletResponse response,
 			UriComponentsBuilder ucBuilder) {
 		FieldErrorDTO ermsg = new FieldErrorDTO();
@@ -330,7 +331,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	// ------------------- ajax Entities ---------------------------------
 
-	@RequestMapping(value = "/ajax", method = RequestMethod.POST)
+	@GetMapping(value = "/ajax")
 	public ResponseEntity<?> ajax(@RequestBody Ajax ajax) {
 		// verify the clientId authorization
 		try {
@@ -351,7 +352,7 @@ public abstract class AbstractControllerForm<K extends Serializable, E extends M
 
 	// ------------------- Generate Excel ---------------------------------
 
-	@RequestMapping(value = "/generateExcel/{json}", method = RequestMethod.GET)
+	@GetMapping(value = "/generateExcel/{json}")
 	public void generateExcel(@PathVariable(required = false) String json, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		try {

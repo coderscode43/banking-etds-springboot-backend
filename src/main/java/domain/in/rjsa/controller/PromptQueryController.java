@@ -11,15 +11,14 @@ import java.util.concurrent.ThreadPoolExecutor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.context.request.async.DeferredResult;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -44,7 +43,7 @@ public class PromptQueryController {
 	private ProcessingStatusService processingStatusService;
 	
 	
-	@RequestMapping(value = "/TextToSQL", method = RequestMethod.POST)
+	@PostMapping(value = "/TextToSQL")
 	public ResponseEntity<Map<String, String>> processPromptQuery(@RequestBody String data) {
 	    logger.info("Request received, processing will start asynchronously");
 
@@ -86,7 +85,7 @@ public class PromptQueryController {
 	    return ResponseEntity.ok(response);
 	}
 
-	@RequestMapping(value = "/status/{requestId}", method = RequestMethod.GET)
+	@GetMapping(value = "/status/{requestId}")
 	public ResponseEntity<?> getProcessingStatus(@PathVariable String requestId) {
 	    String status = processingStatusService.getStatus(requestId);
 

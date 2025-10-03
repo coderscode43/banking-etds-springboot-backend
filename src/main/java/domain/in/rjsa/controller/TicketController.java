@@ -13,7 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -58,7 +61,7 @@ public class TicketController extends AbstractControllerForm<Long, Tickets, Tick
 		return Tickets.class;
 	}
 
-	@RequestMapping(value = "/list/{fy}/{branchCode}/count/", method = RequestMethod.GET)
+	@GetMapping(value = "/list/{fy}/{branchCode}/count/")
 	public ResponseEntity<?> count(@PathVariable String fy, @PathVariable Long branchCode,
 			HttpServletRequest request) {
 		HashMap<String, Object> constrains = new HashMap<>();
@@ -90,7 +93,7 @@ public class TicketController extends AbstractControllerForm<Long, Tickets, Tick
 	}
 	
 	
-	@RequestMapping(value = "/list/{fy}/{branchCode}/get/{pageNo}/{resultPerPage}", method = RequestMethod.GET)
+	@GetMapping(value = "/list/{fy}/{branchCode}/get/{pageNo}/{resultPerPage}")
 	public ResponseEntity<?> listAll(@PathVariable String fy, @PathVariable Long branchCode, HttpServletRequest request,
 			@PathVariable int pageNo, @PathVariable int resultPerPage) {
 		try {
@@ -116,7 +119,7 @@ public class TicketController extends AbstractControllerForm<Long, Tickets, Tick
 
 	}
 
-	@RequestMapping(value = "/add/{branchCode}", method = RequestMethod.POST)
+	@PostMapping(value = "/add/{branchCode}")
 	@ResponseBody
 	public ResponseEntity<?> createEntity(@PathVariable Long branchCode,
 			@RequestBody LinkedHashMap<String, Object> entity) {
@@ -131,7 +134,7 @@ public class TicketController extends AbstractControllerForm<Long, Tickets, Tick
 		// ermsg.setMessage(" Saved Successfully");
 		return new ResponseEntity<Object>(HttpStatus.CREATED);
 	}
-	@RequestMapping(value = "/add/{fy}/{branchCode}", method = RequestMethod.POST)
+	@PostMapping(value = "/add/{fy}/{branchCode}")
 	@ResponseBody
 	public ResponseEntity<?> createFYEntity(@PathVariable Long branchCode,@PathVariable String fy,
 			@RequestBody LinkedHashMap<String, Object> entity) {
@@ -165,7 +168,7 @@ public class TicketController extends AbstractControllerForm<Long, Tickets, Tick
 
 	}
 	
-	@RequestMapping(value = "/addTicket", method = RequestMethod.POST)
+	@PostMapping(value = "/addTicket")
 	public ResponseEntity<?> addDocument(@RequestParam("branchCode") Long branchCode,
 			@RequestParam("custVendId") String custVendId, 
 			@RequestParam("dateOfChange") Date dateOfChange, 
@@ -224,7 +227,7 @@ public class TicketController extends AbstractControllerForm<Long, Tickets, Tick
 	}
 
 
-	@RequestMapping(value = "/search/{fy}/{branchCode}/{pageNo}/{resultPerPage}/{json}", method = RequestMethod.GET)
+	@GetMapping(value = "/search/{fy}/{branchCode}/{pageNo}/{resultPerPage}/{json}")
 	public ResponseEntity<?> search(@PathVariable String fy, @PathVariable Long branchCode, @PathVariable int pageNo,@PathVariable int resultPerPage,
 			@PathVariable String json) {
 		try {
@@ -248,7 +251,7 @@ public class TicketController extends AbstractControllerForm<Long, Tickets, Tick
 
 	}
 	
-	@RequestMapping(value = "/detail/{fy}/{branchCode}/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "/detail/{fy}/{branchCode}/{id}")
 	public ResponseEntity<?> getDetailController(@PathVariable Long id, @PathVariable String fy,
 			@PathVariable Long branchCode){
 		// verify the clientId authorization
@@ -285,7 +288,7 @@ public class TicketController extends AbstractControllerForm<Long, Tickets, Tick
 		return map; 
 	}
 	
-	@RequestMapping(value = "/update/{page}", method = RequestMethod.PUT)
+	@PutMapping(value = "/update/{page}")
 	public ResponseEntity<?> updateTestimonial(@RequestBody LinkedHashMap<String, Object> entity) {
 		adminValidation(entity);
 		try {
@@ -319,7 +322,7 @@ public class TicketController extends AbstractControllerForm<Long, Tickets, Tick
 		return service.search(map, pageNo, resultPerPage);
 	}
 	
-	@RequestMapping(value = "/downloadDoc/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "/downloadDoc/{id}")
 	public ResponseEntity<?> downloadDocument(HttpServletResponse response, @PathVariable Long id) {
 		FieldErrorDTO ermsg = new FieldErrorDTO();
 		try {

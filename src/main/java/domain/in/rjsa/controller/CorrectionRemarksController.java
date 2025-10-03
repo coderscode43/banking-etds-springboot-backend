@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -43,7 +45,7 @@ public class CorrectionRemarksController
 		return CorrectionRemarks.class;
 	}
 
-	@RequestMapping(value = "/addRemark", method = RequestMethod.POST)
+	@PostMapping(value = "/addRemark")
 	public ResponseEntity<?> createEntity(@RequestBody LinkedHashMap<String, Object> entity) {
 		FieldErrorDTO ermsg = new FieldErrorDTO();
 		try {
@@ -65,7 +67,7 @@ public class CorrectionRemarksController
 
 	}
 
-	@RequestMapping(value = "/addRemarkWithDocument", method = RequestMethod.POST)
+	@PostMapping(value = "/addRemarkWithDocument")
 	public ResponseEntity<?> addDocument(@RequestParam("downloadFile") MultipartFile downloadFile,
 			@RequestParam("branchCode") Long branchCode, @RequestParam("crId") Long crId,
 			@RequestParam("remark") String remark, @RequestParam("status") String status,
@@ -90,7 +92,7 @@ public class CorrectionRemarksController
 
 	}
 
-	@RequestMapping(value = "/downloadDoc/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "/downloadDoc/{id}")
 	public ResponseEntity<?> downloadDocument(HttpServletResponse response, @PathVariable Long id) {
 		FieldErrorDTO ermsg = new FieldErrorDTO();
 		try {

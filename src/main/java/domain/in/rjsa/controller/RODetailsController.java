@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -44,7 +45,7 @@ public class RODetailsController extends AbstractControllerForm<Long, RODetails,
 		return RODetails.class;
 	}
 
-	@RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "/detail/{id}")
 	public ResponseEntity<?> getDetailController(@PathVariable Long id) {
 		// verify the clientId authorization
 		try {
@@ -59,7 +60,7 @@ public class RODetailsController extends AbstractControllerForm<Long, RODetails,
 
 	// ------------------- Search Entities ---------------------------------
 
-	@RequestMapping(value = "/search/{fy}/{branchCode}/{pageNo}/{resultPerPage}/{json}", method = RequestMethod.GET)
+	@GetMapping(value = "/search/{fy}/{branchCode}/{pageNo}/{resultPerPage}/{json}")
 	public ResponseEntity<?> search(@PathVariable String fy, @PathVariable Long branchCode, @PathVariable String json,
 			@PathVariable int pageNo, @PathVariable int resultPerPage) {
 		try {

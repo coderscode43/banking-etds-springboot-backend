@@ -15,7 +15,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.AntPathMatcher;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -90,7 +92,7 @@ public class CorrectionRequestController
 	}
 
 	// ------------------- Get List ---------------------------------
-	@RequestMapping(value = "/list/{fy}/{branchCode}/count/", method = RequestMethod.GET)
+	@GetMapping(value = "/list/{fy}/{branchCode}/count/")
 	public ResponseEntity<?> count(@PathVariable String fy, @PathVariable Long branchCode, HttpServletRequest request) {
 		HashMap<String, Object> constrains = new HashMap<>();
 		if (!"admin".equals(getBranchCode())) {
@@ -118,7 +120,7 @@ public class CorrectionRequestController
 
 	}
 
-	@RequestMapping(value = "/list/{fy}/{branchCode}/get/{pageNo}/{resultPerPage}", method = RequestMethod.GET)
+	@GetMapping(value = "/list/{fy}/{branchCode}/get/{pageNo}/{resultPerPage}")
 	public ResponseEntity<?> listAll(@PathVariable String fy, @PathVariable Long branchCode, HttpServletRequest request,
 			@PathVariable int pageNo, @PathVariable int resultPerPage) {
 		try {
@@ -174,17 +176,16 @@ public class CorrectionRequestController
 
 	// ------------------- Get Detail ---------------------------------
 
-	@RequestMapping(value = "/detail/{fy}/{branchCode}/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "/detail/{fy}/{branchCode}/{id}")
 	public ResponseEntity<?> getDetailController(@PathVariable Long id, @PathVariable String fy,
 			@PathVariable Long branchCode) {
 		// verify the clientId authorization
 		try {
 			return new ResponseEntity<>(getDetail(id, fy, branchCode), HttpStatus.OK);
 		} catch (Exception e) {
-			logger.error("Error in getting detail ", e);
+			logger.error("Error in getting detail", e);
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
-
 	}
 
 	public Object getDetail(Long id, String fy, Long branchCode) {
@@ -202,7 +203,7 @@ public class CorrectionRequestController
 	}
 
 	// ------------------- Get Add ---------------------------------
-	@RequestMapping(value = "/add/{fy}/{branchCode}", method = RequestMethod.POST)
+	@PostMapping(value = "/add/{fy}/{branchCode}")
 	@ResponseBody
 	public ResponseEntity<?> createEntity(@RequestBody LinkedHashMap<String, Object> entity, @PathVariable String fy,
 			@PathVariable String branchCode) {
@@ -231,7 +232,7 @@ public class CorrectionRequestController
 	}
 
 	@SuppressWarnings({ "deprecation", "unused" })
-	@RequestMapping(value = "/addCorrection/singleFile", method = RequestMethod.POST)
+	@PostMapping(value = "/addCorrection/singleFile")
 	@ResponseBody
 	public ResponseEntity<?> addCorrection(@RequestParam("blob") List<MultipartFile> listsd,
 			@RequestParam("dec") String entity) {
@@ -285,7 +286,7 @@ public class CorrectionRequestController
 
 	}
 
-	@RequestMapping(value = "/addCorrection/multipleFile", method = RequestMethod.POST)
+	@PostMapping(value = "/addCorrection/multipleFile")
 	public ResponseEntity<?> addCorrection(@RequestParam("blob") List<MultipartFile> listsd,
 			@RequestParam("blob2") MultipartFile cd, @RequestParam("dec") String entity) {
 		logger.info("Creating new Return instance");
@@ -408,7 +409,7 @@ public class CorrectionRequestController
 		}
 	}
 
-	@RequestMapping(value = "/regenerateCorrectionRequest", method = RequestMethod.POST)
+	@PostMapping(value = "/regenerateCorrectionRequest")
 	@ResponseBody
 	public ResponseEntity<?> regenerateCorrectionRequest(@RequestParam("crId") Long correctionRequestId,
 			@RequestParam("crRemark") String correctionRequestremark) {
@@ -469,7 +470,7 @@ public class CorrectionRequestController
 	}
 
 	// ------------------- Get Search ---------------------------------
-	@RequestMapping(value = "/search/{fy}/{branchCode}/{pageNo}/{resultPerPage}/{json}/**", method = RequestMethod.GET)
+	@GetMapping(value = "/search/{fy}/{branchCode}/{pageNo}/{resultPerPage}/{json}/**")
 	public ResponseEntity<?> search(HttpServletRequest request, @PathVariable String fy, @PathVariable Long branchCode,
 			@PathVariable int pageNo, @PathVariable int resultPerPage, @PathVariable String json) {
 		try {
@@ -511,7 +512,7 @@ public class CorrectionRequestController
 	}
 
 	// ------------------- Search Table ---------------------------------
-	@RequestMapping(value = "/searchTable/get/{pageNo}/{resultPerPage}/{json}/**", method = RequestMethod.GET)
+	@GetMapping(value = "/searchTable/get/{pageNo}/{resultPerPage}/{json}/**")
 	public ResponseEntity<?> searchTable(@PathVariable String json, HttpServletRequest request,
 			@PathVariable int pageNo, @PathVariable int resultPerPage) {
 		try {
@@ -620,7 +621,7 @@ public class CorrectionRequestController
 
 	}
 
-	@RequestMapping(value = "/downloadDoc/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "/downloadDoc/{id}")
 	public ResponseEntity<?> downloadDocument(HttpServletResponse response, @PathVariable Long id) {
 		FieldErrorDTO ermsg = new FieldErrorDTO();
 		try {

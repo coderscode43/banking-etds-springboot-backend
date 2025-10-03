@@ -21,10 +21,13 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.AntPathMatcher;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -59,8 +62,8 @@ public class BranchController extends AbstractController {
 	LogsService lservice;
 
 	/* pranay */
-	@RequestMapping(value = "/ajax", method = RequestMethod.POST)
-	public ResponseEntity<?> ajax(@RequestBody Ajax ajax) {
+	@GetMapping(value = "/ajax")
+	public ResponseEntity<?> ajax(@ModelAttribute Ajax ajax) {
 		// verify the clientId authorization
 		try {
 			List<String> list = getAjax(ajax.getName(), ajax.getTerm());
@@ -77,7 +80,7 @@ public class BranchController extends AbstractController {
 		return service.ajax(name, term);
 	}
 
-	@RequestMapping(value = "/search/get/{pageNo}/{resultPerPage}/{json}", method = RequestMethod.GET)
+	@GetMapping(value = "/search/get/{pageNo}/{resultPerPage}/{json}")
 	public ResponseEntity<?> search(@PathVariable String json, HttpServletRequest request, @PathVariable int pageNo,
 			@PathVariable int resultPerPage) {
 		try {
@@ -136,7 +139,7 @@ public class BranchController extends AbstractController {
 	}
 
 	// ------------------- Add Entity ---------------------------------
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @PostMapping(value = "/add")
     @ResponseBody
     public ResponseEntity<?> createEntity(@RequestBody LinkedHashMap<String, Object> entity) {
         FieldErrorDTO ermsg = new FieldErrorDTO();
@@ -173,7 +176,7 @@ public class BranchController extends AbstractController {
 	}
 
 	// ------------------- Get Detail ---------------------------------
-	@RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "/detail/{id}")
 	public ResponseEntity<?> getDetailController(@PathVariable Long id) {
 		// verify the clientId authorization
 
@@ -204,10 +207,11 @@ public class BranchController extends AbstractController {
 	}
 
 	// ------------------- Update Entity ---------------------------------
-    @RequestMapping(value = "/update", method = RequestMethod.PUT)
-    public ResponseEntity<?> update(@RequestBody LinkedHashMap<String, Object> entity, HttpServletResponse response,
-                                    UriComponentsBuilder ucBuilder) {
-        FieldErrorDTO errmsg = new FieldErrorDTO();
+	@PutMapping(value = "/update")
+	public ResponseEntity<?> update(@RequestBody LinkedHashMap<String, Object> entity, HttpServletResponse response,
+			UriComponentsBuilder ucBuilder) {
+		
+		FieldErrorDTO errmsg = new FieldErrorDTO();
         errmsg.setEntityName(getEntity().getSimpleName());
 
         if ("admin".equals(getBranchCode())) {
@@ -221,7 +225,7 @@ public class BranchController extends AbstractController {
             errmsg.setMessage("Unauthorized branch code");
             return new ResponseEntity<Object>(errmsg, HttpStatus.FORBIDDEN);
         }
-    }
+	}
 
 	public void update(LinkedHashMap<?, ?> entity, Long id) {
 		try {
@@ -249,7 +253,7 @@ public class BranchController extends AbstractController {
 
 	}
 
-	@RequestMapping(value = "/list/count/", method = RequestMethod.GET)
+	@GetMapping(value = "/list/count/")
 	public ResponseEntity<?> count(HttpServletRequest request) {
 		// verify the clientId authorization
 //			applicationCache.getUserAuthorised();
@@ -281,7 +285,7 @@ public class BranchController extends AbstractController {
 
 	}
 
-	@RequestMapping(value = "/list/get/{pageNo}/{resultPerPage}", method = RequestMethod.GET)
+	@GetMapping(value = "/list/get/{pageNo}/{resultPerPage}")
 	public ResponseEntity<?> listAll(HttpServletRequest request, @PathVariable int pageNo,
 			@PathVariable int resultPerPage) {
 		// verify the clientId authorization
@@ -355,7 +359,7 @@ public class BranchController extends AbstractController {
 	}
 	// ------------------- Generate Excel ---------------------------------
 
-	@RequestMapping(value = "/generateExcel/{json}", method = RequestMethod.GET)
+	@GetMapping(value = "/generateExcel/{json}")
 	public void generateExcel(@PathVariable(required = false) String json, HttpServletRequest request, HttpServletResponse response) {
 		try {
 			final String path = request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE).toString();

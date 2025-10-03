@@ -18,7 +18,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -51,7 +53,7 @@ public class MisReportController extends AbstractControllerFY<Long, MisReport, M
 		return MisReport.class;
 	}
 
-	@RequestMapping(value = "/add/{fy}/{branchCode}", method = RequestMethod.POST)
+	@PostMapping(value = "/add/{fy}/{branchCode}")
 	@ResponseBody
 	public ResponseEntity<?> createEntity(@RequestBody LinkedHashMap<String, Object> entity,
 			@PathVariable Long branchCode, @PathVariable String fy) {
@@ -68,7 +70,7 @@ public class MisReportController extends AbstractControllerFY<Long, MisReport, M
 
 	}
 
-	@RequestMapping(value = "/files/{tan}/{form}/{fy}/{q}/{typeOfReport}", method = RequestMethod.GET, produces = "application/octet-stream")
+	@GetMapping(value = "/files/{tan}/{form}/{fy}/{q}/{typeOfReport}", produces = "application/octet-stream")
 	public void download(HttpServletRequest request, HttpServletResponse response, @PathVariable String tan,
 			@PathVariable String form, @PathVariable String fy, @PathVariable String q,
 			@PathVariable String typeOfReport) {

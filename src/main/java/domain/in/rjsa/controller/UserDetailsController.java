@@ -18,7 +18,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.AntPathMatcher;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -56,7 +59,7 @@ public class UserDetailsController extends AbstractController {
 
 	// ------------------- Delete Entity ---------------------------------
 
-	@RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
+	@DeleteMapping(value = "/delete/{id}")
 	public ResponseEntity<?> delete(@PathVariable String id) {
 		// verify the clientId authorization
 		FieldErrorDTO ermsg = new FieldErrorDTO();
@@ -81,7 +84,7 @@ public class UserDetailsController extends AbstractController {
 
 	}
 
-	@RequestMapping(value = "/list/get/{pageNo}/{resultPerPage}", method = RequestMethod.GET)
+	@GetMapping(value = "/list/get/{pageNo}/{resultPerPage}")
 	public ResponseEntity<?> listAll(HttpServletRequest request, @PathVariable int pageNo,
 			@PathVariable int resultPerPage) {
 		try {
@@ -107,7 +110,7 @@ public class UserDetailsController extends AbstractController {
 
 	// ------------------- Count Entity ---------------------------------
 
-	@RequestMapping(value = "/list/count/", method = RequestMethod.GET)
+	@GetMapping(value = "/list/count/")
 	public ResponseEntity<?> count(HttpServletRequest request) {
 		// verify the clientId authorization
 //				applicationCache.getUserAuthorised();
@@ -131,7 +134,7 @@ public class UserDetailsController extends AbstractController {
 
 	}
 
-	@RequestMapping(value = "/search/get/{pageNo}/{resultPerPage}/{json}", method = RequestMethod.GET)
+	@GetMapping(value = "/search/get/{pageNo}/{resultPerPage}/{json}")
 	public ResponseEntity<?> search(@PathVariable String json, HttpServletRequest request, @PathVariable int pageNo,
 			@PathVariable int resultPerPage) {
 		if ("admin".equals(getBranchCode())) {
@@ -198,7 +201,7 @@ public class UserDetailsController extends AbstractController {
 	}
 	// ------------------- Add Entity ---------------------------------
 
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	@PostMapping(value = "/add")
 	@ResponseBody
 	public ResponseEntity<?> createEntity(@RequestBody LinkedHashMap<String, Object> entity) {
 	    FieldErrorDTO ermsg = new FieldErrorDTO();
@@ -246,7 +249,7 @@ public class UserDetailsController extends AbstractController {
 
 	// ------------------- Generate Excel ---------------------------------
 
-	@RequestMapping(value = "/generateExcel/{json}", method = RequestMethod.GET)
+	@GetMapping(value = "/generateExcel/{json}")
 	public void generateExcel(@PathVariable(required = false) String json, HttpServletRequest request, HttpServletResponse response) {
 		try {
 			final String path = request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE).toString();

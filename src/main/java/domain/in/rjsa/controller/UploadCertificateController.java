@@ -1,6 +1,5 @@
 package domain.in.rjsa.controller;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.Date;
 import java.util.HashMap;
@@ -16,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,7 +39,7 @@ public class UploadCertificateController extends AbstractControllerForm<Long, Up
 	
 	static final org.slf4j.Logger logger = LoggerFactory.getLogger(UploadCertificateController.class);
 
-	@RequestMapping(value = "/addFile", method = RequestMethod.POST)
+	@PostMapping(value = "/addFile")
 	public ResponseEntity<?> addDocument(
 			@RequestParam("zipFile") MultipartFile downloadFile,
 			@RequestParam("TAN") String TAN,
@@ -78,7 +78,7 @@ public class UploadCertificateController extends AbstractControllerForm<Long, Up
 
 	}
 	
-	@RequestMapping(value = "/uploadCertificate", method = RequestMethod.POST)
+	@PostMapping(value = "/uploadCertificate")
 	public ResponseEntity<?> uploadCertificate(@RequestParam("downloadFile") MultipartFile downloadFile,
 			@RequestParam("tan") String tan, @RequestParam("typeofCertificate") String typeofCertificate,
 			@RequestParam("fy") String fy, @RequestParam("quarter") String quarter) {
@@ -115,7 +115,7 @@ public class UploadCertificateController extends AbstractControllerForm<Long, Up
 	}
 	
 	// ========================== Upload Zip with Thread
-	@RequestMapping(value = "/uploadZip", method = RequestMethod.POST)
+	@PostMapping(value = "/uploadZip")
 	public ResponseEntity<?> uploadZip(@RequestParam("downloadFile") MultipartFile downloadFile,
 			@RequestParam("tan") String tan, @RequestParam("typeofCertificate") String typeofCertificate,
 			@RequestParam("fy") String fy, @RequestParam("quarter") String quarter) {

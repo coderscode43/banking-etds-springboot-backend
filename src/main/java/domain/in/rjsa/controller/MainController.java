@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainController {
 	static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	// This will get the all the UI required pages
-	@RequestMapping(value = "/Access_Denied")
+	@GetMapping(value = "/Access_Denied")
 	public ResponseEntity<?>  accessDenied(@PathVariable String page,ModelMap model) {
 		//Add userName in the home page
 		logger.info("Get page " + page);

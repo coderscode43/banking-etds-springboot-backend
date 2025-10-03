@@ -28,9 +28,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.AntPathMatcher;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.HandlerMapping;
 
@@ -62,7 +64,7 @@ public abstract class AbstractControllerTaxo<K extends Serializable, E extends M
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
 	/*------------------- Add data In Table -------------------------------*/
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	@PostMapping(value = "/add")
 	public ResponseEntity<?> addData(@Valid @RequestBody String json, HttpServletRequest request) {
 		try {
 //			Login login = applicationCache.getLoginBasedOnAuth(request.getHeader("auth").toString());
@@ -78,7 +80,7 @@ public abstract class AbstractControllerTaxo<K extends Serializable, E extends M
 
 	// ------------------- List Entity ---------------------------------
 
-	@RequestMapping(value = "/list/get/{pageNo}/{resultPerPage}", method = RequestMethod.GET)
+	@GetMapping(value = "/list/get/{pageNo}/{resultPerPage}")
 	public ResponseEntity<?> listAll(HttpServletRequest request, @PathVariable int pageNo,
 			@PathVariable int resultPerPage) {
 		String mapping = request.getPathInfo();
@@ -117,7 +119,7 @@ public abstract class AbstractControllerTaxo<K extends Serializable, E extends M
 
 	// ------------------- Count Entity ---------------------------------
 
-	@RequestMapping(value = "/list/count/", method = RequestMethod.GET)
+	@GetMapping(value = "/list/count/")
 	public ResponseEntity<?> count(HttpServletRequest request) {
 		HashMap<String, Object> constrains = new HashMap<>();
 
@@ -149,7 +151,7 @@ public abstract class AbstractControllerTaxo<K extends Serializable, E extends M
 
 	// ------------------- List Entity ---------------------------------
 
-	@RequestMapping(value = "/list/{fy}/{branchCode}/get/{pageNo}/{resultPerPage}", method = RequestMethod.GET)
+	@GetMapping(value = "/list/{fy}/{branchCode}/get/{pageNo}/{resultPerPage}")
 	public ResponseEntity<?> listAll(@PathVariable String fy, @PathVariable Long branchCode, HttpServletRequest request,
 			@PathVariable int pageNo, @PathVariable int resultPerPage) {
 		try {
@@ -197,7 +199,7 @@ public abstract class AbstractControllerTaxo<K extends Serializable, E extends M
 
 	// ------------------- Search Entities ---------------------------------
 
-	@RequestMapping(value = "/search/get/{pageNo}/{resultPerPage}/{json}", method = RequestMethod.GET)
+	@GetMapping(value = "/search/get/{pageNo}/{resultPerPage}/{json}")
 	public ResponseEntity<?> search(@PathVariable String json, HttpServletRequest request, @PathVariable int pageNo,
 			@PathVariable int resultPerPage) {
 		try {
@@ -249,7 +251,7 @@ public abstract class AbstractControllerTaxo<K extends Serializable, E extends M
 
 	// ------------------- Search Single Entity ---------------------------------
 
-	@RequestMapping(value = "/searchEntity", method = RequestMethod.POST)
+	@PostMapping(value = "/searchEntity")
 	public ResponseEntity<?> searchEntity(@RequestBody LinkedHashMap<String, Object> map) {
 		// verify the clientId authorization
 		try {
@@ -270,7 +272,7 @@ public abstract class AbstractControllerTaxo<K extends Serializable, E extends M
 
 	// ------------------- Get Detail ---------------------------------
 
-	@RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "/detail/{id}")
 	public ResponseEntity<?> getDetailController(@PathVariable K id) {
 		// verify the clientId authorization
 		try {
@@ -328,7 +330,7 @@ public abstract class AbstractControllerTaxo<K extends Serializable, E extends M
 
 	// ------------------- Generate Excel ---------------------------------
 
-	@RequestMapping(value = "/generateExcel/{json}", method = RequestMethod.GET)
+	@GetMapping(value = "/generateExcel/{json}")
 	public void generateExcel(@PathVariable(required = false) String json, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		try {
@@ -411,236 +413,240 @@ public abstract class AbstractControllerTaxo<K extends Serializable, E extends M
 
 	public abstract Class<E> getEntity();
 
-	/*------------------- Get data through directAPI -------------------------------*/
-	@RequestMapping(value = "/get", method = RequestMethod.POST)
-	public ResponseEntity<?> get(@RequestBody String json, HttpServletRequest request) {
-		try {
-			HashMap<String, Object> dataMap = processRequest(json);
-			List<E> dataList = getService().search(dataMap);
-			return new ResponseEntity<List<E>>(dataList, HttpStatus.OK);
-		} catch (Exception e) {
-			logger.error("Exception Occurred!", e);
-			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
-		}
-	}
-
-	/*------------------- Update data through directAPI -------------------------------*/
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public ResponseEntity<?> update(@RequestBody String json, HttpServletRequest request) {
-		try {
-			HashMap<String, Object> dataMap = processRequest(json);
-			List<E> entityList = getService().search(dataMap);
-
-			if (entityList.isEmpty()) {
-				return new ResponseEntity<List<E>>(entityList, HttpStatus.OK);
-			}
-			updateData(dataMap, entityList);
-
-			return new ResponseEntity<String>(HttpStatus.OK);
-		} catch (Exception e) {
-			logger.error("Exception Occurred!", e);
-			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
-		}
-	}
-
-	private void updateData(HashMap<String, Object> dataMap, List<E> entityList) throws Exception {
-		ObjectMapper mapper = new ObjectMapper();
-		boolean flag = false;
-
-		HashMap<String, Object> setMap = (HashMap<String, Object>) dataMap.get("set");
-
-		for (E entity : entityList) {
-			List<Field> fields = Arrays.asList(entity.getClass().getDeclaredFields());
-
-			if (!flag) {
-				for (Map.Entry<String, Object> entry : setMap.entrySet()) {
-					String key = entry.getKey();
-					String stringValue = entry.getValue().toString();
-					Field field = getFieldType(fields, key);
-
-					if (field != null) {
-						Object value = convertValue(stringValue, field.getType());
-
-						if (value != null) {
-							setMap.put(key, value);
-						}
-					}
-				}
-				flag = true;
-			}
-
-			mapper.updateValue(entity, setMap);
-			getService().update(entity);
-		}
-
-	}
-
-	private HashMap<String, Object> processRequest(String json) {
-		JSONParser jsonParser = new JSONParser();
-		HashMap<String, Object> dataMap = new LinkedHashMap<String, Object>();
-
-		try {
-			JSONObject jsonObject = (JSONObject) jsonParser.parse(json);
-			Set<String> keySet = jsonObject.keySet();
-
-			for (String key : keySet) {
-				if (key.equalsIgnoreCase("and") || key.equalsIgnoreCase("or") || key.equalsIgnoreCase("set")
-						|| key.equalsIgnoreCase("orderBy")) {
-					dataMap.putAll(processObject(jsonObject, key));
-
-				} else if (key.equalsIgnoreCase("distinct")) {
-					dataMap.putAll(processDistinct(jsonObject, key));
-
-				} else {
-					throw new CustomException("Invalid key!");
-				}
-			}
-
-		} catch (ParseException e) {
-			logger.error("Exception Occurred!", e);
-		}
-		return dataMap;
-
-	}
-
-	private HashMap<String, Object> processObject(JSONObject jsonObject, String key) {
-		HashMap<String, Object> conditionsMap = new HashMap<String, Object>();
-		JSONArray jsonArray = (JSONArray) jsonObject.get(key);
-
-		for (Object object : jsonArray) {
-			String condition = (String) object;
-			String[] parts = condition.split(Pattern.quote("^"), -1);
-
-			if (key.equalsIgnoreCase("set")) {
-				if (parts.length == 2) {
-					HashMap<String, Object> setMap = (HashMap<String, Object>) conditionsMap.getOrDefault("set",
-							new HashMap<String, Object>());
-					setMap.put(parts[0], parts[1]);
-					conditionsMap.put("set", setMap);
-				}
-
-			} else if (key.equalsIgnoreCase("orderBy")) {
-				if (parts.length == 2) {
-					String operator = parts[0];
-
-					if (!conditionsMap.containsKey(key)) {
-						HashMap<String, Object> operatorMap = new LinkedHashMap<String, Object>();
-						conditionsMap.put(key, operatorMap);
-					}
-
-					HashMap<String, Object> operatorMap = (HashMap<String, Object>) conditionsMap.get(key);
-
-					if (!operatorMap.containsKey(operator)) {
-						List<String> operatorList = new ArrayList<String>();
-						operatorMap.put(operator, operatorList);
-					}
-
-					((ArrayList) operatorMap.get(operator)).add(parts[1]);
-				}
-
-			} else {
-				if (parts.length == 3) {
-					String operator = parts[1];
-
-					if (!conditionsMap.containsKey(key)) {
-						HashMap<String, Object> operatorMap = new LinkedHashMap<String, Object>();
-						conditionsMap.put(key, operatorMap);
-					}
-
-					HashMap<String, Object> operatorMap = (HashMap<String, Object>) conditionsMap.get(key);
-
-					if (!operatorMap.containsKey(operator)) {
-						List<HashMap<String, Object>> operatorList = new ArrayList<HashMap<String, Object>>();
-						operatorMap.put(operator, operatorList);
-					}
-
-					HashMap<String, Object> conditionEntry = new HashMap<String, Object>();
-					conditionEntry.put(parts[0], parts[2]);
-
-					((List<HashMap<String, Object>>) operatorMap.get(operator)).add(conditionEntry);
-				}
-			}
-		}
-
-		return conditionsMap;
-	}
-
-//	private HashMap<String, Object> processOrderBy(JSONObject jsonObject, String key) {
-//		HashMap<String, Object> orderByMap = new HashMap<String, Object>();
-//		String orderBy = jsonObject.get(key).toString();
-//		String[] parts = orderBy.split(Pattern.quote("^"), -1);
-//
-//		orderByMap.put(parts[0], parts[1]);
-//		return orderByMap;
+//	/*------------------- Get data through directAPI -------------------------------*/
+//	@GetMapping(value = "/get")
+//	public ResponseEntity<?> get(@RequestBody String json, HttpServletRequest request) {
+//		try {
+//			HashMap<String, Object> dataMap = processRequest(json);
+//			List<E> dataList = getService().search(dataMap);
+//			return new ResponseEntity<List<E>>(dataList, HttpStatus.OK);
+//		} catch (Exception e) {
+//			logger.error("Exception Occurred!", e);
+//			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+//		}
 //	}
-
-	private HashMap<String, Object> processDistinct(JSONObject jsonObject, String key) {
-		HashMap<String, Object> distinctMap = new HashMap<String, Object>();
-		JSONArray jsonArray = (JSONArray) jsonObject.get(key);
-
-		if (!jsonArray.isEmpty()) {
-			List<String> asList = jsonArray;
-			distinctMap.put(key, asList);
-		}
-		return distinctMap;
-	}
-
-	private Field getFieldType(List<Field> fields, String key) {
-		return fields.stream().filter(f -> f.getName().equalsIgnoreCase(key)).findFirst().get();
-	}
-
-	private Object convertValue(String stringValue, Class<?> fieldType) {
-		if (fieldType == String.class) {
-			return stringValue;
-		}
-		if (fieldType == Date.class) {
-			return parseDate(stringValue);
-		}
-		return null;
-	}
-
-	private Date parseDate(String dateAsString) {
-		Date date = null;
-
-		try {
-			if (!(dateAsString.equals(""))) {
-//			"Sep 2, 2024, 12:00:00 AM"
-				String[] data = dateAsString.split(Pattern.quote(","), -1);
-				String[] dayNmonth = data[0].split(Pattern.quote(" "), -1);
-
-				String month = dayNmonth[0];
-				String day = dayNmonth[1];
-				String year = data[1];
-
-				String formatttedDateAsString = year + "-" + getMonthNum(month) + "-"
-						+ (day.length() == 1 ? "0" + day : day);
-
-				return new SimpleDateFormat("yyyy-MM-dd").parse(formatttedDateAsString);
-			} else {
-				return date;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new CustomException("Invalid date format provided!");
-		}
-	}
-
-	private String getMonthNum(String month) {
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("Jan", "01");
-		map.put("Feb", "02");
-		map.put("Mar", "03");
-		map.put("Apr", "04");
-		map.put("May", "05");
-		map.put("Jun", "06");
-		map.put("Jul", "07");
-		map.put("Aug", "08");
-		map.put("Sep", "09");
-		map.put("Oct", "10");
-		map.put("Nov", "11");
-		map.put("Dec", "12");
-
-		return map.get(month);
-	}
+//	
+//	
+//
+//	/*------------------- Update data through directAPI -------------------------------*/
+//	@PutMapping(value = "/update")
+//	public ResponseEntity<?> update(@RequestBody String json, HttpServletRequest request) {
+//		try {
+//			HashMap<String, Object> dataMap = processRequest(json);
+//			List<E> entityList = getService().search(dataMap);
+//
+//			if (entityList.isEmpty()) {
+//				return new ResponseEntity<List<E>>(entityList, HttpStatus.OK);
+//			}
+//			updateData(dataMap, entityList);
+//
+//			return new ResponseEntity<String>(HttpStatus.OK);
+//		} catch (Exception e) {
+//			logger.error("Exception Occurred!", e);
+//			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+//		}
+//	}
+//	
+//	
+//
+//	private void updateData(HashMap<String, Object> dataMap, List<E> entityList) throws Exception {
+//		ObjectMapper mapper = new ObjectMapper();
+//		boolean flag = false;
+//
+//		HashMap<String, Object> setMap = (HashMap<String, Object>) dataMap.get("set");
+//
+//		for (E entity : entityList) {
+//			List<Field> fields = Arrays.asList(entity.getClass().getDeclaredFields());
+//
+//			if (!flag) {
+//				for (Map.Entry<String, Object> entry : setMap.entrySet()) {
+//					String key = entry.getKey();
+//					String stringValue = entry.getValue().toString();
+//					Field field = getFieldType(fields, key);
+//
+//					if (field != null) {
+//						Object value = convertValue(stringValue, field.getType());
+//
+//						if (value != null) {
+//							setMap.put(key, value);
+//						}
+//					}
+//				}
+//				flag = true;
+//			}
+//
+//			mapper.updateValue(entity, setMap);
+//			getService().update(entity);
+//		}
+//
+//	}
+//
+//	private HashMap<String, Object> processRequest(String json) {
+//		JSONParser jsonParser = new JSONParser();
+//		HashMap<String, Object> dataMap = new LinkedHashMap<String, Object>();
+//
+//		try {
+//			JSONObject jsonObject = (JSONObject) jsonParser.parse(json);
+//			Set<String> keySet = jsonObject.keySet();
+//
+//			for (String key : keySet) {
+//				if (key.equalsIgnoreCase("and") || key.equalsIgnoreCase("or") || key.equalsIgnoreCase("set")
+//						|| key.equalsIgnoreCase("orderBy")) {
+//					dataMap.putAll(processObject(jsonObject, key));
+//
+//				} else if (key.equalsIgnoreCase("distinct")) {
+//					dataMap.putAll(processDistinct(jsonObject, key));
+//
+//				} else {
+//					throw new CustomException("Invalid key!");
+//				}
+//			}
+//
+//		} catch (ParseException e) {
+//			logger.error("Exception Occurred!", e);
+//		}
+//		return dataMap;
+//
+//	}
+//
+//	private HashMap<String, Object> processObject(JSONObject jsonObject, String key) {
+//		HashMap<String, Object> conditionsMap = new HashMap<String, Object>();
+//		JSONArray jsonArray = (JSONArray) jsonObject.get(key);
+//
+//		for (Object object : jsonArray) {
+//			String condition = (String) object;
+//			String[] parts = condition.split(Pattern.quote("^"), -1);
+//
+//			if (key.equalsIgnoreCase("set")) {
+//				if (parts.length == 2) {
+//					HashMap<String, Object> setMap = (HashMap<String, Object>) conditionsMap.getOrDefault("set",
+//							new HashMap<String, Object>());
+//					setMap.put(parts[0], parts[1]);
+//					conditionsMap.put("set", setMap);
+//				}
+//
+//			} else if (key.equalsIgnoreCase("orderBy")) {
+//				if (parts.length == 2) {
+//					String operator = parts[0];
+//
+//					if (!conditionsMap.containsKey(key)) {
+//						HashMap<String, Object> operatorMap = new LinkedHashMap<String, Object>();
+//						conditionsMap.put(key, operatorMap);
+//					}
+//
+//					HashMap<String, Object> operatorMap = (HashMap<String, Object>) conditionsMap.get(key);
+//
+//					if (!operatorMap.containsKey(operator)) {
+//						List<String> operatorList = new ArrayList<String>();
+//						operatorMap.put(operator, operatorList);
+//					}
+//
+//					((ArrayList) operatorMap.get(operator)).add(parts[1]);
+//				}
+//
+//			} else {
+//				if (parts.length == 3) {
+//					String operator = parts[1];
+//
+//					if (!conditionsMap.containsKey(key)) {
+//						HashMap<String, Object> operatorMap = new LinkedHashMap<String, Object>();
+//						conditionsMap.put(key, operatorMap);
+//					}
+//
+//					HashMap<String, Object> operatorMap = (HashMap<String, Object>) conditionsMap.get(key);
+//
+//					if (!operatorMap.containsKey(operator)) {
+//						List<HashMap<String, Object>> operatorList = new ArrayList<HashMap<String, Object>>();
+//						operatorMap.put(operator, operatorList);
+//					}
+//
+//					HashMap<String, Object> conditionEntry = new HashMap<String, Object>();
+//					conditionEntry.put(parts[0], parts[2]);
+//
+//					((List<HashMap<String, Object>>) operatorMap.get(operator)).add(conditionEntry);
+//				}
+//			}
+//		}
+//
+//		return conditionsMap;
+//	}
+//
+////	private HashMap<String, Object> processOrderBy(JSONObject jsonObject, String key) {
+////		HashMap<String, Object> orderByMap = new HashMap<String, Object>();
+////		String orderBy = jsonObject.get(key).toString();
+////		String[] parts = orderBy.split(Pattern.quote("^"), -1);
+////
+////		orderByMap.put(parts[0], parts[1]);
+////		return orderByMap;
+////	}
+//
+//	private HashMap<String, Object> processDistinct(JSONObject jsonObject, String key) {
+//		HashMap<String, Object> distinctMap = new HashMap<String, Object>();
+//		JSONArray jsonArray = (JSONArray) jsonObject.get(key);
+//
+//		if (!jsonArray.isEmpty()) {
+//			List<String> asList = jsonArray;
+//			distinctMap.put(key, asList);
+//		}
+//		return distinctMap;
+//	}
+//
+//	private Field getFieldType(List<Field> fields, String key) {
+//		return fields.stream().filter(f -> f.getName().equalsIgnoreCase(key)).findFirst().get();
+//	}
+//
+//	private Object convertValue(String stringValue, Class<?> fieldType) {
+//		if (fieldType == String.class) {
+//			return stringValue;
+//		}
+//		if (fieldType == Date.class) {
+//			return parseDate(stringValue);
+//		}
+//		return null;
+//	}
+//
+//	private Date parseDate(String dateAsString) {
+//		Date date = null;
+//
+//		try {
+//			if (!(dateAsString.equals(""))) {
+////			"Sep 2, 2024, 12:00:00 AM"
+//				String[] data = dateAsString.split(Pattern.quote(","), -1);
+//				String[] dayNmonth = data[0].split(Pattern.quote(" "), -1);
+//
+//				String month = dayNmonth[0];
+//				String day = dayNmonth[1];
+//				String year = data[1];
+//
+//				String formatttedDateAsString = year + "-" + getMonthNum(month) + "-"
+//						+ (day.length() == 1 ? "0" + day : day);
+//
+//				return new SimpleDateFormat("yyyy-MM-dd").parse(formatttedDateAsString);
+//			} else {
+//				return date;
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			throw new CustomException("Invalid date format provided!");
+//		}
+//	}
+//
+//	private String getMonthNum(String month) {
+//		Map<String, String> map = new HashMap<String, String>();
+//		map.put("Jan", "01");
+//		map.put("Feb", "02");
+//		map.put("Mar", "03");
+//		map.put("Apr", "04");
+//		map.put("May", "05");
+//		map.put("Jun", "06");
+//		map.put("Jul", "07");
+//		map.put("Aug", "08");
+//		map.put("Sep", "09");
+//		map.put("Oct", "10");
+//		map.put("Nov", "11");
+//		map.put("Dec", "12");
+//
+//		return map.get(month);
+//	}
 
 }

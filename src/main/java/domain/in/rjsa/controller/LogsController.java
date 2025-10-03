@@ -14,7 +14,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.AntPathMatcher;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -42,7 +44,7 @@ public class LogsController extends AbstractControllerForm<Long, Logs, LogsServi
 	ApplicationCache applicationCache;
 
 	/* pranay */
-	@RequestMapping(value = "/ajax", method = RequestMethod.POST)
+	@PostMapping(value = "/ajax")
 	public ResponseEntity<?> ajax(@RequestBody Ajax ajax) {
 		// verify the clientId authorization
 		try {
@@ -60,7 +62,7 @@ public class LogsController extends AbstractControllerForm<Long, Logs, LogsServi
 		return service.ajax(name, term);
 	}
 
-	@RequestMapping(value = "/search/get/{pageNo}/{resultPerPage}/{json}", method = RequestMethod.GET)
+	@GetMapping(value = "/search/get/{pageNo}/{resultPerPage}/{json}")
 	public ResponseEntity<?> search(@PathVariable String json, HttpServletRequest request, @PathVariable int pageNo,
 			@PathVariable int resultPerPage) {
 		try {
@@ -134,7 +136,7 @@ public class LogsController extends AbstractControllerForm<Long, Logs, LogsServi
 
 	}
 
-	@RequestMapping(value = "/list/count/", method = RequestMethod.GET)
+	@GetMapping(value = "/list/count/")
 	public ResponseEntity<?> count(HttpServletRequest request) {
 		// verify the clientId authorization
 //			applicationCache.getUserAuthorised();

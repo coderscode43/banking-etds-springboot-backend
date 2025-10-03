@@ -11,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -44,7 +46,7 @@ public class LDCController extends AbstractControllerTaxo<String, LDC, LDCServic
 		return LDC.class;
 	}
 
-	@RequestMapping(value = "/list/{fy}/{branchCode}/count/", method = RequestMethod.GET)
+	@GetMapping(value = "/list/{fy}/{branchCode}/count/")
 	public ResponseEntity<?> count(@PathVariable String fy, @PathVariable Long branchCode, HttpServletRequest request) {
 		HashMap<String, Object> constrains = new HashMap<>();
 //		constrains.put("fy",fy);
@@ -91,7 +93,7 @@ public class LDCController extends AbstractControllerTaxo<String, LDC, LDCServic
 		return getService().findAll(constrains, pageNo, resultPerPage);
 	}
 
-	@RequestMapping(value = "/search/{fy}/{branchCode}/{pageNo}/{resultPerPage}/{json}", method = RequestMethod.GET)
+	@GetMapping(value = "/search/{fy}/{branchCode}/{pageNo}/{resultPerPage}/{json}")
 	public ResponseEntity<?> search(@PathVariable String fy, @PathVariable Long branchCode, @PathVariable String json,
 			HttpServletRequest request, @PathVariable int pageNo, @PathVariable int resultPerPage) {
 		try {
@@ -129,7 +131,7 @@ public class LDCController extends AbstractControllerTaxo<String, LDC, LDCServic
 		return service.search(map, pageNo, resultPerPage);
 	}
 
-	@RequestMapping(value = "/searchEntity/{fy}/{branchCode}", method = RequestMethod.POST)
+	@PostMapping(value = "/searchEntity/{fy}/{branchCode}")
 	public ResponseEntity<?> searchEntity(@RequestBody LinkedHashMap<String, Object> map, @PathVariable String fy,
 			@PathVariable Long branchCode) {
 		try {

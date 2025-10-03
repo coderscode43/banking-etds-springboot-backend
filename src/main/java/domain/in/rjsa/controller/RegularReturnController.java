@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -50,7 +51,7 @@ public class RegularReturnController extends AbstractControllerForm<Long, Regula
 
 	// ------------------- Get Detail ---------------------------------
 
-	@RequestMapping(value = "/detail/{fy}/{roCode}/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "/detail/{fy}/{roCode}/{id}")
 	public ResponseEntity<?> getDetailController(@PathVariable Long id, @PathVariable String fy,
 			@PathVariable String roCode) {
 		// verify the clientId authorization
@@ -102,7 +103,7 @@ public class RegularReturnController extends AbstractControllerForm<Long, Regula
 	}
 
 	// ------------------- Get List ---------------------------------
-	@RequestMapping(value = "/list/{fy}/{branchCode}/count/", method = RequestMethod.GET)
+	@GetMapping(value = "/list/{fy}/{branchCode}/count/")
 	public ResponseEntity<?> count(@PathVariable String fy, @PathVariable String branchCode,
 			HttpServletRequest request) {
 		HashMap<String, Object> constrains = new HashMap<>();
@@ -132,7 +133,7 @@ public class RegularReturnController extends AbstractControllerForm<Long, Regula
 
 	}
 
-	@RequestMapping(value = "/list/{fy}/{branchCode}/get/{pageNo}/{resultPerPage}", method = RequestMethod.GET)
+	@GetMapping(value = "/list/{fy}/{branchCode}/get/{pageNo}/{resultPerPage}")
 	public ResponseEntity<?> listAll(@PathVariable String fy, @PathVariable String branchCode,
 			HttpServletRequest request, @PathVariable int pageNo, @PathVariable int resultPerPage) {
 		try {
@@ -175,7 +176,7 @@ public class RegularReturnController extends AbstractControllerForm<Long, Regula
 	}
 
 	// ------------------- Get Search ---------------------------------
-	@RequestMapping(value = "/search/{fy}/{branchCode}/{pageNo}/{resultPerPage}/{json}", method = RequestMethod.GET)
+	@GetMapping(value = "/search/{fy}/{branchCode}/{pageNo}/{resultPerPage}/{json}")
 	public ResponseEntity<?> search(@PathVariable String fy, @PathVariable Long branchCode, @PathVariable int pageNo,
 			@PathVariable int resultPerPage, @PathVariable String json) {
 		try {

@@ -12,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -58,7 +60,7 @@ public class RegularReturnRemarkController
 		return RegularReturnRemark.class;
 	}
 
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	@PostMapping(value = "/add")
 	public ResponseEntity<?> createEntity(@RequestBody LinkedHashMap<String, Object> entity) {
 		FieldErrorDTO ermsg = new FieldErrorDTO();
 		try {
@@ -78,7 +80,7 @@ public class RegularReturnRemarkController
 
 	// ------------------- Upload Regular Return from RO
 	// ---------------------------------
-	@RequestMapping(value = "/addRegularReturnRO", method = RequestMethod.POST)
+	@PostMapping(value = "/addRegularReturnRO")
 	public ResponseEntity<?> addRegularReturnRO(
 			@RequestParam(value = "blob", required = false) List<MultipartFile> listdocs,
 			@RequestParam("tdsfileblob") MultipartFile tdsfileblob,
@@ -99,7 +101,7 @@ public class RegularReturnRemarkController
 
 	// ------------------- Add With File ---------------------------------
 
-	@RequestMapping(value = "/addWithFile", method = RequestMethod.POST)
+	@PostMapping(value = "/addWithFile")
 	public ResponseEntity<?> addDocument(@RequestParam("blob") MultipartFile blob, @RequestParam("dec") String entity) {
 
 		FieldErrorDTO ermsg = new FieldErrorDTO();
@@ -120,7 +122,7 @@ public class RegularReturnRemarkController
 		}
 	}
 
-	@RequestMapping(value = "/downloadDoc/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "/downloadDoc/{id}")
 	public ResponseEntity<?> downloadDocument(HttpServletResponse response, @PathVariable Long id) {
 		FieldErrorDTO ermsg = new FieldErrorDTO();
 		try {
@@ -134,7 +136,7 @@ public class RegularReturnRemarkController
 		}
 	}
 
-	@RequestMapping(value = "/addBulkRemark", method = RequestMethod.POST)
+	@PostMapping(value = "/addBulkRemark")
 	public ResponseEntity<?> createBulkRemark(@RequestBody LinkedHashMap<String, Object> entity) {
 		FieldErrorDTO ermsg = new FieldErrorDTO();
 		try {
@@ -152,7 +154,7 @@ public class RegularReturnRemarkController
 		}
 	}
 
-	@RequestMapping(value = "/sendReminder", method = RequestMethod.POST)
+	@PostMapping(value = "/sendReminder")
 	public ResponseEntity<?> sendReminder(@RequestBody LinkedHashMap<String, Object> entity) {
 		FieldErrorDTO ermsg = new FieldErrorDTO();
 		try {

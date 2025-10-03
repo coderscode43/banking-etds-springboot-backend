@@ -48,7 +48,7 @@ public class IndexController extends AbstractController {
 	@Value("${panel.access:}")
 	private String panelAccess;
 
-	@RequestMapping(value = "/logout")
+	@GetMapping(value = "/logout")
 	public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		if (auth != null) {
@@ -58,18 +58,18 @@ public class IndexController extends AbstractController {
 										// show login screen again.
 	}
 
-	@RequestMapping(value = "/resetPass")
+	@GetMapping(value = "/resetPass")
 	public String resetPassword(ModelMap model) {
 		String pageName = "resetPass";
 		return pageName;
 	}
 
-	@RequestMapping(value = "/example-loader.tpl")
+	@GetMapping(value = "/example-loader.tpl")
 	public String getLoader(ModelMap model) {
 		return "example-loader.tpl";
 	}
 
-	@RequestMapping(value = "/home")
+	@GetMapping(value = "/home")
 	public String gethome(ModelMap model) {
 		setStaticData();
 		setModel(model);
@@ -110,7 +110,7 @@ public class IndexController extends AbstractController {
 		model.addAttribute("fy", financialYear);
 	}
 
-	@RequestMapping(value = "/homePage")
+	@GetMapping(value = "/homePage")
 	public String getHomePage(ModelMap model) {
 		String branchCodeS = getBranchCode();
 //		String branchCodeS = "101";
@@ -205,7 +205,7 @@ public class IndexController extends AbstractController {
 		}
 	}
 
-	@RequestMapping(value = "/homeWOT/{branchCode}/{fy}")
+	@GetMapping(value = "/homeWOT/{branchCode}/{fy}")
 	public String gethomeWOT(@PathVariable String fy, @PathVariable Long branchCode, ModelMap model) {
 		setStaticData();
 		setModel(model);
@@ -215,7 +215,7 @@ public class IndexController extends AbstractController {
 		return "homeWOT";
 	}
 
-	@RequestMapping(value = "/homePageWOT")
+	@GetMapping(value = "/homePageWOT")
 	public String getHomePageWOT(ModelMap model) {
 		model.addAttribute("typeOfUser", getBranchCode());
 		// for Dashboard
@@ -223,7 +223,7 @@ public class IndexController extends AbstractController {
 		return "homeWOT/homeWOTHomepage";
 	}
 
-	@RequestMapping(value = "/add/{action}/{page}")
+	@GetMapping(value = "/add/{action}/{page}")
 	public String getAddPage(ModelMap model, @PathVariable String page, @PathVariable String action) {
 		logger.info("Get add page for " + page);
 		// add Branch State-pranay
@@ -238,21 +238,21 @@ public class IndexController extends AbstractController {
 		return sendPage(action, page);
 	}
 
-	@RequestMapping(value = "/detail/{action}/{page}")
+	@GetMapping(value = "/detail/{action}/{page}")
 	public String getPage(@PathVariable String action, @PathVariable String page, ModelMap model) {
 		setStaticData();
 		setModel(model);
 		return sendPage(action, page);
 	}
 
-	@RequestMapping(value = "/list/{action}/{page}")
+	@GetMapping(value = "/list/{action}/{page}")
 	public String getListPage(@PathVariable String action, @PathVariable String page, ModelMap model) {
 		setStaticData();
 		setModel(model);
 		return sendPage(action, page);
 	}
 
-	@RequestMapping(value = "/downloadCertificate/{branchCode}/{action}/{page}")
+	@GetMapping(value = "/downloadCertificate/{branchCode}/{action}/{page}")
 	public String getDownloadCertificate(@PathVariable Long branchCode, @PathVariable String action,
 			@PathVariable String page, ModelMap model) {
 		setStaticData();
@@ -496,17 +496,17 @@ public class IndexController extends AbstractController {
         return ResponseEntity.ok(map);
     }
 
-	@RequestMapping(value = "/HomehelpSC")
+	@GetMapping(value = "/HomehelpSC")
 	public String getHelpHomePageSC() {
 		return "homeHelpSC";
 	}
 
-	@RequestMapping(value = "/HomehelpWOT")
+	@GetMapping(value = "/HomehelpWOT")
 	public String getHelpHomePageWOT() {
 		return "homeHelpWOT";
 	}
 
-	@RequestMapping(value = "/help/{helpFolder}/{helpPage}")
+	@GetMapping(value = "/help/{helpFolder}/{helpPage}")
 	public String getHelpPage(@PathVariable String helpFolder, @PathVariable String helpPage, ModelMap model) {
 		return "helpPage/" + helpFolder + "/" + helpPage;
 	}

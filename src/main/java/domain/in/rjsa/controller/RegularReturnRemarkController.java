@@ -63,15 +63,16 @@ public class RegularReturnRemarkController
 	@PostMapping(value = "/add")
 	public ResponseEntity<?> createEntity(@RequestBody LinkedHashMap<String, Object> entity) {
 		FieldErrorDTO ermsg = new FieldErrorDTO();
+		ermsg.setEntityName(getEntity().getSimpleName());
 		try {
 			logger.info("Creating new Return instance");
 			adminValidation(entity);
 			service.save(entity, getPrincipal());
 			addLogs("Add");
 //			addRemarkLogs(entity);
-			return new ResponseEntity<Object>(HttpStatus.CREATED);
+			ermsg.setSuccessMsg("Saved Successfully");
+			return new ResponseEntity<Object>(ermsg,HttpStatus.CREATED);
 		} catch (Exception e) {
-			ermsg.setEntityName(getEntity().getSimpleName().toString());
 			ermsg.setExceptionMsg(e.getMessage());
 			return new ResponseEntity<Object>(ermsg, HttpStatus.BAD_REQUEST);
 		}
@@ -106,6 +107,7 @@ public class RegularReturnRemarkController
 
 		FieldErrorDTO ermsg = new FieldErrorDTO();
 		logger.info("Creating new Return instance");
+		ermsg.setEntityName(getEntity().getSimpleName());
 		try {
 			ObjectMapper mapper = new ObjectMapper();
 			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
@@ -114,10 +116,10 @@ public class RegularReturnRemarkController
 			adminValidation(map);
 			getService().saveWithFile(blob, map, getPrincipal());
 			addLogs("Add");
-
-			ermsg.setMessage(" Saved Successfully");
-			return new ResponseEntity<Object>(HttpStatus.CREATED);
-		} catch (Exception e) {
+			ermsg.setSuccessMsg("Saved Successfully");
+			return new ResponseEntity<Object>(ermsg,HttpStatus.CREATED);
+		} catch (Exception e) {		
+			ermsg.setExceptionMsg(e.getMessage());
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}

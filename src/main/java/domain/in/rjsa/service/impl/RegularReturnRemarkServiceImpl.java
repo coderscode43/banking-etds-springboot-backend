@@ -279,7 +279,7 @@ public class RegularReturnRemarkServiceImpl extends
 			String path = StaticData.documentSave;
 			SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy");
 
-			String filePath = null;
+			String filePath = path;
 			String[] docArray = rr.getSupportingDocName().split(Pattern.quote(","), -1);
 
 			if (docArray.length > 1) {
@@ -311,11 +311,15 @@ public class RegularReturnRemarkServiceImpl extends
 			} else {
 				filePath = path + "/" + date.format(rr.getAddedOn()) + "/" + r.fy + "/" + r.quarter + "/"
 						+ rr.getRoCode() + "/RegularReturn/" + r.form + "/" + rr.getSupportingDocName();
-
+				
+				String fileName = rr.getSupportingDocName();
+				String fileExtension = getFileExtension(fileName);
 				File file = new File(filePath);
 				FileInputStream fileInputStream = new FileInputStream(file);
-				response.setStatus(HttpServletResponse.SC_OK);
 				response.setHeader("Content-Disposition", " attachment; filename=" + rr.getSupportingDocName());
+				response.setHeader("Access-Control-Expose-Headers", "Content-Disposition");
+				response.addHeader("Content-Type", getContentType(fileExtension));
+				response.setStatus(HttpServletResponse.SC_OK);
 				IOUtils.copy(fileInputStream, response.getOutputStream());
 				fileInputStream.close();
 				response.getOutputStream().close();
@@ -324,7 +328,34 @@ public class RegularReturnRemarkServiceImpl extends
 			e.printStackTrace();
 		}
 	}
-
+	
+	private String getContentType(String fileType) {
+		// Logic to determine content type based on fileType
+		switch (fileType.toUpperCase()) {
+		case "PDF":
+			return "application/pdf";
+		case "CSV":
+			return "text/csv";
+		case "CSI":
+			return "application/octet-stream";
+		case "Excel":
+			return "application/vnd.ms-excel";
+		case "TEXT":
+			return "text/plain";
+		case "DOC":
+			return "application/docs";
+		default:
+			return "application/octet-stream";
+		}
+	}
+	
+	private String getFileExtension(String fileName) {
+		if (fileName != null && fileName.contains(".")) {
+			return fileName.substring(fileName.lastIndexOf('.') + 1);
+		}
+		return "";
+	}
+	
 	@Override
 	public void saveBulkRemark(LinkedHashMap<String, Object> entity, String principal) {
 		try {

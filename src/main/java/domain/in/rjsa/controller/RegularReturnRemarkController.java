@@ -87,14 +87,15 @@ public class RegularReturnRemarkController
 			@RequestParam("tdsfileblob") MultipartFile tdsfileblob,
 			/* @RequestParam("reportfileblob") MultipartFile reportfile, */ @RequestParam("dec") String entity) {
 		FieldErrorDTO ermsg = new FieldErrorDTO();
+		ermsg.setEntityName("RegularReturn");
 		try {
 			service.saveRegularReturnRO(listdocs, tdsfileblob, /* reportfile, */ entity, getPrincipal());
-			return new ResponseEntity<Object>(HttpStatus.CREATED);
+			ermsg.setSuccessMsg("Saved Succesfully");
+			return new ResponseEntity<Object>(ermsg, HttpStatus.OK);
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			ermsg.setExceptionMsg("Error in application, Please contact your administrator");
-			ermsg.setEntityName("RegularReturn");
+			ermsg.setExceptionMsg("Error in application, Please contact your administrator" + e.getMessage());
 			return new ResponseEntity<Object>(ermsg, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 

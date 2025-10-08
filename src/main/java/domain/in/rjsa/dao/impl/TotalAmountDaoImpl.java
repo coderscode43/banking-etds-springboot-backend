@@ -173,6 +173,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import org.springframework.stereotype.Repository;
 
@@ -234,6 +235,25 @@ public class TotalAmountDaoImpl extends AbstractDaoFY<Long, TotalAmount> impleme
     /**
      * Helper method to build predicates from HashMap dynamically.
      */
+    
+    // Helper method to convert date 
+    
+    private String convertFiscalYearToDBFormat(String fy) {
+        if (fy == null || !fy.contains("-")) {
+            return fy; // Already in correct format or invalid
+        }
+
+        try {
+            String[] parts = fy.split("-");
+            String startYear = parts[0]; 
+            String endYear = parts[1];   
+            return startYear + endYear; 
+        } catch (Exception e) {
+            return fy;
+        }
+    }
+
+    
     private List<Predicate> buildPredicates(HashMap entity, CriteriaBuilder cb, Root<TotalAmount> root) {
         List<Predicate> predicates = new ArrayList<>();
 
@@ -247,13 +267,16 @@ public class TotalAmountDaoImpl extends AbstractDaoFY<Long, TotalAmount> impleme
             predicates.add(cb.equal(root.get("pan"), entity.get("pan")));
         }
         if (entity.get("sectionCode") != null) {
-            predicates.add(cb.equal(root.get("sectionCode"), entity.get("sectionCode")));
+            String section = entity.get("sectionCode").toString().split(Pattern.quote("-"))[0];
+            predicates.add(cb.equal(root.get("sectionCode"), section));
         }
         if (entity.get("month") != null) {
             predicates.add(cb.equal(root.get("month"), entity.get("month")));
         }
         if (entity.get("fy") != null) {
-            predicates.add(cb.equal(root.get("fy"), entity.get("fy")));
+            String fyRaw = entity.get("fy").toString();
+            String fyConverted = convertFiscalYearToDBFormat(fyRaw);
+            predicates.add(cb.equal(root.get("fy"), fyConverted));
         }
         if (entity.get("totalAmountPaidRaw") != null) {
             predicates.add(cb.equal(root.get("totalAmountPaidRaw"),
@@ -263,9 +286,9 @@ public class TotalAmountDaoImpl extends AbstractDaoFY<Long, TotalAmount> impleme
             predicates.add(cb.equal(root.get("totalAmountPaidUpload"),
                     Double.parseDouble(entity.get("totalAmountPaidUpload").toString())));
         }
-        if (entity.get("totalTaxRaw") != null) {
-            predicates.add(cb.equal(root.get("totalTaxRaw"),
-                    Double.parseDouble(entity.get("totalTaxRaw").toString())));
+        if (entity.get("totaltaxRaw") != null) {
+            predicates.add(cb.equal(root.get("totaltaxRaw"),
+                    Double.parseDouble(entity.get("totaltaxRaw").toString())));
         }
         if (entity.get("totalTaxUploaded") != null) {
             predicates.add(cb.equal(root.get("totalTaxUploaded"),

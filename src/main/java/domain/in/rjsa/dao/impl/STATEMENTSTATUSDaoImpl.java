@@ -324,7 +324,7 @@ public class STATEMENTSTATUSDaoImpl extends AbstractDaoTaxo<Long, STATEMENTSTATU
         }
         if (entity.get("FY") != null) {
             String[] parts = entity.get("FY").toString().split("-");
-            predicates.add(cb.equal(root.get("FY"), parts[0] + parts[1]));
+            predicates.add(cb.equal(root.get("FY"), entity.get("FY")));
         }
         if (entity.get("QUARTER") != null) {
             predicates.add(cb.equal(root.get("QUARTER"), String.valueOf(entity.get("QUARTER"))));
@@ -356,8 +356,8 @@ public class STATEMENTSTATUSDaoImpl extends AbstractDaoTaxo<Long, STATEMENTSTATU
                                 Date.from(ZonedDateTime.parse((String) v).toInstant())));
                         break;
                     case "FY":
-                        String[] parts = v.toString().split("-");
-                        predicates.add(cb.equal(root.get("FY"), parts[0] + parts[1]));
+//                        String[] parts = v.toString().split("-");
+                        predicates.add(cb.equal(root.get("FY"), entity.get(v)));
                         break;
                     default:
                         predicates.add(cb.equal(root.get(k), v));

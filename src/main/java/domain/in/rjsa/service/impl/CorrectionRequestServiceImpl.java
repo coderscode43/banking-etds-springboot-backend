@@ -185,6 +185,12 @@ public class CorrectionRequestServiceImpl extends AbstractServiceForm<Long, Corr
 		for (CorrectionRequest CorrectionRequest1 : listUsers) {
 			map.remove("branchCode");
 			map.remove("fy");
+			map.remove("status");
+			map.remove("ticketnumber");
+			map.remove("typeOfCorrection");
+			map.remove("correctionOn");
+			map.remove("fromDate");
+			map.remove("toDate");
 			map.put("correctionRequestId", CorrectionRequest1.getId());
 			List<CorrectionRequestAmountDetails> correctionRequestAmountDetails = cradDao.searchExcel(map);
 			LinkedHashMap<String, Object> addChallanMap = new LinkedHashMap<String, Object>();

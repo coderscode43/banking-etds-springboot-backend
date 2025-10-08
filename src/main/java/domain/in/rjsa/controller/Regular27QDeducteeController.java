@@ -95,7 +95,7 @@ public class Regular27QDeducteeController
 	}
 
 	// ------------------- Search Single Entity ---------------------------------
-	@GetMapping(value = "/search/get/{pageNo}/{resultPerPage}/{json}")
+	@GetMapping(value = {"/search/get/{pageNo}/{resultPerPage}/{json}","/search/get/{pageNo}/{resultPerPage}/{json}/**"})
 	public ResponseEntity<?> search(@PathVariable String json, HttpServletRequest request, @PathVariable int pageNo,
 			@PathVariable int resultPerPage) {
 		try {

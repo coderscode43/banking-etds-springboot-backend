@@ -304,7 +304,7 @@ td .autoResize {
 								required>
 								<option disabled value="">Select Section</option>
 								<#list Section as section>
-								<option value="${section}">${section}</option>
+								<option value="${section?split('-')[0]}">${section}</option>
 								</#list>
 							</select>
 						</div>

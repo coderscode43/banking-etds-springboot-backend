@@ -76,24 +76,23 @@ public class DeducteeRemarkServiceImpl extends AbstractServiceForm<Long, Deducte
 			remark.setADDEDBY(getPrincipal());
 			remark.setDATETIME(new Date());
 
-			// Saving Updated JSON till Approval from Another Admin
-			String jsonElement = mapper.writeValueAsString(entity);
-			remark.setFORMDATA(jsonElement);
-
 			remark.setSTATUS("Pending");
 			createRemark(entity, remark);
 			remark.setFY(entity.get("fy").toString());
 			remark.setDEDUCTEEFORM(entity.get("challanHeading").toString());
 			remark.setBRANCHCODE(entity.get("branchCode").toString());
+			
+			// Saving Updated JSON till Approval from Another Admin
+			String jsonElement = mapper.writeValueAsString(entity);
+			remark.setFORMDATA(jsonElement);
 
 			dao.persist(remark);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 
-	private void createRemark(LinkedHashMap<String, Object> newDeductee, DeducteeRemark remark) {
+	private void createRemark(LinkedHashMap<String, Object> newDeductee, DeducteeRemark remark) throws Exception {
 		ObjectMapper mapper = new ObjectMapper();
 		LinkedHashMap<String, Object> old_deductee = null;
 
@@ -121,7 +120,7 @@ public class DeducteeRemarkServiceImpl extends AbstractServiceForm<Long, Deducte
 
 		}
 
-		if (newDeductee.get("challanHeading").toString().equalsIgnoreCase("INTEREST_27EQ")) {
+		if (newDeductee.get("challanHeading").toString().equalsIgnoreCase("INTEREST_27EQ") || newDeductee.get("challanHeading").toString().equalsIgnoreCase("TCS_27EQ")) {
 			Regular27EQDeductee OLDdeductee = regular27EQDeducteeService
 					.getByKey(Long.valueOf(newDeductee.get("id").toString()));
 
@@ -167,6 +166,8 @@ public class DeducteeRemarkServiceImpl extends AbstractServiceForm<Long, Deducte
 					if (key.equals("dateOfDeduction") || key.equals("dateOfPayment") 
 							|| key.equals("ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment")) {
 						newValueStr = formatDate(newValue);
+						
+						newDeductee.put(key, getDate(newValue));
 					}
 					addRemark(remarkBuilder, key, oldValueStr, newValueStr);
 				}
@@ -178,33 +179,36 @@ public class DeducteeRemarkServiceImpl extends AbstractServiceForm<Long, Deducte
 			remark.setREMARK(remarkBuilder.toString());
 		}
 	}
+	
+	private Date parseDate(Object dateObj) {
+	    if (dateObj instanceof String) {
+	        try {
+	            SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+	            inputFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+	            return inputFormat.parse(dateObj.toString());
+	        } catch (ParseException e) {
+	            e.printStackTrace();
+	            throw new RuntimeException(e);
+	        }
+	    } else if (dateObj instanceof Date) {
+	        return (Date) dateObj;
+	    } else {
+	        throw new IllegalArgumentException("Unsupported date object type");
+	    }
+	}
+
+	public Date getDate(Object dateObj) {
+	    return parseDate(dateObj);
+	}
 
 	public String formatDate(Object dateObj) {
-		String dateFormat = "yyyy-MM-dd";
-		SimpleDateFormat format = new SimpleDateFormat(dateFormat);
-		format.setTimeZone(TimeZone.getTimeZone("Asia/Kolkata"));
-
-		Date date = null;
-		if (dateObj instanceof String) {
-			try {
-				SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-				inputFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
-				date = inputFormat.parse(dateObj.toString());
-
-				return format.format(date);
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				throw new RuntimeException();
-			}
-		} else if (dateObj instanceof Date) {
-			date = (Date) dateObj;
-			return new SimpleDateFormat(dateFormat).format(date);
-		} else {
-			throw new IllegalArgumentException("Unsupported date object type");
-		}
-
+	    Date date = parseDate(dateObj);
+	    SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
+	    outputFormat.setTimeZone(TimeZone.getTimeZone("Asia/Kolkata"));
+	    return outputFormat.format(date);
 	}
+
+	
 
 	public void addRemark(StringBuilder remarkBuilder, String key, String oldValueStr, String newValueStr) {
 		if (remarkBuilder.length() > 0) {

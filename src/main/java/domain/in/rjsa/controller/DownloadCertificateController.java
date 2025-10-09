@@ -317,6 +317,7 @@ public class DownloadCertificateController {
 				// create zip and send the file also delete the file after sending
 				response.setStatus(HttpServletResponse.SC_OK);
 				response.addHeader("Content-Disposition", " attachment; filename=" + pan + "_" + fy + "_" + q + ".zip");
+				response.setHeader("Access-Control-Expose-Headers", "Content-Disposition");
 				response.setHeader("Content-Type", "application/zip");
 
 				ZipOutputStream zipOutputStream = new ZipOutputStream(response.getOutputStream());
@@ -445,6 +446,7 @@ public class DownloadCertificateController {
 				response.setStatus(HttpServletResponse.SC_OK);
 				response.addHeader("Content-Disposition",
 						" attachment; filename=" + tan.split(Pattern.quote("-"), -1)[0] + "_" + fy + "_" + q + ".zip");
+				response.setHeader("Access-Control-Expose-Headers", "Content-Disposition");
 				response.setHeader("Content-Type", "application/zip");
 
 				ZipOutputStream zipOutputStream = new ZipOutputStream(response.getOutputStream());
@@ -568,6 +570,7 @@ public class DownloadCertificateController {
 				response.setStatus(HttpServletResponse.SC_OK);
 				response.setHeader("Content-Disposition",
 						" attachment; filename=" + t[0] + "_" + q + "_" + fy + ".zip");
+				response.setHeader("Access-Control-Expose-Headers", "Content-Disposition");
 				IOUtils.copy(targetStream, response.getOutputStream());
 				targetStream.close();
 				response.getOutputStream().close();

@@ -148,6 +148,7 @@ public class MisReportController extends AbstractControllerFY<Long, MisReport, M
 				response.setStatus(HttpServletResponse.SC_OK);
 				response.addHeader("Content-Disposition", " attachment; filename=" + typeOfReport + "_" + t[0] + "_"
 						+ f[0] + "_" + fy + "_" + q + ".zip");
+				response.setHeader("Access-Control-Expose-Headers", "Content-Disposition");
 				response.setHeader("Content-Type", "application/zip");
 
 				ZipOutputStream zipOutputStream = new ZipOutputStream(response.getOutputStream());
@@ -173,11 +174,13 @@ public class MisReportController extends AbstractControllerFY<Long, MisReport, M
 		} catch (Exception e) {
 			// send dto object with error
 			logger.info(e.getMessage());
-			ermsg.setMessage("File not found for this PAN Number");
-			ermsg.setExceptionMsg(e.getMessage());
+			ermsg.setMessage(e.getMessage());
+			ermsg.setExceptionMsg("File not found for this TAN Number");
 			ermsg.setEntityName("Certificate");
-			response.setStatus(400);
-			ResponseEntity re = new ResponseEntity<Object>(ermsg, HttpStatus.BAD_REQUEST);
+			response.setHeader("Access-Control-Expose-Headers", "Content-Disposition");
+			response.setHeader("Content-Type", "application/json");
+			response.setStatus(404);
+			ResponseEntity re = new ResponseEntity<Object>(ermsg, HttpStatus.NOT_FOUND);
 			try {
 				response.getWriter().write(re.getBody().toString());
 			} catch (IOException e1) {

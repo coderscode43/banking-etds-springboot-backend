@@ -1,7 +1,11 @@
 package domain.in.rjsa.controller;
 
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.format.TextStyle;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Pattern;
 
@@ -492,9 +496,45 @@ public class IndexController extends AbstractController {
         clientDetailsMap.put("ClientPAN", StaticData.ClientPAN);
         clientDetailsMap.put("panelAccess", panelAccess);
         map.put("clientDetails", clientDetailsMap);
-
+        
+		map.put("crtMonth", getCrtMonth());
+		map.put("crtQuarter", getQuarter(LocalDate.now().getMonthValue()));
+		map.put("crtFy", getCurrentFinancialYear());
+		
         return ResponseEntity.ok(map);
     }
+    
+    
+    private String getCrtMonth() {
+    	LocalDate currentDate = LocalDate.now();
+		return currentDate.getMonth().getDisplayName(TextStyle.FULL, Locale.ENGLISH);
+    }
+    
+	private String getQuarter(int month) {
+		if (month >= 4 && month <= 6) {
+			return "Q1";
+		} else if (month >= 7 && month <= 9) {
+			return "Q2";
+		} else if (month >= 10 && month <= 12) {
+			return "Q3";
+		} else {
+			return "Q4";
+		}
+	}
+
+	private String getCurrentFinancialYear() {
+		LocalDate currentDate = LocalDate.now();
+		int year = currentDate.getYear();
+		Month month = currentDate.getMonth();
+		String financialYear;
+		if (month.getValue() >= 4) {
+			financialYear = year + "-" + (year + 1) % 100;
+		} else {
+			financialYear = (year - 1) + "-" + (year % 100);
+		}
+		
+		return financialYear;
+	}
 
 	@GetMapping(value = "/HomehelpSC")
 	public String getHelpHomePageSC() {

@@ -528,8 +528,9 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 	@PutMapping(value = "/updateDeductee/{id}/{deducteeId}")
 	public ResponseEntity<?> updateDeductee(@PathVariable Long id, @PathVariable Long deducteeId,
 			@RequestBody String entity) {
+		FieldErrorDTO ermsg = new FieldErrorDTO();
+		ermsg.setEntityName(getEntity().toString());
 		try {
-			FieldErrorDTO ermsg = new FieldErrorDTO();
 			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
 			map.put("id", id);
 			map.put("DEDUCTEEID", deducteeId);
@@ -550,18 +551,22 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 			remark.setAPPROVEDON(new Date());
 			remark.setAPPROVEDBY(getPrincipal());
 			deducteeService.update(remark);
-
+			ermsg.setSuccessMsg("Approved Successfully");
+			return new ResponseEntity<>(ermsg,HttpStatus.ACCEPTED);
 		} catch (Exception e) {
 			e.printStackTrace();
+			ermsg.setMessage(e.getMessage());
+			ermsg.setExceptionMsg("Upload to process your request");
+			return new ResponseEntity<>(ermsg,HttpStatus.BAD_REQUEST);
 		}
-		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 	@PutMapping(value = "/rejectDeductee/{id}/{deducteeformid}/{rejectRemark}")
 	public ResponseEntity<?> rejectDeductee(@PathVariable Long id, @PathVariable Long deducteeformid,
 			@PathVariable String rejectRemark, @RequestBody String entity) {
-		try {
 		FieldErrorDTO ermsg = new FieldErrorDTO();
+		ermsg.setEntityName(getEntity().toString());
+		try {
 		LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
 		map.put("id", id);
 		map.put("DEDUCTEEID", deducteeformid);
@@ -591,13 +596,17 @@ public abstract class AbstractControllerFY<K extends Serializable, E extends Mod
 		LinkedHashMap<String, Object> entityMap = mapper.readValue(entity, LinkedHashMap.class);
 		entityMap.put("resolved", false);
 		update(entityMap);
+		ermsg.setSuccessMsg("Rejected Successfully");
+		return new ResponseEntity<>(ermsg,HttpStatus.ACCEPTED);
 		} catch(Exception e) {
 			e.printStackTrace();
+			ermsg.setMessage(e.getMessage());
+			ermsg.setExceptionMsg("Upload to process your request");
+			return new ResponseEntity<>(ermsg,HttpStatus.BAD_REQUEST);
 		}
 
 		// change DeducteeRemark status
 
-		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 	@PutMapping(value = "/update")

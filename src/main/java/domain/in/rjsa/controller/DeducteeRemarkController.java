@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import domain.in.rjsa.exception.FieldErrorDTO;
 import domain.in.rjsa.model.fy.DeducteeRemark;
 import domain.in.rjsa.service.DeducteeRemarkService;
 
@@ -35,7 +36,11 @@ public class DeducteeRemarkController extends AbstractControllerForm<Long, Deduc
 	@Override
 	@PostMapping(value = "/add")
 	public ResponseEntity<?> createEntity(@RequestBody LinkedHashMap<String, Object> entity) {
+		FieldErrorDTO ermsg = new FieldErrorDTO();
+		ermsg.setEntityName(getEntity().getSimpleName());
+		
 		service.save(entity);
-		return new ResponseEntity<DeducteeRemark>(HttpStatus.OK);
+        ermsg.setSuccessMsg("Updated Successfully");
+		return new ResponseEntity<>(ermsg, HttpStatus.OK);
 	}
 }

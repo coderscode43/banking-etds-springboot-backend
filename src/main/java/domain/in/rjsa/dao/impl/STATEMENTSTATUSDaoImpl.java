@@ -323,7 +323,6 @@ public class STATEMENTSTATUSDaoImpl extends AbstractDaoTaxo<Long, STATEMENTSTATU
             predicates.add(cb.equal(root.get("FORM"), String.valueOf(entity.get("FORM"))));
         }
         if (entity.get("FY") != null) {
-            String[] parts = entity.get("FY").toString().split("-");
             predicates.add(cb.equal(root.get("FY"), entity.get("FY")));
         }
         if (entity.get("QUARTER") != null) {
@@ -357,7 +356,7 @@ public class STATEMENTSTATUSDaoImpl extends AbstractDaoTaxo<Long, STATEMENTSTATU
                         break;
                     case "FY":
 //                        String[] parts = v.toString().split("-");
-                        predicates.add(cb.equal(root.get("FY"), entity.get(v)));
+                        predicates.add(cb.equal(root.get("FY"), v));
                         break;
                     default:
                         predicates.add(cb.equal(root.get(k), v));

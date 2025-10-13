@@ -141,44 +141,26 @@ public class LDCDaoImpl extends AbstractDaoTaxo<String, LDC> implements LDCDao {
 
     @SuppressWarnings("unchecked")
     @Override
+    public Long findallCount(HashMap<String, Object> constraints) {
+        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<Long> cq = cb.createQuery(Long.class);
+        Root<LDC> root = cq.from(LDC.class);
+
+        List<Predicate> predicates = buildPredicates(cb, root, constraints);
+
+        cq.select(cb.count(root)).where(predicates.toArray(new Predicate[0]));
+
+        return getEntityManager().createQuery(cq).getSingleResult();
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
     public List<LDC> search(HashMap entity, int pageNo, int noOfResult) {
         CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<LDC> cq = cb.createQuery(LDC.class);
         Root<LDC> root = cq.from(LDC.class);
 
-        List<Predicate> predicates = new ArrayList<>();
-
-        if (entity.get("PAN") != null) {
-            predicates.add(cb.or(cb.equal(root.get("PAN"), entity.get("PAN")), cb.isNull(root.get("PAN"))));
-        }
-        if (entity.get("SECTION_CODE") != null) {
-            predicates.add(cb.or(cb.equal(root.get("SECTION_CODE"), entity.get("SECTION_CODE")), cb.isNull(root.get("SECTION_CODE"))));
-        }
-        if (entity.get("LDC_NUMBER") != null) {
-            predicates.add(cb.or(cb.equal(root.get("LDC_NUMBER"), entity.get("LDC_NUMBER")), cb.isNull(root.get("LDC_NUMBER"))));
-        }
-        if (entity.get("TAN") != null) {
-            String[] Tan = entity.get("TAN").toString().split(Pattern.quote("-"), -1);
-            predicates.add(cb.or(cb.equal(root.get("TAN"), Tan[0]), cb.isNull(root.get("TAN"))));
-        }
-        if (entity.get("FY") != null) {
-            predicates.add(cb.or(cb.equal(root.get("FY"), entity.get("FY")), cb.isNull(root.get("FY"))));
-        }
-        if (entity.get("LDC_RATE") != null) {
-            predicates.add(cb.or(cb.equal(root.get("LDC_RATE"), entity.get("LDC_RATE")), cb.isNull(root.get("LDC_RATE"))));
-        }
-        if (entity.get("CERTIFICATE_LIMIT") != null) {
-            predicates.add(cb.or(cb.equal(root.get("CERTIFICATE_LIMIT"), entity.get("CERTIFICATE_LIMIT")), cb.isNull(root.get("CERTIFICATE_LIMIT"))));
-        }
-        if (entity.get("AMOUNT_CONSUMED") != null) {
-            predicates.add(cb.or(cb.equal(root.get("AMOUNT_CONSUMED"), entity.get("AMOUNT_CONSUMED")), cb.isNull(root.get("AMOUNT_CONSUMED"))));
-        }
-        if (entity.get("NATURE_OF_PAYMENT") != null) {
-            predicates.add(cb.or(cb.equal(root.get("NATURE_OF_PAYMENT"), entity.get("NATURE_OF_PAYMENT")), cb.isNull(root.get("NATURE_OF_PAYMENT"))));
-        }
-        if (entity.get("NAME") != null) {
-            predicates.add(cb.or(cb.equal(root.get("NAME"), entity.get("NAME")), cb.isNull(root.get("NAME"))));
-        }
+        List<Predicate> predicates = buildPredicates(cb, root, entity);
 
         cq.select(root).where(predicates.toArray(new Predicate[0]));
         cq.orderBy(cb.desc(root.get("PAN")));
@@ -188,6 +170,7 @@ public class LDCDaoImpl extends AbstractDaoTaxo<String, LDC> implements LDCDao {
                 .setMaxResults(noOfResult)
                 .getResultList();
     }
+
 
     @Override
     public LDC getByKey(String tan) {
@@ -200,49 +183,60 @@ public class LDCDaoImpl extends AbstractDaoTaxo<String, LDC> implements LDCDao {
         return getEntityManager().createQuery(cq).getSingleResult();
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<LDC> searchExcel(HashMap entity) {
         CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<LDC> cq = cb.createQuery(LDC.class);
         Root<LDC> root = cq.from(LDC.class);
 
-        List<Predicate> predicates = new ArrayList<>();
-
-        if (entity.get("PAN") != null) {
-            predicates.add(cb.or(cb.equal(root.get("PAN"), entity.get("PAN")), cb.isNull(root.get("PAN"))));
-        }
-        if (entity.get("SECTION_CODE") != null) {
-            predicates.add(cb.or(cb.equal(root.get("SECTION_CODE"), entity.get("SECTION_CODE")), cb.isNull(root.get("SECTION_CODE"))));
-        }
-        if (entity.get("LDC_NUMBER") != null) {
-            predicates.add(cb.or(cb.equal(root.get("LDC_NUMBER"), entity.get("LDC_NUMBER")), cb.isNull(root.get("LDC_NUMBER"))));
-        }
-        if (entity.get("TAN") != null) {
-            predicates.add(cb.or(cb.equal(root.get("TAN"), entity.get("TAN")), cb.isNull(root.get("TAN"))));
-        }
-        if (entity.get("FY") != null) {
-            predicates.add(cb.or(cb.equal(root.get("FY"), entity.get("FY")), cb.isNull(root.get("FY"))));
-        }
-        if (entity.get("LDC_RATE") != null) {
-            predicates.add(cb.or(cb.equal(root.get("LDC_RATE"), entity.get("LDC_RATE")), cb.isNull(root.get("LDC_RATE"))));
-        }
-        if (entity.get("CERTIFICATE_LIMIT") != null) {
-            predicates.add(cb.or(cb.equal(root.get("CERTIFICATE_LIMIT"), entity.get("CERTIFICATE_LIMIT")), cb.isNull(root.get("CERTIFICATE_LIMIT"))));
-        }
-        if (entity.get("AMOUNT_CONSUMED") != null) {
-            predicates.add(cb.or(cb.equal(root.get("AMOUNT_CONSUMED"), entity.get("AMOUNT_CONSUMED")), cb.isNull(root.get("AMOUNT_CONSUMED"))));
-        }
-        if (entity.get("NATURE_OF_PAYMENT") != null) {
-            predicates.add(cb.or(cb.equal(root.get("NATURE_OF_PAYMENT"), entity.get("NATURE_OF_PAYMENT")), cb.isNull(root.get("NATURE_OF_PAYMENT"))));
-        }
-        if (entity.get("NAME") != null) {
-            predicates.add(cb.or(cb.equal(root.get("NAME"), entity.get("NAME")), cb.isNull(root.get("NAME"))));
-        }
+        List<Predicate> predicates = buildPredicates(cb, root, entity);
 
         cq.select(root).where(predicates.toArray(new Predicate[0]));
         cq.orderBy(cb.desc(root.get("PAN")));
 
         return getEntityManager().createQuery(cq).getResultList();
     }
+
+    
+    private List<Predicate> buildPredicates(CriteriaBuilder cb, Root<LDC> root, HashMap<String, Object> constraints) {
+        List<Predicate> predicates = new ArrayList<>();
+
+        if (constraints.get("PAN") != null) {
+            predicates.add(cb.equal(root.get("PAN"), constraints.get("PAN")));
+        }
+        if (constraints.get("SECTION_CODE") != null) {
+            String section = constraints.get("SECTION_CODE").toString().split(Pattern.quote("-"), -1)[0];
+            predicates.add(cb.like(root.get("SECTION_CODE"), "%" + section + "%"));
+        }
+        if (constraints.get("LDC_NUMBER") != null) {
+            predicates.add(cb.equal(root.get("LDC_NUMBER"), constraints.get("LDC_NUMBER")));
+        }
+        if (constraints.get("TAN") != null) {
+            String[] Tan = constraints.get("TAN").toString().split(Pattern.quote("-"), -1);
+            predicates.add(cb.or(cb.equal(root.get("TAN"), Tan[0]), cb.isNull(root.get("TAN"))));
+        }
+        if (constraints.get("FY") != null) {
+            predicates.add(cb.or(cb.equal(root.get("FY"), constraints.get("FY")), cb.isNull(root.get("FY"))));
+        }
+        if (constraints.get("LDC_RATE") != null) {
+            predicates.add(cb.or(cb.equal(root.get("LDC_RATE"), constraints.get("LDC_RATE")), cb.isNull(root.get("LDC_RATE"))));
+        }
+        if (constraints.get("CERTIFICATE_LIMIT") != null) {
+            predicates.add(cb.or(cb.equal(root.get("CERTIFICATE_LIMIT"), constraints.get("CERTIFICATE_LIMIT")), cb.isNull(root.get("CERTIFICATE_LIMIT"))));
+        }
+        if (constraints.get("AMOUNT_CONSUMED") != null) {
+            predicates.add(cb.or(cb.equal(root.get("AMOUNT_CONSUMED"), constraints.get("AMOUNT_CONSUMED")), cb.isNull(root.get("AMOUNT_CONSUMED"))));
+        }
+        if (constraints.get("NATURE_OF_PAYMENT") != null) {
+            predicates.add(cb.or(cb.equal(root.get("NATURE_OF_PAYMENT"), constraints.get("NATURE_OF_PAYMENT")), cb.isNull(root.get("NATURE_OF_PAYMENT"))));
+        }
+        if (constraints.get("NAME") != null) {
+            predicates.add(cb.or(cb.equal(root.get("NAME"), constraints.get("NAME")), cb.isNull(root.get("NAME"))));
+        }
+
+        return predicates;
+    }
+
 }
 

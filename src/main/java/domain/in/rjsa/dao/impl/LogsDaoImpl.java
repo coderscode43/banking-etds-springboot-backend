@@ -83,9 +83,11 @@
 
 package domain.in.rjsa.dao.impl;
 
-import java.sql.Date;
+import java.time.LocalTime;
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -166,14 +168,18 @@ public class LogsDaoImpl extends AbstractDaoForm<Long, Logs> implements LogsDao 
             predicates.add(cb.or(cb.equal(root.get("ipaddrs"), entity.get("ipaddrs")),
                                  cb.isNull(root.get("ipaddrs"))));
         }
+        
         if (entity.get("fromDate") != null) {
-            Date fromDate = (Date) Date.from(ZonedDateTime.parse((String) entity.get("fromDate")).toInstant());
-            predicates.add(cb.greaterThanOrEqualTo(root.get("date"), fromDate));
-        }
-        if (entity.get("toDate") != null) {
-            Date toDate = (Date) Date.from(ZonedDateTime.parse((String) entity.get("toDate")).toInstant());
-            predicates.add(cb.lessThanOrEqualTo(root.get("date"), toDate));
-        }
+			ZonedDateTime fromDate = ZonedDateTime.parse(entity.get("fromDate").toString())
+					.withZoneSameInstant(ZoneId.of("Asia/Kolkata")).with(LocalTime.MIN);
+			predicates.add(cb.greaterThanOrEqualTo(root.get("logsDate"), Date.from(fromDate.toInstant())));
+		}
+
+		if (entity.get("toDate") != null) {
+			ZonedDateTime fromDate = ZonedDateTime.parse(entity.get("toDate").toString())
+					.withZoneSameInstant(ZoneId.of("Asia/Kolkata")).with(LocalTime.MAX);
+			predicates.add(cb.lessThanOrEqualTo(root.get("logsDate"), Date.from(fromDate.toInstant())));
+		}
 
         return predicates;
     }

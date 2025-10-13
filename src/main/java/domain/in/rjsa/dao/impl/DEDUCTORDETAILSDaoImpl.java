@@ -117,8 +117,10 @@ public class DEDUCTORDETAILSDaoImpl extends AbstractDaoTaxo<Long, DEDUCTORDETAIL
             predicates.add(cb.equal(root.get("TAN"), entity.get("TAN").toString()));
         }
         if (entity.get("STATE") != null) {
-            predicates.add(cb.equal(root.get("STATE"), entity.get("STATE").toString()));
+            String formattedState = formatStateQuery(entity.get("STATE").toString());
+            predicates.add(cb.equal(root.get("STATE"), formattedState));
         }
+
         if (entity.get("CITY") != null) {
             predicates.add(cb.equal(root.get("CITY"), entity.get("CITY").toString()));
         }
@@ -132,6 +134,32 @@ public class DEDUCTORDETAILSDaoImpl extends AbstractDaoTaxo<Long, DEDUCTORDETAIL
         query.setMaxResults(noOfResult);
 
         return query.getResultList();
+    }
+    
+    @Override
+    public Long findallCount(HashMap<String, Object> entity) {
+        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<Long> cq = cb.createQuery(Long.class);
+        Root<DEDUCTORDETAILS> root = cq.from(DEDUCTORDETAILS.class);
+
+        List<Predicate> predicates = new ArrayList<>();
+
+        if (entity.get("TAN") != null) {
+            predicates.add(cb.equal(root.get("TAN"), entity.get("TAN").toString()));
+        }
+        if (entity.get("STATE") != null) {
+            String formattedState = formatStateQuery(entity.get("STATE").toString());
+            predicates.add(cb.equal(root.get("STATE"), formattedState));
+        }
+
+        if (entity.get("CITY") != null) {
+            predicates.add(cb.equal(root.get("CITY"), entity.get("CITY").toString()));
+        }
+
+        cq.select(cb.count(root))
+          .where(predicates.toArray(new Predicate[0]));
+
+        return getEntityManager().createQuery(cq).getSingleResult();
     }
 
     @Override
@@ -170,7 +198,8 @@ public class DEDUCTORDETAILSDaoImpl extends AbstractDaoTaxo<Long, DEDUCTORDETAIL
             predicates.add(cb.equal(root.get("TAN"), entity.get("TAN").toString()));
         }
         if (entity.get("STATE") != null) {
-            predicates.add(cb.equal(root.get("STATE"), entity.get("STATE").toString()));
+            String formattedState = formatStateQuery(entity.get("STATE").toString());
+            predicates.add(cb.equal(root.get("STATE"), formattedState));
         }
         if (entity.get("CITY") != null) {
             predicates.add(cb.equal(root.get("CITY"), entity.get("CITY").toString()));
@@ -182,4 +211,17 @@ public class DEDUCTORDETAILSDaoImpl extends AbstractDaoTaxo<Long, DEDUCTORDETAIL
 
         return getEntityManager().createQuery(cq).getResultList();
     }
+    
+    //Helper method 
+    private String formatStateQuery(String stateQuery) {
+        String[] parts = stateQuery.trim().split("-");
+        if (parts.length == 2) {
+            String stateName = parts[0].trim().toUpperCase();
+            String stateCode = parts[1].trim();
+            return stateCode + "-" + stateName;
+        }
+        return stateQuery.trim();
+    }
+
+
 }

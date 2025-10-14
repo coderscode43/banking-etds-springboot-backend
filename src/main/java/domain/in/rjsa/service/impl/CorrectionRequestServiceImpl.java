@@ -801,15 +801,17 @@ public class CorrectionRequestServiceImpl extends AbstractServiceForm<Long, Corr
 					}
 				}
 			}
-			String fy = jsonObject1.get("fy").toString();
+			String fy = jsonObject1.get("fy").asText();
 			String q = getQuarter(quarter);
-			String branchCode = jsonObject1.get("branchCode").toString();
+			String branchCode = jsonObject1.get("branchCode").asText();
 			String path = StaticData.documentSave;
 			File file = null;
 			if (jsonObject2 != null) {
 				if (jsonObject2.has("challanSupportingDoc")) {
-					String filepath = path + "//" + date + "//" + fy + "//" + q + "//" + branchCode
-							+ "//CorrectionRequest//" + ticketNumber + "//ChallanSupportingDocument";
+					String filepath = Paths.get(path, date, fy, q, branchCode, "CorrectionRequest",
+							ticketNumber.toString(), "CorrectionSupportingDocument").toString();
+//					String filepath = path + "//" + date + "//" + fy + "//" + q + "//" + branchCode
+//							+ "//CorrectionRequest//" + ticketNumber + "//ChallanSupportingDocument";
 					file = new File(filepath);
 					if (!file.exists()) {
 						file.mkdirs();
@@ -836,9 +838,10 @@ public class CorrectionRequestServiceImpl extends AbstractServiceForm<Long, Corr
 				}
 			} else if (jsonObject1 != null) {
 				if (rootNode.has("docs")) {
-
-					String filepath = path + "//" + date + "//" + fy + "//" + q + "//" + branchCode
-							+ "//CorrectionRequest//" + ticketNumber + "//CorrectionSupportingDocument";
+					String filepath = Paths.get(path, date, fy, q, branchCode, "CorrectionRequest",
+							ticketNumber.toString(), "CorrectionSupportingDocument").toString();
+//					String filepath = path + "//" + date + "//" + fy + "//" + q + "//" + branchCode
+//							+ "//CorrectionRequest//" + ticketNumber + "//CorrectionSupportingDocument";
 					file = new File(filepath);
 					if (!file.exists()) {
 						file.mkdirs();
@@ -915,8 +918,9 @@ public class CorrectionRequestServiceImpl extends AbstractServiceForm<Long, Corr
 			try {
 				if (path != null) {
 					for (MultipartFile blob : listBlob) {
-						String filepath1 = path + "//" + date + "//" + fy + "//" + q + "//" + branchCode
-								+ "//CorrectionRequest//" + ticketNumber + "//CorrectionSupportingDocument";
+						String filepath1 = Paths.get(path, date, fy, q, branchCode, "CorrectionRequest",ticketNumber.toString(),"CorrectionSupportingDocument").toString();
+//						String filepath1 = path + "//" + date + "//" + fy + "//" + q + "//" + branchCode
+//								+ "//CorrectionRequest//" + ticketNumber + "/CorrectionSupportingDocument";
 						File file1 = new File(filepath1);
 						if (!file1.exists()) {
 							file1.mkdirs();
@@ -1035,13 +1039,14 @@ public class CorrectionRequestServiceImpl extends AbstractServiceForm<Long, Corr
 	public void downloadDocument(Long id, HttpServletResponse response) {
 		try {
 			CorrectionRequest cr = dao.getByKey(id);
-			String date = cr.getCorrectionRequestDate().toString();
+			String date1 = new SimpleDateFormat("dd-MM-yyyy").format(cr.getCorrectionRequestDate());
 			String path = StaticData.documentSave;
 
-			DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
-			DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-			LocalDateTime dateTime = LocalDateTime.parse(date, inputFormatter);
-			String date1 = dateTime.toLocalDate().format(outputFormatter);
+//			String date = cr.getCorrectionRequestDate();
+//			DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
+//			DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+//			LocalDateTime dateTime = LocalDateTime.parse(date, inputFormatter);
+//			String date1 = dateTime.toLocalDate().format(outputFormatter);
 
 			String[] fileName = cr.getFileName().substring(0, cr.getFileName().length() - 1).split(Pattern.quote("^"),
 					-1);
@@ -1049,10 +1054,13 @@ public class CorrectionRequestServiceImpl extends AbstractServiceForm<Long, Corr
 			ZipOutputStream zipOutputStream = new ZipOutputStream(response.getOutputStream());
 			int i = fileName.length;
 			for (String f : fileName) {
-
-				String filePath = path + "//" + date1 + "//" + cr.fy + "//" + cr.getQuarter().replace(", ", "_") + "//"
-						+ cr.getBranchCode() + "//CorrectionRequest//" + cr.getTicketNumber()
-						+ "//CorrectionSupportingDocument//" + f;
+				String filePath = Paths
+						.get(path, date1, cr.fy, cr.getQuarter().replace(", ", "_"), cr.getBranchCode().toString(),
+								"CorrectionRequest", cr.getTicketNumber().toString(), "CorrectionSupportingDocument", f)
+						.toString();
+//				String filePath = path + "//" + date1 + "//" + cr.fy + "//" + cr.getQuarter().replace(", ", "_") + "//"
+//						+ cr.getBranchCode() + "//CorrectionRequest//" + cr.getTicketNumber()
+//						+ "//CorrectionSupportingDocument//" + f;
 				try {
 					File file = new File(filePath);
 					if (file.exists()) {
@@ -1060,6 +1068,7 @@ public class CorrectionRequestServiceImpl extends AbstractServiceForm<Long, Corr
 						response.addHeader("Content-Disposition",
 								" attachment; filename=" + cr.getTicketNumber() + ".zip");
 						response.setHeader("Content-Type", "application/zip");
+						response.setHeader("Access-Control-Expose-Headers", "Content-Disposition");
 						zipOutputStream.putNextEntry(new ZipEntry(file.getName().split(Pattern.quote("."), -1)[0] + "_"
 								+ i + "." + file.getName().split(Pattern.quote("."), -1)[1]));
 						FileInputStream fileInputStream = new FileInputStream(file);
@@ -1073,9 +1082,14 @@ public class CorrectionRequestServiceImpl extends AbstractServiceForm<Long, Corr
 						response.addHeader("Content-Disposition",
 								" attachment; filename=" + cr.getTicketNumber() + ".zip");
 						response.setHeader("Content-Type", "application/zip");
-						filePath = path + "//" + date1 + "//" + cr.fy + "//" + cr.getBranchCode()
-								+ "//CorrectionRequest//" + cr.getTicketNumber() + "//CorrectionSupportingDocument//"
-								+ f;
+						response.setHeader("Access-Control-Expose-Headers", "Content-Disposition");
+						filePath = Paths
+								.get(path, date1, cr.fy, cr.getQuarter().replace(", ", "_"), cr.getBranchCode().toString(),
+										"CorrectionRequest", cr.getTicketNumber().toString(), "CorrectionSupportingDocument", f)
+								.toString();
+//						filePath = path + "//" + date1 + "//" + cr.fy + "//" + cr.getBranchCode()
+//								+ "//CorrectionRequest//" + cr.getTicketNumber() + "//CorrectionSupportingDocument//"
+//								+ f;
 						file = new File(filePath);
 						if (file.exists()) {
 							zipOutputStream.putNextEntry(new ZipEntry(file.getName().split(Pattern.quote("."), -1)[0]
@@ -1092,8 +1106,13 @@ public class CorrectionRequestServiceImpl extends AbstractServiceForm<Long, Corr
 					response.setStatus(HttpServletResponse.SC_OK);
 					response.addHeader("Content-Disposition", " attachment; filename=" + cr.getTicketNumber() + ".zip");
 					response.setHeader("Content-Type", "application/zip");
-					filePath = path + "//" + date1 + "//" + cr.fy + "//" + cr.getBranchCode() + "//CorrectionRequest//"
-							+ cr.getTicketNumber() + "//CorrectionSupportingDocument//" + f;
+					response.setHeader("Access-Control-Expose-Headers", "Content-Disposition");
+					filePath = Paths
+							.get(path, date1, cr.fy, cr.getQuarter().replace(", ", "_"), cr.getBranchCode().toString(),
+									"CorrectionRequest", cr.getTicketNumber().toString(), "CorrectionSupportingDocument", f)
+							.toString();
+//					filePath = path + "//" + date1 + "//" + cr.fy + "//" + cr.getBranchCode() + "//CorrectionRequest//"
+//							+ cr.getTicketNumber() + "//CorrectionSupportingDocument//" + f;
 					File file = new File(filePath);
 					if (file.exists()) {
 						zipOutputStream.putNextEntry(new ZipEntry(file.getName().split(Pattern.quote("."), -1)[0] + "_"
@@ -1122,6 +1141,7 @@ public class CorrectionRequestServiceImpl extends AbstractServiceForm<Long, Corr
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			
 		}
 	}
 

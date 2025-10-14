@@ -626,7 +626,8 @@ public class CorrectionRequestController
 		FieldErrorDTO ermsg = new FieldErrorDTO();
 		try {
 			service.downloadDocument(id, response);
-			return new ResponseEntity<>(response, HttpStatus.OK);
+			ermsg.setSuccessMsg("File downloaded successfully");
+			return new ResponseEntity<>(ermsg, HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
 			ermsg.setEntityName("Upload Document");

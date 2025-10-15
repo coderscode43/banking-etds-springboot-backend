@@ -1084,7 +1084,7 @@ public class CorrectionRequestServiceImpl extends AbstractServiceForm<Long, Corr
 						response.setHeader("Content-Type", "application/zip");
 						response.setHeader("Access-Control-Expose-Headers", "Content-Disposition");
 						filePath = Paths
-								.get(path, date1, cr.fy, cr.getQuarter().replace(", ", "_"), cr.getBranchCode().toString(),
+								.get(path, date1, cr.fy, cr.getBranchCode().toString(),
 										"CorrectionRequest", cr.getTicketNumber().toString(), "CorrectionSupportingDocument", f)
 								.toString();
 //						filePath = path + "//" + date1 + "//" + cr.fy + "//" + cr.getBranchCode()
@@ -1108,7 +1108,7 @@ public class CorrectionRequestServiceImpl extends AbstractServiceForm<Long, Corr
 					response.setHeader("Content-Type", "application/zip");
 					response.setHeader("Access-Control-Expose-Headers", "Content-Disposition");
 					filePath = Paths
-							.get(path, date1, cr.fy, cr.getQuarter().replace(", ", "_"), cr.getBranchCode().toString(),
+							.get(path, date1, cr.fy, cr.getBranchCode().toString(),
 									"CorrectionRequest", cr.getTicketNumber().toString(), "CorrectionSupportingDocument", f)
 							.toString();
 //					filePath = path + "//" + date1 + "//" + cr.fy + "//" + cr.getBranchCode() + "//CorrectionRequest//"

@@ -13,7 +13,7 @@ public class CorrectionRequestAmountDetails extends CommonModelAbstract {
 	 * 
 	 */
 	private static final long serialVersionUID = 4452993067071903984L;
-	public Long id;
+	public Long cradId;
 	public Long correctionRequestId;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy", timezone = "Asia/Kolkata")
 	public Date dateOfPayment;

@@ -198,7 +198,7 @@ public class CorrectionRemarksServiceImpl extends AbstractServiceForm<Long, Corr
 	@Override
 	public void saveRemark(CorrectionRemarks entity, String principal) {
 		CorrectionRequest cr = crDao.getByKey(entity.getCorrectionRequestId());
-		String makerBy = cr.getMakerBy();
+ 		String makerBy = cr.getMakerBy();
 		String timeStamp = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(Calendar.getInstance().getTime());
 		String status = entity.getRemarkStatus();
 		if (!makerBy.equalsIgnoreCase(principal)) {
@@ -296,16 +296,21 @@ public class CorrectionRemarksServiceImpl extends AbstractServiceForm<Long, Corr
 				if (path != null) {
 					Branch b = brDao.getByKey(c.getBranchCode());
 					String[] fName = cr.getSupportingDocName().split(Pattern.quote("_"), -1);
-					String filePath = path + "download/" + c.fy + "//" + fName[1] + "//" + "Form16A//" + b.getTan()
-							+ "//" + cr.getSupportingDocName();
+					String filePath = Paths
+							.get(path, "download", c.fy, fName[1], "Form16A", b.getTan(), cr.getSupportingDocName())
+							.toString();
+
+//					String filePath = path + "download/" + c.fy + "//" + fName[1] + "//" + "Form16A//" + b.getTan()
+//							+ "//" + cr.getSupportingDocName();
 					logger.info(filePath);
 					File file = new File(filePath);
 					byte[] fileContent;
 					fileContent = Files.readAllBytes(file.toPath());
 					String mimeType = URLConnection.guessContentTypeFromName(cr.getSupportingDocName());
 					response.setContentType(mimeType);
-					response.setStatus(HttpServletResponse.SC_OK);
+					response.setHeader("Access-Control-Expose-Headers", "Content-Disposition");
 					response.setHeader("Content-Disposition", " attachment; filename=" + cr.getSupportingDocName());
+					response.setStatus(HttpServletResponse.SC_OK);
 					response.getOutputStream().write(fileContent);
 					response.getOutputStream().close();
 				} else {
@@ -332,6 +337,7 @@ public class CorrectionRemarksServiceImpl extends AbstractServiceForm<Long, Corr
 					response.setContentType(mimeType);
 					response.setStatus(HttpServletResponse.SC_OK);
 					response.setHeader("Content-Disposition", " attachment; filename=" + cr.getSupportingDocName());
+					response.setHeader("Access-Control-Expose-Headers", "Content-Disposition");
 					response.getOutputStream().write(fileContent);
 					response.getOutputStream().close();
 				} else {

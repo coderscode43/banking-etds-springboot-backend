@@ -48,8 +48,8 @@ public class CorrectionRemarksController
 	@PostMapping(value = "/addRemark")
 	public ResponseEntity<?> createEntity(@RequestBody LinkedHashMap<String, Object> entity) {
 		FieldErrorDTO ermsg = new FieldErrorDTO();
+		ermsg.setEntityName(getEntity().getSimpleName().toString());
 		try {
-
 			logger.info("Creating new Return instance");
 			adminValidation(entity);
 			String json = mapper.writeValueAsString(entity);
@@ -57,9 +57,9 @@ public class CorrectionRemarksController
 			service.saveRemark(correctionRemarks, getPrincipal());
 			addLogs("Add");
 //		addRemarkLogs(entity);
-			return new ResponseEntity<Object>(HttpStatus.CREATED);
+			ermsg.setSuccessMsg("Remark added Successfully");
+			return new ResponseEntity<Object>(ermsg,HttpStatus.CREATED);
 		} catch (Exception e) {
-			ermsg.setEntityName(getEntity().getSimpleName().toString());
 			ermsg.setExceptionMsg(e.getMessage());
 			return new ResponseEntity<Object>(ermsg, HttpStatus.BAD_REQUEST);
 
@@ -73,20 +73,22 @@ public class CorrectionRemarksController
 			@RequestParam("remark") String remark, @RequestParam("status") String status,
 			@RequestParam("fy") String fy,@RequestParam("quarter") String quarter) {
 		FieldErrorDTO ermsg = new FieldErrorDTO();
+		ermsg.setEntityName(getEntity().getSimpleName().toString());
 		try {
 //			if (downloadFile.getOriginalFilename().endsWith(".zip")) {
 			// lessonMap.put("uploadedTime", uploadedTime);
 			HashMap<String, Object> entity = new HashMap<>();
 			service.SaveRemarkWithDocument(downloadFile, branchCode, crId, remark, getPrincipal(), status,fy,quarter);
 			addLogs("Add");
-			return new ResponseEntity<>(HttpStatus.OK);
+			ermsg.setSuccessMsg("Remark & File added Successfully");
+			return new ResponseEntity<>(ermsg, HttpStatus.OK);
 //			} else {
 //				throw new CustomException("Invalid File Type");
 //			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			ermsg.setEntityName("Upload Document");
-			ermsg.setExceptionMsg(e.getMessage());
+			ermsg.setMessage(e.getMessage());
+			ermsg.setExceptionMsg("Error Adding the Response ");
 			return new ResponseEntity<>(ermsg, HttpStatus.BAD_REQUEST);
 		}
 
@@ -95,13 +97,14 @@ public class CorrectionRemarksController
 	@GetMapping(value = "/downloadDoc/{id}")
 	public ResponseEntity<?> downloadDocument(HttpServletResponse response, @PathVariable Long id) {
 		FieldErrorDTO ermsg = new FieldErrorDTO();
+		ermsg.setEntityName(getEntity().getSimpleName().toString());
 		try {
 			service.downloadDocument(id, response);
 			return new ResponseEntity<>(response, HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
-			ermsg.setEntityName("Upload Document");
-			ermsg.setExceptionMsg(e.getMessage());
+			ermsg.setMessage(e.getMessage());
+			ermsg.setExceptionMsg("Error in Downloading the Document");
 			return new ResponseEntity<>(ermsg, HttpStatus.BAD_REQUEST);
 		}
 

@@ -8,6 +8,7 @@ import org.json.simple.JSONObject;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import domain.in.rjsa.annotation.Validate;
 import domain.in.rjsa.model.form.CommonModelAbstract;
 import domain.in.rjsa.util.JsonDateSerializer;
 import jakarta.validation.constraints.Size;
@@ -19,80 +20,141 @@ public class Regular24QDeductee extends CommonModelAbstract {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	@Validate(order = 41)
 	public Long id;
-	public String challanHeading;
+	
+	@Validate(order = 1)
+	public Long deducteeSrNo;
+	
+	@Validate(order = 2)
+	public Long challanSrNo;
+	
+	@Validate(order = 3)
 	public String deducteeRefNo;
-	//	@NotNull(message = "Pan Reference No. is a required field.")
+	
+	@Validate(order = 4)
 	@Size(min = 0, max = 45, message = "Pan Reference No. should not be greater than 45 characters.")
 	public String panRefNo;
-	//	@NotNull(message = "Pan is a required field.")
-//	@Size(min = 0, max = 45, message = "Pan should not be greater than 10 characters.")
+	
+	@Validate(order = 5)
 	public String pan;
-	//	@NotNull(message = "Name is a required field.")
+	
+	@Validate(order = 6)
 	@Size(min = 0, max = 45, message = "Name should not be greater than 45 characters.")
 	public String name;
-	//	@NotNull(message = "Section Code is a required field.")
+	
+	@Validate(order = 7)
 	@Size(min = 0, max = 45, message = "Section Code should not be greater than 45 characters.")
 	public String sectionCode;
+	
+	@Validate(order = 8)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Kolkata")
-//	@NotNull(message = "Date is a required field.")
 	public Date dateOfPayment;
+	
+	@Validate(order = 9)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Kolkata")
-//	@NotNull(message = "Date is a required field.")
 	public Date dateOfDeduction;
-	//	@NotNull(message = "Amount Paid is a required field.")
-	//@Digits(integer = 12, fraction = 2, message = "Amount Paid is not proper.Maximum 2 fractions allowed.")
+	
+	@Validate(order = 10)
 	public Double amountPaid;
-	//	@NotNull(message = "Tds is a required field.")
-	//@Digits(integer = 12, fraction = 2, message = "Tds is not proper.Maximum 2 fractions allowed.Maximum 2 fractions allowed.")
+	
+	@Validate(order = 11)
 	public Double tds;
-	//	@NotNull(message = "Surcharge is a required field.")
-	//@Digits(integer = 12, fraction = 2, message = "Surcharge is not proper.Maximum 2 fractions allowed.")
+	
+	@Validate(order = 12)
 	public Double surcharge;
-	//	@NotNull(message = "Education Cess is a required field.")
-	//@Digits(integer = 12, fraction = 2, message = "Education Cess is not proper.Maximum 2 fractions allowed.")
+	
+	@Validate(order = 13)
 	public Double eduCess;
-	//	@NotNull(message = "Total Tds is a required field.")
-	//@Digits(integer = 12, fraction = 2, message = "Education Cess is not proper.Maximum 2 fractions allowed.")
+	
+	@Validate(order = 14)
 	public Double totalTaxDeducted;
-	//	@NotNull(message = "Total Tax Deposited is a required field.")
-	//@Digits(integer = 12, fraction = 2, message = "Total Tax Deposited value is not proper.Maximum 2 fractions allowed.")
+	
+	@Validate(order = 15)
 	public Double totalTaxDeposited;
-	//	@NotNull(message = "Certificate Number is a required field.")
-	@Size(min = 0, max = 45, message = "Certificate Number should not be greater than 45 characters.")
-	public String certificateNumber;
+	
+	@Validate(order = 16)
 	@Size(min = 0, max = 45, message = "Remarks should not be greater than 45 characters.")
 	public String remarksReason;
-	//	@NotNull(message = "FY is a required field.")
-	@Size(min = 0, max = 45, message = "FY should not be greater than 45 characters.")
-	public String fy;
-	//	@NotNull(message = "Quarter is a required field.")
-	@Size(min = 0, max = 45, message = "Quarter should not be greater than 45 characters.")
-	public String quarter;
-	public Long branchCode;
-	public String accNo;
-	public Long challanSrNo;
-	public String month;
-	public String custVendId;
-	public String uniqueRefNo;
-	public String TAN;
-	public String roCode;
+	
+	@Validate(order = 17)
+	@Size(min = 0, max = 45, message = "Certificate Number should not be greater than 45 characters.")
+	public String certificateNumber;
+	
+	@Validate(order = 18)
 	public String errorDescription;
+	
+	@Validate(order = 19)
 	public String warningDescription;
+	
+	@Validate(order = 20)
 	public Double shortDeduction;
+	
+	@Validate(order = 21)
 	public Double interestOnShortDeduction;
+	
+	@Validate(order = 22)
 	public Double interestOnLatePayment;
+	
+	@Validate(order = 23)
 	public Double interestOnLateDeduction;
-//	//	public boolean verify = false;
-	public boolean resolved;
+	
+	@Validate(order = 24)
+	public Long branchCode;
+	
+	@Validate(order = 25)
+	public String custVendId;
+	
+	@Validate(order = 26)
+	public String challanHeading;
+	
+	@Validate(order = 27)
+	public String accNo;
 
+	@Validate(order = 28)
+	public String uniqueRefNo;
+
+	@Validate(order = 29)
+	public String roCode;
+
+	@Validate(order = 30)
+	public String TAN;
+	
+	@Validate(order = 31)
 	public String comments;
 
-	public Long deducteeSrNo;
-
+	@Validate(order = 32)
 	public Long tranAmt;
 
+	@Validate(order = 33)
 	public String additionalDetail;
+	
+	@Validate(order = 34)
+	public String month;
+	
+	@Validate(order = 35)
+	public boolean resolved;
+
+	@Validate(order = 36)
+	@Size(min = 0, max = 45, message = "FY should not be greater than 45 characters.")
+	public String fy;
+	
+	@Validate(order = 37)
+	@Size(min = 0, max = 45, message = "Quarter should not be greater than 45 characters.")
+	public String quarter;
+
+	/* 3 new columns */
+	@Validate(order = 38)
+	private String validInvalidPan;
+	
+	@Validate(order = 39)
+	private String panStatus;
+	
+	@Validate(order = 40)
+	private String specifiedPerson;
+	
+	public ChallanDetails challanDetails;
 
 	@JsonSerialize(using = JsonDateSerializer.class)
 	public Date getDateOfPayment() {

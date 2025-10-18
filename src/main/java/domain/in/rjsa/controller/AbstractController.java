@@ -57,7 +57,7 @@ public class AbstractController {
 				try {
 					ud = applicationCache.getAdminUser(getPrincipal());
 				} catch (Exception e) {
-					e.printStackTrace();
+//					e.printStackTrace();
 				}
 			}
 			String type = login.getType();

@@ -263,6 +263,7 @@ import org.springframework.stereotype.Repository;
 
 import domain.in.rjsa.dao.AbstractDaoFY;
 import domain.in.rjsa.dao.Regular24QDeducteeDao;
+import domain.in.rjsa.dto.TDSAmountDto;
 import domain.in.rjsa.model.fy.Regular24QDeductee;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
@@ -387,4 +388,33 @@ public class Regular24QDeducteeDaoImpl extends AbstractDaoFY<Long, Regular24QDed
 
         return predicates;
     }
+    
+    @Override
+	public List<TDSAmountDto> getAmountDetails(String quarter) {
+		CriteriaBuilder builder = getEntityManager().getCriteriaBuilder();
+		CriteriaQuery<TDSAmountDto> query = builder.createQuery(TDSAmountDto.class);
+		Root<Regular24QDeductee> root = query.from(Regular24QDeductee.class);
+
+		Predicate predicate = builder.equal(root.get("quarter"), quarter);
+
+		query.select(builder.construct(TDSAmountDto.class, root.get("TAN"), builder.sum(root.get("tds"))))
+				.where(predicate).groupBy(root.get("TAN"));
+
+		return getEntityManager().createQuery(query).getResultList();
+	}
+
+	@Override
+	public List<Regular24QDeductee> getDetails(HashMap<String, Object> data) {
+		CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<Regular24QDeductee> cq = cb.createQuery(Regular24QDeductee.class);
+        Root<Regular24QDeductee> root = cq.from(Regular24QDeductee.class);
+
+        List<Predicate> predicates = buildPredicates(cb, root, data);
+
+        cq.select(root).where(predicates.toArray(new Predicate[0]));
+        cq.orderBy(cb.desc(root.get("tds")));
+
+        return getEntityManager().createQuery(cq).getResultList();
+	}
+	
 }

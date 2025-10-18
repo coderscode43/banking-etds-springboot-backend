@@ -8,6 +8,7 @@ import org.json.simple.JSONObject;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import domain.in.rjsa.annotation.Validate;
 import domain.in.rjsa.model.form.CommonModelAbstract;
 import domain.in.rjsa.util.JsonDateSerializer;
 import lombok.Data;
@@ -18,91 +19,154 @@ public class Regular26QDeductee extends CommonModelAbstract {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	@Validate(order = 48)
 	public Long id;
-
-	public String challanHeading;
-
+	
+	@Validate(order = 1)
+	public Long deducteeSrNo;
+	
+	@Validate(order = 2)
+	public Long challanSrNo;
+	
+	@Validate(order = 3)
 	public String deducteeRefNo;
 
+	@Validate(order = 4)
 	public String deducteeCode;
-
+	
+	@Validate(order = 5)
 	public String pan;
 
+	@Validate(order = 6)
 	public String name;
 
+	@Validate(order = 7)
 	public String sectionCode;
-
+	
+	@Validate(order = 8)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Kolkata")
 	public Date dateOfPayment;
 
+	@Validate(order = 9)
 	public Double amountPaid;
 
+	@Validate(order = 10)
 	public Double tds;
 
+	@Validate(order = 11)
 	public Double surcharge;
 
+	@Validate(order = 12)
 	public Double eduCess;
 
+	@Validate(order = 13)
 	public Double totalTaxDeducted;
 
+	@Validate(order = 14)
 	public Double totalTaxDeposited;
-
+	
+	@Validate(order = 15)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Kolkata")
 	public Date dateOfDeduction;
 
+	@Validate(order = 16)
 	public Double rateAtWhichTaxCollected;
 
+	@Validate(order = 17)
 	public String remarksReason;
 
+	@Validate(order = 18)
 	public String certificateNumber;
-
-	public String fy;
-
-	public String quarter;
-
-	public String branchCode;
-
-	public String accNo;
-
-	public Long challanSrNo;
-
-	public String month;
-
-	public String custVendId;
-
-	public String uniqueRefNo;
-
+	
+	@Validate(order = 19)
 	public Double cashWithdrawal194N;
 
+	@Validate(order = 20)
 	public Double cashWithdrawal194N20Lto1Cr;
 
+	@Validate(order = 21)
 	public Double cashWithdrawal194N1Cr;
-
-	public String TAN;
-
-	public String roCode;
-
+	
+	/* 3 new columns */
+	@Validate(order = 22)
+	public Double cashWithdrawal194N3Cr;
+	
+	@Validate(order = 23)
+	public Double cashWIthdrawal194N20LtO3Cr;
+	
+	@Validate(order = 24)
+	public Double cashWithdrawal194Ngr3Cr;
+	
+	@Validate(order = 25)
 	public String errorDescription;
 
+	@Validate(order = 26)
 	public String warningDescription;
 
+	@Validate(order = 27)
 	public Double shortDeduction;
 
+	@Validate(order = 28)
 	public Double interestOnShortDeduction;
 
+	@Validate(order = 29)
 	public Double interestOnLatePayment;
 
+	@Validate(order = 30)
 	public Double interestOnLateDeduction;
-
-	public boolean resolved;
-
+	
+	@Validate(order = 31)
+	public String branchCode;
+	
+	@Validate(order = 32)
+	public String custVendId;
+	
+	@Validate(order = 33)
+	public String challanHeading;
+	
+	@Validate(order = 34)
+	public String accNo;
+	
+	@Validate(order = 35)
+	public String uniqueRefNo;
+	
+	@Validate(order = 36)
+	public String roCode;
+	
+	@Validate(order = 37)
+	public String TAN;
+	
+	@Validate(order = 38)
 	public String comments;
-
-	public Long deducteeSrNo;
-
+	
+	@Validate(order = 39)
 	public Double tranAmt;
 
+	@Validate(order = 40)
 	public String additionalDetail;
+
+	@Validate(order = 41)
+	public String month;
+
+	@Validate(order = 42)
+	public boolean resolved;
+
+	@Validate(order = 43)
+	public String fy;
+	
+	@Validate(order = 44)
+	public String quarter;
+	
+	/* 3 new columns */
+	@Validate(order = 45)
+	private String validInvalidPan;
+	
+	@Validate(order = 46)
+	private String panStatus;
+	
+	@Validate(order = 47)
+	private String specifiedPerson;
 
 	@JsonSerialize(using = JsonDateSerializer.class)
 	public Date getDateOfPayment() {

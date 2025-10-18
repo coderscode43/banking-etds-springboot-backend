@@ -15,20 +15,25 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.HandlerMapping;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import domain.in.rjsa.exception.CustomException;
+import domain.in.rjsa.exception.FieldErrorDTO;
 import domain.in.rjsa.model.form.ListCount;
 import domain.in.rjsa.model.fy.DeducteeRemark;
 import domain.in.rjsa.model.fy.Regular24QDeductee;
 import domain.in.rjsa.service.Regular24QDeducteeService;
 import domain.in.rjsa.service.RemarkService;
+import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping("/apiform24QDeductee")
@@ -166,4 +171,43 @@ public class Regular24QDeducteeController<E>
 			throw new CustomException(e.getMessage());
 		}
 	}
+	
+	@GetMapping("/getAmountDetails")
+	public ResponseEntity<?> getAmountDetails(@RequestParam String quarter, HttpServletResponse response) {
+		try {
+			byte[] excelBytes = service.getAmountDetailsAsExcel(quarter);
+
+			response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+			response.setHeader("Content-Disposition", "attachment; filename=\"TDSAmount.xlsx\"");
+			response.setContentLength(excelBytes.length);
+
+			ServletOutputStream out = response.getOutputStream();
+			out.write(excelBytes);
+			out.flush();
+
+			return ResponseEntity.status(HttpStatus.OK).build();
+		} catch (Exception e) {
+			logger.error("Error getting amount details", e);
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+					.body("Download failed. There was an error while downloading the excel. Please try again later.");
+		}
+	}
+	
+	@PostMapping("/mapChallan")
+	public ResponseEntity<?> mapChallan(@RequestBody HashMap<String, Object> data) {
+		FieldErrorDTO dto = new FieldErrorDTO();
+		try {
+			service.mapChallan(data);
+			dto.setMessage("Map challan successfully.");
+			return new ResponseEntity<>(dto, HttpStatus.OK);
+		} catch(Exception e) {
+			logger.error("Error mapping challan", e);
+			dto.setEntityName(getEntity().getSimpleName());
+			dto.setMessage("Error");
+			dto.setExceptionMsg("Error mapping challan");
+			return new ResponseEntity<>(dto, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+	}
+	
 }

@@ -1,12 +1,18 @@
 package domain.in.rjsa.service.impl;
 
+import java.lang.reflect.Field;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.TimeZone;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,7 +21,9 @@ import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import domain.in.rjsa.annotation.Validate;
 import domain.in.rjsa.dao.DeducteeRemarkDao;
+import domain.in.rjsa.exception.CustomException;
 import domain.in.rjsa.model.fy.DeducteeRemark;
 import domain.in.rjsa.model.fy.Regular24QDeductee;
 import domain.in.rjsa.model.fy.Regular26QDeductee;
@@ -27,13 +35,14 @@ import domain.in.rjsa.service.Regular24QDeducteeService;
 import domain.in.rjsa.service.Regular26QDeducteeService;
 import domain.in.rjsa.service.Regular27EQDeducteeService;
 import domain.in.rjsa.service.Regular27QDeducteeService;
+import in.rjsa.tdsExcelConvertor.util.MainClassToTestSingleLineValidation;
 import jakarta.transaction.Transactional;
 
 @Transactional
 @Service("DeducteeRemarkService")
 public class DeducteeRemarkServiceImpl extends AbstractServiceForm<Long, DeducteeRemark, DeducteeRemarkDao>
 		implements DeducteeRemarkService {
-
+	
 	@Autowired
 	DeducteeRemarkDao dao;
 
@@ -70,6 +79,7 @@ public class DeducteeRemarkServiceImpl extends AbstractServiceForm<Long, Deducte
 	@Override
 	public void save(LinkedHashMap<String, Object> entity) {
 		try {
+			validateData(entity);
 			System.out.println(entity);
 			DeducteeRemark remark = new DeducteeRemark();
 			remark.setDEDUCTEEID(Long.valueOf(entity.get("id").toString()));
@@ -90,6 +100,80 @@ public class DeducteeRemarkServiceImpl extends AbstractServiceForm<Long, Deducte
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void validateData(LinkedHashMap<String, Object> entity) {
+		String validationJson = buildValidationJson(entity);
+		MainClassToTestSingleLineValidation validateSingleLine = new MainClassToTestSingleLineValidation();
+		JSONObject postValidationMsg = validateSingleLine.validateSingleLine(validationJson);
+
+		if (postValidationMsg.containsKey("serverError")) {
+			throw new CustomException("Error validating details: "+postValidationMsg.get("serverError"));
+		} else {
+			throw new CustomException("Error validating details");
+		}
+	}
+	
+	private String buildValidationJson(LinkedHashMap<String, Object> map) {
+		Map<String, Object> lineMap = new HashMap<String, Object>();
+
+		try {
+			String challanHeding = map.get("challanHeading").toString();
+			if (challanHeding.contains("24Q")) {
+				lineMap.put("form", "24Q");
+				lineMap.put("line", buildLine(map, Regular24QDeductee.class));
+			} else if (challanHeding.contains("26Q")) {
+				lineMap.put("form", "26Q");
+				lineMap.put("line", buildLine(map, Regular26QDeductee.class));
+			} else if (challanHeding.contains("27EQ")) {
+				lineMap.put("form", "27EQ");
+				lineMap.put("line", buildLine(map, Regular27EQDeductee.class));
+			} else if (challanHeding.contains("27Q")) {
+				lineMap.put("form", "27Q");
+				lineMap.put("line", buildLine(map, Regular27QDeductee.class));
+			} else {
+				throw new CustomException("Invalid Challan Heading");
+			}
+
+			lineMap.put("fy", map.get("fy"));
+			lineMap.put("pan", map.get("pan"));
+			lineMap.put("name", map.get("name"));
+			lineMap.put("tan", map.get("TAN"));
+			lineMap.put("q", map.get("quarter"));
+			lineMap.put("month", map.get("month"));
+			lineMap.put("challanHeading", challanHeding);
+
+			return mapper.writeValueAsString(lineMap);
+		} catch (Exception e) {
+			throw new CustomException("Error validating details");
+		}
+	}
+
+	public static String buildLine(LinkedHashMap<String, Object> map, Object deductee) {
+		StringBuilder line = new StringBuilder();
+
+	    try {
+	        Field[] fields = Regular24QDeductee.class.getDeclaredFields();
+
+	        List<Field> orderedFields = Arrays.stream(fields)
+	            .filter(f -> f.isAnnotationPresent(Validate.class) && f.getAnnotation(Validate.class).enabled())
+	            .sorted(Comparator.comparingInt(f -> f.getAnnotation(Validate.class).order()))
+	            .toList();
+
+	        for (Field field : orderedFields) {
+	            String key = field.getName();
+	            Object value = map.get(key);
+	            line.append(value != null ? value.toString() : "").append("^");
+	        }
+
+	        if (line.length() > 0) {
+	            line.setLength(line.length() - 1);
+	        }
+	        return line.toString();
+
+	    } catch (Exception e) {
+	        throw new CustomException("Error validating details");
+	    }
 	}
 
 	private void createRemark(LinkedHashMap<String, Object> newDeductee, DeducteeRemark remark) throws Exception {

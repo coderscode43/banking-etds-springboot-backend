@@ -149,11 +149,11 @@ public class DeducteeRemarkServiceImpl extends AbstractServiceForm<Long, Deducte
 		}
 	}
 
-	public static String buildLine(LinkedHashMap<String, Object> map, Object deductee) {
+	public static <T> String buildLine(LinkedHashMap<String, Object> map, Class<T> deductee) {
 		StringBuilder line = new StringBuilder();
 
 	    try {
-	        Field[] fields = Regular24QDeductee.class.getDeclaredFields();
+	        Field[] fields = deductee.getDeclaredFields();
 
 	        List<Field> orderedFields = Arrays.stream(fields)
 	            .filter(f -> f.isAnnotationPresent(Validate.class) && f.getAnnotation(Validate.class).enabled())

@@ -1,25 +1,20 @@
 package domain.in.rjsa.service.impl;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.StringUtils;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -27,10 +22,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import domain.in.rjsa.dao.ChallanDetailsDao;
 import domain.in.rjsa.dao.Regular24QDeducteeDao;
 import domain.in.rjsa.dao.RemarkDao;
-import domain.in.rjsa.dto.TDSAmountDto;
 import domain.in.rjsa.excel.Form24QDeducteeExcel;
 import domain.in.rjsa.exception.CustomException;
-import domain.in.rjsa.model.fy.ChallanDetails;
 import domain.in.rjsa.model.fy.Regular24QDeductee;
 import domain.in.rjsa.service.AbstractServiceFY;
 import domain.in.rjsa.service.Regular24QDeducteeService;
@@ -329,130 +322,4 @@ public class Regular24QDeducteeServiceImpl extends AbstractServiceFY<Long, Regul
 		}
 	}
 	
-	@Override
-	public byte[] getAmountDetailsAsExcel(String quarter) {
-		List<TDSAmountDto> tdsAmountList = dao.getAmountDetails(quarter);
-
-		try (InputStream stream = getClass().getClassLoader().getResourceAsStream("excel/TDSAmount.xlsx");
-				Workbook wb = new XSSFWorkbook(stream);
-				ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
-
-			Sheet sheet = wb.getSheet("TDS-1");
-
-			int srNo = 1;
-			int row = 1;
-
-			for (TDSAmountDto tdsAmount : tdsAmountList) {
-				Row rowNum = sheet.createRow(row);
-
-				int cell = 0;
-				Cell cellObj;
-				rowNum.createCell(cell++).setCellValue(srNo);
-
-				cellObj = rowNum.createCell(cell++);
-				if (StringUtils.hasText(tdsAmount.getTan())) {
-					cellObj.setCellValue(tdsAmount.getTan());
-				}
-
-				cellObj = rowNum.createCell(cell++);
-				cellObj.setCellValue(quarter);
-
-				cellObj = rowNum.createCell(cell++);
-				if (tdsAmount.getAmount() == null) {
-					cellObj.setCellValue(0.00);
-				} else {
-					cellObj.setCellValue(tdsAmount.getAmount());
-				}
-
-				row++;
-				srNo++;
-			}
-
-			wb.write(baos);
-			return baos.toByteArray();
-
-		} catch (Exception e) {
-			throw new CustomException("Error generating amout excel.");
-		}
-	}
-
-	@Override
-	public void mapChallan(HashMap<String, Object> data) {
-		List<Regular24QDeductee> deductees = dao.getDetails(data);
-
-		if (deductees == null || deductees.isEmpty()) {
-			return;
-		}
-
-		double maxAmount = Double.parseDouble(data.get("amount").toString());
-		double currentSum = 0.0;
-
-		String fy = deductees.get(0).getFy();
-		ChallanDetails currentChallan = createNewChallan(data, fy);
-
-		for (Regular24QDeductee deductee : deductees) {
-			double remainingTds = deductee.getTds();
-			boolean isFirstPart = true;
-
-			while (remainingTds > 0) {
-				double spaceLeft = maxAmount - currentSum;
-				double amountToAdd = Math.min(remainingTds, spaceLeft);
-
-				Regular24QDeductee deducteePart;
-
-				if (isFirstPart) {
-					deductee.setTds(amountToAdd);
-					deducteePart = deductee;
-					deducteePart.setChallanDetails(currentChallan);
-					dao.update(deducteePart);
-
-					isFirstPart = false;
-				} else {
-					deducteePart = createNewDeductee(deductee, amountToAdd);
-					deducteePart.setChallanDetails(currentChallan);
-					dao.persist(deducteePart);
-				}
-
-				currentSum += amountToAdd;
-				remainingTds -= amountToAdd;
-
-				if (currentSum == maxAmount) {
-					currentChallan.setTds(currentSum);
-					challanDetailsDao.persist(currentChallan);
-
-					currentChallan = createNewChallan(data, fy);
-					currentSum = 0.0;
-				}
-			}
-		}
-
-		if (currentSum > 0.0) {
-			currentChallan.setTds(currentSum);
-			challanDetailsDao.persist(currentChallan);
-		}
-
-	}
-
-	public ChallanDetails createNewChallan(HashMap<String, Object> data, String fy) {
-		ChallanDetails challanDetails = new ChallanDetails();
-		String tan = data.get("TAN").toString().split("-")[0];
-		challanDetails.setTAN(tan);
-		challanDetails.setFy(fy);
-		challanDetails.setMonth(data.get("month").toString());
-		challanDetails.setTds(0.0);
-		return challanDetails;
-	}
-
-	private Regular24QDeductee createNewDeductee(Regular24QDeductee original, Double newTds) {
-		ObjectMapper mapper = new ObjectMapper();
-		HashMap<String, Object> map = mapper.convertValue(original, new TypeReference<HashMap<String, Object>>() {
-		});
-
-		Regular24QDeductee newDeductee = mapper.convertValue(map, Regular24QDeductee.class);
-		newDeductee.setId(null);
-		newDeductee.setTds(newTds);
-
-		return newDeductee;
-	}
-
 }

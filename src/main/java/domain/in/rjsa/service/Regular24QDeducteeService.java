@@ -12,9 +12,4 @@ public interface Regular24QDeducteeService extends ServiceInterfaceFY<Long, Regu
 
 	public Long findallCount(HashMap<String, Object> constrains);
 
-	public byte[] getAmountDetailsAsExcel(String quarter);
-
-	public void mapChallan(HashMap<String, Object> data);
-
-//	 public void updateAllowed(LinkedHashMap<String, Object> entity);
 }

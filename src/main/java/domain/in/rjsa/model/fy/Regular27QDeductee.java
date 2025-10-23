@@ -8,6 +8,7 @@ import org.json.simple.JSONObject;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import domain.in.rjsa.annotation.Validate;
 import domain.in.rjsa.model.form.CommonModelAbstract;
 import domain.in.rjsa.util.JsonDateSerializer;
 import lombok.Data;
@@ -18,113 +19,183 @@ public class Regular27QDeductee extends CommonModelAbstract {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	@Validate(order = 58)
 	public Long id;
-
-	public String challanHeading;
-
-	public String deducteeRefNo;
-
-	public String deducteeCode;
-
-	public String pan;
-
-	public String name;
-
-	public String sectionCode;
-
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Kolkata")
-	public Date dateOfPayment;
-
-	public Double amountPaid;
-
-	public Double tds;
-
-	public Double surcharge;
-
-	public Double eduCess;
-
-	public Double totalTaxDeducted;
-
-	public Double totalTaxDeposited;
-
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Kolkata")
-	public Date dateOfDeduction;
-
-	public Double rateAtWhichTaxCollected;
-
-	public String remarksReason;
-
-	public String grossingUpIndicator;
-
-	public String certificateNumber;
-
-	public Long uniqueAcknowledgeNo;
-
-	public String countryOfResidence;
-
-	public String emailId;
-
-	public Long contactNoOfDeductee;
-
-	public String addressOfDeductee;
-
-	public Long taxIdentificationNo;
-
-	public String fy;
-
-	public String quarter;
-
-	public String tdsRateAsPerItActs;
-
-	public String natureOfRemittance;
-
-	public Long branchCode;
-
-	public String accNo;
-
+	
+	@Validate(order = 1)
+	public Long deducteeSrNo;
+	
+	@Validate(order = 2)
 	public Long challanSrNo;
 
-	public String month;
+	@Validate(order = 3)
+	public String deducteeRefNo;
+	
+	@Validate(order = 4)
+	public String deducteeCode;
+	
+	@Validate(order = 5)
+	public String pan;
+	
+	@Validate(order = 6)
+	public String name;
+	
+	@Validate(order = 7)
+	public String sectionCode;
+	
+	@Validate(order = 8)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Kolkata")
+	public Date dateOfPayment;
+	
+	@Validate(order = 9)
+	public Double amountPaid;
 
-	public String custVendId;
+	@Validate(order = 10)
+	public Double tds;
+	
+	@Validate(order = 11)
+	public Double surcharge;
+	
+	@Validate(order = 12)
+	public Double eduCess;
+	
+	@Validate(order = 13)
+	public Double totalTaxDeducted;
+	
+	@Validate(order = 14)
+	public Double totalTaxDeposited;
+	
+	@Validate(order = 15)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Kolkata")
+	public Date dateOfDeduction;
+	
+	@Validate(order = 16)
+	public Double rateAtWhichTaxCollected;
+	
+	@Validate(order = 17)
+	public String remarksReason;
+	
+	@Validate(order = 18)
+	public String grossingUpIndicator;
+	
+	@Validate(order = 19)
+	public String certificateNumber;
 
-	public String uniqueRefNo;
+	@Validate(order = 20)
+	public String tdsRateAsPerItActs;
 
+	@Validate(order = 21)
+	public String natureOfRemittance;
+	
+	@Validate(order = 22)
+	public Long uniqueAcknowledgeNo;
+
+	@Validate(order = 23)
+	public String countryOfResidence;
+	
+	@Validate(order = 24)
+	public String emailId;
+
+	@Validate(order = 25)
+	public Long contactNoOfDeductee;
+
+	@Validate(order = 26)
+	public String addressOfDeductee;
+
+	@Validate(order = 27)
+	public Long taxIdentificationNo;
+	
+	@Validate(order = 28)
 	public Double cashWithdrawal194N;
 
+	@Validate(order = 29)
 	public Double cashWithdrawal194N20Lto1Cr;
 
+	@Validate(order = 30)
 	public Double cashWithdrawal194N1Cr;
-
-	public String TAN;
-
-	public String roCode;
-
+	
+	@Validate(order = 35)
 	public String errorDescription;
 
+	@Validate(order = 36)
 	public String warningDescription;
 
+	@Validate(order = 37)
 	public Double shortDeduction;
-
+	
+	@Validate(order = 38)
 	public Double interestOnShortDeduction;
 
+	@Validate(order = 39)
 	public Double interestOnLatePayment;
 
+	@Validate(order = 40)
 	public Double interestOnLateDeduction;
-
-//	//	public boolean verify = false;
-
-	public boolean resolved;
-
+	
+	@Validate(order = 41)
+	public Long branchCode;
+	
+	@Validate(order = 42)
+	public String custVendId;
+	
+	@Validate(order = 43)
+	public String challanHeading;
+	
+	@Validate(order = 44)
+	public String accNo;
+	
+	@Validate(order = 45)
+	public String uniqueRefNo;
+	
+	@Validate(order = 46)
+	public String roCode;
+	
+	@Validate(order = 47)
+	public String TAN;
+	
+	@Validate(order = 48)
 	public String comments;
-
-//	//	public String remarks;
-
-	public Long deducteeSrNo;
-
+	
+	@Validate(order = 49)
 	public Long tranAmt;
-
+	
+	@Validate(order = 50)
 	public String additionalDetail;
+	
+	@Validate(order = 51)
+	public String month;
+	
+	@Validate(order = 52)
+	public boolean resolved;
+	
+	@Validate(order = 53)
+	public String fy;
+	
+	@Validate(order = 54)
+	public String quarter;
+	
+	/* 7 new columns */
+	@Validate(order = 31)
+	public Double cashWithdrawal194N3Cr;
+	
+	@Validate(order = 32)
+	public Double cashWithdrawal194N20Lto3Cr;
+	
+	@Validate(order = 33)
+	public Double cashWithdrawal194Ngr3Cr;
+	
+	@Validate(order = 34)
+	public String whetherCollecteeOptRegime;
+	
+	@Validate(order = 55)
+	public String validInvalidPan;
+
+	@Validate(order = 56)
+	public String panStatus;
+
+	@Validate(order = 57)
+	public String specifiedPerson;
 
 	public void setEntity(Regular27QDeductee form27Q) {
 		this.dateOfPayment = form27Q.getDateOfPayment();

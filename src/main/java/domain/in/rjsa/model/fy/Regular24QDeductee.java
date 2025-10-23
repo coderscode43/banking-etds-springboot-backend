@@ -146,16 +146,14 @@ public class Regular24QDeductee extends CommonModelAbstract {
 
 	/* 3 new columns */
 	@Validate(order = 38)
-	private String validInvalidPan;
+	public String validInvalidPan;
 	
 	@Validate(order = 39)
-	private String panStatus;
+	public String panStatus;
 	
 	@Validate(order = 40)
-	private String specifiedPerson;
+	public String specifiedPerson;
 	
-	public ChallanDetails challanDetails;
-
 	@JsonSerialize(using = JsonDateSerializer.class)
 	public Date getDateOfPayment() {
 		return dateOfPayment;

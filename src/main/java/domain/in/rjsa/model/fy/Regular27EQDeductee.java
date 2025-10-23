@@ -8,6 +8,7 @@ import org.json.simple.JSONObject;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import domain.in.rjsa.annotation.Validate;
 import domain.in.rjsa.model.form.CommonModelAbstract;
 import domain.in.rjsa.util.JsonDateSerializer;
 import lombok.Data;
@@ -18,68 +19,158 @@ public class Regular27EQDeductee extends CommonModelAbstract {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	@Validate(order = 49)
 	public Long id;
+	
+	@Validate(order = 1)
+	public Long deducteeSrNo;
+	
+	@Validate(order = 2)
+	public Long challanSrNo;
+	
+	@Validate(order = 3)
 	public String deducteeRefNo;
+	
+	@Validate(order = 4)
 	public String deducteeCode;
+	
+	@Validate(order = 5)
 	public String pan;
+	
+	@Validate(order = 6)
 	public String name;
+	
+	@Validate(order = 7)
 	public Double amountPaid;
 
+	@Validate(order = 8)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Kolkata")
 	public Date dateOfPayment;
 
+	@Validate(order = 9)
 	public Double tds;
+	
+	@Validate(order = 10)
 	public Double surcharge;
-	public String quarter;
-	public String fy;
+	
+	@Validate(order = 11)
 	public Double eduCess;
+	
+	@Validate(order = 12)
 	public Double totalTaxDeducted;
+	
+	@Validate(order = 13)
 	public Double totalTaxDeposited;
-
+	
+	@Validate(order = 14)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Kolkata")
 	public Date dateOfDeduction;
-
+	
+	@Validate(order = 15)
 	public Double totalValueofPurchase;
+	
+	@Validate(order = 16)
 	public Double rateatwhichTaxCollected;
+	
+	@Validate(order = 17)
 	public String remarksReason;
+	
+	@Validate(order = 18)
+	public String sectionCode;
+	
+	@Validate(order = 19)
 	public String certificateNumber;
+	
+	@Validate(order = 20)
 	public String deducteeisNonResident;
+	
+	@Validate(order = 21)
 	public String permanentEstablishment;
-	public Long branchCode;
-	public String accNo;
-	public Long challanSrNo;
-	public String month;
-//	//	public Long deducteeId;
-	public String challanHeading;
-	public String custVendId;
-	public String uniqueRefNo;
+	
+	@Validate(order = 22)
 	public String reasonForNonCollectionForG;
+	
+	@Validate(order = 23)
 	public Long ifAnswerTo681AisyesthenChallanNumber;
+	
+	@Validate(order = 24)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Kolkata")
 	public Date ifAnswerto681AisyesthenDateofpaymentofTDStoCentralGovernment;
-	public String TAN;
-	public String roCode;
-	public String sectionCode;
+	
+	@Validate(order = 26)
 	public String errorDescription;
+	
+	@Validate(order = 27)
 	public String warningDescription;
+	
+	@Validate(order = 28)
 	public Double shortDeduction;
+	
+	@Validate(order = 29)
 	public Double interestOnShortDeduction;
+	
+	@Validate(order = 30)
 	public Double interestOnLatePayment;
+	
+	@Validate(order = 31)
 	public Double interestOnLateDeduction;
-
-	public boolean resolved;
-
+	
+	@Validate(order = 32)
+	public Long branchCode;
+	
+	@Validate(order = 33)
+	public String custVendId;
+	
+	@Validate(order = 34)
+	public String challanHeading;
+	
+	@Validate(order = 35)
+	public String accNo;
+	
+	@Validate(order = 36)
+	public String uniqueRefNo;
+	
+	@Validate(order = 37)
+	public String roCode;
+	
+	@Validate(order = 38)
+	public String TAN;
+	
+	@Validate(order = 39)
 	public String comments;
-
-	public Long deducteeSrNo;
-
+	
+	@Validate(order = 40)
 	public Long tranAmt;
-
+	
+	@Validate(order = 41)
 	public String additionalDetail;
+	
+	@Validate(order = 42)
+	public String month;
+	
+	@Validate(order = 43)
+	public boolean resolved;
+	
+	@Validate(order = 44)
+	public String fy;
+	
+	@Validate(order = 45)
+	public String quarter;
+	
+	/* 4 new columns */
+	@Validate(order = 25)
+	private String whetherCollecteeOptRegime;
 
-	/*
-	 * public boolean verify = false;
-	 */
+	@Validate(order = 46)
+	public String validInvalidPan;
+
+	@Validate(order = 47)
+	public String panStatus;
+
+	@Validate(order = 48)
+	public String specifiedPerson;
+	
 	@JsonSerialize(using = JsonDateSerializer.class)
 	public Date getDateOfPayment() {
 		return dateOfPayment;

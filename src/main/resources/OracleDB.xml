@@ -566,7 +566,6 @@
     <property name="validInvalidPan" column="VALIDINVALIDPAN" type="string"/>
     <property name="panStatus" column="PANSTATUS" type="string"/>
     <property name="specifiedPerson" column="SPECIFIEDPERSON" type="string"/>
-    <many-to-one name="challanDetails" class="domain.in.rjsa.model.fy.ChallanDetails" column="CHALLAN_ID" not-null="false"></many-to-one>
 </class>
 
 <class name="domain.in.rjsa.model.fy.Regular26QDeductee" table="REGULAR26QDEDUCTEE" schema="AAACN4165C_2324">
@@ -616,13 +615,13 @@
     <property name="comments" column="COMMENTS" type="string"/>
     <property name="deducteeSrNo" column="DEDUCTEESRNO" type="long"/>
     <property name="tranAmt" column="TRANAMT" type="double"/>
+    <property name="additionalDetail" column="ADDITIONALDETAIL" type="string"/>
     <property name="cashWithdrawal194N3Cr" column="CASHWITHDRAWAL194N3CR" type="double"/>
     <property name="cashWIthdrawal194N20LtO3Cr" column="CASHWITHDRAWAL194N20LTO3CR" type="double"/>
     <property name="cashWithdrawal194Ngr3Cr" column="CASHWITHDRAWAL194NGR3CR" type="double"/>
     <property name="validInvalidPan" column="VALIDINVALIDPAN" type="string"/>
     <property name="panStatus" column="PANSTATUS" type="string"/>
     <property name="specifiedPerson" column="SPECIFIEDPERSON" type="string"/>
-    <property name="additionalDetail" column="ADDITIONALDETAIL" type="string"/>
 </class>
 
 <class name="domain.in.rjsa.model.fy.Regular27EQDeductee" table="REGULAR27EQDEDUCTEE" schema="AAACN4165C_2324">
@@ -675,6 +674,10 @@
     <property name="deducteeSrNo" column="DEDUCTEESRNO" type="long"/>
     <property name="tranAmt" column="TRANAMT" type="long"/>
     <property name="additionalDetail" column="ADDITIONALDETAIL" type="string"/>
+    <property name="whetherCollecteeOptRegime" column="WHETHERCOLLECTEEOPTREGIME" type="string"/>
+    <property name="validInvalidPan" column="VALIDINVALIDPAN" type="string"/>
+    <property name="panStatus" column="PANSTATUS" type="string"/>
+    <property name="specifiedPerson" column="SPECIFIEDPERSON" type="string"/>
 </class>
 
 <class name="domain.in.rjsa.model.fy.Regular27QDeductee" table="REGULAR27QDEDUCTEE" schema="AAACN4165C_2324">
@@ -733,6 +736,13 @@
     <property name="deducteeSrNo" column="DEDUCTEESRNO" type="long"/>
     <property name="tranAmt" column="TRANAMT" type="long"/>
     <property name="additionalDetail" column="ADDITIONALDETAIL" type="string"/>
+    <property name="cashWithdrawal194N3Cr" column="CASHWITHDRAWAL194N3CR" type="double"/>
+    <property name="cashWithdrawal194N20Lto3Cr" column="CASHWITHDRAWAL194N20LTO3CR" type="double"/>
+    <property name="cashWithdrawal194Ngr3Cr" column="CASHWITHDRAWAL194NGR3CR" type="double"/>
+    <property name="whetherCollecteeOptRegime" column="WHETHERCOLLECTEEOPTREGIME" type="string"/>
+    <property name="validInvalidPan" column="VALIDINVALIDPAN" type="string"/>
+    <property name="panStatus" column="PANSTATUS" type="string"/>
+    <property name="specifiedPerson" column="SPECIFIEDPERSON" type="string"/>
 </class>
 
 <class name="domain.in.rjsa.model.fy.DeducteeRemark" table="DEDUCTEEREMARK" schema="AAACN4165C_2324">

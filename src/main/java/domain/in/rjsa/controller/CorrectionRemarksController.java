@@ -60,7 +60,8 @@ public class CorrectionRemarksController
 			ermsg.setSuccessMsg("Remark added Successfully");
 			return new ResponseEntity<Object>(ermsg,HttpStatus.CREATED);
 		} catch (Exception e) {
-			ermsg.setExceptionMsg(e.getMessage());
+			ermsg.setMessage(e.getMessage());
+			ermsg.setExceptionMsg("Error while setting the Remark");
 			return new ResponseEntity<Object>(ermsg, HttpStatus.BAD_REQUEST);
 
 		}

@@ -238,6 +238,7 @@ public class CorrectionRequestController
 			@RequestParam("dec") String entity) {
 		logger.info("Creating new Return instance");
 		FieldErrorDTO ermsg = new FieldErrorDTO();
+        ermsg.setEntityName("Correction Request");
 		try {
 			ObjectMapper mapper = new ObjectMapper();
 			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
@@ -274,13 +275,12 @@ public class CorrectionRequestController
 			}
 			createWithFileName(entity, fn, ticketNumber);
 //			getService().saveAmount(map);
-			addLogs("Add");
-			// ermsg.setMessage(" Saved Successfully");
-			return new ResponseEntity<Object>(HttpStatus.CREATED);
+            addLogs("Add");
 
+            ermsg.setSuccessMsg("Saved Successfully");
+            return new ResponseEntity<Object>(ermsg, HttpStatus.CREATED);
 		} catch (Exception e) {
 			ermsg.setExceptionMsg(e.getMessage());
-			ermsg.setEntityName("Correction Request");
 			return new ResponseEntity<Object>(ermsg, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
@@ -291,6 +291,7 @@ public class CorrectionRequestController
 			@RequestParam("blob2") MultipartFile cd, @RequestParam("dec") String entity) {
 		logger.info("Creating new Return instance");
 		FieldErrorDTO ermsg = new FieldErrorDTO();
+        ermsg.setEntityName("Correction Request");
 		try {
 			ObjectMapper mapper = new ObjectMapper();
 			LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
@@ -308,13 +309,12 @@ public class CorrectionRequestController
 			fn.put("cd", cd.getOriginalFilename());
 			createWithFileName(entity, fn, ticketNumber);
 //			getService().saveAmount(map);
-			addLogs("Add");
-			// ermsg.setMessage(" Saved Successfully");
-			return new ResponseEntity<Object>(HttpStatus.CREATED);
+            addLogs("Add");
+            ermsg.setSuccessMsg("Saved Successfully");
+            return new ResponseEntity<Object>(ermsg, HttpStatus.CREATED);
 
 		} catch (Exception e) {
 			ermsg.setExceptionMsg(e.getMessage());
-			ermsg.setEntityName("Correction Request");
 			return new ResponseEntity<Object>(ermsg, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
@@ -339,9 +339,11 @@ public class CorrectionRequestController
 			if (fileName.containsKey("sd")) {
 				cr.setFileName(fileName.get("sd").toString());
 			}
-			String q = cr.getQuarter().substring(0, cr.getQuarter().toString().length() - 2);
+//			String q = cr.getQuarter().substring(0, cr.getQuarter().toString().length() - 2);
+            String q = cr.getQuarter();
 			cr.setQuarter(q);
-			String tos = cr.getTypeOfCorrection().substring(0, cr.getTypeOfCorrection().toString().length() - 2);
+//			String tos = cr.getTypeOfCorrection().substring(0, cr.getTypeOfCorrection().toString().length() - 2);
+            String tos = cr.getTypeOfCorrection();
 			cr.setTypeOfCorrection(tos);
 			cr.setLastUpdatedOn(new Date());
 			getService().save(cr);
@@ -615,8 +617,11 @@ public class CorrectionRequestController
 
 			return new ResponseEntity<>(send, HttpStatus.OK);
 		} catch (Exception e) {
+            FieldErrorDTO errmsg = new FieldErrorDTO();
+            errmsg.setEntityName(getEntity().getSimpleName());
+            errmsg.setExceptionMsg(e.getMessage());
 			logger.error("Error in listALL", e);
-			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>(errmsg, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
 	}

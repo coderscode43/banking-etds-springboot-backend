@@ -59,7 +59,7 @@ public class SecurityConfig {
                                 "/static/img/NIA.png", "/static/img/UCO.png", "/static/js/bootstrap.min.js",
                                 "/static/js/lib/bootstrap.js", "/static/js/jquery.min.js", "/static/css/font-awesome.min.css",
                                 "/static/fonts/css/font-awesome.css", "/static/css/signin.css", "/static/css/bootstrap.min.css",
-                                "/static/img/TOS.png", "/apidownloadCertificate/**", "/api*/**", "/index/testConnection", "/index/staticData")
+                                "/static/img/TOS.png", "/apidownloadCertificate/**")
                         .permitAll()
                         .requestMatchers(HttpMethod.TRACE).denyAll()
                      // .requestMatchers(HttpMethod.OPTIONS).denyAll()

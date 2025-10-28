@@ -911,9 +911,9 @@ public class CorrectionRequestServiceImpl extends AbstractServiceForm<Long, Corr
 				}
 			}
 
-			String fy = jsonObject1.get("fy").toString();
+			String fy = jsonObject1.get("fy").asText();
 			String q = getQuarter(quarter);
-			String branchCode = jsonObject1.get("branchCode").toString();
+			String branchCode = jsonObject1.get("branchCode").asText();
 			String path = StaticData.documentSave;
 			try {
 				if (path != null) {
@@ -938,8 +938,9 @@ public class CorrectionRequestServiceImpl extends AbstractServiceForm<Long, Corr
 						}
 //					blob.transferTo(file1);
 					}
-					String filepath2 = path + "//" + date + "//" + fy + "//" + q + "//" + branchCode
-							+ "//CorrectionRequest//" + ticketNumber + "//ChallanSupportingDocument";
+//					String filepath2 = path + "//" + date + "//" + fy + "//" + q + "//" + branchCode
+//							+ "//CorrectionRequest//" + ticketNumber + "//ChallanSupportingDocument";
+                    String filepath2 = Paths.get(path, date, fy, q, branchCode, "CorrectionRequest", String.valueOf(ticketNumber), "ChallanSupportingDocument").toString();
 					File file2 = new File(filepath2);
 					if (!file2.exists()) {
 						file2.mkdirs();

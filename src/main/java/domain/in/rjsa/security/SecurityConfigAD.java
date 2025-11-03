@@ -50,7 +50,7 @@ public class SecurityConfigAD {
                                 "/static/js/jquery.min.js", "/static/css/font-awesome.min.css",
                                 "/static/fonts/css/font-awesome.css", "/static/css/signin.css",
                                 "/static/css/bootstrap.min.css", "/static/img/TOS.png",
-                                "/apidownloadCertificate/**"
+                                "/apidownloadCertificate/**", "/apiAuth/getStatus"
                         )
                         .permitAll() // Allow unrestricted access to the above URLs
                         .anyRequest().authenticated() // Require authentication for any other request

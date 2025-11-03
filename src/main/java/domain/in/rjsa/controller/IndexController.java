@@ -9,6 +9,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+import domain.in.rjsa.dto.AuthStatusResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,15 +53,17 @@ public class IndexController extends AbstractController {
 	@Value("${panel.access:}")
 	private String panelAccess;
 
-	@GetMapping(value = "/logout")
-	public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		if (auth != null) {
-			new SecurityContextLogoutHandler().logout(request, response, auth);
-		}
-		return "redirect:/login.jsp";// You can redirect wherever you want, but generally it's a good practice to
-										// show login screen again.
-	}
+    @GetMapping(value = "/logout")
+    public ResponseEntity<AuthStatusResponse> logoutPage(HttpServletRequest request, HttpServletResponse response) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        AuthStatusResponse authStatusResponse = new AuthStatusResponse("inactive", false);
+
+        if (auth != null) {
+            new SecurityContextLogoutHandler().logout(request, response, auth);
+        }
+
+        return ResponseEntity.ok().body(authStatusResponse);
+    }
 
 	@GetMapping(value = "/resetPass")
 	public String resetPassword(ModelMap model) {
